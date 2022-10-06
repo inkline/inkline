@@ -445,59 +445,252 @@
 }
 
 .popover {
-    @include popup(
-        (
-            'z-index': var(--popover--z-index)
-        )
-    );
+    @include popup(var(--popover--z-index, 2000));
     @include popup-arrow();
-    @include popup-arrow-size-variant();
+    @include popup-arrow-size-variant(var(--popover--arrow--size, 6px));
 
     text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
     list-style: none;
     line-height: var(--popover--line-height, var(--line-height));
     box-shadow: var(
         --popover--box-shadow,
-        (
-            var(--popover--box-shadow-x-offset, var(--box-shadow-offset-x))
-                var(--popover--box-shadow-y-offset, var(--box-shadow-offset-y))
-                var(--popover--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                var(--popover--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                var(--popover--box-shadow-color, var(--box-shadow-color))
-        )
+        var(--popover--box-shadow-x-offset, var(--box-shadow-offset-x))
+            var(--popover--box-shadow-y-offset, var(--box-shadow-offset-y))
+            var(--popover--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+            var(--popover--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+            var(--popover--box-shadow-color, var(--box-shadow-color))
     );
     background-clip: padding-box;
     display: inline-block;
     white-space: normal;
-    width: var(--popover--width);
-    max-width: var(----max-width);
+    width: var(--popover--width, 280px);
+    max-width: var(--popover--max-width, 90vw);
     color: var(--popover--color);
     font-size: var(--popover--font-size, var(--font-size));
 
     > .popover-header {
-        border-style: var(----header--border-style);
-        border-width: var(----header--border-width);
-        border-bottom-width: 0;
-        border-color: var(----header--border-color);
+        border-style: var(
+            --popover--header--border-style,
+            var(
+                    --popover--header--border-top-style,
+                    var(--popover--border-top-style, var(--border-top-style))
+                )
+                var(
+                    --popover--header--border-right-style,
+                    var(--popover--border-right-style, var(--border-right-style))
+                )
+                var(
+                    --popover--header--border-bottom-style,
+                    var(--popover--border-bottom-style, var(--border-bottom-style))
+                )
+                var(
+                    --popover--header--border-left-style,
+                    var(--popover--border-left-style, var(--border-left-style))
+                )
+        );
+        border-width: var(
+            --popover--header--border-width,
+            var(
+                    --popover--header--border-top-width,
+                    var(--popover--border-top-width, var(--border-top-width))
+                )
+                var(
+                    --popover--header--border-right-width,
+                    var(--popover--border-right-width, var(--border-right-width))
+                )
+                var(--popover--header--border-bottom-width, 0)
+                var(
+                    --popover--header--border-left-width,
+                    var(--popover--border-left-width, var(--border-left-width))
+                )
+        );
+        border-color: var(
+            --popover--header--border-color,
+            var(
+                    --popover--header--border-top-color,
+                    var(--popover--border-top-color, var(--border-top-color))
+                )
+                var(
+                    --popover--header--border-right-color,
+                    var(--popover--border-right-color, var(--border-right-color))
+                )
+                var(
+                    --popover--header--border-bottom-color,
+                    var(--popover--border-bottom-color, var(--border-bottom-color))
+                )
+                var(
+                    --popover--header--border-left-color,
+                    var(--popover--border-left-color, var(--border-left-color))
+                )
+        );
+        padding: var(
+            --popover--header--padding,
+            var(--popover--header--padding-top, var(--popover--padding-top, var(--padding-top)))
+                var(
+                    --popover--header--padding-right,
+                    var(--popover--padding-right, var(--padding-right))
+                )
+                var(
+                    --popover--header--padding-bottom,
+                    var(--popover--padding-bottom, var(--padding-bottom))
+                )
+                var(
+                    --popover--header--padding-left,
+                    var(--popover--padding-left, var(--padding-left))
+                )
+        );
         background-color: var(--popover--header--background, var(--popover--background));
-        padding: var(----header--padding);
     }
 
     > .popover-body {
-        border-style: var(----body--border-style);
-        border-width: var(----body--border-width);
+        border-style: var(
+            --popover--body--border-style,
+            var(
+                    --popover--body--border-top-style,
+                    var(--popover--border-top-style, var(--border-top-style))
+                )
+                var(
+                    --popover--body--border-right-style,
+                    var(--popover--border-right-style, var(--border-right-style))
+                )
+                var(
+                    --popover--body--border-bottom-style,
+                    var(--popover--border-bottom-style, var(--border-bottom-style))
+                )
+                var(
+                    --popover--body--border-left-style,
+                    var(--popover--border-left-style, var(--border-left-style))
+                )
+        );
+        border-width: var(
+            --popover--body--border-width,
+            var(
+                    --popover--body--border-top-width,
+                    var(--popover--border-top-width, var(--border-top-width))
+                )
+                var(
+                    --popover--body--border-right-width,
+                    var(--popover--border-right-width, var(--border-right-width))
+                )
+                var(
+                    --popover--body--border-bottom-width,
+                    var(--popover--border-bottom-width, var(--border-bottom-width))
+                )
+                var(
+                    --popover--body--border-left-width,
+                    var(--popover--border-left-width, var(--border-left-width))
+                )
+        );
+        border-color: var(
+            --popover--body--border-color,
+            var(
+                    --popover--body--border-top-color,
+                    var(--popover--border-top-color, var(--border-top-color))
+                )
+                var(
+                    --popover--body--border-right-color,
+                    var(--popover--border-right-color, var(--border-right-color))
+                )
+                var(
+                    --popover--body--border-bottom-color,
+                    var(--popover--border-bottom-color, var(--border-bottom-color))
+                )
+                var(
+                    --popover--body--border-left-color,
+                    var(--popover--border-left-color, var(--border-left-color))
+                )
+        );
+        padding: var(
+            --popover--body--padding,
+            var(--popover--body--padding-top, var(--popover--padding-top, var(--padding-top)))
+                var(
+                    --popover--body--padding-right,
+                    var(--popover--padding-right, var(--padding-right))
+                )
+                var(
+                    --popover--body--padding-bottom,
+                    var(--popover--padding-bottom, var(--padding-bottom))
+                )
+                var(
+                    --popover--body--padding-left,
+                    var(--popover--padding-left, var(--padding-left))
+                )
+        );
         background-color: var(--popover--body--background, var(--popover--background));
-        border-color: var(----body--border-color);
-        padding: var(----body--padding);
     }
 
     > .popover-footer {
-        border-style: var(----footer--border-style);
-        border-width: var(----footer--border-width);
-        border-top-width: 0;
-        border-color: var(----footer--border-color);
+        border-style: var(
+            --popover--footer--border-style,
+            var(
+                    --popover--footer--border-top-style,
+                    var(--popover--border-top-style, var(--border-top-style))
+                )
+                var(
+                    --popover--footer--border-right-style,
+                    var(--popover--border-right-style, var(--border-right-style))
+                )
+                var(
+                    --popover--footer--border-bottom-style,
+                    var(--popover--border-bottom-style, var(--border-bottom-style))
+                )
+                var(
+                    --popover--footer--border-left-style,
+                    var(--popover--border-left-style, var(--border-left-style))
+                )
+        );
+        border-width: var(
+            --popover--footer--border-width,
+            var(--popover--footer--border-top-width, 0)
+                var(
+                    --popover--footer--border-right-width,
+                    var(--popover--border-right-width, var(--border-right-width))
+                )
+                var(
+                    --popover--footer--border-bottom-width,
+                    var(--popover--border-bottom-width, var(--border-bottom-width))
+                )
+                var(
+                    --popover--footer--border-left-width,
+                    var(--popover--border-left-width, var(--border-left-width))
+                )
+        );
+        border-color: var(
+            --popover--footer--border-color,
+            var(
+                    --popover--footer--border-top-color,
+                    var(--popover--border-top-color, var(--border-top-color))
+                )
+                var(
+                    --popover--footer--border-right-color,
+                    var(--popover--border-right-color, var(--border-right-color))
+                )
+                var(
+                    --popover--footer--border-bottom-color,
+                    var(--popover--border-bottom-color, var(--border-bottom-color))
+                )
+                var(
+                    --popover--footer--border-left-color,
+                    var(--popover--border-left-color, var(--border-left-color))
+                )
+        );
+        padding: var(
+            --popover--footer--padding,
+            var(--popover--footer--padding-top, var(--popover--padding-top, var(--padding-top)))
+                var(
+                    --popover--footer--padding-right,
+                    var(--popover--padding-right, var(--padding-right))
+                )
+                var(
+                    --popover--footer--padding-bottom,
+                    var(--popover--padding-bottom, var(--padding-bottom))
+                )
+                var(
+                    --popover--footer--padding-left,
+                    var(--popover--padding-left, var(--padding-left))
+                )
+        );
         background-color: var(--popover--footer--background, var(--popover--background));
-        padding: var(----footer--padding);
     }
 
     > *:nth-child(2) {
@@ -524,33 +717,25 @@
 
     @include popup-arrow-color-variant-for-side(
         'top',
-        (
-            'background': var(--popover--body--background, var(--popover--background)),
-            'border-color': var(--popover--border-top-color, var(--border-top-color))
-        )
-    );
-
-    @include popup-arrow-color-variant-for-side(
-        'bottom',
-        (
-            'background': var(--popover--body--background, var(--popover--background)),
-            'border-color': var(--popover--border-bottom-color, var(--border-bottom-color))
-        )
-    );
-
-    @include popup-arrow-color-variant-for-side(
-        'left',
-        (
-            'background': var(--popover--body--background, var(--popover--background)),
-            'border-color': var(--popover--border-left-color, var(--border-left-color))
-        )
+        var(--popover--background),
+        var(--popover--border-bottom-color, var(--border-bottom-color))
     );
 
     @include popup-arrow-color-variant-for-side(
         'right',
-        (
-            'background': var(--popover--body--background, var(--popover--background)),
-            'border-color': var(--popover--border-right-color, var(--border-right-color))
-        )
+        var(--popover--background),
+        var(--popover--border-left-color, var(--border-left-color))
+    );
+
+    @include popup-arrow-color-variant-for-side(
+        'bottom',
+        var(--popover--background),
+        var(--popover--border-top-color, var(--border-top-color))
+    );
+
+    @include popup-arrow-color-variant-for-side(
+        'left',
+        var(--popover--background),
+        var(--popover--border-right-color, var(--border-right-color))
     );
 }
