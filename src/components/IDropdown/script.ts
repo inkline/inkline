@@ -1,16 +1,16 @@
 /* eslint-disable no-case-declarations */
 
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 import {
     PopupMixin,
     PopupControlsMixin,
     sizePropValidator,
     colorVariantClass,
-    defaultPropValue
-} from '@inkline/inkline/mixins';
-import { ClickOutside } from '@inkline/inkline/directives';
-import { on, off, isFocusable, isKey } from '@inkline/inkline/helpers';
-import { Classes } from '@inkline/inkline/types';
+    defaultPropValue,
+} from "@inkline/inkline/mixins";
+import { ClickOutside } from "@inkline/inkline/directives";
+import { on, off, isFocusable, isKey } from "@inkline/inkline/helpers";
+import { Classes } from "@inkline/inkline/types";
 
 /**
  * Slot for dropdown trigger
@@ -36,33 +36,30 @@ import { Classes } from '@inkline/inkline/types';
  * @kind slot
  */
 
-const componentName = 'IDropdown';
+const componentName = "IDropdown";
 
 export default defineComponent({
     name: componentName,
     directives: {
-        ClickOutside
+        ClickOutside,
     },
-    mixins: [
-        PopupMixin,
-        PopupControlsMixin
-    ],
-    provide () {
+    mixins: [PopupMixin, PopupControlsMixin],
+    provide() {
         return {
-            dropdown: this
+            dropdown: this,
         };
     },
     inject: {
         navbar: {
             default: () => ({
-                onItemClick: () => {}
-            })
+                onItemClick: () => {},
+            }),
         },
         sidebar: {
             default: () => ({
-                onItemClick: () => {}
-            })
-        }
+                onItemClick: () => {},
+            }),
+        },
     },
     props: {
         /**
@@ -73,7 +70,7 @@ export default defineComponent({
          */
         animationDuration: {
             type: Number,
-            default: 300
+            default: 300,
         },
         /**
          * The color variant of the dropdown
@@ -83,7 +80,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: defaultPropValue<string>(componentName, "color"),
         },
         /**
          * The disabled state of the dropdown
@@ -93,7 +90,7 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * Used to hide the dropdown when clicking or selecting a dropdown item
@@ -103,7 +100,7 @@ export default defineComponent({
          */
         hideOnItemClick: {
             type: Boolean,
-            default: true
+            default: true,
         },
         /**
          * The keydown events bound to the trigger element
@@ -113,7 +110,14 @@ export default defineComponent({
          */
         keydownTrigger: {
             type: Array,
-            default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+            default: (): string[] => [
+                "up",
+                "down",
+                "enter",
+                "space",
+                "tab",
+                "esc",
+            ],
         },
         /**
          * The keydown events bound to the dropdown item elements
@@ -123,7 +127,14 @@ export default defineComponent({
          */
         keydownItem: {
             type: Array,
-            default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+            default: (): string[] => [
+                "up",
+                "down",
+                "enter",
+                "space",
+                "tab",
+                "esc",
+            ],
         },
         /**
          * Used to manually control the visibility of the dropdown
@@ -133,7 +144,7 @@ export default defineComponent({
          */
         modelValue: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * Displays an arrow on the dropdown pointing to the trigger element
@@ -143,7 +154,7 @@ export default defineComponent({
          */
         arrow: {
             type: Boolean,
-            default: true
+            default: true,
         },
         /**
          * The placement of the dropdown
@@ -153,7 +164,7 @@ export default defineComponent({
          */
         placement: {
             type: String,
-            default: 'bottom'
+            default: "bottom",
         },
         /**
          * The events used to trigger the dropdown
@@ -163,7 +174,7 @@ export default defineComponent({
          */
         trigger: {
             type: [String, Array],
-            default: (): string[] => ['click']
+            default: (): string[] => ["click"],
         },
         /**
          * The offset of the dropdown relative to the trigger element
@@ -173,7 +184,17 @@ export default defineComponent({
          */
         offset: {
             type: Number,
-            default: 6
+            default: 6,
+        },
+        /**
+         * Determines whether hover state should be transferred from trigger to popup
+         * @type Boolean
+         * @default true
+         * @name interactable
+         */
+        interactable: {
+            type: Boolean,
+            default: true,
         },
         /**
          * Used to override the popper.js options used for creating the dropdown
@@ -183,7 +204,7 @@ export default defineComponent({
          */
         popperOptions: {
             type: Object,
-            default: (): any => ({})
+            default: (): any => ({}),
         },
         /**
          * The size variant of the dropdown
@@ -193,50 +214,50 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
-        }
+            default: defaultPropValue<string>(componentName, "size"),
+            validator: sizePropValidator,
+        },
     },
     emits: [
         /**
          * Event emitted for setting the modelValue
          * @event update:modelValue
          */
-        'update:modelValue'
+        "update:modelValue",
     ],
     computed: {
-        classes (): Classes {
+        classes(): Classes {
             return {
                 ...colorVariantClass(this),
-                [`-${this.size}`]: Boolean(this.size)
+                [`-${this.size}`]: Boolean(this.size),
             };
-        }
+        },
     },
-    mounted () {
+    mounted() {
         for (const child of (this.$refs.trigger as HTMLElement).children) {
-            on(child as HTMLElement, 'keydown', this.onTriggerKeyDown);
+            on(child as HTMLElement, "keydown", this.onTriggerKeyDown);
         }
 
-        on(this.$refs.popup as HTMLElement, 'keydown', this.onItemKeyDown);
+        on(this.$refs.popup as HTMLElement, "keydown", this.onItemKeyDown);
     },
-    beforeUnmount () {
+    beforeUnmount() {
         for (const child of (this.$refs.trigger as HTMLElement).children) {
-            off(child as HTMLElement, 'keydown', this.onTriggerKeyDown);
+            off(child as HTMLElement, "keydown", this.onTriggerKeyDown);
         }
 
-        off(this.$refs.popup as HTMLElement, 'keydown', this.onItemKeyDown);
+        off(this.$refs.popup as HTMLElement, "keydown", this.onItemKeyDown);
     },
     methods: {
-        onEscape () {
+        onEscape() {
             this.visible = false;
-            this.$emit('update:modelValue', false);
+            this.$emit("update:modelValue", false);
         },
-        handleClickOutside () {
+        handleClickOutside() {
             this.visible = false;
-            this.$emit('update:modelValue', false);
+            this.$emit("update:modelValue", false);
             this.onClickOutside();
         },
-        getFocusableItems (): HTMLElement[] {
+        getFocusableItems(): HTMLElement[] {
             const focusableItems = [];
 
             for (const child of (this.$refs.body as HTMLElement).children) {
@@ -247,96 +268,111 @@ export default defineComponent({
 
             return focusableItems;
         },
-        onTriggerKeyDown (event: KeyboardEvent) {
+        onTriggerKeyDown(event: KeyboardEvent) {
             if (this.keydownTrigger.length === 0) {
                 return;
             }
 
             const focusableItems = this.getFocusableItems();
-            const activeIndex = focusableItems.findIndex((item: any) => item.active);
+            const activeIndex = focusableItems.findIndex(
+                (item: any) => item.active
+            );
             const initialIndex = activeIndex > -1 ? activeIndex : 0;
             const focusTarget = focusableItems[initialIndex];
 
             switch (true) {
-            case isKey('up', event) && this.keydownTrigger.includes('up'):
-            case isKey('down', event) && this.keydownTrigger.includes('down'):
-                this.show();
+                case isKey("up", event) && this.keydownTrigger.includes("up"):
+                case isKey("down", event) &&
+                    this.keydownTrigger.includes("down"):
+                    this.show();
 
-                setTimeout(() => {
-                    focusTarget.focus();
-                }, this.visible ? 0 : this.animationDuration);
+                    setTimeout(
+                        () => {
+                            focusTarget.focus();
+                        },
+                        this.visible ? 0 : this.animationDuration
+                    );
 
-                event.preventDefault();
-                event.stopPropagation();
-                break;
+                    event.preventDefault();
+                    event.stopPropagation();
+                    break;
 
-            case isKey('enter', event) && this.keydownTrigger.includes('enter'):
-            case isKey('space', event) && this.keydownTrigger.includes('space'):
-                this.onClick();
+                case isKey("enter", event) &&
+                    this.keydownTrigger.includes("enter"):
+                case isKey("space", event) &&
+                    this.keydownTrigger.includes("space"):
+                    this.onClick();
 
-                if (!this.visible) {
-                    setTimeout(() => {
-                        focusTarget.focus();
-                    }, this.animationDuration);
-                }
+                    if (!this.visible) {
+                        setTimeout(() => {
+                            focusTarget.focus();
+                        }, this.animationDuration);
+                    }
 
-                event.preventDefault();
-                break;
+                    event.preventDefault();
+                    break;
 
-            case isKey('tab', event) && this.keydownTrigger.includes('tab'):
-            case isKey('esc', event) && this.keydownTrigger.includes('esc'):
-                this.hide();
-                break;
+                case isKey("tab", event) && this.keydownTrigger.includes("tab"):
+                case isKey("esc", event) && this.keydownTrigger.includes("esc"):
+                    this.hide();
+                    break;
             }
         },
-        onItemKeyDown (event: KeyboardEvent) {
+        onItemKeyDown(event: KeyboardEvent) {
             if (this.keydownItem.length === 0) {
                 return;
             }
 
             switch (true) {
-            case isKey('up', event) && this.keydownItem.includes('up'):
-            case isKey('down', event) && this.keydownItem.includes('down'):
-                const focusableItems = this.getFocusableItems();
+                case isKey("up", event) && this.keydownItem.includes("up"):
+                case isKey("down", event) && this.keydownItem.includes("down"):
+                    const focusableItems = this.getFocusableItems();
 
-                const currentIndex = focusableItems.findIndex((item) => item === event.target);
-                const maxIndex = focusableItems.length - 1;
-                let nextIndex;
+                    const currentIndex = focusableItems.findIndex(
+                        (item) => item === event.target
+                    );
+                    const maxIndex = focusableItems.length - 1;
+                    let nextIndex;
 
-                if (isKey('up', event)) {
-                    nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
-                } else {
-                    nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
-                }
+                    if (isKey("up", event)) {
+                        nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
+                    } else {
+                        nextIndex =
+                            currentIndex < maxIndex
+                                ? currentIndex + 1
+                                : maxIndex;
+                    }
 
-                focusableItems[nextIndex].focus();
+                    focusableItems[nextIndex].focus();
 
-                event.preventDefault();
-                event.stopPropagation();
-                break;
+                    event.preventDefault();
+                    event.stopPropagation();
+                    break;
 
-            case isKey('enter', event) && this.keydownItem.includes('enter'):
-            case isKey('space', event) && this.keydownItem.includes('space'):
-                (event as any).target.click();
+                case isKey("enter", event) &&
+                    this.keydownItem.includes("enter"):
+                case isKey("space", event) &&
+                    this.keydownItem.includes("space"):
+                    (event as any).target.click();
 
-                if (this.hideOnItemClick) {
+                    if (this.hideOnItemClick) {
+                        this.hide();
+                    }
+                    this.focusTrigger();
+
+                    event.preventDefault();
+                    break;
+
+                case isKey("tab", event) && this.keydownItem.includes("tab"):
+                case isKey("esc", event) && this.keydownItem.includes("esc"):
                     this.hide();
-                }
-                this.focusTrigger();
+                    this.focusTrigger();
 
-                event.preventDefault();
-                break;
-
-            case isKey('tab', event) && this.keydownItem.includes('tab'):
-            case isKey('esc', event) && this.keydownItem.includes('esc'):
-                this.hide();
-                this.focusTrigger();
-
-                event.preventDefault();
-                break;
+                    event.preventDefault();
+                    break;
             }
         },
-        onItemClick () {
+        onItemClick() {
             if (this.hideOnItemClick) {
                 this.hide();
             }
@@ -344,6 +380,6 @@ export default defineComponent({
             [(this as any).navbar, (this as any).sidebar].forEach((parent) => {
                 parent.onItemClick();
             });
-        }
-    }
+        },
+    },
 });

@@ -1,14 +1,14 @@
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 import {
     PopupMixin,
     PopupControlsMixin,
     sizePropValidator,
     colorVariantClass,
-    defaultPropValue
-} from '@inkline/inkline/mixins';
-import ClickOutside from '@inkline/inkline/directives/click-outside';
-import { Classes } from '@inkline/inkline/types';
-import { uid } from '@inkline/inkline/helpers';
+    defaultPropValue,
+} from "@inkline/inkline/mixins";
+import ClickOutside from "@inkline/inkline/directives/click-outside";
+import { Classes } from "@inkline/inkline/types";
+import { uid } from "@inkline/inkline/helpers";
 
 /**
  * Slot for tooltip trigger
@@ -34,17 +34,14 @@ import { uid } from '@inkline/inkline/helpers';
  * @kind slot
  */
 
-const componentName = 'IPopover';
+const componentName = "IPopover";
 
 export default defineComponent({
     name: componentName,
     directives: {
-        ClickOutside
+        ClickOutside,
     },
-    mixins: [
-        PopupMixin,
-        PopupControlsMixin
-    ],
+    mixins: [PopupMixin, PopupControlsMixin],
     props: {
         /**
          * The color variant of the popover
@@ -54,7 +51,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'color')
+            default: defaultPropValue<string>(componentName, "color"),
         },
         /**
          * The disabled state of the popover
@@ -64,7 +61,7 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * Used to manually control the visibility of the popover
@@ -74,7 +71,7 @@ export default defineComponent({
          */
         modelValue: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The identifier of the popover
@@ -84,9 +81,9 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default (): string {
-                return uid('popover');
-            }
+            default(): string {
+                return uid("popover");
+            },
         },
         /**
          * Displays an arrow on the popover pointing to the trigger element
@@ -96,7 +93,7 @@ export default defineComponent({
          */
         arrow: {
             type: Boolean,
-            default: true
+            default: true,
         },
         /**
          * The placement of the popover
@@ -106,7 +103,7 @@ export default defineComponent({
          */
         placement: {
             type: String,
-            default: 'top'
+            default: "top",
         },
         /**
          * The events used to trigger the popover
@@ -116,7 +113,7 @@ export default defineComponent({
          */
         trigger: {
             type: [String, Array],
-            default: (): string[] => ['click']
+            default: (): string[] => ["click"],
         },
         /**
          * The offset of the popover relative to the trigger element
@@ -126,7 +123,17 @@ export default defineComponent({
          */
         offset: {
             type: Number,
-            default: 6
+            default: 6,
+        },
+        /**
+         * Determines whether hover state should be transferred from trigger to popup
+         * @type Boolean
+         * @default false
+         * @name interactable
+         */
+        interactable: {
+            type: Boolean,
+            default: false,
         },
         /**
          * Used to override the popper.js options used for creating the popover
@@ -136,7 +143,7 @@ export default defineComponent({
          */
         popperOptions: {
             type: Object,
-            default: (): any => ({})
+            default: (): any => ({}),
         },
         /**
          * The size variant of the popover
@@ -146,34 +153,34 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: defaultPropValue<string>(componentName, 'size'),
-            validator: sizePropValidator
-        }
+            default: defaultPropValue<string>(componentName, "size"),
+            validator: sizePropValidator,
+        },
     },
     emits: [
         /**
          * Event emitted for setting the modelValue
          * @event update:modelValue
          */
-        'update:modelValue'
+        "update:modelValue",
     ],
     computed: {
-        classes (): Classes {
+        classes(): Classes {
             return {
                 ...colorVariantClass(this),
-                [`-${this.size}`]: Boolean(this.size)
+                [`-${this.size}`]: Boolean(this.size),
             };
-        }
+        },
     },
     methods: {
-        onEscape () {
+        onEscape() {
             this.visible = false;
-            this.$emit('update:modelValue', false);
+            this.$emit("update:modelValue", false);
         },
-        handleClickOutside () {
+        handleClickOutside() {
             this.visible = false;
-            this.$emit('update:modelValue', false);
+            this.$emit("update:modelValue", false);
             this.onClickOutside();
-        }
-    }
+        },
+    },
 });
