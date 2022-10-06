@@ -76,6 +76,8 @@
         "postcss": "^8.4.17",
         "postcss-preset-env": "^7.8.2",
         "prettier": "2.7.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "sass": "^1.55.0",
         "shelljs": "^0.8.5",
         "storybook-dark-mode": "^1.1.2",
