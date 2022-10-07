@@ -1,4 +1,4 @@
-export { default as IAlert } from './IAlert/index.vue';
+export { default as IAlert } from './IAlert/IAlert.vue';
 export { default as IBadge } from './IBadge/index.vue';
 export { default as IBreadcrumb } from './IBreadcrumb/index.vue';
 export * from './IBreadcrumb/components';

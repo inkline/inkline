@@ -111,11 +111,11 @@ function dismiss() {
  */
 </script>
 
-<script lang="ts">
+<!-- <script lang="ts">
 export default {
     name: 'IAlert'
 };
-</script>
+</script> -->
 
 <template>
     <div v-show="!dismissed" class="alert" role="alert" :class="classes" v-bind="$attrs">

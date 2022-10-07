@@ -20,7 +20,7 @@ export interface PrototypeConfig {
 
 export interface PluginConfig extends PrototypeConfig {
     components: any;
-    icons: Record<string, SvgNode>
+    icons: Record<string, SvgNode>;
 }
 
 export interface Prototype {
@@ -72,12 +72,12 @@ export const defaultOptions: PluginConfig = {
 /**
  * Create inkline prototype
  */
-export function createPrototype ({ icons, components, ...options }: PrototypeConfig): Prototype {
+export function createPrototype({ icons, components, ...options }: PrototypeConfig): Prototype {
     return {
-        form (schema) {
+        form(schema) {
             return initializeForm(schema);
         },
-        setLocale (locale) {
+        setLocale(locale) {
             setLocale(locale);
         },
         options: reactive(options)
@@ -96,7 +96,7 @@ export const inklineGlobals: InklineGlobals = {
  * Inkline Vue.js plugin
  */
 export const Inkline: Plugin = {
-    install (app, options: Partial<PrototypeConfig> = {}) {
+    install(app, options: Partial<PrototypeConfig> = {}) {
         const extendedOptions: PluginConfig = {
             ...defaultOptions,
             ...options
@@ -106,8 +106,8 @@ export const Inkline: Plugin = {
          * Register components provided through options globally
          */
 
-        for (const componentIndex in extendedOptions.components) { // eslint-disable-line guard-for-in
-            app.component(extendedOptions.components[componentIndex].name, extendedOptions.components[componentIndex]);
+        for (const componentIndex in extendedOptions.components) {
+            app.component(componentIndex, extendedOptions.components[componentIndex]);
         }
 
         /**
@@ -115,7 +115,8 @@ export const Inkline: Plugin = {
          */
 
         if (typeof window !== 'undefined') {
-            extendedOptions.colorMode = localStorage.getItem(colorModeLocalStorageKey) || extendedOptions.colorMode;
+            extendedOptions.colorMode =
+                localStorage.getItem(colorModeLocalStorageKey) || extendedOptions.colorMode;
         }
 
         /**
@@ -151,11 +152,14 @@ export const Inkline: Plugin = {
              * Add color mode on change handler
              */
 
-            watch(() => prototype.options.colorMode, (colorMode) => {
-                handleColorMode(colorMode as string);
+            watch(
+                () => prototype.options.colorMode,
+                (colorMode) => {
+                    handleColorMode(colorMode as string);
 
-                localStorage.setItem(colorModeLocalStorageKey, colorMode as string);
-            });
+                    localStorage.setItem(colorModeLocalStorageKey, colorMode as string);
+                }
+            );
 
             /**
              * Add dark mode media query on change handler
@@ -183,6 +187,6 @@ export const Inkline: Plugin = {
 
 declare module '@vue/runtime-core' {
     interface ComponentCustomProperties {
-        $inkline: Prototype
+        $inkline: Prototype;
     }
 }

@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/vue3';
-import IAlert from '../index.vue';
+import IAlert from '../IAlert.vue';
 import {
     IAlertBasicExample,
     IAlertColorVariantsExample,
