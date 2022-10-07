@@ -1,1 +1,7 @@
-<template src="./size-variants.html" />
+<template>
+    <i-badge size="sm">Small</i-badge>
+
+    <i-badge size="md">Medium</i-badge>
+
+    <i-badge size="lg">Large</i-badge>
+</template>
