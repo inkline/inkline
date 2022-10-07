@@ -27,7 +27,8 @@
         "generate:manifest:sass": "ts-node ./scripts/manifest-sass.ts",
         "storybook": "start-storybook -p 6006",
         "storybook:build": "build-storybook",
-        "stylelint-check": "stylelint-config-prettier-check"
+        "stylelint-check": "stylelint-config-prettier-check",
+        "postinstall": "rimraf ./node_modules/@types/react & rimraf ./node_modules/react/src/**/*.d.ts"
     },
     "main": "inkline.js",
     "module": "inkline.mjs",
