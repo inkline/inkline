@@ -1,1 +1,13 @@
-<template src="./color-variants.html" />
+<template>
+    <i-breadcrumb color="light">
+        <i-breadcrumb-item href="/">Home</i-breadcrumb-item>
+        <i-breadcrumb-item>Library</i-breadcrumb-item>
+        <i-breadcrumb-item active>Light</i-breadcrumb-item>
+    </i-breadcrumb>
+
+    <i-breadcrumb color="dark">
+        <i-breadcrumb-item href="/">Home</i-breadcrumb-item>
+        <i-breadcrumb-item>Library</i-breadcrumb-item>
+        <i-breadcrumb-item active>Dark</i-breadcrumb-item>
+    </i-breadcrumb>
+</template>

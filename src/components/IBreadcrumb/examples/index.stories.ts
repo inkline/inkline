@@ -1,4 +1,4 @@
-import IBreadcrumb from '../index.vue';
+import IBreadcrumb from '../IBreadcrumb.vue';
 import {
     IBreadcrumbBasicExample,
     IBreadcrumbColorVariantsExample,
@@ -6,7 +6,12 @@ import {
     IBreadcrumbSizeVariantsExample,
     IBreadcrumbDynamicallyGeneratedExample
 } from './index';
-import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
+import {
+    colorArgType,
+    createStory,
+    sizeArgType,
+    createExampleStory
+} from '@inkline/inkline/__storybook__';
 
 export default {
     component: IBreadcrumb,
@@ -18,7 +23,7 @@ export default {
 };
 
 export const Basic = createStory(IBreadcrumbBasicExample);
-export const Routing = () => IBreadcrumbRoutingExample;
-export const ColorVariants = () => IBreadcrumbColorVariantsExample;
-export const SizeVariants = () => IBreadcrumbSizeVariantsExample;
-export const DynamicallyGenerated = () => IBreadcrumbDynamicallyGeneratedExample;
+export const Routing = createExampleStory(IBreadcrumbRoutingExample);
+export const ColorVariants = createExampleStory(IBreadcrumbColorVariantsExample);
+export const SizeVariants = createExampleStory(IBreadcrumbSizeVariantsExample);
+export const DynamicallyGenerated = createExampleStory(IBreadcrumbDynamicallyGeneratedExample);

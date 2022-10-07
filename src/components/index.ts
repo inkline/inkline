@@ -1,6 +1,6 @@
 export { default as IAlert } from './IAlert/IAlert.vue';
 export { default as IBadge } from './IBadge/IBadge.vue';
-export { default as IBreadcrumb } from './IBreadcrumb/index.vue';
+export { default as IBreadcrumb } from './IBreadcrumb/IBreadcrumb.vue';
 export * from './IBreadcrumb/components';
 export { default as IButton } from './IButton/index.vue';
 export { default as IButtonGroup } from './IButtonGroup/index.vue';
