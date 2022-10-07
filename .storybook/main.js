@@ -51,7 +51,8 @@ module.exports = {
         },
         '@storybook/addon-links',
         '@storybook/addon-essentials',
-        '@storybook/addon-interactions',
+        // Disabled until this is actually used rather otherwise its a blank tab
+        // '@storybook/addon-interactions',
         '@storybook/addon-a11y',
         'storybook-dark-mode'
     ],
