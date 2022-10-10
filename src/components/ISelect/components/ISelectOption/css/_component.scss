@@ -1,7 +1,3 @@
-@import '../../../../css/variables';
-@import '../../../../css/mixins';
-@import '../../css/variables';
-
 /**
  * Select option
  */
@@ -28,13 +24,13 @@
     );
     padding: var(
         --select--option--padding,
-        var(--select--option--padding-top, var(--card--padding-top, var(--padding-top)))
-            var(--select--option--padding-right, var(--card--padding-right, var(--padding-right)))
+        var(--select--option--padding-top, var(--select--padding-top, var(--padding-top)))
+            var(--select--option--padding-right, var(--select--padding-right, var(--padding-right)))
             var(
                 --select--option--padding-bottom,
-                var(--card--padding-bottom, var(--padding-bottom))
+                var(--select--padding-bottom, var(--padding-bottom))
             )
-            var(--select--option--padding-left, var(--card--padding-left, var(--padding-left)))
+            var(--select--option--padding-left, var(--select--padding-left, var(--padding-left)))
     );
     color: var(--select--option--color, var(--select--color));
     background: var(--select--option--background, var(--select--background));
@@ -74,13 +70,13 @@
     &.-disabled {
         pointer-events: none;
         cursor: default;
-        color: var(--select--option--disabled--color);
-        background: var(--select--option--disabled--background);
+        color: var(--select--option--disabled--color, var(--select--color));
+        background: var(--select--option--disabled--background, var(--select--background));
     }
 
     &.-active {
         font-weight: bold;
-        color: var(--select--option--active--color);
-        background: var(--select--option--active--background);
+        color: var(--select--option--active--color, var(--select--color));
+        background: var(--select--option--active--background, var(--select--background));
     }
 }

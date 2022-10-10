@@ -861,18 +861,21 @@
 
     .input-wrapper {
         * + .select-caret {
-            margin-left: spacing();
+            margin-left: var(--margin-left);
         }
 
         .input-suffix > .select-caret {
             cursor: pointer;
             mask-image: url($ink-caret-down);
+            -webkit-mask-image: url($ink-caret-down);
             mask-position: center center;
+            -webkit-mask-position: center center;
             mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
             background-color: var(--select--color);
             height: var(--select--font-size, var(--font-size));
             width: var(--select--font-size, var(--font-size));
-            mask-size: var(--select--font-size, var(--font-size)) var(----font-size);
+            mask-size: var(--select--font-size, var(--font-size)) var(--font-size);
         }
     }
 }

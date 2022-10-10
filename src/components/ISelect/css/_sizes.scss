@@ -26,19 +26,19 @@
         );
         --select--margin-top: var(
             --select--sm--margin-top,
-            calc(#{calc(var(--margin-top) / 2)} * var(--size-multiplier-sm))
+            calc(calc(var(--margin-top) / 2) * var(--size-multiplier-sm))
         );
         --select--margin-right: var(
             --select--sm--margin-right,
-            calc(#{calc(var(--margin-right) / 2)} * var(--size-multiplier-sm))
+            calc(calc(var(--margin-right) / 2) * var(--size-multiplier-sm))
         );
         --select--margin-bottom: var(
             --select--sm--margin-bottom,
-            calc(#{calc(var(--margin-bottom) / 2)} * var(--size-multiplier-sm))
+            calc(calc(var(--margin-bottom) / 2) * var(--size-multiplier-sm))
         );
         --select--margin-left: var(
             --select--sm--margin-left,
-            calc(#{calc(var(--margin-left) / 2)} * var(--size-multiplier-sm))
+            calc(calc(var(--margin-left) / 2) * var(--size-multiplier-sm))
         );
         --select--padding-top: var(
             --select--sm--padding-top,
@@ -56,37 +56,37 @@
             --select--sm--padding-left,
             calc(var(--padding-left) * var(--size-multiplier-sm))
         );
+        --select--option--padding-top: var(
+            --select--sm--option--padding-top,
+            calc(calc(var(--select--padding-top) / 2) * var(--size-multiplier-sm))
+        );
         --select--option--padding-bottom: var(
             --select--sm--option--padding-bottom,
-            calc(#{calc(var(----padding-bottom) / 2)} * var(--size-multiplier-sm))
+            calc(calc(var(--select--padding-bottom) / 2) * var(--size-multiplier-sm))
         );
-        --select--option--padding-left: var(
-            --select--sm--option--padding-left,
-            var(----padding-left-sm)
+        --select--header--padding-top: var(
+            --select--sm--header--padding-top,
+            calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-sm))
         );
         --select--header--padding-bottom: var(
             --select--sm--header--padding-bottom,
-            calc(#{calc(var(----padding-bottom) * 3 / 4)} * var(--size-multiplier-sm))
+            calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-sm))
         );
-        --select--header--padding-left: var(
-            --select--sm--header--padding-left,
-            var(----padding-left-sm)
-        );
-        --select--body--padding-bottom: var(
-            --select--sm--body--padding-bottom,
-            var(----padding-bottom-sm)
+        --select--body--padding-right: var(
+            --select--sm--body--padding-right,
+            0
         );
         --select--body--padding-left: var(
             --select--sm--body--padding-left,
-            calc(#{0} * var(--size-multiplier-sm))
+            0
+        );
+        --select--footer--padding-top: var(
+            --select--sm--footer--padding-top,
+            calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-sm))
         );
         --select--footer--padding-bottom: var(
             --select--sm--footer--padding-bottom,
-            calc(#{calc(var(----padding-bottom) * 3 / 4)} * var(--size-multiplier-sm))
-        );
-        --select--footer--padding-left: var(
-            --select--sm--footer--padding-left,
-            var(----padding-left-sm)
+            calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-sm))
         );
     }
 
@@ -113,19 +113,19 @@
         );
         --select--margin-top: var(
             --select--md--margin-top,
-            calc(#{calc(var(--margin-top) / 2)} * var(--size-multiplier-md))
+            calc(calc(var(--margin-top) / 2) * var(--size-multiplier-md))
         );
         --select--margin-right: var(
             --select--md--margin-right,
-            calc(#{calc(var(--margin-right) / 2)} * var(--size-multiplier-md))
+            calc(calc(var(--margin-right) / 2) * var(--size-multiplier-md))
         );
         --select--margin-bottom: var(
             --select--md--margin-bottom,
-            calc(#{calc(var(--margin-bottom) / 2)} * var(--size-multiplier-md))
+            calc(calc(var(--margin-bottom) / 2) * var(--size-multiplier-md))
         );
         --select--margin-left: var(
             --select--md--margin-left,
-            calc(#{calc(var(--margin-left) / 2)} * var(--size-multiplier-md))
+            calc(calc(var(--margin-left) / 2) * var(--size-multiplier-md))
         );
         --select--padding-top: var(
             --select--md--padding-top,
@@ -143,37 +143,37 @@
             --select--md--padding-left,
             calc(var(--padding-left) * var(--size-multiplier-md))
         );
-        --select--option--padding-bottom: var(
-            --select--md--option--padding-bottom,
-            calc(#{calc(var(----padding-bottom) / 2)} * var(--size-multiplier-md))
+        --select--option--padding-top: var(
+                --select--md--option--padding-top,
+                calc(calc(var(--select--padding-top) / 2) * var(--size-multiplier-md))
         );
-        --select--option--padding-left: var(
-            --select--md--option--padding-left,
-            var(----padding-left-md)
+        --select--option--padding-bottom: var(
+                --select--md--option--padding-bottom,
+                calc(calc(var(--select--padding-bottom) / 2) * var(--size-multiplier-md))
+        );
+        --select--header--padding-top: var(
+                --select--md--header--padding-top,
+                calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-md))
         );
         --select--header--padding-bottom: var(
-            --select--md--header--padding-bottom,
-            calc(#{calc(var(----padding-bottom) * 3 / 4)} * var(--size-multiplier-md))
+                --select--md--header--padding-bottom,
+                calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-md))
         );
-        --select--header--padding-left: var(
-            --select--md--header--padding-left,
-            var(----padding-left-md)
-        );
-        --select--body--padding-bottom: var(
-            --select--md--body--padding-bottom,
-            var(----padding-bottom-md)
+        --select--body--padding-right: var(
+                --select--md--body--padding-right,
+                0
         );
         --select--body--padding-left: var(
-            --select--md--body--padding-left,
-            calc(#{0} * var(--size-multiplier-md))
+                --select--md--body--padding-left,
+                0
+        );
+        --select--footer--padding-top: var(
+                --select--md--footer--padding-top,
+                calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-md))
         );
         --select--footer--padding-bottom: var(
-            --select--md--footer--padding-bottom,
-            calc(#{calc(var(----padding-bottom) * 3 / 4)} * var(--size-multiplier-md))
-        );
-        --select--footer--padding-left: var(
-            --select--md--footer--padding-left,
-            var(----padding-left-md)
+                --select--md--footer--padding-bottom,
+                calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-md))
         );
     }
 
@@ -200,19 +200,19 @@
         );
         --select--margin-top: var(
             --select--lg--margin-top,
-            calc(#{calc(var(--margin-top) / 2)} * var(--size-multiplier-lg))
+            calc(calc(var(--margin-top) / 2) * var(--size-multiplier-lg))
         );
         --select--margin-right: var(
             --select--lg--margin-right,
-            calc(#{calc(var(--margin-right) / 2)} * var(--size-multiplier-lg))
+            calc(calc(var(--margin-right) / 2) * var(--size-multiplier-lg))
         );
         --select--margin-bottom: var(
             --select--lg--margin-bottom,
-            calc(#{calc(var(--margin-bottom) / 2)} * var(--size-multiplier-lg))
+            calc(calc(var(--margin-bottom) / 2) * var(--size-multiplier-lg))
         );
         --select--margin-left: var(
             --select--lg--margin-left,
-            calc(#{calc(var(--margin-left) / 2)} * var(--size-multiplier-lg))
+            calc(calc(var(--margin-left) / 2) * var(--size-multiplier-lg))
         );
         --select--padding-top: var(
             --select--lg--padding-top,
@@ -230,37 +230,37 @@
             --select--lg--padding-left,
             calc(var(--padding-left) * var(--size-multiplier-lg))
         );
-        --select--option--padding-bottom: var(
-            --select--lg--option--padding-bottom,
-            calc(#{calc(var(----padding-bottom) / 2)} * var(--size-multiplier-lg))
+        --select--option--padding-top: var(
+                --select--lg--option--padding-top,
+                calc(calc(var(--select--padding-top) / 2) * var(--size-multiplier-lg))
         );
-        --select--option--padding-left: var(
-            --select--lg--option--padding-left,
-            var(----padding-left-lg)
+        --select--option--padding-bottom: var(
+                --select--lg--option--padding-bottom,
+                calc(calc(var(--select--padding-bottom) / 2) * var(--size-multiplier-lg))
+        );
+        --select--header--padding-top: var(
+                --select--lg--header--padding-top,
+                calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-lg))
         );
         --select--header--padding-bottom: var(
-            --select--lg--header--padding-bottom,
-            calc(#{calc(var(----padding-bottom) * 3 / 4)} * var(--size-multiplier-lg))
+                --select--lg--header--padding-bottom,
+                calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-lg))
         );
-        --select--header--padding-left: var(
-            --select--lg--header--padding-left,
-            var(----padding-left-lg)
-        );
-        --select--body--padding-bottom: var(
-            --select--lg--body--padding-bottom,
-            var(----padding-bottom-lg)
+        --select--body--padding-right: var(
+                --select--lg--body--padding-right,
+                0
         );
         --select--body--padding-left: var(
-            --select--lg--body--padding-left,
-            calc(#{0} * var(--size-multiplier-lg))
+                --select--lg--body--padding-left,
+                0
+        );
+        --select--footer--padding-top: var(
+                --select--lg--footer--padding-top,
+                calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-lg))
         );
         --select--footer--padding-bottom: var(
-            --select--lg--footer--padding-bottom,
-            calc(#{calc(var(----padding-bottom) * 3 / 4)} * var(--size-multiplier-lg))
-        );
-        --select--footer--padding-left: var(
-            --select--lg--footer--padding-left,
-            var(----padding-left-lg)
+                --select--lg--footer--padding-bottom,
+                calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-lg))
         );
     }
 }
