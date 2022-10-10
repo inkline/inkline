@@ -23,14 +23,14 @@ export interface PluginConfig extends PrototypeConfig {
     icons: Record<string, SvgNode>;
 }
 
-export interface Prototype {
+export interface InklineGlobalOptions {
     form: (...args: any[]) => any;
     setLocale: (language: string) => any;
     options: PrototypeConfig;
 }
 
 export interface InklineGlobals {
-    prototype?: Prototype;
+    prototype?: InklineGlobalOptions;
     icons?: Record<string, SvgNode>;
 }
 
@@ -72,7 +72,11 @@ export const defaultOptions: PluginConfig = {
 /**
  * Create inkline prototype
  */
-export function createPrototype({ icons, components, ...options }: PrototypeConfig): Prototype {
+export function createPrototype({
+    icons,
+    components,
+    ...options
+}: PrototypeConfig): InklineGlobalOptions {
     return {
         form(schema) {
             return initializeForm(schema);
@@ -81,7 +85,7 @@ export function createPrototype({ icons, components, ...options }: PrototypeConf
             setLocale(locale);
         },
         options: reactive(options)
-    } as Prototype;
+    } as InklineGlobalOptions;
 }
 
 /**
@@ -123,7 +127,7 @@ export const Inkline: Plugin = {
          * Add $inkline global property
          */
 
-        const prototype: Prototype = createPrototype(extendedOptions);
+        const prototype: InklineGlobalOptions = createPrototype(extendedOptions);
 
         app.config.globalProperties.$inkline = prototype;
         app.provide('inkline', prototype);
@@ -187,6 +191,6 @@ export const Inkline: Plugin = {
 
 declare module '@vue/runtime-core' {
     interface ComponentCustomProperties {
-        $inkline: Prototype;
+        $inkline: InklineGlobalOptions;
     }
 }
