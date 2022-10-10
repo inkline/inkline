@@ -1,3 +1,11 @@
 // Vitest Snapshot v1
 
-exports[`Components > IBadge > should render correctly 1`] = `"<div class=\\"badge -light -md\\"></div>"`;
+exports[`Components > IBadge > should render correctly 1`] = `
+<div
+  class="badge -light -md"
+>
+  <!--** Slot for default badge content -->
+  
+  
+</div>
+`;

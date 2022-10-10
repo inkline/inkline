@@ -1,4 +1,4 @@
-import { render } from '@testing-library/vue';
+import { mount } from '@vue/test-utils';
 import { IBadge } from '@inkline/inkline/components';
 
 describe('Components', () => {
@@ -8,25 +8,22 @@ describe('Components', () => {
             size: 'md'
         };
 
+        const wrapper = mount(IBadge, {
+            props
+        });
+
         it('should be named correctly', () => {
-            expect(IBadge.name).toEqual('IBadge');
+            expect(IBadge.__name).toEqual('IBadge');
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IBadge, { props });
-            expect(wrapper.html()).toMatchSnapshot();
+            expect(wrapper.exists()).toBeTruthy();
+            expect(wrapper.element).toMatchSnapshot();
         });
 
-        describe('computed', () => {
-            describe('classes', () => {
-                it('should add classes based on props', () => {
-                    const wrapper = render(IBadge, { props });
-
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        `-${props.color}`,
-                        `-${props.size}`
-                    );
-                });
+        describe('styling', () => {
+            it('should add classes based on props', () => {
+                expect(wrapper.element).toHaveClass(`-${props.color}`, `-${props.size}`);
             });
         });
     });
