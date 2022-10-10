@@ -96,6 +96,11 @@
       "import": "./inkline.mjs",
       "types": "./inkline.d.ts"
     },
+    "./plugin": {
+      "require": "./plugin.js",
+      "import": "./plugin.mjs",
+      "types": "./plugin.d.ts"
+    },
     "./components": {
       "require": "./components/index.js",
       "import": "./components/index.mjs",
