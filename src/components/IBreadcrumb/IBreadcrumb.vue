@@ -48,12 +48,10 @@ const classes = computed(() => ({
 </script>
 
 <template>
-    <div>
-        <nav class="breadcrumb" :class="classes" :aria-label="ariaLabel" v-bind="$attrs">
-            <ol>
-                <!--** Slot for default breadcrumb content -->
-                <slot />
-            </ol>
-        </nav>
-    </div>
+    <nav class="breadcrumb" :class="classes" :aria-label="ariaLabel" v-bind="$attrs">
+        <ol>
+            <!--** Slot for default breadcrumb content -->
+            <slot />
+        </ol>
+    </nav>
 </template>

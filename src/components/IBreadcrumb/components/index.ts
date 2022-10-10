@@ -1,1 +1,1 @@
-export { default as IBreadcrumbItem } from './IBreadcrumbItem/index.vue';
+export { default as IBreadcrumbItem } from './IBreadcrumbItem/IBreadcrumbItem.vue';
