@@ -519,7 +519,10 @@
                     --dropdown--body--border-right-width,
                     var(--dropdown--border-right-width, var(--border-right-width))
                 )
-                var(--dropdown--body--border-bottom-width, var(--dropdown--border-bottom-width, 0))
+                var(
+                    --dropdown--body--border-bottom-width,
+                    var(--dropdown--border-bottom-width, var(--border-bottom-width))
+                )
                 var(
                     --dropdown--body--border-left-width,
                     var(--dropdown--border-left-width, var(--border-left-width))

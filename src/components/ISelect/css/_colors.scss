@@ -3,7 +3,7 @@
  */
 
 .select-wrapper {
-    @include variant('light', 'form') {
+    &.-light {
         --select--background: var(--select--white--background, var(--color-white));
         --select--border-top-color: var(--select--light--border-top-color, var(--color-light-550));
         --select--border-right-color: var(
@@ -41,7 +41,7 @@
         );
     }
 
-    @include variant('dark', 'form') {
+    &.-dark {
         --select--background: var(--select--dark--background, var(--color-dark));
         --select--border-top-color: var(--select--dark--border-top-color, var(--color-dark-450));
         --select--border-right-color: var(
