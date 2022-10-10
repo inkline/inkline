@@ -66,7 +66,7 @@ const props = defineProps({
     }
 });
 
-const { isRouterLink } = useLinkable({ to: props.to, href: props.href });
+const { tag } = useLinkable({ to: props.to, href: props.href, tag: props.tag });
 
 const classes = computed(() => ({
     '-active': props.active,
@@ -80,7 +80,7 @@ const tabIndex = computed(() => (props.disabled || props.active ? -1 : props.tab
     <li class="breadcrumb-item" :class="classes">
         <component
             v-bind="$attrs"
-            :is="isRouterLink ? 'a' : props.tag"
+            :is="tag"
             :tabindex="tabIndex"
             :aria-current="active ? 'location' : undefined"
         >

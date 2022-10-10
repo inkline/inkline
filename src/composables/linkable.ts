@@ -4,6 +4,7 @@ import { useInkline } from './inkline';
 export interface LinkableProps {
     to: string | Record<string, unknown> | undefined;
     href: string | undefined;
+    tag?: string;
 }
 
 export function useLinkable(props: LinkableProps) {
@@ -17,16 +18,13 @@ export function useLinkable(props: LinkableProps) {
         return Boolean(routerComponent.value && (props.to || props.href));
     });
 
+    const tag = computed((): string => {
+        return isRouterLink.value ? tag.value : 'a';
+    });
+
     // const isComponent = computed(() => {
     //     return isTag.value === routerComponent.value;
     // });
 
-    return { isRouterLink };
+    return { isRouterLink, tag };
 }
-
-export const useLinkableProps = {
-    tag: {
-        type: String,
-        default: 'a'
-    }
-};
