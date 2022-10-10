@@ -164,7 +164,7 @@ describe('Plugin', () => {
             });
 
             describe('onDarkModeMediaQueryChange()', () => {
-                it('should call handleColorMode() and set prefersColorScheme', () => {
+                it('should call handleColorMode() =', () => {
                     const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
                     const addEventListener = vi.fn();
                     matchMediaSpy.mockImplementation(() => ({
@@ -180,7 +180,7 @@ describe('Plugin', () => {
                     const onDarkModeMediaQueryChange = addEventListener.mock.calls[0][1];
                     onDarkModeMediaQueryChange({ matches: true });
 
-                    expect(prototype.options.prefersColorScheme).toEqual('dark');
+                    expect(document.body).toHaveClass('-dark');
 
                     vi.clearAllMocks();
                 });
@@ -199,9 +199,9 @@ describe('Plugin', () => {
                     const prototype = app.provide.mock.calls[0][1];
                     prototype.options.colorMode = 'light';
                     const onDarkModeMediaQueryChange = addEventListener.mock.calls[0][1];
-                    onDarkModeMediaQueryChange({ matches: false });
+                    onDarkModeMediaQueryChange({ matches: true });
 
-                    expect(prototype.options.prefersColorScheme).toEqual('light');
+                    expect(document.body).toHaveClass('-light');
 
                     vi.clearAllMocks();
                 });
