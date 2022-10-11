@@ -1,1 +1,19 @@
-<template src="./size-variants.html" />
+<template>
+    <i-button-group size="sm">
+        <i-button>Left</i-button>
+        <i-button>Middle</i-button>
+        <i-button>Right</i-button>
+    </i-button-group>
+
+    <i-button-group size="md">
+        <i-button>Left</i-button>
+        <i-button>Middle</i-button>
+        <i-button>Right</i-button>
+    </i-button-group>
+
+    <i-button-group size="lg">
+        <i-button>Left</i-button>
+        <i-button>Middle</i-button>
+        <i-button>Right</i-button>
+    </i-button-group>
+</template>

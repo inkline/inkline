@@ -11,10 +11,10 @@ export function useSize(props: UseSizeProps) {
     const sizeClass = ref(props.currentSize ?? 'md');
 
     if (!props.currentSize && options) {
-        if (options.options.componentOptions[props.componentName]?.size) {
-            sizeClass.value = options.options.componentOptions[props.componentName]?.size;
-        } else if (options.options.size) {
-            sizeClass.value = options.options.size;
+        if (options.componentOptions[props.componentName]?.size) {
+            sizeClass.value = options.componentOptions[props.componentName]?.size;
+        } else if (options.size) {
+            sizeClass.value = options.size;
         }
     }
 

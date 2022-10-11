@@ -1,1 +1,7 @@
-<template src="./vertical.html" />
+<template>
+    <i-button-group vertical>
+        <i-button>Button 1</i-button>
+        <i-button>Button 2</i-button>
+        <i-button>Button 3</i-button>
+    </i-button-group>
+</template>

@@ -1,1 +1,7 @@
-<template src="./button-type.html" />
+<template>
+    <i-button type="button">Button</i-button>
+
+    <i-button type="submit">Submit</i-button>
+
+    <i-button type="reset">Reset</i-button>
+</template>

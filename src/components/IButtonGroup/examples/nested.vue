@@ -1,1 +1,9 @@
-<template src="./nested.html" />
+<template>
+    <i-button-group>
+        <i-button>Button 1</i-button>
+        <i-button-group>
+            <i-button>Button 2</i-button>
+            <i-button>Button 3</i-button>
+        </i-button-group>
+    </i-button-group>
+</template>

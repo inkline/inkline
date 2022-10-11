@@ -1,1 +1,15 @@
-<template src="./button-tag.html" />
+<template>
+    <i-button tag="a">Link Button</i-button>
+
+    <i-button tag="button" type="button">Button</i-button>
+
+    <i-button tag="button" type="submit">Submit Button</i-button>
+
+    <i-button tag="button" type="reset">Reset Button</i-button>
+
+    <i-button tag="input" type="button" value="Input">Input</i-button>
+
+    <i-button tag="input" type="submit" value="Submit Input">Submit Input</i-button>
+
+    <i-button tag="input" type="reset" value="Reset Input">Reset Input</i-button>
+</template>

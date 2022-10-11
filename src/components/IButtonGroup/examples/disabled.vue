@@ -1,1 +1,7 @@
-<template src="./disabled.html" />
+<template>
+    <i-button-group disabled>
+        <i-button>Left</i-button>
+        <i-button>Middle</i-button>
+        <i-button>Right</i-button>
+    </i-button-group>
+</template>

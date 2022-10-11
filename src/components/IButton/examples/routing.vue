@@ -1,1 +1,5 @@
-<template src="./routing.html" />
+<template>
+    <i-button href="https://inkline.io"> Button Link </i-button>
+
+    <i-button :to="{ name: 'docs-components-button' }"> Button Route </i-button>
+</template>

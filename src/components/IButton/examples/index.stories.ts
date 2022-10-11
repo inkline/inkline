@@ -1,4 +1,4 @@
-import IButton from '../index.vue';
+import IButton from '../IButton.vue';
 import {
     IButtonBasicExample,
     IButtonBlockExample,
@@ -15,7 +15,12 @@ import {
     IButtonStateDisabledExample,
     IButtonStateLoadingExample
 } from './index';
-import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
+import {
+    colorArgType,
+    createStory,
+    sizeArgType,
+    createExampleStory
+} from '@inkline/inkline/__storybook__';
 
 export default {
     component: IButton,
@@ -40,16 +45,16 @@ export default {
 };
 
 export const Basic = createStory(IButtonBasicExample);
-export const Block = () => IButtonBlockExample;
-export const Tag = () => IButtonTagExample;
-export const Type = () => IButtonTypeExample;
-export const Circle = () => IButtonCircleExample;
-export const ColorVariants = () => IButtonColorVariantsExample;
-export const Icon = () => IButtonIconExample;
-export const Link = () => IButtonLinkExample;
-export const Outline = () => IButtonOutlineExample;
-export const Routing = () => IButtonRoutingExample;
-export const SizeVariants = () => IButtonSizeVariantsExample;
-export const StateActive = () => IButtonStateActiveExample;
-export const StateDisabled = () => IButtonStateDisabledExample;
-export const StateLoading = () => IButtonStateLoadingExample;
+export const Block = createExampleStory(IButtonBlockExample);
+export const Tag = createExampleStory(IButtonTagExample);
+export const Type = createExampleStory(IButtonTypeExample);
+export const Circle = createExampleStory(IButtonCircleExample);
+export const ColorVariants = createExampleStory(IButtonColorVariantsExample);
+export const Icon = createExampleStory(IButtonIconExample);
+export const Link = createExampleStory(IButtonLinkExample);
+export const Outline = createExampleStory(IButtonOutlineExample);
+export const Routing = createExampleStory(IButtonRoutingExample);
+export const SizeVariants = createExampleStory(IButtonSizeVariantsExample);
+export const StateActive = createExampleStory(IButtonStateActiveExample);
+export const StateDisabled = createExampleStory(IButtonStateDisabledExample);
+export const StateLoading = createExampleStory(IButtonStateLoadingExample);

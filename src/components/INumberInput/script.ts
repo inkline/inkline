@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import IButton from '@inkline/inkline/components/IButton/index.vue';
+import IButton from '@inkline/inkline/components/IButton/IButton.vue';
 import IInput from '@inkline/inkline/components/IInput/index.vue';
 import { uid } from '@grozav/utils';
 import { InputElementEvent } from '@inkline/inkline/types';
@@ -71,7 +71,7 @@ export default defineComponent({
          */
         name: {
             type: [String, Number],
-            default (): string {
+            default(): string {
                 return uid('input');
             }
         },
@@ -156,8 +156,9 @@ export default defineComponent({
     watch: {
         modelValue: {
             immediate: true,
-            handler (value: string) {
-                let newValue = (value || '').toString()
+            handler(value: string) {
+                let newValue = (value || '')
+                    .toString()
                     .replace(/^[^0-9-]/, '')
                     .replace(/^(-)[^0-9]/, '$1')
                     .replace(new RegExp(`^(-?[0-9]+)[^0-9${this.precision > 0 ? '.' : ''}]`), '$1');
@@ -168,8 +169,10 @@ export default defineComponent({
                         .replace(new RegExp(`^(-?[0-9]+\\.[0-9]{0,${this.precision}}).*`), '$1');
                 }
 
-                if (parseFloat(newValue) >= parseFloat(this.max as string)) newValue = this.max.toString();
-                if (parseFloat(newValue) <= parseFloat(this.min as string)) newValue = this.min.toString();
+                if (parseFloat(newValue) >= parseFloat(this.max as string))
+                    newValue = this.max.toString();
+                if (parseFloat(newValue) <= parseFloat(this.min as string))
+                    newValue = this.min.toString();
 
                 (this.parent as any).onInput?.(this.name, newValue);
                 this.$emit('update:modelValue', newValue);
@@ -177,21 +180,27 @@ export default defineComponent({
         }
     },
     methods: {
-        decrease () {
+        decrease() {
             if (this.disabled || this.readonly) {
                 return;
             }
 
-            this.$emit('update:modelValue', this.formatPrecision((Number(this.modelValue) - this.step).toString()));
+            this.$emit(
+                'update:modelValue',
+                this.formatPrecision((Number(this.modelValue) - this.step).toString())
+            );
         },
-        increase () {
+        increase() {
             if (this.disabled || this.readonly) {
                 return;
             }
 
-            this.$emit('update:modelValue', this.formatPrecision((Number(this.modelValue) + this.step).toString()));
+            this.$emit(
+                'update:modelValue',
+                this.formatPrecision((Number(this.modelValue) + this.step).toString())
+            );
         },
-        formatPrecision (value: string) {
+        formatPrecision(value: string) {
             const parts = value.split('.');
             let decimals = parts[1] || '';
 
@@ -201,12 +210,15 @@ export default defineComponent({
 
             return this.precision > 0 ? `${parts[0]}.${decimals}` : parts[0];
         },
-        onBlurFormatPrecision (event: InputElementEvent) {
+        onBlurFormatPrecision(event: InputElementEvent) {
             if (this.disabled || this.readonly) {
                 return;
             }
 
-            this.$emit('update:modelValue', this.formatPrecision(Number(this.modelValue).toString()));
+            this.$emit(
+                'update:modelValue',
+                this.formatPrecision(Number(this.modelValue).toString())
+            );
 
             (this.parent as any).onBlur?.(this.name, event);
         }
