@@ -4,10 +4,10 @@ export { default as IBreadcrumb } from './IBreadcrumb/IBreadcrumb.vue';
 export * from './IBreadcrumb/components';
 export { default as IButton } from './IButton/IButton.vue';
 export { default as IButtonGroup } from './IButtonGroup/IButtonGroup.vue';
+export { default as ICard } from './ICard/ICard.vue';
 
 export { default as IColumn } from './IColumn/index.vue';
 export { default as IContainer } from './IContainer/index.vue';
-export { default as ICard } from './ICard/index.vue';
 export { default as ICheckbox } from './ICheckbox/index.vue';
 export * from './ICheckbox/components';
 export { default as ICollapsible } from './ICollapsible/index.vue';
