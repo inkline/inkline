@@ -6,13 +6,9 @@ import {
     ButtonGroupInjectionKey
 } from '@inkline/inkline/components/IButtonGroup/mixin';
 import ILoader from '@inkline/inkline/components/ILoader/index.vue';
-import { FormInjection, FormInjectionKey } from '../IForm/mixin';
-import { FormGroupInjection, FormGroupInjectionKey } from '../IForm/components/IFormGroup/mixin';
 
 const componentName = 'IButton';
 const buttonGroup = inject<ButtonGroupInjection>(ButtonGroupInjectionKey, {});
-// const form = inject<FormInjection>(FormInjectionKey);
-// const formGroup = inject<FormGroupInjection>(FormGroupInjectionKey);
 
 // TODO: prop descriptions
 const props = defineProps({
@@ -188,8 +184,7 @@ const classes = computed(() => {
 });
 
 const isDisabled = computed(() => {
-    return props.disabled;
-    // || buttonGroup?.disabled || form?.disabled || formGroup?.disabled;
+    return props.disabled || buttonGroup?.disabled;
 });
 
 const role = computed(() => (props.to || props.href ? 'link' : 'button'));
