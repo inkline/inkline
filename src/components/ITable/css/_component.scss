@@ -191,10 +191,9 @@
             );
             border-width: var(
                 --table--border-width,
-                var(--table--border-top-width, var(--border-top-width))
-                    var(--table--border-right-width, var(--border-right-width))
+                var(--table--border-top-width, 0) var(--table--border-right-width, 0)
                     var(--table--border-bottom-width, var(--border-bottom-width))
-                    var(--table--border-left-width, var(--border-left-width))
+                    var(--table--border-left-width, 0)
             );
             background-color: var(--table--background);
             transition-duration: var(--table--transition-duration, var(--transition-duration));
