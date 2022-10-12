@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { computedColorValue, computedSizeValue } from '@inkline/inkline/mixins';
+import { useColor, useSize } from '@inkline/inkline/composables';
 
 const componentName = 'IBreadcrumb';
 
@@ -23,7 +23,7 @@ const props = defineProps({
      */
     color: {
         type: String,
-        default: ''
+        default: undefined
     },
     /**
      * The size variant of the breadcrumb
@@ -33,17 +33,16 @@ const props = defineProps({
      */
     size: {
         type: String,
-        default: ''
+        default: undefined
     }
 });
 
-const computedColor = computed(() => computedColorValue(componentName, props.color));
-
-const computedSize = computed(() => computedSizeValue(componentName, props.size));
+const color = useColor({ componentName, currentColor: props.color });
+const size = useSize({ componentName, currentSize: props.size });
 
 const classes = computed(() => ({
-    [`-${computedColor.value}`]: Boolean(computedColor),
-    [`-${computedSize.value}`]: Boolean(computedSize)
+    [`-${color.value}`]: Boolean(color.value),
+    [`-${size.value}`]: Boolean(size.value)
 }));
 </script>
 

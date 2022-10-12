@@ -5,11 +5,13 @@ import {
     ButtonGroupInjection,
     ButtonGroupInjectionKey
 } from '@inkline/inkline/components/IButtonGroup/mixin';
+import { FormInjection, FormInjectionKey } from '../IForm/mixin';
+import { FormGroupInjection, FormGroupInjectionKey } from '../IForm/components/IFormGroup/mixin';
 
 const componentName = 'IButtonGroup';
 const buttonGroup = inject<ButtonGroupInjection>(ButtonGroupInjectionKey, {});
-// const form = inject<FormInjection>(FormInjectionKey);
-// const formGroup = inject<FormGroupInjection>('FormGroupInjectionKey');
+const form = inject<FormInjection>(FormInjectionKey, {});
+const formGroup = inject<FormGroupInjection>(FormGroupInjectionKey, {});
 
 const props = defineProps({
     /**
@@ -54,14 +56,10 @@ const props = defineProps({
     }
 });
 
-// const computedSize = computed(() => computedSizeValue(componentName, this.size || (this as any).buttonGroup.size);)
-const size = useSize({ componentName, currentSize: props.size });
+const size = useSize({ componentName, currentSize: props.size || buttonGroup.size });
 
 const isDisabled = computed(
-    () => props.disabled || buttonGroup.disabled
-    // ||
-    // (this as any).form.disabled ||
-    // (this as any).formGroup.disabled
+    () => props.disabled || buttonGroup.disabled || form.disabled || formGroup.disabled
 );
 
 const classes = computed(() => ({

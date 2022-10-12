@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import { ref, useSlots, computed, watch } from 'vue';
-import { computedColorValue, computedSizeValue } from '@inkline/inkline/mixins';
+import { useColor, useSize } from '@inkline/inkline/composables';
 
 const componentName = 'IAlert';
-// const componentSizes = ['sm', 'md', 'lg'];
-// const componentColors = ['info', 'success', 'warning', 'danger'];
+const dismissed = ref(false);
 
 const props = defineProps({
     /**
@@ -15,7 +14,7 @@ const props = defineProps({
      */
     size: {
         type: String,
-        default: ''
+        default: undefined
     },
     /**
      * The color variant of the alert
@@ -67,15 +66,12 @@ const emits = defineEmits([
     'update:modelValue'
 ]);
 
-const dismissed = ref(false);
-
-const computedColor = computed(() => computedColorValue(componentName, props.color));
-
-const computedSize = computed(() => computedSizeValue(componentName, props.size));
+const color = useColor({ componentName, currentColor: props.color });
+const size = useSize({ componentName, currentSize: props.size });
 
 const classes = computed(() => ({
-    [`-${computedColor.value}`]: Boolean(computedColor),
-    [`-${computedSize.value}`]: Boolean(computedSize),
+    [`-${color.value}`]: Boolean(color.value),
+    [`-${size.value}`]: Boolean(size.value),
     '-dismissible': props.dismissible,
     '-with-icon': Boolean(useSlots().icon)
 }));
@@ -91,31 +87,7 @@ function dismiss() {
     dismissed.value = true;
     emits('update:modelValue', false);
 }
-
-/**
- * Slot for default alert content
- * @name default
- * @kind slot
- */
-
-/**
- * Slot for alert icon
- * @name icon
- * @kind slot
- */
-
-/**
- * Slot for alert dismiss button
- * @name dismiss
- * @kind slot
- */
 </script>
-
-<!-- <script lang="ts">
-export default {
-    name: 'IAlert'
-};
-</script> -->
 
 <template>
     <div v-show="!dismissed" class="alert" role="alert" :class="classes" v-bind="$attrs">
