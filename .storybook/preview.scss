@@ -18,36 +18,12 @@
 @import '../src/components/IPopover/css/preview';
 @import '../src/components/IProgress/css/preview';
 @import '../src/components/ISelect/css/preview';
+@import '../src/components/ISidebar/css/preview';
 @import '../src/components/ITooltip/css/preview';
 
-//@import "../src/css/variables";
-//@import "../src/css/mixins";
-//@import "../src/css/preview";
-//
-//#root {
-//    min-height: calc(100vh - 2rem);
-//
-//    > * {
-//        margin: 0.5rem;
-//    }
-//
-//    @extend %border-utilities-preview;
-//    @extend %color-utilities-preview;
-//    @extend %flex-utilities-preview;
-//    @extend %spacing-utilities-preview;
-//    @extend %sizing-utilities-preview;
-//    @extend %card-preview;
-//
-//    .storybook-example {
-//        @extend %card-preview;
-//        @extend %layout-preview;
-//        @extend %grid-preview;
-//
-//        .layout-content {
-//            min-height: 300px;
-//        }
-//    }
-//}
+#root {
+    min-height: calc(100vh - 2rem);
+}
 
 #root,
 .storybook-example {
@@ -70,4 +46,5 @@
     @extend %progress-preview;
     @extend %select-preview;
     @extend %tooltip-preview;
+    @extend %sidebar-preview;
 }

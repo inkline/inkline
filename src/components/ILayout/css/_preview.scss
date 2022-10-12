@@ -1,4 +1,9 @@
 %layout-preview {
+    > .layout,
+    > div > .layout {
+        min-height: 360px;
+    }
+
     > .layout {
         border: 1px solid var(--color-gray-400);
         padding: var(--padding);
@@ -44,11 +49,6 @@
             + .layout-aside {
                 margin-left: var(--margin-left);
             }
-        }
-
-        .layout-content,
-        .layout-aside {
-            min-height: 300px;
         }
 
         .layout-content,

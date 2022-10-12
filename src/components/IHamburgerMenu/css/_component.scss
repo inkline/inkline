@@ -67,14 +67,12 @@
     opacity: var(--hamburger-menu--opacity, 0.75);
     padding: var(
         --hamburger-menu--padding,
-        var(--hamburger-menu--padding-top, var(--padding-top-1-2))
-            var(--hamburger-menu--padding-right, var(--padding-right-1-2))
-            var(--hamburger-menu--padding-bottom, var(--padding-bottom-1-2))
-            var(--hamburger-menu--padding-left, var(--padding-left-1-2))
+        var(--hamburger-menu--padding-top, 0) var(--hamburger-menu--padding-right, 0)
+            var(--hamburger-menu--padding-bottom, 0) var(--hamburger-menu--padding-left, 0)
     );
     width: var(--hamburger-menu--bar--width);
     height: calc(var(--hamburger-menu--bar--height) * 3 + var(--hamburger-menu--bar--spacing) * 2);
-    display: inline-block;
+    display: inline-flex;
     position: relative;
     box-sizing: content-box;
     cursor: pointer;

@@ -34,6 +34,7 @@ module.exports = {
         '../src/components/IRadio/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/IRow/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ISelect/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/ISidebar/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITextarea/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITextarea/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITooltip/**/*.stories.@(js|jsx|ts|tsx)',
