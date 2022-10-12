@@ -8,7 +8,7 @@ export interface UseSizeProps {
 
 export function useSize(props: UseSizeProps) {
     const { options } = useInkline();
-    const sizeClass = ref(props.currentSize ?? 'md');
+    const sizeClass = ref(props.currentSize || 'md');
 
     if (!props.currentSize && options) {
         if (options.componentOptions[props.componentName]?.size) {

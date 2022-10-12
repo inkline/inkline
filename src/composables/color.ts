@@ -8,7 +8,7 @@ export interface UseColorProps {
 
 export function useColor(props: UseColorProps) {
     const { options } = useInkline();
-    const colorClass = ref(props.currentColor ?? 'light');
+    const colorClass = ref(props.currentColor || 'light');
 
     if (!props.currentColor && options) {
         if (options.componentOptions[props.componentName]?.color) {
