@@ -113,6 +113,9 @@
 /// @name table--padding--condensed
 ////
 
+@use '../../../cssnew/mixins';
+@use '../../../cssnew/functions';
+
 /**
  * Tables
  */
@@ -127,11 +130,11 @@
     position: relative;
 
     &.-responsive {
-        @each $breakpoint-key, $breakpoint-value in $breakpoints {
-            $infix: breakpoint-infix($breakpoint-key);
+        @each $breakpoint-key in $breakpoint-keys {
+            $infix: mixins.breakpoint-infix($breakpoint-key);
 
             &#{$infix} {
-                @include breakpoint-down($breakpoint-key) {
+                @include mixins.breakpoint-down($breakpoint-key) {
                     display: block;
                     width: 100%;
                     overflow-x: auto;
@@ -155,12 +158,10 @@
         margin-bottom: var(--table--margin-bottom, var(--margin-bottom));
         border-top-color: var(
             --table--border-color,
-            (
-                var(--table--border-top-color, var(--border-top-color))
-                    var(--table--border-right-color, var(--border-right-color))
-                    var(--table--border-bottom-color, var(--border-bottom-color))
-                    var(--table--border-left-color, var(--border-left-color))
-            )
+            var(--table--border-top-color, var(--border-top-color))
+                var(--table--border-right-color, var(--border-right-color))
+                var(--table--border-bottom-color, var(--border-bottom-color))
+                var(--table--border-left-color, var(--border-left-color))
         );
         color: var(--table--color);
 
@@ -168,68 +169,68 @@
         td {
             padding: var(
                 --table--padding,
-                (
-                    var(--table--padding-top, var(--padding-top))
-                        var(--table--padding-right, var(--padding-right))
-                        var(--table--padding-bottom, var(--padding-bottom))
-                        var(--table--padding-left, var(--padding-left))
-                )
+                var(--table--padding-top, var(--padding-top))
+                    var(--table--padding-right, var(--padding-right))
+                    var(--table--padding-bottom, var(--padding-bottom))
+                    var(--table--padding-left, var(--padding-left))
             );
             vertical-align: top;
-            border-top-style: var(
+            border-style: var(
                 --table--border-style,
-                (
-                    var(--table--border-top-style, var(--border-top-style))
-                        var(--table--border-right-style, var(--border-right-style))
-                        var(--table--border-bottom-style, var(--border-bottom-style))
-                        var(--table--border-left-style, var(--border-left-style))
-                )
+                var(--table--border-top-style, var(--border-top-style))
+                    var(--table--border-right-style, var(--border-right-style))
+                    var(--table--border-bottom-style, var(--border-bottom-style))
+                    var(--table--border-left-style, var(--border-left-style))
             );
-            border-top-color: var(
+            border-color: var(
                 --table--border-color,
-                (
-                    var(--table--border-top-color, var(--border-top-color))
-                        var(--table--border-right-color, var(--border-right-color))
-                        var(--table--border-bottom-color, var(--border-bottom-color))
-                        var(--table--border-left-color, var(--border-left-color))
-                )
+                var(--table--border-top-color, var(--border-top-color))
+                    var(--table--border-right-color, var(--border-right-color))
+                    var(--table--border-bottom-color, var(--border-bottom-color))
+                    var(--table--border-left-color, var(--border-left-color))
             );
-            border-top-width: var(--table--border-top-width, var(--border-top-width));
+            border-width: var(
+                --table--border-width,
+                var(--table--border-top-width, var(--border-top-width))
+                    var(--table--border-right-width, var(--border-right-width))
+                    var(--table--border-bottom-width, var(--border-bottom-width))
+                    var(--table--border-left-width, var(--border-left-width))
+            );
             background-color: var(--table--background);
             transition-duration: var(--table--transition-duration, var(--transition-duration));
             transition-timing-function: var(
                 --table--transition-timing-function,
                 var(--transition-timing-function)
             );
-            transition-property: var(
-                --table--transition-property,
-                (color, background-color, border)
-            );
+            transition-property: var(--table--transition-property, color, background-color, border);
         }
 
         thead th {
             vertical-align: bottom;
-            border-bottom-width: calc(
-                2 * var(--table--border-bottom-width, var(--border-bottom-width))
+            border-bottom-width: var(
+                --table--thead--th--border-bottom-width,
+                calc(2 * var(--table--border-bottom-width, var(--border-bottom-width)))
             );
         }
 
         tbody + tbody {
-            border-top: calc(2 * var(--table--border-top-width, var(--border-top-width))) solid
-                transparent;
+            border-top-style: var(--table--tbody--adjacent--border-top-style, solid);
+            border-top-width: var(
+                --table--tbody--adjacent--border-top-width,
+                calc(2 * var(--table--border-top-width, var(--border-top-width)))
+            );
+            border-top-color: var(--table--tbody--adjacent--border-top-color, transparent);
         }
 
         th,
         td,
         tbody + tbody {
-            border-top-color: var(
+            border-color: var(
                 --table--border-color,
-                (
-                    var(--table--border-top-color, var(--border-top-color))
-                        var(--table--border-right-color, var(--border-right-color))
-                        var(--table--border-bottom-color, var(--border-bottom-color))
-                        var(--table--border-left-color, var(--border-left-color))
-                )
+                var(--table--border-top-color, var(--border-top-color))
+                    var(--table--border-right-color, var(--border-right-color))
+                    var(--table--border-bottom-color, var(--border-bottom-color))
+                    var(--table--border-left-color, var(--border-left-color))
             );
         }
     }
@@ -239,7 +240,25 @@
     &.-condensed .table {
         th,
         td {
-            ----padding: var(----padding--condensed);
+            padding: var(
+                --table--condensed--padding,
+                var(
+                        --table--condensed--padding-top,
+                        calc(var(--table--padding-top, var(--padding-top)) * 0.5)
+                    )
+                    var(
+                        --table--condensed--padding-right,
+                        calc(var(--table--padding-right, var(--padding-right)) * 0.5)
+                    )
+                    var(
+                        --table--condensed--padding-bottom,
+                        calc(var(--table--padding-bottom, var(--padding-bottom)) * 0.5)
+                    )
+                    var(
+                        --table--condensed--padding-left,
+                        calc(var(--table--padding-left, var(--padding-left)) * 0.5)
+                    )
+            );
         }
     }
 
@@ -280,30 +299,24 @@
         td {
             border-style: var(
                 --table--border-style,
-                (
-                    var(--table--border-top-style, var(--border-top-style))
-                        var(--table--border-right-style, var(--border-right-style))
-                        var(--table--border-bottom-style, var(--border-bottom-style))
-                        var(--table--border-left-style, var(--border-left-style))
-                )
+                var(--table--border-top-style, var(--border-top-style))
+                    var(--table--border-right-style, var(--border-right-style))
+                    var(--table--border-bottom-style, var(--border-bottom-style))
+                    var(--table--border-left-style, var(--border-left-style))
             );
             border-color: var(
                 --table--border-color,
-                (
-                    var(--table--border-top-color, var(--border-top-color))
-                        var(--table--border-right-color, var(--border-right-color))
-                        var(--table--border-bottom-color, var(--border-bottom-color))
-                        var(--table--border-left-color, var(--border-left-color))
-                )
+                var(--table--border-top-color, var(--border-top-color))
+                    var(--table--border-right-color, var(--border-right-color))
+                    var(--table--border-bottom-color, var(--border-bottom-color))
+                    var(--table--border-left-color, var(--border-left-color))
             );
             border-width: var(
                 --table--border-width,
-                (
-                    var(--table--border-top-width, var(--border-top-width))
-                        var(--table--border-right-width, var(--border-right-width))
-                        var(--table--border-bottom-width, var(--border-bottom-width))
-                        var(--table--border-left-width, var(--border-left-width))
-                )
+                var(--table--border-top-width, var(--border-top-width))
+                    var(--table--border-right-width, var(--border-right-width))
+                    var(--table--border-bottom-width, var(--border-bottom-width))
+                    var(--table--border-left-width, var(--border-left-width))
             );
         }
     }
@@ -328,7 +341,7 @@
         tbody > tr:nth-of-type(odd) {
             th,
             td {
-                --table--background: var(----background--striped);
+                background: var(--table--striped--background);
             }
         }
     }
@@ -341,14 +354,23 @@
         tbody tr {
             th,
             td {
-                transition: background-color
-                    var(--table--transition-duration, var(--transition-duration)) ease;
+                transition-property: var(
+                    --table--transition-property,
+                    color,
+                    background-color,
+                    border
+                );
+                transition-duration: var(--table--transition-duration, var(--transition-duration));
+                transition-timing-function: var(
+                    --table--transition-timing-function,
+                    var(--transition-timing-function)
+                );
             }
 
             &:hover {
                 th,
                 td {
-                    --table--background: var(----background--hover);
+                    background: var(--table--hover--background);
                 }
             }
         }

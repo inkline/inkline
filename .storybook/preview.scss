@@ -19,6 +19,7 @@
 @import '../src/components/IProgress/css/preview';
 @import '../src/components/ISelect/css/preview';
 @import '../src/components/ISidebar/css/preview';
+@import '../src/components/ITable/css/preview';
 @import '../src/components/ITooltip/css/preview';
 
 #root {
@@ -47,4 +48,5 @@
     @extend %select-preview;
     @extend %tooltip-preview;
     @extend %sidebar-preview;
+    @extend %table-preview;
 }
