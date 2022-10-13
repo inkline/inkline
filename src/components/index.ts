@@ -50,5 +50,5 @@ export { default as ITable } from './ITable/index.vue';
 export { default as ITabs } from './ITabs/index.vue';
 export * from './ITabs/components';
 export { default as ITextarea } from './ITextarea/index.vue';
-// export { default as IToggle } from './IToggle/index.vue';
+export { default as IToggle } from './IToggle/index.vue';
 export { default as ITooltip } from './ITooltip/index.vue';

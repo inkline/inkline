@@ -1,14 +1,10 @@
 import { defineComponent } from 'vue';
 import { uid } from '@grozav/utils';
-import {
-    computedColorValue,
-    computedSizeValue,
-    FormComponentMixin
-} from '@inkline/inkline/mixins';
+import { computedColorValue, computedSizeValue, FormComponentMixin } from '@inkline/inkline/mixins';
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
 /**
- * Slot for default checkbox label
+ * Slot for default toggle label
  * @name default
  * @kind slot
  */
@@ -17,9 +13,7 @@ const componentName = 'IToggle';
 
 export default defineComponent({
     name: componentName,
-    mixins: [
-        FormComponentMixin
-    ],
+    mixins: [FormComponentMixin],
     inject: {
         formGroup: {
             default: (): any => ({})
@@ -30,7 +24,7 @@ export default defineComponent({
     },
     props: {
         /**
-         * The color variant of the checkbox
+         * The color variant of the toggle
          * @type light | dark
          * @default light
          * @name color
@@ -40,7 +34,7 @@ export default defineComponent({
             default: ''
         },
         /**
-         * The disabled state of the checkbox
+         * The disabled state of the toggle
          * @type Boolean
          * @default false
          * @name disabled
@@ -50,7 +44,7 @@ export default defineComponent({
             default: false
         },
         /**
-         * The indeterminate state of the checkbox
+         * The indeterminate state of the toggle
          * @type Boolean
          * @default false
          * @name indeterminate
@@ -60,7 +54,7 @@ export default defineComponent({
             default: false
         },
         /**
-         * Used to set the checkbox value when used inside a checkbox group
+         * Used to set the toggle value when used inside a toggle group
          * @default false
          * @name value
          */
@@ -68,7 +62,7 @@ export default defineComponent({
             default: false
         },
         /**
-         * Used to set the checkbox value when used by itself
+         * Used to set the toggle value when used by itself
          * @default false
          * @name modelValue
          */
@@ -76,19 +70,19 @@ export default defineComponent({
             default: false
         },
         /**
-         * The unique identifier of the checkbox
+         * The unique identifier of the toggle
          * @type String
          * @default uid()
          * @name name
          */
         name: {
             type: [String, Number],
-            default (): string {
+            default(): string {
                 return uid('toggle');
             }
         },
         /**
-         * The readonly state of the checkbox
+         * The readonly state of the toggle
          * @type Boolean
          * @default false
          * @name readonly
@@ -98,7 +92,17 @@ export default defineComponent({
             default: false
         },
         /**
-         * The size variant of the checkbox
+         * Render the toggle as rounded
+         * @type Boolean
+         * @default false
+         * @name readonly
+         */
+        rounded: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * The size variant of the toggle
          * @type sm | md | lg
          * @default md
          * @name size
@@ -108,7 +112,7 @@ export default defineComponent({
             default: ''
         },
         /**
-         * The tabindex of the checkbox
+         * The tabindex of the toggle
          * @type Number | String
          * @default 0
          * @name tabindex
@@ -126,45 +130,46 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        computedColor (): string | undefined {
+        computedColor(): string | undefined {
             return computedColorValue(componentName, this.color);
         },
-        computedSize (): string | undefined {
+        computedSize(): string | undefined {
             return computedSizeValue(componentName, this.size);
         },
-        classes (): Classes {
+        classes(): Classes {
             return {
                 [`-${this.computedColor}`]: Boolean(this.computedColor),
                 [`-${this.computedSize}`]: Boolean(this.computedSize),
                 '-disabled': this.isDisabled,
-                '-readonly': this.isReadonly
+                '-readonly': this.isReadonly,
+                '-rounded': this.rounded
             };
         },
-        checked (): boolean {
+        checked(): boolean {
             if (this.schema) {
                 return this.schema.value;
             }
 
             return this.modelValue;
         },
-        tabIndex (): number | string {
+        tabIndex(): number | string {
             return this.isDisabled ? -1 : this.tabindex;
         }
     },
     methods: {
-        clickInputRef () {
+        clickInputRef() {
             if (this.isReadonly) {
                 return;
             }
 
             (this as any).$refs.input.click();
         },
-        onChange (event: InputElementEvent) {
+        onChange(event: InputElementEvent) {
             this.parent.onInput?.(this.name, event.target.checked);
 
             this.$emit('update:modelValue', event.target.checked);
         },
-        onBlur (event: InputElementEvent) {
+        onBlur(event: InputElementEvent) {
             this.parent.onBlur?.(this.name, event);
         }
     }

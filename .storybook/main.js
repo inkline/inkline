@@ -39,6 +39,7 @@ module.exports = {
         '../src/components/ITabs/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITextarea/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITextarea/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/IToggle/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITooltip/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/stories/core/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/stories/utilities/**/*.stories.@(js|jsx|ts|tsx)'

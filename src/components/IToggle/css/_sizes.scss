@@ -3,32 +3,32 @@
  */
 
 .toggle {
-    @include variant('sm', 'form') {
-        --toggle--width: var(--toggle--sm--width, calc(#{40px} * var(--size-multiplier-sm)));
-        --toggle--height: var(--toggle--sm--height, calc(#{20px} * var(--size-multiplier-sm)));
-        --toggle--indicator--border-top-left-radius: var(
-            --toggle--sm--indicator--border-top-left-radius,
-            calc(#{50%} * var(--size-multiplier-sm))
+    &.-sm {
+        --toggle--width: var(--toggle--sm--width, calc(40px * var(--size-multiplier-sm)));
+        --toggle--height: var(--toggle--sm--height, calc(20px * var(--size-multiplier-sm)));
+        --toggle--border-top-left-radius: var(
+            --toggle--sm--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-sm))
         );
-        --toggle--indicator--border-top-right-radius: var(
-            --toggle--sm--indicator--border-top-right-radius,
-            calc(#{50%} * var(--size-multiplier-sm))
+        --toggle--border-top-right-radius: var(
+            --toggle--sm--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-sm))
         );
-        --toggle--indicator--border-bottom-right-radius: var(
-            --toggle--sm--indicator--border-bottom-right-radius,
-            calc(#{50%} * var(--size-multiplier-sm))
+        --toggle--border-bottom-right-radius: var(
+            --toggle--sm--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))
         );
-        --toggle--indicator--border-bottom-left-radius: var(
-            --toggle--sm--indicator--border-bottom-left-radius,
-            calc(#{50%} * var(--size-multiplier-sm))
+        --toggle--border-bottom-left-radius: var(
+            --toggle--sm--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))
         );
         --toggle--indicator--width: var(
             --toggle--sm--indicator--width,
-            calc(#{16px} * var(--size-multiplier-sm))
+            calc(16px * var(--size-multiplier-sm))
         );
         --toggle--indicator--height: var(
             --toggle--sm--indicator--height,
-            calc(#{16px} * var(--size-multiplier-sm))
+            calc(16px * var(--size-multiplier-sm))
         );
         --toggle--label--font-size: var(
             --toggle--sm--label--font-size,
@@ -36,32 +36,32 @@
         );
     }
 
-    @include variant('md', 'form') {
-        --toggle--width: var(--toggle--md--width, calc(#{40px} * var(--size-multiplier-md)));
-        --toggle--height: var(--toggle--md--height, calc(#{20px} * var(--size-multiplier-md)));
-        --toggle--indicator--border-top-left-radius: var(
-            --toggle--md--indicator--border-top-left-radius,
-            calc(#{50%} * var(--size-multiplier-md))
+    &.-md {
+        --toggle--width: var(--toggle--md--width, calc(40px * var(--size-multiplier-md)));
+        --toggle--height: var(--toggle--md--height, calc(20px * var(--size-multiplier-md)));
+        --toggle--border-top-left-radius: var(
+            --toggle--md--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-md))
         );
-        --toggle--indicator--border-top-right-radius: var(
-            --toggle--md--indicator--border-top-right-radius,
-            calc(#{50%} * var(--size-multiplier-md))
+        --toggle--border-top-right-radius: var(
+            --toggle--md--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-md))
         );
-        --toggle--indicator--border-bottom-right-radius: var(
-            --toggle--md--indicator--border-bottom-right-radius,
-            calc(#{50%} * var(--size-multiplier-md))
+        --toggle--border-bottom-right-radius: var(
+            --toggle--md--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))
         );
-        --toggle--indicator--border-bottom-left-radius: var(
-            --toggle--md--indicator--border-bottom-left-radius,
-            calc(#{50%} * var(--size-multiplier-md))
+        --toggle--border-bottom-left-radius: var(
+            --toggle--md--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))
         );
         --toggle--indicator--width: var(
             --toggle--md--indicator--width,
-            calc(#{16px} * var(--size-multiplier-md))
+            calc(16px * var(--size-multiplier-md))
         );
         --toggle--indicator--height: var(
             --toggle--md--indicator--height,
-            calc(#{16px} * var(--size-multiplier-md))
+            calc(16px * var(--size-multiplier-md))
         );
         --toggle--label--font-size: var(
             --toggle--md--label--font-size,
@@ -69,32 +69,32 @@
         );
     }
 
-    @include variant('lg', 'form') {
-        --toggle--width: var(--toggle--lg--width, calc(#{40px} * var(--size-multiplier-lg)));
-        --toggle--height: var(--toggle--lg--height, calc(#{20px} * var(--size-multiplier-lg)));
-        --toggle--indicator--border-top-left-radius: var(
-            --toggle--lg--indicator--border-top-left-radius,
-            calc(#{50%} * var(--size-multiplier-lg))
+    &.-lg {
+        --toggle--width: var(--toggle--lg--width, calc(40px * var(--size-multiplier-lg)));
+        --toggle--height: var(--toggle--lg--height, calc(20px * var(--size-multiplier-lg)));
+        --toggle--border-top-left-radius: var(
+            --toggle--lg--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-lg))
         );
-        --toggle--indicator--border-top-right-radius: var(
-            --toggle--lg--indicator--border-top-right-radius,
-            calc(#{50%} * var(--size-multiplier-lg))
+        --toggle--border-top-right-radius: var(
+            --toggle--lg--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-lg))
         );
-        --toggle--indicator--border-bottom-right-radius: var(
-            --toggle--lg--indicator--border-bottom-right-radius,
-            calc(#{50%} * var(--size-multiplier-lg))
+        --toggle--border-bottom-right-radius: var(
+            --toggle--lg--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))
         );
-        --toggle--indicator--border-bottom-left-radius: var(
-            --toggle--lg--indicator--border-bottom-left-radius,
-            calc(#{50%} * var(--size-multiplier-lg))
+        --toggle--border-bottom-left-radius: var(
+            --toggle--lg--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))
         );
         --toggle--indicator--width: var(
             --toggle--lg--indicator--width,
-            calc(#{16px} * var(--size-multiplier-lg))
+            calc(16px * var(--size-multiplier-lg))
         );
         --toggle--indicator--height: var(
             --toggle--lg--indicator--height,
-            calc(#{16px} * var(--size-multiplier-lg))
+            calc(16px * var(--size-multiplier-lg))
         );
         --toggle--label--font-size: var(
             --toggle--lg--label--font-size,

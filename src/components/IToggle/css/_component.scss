@@ -6,7 +6,7 @@
 
 ////
 /// The background of the toggle component when checked
-/// @name toggle--background--checked
+/// @name toggle--checked--background
 /// @type color
 ////
 
@@ -18,7 +18,7 @@
 
 ////
 /// The background of the toggle component when checked and disabled
-/// @name toggle--background--checked-disabled
+/// @name toggle--checked--disabled--background
 /// @type color
 ////
 
@@ -30,7 +30,7 @@
 
 ////
 /// The border-color of the toggle component when checked
-/// @name toggle--border-color--checked
+/// @name toggle--checked--border-color
 /// @type color
 ////
 
@@ -42,7 +42,7 @@
 
 ////
 /// The border-color of the toggle component when checked and disabled
-/// @name toggle--border-color--checked-disabled
+/// @name toggle--checked--disabled--border-color
 /// @type color
 ////
 
@@ -166,18 +166,18 @@
 
 ////
 /// The background of the toggle component indicator when checked
-/// @name toggle--indicator--checked--background
+/// @name toggle--checked--indicator--background
 ////
 
 ////
 /// The background of the toggle component indicator when disabled
-/// @name toggle--indicator--disabled--background
+/// @name toggle--disabled--indicator--background
 /// @type color
 ////
 
 ////
 /// The background of the toggle component indicator when checked and disabled
-/// @name toggle--indicator--checked--background-disabled
+/// @name toggle--checked--disabled--indicator--background
 /// @type color
 ////
 
@@ -230,7 +230,7 @@
 
 ////
 /// The color of the toggle component label when disabled
-/// @name toggle--label--disabled--color
+/// @name toggle--disabled--label--color
 /// @type color
 ////
 
@@ -240,15 +240,10 @@
 /// @type size
 ////
 
-@import '../../css/variables';
-@import '../../css/mixins';
-@import 'css/variables';
-@import 'css/sizes';
-@import 'css/colors';
-
 /**
- * Checkbox
+ * Toggle
  */
+
 .toggle {
     position: relative;
     margin-bottom: 0;
@@ -265,45 +260,74 @@
 
         &:checked + .toggle-label {
             &::before {
-                --toggle--background: var(----background--checked);
-                --toggle--border-color: var(----border-color--checked);
+                background: var(--toggle--checked--background, var(--color-primary));
+                border-color: var(
+                    --toggle--checked--border-color,
+                    var(--toggle--checked--border-top-color, var(--color-primary))
+                        var(--toggle--checked--border-right-color, var(--color-primary))
+                        var(--toggle--checked--border-bottom-color, var(--color-primary))
+                        var(--toggle--checked--border-left-color, var(--color-primary))
+                );
             }
 
             &::after {
-                ----indicator--background: var(----indicator--checked--background);
-
-                transform: translate(calc(#{var(--toggle--width)} / 2), 0);
+                background: var(--toggle--checked--indicator--background, var(--color-white));
+                transform: translate(calc(var(--toggle--width, 40px) * 0.5), 0);
             }
         }
 
         &:focus + .toggle-label::before {
-            box-shadow: 0 0 1px var(----background--checked);
+            box-shadow: 0 0 1px var(--toggle--checked--background);
         }
 
         &:disabled + .toggle-label,
         &[readonly] + .toggle-label {
             cursor: default;
-            color: var(----label--disabled--color);
+            color: var(--toggle--disabled--label--color);
 
             &::before {
-                --toggle--background: var(--toggle--disabled--background);
-                --toggle--border-color: var(--toggle--disabled--border-color);
+                background: var(--toggle--disabled--background);
+                border-color: var(
+                    --toggle--disabled--border-color,
+                    var(
+                            --toggle--disabled--border-top-color,
+                            var(--toggle--border-top-color, var(--border-top-color))
+                        )
+                        var(
+                            --toggle--disabled--border-right-color,
+                            var(--toggle--border-right-color, var(--border-right-color))
+                        )
+                        var(
+                            --toggle--disabled--border-bottom-color,
+                            var(--toggle--border-bottom-color, var(--border-bottom-color))
+                        )
+                        var(
+                            --toggle--disabled--border-left-color,
+                            var(--toggle--border-left-color, var(--border-left-color))
+                        )
+                );
             }
 
             &::after {
-                ----indicator--background: var(----indicator--disabled--background);
+                background: var(--toggle--disabled--indicator--background);
             }
         }
 
         &:disabled:checked + .toggle-label,
         &[readonly]:checked + .toggle-label {
             &::before {
-                --toggle--background: var(----background--checked-disabled);
-                --toggle--border-color: var(----border-color--checked-disabled);
+                background: var(--toggle--checked--disabled--background);
+                border-color: var(
+                    --toggle--checked--disabled--border-color,
+                    var(--toggle--checked--disabled--border-top-color, var(--color-primary))
+                        var(--toggle--checked--disabled--border-right-color, var(--color-primary))
+                        var(--toggle--checked--disabled--border-bottom-color, var(--color-primary))
+                        var(--toggle--checked--disabled--border-left-color, var(--color-primary))
+                );
             }
 
             &::after {
-                ----indicator--background: var(----indicator--checked--background-disabled);
+                background: var(--toggle--checked--disabled--indicator--background);
             }
         }
     }
@@ -313,15 +337,25 @@
         align-items: center;
         position: relative;
         margin: 0;
-        color: var(----label--color);
-        font-size: var(----label--font-size);
+        color: var(--toggle--label--color, var(--toggle--color));
+        font-size: var(--toggle--label--font-size, var(--toggle--font-size, var(--font-size)));
 
         &::before {
             content: '';
             position: relative;
             display: inline-block;
             cursor: pointer;
-            transition: var(----transition-duration);
+            transition-duration: var(--toggle--transition-duration, var(--transition-duration));
+            transition-property: var(
+                --toggle--transition-property,
+                background-color,
+                border-color,
+                transform
+            );
+            transition-timing-function: var(
+                --toggle--transition-timing-function,
+                var(--transition-timing-function)
+            );
             border-width: var(
                 --toggle--border-width,
                 (
@@ -353,16 +387,14 @@
             flex-shrink: 0;
             flex-grow: 0;
             background-color: var(--toggle--background);
-            width: var(--toggle--width);
-            height: var(--toggle--height);
+            width: var(--toggle--width, 40px);
+            height: var(--toggle--height, 20px);
             border-radius: var(
                 --toggle--border-radius,
-                (
-                    var(--toggle--border-top-left-radius, var(--border-top-left-radius))
-                        var(--toggle--border-top-right-radius, var(--border-top-right-radius))
-                        var(--toggle--border-bottom-right-radius, var(--border-bottom-right-radius))
-                        var(--toggle--border-bottom-left-radius, var(--border-bottom-left-radius))
-                )
+                var(--toggle--border-top-left-radius, var(--border-top-left-radius))
+                    var(--toggle--border-top-right-radius, var(--border-top-right-radius))
+                    var(--toggle--border-bottom-right-radius, var(--border-bottom-right-radius))
+                    var(--toggle--border-bottom-left-radius, var(--border-bottom-left-radius))
             );
         }
 
@@ -374,21 +406,75 @@
             left: 0;
             z-index: 1;
             transform: translate(0, 0);
-            transition: var(----transition-duration);
-            background-color: var(----indicator--background);
-            height: var(----indicator--width);
-            width: var(----indicator--height);
+            transition-duration: var(--toggle--transition-duration, var(--transition-duration));
+            transition-property: var(
+                --toggle--transition-property,
+                background-color,
+                border-color,
+                transform
+            );
+            transition-timing-function: var(
+                --toggle--transition-timing-function,
+                var(--transition-timing-function)
+            );
+            background-color: var(--toggle--indicator--background);
+            height: var(--toggle--indicator--width, 16px);
+            width: var(--toggle--indicator--height, 16px);
             border-radius: var(
-                --toggle--border-radius,
+                --toggle--indicator--border-radius,
                 (
-                    var(--toggle--border-top-left-radius, var(--border-top-left-radius))
-                        var(--toggle--border-top-right-radius, var(--border-top-right-radius))
-                        var(--toggle--border-bottom-right-radius, var(--border-bottom-right-radius))
-                        var(--toggle--border-bottom-left-radius, var(--border-bottom-left-radius))
+                    var(
+                            --toggle--indicator--border-top-left-radius,
+                            var(--toggle--border-top-left-radius, var(--border-top-left-radius))
+                        )
+                        var(
+                            --toggle--indicator--border-top-right-radius,
+                            var(--toggle--border-top-right-radius, var(--border-top-right-radius))
+                        )
+                        var(
+                            --toggle--indicator--border-bottom-right-radius,
+                            var(
+                                --toggle--border-bottom-right-radius,
+                                var(--border-bottom-right-radius)
+                            )
+                        )
+                        var(
+                            --toggle--indicator--border-bottom-left-radius,
+                            var(
+                                --toggle--border-bottom-left-radius,
+                                var(--border-bottom-left-radius)
+                            )
+                        )
                 )
             );
-            margin-top: calc(var(----indicator--height) / -2);
-            margin-left: calc(var(--toggle--height) / 2 - var(----indicator--height) / 2);
+            margin-top: calc(var(--toggle--indicator--height, 16px) / -2);
+            margin-left: calc(
+                var(--toggle--height, 20px) / 2 - var(--toggle--indicator--height, 16px) / 2
+            );
+        }
+    }
+
+    &.-rounded {
+        .toggle-label {
+            &::before {
+                border-radius: var(
+                    --toggle--rounded--border-radius,
+                    var(--toggle--rounded--border-top-left-radius, var(--toggle--height))
+                        var(--toggle--rounded--border-top-right-radius, var(--toggle--height))
+                        var(--toggle--rounded--border-bottom-right-radius, var(--toggle--height))
+                        var(--toggle--rounded--border-bottom-left-radius, var(--toggle--height))
+                );
+            }
+
+            &::after {
+                border-radius: var(
+                    --toggle--rounded--indicator--border-radius,
+                    var(--toggle--rounded--indicator--border-top-left-radius, 50%)
+                        var(--toggle--rounded--indicator--border-top-right-radius, 50%)
+                        var(--toggle--rounded--indicator--border-bottom-right-radius, 50%)
+                        var(--toggle--rounded--indicator--border-bottom-left-radius, 50%)
+                );
+            }
         }
     }
 }
