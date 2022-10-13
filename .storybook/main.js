@@ -36,6 +36,7 @@ module.exports = {
         '../src/components/ISelect/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ISidebar/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITable/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/components/ITabs/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITextarea/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITextarea/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/components/ITooltip/**/*.stories.@(js|jsx|ts|tsx)',

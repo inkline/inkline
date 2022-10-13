@@ -208,7 +208,7 @@
             vertical-align: bottom;
             border-bottom-width: var(
                 --table--thead--th--border-bottom-width,
-                calc(2 * var(--table--border-bottom-width, var(--border-bottom-width)))
+                var(--table--border-bottom-width, var(--border-bottom-width))
             );
         }
 
@@ -216,7 +216,7 @@
             border-top-style: var(--table--tbody--adjacent--border-top-style, solid);
             border-top-width: var(
                 --table--tbody--adjacent--border-top-width,
-                calc(2 * var(--table--border-top-width, var(--border-top-width)))
+                var(--table--border-top-width, var(--border-top-width))
             );
             border-top-color: var(--table--tbody--adjacent--border-top-color, transparent);
         }

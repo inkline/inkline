@@ -40,14 +40,6 @@
             --tabs--sm--padding-left,
             calc(var(--padding-left) * var(--size-multiplier-sm))
         );
-        --tabs--header--padding-bottom: var(
-            --tabs--sm--header--padding-bottom,
-            var(----padding-bottom-sm)
-        );
-        --tabs--header--padding-left: var(
-            --tabs--sm--header--padding-left,
-            var(----padding-left-sm)
-        );
     }
 
     &.-md {
@@ -87,14 +79,6 @@
             --tabs--md--padding-left,
             calc(var(--padding-left) * var(--size-multiplier-md))
         );
-        --tabs--header--padding-bottom: var(
-            --tabs--md--header--padding-bottom,
-            var(----padding-bottom-md)
-        );
-        --tabs--header--padding-left: var(
-            --tabs--md--header--padding-left,
-            var(----padding-left-md)
-        );
     }
 
     &.-lg {
@@ -133,14 +117,6 @@
         --tabs--padding-left: var(
             --tabs--lg--padding-left,
             calc(var(--padding-left) * var(--size-multiplier-lg))
-        );
-        --tabs--header--padding-bottom: var(
-            --tabs--lg--header--padding-bottom,
-            var(----padding-bottom-lg)
-        );
-        --tabs--header--padding-left: var(
-            --tabs--lg--header--padding-left,
-            var(----padding-left-lg)
         );
     }
 }
