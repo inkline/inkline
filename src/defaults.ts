@@ -19,6 +19,7 @@ import {
     boxShadowGenerators,
     breakpointsGenerators,
     colorGenerators,
+    genericGenerators,
     marginGenerators,
     paddingGenerators,
     scaleRatioGenerators,
@@ -95,7 +96,8 @@ export const defaultConfig: Configuration = {
         ...paddingGenerators,
         ...scaleRatioGenerators,
         ...sizeGenerators,
-        ...typographyGenerators
+        ...typographyGenerators,
+        ...genericGenerators
     ],
     theme: {
         default: {

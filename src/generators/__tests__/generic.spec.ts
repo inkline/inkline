@@ -16,20 +16,15 @@ describe('generators', () => {
                 const theme = {
                     elements: {
                         body: {
-                            color: '#000000',
-                            background: '#ffffff'
+                            color: '#000000'
                         }
                     }
                 } as unknown as ResolvedTheme;
-                const value = theme.elements.body;
-                const path = ['elements', 'body'];
+                const value = theme.elements.body.color;
+                const path = ['elements', 'body', 'color'];
 
                 expect(genericGenerator.apply({ config, theme, value, path })).toEqual([
-                    '/**',
-                    ' * Body variables',
-                    ' */',
-                    `--body--color: ${theme.elements.body.color};`,
-                    `--body--background: ${theme.elements.body.background};`
+                    `--body--color: ${theme.elements.body.color};`
                 ]);
             });
 
@@ -38,30 +33,19 @@ describe('generators', () => {
                 const theme = {
                     elements: {
                         body: {
-                            color: '#000000',
-                            background: '#ffffff',
                             border: {
                                 top: {
-                                    width: '1px',
-                                    style: 'solid',
-                                    color: '#000000'
+                                    style: 'solid'
                                 }
                             }
                         }
                     }
                 } as unknown as ResolvedTheme;
-                const value = theme.elements.body;
-                const path = ['elements', 'body'];
+                const value = theme.elements.body.border.top.style;
+                const path = ['elements', 'body', 'border', 'top', 'style'];
 
                 expect(genericGenerator.apply({ config, theme, value, path })).toEqual([
-                    '/**',
-                    ' * Body variables',
-                    ' */',
-                    `--body--color: ${theme.elements.body.color};`,
-                    `--body--background: ${theme.elements.body.background};`,
-                    `--body--border-top-width: ${theme.elements.body.border.top.width};`,
                     `--body--border-top-style: ${theme.elements.body.border.top.style};`,
-                    `--body--border-top-color: ${theme.elements.body.border.top.color};`
                 ]);
             });
 
@@ -76,14 +60,11 @@ describe('generators', () => {
                         }
                     }
                 } as unknown as ResolvedTheme;
-                const value = theme.elements.button;
-                const path = ['elements', 'button'];
+                const value = theme.elements.button.primary.background;
+                const path = ['elements', 'button', 'primary', 'background'];
 
                 expect(genericGenerator.apply({ config, theme, value, path })).toEqual([
-                    '/**',
-                    ' * Button variables',
-                    ' */',
-                    `--button--primary--background: ${theme.elements.button.primary.background};`,
+                    `--button--primary--background: ${theme.elements.button.primary.background};`
                 ]);
             });
 
@@ -96,13 +77,10 @@ describe('generators', () => {
                         }
                     }
                 } as unknown as ResolvedTheme;
-                const value = theme.elements.buttonGroup;
-                const path = ['elements', 'buttonGroup'];
+                const value = theme.elements.buttonGroup.borderRadius;
+                const path = ['elements', 'buttonGroup', 'borderRadius'];
 
                 expect(genericGenerator.apply({ config, theme, value, path })).toEqual([
-                    '/**',
-                    ' * Button group variables',
-                    ' */',
                     `--button-group--border-radius: ${theme.elements.buttonGroup.borderRadius};`
                 ]);
             });

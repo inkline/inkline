@@ -19,24 +19,24 @@ export const breakpointsGenerator: Generator<ResolvedTheme['breakpoints']> = {
 
 const breakpointCodegen = {
     css: {
-        down: (key: string, nextUnitValue: string) =>
-            key === '2xl' ? '' : `@custom-media --breakpoint-${key}-down (max-width: ${nextUnitValue});`,
-        up: (key: string, unitValue: string) =>
-            key === 'xs' ? '' : `@custom-media --breakpoint-${key}-up (min-width: ${unitValue});`,
+        down: (key: string, nextUnitValue: string, isLast = false) =>
+            isLast ? '' : `@custom-media --breakpoint-${key}-down (max-width: ${nextUnitValue});`,
+        up: (key: string, unitValue: string, isFirst = false) =>
+            isFirst ? '' : `@custom-media --breakpoint-${key}-up (min-width: ${unitValue});`,
         match: (key: string, unitValue: string, nextUnitValue: string) =>
             `@custom-media --breakpoint-${key} (min-width: ${unitValue})${nextUnitValue ? ` and (max-width: ${nextUnitValue})` : ''};`
     },
     scss: {
-        down: (key: string, nextUnitValue: string) =>
-            `@mixin breakpoint-${key}-down { ${key === '2xl' ? '@content;' : `@media screen and (max-width: ${nextUnitValue}) { @content; }`} }`,
-        up: (key: string, unitValue: string) =>
-            `@mixin breakpoint-${key}-up { ${key === 'xs' ? '@content;' : `@media screen and (min-width: ${unitValue}) { @content; }`} }`,
+        down: (key: string, nextUnitValue: string, isLast = false) =>
+            `@mixin breakpoint-${key}-down { ${isLast ? '@content;' : `@media screen and (max-width: ${nextUnitValue}) { @content; }`} }`,
+        up: (key: string, unitValue: string, isFirst = false) =>
+            `@mixin breakpoint-${key}-up { ${isFirst ? '@content;' : `@media screen and (min-width: ${unitValue}) { @content; }`} }`,
         match: (key: string, unitValue: string, nextUnitValue: string) =>
             `@mixin breakpoint-${key} { @media screen and (min-width: ${unitValue})${nextUnitValue ? ` and (max-width: ${nextUnitValue})` : ''} { @content; }}`,
         list: (breakpoints: string[], columns: number) => [
             `$columns: ${columns} !default;`,
             `$breakpoint-keys: (${breakpoints.map((breakpoint) => `'${breakpoint}'`).join(', ')}) !default;`
-        ].join('\n'),
+        ],
         aggregate: (type: string, breakpoints: string[]) => {
             const suffix = type ? `-${type}` : '';
             const indent = '    ';
@@ -63,7 +63,9 @@ export const breakpointsMixinsGenerator: Generator<ResolvedTheme['breakpoints']>
 
         return ['/**', ' * Breakpoint mixins', ' */']
             .concat(pairs.map(([key, value], index) => {
-                const nextValue: string | number = index === pairs.length - 1 ? Infinity : pairs[index + 1][1];
+                const isFirst = index === 0;
+                const isLast = index === pairs.length - 1;
+                const nextValue: string | number = isLast ? Infinity : pairs[index + 1][1];
                 const nextUnitValue = typeof nextValue === 'string'
                     ? `${parseInt(nextValue) - 0.01}${(nextValue as string).replace(/^\d+/, '')}`
                     : `${nextValue - 0.01}px`;
@@ -71,9 +73,9 @@ export const breakpointsMixinsGenerator: Generator<ResolvedTheme['breakpoints']>
 
                 const rules: string[] = [];
 
-                rules.push(breakpointCodegen[language].down(key, nextUnitValue));
-                rules.push(breakpointCodegen[language].up(key, unitValue));
-                rules.push(breakpointCodegen[language].match(key, unitValue, index !== pairs.length - 1 ? nextUnitValue : ''));
+                rules.push(breakpointCodegen[language].down(key, nextUnitValue, isLast));
+                rules.push(breakpointCodegen[language].up(key, unitValue, isFirst));
+                rules.push(breakpointCodegen[language].match(key, unitValue, isLast ? '' : nextUnitValue));
 
                 return rules;
             }).flat().filter((rule) => rule))
@@ -84,7 +86,7 @@ export const breakpointsMixinsGenerator: Generator<ResolvedTheme['breakpoints']>
                     breakpointCodegen.scss.aggregate('down', breakpoints),
                     breakpointCodegen.scss.aggregate('up', breakpoints),
                     breakpointCodegen.scss.aggregate('', breakpoints)
-                ]
+                ].flat()
                 : []);
     }
 };
