@@ -29,30 +29,44 @@ export function applyResolvers (
         };
 
         let matches = 0;
-        config.resolvers.forEach((resolver) => {
+        for (const resolver of config.resolvers) {
+            const tests = Array.isArray(resolver.test) ? resolver.test : [resolver.test];
+            const skips = Array.isArray(resolver.skip) ? resolver.skip : (resolver.skip ? [resolver.skip] : []);
+            const sets = Array.isArray(resolver.set) ? resolver.set : [resolver.set];
+
+            const passingTest = tests.find((test) => test.test(joinedPath));
+
             // Check if resolver test path matches and type guard passes,
             // then set resolved value at target path
-            if (resolver.test.test(joinedPath) && !resolver.skip?.test(joinedPath) && (resolver.guard ? resolver.guard(context) : true)) {
+            if (
+                passingTest &&
+                skips.every((skip) => !skip.test(joinedPath)) &&
+                (resolver.guard ? resolver.guard(context) : true)
+            ) {
                 const targetValue = resolver.apply(context);
 
                 // If there's a set function, use it to set the value
                 if (typeof resolver.set === 'function') {
                     resolver.set(context, targetValue);
                 } else {
-                    (Array.isArray(resolver.set) ? resolver.set : [resolver.set]).forEach((setPath: string) => {
+                    sets.forEach((setPath) => {
                         // Compute target path by processing the path string
-                        const targetPath = joinedPath.replace(resolver.test, setPath);
+                        const targetPath = joinedPath.replace(passingTest, setPath as string);
                         setValueByPath(target, targetPath, targetValue);
                     });
                 }
 
                 matches += 1;
             }
-        });
+        }
 
         // Increase depth and apply resolvers to object fields recursively
-        if (matches === 0 && typeof value === 'object') {
-            return applyResolvers(config, theme, value, target, path);
+        if (matches === 0) {
+            if (typeof value === 'object') {
+                return applyResolvers(config, theme, value, target, path);
+            } else {
+                setValueByPath(target, joinedPath, value);
+            }
         }
     });
 

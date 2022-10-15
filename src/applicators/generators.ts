@@ -6,6 +6,8 @@ import {
     ResolvedConfiguration,
     ResolvedTheme
 } from '../types';
+import { genericGenerator } from '../generators';
+import { capitalizeFirst, toDashCase } from '@grozav/utils';
 
 /**
  * Recursively apply generators to each key value pair in the source object, setting the value in the target object
@@ -60,8 +62,29 @@ export function applyGenerators (
         });
 
         // Increase depth and apply generators to object fields recursively
-        if (matches === 0 && typeof value === 'object') {
-            return applyGenerators(config, theme, value, target, path);
+        if (matches === 0) {
+            if (typeof value === 'object') {
+                return applyGenerators(config, theme, value, target, path);
+            } else {
+                const groupName = path[0];
+                const subgroup = path[1];
+                const existingGroup = target
+                    .find((group) => group.subgroup === subgroup && group.name === groupName);
+
+                if (existingGroup) {
+                    existingGroup.lines.push(...genericGenerator.apply(context));
+                } else {
+                    const subgroupName = capitalizeFirst(toDashCase(path[1]).replace(/-/g, ' '));
+
+                    target.push({
+                        name: groupName,
+                        lines: ['/**', ` * ${subgroupName} variables`, ' */'].concat(genericGenerator.apply(context)),
+                        priority: genericGenerator.priority ?? GeneratorPriority.Medium,
+                        location: 'root',
+                        subgroup
+                    });
+                }
+            }
         }
     });
 

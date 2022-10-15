@@ -6,7 +6,6 @@ import {
     boxShadowResolvers,
     breakpointsResolvers,
     colorResolvers,
-    elementsResolvers,
     marginResolvers,
     paddingResolvers,
     scaleRatioResolvers,
@@ -20,7 +19,6 @@ import {
     boxShadowGenerators,
     breakpointsGenerators,
     colorGenerators,
-    elementsGenerators,
     marginGenerators,
     paddingGenerators,
     scaleRatioGenerators,
@@ -84,8 +82,7 @@ export const defaultConfig: Configuration = {
         ...paddingResolvers,
         ...scaleRatioResolvers,
         ...sizeResolvers,
-        ...typographyResolvers,
-        ...elementsResolvers
+        ...typographyResolvers
     ],
     generators: [
         ...animationGenerators,
@@ -98,8 +95,7 @@ export const defaultConfig: Configuration = {
         ...paddingGenerators,
         ...scaleRatioGenerators,
         ...sizeGenerators,
-        ...typographyGenerators,
-        ...elementsGenerators
+        ...typographyGenerators
     ],
     theme: {
         default: {
@@ -208,6 +204,34 @@ export const defaultConfig: Configuration = {
                 body: {
                     background: 'var(--color-white)',
                     color: 'var(--color-gray-900)'
+                },
+                grid: {
+                    columns: 12,
+                    gutter: '28px',
+                    xs: {
+                        gutter: 'calc(var(--gutter) * var(--size-multiplier-xs))',
+                        width: '100%'
+                    },
+                    sm: {
+                        gutter: 'calc(var(--gutter) * var(--size-multiplier-sm))',
+                        width: 'calc(var(--breakpoint-sm) - var(--grid--sm--gutter))'
+                    },
+                    md: {
+                        gutter: 'calc(var(--gutter) * var(--size-multiplier-md))',
+                        width: 'calc(var(--breakpoint-md) - var(--grid--md--gutter))'
+                    },
+                    lg: {
+                        gutter: 'calc(var(--gutter) * var(--size-multiplier-lg))',
+                        width: 'calc(var(--breakpoint-lg) - var(--grid--lg--gutter))'
+                    },
+                    xl: {
+                        gutter: 'calc(var(--gutter) * var(--size-multiplier-xl))',
+                        width: 'calc(var(--breakpoint-xl) - var(--grid--xl--gutter))'
+                    },
+                    '2xl': {
+                        gutter: 'calc(var(--gutter) * var(--size-multiplier-2xl))',
+                        width: 'calc(var(--breakpoint-2xl) - var(--grid--2xl--gutter))'
+                    }
                 }
             },
             variants: {
@@ -248,11 +272,13 @@ export const defaultConfig: Configuration = {
                 padding: spacingVariants,
                 size: {
                     multiplier: {
+                        '2xs': { divide: 'var(--scale-ratio-pow-3)' },
                         xs: { divide: 'var(--scale-ratio-pow-2)' },
                         sm: { divide: 'var(--scale-ratio-pow-1)' },
                         md: {},
                         lg: { multiply: 'var(--scale-ratio-pow-1)' },
-                        xl: { multiply: 'var(--scale-ratio-pow-2)' }
+                        xl: { multiply: 'var(--scale-ratio-pow-2)' },
+                        '2xl': { multiply: 'var(--scale-ratio-pow-3)' }
                     }
                 },
                 typography: {

@@ -1,15 +1,67 @@
 import { Generator, ResolvedTheme } from '../types';
 import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
+import { codegenSetCSSVariable } from '../helpers';
 
 export const breakpointsGenerator: Generator<ResolvedTheme['breakpoints']> = {
     name: 'breakpoints',
-    location: 'default',
+    location: 'root',
     test: /(.*)breakpoints$/,
     skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ value }) => {
-        const pairs = Object.entries(value).sort((a, b) => a[1] - b[1]);
-
         return ['/**', ' * Breakpoint variables', ' */']
+            .concat(Object.entries(value).map(([key, value]) => {
+                const unitValue = typeof value === 'string' ? value : `${value}px`;
+
+                return codegenSetCSSVariable(`breakpoints-${key}`, unitValue);
+            }));
+    }
+};
+
+const breakpointCodegen = {
+    css: {
+        down: (key: string, nextUnitValue: string) =>
+            key === '2xl' ? '' : `@custom-media --breakpoint-${key}-down (max-width: ${nextUnitValue});`,
+        up: (key: string, unitValue: string) =>
+            key === 'xs' ? '' : `@custom-media --breakpoint-${key}-up (min-width: ${unitValue});`,
+        match: (key: string, unitValue: string, nextUnitValue: string) =>
+            `@custom-media --breakpoint-${key} (min-width: ${unitValue})${nextUnitValue ? ` and (max-width: ${nextUnitValue})` : ''};`
+    },
+    scss: {
+        down: (key: string, nextUnitValue: string) =>
+            `@mixin breakpoint-${key}-down { ${key === '2xl' ? '@content;' : `@media screen and (max-width: ${nextUnitValue}) { @content; }`} }`,
+        up: (key: string, unitValue: string) =>
+            `@mixin breakpoint-${key}-up { ${key === 'xs' ? '@content;' : `@media screen and (min-width: ${unitValue}) { @content; }`} }`,
+        match: (key: string, unitValue: string, nextUnitValue: string) =>
+            `@mixin breakpoint-${key} { @media screen and (min-width: ${unitValue})${nextUnitValue ? ` and (max-width: ${nextUnitValue})` : ''} { @content; }}`,
+        list: (breakpoints: string[], columns: number) => [
+            `$columns: ${columns} !default;`,
+            `$breakpoint-keys: (${breakpoints.map((breakpoint) => `'${breakpoint}'`).join(', ')}) !default;`
+        ].join('\n'),
+        aggregate: (type: string, breakpoints: string[]) => {
+            const suffix = type ? `-${type}` : '';
+            const indent = '    ';
+
+            return `\n@mixin breakpoint${suffix}($key) {\n${indent}${breakpoints
+                .map((breakpoint, index) => `@${index !== 0 ? 'else ' : ''}if $key == '${breakpoint}' { @include breakpoint-${breakpoint}${suffix} { @content; } }`)
+                .join(`\n${indent}`)
+            }\n${indent}@else { @content; }\n}`;
+        }
+    }
+};
+
+export const breakpointsMixinsGenerator: Generator<ResolvedTheme['breakpoints']> = {
+    name: 'mixins',
+    location: 'default',
+    test: /(.*)breakpoints$/,
+    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
+    apply: ({ config, theme, value }) => {
+        const pairs = Object.entries(value).sort((a, b) => a[1] - b[1]);
+        const language = ['.css', '.pcss'].includes(config.buildOptions.extName as string) ? 'css' : 'scss';
+
+        const breakpoints = Object.keys(theme.breakpoints);
+        const columns = theme.elements.grid.columns;
+
+        return ['/**', ' * Breakpoint mixins', ' */']
             .concat(pairs.map(([key, value], index) => {
                 const nextValue: string | number = index === pairs.length - 1 ? Infinity : pairs[index + 1][1];
                 const nextUnitValue = typeof nextValue === 'string'
@@ -19,21 +71,25 @@ export const breakpointsGenerator: Generator<ResolvedTheme['breakpoints']> = {
 
                 const rules: string[] = [];
 
-                if (index !== pairs.length - 1) {
-                    rules.push(`@custom-media --breakpoint-${key}-down (max-width: ${nextUnitValue});`);
-                }
-
-                if (index !== 0) {
-                    rules.push(`@custom-media --breakpoint-${key}-up (min-width: ${unitValue});`);
-                }
-
-                rules.push(`@custom-media --breakpoint-${key} (min-width: ${unitValue})${index !== pairs.length - 1 ? ` and (max-width: ${nextUnitValue})` : ''};`);
+                rules.push(breakpointCodegen[language].down(key, nextUnitValue));
+                rules.push(breakpointCodegen[language].up(key, unitValue));
+                rules.push(breakpointCodegen[language].match(key, unitValue, index !== pairs.length - 1 ? nextUnitValue : ''));
 
                 return rules;
-            }).flat());
+            }).flat().filter((rule) => rule))
+            .concat(language === 'scss'
+                ? [
+                    '',
+                    breakpointCodegen.scss.list(breakpoints, columns),
+                    breakpointCodegen.scss.aggregate('down', breakpoints),
+                    breakpointCodegen.scss.aggregate('up', breakpoints),
+                    breakpointCodegen.scss.aggregate('', breakpoints)
+                ]
+                : []);
     }
 };
 
 export const breakpointsGenerators: Generator[] = [
-    breakpointsGenerator
+    breakpointsGenerator,
+    breakpointsMixinsGenerator
 ];

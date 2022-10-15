@@ -1,17 +1,17 @@
-import { breakpointsGenerator } from '../breakpoints';
+import { breakpointsMixinsGenerator } from '../breakpoints';
 import { ResolvedConfiguration, ResolvedTheme } from '../../types';
 
 describe('generators', () => {
-    describe('breakpoints', () => {
+    describe('breakpointsMixins', () => {
         describe('test', () => {
             it('should match direct path', () => {
                 const path = 'breakpoints';
-                expect((breakpointsGenerator.test as RegExp).test(path)).toEqual(true);
+                expect((breakpointsMixinsGenerator.test as RegExp).test(path)).toEqual(true);
             });
 
             it('should match nested path', () => {
                 const path = 'nested.breakpoints';
-                expect((breakpointsGenerator.test as RegExp).test(path)).toEqual(true);
+                expect((breakpointsMixinsGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 
@@ -28,7 +28,7 @@ describe('generators', () => {
                 const value = theme.breakpoints;
                 const path = ['breakpoints'];
 
-                expect(breakpointsGenerator.apply({ config, theme, value, path })).toEqual([
+                expect(breakpointsMixinsGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Breakpoint variables',
                     ' */',

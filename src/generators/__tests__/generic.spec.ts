@@ -1,12 +1,12 @@
-import { elementsGenerator } from '../elements';
+import { genericGenerator } from '../generic';
 import { ResolvedConfiguration, ResolvedTheme } from '../../types';
 
 describe('generators', () => {
-    describe('elements', () => {
+    describe('generic', () => {
         describe('test', () => {
-            it('should match direct path', () => {
+            it('should match any path', () => {
                 const path = 'elements.body.color';
-                expect((elementsGenerator.test as RegExp).test(path)).toEqual(true);
+                expect((genericGenerator.test as RegExp).test(path)).toEqual(true);
             });
         });
 
@@ -24,7 +24,7 @@ describe('generators', () => {
                 const value = theme.elements.body;
                 const path = ['elements', 'body'];
 
-                expect(elementsGenerator.apply({ config, theme, value, path })).toEqual([
+                expect(genericGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Body variables',
                     ' */',
@@ -53,7 +53,7 @@ describe('generators', () => {
                 const value = theme.elements.body;
                 const path = ['elements', 'body'];
 
-                expect(elementsGenerator.apply({ config, theme, value, path })).toEqual([
+                expect(genericGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Body variables',
                     ' */',
@@ -79,7 +79,7 @@ describe('generators', () => {
                 const value = theme.elements.button;
                 const path = ['elements', 'button'];
 
-                expect(elementsGenerator.apply({ config, theme, value, path })).toEqual([
+                expect(genericGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Button variables',
                     ' */',
@@ -99,7 +99,7 @@ describe('generators', () => {
                 const value = theme.elements.buttonGroup;
                 const path = ['elements', 'buttonGroup'];
 
-                expect(elementsGenerator.apply({ config, theme, value, path })).toEqual([
+                expect(genericGenerator.apply({ config, theme, value, path })).toEqual([
                     '/**',
                     ' * Button group variables',
                     ' */',

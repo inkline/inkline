@@ -14,6 +14,7 @@ export interface CodegenGroup {
     lines: string[];
     location: GeneratorLocation;
     priority: GeneratorPriority;
+    subgroup?: string;
 }
 
 export interface IntermediaryCodegenFile {
