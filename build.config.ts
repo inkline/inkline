@@ -16,5 +16,6 @@ export default {
             outDir: './lib',
             declaration: false
         }
-    ]
+    ],
+    failOnWarn: false
 };
