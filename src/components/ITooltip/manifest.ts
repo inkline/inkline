@@ -12,6 +12,10 @@ export const manifest = {
     ],
     events: [
         {
+            description: 'Event emitted when clicking outside the tooltip elements',
+            name: 'click-outside'
+        },
+        {
             description: 'Event emitted for setting the modelValue',
             name: 'update:modelValue'
         }

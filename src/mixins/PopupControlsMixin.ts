@@ -24,7 +24,7 @@ export default defineComponent({
             default: 300
         }
     },
-    emits: ['update:modelValue'],
+    emits: ['update:modelValue', 'click-outside'],
     data () {
         return {
             visible: this.modelValue,
@@ -104,6 +104,7 @@ export default defineComponent({
             if (this.modelValue) return;
 
             this.hide();
+            this.$emit('click-outside');
         },
         addEventListeners () {
             [].concat((this as any).trigger).forEach((trigger) => {

@@ -220,6 +220,11 @@ export default defineComponent({
     },
     emits: [
         /**
+         * Event emitted when clicking outside the dropdown elements
+         * @event click-outside
+         */
+        'click-outside',
+        /**
          * Event emitted for setting the modelValue
          * @event update:modelValue
          */
