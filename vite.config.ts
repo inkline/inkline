@@ -8,7 +8,7 @@ import { resolve } from 'path';
 export default defineConfig({
     plugins: [
         inspect(),
-        inkline({
+        ...inkline({
             outputDir: resolve(__dirname, 'src/playground/css/config')
         })
     ],

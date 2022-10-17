@@ -36,6 +36,7 @@
   "dependencies": {
     "@grozav/utils": "1.1.4",
     "@inkline/config": "^1.6.2",
+    "unocss": "^0.45.29",
     "unplugin": "^0.9.6"
   },
   "main": "index.cjs",

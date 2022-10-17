@@ -19,6 +19,7 @@ export const plugin = createUnplugin((options: UserOptions = {}) => {
 
     return {
         name: 'inkline'
+        // @TODO Add transform for inkline import to include [config, unocss, inkline]
     };
 });
 
