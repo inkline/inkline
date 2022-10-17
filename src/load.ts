@@ -13,7 +13,7 @@ export async function loadConfig (
         overrides: overrides as Configuration
     });
 
-    return resolve(config);
+    return resolve(config as Configuration);
 }
 
 export async function loadConfigFromFile (
@@ -25,5 +25,5 @@ export async function loadConfigFromFile (
         ...options
     });
 
-    return resolve(config);
+    return resolve(config as Configuration);
 }

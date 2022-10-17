@@ -4,3 +4,7 @@ export interface BuildOptions {
     extName?: `.${string}`;
     themeSelector?: string;
 }
+
+export interface ResolvedBuildOptions extends Required<BuildOptions> {
+    configDir: string;
+}
