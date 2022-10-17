@@ -1,10 +1,10 @@
-@import '../.inkline/css/breakpoints.css';
+@import 'config';
 
 body {
     background: var(--color-red);
 }
 
-@media (--breakpoint-lg-down) {
+@include breakpoint-lg-down() {
     body {
         background: var(--color-blue) !important;
     }

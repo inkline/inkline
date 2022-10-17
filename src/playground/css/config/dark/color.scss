@@ -1,0 +1,10 @@
+.dark-theme {
+    /**
+     * Text color variables
+     */
+    --text--color-muted-h: var(--color-gray-400-h);
+    --text--color-muted-s: var(--color-gray-400-s);
+    --text--color-muted-l: var(--color-gray-400-l);
+    --text--color-muted-a: var(--color-gray-400-a);
+    --text--color-muted: hsla(var(--text--color-muted-h), var(--text--color-muted-s), var(--text--color-muted-l), var(--text--color-muted-a));
+}

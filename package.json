@@ -2,7 +2,7 @@
   "name": "@inkline/plugin",
   "version": "1.0.0",
   "scripts": {
-    "start": "npm run build && node --experimental-specifier-resolution=node lib/index.mjs",
+    "start": "npm run build",
     "dev": "vite",
     "build": "unbuild",
     "postbuild": "ts-node scripts/postbuild.ts",
@@ -17,22 +17,26 @@
     "postversion": "ts-node scripts/postversion.ts"
   },
   "devDependencies": {
-    "@grozav/eslint-config": "1.0.2",
+    "@grozav/eslint-config": "1.0.4",
     "@types/shelljs": "0.8.11",
-    "eslint": "8.12.0",
+    "chokidar": "^3.5.3",
+    "eslint": "8.25.0",
     "np": "^7.6.2",
     "npm-run-all": "4.1.5",
-    "pathe": "0.3.0",
+    "pathe": "^0.3.9",
+    "sass": "^1.55.0",
     "shelljs": "0.8.5",
-    "ts-node": "10.7.0",
-    "typescript": "^4.5.4",
-    "unbuild": "0.7.2",
-    "vite": "^2.9.0",
-    "vitest": "0.8.3"
+    "ts-node": "10.9.1",
+    "typescript": "^4.8.4",
+    "unbuild": "0.9.1",
+    "vite": "^3.1.8",
+    "vite-plugin-inspect": "^0.7.5",
+    "vitest": "0.24.3"
   },
   "dependencies": {
-    "@grozav/utils": "1.1.1",
-    "@inkline/config": "^1.2.5"
+    "@grozav/utils": "1.1.4",
+    "@inkline/config": "^1.6.2",
+    "unplugin": "^0.9.6"
   },
   "main": "index.cjs",
   "module": "index.mjs",
