@@ -1,1 +1,1 @@
-export { default as ICheckboxGroup } from './ICheckboxGroup/index.vue';
+export { default as ICheckboxGroup } from './ICheckboxGroup/ICheckboxGroup.vue';

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, useSlots, computed, watch } from 'vue';
-import { useColor, useSize } from '@inkline/inkline/composables';
+import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'IAlert';
 const dismissed = ref(false);
@@ -66,8 +66,8 @@ const emits = defineEmits([
     'update:modelValue'
 ]);
 
-const color = useColor({ componentName, currentColor: props.color });
-const size = useSize({ componentName, currentSize: props.size });
+const color = useComponentColor({ componentName, currentColor: props.color });
+const size = useComponentSize({ componentName, currentSize: props.size });
 
 const classes = computed(() => ({
     [`-${color.value}`]: Boolean(color.value),

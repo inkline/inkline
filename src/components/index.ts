@@ -1,21 +1,28 @@
 export { default as IAlert } from './IAlert/IAlert.vue';
+
 export { default as IBadge } from './IBadge/IBadge.vue';
+
 export { default as IBreadcrumb } from './IBreadcrumb/IBreadcrumb.vue';
 export * from './IBreadcrumb/components';
+
 export { default as IButton } from './IButton/IButton.vue';
+
 export { default as IButtonGroup } from './IButtonGroup/IButtonGroup.vue';
+
 export { default as ICard } from './ICard/ICard.vue';
+
+export { default as ICheckbox } from './ICheckbox/ICheckbox.vue';
+export * from './ICheckbox/components';
+
+export { default as IForm } from './IForm/IForm.vue';
+export * from './IForm/components';
 
 export { default as IColumn } from './IColumn/index.vue';
 export { default as IContainer } from './IContainer/index.vue';
-export { default as ICheckbox } from './ICheckbox/index.vue';
-export * from './ICheckbox/components';
 export { default as ICollapsible } from './ICollapsible/index.vue';
 export * from './ICollapsible/components';
 export { default as IDropdown } from './IDropdown/index.vue';
 export * from './IDropdown/components';
-export { default as IForm } from './IForm/index.vue';
-export * from './IForm/components';
 export { default as IHamburgerMenu } from './IHamburgerMenu/index.vue';
 export { default as IHeader } from './IHeader/index.vue';
 export { default as IIcon } from './IIcon/index.vue';

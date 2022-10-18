@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useColor, useSize } from '@inkline/inkline/composables';
+import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'ICard';
 
@@ -13,7 +13,7 @@ const props = defineProps({
      */
     color: {
         type: String,
-        default: ''
+        default: undefined
     },
     /**
      * The size variant of the card
@@ -23,14 +23,14 @@ const props = defineProps({
      */
     size: {
         type: String,
-        default: ''
+        default: undefined
     }
 });
 
-const color = useColor({ componentName, currentColor: props.color });
-const size = useSize({ componentName, currentSize: props.size });
+const color = useComponentColor({ componentName, currentColor: props.color });
+const size = useComponentSize({ componentName, currentSize: props.size });
 
-const classes = computed(() => ({ [`-${color}`]: Boolean(color), [`-${size}`]: Boolean(size) }));
+const classes = computed(() => ({ [`-${color.value}`]: true, [`-${size.value}`]: true }));
 </script>
 
 <template>

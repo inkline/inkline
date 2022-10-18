@@ -1,17 +1,8 @@
 <script lang="ts" setup>
-import { computed, provide, inject } from 'vue';
-import { useSize } from '@inkline/inkline/composables';
-import {
-    ButtonGroupInjection,
-    ButtonGroupInjectionKey
-} from '@inkline/inkline/components/IButtonGroup/mixin';
-import { FormInjection, FormInjectionKey } from '../IForm/mixin';
-import { FormGroupInjection, FormGroupInjectionKey } from '../IForm/components/IFormGroup/mixin';
+import { computed } from 'vue';
+import { useComponentSize, useInputState } from '@inkline/inkline/composables';
 
 const componentName = 'IButtonGroup';
-const buttonGroup = inject<ButtonGroupInjection>(ButtonGroupInjectionKey, {});
-const form = inject<FormInjection>(FormInjectionKey, {});
-const formGroup = inject<FormGroupInjection>(FormGroupInjectionKey, {});
 
 const props = defineProps({
     /**
@@ -52,24 +43,26 @@ const props = defineProps({
      */
     size: {
         type: String,
-        default: ''
+        default: undefined
     }
 });
 
-const size = useSize({ componentName, currentSize: props.size || buttonGroup.size });
+const componentSize = useComponentSize({ componentName, currentSize: props.size });
+const { disabled, size } = useInputState({
+    disabled: props.disabled,
+    size: componentSize.value
+});
 
-const isDisabled = computed(
-    () => props.disabled || buttonGroup.disabled || form.disabled || formGroup.disabled
-);
+const isDisabled = computed(() => {
+    return props.disabled || disabled.value;
+});
 
 const classes = computed(() => ({
-    [`-${size}`]: Boolean(size),
+    [`-${size.value}`]: true,
     '-vertical': props.vertical,
     '-block': props.block,
     '-disabled': isDisabled.value
 }));
-
-provide(ButtonGroupInjectionKey, { disabled: props.disabled, size: props.size });
 </script>
 
 <template>
