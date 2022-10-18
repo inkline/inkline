@@ -1,4 +1,4 @@
-import IFormLabel from '../index.vue';
+import IFormLabel from '../IFormLabel.vue';
 import {
     IFormLabelBasicExample,
     IFormLabelDisabledExample,

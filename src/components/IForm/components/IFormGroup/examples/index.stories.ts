@@ -1,4 +1,4 @@
-import IFormGroup from '../index.vue';
+import IFormGroup from '../iFormGroup.vue';
 import {
     IFormGroupBasicExample,
     IFormGroupDisabledExample,

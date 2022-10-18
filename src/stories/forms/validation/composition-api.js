@@ -1,7 +1,7 @@
-import { useForm } from '@inkline/inkline/composition-api';
+import { useForm } from '@inkline/inkline/composables';
 
 export default {
-    setup () {
+    setup() {
         const schema = {
             username: {
                 validators: ['required']
@@ -17,7 +17,7 @@ export default {
         };
     },
     methods: {
-        onSubmit () {
+        onSubmit() {
             alert('Form submitted');
         }
     }

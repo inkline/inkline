@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { computed, inject } from 'vue';
-import { useColor, useSize, useLinkable } from '@inkline/inkline/composables';
+import { computed } from 'vue';
 import {
-    ButtonGroupInjection,
-    ButtonGroupInjectionKey
-} from '@inkline/inkline/components/IButtonGroup/mixin';
+    useComponentColor,
+    useComponentSize,
+    useInputState,
+    useLinkable
+} from '@inkline/inkline/composables';
 import ILoader from '@inkline/inkline/components/ILoader/index.vue';
 
 const componentName = 'IButton';
-const buttonGroup = inject<ButtonGroupInjection>(ButtonGroupInjectionKey, {});
 
 // TODO: prop descriptions
 const props = defineProps({
@@ -144,8 +144,12 @@ const props = defineProps({
     }
 });
 
-const color = useColor({ componentName, currentColor: props.color });
-const size = useSize({ componentName, currentSize: props.size || buttonGroup?.size });
+const componentColor = useComponentColor({ componentName, currentColor: props.color });
+const componentSize = useComponentSize({ componentName, currentSize: props.size });
+const { disabled, size } = useInputState({
+    disabled: props.disabled,
+    size: componentSize.value
+});
 const { tag } = useLinkable({ to: props.to, href: props.href, tag: props.tag });
 
 const ariaBusy = computed(() => {
@@ -171,8 +175,8 @@ const ariaPressed = computed(() => {
 
 const classes = computed(() => {
     return {
-        [`-${color.value}`]: Boolean(color.value),
-        [`-${size.value}`]: Boolean(size.value),
+        [`-${componentColor.value}`]: true,
+        [`-${size.value}`]: true,
         '-active': props.active,
         '-block': props.block,
         '-circle': props.circle,
@@ -184,7 +188,7 @@ const classes = computed(() => {
 });
 
 const isDisabled = computed(() => {
-    return props.disabled || buttonGroup?.disabled;
+    return props.disabled || disabled.value || props.loading;
 });
 
 const role = computed(() => (props.to || props.href ? 'link' : 'button'));
@@ -200,7 +204,7 @@ const tabIndex = computed(() => (isDisabled.value ? -1 : props.tabindex));
         :role="role"
         :tabindex="tabIndex"
         :class="classes"
-        :disabled="isDisabled || loading"
+        :disabled="isDisabled"
         :aria-disabled="ariaDisabled"
         :aria-pressed="ariaPressed"
         :aria-busy="ariaBusy"

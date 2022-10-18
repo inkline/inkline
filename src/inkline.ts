@@ -1,7 +1,6 @@
 import * as components from '@inkline/inkline/components';
 
 export * from '@inkline/inkline/components';
-export * from '@inkline/inkline/composition-api';
 export * from '@inkline/inkline/constants';
 export * from '@inkline/inkline/controllers';
 export * from '@inkline/inkline/directives';

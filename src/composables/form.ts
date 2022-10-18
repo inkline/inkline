@@ -1,5 +1,4 @@
 import { ref, Ref } from 'vue';
-
 import { initialize } from '@inkline/inkline/validation';
 
 export interface FormFieldValidator {
@@ -26,6 +25,6 @@ export interface FormGroup extends FormState {
     [key: string]: FormField | FormField[] | FormGroup | boolean;
 }
 
-export function useForm<T> (schema: T): Ref<FormGroup> {
+export function useForm<T>(schema: T) {
     return ref(initialize(schema));
 }
