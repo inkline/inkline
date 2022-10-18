@@ -19,6 +19,7 @@ rules:
                 -   else if
                 -   each
     at-rule-no-vendor-prefix: null
+    annotation-no-unknown: null
     block-closing-brace-newline-after: null
     color-function-notation: null
     color-hex-length: null
