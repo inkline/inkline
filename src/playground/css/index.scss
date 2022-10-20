@@ -1,11 +1,19 @@
 @import 'config';
 
-body {
-    background: var(--color-red);
-}
+.box {
+    display: inline-flex;
+    width: 100px;
+    height: 100px;
+    margin-right: var(--margin-right);
+    margin-bottom: var(--margin-bottom);
 
-@include breakpoint-lg-down() {
-    body {
-        background: var(--color-blue) !important;
+    &.-border {
+        border-width: 1px;
+        border-style: solid;
+        border-color: var(--border-color);
+    }
+
+    &.-rounded {
+        border-radius: var(--border-top-left-radius) var(--border-top-right-radius) var(--border-bottom-right-radius) var(--border-bottom-left-radius);
     }
 }
