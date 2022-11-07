@@ -3,6 +3,7 @@ export interface BuildOptions {
     outputDir?: string;
     extName?: `.${string}`;
     themeSelector?: string;
+    manifest?: boolean;
 }
 
 export interface ResolvedBuildOptions extends Required<BuildOptions> {

@@ -42,7 +42,9 @@ export async function build (options: BuildOptions = {}): Promise<ResolvedBuildO
         );
     }).flat());
 
-    await writeFile(resolve(resolvedOptions.outputDir, 'manifest.json'), JSON.stringify(config.theme, null, 4));
+    if (resolvedOptions.manifest) {
+        await writeFile(resolve(resolvedOptions.outputDir, 'manifest.json'), JSON.stringify(config.theme, null, 4));
+    }
 
     return resolvedOptions;
 }

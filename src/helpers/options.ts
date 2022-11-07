@@ -8,7 +8,8 @@ export function getResolvedOptions (options: BuildOptions): ResolvedBuildOptions
         configFile: '',
         extName: '.',
         outputDir: '',
-        themeSelector: ''
+        themeSelector: '',
+        manifest: false
     };
 
     let configDir = process.cwd();
@@ -24,6 +25,7 @@ export function getResolvedOptions (options: BuildOptions): ResolvedBuildOptions
     resolvedOptions.extName = options.extName || DEFAULT_OUTPUT_EXTNAME;
     resolvedOptions.themeSelector = options.themeSelector || DEFAULT_THEME_SELECTOR;
     resolvedOptions.outputDir = options.outputDir || resolve(configDir, DEFAULT_OUTPUT_DIR);
+    resolvedOptions.manifest = !!options.manifest;
 
     return resolvedOptions;
 }
