@@ -1,0 +1,841 @@
+{
+    "default": {
+        "animation": {
+            "duration": "300ms",
+            "timingFunction": "ease"
+        },
+        "boxShadow": {
+            "offsetX": "0",
+            "offsetY": "0.5rem",
+            "blurRadius": "1rem",
+            "spreadRadius": "-0.75rem",
+            "color": "rgba(0, 0, 0, 0.15)"
+        },
+        "breakpoints": {
+            "xs": 0,
+            "sm": 576,
+            "md": 768,
+            "lg": 992,
+            "xl": 1200,
+            "2xl": 1400
+        },
+        "color": {
+            "red": {
+                "h": 1.3259668508287064,
+                "s": 87.43961352657004,
+                "l": 59.411764705882355,
+                "a": 1
+            },
+            "orange": {
+                "h": 19.622641509433947,
+                "s": 92.9824561403509,
+                "l": 66.47058823529412,
+                "a": 1
+            },
+            "yellow": {
+                "h": 43.676470588235304,
+                "s": 100,
+                "l": 73.33333333333334,
+                "a": 1
+            },
+            "green": {
+                "h": 154.4186046511628,
+                "s": 57.847533632286996,
+                "l": 43.72549019607843,
+                "a": 1
+            },
+            "teal": {
+                "h": 173.8888888888889,
+                "s": 42.85714285714286,
+                "l": 49.411764705882355,
+                "a": 1
+            },
+            "blue": {
+                "h": 195.0967741935484,
+                "s": 77.11442786069651,
+                "l": 39.411764705882355,
+                "a": 1
+            },
+            "purple": {
+                "h": 262.2857142857142,
+                "s": 30.172413793103452,
+                "l": 54.50980392156863,
+                "a": 1
+            },
+            "pink": {
+                "h": 351.42857142857144,
+                "s": 95.68345323741009,
+                "l": 72.74509803921569,
+                "a": 1
+            },
+            "white": {
+                "h": 0,
+                "s": 0,
+                "l": 100,
+                "a": 1
+            },
+            "light": "var(--color-gray-100)",
+            "gray": {
+                "h": 193.63636363636363,
+                "s": 10.784313725490199,
+                "l": 60.00000000000001,
+                "a": 1
+            },
+            "dark": "var(--color-gray-800)",
+            "black": {
+                "h": 0,
+                "s": 0,
+                "l": 0,
+                "a": 1
+            },
+            "primary": {
+                "h": 195.0967741935484,
+                "s": 77.11442786069651,
+                "l": 39.411764705882355,
+                "a": 1
+            },
+            "secondary": {
+                "h": 262.2857142857142,
+                "s": 30.172413793103452,
+                "l": 54.50980392156863,
+                "a": 1
+            },
+            "info": {
+                "h": 173.8888888888889,
+                "s": 42.85714285714286,
+                "l": 49.411764705882355,
+                "a": 1
+            },
+            "success": {
+                "h": 154.4186046511628,
+                "s": 57.847533632286996,
+                "l": 43.72549019607843,
+                "a": 1
+            },
+            "warning": {
+                "h": 43.676470588235304,
+                "s": 100,
+                "l": 73.33333333333334,
+                "a": 1
+            },
+            "danger": {
+                "h": 1.3259668508287064,
+                "s": 87.43961352657004,
+                "l": 59.411764705882355,
+                "a": 1
+            }
+        },
+        "margin": {
+            "top": "1rem",
+            "right": "1rem",
+            "bottom": "1rem",
+            "left": "1rem"
+        },
+        "padding": {
+            "top": "1rem",
+            "right": "1rem",
+            "bottom": "1rem",
+            "left": "1rem"
+        },
+        "border": {
+            "top": {
+                "width": "1px",
+                "style": "solid",
+                "color": "#c4cdd0"
+            },
+            "right": {
+                "width": "1px",
+                "style": "solid",
+                "color": "#c4cdd0"
+            },
+            "bottom": {
+                "width": "1px",
+                "style": "solid",
+                "color": "#c4cdd0"
+            },
+            "left": {
+                "width": "1px",
+                "style": "solid",
+                "color": "#c4cdd0"
+            }
+        },
+        "borderRadius": {
+            "topLeft": "4px",
+            "topRight": "4px",
+            "bottomRight": "4px",
+            "bottomLeft": "4px"
+        },
+        "scaleRatio": {
+            "minorSecond": 1.067,
+            "majorSecond": 1.125,
+            "minorThird": 1.2,
+            "majorThird": 1.25,
+            "perfectFourth": 1.333,
+            "augmentedFourth": 1.414,
+            "perfectFifth": 1.5,
+            "golden": 1.618,
+            "primary": "var(--scale-ratio-minor-third)"
+        },
+        "size": {
+            "multiplier": 1,
+            "percentages": {
+                "0": "0%",
+                "25": "25%",
+                "50": "50%",
+                "75": "75%",
+                "100": "100%"
+            }
+        },
+        "typography": {
+            "fontFamily": {
+                "primary": {
+                    "base": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
+                    "monospace": "'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+                    "print": "'Georgia', 'Times New Roman', 'Times', serif"
+                },
+                "secondary": {
+                    "base": "var(--font-family-primary-base)",
+                    "monospace": "var(--font-family-primary-monospace)",
+                    "print": "var(--font-family-primary-print)"
+                }
+            },
+            "fontWeight": {
+                "extralight": 200,
+                "light": 300,
+                "normal": "normal",
+                "semibold": 600,
+                "bold": "bold",
+                "black": 900,
+                "lighter": "lighter",
+                "bolder": "bolder"
+            },
+            "fontSize": "1rem",
+            "lineHeight": 1.5,
+            "letterSpacing": 0,
+            "color": {
+                "dark": "var(--color-gray-900)",
+                "muted": "var(--color-gray-600)",
+                "light": "var(--color-gray-100)"
+            },
+            "contrastColor": {
+                "light": "var(--color-gray-900)",
+                "dark": "var(--color-white)"
+            }
+        },
+        "elements": {
+            "body": {
+                "background": "var(--color-white)",
+                "color": "var(--color-gray-900)"
+            },
+            "grid": {
+                "columns": 12,
+                "gutter": "28px",
+                "xs": {
+                    "gutter": "calc(var(--gutter) * var(--size-multiplier-xs))",
+                    "width": "100%"
+                },
+                "sm": {
+                    "gutter": "calc(var(--gutter) * var(--size-multiplier-sm))",
+                    "width": "calc(var(--breakpoint-sm) - var(--grid--sm--gutter))"
+                },
+                "md": {
+                    "gutter": "calc(var(--gutter) * var(--size-multiplier-md))",
+                    "width": "calc(var(--breakpoint-md) - var(--grid--md--gutter))"
+                },
+                "lg": {
+                    "gutter": "calc(var(--gutter) * var(--size-multiplier-lg))",
+                    "width": "calc(var(--breakpoint-lg) - var(--grid--lg--gutter))"
+                },
+                "xl": {
+                    "gutter": "calc(var(--gutter) * var(--size-multiplier-xl))",
+                    "width": "calc(var(--breakpoint-xl) - var(--grid--xl--gutter))"
+                },
+                "2xl": {
+                    "gutter": "calc(var(--gutter) * var(--size-multiplier-2xl))",
+                    "width": "calc(var(--breakpoint-2xl) - var(--grid--2xl--gutter))"
+                }
+            }
+        },
+        "variants": {
+            "borderRadius": {
+                "xs": {
+                    "multiply": "var(--size-multiplier-xs)"
+                },
+                "sm": {
+                    "multiply": "var(--size-multiplier-sm)"
+                },
+                "md": {
+                    "multiply": "var(--size-multiplier-md)"
+                },
+                "lg": {
+                    "multiply": "var(--size-multiplier-lg)"
+                },
+                "xl": {
+                    "multiply": "var(--size-multiplier-xl)"
+                }
+            },
+            "color": {
+                "primary": {
+                    "50": {
+                        "lightness": 95
+                    },
+                    "100": {
+                        "lightness": 90
+                    },
+                    "200": {
+                        "lightness": 80
+                    },
+                    "300": {
+                        "lightness": 70
+                    },
+                    "400": {
+                        "lightness": 60
+                    },
+                    "500": {
+                        "lightness": 50
+                    },
+                    "600": {
+                        "lightness": 40
+                    },
+                    "700": {
+                        "lightness": 30
+                    },
+                    "800": {
+                        "lightness": 20
+                    },
+                    "900": {
+                        "lightness": 10
+                    },
+                    "shade-150": {
+                        "darken": 15
+                    },
+                    "shade-100": {
+                        "darken": 10
+                    },
+                    "shade-50": {
+                        "darken": 5
+                    },
+                    "tint-50": {
+                        "lighten": 5
+                    },
+                    "tint-100": {
+                        "lighten": 10
+                    },
+                    "tint-150": {
+                        "lighten": 15
+                    }
+                },
+                "secondary": {
+                    "50": {
+                        "lightness": 95
+                    },
+                    "100": {
+                        "lightness": 90
+                    },
+                    "200": {
+                        "lightness": 80
+                    },
+                    "300": {
+                        "lightness": 70
+                    },
+                    "400": {
+                        "lightness": 60
+                    },
+                    "500": {
+                        "lightness": 50
+                    },
+                    "600": {
+                        "lightness": 40
+                    },
+                    "700": {
+                        "lightness": 30
+                    },
+                    "800": {
+                        "lightness": 20
+                    },
+                    "900": {
+                        "lightness": 10
+                    },
+                    "shade-150": {
+                        "darken": 15
+                    },
+                    "shade-100": {
+                        "darken": 10
+                    },
+                    "shade-50": {
+                        "darken": 5
+                    },
+                    "tint-50": {
+                        "lighten": 5
+                    },
+                    "tint-100": {
+                        "lighten": 10
+                    },
+                    "tint-150": {
+                        "lighten": 15
+                    }
+                },
+                "info": {
+                    "50": {
+                        "lightness": 95
+                    },
+                    "100": {
+                        "lightness": 90
+                    },
+                    "200": {
+                        "lightness": 80
+                    },
+                    "300": {
+                        "lightness": 70
+                    },
+                    "400": {
+                        "lightness": 60
+                    },
+                    "500": {
+                        "lightness": 50
+                    },
+                    "600": {
+                        "lightness": 40
+                    },
+                    "700": {
+                        "lightness": 30
+                    },
+                    "800": {
+                        "lightness": 20
+                    },
+                    "900": {
+                        "lightness": 10
+                    },
+                    "shade-150": {
+                        "darken": 15
+                    },
+                    "shade-100": {
+                        "darken": 10
+                    },
+                    "shade-50": {
+                        "darken": 5
+                    },
+                    "tint-50": {
+                        "lighten": 5
+                    },
+                    "tint-100": {
+                        "lighten": 10
+                    },
+                    "tint-150": {
+                        "lighten": 15
+                    }
+                },
+                "success": {
+                    "50": {
+                        "lightness": 95
+                    },
+                    "100": {
+                        "lightness": 90
+                    },
+                    "200": {
+                        "lightness": 80
+                    },
+                    "300": {
+                        "lightness": 70
+                    },
+                    "400": {
+                        "lightness": 60
+                    },
+                    "500": {
+                        "lightness": 50
+                    },
+                    "600": {
+                        "lightness": 40
+                    },
+                    "700": {
+                        "lightness": 30
+                    },
+                    "800": {
+                        "lightness": 20
+                    },
+                    "900": {
+                        "lightness": 10
+                    },
+                    "shade-150": {
+                        "darken": 15
+                    },
+                    "shade-100": {
+                        "darken": 10
+                    },
+                    "shade-50": {
+                        "darken": 5
+                    },
+                    "tint-50": {
+                        "lighten": 5
+                    },
+                    "tint-100": {
+                        "lighten": 10
+                    },
+                    "tint-150": {
+                        "lighten": 15
+                    }
+                },
+                "warning": {
+                    "50": {
+                        "lightness": 95
+                    },
+                    "100": {
+                        "lightness": 90
+                    },
+                    "200": {
+                        "lightness": 80
+                    },
+                    "300": {
+                        "lightness": 70
+                    },
+                    "400": {
+                        "lightness": 60
+                    },
+                    "500": {
+                        "lightness": 50
+                    },
+                    "600": {
+                        "lightness": 40
+                    },
+                    "700": {
+                        "lightness": 30
+                    },
+                    "800": {
+                        "lightness": 20
+                    },
+                    "900": {
+                        "lightness": 10
+                    },
+                    "shade-150": {
+                        "darken": 15
+                    },
+                    "shade-100": {
+                        "darken": 10
+                    },
+                    "shade-50": {
+                        "darken": 5
+                    },
+                    "tint-50": {
+                        "lighten": 5
+                    },
+                    "tint-100": {
+                        "lighten": 10
+                    },
+                    "tint-150": {
+                        "lighten": 15
+                    }
+                },
+                "danger": {
+                    "50": {
+                        "lightness": 95
+                    },
+                    "100": {
+                        "lightness": 90
+                    },
+                    "200": {
+                        "lightness": 80
+                    },
+                    "300": {
+                        "lightness": 70
+                    },
+                    "400": {
+                        "lightness": 60
+                    },
+                    "500": {
+                        "lightness": 50
+                    },
+                    "600": {
+                        "lightness": 40
+                    },
+                    "700": {
+                        "lightness": 30
+                    },
+                    "800": {
+                        "lightness": 20
+                    },
+                    "900": {
+                        "lightness": 10
+                    },
+                    "shade-150": {
+                        "darken": 15
+                    },
+                    "shade-100": {
+                        "darken": 10
+                    },
+                    "shade-50": {
+                        "darken": 5
+                    },
+                    "tint-50": {
+                        "lighten": 5
+                    },
+                    "tint-100": {
+                        "lighten": 10
+                    },
+                    "tint-150": {
+                        "lighten": 15
+                    }
+                },
+                "gray": {
+                    "50": {
+                        "lightness": 95
+                    },
+                    "100": {
+                        "lightness": 90
+                    },
+                    "200": {
+                        "lightness": 80
+                    },
+                    "300": {
+                        "lightness": 70
+                    },
+                    "400": {
+                        "lightness": 60
+                    },
+                    "500": {
+                        "lightness": 50
+                    },
+                    "600": {
+                        "lightness": 40
+                    },
+                    "700": {
+                        "lightness": 30
+                    },
+                    "800": {
+                        "lightness": 20
+                    },
+                    "900": {
+                        "lightness": 10
+                    },
+                    "shade-150": {
+                        "darken": 15
+                    },
+                    "shade-100": {
+                        "darken": 10
+                    },
+                    "shade-50": {
+                        "darken": 5
+                    },
+                    "tint-50": {
+                        "lighten": 5
+                    },
+                    "tint-100": {
+                        "lighten": 10
+                    },
+                    "tint-150": {
+                        "lighten": 15
+                    }
+                },
+                "light": {
+                    "shade-150": {
+                        "darken": 15
+                    },
+                    "shade-100": {
+                        "darken": 10
+                    },
+                    "shade-50": {
+                        "darken": 5
+                    },
+                    "tint-50": {
+                        "lighten": 5
+                    },
+                    "tint-100": {
+                        "lighten": 10
+                    },
+                    "tint-150": {
+                        "lighten": 15
+                    }
+                },
+                "dark": {
+                    "shade-150": {
+                        "darken": 15
+                    },
+                    "shade-100": {
+                        "darken": 10
+                    },
+                    "shade-50": {
+                        "darken": 5
+                    },
+                    "tint-50": {
+                        "lighten": 5
+                    },
+                    "tint-100": {
+                        "lighten": 10
+                    },
+                    "tint-150": {
+                        "lighten": 15
+                    }
+                }
+            },
+            "margin": {
+                "2": {
+                    "multiply": 2
+                },
+                "3": {
+                    "multiply": 3
+                },
+                "4": {
+                    "multiply": 4
+                },
+                "5": {
+                    "multiply": 5
+                },
+                "xs": {
+                    "multiply": "var(--size-multiplier-xs)"
+                },
+                "sm": {
+                    "multiply": "var(--size-multiplier-sm)"
+                },
+                "md": {
+                    "multiply": "var(--size-multiplier-md)"
+                },
+                "lg": {
+                    "multiply": "var(--size-multiplier-lg)"
+                },
+                "xl": {
+                    "multiply": "var(--size-multiplier-xl)"
+                },
+                "1-5": {
+                    "divide": 5
+                },
+                "1-4": {
+                    "divide": 4
+                },
+                "3-4": {
+                    "divide": 4,
+                    "multiply": 3
+                },
+                "1-3": {
+                    "divide": 3
+                },
+                "2-3": {
+                    "divide": 3,
+                    "multiply": 2
+                },
+                "1-2": {
+                    "divide": 2
+                }
+            },
+            "padding": {
+                "2": {
+                    "multiply": 2
+                },
+                "3": {
+                    "multiply": 3
+                },
+                "4": {
+                    "multiply": 4
+                },
+                "5": {
+                    "multiply": 5
+                },
+                "xs": {
+                    "multiply": "var(--size-multiplier-xs)"
+                },
+                "sm": {
+                    "multiply": "var(--size-multiplier-sm)"
+                },
+                "md": {
+                    "multiply": "var(--size-multiplier-md)"
+                },
+                "lg": {
+                    "multiply": "var(--size-multiplier-lg)"
+                },
+                "xl": {
+                    "multiply": "var(--size-multiplier-xl)"
+                },
+                "1-5": {
+                    "divide": 5
+                },
+                "1-4": {
+                    "divide": 4
+                },
+                "3-4": {
+                    "divide": 4,
+                    "multiply": 3
+                },
+                "1-3": {
+                    "divide": 3
+                },
+                "2-3": {
+                    "divide": 3,
+                    "multiply": 2
+                },
+                "1-2": {
+                    "divide": 2
+                }
+            },
+            "size": {
+                "multiplier": {
+                    "2xs": {
+                        "divide": "var(--scale-ratio-pow-3)"
+                    },
+                    "xs": {
+                        "divide": "var(--scale-ratio-pow-2)"
+                    },
+                    "sm": {
+                        "divide": "var(--scale-ratio-pow-1)"
+                    },
+                    "md": {},
+                    "lg": {
+                        "multiply": "var(--scale-ratio-pow-1)"
+                    },
+                    "xl": {
+                        "multiply": "var(--scale-ratio-pow-2)"
+                    },
+                    "2xl": {
+                        "multiply": "var(--scale-ratio-pow-3)"
+                    }
+                }
+            },
+            "typography": {
+                "fontSize": {
+                    "xs": {
+                        "multiply": "var(--size-multiplier-xs)"
+                    },
+                    "sm": {
+                        "multiply": "var(--size-multiplier-sm)"
+                    },
+                    "md": {
+                        "multiply": "var(--size-multiplier-md)"
+                    },
+                    "lg": {
+                        "multiply": "var(--size-multiplier-lg)"
+                    },
+                    "xl": {
+                        "multiply": "var(--size-multiplier-xl)"
+                    }
+                }
+            }
+        }
+    },
+    "dark": {
+        "border": {
+            "top": {
+                "color": "#4a4a4c"
+            },
+            "right": {
+                "color": "#4a4a4c"
+            },
+            "bottom": {
+                "color": "#4a4a4c"
+            },
+            "left": {
+                "color": "#4a4a4c"
+            },
+            "color": {
+                "width": "#4a4a4c"
+            }
+        },
+        "typography": {
+            "color": {
+                "muted": "var(--color-gray-400)"
+            }
+        },
+        "elements": {
+            "body": {
+                "background": "var(--color-gray-900)",
+                "color": "var(--color-gray-100)"
+            }
+        }
+    }
+}

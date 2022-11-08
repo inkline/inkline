@@ -1,21 +1,23 @@
 import { UserOptions } from './types';
-import { build } from '@inkline/config';
 import * as chokidar from 'chokidar';
+import { build } from './build';
+import { getResolvedConfiguration } from './config';
 
 /**
  * Watch config file for changes and rebuild
  */
-export async function watch ({ configFile, outputDir, extName }: UserOptions) {
+export async function watch (options: UserOptions) {
+    const { configFile } = getResolvedConfiguration(options);
+
     const watcher = chokidar.watch(configFile, {
         persistent: true
     });
 
     const watchFn = async () => {
-        await build({ configFile, outputDir, extName });
+        await build(options);
     };
 
     watcher
-        .on('add', watchFn)
         .on('change', watchFn);
 
     return watcher;

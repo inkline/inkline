@@ -1,25 +1,21 @@
 import { createUnplugin } from 'unplugin';
-import {
-    DEFAULT_CONFIG_FILE
-} from './constants';
-import {
-    DEFAULT_OUTPUT_DIR,
-    DEFAULT_OUTPUT_EXTNAME
-} from '@inkline/config';
-import { resolve } from 'pathe';
 import { UserOptions } from './types';
 import { watch } from './watch';
+import { build } from './build';
 
-export const plugin = createUnplugin((options: UserOptions = {}) => {
-    const configFile = options.configFile || resolve(process.cwd(), DEFAULT_CONFIG_FILE);
-    const outputDir = options.outputDir || resolve(process.cwd(), DEFAULT_OUTPUT_DIR);
-    const extName = options.extName || DEFAULT_OUTPUT_EXTNAME;
+export const plugin = createUnplugin((options: UserOptions = {}, { watchMode }) => {
+    options.plugins?.forEach((plugin) => plugin.apply(options));
 
-    watch({ configFile, outputDir, extName });
+    if (watchMode) {
+        watch(options);
+    }
 
     return {
-        name: 'inkline'
-        // @TODO Add transform for inkline import to include [config, unocss, inkline]
+        name: 'inkline',
+        enforce: 'pre',
+        buildStart: async () => {
+            await build(options);
+        }
     };
 });
 
