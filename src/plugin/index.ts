@@ -6,14 +6,12 @@ import { build } from './build';
 export const plugin = createUnplugin((options: UserOptions = {}, { watchMode }) => {
     if (watchMode) {
         watch(options);
+    } else {
+        build(options);
     }
 
     return {
-        name: 'inkline',
-        enforce: 'pre',
-        buildStart: async () => {
-            await build(options);
-        }
+        name: 'inkline'
     };
 });
 

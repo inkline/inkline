@@ -18,6 +18,7 @@ export async function watch (options: UserOptions) {
     };
 
     watcher
+        .on('add', watchFn)
         .on('change', watchFn);
 
     return watcher;

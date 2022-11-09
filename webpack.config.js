@@ -2,6 +2,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const inkline = require('./lib/webpack.cjs');
 
+const inklineConfig = {
+    outputDir: path.resolve(__dirname, 'src/playground/css/config')
+};
+
 module.exports = {
     mode: 'development',
     entry: path.resolve(__dirname, 'src', 'playground', 'webpack', 'main.ts'),
@@ -22,9 +26,9 @@ module.exports = {
         ]
     },
     plugins: [
-        inkline(),
+        inkline(inklineConfig),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'playground', 'index.html')
+            template: path.resolve(__dirname, 'src', 'playground', 'webpack', 'index.html')
         })
     ]
 };
