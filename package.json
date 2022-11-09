@@ -50,19 +50,39 @@
     "@inkline/config": "^1.7.1",
     "unplugin": "^0.9.6"
   },
-  "main": "index.cjs",
+  "main": "index.js",
   "module": "index.mjs",
-  "jsdelivr": "index.cjs",
-  "unpkg": "index.cjs",
+  "jsdelivr": "index.js",
+  "unpkg": "index.js",
   "types": "index.d.ts",
   "files": [
     "**/*"
   ],
   "exports": {
     ".": {
-      "require": "./index.cjs",
+      "require": "./index.js",
       "import": "./index.mjs",
       "types": "./index.d.ts"
+    },
+    "./esbuild": {
+      "require": "./esbuild.js",
+      "import": "./esbuild.mjs",
+      "types": "./esbuild.d.ts"
+    },
+    "./rollup": {
+      "require": "./rollup.js",
+      "import": "./rollup.mjs",
+      "types": "./rollup.d.ts"
+    },
+    "./vite": {
+      "require": "./vite.js",
+      "import": "./vite.mjs",
+      "types": "./vite.d.ts"
+    },
+    "./webpack": {
+      "require": "./webpack.js",
+      "import": "./webpack.mjs",
+      "types": "./webpack.d.ts"
     },
     "./*": "./*"
   },
