@@ -811,19 +811,24 @@
     "dark": {
         "border": {
             "top": {
-                "color": "#4a4a4c"
+                "color": {
+                    "width": "#4a4a4c"
+                }
             },
             "right": {
-                "color": "#4a4a4c"
+                "color": {
+                    "width": "#4a4a4c"
+                }
             },
             "bottom": {
-                "color": "#4a4a4c"
+                "color": {
+                    "width": "#4a4a4c"
+                }
             },
             "left": {
-                "color": "#4a4a4c"
-            },
-            "color": {
-                "width": "#4a4a4c"
+                "color": {
+                    "width": "#4a4a4c"
+                }
             }
         },
         "typography": {

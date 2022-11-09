@@ -1,2 +1,2 @@
 import '../css/index.scss';
-import 'uno.css';
+// import 'uno.css';

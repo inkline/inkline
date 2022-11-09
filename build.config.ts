@@ -1,4 +1,5 @@
 export default {
+    failOnWarn: false,
     entries: [
         {
             builder: 'mkdist',

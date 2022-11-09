@@ -4,8 +4,6 @@ import { watch } from './watch';
 import { build } from './build';
 
 export const plugin = createUnplugin((options: UserOptions = {}, { watchMode }) => {
-    options.plugins?.forEach((plugin) => plugin.apply(options));
-
     if (watchMode) {
         watch(options);
     }
