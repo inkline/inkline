@@ -1,4 +1,4 @@
-import { vitePlugin as inkline } from './plugin';
+import { vitePlugin } from './plugin';
 
-export { inkline };
+export const inkline = vitePlugin;
 export default inkline;

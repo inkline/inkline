@@ -1,4 +1,4 @@
-import { webpackPlugin as inkline } from './plugin';
+import { webpackPlugin } from './plugin';
 
-export { inkline };
+export const inkline = webpackPlugin;
 export default inkline;
