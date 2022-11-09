@@ -3,8 +3,6 @@ import { configDefaults } from 'vitest/config';
 import inspect from 'vite-plugin-inspect';
 import { inkline } from './src/vite';
 import { resolve } from 'path';
-import unocss from '@unocss/vite';
-import { presetInkline } from './src/preset';
 import { UserOptions } from './src/plugin/types';
 
 const inklineConfig: UserOptions = {
@@ -19,10 +17,7 @@ export default defineConfig({
     },
     plugins: [
         inspect(),
-        inkline(inklineConfig),
-        unocss({
-            presets: [presetInkline(inklineConfig)]
-        })
+        inkline(inklineConfig)
     ],
     test: {
         globals: true,
