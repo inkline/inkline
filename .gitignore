@@ -24,5 +24,10 @@ dist-ssr
 *.sln
 *.sw?
 
+.nuxt
 .inkline
+
 src/playground/css/config
+src/playground/vite/css
+src/playground/webpack/css
+src/playground/nuxt/css

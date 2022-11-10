@@ -6,6 +6,7 @@
     "dev": "npm run dev:vite",
     "dev:vite": "vite",
     "dev:webpack": "webpack serve",
+    "dev:nuxt": "nuxt dev",
     "build": "unbuild",
     "postbuild": "ts-node scripts/postbuild.ts",
     "lint": "eslint --ext .vue,.ts,.tsx,.js,.jsx src",
@@ -20,7 +21,10 @@
     "playground": "ts-node scripts/playground.ts"
   },
   "devDependencies": {
-    "@grozav/eslint-config": "1.0.4",
+    "@grozav/eslint-config": "latest",
+    "@nuxt/module-builder": "^0.2.0",
+    "@nuxt/schema": "^3.0.0-rc.13",
+    "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@types/shelljs": "0.8.11",
     "chokidar": "^3.5.3",
     "css-loader": "^6.7.1",
@@ -29,6 +33,7 @@
     "jsdom": "^20.0.2",
     "np": "^7.6.2",
     "npm-run-all": "4.1.5",
+    "nuxt": "3.0.0-rc.13",
     "pathe": "^0.3.9",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
@@ -46,8 +51,10 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@grozav/utils": "1.1.4",
-    "@inkline/config": "^1.7.1",
+    "@grozav/utils": "latest",
+    "@inkline/config": "latest",
+    "@inkline/inkline": "latest",
+    "@nuxt/kit": "^3.0.0-rc.13",
     "unplugin": "^0.9.6"
   },
   "main": "index.js",
@@ -68,6 +75,11 @@
       "require": "./esbuild.js",
       "import": "./esbuild.mjs",
       "types": "./esbuild.d.ts"
+    },
+    "./nuxt": {
+      "require": "./nuxt.js",
+      "import": "./nuxt.mjs",
+      "types": "./nuxt.d.ts"
     },
     "./rollup": {
       "require": "./rollup.js",

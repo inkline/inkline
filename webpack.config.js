@@ -1,9 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const inkline = require('./lib/webpack.cjs');
+const inkline = require('./lib/webpack');
 
 const inklineConfig = {
-    outputDir: path.resolve(__dirname, 'src/playground/css/config')
+    outputDir: path.resolve(__dirname, 'src/playground/webpack/css')
 };
 
 module.exports = {

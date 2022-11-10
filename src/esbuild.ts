@@ -1,1 +1,4 @@
-export { esbuildPlugin as inkline } from './plugin';
+import { esbuildPlugin } from './plugin';
+
+export const inkline = esbuildPlugin;
+export default inkline;

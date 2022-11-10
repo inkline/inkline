@@ -6,7 +6,7 @@ import { resolve } from 'path';
 import { UserOptions } from './src/plugin/types';
 
 const inklineConfig: UserOptions = {
-    outputDir: resolve(__dirname, 'src/playground/css/config')
+    outputDir: resolve(__dirname, 'src/playground/vite/css')
 };
 
 // https://vitejs.dev/config/
