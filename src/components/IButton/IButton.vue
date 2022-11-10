@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import {computed, inject} from 'vue';
 import {
     useComponentColor,
     useComponentSize,
@@ -7,6 +7,7 @@ import {
     useLinkable
 } from '@inkline/inkline/composables';
 import ILoader from '@inkline/inkline/components/ILoader/index.vue';
+import {ButtonGroupKey} from "@inkline/inkline/components/IButtonGroup/mixin";
 
 const componentName = 'IButton';
 
@@ -144,10 +145,12 @@ const props = defineProps({
     }
 });
 
+const buttonGroup = inject(ButtonGroupKey);
+
 const componentColor = useComponentColor({ componentName, currentColor: props.color });
-const componentSize = useComponentSize({ componentName, currentSize: props.size });
+const componentSize = useComponentSize({ componentName, currentSize: props.size || buttonGroup?.size.value });
 const { disabled, size } = useInputState({
-    disabled: props.disabled,
+    disabled: buttonGroup?.disabled.value || props.disabled,
     size: componentSize.value
 });
 const { tag } = useLinkable({ to: props.to, href: props.href, tag: props.tag });

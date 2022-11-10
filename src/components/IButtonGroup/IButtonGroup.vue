@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import {computed, provide} from 'vue';
 import { useComponentSize, useInputState } from '@inkline/inkline/composables';
+import {ButtonGroupKey} from "@inkline/inkline/components/IButtonGroup/mixin";
 
 const componentName = 'IButtonGroup';
 
@@ -63,6 +64,8 @@ const classes = computed(() => ({
     '-block': props.block,
     '-disabled': isDisabled.value
 }));
+
+provide(ButtonGroupKey, { disabled: isDisabled, size: componentSize });
 </script>
 
 <template>
