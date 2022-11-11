@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { computed, inject, ref } from 'vue';
 import { uid } from '@grozav/utils';
-import { useComponentColor, useComponentSize, useValidation } from '@inkline/inkline/composables';
-import { useInputState } from '@inkline/inkline/composables/inputState';
+import { useComponentColor, useComponentSize, useValidation , useFormState } from '@inkline/inkline/composables';
 import { CheckboxGroupKey } from './components/ICheckboxGroup/mixin';
 
 const componentName = 'ICheckbox';
@@ -119,18 +118,18 @@ const emit = defineEmits([
 
 const input = ref<HTMLInputElement | null>(null);
 
-const checkboxGroup = inject(CheckboxGroupKey, {});
+const checkboxGroup = inject(CheckboxGroupKey, null);
 
 const componentColor = useComponentColor({ componentName, currentColor: props.color });
 const componentSize = useComponentSize({ componentName, currentSize: props.size });
-const { disabled, size, readonly } = useInputState({
+const { disabled, size, readonly } = useFormState({
     disabled: props.disabled,
     readonly: props.readonly,
     size: componentSize.value
 });
-const { schema, onInput, onBlur } = useValidation({
-    name: props.name,
-    elementType: 'checkbox'
+
+const { schema, onInput: schemaOnInput, onBlur: schemaOnBlur } = useValidation({
+    name: props.name
 });
 
 const classes = computed(() => ({
@@ -144,9 +143,10 @@ const classes = computed(() => ({
 const checked = computed(() => {
     if (schema.value) {
         return schema.value.value;
-    } else if (checkboxGroup?.values) {
-        return checkboxGroup.values.includes(props.value);
+    } else if (checkboxGroup?.value) {
+        return checkboxGroup.value.includes(props.value);
     }
+
     return props.modelValue;
 });
 
@@ -154,30 +154,33 @@ const tabindex = computed(() => {
     return disabled ? -1 : props.tabindex;
 });
 
-function onClickLabel() {
-    if (readonly.value) {
-        return;
-    }
-    input.value?.click();
-}
-
-function changed(event: Event) {
+function onChange(event: Event) {
     const target = event.target as HTMLInputElement;
 
-    if (checkboxGroup.onChange) {
+    if (checkboxGroup) {
         checkboxGroup.onChange(props.value);
     } else {
-        onInput(props.name, target.checked);
+        schemaOnInput(props.name, target.checked);
     }
+
     emit('update:modelValue', target.checked);
 }
 
-function blurred(event: FocusEvent) {
-    if (checkboxGroup.onBlur) {
-        checkboxGroup.onBlur(props.name, event);
+function labelOnBlur(event: FocusEvent) {
+    if (checkboxGroup) {
+        checkboxGroup.onBlur(event);
     } else {
-        onBlur(props.name, event);
+        schemaOnBlur(props.name, event);
     }
+}
+
+function labelOnClick(event: MouseEvent) {
+    if (readonly.value) {
+        return;
+    }
+
+    input.value?.click();
+    labelOnBlur(event);
 }
 </script>
 
@@ -200,14 +203,15 @@ function blurred(event: FocusEvent) {
             aria-hidden="true"
             :aria-checked="checked"
             :aria-readonly="readonly"
-            @change="changed"
+            @change="onChange"
+            @blur="labelOnBlur"
         />
         <label
             class="checkbox-label"
-            :aria-disabled="disabled"
-            @blur="blurred"
-            @click="onClickLabel"
-            @keydown.space.stop.prevent="onClickLabel"
+            :aria-disabled="disabled ? 'true' : null"
+            @blur="labelOnBlur"
+            @click="labelOnClick"
+            @keydown.space.stop.prevent="labelOnClick"
         >
             <!--** Slot for default checkbox label -->
             <slot />

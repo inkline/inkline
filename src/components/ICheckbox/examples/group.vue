@@ -11,5 +11,4 @@ const checked = ref(['apple']);
         <i-checkbox value="strawberry">Strawberry</i-checkbox>
         <i-checkbox value="mango">Mango</i-checkbox>
     </i-checkbox-group>
-    {{ checked }}
 </template>

@@ -1,9 +1,10 @@
 import type { InjectionKey } from 'vue';
 
 export interface CheckboxGroupInjection {
-    onChange?: any;
-    onBlur?: any;
-    values?: any[];
+    name: string;
+    value: any[];
+    onChange: (value: any) => void;
+    onBlur: (event: FocusEvent) => void;
 }
 
 export const CheckboxGroupKey = Symbol('CheckboxGroup') as InjectionKey<CheckboxGroupInjection>;

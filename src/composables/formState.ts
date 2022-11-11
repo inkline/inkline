@@ -8,7 +8,7 @@ export interface FormStateInjection {
 
 export const FormStateInjectionKey = Symbol('FormState') as InjectionKey<FormStateInjection>;
 
-export function useInputState(props: FormStateInjection) {
+export function useFormState(props: FormStateInjection) {
     const formSate = inject(FormStateInjectionKey, {
         disabled: props.disabled,
         readonly: props.readonly,

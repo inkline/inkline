@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import {computed, provide} from 'vue';
-import { useComponentSize, useInputState } from '@inkline/inkline/composables';
+import {computed, inject, provide} from 'vue';
+import { useComponentSize, useFormState } from '@inkline/inkline/composables';
 import {ButtonGroupKey} from "@inkline/inkline/components/IButtonGroup/mixin";
 
 const componentName = 'IButtonGroup';
@@ -48,9 +48,11 @@ const props = defineProps({
     }
 });
 
-const componentSize = useComponentSize({ componentName, currentSize: props.size });
-const { disabled, size } = useInputState({
-    disabled: props.disabled,
+const buttonGroup = inject(ButtonGroupKey);
+
+const componentSize = useComponentSize({ componentName, currentSize: buttonGroup?.size.value || props.size });
+const { disabled, size } = useFormState({
+    disabled: buttonGroup?.disabled.value || props.disabled,
     size: componentSize.value
 });
 

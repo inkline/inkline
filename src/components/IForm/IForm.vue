@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useComponentColor, useComponentSize, useValidation } from '@inkline/inkline/composables';
-import { useInputState } from '@inkline/inkline/composables/inputState';
+import {computed, provide} from 'vue';
+import { useComponentColor, useComponentSize, useValidation , useFormState } from '@inkline/inkline/composables';
 import { uid } from '@grozav/utils';
+import {FormKey} from "@inkline/inkline/components/IForm/mixin";
 
 const componentName = 'IForm';
 
@@ -105,17 +105,20 @@ const emit = defineEmits([
 const componentSize = useComponentSize({ componentName, currentSize: props.size });
 const componentColor = useComponentColor({ componentName, currentColor: props.color });
 
-const { disabled, readonly, size } = useInputState({
+const { disabled, readonly, size } = useFormState({
     disabled: props.disabled,
     readonly: props.readonly,
     size: componentSize.value
 });
 
-const { schema, onSubmit } = useValidation({
+const { schema, onBlur, onInput, onSubmit: schemaOnSubmit } = useValidation({
     schema: props.modelValue,
-    elementType: 'form',
-    updateCallBack,
-    submitCallBack
+    onUpdate: (model: any) => {
+        emit('update:modelValue', model)
+    },
+    onSubmit: (event: SubmitEvent) => {
+        emit('submit', event);
+    }
 });
 
 const classes = computed(() => ({
@@ -126,13 +129,19 @@ const classes = computed(() => ({
     '-inline': props.inline
 }));
 
-function updateCallBack(model: any) {
-    emit('update:modelValue', model);
+function onSubmit(event: SubmitEvent) {
+    if (props.modelValue) {
+        schemaOnSubmit(event);
+    } else {
+        emit('submit', event);
+    }
 }
 
-function submitCallBack(event: SubmitEvent) {
-    emit('submit', event);
-}
+provide(FormKey, {
+    onBlur,
+    onInput,
+    schema,
+});
 </script>
 
 <script lang="ts">
@@ -152,7 +161,7 @@ export default {
         @submit.prevent="onSubmit"
     >
         <pre
-            >{{ schema }}
+        >{{ schema }}
         </pre>
         <!--** Slot for form content -->
         <slot />
