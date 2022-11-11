@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useComponentColor, useComponentSize, useValidation } from '@inkline/inkline/composables';
-import { useInputState } from '@inkline/inkline/composables/inputState';
+import {computed, provide} from 'vue';
+import { useComponentColor, useComponentSize, useValidation , useFormState } from '@inkline/inkline/composables';
+import {FormKey} from "@inkline/inkline/components/IForm";
+import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
 
 const componentName = 'IFormGroup';
 
@@ -78,12 +79,12 @@ const props = defineProps({
     }
 });
 
-useValidation({ name: props.name, elementType: 'formGroup' });
+const { onBlur, onInput } = useValidation({ name: props.name });
 
 const componentSize = useComponentSize({ componentName, currentSize: props.size });
 const componentColor = useComponentColor({ componentName, currentColor: props.color });
 
-const { disabled, readonly, size } = useInputState({
+const { disabled, readonly, size } = useFormState({
     disabled: props.disabled,
     readonly: props.readonly,
     size: componentSize.value
@@ -98,6 +99,11 @@ const classes = computed(() => ({
     // @TODO '-error': this.input && this.input.schema?.$invalid,
     '-required': props.required // @TODO Add required state based on required validator this.input.schema?.validators.some(v => v.name === 'required')
 }));
+
+provide(FormGroupKey, {
+    onBlur,
+    onInput,
+});
 </script>
 
 <template>

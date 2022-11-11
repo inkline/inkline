@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { computed, provide } from 'vue';
-import { useInputState } from '@inkline/inkline/composables/inputState';
-import { useComponentColor, useComponentSize, useValidation } from '@inkline/inkline/composables';
+import { useFormState , useComponentColor, useComponentSize, useValidation } from '@inkline/inkline/composables';
 import { CheckboxGroupKey } from './mixin';
 import { uid } from '@grozav/utils';
 
@@ -101,16 +100,14 @@ const emit = defineEmits([
 
 const componentColor = useComponentColor({ componentName, currentColor: props.color });
 const componentSize = useComponentSize({ componentName, currentSize: props.size });
-const { disabled, readonly, size } = useInputState({
+const { disabled, readonly, size } = useFormState({
     disabled: props.disabled,
     readonly: props.readonly,
     size: componentSize.value
 });
 
-const { schema, onInput } = useValidation({
-    name: props.name,
-    schema: props.modelValue,
-    elementType: 'checkboxGroup'
+const { schema, onInput: schemaOnInput, onBlur: schemaOnBlur } = useValidation({
+    name: props.name
 });
 
 const classes = computed(() => ({
@@ -124,7 +121,9 @@ const classes = computed(() => ({
 function onChange(value: string) {
     let modelValue: any[] = [];
 
-    if (schema.value && schema.value.value) {
+    console.log(schema);
+
+    if (schema.value) {
         modelValue = [...schema.value.value];
     } else if (props.modelValue) {
         modelValue = [...props.modelValue];
@@ -138,13 +137,19 @@ function onChange(value: string) {
         modelValue.push(value);
     }
 
-    onInput(props.name, modelValue);
+    schemaOnInput(props.name, modelValue);
     emit('update:modelValue', modelValue);
 }
 
+function onBlur(event: FocusEvent) {
+    schemaOnBlur(props.name, event);
+}
+
 provide(CheckboxGroupKey, {
+    name: props.name,
+    value: schema.value?.value || props.modelValue,
     onChange,
-    values: schema.value.value
+    onBlur
 });
 </script>
 

@@ -1,16 +1,30 @@
 <script lang="ts" setup>
 import { useForm } from '@inkline/inkline/composables';
 
-const schema = useForm({ test: {} });
+const schema = useForm({
+    checkbox: {},
+    checkboxGroup: {},
+    input: {}
+});
 </script>
 
 <template>
     <i-form v-model="schema">
-        <!-- <i-form-group> -->
-        <!-- <i-checkbox-group name="test"> -->
-        <i-checkbox name="test">Test</i-checkbox>
-        <!-- </i-checkbox-group> -->
-        <!-- </i-form-group> -->
+        <i-form-group>
+            <i-checkbox name="checkbox">Test</i-checkbox>
+        </i-form-group>
+        <i-form-group>
+            <i-checkbox-group name="checkboxGroup">
+                <i-checkbox value="a">a</i-checkbox>
+                <i-checkbox value="b">b</i-checkbox>
+                <i-checkbox value="c">c</i-checkbox>
+            </i-checkbox-group>
+        </i-form-group>
+
+        <i-form-group>
+            <i-form-label>Input</i-form-label>
+            <i-input name="input" placeholder="Type something.." />
+        </i-form-group>
 
         <!-- <i-form-group>
             <i-form-label>Input</i-form-label>

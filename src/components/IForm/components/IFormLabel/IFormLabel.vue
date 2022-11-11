@@ -38,10 +38,10 @@ const props = defineProps({
     }
 });
 
-const size = useComponentSize({ componentName, currentSize: props.size });
+const componentSize = useComponentSize({ componentName, currentSize: props.size });
 
 const classes = computed(() => ({
-    [`-${props.size}`]: Boolean(props.size),
+    [`-${componentSize}`]: true,
     [`-${props.placement}`]: Boolean(props.placement)
 }));
 
@@ -50,6 +50,7 @@ function onClick() {
         return;
     }
     if (labelRef.value) {
+        // @TODO: Find a better way to focus the next input
         // return labelRef.value?.nextSibling?.querySelector('input, textarea').focus();
     }
 }

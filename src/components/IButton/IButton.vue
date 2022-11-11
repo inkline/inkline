@@ -3,7 +3,7 @@ import {computed, inject} from 'vue';
 import {
     useComponentColor,
     useComponentSize,
-    useInputState,
+    useFormState,
     useLinkable
 } from '@inkline/inkline/composables';
 import ILoader from '@inkline/inkline/components/ILoader/index.vue';
@@ -149,7 +149,7 @@ const buttonGroup = inject(ButtonGroupKey);
 
 const componentColor = useComponentColor({ componentName, currentColor: props.color });
 const componentSize = useComponentSize({ componentName, currentSize: props.size || buttonGroup?.size.value });
-const { disabled, size } = useInputState({
+const { disabled, size } = useFormState({
     disabled: buttonGroup?.disabled.value || props.disabled,
     size: componentSize.value
 });
@@ -159,21 +159,18 @@ const ariaBusy = computed(() => {
     if (role.value !== 'button') {
         return null;
     }
-    return props.loading ? 'true' : 'false';
+    return props.loading ? 'true' : null;
 });
 
 const ariaDisabled = computed(() => {
-    if (role.value !== 'button') {
-        return null;
-    }
-    return props.disabled ? 'true' : 'false';
+    return props.disabled ? 'true' : null;
 });
 
 const ariaPressed = computed(() => {
     if (role.value !== 'button') {
         return null;
     }
-    return props.active ? 'true' : 'false';
+    return props.active ? 'true' : null;
 });
 
 const classes = computed(() => {

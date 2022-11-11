@@ -1,50 +1,35 @@
 import { clone, getValueByPath, setValueByPath, setValuesAlongPath } from '@grozav/utils';
-import { inject, InjectionKey, provide, ref } from 'vue';
+import { computed, inject, ref } from 'vue';
 import { FormKey } from '../components/IForm';
 import { FormGroupKey } from '../components/IForm/components/IFormGroup/mixin';
 import { validate } from '../validation';
 import { useInkline } from './inkline';
 
-const ValidationInjectionKey = Symbol('FormValidation') as InjectionKey<{ schema?: any }>;
-
-export function useValidation(props: {
+export interface UseValidationOptions {
     name?: string;
     schema?: any;
-    updateCallBack?: (model: any) => void;
-    submitCallBack?: (model: any) => void;
-    elementType: 'form' | 'formGroup' | 'checkbox' | 'checkboxGroup';
-}) {
+    onUpdate?: (model: any) => void;
+    onSubmit?: (model: any) => void;
+}
+
+export function useValidation(options: UseValidationOptions) {
     const inkline = useInkline();
-    const formSate = inject(ValidationInjectionKey, {});
-    const formGroup = inject(FormGroupKey, {});
-    const form = inject(FormKey, {});
-    const schema = ref<any | null>(null);
 
-    if (props.schema) {
-        schema.value = props.schema;
-    } else if (formSate?.schema) {
-        if (props.name) {
-            schema.value = getValueByPath(formSate.schema.value, props.name);
-        }
-        schema.value = props.schema;
-    }
+    const form = inject(FormKey, null);
+    const formGroup = inject(FormGroupKey, null);
 
-    if (props.elementType === 'form') {
-        provide(FormKey, {
-            onBlur,
-            onInput
-        });
-    }
+    const schema = form
+        ? computed(() => getValueByPath(form.schema.value, options.name!))
+        : ref<any | null>(options.schema || null);
 
-    if (props.elementType === 'formGroup') {
-        provide(FormGroupKey, {
-            onInput,
-            onBlur
-        });
-    }
-
+    /**
+     * Determine if form event should trigger validation
+     *
+     * @param path
+     * @param eventName
+     */
     function shouldValidate(path: string, eventName: string) {
-        const targetSchema = getValueByPath(schema.value, path);
+        const targetSchema = getValueByPath(options.schema, path);
         const events = targetSchema.validateOn
             ? [].concat(targetSchema.validateOn)
             : inkline.options.validateOn;
@@ -52,68 +37,100 @@ export function useValidation(props: {
         return events!.includes(eventName);
     }
 
+    /**
+     * Set the form field value and set its state as dirty
+     * Function is called at root form level
+     *
+     * @param name
+     * @param value
+     */
     function setValue(name: string, value: any) {
-        if (props.schema) {
-            let clonedSchema = clone(schema.value);
-            clonedSchema = setValueByPath(clonedSchema, `${name}.value`, value);
-            clonedSchema = setValuesAlongPath(clonedSchema, name, { pristine: false, dirty: true });
-            if (shouldValidate(name, 'input')) {
-                clonedSchema = validate(schema);
-            }
-            schema.value = clonedSchema;
-            if (props.updateCallBack) {
-                props.updateCallBack(schema.value);
-            }
+        let clonedSchema = clone(schema.value);
+        clonedSchema = setValueByPath(clonedSchema, `${name}.value`, value);
+        clonedSchema = setValuesAlongPath(clonedSchema, name, { pristine: false, dirty: true });
+
+        if (shouldValidate(name, 'input')) {
+            clonedSchema = validate(clonedSchema);
         }
+
+        schema.value = clonedSchema;
+        options.onUpdate?.(clonedSchema);
     }
 
-    function touchValue(name: string, event: any) {
-        if (props.schema) {
-            let clonedSchema = clone(schema.value);
-            clonedSchema = setValuesAlongPath(clonedSchema, name, { pristine: false, dirty: true });
-            if (shouldValidate(name, event.name)) {
-                clonedSchema = validate(schema);
-            }
-            schema.value = clonedSchema;
-            if (props.updateCallBack) {
-                props.updateCallBack(schema.value);
-            }
+    /**
+     * Set the form field state as touched.
+     * Function is called at root form level
+     *
+     * @param name
+     * @param event
+     */
+    function setTouched(name: string, event: Event & { name: string }) {
+        let clonedSchema = clone(schema.value);
+        clonedSchema = setValuesAlongPath(clonedSchema, name, {
+            untouched: false,
+            touched: true
+        });
+
+        if (shouldValidate(name, event.name)) {
+            clonedSchema = validate(clonedSchema);
         }
+
+        schema.value = clonedSchema;
+        options.onUpdate?.(clonedSchema);
     }
+
+    /**
+     * Call form onSubmit callback if validation is successful.
+     * Function is called at root form level
+     *
+     * @param event
+     */
     function onSubmit(event: SubmitEvent) {
-        if (props.schema) {
-            let clonedSchema = clone(schema.value);
-            clonedSchema = setValuesAlongPath(validate(schema), '', {
-                untouched: false,
-                touched: true
-            });
-            if (props.submitCallBack) {
-                props.submitCallBack(event);
-            }
-            if (clonedSchema.invalid) {
-                return;
-            }
-            schema.value = clonedSchema;
+        let clonedSchema = clone(schema.value);
+        clonedSchema = setValuesAlongPath(validate(clonedSchema), '', {
+            untouched: false,
+            touched: true
+        });
+
+        if (clonedSchema.valid) {
+            options.onSubmit?.(event);
         }
+
+        schema.value = clonedSchema;
+        options.onUpdate?.(clonedSchema);
     }
 
+    /**
+     * Recursively preform onInput callback for form group or form that the element
+     * belongs to, up until the root form is reached.
+     *
+     * @param name
+     * @param value
+     */
     function onInput(name: string, value: any) {
-        if (formGroup.onInput) {
+        if (formGroup) {
             formGroup.onInput(name, value);
-        } else if (form.onInput) {
+        } else if (form) {
             form.onInput(name, value);
-        } else {
+        } else if (options.schema) {
             setValue(name, value);
         }
     }
 
+    /**
+     * Recursively preform onBlur callback for form group or form that the element
+     * belongs to, up until the root form is reached.
+     *
+     * @param name
+     * @param event
+     */
     function onBlur(name: string, event: any) {
-        if (formGroup.onBlur) {
+        if (formGroup) {
             formGroup.onBlur(name, event);
-        } else if (form.onBlur) {
+        } else if (form) {
             form.onBlur(name, event);
-        } else {
-            touchValue(name, event);
+        } else if (options.schema) {
+            setTouched(name, event);
         }
     }
 

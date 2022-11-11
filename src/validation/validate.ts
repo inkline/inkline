@@ -10,8 +10,6 @@ import { translate } from '@inkline/inkline/i18n';
  * @returns {*}
  */
 export function validateFormInput(schema: any, path = '') {
-    console.log(schema, path);
-
     const errors: any[] = [];
 
     schema.valid = (schema.validators || []).reduce((acc: boolean, rawValidator: any) => {
@@ -76,5 +74,5 @@ export function validateFormGroup(schema: any, name = '') {
  * @returns {*}
  */
 export function validate(schema: any) {
-    return validateFormGroup(schema.value);
+    return validateFormGroup(schema);
 }
