@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import {computed, provide} from 'vue';
-import { useComponentColor, useComponentSize, useValidation , useFormState } from '@inkline/inkline/composables';
+import {computed, inject, provide} from 'vue';
+import { useComponentColor, useComponentSize, useValidation } from '@inkline/inkline/composables';
 import {FormKey} from "@inkline/inkline/components/IForm";
 import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
 
@@ -79,20 +79,20 @@ const props = defineProps({
     }
 });
 
+const form = inject(FormKey);
+const formGroup = inject(FormGroupKey);
+
 const { onBlur, onInput } = useValidation({ name: props.name });
 
-const componentSize = useComponentSize({ componentName, currentSize: props.size });
-const componentColor = useComponentColor({ componentName, currentColor: props.color });
+const color = useComponentColor({ componentName, currentColor: props.color || formGroup?.color.value || form?.color.value });
+const size = useComponentSize({ componentName, currentSize: props.size || formGroup?.size.value || form?.size.value });
 
-const { disabled, readonly, size } = useFormState({
-    disabled: props.disabled,
-    readonly: props.readonly,
-    size: componentSize.value
-});
+const disabled = computed(() => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value));
+const readonly = computed(() => !!(props.disabled || formGroup?.readonly.value || form?.readonly.value));
 
 const classes = computed(() => ({
-    [`-${size}`]: true,
-    [`-${componentColor}`]: true,
+    [`-${size.value}`]: true,
+    [`-${color.value}`]: true,
     '-disabled': disabled.value,
     '-readonly': readonly.value,
     '-inline': props.inline,
@@ -101,6 +101,10 @@ const classes = computed(() => ({
 }));
 
 provide(FormGroupKey, {
+    disabled,
+    readonly,
+    size,
+    color,
     onBlur,
     onInput,
 });

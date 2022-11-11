@@ -102,14 +102,11 @@ const emit = defineEmits([
     'submit'
 ]);
 
-const componentSize = useComponentSize({ componentName, currentSize: props.size });
-const componentColor = useComponentColor({ componentName, currentColor: props.color });
+const size = useComponentSize({ componentName, currentSize: props.size });
+const color = useComponentColor({ componentName, currentColor: props.color });
 
-const { disabled, readonly, size } = useFormState({
-    disabled: props.disabled,
-    readonly: props.readonly,
-    size: componentSize.value
-});
+const disabled = computed(() => props.disabled);
+const readonly = computed(() => props.readonly);
 
 const { schema, onBlur, onInput, onSubmit: schemaOnSubmit } = useValidation({
     schema: props.modelValue,
@@ -122,10 +119,10 @@ const { schema, onBlur, onInput, onSubmit: schemaOnSubmit } = useValidation({
 });
 
 const classes = computed(() => ({
-    [`-${size}`]: true,
-    [`-${componentColor}`]: true,
-    '-disabled': disabled.value,
-    '-readonly': readonly.value,
+    [`-${size.value}`]: true,
+    [`-${color.value}`]: true,
+    '-disabled': props.disabled,
+    '-readonly': props.readonly,
     '-inline': props.inline
 }));
 
@@ -138,9 +135,13 @@ function onSubmit(event: SubmitEvent) {
 }
 
 provide(FormKey, {
+    schema,
+    disabled,
+    readonly,
+    size,
+    color,
     onBlur,
     onInput,
-    schema,
 });
 </script>
 

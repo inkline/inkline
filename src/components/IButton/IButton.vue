@@ -8,6 +8,8 @@ import {
 } from '@inkline/inkline/composables';
 import ILoader from '@inkline/inkline/components/ILoader/index.vue';
 import {ButtonGroupKey} from "@inkline/inkline/components/IButtonGroup/mixin";
+import {FormKey} from "@inkline/inkline/components/IForm";
+import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
 
 const componentName = 'IButton';
 
@@ -146,14 +148,17 @@ const props = defineProps({
 });
 
 const buttonGroup = inject(ButtonGroupKey);
+const form = inject(FormKey);
+const formGroup = inject(FormGroupKey);
 
-const componentColor = useComponentColor({ componentName, currentColor: props.color });
-const componentSize = useComponentSize({ componentName, currentSize: props.size || buttonGroup?.size.value });
-const { disabled, size } = useFormState({
-    disabled: buttonGroup?.disabled.value || props.disabled,
-    size: componentSize.value
-});
+const color = useComponentColor({ componentName, currentColor: props.color || buttonGroup?.color.value });
+const size = useComponentSize({ componentName, currentSize: props.size || buttonGroup?.size.value });
+
 const { tag } = useLinkable({ to: props.to, href: props.href, tag: props.tag });
+
+const disabled = computed(() => {
+    return props.disabled || props.loading || buttonGroup?.disabled.value || formGroup?.disabled.value || form?.disabled.value;
+});
 
 const ariaBusy = computed(() => {
     if (role.value !== 'button') {
@@ -175,24 +180,20 @@ const ariaPressed = computed(() => {
 
 const classes = computed(() => {
     return {
-        [`-${componentColor.value}`]: true,
+        [`-${color.value}`]: true,
         [`-${size.value}`]: true,
         '-active': props.active,
         '-block': props.block,
         '-circle': props.circle,
-        '-disabled': isDisabled.value,
+        '-disabled': disabled.value,
         '-link': props.link,
         '-outline': props.outline,
         '-loading': props.loading
     };
 });
 
-const isDisabled = computed(() => {
-    return props.disabled || disabled.value || props.loading;
-});
-
 const role = computed(() => (props.to || props.href ? 'link' : 'button'));
-const tabIndex = computed(() => (isDisabled.value ? -1 : props.tabindex));
+const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 </script>
 
 <template>
@@ -204,7 +205,7 @@ const tabIndex = computed(() => (isDisabled.value ? -1 : props.tabindex));
         :role="role"
         :tabindex="tabIndex"
         :class="classes"
-        :disabled="isDisabled"
+        :disabled="disabled"
         :aria-disabled="ariaDisabled"
         :aria-pressed="ariaPressed"
         :aria-busy="ariaBusy"

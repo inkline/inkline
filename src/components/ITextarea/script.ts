@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
 import { uid } from '@grozav/utils';
-import IInput from '@inkline/inkline/components/IInput/index.vue';
+import IInput from '@inkline/inkline/components/IInput/IInput.vue';
 
 /**
  * Slot for the textarea prefix content
@@ -97,7 +97,7 @@ export default defineComponent({
          */
         name: {
             type: [String, Number],
-            default (): string {
+            default(): string {
                 return uid('textarea');
             }
         },

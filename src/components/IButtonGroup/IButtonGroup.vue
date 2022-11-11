@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {computed, inject, provide} from 'vue';
-import { useComponentSize, useFormState } from '@inkline/inkline/composables';
+import {useComponentColor, useComponentSize} from '@inkline/inkline/composables';
 import {ButtonGroupKey} from "@inkline/inkline/components/IButtonGroup/mixin";
 
 const componentName = 'IButtonGroup';
@@ -45,29 +45,41 @@ const props = defineProps({
     size: {
         type: String,
         default: undefined
+    },
+    /**
+     * The color of the button group
+     * @type String
+     * @default
+     * @name color
+     */
+    color: {
+        type: String,
+        default: undefined
     }
 });
 
 const buttonGroup = inject(ButtonGroupKey);
 
-const componentSize = useComponentSize({ componentName, currentSize: buttonGroup?.size.value || props.size });
-const { disabled, size } = useFormState({
-    disabled: buttonGroup?.disabled.value || props.disabled,
-    size: componentSize.value
-});
+const color = useComponentColor({ componentName, currentColor: props.color || buttonGroup?.color.value });
+const size = useComponentSize({ componentName, currentSize: props.size || buttonGroup?.size.value });
 
-const isDisabled = computed(() => {
-    return props.disabled || disabled.value;
+const disabled = computed((): boolean => {
+    return !!(props.disabled || disabled.value || buttonGroup?.disabled.value);
 });
 
 const classes = computed(() => ({
     [`-${size.value}`]: true,
+    [`-${color.value}`]: true,
     '-vertical': props.vertical,
     '-block': props.block,
-    '-disabled': isDisabled.value
+    '-disabled': disabled.value
 }));
 
-provide(ButtonGroupKey, { disabled: isDisabled, size: componentSize });
+provide(ButtonGroupKey, {
+    disabled,
+    size,
+    color
+});
 </script>
 
 <template>
@@ -75,7 +87,7 @@ provide(ButtonGroupKey, { disabled: isDisabled, size: componentSize });
         class="button-group"
         :class="classes"
         role="group"
-        :aria-disabled="isDisabled"
+        :aria-disabled="disabled ? 'true' : null"
         v-bind="$attrs"
     >
         <!--** Slot for default button group content -->
