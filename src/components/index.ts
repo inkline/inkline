@@ -17,6 +17,8 @@ export * from './ICheckbox/components';
 export { default as IForm } from './IForm/IForm.vue';
 export * from './IForm/components';
 
+export { default as IInput } from './IInput/IInput.vue';
+
 export { default as IColumn } from './IColumn/index.vue';
 export { default as IContainer } from './IContainer/index.vue';
 export { default as ICollapsible } from './ICollapsible/index.vue';
@@ -26,7 +28,6 @@ export * from './IDropdown/components';
 export { default as IHamburgerMenu } from './IHamburgerMenu/index.vue';
 export { default as IHeader } from './IHeader/index.vue';
 export { default as IIcon } from './IIcon/index.vue';
-export { default as IInput } from './IInput/index.vue';
 export { default as ILayout } from './ILayout/index.vue';
 export { default as ILayoutAside } from './ILayout/components/ILayoutAside/index.vue';
 export { default as ILayoutContent } from './ILayout/components/ILayoutContent/index.vue';

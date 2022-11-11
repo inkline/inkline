@@ -24,7 +24,7 @@ export function useFormState(props: FormStateInjection) {
     });
 
     const size = computed(() => {
-        return props.size === 'md' ? formSate.size : props.size;
+        return props.size ? props.size : formSate.size;
     });
 
     provide(FormStateInjectionKey, {

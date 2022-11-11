@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
 import IButton from '@inkline/inkline/components/IButton/IButton.vue';
-import IInput from '@inkline/inkline/components/IInput/index.vue';
+import IInput from '@inkline/inkline/components/IInput/IInput.vue';
 import { uid } from '@grozav/utils';
 import { InputElementEvent } from '@inkline/inkline/types';
 

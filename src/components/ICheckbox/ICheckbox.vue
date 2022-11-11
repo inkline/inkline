@@ -3,6 +3,8 @@ import { computed, inject, ref } from 'vue';
 import { uid } from '@grozav/utils';
 import { useComponentColor, useComponentSize, useValidation , useFormState } from '@inkline/inkline/composables';
 import { CheckboxGroupKey } from './components/ICheckboxGroup/mixin';
+import {FormKey} from "@inkline/inkline/components/IForm";
+import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
 
 const componentName = 'ICheckbox';
 
@@ -116,24 +118,24 @@ const emit = defineEmits([
     'update:modelValue'
 ]);
 
-const input = ref<HTMLInputElement | null>(null);
+const inputRef = ref<HTMLInputElement | null>(null);
 
 const checkboxGroup = inject(CheckboxGroupKey, null);
+const form = inject(FormKey);
+const formGroup = inject(FormGroupKey);
 
-const componentColor = useComponentColor({ componentName, currentColor: props.color });
-const componentSize = useComponentSize({ componentName, currentSize: props.size });
-const { disabled, size, readonly } = useFormState({
-    disabled: props.disabled,
-    readonly: props.readonly,
-    size: componentSize.value
-});
+const color = useComponentColor({ componentName, currentColor: props.color || checkboxGroup?.color.value || formGroup?.color.value || form?.color.value });
+const size = useComponentSize({ componentName, currentSize: props.size || checkboxGroup?.size.value || formGroup?.size.value || form?.size.value });
+
+const disabled = computed(() => props.disabled || checkboxGroup?.disabled.value || formGroup?.disabled.value || form?.disabled.value);
+const readonly = computed(() => props.disabled || checkboxGroup?.readonly.value || formGroup?.readonly.value || form?.readonly.value);
 
 const { schema, onInput: schemaOnInput, onBlur: schemaOnBlur } = useValidation({
     name: props.name
 });
 
 const classes = computed(() => ({
-    [`-${componentColor.value}`]: true,
+    [`-${color.value}`]: true,
     [`-${size.value}`]: true,
     '-disabled': disabled.value,
     '-readonly': readonly.value,
@@ -151,7 +153,7 @@ const checked = computed(() => {
 });
 
 const tabindex = computed(() => {
-    return disabled ? -1 : props.tabindex;
+    return disabled.value ? -1 : props.tabindex;
 });
 
 function onChange(event: Event) {
@@ -179,7 +181,7 @@ function labelOnClick(event: MouseEvent) {
         return;
     }
 
-    input.value?.click();
+    inputRef.value?.click();
     labelOnBlur(event);
 }
 </script>
@@ -192,7 +194,7 @@ function labelOnClick(event: MouseEvent) {
         role="checkbox"
     >
         <input
-            ref="input"
+            ref="inputRef"
             type="checkbox"
             :checked="checked"
             :tabindex="tabindex"

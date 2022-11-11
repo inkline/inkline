@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import { computed, provide } from 'vue';
+import {computed, inject, provide} from 'vue';
 import { useFormState , useComponentColor, useComponentSize, useValidation } from '@inkline/inkline/composables';
 import { CheckboxGroupKey } from './mixin';
 import { uid } from '@grozav/utils';
+import {FormKey} from "@inkline/inkline/components/IForm";
+import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
 
 const componentName = 'ICheckboxGroup';
 
@@ -98,20 +100,21 @@ const emit = defineEmits([
     'update:modelValue'
 ]);
 
-const componentColor = useComponentColor({ componentName, currentColor: props.color });
-const componentSize = useComponentSize({ componentName, currentSize: props.size });
-const { disabled, readonly, size } = useFormState({
-    disabled: props.disabled,
-    readonly: props.readonly,
-    size: componentSize.value
-});
+const form = inject(FormKey);
+const formGroup = inject(FormGroupKey);
+
+const color = useComponentColor({ componentName, currentColor: props.color });
+const size = useComponentSize({ componentName, currentSize: props.size });
+
+const disabled = computed(() => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value));
+const readonly = computed(() => !!(props.disabled || formGroup?.readonly.value || form?.readonly.value));
 
 const { schema, onInput: schemaOnInput, onBlur: schemaOnBlur } = useValidation({
     name: props.name
 });
 
 const classes = computed(() => ({
-    [`-${componentColor.value}`]: true,
+    [`-${color.value}`]: true,
     [`-${size.value}`]: true,
     '-disabled': disabled,
     '-readonly': readonly,
@@ -148,6 +151,10 @@ function onBlur(event: FocusEvent) {
 provide(CheckboxGroupKey, {
     name: props.name,
     value: schema.value?.value || props.modelValue,
+    disabled,
+    readonly,
+    color,
+    size,
     onChange,
     onBlur
 });

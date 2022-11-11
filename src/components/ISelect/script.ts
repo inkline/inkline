@@ -1,26 +1,18 @@
 /* eslint-disable no-case-declarations */
 
 import { defineComponent } from 'vue';
-import {
-    isFocusable,
-    isFunction,
-    isKey,
-    uid,
-    getValueByPath
-} from '@grozav/utils';
+import { isFocusable, isFunction, isKey, uid, getValueByPath } from '@grozav/utils';
 import {
     computedColorValue,
     computedPropValue,
     sizePropValidator,
     FormComponentMixin,
-    PopupMixin, computedSizeValue
+    PopupMixin,
+    computedSizeValue
 } from '@inkline/inkline/mixins';
-import {
-    useBaseModifiers,
-    sameWidthModifier
-} from '@inkline/inkline/mixins/PopupMixin';
+import { useBaseModifiers, sameWidthModifier } from '@inkline/inkline/mixins/PopupMixin';
 import { ClickOutside } from '@inkline/inkline/directives';
-import IInput from '@inkline/inkline/components/IInput/index.vue';
+import IInput from '@inkline/inkline/components/IInput/IInput.vue';
 import IIcon from '@inkline/inkline/components/IIcon/index.vue';
 import IMark from '@inkline/inkline/components/IMark/index.vue';
 import ISelectOption from '@inkline/inkline/components/ISelect/components/ISelectOption/index.vue';
@@ -71,10 +63,7 @@ export default defineComponent({
         ISelectOption,
         IMark
     },
-    mixins: [
-        FormComponentMixin,
-        PopupMixin
-    ],
+    mixins: [FormComponentMixin, PopupMixin],
     inject: {
         formGroup: {
             default: (): any => ({})
@@ -83,7 +72,7 @@ export default defineComponent({
             default: (): any => ({})
         }
     },
-    provide () {
+    provide() {
         return {
             select: this
         };
@@ -278,10 +267,7 @@ export default defineComponent({
         popperOptions: {
             type: Object,
             default: (): any => ({
-                modifiers: [
-                    ...useBaseModifiers({ offset: 8 }),
-                    sameWidthModifier()
-                ]
+                modifiers: [...useBaseModifiers({ offset: 8 }), sameWidthModifier()]
             })
         },
         /**
@@ -372,7 +358,7 @@ export default defineComponent({
          */
         'pagination'
     ],
-    data (): { animating: boolean; visible: boolean; inputValue: string; } {
+    data(): { animating: boolean; visible: boolean; inputValue: string } {
         return {
             animating: false,
             visible: false,
@@ -380,46 +366,46 @@ export default defineComponent({
         };
     },
     computed: {
-        computedColor (): string | undefined {
+        computedColor(): string | undefined {
             return computedColorValue(componentName, this.color);
         },
-        computedSize (): string | undefined {
+        computedSize(): string | undefined {
             return computedSizeValue(componentName, this.size);
         },
-        wrapperClasses (): Classes {
+        wrapperClasses(): Classes {
             return {
                 [`-${this.computedColor}`]: Boolean(this.computedColor),
                 [`-${this.computedSize}`]: Boolean(this.computedSize)
             };
         },
-        popupClasses (): Classes {
+        popupClasses(): Classes {
             return {
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly
             };
         },
-        tabIndex (): number | string {
+        tabIndex(): number | string {
             return this.isDisabled ? -1 : this.tabindex;
         },
-        isClearable (): boolean {
+        isClearable(): boolean {
             return this.value && this.clearable && !this.isDisabled && !this.isReadonly;
         },
-        value (): any {
+        value(): any {
             if (this.schema) {
                 return this.schema.value;
             }
 
             return this.modelValue;
         },
-        inputPlaceholder (): string {
+        inputPlaceholder(): string {
             return this.value ? this.computeLabel(this.value) : this.placeholder;
         }
     },
     watch: {
-        value (value) {
+        value(value) {
             this.inputValue = this.computeLabel(value);
         },
-        inputValue (value) {
+        inputValue(value) {
             const matchesLength = this.inputMatchesLength(value);
             const matchesLabel = this.inputMatchesLabel(value);
 
@@ -429,7 +415,7 @@ export default defineComponent({
 
             this.$emit('search', this.inputValue);
         },
-        options () {
+        options() {
             if (this.visible) {
                 this.createPopper();
             }
@@ -443,7 +429,7 @@ export default defineComponent({
          * focusing and blurring the input elements.
          */
 
-        onInput (option: SelectOption, label?: string) {
+        onInput(option: SelectOption, label?: string) {
             if (option.disabled) {
                 return;
             }
@@ -457,12 +443,14 @@ export default defineComponent({
             this.parent.onInput?.(this.name, option);
             this.$emit('update:modelValue', option);
         },
-        onClear () {
+        onClear() {
             this.animating = true;
             this.$emit('update:modelValue', null);
-            this.$nextTick(() => { this.animating = false; });
+            this.$nextTick(() => {
+                this.animating = false;
+            });
         },
-        onFocus (event: MouseEvent) {
+        onFocus(event: MouseEvent) {
             // If there is no value and there are no default options,
             // do not open select
             if (!this.value && this.options.length === 0) {
@@ -473,16 +461,16 @@ export default defineComponent({
                 this.inputValue = '';
             }
 
-            const focusShouldShowSelect = !event.relatedTarget ||
-                !(this as any).$refs.wrapper.contains(event.relatedTarget);
+            const focusShouldShowSelect =
+                !event.relatedTarget || !(this as any).$refs.wrapper.contains(event.relatedTarget);
 
             if (focusShouldShowSelect && this.inputShouldShowSelect(this.inputValue)) {
                 this.show();
             }
         },
-        onBlur (event: MouseEvent) {
-            const blurShouldHideSelect = !event.relatedTarget ||
-                !(this as any).$refs.wrapper.contains(event.relatedTarget);
+        onBlur(event: MouseEvent) {
+            const blurShouldHideSelect =
+                !event.relatedTarget || !(this as any).$refs.wrapper.contains(event.relatedTarget);
 
             if (blurShouldHideSelect) {
                 this.hide();
@@ -491,7 +479,7 @@ export default defineComponent({
 
             this.parent.onBlur?.(this.name, event);
         },
-        onClick () {
+        onClick() {
             if (this.autocomplete) {
                 this.inputValue = '';
             }
@@ -500,10 +488,10 @@ export default defineComponent({
                 this.show();
             }
         },
-        onClickOutside () {
+        onClickOutside() {
             this.hide();
         },
-        onClickCaret (event: MouseEvent) {
+        onClickCaret(event: MouseEvent) {
             if (this.visible) {
                 this.onBlur(event);
             } else {
@@ -521,7 +509,7 @@ export default defineComponent({
          * Compute scroll offset, viewport height and total height and determine if next set of items needs to be loaded
          */
 
-        onScroll () {
+        onScroll() {
             if (isNaN(this.total as any)) {
                 return;
             }
@@ -530,14 +518,15 @@ export default defineComponent({
             const viewportHeight = parseInt(getComputedStyle((this as any).$refs.body).height, 10);
             const totalHeight = parseInt(getComputedStyle((this as any).$refs.options).height, 10);
 
-            const shouldLoadNextPage = scrollTop + viewportHeight > totalHeight - this.scrollTolerance;
+            const shouldLoadNextPage =
+                scrollTop + viewportHeight > totalHeight - this.scrollTolerance;
             const endReached = this.options.length >= (this.total as number);
 
             if (shouldLoadNextPage && !endReached && this.options.length > 0 && !this.loading) {
                 this.$emit('pagination');
             }
         },
-        onWindowResize () {
+        onWindowResize() {
             this.onScroll();
 
             if (this.visible) {
@@ -551,7 +540,7 @@ export default defineComponent({
          * Keyboard bindings for select input and select options
          */
 
-        onTriggerKeyDown (event: KeyboardEvent) {
+        onTriggerKeyDown(event: KeyboardEvent) {
             if (this.keydownTrigger.length === 0) {
                 return;
             }
@@ -562,90 +551,98 @@ export default defineComponent({
             const focusTarget = focusableItems[initialIndex];
 
             switch (true) {
-            case isKey('up', event) && this.keydownTrigger.includes('up'):
-            case isKey('down', event) && this.keydownTrigger.includes('down'):
-                this.show();
+                case isKey('up', event) && this.keydownTrigger.includes('up'):
+                case isKey('down', event) && this.keydownTrigger.includes('down'):
+                    this.show();
 
-                setTimeout(() => {
-                    focusTarget.focus();
-                }, this.visible ? 0 : this.animationDuration);
+                    setTimeout(
+                        () => {
+                            focusTarget.focus();
+                        },
+                        this.visible ? 0 : this.animationDuration
+                    );
 
-                event.preventDefault();
-                event.stopPropagation();
-                break;
+                    event.preventDefault();
+                    event.stopPropagation();
+                    break;
 
-            case isKey('enter', event) && this.keydownTrigger.includes('enter'):
-                if (this.selectFirstOptionOnEnter && (!this.value || !this.inputMatchesLabel(this.inputValue))) {
-                    const firstAvailableOption = this.options.find((option: any) => !option.disabled) as SelectOption;
+                case isKey('enter', event) && this.keydownTrigger.includes('enter'):
+                    if (
+                        this.selectFirstOptionOnEnter &&
+                        (!this.value || !this.inputMatchesLabel(this.inputValue))
+                    ) {
+                        const firstAvailableOption = this.options.find(
+                            (option: any) => !option.disabled
+                        ) as SelectOption;
 
-                    if (firstAvailableOption) {
-                        this.onInput(firstAvailableOption);
-                        this.focus();
+                        if (firstAvailableOption) {
+                            this.onInput(firstAvailableOption);
+                            this.focus();
+                        }
+                    } else {
+                        this.onClick();
                     }
-                } else {
-                    this.onClick();
-                }
 
-                if (!this.visible) {
-                    setTimeout(() => {
-                        focusTarget.focus();
-                    }, this.animationDuration);
-                }
+                    if (!this.visible) {
+                        setTimeout(() => {
+                            focusTarget.focus();
+                        }, this.animationDuration);
+                    }
 
-                event.preventDefault();
-                break;
+                    event.preventDefault();
+                    break;
 
-            case isKey('tab', event) && this.keydownTrigger.includes('tab'):
-            case isKey('esc', event) && this.keydownTrigger.includes('esc'):
-                this.hide();
-                break;
+                case isKey('tab', event) && this.keydownTrigger.includes('tab'):
+                case isKey('esc', event) && this.keydownTrigger.includes('esc'):
+                    this.hide();
+                    break;
             }
         },
-        onItemKeyDown (event: KeyboardEvent) {
+        onItemKeyDown(event: KeyboardEvent) {
             if (this.keydownItem.length === 0) {
                 return;
             }
 
             switch (true) {
-            case isKey('up', event) && this.keydownItem.includes('up'):
-            case isKey('down', event) && this.keydownItem.includes('down'):
-                const focusableItems = this.getFocusableItems();
+                case isKey('up', event) && this.keydownItem.includes('up'):
+                case isKey('down', event) && this.keydownItem.includes('down'):
+                    const focusableItems = this.getFocusableItems();
 
-                const currentIndex = focusableItems.findIndex((item) => item === event.target);
-                const maxIndex = focusableItems.length - 1;
-                let nextIndex;
+                    const currentIndex = focusableItems.findIndex((item) => item === event.target);
+                    const maxIndex = focusableItems.length - 1;
+                    let nextIndex;
 
-                if (isKey('up', event)) {
-                    nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
-                } else {
-                    nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
-                }
+                    if (isKey('up', event)) {
+                        nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
+                    } else {
+                        nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
+                    }
 
-                focusableItems[nextIndex].focus();
+                    focusableItems[nextIndex].focus();
 
-                event.preventDefault();
-                event.stopPropagation();
-                break;
+                    event.preventDefault();
+                    event.stopPropagation();
+                    break;
 
-            case isKey('enter', event) && this.keydownItem.includes('enter'):
-            case isKey('space', event) && this.keydownItem.includes('space'):
-                (event as any).target.click();
+                case isKey('enter', event) && this.keydownItem.includes('enter'):
+                case isKey('space', event) && this.keydownItem.includes('space'):
+                    (event as any).target.click();
 
-                this.focus();
+                    this.focus();
 
-                event.preventDefault();
-                break;
+                    event.preventDefault();
+                    break;
 
-            case isKey('tab', event) && this.keydownItem.includes('tab'):
-            case isKey('esc', event) && this.keydownItem.includes('esc'):
-                this.hide();
-                this.focus();
+                case isKey('tab', event) && this.keydownItem.includes('tab'):
+                case isKey('esc', event) && this.keydownItem.includes('esc'):
+                    this.hide();
+                    this.focus();
 
-                event.preventDefault();
-                break;
+                    event.preventDefault();
+                    break;
             }
         },
-        onEscape () {
+        onEscape() {
             this.hide();
         },
 
@@ -655,7 +652,7 @@ export default defineComponent({
          * Hide or show the select options menu
          */
 
-        show () {
+        show() {
             if (this.isDisabled || this.isReadonly || this.visible) {
                 return;
             }
@@ -663,7 +660,7 @@ export default defineComponent({
             this.visible = true;
             this.createPopper();
         },
-        hide () {
+        hide() {
             if (!this.visible) {
                 return;
             }
@@ -680,10 +677,10 @@ export default defineComponent({
          * Helper methods
          */
 
-        focus () {
+        focus() {
             (this as any).$refs.trigger.focus();
         },
-        getFocusableItems (): HTMLElement[] {
+        getFocusableItems(): HTMLElement[] {
             const focusableItems = [];
 
             for (const child of (this as any).$refs.options.children) {
@@ -694,7 +691,7 @@ export default defineComponent({
 
             return focusableItems;
         },
-        getElementHeight (node: HTMLElement): number {
+        getElementHeight(node: HTMLElement): number {
             const computedStyle = getComputedStyle(node);
 
             if (!computedStyle.height) {
@@ -703,20 +700,20 @@ export default defineComponent({
 
             return Math.ceil(parseFloat(computedStyle.height));
         },
-        inputMatchesLabel (value: string): boolean {
+        inputMatchesLabel(value: string): boolean {
             return this.value && value === this.computeLabel(this.value);
         },
-        inputMatchesLength (value: string): boolean {
+        inputMatchesLength(value: string): boolean {
             return this.minLength === 0 || ((value as any) && value.length >= this.minLength);
         },
-        inputShouldShowSelect (value: string): boolean {
+        inputShouldShowSelect(value: string): boolean {
             if (!this.autocomplete) {
                 return true;
             }
 
             return this.inputMatchesLength(value) && !this.inputMatchesLabel(value);
         },
-        computeLabel (option: SelectOption): string {
+        computeLabel(option: SelectOption): string {
             if (typeof option !== 'object') {
                 return this.inputValue;
             }
