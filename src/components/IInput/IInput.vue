@@ -192,11 +192,11 @@ const { schema, onInput: schemaOnInput, onBlur: schemaOnBlur } = useValidation({
 const hasError = computed(() => {
     if (typeof props.error === 'boolean') {
         return props.error;
-    } else if (schema && props.error) {
+    } else if (schema.value && props.error) {
         let visible = true;
 
         ([] as string[]).concat(props.error as string[]).forEach((status) => {
-            visible = visible && schema[status];
+            visible = visible && schema.value[status];
         });
 
         return visible;
@@ -223,7 +223,7 @@ const classes = computed(() => ({
     [`-${color.value}`]: true,
     [`-${size.value}`]: true,
     '-disabled': disabled.value,
-    '-error': hasError.value,
+    '-error': Boolean(hasError.value),
     '-readonly': readonly.value,
     '-prefixed': Boolean(slots.prefix),
     '-suffixed': Boolean(slots.suffix),
@@ -247,10 +247,6 @@ function onClear (event: Event) {
 
     schemaOnInput(props.name, '');
     emit('update:modelValue', '');
-}
-
-function focus () {
-    input.value?.focus();
 }
 </script>
 
