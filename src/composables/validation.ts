@@ -5,14 +5,12 @@ import { FormGroupKey } from '../components/IForm/components/IFormGroup/mixin';
 import { validate } from '../validation';
 import { useInkline } from './inkline';
 
-export interface UseValidationOptions {
+export function useValidation(options: {
     name?: string;
     schema?: any;
     onUpdate?: (model: any) => void;
     onSubmit?: (model: any) => void;
-}
-
-export function useValidation(options: UseValidationOptions) {
+}) {
     const inkline = useInkline();
 
     const form = inject(FormKey, null);
@@ -150,4 +148,24 @@ export function useValidation(options: UseValidationOptions) {
     }
 
     return { schema, onSubmit, onInput, onBlur };
+}
+
+export function useFormSchemaError(options: { schema: any; error: boolean | string[] }) {
+    const hasError = computed(() => {
+        if (typeof options.error === 'boolean') {
+            return options.error;
+        } else if (options.schema.value && options.error) {
+            let visible = true;
+
+            ([] as string[]).concat(options.error as string[]).forEach((status) => {
+                visible = visible && options.schema.value[status];
+            });
+
+            return visible;
+        }
+
+        return false;
+    });
+
+    return { hasError };
 }

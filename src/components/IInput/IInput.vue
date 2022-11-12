@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import {ref, computed, useAttrs, useSlots, inject} from 'vue';
+import {ref, computed, useAttrs, useSlots, inject, PropType} from 'vue';
 import {filterKeys, uid} from '@grozav/utils';
 
-import {useComponentColor, useComponentSize, useValidation} from "@inkline/inkline/composables";
+import {useComponentColor, useComponentSize, useFormSchemaError, useValidation} from "@inkline/inkline/composables";
 import {FormKey} from "@inkline/inkline/components/IForm";
 import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
 
@@ -47,8 +47,8 @@ const props = defineProps({
      * @name error
      */
     error: {
-        type: [Array, Boolean],
-        default: (): string[] => ['touched', 'dirty', 'invalid']
+        type: [Array, Boolean] as PropType<boolean | string[]>,
+        default: () => ['touched', 'dirty', 'invalid']
     },
     /**
      * The id of the internal input element
@@ -188,21 +188,9 @@ const inputAttrs = computed(() => filterKeys(attrs, { denylist: wrapperAttrsAllo
 const { schema, onInput: schemaOnInput, onBlur: schemaOnBlur } = useValidation({
     name: props.name
 });
-
-const hasError = computed(() => {
-    if (typeof props.error === 'boolean') {
-        return props.error;
-    } else if (schema.value && props.error) {
-        let visible = true;
-
-        ([] as string[]).concat(props.error as string[]).forEach((status) => {
-            visible = visible && schema.value[status];
-        });
-
-        return visible;
-    }
-
-    return false;
+const { hasError } = useFormSchemaError({
+    schema,
+    error: props.error
 });
 
 const tabIndex = computed(() => disabled.value ? -1 : props.tabindex);
@@ -223,7 +211,7 @@ const classes = computed(() => ({
     [`-${color.value}`]: true,
     [`-${size.value}`]: true,
     '-disabled': disabled.value,
-    '-error': Boolean(hasError.value),
+    '-error': hasError.value,
     '-readonly': readonly.value,
     '-prefixed': Boolean(slots.prefix),
     '-suffixed': Boolean(slots.suffix),

@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import {
     computedColorValue,
     sizePropValidator,
@@ -18,9 +18,7 @@ const componentName = 'IRadioGroup';
 
 export default defineComponent({
     name: componentName,
-    mixins: [
-        FormComponentMixin
-    ],
+    mixins: [FormComponentMixin],
     inject: {
         formGroup: {
             default: (): any => ({})
@@ -29,7 +27,7 @@ export default defineComponent({
             default: (): any => ({})
         }
     },
-    provide () {
+    provide() {
         return {
             formGroup: this
         };
@@ -54,6 +52,17 @@ export default defineComponent({
         disabled: {
             type: Boolean,
             default: false
+        },
+        /**
+         * The error state of the checkbox, computed based on schema by default.
+         * @type Boolean | Array
+         * @default ['touched', 'dirty', 'invalid']
+         * @TODO use propDefaultValue to set default value
+         * @name error
+         */
+        error: {
+            type: [Array, Boolean] as PropType<boolean | string[]>,
+            default: () => ['touched', 'dirty', 'invalid']
         },
         /**
          * Display the radio group as inline
@@ -81,7 +90,7 @@ export default defineComponent({
          */
         name: {
             type: [String, Number],
-            default () {
+            default() {
                 return uid('radio-group');
             }
         },
@@ -115,16 +124,17 @@ export default defineComponent({
         'update:modelValue'
     ],
     computed: {
-        classes (): Classes {
+        classes(): Classes {
             return {
                 [`-${computedColorValue(componentName, this.color)}`]: true,
                 [`-${this.size}`]: Boolean(this.size),
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,
                 '-inline': this.inline
+                // '-error': hasError.value
             };
         },
-        checked (): string {
+        checked(): string {
             if (this.schema) {
                 return this.schema.value;
             }
@@ -133,7 +143,7 @@ export default defineComponent({
         }
     },
     methods: {
-        onChange (value: string) {
+        onChange(value: string) {
             this.parent.onInput?.(this.name, value);
 
             this.$emit('update:modelValue', value);
