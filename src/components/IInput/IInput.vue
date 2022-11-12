@@ -2,7 +2,7 @@
 import {ref, computed, useAttrs, useSlots, inject, PropType} from 'vue';
 import {filterKeys, uid} from '@grozav/utils';
 
-import {useComponentColor, useComponentSize, useFormSchemaError, useValidation} from "@inkline/inkline/composables";
+import {useComponentColor, useComponentSize, useFormValidationError, useValidation} from "@inkline/inkline/composables";
 import {FormKey} from "@inkline/inkline/components/IForm";
 import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
 
@@ -188,7 +188,7 @@ const inputAttrs = computed(() => filterKeys(attrs, { denylist: wrapperAttrsAllo
 const { schema, onInput: schemaOnInput, onBlur: schemaOnBlur } = useValidation({
     name: props.name
 });
-const { hasError } = useFormSchemaError({
+const { hasError } = useFormValidationError({
     schema,
     error: props.error
 });

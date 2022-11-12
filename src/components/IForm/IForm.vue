@@ -5,7 +5,7 @@ import {
     useComponentSize,
     useValidation,
     useFormState,
-    useFormSchemaError
+    useFormValidationError
 } from '@inkline/inkline/composables';
 import { uid } from '@grozav/utils';
 import {FormKey} from "@inkline/inkline/components/IForm/mixin";
@@ -123,7 +123,7 @@ const { schema, onBlur, onInput, onSubmit: schemaOnSubmit } = useValidation({
         emit('submit', event);
     }
 });
-const { hasError } = useFormSchemaError({
+const { hasError } = useFormValidationError({
     schema,
     error: ['invalid']
 });

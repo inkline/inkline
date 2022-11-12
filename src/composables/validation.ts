@@ -150,7 +150,7 @@ export function useValidation(options: {
     return { schema, onSubmit, onInput, onBlur };
 }
 
-export function useFormSchemaError(options: { schema: any; error: boolean | string[] }) {
+export function useFormValidationError(options: { schema: any; error: boolean | string[] }) {
     const hasError = computed(() => {
         if (typeof options.error === 'boolean') {
             return options.error;
