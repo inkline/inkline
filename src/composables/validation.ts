@@ -19,7 +19,7 @@ export function useValidation(options: UseValidationOptions) {
     const formGroup = inject(FormGroupKey, null);
 
     const schema = form
-        ? computed(() => getValueByPath(form.schema.value, options.name!))
+        ? computed(() => form.schema && getValueByPath(form.schema.value, options.name!))
         : ref<any | null>(options.schema || null);
 
     /**
@@ -28,10 +28,9 @@ export function useValidation(options: UseValidationOptions) {
      * @param path
      * @param eventName
      */
-    function shouldValidate(path: string, eventName: string) {
-        const targetSchema = getValueByPath(options.schema, path);
-        const events = targetSchema.validateOn
-            ? [].concat(targetSchema.validateOn)
+    function shouldValidate(schema: any, eventName: string) {
+        const events = schema.validateOn
+            ? [].concat(schema.validateOn)
             : inkline.options.validateOn;
 
         return events!.includes(eventName);
@@ -46,10 +45,18 @@ export function useValidation(options: UseValidationOptions) {
      */
     function setValue(name: string, value: any) {
         let clonedSchema = clone(schema.value);
+
+        const targetSchema = getValueByPath(clonedSchema, name);
+        if (!targetSchema) {
+            throw new Error(
+                'Schema to be validated not found. Did you forget to match the schema key to the input "name" prop?'
+            );
+        }
+
         clonedSchema = setValueByPath(clonedSchema, `${name}.value`, value);
         clonedSchema = setValuesAlongPath(clonedSchema, name, { pristine: false, dirty: true });
 
-        if (shouldValidate(name, 'input')) {
+        if (shouldValidate(targetSchema, 'input')) {
             clonedSchema = validate(clonedSchema);
         }
 
@@ -66,12 +73,20 @@ export function useValidation(options: UseValidationOptions) {
      */
     function setTouched(name: string, event: Event & { name: string }) {
         let clonedSchema = clone(schema.value);
+
+        const targetSchema = getValueByPath(clonedSchema, name);
+        if (!targetSchema) {
+            throw new Error(
+                'Schema to be validated not found. Did you forget to match the schema key to the input "name" prop?'
+            );
+        }
+
         clonedSchema = setValuesAlongPath(clonedSchema, name, {
             untouched: false,
             touched: true
         });
 
-        if (shouldValidate(name, event.name)) {
+        if (shouldValidate(targetSchema, event.name)) {
             clonedSchema = validate(clonedSchema);
         }
 
