@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { uid } from '@grozav/utils';
 import IInput from '@inkline/inkline/components/IInput/IInput.vue';
 
@@ -68,6 +68,17 @@ export default defineComponent({
         disabled: {
             type: Boolean,
             default: false
+        },
+        /**
+         * The error state of the checkbox, computed based on schema by default.
+         * @type Boolean | Array
+         * @default ['touched', 'dirty', 'invalid']
+         * @TODO use propDefaultValue to set default value
+         * @name error
+         */
+        error: {
+            type: [Array, Boolean] as PropType<boolean | string[]>,
+            default: () => ['touched', 'dirty', 'invalid']
         },
         /**
          * The id of the internal textarea element

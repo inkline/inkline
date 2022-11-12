@@ -1,6 +1,12 @@
 <script lang="ts" setup>
 import {computed, provide} from 'vue';
-import { useComponentColor, useComponentSize, useValidation , useFormState } from '@inkline/inkline/composables';
+import {
+    useComponentColor,
+    useComponentSize,
+    useValidation,
+    useFormState,
+    useFormSchemaError
+} from '@inkline/inkline/composables';
 import { uid } from '@grozav/utils';
 import {FormKey} from "@inkline/inkline/components/IForm/mixin";
 
@@ -117,13 +123,18 @@ const { schema, onBlur, onInput, onSubmit: schemaOnSubmit } = useValidation({
         emit('submit', event);
     }
 });
+const { hasError } = useFormSchemaError({
+    schema,
+    error: ['invalid']
+});
 
 const classes = computed(() => ({
     [`-${size.value}`]: true,
     [`-${color.value}`]: true,
     '-disabled': props.disabled,
     '-readonly': props.readonly,
-    '-inline': props.inline
+    '-inline': props.inline,
+    '-error': hasError.value
 }));
 
 function onSubmit(event: SubmitEvent) {

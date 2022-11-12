@@ -1,6 +1,12 @@
 <script lang="ts" setup>
-import {computed, inject, provide} from 'vue';
-import { useFormState , useComponentColor, useComponentSize, useValidation } from '@inkline/inkline/composables';
+import {computed, inject, PropType, provide} from 'vue';
+import {
+    useFormState,
+    useComponentColor,
+    useComponentSize,
+    useValidation,
+    useFormSchemaError
+} from '@inkline/inkline/composables';
 import { CheckboxGroupKey } from './mixin';
 import { uid } from '@grozav/utils';
 import {FormKey} from "@inkline/inkline/components/IForm";
@@ -28,6 +34,17 @@ const props = defineProps({
     disabled: {
         type: Boolean,
         default: false
+    },
+    /**
+     * The error state of the checkbox, computed based on schema by default.
+     * @type Boolean | Array
+     * @default ['touched', 'dirty', 'invalid']
+     * @TODO use propDefaultValue to set default value
+     * @name error
+     */
+    error: {
+        type: [Array, Boolean] as PropType<boolean | string[]>,
+        default: () => ['touched', 'dirty', 'invalid']
     },
     /**
      * Display the checkbox group as inline
@@ -112,13 +129,18 @@ const readonly = computed(() => !!(props.disabled || formGroup?.readonly.value |
 const { schema, onInput: schemaOnInput, onBlur: schemaOnBlur } = useValidation({
     name: props.name
 });
+const { hasError } = useFormSchemaError({
+    schema,
+    error: props.error
+});
 
 const classes = computed(() => ({
     [`-${color.value}`]: true,
     [`-${size.value}`]: true,
     '-disabled': disabled,
     '-readonly': readonly,
-    '-inline': props.inline
+    '-inline': props.inline,
+    '-error': hasError.value
 }));
 
 function onChange(value: string) {

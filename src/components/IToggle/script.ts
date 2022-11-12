@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { uid } from '@grozav/utils';
 import { computedColorValue, computedSizeValue, FormComponentMixin } from '@inkline/inkline/mixins';
 import { Classes, InputElementEvent } from '@inkline/inkline/types';
@@ -42,6 +42,17 @@ export default defineComponent({
         disabled: {
             type: Boolean,
             default: false
+        },
+        /**
+         * The error state of the checkbox, computed based on schema by default.
+         * @type Boolean | Array
+         * @default ['touched', 'dirty', 'invalid']
+         * @TODO use propDefaultValue to set default value
+         * @name error
+         */
+        error: {
+            type: [Array, Boolean] as PropType<boolean | string[]>,
+            default: () => ['touched', 'dirty', 'invalid']
         },
         /**
          * The indeterminate state of the toggle
@@ -143,6 +154,7 @@ export default defineComponent({
                 '-disabled': this.isDisabled,
                 '-readonly': this.isReadonly,
                 '-rounded': this.rounded
+                // '-error': hasError.value,
             };
         },
         checked(): boolean {

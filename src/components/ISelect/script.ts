@@ -1,6 +1,6 @@
 /* eslint-disable no-case-declarations */
 
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { isFocusable, isFunction, isKey, uid, getValueByPath } from '@grozav/utils';
 import {
     computedColorValue,
@@ -137,6 +137,17 @@ export default defineComponent({
         disabled: {
             type: Boolean,
             default: false
+        },
+        /**
+         * The error state of the checkbox, computed based on schema by default.
+         * @type Boolean | Array
+         * @default ['touched', 'dirty', 'invalid']
+         * @TODO use propDefaultValue to set default value
+         * @name error
+         */
+        error: {
+            type: [Array, Boolean] as PropType<boolean | string[]>,
+            default: () => ['touched', 'dirty', 'invalid']
         },
         /**
          * The field to be used for identifying the options
@@ -376,6 +387,7 @@ export default defineComponent({
             return {
                 [`-${this.computedColor}`]: Boolean(this.computedColor),
                 [`-${this.computedSize}`]: Boolean(this.computedSize)
+                // '-error': hasError.value,
             };
         },
         popupClasses(): Classes {

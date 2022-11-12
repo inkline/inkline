@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {computed, inject, provide} from 'vue';
-import { useComponentColor, useComponentSize, useValidation } from '@inkline/inkline/composables';
+import {useComponentColor, useComponentSize, useFormSchemaError, useValidation} from '@inkline/inkline/composables';
 import {FormKey} from "@inkline/inkline/components/IForm";
 import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
 
@@ -82,7 +82,11 @@ const props = defineProps({
 const form = inject(FormKey);
 const formGroup = inject(FormGroupKey);
 
-const { onBlur, onInput } = useValidation({ name: props.name });
+const { schema, onBlur, onInput } = useValidation({ name: props.name });
+const { hasError } = useFormSchemaError({
+    schema,
+    error: ['invalid']
+});
 
 const color = useComponentColor({ componentName, currentColor: props.color || formGroup?.color.value || form?.color.value });
 const size = useComponentSize({ componentName, currentSize: props.size || formGroup?.size.value || form?.size.value });
@@ -96,7 +100,7 @@ const classes = computed(() => ({
     '-disabled': disabled.value,
     '-readonly': readonly.value,
     '-inline': props.inline,
-    // @TODO '-error': this.input && this.input.schema?.$invalid,
+    '-error': hasError.value,
     '-required': props.required // @TODO Add required state based on required validator this.input.schema?.validators.some(v => v.name === 'required')
 }));
 
