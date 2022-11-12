@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {computed, inject, provide} from 'vue';
-import {useComponentColor, useComponentSize, useFormSchemaError, useValidation} from '@inkline/inkline/composables';
+import {useComponentColor, useComponentSize, useFormValidationError, useValidation} from '@inkline/inkline/composables';
 import {FormKey} from "@inkline/inkline/components/IForm";
 import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
 
@@ -83,7 +83,7 @@ const form = inject(FormKey);
 const formGroup = inject(FormGroupKey);
 
 const { schema, onBlur, onInput } = useValidation({ name: props.name });
-const { hasError } = useFormSchemaError({
+const { hasError } = useFormValidationError({
     schema,
     error: ['invalid']
 });

@@ -6,7 +6,7 @@ import {
     useComponentSize,
     useValidation,
     useFormState,
-    useFormSchemaError
+    useFormValidationError
 } from '@inkline/inkline/composables';
 import { CheckboxGroupKey } from './components/ICheckboxGroup/mixin';
 import {FormKey} from "@inkline/inkline/components/IForm";
@@ -150,7 +150,7 @@ const readonly = computed(() => props.disabled || checkboxGroup?.readonly.value 
 const { schema, onInput: schemaOnInput, onBlur: schemaOnBlur } = useValidation({
     name: props.name
 });
-const { hasError } = useFormSchemaError({
+const { hasError } = useFormValidationError({
     schema,
     error: props.error
 });
