@@ -15,9 +15,13 @@ export { IFormError } from './IFormError';
 export { IFormLabel } from './IFormLabel';
 export { IInput } from './IInput';
 export { INumberInput } from './INumberInput';
+export { IRadio } from './IRadio';
+export { IRadioGroup } from './IRadioGroup';
 export { ITextarea } from './ITextarea';
+export { IToggle } from './IToggle';
 
 // Options API
+// @TODO Migrate to Composition API
 
 export { IColumn } from './IColumn';
 export { IContainer } from './IContainer';
@@ -49,8 +53,6 @@ export { IPagination } from './IPagination';
 export { IPopover } from './IPopover';
 export { IProgress } from './IProgress';
 export { IProgressBar } from './IProgressBar';
-export { IRadio } from './IRadio';
-export { IRadioGroup } from './IRadioGroup';
 export { IRow } from './IRow';
 export { ISelect } from './ISelect';
 export { ISelectOption } from './ISelectOption';
@@ -59,5 +61,4 @@ export { ITable } from './ITable';
 export { ITabs } from './ITabs';
 export { ITab } from './ITab';
 export { ITabTitle } from './ITabTitle';
-export { IToggle } from './IToggle';
 export { ITooltip } from './ITooltip';
