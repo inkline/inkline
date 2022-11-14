@@ -13,12 +13,12 @@ import {
 } from '@inkline/inkline/mixins';
 import { useBaseModifiers, sameWidthModifier } from '@inkline/inkline/mixins/PopupMixin';
 import { ClickOutside } from '@inkline/inkline/directives';
-import IInput from '@inkline/inkline/components/IInput/IInput.vue';
-import IIcon from '@inkline/inkline/components/IIcon/index.vue';
-import IMark from '@inkline/inkline/components/IMark/index.vue';
-import ISelectOption from '@inkline/inkline/components/ISelect/components/ISelectOption/index.vue';
-import { SelectOption } from '@inkline/inkline/components/ISelect/components/ISelectOption/script';
+import {IInput} from '@inkline/inkline/components/IInput';
+import {IIcon} from '@inkline/inkline/components/IIcon';
+import {IMark} from '@inkline/inkline/components/IMark';
+import {ISelectOption} from '@inkline/inkline/components/ISelectOption';
 import { Classes } from '@inkline/inkline/types';
+import { SelectOption } from '../ISelectOption/ISelectOption.vue';
 
 /**
  * Slot for the select prefix content
@@ -741,21 +741,21 @@ export default defineComponent({
 
 <template>
     <div
+        :id="name"
+        ref="wrapper"
+        v-click-outside="onClickOutside"
         class="select-wrapper"
         :class="wrapperClasses"
-        :id="name"
         :name="name"
-        ref="wrapper"
         role="combobox"
         aria-haspopup="listbox"
         :aria-owns="`${name}-options`"
         :aria-expanded="visible ? 'true' : 'false'"
-        v-click-outside="onClickOutside"
         @keyup.esc="onEscape"
     >
         <i-input
-            v-model="inputValue"
             ref="trigger"
+            v-model="inputValue"
             autocomplete="off"
             aria-autocomplete="both"
             :aria-controls="`${name}-options`"
@@ -788,26 +788,26 @@ export default defineComponent({
                 <slot name="append" />
             </template>
         </i-input>
-    
+
         <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
             <div
+                v-show="visible"
+                :id="`${name}-options`"
+                ref="popup"
                 class="select"
                 :class="popupClasses"
-                :id="`${name}-options`"
                 role="listbox"
-                ref="popup"
                 :aria-hidden="visible ? 'false' : 'true'"
-                v-show="visible"
             >
-                <span data-popper-arrow v-if="arrow" />
-                <div class="select-header" v-if="$slots.header">
+                <span v-if="arrow" data-popper-arrow />
+                <div v-if="$slots.header" class="select-header">
                     <slot name="header" />
                 </div>
-                <div class="select-body" ref="body" @scroll="onScroll">
-                    <div class="select-no-results" v-if="!$slots.default && options.length === 0">
+                <div ref="body" class="select-body" @scroll="onScroll">
+                    <div v-if="!$slots.default && options.length === 0" class="select-no-results">
                         <slot name="no-results"> There are no results for your query. </slot>
                     </div>
-                    <div class="select-options" ref="options">
+                    <div ref="options" class="select-options">
                         <slot />
                         <i-select-option
                             v-for="option in options"
@@ -828,7 +828,7 @@ export default defineComponent({
                         </i-select-option>
                     </div>
                 </div>
-                <div class="select-footer" v-if="$slots.footer">
+                <div v-if="$slots.footer" class="select-footer">
                     <slot name="footer" />
                 </div>
             </div>

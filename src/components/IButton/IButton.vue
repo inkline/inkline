@@ -5,7 +5,7 @@ import {
     useComponentSize,
     useLinkable
 } from '@inkline/inkline/composables';
-import ILoader from '@inkline/inkline/components/ILoader/index.vue';
+import {ILoader} from '@inkline/inkline/components/ILoader';
 import {ButtonGroupKey} from "@inkline/inkline/components/IButtonGroup/mixin";
 import {FormKey} from "../IForm";
 import {FormGroupKey} from "../IFormGroup";

@@ -6,9 +6,9 @@ import {
     computedColorValue, computedSizeValue
 } from '@inkline/inkline/mixins';
 
-import IContainer from '@inkline/inkline/components/IContainer/index.vue';
-import IRow from '@inkline/inkline/components/IRow/index.vue';
-import IColumn from '@inkline/inkline/components/IColumn/index.vue';
+import {IContainer} from '@inkline/inkline/components/IContainer';
+import {IRow} from '@inkline/inkline/components/IRow';
+import {IColumn} from '@inkline/inkline/components/IColumn';
 import { Classes } from '@inkline/inkline/types';
 
 /**

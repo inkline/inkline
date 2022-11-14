@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import IContainer from '@inkline/inkline/components/IContainer/index.vue';
-import IRow from '@inkline/inkline/components/IRow/index.vue';
-import IColumn from '@inkline/inkline/components/IColumn/index.vue';
-import IHamburgerMenu from '@inkline/inkline/components/IHamburgerMenu/index.vue';
+import {IContainer} from '@inkline/inkline/components/IContainer';
+import {IRow} from '@inkline/inkline/components/IRow';
+import {IColumn} from '@inkline/inkline/components/IColumn';
+import {IHamburgerMenu} from '@inkline/inkline/components/IHamburgerMenu';
 import {
     CollapsibleMixin,
     computedPropValue,
@@ -140,7 +140,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <nav class="navbar" :class="classes" v-bind="$attrs" v-click-outside="onClickOutside">
+    <nav v-click-outside="onClickOutside" class="navbar" :class="classes" v-bind="$attrs">
         <i-container :fluid="fluid">
             <i-row>
                 <i-column>
@@ -148,7 +148,7 @@ export default defineComponent({
                         class="collapse-toggle"
                         :animation="menuAnimation"
                         :color="color"
-                        :modelValue="open"
+                        :model-value="open"
                         @update:modelValue="toggleOpen"
                     />
                     <slot />

@@ -1,4 +1,4 @@
-<script src="./script.ts" lang="ts">
+<script lang="ts">
 import { h, computed, defineComponent, onMounted, inject } from 'vue';
 import { computedSizeValue } from '@inkline/inkline/mixins';
 import { toCamelCase } from '@grozav/utils';
