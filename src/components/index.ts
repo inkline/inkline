@@ -1,23 +1,23 @@
-export { default as IAlert } from './IAlert/IAlert.vue';
+// Composition API
 
-export { default as IBadge } from './IBadge/IBadge.vue';
+export { IAlert } from './IAlert';
+export { IBadge } from './IBadge';
+export { IBreadcrumb } from './IBreadcrumb';
+export { IBreadcrumbItem } from './IBreadcrumbItem';
+export { IButton } from './IButton';
+export { IButtonGroup } from './IButtonGroup';
+export { ICard } from './ICard';
+export { ICheckbox } from './ICheckbox';
+export { ICheckboxGroup } from './ICheckboxGroup';
+export { IForm } from './IForm';
+export { IFormGroup } from './IFormGroup';
+export { IFormError } from './IFormError';
+export { IFormLabel } from './IFormLabel';
+export { IInput } from './IInput';
+export { INumberInput } from './INumberInput';
+export { ITextarea } from './ITextarea';
 
-export { default as IBreadcrumb } from './IBreadcrumb/IBreadcrumb.vue';
-export * from './IBreadcrumb/components';
-
-export { default as IButton } from './IButton/IButton.vue';
-
-export { default as IButtonGroup } from './IButtonGroup/IButtonGroup.vue';
-
-export { default as ICard } from './ICard/ICard.vue';
-
-export { default as ICheckbox } from './ICheckbox/ICheckbox.vue';
-export * from './ICheckbox/components';
-
-export { default as IForm } from './IForm/IForm.vue';
-export * from './IForm/components';
-
-export { default as IInput } from './IInput/IInput.vue';
+// Options API
 
 export { default as IColumn } from './IColumn/index.vue';
 export { default as IContainer } from './IContainer/index.vue';
@@ -43,7 +43,6 @@ export { default as INav } from './INav/index.vue';
 export * from './INav/components';
 export { default as INavbar } from './INavbar/index.vue';
 export * from './INavbar/components';
-export { default as INumberInput } from './INumberInput/index.vue';
 export { default as IPagination } from './IPagination/index.vue';
 export { default as IPopover } from './IPopover/index.vue';
 export { default as IProgress } from './IProgress/index.vue';
@@ -57,6 +56,5 @@ export { default as ISidebar } from './ISidebar/index.vue';
 export { default as ITable } from './ITable/index.vue';
 export { default as ITabs } from './ITabs/index.vue';
 export * from './ITabs/components';
-export { default as ITextarea } from './ITextarea/index.vue';
 export { default as IToggle } from './IToggle/index.vue';
 export { default as ITooltip } from './ITooltip/index.vue';

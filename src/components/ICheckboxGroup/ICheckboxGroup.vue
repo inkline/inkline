@@ -9,8 +9,8 @@ import {
 } from '@inkline/inkline/composables';
 import { CheckboxGroupKey } from './mixin';
 import { uid } from '@grozav/utils';
-import {FormKey} from "@inkline/inkline/components/IForm";
-import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
+import {FormKey} from "../IForm";
+import {FormGroupKey} from "../IFormGroup";
 
 const componentName = 'ICheckboxGroup';
 

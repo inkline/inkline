@@ -1,7 +1,7 @@
 import { clone, getValueByPath, setValueByPath, setValuesAlongPath } from '@grozav/utils';
 import { computed, inject, ref } from 'vue';
 import { FormKey } from '../components/IForm';
-import { FormGroupKey } from '../components/IForm/components/IFormGroup/mixin';
+import { FormGroupKey } from '../components/IFormGroup';
 import { validate } from '../validation';
 import { useInkline } from './inkline';
 

@@ -3,13 +3,12 @@ import {computed, inject} from 'vue';
 import {
     useComponentColor,
     useComponentSize,
-    useFormState,
     useLinkable
 } from '@inkline/inkline/composables';
 import ILoader from '@inkline/inkline/components/ILoader/index.vue';
 import {ButtonGroupKey} from "@inkline/inkline/components/IButtonGroup/mixin";
-import {FormKey} from "@inkline/inkline/components/IForm";
-import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
+import {FormKey} from "../IForm";
+import {FormGroupKey} from "../IFormGroup";
 
 const componentName = 'IButton';
 
@@ -147,9 +146,9 @@ const props = defineProps({
     }
 });
 
-const buttonGroup = inject(ButtonGroupKey);
-const form = inject(FormKey);
-const formGroup = inject(FormGroupKey);
+const buttonGroup = inject(ButtonGroupKey, null);
+const form = inject(FormKey, null);
+const formGroup = inject(FormGroupKey, null);
 
 const color = useComponentColor({ componentName, currentColor: props.color || buttonGroup?.color.value });
 const size = useComponentSize({ componentName, currentSize: props.size || buttonGroup?.size.value });

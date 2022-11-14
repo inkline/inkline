@@ -5,8 +5,18 @@ const schema = useForm({
     input: {
         validators: ['required']
     },
-    checkbox: {},
-    checkboxGroup: {}
+    numberInput: {
+        validators: ['required']
+    },
+    textarea: {
+        validators: ['required']
+    },
+    checkbox: {
+        validators: ['required']
+    },
+    checkboxGroup: {
+        validators: ['required']
+    }
 });
 </script>
 <template>
@@ -17,10 +27,16 @@ const schema = useForm({
             <i-form-error />
         </i-form-group>
 
-        <!-- <i-form-group>
+        <i-form-group>
+            <i-form-label>Number Input</i-form-label>
+            <i-number-input name="numberInput" placeholder="Type something.." />
+            <i-form-error />
+        </i-form-group>
+
+        <i-form-group>
             <i-form-label>Textarea</i-form-label>
-            <i-textarea v-model="textarea" placeholder="Write a comment.." />
-        </i-form-group> -->
+            <i-textarea name="textarea" placeholder="Write a comment.." />
+        </i-form-group>
 
         <!-- <i-form-group>
             <i-form-label>Select</i-form-label>

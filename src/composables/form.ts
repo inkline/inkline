@@ -1,4 +1,4 @@
-import { ref, Ref } from 'vue';
+import { ref } from 'vue';
 import { initialize } from '@inkline/inkline/validation';
 
 export interface FormFieldValidator {
