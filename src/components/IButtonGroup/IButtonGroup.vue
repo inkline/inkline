@@ -58,7 +58,7 @@ const props = defineProps({
     }
 });
 
-const buttonGroup = inject(ButtonGroupKey);
+const buttonGroup = inject(ButtonGroupKey, null);
 
 const color = useComponentColor({ componentName, currentColor: props.color || buttonGroup?.color.value });
 const size = useComponentSize({ componentName, currentSize: props.size || buttonGroup?.size.value });

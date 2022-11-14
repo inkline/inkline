@@ -1,12 +1,14 @@
 <script lang="ts" setup>
-import {ref, computed, useAttrs, useSlots, inject, PropType} from 'vue';
+import {computed, defineComponent, inject, PropType, ref, useAttrs, useSlots, watch} from 'vue';
+import {IButton} from '../IButton';
 import {filterKeys, uid} from '@grozav/utils';
-
+import { InputElementEvent } from '@inkline/inkline/types';
 import {useComponentColor, useComponentSize, useFormValidationError, useValidation} from "@inkline/inkline/composables";
 import {FormKey} from "../IForm";
 import {FormGroupKey} from "../IFormGroup";
 
-const componentName = 'IInput';
+
+const componentName = 'INumberInput';
 
 const props = defineProps({
     /**
@@ -40,7 +42,7 @@ const props = defineProps({
         default: false
     },
     /**
-     * The error state of the input, computed based on schema by default.
+     * The error state of the checkbox, computed based on schema by default.
      * @type Boolean | Array
      * @default ['touched', 'dirty', 'invalid']
      * @TODO use propDefaultValue to set default value
@@ -58,22 +60,12 @@ const props = defineProps({
      */
     id: {
         type: String,
-        default: undefined
-    },
-    /**
-     * The id of the input wrapper element
-     * @type String
-     * @default
-     * @name wrapperId
-     */
-    wrapperId: {
-        type: String,
-        default: undefined
+        default: ''
     },
     /**
      * Used to set the field value
      * @type String | Number
-     * @default ''
+     * @default
      * @name modelValue
      */
     modelValue: {
@@ -88,7 +80,7 @@ const props = defineProps({
      */
     name: {
         type: String,
-        default () {
+        default(): string {
             return uid('input');
         }
     },
@@ -133,14 +125,44 @@ const props = defineProps({
         default: 0
     },
     /**
-     * The type of the input
-     * @type String
-     * @default text
-     * @name type
+     * The minimum allowed input value
+     * @type Number
+     * @default -Infinity
+     * @name min
      */
-    type: {
-        type: String,
-        default: 'text'
+    min: {
+        type: [Number, String],
+        default: -Infinity
+    },
+    /**
+     * The maximum allowed input value
+     * @type Number
+     * @default +Infinity
+     * @name max
+     */
+    max: {
+        type: [Number, String],
+        default: Infinity
+    },
+    /**
+     * The precision of the input value, for floating point numbers
+     * @type Number
+     * @default 0
+     * @name precision
+     */
+    precision: {
+        type: Number,
+        default: 0
+    },
+    /**
+     * The increment step to increase or decrease the value by
+     * @type Number
+     * @default 1
+     * @name step
+     */
+    step: {
+        type: Number,
+        default: 1
     },
     /**
      * The aria-label of the clear button
@@ -219,34 +241,108 @@ const classes = computed(() => ({
     '-appended': Boolean(slots.append)
 }));
 
+watch(() => value.value, (value) => {
+    let newValue = (value || '')
+        .toString()
+        .replace(/^[^0-9-]/, '')
+        .replace(/^(-)[^0-9]/, '$1')
+        .replace(new RegExp(`^(-?[0-9]+)[^0-9${props.precision > 0 ? '.' : ''}]`), '$1');
+
+    if (props.precision > 0) {
+        newValue = newValue
+            .replace(/^(-?[0-9]+\.)[^0-9]/, '$1')
+            .replace(new RegExp(`^(-?[0-9]+\\.[0-9]{0,${props.precision}}).*`), '$1');
+    }
+
+    if (parseFloat(newValue) >= parseFloat(props.max as string))
+        newValue = props.max.toString();
+    if (parseFloat(newValue) <= parseFloat(props.min as string))
+        newValue = props.min.toString();
+
+    schemaOnInput(props.name, newValue);
+    emit('update:modelValue', newValue);
+});
+
 function onBlur (event: Event) {
     schemaOnBlur(props.name, event);
+}
+
+function updateModelValue(value: string) {
+    schemaOnInput(props.name, value);
+    emit('update:modelValue', value);
 }
 
 function onInput (event: Event) {
     const target = event.target as HTMLInputElement;
 
-    schemaOnInput(props.name, target.value);
-    emit('update:modelValue', target.value);
+    updateModelValue(target.value);
 }
 
 function onClear (event: Event) {
     emit('clear', event);
 
-    schemaOnInput(props.name, '');
-    emit('update:modelValue', '');
+    updateModelValue('');
+}
+
+function decrease() {
+    if (disabled.value || readonly.value) {
+        return;
+    }
+
+    updateModelValue(formatPrecision((Number(value.value) - props.step).toString()));
+}
+
+function increase() {
+    if (disabled.value || readonly.value) {
+        return;
+    }
+
+    updateModelValue(formatPrecision((Number(value.value) + props.step).toString()));
+}
+
+function formatPrecision(value: string) {
+    const parts = value.split('.');
+    let decimals = parts[1] || '';
+
+    for (let i = decimals.length; i < props.precision; i += 1) {
+        decimals += '0';
+    }
+
+    return props.precision > 0 ? `${parts[0]}.${decimals}` : parts[0];
+}
+
+function onBlurFormatPrecision(event: InputElementEvent) {
+    if (disabled.value || readonly.value) {
+        return;
+    }
+
+    updateModelValue(formatPrecision(Number(value.value).toString()));
+    onBlur(event);
 }
 </script>
 
 <template>
-    <div :id="id && `${id}-wrapper`" class="input-wrapper" :class="classes" v-bind="wrapperAttrs">
-        <div v-if="$slots.prepend" class="input-prepend">
-            <!--** Slot for the input prepend content -->
+    <div
+        :id="id && `${id}-wrapper`"
+        class="input-wrapper -prepended -appended"
+        :class="classes"
+        v-bind="wrapperAttrs"
+    >
+        <div class="input-prepend">
             <slot name="prepend" />
+            <i-button
+                type="button"
+                :color="color"
+                :size="size"
+                :disabled="disabled"
+                class="input-button-decrease"
+                @click="decrease"
+            >
+                -
+            </i-button>
         </div>
         <div class="input">
             <span v-if="$slots.prefix" class="input-prefix">
-                <!--** Slot for the input prefix content -->
                 <slot name="prefix" />
             </span>
             <input
@@ -255,7 +351,7 @@ function onClear (event: Event) {
                 ref="input"
                 :value="value"
                 :name="name"
-                :type="type"
+                type="text"
                 :tabindex="tabIndex"
                 :disabled="disabled"
                 :aria-disabled="disabled ? 'true' : false"
@@ -265,7 +361,6 @@ function onClear (event: Event) {
                 @blur="onBlur"
             />
             <span v-if="$slots.suffix || props.clearable && clearable" class="input-suffix">
-                <!--** Slot for the clearable button -->
                 <slot name="clearable" :clear="onClear">
                     <i
                         v-if="props.clearable"
@@ -277,12 +372,20 @@ function onClear (event: Event) {
                         @click="onClear"
                     />
                 </slot>
-                <!--** Slot for the input suffix content -->
                 <slot name="suffix" />
             </span>
         </div>
-        <div v-if="$slots.append" class="input-append">
-            <!--** Slot for the input append content -->
+        <div class="input-append">
+            <i-button
+                type="button"
+                :color="color"
+                :size="size"
+                :disabled="disabled"
+                class="input-button-increase"
+                @click="increase"
+            >
+                +
+            </i-button>
             <slot name="append" />
         </div>
     </div>

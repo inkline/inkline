@@ -6,7 +6,7 @@ import {useComponentColor, useComponentSize, useFormValidationError, useValidati
 import {FormKey} from "../IForm";
 import {FormGroupKey} from "../IFormGroup";
 
-const componentName = 'IInput';
+const componentName = 'ITextarea';
 
 const props = defineProps({
     /**
@@ -241,31 +241,29 @@ function onClear (event: Event) {
 <template>
     <div :id="id && `${id}-wrapper`" class="input-wrapper" :class="classes" v-bind="wrapperAttrs">
         <div v-if="$slots.prepend" class="input-prepend">
-            <!--** Slot for the input prepend content -->
             <slot name="prepend" />
         </div>
         <div class="input">
             <span v-if="$slots.prefix" class="input-prefix">
-                <!--** Slot for the input prefix content -->
                 <slot name="prefix" />
             </span>
-            <input
+            <textarea
                 v-bind="inputAttrs"
                 :id="id"
                 ref="input"
                 :value="value"
+                role="textbox"
                 :name="name"
-                :type="type"
                 :tabindex="tabIndex"
                 :disabled="disabled"
                 :aria-disabled="disabled ? 'true' : false"
                 :readonly="readonly || plaintext"
                 :aria-readonly="(readonly || plaintext) ? 'true' : false"
+                aria-multiline="true"
                 @input="onInput"
                 @blur="onBlur"
             />
             <span v-if="$slots.suffix || props.clearable && clearable" class="input-suffix">
-                <!--** Slot for the clearable button -->
                 <slot name="clearable" :clear="onClear">
                     <i
                         v-if="props.clearable"
@@ -277,12 +275,10 @@ function onClear (event: Event) {
                         @click="onClear"
                     />
                 </slot>
-                <!--** Slot for the input suffix content -->
                 <slot name="suffix" />
             </span>
         </div>
         <div v-if="$slots.append" class="input-append">
-            <!--** Slot for the input append content -->
             <slot name="append" />
         </div>
     </div>

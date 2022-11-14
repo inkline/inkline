@@ -5,12 +5,11 @@ import {
     useComponentColor,
     useComponentSize,
     useValidation,
-    useFormState,
     useFormValidationError
 } from '@inkline/inkline/composables';
-import { CheckboxGroupKey } from './components/ICheckboxGroup/mixin';
-import {FormKey} from "@inkline/inkline/components/IForm";
-import {FormGroupKey} from "@inkline/inkline/components/IForm/components/IFormGroup/mixin";
+import { CheckboxGroupKey } from '../ICheckboxGroup';
+import {FormKey} from "../IForm";
+import {FormGroupKey} from "../IFormGroup";
 
 const componentName = 'ICheckbox';
 

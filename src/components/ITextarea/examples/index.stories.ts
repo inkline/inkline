@@ -1,4 +1,4 @@
-import ITextarea from '../index.vue';
+import { ITextarea } from '../index';
 import {
     ITextareaBasicExample,
     ITextareaColorVariantsExample,
