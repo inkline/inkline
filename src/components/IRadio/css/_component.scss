@@ -265,7 +265,7 @@
                     var(--radio--box-shadow-spread-radius, var(--box-shadow-spread-radius))
                     var(--radio--box-shadow-color, var(--box-shadow-color))
             );
-            margin-right: var(--radio--margin-right, var(--margin-right));
+            margin-right: var(--radio--margin-right, var(--margin-right-1-2));
             transition-property: var(--radio--transition-property, background-color, border-color);
             transition-duration: var(--radio--transition-duration, var(--transition-duration));
             transition-timing-function: var(

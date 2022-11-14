@@ -1,8 +1,9 @@
-<script lang="ts">
-import { defineComponent, PropType } from 'vue';
+<script lang="ts" setup>
+import {computed, inject, PropType, ref} from 'vue';
 import { uid } from '@grozav/utils';
-import { computedColorValue, computedSizeValue, FormComponentMixin } from '@inkline/inkline/mixins';
-import { Classes, InputElementEvent } from '@inkline/inkline/types';
+import {FormKey} from "@inkline/inkline/components/IForm";
+import {FormGroupKey} from "@inkline/inkline/components/IFormGroup";
+import {useComponentColor, useComponentSize, useFormValidationError, useValidation} from "@inkline/inkline/composables";
 
 /**
  * Slot for default toggle label
@@ -12,206 +13,216 @@ import { Classes, InputElementEvent } from '@inkline/inkline/types';
 
 const componentName = 'IToggle';
 
-export default defineComponent({
-    name: componentName,
-    mixins: [FormComponentMixin],
-    inject: {
-        formGroup: {
-            default: (): any => ({})
-        },
-        form: {
-            default: (): any => ({})
+
+const props = defineProps({
+    /**
+     * The color variant of the checkbox
+     * @type light | dark
+     * @default light
+     * @name color
+     */
+    color: {
+        type: String,
+        default: undefined
+    },
+    /**
+     * The disabled state of the checkbox
+     * @type Boolean
+     * @default false
+     * @name disabled
+     */
+    disabled: {
+        type: Boolean,
+        default: false
+    },
+    /**
+     * The error state of the checkbox, computed based on schema by default.
+     * @type Boolean | Array
+     * @default ['touched', 'dirty', 'invalid']
+     * @TODO use propDefaultValue to set default value
+     * @name error
+     */
+    error: {
+        type: [Array, Boolean] as PropType<boolean | string[]>,
+        default: () => ['touched', 'dirty', 'invalid']
+    },
+    /**
+     * The indeterminate state of the checkbox
+     * @type Boolean
+     * @default false
+     * @name indeterminate
+     */
+    indeterminate: {
+        type: Boolean,
+        default: false
+    },
+    /**
+     * Used to set the checkbox value when used inside a checkbox group
+     * @default false
+     * @name value
+     */
+    value: {
+        default: undefined
+    },
+    /**
+     * Used to set the checkbox value when used by itself
+     * @default false
+     * @name modelValue
+     */
+    modelValue: {
+        default: false
+    },
+    /**
+     * The unique identifier of the checkbox
+     * @type String
+     * @default uid()
+     * @name name
+     */
+    name: {
+        type: String,
+        default() {
+            return uid('checkbox');
         }
     },
-    props: {
-        /**
-         * The color variant of the toggle
-         * @type light | dark
-         * @default light
-         * @name color
-         */
-        color: {
-            type: String,
-            default: ''
-        },
-        /**
-         * The disabled state of the toggle
-         * @type Boolean
-         * @default false
-         * @name disabled
-         */
-        disabled: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * The error state of the checkbox, computed based on schema by default.
-         * @type Boolean | Array
-         * @default ['touched', 'dirty', 'invalid']
-         * @TODO use propDefaultValue to set default value
-         * @name error
-         */
-        error: {
-            type: [Array, Boolean] as PropType<boolean | string[]>,
-            default: () => ['touched', 'dirty', 'invalid']
-        },
-        /**
-         * The indeterminate state of the toggle
-         * @type Boolean
-         * @default false
-         * @name indeterminate
-         */
-        indeterminate: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * Used to set the toggle value when used inside a toggle group
-         * @default false
-         * @name value
-         */
-        value: {
-            default: false
-        },
-        /**
-         * Used to set the toggle value when used by itself
-         * @default false
-         * @name modelValue
-         */
-        modelValue: {
-            default: false
-        },
-        /**
-         * The unique identifier of the toggle
-         * @type String
-         * @default uid()
-         * @name name
-         */
-        name: {
-            type: [String, Number],
-            default(): string {
-                return uid('toggle');
-            }
-        },
-        /**
-         * The readonly state of the toggle
-         * @type Boolean
-         * @default false
-         * @name readonly
-         */
-        readonly: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * Render the toggle as rounded
-         * @type Boolean
-         * @default false
-         * @name readonly
-         */
-        rounded: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * The size variant of the toggle
-         * @type sm | md | lg
-         * @default md
-         * @name size
-         */
-        size: {
-            type: String,
-            default: ''
-        },
-        /**
-         * The tabindex of the toggle
-         * @type Number | String
-         * @default 0
-         * @name tabindex
-         */
-        tabindex: {
-            type: [Number, String],
-            default: 0
-        }
+    /**
+     * Displays the native browser checkbox input indicator
+     * @type Boolean
+     * @default false
+     * @name native
+     */
+    native: {
+        type: Boolean,
+        default: false
     },
-    emits: [
-        /**
-         * Event emitted for setting the modelValue
-         * @event update:modelValue
-         */
-        'update:modelValue'
-    ],
-    computed: {
-        computedColor(): string | undefined {
-            return computedColorValue(componentName, this.color);
-        },
-        computedSize(): string | undefined {
-            return computedSizeValue(componentName, this.size);
-        },
-        classes(): Classes {
-            return {
-                [`-${this.computedColor}`]: Boolean(this.computedColor),
-                [`-${this.computedSize}`]: Boolean(this.computedSize),
-                '-disabled': this.isDisabled,
-                '-readonly': this.isReadonly,
-                '-rounded': this.rounded
-                // '-error': hasError.value,
-            };
-        },
-        checked(): boolean {
-            if (this.schema) {
-                return this.schema.value;
-            }
-
-            return this.modelValue;
-        },
-        tabIndex(): number | string {
-            return this.isDisabled ? -1 : this.tabindex;
-        }
+    /**
+     * The readonly state of the checkbox
+     * @type Boolean
+     * @default false
+     * @name readonly
+     */
+    readonly: {
+        type: Boolean,
+        default: false
     },
-    methods: {
-        clickInputRef() {
-            if (this.isReadonly) {
-                return;
-            }
-
-            (this as any).$refs.input.click();
-        },
-        onChange(event: InputElementEvent) {
-            this.parent.onInput?.(this.name, event.target.checked);
-
-            this.$emit('update:modelValue', event.target.checked);
-        },
-        onBlur(event: InputElementEvent) {
-            this.parent.onBlur?.(this.name, event);
-        }
+    /**
+     * The size variant of the checkbox
+     * @type sm | md | lg
+     * @default md
+     * @name size
+     *
+     */
+    size: {
+        type: String,
+        default: undefined
+    },
+    /**
+     * The tabindex of the checkbox
+     * @type Number | String
+     * @default 0
+     * @name tabindex
+     */
+    tabindex: {
+        type: [Number, String],
+        default: 0
     }
 });
+
+const emit = defineEmits([
+    /**
+     * Event emitted for setting the modelValue
+     * @event update:modelValue
+     */
+    'update:modelValue'
+]);
+
+const inputRef = ref<HTMLInputElement | null>(null);
+
+const form = inject(FormKey);
+const formGroup = inject(FormGroupKey);
+
+const color = useComponentColor({ componentName, currentColor: props.color || formGroup?.color.value || form?.color.value });
+const size = useComponentSize({ componentName, currentSize: props.size || formGroup?.size.value || form?.size.value });
+
+const disabled = computed(() => props.disabled || formGroup?.disabled.value || form?.disabled.value);
+const readonly = computed(() => props.disabled || formGroup?.readonly.value || form?.readonly.value);
+
+const { schema, onInput: schemaOnInput, onBlur: schemaOnBlur } = useValidation({
+    name: props.name
+});
+const { hasError } = useFormValidationError({
+    schema,
+    error: props.error
+});
+
+const classes = computed(() => ({
+    [`-${color.value}`]: true,
+    [`-${size.value}`]: true,
+    '-disabled': disabled.value,
+    '-readonly': readonly.value,
+    '-native': props.native,
+    '-error': hasError.value,
+}));
+
+const checked = computed(() => {
+    if (schema.value) {
+        return Boolean(schema.value.value);
+    }
+
+    return props.modelValue;
+});
+
+const tabindex = computed(() => {
+    return disabled.value ? -1 : props.tabindex;
+});
+
+function onChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+
+    schemaOnInput(props.name, target.checked);
+    emit('update:modelValue', target.checked);
+}
+
+function labelOnBlur(event: FocusEvent) {
+    schemaOnBlur(props.name, event);
+}
+
+function labelOnClick(event: MouseEvent) {
+    if (readonly.value) {
+        return;
+    }
+
+    inputRef.value?.click();
+    labelOnBlur(event);
+}
 </script>
 
 <template>
-    <div class="toggle" :class="classes">
+    <div
+        class="toggle"
+        :class="classes"
+        :aria-checked="checked"
+        :aria-disabled="disabled"
+        :aria-readonly="readonly"
+        role="checkbox"
+    >
         <input
-            ref="input"
+            ref="inputRef"
             type="checkbox"
             :checked="checked"
-            :disabled="isDisabled"
-            :readonly="isReadonly"
+            :disabled="disabled"
+            :readonly="readonly"
             :aria-checked="checked"
-            :aria-disabled="isDisabled"
-            :aria-readonly="isReadonly"
+            :aria-disabled="disabled"
+            :aria-readonly="readonly"
             :name="name"
             @change="onChange"
         />
         <label
             class="toggle-label"
-            :aria-checked="checked"
-            :aria-disabled="isDisabled"
-            :aria-readonly="isReadonly"
-            :tabindex="tabIndex"
-            @click="clickInputRef"
-            @blur="onBlur"
-            @keydown.space.stop.prevent="clickInputRef"
+            :tabindex="tabindex"
+            @click="labelOnClick"
+            @blur="labelOnBlur"
+            @keydown.space.stop.prevent="labelOnClick"
         >
             <slot />
         </label>

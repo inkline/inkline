@@ -165,9 +165,9 @@ const classes = computed(() => ({
 
 const checked = computed(() => {
     if (schema.value) {
-        return schema.value.value;
+        return Boolean(schema.value.value);
     } else if (checkboxGroup?.value) {
-        return checkboxGroup.value.includes(props.value);
+        return checkboxGroup.value.value.includes(props.value);
     }
 
     return props.modelValue;
@@ -212,6 +212,8 @@ function labelOnClick(event: MouseEvent) {
         class="checkbox"
         :class="classes"
         :aria-checked="checked ? 'true' : 'false'"
+        :aria-disabled="disabled ? 'true' : null"
+        :aria-readonly="readonly ? 'true' : null"
         role="checkbox"
     >
         <input
@@ -231,7 +233,6 @@ function labelOnClick(event: MouseEvent) {
         />
         <label
             class="checkbox-label"
-            :aria-disabled="disabled ? 'true' : null"
             @blur="labelOnBlur"
             @click="labelOnClick"
             @keydown.space.stop.prevent="labelOnClick"

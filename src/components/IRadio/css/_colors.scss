@@ -4,34 +4,34 @@
 
 .radio {
     &.-light {
-        --radio--background: var(--radio--white--background, var(--color-white));
+        --radio--background: var(--radio--light--background, var(--color-white));
         --radio--checked--background: var(
-            --radio--primary--checked--background,
+            --radio--light--checked--background,
             var(--color-primary)
         );
         --radio--disabled--background: var(
             --radio--light--disabled--background,
-            var(--color-light-250)
+            var(--color-light-200)
         );
-        --radio--checked--background-disabled: var(
-            --radio--primary--checked--background-disabled,
-            var(--color-primary-250)
+        --radio--checked--disabled--background: var(
+            --radio--light--checked--disabled--background,
+            var(--color-primary-200)
         );
-        --radio--border-color: var(--radio--light--border-color, var(--color-light-550));
+        --radio--border-color: var(--radio--light--border-color, var(--color-light-shade-50));
         --radio--checked--border-color: var(
-            --radio--primary--checked--border-color,
-            var(--color-primary-550)
+            --radio--light--checked--border-color,
+            var(--color-primary-shade-50)
         );
         --radio--disabled--border-color: var(
             --radio--light--disabled--border-color,
             var(--color-light)
         );
-        --radio--checked--border-color-disabled: var(
-            --radio--primary--checked--border-color-disabled,
+        --radio--checked--disabled--border-color: var(
+            --radio--light--checked--disabled--border-color,
             var(--color-primary-300)
         );
         --radio--color: var(--radio--white--color, var(--color-white));
-        --radio--disabled--color: var(--radio--light--disabled--color, var(--color-light-250));
+        --radio--disabled--color: var(--radio--light--disabled--color, var(--color-light-200));
         --radio--label--color: var(--radio--light--label--color, var(--contrast-text--color-light));
         --radio--disabled--label--color: var(
             --radio--light--disabled--label--color,
@@ -41,36 +41,33 @@
 
     &.-dark {
         --radio--background: var(--radio--dark--background, var(--color-dark));
-        --radio--checked--background: var(
-            --radio--primary--checked--background,
-            var(--color-primary)
-        );
+        --radio--checked--background: var(--radio--dark--checked--background, var(--color-primary));
         --radio--disabled--background: var(
             --radio--dark--disabled--background,
-            var(--color-dark-250)
+            var(--color-dark-200)
         );
-        --radio--checked--background-disabled: var(
-            --radio--primary--checked--background-disabled,
-            var(--color-primary-750)
+        --radio--checked--disabled--background: var(
+            --radio--dark--checked--disabled--background,
+            var(--color-primary-700)
         );
-        --radio--border-color: var(--radio--dark--border-color, var(--color-dark));
+        --radio--border-color: var(--radio--dark--border-color, var(--color-dark-tint-50));
         --radio--checked--border-color: var(
-            --radio--primary--checked--border-color,
-            var(--color-primary-550)
+            --radio--dark--checked--border-color,
+            var(--color-primary-lighten-50)
         );
         --radio--disabled--border-color: var(
             --radio--dark--disabled--border-color,
             var(--color-dark)
         );
-        --radio--checked--border-color-disabled: var(
-            --radio--primary--checked--border-color-disabled,
+        --radio--checked--disabled--border-color: var(
+            --radio--dark--checked--disabled--border-color,
             var(--color-primary-700)
         );
         --radio--color: var(--radio--white--color, var(--color-white));
-        --radio--disabled--color: var(--radio--dark--disabled--color, var(--color-dark-250));
+        --radio--disabled--color: var(--radio--dark--disabled--color, var(--color-dark-200));
         --radio--label--color: var(--radio--dark--label--color, var(--contrast-text--color-dark));
         --radio--disabled--label--color: var(
-            --radio--dark--label--color--disabled,
+            --radio--dark--disabled--label--color,
             var(--color-dark-300)
         );
     }

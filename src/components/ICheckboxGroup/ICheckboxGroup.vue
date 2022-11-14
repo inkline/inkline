@@ -134,6 +134,14 @@ const { hasError } = useFormValidationError({
     error: props.error
 });
 
+const value = computed(() => {
+    if (schema.value) {
+        return schema.value.value;
+    }
+
+    return props.modelValue;
+});
+
 const classes = computed(() => ({
     [`-${color.value}`]: true,
     [`-${size.value}`]: true,
@@ -145,8 +153,6 @@ const classes = computed(() => ({
 
 function onChange(value: string) {
     let modelValue: any[] = [];
-
-    console.log(schema);
 
     if (schema.value) {
         modelValue = [...schema.value.value];
@@ -172,7 +178,7 @@ function onBlur(event: FocusEvent) {
 
 provide(CheckboxGroupKey, {
     name: props.name,
-    value: schema.value?.value || props.modelValue,
+    value,
     disabled,
     readonly,
     color,

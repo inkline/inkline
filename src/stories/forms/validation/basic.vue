@@ -16,6 +16,12 @@ const schema = useForm({
     },
     checkboxGroup: {
         validators: ['required']
+    },
+    radioGroup: {
+        validators: ['required']
+    },
+    toggle: {
+        validators: ['required']
     }
 });
 </script>
@@ -43,25 +49,35 @@ const schema = useForm({
             <i-select v-model="select" :options="options" placeholder="Choose an option" />
         </i-form-group> -->
 
-        <!-- <i-form-group>
+        <i-form-group>
+            <i-form-label>Checkbox</i-form-label>
+            <i-checkbox name="checkbox">Apple</i-checkbox>
+        </i-form-group>
+
+        <i-form-group>
             <i-form-label>Checkbox Group</i-form-label>
-            <i-checkbox-group v-model="checkboxGroup">
+            <i-checkbox-group name="checkboxGroup">
                 <i-checkbox value="apple">Apple</i-checkbox>
                 <i-checkbox value="banana">Banana</i-checkbox>
-
                 <i-checkbox value="strawberry">Strawberry</i-checkbox>
                 <i-checkbox value="mango">Mango</i-checkbox>
             </i-checkbox-group>
-        </i-form-group> -->
+        </i-form-group>
 
-        <!-- <i-form-group>
+        <i-form-group>
             <i-form-label>Radio Group</i-form-label>
-            <i-radio-group v-model="radioGroup">
+            <i-radio-group name="radioGroup">
                 <i-radio value="coconut">Coconut</i-radio>
                 <i-radio value="passionfruit">Passion fruit</i-radio>
                 <i-radio value="apricot">Apricot</i-radio>
             </i-radio-group>
-        </i-form-group> -->
+        </i-form-group>
+
+
+        <i-form-group>
+            <i-form-label>Toggle</i-form-label>
+            <i-toggle name="toggle" />
+        </i-form-group>
 
         <!-- <i-form-group>
             <i-form-label>Toggle</i-form-label>

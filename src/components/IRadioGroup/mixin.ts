@@ -1,8 +1,8 @@
 import type { InjectionKey, Ref } from 'vue';
 
-export interface CheckboxGroupInjection {
+export interface RadioGroupInjection {
     name: string;
-    value: Ref<any[]>;
+    value: Ref;
     size: Ref<string>;
     color: Ref<string>;
     disabled: Ref<boolean>;
@@ -11,4 +11,4 @@ export interface CheckboxGroupInjection {
     onBlur: (event: FocusEvent) => void;
 }
 
-export const CheckboxGroupKey = Symbol('CheckboxGroup') as InjectionKey<CheckboxGroupInjection>;
+export const RadioGroupKey = Symbol('RadioGroup') as InjectionKey<RadioGroupInjection>;
