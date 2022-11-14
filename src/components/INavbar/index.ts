@@ -1,0 +1,1 @@
+export { default as INavbar } from './INavbar.vue';

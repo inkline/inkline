@@ -1,4 +1,4 @@
-import INavbar from '../index.vue';
+import { INavbar } from '../index';
 import {
     INavbarBasicExample,
     INavbarCollapseBreakpointExample,

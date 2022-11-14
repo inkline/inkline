@@ -1,4 +1,4 @@
-import ISelect from '../index.vue';
+import { ISelect } from '../index';
 import {
     ISelectAdvancedExample,
     ISelectAutocompleteExample,

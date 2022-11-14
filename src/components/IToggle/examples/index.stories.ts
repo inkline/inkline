@@ -1,4 +1,4 @@
-import IToggle from '../index.vue';
+import { IToggle } from '../index';
 import {
     IToggleBasicExample,
     IToggleColorVariantsExample,

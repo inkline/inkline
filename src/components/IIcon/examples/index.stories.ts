@@ -1,4 +1,4 @@
-import IIcon from '../index.vue';
+import { IIcon } from '../index';
 import {
     IIconBasicExample,
     IIconIconsExample,

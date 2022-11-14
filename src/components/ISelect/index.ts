@@ -1,0 +1,1 @@
+export { default as ISelect } from './ISelect.vue';

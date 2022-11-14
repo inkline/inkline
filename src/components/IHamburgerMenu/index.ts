@@ -1,0 +1,1 @@
+export { default as IHamburgerMenu } from './IHamburgerMenu.vue';

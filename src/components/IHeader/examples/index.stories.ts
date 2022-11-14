@@ -1,4 +1,4 @@
-import IHeader from '../index.vue';
+import { IHeader } from '../index';
 import {
     IHeaderBasicExample,
     IHeaderColorVariantsExample,

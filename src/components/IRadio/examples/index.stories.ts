@@ -1,4 +1,4 @@
-import IRadio from '../index.vue';
+import { IRadio } from '../index';
 import {
     IRadioBasicExample,
     IRadioColorVariantsExample,

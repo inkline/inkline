@@ -1,4 +1,4 @@
-import IHamburgerMenu from '../index.vue';
+import { IHamburgerMenu } from '../index';
 import {
     IHamburgerMenuAnimationExample,
     IHamburgerMenuBasicExample,

@@ -1,4 +1,4 @@
-import ILayout from '../index.vue';
+import { ILayout } from '../index';
 import {
     ILayoutBasicExample,
     ILayoutContentHeaderExample,

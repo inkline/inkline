@@ -1,4 +1,4 @@
-import ISidebar from '../index.vue';
+import { ISidebar } from '../index';
 import {
     ISidebarBasicExample,
     ISidebarCollapseBreakpointExample,

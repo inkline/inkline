@@ -1,0 +1,1 @@
+export { default as IPopover } from './IPopover.vue';

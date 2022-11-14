@@ -1,0 +1,1 @@
+export { default as IMark } from './IMark.vue';
