@@ -1,0 +1,1 @@
+export { default as IRadioGroup } from './IRadioGroup.vue';

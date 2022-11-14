@@ -1,4 +1,4 @@
-import IContainer from '../index.vue';
+import { IContainer } from '../index';
 import {
     IContainerBasicExample,
     IContainerFluidExample

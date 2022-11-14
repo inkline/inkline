@@ -1,4 +1,4 @@
-import IListGroup from '../index.vue';
+import { IListGroup } from '../index';
 import {
     IListGroupBasicExample,
     IListGroupBorderlessExample,

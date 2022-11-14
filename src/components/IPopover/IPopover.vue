@@ -1,0 +1,237 @@
+<script lang="ts">
+import { defineComponent } from 'vue';
+import {
+    PopupMixin,
+    PopupControlsMixin,
+    sizePropValidator,
+    computedColorValue,
+    computedPropValue, computedSizeValue
+} from '@inkline/inkline/mixins';
+import ClickOutside from '@inkline/inkline/directives/click-outside';
+import { Classes } from '@inkline/inkline/types';
+import { uid } from '@grozav/utils';
+
+/**
+ * Slot for tooltip trigger
+ * @name default
+ * @kind slot
+ */
+
+/**
+ * Slot for tooltip header content
+ * @name header
+ * @kind slot
+ */
+
+/**
+ * Slot for tooltip body content
+ * @name body
+ * @kind slot
+ */
+
+/**
+ * Slot for tooltip footer content
+ * @name footer
+ * @kind slot
+ */
+
+const componentName = 'IPopover';
+
+export default defineComponent({
+    name: componentName,
+    directives: {
+        ClickOutside
+    },
+    mixins: [PopupMixin, PopupControlsMixin],
+    props: {
+        /**
+         * The color variant of the popover
+         * @type light | dark
+         * @default light
+         * @name color
+         */
+        color: {
+            type: String,
+            default: ''
+        },
+        /**
+         * The disabled state of the popover
+         * @type Boolean
+         * @default false
+         * @name disabled
+         */
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * Used to manually control the visibility of the popover
+         * @type Boolean
+         * @default false
+         * @name modelValue
+         */
+        modelValue: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * The identifier of the popover
+         * @type String
+         * @default uid()
+         * @name name
+         */
+        name: {
+            type: String,
+            default (): string {
+                return uid('popover');
+            }
+        },
+        /**
+         * Displays an arrow on the popover pointing to the trigger element
+         * @type Boolean
+         * @default true
+         * @name arrow
+         */
+        arrow: {
+            type: Boolean,
+            default: true
+        },
+        /**
+         * The placement of the popover
+         * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
+         * @default false
+         * @name placement
+         */
+        placement: {
+            type: String,
+            default: 'top'
+        },
+        /**
+         * The events used to trigger the popover
+         * @type hover | focus | click | manual
+         * @default [click]
+         * @name trigger
+         */
+        trigger: {
+            type: [String, Array],
+            default: (): string[] => ['click']
+        },
+        /**
+         * The offset of the popover relative to the trigger element
+         * @type Number
+         * @default 6
+         * @name offset
+         */
+        offset: {
+            type: Number,
+            default: 6
+        },
+        /**
+         * Determines whether hover state should be transferred from trigger to popup
+         * @type Boolean
+         * @default false
+         * @name interactable
+         */
+        interactable: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * Used to override the popper.js options used for creating the popover
+         * @type Object
+         * @default {}
+         * @name popperOptions
+         */
+        popperOptions: {
+            type: Object,
+            default: (): any => ({})
+        },
+        /**
+         * The size variant of the popover
+         * @type sm | md | lg
+         * @default md
+         * @name size
+         */
+        size: {
+            type: String,
+            default: ''
+        }
+    },
+    emits: [
+        /**
+         * Event emitted for setting the modelValue
+         * @event update:modelValue
+         */
+        'update:modelValue'
+    ],
+    computed: {
+        computedColor (): string | undefined {
+            return computedColorValue(componentName, this.color);
+        },
+        computedSize (): string | undefined {
+            return computedSizeValue(componentName, this.size);
+        },
+        classes (): Classes {
+            return {
+                [`-${this.computedColor}`]: Boolean(this.computedColor),
+                [`-${this.computedSize}`]: Boolean(this.computedSize)
+            };
+        }
+    },
+    methods: {
+        onEscape () {
+            this.visible = false;
+            this.$emit('update:modelValue', false);
+        },
+        handleClickOutside () {
+            this.visible = false;
+            this.$emit('update:modelValue', false);
+            this.onClickOutside();
+        }
+    }
+});
+</script>
+
+<template>
+    <div
+        class="popover-wrapper"
+        ref="wrapper"
+        :class="classes"
+        :id="name"
+        v-click-outside="onClickOutside"
+        @keyup.esc="onEscape"
+    >
+        <div
+            class="popover-trigger"
+            ref="trigger"
+            :aria-describedby="`${name}-popup`"
+            :aria-disabled="disabled ? 'true' : 'false'"
+            :aria-expanded="visible ? 'true' : 'false'"
+        >
+            <slot />
+        </div>
+    
+        <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
+            <div
+                class="popover"
+                ref="popup"
+                role="tooltip"
+                aria-live="polite"
+                :id="`${name}-popup`"
+                :aria-hidden="visible ? 'false' : 'true'"
+                v-show="visible"
+            >
+                <span data-popper-arrow v-if="arrow" />
+                <div class="popover-header" v-if="$slots.header">
+                    <slot name="header" />
+                </div>
+                <div class="popover-body" v-if="$slots.body">
+                    <slot name="body" />
+                </div>
+                <div class="popover-footer" v-if="$slots.footer">
+                    <slot name="footer" />
+                </div>
+            </div>
+        </transition>
+    </div>
+</template>

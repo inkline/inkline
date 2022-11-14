@@ -1,0 +1,1 @@
+export { default as ITabTitle } from './ITabTitle.vue';

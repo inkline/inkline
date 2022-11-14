@@ -1,4 +1,4 @@
-import ITable from '../index.vue';
+import { ITable } from '../index';
 import {
     ITableBasicExample,
     ITableBorderedExample,

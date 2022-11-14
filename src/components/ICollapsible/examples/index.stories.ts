@@ -1,4 +1,4 @@
-import ICollapsible from '../index.vue';
+import { ICollapsible } from '../index';
 import {
     ICollapsibleAccordionExample,
     ICollapsibleBasicExample,

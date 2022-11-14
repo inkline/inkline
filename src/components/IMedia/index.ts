@@ -1,0 +1,1 @@
+export { default as IMedia } from './IMedia.vue';

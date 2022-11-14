@@ -1,0 +1,1 @@
+export { default as ITab } from './ITab.vue';

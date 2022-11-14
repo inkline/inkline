@@ -1,4 +1,4 @@
-import IProgress from '../index.vue';
+import { IProgress } from '../index';
 import {
     IProgressBasicExample,
     IProgressBarColorVariantsExample,

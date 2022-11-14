@@ -1,4 +1,4 @@
-import IModal from '../index.vue';
+import { IModal } from '../index';
 import {
     IModalBasicExample,
     IModalColorVariantsExample,

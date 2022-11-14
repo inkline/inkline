@@ -1,0 +1,1 @@
+export { default as ICollapsible } from './ICollapsible.vue';

@@ -1,0 +1,1 @@
+export { default as ILayout } from './ILayout.vue';

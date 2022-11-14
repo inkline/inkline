@@ -1,0 +1,1 @@
+export { default as INavbarCollapsible } from './INavbarCollapsible.vue';

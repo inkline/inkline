@@ -1,4 +1,4 @@
-import ITabs from '../index.vue';
+import { ITabs } from '../index';
 import {
     ITabsBasicExample,
     ITabsColorVariantsExample,

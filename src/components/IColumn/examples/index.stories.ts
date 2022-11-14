@@ -1,4 +1,4 @@
-import IColumn from '../index.vue';
+import { IColumn } from '../index';
 import {
     IColumnBasicExample,
     IColumnAutoWidthExample,

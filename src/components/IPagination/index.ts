@@ -1,0 +1,1 @@
+export { default as IPagination } from './IPagination.vue';

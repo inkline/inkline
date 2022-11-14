@@ -1,0 +1,1 @@
+export { default as IRadio } from './IRadio.vue';

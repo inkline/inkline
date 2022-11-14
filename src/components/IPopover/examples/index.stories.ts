@@ -1,4 +1,4 @@
-import IPopover from '../index.vue';
+import { IPopover } from '../index';
 import {
     IPopoverBasicExample,
     IPopoverColorVariantsExample,
