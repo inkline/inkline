@@ -38,7 +38,7 @@ const classes = computed(() => ({
 
 <template>
     <div class="badge" :class="classes" v-bind="$attrs">
-        <!--** Slot for default badge content -->
+        <!-- @slot default Slot for default badge content -->
         <slot />
     </div>
 </template>

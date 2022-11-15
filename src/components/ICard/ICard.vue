@@ -36,20 +36,20 @@ const classes = computed(() => ({ [`-${color.value}`]: true, [`-${size.value}`]:
 <template>
     <div class="card" :class="classes">
         <header v-if="!!$slots.header" class="card-header">
-            <!--** Slot for card header content -->
+            <!-- @slot header Slot for card header content -->
             <slot name="header" />
         </header>
 
-        <!--** Slot for card image -->
+        <!-- @slot image Slot for card image -->
         <slot name="image" />
 
         <div v-if="!!$slots.default" class="card-body">
-            <!--** Slot for card header content -->
+            <!-- @slot default Slot for card header content -->
             <slot />
         </div>
 
         <footer v-if="!!$slots.footer" class="card-footer">
-            <!--** Slot for card footer content -->
+            <!-- @slot footer Slot for card footer content -->
             <slot name="footer" />
         </footer>
     </div>

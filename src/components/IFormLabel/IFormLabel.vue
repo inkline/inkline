@@ -65,7 +65,7 @@ function onClick() {
         v-bind="$attrs"
         @click="onClick"
     >
-        <!--** Slot for default form label content  -->
+        <!-- @slot default Slot for default form label content  -->
         <slot />
     </label>
 </template>

@@ -210,11 +210,11 @@ const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
         :aria-busy="ariaBusy"
         aria-live="polite"
     >
-        <!--** Slot for default button content -->
+        <!-- @slot loading Slot for button loading state -->
         <slot v-if="loading" name="loading">
             <i-loader />
         </slot>
-        <!--** Slot for button loading state -->
+        <!-- @slot default Slot for default button content -->
         <slot v-if="!loading" />
     </component>
 </template>

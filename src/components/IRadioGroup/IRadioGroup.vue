@@ -175,7 +175,7 @@ provide(RadioGroupKey, {
 
 <template>
     <div class="form-group radio-group" :class="classes" :name="name" role="radiogroup">
-        <!--** Slot for default radio group options -->
+        <!-- @slot default Slot for default radio group options -->
         <slot />
     </div>
 </template>

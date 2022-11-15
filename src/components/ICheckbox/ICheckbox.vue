@@ -237,7 +237,7 @@ function labelOnClick(event: MouseEvent) {
             @click="labelOnClick"
             @keydown.space.stop.prevent="labelOnClick"
         >
-            <!--** Slot for default checkbox label -->
+            <!-- @slot default Slot for default checkbox label -->
             <slot />
         </label>
     </div>

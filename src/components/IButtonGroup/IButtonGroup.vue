@@ -90,7 +90,7 @@ provide(ButtonGroupKey, {
         :aria-disabled="disabled ? 'true' : null"
         v-bind="$attrs"
     >
-        <!--** Slot for default button group content -->
+        <!-- @slot default Slot for default button group content -->
         <slot />
     </div>
 </template>

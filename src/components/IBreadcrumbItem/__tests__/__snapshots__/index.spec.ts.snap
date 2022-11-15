@@ -7,9 +7,9 @@ exports[`Components > IBreadcrumbItem > should render correctly 1`] = `
   <a
     tabindex="0"
   >
-    <!--** Slot for default breadcrumb item content -->
-    
-    
+    <!-- @slot default Slot for default breadcrumb item content -->
+
+
   </a>
 </li>
 `;

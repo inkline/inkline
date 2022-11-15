@@ -190,7 +190,7 @@ provide(CheckboxGroupKey, {
 
 <template>
     <div class="form-group checkbox-group" :class="classes" :name="name" role="checkboxgroup">
-        <!--** Slot for default checkbox group options -->
+        <!-- @slot default Slot for default checkbox group options -->
         <slot />
     </div>
 </template>

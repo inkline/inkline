@@ -92,11 +92,11 @@ function dismiss() {
 <template>
     <div v-show="!dismissed" class="alert" role="alert" :class="classes" v-bind="$attrs">
         <span v-if="$slots.icon" class="icon" role="img" aria-hidden="true">
-            <!--** Slot for alert icon -->
+            <!-- @slot icon Slot for alert icon -->
             <slot name="icon" />
         </span>
         <div class="content">
-            <!--** Slot for default alert content -->
+            <!-- @slot default Slot for default alert content -->
             <slot />
         </div>
         <span
@@ -106,7 +106,7 @@ function dismiss() {
             :aria-label="dismissAriaLabel"
             @click="dismiss"
         >
-            <!--** Slot for alert dismiss button -->
+            <!-- @slot dismiss Slot for alert dismiss button -->
             <slot name="dismiss">&times;</slot>
         </span>
     </div>

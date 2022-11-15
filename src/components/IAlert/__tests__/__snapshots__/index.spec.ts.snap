@@ -10,19 +10,19 @@ exports[`Components > IAlert > should render correctly 1`] = `
     class="icon"
     role="img"
   >
-    <!--** Slot for alert icon -->
-    
+    <!-- @slot default Slot for alert icon -->
+
     <div>
       Placeholder
     </div>
-    
+
   </span>
   <div
     class="content"
   >
-    <!--** Slot for default alert content -->
-    
-    
+    <!-- @slot default Slot for default alert content -->
+
+
   </div>
   <!--v-if-->
 </div>

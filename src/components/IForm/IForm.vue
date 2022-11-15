@@ -174,7 +174,7 @@ export default {
         <pre
         >{{ schema }}
         </pre>
-        <!--** Slot for form content -->
+        <!-- @slot default Slot for form content -->
         <slot />
     </form>
 </template>

@@ -9,6 +9,8 @@ export { IButtonGroup } from './IButtonGroup';
 export { ICard } from './ICard';
 export { ICheckbox } from './ICheckbox';
 export { ICheckboxGroup } from './ICheckboxGroup';
+export { IColumn } from './IColumn';
+export { IContainer } from './IContainer';
 export { IForm } from './IForm';
 export { IFormGroup } from './IFormGroup';
 export { IFormError } from './IFormError';
@@ -17,14 +19,13 @@ export { IInput } from './IInput';
 export { INumberInput } from './INumberInput';
 export { IRadio } from './IRadio';
 export { IRadioGroup } from './IRadioGroup';
+export { IRow } from './IRow';
 export { ITextarea } from './ITextarea';
 export { IToggle } from './IToggle';
 
 // Options API
 // @TODO Migrate to Composition API
 
-export { IColumn } from './IColumn';
-export { IContainer } from './IContainer';
 export { ICollapsible } from './ICollapsible';
 export { ICollapsibleItem } from './ICollapsibleItem';
 export { IDropdown } from './IDropdown';
@@ -53,7 +54,6 @@ export { IPagination } from './IPagination';
 export { IPopover } from './IPopover';
 export { IProgress } from './IProgress';
 export { IProgressBar } from './IProgressBar';
-export { IRow } from './IRow';
 export { ISelect } from './ISelect';
 export { ISelectOption } from './ISelectOption';
 export { ISidebar } from './ISidebar';

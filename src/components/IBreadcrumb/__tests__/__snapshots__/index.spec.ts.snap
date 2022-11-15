@@ -6,9 +6,9 @@ exports[`Components > IBreadcrumb > should render correctly 1`] = `
   class="breadcrumb -light -md"
 >
   <ol>
-    <!--** Slot for default breadcrumb content -->
-    
-    
+    <!-- @slot default Slot for default breadcrumb content -->
+
+
   </ol>
 </nav>
 `;

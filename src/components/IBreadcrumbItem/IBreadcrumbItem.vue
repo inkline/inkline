@@ -84,7 +84,7 @@ const tabIndex = computed(() => (props.disabled || props.active ? -1 : props.tab
             :tabindex="tabIndex"
             :aria-current="active ? 'location' : undefined"
         >
-            <!--** Slot for default breadcrumb item content -->
+            <!-- @slot default Slot for default breadcrumb item content -->
             <slot />
         </component>
     </li>

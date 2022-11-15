@@ -218,7 +218,7 @@ function labelOnClick(event: MouseEvent) {
             @click="labelOnClick"
             @keydown.space.stop.prevent="labelOnClick"
         >
-            <!--** Slot for default radio label -->
+            <!-- @slot default Slot for default radio label -->
             <slot />
         </label>
     </div>

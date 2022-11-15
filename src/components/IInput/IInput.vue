@@ -241,12 +241,12 @@ function onClear (event: Event) {
 <template>
     <div :id="id && `${id}-wrapper`" class="input-wrapper" :class="classes" v-bind="wrapperAttrs">
         <div v-if="$slots.prepend" class="input-prepend">
-            <!--** Slot for the input prepend content -->
+            <!-- @slot prepend Slot for the input prepend content -->
             <slot name="prepend" />
         </div>
         <div class="input">
             <span v-if="$slots.prefix" class="input-prefix">
-                <!--** Slot for the input prefix content -->
+                <!-- @slot prefix Slot for the input prefix content -->
                 <slot name="prefix" />
             </span>
             <input
@@ -265,7 +265,7 @@ function onClear (event: Event) {
                 @blur="onBlur"
             />
             <span v-if="$slots.suffix || props.clearable && clearable" class="input-suffix">
-                <!--** Slot for the clearable button -->
+                <!-- @slot clearable Slot for the clearable button -->
                 <slot name="clearable" :clear="onClear">
                     <i
                         v-if="props.clearable"
@@ -277,12 +277,12 @@ function onClear (event: Event) {
                         @click="onClear"
                     />
                 </slot>
-                <!--** Slot for the input suffix content -->
+                <!-- @slot suffix Slot for the input suffix content -->
                 <slot name="suffix" />
             </span>
         </div>
         <div v-if="$slots.append" class="input-append">
-            <!--** Slot for the input append content -->
+            <!-- @slot append Slot for the input append content -->
             <slot name="append" />
         </div>
     </div>

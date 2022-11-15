@@ -116,7 +116,7 @@ provide(FormGroupKey, {
 
 <template>
     <fieldset class="form-group" :class="classes" :name="name" role="group">
-        <!--** Slot for default form group content -->
+        <!-- @slot default Slot for default form group content -->
         <slot />
     </fieldset>
 </template>
