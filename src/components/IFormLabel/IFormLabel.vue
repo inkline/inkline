@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
+import {computed, inject, ref} from 'vue';
 import { useComponentSize } from '@inkline/inkline/composables';
+import {FormKey} from "@inkline/inkline/components/IForm";
+import {FormGroupKey} from "@inkline/inkline/components/IFormGroup";
 
 const componentName = 'IFormLabel';
 const labelRef = ref<HTMLLabelElement | null>(null);
@@ -38,10 +40,14 @@ const props = defineProps({
     }
 });
 
-const componentSize = useComponentSize({ componentName, currentSize: props.size });
+const form = inject(FormKey, null);
+const formGroup = inject(FormGroupKey, null);
+
+const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
+const { size } = useComponentSize({ componentName, currentSize });
 
 const classes = computed(() => ({
-    [`-${componentSize}`]: true,
+    [`-${size.value}`]: true,
     [`-${props.placement}`]: Boolean(props.placement)
 }));
 

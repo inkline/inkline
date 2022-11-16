@@ -140,8 +140,10 @@ const inputRef = ref<HTMLInputElement | null>(null);
 const form = inject(FormKey);
 const formGroup = inject(FormGroupKey);
 
-const color = useComponentColor({ componentName, currentColor: props.color || formGroup?.color.value || form?.color.value });
-const size = useComponentSize({ componentName, currentSize: props.size || formGroup?.size.value || form?.size.value });
+const currentColor = computed(() => props.color || formGroup?.color.value || form?.color.value);
+const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
+const { color } = useComponentColor({ componentName, currentColor });
+const { size } = useComponentSize({ componentName, currentSize });
 
 const disabled = computed(() => props.disabled || formGroup?.disabled.value || form?.disabled.value);
 const readonly = computed(() => props.disabled || formGroup?.readonly.value || form?.readonly.value);

@@ -88,8 +88,8 @@ const { hasError } = useFormValidationError({
     error: ['invalid']
 });
 
-const color = useComponentColor({ componentName, currentColor: props.color || formGroup?.color.value || form?.color.value });
-const size = useComponentSize({ componentName, currentSize: props.size || formGroup?.size.value || form?.size.value });
+const { color } = useComponentColor({ componentName, currentColor: props.color || formGroup?.color.value || form?.color.value });
+const { size } = useComponentSize({ componentName, currentSize: props.size || formGroup?.size.value || form?.size.value });
 
 const disabled = computed(() => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value));
 const readonly = computed(() => !!(props.disabled || formGroup?.readonly.value || form?.readonly.value));

@@ -60,8 +60,10 @@ const props = defineProps({
 
 const buttonGroup = inject(ButtonGroupKey, null);
 
-const color = useComponentColor({ componentName, currentColor: props.color || buttonGroup?.color.value });
-const size = useComponentSize({ componentName, currentSize: props.size || buttonGroup?.size.value });
+const currentColor = computed(() => props.color || buttonGroup?.color.value);
+const currentSize = computed(() => props.size || buttonGroup?.size.value);
+const { color } = useComponentColor({ componentName, currentColor });
+const { size } = useComponentSize({ componentName, currentSize });
 
 const disabled = computed((): boolean => {
     return !!(props.disabled || disabled.value || buttonGroup?.disabled.value);

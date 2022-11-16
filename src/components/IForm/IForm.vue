@@ -107,8 +107,10 @@ const emit = defineEmits([
     'submit'
 ]);
 
-const size = useComponentSize({ componentName, currentSize: props.size });
-const color = useComponentColor({ componentName, currentColor: props.color });
+const currentColor = computed(() => props.color);
+const currentSize = computed(() => props.size);
+const { size } = useComponentSize({ componentName, currentSize });
+const { color } = useComponentColor({ componentName, currentColor });
 
 const disabled = computed(() => props.disabled);
 const readonly = computed(() => props.readonly);

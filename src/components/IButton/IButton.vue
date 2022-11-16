@@ -150,8 +150,10 @@ const buttonGroup = inject(ButtonGroupKey, null);
 const form = inject(FormKey, null);
 const formGroup = inject(FormGroupKey, null);
 
-const color = useComponentColor({ componentName, currentColor: props.color || buttonGroup?.color.value });
-const size = useComponentSize({ componentName, currentSize: props.size || buttonGroup?.size.value });
+const currentColor = computed(() => props.color || buttonGroup?.color.value);
+const currentSize = computed(() => props.size || buttonGroup?.size.value);
+const { color } = useComponentColor({ componentName, currentColor });
+const { size } = useComponentSize({ componentName, currentSize });
 
 const { tag } = useLinkable({ to: props.to, href: props.href, tag: props.tag });
 

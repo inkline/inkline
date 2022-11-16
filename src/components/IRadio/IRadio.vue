@@ -127,8 +127,10 @@ const radioGroup = inject(RadioGroupKey, null);
 const form = inject(FormKey);
 const formGroup = inject(FormGroupKey);
 
-const color = useComponentColor({ componentName, currentColor: props.color || radioGroup?.color.value || formGroup?.color.value || form?.color.value });
-const size = useComponentSize({ componentName, currentSize: props.size || radioGroup?.size.value || formGroup?.size.value || form?.size.value });
+const currentColor = computed(() => props.color || radioGroup?.color.value || formGroup?.color.value || form?.color.value);
+const currentSize = computed(() => props.size || radioGroup?.size.value || formGroup?.size.value || form?.size.value);
+const { color } = useComponentColor({ componentName, currentColor });
+const { size } = useComponentSize({ componentName, currentSize });
 
 const disabled = computed(() => props.disabled || radioGroup?.disabled.value || formGroup?.disabled.value || form?.disabled.value);
 const readonly = computed(() => props.disabled || radioGroup?.readonly.value || formGroup?.readonly.value || form?.readonly.value);

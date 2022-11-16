@@ -37,8 +37,10 @@ const props = defineProps({
     }
 });
 
-const color = useComponentColor({ componentName, currentColor: props.color });
-const size = useComponentSize({ componentName, currentSize: props.size });
+const currentColor = computed(() => props.color);
+const currentSize = computed(() => props.size);
+const { color } = useComponentColor({ componentName, currentColor });
+const { size } = useComponentSize({ componentName, currentSize });
 
 const classes = computed(() => ({
     [`-${color.value}`]: Boolean(color.value),

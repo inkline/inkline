@@ -140,8 +140,10 @@ const checkboxGroup = inject(CheckboxGroupKey, null);
 const form = inject(FormKey);
 const formGroup = inject(FormGroupKey);
 
-const color = useComponentColor({ componentName, currentColor: props.color || checkboxGroup?.color.value || formGroup?.color.value || form?.color.value });
-const size = useComponentSize({ componentName, currentSize: props.size || checkboxGroup?.size.value || formGroup?.size.value || form?.size.value });
+const currentColor = computed(() => props.color || checkboxGroup?.color.value || formGroup?.color.value || form?.color.value);
+const currentSize = computed(() => props.size || checkboxGroup?.size.value || formGroup?.size.value || form?.size.value);
+const { color } = useComponentColor({ componentName, currentColor });
+const { size } = useComponentSize({ componentName, currentSize });
 
 const disabled = computed(() => props.disabled || checkboxGroup?.disabled.value || formGroup?.disabled.value || form?.disabled.value);
 const readonly = computed(() => props.disabled || checkboxGroup?.readonly.value || formGroup?.readonly.value || form?.readonly.value);

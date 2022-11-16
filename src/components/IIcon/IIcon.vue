@@ -4,6 +4,7 @@ import { computedSizeValue } from '@inkline/inkline/mixins';
 import { toCamelCase } from '@grozav/utils';
 import { renderSvg } from '@inkline/inkline/utils';
 import { SvgNode } from '@inkline/inkline/types';
+import { useComponentSize } from '@inkline/inkline/composables';
 
 /**
  * The icon to be displayed
@@ -42,11 +43,13 @@ export default defineComponent({
         const icons = inject('inklineIcons') as Record<string, SvgNode>;
         const iconName = computed(() => toCamelCase(props.name));
         const icon = computed(() => icons[iconName.value]);
-        const size = computed(() => computedSizeValue(componentName, props.size));
+
+        const currentSize = computed(() => props.size);
+        const { size } = useComponentSize({ componentName, currentSize });
 
         const classes = computed(() => ({
             'inkline-icon': true,
-            [`-${size.value}`]: Boolean(size.value)
+            [`-${size.value}`]: true
         }));
 
         onMounted(() => {
