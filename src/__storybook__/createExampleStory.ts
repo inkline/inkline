@@ -1,10 +1,11 @@
-import { StoryFn } from '@storybook/vue3';
-import { ConcreteComponent } from 'vue';
+import { Component } from 'vue';
 
-export const createExampleStory = (component: ConcreteComponent): StoryFn<ConcreteComponent> => {
-    const story: StoryFn<typeof component> = () => component;
+export const createExampleStory = (component: Component): (() => Component) => {
+    const story = () => component;
+
     story.parameters = {
         controls: { hideNoControlsWarning: true }
     };
+
     return story;
 };

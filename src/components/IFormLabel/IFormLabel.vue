@@ -55,9 +55,11 @@ function onClick() {
     if (props.for) {
         return;
     }
+
     if (labelRef.value) {
-        // @TODO: Find a better way to focus the next input
-        // return labelRef.value?.nextSibling?.querySelector('input, textarea').focus();
+        const nextSibling = labelRef.value?.nextSibling as HTMLElement;
+
+        (nextSibling?.querySelector('input, textarea') as HTMLElement)?.focus?.();
     }
 }
 </script>

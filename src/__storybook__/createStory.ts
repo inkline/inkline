@@ -1,12 +1,12 @@
-import { DefineComponent, h } from 'vue';
+import { Component, h } from 'vue';
 
-export const createStory = (Component: DefineComponent) => (args: any) => ({
+export const createStory = (component: Component) => (args: any) => ({
     setup: () => () =>
         h(
             'div',
             {
                 class: `storybook-example ${args.class || ''}`
             },
-            [h(Component, args)]
+            [h(component, args)]
         )
 });
