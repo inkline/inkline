@@ -1,2 +1,31 @@
-<template src="./prepend-append-text.demo.html" />
-<script src="./prepend-append-text.demo.js" />
+<script>
+export default {
+    data() {
+        return {
+            value: ''
+        };
+    }
+};
+</script>
+<template>
+    <i-input v-model="value" placeholder="Type something..">
+        <template #prepend>
+            <span>https://</span>
+        </template>
+    </i-input>
+    
+    <i-input v-model="value" placeholder="Type something..">
+        <template #append>
+            <span>.com</span>
+        </template>
+    </i-input>
+    
+    <i-input v-model="value" placeholder="Type something..">
+        <template #prepend>
+            <span>https://</span>
+        </template>
+        <template #append>
+            <span>.com</span>
+        </template>
+    </i-input>
+</template>

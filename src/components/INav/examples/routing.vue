@@ -1,1 +1,6 @@
-<template src="./routing.demo.html" />
+<template>
+    <i-nav>
+        <i-nav-item href="https://inkline.io">Link</i-nav-item>
+        <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
+    </i-nav>
+</template>

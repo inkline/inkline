@@ -1,1 +1,9 @@
-<template src="./color-variants.html" />
+<template>
+    <i-progress color="light">
+        <i-progress-bar :value="65" />
+    </i-progress>
+    
+    <i-progress color="dark">
+        <i-progress-bar :value="65" />
+    </i-progress>
+</template>

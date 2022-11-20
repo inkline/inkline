@@ -1,1 +1,3 @@
-<template src="./text.html" />
+<template>
+    <i-loader> 99% </i-loader>
+</template>

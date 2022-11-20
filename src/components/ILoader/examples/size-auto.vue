@@ -1,1 +1,5 @@
-<template src="./size-auto.html" />
+<template>
+    <div style="height: 100px; width: 100px">
+        <i-loader size="auto" />
+    </div>
+</template>

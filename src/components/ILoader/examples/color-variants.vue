@@ -1,1 +1,7 @@
-<template src="./color-variants.html" />
+<template>
+    <i-loader color="primary" />
+    
+    <i-loader color="light" />
+    
+    <i-loader color="dark" />
+</template>

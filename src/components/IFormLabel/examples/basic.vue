@@ -1,2 +1,15 @@
-<template src="./basic.demo.html" />
-<script src="./basic.demo.js" />
+<script>
+export default {
+    data() {
+        return {
+            value: ''
+        };
+    }
+};
+</script>
+<template>
+    <i-form-group>
+        <i-form-label>Input Label Default</i-form-label>
+        <i-input v-model="value" placeholder="Type something.." />
+    </i-form-group>
+</template>

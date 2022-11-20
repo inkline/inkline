@@ -1,2 +1,23 @@
-<template src="./size-variants-sm.html" />
-<script src="./size-variants-sm.js" />
+<script>
+export default {
+    data() {
+        return {
+            input: '',
+            textarea: ''
+        };
+    }
+};
+</script>
+<template>
+    <i-form>
+        <i-form-group size="sm">
+            <i-form-label>Input</i-form-label>
+            <i-input v-model="input" placeholder="Type something.." />
+        </i-form-group>
+    
+        <i-form-group size="sm">
+            <i-form-label>Textarea</i-form-label>
+            <i-textarea v-model="textarea" placeholder="Write a comment.." />
+        </i-form-group>
+    </i-form>
+</template>

@@ -1,1 +1,23 @@
-<template src="./color-variants.demo.html" />
+<template>
+    <i-navbar color="light">
+        <i-navbar-brand to="/"> Navbar </i-navbar-brand>
+        <i-navbar-collapsible>
+            <i-nav>
+                <i-nav-item to="/"> Home </i-nav-item>
+                <i-nav-item to="/about"> About </i-nav-item>
+                <i-nav-item to="/contact"> Contact </i-nav-item>
+            </i-nav>
+        </i-navbar-collapsible>
+    </i-navbar>
+    
+    <i-navbar color="dark">
+        <i-navbar-brand to="/"> Navbar </i-navbar-brand>
+        <i-navbar-collapsible>
+            <i-nav>
+                <i-nav-item to="/"> Home </i-nav-item>
+                <i-nav-item to="/about"> About </i-nav-item>
+                <i-nav-item to="/contact"> Contact </i-nav-item>
+            </i-nav>
+        </i-navbar-collapsible>
+    </i-navbar>
+</template>

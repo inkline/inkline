@@ -1,2 +1,15 @@
-<template src="./required.html" />
-<script src="./required.js" />
+<script>
+export default {
+    data() {
+        return {
+            value: ''
+        };
+    }
+};
+</script>
+<template>
+    <i-form-group required>
+        <i-form-label>Input Label Required</i-form-label>
+        <i-input v-model="value" placeholder="Type something.." />
+    </i-form-group>
+</template>

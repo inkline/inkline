@@ -1,2 +1,23 @@
-<template src="./collapse-manual.demo.html" />
-<script src="./collapse-manual.js" />
+<script>
+export default {
+    data() {
+        return {
+            open: false
+        };
+    }
+};
+</script>
+<template>
+    <i-button @click="open = !open">Toggle Navbar</i-button>
+    
+    <i-navbar v-model="open" :collapse="true" :collapse-on-click-outside="false">
+        <i-navbar-brand to="/"> Navbar </i-navbar-brand>
+        <i-navbar-collapsible>
+            <i-nav>
+                <i-nav-item to="/"> Home </i-nav-item>
+                <i-nav-item to="/about"> About </i-nav-item>
+                <i-nav-item to="/contact"> Contact </i-nav-item>
+            </i-nav>
+        </i-navbar-collapsible>
+    </i-navbar>
+</template>

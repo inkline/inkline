@@ -1,1 +1,7 @@
-<template src="./size-variants.html" />
+<template>
+    <i-loader size="sm" />
+    
+    <i-loader size="md" />
+    
+    <i-loader size="lg" />
+</template>

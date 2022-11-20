@@ -1,1 +1,10 @@
-<template src="./reordering-last.html" />
+<template>
+    <i-container>
+        <i-row>
+            <i-column xs="3" last>1</i-column>
+            <i-column xs="3">2</i-column>
+            <i-column xs="3">3</i-column>
+            <i-column xs="3">4</i-column>
+        </i-row>
+    </i-container>
+</template>

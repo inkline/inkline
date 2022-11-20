@@ -1,2 +1,24 @@
-<template src="./animation.demo.html" />
-<script src="./animation.demo.js" />
+<script>
+export default {
+    data() {
+        return {
+            active: false
+        };
+    }
+};
+</script>
+<template>
+    <i-hamburger-menu animation="close" v-model="active" />
+    
+    <i-hamburger-menu animation="arrow-up" v-model="active" />
+    
+    <i-hamburger-menu animation="arrow-down" v-model="active" />
+    
+    <i-hamburger-menu animation="arrow-left" v-model="active" />
+    
+    <i-hamburger-menu animation="arrow-right" v-model="active" />
+    
+    <i-hamburger-menu animation="minus" v-model="active" />
+    
+    <i-hamburger-menu animation="plus" v-model="active" />
+</template>

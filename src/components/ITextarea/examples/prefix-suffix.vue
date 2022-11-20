@@ -1,2 +1,23 @@
-<template src="./prefix-suffix.demo.html" />
-<script src="./prefix-suffix.demo.js" />
+<script>
+export default {
+    data() {
+        return {
+            value: ''
+        };
+    }
+};
+</script>
+<template>
+    <i-textarea v-model="value" placeholder="Type something..">
+        <template #prefix>@</template>
+    </i-textarea>
+    
+    <i-textarea v-model="value" placeholder="Type something..">
+        <template #suffix>@</template>
+    </i-textarea>
+    
+    <i-textarea v-model="value" placeholder="Type something..">
+        <template #prefix>@</template>
+        <template #suffix>@</template>
+    </i-textarea>
+</template>

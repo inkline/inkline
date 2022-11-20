@@ -1,2 +1,14 @@
-<template src="./color-variants.demo.html" />
-<script src="./color-variants.demo.js" />
+<script>
+export default {
+    data() {
+        return {
+            toggled: false
+        };
+    }
+};
+</script>
+<template>
+    <i-toggle v-model="toggled" color="light">I accept the terms and conditions</i-toggle>
+    
+    <i-toggle v-model="toggled" color="dark">I accept the terms and conditions</i-toggle>
+</template>

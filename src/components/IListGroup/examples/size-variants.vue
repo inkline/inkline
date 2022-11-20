@@ -1,1 +1,22 @@
-<template src="./size-variants.html" />
+<template>
+    <i-list-group size="sm">
+        <i-list-group-item>List Group Item</i-list-group-item>
+        <i-list-group-item>List Group Item</i-list-group-item>
+        <i-list-group-item>List Group Item</i-list-group-item>
+        <i-list-group-item>List Group Item</i-list-group-item>
+    </i-list-group>
+    
+    <i-list-group size="md">
+        <i-list-group-item>List Group Item</i-list-group-item>
+        <i-list-group-item>List Group Item</i-list-group-item>
+        <i-list-group-item>List Group Item</i-list-group-item>
+        <i-list-group-item>List Group Item</i-list-group-item>
+    </i-list-group>
+    
+    <i-list-group size="lg">
+        <i-list-group-item>List Group Item</i-list-group-item>
+        <i-list-group-item>List Group Item</i-list-group-item>
+        <i-list-group-item>List Group Item</i-list-group-item>
+        <i-list-group-item>List Group Item</i-list-group-item>
+    </i-list-group>
+</template>

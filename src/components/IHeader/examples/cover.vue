@@ -1,2 +1,12 @@
-<template src="./cover.html" />
-<style src="./cover.scss" lang="scss" scoped />
+<template>
+    <i-header id="cover-header" cover class="_text-align:center _color:white">
+        <h1>Cover Inkline Header</h1>
+        <p>This is a cover background header paragraph lorem ipsum dolor sit amet.</p>
+        <i-button color="primary">Button</i-button>
+    </i-header>
+</template>
+<style lang="scss">
+#cover-header {
+    background-image: url('../../../assets/images/moonlight.jpg');
+}
+</style>

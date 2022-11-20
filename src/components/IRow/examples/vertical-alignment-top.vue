@@ -1,1 +1,8 @@
-<template src="./vertical-alignment-top.html" />
+<template>
+    <i-container>
+        <i-row top>
+            <i-column xs="6"></i-column>
+            <i-column xs="6"></i-column>
+        </i-row>
+    </i-container>
+</template>

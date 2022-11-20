@@ -1,1 +1,37 @@
-<template src="./auto-width.html" />
+<template>
+    <i-container>
+        <i-row>
+            <i-column></i-column>
+        </i-row>
+        <i-row>
+            <i-column></i-column>
+            <i-column></i-column>
+        </i-row>
+        <i-row>
+            <i-column></i-column>
+            <i-column></i-column>
+            <i-column></i-column>
+        </i-row>
+        <i-row>
+            <i-column></i-column>
+            <i-column></i-column>
+            <i-column></i-column>
+            <i-column></i-column>
+        </i-row>
+        <i-row>
+            <i-column></i-column>
+            <i-column></i-column>
+            <i-column></i-column>
+            <i-column></i-column>
+            <i-column></i-column>
+        </i-row>
+        <i-row>
+            <i-column></i-column>
+            <i-column></i-column>
+            <i-column></i-column>
+            <i-column></i-column>
+            <i-column></i-column>
+            <i-column></i-column>
+        </i-row>
+    </i-container>
+</template>

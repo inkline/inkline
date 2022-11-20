@@ -1,1 +1,17 @@
-<template src="./color-variants.html" />
+<template>
+    <i-nav color="light" class="_background:light">
+        <i-nav-item href="https://inkline.io">Link</i-nav-item>
+        <i-nav-item :to="{ name: 'docs-components-nav' }">Router Link</i-nav-item>
+        <i-nav-item>Item</i-nav-item>
+        <i-nav-item>Item</i-nav-item>
+        <i-nav-item disabled>Disabled</i-nav-item>
+    </i-nav>
+    
+    <i-nav color="dark" class="_background:dark">
+        <i-nav-item href="https://inkline.io">Link</i-nav-item>
+        <i-nav-item :to="{ name: 'docs-components-nav' }">Router Link</i-nav-item>
+        <i-nav-item>Item</i-nav-item>
+        <i-nav-item>Item</i-nav-item>
+        <i-nav-item disabled>Disabled</i-nav-item>
+    </i-nav>
+</template>

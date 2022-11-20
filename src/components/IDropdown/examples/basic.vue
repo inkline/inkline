@@ -1,1 +1,12 @@
-<template src="./basic.html" />
+<template>
+    <i-dropdown>
+        <i-button>Dropdown</i-button>
+        <template #body>
+            <i-dropdown-item>Action</i-dropdown-item>
+            <i-dropdown-item>Another action</i-dropdown-item>
+            <i-dropdown-item disabled>Disabled action</i-dropdown-item>
+            <i-dropdown-divider />
+            <i-dropdown-item>Separated item</i-dropdown-item>
+        </template>
+    </i-dropdown>
+</template>

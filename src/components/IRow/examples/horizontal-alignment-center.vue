@@ -1,1 +1,7 @@
-<template src="./horizontal-alignment-center.html" />
+<template>
+    <i-container>
+        <i-row center>
+            <i-column xs="4"></i-column>
+        </i-row>
+    </i-container>
+</template>

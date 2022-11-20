@@ -1,2 +1,22 @@
-<template src="./default-open.html" />
-<script src="./default-open.js" />
+<script>
+export default {
+    data() {
+        return {
+            open: ['collapsible-item-1']
+        };
+    }
+};
+</script>
+<template>
+    <i-collapsible v-model="open">
+        <i-collapsible-item name="collapsible-item-1" title="Item 1">
+            Item 1 content
+        </i-collapsible-item>
+        <i-collapsible-item name="collapsible-item-2" title="Item 2">
+            Item 2 content
+        </i-collapsible-item>
+        <i-collapsible-item name="collapsible-item-3" title="Item 3">
+            Item 3 content
+        </i-collapsible-item>
+    </i-collapsible>
+</template>

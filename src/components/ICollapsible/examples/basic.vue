@@ -1,1 +1,7 @@
-<template src="./basic.html" />
+<template>
+    <i-collapsible>
+        <i-collapsible-item title="Item 1"> Item 1 content </i-collapsible-item>
+        <i-collapsible-item title="Item 2"> Item 2 content </i-collapsible-item>
+        <i-collapsible-item title="Item 3"> Item 3 content </i-collapsible-item>
+    </i-collapsible>
+</template>

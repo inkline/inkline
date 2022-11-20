@@ -1,1 +1,9 @@
-<template src="./distribution-between.html" />
+<template>
+    <i-container>
+        <i-row between>
+            <i-column xs="3"></i-column>
+            <i-column xs="3"></i-column>
+            <i-column xs="3"></i-column>
+        </i-row>
+    </i-container>
+</template>

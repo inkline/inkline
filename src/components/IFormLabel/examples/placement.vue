@@ -1,2 +1,25 @@
-<template src="./placement.html" />
-<script src="./placement.js" />
+<script>
+export default {
+    data() {
+        return {
+            value: ''
+        };
+    }
+};
+</script>
+<template>
+    <i-form-group>
+        <i-form-label>Input Label Default</i-form-label>
+        <i-input v-model="value" placeholder="Type something.." />
+    </i-form-group>
+    
+    <i-form-group inline>
+        <i-form-label placement="left">Input Label Left</i-form-label>
+        <i-input v-model="value" placeholder="Type something.." />
+    </i-form-group>
+    
+    <i-form-group inline>
+        <i-form-label placement="right">Input Label Right</i-form-label>
+        <i-input v-model="value" placeholder="Type something.." />
+    </i-form-group>
+</template>
