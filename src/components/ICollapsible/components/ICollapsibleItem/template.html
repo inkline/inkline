@@ -2,6 +2,9 @@
     class="collapsible-item"
     :class="classes"
     :name="name"
+    tabindex="0"
+    @click="onClick"
+    @keydown.prevent.enter="onClick"
 >
     <a
         class="collapsible-header"
@@ -10,8 +13,6 @@
         :aria-expanded="active ? 'true' : 'false'"
         :aria-controls="`collapsible-item-content-${name}`"
         :aria-describedby="`collapsible-item-content-${name}`"
-        tabindex="0"
-        @click="onClick"
     >
         <slot name="header">
             {{ title }}
