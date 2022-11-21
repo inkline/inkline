@@ -1,43 +1,28 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import {computed, inject} from 'vue';
 import { IExpandTransition } from '@inkline/inkline/transitions';
-
-/**
- * Slot for default navbar collapsible content
- * @name default
- * @kind slot
- */
+import {NavbarKey} from "@inkline/inkline/components/INavbar/mixin";
+import { useIsServer } from '@inkline/inkline/composables';
 
 const componentName = 'INavbarCollapsible';
 
-export default defineComponent({
-    name: componentName,
-    components: {
-        IExpandTransition
-    },
-    inject: {
-        navbar: {
-            default: () => ({})
-        }
-    },
-    computed: {
-        visible () {
-            const isServer = typeof window === 'undefined';
+const navbar = inject(NavbarKey, null);
+const { isServer } = useIsServer();
 
-            return (this as any).navbar.open || !(this as any).navbar.collapsible || isServer;
-        }
-    }
-});
+const visible = computed(() => {
+    return !navbar || navbar && (navbar.open.value || !navbar.collapsible.value) || isServer.value;
+})
 </script>
 
 <template>
     <i-expand-transition>
         <div
+            v-show="visible"
             class="navbar-collapsible"
             :aria-hidden="visible ? 'false' : 'true'"
             :aria-expanded="visible ? 'true' : 'false'"
-            v-show="visible"
         >
+            <!-- @slot default Slot for default navbar collapsible content -->
             <slot />
         </div>
     </i-expand-transition>

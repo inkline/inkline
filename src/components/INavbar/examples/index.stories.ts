@@ -4,7 +4,7 @@ import {
     INavbarCollapseBreakpointExample,
     INavbarCollapseTrueExample,
     INavbarCollapseFalseExample,
-    INavbarCollapseManualExample,
+    INavbarCollapsedStateExample,
     INavbarColorVariantsExample,
     INavbarDropdownExample,
     INavbarNavPlacementExample,
@@ -27,7 +27,7 @@ export const Basic = createStory(INavbarBasicExample);
 export const CollapseBreakpoint = () => INavbarCollapseBreakpointExample;
 export const CollapseTrue = () => INavbarCollapseTrueExample;
 export const CollapseFalse = () => INavbarCollapseFalseExample;
-export const CollapseManual = () => INavbarCollapseManualExample;
+export const CollapsedState = () => INavbarCollapsedStateExample;
 export const ColorVariants = () => INavbarColorVariantsExample;
 export const Dropdown = () => INavbarDropdownExample;
 export const NavPlacement = () => INavbarNavPlacementExample;

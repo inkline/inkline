@@ -1,23 +1,21 @@
-import { computed } from 'vue';
+import { computed, Ref } from 'vue';
 import { useInkline } from './inkline';
 
-export interface LinkableProps {
-    to: string | Record<string, unknown> | undefined;
-    href: string | undefined;
-    tag: string;
-}
-
-export function useLinkable(props: LinkableProps) {
+export function useLinkable(props: {
+    to: Ref<string | Record<string, unknown> | undefined>;
+    href: Ref<string | undefined>;
+    tag: Ref<string>;
+}) {
     const inkline = useInkline();
 
     const tag = computed((): string => {
-        if (props.to) {
+        if (props.to.value) {
             return inkline?.options?.routerComponent;
         } else {
-            if (props.href) {
+            if (props.href.value) {
                 return 'a';
             } else {
-                return props.tag;
+                return props.tag.value;
             }
         }
     });

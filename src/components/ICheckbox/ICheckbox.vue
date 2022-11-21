@@ -137,8 +137,8 @@ const emit = defineEmits([
 const inputRef = ref<HTMLInputElement | null>(null);
 
 const checkboxGroup = inject(CheckboxGroupKey, null);
-const form = inject(FormKey);
-const formGroup = inject(FormGroupKey);
+const form = inject(FormKey, null);
+const formGroup = inject(FormGroupKey, null);
 
 const currentColor = computed(() => props.color || checkboxGroup?.color.value || formGroup?.color.value || form?.color.value);
 const currentSize = computed(() => props.size || checkboxGroup?.size.value || formGroup?.size.value || form?.size.value);

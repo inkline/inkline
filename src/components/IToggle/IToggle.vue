@@ -137,8 +137,8 @@ const emit = defineEmits([
 
 const inputRef = ref<HTMLInputElement | null>(null);
 
-const form = inject(FormKey);
-const formGroup = inject(FormGroupKey);
+const form = inject(FormKey, null);
+const formGroup = inject(FormGroupKey, null);
 
 const currentColor = computed(() => props.color || formGroup?.color.value || form?.color.value);
 const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);

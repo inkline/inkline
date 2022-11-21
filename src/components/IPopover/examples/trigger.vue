@@ -8,35 +8,35 @@ export default {
 };
 </script>
 <template>
-    <i-popover trigger="click">
+    <i-popover events="click">
         <i-button>Click Popover</i-button>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
     </i-popover>
-    
-    <i-popover trigger="hover">
+
+    <i-popover events="hover">
         <i-button>Hover Popover</i-button>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
     </i-popover>
-    
-    <i-popover trigger="focus">
+
+    <i-popover events="focus">
         <i-button type="submit">Focus Popover</i-button>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
     </i-popover>
-    
-    <i-popover :trigger="['focus', 'hover']">
+
+    <i-popover :events="['focus', 'hover']">
         <i-button>Multiple Events Popover</i-button>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
     </i-popover>
-    
-    <i-popover trigger="manual" v-model="visible">
+
+    <i-popover v-model="visible" events="manual">
         <i-button @click="visible = !visible">Manual Popover</i-button>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>

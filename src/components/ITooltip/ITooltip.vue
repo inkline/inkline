@@ -1,45 +1,11 @@
 <script lang="ts" setup>
-import {toRef, PropType, ref, computed} from 'vue';
+import {PropType, ref, computed} from 'vue';
 import { uid } from '@grozav/utils';
 import {PopupEvent, usePopupControl} from "@inkline/inkline/composables/popup";
-import {useComponentColor, useComponentSize} from "@inkline/inkline/composables";
+import {useClickOutside, useComponentColor, useComponentSize} from "@inkline/inkline/composables";
 import {Placement} from "@floating-ui/dom";
 
 const componentName = 'ITooltip';
-
-// export default defineComponent({
-//     name: componentName,
-//     directives: {
-//         ClickOutside
-//     },
-//     mixins: [PopupMixin, PopupControlsMixin],
-//     props: ,
-//     computed: {
-//         computedColor (): string | undefined {
-//             return computedColorValue(componentName, this.color);
-//         },
-//         computedSize (): string | undefined {
-//             return computedSizeValue(componentName, this.size);
-//         },
-//         classes (): Classes {
-//             return {
-//                 [`-${this.computedColor}`]: Boolean(this.computedColor),
-//                 [`-${this.computedSize}`]: Boolean(this.computedSize)
-//             };
-//         }
-//     },
-//     methods: {
-//         onEscape () {
-//             this.visible = false;
-//             this.$emit('update:modelValue', false);
-//         },
-//         handleClickOutside () {
-//             this.visible = false;
-//             this.$emit('update:modelValue', false);
-//             this.onClickOutside();
-//         }
-//     }
-// });
 
 const props = defineProps({
     /**
@@ -156,11 +122,21 @@ const props = defineProps({
     },
     /**
      * Delay in milliseconds before the tooltip is hidden on hover
-     * @name size
-     * @type sm | md | lg
-     * @default md
+     * @name hoverHideDelay
+     * @type Number
+     * @default 300
      */
     hoverHideDelay: {
+        type: Number,
+        default: 300
+    },
+    /**
+     * Animation duration in milliseconds
+     * @name animationDuration
+     * @type Number
+     * @default 300
+     */
+    animationDuration: {
         type: Number,
         default: 300
     }
@@ -179,6 +155,7 @@ const emit = defineEmits([
     'click:outside'
 ]);
 
+const wrapperRef = ref<HTMLElement | null>(null);
 const triggerRef = ref<HTMLElement | null>(null);
 const popupRef = ref<HTMLElement | null>(null);
 const arrowRef = ref<HTMLElement | null>(null);
@@ -188,27 +165,16 @@ const currentSize = computed(() => props.size);
 const { color } = useComponentColor({ componentName, currentColor });
 const { size } = useComponentSize({ componentName, currentSize });
 
-const disabled = toRef(props, 'disabled');
-const modelValue = toRef(props, 'modelValue');
-const events = toRef(props, 'events');
-const offset = toRef(props, 'offset');
-const placement = toRef(props, 'placement');
-const interactable = toRef(props, 'interactable');
-const hoverHideDelay = toRef(props, 'hoverHideDelay');
-
-const { visible, hide, destroyPopup } = usePopupControl({
+const componentProps = computed(() => props);
+const { visible, onKeyEscape, onClickOutside } = usePopupControl({
     triggerRef,
     popupRef,
     arrowRef,
-    disabled,
-    modelValue,
-    events,
-    offset,
-    placement,
-    interactable,
-    hoverHideDelay,
+    componentProps,
     emit
 });
+
+useClickOutside({ elementRef: wrapperRef, fn: onClickOutside });
 
 const classes = computed(() => {
     return {
@@ -216,26 +182,16 @@ const classes = computed(() => {
         [`-${size.value}`]: true,
     };
 });
-
-function onClickOutside() {}
-function onEscape() {
-    hide();
-}
-
-function onChange(value: boolean) {
-    emit('update:modelValue', value);
-}
 </script>
 
 <template>
     <div
         :id="name"
-        ref="wrapper"
+        ref="wrapperRef"
         class="tooltip-wrapper"
         :class="classes"
-        @keyup.esc="onEscape"
+        @keyup.esc="onKeyEscape"
     >
-        <!-- v-click-outside="onClickOutside" -->
         <div
             ref="triggerRef"
             class="tooltip-trigger"
@@ -247,7 +203,7 @@ function onChange(value: boolean) {
             <slot />
         </div>
 
-        <transition name="zoom-in-top-transition" @after-leave="destroyPopup">
+        <transition name="zoom-in-top-transition">
             <div
                 v-show="visible"
                 :id="`${name}-popup`"

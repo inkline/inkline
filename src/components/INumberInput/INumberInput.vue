@@ -192,8 +192,8 @@ const emit = defineEmits([
     'clear'
 ]);
 
-const form = inject(FormKey);
-const formGroup = inject(FormGroupKey);
+const form = inject(FormKey, null);
+const formGroup = inject(FormGroupKey, null);
 
 const { color } = useComponentColor({ componentName, currentColor: props.color });
 const { size } = useComponentSize({ componentName, currentSize: props.size });

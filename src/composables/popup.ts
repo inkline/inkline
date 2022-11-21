@@ -16,19 +16,22 @@ export function usePopupControl(props: {
     triggerRef: Ref<HTMLElement | null>;
     popupRef: Ref<HTMLElement | null>;
     arrowRef: Ref<HTMLElement | null>;
-    disabled?: Ref<boolean>;
-    readonly?: Ref<boolean>;
-    events: Ref<PopupEvent | PopupEvent[]>;
-    placement: Ref<Placement>;
-    interactable: Ref<boolean>;
-    modelValue: Ref<boolean | undefined>;
-    hoverHideDelay: Ref<number>;
-    offset: Ref<number>;
+    componentProps: Ref<{
+        disabled?: boolean;
+        readonly?: boolean;
+        events: PopupEvent | PopupEvent[];
+        placement: Placement;
+        interactable: boolean;
+        modelValue?: boolean;
+        animationDuration: number;
+        hoverHideDelay: number;
+        offset: number;
+    }>;
     emit: (event: 'update:modelValue' | 'click:outside', ...args: any[]) => void;
 }) {
-    const visible = ref(props.modelValue.value);
+    const visible = ref(props.componentProps.value.modelValue);
     const instance = ref<() => void>();
-    const animating = ref(false);
+    const transitionInteractable = ref(false);
     const triggerStack = ref(0);
 
     onMounted(() => {
@@ -40,7 +43,7 @@ export function usePopupControl(props: {
     });
 
     watch(
-        () => props.modelValue.value,
+        () => props.componentProps.value.modelValue,
         (value) => {
             if (value) {
                 show();
@@ -55,21 +58,21 @@ export function usePopupControl(props: {
             return;
         }
 
-        ([] as PopupEvent[]).concat(props.events.value).forEach((trigger) => {
+        ([] as PopupEvent[]).concat(props.componentProps.value.events).forEach((trigger) => {
             switch (trigger) {
                 case 'hover':
                     on(
                         props.triggerRef.value as HTMLElement,
                         'mouseenter',
-                        props.interactable.value ? hoverShow : show
+                        props.componentProps.value.interactable ? hoverShow : show
                     );
                     on(
                         props.triggerRef.value as HTMLElement,
                         'mouseleave',
-                        props.interactable.value ? hoverHide : hide
+                        props.componentProps.value.interactable ? hoverHide : hide
                     );
 
-                    if (props.interactable.value) {
+                    if (props.componentProps.value.interactable) {
                         on(props.popupRef.value as HTMLElement, 'mouseenter', hoverShow);
                         on(props.popupRef.value as HTMLElement, 'mouseleave', hoverHide);
                     }
@@ -94,21 +97,21 @@ export function usePopupControl(props: {
             return;
         }
 
-        ([] as PopupEvent[]).concat(props.events.value).forEach((trigger) => {
+        ([] as PopupEvent[]).concat(props.componentProps.value.events).forEach((trigger) => {
             switch (trigger) {
                 case 'hover':
                     off(
                         props.triggerRef.value as HTMLElement,
                         'mouseenter',
-                        props.interactable.value ? hoverShow : show
+                        props.componentProps.value.interactable ? hoverShow : show
                     );
                     off(
                         props.triggerRef.value as HTMLElement,
                         'mouseleave',
-                        props.interactable.value ? hoverHide : hide
+                        props.componentProps.value.interactable ? hoverHide : hide
                     );
 
-                    if (props.interactable.value) {
+                    if (props.componentProps.value.interactable) {
                         off(props.popupRef.value as HTMLElement, 'mouseenter', hoverShow);
                         off(props.popupRef.value as HTMLElement, 'mouseleave', hoverHide);
                     }
@@ -129,7 +132,11 @@ export function usePopupControl(props: {
     }
 
     function show() {
-        if (props.disabled?.value || props.readonly?.value || visible.value) {
+        if (
+            props.componentProps.value.disabled ||
+            props.componentProps.value.readonly ||
+            visible.value
+        ) {
             return;
         }
 
@@ -142,7 +149,11 @@ export function usePopupControl(props: {
     }
 
     function hide() {
-        if (props.disabled?.value || props.readonly?.value || !visible.value) {
+        if (
+            props.componentProps.value.disabled ||
+            props.componentProps.value.readonly ||
+            !visible.value
+        ) {
             return;
         }
 
@@ -154,14 +165,8 @@ export function usePopupControl(props: {
 
             props.emit('update:modelValue', false);
 
-            // Destroyed by <transition> component after transition is finished
-            // destroyPopup();
+            setTimeout(() => destroyPopup(), props.componentProps.value.animationDuration);
         }
-    }
-
-    function hoverShow() {
-        animating.value = false;
-        show();
     }
 
     function onClick() {
@@ -175,18 +180,27 @@ export function usePopupControl(props: {
     function onClickOutside() {
         props.emit('click:outside');
 
-        if (props.modelValue) return;
+        if (!props.componentProps.value.modelValue) {
+            hide();
+        }
+    }
 
+    function onKeyEscape() {
         hide();
     }
 
+    function hoverShow() {
+        transitionInteractable.value = false;
+        show();
+    }
+
     function hoverHide() {
-        animating.value = true;
+        transitionInteractable.value = true;
         setTimeout(() => {
-            if (animating.value) {
+            if (transitionInteractable.value) {
                 hide();
             }
-        }, props.hoverHideDelay.value);
+        }, props.componentProps.value.hoverHideDelay);
     }
 
     function createPopup() {
@@ -204,14 +218,14 @@ export function usePopupControl(props: {
 
         instance.value = autoUpdate(triggerRef, popupRef, () => {
             computePosition(triggerRef, popupRef, {
-                placement: props.placement.value,
+                placement: props.componentProps.value.placement,
                 strategy: 'fixed',
-                middleware: [offset(props.offset.value), flip(), shift({ padding: 6 })].concat(
-                    arrowRef ? [arrow({ element: arrowRef })] : []
-                )
+                middleware: [
+                    offset(props.componentProps.value.offset),
+                    flip(),
+                    shift({ padding: 6 })
+                ].concat(arrowRef ? [arrow({ element: arrowRef })] : [])
             }).then(({ x, y, placement, middlewareData }) => {
-                console.log(x, y);
-
                 Object.assign(popupRef.style, {
                     left: `${x}px`,
                     top: `${y}px`
@@ -252,5 +266,5 @@ export function usePopupControl(props: {
         }
     }
 
-    return { visible, show, hide, createPopup, destroyPopup };
+    return { visible, show, hide, onClickOutside, onKeyEscape, createPopup, destroyPopup };
 }

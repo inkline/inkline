@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {computed, inject} from 'vue';
+import {computed, inject, toRef} from 'vue';
 import {
     useComponentColor,
     useComponentSize,
@@ -65,7 +65,7 @@ const props = defineProps({
         default: false
     },
     /**
-     *
+     * Renders the component as an anchor link with a `href` attribute
      * @type String
      * @default undefined
      * @name to
@@ -125,7 +125,7 @@ const props = defineProps({
         default: 0
     },
     /**
-     *
+     * Renders the component as a Router Link component with a `to` attribute
      * @type String
      * @default undefined
      * @name to
@@ -155,7 +155,10 @@ const currentSize = computed(() => props.size || buttonGroup?.size.value);
 const { color } = useComponentColor({ componentName, currentColor });
 const { size } = useComponentSize({ componentName, currentSize });
 
-const { tag } = useLinkable({ to: props.to, href: props.href, tag: props.tag });
+const to = toRef(props, 'to');
+const href = toRef(props, 'href');
+const currentTag = toRef(props, 'tag');
+const { tag } = useLinkable({ to, href, tag: currentTag });
 
 const disabled = computed(() => {
     return props.disabled || props.loading || buttonGroup?.disabled.value || formGroup?.disabled.value || form?.disabled.value;
@@ -202,6 +205,8 @@ const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
         v-bind="$attrs"
         :is="tag"
         class="button"
+        :to="to"
+        :href="href"
         :tag="tag"
         :role="role"
         :tabindex="tabIndex"

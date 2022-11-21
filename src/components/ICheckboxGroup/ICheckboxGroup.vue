@@ -117,8 +117,8 @@ const emit = defineEmits([
     'update:modelValue'
 ]);
 
-const form = inject(FormKey);
-const formGroup = inject(FormGroupKey);
+const form = inject(FormKey, null);
+const formGroup = inject(FormGroupKey, null);
 
 const currentColor = computed(() => props.color);
 const currentSize = computed(() => props.size);

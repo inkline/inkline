@@ -1,5 +1,5 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import {computed, defineComponent, provide, ref, toRef} from 'vue';
 import {IContainer} from '@inkline/inkline/components/IContainer';
 import {IRow} from '@inkline/inkline/components/IRow';
 import {IColumn} from '@inkline/inkline/components/IColumn';
@@ -12,135 +12,149 @@ import {
 } from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
 import { Classes } from '@inkline/inkline/types';
-
-/**
- * Slot for default navbar content
- * @name default
- * @kind slot
- */
+import {NavbarKey} from "@inkline/inkline/components/INavbar/mixin";
+import {useClickOutside, useCollapsible, useComponentColor, useComponentSize} from "@inkline/inkline/composables";
 
 const componentName = 'INavbar';
 
-export default defineComponent({
-    name: componentName,
-    components: {
-        IContainer,
-        IRow,
-        IColumn,
-        IHamburgerMenu
+const props = defineProps({
+    /**
+     * Determines if the navbar should close when clicking a navbar item
+     * @type Boolean
+     * @default true
+     * @name collapseOnItemClick
+     */
+    collapseOnItemClick: {
+        type: Boolean,
+        default: true
     },
-    directives: {
-        ClickOutside
+    /**
+     * Determines if the navbar should close when clicking outside
+     * @type Boolean
+     * @default true
+     * @name collapseOnClickOutside
+     */
+    collapseOnClickOutside: {
+        type: Boolean,
+        default: true
     },
-    mixins: [
-        CollapsibleMixin
-    ],
-    provide (): { navbar: any } {
-        return {
-            navbar: this
-        };
+    /**
+     * Breakpoint to collapse the navbar at. If boolean value, sets to always or never collapse
+     * @type Boolean | String
+     * @default 'md'
+     * @name collapse
+     */
+    collapse: {
+        type: [String, Boolean],
+        default: 'md'
     },
-    props: {
-        /**
-         * Determines if the navbar should close when clicking a navbar item
-         * @type Boolean
-         * @default true
-         * @name collapseOnItemClick
-         */
-        collapseOnItemClick: {
-            type: Boolean,
-            default: true
-        },
-        /**
-         * Determines if the navbar should close when clicking outside
-         * @type Boolean
-         * @default true
-         * @name collapseOnClickOutside
-         */
-        collapseOnClickOutside: {
-            type: Boolean,
-            default: true
-        },
-        /**
-         * The color variant of the navbar
-         * @type light | dark
-         * @default light
-         * @name color
-         */
-        color: {
-            type: String,
-            default: ''
-        },
-        /**
-         * Display the inner container as fluid, spanning 100% width
-         * @type Boolean
-         * @default false
-         * @name fluid
-         */
-        fluid: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * The size variant of the navbar
-         * @type sm | md | lg
-         * @default md
-         * @name size
-         */
-        size: {
-            type: String,
-            default: ''
-        },
-        /**
-         * The animation of the hamburger menu component used for collapsing
-         * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minus
-         * @default close
-         * @name menuAnimation
-         */
-        menuAnimation: {
-            type: String,
-            default: 'close'
-        }
+    /**
+     * The color variant of the navbar
+     * @type light | dark
+     * @default light
+     * @name color
+     */
+    color: {
+        type: String,
+        default: ''
     },
-    emits: [
-        /**
-         * Event emitted for setting the modelValue
-         * @event update:modelValue
-         */
-        'update:modelValue'
-    ],
-    computed: {
-        computedColor (): string | undefined {
-            return computedColorValue(componentName, this.color);
-        },
-        computedSize (): string | undefined {
-            return computedSizeValue(componentName, this.size);
-        },
-        classes (): Classes {
-            return {
-                ...this.collapsibleClasses,
-                [`-${this.computedColor}`]: Boolean(this.computedColor),
-                [`-${this.computedSize}`]: Boolean(this.computedSize)
-            };
-        }
+    /**
+     * Display the inner container as fluid, spanning 100% width
+     * @type Boolean
+     * @default false
+     * @name fluid
+     */
+    fluid: {
+        type: Boolean,
+        default: false
     },
-    methods: {
-        onItemClick () {
-            if (this.collapseOnItemClick && this.open) {
-                this.setOpen(false);
-            }
-        },
-        onClickOutside () {
-            if (this.collapseOnClickOutside && this.open) {
-                this.setOpen(false);
-            }
-        }
+    /**
+     * The size variant of the navbar
+     * @type sm | md | lg
+     * @default md
+     * @name size
+     */
+    size: {
+        type: String,
+        default: ''
+    },
+    /**
+     * The animation of the hamburger menu component used for collapsing
+     * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minus
+     * @default close
+     * @name menuAnimation
+     */
+    menuAnimation: {
+        type: String,
+        default: 'close'
+    },
+    /**
+     * Used to manually control the collapsed state of the navbar
+     * @type Boolean
+     * @default false
+     * @name modelValue
+     */
+    modelValue: {
+        type: Boolean,
+        default: false
     }
 });
+
+const emit = defineEmits([
+    /**
+     * Event emitted for setting the modelValue
+     * @event update:modelValue
+     */
+    'update:modelValue'
+]);
+
+const navbarRef = ref<HTMLElement | null>(null);
+
+const currentColor = computed(() => props.color);
+const currentSize = computed(() => props.size);
+const { color } = useComponentColor({ componentName, currentColor });
+const { size } = useComponentSize({ componentName, currentSize });
+
+const collapse = toRef(props, 'collapse');
+const modelValue = toRef(props, 'modelValue');
+const { open, collapsible, classes: collapsibleClasses, setOpen, toggleOpen } = useCollapsible({
+    collapse,
+    modelValue,
+    emit
+});
+
+useClickOutside({
+    elementRef: navbarRef,
+    fn: onClickOutside
+});
+
+const classes = computed(() => ({
+    ...collapsibleClasses.value,
+    [`-${color.value}`]: true,
+    [`-${size.value}`]: true,
+}));
+
+provide(NavbarKey, {
+    collapsible,
+    open,
+    onItemClick
+});
+
+function onItemClick () {
+    if (props.collapseOnItemClick && open.value) {
+        setOpen(false);
+    }
+}
+
+function onClickOutside () {
+    if (props.collapseOnClickOutside && open.value) {
+        setOpen(false);
+    }
+}
 </script>
 
 <template>
-    <nav v-click-outside="onClickOutside" class="navbar" :class="classes" v-bind="$attrs">
+    <nav ref="navbarRef" class="navbar" :class="classes" v-bind="$attrs">
         <i-container :fluid="fluid">
             <i-row>
                 <i-column>
@@ -151,6 +165,7 @@ export default defineComponent({
                         :model-value="open"
                         @update:modelValue="toggleOpen"
                     />
+                    <!-- @slot default Slot for default navbar content -->
                     <slot />
                 </i-column>
             </i-row>
