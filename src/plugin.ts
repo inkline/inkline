@@ -119,8 +119,10 @@ export const Inkline: Plugin = {
          */
 
         if (typeof window !== 'undefined') {
-            extendedOptions.colorMode =
-                localStorage.getItem(colorModeLocalStorageKey) || extendedOptions.colorMode;
+            const storedColorMode = localStorage.getItem(colorModeLocalStorageKey);
+            if (storedColorMode) {
+                extendedOptions.colorMode = storedColorMode;
+            }
         }
 
         /**
@@ -129,10 +131,9 @@ export const Inkline: Plugin = {
 
         const prototype: InklineGlobalOptions = createPrototype(extendedOptions);
 
+        inklineGlobals.prototype = prototype;
         app.config.globalProperties.$inkline = prototype;
         app.provide('inkline', prototype);
-
-        inklineGlobals.prototype = prototype;
 
         /**
          * Add inklineIcons global provide
@@ -146,12 +147,6 @@ export const Inkline: Plugin = {
         app.provide('inklineIcons', icons);
 
         if (typeof window !== 'undefined') {
-            /**
-             * Add inkline class to document body and initialize color mode
-             */
-
-            addClass(document.body, 'inkline');
-
             /**
              * Add color mode on change handler
              */
@@ -169,9 +164,7 @@ export const Inkline: Plugin = {
              * Add dark mode media query on change handler
              */
 
-            const onDarkModeMediaQueryChange = (e: MediaQueryListEvent) => {
-                prototype.options.prefersColorScheme = e.matches ? 'dark' : 'light';
-
+            const onDarkModeMediaQueryChange = () => {
                 if (prototype.options.colorMode === 'system') {
                     handleColorMode(prototype.options.colorMode);
                 }
@@ -184,6 +177,11 @@ export const Inkline: Plugin = {
                 darkModeMediaQuery.addListener(onDarkModeMediaQueryChange);
             }
 
+            /**
+             * Add inkline class to document body and initialize color mode
+             */
+
+            addClass(document.body, 'inkline');
             handleColorMode(extendedOptions.colorMode);
         }
     }

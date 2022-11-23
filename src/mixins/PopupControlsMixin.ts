@@ -100,7 +100,11 @@ export default defineComponent({
                 this.show();
             }
         },
-        onClickOutside () {
+        onClickOutside (event: MouseEvent) {
+            if (this.visible) {
+                this.$emit('click-outside', event);
+            }
+
             if (this.modelValue) return;
 
             this.hide();

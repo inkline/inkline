@@ -73,28 +73,33 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="collapsible-item" :class="classes" :name="name">
+    <div
+        class="collapsible-item"
+        :class="classes"
+        :name="name"
+        tabindex="0"
+        @click="onClick"
+        @keydown.prevent.enter="onClick"
+    >
         <a
+            :id="`collapsible-item-heading-${name}`"
             class="collapsible-header"
             role="tab"
-            :id="`collapsible-item-heading-${name}`"
             :aria-expanded="active ? 'true' : 'false'"
             :aria-controls="`collapsible-item-content-${name}`"
             :aria-describedby="`collapsible-item-content-${name}`"
-            tabindex="0"
-            @click="onClick"
         >
             <slot name="header"> {{ title }} </slot>
             <i class="icon" />
         </a>
         <i-expand-transition>
             <div
+                v-show="active"
+                :id="`collapsible-item-content-${name}`"
                 class="collapsible-body"
                 role="tabpanel"
-                :id="`collapsible-item-content-${name}`"
                 :aria-hidden="active ? 'false' : 'true'"
                 :aria-labelledby="`collapsible-item-heading-${name}`"
-                v-show="active"
             >
                 <div class="content">
                     <slot />
