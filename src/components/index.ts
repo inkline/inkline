@@ -16,12 +16,19 @@ export { IFormGroup } from './IFormGroup';
 export { IFormError } from './IFormError';
 export { IFormLabel } from './IFormLabel';
 export { IInput } from './IInput';
+export { INav } from './INav';
+export { INavItem } from './INavItem';
+export { INavbar } from './INavbar';
+export { INavbarBrand } from './INavbarBrand';
+export { INavbarCollapsible } from './INavbarCollapsible';
 export { INumberInput } from './INumberInput';
+export { IPopover } from './IPopover';
 export { IRadio } from './IRadio';
 export { IRadioGroup } from './IRadioGroup';
 export { IRow } from './IRow';
 export { ITextarea } from './ITextarea';
 export { IToggle } from './IToggle';
+export { ITooltip } from './ITooltip';
 
 // Options API
 // @TODO Migrate to Composition API
@@ -45,13 +52,7 @@ export { ILoader } from './ILoader';
 export { IMark } from './IMark';
 export { IMedia } from './IMedia';
 export { IModal } from './IModal';
-export { INav } from './INav';
-export { INavItem } from './INavItem';
-export { INavbar } from './INavbar';
-export { INavbarBrand } from './INavbarBrand';
-export { INavbarCollapsible } from './INavbarCollapsible';
 export { IPagination } from './IPagination';
-export { IPopover } from './IPopover';
 export { IProgress } from './IProgress';
 export { IProgressBar } from './IProgressBar';
 export { ISelect } from './ISelect';
@@ -61,4 +62,3 @@ export { ITable } from './ITable';
 export { ITabs } from './ITabs';
 export { ITab } from './ITab';
 export { ITabTitle } from './ITabTitle';
-export { ITooltip } from './ITooltip';

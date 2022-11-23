@@ -1,3 +1,4 @@
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { getStyleProperty } from '@grozav/utils';
 
@@ -37,3 +38,43 @@ export default defineComponent({
         }
     }
 });
+</script>
+
+<template>
+    <transition name="expand" @enter="onEnter" @after-enter="onAfterEnter" @leave="onLeave">
+        <slot />
+    </transition>
+</template>
+
+<style lang="scss" scoped>
+@import '../../css/variables';
+
+.expand-enter-active,
+.expand-leave-active {
+    transition-property: height;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-easing);
+    overflow: hidden;
+}
+
+.expand-enter,
+.expand-leave-to {
+    height: 0;
+}
+
+* {
+    will-change: height;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.expand-enter-from,
+.expand-enter-active,
+.expand-leave-active,
+.expand-leave-to {
+    will-change: height;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+</style>
