@@ -1,86 +1,80 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import {computed, defineComponent} from 'vue';
 import {
     computedColorValue,
     computedSizeValue
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
+import {useComponentColor, useComponentSize} from "@inkline/inkline/composables";
 
 const componentName = 'IHamburgerMenu';
 
-export default defineComponent({
-    name: componentName,
-    props: {
-        /**
-         * The animation of the hamburger menu
-         * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minus
-         * @default close
-         * @name animation
-         */
-        animation: {
-            type: String,
-            default: 'close'
-        },
-        /**
-         * The color variant of the hamburger menu
-         * @type light | dark
-         * @default light
-         * @name color
-         */
-        color: {
-            type: String,
-            default: ''
-        },
-        /**
-         * The size variant of the hamburger menu
-         * @type sm | md | lg
-         * @default md
-         * @name size
-         */
-        size: {
-            type: String,
-            default: ''
-        },
-        /**
-         * Used to set the hamburger menu as opened or closed
-         * @type Boolean
-         * @default false
-         * @name modelValue
-         */
-        modelValue: {
-            type: Boolean,
-            default: false
-        }
+const props = defineProps({
+    /**
+     * The animation of the hamburger menu
+     * @type close | arrow-up | arrow-down | arrow-left | arrow-right | plus | minus
+     * @default close
+     * @name animation
+     */
+    animation: {
+        type: String,
+        default: 'close'
     },
-    emits: [
-        /**
-         * Event emitted for setting the modelValue
-         * @event update:modelValue
-         */
-        'update:modelValue'
-    ],
-    computed: {
-        computedColor (): string | undefined {
-            return computedColorValue(componentName, this.color);
-        },
-        computedSize (): string | undefined {
-            return computedSizeValue(componentName, this.size);
-        },
-        classes (): Classes {
-            return {
-                [`-${this.computedColor}`]: Boolean(this.computedColor),
-                [`-${this.computedSize}`]: Boolean(this.computedSize),
-                '-active': this.modelValue,
-                [`-${this.animation}`]: true
-            };
-        }
+    /**
+     * The color variant of the hamburger menu
+     * @type light | dark
+     * @default light
+     * @name color
+     */
+    color: {
+        type: String,
+        default: ''
     },
-    methods: {
-        onClick () {
-            this.$emit('update:modelValue', !this.modelValue);
-        }
+    /**
+     * The size variant of the hamburger menu
+     * @type sm | md | lg
+     * @default md
+     * @name size
+     */
+    size: {
+        type: String,
+        default: ''
+    },
+    /**
+     * Used to set the hamburger menu as opened or closed
+     * @type Boolean
+     * @default false
+     * @name modelValue
+     */
+    modelValue: {
+        type: Boolean,
+        default: false
     }
 });
+
+const emit = defineEmits([
+    /**
+     * Event emitted for setting the modelValue
+     * @event update:modelValue
+     */
+    'update:modelValue'
+]);
+
+const currentColor = computed(() => props.color);
+const currentSize = computed(() => props.size);
+const { color } = useComponentColor({ componentName, currentColor });
+const { size } = useComponentSize({ componentName, currentSize });
+
+const classes = computed(() => ({
+    [`-${color.value}`]: true,
+    [`-${size.value}`]: true,
+    [`-${props.animation}`]: Boolean(props.animation),
+    '-active': props.modelValue
+}));
+
+function onClick () {
+    emit('update:modelValue', !props.modelValue);
+}
 </script>
 
 <template>
