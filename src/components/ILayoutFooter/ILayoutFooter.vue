@@ -1,21 +1,10 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-/**
- * Slot for default layout footer content
- * @name default
- * @kind slot
- */
-
+<script lang="ts" setup>
 const componentName = 'ILayoutFooter';
-
-export default defineComponent({
-    name: componentName
-});
 </script>
 
 <template>
     <footer class="layout-footer">
+        <!-- @slot default Slot for default layout footer content -->
         <slot />
     </footer>
 </template>

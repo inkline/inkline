@@ -1,21 +1,10 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-/**
- * Slot for default layout content children
- * @name default
- * @kind slot
- */
-
+<script lang="ts" setup>
 const componentName = 'ILayoutContent';
-
-export default defineComponent({
-    name: componentName
-});
 </script>
 
 <template>
     <section class="layout-content">
+        <!-- @slot default Slot for default layout content children -->
         <slot />
     </section>
 </template>
