@@ -402,33 +402,37 @@ export default defineComponent({
 
 <template>
     <div
-        class="dropdown-wrapper"
         ref="wrapper"
-        aria-haspopup="true"
         v-click-outside="onClickOutside"
+        class="dropdown-wrapper"
+        aria-haspopup="true"
         @keyup.esc="onEscape"
     >
-        <div class="dropdown-trigger" ref="trigger">
+        <div ref="trigger" class="dropdown-trigger">
+            <!-- @slot default Slot for dropdown trigger -->
             <slot />
         </div>
-    
+
         <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
             <div
+                v-show="visible"
+                ref="popup"
                 class="dropdown"
                 :class="classes"
                 role="menu"
-                ref="popup"
                 :aria-hidden="visible ? 'false' : 'true'"
-                v-show="visible"
             >
-                <span data-popper-arrow v-if="arrow" />
-                <div class="dropdown-header" v-if="$slots.header">
+                <span v-if="arrow" data-popper-arrow />
+                <div v-if="$slots.header" class="dropdown-header">
+                    <!-- @slot header Slot for dropdown header content -->
                     <slot name="header" />
                 </div>
-                <div class="dropdown-body" ref="body" v-if="$slots.body">
+                <div v-if="$slots.body" ref="body" class="dropdown-body">
+                    <!-- @slot body Slot for dropdown body content -->
                     <slot name="body" />
                 </div>
-                <div class="dropdown-footer" v-if="$slots.footer">
+                <div v-if="$slots.footer" class="dropdown-footer">
+                    <!-- @slot footer Slot for dropdown footer content -->
                     <slot name="footer" />
                 </div>
             </div>

@@ -1,119 +1,104 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import {defineComponent, ref, provide, computed, PropType, watch} from 'vue';
 import {
     computedColorValue,
     computedSizeValue
 } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
-
-/**
- * Slot for default collapsible content
- * @name default
- * @kind slot
- */
+import {CollapsibleKey} from "@inkline/inkline/components/ICollapsible/mixin";
+import {useComponentColor, useComponentSize} from "@inkline/inkline/composables";
 
 const componentName = 'ICollapsible';
 
-export default defineComponent({
-    name: componentName,
-    provide () {
-        return {
-            collapsible: this
-        };
+const props = defineProps({
+    /**
+     * Display the collapsible as an accordion, keeping a maximum of one open collapsible item
+     * @type Boolean
+     * @default false
+     * @name accordion
+     */
+    accordion: {
+        type: Boolean,
+        default: false
     },
-    props: {
-        /**
-         * Display the collapsible as an accordion, keeping a maximum of one open collapsible item
-         * @type Boolean
-         * @default false
-         * @name accordion
-         */
-        accordion: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * The color variant of the button
-         * @type light | dark | blank
-         * @default light
-         * @name color
-         */
-        color: {
-            type: String,
-            default: ''
-        },
-        /**
-         * The size variant of the collapsible
-         * @type sm | md | lg
-         * @default md
-         * @name size
-         */
-        size: {
-            type: String,
-            default: ''
-        },
-        /**
-         * Used to determine which collapsible item is open
-         * @type String[]
-         * @default
-         * @name modelValue
-         */
-        modelValue: {
-            type: Array,
-            default: (): any[] => []
-        }
+    /**
+     * The color variant of the button
+     * @type light | dark | blank
+     * @default light
+     * @name color
+     */
+    color: {
+        type: String,
+        default: ''
     },
-    emits: [
-        /**
-         * Event emitted for setting the modelValue
-         * @event update:modelValue
-         */
-        'update:modelValue'
-    ],
-    data () {
-        return {
-            activeItems: ([] as any[]).concat(this.modelValue)
-        };
+    /**
+     * The size variant of the collapsible
+     * @type sm | md | lg
+     * @default md
+     * @name size
+     */
+    size: {
+        type: String,
+        default: ''
     },
-    computed: {
-        computedColor (): string | undefined {
-            return computedColorValue(componentName, this.color);
-        },
-        computedSize (): string | undefined {
-            return computedSizeValue(componentName, this.size);
-        },
-        classes (): Classes {
-            return {
-                [`-${this.computedColor}`]: Boolean(this.computedColor),
-                [`-${this.computedSize}`]: Boolean(this.computedSize),
-                [`-${this.size}`]: Boolean(this.size)
-            };
-        }
-    },
-    watch: {
-        modelValue (value) {
-            this.activeItems = [].concat(value);
-        }
-    },
-    methods: {
-        onItemClick (item: any) {
-            if (this.accordion) {
-                this.activeItems = this.activeItems.indexOf(item.name) > -1 ? [] : [item.name];
-                return this.activeItems;
-            }
-
-            const index = this.activeItems.indexOf(item.name);
-
-            if (index > -1) {
-                this.activeItems.splice(index, 1);
-            } else {
-                this.activeItems.push(item.name);
-            }
-
-            this.$emit('update:modelValue', this.activeItems);
-        }
+    /**
+     * Used to determine which collapsible item is open
+     * @type String[]
+     * @default
+     * @name modelValue
+     */
+    modelValue: {
+        type: Array as PropType<string[]>,
+        default: (): string[] => []
     }
 });
+
+const emit = defineEmits([
+    /**
+     * Event emitted for setting the modelValue
+     * @event update:modelValue
+     */
+    'update:modelValue'
+]);
+
+const currentColor = computed(() => props.color);
+const currentSize = computed(() => props.size);
+const { color } = useComponentColor({ componentName, currentColor });
+const { size } = useComponentSize({ componentName, currentSize });
+
+const classes = computed(() => ({
+    [`-${color.value}`]: Boolean(color.value),
+    [`-${size.value}`]: Boolean(size.value),
+}));
+
+const activeItems = ref(([] as string[]).concat(props.modelValue));
+
+watch(() => props.modelValue, (value: string[]) => {
+    activeItems.value = ([] as string[]).concat(value);
+});
+
+provide(CollapsibleKey, {
+    activeItems,
+    onItemClick
+});
+
+function onItemClick (id: string) {
+    if (props.accordion) {
+        activeItems.value = activeItems.value.indexOf(id) > -1 ? [] : [id];
+
+        return;
+    }
+
+    const index = activeItems.value.indexOf(id);
+
+    if (index > -1) {
+        activeItems.value.splice(index, 1);
+    } else {
+        activeItems.value.push(id);
+    }
+
+    emit('update:modelValue', activeItems.value);
+}
 </script>
 
 <template>
@@ -122,8 +107,8 @@ export default defineComponent({
         :class="classes"
         role="tablist"
         aria-multiselectable="true"
-        v-bind="$attrs"
     >
+        <!-- @slot Default slot for collapsible items -->
         <slot />
     </div>
 </template>

@@ -9,6 +9,8 @@ export { IButtonGroup } from './IButtonGroup';
 export { ICard } from './ICard';
 export { ICheckbox } from './ICheckbox';
 export { ICheckboxGroup } from './ICheckboxGroup';
+export { ICollapsible } from './ICollapsible';
+export { ICollapsibleItem } from './ICollapsibleItem';
 export { IColumn } from './IColumn';
 export { IContainer } from './IContainer';
 export { IForm } from './IForm';
@@ -33,8 +35,6 @@ export { ITooltip } from './ITooltip';
 // Options API
 // @TODO Migrate to Composition API
 
-export { ICollapsible } from './ICollapsible';
-export { ICollapsibleItem } from './ICollapsibleItem';
 export { IDropdown } from './IDropdown';
 export { IDropdownDivider } from './IDropdownDivider';
 export { IDropdownItem } from './IDropdownItem';

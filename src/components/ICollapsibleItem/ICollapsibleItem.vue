@@ -1,75 +1,48 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import {defineComponent, computed, inject} from 'vue';
 import { uid } from '@grozav/utils';
 import { IExpandTransition } from '@inkline/inkline/transitions';
 import { Classes } from '@inkline/inkline/types';
-
-/**
- * Slot for default collapsible item content
- * @name default
- * @kind slot
- */
-
-/**
- * Slot for collapsible item header content
- * @name header
- * @kind slot
- */
+import {CollapsibleKey} from "@inkline/inkline/components/ICollapsible/mixin";
 
 const componentName = 'ICollapsibleItem';
 
-export default defineComponent({
-    name: componentName,
-    components: {
-        IExpandTransition
-    },
-    inject: {
-        collapsible: {
-            default: () => ({
-                activeItems: []
-            })
+const collapsible = inject(CollapsibleKey, null);
+
+const props = defineProps({
+    /**
+     * The unique identifier of the collapsible item, used for determining if the item is open or not
+     * @type String
+     * @default uid()
+     * @name name
+     */
+    name: {
+        type: String,
+        default () {
+            return uid('collapsible-item');
         }
     },
-    props: {
-        /**
-         * The unique identifier of the collapsible item, used for determining if the item is open or not
-         * @type String
-         * @default uid()
-         * @name name
-         */
-        name: {
-            type: String,
-            default () {
-                return uid('collapsible-item');
-            }
-        },
-        /**
-         * The title of the collapsible item
-         * @type String
-         * @default
-         * @name title
-         */
-        title: {
-            type: String,
-            default: ''
-        }
-    },
-    computed: {
-        active (): boolean {
-            return (this as any).collapsible.activeItems.indexOf(this.name) > -1;
-        },
-        classes (): Classes {
-            return {
-                '-active': this.active
-            };
-        }
-    },
-    methods: {
-        onClick () {
-            (this as any).collapsible.onItemClick(this);
-        }
+    /**
+     * The title of the collapsible item
+     * @type String
+     * @default
+     * @name title
+     */
+    title: {
+        type: String,
+        default: ''
     }
 });
+
+const active = computed(() => collapsible?.activeItems.value.includes(props.name));
+
+const classes = computed(() => ({
+    '-active': active.value
+}));
+
+function onClick () {
+    collapsible?.onItemClick(props.name);
+}
 </script>
 
 <template>
@@ -80,6 +53,7 @@ export default defineComponent({
         tabindex="0"
         @click="onClick"
         @keydown.prevent.enter="onClick"
+        @keydown.prevent.space="onClick"
     >
         <a
             :id="`collapsible-item-heading-${name}`"
@@ -89,6 +63,7 @@ export default defineComponent({
             :aria-controls="`collapsible-item-content-${name}`"
             :aria-describedby="`collapsible-item-content-${name}`"
         >
+            <!-- @slot header Slot for collapsible item header content -->
             <slot name="header"> {{ title }} </slot>
             <i class="icon" />
         </a>
@@ -102,6 +77,7 @@ export default defineComponent({
                 :aria-labelledby="`collapsible-item-heading-${name}`"
             >
                 <div class="content">
+                    <!-- @slot default Slot for default collapsible item content -->
                     <slot />
                 </div>
             </div>

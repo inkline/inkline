@@ -1,11 +1,5 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
-
+<script lang="ts" setup>
 const componentName = 'IDropdownDivider';
-
-export default defineComponent({
-    name: componentName
-});
 </script>
 
 <template>
