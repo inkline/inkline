@@ -1,5 +1,5 @@
 import { onMounted, onUnmounted, ref, Ref, watch } from 'vue';
-import { off, on } from '@grozav/utils';
+import { focusFirstDescendant, off, on } from '@grozav/utils';
 import {
     arrow,
     autoUpdate,
@@ -266,5 +266,28 @@ export function usePopupControl(props: {
         }
     }
 
-    return { visible, show, hide, onClickOutside, onKeyEscape, createPopup, destroyPopup };
+    function focusTrigger() {
+        if (!props.triggerRef.value) {
+            return;
+        }
+
+        for (const child of props.triggerRef.value.children) {
+            if (focusFirstDescendant(child as HTMLElement)) {
+                (child as HTMLElement).focus();
+                break;
+            }
+        }
+    }
+
+    return {
+        visible,
+        show,
+        hide,
+        onClick,
+        onClickOutside,
+        onKeyEscape,
+        focusTrigger,
+        createPopup,
+        destroyPopup
+    };
 }

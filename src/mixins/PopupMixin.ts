@@ -38,7 +38,7 @@ export const sameWidthModifier = () => ({
     fn: ({ state }: { state: any }) => {
         state.styles.popper.width = `${state.rects.reference.width}px`;
     },
-    effect ({ state }: { state: any }) {
+    effect({ state }: { state: any }) {
         state.elements.popper.style.width = `${state.elements.reference.offsetWidth}px`;
     }
 });
@@ -76,28 +76,28 @@ export default defineComponent({
             type: Number,
             default: 6
         },
-        popperOptions: {
+        popupOptions: {
             type: Object,
             default: () => ({})
         }
     },
-    data (): { popperInstance?: Instance } {
+    data(): { popperInstance?: Instance } {
         return {
             popperInstance: undefined
         };
     },
     watch: {
-        placement (placement: Placement) {
+        placement(placement: Placement) {
             if (this.popperInstance) {
                 this.popperInstance.setOptions({ placement });
             }
         }
     },
-    beforeUnmount () {
+    beforeUnmount() {
         this.destroyPopper();
     },
     methods: {
-        createPopper () {
+        createPopper() {
             if (typeof window === 'undefined') {
                 return;
             }
@@ -111,11 +111,11 @@ export default defineComponent({
                     strategy: 'fixed',
                     placement: this.placement as Placement,
                     modifiers,
-                    ...this.popperOptions
+                    ...this.popupOptions
                 }
             );
         },
-        destroyPopper () {
+        destroyPopper() {
             if (this.popperInstance) {
                 this.popperInstance.destroy();
                 this.popperInstance = undefined;

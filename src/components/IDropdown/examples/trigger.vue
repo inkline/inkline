@@ -8,7 +8,7 @@ export default {
 };
 </script>
 <template>
-    <i-dropdown trigger="click">
+    <i-dropdown events="click">
         <i-button>Click Dropdown</i-button>
         <template #body>
             <i-dropdown-item>Action</i-dropdown-item>
@@ -18,8 +18,8 @@ export default {
             <i-dropdown-item>Separated item</i-dropdown-item>
         </template>
     </i-dropdown>
-    
-    <i-dropdown trigger="hover">
+
+    <i-dropdown events="hover">
         <i-button>Hover Dropdown</i-button>
         <template #body>
             <i-dropdown-item>Action</i-dropdown-item>
@@ -29,8 +29,8 @@ export default {
             <i-dropdown-item>Separated item</i-dropdown-item>
         </template>
     </i-dropdown>
-    
-    <i-dropdown trigger="focus">
+
+    <i-dropdown events="focus">
         <i-button type="submit">Focus Dropdown</i-button>
         <template #body>
             <i-dropdown-item>Action</i-dropdown-item>
@@ -40,8 +40,8 @@ export default {
             <i-dropdown-item>Separated item</i-dropdown-item>
         </template>
     </i-dropdown>
-    
-    <i-dropdown :trigger="['focus', 'hover']">
+
+    <i-dropdown :events="['focus', 'hover']">
         <i-button>Multiple Events Dropdown</i-button>
         <template #body>
             <i-dropdown-item>Action</i-dropdown-item>
@@ -51,8 +51,8 @@ export default {
             <i-dropdown-item>Separated item</i-dropdown-item>
         </template>
     </i-dropdown>
-    
-    <i-dropdown trigger="manual" v-model="visible">
+
+    <i-dropdown v-model="visible" events="manual">
         <i-button @click="visible = !visible">Manual Dropdown</i-button>
         <template #body>
             <i-dropdown-item>Action</i-dropdown-item>

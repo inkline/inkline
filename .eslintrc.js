@@ -5,6 +5,7 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-empty-function': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
+        'no-case-declarations': 'off',
         'vue/html-indent': ['warn', 4],
         'vue/max-attributes-per-line': 'off',
         'vue/custom-event-name-casing': 'off',

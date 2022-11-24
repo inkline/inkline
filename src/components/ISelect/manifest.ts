@@ -39,141 +39,103 @@ export const manifest = {
     props: [
         {
             name: 'animationDuration',
-            type: [
-                'Number'
-            ],
+            type: ['Number'],
             default: '300',
             description: 'The duration of the hide and show animation'
         },
         {
             name: 'autocomplete',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Enable autocomplete functionality'
         },
         {
             name: 'arrow',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'true',
             description: 'Displays an arrow on the dropdown pointing to the trigger element'
         },
         {
             name: 'color',
-            type: [
-                'light',
-                'dark'
-            ],
+            type: ['light', 'dark'],
             default: 'light',
             description: 'The color variant of the select'
         },
         {
             name: 'clearable',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the select as clearable'
         },
         {
             name: 'disabled',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The disabled state of the select'
         },
         {
             name: 'idField',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'id',
             description: 'The field to be used for identifying the options'
         },
         {
             name: 'keydownTrigger',
-            type: [
-                'string[]'
-            ],
+            type: ['string[]'],
             default: 'up, down, enter, space, tab, esc',
             description: 'The keydown events bound to the trigger element'
         },
         {
             name: 'keydownItem',
-            type: [
-                'string[]'
-            ],
+            type: ['string[]'],
             default: 'up, down, enter, space, tab, esc',
             description: 'The keydown events bound to the select option elements'
         },
         {
             name: 'label',
-            type: [
-                'String',
-                'Function'
-            ],
+            type: ['String', 'Function'],
             default: 'label',
             description: 'Used to extract the label from the select option and select value'
         },
         {
             name: 'loading',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The loading state of the select'
         },
         {
             name: 'modelValue',
-            type: [
-                'Object',
-                'String',
-                'Number'
-            ],
+            type: ['Object', 'String', 'Number'],
             default: 'null',
             description: 'Used to set the field value'
         },
         {
             name: 'minLength',
-            type: [
-                'Number'
-            ],
+            type: ['Number'],
             default: '0',
             description: 'The minimum input length to open the select dropdown at'
         },
         {
             name: 'name',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'uid()',
             description: 'The unique identifier of the select'
         },
         {
             name: 'options',
-            type: [
-                'Array'
-            ],
+            type: ['Array'],
             default: '',
             description: 'The options to be displayed in the select component'
         },
         {
             name: 'placeholder',
-            type: [
-                'String'
-            ],
-            default: '\'\'',
+            type: ['String'],
+            default: "''",
             description: 'The placeholder of the select input'
         },
         {
             name: 'offset',
-            type: [
-                'Number'
-            ],
+            type: ['Number'],
             default: '6',
             description: 'The offset of the dropdown relative to the trigger element'
         },
@@ -197,69 +159,50 @@ export const manifest = {
             description: 'The placement of the dropdown'
         },
         {
-            name: 'popperOptions',
-            type: [
-                'Object'
-            ],
+            name: 'popupOptions',
+            type: ['Object'],
             default: '',
-            description: 'Used to override the popper.js options used for creating the dropdown'
+            description: 'Used to override the floating-ui options used for creating the dropdown'
         },
         {
             name: 'readonly',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The readonly state of the select'
         },
         {
             name: 'scrollTolerance',
-            type: [
-                'Number'
-            ],
+            type: ['Number'],
             default: '160',
             description: 'The number of pixels until scroll end before loading the next page'
         },
         {
             name: 'selectFirstOptionOnEnter',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'true',
             description: 'Selects the first option when pressing enter'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the select'
         },
         {
             name: 'tabindex',
-            type: [
-                'Number',
-                'String'
-            ],
+            type: ['Number', 'String'],
             default: '1',
             description: 'The tabindex of the select'
         },
         {
             name: 'type',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'text',
             description: 'The type of the select'
         },
         {
             name: 'total',
-            type: [
-                'Number'
-            ],
+            type: ['Number'],
             default: 'undefined',
             description: 'The total number of options, used for infinite scrolling'
         }
@@ -275,31 +218,31 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'white\')',
+                value: "color('white')",
                 description: 'The background of the select component'
             },
             {
                 name: 'border-top-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border top color of the select component'
             },
             {
                 name: 'border-right-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border right color of the select component'
             },
             {
                 name: 'border-bottom-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border bottom color of the select component'
             },
             {
                 name: 'border-left-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border left color of the select component'
             },
             {
@@ -425,7 +368,7 @@ export const manifest = {
             {
                 name: 'font-weight',
                 type: '',
-                value: 'font-weight(\'normal\')',
+                value: "font-weight('normal')",
                 description: 'The font weight of the select component'
             },
             {
@@ -527,7 +470,7 @@ export const manifest = {
             {
                 name: 'option--background--hover',
                 type: 'color',
-                value: 'color(\'light-25\')',
+                value: "color('light-25')",
                 description: 'The background of the select component option when hovered or focused'
             },
             {
@@ -593,7 +536,7 @@ export const manifest = {
             {
                 name: 'option--color--disabled',
                 type: 'color',
-                value: 'color(\'light-65\')',
+                value: "color('light-65')",
                 description: 'The color of the select component option when disabled'
             },
             {
@@ -629,13 +572,13 @@ export const manifest = {
             {
                 name: 'divider--margin',
                 type: '',
-                value: 'spacing(\'1/2\')',
+                value: "spacing('1/2')",
                 description: 'The margin of the select component divider'
             },
             {
                 name: 'header--background',
                 type: 'color',
-                value: 'color(\'gray-05\')',
+                value: "color('gray-05')",
                 description: 'The background of the select component header'
             },
             {
@@ -803,7 +746,7 @@ export const manifest = {
             {
                 name: 'footer--background',
                 type: 'color',
-                value: 'color(\'gray-05\')',
+                value: "color('gray-05')",
                 description: 'The background of the select component footer'
             },
             {
@@ -894,68 +837,79 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'white\')',
-                        description: 'The background of the select component, for the light color variant'
+                        value: "color('white')",
+                        description:
+                            'The background of the select component, for the light color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border top color of the select component, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border top color of the select component, for the light color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border right color of the select component, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border right color of the select component, for the light color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border bottom color of the select component, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border bottom color of the select component, for the light color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border left color of the select component, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border left color of the select component, for the light color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-white)',
-                        description: 'The color of the select component item, for the light color variant'
+                        description:
+                            'The color of the select component item, for the light color variant'
                     },
                     {
                         name: 'option--background--hover',
                         type: '',
-                        value: 'color(\'light-25\')',
-                        description: 'The background of the select component option when hovered or focused, for the light color variant'
+                        value: "color('light-25')",
+                        description:
+                            'The background of the select component option when hovered or focused, for the light color variant'
                     },
                     {
                         name: 'option--background--disabled',
                         type: '',
                         value: 'transparent',
-                        description: 'The background of the select component option when disabled, for the light color variant'
+                        description:
+                            'The background of the select component option when disabled, for the light color variant'
                     },
                     {
                         name: 'option--color--disabled',
                         type: '',
-                        value: 'color(\'light-65\')',
-                        description: 'The color of the select component option when disabled, for the light color variant'
+                        value: "color('light-65')",
+                        description:
+                            'The color of the select component option when disabled, for the light color variant'
                     },
                     {
                         name: 'header--background',
                         type: '',
-                        value: 'color(\'gray-05\')',
-                        description: 'The background of the select component header, for the light color variant'
+                        value: "color('gray-05')",
+                        description:
+                            'The background of the select component header, for the light color variant'
                     },
                     {
                         name: 'footer--background',
                         type: '',
-                        value: 'color(\'gray-05\')',
-                        description: 'The background of the select component footer, for the light color variant'
+                        value: "color('gray-05')",
+                        description:
+                            'The background of the select component footer, for the light color variant'
                     }
                 ]
             },
@@ -967,68 +921,79 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the select component, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the select component, for the dark color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border top color of the select component, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border top color of the select component, for the dark color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border right color of the select component, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border right color of the select component, for the dark color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border bottom color of the select component, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border bottom color of the select component, for the dark color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border left color of the select component, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border left color of the select component, for the dark color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-dark)',
-                        description: 'The color of the select component item, for the dark color variant'
+                        description:
+                            'The color of the select component item, for the dark color variant'
                     },
                     {
                         name: 'option--background--hover',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The background of the select component option when hovered or focused, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The background of the select component option when hovered or focused, for the dark color variant'
                     },
                     {
                         name: 'option--background--disabled',
                         type: '',
                         value: 'transparent',
-                        description: 'The background of the select component option when disabled, for the dark color variant'
+                        description:
+                            'The background of the select component option when disabled, for the dark color variant'
                     },
                     {
                         name: 'option--color--disabled',
                         type: '',
-                        value: 'color(\'dark-25\')',
-                        description: 'The color of the select component option when disabled, for the dark color variant'
+                        value: "color('dark-25')",
+                        description:
+                            'The color of the select component option when disabled, for the dark color variant'
                     },
                     {
                         name: 'header--background',
                         type: '',
-                        value: 'color(\'dark-55\')',
-                        description: 'The background of the select component header, for the dark color variant'
+                        value: "color('dark-55')",
+                        description:
+                            'The background of the select component header, for the dark color variant'
                     },
                     {
                         name: 'footer--background',
                         type: '',
-                        value: 'color(\'dark-55\')',
-                        description: 'The background of the select component footer, for the dark color variant'
+                        value: "color('dark-55')",
+                        description:
+                            'The background of the select component footer, for the dark color variant'
                     }
                 ]
             },
@@ -1040,128 +1005,149 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top left radius of the select component, for the sm size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top left radius of the select component, for the sm size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top right radius of the select component, for the sm size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top right radius of the select component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom right radius of the select component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom right radius of the select component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom left radius of the select component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom left radius of the select component, for the sm size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
-                        description: 'The font size of the select component, for the sm size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('sm')})",
+                        description:
+                            'The font size of the select component, for the sm size variant'
                     },
                     {
                         name: 'margin-top',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier(\'sm\')})',
-                        description: 'The margin top of the select component, for the sm size variant'
+                        value: "calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier('sm')})",
+                        description:
+                            'The margin top of the select component, for the sm size variant'
                     },
                     {
                         name: 'margin-right',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier(\'sm\')})',
-                        description: 'The margin right of the select component, for the sm size variant'
+                        value: "calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier('sm')})",
+                        description:
+                            'The margin right of the select component, for the sm size variant'
                     },
                     {
                         name: 'margin-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier(\'sm\')})',
-                        description: 'The margin bottom of the select component, for the sm size variant'
+                        value: "calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier('sm')})",
+                        description:
+                            'The margin bottom of the select component, for the sm size variant'
                     },
                     {
                         name: 'margin-left',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier(\'sm\')})',
-                        description: 'The margin left of the select component, for the sm size variant'
+                        value: "calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier('sm')})",
+                        description:
+                            'The margin left of the select component, for the sm size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding top of the select component, for the sm size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding top of the select component, for the sm size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding right of the select component, for the sm size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding right of the select component, for the sm size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the select component, for the sm size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the select component, for the sm size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the select component, for the sm size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the select component, for the sm size variant'
                     },
                     {
                         name: 'option--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the select component option, for the sm size variant'
+                        value: "calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the select component option, for the sm size variant'
                     },
                     {
                         name: 'option--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the select component option, for the sm size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the select component option, for the sm size variant'
                     },
                     {
                         name: 'header--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the select component header, for the sm size variant'
+                        value: "calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the select component header, for the sm size variant'
                     },
                     {
                         name: 'header--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the select component header, for the sm size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the select component header, for the sm size variant'
                     },
                     {
                         name: 'body--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the select component body, for the sm size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the select component body, for the sm size variant'
                     },
                     {
                         name: 'body--padding-left',
                         type: '',
-                        value: 'calc(#{0} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the select component body, for the sm size variant'
+                        value: "calc(#{0} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the select component body, for the sm size variant'
                     },
                     {
                         name: 'footer--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the select component footer, for the sm size variant'
+                        value: "calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the select component footer, for the sm size variant'
                     },
                     {
                         name: 'footer--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the select component footer, for the sm size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the select component footer, for the sm size variant'
                     }
                 ]
             },
@@ -1173,128 +1159,149 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top left radius of the select component, for the md size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top left radius of the select component, for the md size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top right radius of the select component, for the md size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top right radius of the select component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom right radius of the select component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom right radius of the select component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom left radius of the select component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom left radius of the select component, for the md size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
-                        description: 'The font size of the select component, for the md size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('md')})",
+                        description:
+                            'The font size of the select component, for the md size variant'
                     },
                     {
                         name: 'margin-top',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier(\'md\')})',
-                        description: 'The margin top of the select component, for the md size variant'
+                        value: "calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier('md')})",
+                        description:
+                            'The margin top of the select component, for the md size variant'
                     },
                     {
                         name: 'margin-right',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier(\'md\')})',
-                        description: 'The margin right of the select component, for the md size variant'
+                        value: "calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier('md')})",
+                        description:
+                            'The margin right of the select component, for the md size variant'
                     },
                     {
                         name: 'margin-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier(\'md\')})',
-                        description: 'The margin bottom of the select component, for the md size variant'
+                        value: "calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier('md')})",
+                        description:
+                            'The margin bottom of the select component, for the md size variant'
                     },
                     {
                         name: 'margin-left',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier(\'md\')})',
-                        description: 'The margin left of the select component, for the md size variant'
+                        value: "calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier('md')})",
+                        description:
+                            'The margin left of the select component, for the md size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding top of the select component, for the md size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding top of the select component, for the md size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding right of the select component, for the md size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding right of the select component, for the md size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the select component, for the md size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the select component, for the md size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the select component, for the md size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the select component, for the md size variant'
                     },
                     {
                         name: 'option--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the select component option, for the md size variant'
+                        value: "calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the select component option, for the md size variant'
                     },
                     {
                         name: 'option--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the select component option, for the md size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the select component option, for the md size variant'
                     },
                     {
                         name: 'header--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the select component header, for the md size variant'
+                        value: "calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the select component header, for the md size variant'
                     },
                     {
                         name: 'header--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the select component header, for the md size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the select component header, for the md size variant'
                     },
                     {
                         name: 'body--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the select component body, for the md size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the select component body, for the md size variant'
                     },
                     {
                         name: 'body--padding-left',
                         type: '',
-                        value: 'calc(#{0} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the select component body, for the md size variant'
+                        value: "calc(#{0} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the select component body, for the md size variant'
                     },
                     {
                         name: 'footer--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the select component footer, for the md size variant'
+                        value: "calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the select component footer, for the md size variant'
                     },
                     {
                         name: 'footer--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the select component footer, for the md size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the select component footer, for the md size variant'
                     }
                 ]
             },
@@ -1306,128 +1313,149 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top left radius of the select component, for the lg size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top left radius of the select component, for the lg size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top right radius of the select component, for the lg size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top right radius of the select component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom right radius of the select component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom right radius of the select component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom left radius of the select component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom left radius of the select component, for the lg size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
-                        description: 'The font size of the select component, for the lg size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('lg')})",
+                        description:
+                            'The font size of the select component, for the lg size variant'
                     },
                     {
                         name: 'margin-top',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier(\'lg\')})',
-                        description: 'The margin top of the select component, for the lg size variant'
+                        value: "calc(#{calc(var(--margin-top) / 2)} * #{size-multiplier('lg')})",
+                        description:
+                            'The margin top of the select component, for the lg size variant'
                     },
                     {
                         name: 'margin-right',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier(\'lg\')})',
-                        description: 'The margin right of the select component, for the lg size variant'
+                        value: "calc(#{calc(var(--margin-right) / 2)} * #{size-multiplier('lg')})",
+                        description:
+                            'The margin right of the select component, for the lg size variant'
                     },
                     {
                         name: 'margin-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier(\'lg\')})',
-                        description: 'The margin bottom of the select component, for the lg size variant'
+                        value: "calc(#{calc(var(--margin-bottom) / 2)} * #{size-multiplier('lg')})",
+                        description:
+                            'The margin bottom of the select component, for the lg size variant'
                     },
                     {
                         name: 'margin-left',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier(\'lg\')})',
-                        description: 'The margin left of the select component, for the lg size variant'
+                        value: "calc(#{calc(var(--margin-left) / 2)} * #{size-multiplier('lg')})",
+                        description:
+                            'The margin left of the select component, for the lg size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding top of the select component, for the lg size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding top of the select component, for the lg size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding right of the select component, for the lg size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding right of the select component, for the lg size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the select component, for the lg size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the select component, for the lg size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the select component, for the lg size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the select component, for the lg size variant'
                     },
                     {
                         name: 'option--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the select component option, for the lg size variant'
+                        value: "calc(#{calc(var(----padding-bottom) / 2)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the select component option, for the lg size variant'
                     },
                     {
                         name: 'option--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the select component option, for the lg size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the select component option, for the lg size variant'
                     },
                     {
                         name: 'header--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the select component header, for the lg size variant'
+                        value: "calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the select component header, for the lg size variant'
                     },
                     {
                         name: 'header--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the select component header, for the lg size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the select component header, for the lg size variant'
                     },
                     {
                         name: 'body--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the select component body, for the lg size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the select component body, for the lg size variant'
                     },
                     {
                         name: 'body--padding-left',
                         type: '',
-                        value: 'calc(#{0} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the select component body, for the lg size variant'
+                        value: "calc(#{0} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the select component body, for the lg size variant'
                     },
                     {
                         name: 'footer--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the select component footer, for the lg size variant'
+                        value: "calc(#{calc(var(----padding-bottom) * 3 / 4)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the select component footer, for the lg size variant'
                     },
                     {
                         name: 'footer--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the select component footer, for the lg size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the select component footer, for the lg size variant'
                     }
                 ]
             }

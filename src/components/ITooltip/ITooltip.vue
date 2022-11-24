@@ -101,12 +101,12 @@ const props = defineProps({
         default: false
     },
     /**
-     * Used to override the popper.js options used for creating the tooltip
-     * @name popperOptions
+     * Used to override the floating-ui options used for creating the tooltip
+     * @name popupOptions
      * @type Object
      * @default {}
      */
-    popperOptions: {
+    popupOptions: {
         type: Object,
         default: (): any => ({})
     },

@@ -271,12 +271,12 @@ export default defineComponent({
             default: 'bottom'
         },
         /**
-         * Used to override the popper.js options used for creating the dropdown
+         * Used to override the floating-ui options used for creating the dropdown
          * @type Object
          * @default {}
-         * @name popperOptions
+         * @name popupOptions
          */
-        popperOptions: {
+        popupOptions: {
             type: Object,
             default: (): any => ({
                 modifiers: [...useBaseModifiers({ offset: 8 }), sameWidthModifier()]
