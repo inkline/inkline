@@ -8,6 +8,7 @@
 @import '../src/components/IContainer/css/preview';
 @import '../src/components/ICollapsible/css/preview';
 @import '../src/components/IDropdown/css/preview';
+@import '../src/components/IHamburgerMenu/css/preview';
 @import '../src/components/IHeader/css/preview';
 @import '../src/components/IInput/css/preview';
 @import '../src/components/ILayout/css/preview';
@@ -36,6 +37,7 @@
     @extend %card-preview;
     @extend %collapsible-preview;
     @extend %dropdown-preview;
+    @extend %hamburger-menu-preview;
     @extend %header-preview;
     @extend %grid-preview;
     @extend %input-preview;

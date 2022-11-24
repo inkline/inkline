@@ -13,10 +13,15 @@ export { ICollapsible } from './ICollapsible';
 export { ICollapsibleItem } from './ICollapsibleItem';
 export { IColumn } from './IColumn';
 export { IContainer } from './IContainer';
+export { IDropdown } from './IDropdown';
+export { IDropdownDivider } from './IDropdownDivider';
+export { IDropdownItem } from './IDropdownItem';
 export { IForm } from './IForm';
 export { IFormGroup } from './IFormGroup';
 export { IFormError } from './IFormError';
 export { IFormLabel } from './IFormLabel';
+export { IHamburgerMenu } from './IHamburgerMenu';
+export { IHeader } from './IHeader';
 export { IInput } from './IInput';
 export { INav } from './INav';
 export { INavItem } from './INavItem';
@@ -35,11 +40,6 @@ export { ITooltip } from './ITooltip';
 // Options API
 // @TODO Migrate to Composition API
 
-export { IDropdown } from './IDropdown';
-export { IDropdownDivider } from './IDropdownDivider';
-export { IDropdownItem } from './IDropdownItem';
-export { IHamburgerMenu } from './IHamburgerMenu';
-export { IHeader } from './IHeader';
 export { IIcon } from './IIcon';
 export { ILayout } from './ILayout';
 export { ILayoutAside } from './ILayoutAside';
