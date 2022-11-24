@@ -128,7 +128,7 @@ function onClick (event: Event) {
         :href="href"
         class="nav-item"
         :role="role"
-        :tag="tag"
+        :tag="props.tag"
         :tabindex="tabIndex"
         :class="classes"
         :disabled="disabled"

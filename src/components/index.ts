@@ -22,7 +22,13 @@ export { IFormError } from './IFormError';
 export { IFormLabel } from './IFormLabel';
 export { IHamburgerMenu } from './IHamburgerMenu';
 export { IHeader } from './IHeader';
+export { IIcon } from './IIcon';
 export { IInput } from './IInput';
+export { ILayout } from './ILayout';
+export { ILayoutAside } from './ILayoutAside';
+export { ILayoutContent } from './ILayoutContent';
+export { ILayoutFooter } from './ILayoutFooter';
+export { ILayoutHeader } from './ILayoutHeader';
 export { INav } from './INav';
 export { INavItem } from './INavItem';
 export { INavbar } from './INavbar';
@@ -40,12 +46,6 @@ export { ITooltip } from './ITooltip';
 // Options API
 // @TODO Migrate to Composition API
 
-export { IIcon } from './IIcon';
-export { ILayout } from './ILayout';
-export { ILayoutAside } from './ILayoutAside';
-export { ILayoutContent } from './ILayoutContent';
-export { ILayoutFooter } from './ILayoutFooter';
-export { ILayoutHeader } from './ILayoutHeader';
 export { IListGroup } from './IListGroup';
 export { IListGroupItem } from './IListGroupItem';
 export { ILoader } from './ILoader';

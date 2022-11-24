@@ -116,7 +116,7 @@ function onClick (event: Event) {
         class="dropdown-item"
         :class="classes"
         :role="role"
-        :tag="tag"
+        :tag="props.tag"
         :tabindex="tabIndex"
         :disabled="disabled"
         :aria-disabled="ariaDisabled"

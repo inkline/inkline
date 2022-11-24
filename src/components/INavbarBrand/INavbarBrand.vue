@@ -53,7 +53,7 @@ const { tag } = useLinkable({ to, href, tag: currentTag });
 </script>
 
 <template>
-    <component :is="tag" class="navbar-brand" :tag="tag" translate="no">
+    <component :is="tag" class="navbar-brand" :tag="props.tag" translate="no">
         <!-- @slot default Slot for default navbar brand content -->
         <slot />
     </component>

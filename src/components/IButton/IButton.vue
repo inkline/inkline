@@ -207,7 +207,7 @@ const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
         class="button"
         :to="to"
         :href="href"
-        :tag="tag"
+        :tag="props.tag"
         :role="role"
         :tabindex="tabIndex"
         :class="classes"
