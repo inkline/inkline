@@ -34,6 +34,7 @@ export { IListGroupItem } from './IListGroupItem';
 export { ILoader } from './ILoader';
 export { IMark } from './IMark';
 export { IMedia } from './IMedia';
+export { IModal } from './IModal';
 export { INav } from './INav';
 export { INavItem } from './INavItem';
 export { INavbar } from './INavbar';
@@ -41,6 +42,8 @@ export { INavbarBrand } from './INavbarBrand';
 export { INavbarCollapsible } from './INavbarCollapsible';
 export { INumberInput } from './INumberInput';
 export { IPopover } from './IPopover';
+export { IProgress } from './IProgress';
+export { IProgressBar } from './IProgressBar';
 export { IRadio } from './IRadio';
 export { IRadioGroup } from './IRadioGroup';
 export { IRow } from './IRow';
@@ -51,10 +54,7 @@ export { ITooltip } from './ITooltip';
 // Options API
 // @TODO Migrate to Composition API
 
-export { IModal } from './IModal';
 export { IPagination } from './IPagination';
-export { IProgress } from './IProgress';
-export { IProgressBar } from './IProgressBar';
 export { ISelect } from './ISelect';
 export { ISelectOption } from './ISelectOption';
 export { ISidebar } from './ISidebar';
