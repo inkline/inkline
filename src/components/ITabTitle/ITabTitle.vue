@@ -1,56 +1,36 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import {computed, inject, toRef} from 'vue';
 import { uid } from '@grozav/utils';
-import { Classes } from '@inkline/inkline/types';
-
-/**
- * Slot for default tab title content
- * @name default
- * @kind slot
- */
+import {TabsKey} from "@inkline/inkline/components/ITabs/mixin";
 
 const componentName = 'ITabTitle';
 
-export default defineComponent({
-    name: componentName,
-    inject: {
-        tabs: {
-            default: () => ({})
-        }
-    },
-    props: {
-        /**
-         * The name of the referenced tab
-         * @type String
-         * @default
-         * @name for
-         */
-        for: {
-            type: String,
-            default (): string {
-                return uid('tab');
-            }
-        }
-    },
-    computed: {
-        active (): boolean {
-            return (this as any).tabs.active === this.for;
-        },
-        classes (): Classes {
-            return {
-                '-active': this.active
-            };
-        },
-        name (): string {
-            return this.for;
-        }
-    },
-    methods: {
-        onClick () {
-            (this as any).tabs.setActive(this.for);
+const props = defineProps({
+    /**
+     * The name of the referenced tab
+     * @type String
+     * @default
+     * @name for
+     */
+    for: {
+        type: String,
+        default (): string {
+            return uid('tab');
         }
     }
 });
+
+const tabs = inject(TabsKey, null);
+
+const name = toRef(props, 'for');
+const active = computed(() => tabs?.active.value === props.for);
+const classes = computed(() => ({
+    '-active': active.value
+}));
+
+function onClick () {
+    tabs?.setActive(props.for);
+}
 </script>
 
 <template>
@@ -66,6 +46,7 @@ export default defineComponent({
         tabindex="0"
         @click="onClick"
     >
+        <!-- @slot default Slot for tab title content -->
         <slot />
     </div>
 </template>

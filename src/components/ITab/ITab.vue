@@ -1,71 +1,55 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import {computed, inject} from 'vue';
 import { uid } from '@grozav/utils';
-import { Classes } from '@inkline/inkline/types';
-
-/**
- * Slot for default tab content
- * @name default
- * @kind slot
- */
+import {TabsKey} from "@inkline/inkline/components/ITabs/mixin";
 
 const componentName = 'ITab';
 
-export default defineComponent({
-    name: componentName,
-    inject: {
-        tabs: {
-            default: () => ({})
-        }
+const props = defineProps({
+    /**
+     * The title of the tab
+     * @type String
+     * @default
+     * @name title
+     */
+    title: {
+        type: String,
+        default: ''
     },
-    props: {
-        /**
-         * The title of the tab
-         * @type String
-         * @default
-         * @name title
-         */
-        title: {
-            type: String,
-            default: ''
-        },
-        /**
-         * The name of the tab, used as an identifier
-         * @type String
-         * @default uid()
-         * @name name
-         */
-        name: {
-            type: String,
-            default (): string {
-                return uid('tab');
-            }
-        }
-    },
-    computed: {
-        active (): boolean {
-            return (this as any).tabs.active === this.name;
-        },
-        classes (): Classes {
-            return {
-                '-active': this.active
-            };
+    /**
+     * The name of the tab, used as an identifier
+     * @type String
+     * @default uid()
+     * @name name
+     */
+    name: {
+        type: String,
+        default (): string {
+            return uid('tab');
         }
     }
 });
+
+const tabs = inject(TabsKey, null);
+
+const active = computed(() => tabs?.active.value === props.name);
+const classes = computed(() => ({
+    '-active': active.value
+}));
 </script>
 
 <template>
     <div
+        v-show="active"
         class="tab"
         :class="classes"
-        v-show="active"
         role="tabpanel"
         :name="name"
         :aria-hidden="!active"
         :aria-labelledby="`tab-heading-${name}`"
     >
         <div class="tab-body">
+            <!-- @slot default Slot for tab content -->
             <slot />
         </div>
     </div>
