@@ -29,6 +29,11 @@ export { ILayoutAside } from './ILayoutAside';
 export { ILayoutContent } from './ILayoutContent';
 export { ILayoutFooter } from './ILayoutFooter';
 export { ILayoutHeader } from './ILayoutHeader';
+export { IListGroup } from './IListGroup';
+export { IListGroupItem } from './IListGroupItem';
+export { ILoader } from './ILoader';
+export { IMark } from './IMark';
+export { IMedia } from './IMedia';
 export { INav } from './INav';
 export { INavItem } from './INavItem';
 export { INavbar } from './INavbar';
@@ -46,11 +51,6 @@ export { ITooltip } from './ITooltip';
 // Options API
 // @TODO Migrate to Composition API
 
-export { IListGroup } from './IListGroup';
-export { IListGroupItem } from './IListGroupItem';
-export { ILoader } from './ILoader';
-export { IMark } from './IMark';
-export { IMedia } from './IMedia';
 export { IModal } from './IModal';
 export { IPagination } from './IPagination';
 export { IProgress } from './IProgress';

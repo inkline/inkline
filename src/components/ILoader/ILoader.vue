@@ -1,60 +1,49 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import {computed, defineComponent} from 'vue';
 import { computedColorValue, computedSizeValue } from '@inkline/inkline/mixins';
 import { Classes } from '@inkline/inkline/types';
-
-/**
- * Slot for default loader content
- * @name default
- * @kind slot
- */
+import {useComponentColor, useComponentSize} from "@inkline/inkline/composables";
 
 const componentName = 'ILoader';
 
-export default defineComponent({
-    name: componentName,
-    props: {
-        /**
-         * The color variant of the loader
-         * @type primary | light | dark
-         * @default light
-         * @name color
-         */
-        color: {
-            type: String,
-            default: ''
-        },
-        /**
-         * The size variant of the loader
-         * @type sm | md | lg | auto
-         * @default md
-         * @name size
-         */
-        size: {
-            type: String,
-            default: ''
-        }
+const props = defineProps({
+    /**
+     * The color variant of the loader
+     * @type primary | light | dark
+     * @default light
+     * @name color
+     */
+    color: {
+        type: String,
+        default: ''
     },
-    computed: {
-        computedColor (): string | undefined {
-            return computedColorValue(componentName, this.color);
-        },
-        computedSize (): string | undefined {
-            return computedSizeValue(componentName, this.size);
-        },
-        classes (): Classes {
-            return {
-                [`-${this.computedColor}`]: Boolean(this.computedColor),
-                [`-${this.computedSize}`]: Boolean(this.computedSize)
-            };
-        }
+    /**
+     * The size variant of the loader
+     * @type sm | md | lg | auto
+     * @default md
+     * @name size
+     */
+    size: {
+        type: String,
+        default: ''
     }
 });
+
+const currentColor = computed(() => props.color);
+const currentSize = computed(() => props.size);
+const { color } = useComponentColor({ componentName, currentColor });
+const { size } = useComponentSize({ componentName, currentSize });
+
+const classes = computed(() => ({
+    [`-${color.value}`]: true,
+    [`-${size.value}`]: true,
+}));
 </script>
 
 <template>
     <div class="loader" :class="classes" role="img" aria-hidden="true">
         <span v-if="$slots.default" class="loader-text">
+            <!-- @slot default Slot for default loader content -->
             <slot />
         </span>
         <svg viewBox="25 25 50 50">

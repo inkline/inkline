@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Plugin, reactive, watch } from 'vue';
-import { addClass, removeClass } from '@grozav/utils';
+import { addClass, isKey, removeClass } from '@grozav/utils';
 import { initialize as initializeForm } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
 import * as inklineIcons from '@inkline/inkline/icons';
 import { SvgNode } from '@inkline/inkline/types';
+import OverlayController from './controllers/OverlayController';
 
 export interface PrototypeConfig {
     colorMode: 'system' | 'light' | 'dark' | string;
@@ -147,6 +148,19 @@ export const Inkline: Plugin = {
         app.provide('inklineIcons', icons);
 
         if (typeof window !== 'undefined') {
+            /**
+             * Add global key bindings
+             */
+
+            window.addEventListener('keydown', (e) => {
+                if (isKey('esc', e)) {
+                    /**
+                     * Handle `esc` key when a modal is shown
+                     */
+                    OverlayController.onPressEscape();
+                }
+            });
+
             /**
              * Add color mode on change handler
              */

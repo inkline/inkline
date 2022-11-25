@@ -1,263 +1,251 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import {defineComponent, ref, toRef, computed, watch, onMounted, onBeforeUnmount} from 'vue';
 import { addClass, removeClass, uid } from '@grozav/utils';
 import { OverlayController } from '@inkline/inkline/controllers';
-import {
-    computedColorValue,
-    computedSizeValue
-} from '@inkline/inkline/mixins';
 import { ClickOutside } from '@inkline/inkline/directives';
-import { Classes } from '@inkline/inkline/types';
-
-/**
- * Event emitted for setting the modelValue
- * @event update:modelValue
- */
-
-/**
- * Slot for modal body content
- * @name default
- * @kind slot
- */
-
-/**
- * Slot for modal header content
- * @name header
- * @kind slot
- */
-
-/**
- * Slot for modal footer content
- * @name footer
- * @kind slot
- */
+import {useComponentColor, useComponentSize, useClickOutside} from "@inkline/inkline/composables";
 
 const componentName = 'IModal';
 
-export default defineComponent({
-    name: componentName,
-    directives: {
-        ClickOutside
+const props = defineProps({
+    /**
+     * Determines if the modal should close when pressing escape
+     * @type Boolean
+     * @default true
+     * @name closeOnPressEscape
+     */
+    closeOnPressEscape: {
+        type: Boolean,
+        default: true
     },
-    props: {
-        /**
-         * Determines if the modal should close when pressing escape
-         * @type Boolean
-         * @default true
-         * @name closeOnPressEscape
-         */
-        closeOnPressEscape: {
-            type: Boolean,
-            default: true
-        },
-        /**
-         * The aria-label attribute of the close button
-         * @type String
-         * @default Close
-         * @name closeAriaLabel
-         */
-        closeAriaLabel: {
-            type: String,
-            default: 'Close'
-        },
-        /**
-         * The color variant of the modal
-         * @type primary | success | light | dark | info | success | warning | danger
-         * @default light
-         * @name color
-         */
-        color: {
-            type: String,
-            default: ''
-        },
-        /**
-         * The disabled state of the modal
-         * @type Boolean
-         * @default false
-         * @name disabled
-         */
-        disabled: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * Determines if the modal should close when clicking the overlay
-         * @type Boolean
-         * @default true
-         * @name hideOnClickOutside
-         */
-        hideOnClickOutside: {
-            type: Boolean,
-            default: true
-        },
-        /**
-         * The identifier of the modal
-         * @type String
-         * @default uid()
-         * @name name
-         */
-        name: {
-            type: String,
-            default (): string {
-                return uid('modal');
-            }
-        },
-        /**
-         * Determines if the close icon should be visible in the modal header
-         * @type Boolean
-         * @default false
-         * @name showClose
-         */
-        showClose: {
-            type: Boolean,
-            default: true
-        },
-        /**
-         * The size variant of the modal
-         * @type sm | md | lg
-         * @default md
-         * @name size
-         */
-        size: {
-            type: String,
-            default: ''
-        },
-        /**
-         * Used to determine if modal is visible or not
-         * @type Boolean
-         * @default false
-         * @name modelValue
-         */
-        modelValue: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * The modal opening and closing animation
-         * @type fade-in-transition | fade-in-linear-transition | zoom-in-top-transition | zoom-in-bottom-transition | zoom-in-center-transition | zoom-in-left-transition | zoom-in-right-transition
-         * @default zoom-in-center-transition
-         * @name transition
-         */
-        transition: {
-            type: String,
-            default: 'zoom-in-center-transition'
+    /**
+     * The aria-label attribute of the close button
+     * @type String
+     * @default Close
+     * @name closeAriaLabel
+     */
+    closeAriaLabel: {
+        type: String,
+        default: 'Close'
+    },
+    /**
+     * The color variant of the modal
+     * @type primary | success | light | dark | info | success | warning | danger
+     * @default light
+     * @name color
+     */
+    color: {
+        type: String,
+        default: ''
+    },
+    /**
+     * The disabled state of the modal
+     * @type Boolean
+     * @default false
+     * @name disabled
+     */
+    disabled: {
+        type: Boolean,
+        default: false
+    },
+    /**
+     * Determines if the modal should close when clicking the overlay
+     * @type Boolean
+     * @default true
+     * @name hideOnClickOutside
+     */
+    hideOnClickOutside: {
+        type: Boolean,
+        default: true
+    },
+    /**
+     * The identifier of the modal
+     * @type String
+     * @default uid()
+     * @name name
+     */
+    name: {
+        type: String,
+        default (): string {
+            return uid('modal');
         }
     },
-    emits: [
-        /**
-         * Event emitted for setting the modelValue
-         * @event update:modelValue
-         */
-        'update:modelValue'
-    ],
-    data (): { visible: boolean } {
-        return {
-            visible: (this as any).modelValue as boolean
-        };
+    /**
+     * Determines if the close icon should be visible in the modal header
+     * @type Boolean
+     * @default false
+     * @name showClose
+     */
+    showClose: {
+        type: Boolean,
+        default: true
     },
-    computed: {
-        computedColor (): string | undefined {
-            return computedColorValue(componentName, this.color);
-        },
-        computedSize (): string | undefined {
-            return computedSizeValue(componentName, this.size);
-        },
-        classes (): Classes {
-            return {
-                [`-${this.computedColor}`]: Boolean(this.computedColor),
-                [`-${this.computedSize}`]: Boolean(this.computedSize),
-                '-disabled': (this as any).disabled,
-            };
-        }
+    /**
+     * The size variant of the modal
+     * @type sm | md | lg
+     * @default md
+     * @name size
+     */
+    size: {
+        type: String,
+        default: ''
     },
-    watch: {
-        modelValue (value) {
-            if (value) {
-                this.show();
-            } else {
-                this.hide();
-            }
-        }
+    /**
+     * Used to determine if modal is visible or not
+     * @type Boolean
+     * @default false
+     * @name modelValue
+     */
+    modelValue: {
+        type: Boolean,
+        default: false
     },
-    mounted () {
-        OverlayController.register(this as any);
-    },
-    unmounted () {
-        OverlayController.unregister(this as any);
-    },
-    methods: {
-        show (): void {
-            if ((this as any).disabled) {
-                return;
-            }
-
-            this.visible = true;
-            this.$emit('update:modelValue', true);
-
-            OverlayController.open((this as any).name);
-
-            if (typeof window !== 'undefined') {
-                addClass(window.document.body, '-modal');
-            }
-        },
-        hide (): void {
-            if ((this as any).disabled) {
-                return;
-            }
-
-            this.visible = false;
-            this.$emit('update:modelValue', false);
-
-            OverlayController.close((this as any).name);
-
-            if (typeof window !== 'undefined') {
-                removeClass(window.document.body, '-modal');
-            }
-        },
-        onClickOutside (): void {
-            if (!(this as any).hideOnClickOutside) {
-                return;
-            }
-
-            this.hide();
-        }
+    /**
+     * The modal opening and closing animation
+     * @type fade-in-transition | fade-in-linear-transition | zoom-in-top-transition | zoom-in-bottom-transition | zoom-in-center-transition | zoom-in-left-transition | zoom-in-right-transition
+     * @default zoom-in-center-transition
+     * @name transition
+     */
+    transition: {
+        type: String,
+        default: 'zoom-in-center-transition'
     }
 });
+
+const emit = defineEmits([
+    /**
+     * Event emitted for setting the modelValue
+     * @event update:modelValue
+     */
+    'update:modelValue'
+]);
+
+const visible = ref(props.modelValue);
+
+const currentColor = computed(() => props.color);
+const currentSize = computed(() => props.size);
+const { color } = useComponentColor({ componentName, currentColor });
+const { size } = useComponentSize({ componentName, currentSize });
+
+const classes = computed(() => ({
+    [`-${color.value}`]: true,
+    [`-${size.value}`]: true,
+    '-disabled': props.disabled
+}));
+
+const wrapperRef = ref<HTMLElement | null>(null);
+const modalRef = ref<HTMLElement | null>(null);
+const name = toRef(props, 'name');
+const closeOnPressEscape = toRef(props, 'closeOnPressEscape');
+
+watch(() => props.modelValue, (value) => {
+    if (value) {
+        show();
+    } else {
+        hide();
+    }
+});
+
+onMounted(() => {
+    OverlayController.register({
+        name,
+        elementRef: wrapperRef,
+        closeOnPressEscape,
+        hide
+    });
+});
+
+onBeforeUnmount(() => {
+    OverlayController.unregister({
+        name,
+        elementRef: wrapperRef,
+        closeOnPressEscape,
+        hide
+    });
+});
+
+useClickOutside({
+    elementRef: modalRef,
+    fn: onClickOutside
+});
+
+function show (): void {
+    if (props.disabled) {
+        return;
+    }
+
+    visible.value = true;
+    emit('update:modelValue', true);
+
+    OverlayController.open(props.name);
+
+    if (typeof window !== 'undefined') {
+        addClass(window.document.body, '-modal');
+    }
+}
+
+function hide (): void {
+    if (props.disabled) {
+        return;
+    }
+
+    visible.value = false;
+    emit('update:modelValue', false);
+
+    OverlayController.close(props.name);
+
+    if (typeof window !== 'undefined') {
+        removeClass(window.document.body, '-modal');
+    }
+}
+
+function onClickOutside (): void {
+    if (!props.hideOnClickOutside) {
+        return;
+    }
+
+    hide();
+}
 </script>
 
 <template>
     <transition name="fade-in-transition">
         <div
+            v-show="visible"
+            :id="name"
+            ref="wrapperRef"
             class="modal-wrapper"
             role="dialog"
             aria-modal="true"
             :aria-hidden="visible ? 'false' : 'true'"
             :class="classes"
-            v-show="visible"
-            :id="name"
             :name="name"
             :aria-labelledby="`${name}-header`"
         >
             <transition :name="transition">
-                <div class="modal" v-click-outside="onClickOutside" v-show="visible">
-                    <div class="modal-header" :id="`${name}-header`" v-if="$slots.header">
+                <div v-show="visible" ref="modalRef" class="modal">
+                    <div v-if="$slots.header" :id="`${name}-header`" class="modal-header">
+                        <!-- @slot footer Slot for modal header content -->
                         <slot name="header" />
                         <button
+                            v-if="showClose"
                             class="close"
                             aria-hidden="true"
                             :aria-label="closeAriaLabel"
                             @click="hide"
-                            v-if="showClose"
                         >
+                            <!-- @slot close Close icon slot -->
                             <slot name="close">
                                 <i class="icon" />
                             </slot>
                         </button>
                     </div>
-                    <div class="modal-body" v-if="$slots.default">
+                    <div v-if="$slots.default" class="modal-body">
+                        <!-- @slot default Slot for modal body content -->
                         <slot />
                     </div>
-                    <div class="modal-footer" v-if="$slots.footer">
+                    <div v-if="$slots.footer" class="modal-footer">
+                        <!-- @slot footer Slot for modal footer content -->
                         <slot name="footer" />
                     </div>
                 </div>

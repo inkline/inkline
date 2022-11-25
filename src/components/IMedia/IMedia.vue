@@ -1,24 +1,14 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-/**
- * Slot for default media content
- * @name default
- * @kind slot
- */
-
+<script lang="ts" setup>
 const componentName = 'IMedia';
-
-export default defineComponent({
-    name: componentName
-});
 </script>
 
 <template>
     <div class="media">
-        <slot name="image"></slot>
+        <!-- @slot image Slot for media image -->
+        <slot name="image" />
         <div class="media-body">
-            <slot></slot>
+            <!-- @slot default Slot for default media content -->
+            <slot />
         </div>
     </div>
 </template>
