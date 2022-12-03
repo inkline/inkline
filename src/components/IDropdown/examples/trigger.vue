@@ -52,7 +52,7 @@ export default {
         </template>
     </i-dropdown>
 
-    <i-dropdown v-model="visible" events="manual">
+    <i-dropdown v-model:visible="visible" events="manual">
         <i-button @click="visible = !visible">Manual Dropdown</i-button>
         <template #body>
             <i-dropdown-item>Action</i-dropdown-item>

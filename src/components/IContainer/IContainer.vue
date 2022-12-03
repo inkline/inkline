@@ -1,24 +1,30 @@
-<script lang="ts" setup>
-import { computed } from 'vue';
+<script lang="ts">
+import { computed, defineComponent } from 'vue';
 
 const componentName = 'IContainer';
 
-const props = defineProps({
-    /**
-     * Display the container as fluid, always spanning 100% width
-     * @type Boolean
-     * @default false
-     * @name fluid
-     */
-    fluid: {
-        type: Boolean,
-        default: false
+export default defineComponent({
+    name: componentName,
+    props: {
+        /**
+         * Display the container as fluid, always spanning 100% width
+         * @type Boolean
+         * @default false
+         * @name fluid
+         */
+        fluid: {
+            type: Boolean,
+            default: false
+        }
+    },
+    setup(props) {
+        const classes = computed(() => ({
+            '-fluid': props.fluid
+        }));
+
+        return { classes };
     }
 });
-
-const classes = computed(() => ({
-    '-fluid': props.fluid
-}));
 </script>
 
 <template>

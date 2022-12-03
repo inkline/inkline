@@ -1,36 +1,47 @@
-<script lang="ts" setup>
-import {computed, inject, toRef} from 'vue';
+<script lang="ts">
+import { computed, defineComponent, inject, toRef } from 'vue';
 import { uid } from '@grozav/utils';
-import {TabsKey} from "@inkline/inkline/components/ITabs/mixin";
+import { TabsKey } from '@inkline/inkline/components/ITabs/mixin';
 
 const componentName = 'ITabTitle';
 
-const props = defineProps({
-    /**
-     * The name of the referenced tab
-     * @type String
-     * @default
-     * @name for
-     */
-    for: {
-        type: String,
-        default (): string {
-            return uid('tab');
+export default defineComponent({
+    name: componentName,
+    props: {
+        /**
+         * The name of the referenced tab
+         * @type String
+         * @default
+         * @name for
+         */
+        for: {
+            type: String,
+            default(): string {
+                return uid('tab');
+            }
         }
+    },
+    setup(props) {
+        const tabs = inject(TabsKey, null);
+
+        const name = toRef(props, 'for');
+        const active = computed(() => tabs?.active.value === props.for);
+        const classes = computed(() => ({
+            '-active': active.value
+        }));
+
+        function onClick() {
+            tabs?.setActive(props.for);
+        }
+
+        return {
+            name,
+            active,
+            classes,
+            onClick
+        };
     }
 });
-
-const tabs = inject(TabsKey, null);
-
-const name = toRef(props, 'for');
-const active = computed(() => tabs?.active.value === props.for);
-const classes = computed(() => ({
-    '-active': active.value
-}));
-
-function onClick () {
-    tabs?.setActive(props.for);
-}
 </script>
 
 <template>

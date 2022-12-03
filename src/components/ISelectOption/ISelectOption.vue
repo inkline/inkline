@@ -1,31 +1,11 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { Classes } from '@inkline/inkline/types';
-
-/**
- * Slot for default select option content
- * @name default
- * @kind slot
- */
-
-export interface SelectOption {
-    active?: boolean;
-    disabled?: boolean;
-    label: string;
-    value: any;
-
-    [key: string]: any
-}
+import { computed, defineComponent, inject } from 'vue';
+import { SelectKey } from '@inkline/inkline/components/ISelect/mixin';
 
 const componentName = 'ISelectOption';
 
 export default defineComponent({
     name: componentName,
-    inject: {
-        select: {
-            default: (): any => ({})
-        }
-    },
     props: {
         /**
          * The active state of the select option
@@ -78,32 +58,34 @@ export default defineComponent({
             default: (): any => ({})
         }
     },
-    computed: {
-        ariaDisabled () {
-            return this.disabled ? 'true' : 'false';
-        },
-        ariaSelected () {
-            return this.active ? 'true' : 'false';
-        },
-        isActive (): boolean {
-            return this.active || (this.value === (this as any).select.modelValue);
-        },
-        classes (): Classes {
-            return {
-                '-active': this.isActive,
-                '-disabled': this.disabled
-            };
-        },
-        tabIndex (): number | string {
-            return this.disabled ? -1 : this.tabindex;
-        }
-    },
-    methods: {
-        onClick () {
-            if (!this.disabled) {
-                (this as any).select.onInput(this.value, this.label);
+    setup(props) {
+        const select = inject(SelectKey, null);
+
+        const ariaDisabled = computed(() => (props.disabled ? 'true' : null));
+        const ariaSelected = computed(() => (props.disabled ? 'true' : null));
+
+        const isActive = computed(() => props.active || props.value === select?.value.value);
+
+        const classes = computed(() => ({
+            '-active': isActive.value,
+            '-disabled': props.disabled
+        }));
+
+        const tabIndex = computed(() => (props.disabled ? -1 : props.tabindex));
+
+        function onClick() {
+            if (!props.disabled) {
+                select?.onInput(props.value, props.label);
             }
         }
+
+        return {
+            ariaDisabled,
+            ariaSelected,
+            classes,
+            tabIndex,
+            onClick
+        };
     }
 });
 </script>
@@ -119,6 +101,7 @@ export default defineComponent({
         :aria-selected="ariaSelected"
         @click="onClick"
     >
+        <!-- @slot default Slot for select option label -->
         <slot> {{ label }} </slot>
     </div>
 </template>

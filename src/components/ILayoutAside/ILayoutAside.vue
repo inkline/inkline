@@ -1,5 +1,11 @@
-<script lang="ts" setup>
+<script lang="ts">
+import { defineComponent } from 'vue';
+
 const componentName = 'ILayoutAside';
+
+export default defineComponent({
+    name: componentName
+});
 </script>
 
 <template>

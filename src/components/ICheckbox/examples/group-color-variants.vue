@@ -24,5 +24,4 @@ const dark = ref('apple');
             </i-checkbox-group>
         </div>
     </div>
-    ;
 </template>

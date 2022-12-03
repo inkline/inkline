@@ -1,186 +1,208 @@
-<script lang="ts" setup>
-import {PropType, ref, computed} from 'vue';
+<script lang="ts">
+import { PropType, ref, computed, defineComponent } from 'vue';
 import { uid } from '@grozav/utils';
-import {PopupEvent, usePopupControl} from "@inkline/inkline/composables/popup";
-import {useClickOutside, useComponentColor, useComponentSize} from "@inkline/inkline/composables";
-import {Placement} from "@floating-ui/dom";
+import { PopupEvent, usePopupControl } from '@inkline/inkline/composables/popup';
+import { useClickOutside, useComponentColor, useComponentSize } from '@inkline/inkline/composables';
+import { Placement } from '@floating-ui/dom';
 
 const componentName = 'ITooltip';
 
-const props = defineProps({
-    /**
-     * The color variant of the tooltip
-     * @name color
-     * @type light | dark
-     * @default light
-     */
-    color: {
-        type: String,
-        default: ''
-    },
-    /**
-     * The disabled state of the tooltip
-     * @name disabled
-     * @type Boolean
-     * @default false
-     */
-    disabled: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * Used to manually control the visibility of the tooltip
-     * @name modelValue
-     * @type Boolean
-     * @default undefined
-     */
-    modelValue: {
-        type: Boolean,
-        default: undefined
-    },
-    /**
-     * The identifier of the tooltip
-     * @name name
-     * @type String
-     * @default uid()
-     */
-    name: {
-        type: String,
-        default (): string {
-            return uid('tooltip');
+export default defineComponent({
+    name: componentName,
+    props: {
+        /**
+         * The color variant of the tooltip
+         * @name color
+         * @type light | dark
+         * @default light
+         */
+        color: {
+            type: String,
+            default: ''
+        },
+        /**
+         * The disabled state of the tooltip
+         * @name disabled
+         * @type Boolean
+         * @default false
+         */
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * Used to manually control the visibility of the tooltip
+         * @name visible
+         * @type Boolean
+         * @default undefined
+         */
+        visible: {
+            type: Boolean,
+            default: undefined
+        },
+        /**
+         * The identifier of the tooltip
+         * @name name
+         * @type String
+         * @default uid()
+         */
+        name: {
+            type: String,
+            default(): string {
+                return uid('tooltip');
+            }
+        },
+        /**
+         * Displays an arrow on the tooltip pointing to the trigger element
+         * @name arrow
+         * @type Boolean
+         * @default true
+         */
+        arrow: {
+            type: Boolean,
+            default: true
+        },
+        /**
+         * The placement of the tooltip
+         * @name placement
+         * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
+         * @default false
+         */
+        placement: {
+            type: String as PropType<Placement>,
+            default: 'top'
+        },
+        /**
+         * The events used to trigger the tooltip
+         * @name events
+         * @type hover | focus | click | manual
+         * @default [hover, focus]
+         */
+        events: {
+            type: [String, Array] as PropType<PopupEvent | PopupEvent[]>,
+            default: (): string[] => ['hover', 'focus']
+        },
+        /**
+         * The offset of the tooltip relative to the trigger element
+         * @name offset
+         * @type Number
+         * @default 6
+         */
+        offset: {
+            type: Number,
+            default: 6
+        },
+        /**
+         * Determines whether hover state should be transferred from trigger to popup
+         * @name interactable
+         * @type Boolean
+         * @default false
+         */
+        interactable: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * Used to override the floating-ui options used for creating the tooltip
+         * @name popupOptions
+         * @type Object
+         * @default {}
+         */
+        popupOptions: {
+            type: Object,
+            default: (): any => ({})
+        },
+        /**
+         * The size variant of the tooltip
+         * @name size
+         * @type sm | md | lg
+         * @default md
+         */
+        size: {
+            type: String,
+            default: ''
+        },
+        /**
+         * Delay in milliseconds before the tooltip is hidden on hover
+         * @name hoverHideDelay
+         * @type Number
+         * @default 300
+         */
+        hoverHideDelay: {
+            type: Number,
+            default: 300
+        },
+        /**
+         * Animation duration in milliseconds
+         * @name animationDuration
+         * @type Number
+         * @default 300
+         */
+        animationDuration: {
+            type: Number,
+            default: 300
         }
     },
-    /**
-     * Displays an arrow on the tooltip pointing to the trigger element
-     * @name arrow
-     * @type Boolean
-     * @default true
-     */
-    arrow: {
-        type: Boolean,
-        default: true
-    },
-    /**
-     * The placement of the tooltip
-     * @name placement
-     * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
-     * @default false
-     */
-    placement: {
-        type: String as PropType<Placement>,
-        default: 'top'
-    },
-    /**
-     * The events used to trigger the tooltip
-     * @name events
-     * @type hover | focus | click | manual
-     * @default [hover, focus]
-     */
-    events: {
-        type: [String, Array] as PropType<PopupEvent | PopupEvent[]>,
-        default: (): string[] => ['hover', 'focus']
-    },
-    /**
-     * The offset of the tooltip relative to the trigger element
-     * @name offset
-     * @type Number
-     * @default 6
-     */
-    offset: {
-        type: Number,
-        default: 6
-    },
-    /**
-     * Determines whether hover state should be transferred from trigger to popup
-     * @name interactable
-     * @type Boolean
-     * @default false
-     */
-    interactable: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * Used to override the floating-ui options used for creating the tooltip
-     * @name popupOptions
-     * @type Object
-     * @default {}
-     */
-    popupOptions: {
-        type: Object,
-        default: (): any => ({})
-    },
-    /**
-     * The size variant of the tooltip
-     * @name size
-     * @type sm | md | lg
-     * @default md
-     */
-    size: {
-        type: String,
-        default: ''
-    },
-    /**
-     * Delay in milliseconds before the tooltip is hidden on hover
-     * @name hoverHideDelay
-     * @type Number
-     * @default 300
-     */
-    hoverHideDelay: {
-        type: Number,
-        default: 300
-    },
-    /**
-     * Animation duration in milliseconds
-     * @name animationDuration
-     * @type Number
-     * @default 300
-     */
-    animationDuration: {
-        type: Number,
-        default: 300
+    emits: [
+        /**
+         * Event emitted for setting the visible
+         * @event update:visible
+         */
+        'update:visible',
+        /**
+         * Event emitted when clicking outside the tooltip
+         * @event click:outside
+         */
+        'click:outside'
+    ],
+    setup(props, { emit }) {
+        const wrapperRef = ref<HTMLElement | null>(null);
+        const triggerRef = ref<HTMLElement | null>(null);
+        const popupRef = ref<HTMLElement | null>(null);
+        const arrowRef = ref<HTMLElement | null>(null);
+
+        const currentColor = computed(() => props.color);
+        const currentSize = computed(() => props.size);
+        const { color } = useComponentColor({ componentName, currentColor });
+        const { size } = useComponentSize({ componentName, currentSize });
+
+        const componentProps = computed(() => ({
+            disabled: props.disabled,
+            events: props.events,
+            placement: props.placement,
+            interactable: props.interactable,
+            visible: props.visible,
+            animationDuration: props.animationDuration,
+            hoverHideDelay: props.hoverHideDelay,
+            offset: props.offset
+        }));
+        const { visible, onKeyEscape, onClickOutside } = usePopupControl({
+            triggerRef,
+            popupRef,
+            arrowRef,
+            componentProps,
+            emit
+        });
+
+        useClickOutside({ elementRef: wrapperRef, fn: onClickOutside });
+
+        const classes = computed(() => {
+            return {
+                [`-${color.value}`]: true,
+                [`-${size.value}`]: true
+            };
+        });
+
+        return {
+            wrapperRef,
+            triggerRef,
+            popupRef,
+            arrowRef,
+            visible,
+            onKeyEscape,
+            classes
+        };
     }
-});
-
-const emit = defineEmits([
-    /**
-     * Event emitted for setting the modelValue
-     * @event update:modelValue
-     */
-    'update:modelValue',
-    /**
-     * Event emitted when clicking outside the tooltip
-     * @event click:outside
-     */
-    'click:outside'
-]);
-
-const wrapperRef = ref<HTMLElement | null>(null);
-const triggerRef = ref<HTMLElement | null>(null);
-const popupRef = ref<HTMLElement | null>(null);
-const arrowRef = ref<HTMLElement | null>(null);
-
-const currentColor = computed(() => props.color);
-const currentSize = computed(() => props.size);
-const { color } = useComponentColor({ componentName, currentColor });
-const { size } = useComponentSize({ componentName, currentSize });
-
-const componentProps = computed(() => props);
-const { visible, onKeyEscape, onClickOutside } = usePopupControl({
-    triggerRef,
-    popupRef,
-    arrowRef,
-    componentProps,
-    emit
-});
-
-useClickOutside({ elementRef: wrapperRef, fn: onClickOutside });
-
-const classes = computed(() => {
-    return {
-        [`-${color.value}`]: true,
-        [`-${size.value}`]: true,
-    };
 });
 </script>
 
@@ -213,7 +235,7 @@ const classes = computed(() => {
                 aria-live="polite"
                 :aria-hidden="visible ? 'false' : 'true'"
             >
-                <span v-if="props.arrow" ref="arrowRef" class="arrow" />
+                <span v-if="arrow" ref="arrowRef" class="arrow" />
                 <!-- @slot body Slot for tooltip body content -->
                 <slot name="body" />
             </div>

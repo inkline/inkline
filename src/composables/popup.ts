@@ -22,16 +22,16 @@ export function usePopupControl(props: {
         events: PopupEvent | PopupEvent[];
         placement: Placement;
         interactable: boolean;
-        modelValue?: boolean;
+        visible?: boolean;
         animationDuration: number;
         hoverHideDelay: number;
         offset: number;
     }>;
-    emit: (event: 'update:modelValue' | 'click:outside', ...args: any[]) => void;
+    emit: (event: any, ...args: any[]) => void;
 }) {
-    const visible = ref(props.componentProps.value.modelValue);
+    const visible = ref(props.componentProps.value.visible);
     const instance = ref<() => void>();
-    const transitionInteractable = ref(false);
+    const animating = ref(false);
     const triggerStack = ref(0);
 
     onMounted(() => {
@@ -43,7 +43,7 @@ export function usePopupControl(props: {
     });
 
     watch(
-        () => props.componentProps.value.modelValue,
+        () => props.componentProps.value.visible,
         (value) => {
             if (value) {
                 show();
@@ -57,6 +57,8 @@ export function usePopupControl(props: {
         if (!props.triggerRef.value || !props.popupRef.value) {
             return;
         }
+
+        console.log(props.triggerRef, props.popupRef.value);
 
         ([] as PopupEvent[]).concat(props.componentProps.value.events).forEach((trigger) => {
             switch (trigger) {
@@ -145,7 +147,7 @@ export function usePopupControl(props: {
 
         createPopup();
 
-        props.emit('update:modelValue', true);
+        props.emit('update:visible', true);
     }
 
     function hide() {
@@ -163,7 +165,7 @@ export function usePopupControl(props: {
             triggerStack.value = 0;
             visible.value = false;
 
-            props.emit('update:modelValue', false);
+            props.emit('update:visible', false);
 
             setTimeout(() => destroyPopup(), props.componentProps.value.animationDuration);
         }
@@ -180,7 +182,7 @@ export function usePopupControl(props: {
     function onClickOutside() {
         props.emit('click:outside');
 
-        if (!props.componentProps.value.modelValue) {
+        if (!props.componentProps.value.visible) {
             hide();
         }
     }
@@ -190,14 +192,14 @@ export function usePopupControl(props: {
     }
 
     function hoverShow() {
-        transitionInteractable.value = false;
+        animating.value = false;
         show();
     }
 
     function hoverHide() {
-        transitionInteractable.value = true;
+        animating.value = true;
         setTimeout(() => {
-            if (transitionInteractable.value) {
+            if (animating.value) {
                 hide();
             }
         }, props.componentProps.value.hoverHideDelay);

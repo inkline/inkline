@@ -11,6 +11,7 @@ module.exports = {
         'vue/custom-event-name-casing': 'off',
         'vue/multi-word-component-names': 'off',
         'vue/require-prop-types': 'off',
-        'vue/comment-directive': 'off'
+        'vue/comment-directive': 'off',
+        'vue/no-dupe-keys': 'off'
     }
 };

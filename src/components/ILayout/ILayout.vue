@@ -1,24 +1,32 @@
-<script lang="ts" setup>
-import {computed} from 'vue';
+<script lang="ts">
+import { computed, defineComponent } from 'vue';
 
 const componentName = 'ILayout';
 
-const props = defineProps({
-    /**
-     * Display the layout on a vertical orientation
-     * @type Boolean
-     * @default false
-     * @name vertical
-     */
-    vertical: {
-        type: Boolean,
-        default: false
+export default defineComponent({
+    name: componentName,
+    props: {
+        /**
+         * Display the layout on a vertical orientation
+         * @type Boolean
+         * @default false
+         * @name vertical
+         */
+        vertical: {
+            type: Boolean,
+            default: false
+        }
+    },
+    setup(props) {
+        const classes = computed(() => ({
+            '-vertical': props.vertical
+        }));
+
+        return {
+            classes
+        };
     }
 });
-
-const classes = computed(() => ({
-    '-vertical': props.vertical
-}))
 </script>
 
 <template>

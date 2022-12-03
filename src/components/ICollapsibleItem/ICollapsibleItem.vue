@@ -1,48 +1,60 @@
-<script lang="ts" setup>
-import {defineComponent, computed, inject} from 'vue';
+<script lang="ts">
+import { defineComponent, computed, inject } from 'vue';
 import { uid } from '@grozav/utils';
+import { CollapsibleKey } from '@inkline/inkline/components/ICollapsible/mixin';
 import { IExpandTransition } from '@inkline/inkline/transitions';
-import { Classes } from '@inkline/inkline/types';
-import {CollapsibleKey} from "@inkline/inkline/components/ICollapsible/mixin";
 
 const componentName = 'ICollapsibleItem';
 
-const collapsible = inject(CollapsibleKey, null);
-
-const props = defineProps({
-    /**
-     * The unique identifier of the collapsible item, used for determining if the item is open or not
-     * @type String
-     * @default uid()
-     * @name name
-     */
-    name: {
-        type: String,
-        default () {
-            return uid('collapsible-item');
+export default defineComponent({
+    name: componentName,
+    components: {
+        IExpandTransition
+    },
+    props: {
+        /**
+         * The unique identifier of the collapsible item, used for determining if the item is open or not
+         * @type String
+         * @default uid()
+         * @name name
+         */
+        name: {
+            type: String,
+            default() {
+                return uid('collapsible-item');
+            }
+        },
+        /**
+         * The title of the collapsible item
+         * @type String
+         * @default
+         * @name title
+         */
+        title: {
+            type: String,
+            default: ''
         }
     },
-    /**
-     * The title of the collapsible item
-     * @type String
-     * @default
-     * @name title
-     */
-    title: {
-        type: String,
-        default: ''
+    setup(props) {
+        const collapsible = inject(CollapsibleKey, null);
+
+        const active = computed(() => collapsible?.activeItems.value.includes(props.name));
+
+        const classes = computed(() => ({
+            '-active': active.value
+        }));
+
+        function onClick() {
+            collapsible?.onItemClick(props.name);
+        }
+
+        return {
+            active,
+            classes,
+            onClick
+        };
     }
 });
-
-const active = computed(() => collapsible?.activeItems.value.includes(props.name));
-
-const classes = computed(() => ({
-    '-active': active.value
-}));
-
-function onClick () {
-    collapsible?.onItemClick(props.name);
-}
 </script>
 
 <template>

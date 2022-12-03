@@ -1,88 +1,99 @@
-<script lang="ts" setup>
-import {computed, provide, ref, watch} from 'vue';
-import {useComponentColor, useComponentSize} from "@inkline/inkline/composables";
-import {TabsKey} from "@inkline/inkline/components/ITabs/mixin";
+<script lang="ts">
+import { computed, defineComponent, provide, ref, watch } from 'vue';
+import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
+import { TabsKey } from '@inkline/inkline/components/ITabs/mixin';
 
 const componentName = 'ITabs';
 
-const props = defineProps({
-    /**
-     * The color variant of the tabs
-     * @type light | dark
-     * @default light
-     * @name color
-     */
-    color: {
-        type: String,
-        default: ''
+export default defineComponent({
+    name: componentName,
+    props: {
+        /**
+         * The color variant of the tabs
+         * @type light | dark
+         * @default light
+         * @name color
+         */
+        color: {
+            type: String,
+            default: ''
+        },
+        /**
+         * Used to set the currently active tab
+         * @type String
+         * @default
+         * @name modelValue
+         */
+        modelValue: {
+            type: String,
+            default: ''
+        },
+        /**
+         * The size variant of the tabs
+         * @type sm | md | lg
+         * @default md
+         * @name size
+         */
+        size: {
+            type: String,
+            default: ''
+        },
+        /**
+         * Display the tabs header as full width
+         * @type Boolean
+         * @default false
+         * @name stretch
+         */
+        stretch: {
+            type: Boolean,
+            default: false
+        }
     },
-    /**
-     * Used to set the currently active tab
-     * @type String
-     * @default
-     * @name modelValue
-     */
-    modelValue: {
-        type: String,
-        default: ''
-    },
-    /**
-     * The size variant of the tabs
-     * @type sm | md | lg
-     * @default md
-     * @name size
-     */
-    size: {
-        type: String,
-        default: ''
-    },
-    /**
-     * Display the tabs header as full width
-     * @type Boolean
-     * @default false
-     * @name stretch
-     */
-    stretch: {
-        type: Boolean,
-        default: false
+    emits: [
+        /**
+         * Event emitted for setting the modelValue
+         * @event update:modelValue
+         */
+        'update:modelValue'
+    ],
+    setup(props, { emit }) {
+        const active = ref(props.modelValue);
+
+        const currentColor = computed(() => props.color);
+        const currentSize = computed(() => props.size);
+        const { color } = useComponentColor({ componentName, currentColor });
+        const { size } = useComponentSize({ componentName, currentSize });
+
+        const classes = computed(() => ({
+            [`-${color.value}`]: true,
+            [`-${size.value}`]: true,
+            '-stretch': props.stretch
+        }));
+
+        watch(
+            () => props.modelValue,
+            (value) => {
+                active.value = value;
+            }
+        );
+
+        provide(TabsKey, {
+            active,
+            setActive
+        });
+
+        function setActive(id: string) {
+            active.value = id;
+            emit('update:modelValue', active.value);
+        }
+
+        return {
+            active,
+            classes,
+            setActive
+        };
     }
 });
-
-const emit = defineEmits([
-    /**
-     * Event emitted for setting the modelValue
-     * @event update:modelValue
-     */
-    'update:modelValue'
-]);
-
-const active = ref(props.modelValue);
-const tabs = ref<string[]>([]);
-
-const currentColor = computed(() => props.color);
-const currentSize = computed(() => props.size);
-const { color } = useComponentColor({ componentName, currentColor });
-const { size } = useComponentSize({ componentName, currentSize });
-
-const classes = computed(() => ({
-    [`-${color.value}`]: true,
-    [`-${size.value}`]: true,
-    '-stretch': props.stretch
-}));
-
-watch(() => props.modelValue, (value) => {
-    active.value = value;
-});
-
-provide(TabsKey, {
-    active,
-    setActive
-});
-
-function setActive (id: string) {
-    active.value = id;
-    emit('update:modelValue', active.value);
-}
 </script>
 
 <template>

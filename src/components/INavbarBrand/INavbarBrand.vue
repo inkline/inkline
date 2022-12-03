@@ -1,59 +1,59 @@
-<script lang="ts" setup>
-import {defineComponent, toRef} from 'vue';
-import {
-    LinkableMixin
-} from '@inkline/inkline/mixins';
-import {useLinkable} from "@inkline/inkline/composables";
-
-/**
- * Slot for default navbar brand content
- * @name default
- * @kind slot
- */
+<script lang="ts">
+import { defineComponent, toRef } from 'vue';
+import { useLinkable } from '@inkline/inkline/composables';
 
 const componentName = 'INavbarBrand';
 
-const props = defineProps({
-    /**
-     * Renders the component as an anchor link with a `href` attribute
-     * @type String
-     * @default undefined
-     * @name to
-     */
-    href: {
-        type: String,
-        default: undefined
+export default defineComponent({
+    name: componentName,
+    props: {
+        /**
+         * Renders the component as an anchor link with a `href` attribute
+         * @type String
+         * @default undefined
+         * @name to
+         */
+        href: {
+            type: String,
+            default: undefined
+        },
+        /**
+         * Set the HTML tag to be used for rendering the nav item
+         * @type String
+         * @default div
+         * @name tag
+         */
+        tag: {
+            type: String,
+            default: 'div'
+        },
+        /**
+         * Renders the component as a Router Link component with a `to` attribute
+         * @type String
+         * @default undefined
+         * @name to
+         */
+        to: {
+            type: [String, Object],
+            default: undefined
+        }
     },
-    /**
-     * Set the HTML tag to be used for rendering the nav item
-     * @type String
-     * @default div
-     * @name tag
-     */
-    tag: {
-        type: String,
-        default: 'div'
-    },
-    /**
-     * Renders the component as a Router Link component with a `to` attribute
-     * @type String
-     * @default undefined
-     * @name to
-     */
-    to: {
-        type: [String, Object],
-        default: undefined
+    setup(props) {
+        const to = toRef(props, 'to');
+        const href = toRef(props, 'href');
+        const currentTag = toRef(props, 'tag');
+        const { tag } = useLinkable({ to, href, tag: currentTag });
+
+        return {
+            tag,
+            currentTag
+        };
     }
 });
-
-const to = toRef(props, 'to');
-const href = toRef(props, 'href');
-const currentTag = toRef(props, 'tag');
-const { tag } = useLinkable({ to, href, tag: currentTag });
 </script>
 
 <template>
-    <component :is="tag" class="navbar-brand" :tag="props.tag" translate="no">
+    <component :is="tag" class="navbar-brand" :tag="currentTag" translate="no">
         <!-- @slot default Slot for default navbar brand content -->
         <slot />
     </component>

@@ -1,5 +1,5 @@
-<script lang="ts" setup>
-import {computed, provide} from 'vue';
+<script lang="ts">
+import { computed, defineComponent, provide } from 'vue';
 import {
     useComponentColor,
     useComponentSize,
@@ -7,160 +7,167 @@ import {
     useFormValidationError
 } from '@inkline/inkline/composables';
 import { uid } from '@grozav/utils';
-import {FormKey} from "./mixin";
+import { FormKey } from './mixin';
 
 const componentName = 'IForm';
 
-const props = defineProps({
-    /**
-     * The color variant of the form
-     * @type light | dark
-     * @default light
-     * @name color
-     */
-    color: {
-        type: String,
-        default: undefined
+export default defineComponent({
+    inheritAttrs: false,
+    props: {
+        /**
+         * The color variant of the form
+         * @type light | dark
+         * @default light
+         * @name color
+         */
+        color: {
+            type: String,
+            default: undefined
+        },
+        /**
+         * The disabled state of the form
+         * @type Boolean
+         * @default false
+         * @name disabled
+         */
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * Display the form as inline
+         * @type Boolean
+         * @default false
+         * @name inline
+         */
+        inline: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * The loading state of the form
+         * @type Boolean
+         * @default false
+         * @name loading
+         */
+        loading: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * The unique identifier of the form
+         * @type String
+         * @default undefined
+         * @name name
+         */
+        name: {
+            type: String,
+            default: uid('form')
+        },
+        /**
+         * Used to set the form schema
+         * @type Boolean
+         * @default false
+         * @name modelValue
+         */
+        modelValue: {
+            type: Object,
+            default: undefined
+        },
+        /**
+         * The readonly state of the form
+         * @type Boolean
+         * @default false
+         * @name readonly
+         */
+        readonly: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * The size variant of the form
+         * @type sm | md | lg
+         * @default md
+         * @name size
+         */
+        size: {
+            type: String,
+            default: undefined
+        }
     },
-    /**
-     * The disabled state of the form
-     * @type Boolean
-     * @default false
-     * @name disabled
-     */
-    disabled: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * Display the form as inline
-     * @type Boolean
-     * @default false
-     * @name inline
-     */
-    inline: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * The loading state of the form
-     * @type Boolean
-     * @default false
-     * @name loading
-     */
-    loading: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * The unique identifier of the form
-     * @type String
-     * @default undefined
-     * @name name
-     */
-    name: {
-        type: String,
-        default: uid('form')
-    },
-    /**
-     * Used to set the form schema
-     * @type Boolean
-     * @default false
-     * @name modelValue
-     */
-    modelValue: {
-        type: Object,
-        default: undefined
-    },
-    /**
-     * The readonly state of the form
-     * @type Boolean
-     * @default false
-     * @name readonly
-     */
-    readonly: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * The size variant of the form
-     * @type sm | md | lg
-     * @default md
-     * @name size
-     */
-    size: {
-        type: String,
-        default: undefined
+    emits: [
+        /**
+         * Event emitted for setting the modelValue schema
+         * @event update:modelValue
+         */
+        'update:modelValue',
+        /**
+         * Event emitted for submitting the form
+         * @event submit
+         */
+        'submit'
+    ],
+    setup(props, { emit }) {
+        const currentColor = computed(() => props.color);
+        const currentSize = computed(() => props.size);
+        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, currentColor });
+
+        const disabled = computed(() => props.disabled);
+        const readonly = computed(() => props.readonly);
+
+        const {
+            schema,
+            onBlur,
+            onInput,
+            onSubmit: schemaOnSubmit
+        } = useValidation({
+            schema: props.modelValue,
+            onUpdate: (model: any) => {
+                emit('update:modelValue', model);
+            },
+            onSubmit: (event: SubmitEvent) => {
+                emit('submit', event);
+            }
+        });
+        const { hasError } = useFormValidationError({
+            schema,
+            error: ['invalid']
+        });
+
+        const classes = computed(() => ({
+            [`-${size.value}`]: true,
+            [`-${color.value}`]: true,
+            '-disabled': props.disabled,
+            '-readonly': props.readonly,
+            '-inline': props.inline,
+            '-error': hasError.value
+        }));
+
+        function onSubmit(event: SubmitEvent) {
+            if (props.modelValue) {
+                schemaOnSubmit(event);
+            } else {
+                emit('submit', event);
+            }
+        }
+
+        provide(FormKey, {
+            schema,
+            disabled,
+            readonly,
+            size,
+            color,
+            onBlur,
+            onInput
+        });
+
+        return {
+            classes,
+            onSubmit
+        };
     }
 });
-
-const emit = defineEmits([
-    /**
-     * Event emitted for setting the modelValue schema
-     * @event update:modelValue
-     */
-    'update:modelValue',
-    /**
-     * Event emitted for submitting the form
-     * @event submit
-     */
-    'submit'
-]);
-
-const currentColor = computed(() => props.color);
-const currentSize = computed(() => props.size);
-const { size } = useComponentSize({ componentName, currentSize });
-const { color } = useComponentColor({ componentName, currentColor });
-
-const disabled = computed(() => props.disabled);
-const readonly = computed(() => props.readonly);
-
-const { schema, onBlur, onInput, onSubmit: schemaOnSubmit } = useValidation({
-    schema: props.modelValue,
-    onUpdate: (model: any) => {
-        emit('update:modelValue', model)
-    },
-    onSubmit: (event: SubmitEvent) => {
-        emit('submit', event);
-    }
-});
-const { hasError } = useFormValidationError({
-    schema,
-    error: ['invalid']
-});
-
-const classes = computed(() => ({
-    [`-${size.value}`]: true,
-    [`-${color.value}`]: true,
-    '-disabled': props.disabled,
-    '-readonly': props.readonly,
-    '-inline': props.inline,
-    '-error': hasError.value
-}));
-
-function onSubmit(event: SubmitEvent) {
-    if (props.modelValue) {
-        schemaOnSubmit(event);
-    } else {
-        emit('submit', event);
-    }
-}
-
-provide(FormKey, {
-    schema,
-    disabled,
-    readonly,
-    size,
-    color,
-    onBlur,
-    onInput,
-});
-</script>
-
-<script lang="ts">
-export default {
-    inheritAttrs: false
-};
 </script>
 
 <template>
@@ -173,9 +180,6 @@ export default {
         :disabled="readonly"
         @submit.prevent="onSubmit"
     >
-        <pre
-        >{{ schema }}
-        </pre>
         <!-- @slot default Slot for form content -->
         <slot />
     </form>

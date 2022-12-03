@@ -28,6 +28,10 @@
     min-height: calc(100vh - 2rem);
 }
 
+.storybook-example {
+    @extend %layout-local-preview;
+}
+
 #root,
 .storybook-example {
     @extend %alert-preview;

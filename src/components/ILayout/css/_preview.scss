@@ -3,7 +3,9 @@
     > div > .layout {
         min-height: 360px;
     }
+}
 
+%layout-local-preview {
     > .layout {
         border: 1px solid var(--color-gray-400);
         padding: var(--padding);

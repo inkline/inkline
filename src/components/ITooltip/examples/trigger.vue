@@ -25,7 +25,7 @@ const visible = ref(false);
         <template #body>Tooltip</template>
     </i-tooltip>
 
-    <i-tooltip v-model="visible" events="manual">
+    <i-tooltip v-model:visible="visible" events="manual">
         <i-button @click="visible = !visible">Manual Tooltip</i-button>
         <template #body>Tooltip</template>
     </i-tooltip>

@@ -1,17 +1,29 @@
-<script lang="ts" setup>
-import {computed, inject} from 'vue';
+<script lang="ts">
+import { computed, defineComponent, inject } from 'vue';
 import { IExpandTransition } from '@inkline/inkline/transitions';
-import {NavbarKey} from "@inkline/inkline/components/INavbar/mixin";
+import { NavbarKey } from '@inkline/inkline/components/INavbar/mixin';
 import { useIsServer } from '@inkline/inkline/composables';
 
 const componentName = 'INavbarCollapsible';
 
-const navbar = inject(NavbarKey, null);
-const { isServer } = useIsServer();
+export default defineComponent({
+    setup() {
+        const navbar = inject(NavbarKey, null);
+        const { isServer } = useIsServer();
 
-const visible = computed(() => {
-    return !navbar || navbar && (navbar.open.value || !navbar.collapsible.value) || isServer.value;
-})
+        const visible = computed(() => {
+            return (
+                !navbar ||
+                (navbar && (navbar.open.value || !navbar.collapsible.value)) ||
+                isServer.value
+            );
+        });
+
+        return {
+            visible
+        };
+    }
+});
 </script>
 
 <template>

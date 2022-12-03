@@ -36,7 +36,7 @@ export default {
         <template #footer> Popover Footer </template>
     </i-popover>
 
-    <i-popover v-model="visible" events="manual">
+    <i-popover v-model:visible="visible" events="manual">
         <i-button @click="visible = !visible">Manual Popover</i-button>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>

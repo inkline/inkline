@@ -1,45 +1,53 @@
-<script lang="ts" setup>
+<script lang="ts">
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
-import { computed } from 'vue';
+import { computed, defineComponent } from 'vue';
 
 const componentName = 'IBadge';
 
-const props = defineProps({
-    /**
-     * The color variant of the badge
-     * @type primary | success | light | dark | info | success | warning | danger
-     * @default light
-     * @name color
-     */
-    color: {
-        type: String,
-        default: undefined
+export default defineComponent({
+    name: componentName,
+    props: {
+        /**
+         * The color variant of the badge
+         * @type primary | success | light | dark | info | success | warning | danger
+         * @default light
+         * @name color
+         */
+        color: {
+            type: String,
+            default: undefined
+        },
+        /**
+         * The size variant of the badge
+         * @type sm | md | lg
+         * @default md
+         * @name size
+         */
+        size: {
+            type: String,
+            default: undefined
+        }
     },
-    /**
-     * The size variant of the badge
-     * @type sm | md | lg
-     * @default md
-     * @name size
-     */
-    size: {
-        type: String,
-        default: undefined
+    setup(props) {
+        const currentColor = computed(() => props.color);
+        const currentSize = computed(() => props.size);
+        const { color } = useComponentColor({ componentName, currentColor });
+        const { size } = useComponentSize({ componentName, currentSize });
+
+        const classes = computed(() => ({
+            [`-${color.value}`]: Boolean(color.value),
+            [`-${size.value}`]: Boolean(size.value)
+        }));
+
+        return {
+            classes
+        };
     }
 });
-
-const currentColor = computed(() => props.color);
-const currentSize = computed(() => props.size);
-const { color } = useComponentColor({ componentName, currentColor });
-const { size } = useComponentSize({ componentName, currentSize });
-
-const classes = computed(() => ({
-    [`-${color.value}`]: Boolean(color.value),
-    [`-${size.value}`]: Boolean(size.value)
-}));
 </script>
 
 <template>
-    <div class="badge" :class="classes" v-bind="$attrs">
+    <div class="badge" :class="classes">
         <!-- @slot default Slot for default badge content -->
         <slot />
     </div>

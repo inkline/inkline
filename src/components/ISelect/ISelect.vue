@@ -1,83 +1,36 @@
 <script lang="ts">
-/* eslint-disable no-case-declarations */
-
-import { defineComponent, PropType } from 'vue';
-import { isFocusable, isFunction, isKey, uid, getValueByPath } from '@grozav/utils';
 import {
-    computedColorValue,
-    computedPropValue,
-    sizePropValidator,
-    FormComponentMixin,
-    PopupMixin,
-    computedSizeValue
-} from '@inkline/inkline/mixins';
-import { useBaseModifiers, sameWidthModifier } from '@inkline/inkline/mixins/PopupMixin';
-import { ClickOutside } from '@inkline/inkline/directives';
-import {IInput} from '@inkline/inkline/components/IInput';
-import {IIcon} from '@inkline/inkline/components/IIcon';
-import {IMark} from '@inkline/inkline/components/IMark';
-import {ISelectOption} from '@inkline/inkline/components/ISelectOption';
-import { Classes } from '@inkline/inkline/types';
-import { SelectOption } from '../ISelectOption/ISelectOption.vue';
+    computed,
+    defineComponent,
+    inject,
+    nextTick,
+    PropType,
+    provide,
+    ref,
+    useAttrs,
+    useSlots,
+    watch
+} from 'vue';
+import { isFocusable, isFunction, isKey, uid, getValueByPath } from '@grozav/utils';
 
-/**
- * Slot for the select prefix content
- * @name prefix
- * @kind slot
- */
-
-/**
- * Slot for the select suffix content
- * @name suffix
- * @kind slot
- */
-
-/**
- * Slot for the select prepend content
- * @name prepend
- * @kind slot
- */
-
-/**
- * Slot for the select append content
- * @name append
- * @kind slot
- */
-
-/**
- * Slot for the clearable button
- * @name clearable
- * @kind slot
- * @property clear
- */
+import { IInput } from '@inkline/inkline/components';
+import { FormKey } from '@inkline/inkline/components/IForm';
+import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
+import {
+    useClickOutside,
+    useComponentColor,
+    useComponentSize,
+    useFormValidationError,
+    useValidation
+} from '@inkline/inkline/composables';
+import { PopupEvent, usePopupControl } from '@inkline/inkline/composables/popup';
+import { Placement } from '@floating-ui/dom';
+import { SelectKey, SelectOption } from '@inkline/inkline/components/ISelect/mixin';
 
 const componentName = 'ISelect';
 
 export default defineComponent({
     name: componentName,
-    directives: {
-        ClickOutside
-    },
-    components: {
-        IInput,
-        IIcon,
-        ISelectOption,
-        IMark
-    },
-    mixins: [FormComponentMixin, PopupMixin],
-    inject: {
-        formGroup: {
-            default: (): any => ({})
-        },
-        form: {
-            default: (): any => ({})
-        }
-    },
-    provide() {
-        return {
-            select: this
-        };
-    },
     props: {
         /**
          * The duration of the hide and show animation
@@ -151,6 +104,16 @@ export default defineComponent({
             default: () => ['touched', 'dirty', 'invalid']
         },
         /**
+         * The events used to trigger the dropdown
+         * @type hover | focus | click | manual
+         * @default [click]
+         * @name trigger
+         */
+        events: {
+            type: [String, Array] as PropType<PopupEvent | PopupEvent[]>,
+            default: (): string[] => ['click']
+        },
+        /**
          * The field to be used for identifying the options
          * @type String
          * @default id
@@ -164,9 +127,9 @@ export default defineComponent({
          * The keydown events bound to the trigger element
          * @type string[]
          * @default [up, down, enter, space, tab, esc]
-         * @name keydownTrigger
+         * @name triggerKeyBindings
          */
-        keydownTrigger: {
+        triggerKeyBindings: {
             type: Array,
             default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
         },
@@ -174,11 +137,21 @@ export default defineComponent({
          * The keydown events bound to the select option elements
          * @type string[]
          * @default [up, down, enter, space, tab, esc]
-         * @name keydownItem
+         * @name itemKeyBindings
          */
-        keydownItem: {
+        itemKeyBindings: {
             type: Array,
             default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+        },
+        /**
+         * Determines whether hover state should be transferred from trigger to popup
+         * @type Boolean
+         * @default true
+         * @name interactable
+         */
+        interactable: {
+            type: Boolean,
+            default: true
         },
         /**
          * Used to extract the label from the select option and select value
@@ -211,6 +184,16 @@ export default defineComponent({
             default: null
         },
         /**
+         * Used to manually control the visibility of the select dropdown
+         * @type Boolean
+         * @default false
+         * @name visible
+         */
+        visible: {
+            type: Boolean,
+            default: false
+        },
+        /**
          * The minimum input length to open the select dropdown at
          * @type Number
          * @default 0
@@ -227,7 +210,7 @@ export default defineComponent({
          * @name name
          */
         name: {
-            type: [String, Number],
+            type: String,
             default: (): string => uid('select')
         },
         /**
@@ -261,13 +244,13 @@ export default defineComponent({
             default: 6
         },
         /**
-         * The placement of the dropdown
+         * The placement of the select dropdown
          * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
          * @default false
          * @name placement
          */
         placement: {
-            type: String,
+            type: String as PropType<Placement>,
             default: 'bottom'
         },
         /**
@@ -278,9 +261,7 @@ export default defineComponent({
          */
         popupOptions: {
             type: Object,
-            default: (): any => ({
-                modifiers: [...useBaseModifiers({ offset: 8 }), sameWidthModifier()]
-            })
+            default: (): any => ({})
         },
         /**
          * The readonly state of the select
@@ -345,12 +326,21 @@ export default defineComponent({
         /**
          * The total number of options, used for infinite scrolling
          * @type Number
-         * @default undefined
+         * @default
          * @name total
          */
         total: {
+            type: Number
+        },
+        /**
+         * Delay in milliseconds before the popover is hidden on hover
+         * @name hoverHideDelay
+         * @type Number
+         * @default 300
+         */
+        hoverHideDelay: {
             type: Number,
-            default: undefined
+            default: 300
         }
     },
     emits: [
@@ -360,6 +350,11 @@ export default defineComponent({
          */
         'update:modelValue',
         /**
+         * Event emitted for setting the visible
+         * @event update:visible
+         */
+        'update:visible',
+        /**
          * Event emitted when input value changes
          * @event search
          */
@@ -368,373 +363,420 @@ export default defineComponent({
          * Event emitted when the next page needs to be loaded
          * @event pagination
          */
-        'pagination'
+        'pagination',
+        /**
+         * Event emitted when clearing the select element
+         * @event clear
+         */
+        'clear'
     ],
-    data(): { animating: boolean; visible: boolean; inputValue: string } {
-        return {
-            animating: false,
-            visible: false,
-            inputValue: this.computeLabel(this.modelValue) || ''
-        };
-    },
-    computed: {
-        computedColor(): string | undefined {
-            return computedColorValue(componentName, this.color);
-        },
-        computedSize(): string | undefined {
-            return computedSizeValue(componentName, this.size);
-        },
-        wrapperClasses(): Classes {
-            return {
-                [`-${this.computedColor}`]: Boolean(this.computedColor),
-                [`-${this.computedSize}`]: Boolean(this.computedSize)
-                // '-error': hasError.value,
-            };
-        },
-        popupClasses(): Classes {
-            return {
-                '-disabled': this.isDisabled,
-                '-readonly': this.isReadonly
-            };
-        },
-        tabIndex(): number | string {
-            return this.isDisabled ? -1 : this.tabindex;
-        },
-        isClearable(): boolean {
-            return this.value && this.clearable && !this.isDisabled && !this.isReadonly;
-        },
-        value(): any {
-            if (this.schema) {
-                return this.schema.value;
+    setup(props, { attrs, emit, slots }) {
+        const form = inject(FormKey, null);
+        const formGroup = inject(FormGroupKey, null);
+
+        const wrapperRef = ref<HTMLElement | null>(null);
+        const triggerRef = ref<HTMLElement | null>(null);
+        const popupRef = ref<HTMLElement | null>(null);
+        const bodyRef = ref<HTMLElement | null>(null);
+        const arrowRef = ref<HTMLElement | null>(null);
+        const optionsRef = ref<HTMLElement | null>(null);
+
+        // const animating = ref(false);
+        const inputValue = ref(''); // ref(computeLabel(props.modelValue) || '');
+
+        const {
+            schema,
+            onInput: schemaOnInput,
+            onBlur: schemaOnBlur
+        } = useValidation({
+            name: props.name
+        });
+        const { hasError } = useFormValidationError({
+            schema,
+            error: props.error
+        });
+
+        const disabled = computed(
+            () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
+        );
+        const readonly = computed(
+            () => !!(props.disabled || formGroup?.readonly.value || form?.readonly.value)
+        );
+        const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
+
+        const currentColor = computed(
+            () => props.color || formGroup?.color.value || form?.color.value
+        );
+        const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
+        const { color } = useComponentColor({ componentName, currentColor });
+        const { size } = useComponentSize({ componentName, currentSize });
+
+        const value = computed(() => {
+            if (schema.value) {
+                return schema.value.value;
             }
 
-            return this.modelValue;
-        },
-        inputPlaceholder(): string {
-            return this.value ? this.computeLabel(this.value) : this.placeholder;
-        }
-    },
-    watch: {
-        value(value) {
-            this.inputValue = this.computeLabel(value);
-        },
-        inputValue(value) {
-            const matchesLength = this.inputMatchesLength(value);
-            const matchesLabel = this.inputMatchesLabel(value);
+            return props.modelValue;
+        });
 
-            if (matchesLength && !matchesLabel && !this.animating) {
-                this.show();
-            }
+        const clearable = computed(() => {
+            return props.clearable && !disabled.value && !readonly.value && value.value !== '';
+        });
 
-            this.$emit('search', this.inputValue);
-        },
-        options() {
-            if (this.visible) {
-                this.createPopper();
-            }
-        }
-    },
-    methods: {
-        /**
-         * Event bindings
-         *
-         * Input event handlers for changing the value, clearing the value, clicking,
-         * focusing and blurring the input elements.
-         */
+        const componentProps = computed(() => ({
+            disabled: props.disabled,
+            readonly: props.readonly,
+            events: props.events,
+            placement: props.placement,
+            interactable: props.interactable,
+            visible: props.visible,
+            animationDuration: props.animationDuration,
+            hoverHideDelay: props.hoverHideDelay,
+            offset: props.offset
+        }));
+        const {
+            visible,
+            hide,
+            show,
+            createPopup,
+            focusTrigger,
+            onClick: popupOnClick,
+            onClickOutside
+        } = usePopupControl({
+            triggerRef,
+            popupRef,
+            arrowRef,
+            componentProps,
+            emit
+        });
 
-        onInput(option: SelectOption, label?: string) {
-            if (option.disabled) {
-                return;
-            }
+        const wrapperClasses = computed(() => ({
+            [`-${color.value}`]: true,
+            [`-${size.value}`]: true,
+            '-disabled': disabled.value,
+            '-readonly': readonly.value,
+            '-error': hasError.value
+        }));
 
-            this.hide();
+        // const popupClasses = computed(() => ({
+        //     '-disabled': disabled.value,
+        //     '-readonly': readonly.value
+        // }));
+        //
+        // const inputPlaceholder = computed(() => {
+        //     return value.value ? computeLabel(value.value) : props.placeholder;
+        // });
+        //
+        // watch(() => value.value, (newValue) => {
+        //     inputValue.value = computeLabel(newValue) || '';
+        // });
+        //
+        // watch(() => inputValue.value, (value) => {
+        //     const matchesLength = inputMatchesLength(value);
+        //     const matchesLabel = inputMatchesLabel(value);
+        //
+        //     if (matchesLength && !matchesLabel && !animating.value) {
+        //         show();
+        //     }
+        //
+        //     emit('search', inputValue.value);
+        // });
+        //
+        // watch(() => props.options, () => {
+        //     if (visible.value) {
+        //         createPopup();
+        //     }
+        // });
 
-            if (label) {
-                this.inputValue = label;
-            }
+        useClickOutside({ elementRef: wrapperRef, fn: onClickOutside });
 
-            this.parent.onInput?.(this.name, option);
-            this.$emit('update:modelValue', option);
-        },
-        onClear() {
-            this.animating = true;
-            this.$emit('update:modelValue', null);
-            this.$nextTick(() => {
-                this.animating = false;
-            });
-        },
-        onFocus(event: MouseEvent) {
-            // If there is no value and there are no default options,
-            // do not open select
-            if (!this.value && this.options.length === 0) {
-                return;
-            }
+        provide(SelectKey, {
+            value,
+            onInput
+        });
 
-            if (this.autocomplete) {
-                this.inputValue = '';
-            }
+        function onInput() {}
 
-            const focusShouldShowSelect =
-                !event.relatedTarget || !(this as any).$refs.wrapper.contains(event.relatedTarget);
-
-            if (focusShouldShowSelect && this.inputShouldShowSelect(this.inputValue)) {
-                this.show();
-            }
-        },
-        onBlur(event: MouseEvent) {
-            const blurShouldHideSelect =
-                !event.relatedTarget || !(this as any).$refs.wrapper.contains(event.relatedTarget);
-
-            if (blurShouldHideSelect) {
-                this.hide();
-                this.inputValue = this.computeLabel(this.value);
-            }
-
-            this.parent.onBlur?.(this.name, event);
-        },
-        onClick() {
-            if (this.autocomplete) {
-                this.inputValue = '';
-            }
-
-            if (this.inputShouldShowSelect(this.inputValue)) {
-                this.show();
-            }
-        },
-        onClickOutside() {
-            this.hide();
-        },
-        onClickCaret(event: MouseEvent) {
-            if (this.visible) {
-                this.onBlur(event);
-            } else {
-                this.focus();
-                this.onFocus(event);
-            }
-
-            event.preventDefault();
-            event.stopPropagation();
-        },
-
-        /**
-         * Infinite scrolling
-         *
-         * Compute scroll offset, viewport height and total height and determine if next set of items needs to be loaded
-         */
-
-        onScroll() {
-            if (isNaN(this.total as any)) {
-                return;
-            }
-
-            const scrollTop = (this as any).$refs.body.scrollTop;
-            const viewportHeight = parseInt(getComputedStyle((this as any).$refs.body).height, 10);
-            const totalHeight = parseInt(getComputedStyle((this as any).$refs.options).height, 10);
-
-            const shouldLoadNextPage =
-                scrollTop + viewportHeight > totalHeight - this.scrollTolerance;
-            const endReached = this.options.length >= (this.total as number);
-
-            if (shouldLoadNextPage && !endReached && this.options.length > 0 && !this.loading) {
-                this.$emit('pagination');
-            }
-        },
-        onWindowResize() {
-            this.onScroll();
-
-            if (this.visible) {
-                this.$nextTick().then(() => this.createPopper());
-            }
-        },
-
-        /**
-         * Accessibility
-         *
-         * Keyboard bindings for select input and select options
-         */
-
-        onTriggerKeyDown(event: KeyboardEvent) {
-            if (this.keydownTrigger.length === 0) {
-                return;
-            }
-
-            const focusableItems = this.getFocusableItems();
-            const activeIndex = focusableItems.findIndex((item: any) => item.active);
-            const initialIndex = activeIndex > -1 ? activeIndex : 0;
-            const focusTarget = focusableItems[initialIndex];
-
-            switch (true) {
-                case isKey('up', event) && this.keydownTrigger.includes('up'):
-                case isKey('down', event) && this.keydownTrigger.includes('down'):
-                    this.show();
-
-                    setTimeout(
-                        () => {
-                            focusTarget.focus();
-                        },
-                        this.visible ? 0 : this.animationDuration
-                    );
-
-                    event.preventDefault();
-                    event.stopPropagation();
-                    break;
-
-                case isKey('enter', event) && this.keydownTrigger.includes('enter'):
-                    if (
-                        this.selectFirstOptionOnEnter &&
-                        (!this.value || !this.inputMatchesLabel(this.inputValue))
-                    ) {
-                        const firstAvailableOption = this.options.find(
-                            (option: any) => !option.disabled
-                        ) as SelectOption;
-
-                        if (firstAvailableOption) {
-                            this.onInput(firstAvailableOption);
-                            this.focus();
-                        }
-                    } else {
-                        this.onClick();
-                    }
-
-                    if (!this.visible) {
-                        setTimeout(() => {
-                            focusTarget.focus();
-                        }, this.animationDuration);
-                    }
-
-                    event.preventDefault();
-                    break;
-
-                case isKey('tab', event) && this.keydownTrigger.includes('tab'):
-                case isKey('esc', event) && this.keydownTrigger.includes('esc'):
-                    this.hide();
-                    break;
-            }
-        },
-        onItemKeyDown(event: KeyboardEvent) {
-            if (this.keydownItem.length === 0) {
-                return;
-            }
-
-            switch (true) {
-                case isKey('up', event) && this.keydownItem.includes('up'):
-                case isKey('down', event) && this.keydownItem.includes('down'):
-                    const focusableItems = this.getFocusableItems();
-
-                    const currentIndex = focusableItems.findIndex((item) => item === event.target);
-                    const maxIndex = focusableItems.length - 1;
-                    let nextIndex;
-
-                    if (isKey('up', event)) {
-                        nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
-                    } else {
-                        nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
-                    }
-
-                    focusableItems[nextIndex].focus();
-
-                    event.preventDefault();
-                    event.stopPropagation();
-                    break;
-
-                case isKey('enter', event) && this.keydownItem.includes('enter'):
-                case isKey('space', event) && this.keydownItem.includes('space'):
-                    (event as any).target.click();
-
-                    this.focus();
-
-                    event.preventDefault();
-                    break;
-
-                case isKey('tab', event) && this.keydownItem.includes('tab'):
-                case isKey('esc', event) && this.keydownItem.includes('esc'):
-                    this.hide();
-                    this.focus();
-
-                    event.preventDefault();
-                    break;
-            }
-        },
-        onEscape() {
-            this.hide();
-        },
-
-        /**
-         * Visibility
-         *
-         * Hide or show the select options menu
-         */
-
-        show() {
-            if (this.isDisabled || this.isReadonly || this.visible) {
-                return;
-            }
-
-            this.visible = true;
-            this.createPopper();
-        },
-        hide() {
-            if (!this.visible) {
-                return;
-            }
-
-            this.visible = false;
-            this.animating = true;
-
-            setTimeout(() => {
-                this.animating = false;
-            }, this.animationDuration);
-        },
-
-        /**
-         * Helper methods
-         */
-
-        focus() {
-            (this as any).$refs.trigger.focus();
-        },
-        getFocusableItems(): HTMLElement[] {
-            const focusableItems = [];
-
-            for (const child of (this as any).$refs.options.children) {
-                if (isFocusable(child)) {
-                    focusableItems.push(child);
-                }
-            }
-
-            return focusableItems;
-        },
-        getElementHeight(node: HTMLElement): number {
-            const computedStyle = getComputedStyle(node);
-
-            if (!computedStyle.height) {
-                return NaN;
-            }
-
-            return Math.ceil(parseFloat(computedStyle.height));
-        },
-        inputMatchesLabel(value: string): boolean {
-            return this.value && value === this.computeLabel(this.value);
-        },
-        inputMatchesLength(value: string): boolean {
-            return this.minLength === 0 || ((value as any) && value.length >= this.minLength);
-        },
-        inputShouldShowSelect(value: string): boolean {
-            if (!this.autocomplete) {
-                return true;
-            }
-
-            return this.inputMatchesLength(value) && !this.inputMatchesLabel(value);
-        },
-        computeLabel(option: SelectOption): string {
-            if (typeof option !== 'object') {
-                return this.inputValue;
-            }
-
-            return isFunction(this.label)
-                ? (this.label as any)(option)
-                : getValueByPath(option, this.label as string);
-        }
+        // /**
+        //  * Event bindings
+        //  *
+        //  * Input event handlers for changing the value, clearing the value, clicking,
+        //  * focusing and blurring the input elements.
+        //  */
+        //
+        // function onInput(option: SelectOption, label?: string) {
+        //     if (option.disabled) {
+        //         return;
+        //     }
+        //
+        //     hide();
+        //
+        //     if (label) {
+        //         inputValue.value = label;
+        //     }
+        //
+        //     schemaOnInput(props.name, option);
+        //     emit('update:modelValue', option);
+        // }
+        //
+        // function onClear() {
+        //     animating.value = true;
+        //     emit('update:modelValue', null);
+        //     nextTick(() => {
+        //         animating.value = false;
+        //     });
+        // }
+        //
+        // function onFocus(event: MouseEvent) {
+        //     // If there is no value and there are no default options,
+        //     // do not open select
+        //     if (!value.value && props.options.length === 0) {
+        //         return;
+        //     }
+        //
+        //     if (props.autocomplete) {
+        //         inputValue.value = '';
+        //     }
+        //
+        //     const focusShouldShowSelect =
+        //         !event.relatedTarget || !wrapperRef.value?.contains(event.relatedTarget);
+        //
+        //     if (focusShouldShowSelect && inputShouldShowSelect(inputValue.value)) {
+        //         show();
+        //     }
+        // }
+        //
+        // function onBlur(event: MouseEvent) {
+        //     const blurShouldHideSelect =
+        //         !event.relatedTarget || !wrapperRef.value?.contains(event.relatedTarget);
+        //
+        //     if (blurShouldHideSelect) {
+        //         hide();
+        //         inputValue.value = computeLabel(value.value);
+        //     }
+        //
+        //     schemaOnBlur(props.name, event);
+        // }
+        //
+        // function onClick() {
+        //     if (props.autocomplete) {
+        //         inputValue.value = '';
+        //     }
+        //
+        //     if (inputShouldShowSelect(inputValue.value)) {
+        //         show();
+        //     }
+        // }
+        //
+        // function onClickCaret(event: MouseEvent) {
+        //     if (visible.value) {
+        //         onBlur(event);
+        //     } else {
+        //         focus();
+        //         onFocus(event);
+        //     }
+        //
+        //     event.preventDefault();
+        //     event.stopPropagation();
+        // }
+        //
+        // /**
+        //  * Infinite scrolling
+        //  *
+        //  * Compute scroll offset, viewport height and total height and determine if next set of items needs to be loaded
+        //  */
+        //
+        // function onScroll() {
+        //     if (typeof props.total !== 'undefined' || !bodyRef.value || !optionsRef.value) {
+        //         return;
+        //     }
+        //
+        //     const scrollTop = bodyRef.value.scrollTop;
+        //     const viewportHeight = parseInt(getComputedStyle(bodyRef.value).height, 10);
+        //     const totalHeight = parseInt(getComputedStyle(optionsRef.value).height, 10);
+        //
+        //     const shouldLoadNextPage =
+        //         scrollTop + viewportHeight > totalHeight - props.scrollTolerance;
+        //     const endReached = props.options.length >= props.total;
+        //
+        //     if (shouldLoadNextPage && !endReached && props.options.length > 0 && !props.loading) {
+        //         emit('pagination');
+        //     }
+        // }
+        //
+        // function onWindowResize() {
+        //     onScroll();
+        //
+        //     if (visible.value) {
+        //         nextTick().then(() => createPopup());
+        //     }
+        // }
+        //
+        // /**
+        //  * Accessibility
+        //  *
+        //  * Keyboard bindings for select input and select options
+        //  */
+        //
+        // function onTriggerKeyDown(event: KeyboardEvent) {
+        //     if (props.triggerKeyBindings.length === 0) {
+        //         return;
+        //     }
+        //
+        //     const focusableItems = getFocusableItems();
+        //     const activeIndex = focusableItems.findIndex((item: any) => item.active);
+        //     const initialIndex = activeIndex > -1 ? activeIndex : 0;
+        //     const focusTarget = focusableItems[initialIndex];
+        //
+        //     switch (true) {
+        //         case isKey('up', event) && props.triggerKeyBindings.includes('up'):
+        //         case isKey('down', event) && props.triggerKeyBindings.includes('down'):
+        //             show();
+        //
+        //             setTimeout(
+        //                 () => {
+        //                     focusTarget.focus();
+        //                 },
+        //                 visible.value ? 0 : props.animationDuration
+        //             );
+        //
+        //             event.preventDefault();
+        //             event.stopPropagation();
+        //             break;
+        //
+        //         case isKey('enter', event) && props.triggerKeyBindings.includes('enter'):
+        //             if (
+        //                 props.selectFirstOptionOnEnter &&
+        //                 (!value.value || !inputMatchesLabel(inputValue.value))
+        //             ) {
+        //                 const firstAvailableOption = props.options.find(
+        //                     (option: any) => !option.disabled
+        //                 ) as SelectOption;
+        //
+        //                 if (firstAvailableOption) {
+        //                     onInput(firstAvailableOption);
+        //                     focus();
+        //                 }
+        //             } else {
+        //                 onClick();
+        //             }
+        //
+        //             if (!visible.value) {
+        //                 setTimeout(() => {
+        //                     focusTarget.focus();
+        //                 }, props.animationDuration);
+        //             }
+        //
+        //             event.preventDefault();
+        //             break;
+        //
+        //         case isKey('tab', event) && props.triggerKeyBindings.includes('tab'):
+        //         case isKey('esc', event) && props.triggerKeyBindings.includes('esc'):
+        //             hide();
+        //             break;
+        //     }
+        // }
+        //
+        // function onItemKeyDown(event: KeyboardEvent) {
+        //     if (props.itemKeyBindings.length === 0) {
+        //         return;
+        //     }
+        //
+        //     switch (true) {
+        //         case isKey('up', event) && props.itemKeyBindings.includes('up'):
+        //         case isKey('down', event) && props.itemKeyBindings.includes('down'):
+        //             const focusableItems = getFocusableItems();
+        //
+        //             const currentIndex = focusableItems.findIndex((item) => item === event.target);
+        //             const maxIndex = focusableItems.length - 1;
+        //             let nextIndex;
+        //
+        //             if (isKey('up', event)) {
+        //                 nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
+        //             } else {
+        //                 nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
+        //             }
+        //
+        //             focusableItems[nextIndex].focus();
+        //
+        //             event.preventDefault();
+        //             event.stopPropagation();
+        //             break;
+        //
+        //         case isKey('enter', event) && props.itemKeyBindings.includes('enter'):
+        //         case isKey('space', event) && props.itemKeyBindings.includes('space'):
+        //             const target = event.target as HTMLElement;
+        //
+        //             target.click();
+        //             focus();
+        //
+        //             event.preventDefault();
+        //             break;
+        //
+        //         case isKey('tab', event) && props.itemKeyBindings.includes('tab'):
+        //         case isKey('esc', event) && props.itemKeyBindings.includes('esc'):
+        //             hide();
+        //             focus();
+        //
+        //             event.preventDefault();
+        //             break;
+        //     }
+        // }
+        //
+        // function onEscape() {
+        //     hide();
+        // }
+        //
+        // /**
+        //  * Helper methods
+        //  */
+        //
+        // function focus() {
+        //     triggerRef.value!.focus();
+        // }
+        //
+        // function getFocusableItems(): HTMLElement[] {
+        //     if (!optionsRef.value) {
+        //         return [];
+        //     }
+        //
+        //     const focusableItems = [];
+        //     const children = optionsRef.value.children as HTMLCollectionOf<HTMLElement>;
+        //
+        //     for (const child of children) {
+        //         if (isFocusable(child)) {
+        //             focusableItems.push(child);
+        //         }
+        //     }
+        //
+        //     return focusableItems;
+        // }
+        //
+        // function inputMatchesLabel(value: string): boolean {
+        //     return !!(value && value === computeLabel(value));
+        // }
+        //
+        // function inputMatchesLength(value: string): boolean {
+        //     return props.minLength === 0 || ((value as any) && value.length >= props.minLength);
+        // }
+        //
+        // function inputShouldShowSelect(value: string): boolean {
+        //     if (!props.autocomplete) {
+        //         return true;
+        //     }
+        //
+        //     return inputMatchesLength(value) && !inputMatchesLabel(value);
+        // }
+        //
+        // function computeLabel(option: Record<string, any> | string | number): string {
+        //     if (typeof option !== 'object') {
+        //         return inputValue.value;
+        //     }
+        //
+        //     return isFunction(props.label)
+        //         ? (props.label as (option: Record<string, any> | string | number) => void)(option)
+        //         : getValueByPath(option, props.label as string);
+        // }
     }
 });
 </script>
@@ -742,8 +784,7 @@ export default defineComponent({
 <template>
     <div
         :id="name"
-        ref="wrapper"
-        v-click-outside="onClickOutside"
+        ref="wrapperRef"
         class="select-wrapper"
         :class="wrapperClasses"
         :name="name"
@@ -751,63 +792,82 @@ export default defineComponent({
         aria-haspopup="listbox"
         :aria-owns="`${name}-options`"
         :aria-expanded="visible ? 'true' : 'false'"
-        @keyup.esc="onEscape"
     >
+        <!-- @TODO
+            @keyup.esc="onEscape"
+        -->
         <i-input
-            ref="trigger"
+            ref="triggerRef"
             v-model="inputValue"
             autocomplete="off"
             aria-autocomplete="both"
             :aria-controls="`${name}-options`"
-            :disabled="isDisabled"
-            :readonly="isReadonly"
+            :disabled="disabled"
+            :readonly="readonly"
             :tabindex="tabIndex"
             :plaintext="!autocomplete"
-            :placeholder="inputPlaceholder"
-            :clearable="isClearable"
+            :clearable="clearable"
             :color="color"
             :size="size"
             :name="`${name}-input`"
+        >
+            <!--
+            @TODO
+            :placeholder="inputPlaceholder"
             @click="onClick"
             @focus="onFocus"
             @blur="onBlur"
             @clear="onClear"
             @keydown="onTriggerKeyDown"
-        >
+            -->
             <template v-if="$slots.prepend" #prepend>
+                <!-- @slot prepend Slot for the select prepend content -->
                 <slot name="prepend" />
             </template>
             <template v-if="$slots.prefix" #prefix>
+                <!-- @slot prefix Slot for the select prefix content -->
                 <slot name="prefix" />
             </template>
             <template #suffix>
+                <!-- @slot suffix Slot for the select suffix content -->
                 <slot name="suffix" />
-                <button class="select-caret" aria-hidden="true" role="button" @click="onClickCaret" />
+                <button
+                    class="select-caret"
+                    aria-hidden="true"
+                    role="button"
+                    @click="onClickCaret"
+                />
             </template>
             <template v-if="$slots.append" #append>
+                <!-- @slot append Slot for the select append content -->
                 <slot name="append" />
+            </template>
+            <template v-if="$slots.clearable" #clearable>
+                <!-- @slot clearable Slot for the select clearable button -->
+                <slot name="clearable" />
             </template>
         </i-input>
 
-        <transition name="zoom-in-top-transition" @after-leave="destroyPopper">
+        <transition name="zoom-in-top-transition">
             <div
                 v-show="visible"
                 :id="`${name}-options`"
-                ref="popup"
+                ref="popupRef"
                 class="select"
-                :class="popupClasses"
                 role="listbox"
                 :aria-hidden="visible ? 'false' : 'true'"
             >
-                <span v-if="arrow" data-popper-arrow />
+                <span v-if="arrow" ref="arrowRef" class="arrow" />
                 <div v-if="$slots.header" class="select-header">
+                    <!-- @slot header Slot for the select header content -->
                     <slot name="header" />
                 </div>
-                <div ref="body" class="select-body" @scroll="onScroll">
+                <div ref="bodyRef" class="select-body" @scroll="onScroll">
                     <div v-if="!$slots.default && options.length === 0" class="select-no-results">
+                        <!-- @slot no-results Slot for showing no results message -->
                         <slot name="no-results"> There are no results for your query. </slot>
                     </div>
-                    <div ref="options" class="select-options">
+                    <div ref="optionsRef" class="select-options">
                         <slot />
                         <i-select-option
                             v-for="option in options"
@@ -817,18 +877,21 @@ export default defineComponent({
                             :value="option"
                             @keydown="onItemKeyDown"
                         >
+                            <!-- @slot option Slot for the select option content -->
                             <slot name="option" :option="option">
-                                <i-mark
-                                    v-if="autocomplete && inputValue !== computeLabel(option)"
-                                    :text="computeLabel(option)"
-                                    :query="inputValue"
-                                />
-                                <template v-else> {{ computeLabel(option) }} </template>
+                                {{ option }}
+                                <!--                                <i-mark-->
+                                <!--                                    v-if="autocomplete && inputValue !== computeLabel(option)"-->
+                                <!--                                    :text="computeLabel(option)"-->
+                                <!--                                    :query="inputValue"-->
+                                <!--                                />-->
+                                <!--                                <template v-else> {{ computeLabel(option) }} </template>-->
                             </slot>
                         </i-select-option>
                     </div>
                 </div>
                 <div v-if="$slots.footer" class="select-footer">
+                    <!-- @slot footer Slot for the select footer content -->
                     <slot name="footer" />
                 </div>
             </div>

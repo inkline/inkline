@@ -41,12 +41,14 @@ export { INavbar } from './INavbar';
 export { INavbarBrand } from './INavbarBrand';
 export { INavbarCollapsible } from './INavbarCollapsible';
 export { INumberInput } from './INumberInput';
+export { IPagination } from './IPagination';
 export { IPopover } from './IPopover';
 export { IProgress } from './IProgress';
 export { IProgressBar } from './IProgressBar';
 export { IRadio } from './IRadio';
 export { IRadioGroup } from './IRadioGroup';
 export { IRow } from './IRow';
+export { ISidebar } from './ISidebar';
 export { ITable } from './ITable';
 export { ITabs } from './ITabs';
 export { ITab } from './ITab';
@@ -58,7 +60,5 @@ export { ITooltip } from './ITooltip';
 // Options API
 // @TODO Migrate to Composition API
 
-export { IPagination } from './IPagination';
 export { ISelect } from './ISelect';
 export { ISelectOption } from './ISelectOption';
-export { ISidebar } from './ISidebar';

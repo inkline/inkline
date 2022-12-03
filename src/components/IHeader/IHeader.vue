@@ -1,82 +1,86 @@
-<script lang="ts" setup>
-import {computed} from 'vue';
-import {useComponentColor, useComponentSize} from "@inkline/inkline/composables";
-import {IContainer} from '@inkline/inkline/components/IContainer';
-import {IRow} from '@inkline/inkline/components/IRow';
-import {IColumn} from '@inkline/inkline/components/IColumn';
-
-/**
- * Slot for default header content
- * @name default
- * @kind slot
- */
+<script lang="ts">
+import { computed, defineComponent } from 'vue';
+import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
+import { IContainer } from '@inkline/inkline/components/IContainer';
+import { IRow } from '@inkline/inkline/components/IRow';
+import { IColumn } from '@inkline/inkline/components/IColumn';
 
 const componentName = 'IHeader';
 
-const props = defineProps({
-    /**
-     * The color variant of the header
-     * @type primary | light | dark
-     * @default light
-     * @name color
-     */
-    color: {
-        type: String,
-        default: ''
+export default defineComponent({
+    components: {
+        IContainer,
+        IRow,
+        IColumn
     },
-    /**
-     * Display the header background as cover, always covering the whole header width or height
-     * @type Boolean
-     * @default false
-     * @name cover
-     */
-    cover: {
-        type: Boolean,
-        default: false
+    props: {
+        /**
+         * The color variant of the header
+         * @type primary | light | dark
+         * @default light
+         * @name color
+         */
+        color: {
+            type: String,
+            default: ''
+        },
+        /**
+         * Display the header background as cover, always covering the whole header width or height
+         * @type Boolean
+         * @default false
+         * @name cover
+         */
+        cover: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * Display the inner content container as fluid, covering 100% of the header width
+         * @type Boolean
+         * @default false
+         * @name fluid
+         */
+        fluid: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * Display the header as fullscreen, covering 100% screen height and 100% screen width
+         * @type Boolean
+         * @default true
+         * @name fullscreen
+         */
+        fullscreen: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * The size variant of the header
+         * @type sm | md | lg
+         * @default md
+         * @name size
+         */
+        size: {
+            type: String,
+            default: ''
+        }
     },
-    /**
-     * Display the inner content container as fluid, covering 100% of the header width
-     * @type Boolean
-     * @default false
-     * @name fluid
-     */
-    fluid: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * Display the header as fullscreen, covering 100% screen height and 100% screen width
-     * @type Boolean
-     * @default true
-     * @name fullscreen
-     */
-    fullscreen: {
-        type: Boolean,
-        default: false
-    },
-    /**
-     * The size variant of the header
-     * @type sm | md | lg
-     * @default md
-     * @name size
-     */
-    size: {
-        type: String,
-        default: '',
+    setup(props) {
+        const currentColor = computed(() => props.color);
+        const currentSize = computed(() => props.size);
+        const { color } = useComponentColor({ componentName, currentColor });
+        const { size } = useComponentSize({ componentName, currentSize });
+
+        const classes = computed(() => ({
+            [`-${color.value}`]: true,
+            [`-${size.value}`]: true,
+            '-cover': props.cover,
+            '-fullscreen': props.fullscreen
+        }));
+
+        return { classes };
     }
 });
-
-const currentColor = computed(() => props.color);
-const currentSize = computed(() => props.size);
-const { color } = useComponentColor({ componentName, currentColor });
-const { size } = useComponentSize({ componentName, currentSize });
-
-const classes = computed(() => ({
-    [`-${color.value}`]: true,
-    [`-${size.value}`]: true,
-    '-cover': props.cover,
-    '-fullscreen': props.fullscreen
-}));
 </script>
 
 <template>
@@ -84,7 +88,8 @@ const classes = computed(() => ({
         <i-container :fluid="fluid">
             <i-row>
                 <i-column>
-                    <slot></slot>
+                    <!-- @slot default Slot for default header content -->
+                    <slot />
                 </i-column>
             </i-row>
         </i-container>

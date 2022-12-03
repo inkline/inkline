@@ -1,31 +1,12 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
-import {
-    CollapsibleMixin,
-    computedPropValue,
-    computedColorValue,
-    sizePropValidator, computedSizeValue
-} from '@inkline/inkline/mixins';
-import { Classes } from '@inkline/inkline/types';
-
-/**
- * Slot for default sidebar content
- * @name default
- * @kind slot
- */
+import { computed, defineComponent, provide, ref, toRef } from 'vue';
+import { SidebarKey } from '@inkline/inkline/components/ISidebar/mixin';
+import { useCollapsible, useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'ISidebar';
 
 export default defineComponent({
     name: componentName,
-    mixins: [
-        CollapsibleMixin
-    ],
-    provide (): { sidebar: any } {
-        return {
-            sidebar: this
-        };
-    },
     props: {
         /**
          * The aria-label of the sidebar
@@ -36,6 +17,16 @@ export default defineComponent({
         ariaLabel: {
             type: String,
             default: 'Sidebar'
+        },
+        /**
+         * Breakpoint to collapse the sidebar at. If boolean value, sets to always or never collapse
+         * @type Boolean | String
+         * @default 'md'
+         * @name collapse
+         */
+        collapse: {
+            type: [String, Boolean],
+            default: 'md'
         },
         /**
          * Determines if the sidebar should close when clicking a sidebar item
@@ -96,6 +87,16 @@ export default defineComponent({
         size: {
             type: String,
             default: ''
+        },
+        /**
+         * Used to manually control the collapsed state of the sidebar
+         * @type Boolean
+         * @default false
+         * @name modelValue
+         */
+        modelValue: {
+            type: Boolean,
+            default: false
         }
     },
     emits: [
@@ -105,44 +106,74 @@ export default defineComponent({
          */
         'update:modelValue'
     ],
-    computed: {
-        computedColor (): string | undefined {
-            return computedColorValue(componentName, this.color);
-        },
-        computedSize (): string | undefined {
-            return computedSizeValue(componentName, this.size);
-        },
-        classes (): Classes {
-            return {
-                ...this.collapsibleClasses,
-                [`-${this.computedColor}`]: Boolean(this.computedColor),
-                [`-${this.computedSize}`]: Boolean(this.computedSize),
-                [`-collapse-${this.collapsePosition}`]: true,
-                [`-placement-${this.placement}`]: true
-            };
-        },
-        sidebarWrapperTransition (): string {
-            return this.collapsePosition !== 'relative'
+    setup(props, { emit }) {
+        const wrapperRef = ref<HTMLElement | null>(null);
+
+        const currentColor = computed(() => props.color);
+        const currentSize = computed(() => props.size);
+        const { color } = useComponentColor({ componentName, currentColor });
+        const { size } = useComponentSize({ componentName, currentSize });
+
+        const collapse = toRef(props, 'collapse');
+        const modelValue = toRef(props, 'modelValue');
+        const {
+            open,
+            collapsible,
+            classes: collapsibleClasses,
+            setOpen,
+            toggleOpen
+        } = useCollapsible({
+            collapse,
+            modelValue,
+            emit
+        });
+
+        const classes = computed(() => ({
+            ...collapsibleClasses.value,
+            [`-${color.value}`]: true,
+            [`-${size.value}`]: true,
+            [`-collapse-${props.collapsePosition}`]: true,
+            [`-placement-${props.placement}`]: true
+        }));
+
+        const sidebarWrapperTransition = computed(() => {
+            return props.collapsePosition !== 'relative'
                 ? 'sidebar-wrapper-none-transition'
                 : 'sidebar-wrapper-transition';
-        },
-        sidebarTransition (): string {
-            return this.collapsePosition !== 'relative'
+        });
+
+        const sidebarTransition = computed(() => {
+            return props.collapsePosition !== 'relative'
                 ? 'sidebar-transition'
                 : 'sidebar-none-transition';
-        }
-    },
-    methods: {
-        onItemClick () {
-            if (this.collapseOnItemClick && this.open) {
-                this.setOpen(false);
-            }
-        },
-        onOverlayClick () {
-            if (this.collapseOnClickOutside && this.open) {
-                this.setOpen(false);
+        });
+
+        provide(SidebarKey, {
+            onItemClick
+        });
+
+        function onItemClick() {
+            if (props.collapseOnItemClick && open.value) {
+                setOpen(false);
             }
         }
+
+        function onOverlayClick() {
+            if (props.collapseOnClickOutside && open.value) {
+                setOpen(false);
+            }
+        }
+
+        return {
+            wrapperRef,
+            classes,
+            sidebarWrapperTransition,
+            sidebarTransition,
+            collapsible,
+            open,
+            toggleOpen,
+            onOverlayClick
+        };
     }
 });
 </script>
@@ -150,26 +181,30 @@ export default defineComponent({
 <template>
     <transition :name="sidebarWrapperTransition">
         <aside
+            v-show="open || !collapsible"
+            ref="wrapperRef"
             role="complementary"
             class="sidebar-wrapper"
             :class="classes"
             :aria-label="ariaLabel"
-            ref="wrapper"
-            v-show="open || !collapsible"
         >
             <transition :name="sidebarTransition">
-                <div class="sidebar" v-show="collapsePosition === 'relative' || open || !collapsible">
+                <div
+                    v-show="collapsePosition === 'relative' || open || !collapsible"
+                    class="sidebar"
+                >
                     <div class="sidebar-content">
+                        <!-- @slot default Slot for sidebar content -->
                         <slot />
                     </div>
                 </div>
             </transition>
             <transition name="sidebar-overlay-transition">
                 <div
-                    class="sidebar-overlay"
-                    @click="onOverlayClick"
                     v-if="collapsePosition !== 'relative'"
                     v-show="open"
+                    class="sidebar-overlay"
+                    @click="onOverlayClick"
                 />
             </transition>
         </aside>

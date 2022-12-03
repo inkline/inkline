@@ -1,24 +1,8 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
-import {
-    computedColorValue,
-    computedSizeValue
-} from '@inkline/inkline/mixins';
+import { computed, defineComponent, onBeforeUnmount, onMounted, ref } from 'vue';
 import { breakpointKeys, breakpoints } from '@inkline/inkline/constants';
 import { debounce } from '@grozav/utils';
-import { Classes } from '@inkline/inkline/types';
-
-/**
- * Slot for previous button content
- * @name previous
- * @kind slot
- */
-
-/**
- * Slot for next button content
- * @name next
- * @kind slot
- */
+import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'IPagination';
 
@@ -73,7 +57,7 @@ export default defineComponent({
          */
         limit: {
             type: [Number, Object],
-            default (): { [key: string]: number } {
+            default(): { [key: string]: number } {
                 return {
                     xs: 3,
                     sm: 5
@@ -121,131 +105,172 @@ export default defineComponent({
             default: true
         }
     },
-    emits: [
+    emit: [
         /**
          * Event emitted for setting the modelValue
          * @event update:modelValue
          */
         'update:modelValue'
     ],
-    data (): { pageLimit: number } {
-        return {
-            pageLimit: 5
-        };
-    },
-    computed: {
-        computedColor (): string | undefined {
-            return computedColorValue(componentName, this.color);
-        },
-        computedSize (): string | undefined {
-            return computedSizeValue(componentName, this.size);
-        },
-        classes (): Classes {
-            return {
-                [`-${this.computedColor}`]: Boolean(this.computedColor),
-                [`-${this.computedSize}`]: Boolean(this.computedSize)
-            };
-        },
-        pageCount (): number {
-            return Math.ceil((this as any).itemsTotal / (this as any).itemsPerPage);
-        },
-        showQuickPrevious (): boolean {
-            return this.pageCount > this.pageLimit && // Has more pages than limit
-                (this as any).modelValue > this.pageLimit - (this.pageLimit - 1) / 2; // Active page is after limit - (limit - 1) / 2
-        },
-        showQuickNext (): boolean {
-            return this.pageCount > this.pageLimit && // Has more pages than limit
-                (this as any).modelValue < this.pageCount - (this.pageLimit - 1) / 2; // Active page is before pageCount - (limit - 1) / 2
-        },
-        showPrevious (): boolean {
-            return this.pageCount > 0 && (this.showNavigationWhenDisabled ? true : this.modelValue !== 1);
-        },
-        showNext (): boolean {
-            return this.pageCount > 0 && (this.showNavigationWhenDisabled ? true : this.modelValue !== this.pageCount);
-        },
-        pages (): number[] {
+    setup(props, { emit }) {
+        const pageLimit = ref(5);
+
+        const currentColor = computed(() => props.color);
+        const currentSize = computed(() => props.size);
+        const { color } = useComponentColor({ componentName, currentColor });
+        const { size } = useComponentSize({ componentName, currentSize });
+
+        const classes = computed(() => ({
+            [`-${color.value}`]: true,
+            [`-${size.value}`]: true
+        }));
+
+        const pageCount = computed(() => {
+            return Math.ceil(props.itemsTotal / props.itemsPerPage);
+        });
+
+        const showQuickPrevious = computed(() => {
+            return (
+                pageCount.value > pageLimit.value && // Has more pages than limit
+                props.modelValue > pageLimit.value - (pageLimit.value - 1) / 2
+            ); // Active page is after limit - (limit - 1) / 2
+        });
+        const showQuickNext = computed(() => {
+            return (
+                pageCount.value > pageLimit.value && // Has more pages than limit
+                props.modelValue < pageCount.value - (pageLimit.value - 1) / 2
+            ); // Active page is before pageCount - (limit - 1) / 2
+        });
+
+        const showPrevious = computed(() => {
+            return (
+                pageCount.value > 0 &&
+                (props.showNavigationWhenDisabled ? true : props.modelValue !== 1)
+            );
+        });
+        const showNext = computed(() => {
+            return (
+                pageCount.value > 0 &&
+                (props.showNavigationWhenDisabled ? true : props.modelValue !== pageCount.value)
+            );
+        });
+
+        const pages = computed(() => {
             const pages = [];
 
-            if (this.showQuickPrevious && !this.showQuickNext) {
-                const startPage = this.pageCount - (this.pageLimit - 2);
+            if (showQuickPrevious.value && !showQuickNext.value) {
+                const startPage = pageCount.value - (pageLimit.value - 2);
 
-                for (let i = startPage; i < this.pageCount; i++) {
+                for (let i = startPage; i < pageCount.value; i++) {
                     pages.push(i);
                 }
-            } else if (!this.showQuickPrevious && this.showQuickNext) {
-                for (let i = 2; i < this.pageLimit; i++) {
+            } else if (!showQuickPrevious.value && showQuickNext.value) {
+                for (let i = 2; i < pageLimit.value; i++) {
                     pages.push(i);
                 }
-            } else if (this.showQuickPrevious && this.showQuickNext) {
-                const offset = Math.floor(this.pageLimit / 2) - 1;
+            } else if (showQuickPrevious.value && showQuickNext.value) {
+                const offset = Math.floor(pageLimit.value / 2) - 1;
 
-                for (let i = (this as any).modelValue - offset; i <= (this as any).modelValue + offset; i++) {
+                for (let i = props.modelValue - offset; i <= props.modelValue + offset; i++) {
                     pages.push(i);
                 }
             } else {
-                for (let i = 2; i < this.pageCount; i++) {
+                for (let i = 2; i < pageCount.value; i++) {
                     pages.push(i);
                 }
             }
 
             return pages;
+        });
+
+        const debouncedOnWindowResize = debounce(onWindowResize, 250);
+
+        onMounted(() => {
+            if (typeof window !== 'undefined') {
+                window.addEventListener('resize', debouncedOnWindowResize);
+
+                onWindowResize();
+            }
+        });
+
+        onBeforeUnmount(() => {
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('resize', debouncedOnWindowResize);
+            }
+        });
+
+        function next() {
+            if (props.modelValue === pageCount.value) {
+                return;
+            }
+
+            onClick(props.modelValue + 1);
         }
-    },
-    created () {
-        (this as any).debouncedOnWindowResize = debounce(this.onWindowResize, 250);
 
-        if (typeof window !== 'undefined') {
-            window.addEventListener('resize', (this as any).debouncedOnWindowResize);
+        function quickNext() {
+            if (!props.quickLink) {
+                return;
+            }
 
-            this.onWindowResize();
+            const jumpTo = props.modelValue + (pageLimit.value - 2);
+
+            onClick(jumpTo > pageCount.value ? pageCount.value : jumpTo);
         }
-    },
-    unmounted () {
-        if (typeof window !== 'undefined') {
-            window.removeEventListener('resize', (this as any).debouncedOnWindowResize);
+
+        function previous() {
+            if (props.modelValue === 1) {
+                return;
+            }
+
+            onClick(props.modelValue - 1);
         }
-    },
-    methods: {
-        next () {
-            if ((this as any).modelValue === this.pageCount) { return; }
 
-            this.onClick((this as any).modelValue + 1);
-        },
-        quickNext () {
-            if (!(this as any).quickLink) { return; }
+        function quickPrevious() {
+            if (!props.quickLink) {
+                return;
+            }
 
-            const jumpTo = (this as any).modelValue + (this.pageLimit - 2);
+            const jumpTo = props.modelValue - (pageLimit.value - 2);
 
-            this.onClick(jumpTo > this.pageCount ? this.pageCount : jumpTo);
-        },
-        previous () {
-            if ((this as any).modelValue === 1) { return; }
+            onClick(jumpTo < 1 ? 1 : jumpTo);
+        }
 
-            this.onClick((this as any).modelValue - 1);
-        },
-        quickPrevious () {
-            if (!(this as any).quickLink) { return; }
+        function onClick(item: number) {
+            emit('update:modelValue', item);
+        }
 
-            const jumpTo = (this as any).modelValue - (this.pageLimit - 2);
-
-            this.onClick(jumpTo < 1 ? 1 : jumpTo);
-        },
-        onClick (item: number) {
-            this.$emit('update:modelValue', item);
-        },
-        onWindowResize () {
-            if (typeof (this as any).limit === 'number') {
-                this.pageLimit = (this as any).limit;
-                return this.pageLimit;
+        function onWindowResize() {
+            if (typeof props.limit === 'number') {
+                pageLimit.value = props.limit;
+                return pageLimit.value;
             }
 
             for (const breakpointKey of breakpointKeys.slice().reverse()) {
-                if ((this as any).limit.hasOwnProperty(breakpointKey) && (typeof window !== 'undefined' && window.innerWidth >= breakpoints[breakpointKey][0])) {
-                    this.pageLimit = (this as any).limit[breakpointKey];
-                    return this.pageLimit;
+                if (
+                    props.limit.hasOwnProperty(breakpointKey) &&
+                    typeof window !== 'undefined' &&
+                    window.innerWidth >= breakpoints[breakpointKey][0]
+                ) {
+                    pageLimit.value = props.limit[breakpointKey];
+                    return pageLimit.value;
                 }
             }
         }
+
+        return {
+            classes,
+            pageCount,
+            pages,
+            showQuickPrevious,
+            showQuickNext,
+            showPrevious,
+            showNext,
+            next,
+            quickNext,
+            previous,
+            quickPrevious,
+            onClick
+        };
     }
 });
 </script>
@@ -254,63 +279,65 @@ export default defineComponent({
     <nav class="pagination" :class="classes" role="navigation" :aria-label="ariaLabel">
         <ul class="pagination-items">
             <li
+                v-if="showPrevious"
                 class="pagination-item -previous"
                 :class="{ '-disabled': modelValue === 1 }"
-                v-if="showPrevious"
                 @click="previous"
             >
                 <span aria-hidden="true">
+                    <!-- @slot previous Slot for previous button content -->
                     <slot name="previous">&lt;</slot>
                 </span>
             </li>
             <li
+                v-if="pageCount > 0"
                 class="pagination-item -first"
                 :class="{ '-active': modelValue === 1 }"
-                v-if="pageCount > 0"
                 @click="onClick(1)"
             >
                 1
             </li>
             <li
+                v-if="showQuickPrevious"
                 class="pagination-item -quick-previous"
                 :class="{ '-disabled': !quickLink }"
-                v-if="showQuickPrevious"
                 @click="quickPrevious"
             >
                 &hellip;
             </li>
             <li
+                v-for="page in pages"
                 class="pagination-item"
                 :class="{ '-active': modelValue === page }"
                 :aria-current="modelValue === page ? 'page' : false"
-                v-for="page in pages"
                 @click="onClick(page)"
             >
-                {{page}}
+                {{ page }}
             </li>
             <li
+                v-if="showQuickNext"
                 class="pagination-item -quick-next"
                 :class="{ '-disabled': !quickLink }"
-                v-if="showQuickNext"
                 @click="quickNext"
             >
                 &hellip;
             </li>
             <li
+                v-if="pageCount > 1"
                 class="pagination-item -last"
                 :class="{ '-active': modelValue === pageCount }"
-                v-if="pageCount > 1"
                 @click="onClick(pageCount)"
             >
-                {{pageCount}}
+                {{ pageCount }}
             </li>
             <li
+                v-if="showNext"
                 class="pagination-item -next"
                 :class="{ '-disabled': modelValue === pageCount }"
-                v-if="showNext"
                 @click="next"
             >
                 <span aria-hidden="true">
+                    <!-- @slot next Slot for next button content -->
                     <slot name="next">&gt;</slot>
                 </span>
             </li>

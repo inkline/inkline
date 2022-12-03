@@ -1,38 +1,46 @@
-<script lang="ts" setup>
-import { computed } from 'vue';
+<script lang="ts">
+import { computed, defineComponent } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'ICard';
 
-const props = defineProps({
-    /**
-     * The color variant of the card
-     * @type primary | success | light | dark | info | success | warning | danger
-     * @default light
-     * @name color
-     */
-    color: {
-        type: String,
-        default: undefined
+export default defineComponent({
+    name: componentName,
+    props: {
+        /**
+         * The color variant of the card
+         * @type primary | success | light | dark | info | success | warning | danger
+         * @default light
+         * @name color
+         */
+        color: {
+            type: String,
+            default: undefined
+        },
+        /**
+         * The size variant of the card
+         * @type sm | md | lg
+         * @default md
+         * @name size
+         */
+        size: {
+            type: String,
+            default: undefined
+        }
     },
-    /**
-     * The size variant of the card
-     * @type sm | md | lg
-     * @default md
-     * @name size
-     */
-    size: {
-        type: String,
-        default: undefined
+    setup(props) {
+        const currentColor = computed(() => props.color);
+        const currentSize = computed(() => props.size);
+        const { color } = useComponentColor({ componentName, currentColor });
+        const { size } = useComponentSize({ componentName, currentSize });
+
+        const classes = computed(() => ({ [`-${color.value}`]: true, [`-${size.value}`]: true }));
+
+        return {
+            classes
+        };
     }
 });
-
-const currentColor = computed(() => props.color);
-const currentSize = computed(() => props.size);
-const { color } = useComponentColor({ componentName, currentColor });
-const { size } = useComponentSize({ componentName, currentSize });
-
-const classes = computed(() => ({ [`-${color.value}`]: true, [`-${size.value}`]: true }));
 </script>
 
 <template>
