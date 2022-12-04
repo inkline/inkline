@@ -1,2 +1,42 @@
-<template src="./alphanumeric.html" />
-<script src="./alphanumeric.js" />
+<script>
+    export default {
+        data() {
+            return {
+                form: this.$inkline.form({
+                    input: {
+                        validators: [{ name: 'alphanumeric' }]
+                    },
+                    inputSpaces: {
+                        validators: [{ name: 'alphanumeric', allowSpaces: true }]
+                    },
+                    inputDashes: {
+                        validators: [{ name: 'alphanumeric', allowDashes: true }]
+                    }
+                })
+            };
+        }
+    };
+</script>
+<template>
+    <i-form v-model="form">
+        <i-form-group>
+            <i-input name="input" placeholder="This field should contain only letters and numbers" />
+            <i-form-error for="input" />
+        </i-form-group>
+        <i-form-group>
+            <i-input
+                name="inputSpaces"
+                placeholder="This field should contain only letters, numbers and spaces"
+            />
+            <i-form-error for="inputSpaces" />
+        </i-form-group>
+        <i-form-group>
+            <i-input
+                name="inputDashes"
+                placeholder="This field should contain only letters, numbers and dashes"
+            />
+            <i-form-error for="inputDashes" />
+        </i-form-group>
+    </i-form>
+</template>
+

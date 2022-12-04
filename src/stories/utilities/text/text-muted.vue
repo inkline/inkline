@@ -1,1 +1,4 @@
-<template src="./text-muted.html" />
+<template>
+    <p class="_text:muted">This text is muted.</p>
+</template>
+

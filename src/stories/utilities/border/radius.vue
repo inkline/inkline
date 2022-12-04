@@ -1,1 +1,24 @@
-<template src="./radius.html" />
+<template>
+    <div class="_border-radius"></div>
+    
+    <div class="_border-top-radius"></div>
+    
+    <div class="_border-right-radius"></div>
+    
+    <div class="_border-bottom-radius"></div>
+    
+    <div class="_border-left-radius"></div>
+    
+    <div class="_border-top-left-radius"></div>
+    
+    <div class="_border-top-right-radius"></div>
+    
+    <div class="_border-bottom-right-radius"></div>
+    
+    <div class="_border-bottom-left-radius"></div>
+    
+    <div class="_border-radius:circle"></div>
+    
+    <div class="_border-radius:0"></div>
+</template>
+

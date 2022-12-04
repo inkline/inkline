@@ -1,2 +1,29 @@
-<template src="./basic-binding.html" />
-<script src="./basic-binding.js" />
+<script>
+    export default {
+        data() {
+            return {
+                form: this.$inkline.form({
+                    username: {},
+                    password: {}
+                })
+            };
+        }
+    };
+</script>
+<template>
+    <i-form v-model="form">
+        <i-form-group>
+            <i-form-label>Username</i-form-label>
+            <i-input name="username" placeholder="Enter a username.." />
+        </i-form-group>
+        <i-form-group>
+            <i-form-label>Password</i-form-label>
+            <i-input name="password" type="password" placeholder="Enter a password.." />
+        </i-form-group>
+    </i-form>
+    
+    <pre class="_margin-top:2 _text:muted">
+    {{ form }}
+    </pre>
+</template>
+
