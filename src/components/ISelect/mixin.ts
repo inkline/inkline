@@ -10,8 +10,9 @@ export interface SelectOption {
 }
 
 export interface SelectInjection {
-    value: Ref<string>;
-    onInput: (value: string | number | Record<string, any> | undefined, label: string) => void;
+    value: Ref;
+    idField: Ref<string>;
+    onInput: (option: SelectOption) => void;
 }
 
 export const SelectKey = Symbol('Select') as InjectionKey<SelectInjection>;

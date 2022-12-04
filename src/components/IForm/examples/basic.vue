@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {ref} from "vue";
+import { ref } from 'vue';
 
 const input = ref('');
 const textarea = ref('');
@@ -9,7 +9,7 @@ const options = ref([
     { id: 2, label: 'Option B' },
     { id: 3, label: 'Option C' }
 ]);
-const checkboxGroup = ref('');
+const checkboxGroup = ref([]);
 const radioGroup = ref('');
 const toggle = ref(false);
 const checkbox = ref(false);

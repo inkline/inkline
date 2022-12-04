@@ -24,8 +24,8 @@ export default {
 };
 
 export const Basic = createStory(IFormBasicExample);
-// export const Disabled = createExampleStory(IFormDisabledExample);
-// export const Readonly = createExampleStory(IFormReadonlyExample);
-// export const SizeVariantsSm = createExampleStory(IFormSizeVariantsSmExample);
-// export const SizeVariantsMd = createExampleStory(IFormSizeVariantsMdExample);
-// export const SizeVariantsLg = createExampleStory(IFormSizeVariantsLgExample);
+export const Disabled = createExampleStory(IFormDisabledExample);
+export const Readonly = createExampleStory(IFormReadonlyExample);
+export const SizeVariantsSm = createExampleStory(IFormSizeVariantsSmExample);
+export const SizeVariantsMd = createExampleStory(IFormSizeVariantsMdExample);
+export const SizeVariantsLg = createExampleStory(IFormSizeVariantsLgExample);

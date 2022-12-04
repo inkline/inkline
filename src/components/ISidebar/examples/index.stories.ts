@@ -23,7 +23,7 @@ export default {
     }
 };
 
-export const Basic = createStory(ISidebarBasicExample);
+export const Basic = () => ISidebarBasicExample;
 export const CollapseBreakpoint = () => ISidebarCollapseBreakpointExample;
 export const CollapseTrue = () => ISidebarCollapseTrueExample;
 export const CollapseFalse = () => ISidebarCollapseFalseExample;

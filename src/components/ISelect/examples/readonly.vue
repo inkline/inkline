@@ -10,7 +10,7 @@ export default {
         ];
 
         return {
-            selected: options[0],
+            selected: options[0].id,
             options
         };
     }

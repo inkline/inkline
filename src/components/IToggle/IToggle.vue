@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, ref } from 'vue';
+import { computed, defineComponent, inject, PropType, ref, toRef } from 'vue';
 import { uid } from '@grozav/utils';
 import { FormKey } from '@inkline/inkline/components/IForm';
 import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
@@ -124,6 +124,16 @@ export default defineComponent({
         tabindex: {
             type: [Number, String],
             default: 0
+        },
+        /**
+         * Enable toggle validation using schema
+         * @type Boolean
+         * @default true
+         * @name validate
+         */
+        validate: {
+            type: Boolean,
+            default: true
         }
     },
     emits: [
@@ -150,15 +160,18 @@ export default defineComponent({
             () => props.disabled || formGroup?.disabled.value || form?.disabled.value
         );
         const readonly = computed(
-            () => props.disabled || formGroup?.readonly.value || form?.readonly.value
+            () => props.readonly || formGroup?.readonly.value || form?.readonly.value
         );
 
+        const name = toRef(props, 'name');
+        const validate = toRef(props, 'validate');
         const {
             schema,
             onInput: schemaOnInput,
             onBlur: schemaOnBlur
         } = useValidation({
-            name: props.name
+            name,
+            validate
         });
         const { hasError } = useFormValidationError({
             schema,

@@ -7,6 +7,9 @@ import { useIsServer } from '@inkline/inkline/composables';
 const componentName = 'INavbarCollapsible';
 
 export default defineComponent({
+    components: {
+        IExpandTransition
+    },
     setup() {
         const navbar = inject(NavbarKey, null);
         const { isServer } = useIsServer();

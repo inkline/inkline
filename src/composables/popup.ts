@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, ref, Ref, watch } from 'vue';
+import { ComponentPublicInstance, onMounted, onUnmounted, ref, Ref, watch } from 'vue';
 import { focusFirstDescendant, off, on } from '@grozav/utils';
 import {
     arrow,
@@ -9,11 +9,12 @@ import {
     shift,
     Placement
 } from '@floating-ui/dom';
+import { extractRefHTMLElement } from '@inkline/inkline/utils';
 
 export type PopupEvent = 'hover' | 'click' | 'focus' | 'manual';
 
 export function usePopupControl(props: {
-    triggerRef: Ref<HTMLElement | null>;
+    triggerRef: Ref<ComponentPublicInstance | HTMLElement | null>;
     popupRef: Ref<HTMLElement | null>;
     arrowRef: Ref<HTMLElement | null>;
     componentProps: Ref<{
@@ -54,36 +55,37 @@ export function usePopupControl(props: {
     );
 
     function addEventListeners() {
-        if (!props.triggerRef.value || !props.popupRef.value) {
+        const triggerRef = extractRefHTMLElement(props.triggerRef);
+        const popupRef = extractRefHTMLElement(props.popupRef);
+
+        if (!triggerRef || !popupRef) {
             return;
         }
-
-        console.log(props.triggerRef, props.popupRef.value);
 
         ([] as PopupEvent[]).concat(props.componentProps.value.events).forEach((trigger) => {
             switch (trigger) {
                 case 'hover':
                     on(
-                        props.triggerRef.value as HTMLElement,
+                        triggerRef,
                         'mouseenter',
                         props.componentProps.value.interactable ? hoverShow : show
                     );
                     on(
-                        props.triggerRef.value as HTMLElement,
+                        triggerRef,
                         'mouseleave',
                         props.componentProps.value.interactable ? hoverHide : hide
                     );
 
                     if (props.componentProps.value.interactable) {
-                        on(props.popupRef.value as HTMLElement, 'mouseenter', hoverShow);
-                        on(props.popupRef.value as HTMLElement, 'mouseleave', hoverHide);
+                        on(popupRef, 'mouseenter', hoverShow);
+                        on(popupRef, 'mouseleave', hoverHide);
                     }
                     break;
                 case 'click':
-                    on(props.triggerRef.value as HTMLElement, 'click', onClick);
+                    on(triggerRef, 'click', onClick);
                     break;
                 case 'focus':
-                    for (const child of props.triggerRef.value!.children) {
+                    for (const child of triggerRef.children) {
                         on(child as HTMLElement, 'focus', show);
                         on(child as HTMLElement, 'blur', hide);
                     }
@@ -95,7 +97,10 @@ export function usePopupControl(props: {
     }
 
     function removeEventListeners() {
-        if (!props.triggerRef.value || !props.popupRef.value) {
+        const triggerRef = extractRefHTMLElement(props.triggerRef);
+        const popupRef = extractRefHTMLElement(props.popupRef);
+
+        if (!triggerRef || !popupRef) {
             return;
         }
 
@@ -103,26 +108,26 @@ export function usePopupControl(props: {
             switch (trigger) {
                 case 'hover':
                     off(
-                        props.triggerRef.value as HTMLElement,
+                        triggerRef,
                         'mouseenter',
                         props.componentProps.value.interactable ? hoverShow : show
                     );
                     off(
-                        props.triggerRef.value as HTMLElement,
+                        triggerRef,
                         'mouseleave',
                         props.componentProps.value.interactable ? hoverHide : hide
                     );
 
                     if (props.componentProps.value.interactable) {
-                        off(props.popupRef.value as HTMLElement, 'mouseenter', hoverShow);
-                        off(props.popupRef.value as HTMLElement, 'mouseleave', hoverHide);
+                        off(popupRef, 'mouseenter', hoverShow);
+                        off(popupRef, 'mouseleave', hoverHide);
                     }
                     break;
                 case 'click':
-                    off(props.triggerRef.value as HTMLElement, 'click', onClick);
+                    off(triggerRef, 'click', onClick);
                     break;
                 case 'focus':
-                    for (const child of props.triggerRef.value!.children) {
+                    for (const child of triggerRef.children) {
                         off(child as HTMLElement, 'focus', show);
                         off(child as HTMLElement, 'blur', hide);
                     }
@@ -210,13 +215,13 @@ export function usePopupControl(props: {
             return;
         }
 
-        if (!props.triggerRef.value || !props.popupRef.value) {
+        const triggerRef = extractRefHTMLElement(props.triggerRef);
+        const popupRef = extractRefHTMLElement(props.popupRef);
+        const arrowRef = extractRefHTMLElement(props.arrowRef);
+
+        if (!triggerRef || !popupRef) {
             throw new Error('Trigger and popup elements are required.');
         }
-
-        const triggerRef = props.triggerRef.value;
-        const popupRef = props.popupRef.value;
-        const arrowRef = props.arrowRef.value;
 
         instance.value = autoUpdate(triggerRef, popupRef, () => {
             computePosition(triggerRef, popupRef, {
@@ -269,11 +274,13 @@ export function usePopupControl(props: {
     }
 
     function focusTrigger() {
-        if (!props.triggerRef.value) {
+        const triggerRef = extractRefHTMLElement(props.triggerRef);
+
+        if (!triggerRef) {
             return;
         }
 
-        for (const child of props.triggerRef.value.children) {
+        for (const child of triggerRef.children) {
             if (focusFirstDescendant(child as HTMLElement)) {
                 (child as HTMLElement).focus();
                 break;

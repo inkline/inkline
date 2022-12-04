@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, provide } from 'vue';
+import { computed, defineComponent, inject, PropType, provide, toRef } from 'vue';
 import {
     useFormState,
     useComponentColor,
@@ -107,7 +107,17 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: undefined
+            default: ''
+        },
+        /**
+         * Enable checkbox group validation using schema
+         * @type Boolean
+         * @default true
+         * @name validate
+         */
+        validate: {
+            type: Boolean,
+            default: true
         }
     },
     emits: [
@@ -121,8 +131,10 @@ export default defineComponent({
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
 
-        const currentColor = computed(() => props.color);
-        const currentSize = computed(() => props.size);
+        const currentColor = computed(
+            () => props.color || formGroup?.color.value || form?.color.value
+        );
+        const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
 
@@ -130,27 +142,23 @@ export default defineComponent({
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
         );
         const readonly = computed(
-            () => !!(props.disabled || formGroup?.readonly.value || form?.readonly.value)
+            () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
 
+        const name = toRef(props, 'name');
+        const validate = toRef(props, 'validate');
         const {
             schema,
+            value,
             onInput: schemaOnInput,
             onBlur: schemaOnBlur
         } = useValidation({
-            name: props.name
+            name,
+            validate
         });
         const { hasError } = useFormValidationError({
             schema,
             error: props.error
-        });
-
-        const value = computed(() => {
-            if (schema.value) {
-                return schema.value.value;
-            }
-
-            return props.modelValue;
         });
 
         const classes = computed(() => ({

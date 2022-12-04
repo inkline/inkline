@@ -189,6 +189,16 @@ export default defineComponent({
         clearAriaLabel: {
             type: String,
             default: 'Clear'
+        },
+        /**
+         * Enable number input validation using schema
+         * @type Boolean
+         * @default true
+         * @name validate
+         */
+        validate: {
+            type: Boolean,
+            default: true
         }
     },
     emit: [
@@ -216,7 +226,7 @@ export default defineComponent({
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
         );
         const readonly = computed(
-            () => !!(props.disabled || formGroup?.readonly.value || form?.readonly.value)
+            () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
 
         const input = ref<HTMLInputElement | null>(null);
@@ -227,12 +237,15 @@ export default defineComponent({
         );
         const inputAttrs = computed(() => filterKeys(attrs, { denylist: wrapperAttrsAllowlist }));
 
+        const name = toRef(props, 'name');
+        const validate = toRef(props, 'validate');
         const {
             schema,
             onInput: schemaOnInput,
             onBlur: schemaOnBlur
         } = useValidation({
-            name: props.name
+            name,
+            validate
         });
         const { hasError } = useFormValidationError({
             schema,
@@ -242,7 +255,7 @@ export default defineComponent({
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
         const value = computed(() => {
-            if (schema.value) {
+            if (schema.value && validate.value) {
                 return schema.value.value;
             }
 
@@ -408,10 +421,10 @@ export default defineComponent({
                 @input="onInput"
                 @blur="onBlur"
             />
-            <span v-if="$slots.suffix || (props.clearable && clearable)" class="input-suffix">
+            <span v-if="$slots.suffix || clearable" class="input-suffix">
                 <slot name="clearable" :clear="onClear">
                     <i
-                        v-if="props.clearable"
+                        v-if="clearable"
                         v-show="clearable"
                         class="input-clear"
                         role="button"

@@ -2,6 +2,8 @@
 import { computed, defineComponent, toRef } from 'vue';
 import { useLinkable } from '@inkline/inkline/composables';
 
+const componentName = 'IBreadcrumbItem';
+
 export default defineComponent({
     name: componentName,
     props: {

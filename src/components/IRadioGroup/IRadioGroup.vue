@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, provide } from 'vue';
+import { computed, defineComponent, inject, PropType, provide, toRef } from 'vue';
 import { uid } from '@grozav/utils';
 import { FormKey } from '@inkline/inkline/components/IForm';
 import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
@@ -69,11 +69,10 @@ export default defineComponent({
         },
         /**
          * Used to set the radio group value
-         * @default []
+         * @default
          * @name modelValue
          */
         modelValue: {
-            type: Array,
             default: undefined
         },
         /**
@@ -107,6 +106,16 @@ export default defineComponent({
         size: {
             type: String,
             default: undefined
+        },
+        /**
+         * Enable radio group validation using schema
+         * @type Boolean
+         * @default true
+         * @name validate
+         */
+        validate: {
+            type: Boolean,
+            default: true
         }
     },
     emits: [
@@ -132,15 +141,18 @@ export default defineComponent({
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
         );
         const readonly = computed(
-            () => !!(props.disabled || formGroup?.readonly.value || form?.readonly.value)
+            () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
 
+        const name = toRef(props, 'name');
+        const validate = toRef(props, 'validate');
         const {
             schema,
             onInput: schemaOnInput,
             onBlur: schemaOnBlur
         } = useValidation({
-            name: props.name
+            name,
+            validate
         });
         const { hasError } = useFormValidationError({
             schema,
@@ -148,7 +160,7 @@ export default defineComponent({
         });
 
         const value = computed(() => {
-            if (schema.value) {
+            if (schema.value && validate.value) {
                 return schema.value.value;
             }
 

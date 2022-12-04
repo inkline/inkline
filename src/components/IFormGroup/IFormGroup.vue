@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, provide } from 'vue';
+import { computed, defineComponent, inject, provide, toRef } from 'vue';
 import {
     useComponentColor,
     useComponentSize,
@@ -82,33 +82,43 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: 'md'
+            default: ''
+        },
+        /**
+         * Enable form validation using schema
+         * @type Boolean
+         * @default true
+         * @name validate
+         */
+        validate: {
+            type: Boolean,
+            default: true
         }
     },
     setup(props) {
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
 
-        const { schema, onBlur, onInput } = useValidation({ name: props.name });
+        const name = toRef(props, 'name');
+        const validate = toRef(props, 'validate');
+        const { schema, onBlur, onInput } = useValidation({ name, validate });
         const { hasError } = useFormValidationError({
             schema,
             error: ['invalid']
         });
 
-        const { color } = useComponentColor({
-            componentName,
-            currentColor: props.color || formGroup?.color.value || form?.color.value
-        });
-        const { size } = useComponentSize({
-            componentName,
-            currentSize: props.size || formGroup?.size.value || form?.size.value
-        });
+        const currentColor = computed(
+            () => props.color || formGroup?.color.value || form?.color.value
+        );
+        const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
+        const { color } = useComponentColor({ componentName, currentColor });
+        const { size } = useComponentSize({ componentName, currentSize });
 
         const disabled = computed(
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
         );
         const readonly = computed(
-            () => !!(props.disabled || formGroup?.readonly.value || form?.readonly.value)
+            () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
 
         const classes = computed(() => ({

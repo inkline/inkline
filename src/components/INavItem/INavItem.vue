@@ -114,6 +114,7 @@ export default defineComponent({
 
         return {
             classes,
+            currentTag,
             disabled,
             ariaDisabled,
             role,

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { PropType, ref, computed, useSlots, defineComponent } from 'vue';
+import { PropType, ref, computed, defineComponent } from 'vue';
 import { uid } from '@grozav/utils';
 import { PopupEvent, usePopupControl } from '@inkline/inkline/composables/popup';
 import { useClickOutside, useComponentColor, useComponentSize } from '@inkline/inkline/composables';
@@ -155,7 +155,7 @@ export default defineComponent({
          */
         'click:outside'
     ],
-    setup(props, { emit }) {
+    setup(props, { emit, slots }) {
         const wrapperRef = ref<HTMLElement | null>(null);
         const triggerRef = ref<HTMLElement | null>(null);
         const popupRef = ref<HTMLElement | null>(null);
@@ -184,8 +184,6 @@ export default defineComponent({
             emit
         });
 
-        const slots = useSlots();
-
         const classes = computed(() => {
             return {
                 [`-${color.value}`]: true,
@@ -195,12 +193,17 @@ export default defineComponent({
 
         useClickOutside({ elementRef: wrapperRef, fn: onClickOutside });
 
+        function hasSlot(name: string) {
+            return !!slots[name];
+        }
+
         return {
             wrapperRef,
             triggerRef,
             popupRef,
             arrowRef,
             visible,
+            hasSlot,
             onKeyEscape,
             classes
         };
@@ -238,15 +241,15 @@ export default defineComponent({
                 :aria-hidden="visible ? 'false' : 'true'"
             >
                 <span v-if="arrow" ref="arrowRef" class="arrow" />
-                <div v-if="slots.header" class="popover-header">
+                <div v-if="hasSlot('header')" class="popover-header">
                     <!-- @slot header Slot for popover header content -->
                     <slot name="header" />
                 </div>
-                <div v-if="slots.body" class="popover-body">
+                <div v-if="hasSlot('body')" class="popover-body">
                     <!-- @slot body Slot for popover body content -->
                     <slot name="body" />
                 </div>
-                <div v-if="slots.footer" class="popover-footer">
+                <div v-if="hasSlot('footer')" class="popover-footer">
                     <!-- @slot footer Slot for popover footer content -->
                     <slot name="footer" />
                 </div>

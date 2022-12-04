@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-const sm = ref('apple');
-const md = ref('apple');
-const lg = ref('apple');
+const sm = ref(['apple']);
+const md = ref(['apple']);
+const lg = ref(['apple']);
 </script>
 
 <template>

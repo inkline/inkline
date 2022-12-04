@@ -10,6 +10,9 @@ const componentName = 'IButton';
 
 export default defineComponent({
     name: componentName,
+    components: {
+        ILoader
+    },
     props: {
         /**
          * The active state of the button
@@ -206,6 +209,7 @@ export default defineComponent({
             ariaBusy,
             ariaDisabled,
             ariaPressed,
+            disabled,
             isTag,
             role,
             tabIndex,

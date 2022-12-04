@@ -1,12 +1,13 @@
 import { clone, getValueByPath, setValueByPath, setValuesAlongPath } from '@grozav/utils';
-import { computed, inject, ref } from 'vue';
+import { computed, inject, Ref, ref } from 'vue';
 import { FormKey } from '../components/IForm';
 import { FormGroupKey } from '../components/IFormGroup';
 import { validate } from '../validation';
 import { useInkline } from './inkline';
 
 export function useValidation(options: {
-    name?: string;
+    name?: Ref<string>;
+    validate?: Ref<boolean>;
     schema?: any;
     onUpdate?: (model: any) => void;
     onSubmit?: (model: any) => void;
@@ -17,16 +18,25 @@ export function useValidation(options: {
     const formGroup = inject(FormGroupKey, null);
 
     const schema = form
-        ? computed(() => form.schema && getValueByPath(form.schema.value, options.name!))
+        ? computed(
+              () =>
+                  form.schema &&
+                  options.validate?.value &&
+                  getValueByPath(form.schema.value, options.name!.value)
+          )
         : ref<any | null>(options.schema || null);
 
     /**
      * Determine if form event should trigger validation
      *
-     * @param path
+     * @param schema
      * @param eventName
      */
     function shouldValidate(schema: any, eventName: string) {
+        if (!options.validate?.value) {
+            return;
+        }
+
         const events = schema.validateOn
             ? [].concat(schema.validateOn)
             : inkline.options.validateOn;
@@ -42,6 +52,10 @@ export function useValidation(options: {
      * @param value
      */
     function setValue(name: string, value: any) {
+        if (!options.validate?.value) {
+            return;
+        }
+
         let clonedSchema = clone(schema.value);
 
         const targetSchema = getValueByPath(clonedSchema, name);
@@ -70,6 +84,10 @@ export function useValidation(options: {
      * @param event
      */
     function setTouched(name: string, event: Event & { name: string }) {
+        if (!options.validate?.value) {
+            return;
+        }
+
         let clonedSchema = clone(schema.value);
 
         const targetSchema = getValueByPath(clonedSchema, name);
@@ -99,6 +117,10 @@ export function useValidation(options: {
      * @param event
      */
     function onSubmit(event: SubmitEvent) {
+        if (!options.validate?.value) {
+            return;
+        }
+
         let clonedSchema = clone(schema.value);
         clonedSchema = setValuesAlongPath(validate(clonedSchema), '', {
             untouched: false,
@@ -121,6 +143,10 @@ export function useValidation(options: {
      * @param value
      */
     function onInput(name: string, value: any) {
+        if (!options.validate?.value) {
+            return;
+        }
+
         if (formGroup) {
             formGroup.onInput(name, value);
         } else if (form) {
@@ -138,6 +164,10 @@ export function useValidation(options: {
      * @param event
      */
     function onBlur(name: string, event: any) {
+        if (!options.validate?.value) {
+            return;
+        }
+
         if (formGroup) {
             formGroup.onBlur(name, event);
         } else if (form) {

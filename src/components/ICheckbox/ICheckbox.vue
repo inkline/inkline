@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, ref } from 'vue';
+import { computed, defineComponent, inject, PropType, ref, toRef } from 'vue';
 import { uid } from '@grozav/utils';
 import {
     useComponentColor,
@@ -125,6 +125,16 @@ export default defineComponent({
         tabindex: {
             type: [Number, String],
             default: 0
+        },
+        /**
+         * Enable checkbox validation using schema
+         * @type Boolean
+         * @default true
+         * @name validate
+         */
+        validate: {
+            type: Boolean,
+            default: true
         }
     },
     emits: [
@@ -164,18 +174,21 @@ export default defineComponent({
         );
         const readonly = computed(
             () =>
-                props.disabled ||
+                props.readonly ||
                 checkboxGroup?.readonly.value ||
                 formGroup?.readonly.value ||
                 form?.readonly.value
         );
 
+        const name = toRef(props, 'name');
+        const validate = toRef(props, 'validate');
         const {
             schema,
             onInput: schemaOnInput,
             onBlur: schemaOnBlur
         } = useValidation({
-            name: props.name
+            name,
+            validate
         });
         const { hasError } = useFormValidationError({
             schema,
@@ -192,7 +205,7 @@ export default defineComponent({
         }));
 
         const checked = computed(() => {
-            if (schema.value) {
+            if (schema.value && validate.value) {
                 return Boolean(schema.value.value);
             } else if (checkboxGroup?.value) {
                 return checkboxGroup.value.value.includes(props.value);

@@ -1,6 +1,6 @@
 <script lang="ts">
-import { computed, defineComponent, inject } from 'vue';
-import { SelectKey } from '@inkline/inkline/components/ISelect/mixin';
+import { computed, defineComponent, inject, PropType } from 'vue';
+import { SelectKey, SelectOption } from '@inkline/inkline/components/ISelect/mixin';
 
 const componentName = 'ISelectOption';
 
@@ -48,14 +48,17 @@ export default defineComponent({
             default: 0
         },
         /**
-         * The select option value
+         * The select option
          * @type Object | String | Number
          * @default {}
          * @name value
          */
         value: {
-            type: [Object, String, Number],
-            default: (): any => ({})
+            type: Object as PropType<SelectOption>,
+            default: (): SelectOption => ({
+                label: '',
+                value: ''
+            })
         }
     },
     setup(props) {
@@ -64,7 +67,14 @@ export default defineComponent({
         const ariaDisabled = computed(() => (props.disabled ? 'true' : null));
         const ariaSelected = computed(() => (props.disabled ? 'true' : null));
 
-        const isActive = computed(() => props.active || props.value === select?.value.value);
+        const isActive = computed(() => {
+            const idField = select?.idField.value;
+            if (!idField) {
+                return false;
+            }
+
+            return props.active || props.value[idField] === select?.value.value;
+        });
 
         const classes = computed(() => ({
             '-active': isActive.value,
@@ -74,8 +84,8 @@ export default defineComponent({
         const tabIndex = computed(() => (props.disabled ? -1 : props.tabindex));
 
         function onClick() {
-            if (!props.disabled) {
-                select?.onInput(props.value, props.label);
+            if (select && props.value) {
+                select.onInput(props.value);
             }
         }
 
@@ -102,6 +112,6 @@ export default defineComponent({
         @click="onClick"
     >
         <!-- @slot default Slot for select option label -->
-        <slot> {{ label }} </slot>
+        <slot> {{ label || value.label }} </slot>
     </div>
 </template>

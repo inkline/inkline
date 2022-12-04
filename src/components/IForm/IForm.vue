@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, provide } from 'vue';
+import { computed, defineComponent, provide, toRef } from 'vue';
 import {
     useComponentColor,
     useComponentSize,
@@ -92,7 +92,17 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: undefined
+            default: ''
+        },
+        /**
+         * Enable form validation using schema
+         * @type Boolean
+         * @default true
+         * @name validate
+         */
+        validate: {
+            type: Boolean,
+            default: true
         }
     },
     emits: [
@@ -116,12 +126,14 @@ export default defineComponent({
         const disabled = computed(() => props.disabled);
         const readonly = computed(() => props.readonly);
 
+        const validate = toRef(props, 'validate');
         const {
             schema,
             onBlur,
             onInput,
             onSubmit: schemaOnSubmit
         } = useValidation({
+            validate,
             schema: props.modelValue,
             onUpdate: (model: any) => {
                 emit('update:modelValue', model);

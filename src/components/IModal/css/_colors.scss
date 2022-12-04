@@ -4,7 +4,7 @@
 
 .modal-wrapper {
     &.-primary {
-        --modal--background: var(--modal--primary--background, var(--color-white));
+        --modal--background: var(--modal--primary--background, var(--color-primary));
         --modal--border-top-color: var(
             --modal--primary--border-top-color,
             var(--color-primary-shade-50)

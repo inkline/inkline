@@ -2,7 +2,7 @@
 export default {
     data() {
         return {
-            checked: true
+            checked: 'apple'
         };
     }
 };
@@ -10,5 +10,6 @@ export default {
 <template>
     <i-radio-group v-model="checked">
         <i-radio value="apple" readonly>Apple</i-radio>
+        <i-radio value="banana" readonly>Banana</i-radio>
     </i-radio-group>
 </template>

@@ -1,5 +1,7 @@
 <script lang="ts" setup>
+import { computed, ref } from 'vue';
 import { useForm } from '@inkline/inkline/composables';
+import { validate } from '@inkline/inkline/validation';
 
 const schema = useForm({
     input: {
@@ -22,8 +24,35 @@ const schema = useForm({
     },
     toggle: {
         validators: ['required']
+    },
+    select: {
+        validators: ['required']
     }
 });
+
+const options = ref([
+    { id: 1, label: 'Richard Hendricks' },
+    { id: 2, label: 'Bertram Gilfoyle' },
+    { id: 3, label: 'Dinesh Chugtai' },
+    { id: 4, label: 'Jared Dunn' },
+    { id: 5, label: 'Erlich Bachman' }
+]);
+
+const loading = ref(false);
+
+const prettySchema = computed(() => {
+    return JSON.stringify(schema.value, null, 4);
+});
+
+function onSubmit() {
+    loading.value = true;
+
+    validate(schema.value);
+
+    setTimeout(() => {
+        loading.value = false;
+    }, 2000);
+}
 </script>
 <template>
     <i-form v-model="schema">
@@ -44,10 +73,10 @@ const schema = useForm({
             <i-textarea name="textarea" placeholder="Write a comment.." />
         </i-form-group>
 
-        <!-- <i-form-group>
+        <i-form-group>
             <i-form-label>Select</i-form-label>
-            <i-select v-model="select" :options="options" placeholder="Choose an option" />
-        </i-form-group> -->
+            <i-select name="select" :options="options" placeholder="Choose an option" />
+        </i-form-group>
 
         <i-form-group>
             <i-form-label>Checkbox</i-form-label>
@@ -73,24 +102,15 @@ const schema = useForm({
             </i-radio-group>
         </i-form-group>
 
-
         <i-form-group>
             <i-form-label>Toggle</i-form-label>
             <i-toggle name="toggle" />
         </i-form-group>
 
-        <!-- <i-form-group>
-            <i-form-label>Toggle</i-form-label>
-            <i-toggle v-model="toggle">I confirm this toggle</i-toggle>
-        </i-form-group> -->
-
-        <!-- <i-form-group>
-            <i-form-label>Checkbox</i-form-label>
-            <i-checkbox v-model="checkbox">I accept the terms and conditions</i-checkbox>
-        </i-form-group> -->
-
-        <!-- <i-form-group>
+        <i-form-group>
             <i-button type="button" :loading="loading" @click="onSubmit"> Submit </i-button>
-        </i-form-group> -->
+        </i-form-group>
+
+        <pre>{{ prettySchema }}</pre>
     </i-form>
 </template>

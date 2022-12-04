@@ -153,7 +153,7 @@ export default defineComponent({
         );
         const readonly = computed(
             () =>
-                props.disabled ||
+                props.readonly ||
                 radioGroup?.readonly.value ||
                 formGroup?.readonly.value ||
                 form?.readonly.value

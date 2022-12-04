@@ -390,7 +390,7 @@ const disabled = computed(
     () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
 );
 const readonly = computed(
-    () => !!(props.disabled || formGroup?.readonly.value || form?.readonly.value)
+    () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
 );
 const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 

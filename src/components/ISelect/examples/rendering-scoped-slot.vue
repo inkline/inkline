@@ -50,6 +50,7 @@ export default {
         };
     },
     methods: {
+        // Render function still needed for computing preview value
         renderLabel(option) {
             return option ? `${option.address.city}, ${option.address.country}` : '';
         }

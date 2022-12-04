@@ -540,6 +540,8 @@
 /// @name select--footer--padding
 ////
 
+@import '../../../cssnew/mixins';
+
 .select-wrapper {
     display: block;
     position: relative;
@@ -552,9 +554,10 @@
         text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
         list-style: none;
         line-height: var(--select-line-height);
-        background-clip: padding-box;
-        display: inline-block;
+        //background-clip: padding-box;
+        display: block;
         white-space: normal;
+        width: 100%;
         min-width: var(--select--min-width, 240px);
         max-width: var(--select--max-width, 90vw);
         color: var(--select--color);
@@ -857,6 +860,12 @@
             var(--select--background),
             var(--select--border-right-color, var(--border-right-color))
         );
+    }
+
+    &.-error {
+        > .input-wrapper .input {
+            border-color: var(--input--error--border-color, var(--color-danger));
+        }
     }
 
     .input-wrapper {

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ref, computed, inject, PropType, defineComponent } from 'vue';
+import { ref, computed, inject, PropType, defineComponent, toRef } from 'vue';
 import { filterKeys, uid } from '@grozav/utils';
 
 import {
@@ -158,6 +158,16 @@ export default defineComponent({
         clearAriaLabel: {
             type: String,
             default: 'Clear'
+        },
+        /**
+         * Enable textarea validation using schema
+         * @type Boolean
+         * @default true
+         * @name validate
+         */
+        validate: {
+            type: Boolean,
+            default: true
         }
     },
     emits: [
@@ -187,7 +197,7 @@ export default defineComponent({
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
         );
         const readonly = computed(
-            () => !!(props.disabled || formGroup?.readonly.value || form?.readonly.value)
+            () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
 
         const input = ref<HTMLInputElement | null>(null);
@@ -198,12 +208,15 @@ export default defineComponent({
         );
         const inputAttrs = computed(() => filterKeys(attrs, { denylist: wrapperAttrsAllowlist }));
 
+        const name = toRef(props, 'name');
+        const validate = toRef(props, 'validate');
         const {
             schema,
             onInput: schemaOnInput,
             onBlur: schemaOnBlur
         } = useValidation({
-            name: props.name
+            name,
+            validate
         });
         const { hasError } = useFormValidationError({
             schema,
@@ -213,7 +226,7 @@ export default defineComponent({
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
         const value = computed(() => {
-            if (schema.value) {
+            if (schema.value && validate.value) {
                 return schema.value.value;
             }
 
