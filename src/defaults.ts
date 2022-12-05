@@ -209,28 +209,28 @@ export const defaultConfig: Configuration = {
                     columns: 12,
                     gutter: '28px',
                     xs: {
-                        gutter: 'calc(var(--gutter) * var(--size-multiplier-xs))',
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-xs))',
                         width: '100%'
                     },
                     sm: {
-                        gutter: 'calc(var(--gutter) * var(--size-multiplier-sm))',
-                        width: 'calc(var(--breakpoint-sm) - var(--grid--sm--gutter))'
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-sm))',
+                        width: 'calc(var(--breakpoint-sm) - var(--grid--sm--grid--gutter))'
                     },
                     md: {
-                        gutter: 'calc(var(--gutter) * var(--size-multiplier-md))',
-                        width: 'calc(var(--breakpoint-md) - var(--grid--md--gutter))'
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-md))',
+                        width: 'calc(var(--breakpoint-md) - var(--grid--md--grid--gutter))'
                     },
                     lg: {
-                        gutter: 'calc(var(--gutter) * var(--size-multiplier-lg))',
-                        width: 'calc(var(--breakpoint-lg) - var(--grid--lg--gutter))'
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-lg))',
+                        width: 'calc(var(--breakpoint-lg) - var(--grid--lg--grid--gutter))'
                     },
                     xl: {
-                        gutter: 'calc(var(--gutter) * var(--size-multiplier-xl))',
-                        width: 'calc(var(--breakpoint-xl) - var(--grid--xl--gutter))'
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-xl))',
+                        width: 'calc(var(--breakpoint-xl) - var(--grid--xl--grid--gutter))'
                     },
                     '2xl': {
-                        gutter: 'calc(var(--gutter) * var(--size-multiplier-2xl))',
-                        width: 'calc(var(--breakpoint-2xl) - var(--grid--2xl--gutter))'
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-2xl))',
+                        width: 'calc(var(--breakpoint-2xl) - var(--grid--2xl--grid--gutter))'
                     }
                 }
             },
