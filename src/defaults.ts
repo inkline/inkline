@@ -214,23 +214,23 @@ export const defaultConfig: Configuration = {
                     },
                     sm: {
                         gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-sm))',
-                        width: 'calc(var(--breakpoint-sm) - var(--grid--sm--grid--gutter))'
+                        width: 'calc(var(--breakpoint-sm) - var(--grid--sm--gutter))'
                     },
                     md: {
                         gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-md))',
-                        width: 'calc(var(--breakpoint-md) - var(--grid--md--grid--gutter))'
+                        width: 'calc(var(--breakpoint-md) - var(--grid--md--gutter))'
                     },
                     lg: {
                         gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-lg))',
-                        width: 'calc(var(--breakpoint-lg) - var(--grid--lg--grid--gutter))'
+                        width: 'calc(var(--breakpoint-lg) - var(--grid--lg--gutter))'
                     },
                     xl: {
                         gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-xl))',
-                        width: 'calc(var(--breakpoint-xl) - var(--grid--xl--grid--gutter))'
+                        width: 'calc(var(--breakpoint-xl) - var(--grid--xl--gutter))'
                     },
                     '2xl': {
                         gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-2xl))',
-                        width: 'calc(var(--breakpoint-2xl) - var(--grid--2xl--grid--gutter))'
+                        width: 'calc(var(--breakpoint-2xl) - var(--grid--2xl--gutter))'
                     }
                 }
             },
