@@ -1,6 +1,7 @@
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, onMounted, ref, toRef } from 'vue';
 import { getValueByPath } from '@grozav/utils';
+import { useValidation } from '@inkline/inkline/composables';
 
 const componentName = 'IFormError';
 
@@ -29,39 +30,32 @@ export default defineComponent({
         }
     },
     setup(props) {
-        const parent = computed(() => {
-            // if (formGroup.$) {
-            //     return formGroup;
-            // }
-            // return form;
-        });
-
-        const schema = computed(() => {
-            // if (props.for !== '') {
-            //     return getValueByPath(parent.value.schema || {}, `${props.for}`);
-            // }
-            // return parent.value.schema || {};
+        const name = toRef(props, 'for');
+        const validate = ref(true);
+        const { schema } = useValidation({
+            name,
+            validate
         });
 
         const errors = computed(() => {
-            // return schema.value.errors || [];
+            return schema.value.errors || [];
         });
 
-        const isVisible = computed(() => {
-            let visible = true;
+        const visible = computed(() => {
+            let isVisible = true;
 
             if (schema.value && props.visible) {
                 ([] as string[]).concat(props.visible as string[]).forEach((status) => {
-                    visible = visible && schema.value[status];
+                    isVisible = isVisible && schema.value[status];
                 });
             }
 
-            return visible;
+            return isVisible;
         });
 
         return {
             errors,
-            isVisible,
+            visible,
             schema
         };
     }
@@ -69,9 +63,11 @@ export default defineComponent({
 </script>
 
 <template>
-    <transition v-if="schema" v-show="isVisible" name="fade-in-transition">
-        <ul v-if="errors.length > 0" class="form-error" aria-live="polite">
-            <!-- <li v-for="error in errors">{{ error.message }}</li> -->
+    <transition v-if="schema" name="fade-in-transition">
+        <ul v-if="errors.length > 0" v-show="visible" class="form-error" aria-live="polite">
+            <li v-for="(error, index) in errors" :key="`${index}-${error.name}`">
+                {{ error.message }}
+            </li>
         </ul>
     </transition>
 </template>
