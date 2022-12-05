@@ -22,7 +22,7 @@
         "test:dev": "vitest",
         "test:dev:ui": "vitest --ui",
         "coveralls": "cat coverage/lcov.info | coveralls",
-        "generate:config": "inkline generate scss --outputDir ./src/cssnew/variables",
+        "generate:config": "inkline generate scss --outputDir ./src/css/variables",
         "generate:manifest": "ts-node ./scripts/manifest.ts",
         "generate:manifest:sass": "ts-node ./scripts/manifest-sass.ts",
         "storybook": "start-storybook -p 6006",
@@ -40,12 +40,12 @@
         "@grozav/utils": "^1.1.4",
         "@popperjs/core": "2.11.6",
         "normalize.css": "^8.0.1"
-  },
+    },
     "devDependencies": {
         "@babel/core": "^7.19.3",
         "@grozav/eslint-config": "^1.0.4",
         "@inkline/cli": "^1.2.1",
-        "@inkline/config": "^1.7.0",
+        "@inkline/config": "^1.7.4",
         "@storybook/addon-a11y": "^6.5.12",
         "@storybook/addon-actions": "^6.5.12",
         "@storybook/addon-essentials": "^6.5.12",

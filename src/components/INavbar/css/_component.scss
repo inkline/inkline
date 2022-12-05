@@ -247,7 +247,7 @@
  * Navbar
  */
 
-@import '../../../cssnew/mixins';
+@import '../../../css/mixins';
 
 @mixin navbar-collapse {
     .navbar-collapsible {
@@ -357,11 +357,12 @@
             var(--navbar--border-bottom-left-radius, var(--border-bottom-left-radius))
     );
 
-    > .container > .row > .column {
+    > .container {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
+        padding: 0;
     }
 
     .navbar-collapsible {

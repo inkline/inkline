@@ -1,18 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, provide, ref, toRef } from 'vue';
 import { IContainer } from '@inkline/inkline/components/IContainer';
-import { IRow } from '@inkline/inkline/components/IRow';
-import { IColumn } from '@inkline/inkline/components/IColumn';
 import { IHamburgerMenu } from '@inkline/inkline/components/IHamburgerMenu';
-import {
-    CollapsibleMixin,
-    computedPropValue,
-    computedColorValue,
-    sizePropValidator,
-    computedSizeValue
-} from '@inkline/inkline/mixins';
-import { ClickOutside } from '@inkline/inkline/directives';
-import { Classes } from '@inkline/inkline/types';
 import { NavbarKey } from '@inkline/inkline/components/INavbar/mixin';
 import {
     useClickOutside,
@@ -25,6 +14,10 @@ const componentName = 'INavbar';
 
 export default defineComponent({
     name: componentName,
+    components: {
+        IContainer,
+        IHamburgerMenu
+    },
     props: {
         /**
          * Determines if the navbar should close when clicking a navbar item
@@ -179,19 +172,15 @@ export default defineComponent({
 <template>
     <nav ref="navbarRef" class="navbar" :class="classes" v-bind="$attrs">
         <i-container :fluid="fluid">
-            <i-row>
-                <i-column>
-                    <i-hamburger-menu
-                        class="collapse-toggle"
-                        :animation="menuAnimation"
-                        :color="color"
-                        :model-value="open"
-                        @update:modelValue="toggleOpen"
-                    />
-                    <!-- @slot default Slot for default navbar content -->
-                    <slot />
-                </i-column>
-            </i-row>
+            <i-hamburger-menu
+                class="collapse-toggle"
+                :animation="menuAnimation"
+                :color="color"
+                :model-value="open"
+                @update:modelValue="toggleOpen"
+            />
+            <!-- @slot default Slot for default navbar content -->
+            <slot />
         </i-container>
     </nav>
 </template>

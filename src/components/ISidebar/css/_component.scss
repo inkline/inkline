@@ -257,8 +257,8 @@
 /// @name -collapse-fixed--overlay--background
 ////
 
-@use '../../../cssnew/mixins';
-@use '../../../cssnew/functions';
+@use '../../../css/mixins';
+@use '../../../css/functions';
 
 @mixin sidebar-wrapper-collapse {
     &.-collapse-fixed {

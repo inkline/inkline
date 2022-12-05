@@ -1,0 +1,55 @@
+:root {
+    /**
+     * Border radius variables
+     */
+    --border-top-left-radius: 4px;
+    --border-top-right-radius: 4px;
+    --border-bottom-right-radius: 4px;
+    --border-bottom-left-radius: 4px;
+    --border-radius: var(--border-top-left-radius) var(--border-top-right-radius) var(--border-bottom-right-radius) var(--border-bottom-left-radius);
+
+    /**
+     * Border radius xs variant variables
+     */
+    --border-top-left-radius-xs: calc(var(--border-top-left-radius) * var(--size-multiplier-xs));
+    --border-top-right-radius-xs: calc(var(--border-top-right-radius) * var(--size-multiplier-xs));
+    --border-bottom-right-radius-xs: calc(var(--border-bottom-right-radius) * var(--size-multiplier-xs));
+    --border-bottom-left-radius-xs: calc(var(--border-bottom-left-radius) * var(--size-multiplier-xs));
+    --border-radius-xs: var(--border-top-left-radius-xs) var(--border-top-right-radius-xs) var(--border-bottom-right-radius-xs) var(--border-bottom-left-radius-xs);
+
+    /**
+     * Border radius sm variant variables
+     */
+    --border-top-left-radius-sm: calc(var(--border-top-left-radius) * var(--size-multiplier-sm));
+    --border-top-right-radius-sm: calc(var(--border-top-right-radius) * var(--size-multiplier-sm));
+    --border-bottom-right-radius-sm: calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm));
+    --border-bottom-left-radius-sm: calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm));
+    --border-radius-sm: var(--border-top-left-radius-sm) var(--border-top-right-radius-sm) var(--border-bottom-right-radius-sm) var(--border-bottom-left-radius-sm);
+
+    /**
+     * Border radius md variant variables
+     */
+    --border-top-left-radius-md: calc(var(--border-top-left-radius) * var(--size-multiplier-md));
+    --border-top-right-radius-md: calc(var(--border-top-right-radius) * var(--size-multiplier-md));
+    --border-bottom-right-radius-md: calc(var(--border-bottom-right-radius) * var(--size-multiplier-md));
+    --border-bottom-left-radius-md: calc(var(--border-bottom-left-radius) * var(--size-multiplier-md));
+    --border-radius-md: var(--border-top-left-radius-md) var(--border-top-right-radius-md) var(--border-bottom-right-radius-md) var(--border-bottom-left-radius-md);
+
+    /**
+     * Border radius lg variant variables
+     */
+    --border-top-left-radius-lg: calc(var(--border-top-left-radius) * var(--size-multiplier-lg));
+    --border-top-right-radius-lg: calc(var(--border-top-right-radius) * var(--size-multiplier-lg));
+    --border-bottom-right-radius-lg: calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg));
+    --border-bottom-left-radius-lg: calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg));
+    --border-radius-lg: var(--border-top-left-radius-lg) var(--border-top-right-radius-lg) var(--border-bottom-right-radius-lg) var(--border-bottom-left-radius-lg);
+
+    /**
+     * Border radius xl variant variables
+     */
+    --border-top-left-radius-xl: calc(var(--border-top-left-radius) * var(--size-multiplier-xl));
+    --border-top-right-radius-xl: calc(var(--border-top-right-radius) * var(--size-multiplier-xl));
+    --border-bottom-right-radius-xl: calc(var(--border-bottom-right-radius) * var(--size-multiplier-xl));
+    --border-bottom-left-radius-xl: calc(var(--border-bottom-left-radius) * var(--size-multiplier-xl));
+    --border-radius-xl: var(--border-top-left-radius-xl) var(--border-top-right-radius-xl) var(--border-bottom-right-radius-xl) var(--border-bottom-left-radius-xl);
+}

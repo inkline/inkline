@@ -1,7 +1,5 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
-import { computedColorValue, computedSizeValue } from '@inkline/inkline/mixins';
-import { Classes } from '@inkline/inkline/types';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'IHamburgerMenu';
