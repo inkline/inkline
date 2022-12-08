@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, toRef, useAttrs } from 'vue';
+import { computed, defineComponent, inject, toRef } from 'vue';
 import { useLinkable } from '@inkline/inkline/composables';
 import { NavKey } from '@inkline/inkline/components/INav/mixin';
 

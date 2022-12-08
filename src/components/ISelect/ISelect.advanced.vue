@@ -428,7 +428,6 @@ const {
     show,
     createPopup,
     focusTrigger,
-    onClick: popupOnClick,
     onClickOutside
 } = usePopupControl({
     triggerRef,

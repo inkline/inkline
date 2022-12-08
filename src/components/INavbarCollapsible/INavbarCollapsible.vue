@@ -7,6 +7,7 @@ import { useIsServer } from '@inkline/inkline/composables';
 const componentName = 'INavbarCollapsible';
 
 export default defineComponent({
+    name: componentName,
     components: {
         IExpandTransition
     },

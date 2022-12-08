@@ -105,7 +105,7 @@ export default defineComponent({
             default: true
         }
     },
-    emit: [
+    emits: [
         /**
          * Event emitted for setting the modelValue
          * @event update:modelValue
@@ -306,7 +306,8 @@ export default defineComponent({
                 &hellip;
             </li>
             <li
-                v-for="page in pages"
+                v-for="(page, index) in pages"
+                :key="index"
                 class="pagination-item"
                 :class="{ '-active': modelValue === page }"
                 :aria-current="modelValue === page ? 'page' : false"

@@ -2,7 +2,6 @@
 import { defineComponent, ref, toRef, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { addClass, removeClass, uid } from '@grozav/utils';
 import { OverlayController } from '@inkline/inkline/controllers';
-import { ClickOutside } from '@inkline/inkline/directives';
 import { useComponentColor, useComponentSize, useClickOutside } from '@inkline/inkline/composables';
 
 const componentName = 'IModal';

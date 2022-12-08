@@ -1,6 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref, toRef } from 'vue';
-import { getValueByPath } from '@grozav/utils';
+import { computed, defineComponent, ref, toRef } from 'vue';
 import { useValidation } from '@inkline/inkline/composables';
 
 const componentName = 'IFormError';

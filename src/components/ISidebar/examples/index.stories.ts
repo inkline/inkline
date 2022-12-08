@@ -12,7 +12,7 @@ import {
     ISidebarRoutingExample,
     ISidebarRoutingActiveExample
 } from './index';
-import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ISidebar,

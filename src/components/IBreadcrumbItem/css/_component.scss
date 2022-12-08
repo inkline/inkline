@@ -20,12 +20,6 @@
         --breadcrumb--color: var(--breadcrumb--active--color);
     }
 
-    + .breadcrumb-item {
-        &::before {
-            padding-right: var(--breadcrumb--padding-right);
-        }
-    }
-
     > span {
         display: inline-block;
     }
@@ -37,6 +31,7 @@
     // The separator between breadcrumbs (by default, a forward-slash: "/")
     + .breadcrumb-item {
         &::before {
+            padding-right: var(--breadcrumb--padding-right);
             display: inline-block; // } Suppress underlining of the separator in modern browsers
             content: '/';
         }
@@ -48,13 +43,14 @@
     //
     // To trick IE into suppressing the underline, we give the pseudo-element an
     // underline and then immediately remove it.
+    // stylelint-disable-next-line no-duplicate-selectors
     + .breadcrumb-item:hover::before {
         text-decoration: underline;
     }
 
     // Check the above for duplication
+    // stylelint-disable-next-line no-duplicate-selectors
     + .breadcrumb-item:hover::before {
-        /* stylelint-disable-line no-duplicate-selectors */
         text-decoration: none;
     }
 

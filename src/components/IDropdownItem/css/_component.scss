@@ -24,7 +24,6 @@
     );
     text-align: inherit; // For `<button>`s
     white-space: nowrap; // prevent links from randomly breaking onto new lines
-    background-color: transparent; // For `<button>`s
     cursor: pointer;
     transition-property: var(
         --dropdown--item--transition-property,
@@ -116,7 +115,7 @@
             )
         )
     );
-    background: var(--dropdown--item--background, var(--dropdown--background));
+    background: var(--dropdown--item--background, var(--dropdown--background, transparent));
 
     &:not(.-disabled, .-plaintext) {
         &:hover,
@@ -129,11 +128,14 @@
     &.-disabled {
         color: var(--dropdown--item--disabled--color, var(--dropdown--item--color));
         background: var(--dropdown--item--disabled--background, var(--dropdown--item--background));
+        pointer-events: none;
+        cursor: default;
     }
 
     &.-active {
         color: var(--dropdown--item--active--color, var(--dropdown--item--color));
         background: var(--dropdown--item--active--background, var(--dropdown--item--background));
+        font-weight: var(--dropdown--item--active--font-weight, var(--font-weight-semibold));
     }
 
     &:hover,
@@ -142,16 +144,7 @@
         text-decoration: none;
     }
 
-    &.-disabled {
-        pointer-events: none;
-        cursor: default;
-    }
-
     &.-plaintext {
         cursor: default;
-    }
-
-    &.-active {
-        font-weight: var(--font-weight-semibold);
     }
 }

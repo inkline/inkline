@@ -1,46 +1,11 @@
 ---
-processors:
-    # ideally this can be removed once all components are converted to SFC as this prevents auto fix from functioning
-    - stylelint-processor-html
 plugins:
     - stylelint-scss
 extends:
-    - stylelint-config-standard
     - stylelint-config-recommended-scss
+    - stylelint-config-recommended-vue/scss
     - stylelint-config-prettier
 rules:
-    at-rule-empty-line-before:
-        - always
-        - ignore:
-              - after-comment
-              - first-nested
-              - blockless-after-blockless
-          ignoreAtRules:
-              - else
-              - else if
-              - each
-    alpha-value-notation: null
-    at-rule-no-vendor-prefix: null
-    block-closing-brace-newline-after: null
-    color-function-notation: null
-    color-hex-length: null
-    custom-property-empty-line-before: null
-    custom-property-no-missing-var-function: null
-    custom-property-pattern: null
-    declaration-block-no-redundant-longhand-properties: null
-    function-calc-no-unspaced-operator: null
-    max-line-length: null
     no-descending-specificity: null
-    no-empty-source: null
-    number-max-precision: null
-    property-no-vendor-prefix: null
     scss/comment-no-empty: null
-    selector-class-pattern: null
-    string-quotes: null
-    value-keyword-case: null
-    value-list-max-empty-lines: null
     scss/operator-no-newline-after: null
-    annotation-no-unknown:
-        - true
-        - ignoreAnnotations:
-              - 'default'

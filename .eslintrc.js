@@ -12,6 +12,7 @@ module.exports = {
         'vue/multi-word-component-names': 'off',
         'vue/require-prop-types': 'off',
         'vue/comment-directive': 'off',
-        'vue/no-dupe-keys': 'off'
+        'vue/no-dupe-keys': 'off',
+        'vue/v-on-event-hyphenation': 'off'
     }
 };

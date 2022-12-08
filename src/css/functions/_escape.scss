@@ -57,7 +57,7 @@ $-escape-chars: (
         $ch: string.slice($str, $str-index, $str-index);
 
         @if $str-index == 1 and map.has-key($-number-map, $ch) {
-            $output: $output + '\\3'+ $ch + ' ';
+            $output: $output + '\\3'+ $ch + ' '; // stylelint-disable-line scss/operator-no-unspaced
         } @else if list.index($-escape-chars, $ch) != null {
             $output: $output + '\\'+ $ch;
         } @else {

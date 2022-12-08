@@ -13,6 +13,9 @@ export default {
             }
         };
     },
+    mounted() {
+        this.fetchOptions();
+    },
     methods: {
         async fetchOptions() {
             this.loading = true;
@@ -48,9 +51,6 @@ export default {
         renderLabel(option) {
             return option ? `${option.firstName} ${option.lastName}` : '';
         }
-    },
-    mounted() {
-        this.fetchOptions();
     }
 };
 </script>

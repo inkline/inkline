@@ -44,9 +44,9 @@ export default defineComponent({
 
 <template>
     <span>
-        <template v-for="{ text, marked } of parts">
-            <mark v-if="marked">{{ text }}</mark>
-            <template v-else>{{ text }}</template>
+        <template v-for="(part, index) of parts" :key="index">
+            <mark v-if="part.marked">{{ part.text }}</mark>
+            <template v-else>{{ part.text }}</template>
         </template>
     </span>
 </template>

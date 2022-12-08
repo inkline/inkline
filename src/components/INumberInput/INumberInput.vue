@@ -1,15 +1,5 @@
 <script lang="ts">
-import {
-    computed,
-    defineComponent,
-    inject,
-    PropType,
-    ref,
-    toRef,
-    useAttrs,
-    useSlots,
-    watch
-} from 'vue';
+import { computed, defineComponent, inject, PropType, ref, toRef, watch } from 'vue';
 import { IButton } from '../IButton';
 import { filterKeys, uid } from '@grozav/utils';
 import { InputElementEvent } from '@inkline/inkline/types';
@@ -26,6 +16,9 @@ const componentName = 'INumberInput';
 
 export default defineComponent({
     name: componentName,
+    components: {
+        IButton
+    },
     props: {
         /**
          * The color variant of the input
@@ -201,7 +194,7 @@ export default defineComponent({
             default: true
         }
     },
-    emit: [
+    emits: [
         /**
          * Event emitted for setting the modelValue
          * @event update:modelValue

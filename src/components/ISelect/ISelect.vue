@@ -4,7 +4,6 @@ import {
     computed,
     defineComponent,
     inject,
-    nextTick,
     PropType,
     provide,
     ref,
@@ -336,7 +335,8 @@ export default defineComponent({
          * @name total
          */
         total: {
-            type: Number
+            type: Number,
+            default: undefined
         },
         /**
          * Delay in milliseconds before the popover is hidden on hover
@@ -391,7 +391,7 @@ export default defineComponent({
          */
         'clear'
     ],
-    setup(props, { attrs, emit, slots }) {
+    setup(props, { emit }) {
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
 

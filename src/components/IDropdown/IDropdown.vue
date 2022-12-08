@@ -173,16 +173,6 @@ export default defineComponent({
         hoverHideDelay: {
             type: Number,
             default: 300
-        },
-        /**
-         * Animation duration in milliseconds
-         * @name animationDuration
-         * @type Number
-         * @default 300
-         */
-        animationDuration: {
-            type: Number,
-            default: 300
         }
     },
     emits: [

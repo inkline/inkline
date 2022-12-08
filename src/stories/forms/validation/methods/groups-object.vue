@@ -1,32 +1,32 @@
 <script>
-    export default {
-        data() {
-            return {
-                schema: this.$inkline.form({
-                    group: {
-                        firstName: {
-                            validators: [{ name: 'required' }]
-                        },
-                        lastName: {
-                            validators: ['required']
-                        }
+export default {
+    data() {
+        return {
+            schema: this.$inkline.form({
+                group: {
+                    firstName: {
+                        validators: [{ name: 'required' }]
+                    },
+                    lastName: {
+                        validators: ['required']
                     }
-                })
-            };
+                }
+            })
+        };
+    },
+    methods: {
+        setEmail() {
+            this.schema.group.email = this.$inkline.form({
+                validators: [{ name: 'email' }]
+            });
         },
-        methods: {
-            setEmail() {
-                this.schema.group.email = this.$inkline.form({
-                    validators: [{ name: 'email' }]
-                });
-            },
-            setAddress() {
-                this.schema.group.address = this.$inkline.form({
-                    value: '32 Inkline St.'
-                });
-            }
+        setAddress() {
+            this.schema.group.address = this.$inkline.form({
+                value: '32 Inkline St.'
+            });
         }
-    };
+    }
+};
 </script>
 <template>
     <i-form v-model="schema">
@@ -53,9 +53,8 @@
             </i-form-group>
         </i-form-group>
         <i-form-group>
-            <i-button @click="setEmail" type="button">Set Email</i-button>&nbsp;
-            <i-button @click="setAddress" type="button">Set Address</i-button>&nbsp;
+            <i-button type="button" @click="setEmail">Set Email</i-button>&nbsp;
+            <i-button type="button" @click="setAddress">Set Address</i-button>&nbsp;
         </i-form-group>
     </i-form>
 </template>
-
