@@ -1,5 +1,11 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ICheckbox } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
+import { FormKey } from '@inkline/inkline/components/IForm';
+import { ref } from 'vue';
+import { CheckboxGroupKey } from '@inkline/inkline/components/ICheckboxGroup';
 
 describe('Components', () => {
     describe('ICheckbox', () => {
@@ -14,7 +20,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(ICheckbox, { props });
+            const wrapper = render(ICheckbox, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
@@ -25,11 +38,19 @@ describe('Components', () => {
                         props: {
                             color: props.color,
                             size: props.size
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const inputElement = wrapper.container.querySelector('input');
 
-                    expect(inputElement).toHaveAttribute('name', expect.stringContaining('checkbox'));
+                    expect(inputElement).toHaveAttribute(
+                        'name',
+                        expect.stringContaining('checkbox')
+                    );
                 });
             });
         });
@@ -43,6 +64,11 @@ describe('Components', () => {
                             readonly: true,
                             native: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -57,14 +83,17 @@ describe('Components', () => {
             });
 
             describe('checked', () => {
-                it('should be checked if formGroup.checked contains value if formGroup', () => {
+                it('should be checked if checkboxGroup.value contains value', () => {
                     const value = 'value';
                     const wrapper = render(ICheckbox, {
                         global: {
                             provide: {
-                                formGroup: {
-                                    checked: [value]
-                                }
+                                [CheckboxGroupKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    value: ref([value])
+                                },
+                                [InklineKey as symbol]: createInkline()
                             }
                         },
                         props: {
@@ -79,15 +108,22 @@ describe('Components', () => {
 
                 it('should be equal to schema.value if schema', () => {
                     const value = true;
+                    const onBlur = vi.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(ICheckbox, {
                         global: {
                             provide: {
-                                form: {
-                                    schema: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    schema: ref({
                                         [props.name]: {
                                             value
                                         }
-                                    }
+                                    }),
+                                    onBlur,
+                                    onInput
                                 }
                             }
                         },
@@ -107,6 +143,11 @@ describe('Components', () => {
                         props: {
                             modelValue: value,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const inputElement = wrapper.container.querySelector('input');
@@ -121,6 +162,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const labelElement = wrapper.container.querySelector('label');
@@ -129,7 +175,14 @@ describe('Components', () => {
                 });
 
                 it('should be 1 otherwise', () => {
-                    const wrapper = render(ICheckbox, { props });
+                    const wrapper = render(ICheckbox, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
                     const labelElement = wrapper.container.querySelector('label');
 
                     expect(labelElement).toHaveAttribute('tabindex', '0');
@@ -144,6 +197,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const labelElement = wrapper.container.querySelector('label');
@@ -158,6 +216,11 @@ describe('Components', () => {
                         props: {
                             readonly: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const labelElement = wrapper.container.querySelector('label');
@@ -168,7 +231,14 @@ describe('Components', () => {
                 });
 
                 it('should change input value on click when clicking label', () => {
-                    const wrapper = render(ICheckbox, { props });
+                    const wrapper = render(ICheckbox, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
                     const labelElement = wrapper.container.querySelector('label');
                     const inputElement = wrapper.container.querySelector('input');
 
@@ -179,13 +249,18 @@ describe('Components', () => {
 
             describe('onChange()', () => {
                 it('should call parent onInput', () => {
+                    const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(ICheckbox, {
                         global: {
                             provide: {
-                                form: {
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
                                     onInput
-                                }
+                                },
+                                [InklineKey as symbol]: createInkline()
                             }
                         },
                         props
@@ -197,32 +272,40 @@ describe('Components', () => {
                 });
 
                 it('should call parent onChange if formGroup', () => {
-                    const onChange = vi.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(ICheckbox, {
                         global: {
                             provide: {
-                                formGroup: {
-                                    onChange
+                                [InklineKey as symbol]: createInkline(),
+                                [FormGroupKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onInput
                                 }
                             }
                         },
                         props
                     });
-                    const inputElement = wrapper.container.querySelector('input');
+                    const inputElement = wrapper.container.querySelector('input') as Element;
 
-                    fireEvent.change(inputElement as Element);
-                    expect(onChange).toHaveBeenCalled();
+                    fireEvent.change(inputElement);
+                    expect(onInput).toHaveBeenCalled();
                 });
             });
 
             describe('onBlur()', () => {
                 it('should call parent onBlur if defined', () => {
                     const onBlur = vi.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(ICheckbox, {
                         global: {
                             provide: {
-                                form: {
-                                    onBlur
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
+                                    onInput
                                 }
                             }
                         },
@@ -232,22 +315,6 @@ describe('Components', () => {
 
                     fireEvent.blur(labelElement as Element);
                     expect(onBlur).toHaveBeenCalled();
-                });
-
-                it('should not call parent onBlur if not defined', () => {
-                    const onBlur = vi.fn();
-                    const wrapper = render(ICheckbox, {
-                        global: {
-                            provide: {
-                                form: {}
-                            }
-                        },
-                        props
-                    });
-                    const labelElement = wrapper.container.querySelector('label');
-
-                    fireEvent.blur(labelElement as Element);
-                    expect(onBlur).not.toHaveBeenCalled();
                 });
             });
         });

@@ -1,5 +1,9 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IDropdownItem } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { DropdownKey } from '@inkline/inkline/components/IDropdown/mixin';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('IDropdownItem', () => {
@@ -10,7 +14,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IDropdownItem, { props });
+            const wrapper = render(IDropdownItem, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
@@ -23,6 +34,11 @@ describe('Components', () => {
                             active: true,
                             disabled: true,
                             plaintext: true
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -40,6 +56,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -47,7 +68,14 @@ describe('Components', () => {
                 });
 
                 it('should be 1 otherwise', () => {
-                    const wrapper = render(IDropdownItem, { props });
+                    const wrapper = render(IDropdownItem, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
 
                     expect(wrapper.container.firstChild).toHaveAttribute('tabindex', '0');
                 });
@@ -61,7 +89,9 @@ describe('Components', () => {
                     const wrapper = render(IDropdownItem, {
                         global: {
                             provide: {
-                                dropdown: {
+                                [InklineKey as symbol]: createInkline(),
+                                [DropdownKey as symbol]: {
+                                    disabled: ref(false),
                                     onItemClick
                                 }
                             }
@@ -78,7 +108,7 @@ describe('Components', () => {
                     const wrapper = render(IDropdownItem, {
                         global: {
                             provide: {
-                                dropdown: {}
+                                [InklineKey as symbol]: createInkline()
                             }
                         },
                         props

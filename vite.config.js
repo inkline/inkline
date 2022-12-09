@@ -45,6 +45,33 @@ export default defineConfig({
         globals: true,
         environment: 'jsdom',
         setupFiles: ['./vitest.setup.js'],
+        include: [
+            // 'src/constants/**/*.spec.ts',
+            // 'src/components/IAlert/**/*.spec.ts',
+            // 'src/components/IBadge/**/*.spec.ts',
+            // 'src/components/IBreadcrumb/**/*.spec.ts',
+            // 'src/components/IBreadcrumbItem/**/*.spec.ts',
+            // 'src/components/IButton/**/*.spec.ts',
+            // 'src/components/IButtonGroup/**/*.spec.ts',
+            // 'src/components/ICard/**/*.spec.ts',
+            // 'src/components/ICheckbox/**/*.spec.ts',
+            // 'src/components/ICheckboxGroup/**/*.spec.ts'
+            // 'src/components/ICollapsible/**/*.spec.ts',
+            // 'src/components/ICollapsibleItem/**/*.spec.ts',
+            // 'src/components/IColumn/**/*.spec.ts',
+            // 'src/components/IContainer/**/*.spec.ts',
+            // 'src/components/IDropdown/**/*.spec.ts',
+            // 'src/components/IDropdownDivider/**/*.spec.ts',
+            // 'src/components/IDropdownItem/**/*.spec.ts',
+            // 'src/components/IExpandTransition/**/*.spec.ts',
+            'src/components/IForm/**/*.spec.ts',
+            'src/components/IFormError/**/*.spec.ts'
+            // 'src/composables/**/*.spec.ts',
+            // 'src/controllers/**/*.spec.ts',
+            // 'src/i18n/**/*.spec.ts',
+            // 'src/utils/**/*.spec.ts',
+            // 'src/validation/**/*.spec.ts'
+        ],
         coverage: {
             exclude: ['**/__mocks__/*'],
             reporter: ['text', 'json', 'html', 'lcov']

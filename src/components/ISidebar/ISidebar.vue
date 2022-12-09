@@ -61,12 +61,12 @@ export default defineComponent({
         /**
          * The color variant of the sidebar
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * The placement of the sidebar
@@ -81,12 +81,12 @@ export default defineComponent({
         /**
          * The size variant of the navbar
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Used to manually control the collapsed state of the sidebar

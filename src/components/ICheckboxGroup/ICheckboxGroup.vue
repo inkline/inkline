@@ -19,7 +19,7 @@ export default defineComponent({
         /**
          * The color variant of the checkbox group
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
@@ -74,7 +74,7 @@ export default defineComponent({
          */
         modelValue: {
             type: Array,
-            default: undefined
+            default: () => []
         },
         /**
          * The unique identifier of the checkbox group
@@ -101,12 +101,12 @@ export default defineComponent({
         /**
          * The size variant of the checkbox group
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Enable checkbox group validation using schema
@@ -148,7 +148,6 @@ export default defineComponent({
         const validate = toRef(props, 'validate');
         const {
             schema,
-            value,
             onInput: schemaOnInput,
             onBlur: schemaOnBlur
         } = useValidation({
@@ -168,6 +167,14 @@ export default defineComponent({
             '-inline': props.inline,
             '-error': hasError.value
         }));
+
+        const value = computed(() => {
+            if (schema.value && validate.value) {
+                return schema.value.value;
+            }
+
+            return props.modelValue;
+        });
 
         function onChange(value: string) {
             let modelValue: any[] = [];

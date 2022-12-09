@@ -20,22 +20,22 @@ export default defineComponent({
         /**
          * The color variant of the hamburger menu
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * The size variant of the hamburger menu
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Used to set the hamburger menu as opened or closed

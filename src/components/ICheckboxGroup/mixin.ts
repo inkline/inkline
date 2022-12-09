@@ -1,8 +1,8 @@
-import type { InjectionKey, Ref } from 'vue';
+import type { ComputedRef, InjectionKey, Ref } from 'vue';
 
 export interface CheckboxGroupInjection {
     name: string;
-    value: Ref<any[]>;
+    value: ComputedRef<unknown[]>;
     size: Ref<string>;
     color: Ref<string>;
     disabled: Ref<boolean>;

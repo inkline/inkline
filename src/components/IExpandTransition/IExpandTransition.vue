@@ -4,8 +4,8 @@ import { getStyleProperty } from '@grozav/utils';
 
 export default defineComponent({
     name: 'IExpandTransition',
-    methods: {
-        onEnter (element: HTMLElement) {
+    setup() {
+        function onEnter(element: HTMLElement) {
             const width = getStyleProperty(element, 'width');
 
             element.style.width = width;
@@ -24,11 +24,13 @@ export default defineComponent({
             setTimeout(() => {
                 element.style.height = height;
             });
-        },
-        onAfterEnter (element: HTMLElement) {
+        }
+
+        function onAfterEnter(element: HTMLElement) {
             element.style.height = 'auto';
-        },
-        onLeave (element: HTMLElement) {
+        }
+
+        function onLeave(element: HTMLElement) {
             element.style.height = getStyleProperty(element, 'height');
 
             getStyleProperty(element, 'height'); // Force rerender element to set correct height
@@ -36,6 +38,12 @@ export default defineComponent({
                 element.style.height = 0 as any;
             });
         }
+
+        return {
+            onEnter,
+            onAfterEnter,
+            onLeave
+        };
     }
 });
 </script>

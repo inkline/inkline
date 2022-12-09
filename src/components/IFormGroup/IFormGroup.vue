@@ -17,12 +17,12 @@ export default defineComponent({
         /**
          * The color variant of the form group
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * The disabled state of the form group
@@ -77,12 +77,12 @@ export default defineComponent({
         /**
          * The size variant of the form group
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Enable form validation using schema

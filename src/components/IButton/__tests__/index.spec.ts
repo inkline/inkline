@@ -1,5 +1,11 @@
 import { render } from '@testing-library/vue';
-import { IButton, IButtonGroup } from '@inkline/inkline/components';
+import { IButton } from '@inkline/inkline/components/IButton';
+import { ref } from 'vue';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
+import { ButtonGroupKey } from '@inkline/inkline/components/IButtonGroup/mixin';
+import { FormKey } from '@inkline/inkline/components/IForm';
 
 describe('Components', () => {
     describe('IButton', () => {
@@ -13,45 +19,60 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IButton, { props });
+            const wrapper = render(IButton, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
 
-        describe('computed', () => {
-            describe('classes', () => {
-                it('should add classes based on props', () => {
-                    const wrapper = render(IButton, {
-                        props: {
-                            active: true,
-                            block: true,
-                            circle: true,
-                            disabled: true,
-                            link: true,
-                            outline: true,
-                            ...props
+        describe('classes', () => {
+            it('should add classes based on props', () => {
+                const wrapper = render(IButton, {
+                    props: {
+                        active: true,
+                        block: true,
+                        circle: true,
+                        disabled: true,
+                        link: true,
+                        outline: true,
+                        ...props
+                    },
+                    global: {
+                        provide: {
+                            [InklineKey as symbol]: createInkline()
                         }
-                    });
-
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        `-${props.color}`,
-                        `-${props.size}`,
-                        '-active',
-                        '-block',
-                        '-circle',
-                        '-disabled',
-                        '-link',
-                        '-outline'
-                    );
+                    }
                 });
+
+                expect(wrapper.container.firstChild).toHaveClass(
+                    `-${props.color}`,
+                    `-${props.size}`,
+                    '-active',
+                    '-block',
+                    '-circle',
+                    '-disabled',
+                    '-link',
+                    '-outline'
+                );
             });
 
-            describe('tabIndex', () => {
+            describe('tabindex', () => {
                 it('should be -1 if disabled', () => {
                     const wrapper = render(IButton, {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -59,18 +80,30 @@ describe('Components', () => {
                 });
 
                 it('should be 1 otherwise', () => {
-                    const wrapper = render(IButton, { props });
+                    const wrapper = render(IButton, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
 
                     expect(wrapper.container.firstChild).toHaveAttribute('tabindex', '0');
                 });
             });
 
-            describe('isDisabled', () => {
+            describe('disabled', () => {
                 it('should be disabled if disabled', () => {
-                    const wrapper = render(IButtonGroup, {
+                    const wrapper = render(IButton, {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -78,11 +111,12 @@ describe('Components', () => {
                 });
 
                 it('should be disabled if buttonGroup is disabled', () => {
-                    const wrapper = render(IButtonGroup, {
+                    const wrapper = render(IButton, {
                         global: {
                             provide: {
-                                buttonGroup: {
-                                    disabled: true
+                                [InklineKey as symbol]: createInkline(),
+                                [ButtonGroupKey as symbol]: {
+                                    disabled: ref(true)
                                 }
                             }
                         },
@@ -93,11 +127,12 @@ describe('Components', () => {
                 });
 
                 it('should be disabled if form is disabled', () => {
-                    const wrapper = render(IButtonGroup, {
+                    const wrapper = render(IButton, {
                         global: {
                             provide: {
-                                form: {
-                                    disabled: true
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(true)
                                 }
                             }
                         },
@@ -108,11 +143,12 @@ describe('Components', () => {
                 });
 
                 it('should be disabled if formGroup is disabled', () => {
-                    const wrapper = render(IButtonGroup, {
+                    const wrapper = render(IButton, {
                         global: {
                             provide: {
-                                formGroup: {
-                                    disabled: true
+                                [InklineKey as symbol]: createInkline(),
+                                [FormGroupKey as symbol]: {
+                                    disabled: ref(true)
                                 }
                             }
                         },

@@ -11,12 +11,12 @@ export default defineComponent({
         /**
          * The color variant of the progress component
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * The value to consider as the 0% starting point
@@ -41,12 +41,12 @@ export default defineComponent({
         /**
          * The size variant of the progress component
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         }
     },
     setup(props) {

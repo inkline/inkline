@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IForm, IInput } from '@inkline/inkline/components';
-import { createPrototype, defaultOptions } from '@inkline/inkline/plugin';
+import { createPrototype, defaultOptions, InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IForm', () => {
@@ -11,9 +12,7 @@ describe('Components', () => {
         };
 
         const slots = {
-            default: [
-                '<i-input color="light" size="md" name="input" />'
-            ]
+            default: ['<i-input color="light" size="md" name="input" />']
         };
 
         const mocks = {
@@ -30,7 +29,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(IForm, {
-                global: { stubs },
+                global: {
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                },
                 slots,
                 props
             });
@@ -42,7 +46,12 @@ describe('Components', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(IForm, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         slots,
                         props: {
                             disabled: true,
@@ -63,10 +72,16 @@ describe('Components', () => {
             });
 
             describe('schema', () => {
-                it('should be modelValue if modelValue', async () => {
+                it('should be modelValue', async () => {
                     const value = 'value';
                     const wrapper = render(IForm, {
-                        global: { stubs, mocks },
+                        global: {
+                            stubs,
+                            mocks,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         slots,
                         props: {
                             modelValue: {
@@ -82,67 +97,14 @@ describe('Components', () => {
                     expect(input).toHaveProperty('value', value);
                 });
 
-                it('should be form.schema if form', async () => {
+                it('should be undefined if not modelValue', async () => {
                     const value = 'value';
                     const wrapper = render(IForm, {
                         global: {
                             stubs,
                             mocks,
                             provide: {
-                                form: {
-                                    schema: {
-                                        [props.name]: {
-                                            input: {
-                                                value
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        slots,
-                        props
-                    });
-                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
-
-                    expect(input).toHaveProperty('value', value);
-                });
-
-                it('should be formGroup.schema if formGroup', async () => {
-                    const value = 'value';
-                    const wrapper = render(IForm, {
-                        global: {
-                            stubs,
-                            mocks,
-                            provide: {
-                                formGroup: {
-                                    schema: {
-                                        [props.name]: {
-                                            input: {
-                                                value
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        slots,
-                        props
-                    });
-                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
-
-                    expect(input).toHaveProperty('value', value);
-                });
-
-                it('should be undefined otherwise', async () => {
-                    const value = 'value';
-                    const wrapper = render(IForm, {
-                        global: {
-                            stubs,
-                            mocks,
-                            provide: {
-                                form: {},
-                                formGroup: {}
+                                [InklineKey as symbol]: createInkline()
                             }
                         },
                         slots,
@@ -157,58 +119,14 @@ describe('Components', () => {
 
         describe('methods', () => {
             describe('onBlur()', () => {
-                it('should call parent onBlur if parent', async () => {
-                    const onBlur = vi.fn();
+                it.only('should set touched and untouched', async () => {
                     const wrapper = render(IForm, {
                         global: {
                             stubs,
                             mocks,
                             provide: {
-                                form: {
-                                    onBlur
-                                }
+                                [InklineKey as symbol]: createInkline()
                             }
-                        },
-                        slots,
-                        props
-                    });
-                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
-
-                    await fireEvent.blur(input);
-
-                    expect(onBlur).toHaveBeenCalled();
-                });
-
-                it('should call parent onBlur with uid name if parent and name not set', async () => {
-                    const onBlur = vi.fn();
-                    const wrapper = render(IForm, {
-                        global: {
-                            stubs,
-                            mocks,
-                            provide: {
-                                form: {
-                                    onBlur
-                                }
-                            }
-                        },
-                        slots,
-                        props: {
-                            color: props.color,
-                            size: props.size
-                        }
-                    });
-                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
-
-                    await fireEvent.blur(input);
-
-                    expect(onBlur).toHaveBeenCalledWith(expect.stringContaining('form'), expect.any(Event));
-                });
-
-                it('should set touched and untouched', async () => {
-                    const wrapper = render(IForm, {
-                        global: {
-                            stubs,
-                            mocks
                         },
                         slots,
                         props: {
@@ -242,7 +160,10 @@ describe('Components', () => {
                     const wrapper = render(IForm, {
                         global: {
                             stubs,
-                            mocks
+                            mocks,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         slots,
                         props: {
@@ -273,59 +194,15 @@ describe('Components', () => {
             });
 
             describe('onInput()', () => {
-                it('should call parent onInput if parent', async () => {
-                    const onInput = vi.fn();
-                    const wrapper = render(IForm, {
-                        global: {
-                            stubs,
-                            mocks,
-                            provide: {
-                                form: {
-                                    onInput
-                                }
-                            }
-                        },
-                        slots,
-                        props
-                    });
-                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
-
-                    await fireEvent.update(input, 'abc');
-
-                    expect(onInput).toHaveBeenCalled();
-                });
-
-                it('should call parent onInput with uid name if parent and name not set', async () => {
-                    const onInput = vi.fn();
-                    const wrapper = render(IForm, {
-                        global: {
-                            stubs,
-                            mocks,
-                            provide: {
-                                form: {
-                                    onInput
-                                }
-                            }
-                        },
-                        slots,
-                        props: {
-                            color: props.color,
-                            size: props.size
-                        }
-                    });
-                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
-
-                    await fireEvent.update(input, 'abc');
-
-                    expect(onInput).toHaveBeenCalledWith(expect.stringContaining('form'), expect.anything());
-                });
-
                 it('should set pristine and dirty', async () => {
                     const value = 'abc';
                     const wrapper = render(IForm, {
                         global: {
                             stubs,
-                            mocks
+                            mocks,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         slots,
                         props: {
@@ -362,7 +239,10 @@ describe('Components', () => {
                     const wrapper = render(IForm, {
                         global: {
                             stubs,
-                            mocks
+                            mocks,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         slots,
                         props: {
@@ -398,7 +278,10 @@ describe('Components', () => {
                     const wrapper = render(IForm, {
                         global: {
                             stubs,
-                            mocks
+                            mocks,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         slots,
                         props: {
@@ -410,7 +293,7 @@ describe('Components', () => {
                             ...props
                         }
                     });
-                    const form = wrapper.container.firstChild as HTMLFormElement;
+                    const form = wrapper.container.querySelector('form') as HTMLFormElement;
 
                     await fireEvent.submit(form);
 
@@ -434,22 +317,23 @@ describe('Components', () => {
                     const wrapper = render(IForm, {
                         global: {
                             stubs,
-                            mocks
+                            mocks,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         slots,
                         props: {
                             modelValue: {
                                 input: {
                                     value: '',
-                                    validators: [
-                                        { name: 'required' }
-                                    ]
+                                    validators: [{ name: 'required' }]
                                 }
                             },
                             ...props
                         }
                     });
-                    const form = wrapper.container.firstChild as HTMLFormElement;
+                    const form = wrapper.container.querySelector('form') as HTMLFormElement;
 
                     await fireEvent.submit(form);
 
@@ -460,12 +344,15 @@ describe('Components', () => {
                     const wrapper = render(IForm, {
                         global: {
                             stubs,
-                            mocks
+                            mocks,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         slots,
                         props
                     });
-                    const form = wrapper.container.firstChild as HTMLFormElement;
+                    const form = wrapper.container.querySelector('form') as HTMLFormElement;
 
                     await fireEvent.submit(form);
 

@@ -47,7 +47,7 @@ export default defineComponent({
         /**
          * The color variant of the button
          * @type primary | success | light | dark | info | success | warning | danger | facebook | google | twitter | github
-         * @default light
+         * @default
          * @name color
          */
         color: {
@@ -137,7 +137,7 @@ export default defineComponent({
         /**
          * The size variant of the button
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
@@ -178,7 +178,7 @@ export default defineComponent({
         });
 
         const ariaDisabled = computed(() => {
-            return props.disabled ? 'true' : null;
+            return disabled.value ? 'true' : null;
         });
 
         const ariaPressed = computed(() => {

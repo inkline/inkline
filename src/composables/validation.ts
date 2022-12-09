@@ -8,7 +8,7 @@ import { useInkline } from './inkline';
 export function useValidation(options: {
     name?: Ref<string>;
     validate?: Ref<boolean>;
-    schema?: any;
+    schema?: Ref;
     onUpdate?: (model: any) => void;
     onSubmit?: (model: any) => void;
 }) {
@@ -24,7 +24,7 @@ export function useValidation(options: {
                   options.validate?.value &&
                   getValueByPath(form.schema.value, options.name!.value)
           )
-        : ref<any | null>(options.schema || null);
+        : ref<any | null>(options.schema?.value || null);
 
     /**
      * Determine if form event should trigger validation
@@ -83,7 +83,7 @@ export function useValidation(options: {
      * @param name
      * @param event
      */
-    function setTouched(name: string, event: Event & { name: string }) {
+    function setTouched(name: string, event: Event) {
         if (!options.validate?.value) {
             return;
         }
@@ -102,7 +102,7 @@ export function useValidation(options: {
             touched: true
         });
 
-        if (shouldValidate(targetSchema, event.name)) {
+        if (shouldValidate(targetSchema, event.type)) {
             clonedSchema = validate(clonedSchema);
         }
 
@@ -151,7 +151,7 @@ export function useValidation(options: {
             formGroup.onInput(name, value);
         } else if (form) {
             form.onInput(name, value);
-        } else if (options.schema) {
+        } else if (options.schema?.value) {
             setValue(name, value);
         }
     }
@@ -172,7 +172,7 @@ export function useValidation(options: {
             formGroup.onBlur(name, event);
         } else if (form) {
             form.onBlur(name, event);
-        } else if (options.schema) {
+        } else if (options.schema?.value) {
             setTouched(name, event);
         }
     }
@@ -180,7 +180,7 @@ export function useValidation(options: {
     return { schema, onSubmit, onInput, onBlur };
 }
 
-export function useFormValidationError(options: { schema: any; error: boolean | string[] }) {
+export function useFormValidationError(options: { schema: Ref; error: boolean | string[] }) {
     const hasError = computed(() => {
         if (typeof options.error === 'boolean') {
             return options.error;

@@ -37,12 +37,12 @@ export default defineComponent({
         /**
          * The color variant of the dropdown
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * The disabled state of the dropdown
@@ -157,12 +157,12 @@ export default defineComponent({
         /**
          * The size variant of the dropdown
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Delay in milliseconds before the popover is hidden on hover

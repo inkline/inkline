@@ -51,12 +51,12 @@ const props = defineProps({
     /**
      * The color variant of the select
      * @type light | dark
-     * @default light
+     * @default
      * @name color
      */
     color: {
         type: String,
-        default: ''
+        default: undefined
     },
     /**
      * Display the select as clearable
@@ -282,7 +282,7 @@ const props = defineProps({
     /**
      * The size variant of the select
      * @type sm | md | lg
-     * @default md
+     * @default
      * @name size
      */
     size: {

@@ -14,11 +14,11 @@ export default defineComponent({
          * The color variant of the tooltip
          * @name color
          * @type light | dark
-         * @default light
+         * @default
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * The disabled state of the tooltip
@@ -116,11 +116,11 @@ export default defineComponent({
          * The size variant of the tooltip
          * @name size
          * @type sm | md | lg
-         * @default md
+         * @default
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Delay in milliseconds before the tooltip is hidden on hover

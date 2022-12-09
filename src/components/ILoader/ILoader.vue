@@ -10,22 +10,22 @@ export default defineComponent({
         /**
          * The color variant of the loader
          * @type primary | light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * The size variant of the loader
          * @type sm | md | lg | auto
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         }
     },
     setup(props) {

@@ -2,7 +2,7 @@
 import { defineComponent, computed, inject } from 'vue';
 import { uid } from '@grozav/utils';
 import { CollapsibleKey } from '@inkline/inkline/components/ICollapsible/mixin';
-import { IExpandTransition } from '@inkline/inkline/transitions';
+import { IExpandTransition } from '@inkline/inkline/components/IExpandTransition';
 
 const componentName = 'ICollapsibleItem';
 

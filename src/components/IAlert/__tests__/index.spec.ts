@@ -1,6 +1,7 @@
-import { mount } from '@vue/test-utils';
+import { fireEvent, render } from '@testing-library/vue';
 import { IAlert } from '@inkline/inkline/components';
-import { Placeholder } from '@inkline/inkline/__mocks__';
+import { createInkline, Placeholder } from '@inkline/inkline/__mocks__';
+import { InklineKey } from '@inkline/inkline/plugin';
 
 describe('Components', () => {
     describe('IAlert', () => {
@@ -9,43 +10,72 @@ describe('Components', () => {
             size: 'md'
         };
 
-        const wrapper = mount(IAlert, {
-            props,
-            slots: {
-                icon: Placeholder
-            }
-        });
-
         it('should be named correctly', () => {
-            expect(IAlert.__name).toEqual('IAlert');
+            expect(IAlert.name).toEqual('IAlert');
         });
 
         it('should render correctly', () => {
-            expect(wrapper.exists()).toBeTruthy();
-            expect(wrapper.element).toMatchSnapshot();
+            const wrapper = render(IAlert, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
+            expect(wrapper.html()).toMatchSnapshot();
         });
 
-        describe('styling', () => {
-            it('should add classes based on props', async () => {
-                await wrapper.setProps({
-                    dismissible: true
+        describe('computed', () => {
+            describe('classes', () => {
+                it('should add classes based on props', () => {
+                    const wrapper = render(IAlert, {
+                        slots: {
+                            icon: [Placeholder]
+                        },
+                        props: {
+                            dismissible: true,
+                            ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
+
+                    expect(wrapper.container.firstChild).toHaveClass(
+                        `-${props.color}`,
+                        `-${props.size}`,
+                        '-dismissible',
+                        '-with-icon'
+                    );
                 });
-                expect(wrapper.element).toHaveClass(
-                    `-${props.color}`,
-                    `-${props.size}`,
-                    '-dismissible',
-                    '-with-icon'
-                );
             });
         });
 
-        describe('functionality', () => {
-            it('should hide the alert when the dismiss button is clicked', async () => {
-                await wrapper.setProps({ modelValue: true, dismissible: true });
-                expect(wrapper.isVisible()).toBe(true);
-                await wrapper.find('span.dismiss').trigger('click');
-                expect(wrapper.emitted()['update:modelValue'][0]).toEqual([false]);
-                expect(wrapper.isVisible()).toBe(false);
+        describe('methods', () => {
+            describe('dismiss()', () => {
+                it('should hide the alert when clicking the dismiss button', async () => {
+                    const wrapper = render(IAlert, {
+                        props: {
+                            dismissible: true,
+                            modelValue: true,
+                            ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
+
+                    expect(wrapper.container.firstChild).toBeVisible();
+                    const dismissButton = await wrapper.findByLabelText('Dismiss');
+                    await fireEvent.click(dismissButton);
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([false]);
+                    expect(wrapper.container.firstChild).not.toBeVisible();
+                });
             });
         });
     });

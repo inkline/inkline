@@ -10,7 +10,7 @@ export default defineComponent({
         /**
          * The size variant of the alert
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {

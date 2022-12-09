@@ -23,12 +23,12 @@ export default defineComponent({
         /**
          * The color variant of the input
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Display the input as clearable
@@ -116,12 +116,12 @@ export default defineComponent({
         /**
          * The size variant of the input
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * The tabindex of the input

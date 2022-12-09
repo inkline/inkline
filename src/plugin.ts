@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Plugin, reactive, watch } from 'vue';
+import { InjectionKey, Plugin, reactive, watch } from 'vue';
 import { addClass, isKey, removeClass } from '@grozav/utils';
 import { initialize as initializeForm } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
 import * as inklineIcons from '@inkline/inkline/icons';
 import { SvgNode } from '@inkline/inkline/types';
 import OverlayController from './controllers/OverlayController';
+import { TabsInjection } from '@inkline/inkline/components/ITabs/mixin';
 
 export interface PrototypeConfig {
     colorMode: 'system' | 'light' | 'dark' | string;
@@ -97,6 +98,8 @@ export const inklineGlobals: InklineGlobals = {
     icons: undefined
 };
 
+export const InklineKey = Symbol('inkline') as InjectionKey<InklineGlobalOptions>;
+
 /**
  * Inkline Vue.js plugin
  */
@@ -134,7 +137,7 @@ export const Inkline: Plugin = {
 
         inklineGlobals.prototype = prototype;
         app.config.globalProperties.$inkline = prototype;
-        app.provide('inkline', prototype);
+        app.provide(InklineKey, prototype);
 
         /**
          * Add inklineIcons global provide

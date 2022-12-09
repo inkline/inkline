@@ -1,5 +1,7 @@
-import { mount } from '@vue/test-utils';
+import { render } from '@testing-library/vue';
 import { IBreadcrumb } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IBreadcrumb', () => {
@@ -8,31 +10,41 @@ describe('Components', () => {
             size: 'md'
         };
 
-        const wrapper = mount(IBreadcrumb, {
-            props
-        });
-
         it('should be named correctly', () => {
-            expect(IBreadcrumb.__name).toEqual('IBreadcrumb');
+            expect(IBreadcrumb.name).toEqual('IBreadcrumb');
         });
 
         it('should render correctly', () => {
-            expect(wrapper.exists()).toBeTruthy();
-            expect(wrapper.element).toMatchSnapshot();
+            const wrapper = render(IBreadcrumb, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
+
+            expect(wrapper.html()).toMatchSnapshot();
         });
 
-        // describe('styling', () => {
-        //     it('should add classes based on props', () => {
-        //         expect(wrapper.element).toHaveClass(`-${props.color}`, `-${props.size}`);
-        //     });
-        // });
+        describe('computed', () => {
+            describe('classes', () => {
+                it('should add classes based on props', () => {
+                    const wrapper = render(IBreadcrumb, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
 
-        // describe('computed', () => {
-        //     describe('classes', () => {
-        //         it('should add classes based on props', () => {
-        //             expect(wrapper.element).toHaveClass(`-${props.color}`, `-${props.size}`);
-        //         });
-        //     });
-        // });
+                    expect(wrapper.container.firstChild).toHaveClass(
+                        `-${props.color}`,
+                        `-${props.size}`
+                    );
+                });
+            });
+        });
     });
 });

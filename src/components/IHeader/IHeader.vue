@@ -17,12 +17,12 @@ export default defineComponent({
         /**
          * The color variant of the header
          * @type primary | light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Display the header background as cover, always covering the whole header width or height
@@ -57,12 +57,12 @@ export default defineComponent({
         /**
          * The size variant of the header
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         }
     },
     setup(props) {

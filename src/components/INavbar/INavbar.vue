@@ -52,12 +52,12 @@ export default defineComponent({
         /**
          * The color variant of the navbar
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Display the inner container as fluid, spanning 100% width
@@ -72,12 +72,12 @@ export default defineComponent({
         /**
          * The size variant of the navbar
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * The animation of the hamburger menu component used for collapsing

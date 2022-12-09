@@ -11,12 +11,12 @@ export default defineComponent({
         /**
          * The color variant of the tabs
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Used to set the currently active tab
@@ -31,12 +31,12 @@ export default defineComponent({
         /**
          * The size variant of the tabs
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Display the tabs header as full width

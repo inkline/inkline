@@ -22,12 +22,12 @@ export default defineComponent({
         /**
          * The color variant of the pagination
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * The number of items per page to be displayed
@@ -87,12 +87,12 @@ export default defineComponent({
         /**
          * The size variant of the pagination
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Show or hide navigation buttons for first or last page

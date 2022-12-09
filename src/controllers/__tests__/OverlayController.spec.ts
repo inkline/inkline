@@ -1,6 +1,7 @@
 import { OverlayController } from '@inkline/inkline/controllers';
 import { fireEvent } from '@testing-library/vue';
 import { keymap } from '@inkline/inkline/constants';
+import { ref } from 'vue';
 
 describe('Controllers', () => {
     describe('OverlayController', () => {
@@ -41,20 +42,12 @@ describe('Controllers', () => {
         });
 
         describe('constructor()', () => {
-            it('should add keydown event listener', async () => {
-                const spy = vi.spyOn(OverlayController, 'onPressEscape');
-
-                await fireEvent.keyDown(window, { key: keymap.esc[0] });
-
-                expect(spy).toHaveBeenCalled();
-            });
-
             it('should close topmost modal on pressing Escape', async () => {
                 const instance = {
-                    name: 'abc',
-                    closeOnPressEscape: true,
-                    hide: () => OverlayController.close('abc'),
-                    $el: modalElement
+                    name: ref('abc'),
+                    closeOnPressEscape: ref(true),
+                    elementRef: ref(modalElement),
+                    hide: () => OverlayController.close('abc')
                 };
                 const spy = vi.spyOn(instance, 'hide');
 
@@ -63,19 +56,19 @@ describe('Controllers', () => {
 
                 expect(OverlayController.stack).toEqual(['abc']);
 
-                await fireEvent.keyDown(window, { key: keymap.esc[0] });
+                OverlayController.onPressEscape();
 
                 expect(spy).toHaveBeenCalled();
                 expect(OverlayController.stack).toEqual([]);
-                expect(instance.$el.style.zIndex).toEqual(1050);
+                expect(instance.elementRef.value.style.zIndex).toEqual(1050);
             });
 
             it('should not react to other key other than Escape', async () => {
                 const instance = {
-                    name: 'abc',
-                    hide: () => {},
-                    closeOnPressEscape: true,
-                    $el: modalElement
+                    name: ref('abc'),
+                    closeOnPressEscape: ref(true),
+                    elementRef: ref(modalElement),
+                    hide: () => {}
                 };
                 const spy = vi.spyOn(instance, 'hide');
 
@@ -89,12 +82,12 @@ describe('Controllers', () => {
 
             it('should not close topmost modal on pressing Escape if closeOnPressEscape is false', async () => {
                 const instance = {
-                    name: 'abc',
-                    close: () => {},
-                    closeOnPressEscape: false,
-                    $el: modalElement
+                    name: ref('abc'),
+                    closeOnPressEscape: ref(false),
+                    elementRef: ref(modalElement),
+                    hide: () => {}
                 };
-                const spy = vi.spyOn(instance, 'close');
+                const spy = vi.spyOn(instance, 'hide');
 
                 OverlayController.register(instance);
                 OverlayController.open('abc');
@@ -108,24 +101,25 @@ describe('Controllers', () => {
         describe('register()', () => {
             it('should register modal instance', () => {
                 const instance = {
-                    name: 'abc',
-                    $el: modalElement
+                    name: ref('abc'),
+                    closeOnPressEscape: ref(true),
+                    elementRef: ref(modalElement),
+                    hide: () => {}
                 };
 
                 OverlayController.register(instance);
 
-                expect(OverlayController.instances).toHaveProperty(instance.name);
-                expect(OverlayController.instances[instance.name]).toEqual(instance);
-            });
-
-            it('should not register modal instance if instance not defined', () => {
-                OverlayController.register(null);
-
-                expect(Object.keys(OverlayController.instances).length).toEqual(0);
+                expect(OverlayController.instances).toHaveProperty(instance.name.value);
+                expect(OverlayController.instances[instance.name.value]).toEqual(instance);
             });
 
             it('should not register modal instance if id not present', () => {
-                const instance = {};
+                const instance = {
+                    name: ref(),
+                    closeOnPressEscape: ref(true),
+                    elementRef: ref(modalElement),
+                    hide: () => {}
+                };
 
                 OverlayController.register(instance);
 

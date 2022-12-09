@@ -1,5 +1,9 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ICollapsibleItem } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { CollapsibleKey } from '@inkline/inkline/components/ICollapsible/mixin';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('ICollapsibleItem', () => {
@@ -15,8 +19,9 @@ describe('Components', () => {
             const wrapper = render(ICollapsibleItem, {
                 global: {
                     provide: {
-                        collapsible: {
-                            activeItems: []
+                        [InklineKey as symbol]: createInkline(),
+                        [CollapsibleKey as symbol]: {
+                            activeItems: ref([])
                         }
                     }
                 },
@@ -33,7 +38,10 @@ describe('Components', () => {
                         props: {}
                     });
 
-                    expect(wrapper.container.firstChild).toHaveAttribute('name', expect.stringContaining('collapsible-item'));
+                    expect(wrapper.container.firstChild).toHaveAttribute(
+                        'name',
+                        expect.stringContaining('collapsible-item')
+                    );
                 });
             });
         });
@@ -44,8 +52,9 @@ describe('Components', () => {
                     const wrapper = render(ICollapsibleItem, {
                         global: {
                             provide: {
-                                collapsible: {
-                                    activeItems: [props.name]
+                                [InklineKey as symbol]: createInkline(),
+                                [CollapsibleKey as symbol]: {
+                                    activeItems: ref([props.name])
                                 }
                             }
                         },
@@ -61,17 +70,16 @@ describe('Components', () => {
                     const wrapper = render(ICollapsibleItem, {
                         global: {
                             provide: {
-                                collapsible: {
-                                    activeItems: [props.name]
+                                [InklineKey as symbol]: createInkline(),
+                                [CollapsibleKey as symbol]: {
+                                    activeItems: ref([props.name])
                                 }
                             }
                         },
                         props
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        '-active'
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass('-active');
                 });
             });
         });
@@ -83,8 +91,9 @@ describe('Components', () => {
                     const wrapper = render(ICollapsibleItem, {
                         global: {
                             provide: {
-                                collapsible: {
-                                    activeItems: [],
+                                [InklineKey as symbol]: createInkline(),
+                                [CollapsibleKey as symbol]: {
+                                    activeItems: ref([]),
                                     onItemClick
                                 }
                             }

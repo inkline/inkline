@@ -12,12 +12,13 @@ import { FormKey } from './mixin';
 const componentName = 'IForm';
 
 export default defineComponent({
+    name: componentName,
     inheritAttrs: false,
     props: {
         /**
          * The color variant of the form
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
@@ -87,12 +88,12 @@ export default defineComponent({
         /**
          * The size variant of the form
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * Enable form validation using schema
@@ -127,6 +128,7 @@ export default defineComponent({
         const readonly = computed(() => props.readonly);
 
         const validate = toRef(props, 'validate');
+        const modelValue = toRef(props, 'modelValue');
         const {
             schema,
             onBlur,
@@ -134,7 +136,7 @@ export default defineComponent({
             onSubmit: schemaOnSubmit
         } = useValidation({
             validate,
-            schema: props.modelValue,
+            schema: modelValue,
             onUpdate: (model: any) => {
                 emit('update:modelValue', model);
             },
@@ -188,8 +190,8 @@ export default defineComponent({
         :class="classes"
         role="form"
         :name="name"
-        :readonly="disabled"
-        :disabled="readonly"
+        :readonly="readonly"
+        :disabled="disabled"
         @submit.prevent="onSubmit"
     >
         <!-- @slot default Slot for form content -->

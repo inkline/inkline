@@ -19,7 +19,7 @@ export function useComponentColor(props: ComponentColorProps) {
             } else if (inkline.options.colorMode === 'system') {
                 colorClass =
                     typeof window !== 'undefined' &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches
+                    window.matchMedia?.('(prefers-color-scheme: dark)').matches
                         ? 'dark'
                         : 'light';
             } else {

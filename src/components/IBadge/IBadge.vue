@@ -10,7 +10,7 @@ export default defineComponent({
         /**
          * The color variant of the badge
          * @type primary | success | light | dark | info | success | warning | danger
-         * @default light
+         * @default
          * @name color
          */
         color: {
@@ -20,7 +20,7 @@ export default defineComponent({
         /**
          * The size variant of the badge
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {

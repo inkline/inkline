@@ -30,12 +30,12 @@ export default defineComponent({
         /**
          * The size variant of the icon
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         }
     },
     setup(props) {

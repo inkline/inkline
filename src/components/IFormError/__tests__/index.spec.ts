@@ -1,221 +1,176 @@
 import { render } from '@testing-library/vue';
 import { IFormError } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
+import { FormKey } from '@inkline/inkline/components/IForm';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('IFormError', () => {
-        const props = {};
+        const props = {
+            for: 'input'
+        };
 
         it('should be named correctly', () => {
             expect(IFormError.name).toEqual('IFormError');
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IFormError, { props });
+            const wrapper = render(IFormError, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
 
-        describe('computed', () => {
-            describe('parent', () => {
-                it('should be equal to formGroup if formGroup', () => {
-                    const wrapper = render(IFormError, {
-                        global: {
-                            provide: {
-                                formGroup: {
-                                    $: true,
-                                    schema: {
-                                        errors: [
-                                            { message: 'Error' }
-                                        ]
-                                    }
+        it('should get errors from schema using for prop', () => {
+            const wrapper = render(IFormError, {
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline(),
+                        [FormKey as symbol]: {
+                            schema: ref({
+                                input: {
+                                    touched: true,
+                                    dirty: true,
+                                    invalid: true,
+                                    errors: [{ message: 'Error' }]
                                 }
-                            }
-                        },
-                        props
-                    });
-                    const errors = wrapper.container.querySelectorAll('li');
-
-                    expect(errors).toHaveLength(1);
-                });
-
-                it('should be equal to form if form', () => {
-                    const wrapper = render(IFormError, {
-                        global: {
-                            provide: {
-                                form: {
-                                    schema: {
-                                        errors: [
-                                            { message: 'Error' }
-                                        ]
-                                    }
-                                }
-                            }
-                        },
-                        props
-                    });
-                    const errors = wrapper.container.querySelectorAll('li');
-
-                    expect(errors).toHaveLength(1);
-                });
-            });
-
-            describe('schema', () => {
-                it('should use for and schema if provided', () => {
-                    const forName = 'input';
-                    const wrapper = render(IFormError, {
-                        global: {
-                            provide: {
-                                form: {
-                                    schema: {
-                                        [forName]: {
-                                            errors: [
-                                                { message: 'Error' }
-                                            ]
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        props: {
-                            for: forName,
-                            ...props
+                            })
                         }
-                    });
-                    const errors = wrapper.container.querySelectorAll('li');
+                    }
+                },
+                props
+            });
+            const errors = wrapper.container.querySelectorAll('li');
 
-                    expect(errors).toHaveLength(1);
-                });
+            expect(errors).toHaveLength(1);
+        });
 
-                it('should use for if provided', () => {
-                    const forName = 'input';
-                    const wrapper = render(IFormError, {
-                        global: {
-                            provide: {
-                                form: {}
-                            }
-                        },
-                        props: {
-                            for: forName,
-                            ...props
+        it('should not show errors if schema is valid', () => {
+            const wrapper = render(IFormError, {
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline(),
+                        [FormKey as symbol]: {
+                            schema: ref({
+                                input: {
+                                    touched: true,
+                                    dirty: true,
+                                    invalid: false,
+                                    errors: []
+                                }
+                            })
                         }
-                    });
-                    const errors = wrapper.container.querySelectorAll('li');
-
-                    expect(errors).toHaveLength(0);
-                });
-
-                it('should be parent schema if no for provided', () => {
-                    const wrapper = render(IFormError, {
-                        global: {
-                            provide: {
-                                form: {
-                                    schema: {
-                                        errors: [
-                                            { message: 'Error' }
-                                        ]
-                                    }
-                                }
-                            }
-                        },
-                        props
-                    });
-                    const errors = wrapper.container.querySelectorAll('li');
-
-                    expect(errors).toHaveLength(1);
-                });
-
-                it('should fallback if no for and schema provided', () => {
-                    const wrapper = render(IFormError, {
-                        global: {
-                            provide: {
-                                form: {}
-                            }
-                        },
-                        props
-                    });
-                    const errors = wrapper.container.querySelectorAll('li');
-
-                    expect(errors).toHaveLength(0);
-                });
+                    }
+                },
+                props
             });
+            const errors = wrapper.container.querySelectorAll('li');
 
-            describe('errors', () => {
-                it('should be fallback if schema doesn\'t have errors', () => {
-                    const wrapper = render(IFormError, {
-                        global: {
-                            provide: {
-                                form: {
-                                    schema: {}
-                                }
-                            }
-                        },
-                        props
-                    });
-                    const errors = wrapper.container.querySelectorAll('li');
+            expect(errors).toHaveLength(0);
+        });
 
-                    expect(errors).toHaveLength(0);
-                });
+        it('should not show errors if no schema present', () => {
+            const wrapper = render(IFormError, {
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline(),
+                        [FormKey as symbol]: {}
+                    }
+                },
+                props
             });
+            const errors = wrapper.container.querySelectorAll('li');
 
-            describe('isVisible', () => {
-                it('should not be visible if visible condition not specified', () => {
-                    const wrapper = render(IFormError, {
-                        global: {
-                            provide: {
-                                form: {
-                                    schema: {}
+            expect(errors).toHaveLength(0);
+        });
+
+        it('should not show errors if no for prop', () => {
+            const wrapper = render(IFormError, {
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline(),
+                        [FormKey as symbol]: {
+                            schema: ref({
+                                input: {
+                                    touched: true,
+                                    dirty: true,
+                                    invalid: true,
+                                    errors: [{ message: 'Error' }]
                                 }
-                            }
-                        },
-                        props: {
-                            visible: null,
-                            ...props
+                            })
                         }
-                    });
-                    const errorList = wrapper.container.querySelector('ul');
-
-                    expect(errorList).toBeNull();
-                });
-
-                it('should not be visible if not touched, dirty and invalid', () => {
-                    const wrapper = render(IFormError, {
-                        global: {
-                            provide: {
-                                form: {
-                                    schema: {}
-                                }
-                            }
-                        },
-                        props
-                    });
-                    const errorList = wrapper.container.querySelector('ul');
-
-                    expect(errorList).toBeNull();
-                });
-
-                it('should be visible if touched, dirty and invalid', () => {
-                    const wrapper = render(IFormError, {
-                        global: {
-                            provide: {
-                                form: {
-                                    schema: {
-                                        touched: true,
-                                        dirty: true,
-                                        invalid: true,
-                                        errors: [
-                                            { message: 'Error' }
-                                        ]
-                                    }
-                                }
-                            }
-                        },
-                        props
-                    });
-                    const errorList = wrapper.container.querySelector('ul');
-
-                    expect(errorList).toBeVisible();
-                });
+                    }
+                },
+                props: {
+                    ...props,
+                    for: undefined
+                }
             });
+            const errors = wrapper.container.querySelectorAll('li');
+
+            expect(errors).toHaveLength(0);
+        });
+
+        it('should show errors by default if error visible prop is empty', () => {
+            const wrapper = render(IFormError, {
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline(),
+                        [FormKey as symbol]: {
+                            schema: ref({
+                                input: {
+                                    touched: false,
+                                    dirty: false,
+                                    invalid: true,
+                                    errors: [{ message: 'Error' }]
+                                }
+                            })
+                        }
+                    }
+                },
+                props: {
+                    ...props,
+                    visible: undefined
+                }
+            });
+            const errors = wrapper.container.querySelectorAll('li');
+
+            expect(errors).toHaveLength(1);
+        });
+
+        it('should show errors when touched if error visible prop is touched', () => {
+            const wrapper = render(IFormError, {
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline(),
+                        [FormKey as symbol]: {
+                            schema: ref({
+                                input: {
+                                    touched: true,
+                                    dirty: false,
+                                    invalid: true,
+                                    errors: [{ message: 'Error' }]
+                                }
+                            })
+                        }
+                    }
+                },
+                props: {
+                    ...props,
+                    visible: ['touched']
+                }
+            });
+            const errors = wrapper.container.querySelectorAll('li');
+
+            expect(errors).toHaveLength(1);
         });
     });
 });

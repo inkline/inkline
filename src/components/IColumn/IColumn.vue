@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
-import { breakpointClass } from '@grozav/utils';
+import { breakpointClass, toDashCase } from '@grozav/utils';
 import { Classes } from '@inkline/inkline/types';
 
 const componentName = 'IColumn';
@@ -106,11 +106,11 @@ export default defineComponent({
 
         /**
          * Display the column as the first column on extra-extra-large screens
-         * @name first-xxl
+         * @name first-2xl
          * @type Boolean
          * @default false
          */
-        firstXxl: { type: [Boolean], default: false },
+        first2xl: { type: [Boolean], default: false },
 
         /**
          * Display the column as the last column
@@ -162,11 +162,11 @@ export default defineComponent({
 
         /**
          * Display the column as the last column on extra-extra-large screens
-         * @name last-xxl
+         * @name last-2xl
          * @type Boolean
          * @default false
          */
-        lastXxl: { type: [Boolean], default: false },
+        last2xl: { type: [Boolean], default: false },
 
         /**
          * The number of columns to offset the column by
@@ -218,11 +218,11 @@ export default defineComponent({
 
         /**
          * The number of columns to offset the column by on extra-extra-large screens
-         * @name offset-xxl
+         * @name offset-2xl
          * @type String | Number
          * @default
          */
-        offsetXxl: { type: [String, Number] as PropType<string>, default: '' },
+        offset2xl: { type: [String, Number] as PropType<string>, default: '' },
 
         /**
          * The number of columns to push the column by
@@ -274,11 +274,11 @@ export default defineComponent({
 
         /**
          * The number of columns to push the column by on extra-extra-large screens
-         * @name push-xxl
+         * @name push-2xl
          * @type String | Number
          * @default
          */
-        pushXxl: { type: [String, Number] as PropType<string>, default: '' },
+        push2xl: { type: [String, Number] as PropType<string>, default: '' },
 
         /**
          * The number of columns to pull the column by
@@ -330,24 +330,28 @@ export default defineComponent({
 
         /**
          * The number of columns to pull the column by on extra-extra-large screens
-         * @name pull-xxl
+         * @name pull-2xl
          * @type String | Number
          * @default
          */
-        pullXxl: { type: [String, Number] as PropType<string>, default: '' }
+        pull2xl: { type: [String, Number] as PropType<string>, default: '' }
     },
     setup(props) {
         const classes = computed(() =>
             Object.keys(props).reduce((acc: Classes, property) => {
-                if ((props as Record<string, string | number | boolean>)[property]) {
-                    acc[
-                        breakpointClass(
-                            `-${property}`,
-                            (props as Record<string, string | number | boolean>)[property] as
-                                | string
-                                | number
-                        )
-                    ] = true;
+                const value = (props as Record<string, string | number | boolean>)[property] as
+                    | string
+                    | number
+                    | boolean;
+
+                if (value) {
+                    const className = `-${property
+                        .replace('xxl', '2xl')
+                        .replace(/([A-Z])/g, '-$1')
+                        .replace(/([a-z])([0-9])/g, '$1-$2')
+                        .toLowerCase()}${typeof value !== 'boolean' && value ? `-${value}` : ''}`;
+
+                    acc[className] = true;
                 }
 
                 return acc;

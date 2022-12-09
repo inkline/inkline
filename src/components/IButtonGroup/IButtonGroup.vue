@@ -86,7 +86,8 @@ export default defineComponent({
         });
 
         return {
-            classes
+            classes,
+            disabled
         };
     }
 });

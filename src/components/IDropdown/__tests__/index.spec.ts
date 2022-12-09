@@ -1,6 +1,10 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IButton, IDropdown, IDropdownDivider, IDropdownItem } from '@inkline/inkline/components';
 import { keymap } from '@inkline/inkline/constants';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { NavbarKey } from '@inkline/inkline/components/INavbar/mixin';
+import { SidebarKey } from '@inkline/inkline/components/ISidebar/mixin';
 
 describe('Components', () => {
     describe('IDropdown', () => {
@@ -16,9 +20,7 @@ describe('Components', () => {
         };
 
         const slots = {
-            default: [
-                '<i-button color="light" size="md" />'
-            ],
+            default: ['<i-button color="light" size="md" />'],
             body: [
                 '<i-dropdown-item />',
                 '<i-dropdown-item />',
@@ -33,7 +35,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(IDropdown, {
-                global: { stubs },
+                global: {
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                },
                 props,
                 slots
             });
@@ -43,21 +50,23 @@ describe('Components', () => {
 
         describe('computed', () => {
             describe('classes', () => {
-                it('should add classes based on props', async () => {
+                it.only('should add classes based on props', async () => {
                     const wrapper = render(IDropdown, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
-                            modelValue: true,
+                            visible: true,
                             ...props
                         },
                         slots
                     });
                     const menu = await wrapper.getByRole('menu');
 
-                    expect(menu).toHaveClass(
-                        `-${props.color}`,
-                        `-${props.size}`
-                    );
+                    expect(menu).toHaveClass(`-${props.color}`, `-${props.size}`);
                 });
             });
         });
@@ -66,16 +75,23 @@ describe('Components', () => {
             describe('onEscape()', () => {
                 it('should close the dropdown if open', async () => {
                     const wrapper = render(IDropdown, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
-                            modelValue: true,
+                            visible: true,
                             ...props
                         },
                         slots
                     });
                     const menu = await wrapper.getByRole('menu');
-                    await fireEvent.keyUp(wrapper.container.firstChild as Element, { key: keymap.esc[0] });
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([false]);
+                    await fireEvent.keyUp(wrapper.container.firstChild as Element, {
+                        key: keymap.esc[0]
+                    });
+                    expect(wrapper.emitted()['update:visible'][0]).toEqual([false]);
                     expect(menu).not.toBeVisible();
                 });
             });
@@ -83,7 +99,12 @@ describe('Components', () => {
             describe('handleClickOutside()', () => {
                 it('should close the dropdown if open', async () => {
                     const wrapper = render(IDropdown, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props,
                         slots
                     });
@@ -98,7 +119,12 @@ describe('Components', () => {
             describe('onTriggerKeyDown()', () => {
                 it('should not do anything if keydownTrigger is empty', async () => {
                     const wrapper = render(IDropdown, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
                             keydownTrigger: [],
                             ...props
@@ -115,7 +141,12 @@ describe('Components', () => {
                     describe(key, () => {
                         it('should open the dropdown', async () => {
                             const wrapper = render(IDropdown, {
-                                global: { stubs },
+                                global: {
+                                    stubs,
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
+                                },
                                 props,
                                 slots
                             });
@@ -131,7 +162,12 @@ describe('Components', () => {
                     describe(key, () => {
                         it('should open the dropdown', async () => {
                             const wrapper = render(IDropdown, {
-                                global: { stubs },
+                                global: {
+                                    stubs,
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
+                                },
                                 props,
                                 slots
                             });
@@ -143,7 +179,12 @@ describe('Components', () => {
 
                         it('should close the dropdown if open', async () => {
                             const wrapper = render(IDropdown, {
-                                global: { stubs },
+                                global: {
+                                    stubs,
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
+                                },
                                 props,
                                 slots
                             });
@@ -161,7 +202,12 @@ describe('Components', () => {
                     describe(key, () => {
                         it('should close the dropdown', async () => {
                             const wrapper = render(IDropdown, {
-                                global: { stubs },
+                                global: {
+                                    stubs,
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
+                                },
                                 props,
                                 slots
                             });
@@ -178,9 +224,14 @@ describe('Components', () => {
             describe('onItemKeyDown()', () => {
                 it('should not do anything if keydownItem is empty', async () => {
                     const wrapper = render(IDropdown, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
-                            modelValue: true,
+                            visible: true,
                             keydownItem: [],
                             ...props
                         },
@@ -194,9 +245,14 @@ describe('Components', () => {
                 describe('up', () => {
                     it('should focus previous item', async () => {
                         const wrapper = render(IDropdown, {
-                            global: { stubs },
+                            global: {
+                                stubs,
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
+                            },
                             props: {
-                                modelValue: true,
+                                visible: true,
                                 ...props
                             },
                             slots
@@ -209,9 +265,14 @@ describe('Components', () => {
 
                     it('should remain focused if first item', async () => {
                         const wrapper = render(IDropdown, {
-                            global: { stubs },
+                            global: {
+                                stubs,
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
+                            },
                             props: {
-                                modelValue: true,
+                                visible: true,
                                 ...props
                             },
                             slots
@@ -226,9 +287,14 @@ describe('Components', () => {
                 describe('down', () => {
                     it('should focus next item', async () => {
                         const wrapper = render(IDropdown, {
-                            global: { stubs },
+                            global: {
+                                stubs,
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
+                            },
                             props: {
-                                modelValue: true,
+                                visible: true,
                                 ...props
                             },
                             slots
@@ -241,16 +307,23 @@ describe('Components', () => {
 
                     it('should remain focused if last item', async () => {
                         const wrapper = render(IDropdown, {
-                            global: { stubs },
+                            global: {
+                                stubs,
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
+                            },
                             props: {
-                                modelValue: true,
+                                visible: true,
                                 ...props
                             },
                             slots
                         });
                         const menuItems = await wrapper.getAllByRole('menuitem');
                         menuItems[1].focus();
-                        await fireEvent.keyDown(menuItems[menuItems.length - 1], { key: keymap.down[0] });
+                        await fireEvent.keyDown(menuItems[menuItems.length - 1], {
+                            key: keymap.down[0]
+                        });
                         expect(menuItems[menuItems.length - 1]).toHaveFocus();
                     });
                 });
@@ -259,10 +332,15 @@ describe('Components', () => {
                     describe(key, () => {
                         it('should click item and focus trigger', async () => {
                             const wrapper = render(IDropdown, {
-                                global: { stubs },
+                                global: {
+                                    stubs,
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
+                                },
                                 props: {
                                     hideOnItemClick: false,
-                                    modelValue: true,
+                                    visible: true,
                                     ...props
                                 },
                                 slots
@@ -274,10 +352,15 @@ describe('Components', () => {
 
                         it('should close dropdown if hideOnItemClick', async () => {
                             const wrapper = render(IDropdown, {
-                                global: { stubs },
+                                global: {
+                                    stubs,
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
+                                },
                                 props: {
                                     hideOnItemClick: true,
-                                    modelValue: true,
+                                    visible: true,
                                     ...props
                                 },
                                 slots
@@ -294,10 +377,15 @@ describe('Components', () => {
                     describe(key, () => {
                         it('should close dropdown if hideOnItemClick', async () => {
                             const wrapper = render(IDropdown, {
-                                global: { stubs },
+                                global: {
+                                    stubs,
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
+                                },
                                 props: {
                                     hideOnItemClick: true,
-                                    modelValue: true,
+                                    visible: true,
                                     ...props
                                 },
                                 slots
@@ -312,21 +400,22 @@ describe('Components', () => {
             });
 
             describe('onItemClick()', () => {
-                ['navbar', 'sidebar'].forEach((parent) => {
-                    it(`should call parent ${parent} onItemClick`, async () => {
+                [NavbarKey, SidebarKey].forEach((parent) => {
+                    it(`should call parent ${parent.toString()} onItemClick`, async () => {
                         const onItemClick = vi.fn();
                         const wrapper = render(IDropdown, {
                             global: {
                                 stubs,
                                 provide: {
-                                    [parent]: {
+                                    [InklineKey as symbol]: createInkline(),
+                                    [parent as symbol]: {
                                         onItemClick
                                     }
                                 }
                             },
                             props: {
                                 hideOnItemClick: true,
-                                modelValue: true,
+                                visible: true,
                                 ...props
                             },
                             slots

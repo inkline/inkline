@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed, defineComponent, inject } from 'vue';
-import { IExpandTransition } from '@inkline/inkline/transitions';
+import { IExpandTransition } from '@inkline/inkline/components/IExpandTransition';
 import { NavbarKey } from '@inkline/inkline/components/INavbar/mixin';
 import { useIsServer } from '@inkline/inkline/composables';
 

@@ -16,6 +16,7 @@ export { IContainer } from './IContainer';
 export { IDropdown } from './IDropdown';
 export { IDropdownDivider } from './IDropdownDivider';
 export { IDropdownItem } from './IDropdownItem';
+export { IExpandTransition } from './IExpandTransition';
 export { IForm } from './IForm';
 export { IFormGroup } from './IFormGroup';
 export { IFormError } from './IFormError';

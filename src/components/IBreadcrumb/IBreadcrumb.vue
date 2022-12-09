@@ -20,7 +20,7 @@ export default defineComponent({
         /**
          * The color variant of the breadcrumb
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
@@ -30,7 +30,7 @@ export default defineComponent({
         /**
          * The size variant of the breadcrumb
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {

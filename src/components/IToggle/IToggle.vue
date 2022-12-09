@@ -18,7 +18,7 @@ export default defineComponent({
         /**
          * The color variant of the checkbox
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
@@ -107,7 +107,7 @@ export default defineComponent({
         /**
          * The size variant of the checkbox
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          *
          */

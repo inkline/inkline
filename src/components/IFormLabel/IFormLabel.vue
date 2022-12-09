@@ -32,7 +32,7 @@ export default defineComponent({
         /**
          * The size variant of the form label
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {

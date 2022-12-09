@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IColumn } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IColumn', () => {
@@ -17,7 +19,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IColumn, { props });
+            const wrapper = render(IColumn, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
@@ -26,7 +35,12 @@ describe('Components', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(IColumn, {
-                        props
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
@@ -35,7 +49,7 @@ describe('Components', () => {
                         '-md-12',
                         '-lg-12',
                         '-xl-12',
-                        '-xxl-12'
+                        '-2xl-12'
                     );
                 });
 
@@ -49,8 +63,13 @@ describe('Components', () => {
                                 [`${position}Md`]: true,
                                 [`${position}Lg`]: true,
                                 [`${position}Xl`]: true,
-                                [`${position}Xxl`]: true,
+                                [`${position}2xl`]: true,
                                 ...props
+                            },
+                            global: {
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
                             }
                         });
 
@@ -61,7 +80,7 @@ describe('Components', () => {
                             `-${position}-md`,
                             `-${position}-lg`,
                             `-${position}-xl`,
-                            `-${position}-xxl`
+                            `-${position}-2xl`
                         );
                     });
                 });
@@ -76,8 +95,13 @@ describe('Components', () => {
                                 [`${action}Md`]: 6,
                                 [`${action}Lg`]: 6,
                                 [`${action}Xl`]: 6,
-                                [`${action}Xxl`]: 6,
+                                [`${action}2xl`]: 6,
                                 ...props
+                            },
+                            global: {
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
                             }
                         });
 
@@ -88,7 +112,7 @@ describe('Components', () => {
                             `-${action}-md-6`,
                             `-${action}-lg-6`,
                             `-${action}-xl-6`,
-                            `-${action}-xxl-6`
+                            `-${action}-2xl-6`
                         );
                     });
                 });

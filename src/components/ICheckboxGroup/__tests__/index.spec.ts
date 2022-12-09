@@ -1,5 +1,9 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ICheckbox, ICheckboxGroup } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { FormKey } from '@inkline/inkline/components/IForm';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('ICheckboxGroup', () => {
@@ -27,7 +31,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(ICheckboxGroup, {
-                global: { stubs },
+                global: {
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                },
                 props,
                 slots
             });
@@ -38,7 +47,12 @@ describe('Components', () => {
             describe('name', () => {
                 it('should have randomly generated name uid', async () => {
                     const wrapper = render(ICheckboxGroup, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
                             color: props.color,
                             size: props.size
@@ -46,7 +60,10 @@ describe('Components', () => {
                         slots
                     });
 
-                    expect(wrapper.container.firstChild).toHaveAttribute('name', expect.stringContaining('checkbox-group'));
+                    expect(wrapper.container.firstChild).toHaveAttribute(
+                        'name',
+                        expect.stringContaining('checkbox-group')
+                    );
                 });
             });
         });
@@ -55,7 +72,12 @@ describe('Components', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(ICheckboxGroup, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
                             disabled: true,
                             readonly: true,
@@ -78,16 +100,23 @@ describe('Components', () => {
             describe('checked', () => {
                 it('should be equal to schema.value if schema', async () => {
                     const value = ['1'];
+                    const onBlur = vi.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(ICheckboxGroup, {
                         global: {
                             stubs,
                             provide: {
-                                form: {
-                                    schema: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    schema: ref({
                                         [props.name]: {
                                             value
                                         }
-                                    }
+                                    }),
+                                    onBlur,
+                                    onInput
                                 }
                             }
                         },
@@ -102,11 +131,14 @@ describe('Components', () => {
                     expect(checkboxes[0].querySelector('input')).toBeChecked();
                 });
 
-                it('should be equal to modelValue otherwise', () => {
+                it('should be equal to modelValue', async () => {
                     const modelValue = ['1', '2', '3'];
                     const wrapper = render(ICheckboxGroup, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props: {
                             modelValue,
@@ -114,6 +146,7 @@ describe('Components', () => {
                         },
                         slots
                     });
+
                     const checkboxes = wrapper.container.querySelectorAll('input');
 
                     expect(checkboxes[0]).toBeChecked();
@@ -127,7 +160,12 @@ describe('Components', () => {
             describe('onChange', () => {
                 it('should update modelValue when checking checkbox', async () => {
                     const wrapper = render(ICheckboxGroup, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
                             modelValue: [],
                             ...props
@@ -143,7 +181,12 @@ describe('Components', () => {
 
                 it('should update modelValue when unchecking checkbox', async () => {
                     const wrapper = render(ICheckboxGroup, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
                             modelValue: ['1'],
                             ...props
@@ -158,12 +201,17 @@ describe('Components', () => {
                 });
 
                 it('should call parent form onInput when checking checkbox', async () => {
+                    const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(ICheckboxGroup, {
                         global: {
                             stubs,
                             provide: {
-                                form: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
                                     onInput
                                 }
                             }

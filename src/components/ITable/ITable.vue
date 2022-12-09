@@ -70,12 +70,12 @@ export default defineComponent({
         /**
          * The color variant of the table
          * @type primary | success | light | dark | info | success | warning | danger
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         }
     },
     setup(props) {

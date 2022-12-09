@@ -20,22 +20,22 @@ export default defineComponent({
         /**
          * The color variant of the list group
          * @type light | dark
-         * @default light
+         * @default
          * @name color
          */
         color: {
             type: String,
-            default: ''
+            default: undefined
         },
         /**
          * The size variant of the list group
          * @type sm | md | lg
-         * @default md
+         * @default
          * @name size
          */
         size: {
             type: String,
-            default: ''
+            default: undefined
         }
     },
     setup(props) {

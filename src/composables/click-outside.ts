@@ -25,13 +25,13 @@ export function useClickOutside(props: {
 
     onMounted(() => {
         if (typeof window !== 'undefined') {
-            on(window.document as any, 'mousedown', binding);
+            on(window.document, 'mousedown', binding);
         }
     });
 
     onUnmounted(() => {
         if (typeof window !== 'undefined') {
-            off(window.document as any, 'mousedown', binding);
+            off(window.document, 'mousedown', binding);
         }
     });
 }
