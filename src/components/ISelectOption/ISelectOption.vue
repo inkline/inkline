@@ -70,7 +70,7 @@ export default defineComponent({
         const isActive = computed(() => {
             const idField = select?.idField.value;
             if (!idField) {
-                return false;
+                return props.active;
             }
 
             return props.active || props.value[idField] === select?.value.value;
@@ -84,6 +84,10 @@ export default defineComponent({
         const tabIndex = computed(() => (props.disabled ? -1 : props.tabindex));
 
         function onClick() {
+            if (props.disabled) {
+                return;
+            }
+
             if (select && props.value) {
                 select.onInput(props.value);
             }
@@ -102,7 +106,6 @@ export default defineComponent({
 
 <template>
     <div
-        v-bind="$attrs"
         class="select-option"
         :class="classes"
         role="option"

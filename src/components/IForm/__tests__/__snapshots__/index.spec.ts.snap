@@ -1,8 +1,8 @@
 // Vitest Snapshot v1
 
-exports[`Components > IFormGroup > should render correctly 1`] = `
-"<fieldset class=\\"form-group -md -light\\" name=\\"form-group\\" role=\\"group\\">
-  <!-- @slot default Slot for default form group content -->
+exports[`Components > IForm > should render correctly 1`] = `
+"<form class=\\"form -md -light\\" role=\\"form\\" name=\\"form\\" disabled=\\"false\\">
+  <!-- @slot default Slot for form content -->
   <div class=\\"input-wrapper -light -md\\">
     <!--v-if-->
     <div class=\\"input\\">
@@ -11,5 +11,5 @@ exports[`Components > IFormGroup > should render correctly 1`] = `
     </div>
     <!--v-if-->
   </div>
-</fieldset>"
+</form>"
 `;

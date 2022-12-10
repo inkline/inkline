@@ -31,10 +31,6 @@ export default defineComponent({
     setup(props) {
         const progress = inject(ProgressKey, null);
 
-        const value = computed(() =>
-            typeof props.value === 'string' ? parseFloat(props.value.replace('%', '')) : props.value
-        );
-
         const min = computed(() =>
             progress
                 ? typeof progress.min.value === 'string'
@@ -48,15 +44,20 @@ export default defineComponent({
                 ? typeof progress.max.value === 'string'
                     ? parseFloat(progress.max.value)
                     : progress.max.value
-                : 0
+                : 100
         );
 
         const computedValue = computed(() => {
+            const value =
+                typeof props.value === 'string'
+                    ? parseFloat(props.value.replace('%', ''))
+                    : props.value;
+
             if (!progress) {
-                return value.value;
+                return value;
             }
 
-            return ((value.value - min.value) * 100) / (max.value - min.value);
+            return ((value - min.value) * 100) / (max.value - min.value);
         });
 
         const style = computed(() => ({

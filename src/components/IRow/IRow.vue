@@ -1,6 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { breakpointClass } from '@grozav/utils';
+import { breakpointClassName } from '@inkline/inkline/utils';
 
 const componentName = 'IRow';
 
@@ -57,11 +58,11 @@ export default defineComponent({
 
         /**
          * Justify the content to the start of the row on extra-extra-large screens
-         * @name start-xxl
+         * @name start-2xl
          * @type Boolean
          * @default false
          */
-        startXxl: { type: Boolean, default: false },
+        start2xl: { type: Boolean, default: false },
 
         /**
          * Justify the content to the center of the row
@@ -113,11 +114,11 @@ export default defineComponent({
 
         /**
          * Justify the content to the center of the row on extra-extra-large screens
-         * @name center-xxl
+         * @name center-2xl
          * @type Boolean
          * @default false
          */
-        centerXxl: { type: Boolean, default: false },
+        center2xl: { type: Boolean, default: false },
 
         /**
          * Justify the content to the end of the row
@@ -169,11 +170,11 @@ export default defineComponent({
 
         /**
          * Justify the content to the end of the row on extra-extra-large screens
-         * @name end-xxl
+         * @name end-2xl
          * @type Boolean
          * @default false
          */
-        endXxl: { type: Boolean, default: false },
+        end2xl: { type: Boolean, default: false },
 
         /**
          * Align the content to the top of the row
@@ -225,11 +226,11 @@ export default defineComponent({
 
         /**
          * Align the content to the top of the row on extra-extra-large screens
-         * @name top-xxl
+         * @name top-2xl
          * @type Boolean
          * @default false
          */
-        topXxl: { type: Boolean, default: false },
+        top2xl: { type: Boolean, default: false },
 
         /**
          * Align the content to the middle of the row
@@ -281,11 +282,11 @@ export default defineComponent({
 
         /**
          * Align the content to the middle of the row on extra-extra-large screens
-         * @name middle-xxl
+         * @name middle-2xl
          * @type Boolean
          * @default false
          */
-        middleXxl: { type: Boolean, default: false },
+        middle2xl: { type: Boolean, default: false },
 
         /**
          * Align the content to the bottom of the row
@@ -337,11 +338,11 @@ export default defineComponent({
 
         /**
          * Align the content to the bottom of the row on extra-extra-large screens
-         * @name bottom-xxl
+         * @name bottom-2xl
          * @type Boolean
          * @default false
          */
-        bottomXxl: { type: Boolean, default: false },
+        bottom2xl: { type: Boolean, default: false },
 
         /**
          * Justify the content to have space around each item inside the row
@@ -393,11 +394,11 @@ export default defineComponent({
 
         /**
          * Justify the content to have space around each item inside the row on extra-extra-large screens
-         * @name around-xxl
+         * @name around-2xl
          * @type Boolean
          * @default false
          */
-        aroundXxl: { type: Boolean, default: false },
+        around2xl: { type: Boolean, default: false },
 
         /**
          * Justify the content to have space between each item inside the row
@@ -449,11 +450,11 @@ export default defineComponent({
 
         /**
          * Justify the content to have space between each item inside the row on extra-extra-large screens
-         * @name between-xxl
+         * @name between-2xl
          * @type Boolean
          * @default false
          */
-        betweenXxl: { type: Boolean, default: false },
+        between2xl: { type: Boolean, default: false },
 
         /**
          * Order the content in reverse order inside the row
@@ -505,11 +506,11 @@ export default defineComponent({
 
         /**
          * Order the content in reverse order inside the row on extra-extra-large screens
-         * @name reverse-xxl
+         * @name reverse-2xl
          * @type Boolean
          * @default false
          */
-        reverseXxl: { type: Boolean, default: false },
+        reverse2xl: { type: Boolean, default: false },
 
         /**
          * Remove gutter between columns
@@ -535,17 +536,17 @@ export default defineComponent({
     },
     setup(props) {
         const classes = computed(() => {
-            const responsiveClasses = Object.keys(props).reduce(
-                (acc: { [key: string]: boolean }, property) => {
-                    if ((props as Record<string, string | number | boolean>)[property]) {
-                        acc[
-                            breakpointClass(
-                                `-${property}`,
-                                (props as Record<string, string | number | boolean>)[property] as
-                                    | string
-                                    | number
-                            )
-                        ] = true;
+            const responsiveClasses = Object.keys(props).reduce<Record<string, boolean>>(
+                (acc, property) => {
+                    const value = (props as Record<string, string | number | boolean>)[property] as
+                        | string
+                        | number
+                        | boolean;
+
+                    if (value) {
+                        const className = breakpointClassName(property, value);
+
+                        acc[className] = true;
                     }
 
                     return acc;

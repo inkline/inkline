@@ -1,6 +1,10 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ISelectOption } from '@inkline/inkline/components';
 import { createMockInstance } from '@inkline/inkline/__mocks__/createMockInstance';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { SelectKey } from '@inkline/inkline/components/ISelect/mixin';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('ISelectOption', () => {
@@ -11,7 +15,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(ISelectOption, { props });
+            const wrapper = render(ISelectOption, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
@@ -23,31 +34,15 @@ describe('Components', () => {
                         props: {
                             active: true,
                             disabled: true
-                        }
-                    });
-
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        '-active',
-                        '-disabled'
-                    );
-                });
-            });
-
-            describe('isActive', () => {
-                it('should add active class if same value as select', () => {
-                    const value = { label: 'a' };
-                    const wrapper = createMockInstance(ISelectOption, {
-                        props: {
-                            value
                         },
-                        mocks: {
-                            select: {
-                                modelValue: value
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
                             }
                         }
                     });
 
-                    expect(wrapper.isActive).toEqual(true);
+                    expect(wrapper.container.firstChild).toHaveClass('-active', '-disabled');
                 });
             });
 
@@ -57,6 +52,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -64,7 +64,14 @@ describe('Components', () => {
                 });
 
                 it('should be 1 otherwise', () => {
-                    const wrapper = render(ISelectOption, { props });
+                    const wrapper = render(ISelectOption, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
 
                     expect(wrapper.container.firstChild).toHaveAttribute('tabindex', '0');
                 });
@@ -78,9 +85,12 @@ describe('Components', () => {
                     const wrapper = render(ISelectOption, {
                         global: {
                             provide: {
-                                select: {
+                                [SelectKey as symbol]: {
+                                    idField: ref('id'),
+                                    value: ref('0'),
                                     onInput
-                                }
+                                },
+                                [InklineKey as symbol]: createInkline()
                             }
                         },
                         props
@@ -95,7 +105,10 @@ describe('Components', () => {
                     const wrapper = render(ISelectOption, {
                         global: {
                             provide: {
-                                select: {
+                                [InklineKey as symbol]: createInkline(),
+                                [SelectKey as symbol]: {
+                                    idField: ref('id'),
+                                    value: ref('0'),
                                     onInput
                                 }
                             }

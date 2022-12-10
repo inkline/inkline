@@ -1,5 +1,9 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IFormGroup, IInput } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { FormKey } from '@inkline/inkline/components/IForm';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('IFormGroup', () => {
@@ -10,9 +14,7 @@ describe('Components', () => {
         };
 
         const slots = {
-            default: [
-                '<i-input name="input" color="light" size="md" />'
-            ]
+            default: ['<i-input name="input" color="light" size="md" />']
         };
 
         const stubs = {
@@ -26,7 +28,10 @@ describe('Components', () => {
         it('should render correctly', () => {
             const wrapper = render(IFormGroup, {
                 global: {
-                    stubs
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
                 },
                 props,
                 slots
@@ -40,7 +45,10 @@ describe('Components', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(IFormGroup, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         slots,
                         props: {
@@ -70,25 +78,9 @@ describe('Components', () => {
                     const onBlur = vi.fn();
                     const wrapper = render(IFormGroup, {
                         global: {
-                            stubs
-                        },
-                        slots,
-                        props
-                    });
-                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
-
-                    fireEvent.blur(input);
-
-                    expect(onBlur).not.toHaveBeenCalled();
-                });
-
-                it('should not call onBlur if parent without onBlur', () => {
-                    const onBlur = vi.fn();
-                    const wrapper = render(IFormGroup, {
-                        global: {
                             stubs,
                             provide: {
-                                form: {}
+                                [InklineKey as symbol]: createInkline()
                             }
                         },
                         slots,
@@ -103,12 +95,17 @@ describe('Components', () => {
 
                 it('should call onBlur if parent with onBlur', () => {
                     const onBlur = vi.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(IFormGroup, {
                         global: {
                             stubs,
                             provide: {
-                                form: {
-                                    onBlur
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
+                                    onInput
                                 }
                             }
                         },
@@ -128,25 +125,9 @@ describe('Components', () => {
                     const onInput = vi.fn();
                     const wrapper = render(IFormGroup, {
                         global: {
-                            stubs
-                        },
-                        slots,
-                        props
-                    });
-                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
-
-                    fireEvent.update(input, 'abc');
-
-                    expect(onInput).not.toHaveBeenCalled();
-                });
-
-                it('should not call onInput if parent without onInput', () => {
-                    const onInput = vi.fn();
-                    const wrapper = render(IFormGroup, {
-                        global: {
                             stubs,
                             provide: {
-                                form: {}
+                                [InklineKey as symbol]: createInkline()
                             }
                         },
                         slots,
@@ -160,12 +141,17 @@ describe('Components', () => {
                 });
 
                 it('should call onInput if parent with onInput', () => {
+                    const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(IFormGroup, {
                         global: {
                             stubs,
                             provide: {
-                                form: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
                                     onInput
                                 }
                             }

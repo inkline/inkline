@@ -3471,12 +3471,6 @@
 ._display\:revert {
   display: revert;
 }
-._display\:revert-layer {
-  display: revert-layer;
-}
-._display\:revert-layer\! {
-  display: revert-layer !important;
-}
 ._display\:revert\! {
   display: revert !important;
 }
@@ -4181,12 +4175,6 @@
 }
 ._vertical-align\:revert\! {
   vertical-align: revert !important;
-}
-._vertical-align\:revert-layer {
-  vertical-align: revert-layer;
-}
-._vertical-align\:revert-layer\! {
-  vertical-align: revert-layer !important;
 }
 ._vertical-align\:unset {
   vertical-align: unset;
@@ -7033,14 +7021,6 @@
 ._text-align\:revert\!,
 ._text\:revert\! {
   text-align: revert !important;
-}
-._text-align\:revert-layer,
-._text\:revert-layer {
-  text-align: revert-layer;
-}
-._text-align\:revert-layer\!,
-._text\:revert-layer\! {
-  text-align: revert-layer !important;
 }
 ._text-align\:unset,
 ._text\:unset {

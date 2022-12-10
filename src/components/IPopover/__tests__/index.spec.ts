@@ -1,7 +1,8 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IPopover } from '@inkline/inkline/components';
 import { keymap } from '@inkline/inkline/constants';
-import { Placeholder, PlaceholderButton } from '@inkline/inkline/__mocks__';
+import { createInkline, Placeholder, PlaceholderButton } from '@inkline/inkline/__mocks__';
+import { InklineKey } from '@inkline/inkline/plugin';
 
 describe('Components', () => {
     describe('IPopover', () => {
@@ -25,7 +26,12 @@ describe('Components', () => {
         it('should render correctly', () => {
             const wrapper = render(IPopover, {
                 props,
-                slots
+                slots,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();
@@ -36,7 +42,12 @@ describe('Components', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(IPopover, {
                         props,
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
@@ -52,7 +63,12 @@ describe('Components', () => {
                 it('should show popover popup', async () => {
                     const wrapper = render(IPopover, {
                         props,
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
                     const trigger = wrapper.container.querySelector('.popover-trigger');
 
@@ -68,7 +84,12 @@ describe('Components', () => {
                             disabled: true,
                             ...props
                         },
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
                     const trigger = wrapper.container.querySelector('.popover-trigger');
                     const popup = wrapper.container.querySelector('.popover');
@@ -83,7 +104,12 @@ describe('Components', () => {
                 it('should hide popover popup', async () => {
                     const wrapper = render(IPopover, {
                         props,
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
                     const trigger = wrapper.container.querySelector('.popover-trigger');
 
@@ -96,7 +122,12 @@ describe('Components', () => {
                 it('should not hide popover popup if disabled', async () => {
                     const wrapper = render(IPopover, {
                         props,
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
                     let trigger = wrapper.container.querySelector('.popover-trigger');
                     await fireEvent.click(trigger as Element);
@@ -115,31 +146,21 @@ describe('Components', () => {
                 it('should hide popover popup', async () => {
                     const wrapper = render(IPopover, {
                         props,
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
                     const trigger = wrapper.container.querySelector('.popover-trigger');
 
                     await fireEvent.click(trigger as Element);
                     const popup = await wrapper.getByRole('tooltip');
-                    await fireEvent.keyUp(wrapper.container.firstChild as Element, { key: keymap.esc[0] });
+                    await fireEvent.keyUp(wrapper.container.firstChild as Element, {
+                        key: keymap.esc[0]
+                    });
                     expect(popup).not.toBeVisible();
-                });
-            });
-
-            describe('handleClickOutside()', () => {
-                it('should hide popover popup', async () => {
-                    const wrapper = {
-                        visible: true,
-                        $emit: vi.fn(),
-                        onClickOutside: vi.fn(),
-                        handleClickOutside: IPopover.methods!.handleClickOutside
-                    };
-
-                    wrapper.handleClickOutside();
-
-                    expect(wrapper.visible).toEqual(false);
-                    expect(wrapper.onClickOutside).toHaveBeenCalled();
-                    expect(wrapper.$emit).toHaveBeenCalledWith('update:modelValue', false);
                 });
             });
         });

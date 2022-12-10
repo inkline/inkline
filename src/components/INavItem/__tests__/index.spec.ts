@@ -1,5 +1,8 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { INavItem } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { NavKey } from '@inkline/inkline/components/INav/mixin';
 
 describe('Components', () => {
     describe('INavItem', () => {
@@ -11,7 +14,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(INavItem, {
-                props
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();
@@ -25,13 +33,15 @@ describe('Components', () => {
                             active: true,
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        '-active',
-                        '-disabled'
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass('-active', '-disabled');
                 });
             });
 
@@ -41,6 +51,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -48,7 +63,14 @@ describe('Components', () => {
                 });
 
                 it('should be 1 otherwise', () => {
-                    const wrapper = render(INavItem, { props });
+                    const wrapper = render(INavItem, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
 
                     expect(wrapper.container.firstChild).toHaveAttribute('tabindex', '0');
                 });
@@ -62,7 +84,8 @@ describe('Components', () => {
                     const wrapper = render(INavItem, {
                         global: {
                             provide: {
-                                nav: {
+                                [InklineKey as symbol]: createInkline(),
+                                [NavKey as symbol]: {
                                     onItemClick
                                 }
                             }
@@ -80,7 +103,8 @@ describe('Components', () => {
                     const wrapper = render(INavItem, {
                         global: {
                             provide: {
-                                nav: {
+                                [InklineKey as symbol]: createInkline(),
+                                [NavKey as symbol]: {
                                     onItemClick
                                 }
                             }

@@ -1,5 +1,9 @@
 import { render } from '@testing-library/vue';
 import { IProgressBar } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { ProgressKey } from '@inkline/inkline/components/IProgressBar/mixin';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('IProgressBar', () => {
@@ -14,7 +18,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(IProgressBar, {
-                props
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();
@@ -24,19 +33,27 @@ describe('Components', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(IProgressBar, {
-                        props
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        `-${props.color}`
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass(`-${props.color}`);
                 });
             });
 
             describe('style', () => {
                 it('should set width based on default min and max props', () => {
                     const wrapper = render(IProgressBar, {
-                        props
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveStyle({
@@ -48,9 +65,10 @@ describe('Components', () => {
                     const wrapper = render(IProgressBar, {
                         global: {
                             provide: {
-                                progress: {
-                                    min: '0',
-                                    max: '50'
+                                [InklineKey as symbol]: createInkline(),
+                                [ProgressKey as symbol]: {
+                                    min: ref('0'),
+                                    max: ref('50')
                                 }
                             }
                         },

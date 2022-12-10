@@ -8,6 +8,7 @@ import { IColumn } from '@inkline/inkline/components/IColumn';
 const componentName = 'IHeader';
 
 export default defineComponent({
+    name: componentName,
     components: {
         IContainer,
         IRow,

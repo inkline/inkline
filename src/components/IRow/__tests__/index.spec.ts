@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IRow } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IRow', () => {
@@ -10,7 +12,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IRow, { props });
+            const wrapper = render(IRow, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
@@ -22,13 +31,15 @@ describe('Components', () => {
                         props: {
                             noGutter: true,
                             noCollapse: true
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        '-no-gutter',
-                        '-no-collapse'
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass('-no-gutter', '-no-collapse');
                 });
 
                 [
@@ -51,8 +62,13 @@ describe('Components', () => {
                                 [`${position}Md`]: true,
                                 [`${position}Lg`]: true,
                                 [`${position}Xl`]: true,
-                                [`${position}Xxl`]: true,
+                                [`${position}2xl`]: true,
                                 ...props
+                            },
+                            global: {
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
                             }
                         });
 
@@ -63,7 +79,7 @@ describe('Components', () => {
                             `-${position}-md`,
                             `-${position}-lg`,
                             `-${position}-xl`,
-                            `-${position}-xxl`
+                            `-${position}-2xl`
                         );
                     });
                 });

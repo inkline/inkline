@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IListGroup, IListGroupItem } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IListGroup', () => {
@@ -27,7 +29,10 @@ describe('Components', () => {
         it('should render correctly', () => {
             const wrapper = render(IListGroup, {
                 global: {
-                    stubs
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
                 },
                 slots,
                 props
@@ -43,6 +48,12 @@ describe('Components', () => {
                         props: {
                             border: true,
                             ...props
+                        },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 

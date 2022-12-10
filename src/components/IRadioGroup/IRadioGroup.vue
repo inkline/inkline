@@ -186,7 +186,7 @@ export default defineComponent({
         }
 
         provide(RadioGroupKey, {
-            name: props.name,
+            name,
             value,
             disabled,
             readonly,

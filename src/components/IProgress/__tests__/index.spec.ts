@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IProgress, IProgressBar } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IProgress', () => {
@@ -23,7 +25,10 @@ describe('Components', () => {
         it('should render correctly', () => {
             const wrapper = render(IProgress, {
                 global: {
-                    stubs
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
                 },
                 props,
                 slots
@@ -37,7 +42,10 @@ describe('Components', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(IProgress, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props,
                         slots

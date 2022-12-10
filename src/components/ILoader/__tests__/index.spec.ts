@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { ILoader } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('ILoader', () => {
@@ -13,7 +15,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(ILoader, { props });
+            const wrapper = render(ILoader, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
@@ -21,7 +30,12 @@ describe('Components', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(ILoader, {
-                        props
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(

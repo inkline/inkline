@@ -1,7 +1,9 @@
 // Vitest Snapshot v1
 
 exports[`Components > ILayoutAside > should render correctly 1`] = `
-"<aside class=\\"layout-aside\\" data-v-7ef02b65=\\"\\">
-  <div class=\\"layout-aside-children\\" data-v-7ef02b65=\\"\\"></div>
+"<aside class=\\"layout-aside\\">
+  <div class=\\"layout-aside-children\\">
+    <!-- @slot default Slot for default layout aside content -->
+  </div>
 </aside>"
 `;

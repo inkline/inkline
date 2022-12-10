@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { INavbarBrand } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('INavbarBrand', () => {
@@ -11,7 +13,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(INavbarBrand, {
-                props
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();

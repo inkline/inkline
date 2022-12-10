@@ -1,7 +1,7 @@
 import type { InjectionKey, Ref } from 'vue';
 
 export interface RadioGroupInjection {
-    name: string;
+    name: Ref<string>;
     value: Ref;
     size: Ref<string>;
     color: Ref<string>;

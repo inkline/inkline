@@ -1,3 +1,7 @@
 // Vitest Snapshot v1
 
-exports[`Components > IRadio > should render correctly 1`] = `"<div class=\\"radio -light -md\\" role=\\"radio\\"><input type=\\"radio\\" tabindex=\\"-1\\" name=\\"radio\\"><label class=\\"radio-label\\" aria-checked=\\"false\\" tabindex=\\"0\\"></label></div>"`;
+exports[`Components > IRadio > should render correctly 1`] = `
+"<div class=\\"radio -light -md\\" role=\\"radio\\" aria-checked=\\"false\\"><input type=\\"radio\\" name=\\"radio\\"><label class=\\"radio-label\\" tabindex=\\"0\\">
+    <!-- @slot default Slot for default radio label -->
+  </label></div>"
+`;

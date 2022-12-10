@@ -2,6 +2,9 @@
 
 exports[`Components > IMedia > should render correctly 1`] = `
 "<div class=\\"media\\" color=\\"light\\" size=\\"md\\">
-  <div class=\\"media-body\\"></div>
+  <!-- @slot image Slot for media image -->
+  <div class=\\"media-body\\">
+    <!-- @slot default Slot for default media content -->
+  </div>
 </div>"
 `;

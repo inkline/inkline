@@ -1,5 +1,9 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { INav, INavItem } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { NavbarKey } from '@inkline/inkline/components/INavbar/mixin';
+import { SidebarKey } from '@inkline/inkline/components/ISidebar/mixin';
 
 describe('Components', () => {
     describe('INav', () => {
@@ -27,7 +31,10 @@ describe('Components', () => {
         it('should render correctly', () => {
             const wrapper = render(INav, {
                 global: {
-                    stubs
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
                 },
                 slots,
                 props
@@ -43,6 +50,11 @@ describe('Components', () => {
                         props: {
                             vertical: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -57,14 +69,15 @@ describe('Components', () => {
 
         describe('methods', () => {
             describe('onItemClick()', () => {
-                ['navbar', 'sidebar'].forEach((parent) => {
-                    it(`should call parent ${parent} onItemClick`, async () => {
+                [NavbarKey, SidebarKey].forEach((parent) => {
+                    it(`should call parent ${parent.toString()} onItemClick`, async () => {
                         const onItemClick = vi.fn();
                         const wrapper = render(INav, {
                             global: {
                                 stubs,
                                 provide: {
-                                    [parent]: {
+                                    [InklineKey as symbol]: createInkline(),
+                                    [parent as symbol]: {
                                         onItemClick
                                     }
                                 }

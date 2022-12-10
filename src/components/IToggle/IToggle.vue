@@ -81,7 +81,7 @@ export default defineComponent({
         name: {
             type: String,
             default() {
-                return uid('checkbox');
+                return uid('toggle');
             }
         },
         /**

@@ -1,6 +1,9 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ITextarea } from '@inkline/inkline/components';
-import { Placeholder } from '@inkline/inkline/__mocks__';
+import { createInkline, Placeholder } from '@inkline/inkline/__mocks__';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { FormKey } from '@inkline/inkline/components/IForm';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('ITextarea', () => {
@@ -15,7 +18,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(ITextarea, { props });
+            const wrapper = render(ITextarea, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
@@ -26,6 +36,11 @@ describe('Components', () => {
                         props: {
                             color: props.color,
                             size: props.size
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const textarea = wrapper.container.querySelector('textarea');
@@ -50,6 +65,11 @@ describe('Components', () => {
                             suffix: [Placeholder],
                             prepend: [Placeholder],
                             append: [Placeholder]
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -73,12 +93,15 @@ describe('Components', () => {
                         props: {
                             error: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        '-error'
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass('-error');
                 });
 
                 it('should not have error if boolean and false', () => {
@@ -86,35 +109,43 @@ describe('Components', () => {
                         props: {
                             error: false,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
-                    expect(wrapper.container.firstChild).not.toHaveClass(
-                        '-error'
-                    );
+                    expect(wrapper.container.firstChild).not.toHaveClass('-error');
                 });
 
                 it('should have error if schema touched, dirty and invalid', () => {
+                    const onBlur = vi.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(ITextarea, {
                         global: {
                             provide: {
-                                form: {
-                                    schema: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    schema: ref({
                                         [props.name]: {
                                             touched: true,
                                             dirty: true,
                                             invalid: true
                                         }
-                                    }
+                                    }),
+                                    onBlur,
+                                    onInput
                                 }
                             }
                         },
                         props
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        '-error'
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass('-error');
                 });
             });
 
@@ -124,6 +155,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -133,7 +169,14 @@ describe('Components', () => {
                 });
 
                 it('should be 1 otherwise', async () => {
-                    const wrapper = render(ITextarea, { props });
+                    const wrapper = render(ITextarea, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
                     const textarea = await wrapper.findByRole('textbox');
 
                     expect(textarea).toHaveAttribute('tabindex', '0');
@@ -147,6 +190,11 @@ describe('Components', () => {
                             modelValue: 'abc',
                             clearable: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const clear = await wrapper.findByLabelText('Clear');
@@ -158,15 +206,22 @@ describe('Components', () => {
             describe('value', () => {
                 it('should be schema.value if schema', async () => {
                     const value = 'value';
+                    const onBlur = vi.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(ITextarea, {
                         global: {
                             provide: {
-                                form: {
-                                    schema: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    schema: ref({
                                         [props.name]: {
                                             value
                                         }
-                                    }
+                                    }),
+                                    onBlur,
+                                    onInput
                                 }
                             }
                         },
@@ -183,6 +238,11 @@ describe('Components', () => {
                         props: {
                             modelValue: value,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const textarea = await wrapper.findByRole('textbox');
@@ -196,11 +256,16 @@ describe('Components', () => {
             describe('onBlur()', () => {
                 it('should call parent onBlur if parent.onBlur', async () => {
                     const onBlur = vi.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(ITextarea, {
                         global: {
                             provide: {
-                                form: {
-                                    onBlur
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
+                                    onInput
                                 }
                             }
                         },
@@ -212,33 +277,21 @@ describe('Components', () => {
 
                     expect(onBlur).toHaveBeenCalled();
                 });
-
-                it('should not call parent onBlur otherwise', async () => {
-                    const onBlur = vi.fn();
-                    const wrapper = render(ITextarea, {
-                        global: {
-                            provide: {
-                                form: {}
-                            }
-                        },
-                        props
-                    });
-                    const textarea = await wrapper.findByRole('textbox');
-
-                    await fireEvent.blur(textarea);
-
-                    expect(onBlur).not.toHaveBeenCalled();
-                });
             });
 
             describe('onInput()', () => {
                 it('should call parent onInput if parent.onInput', async () => {
                     const value = 'value';
+                    const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(ITextarea, {
                         global: {
                             provide: {
-                                form: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
                                     onInput
                                 }
                             }
@@ -252,23 +305,6 @@ describe('Components', () => {
                     expect(onInput).toHaveBeenCalled();
                     expect(wrapper.emitted()['update:modelValue'][0]).toEqual([value]);
                 });
-
-                it('should not call parent onInput otherwise', async () => {
-                    const onInput = vi.fn();
-                    const wrapper = render(ITextarea, {
-                        global: {
-                            provide: {
-                                form: {}
-                            }
-                        },
-                        props
-                    });
-                    const textarea = await wrapper.findByRole('textbox');
-
-                    await fireEvent.blur(textarea);
-
-                    expect(onInput).not.toHaveBeenCalled();
-                });
             });
 
             describe('onClear()', () => {
@@ -278,6 +314,11 @@ describe('Components', () => {
                             modelValue: 'abc',
                             clearable: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const clear = await wrapper.findByLabelText('Clear');

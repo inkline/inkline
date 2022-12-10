@@ -16,5 +16,4 @@ export default {
 </script>
 <template>
     <i-select v-model="selected" :options="options" placeholder="Choose something.." />
-    <div>{{ selected }}</div>
 </template>

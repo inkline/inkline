@@ -1,5 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IPagination } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IPagination', () => {
@@ -16,7 +18,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(IPagination, {
-                props
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();
@@ -26,7 +33,12 @@ describe('Components', () => {
             describe('classes', () => {
                 it('should add classes based on props', async () => {
                     const wrapper = render(IPagination, {
-                        props
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
@@ -43,6 +55,11 @@ describe('Components', () => {
                             ...props,
                             itemsTotal: 100,
                             itemsPerPage: 10
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const lastPage = await wrapper.getByText('10');
@@ -59,9 +76,16 @@ describe('Components', () => {
                             itemsTotal: 100,
                             itemsPerPage: 10,
                             modelValue: 90
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
-                    const quickPrevious = wrapper.container.querySelector('.pagination-item.-quick-previous');
+                    const quickPrevious = wrapper.container.querySelector(
+                        '.pagination-item.-quick-previous'
+                    );
 
                     expect(quickPrevious).toBeDefined();
                 });
@@ -75,9 +99,16 @@ describe('Components', () => {
                             itemsTotal: 100,
                             itemsPerPage: 10,
                             modelValue: 10
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
-                    const quickNext = wrapper.container.querySelector('.pagination-item.-quick-next');
+                    const quickNext = wrapper.container.querySelector(
+                        '.pagination-item.-quick-next'
+                    );
 
                     expect(quickNext).toBeDefined();
                 });
@@ -93,6 +124,11 @@ describe('Components', () => {
                             itemsTotal: 100,
                             itemsPerPage: 10,
                             modelValue: 1
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const button = wrapper.container.querySelector('.pagination-item.-next');
@@ -112,6 +148,11 @@ describe('Components', () => {
                             itemsTotal: 100,
                             itemsPerPage: 10,
                             modelValue: 1
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const button = wrapper.container.querySelector('.pagination-item.-quick-next');
@@ -130,6 +171,11 @@ describe('Components', () => {
                             itemsTotal: 100,
                             itemsPerPage: 10,
                             modelValue: 10
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const button = wrapper.container.querySelector('.pagination-item.-previous');
@@ -149,9 +195,16 @@ describe('Components', () => {
                             itemsTotal: 100,
                             itemsPerPage: 10,
                             modelValue: 10
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
-                    const button = wrapper.container.querySelector('.pagination-item.-quick-previous');
+                    const button = wrapper.container.querySelector(
+                        '.pagination-item.-quick-previous'
+                    );
 
                     await fireEvent.click(button as Element);
 
@@ -167,6 +220,11 @@ describe('Components', () => {
                             itemsTotal: 100,
                             itemsPerPage: 10,
                             modelValue: 2
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const button = wrapper.container.querySelector('.pagination-item.-first');
@@ -188,6 +246,11 @@ describe('Components', () => {
                             limit: {
                                 xs: 5,
                                 md: 9
+                            }
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
                             }
                         }
                     });

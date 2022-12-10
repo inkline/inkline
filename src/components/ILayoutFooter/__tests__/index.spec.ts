@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { ILayoutFooter } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('ILayoutFooter', () => {
@@ -11,7 +13,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(ILayoutFooter, {
-                props
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();

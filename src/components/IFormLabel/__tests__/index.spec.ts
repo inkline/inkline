@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IFormLabel } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IFormLabel', () => {
@@ -12,7 +14,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IFormLabel, { props });
+            const wrapper = render(IFormLabel, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
@@ -24,13 +33,15 @@ describe('Components', () => {
                         props: {
                             placement: 'left',
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        `-${props.size}`,
-                        '-left'
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass(`-${props.size}`, '-left');
                 });
             });
 
@@ -40,67 +51,15 @@ describe('Components', () => {
                     const wrapper = render(IFormLabel, {
                         props: {
                             for: value
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
                     expect(wrapper.container.firstChild).toHaveAttribute('for', value);
-                });
-            });
-        });
-
-        describe('methods', () => {
-            describe('onClick()', () => {
-                it('should focus next sibling if for not provided', async () => {
-                    const focus = vi.fn();
-                    const wrapper = {
-                        $el: {
-                            nextSibling: {
-                                querySelector: () => ({
-                                    focus
-                                })
-                            }
-                        },
-                        ...IFormLabel.methods
-                    };
-
-                    (wrapper as any).onClick();
-
-                    expect(focus).toHaveBeenCalled();
-                });
-
-                it('should not focus next sibling if not focusable', async () => {
-                    const focus = vi.fn();
-                    const wrapper = {
-                        $el: {
-                            nextSibling: {
-                                querySelector: () => null
-                            }
-                        },
-                        ...IFormLabel.methods
-                    };
-
-                    (wrapper as any).onClick();
-
-                    expect(focus).not.toHaveBeenCalled();
-                });
-
-                it('should not focus next sibling if for provided', async () => {
-                    const focus = vi.fn();
-                    const wrapper = {
-                        for: true,
-                        $el: {
-                            nextSibling: {
-                                querySelector: () => ({
-                                    focus
-                                })
-                            }
-                        },
-                        ...IFormLabel.methods
-                    };
-
-                    (wrapper as any).onClick();
-
-                    expect(focus).not.toHaveBeenCalled();
                 });
             });
         });

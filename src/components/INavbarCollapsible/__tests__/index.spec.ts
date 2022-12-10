@@ -1,5 +1,9 @@
 import { render } from '@testing-library/vue';
 import { INavbarCollapsible } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { NavbarKey } from '@inkline/inkline/components/INavbar/mixin';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('INavbarCollapsible', () => {
@@ -11,7 +15,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(INavbarCollapsible, {
-                props
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();
@@ -23,8 +32,9 @@ describe('Components', () => {
                     const wrapper = render(INavbarCollapsible, {
                         global: {
                             provide: {
-                                navbar: {
-                                    open: true
+                                [InklineKey as symbol]: createInkline(),
+                                [NavbarKey as symbol]: {
+                                    open: ref(true)
                                 }
                             }
                         },
@@ -39,8 +49,10 @@ describe('Components', () => {
                     const wrapper = render(INavbarCollapsible, {
                         global: {
                             provide: {
-                                navbar: {
-                                    collapsible: false
+                                [InklineKey as symbol]: createInkline(),
+                                [NavbarKey as symbol]: {
+                                    open: ref(true),
+                                    collapsible: ref(false)
                                 }
                             }
                         },

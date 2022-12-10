@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, ref } from 'vue';
+import { computed, defineComponent, inject, PropType, ref, toRef } from 'vue';
 import { uid } from '@grozav/utils';
 import { RadioGroupKey } from '@inkline/inkline/components/IRadioGroup';
 import { FormKey } from '@inkline/inkline/components/IForm';
@@ -159,12 +159,13 @@ export default defineComponent({
                 form?.readonly.value
         );
 
+        const name = toRef(props, 'name');
         const {
             schema,
             onInput: schemaOnInput,
             onBlur: schemaOnBlur
         } = useValidation({
-            name: props.name
+            name
         });
         const { hasError } = useFormValidationError({
             schema,
@@ -248,7 +249,6 @@ export default defineComponent({
         <input
             ref="inputRef"
             :checked="checked"
-            :tabindex="tabindex"
             type="radio"
             :name="name"
             :disabled="disabled"
@@ -258,6 +258,7 @@ export default defineComponent({
         />
         <label
             class="radio-label"
+            :tabindex="tabindex"
             @blur="labelOnBlur"
             @click="labelOnClick"
             @keydown.space.stop.prevent="labelOnClick"

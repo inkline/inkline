@@ -1,6 +1,8 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { INav, INavItem, ISidebar } from '@inkline/inkline/components';
 import { createMockInstance } from '@inkline/inkline/__mocks__/createMockInstance';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('ISidebar', () => {
@@ -31,7 +33,10 @@ describe('Components', () => {
         it('should render correctly', () => {
             const wrapper = render(ISidebar, {
                 global: {
-                    stubs
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
                 },
                 props,
                 slots
@@ -45,7 +50,10 @@ describe('Components', () => {
                 it('should add classes based on props', async () => {
                     const wrapper = render(ISidebar, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props: {
                             ...props,
@@ -67,50 +75,6 @@ describe('Components', () => {
                     );
                 });
             });
-
-            describe('sidebarWrapperTransition', () => {
-                it('should return transition if relative', () => {
-                    const wrapper = createMockInstance(ISidebar, {
-                        props: {
-                            collapsePosition: 'relative'
-                        }
-                    });
-
-                    expect(wrapper.sidebarWrapperTransition).toEqual('sidebar-wrapper-transition');
-                });
-
-                it('should return none-transition if not relative', () => {
-                    const wrapper = createMockInstance(ISidebar, {
-                        props: {
-                            collapsePosition: 'absolute'
-                        }
-                    });
-
-                    expect(wrapper.sidebarWrapperTransition).toEqual('sidebar-wrapper-none-transition');
-                });
-            });
-
-            describe('sidebarTransition', () => {
-                it('should return none-transition if relative', () => {
-                    const wrapper = createMockInstance(ISidebar, {
-                        props: {
-                            collapsePosition: 'relative'
-                        }
-                    });
-
-                    expect(wrapper.sidebarTransition).toEqual('sidebar-none-transition');
-                });
-
-                it('should return transition if not relative', () => {
-                    const wrapper = createMockInstance(ISidebar, {
-                        props: {
-                            collapsePosition: 'absolute'
-                        }
-                    });
-
-                    expect(wrapper.sidebarTransition).toEqual('sidebar-transition');
-                });
-            });
         });
 
         describe('methods', () => {
@@ -118,7 +82,10 @@ describe('Components', () => {
                 it('should close sidebar if collapseOnItemClick', async () => {
                     const wrapper = render(ISidebar, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props: {
                             ...props,
@@ -137,7 +104,10 @@ describe('Components', () => {
                 it('should not close sidebar if not collapseOnItemClick', async () => {
                     const wrapper = render(ISidebar, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props: {
                             ...props,
@@ -158,7 +128,10 @@ describe('Components', () => {
                 it('should close sidebar if collapseOnClickOutside', async () => {
                     const wrapper = render(ISidebar, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props: {
                             ...props,
@@ -177,7 +150,10 @@ describe('Components', () => {
                 it('should not close sidebar if not collapseOnClickOutside', async () => {
                     const wrapper = render(ISidebar, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props: {
                             ...props,

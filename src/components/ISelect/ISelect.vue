@@ -680,6 +680,9 @@ export default defineComponent({
 
         function onEscape() {
             hide();
+            setTimeout(() => {
+                focusInput();
+            }, props.animationDuration);
         }
 
         /**
@@ -687,7 +690,12 @@ export default defineComponent({
          */
 
         function focusInput() {
-            const input = extractRefHTMLElement(triggerRef);
+            const inputWrapper = extractRefHTMLElement(triggerRef);
+            if (!inputWrapper) {
+                return;
+            }
+
+            const input = inputWrapper.querySelector('input');
             if (!input) {
                 return;
             }
@@ -778,10 +786,8 @@ export default defineComponent({
         aria-haspopup="listbox"
         :aria-owns="`${name}-options`"
         :aria-expanded="visible ? 'true' : 'false'"
+        @keyup.esc="onEscape"
     >
-        <!-- @TODO
-            @keyup.esc="onEscape"
-        -->
         <i-input
             ref="triggerRef"
             v-model="inputValue"

@@ -1,5 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IHamburgerMenu } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IHamburgerMenu', () => {
@@ -12,7 +14,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IHamburgerMenu, { props });
+            const wrapper = render(IHamburgerMenu, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
@@ -25,6 +34,11 @@ describe('Components', () => {
                             modelValue: true,
                             animation,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -44,6 +58,11 @@ describe('Components', () => {
                         props: {
                             modelValue: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 

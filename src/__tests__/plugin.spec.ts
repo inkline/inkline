@@ -2,6 +2,8 @@ import {
     createPrototype,
     handleColorMode,
     Inkline,
+    InklineIconsKey,
+    InklineKey,
     PrototypeConfig
 } from '@inkline/inkline/plugin';
 import * as inklineIcons from '@inkline/inkline/icons';
@@ -13,33 +15,39 @@ describe('Plugin', () => {
         it('should set given colorMode if not system color mode', () => {
             handleColorMode('color');
 
-            expect(document.body).toHaveClass('-color');
+            expect(document.body).toHaveClass('color-theme');
         });
 
         it('should set given light mode if system color mode', () => {
             const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
-            matchMediaSpy.mockImplementation(() => ({
-                matches: false,
-                addEventListener: vi.fn()
-            }) as any);
+            matchMediaSpy.mockImplementation(
+                () =>
+                    ({
+                        matches: false,
+                        addEventListener: vi.fn()
+                    } as any)
+            );
 
             handleColorMode('system');
 
-            expect(document.body).toHaveClass('-light');
+            expect(document.body).toHaveClass('light-theme');
 
             vi.clearAllMocks();
         });
 
         it('should set given dark mode if system color mode', () => {
             const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
-            matchMediaSpy.mockImplementation(() => ({
-                matches: true,
-                addEventListener: vi.fn()
-            }) as any);
+            matchMediaSpy.mockImplementation(
+                () =>
+                    ({
+                        matches: true,
+                        addEventListener: vi.fn()
+                    } as any)
+            );
 
             handleColorMode('system');
 
-            expect(document.body).toHaveClass('-dark');
+            expect(document.body).toHaveClass('dark-theme');
 
             vi.clearAllMocks();
         });
@@ -87,7 +95,10 @@ describe('Plugin', () => {
                     }
                 });
 
-                expect(app.provide).toHaveBeenCalledWith('inklineIcons', { Icon: true, ...inklineIcons });
+                expect(app.provide).toHaveBeenCalledWith(InklineIconsKey, {
+                    Icon: true,
+                    ...inklineIcons
+                });
             });
 
             it('should register options.components', () => {
@@ -102,7 +113,7 @@ describe('Plugin', () => {
                 expect(app.component).toHaveBeenCalledWith(IButton.name, IButton);
             });
 
-            it('should add \'inkline\' class to body', () => {
+            it("should add 'inkline' class to body", () => {
                 const app = createApp();
 
                 (Inkline as any).install(app);
@@ -115,7 +126,7 @@ describe('Plugin', () => {
 
                 (Inkline as any).install(app, { colorMode: 'dark' });
 
-                expect(document.body).toHaveClass('-dark');
+                expect(document.body).toHaveClass('dark-theme');
             });
 
             it('should add color mode matchMedia event listener', async () => {
@@ -128,15 +139,18 @@ describe('Plugin', () => {
 
                 await new Promise((resolve) => setTimeout(resolve, 1));
 
-                expect(document.body).toHaveClass('-other');
+                expect(document.body).toHaveClass('other-theme');
             });
 
             it('should add color mode matchMedia event listener using addEventListener', () => {
                 const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
                 const addEventListener = vi.fn();
-                matchMediaSpy.mockImplementation(() => ({
-                    addEventListener
-                }) as any);
+                matchMediaSpy.mockImplementation(
+                    () =>
+                        ({
+                            addEventListener
+                        } as any)
+                );
 
                 const app = createApp();
                 (Inkline as any).install(app);
@@ -150,9 +164,12 @@ describe('Plugin', () => {
             it('should add color mode matchMedia event listener using addListener', () => {
                 const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
                 const addListener = vi.fn();
-                matchMediaSpy.mockImplementation(() => ({
-                    addListener
-                }) as any);
+                matchMediaSpy.mockImplementation(
+                    () =>
+                        ({
+                            addListener
+                        } as any)
+                );
 
                 const app = createApp();
                 (Inkline as any).install(app);
@@ -167,10 +184,13 @@ describe('Plugin', () => {
                 it('should call handleColorMode() =', () => {
                     const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
                     const addEventListener = vi.fn();
-                    matchMediaSpy.mockImplementation(() => ({
-                        matches: true,
-                        addEventListener
-                    }) as any);
+                    matchMediaSpy.mockImplementation(
+                        () =>
+                            ({
+                                matches: true,
+                                addEventListener
+                            } as any)
+                    );
 
                     const app = createApp();
                     (Inkline as any).install(app, { colorMode: 'system' });
@@ -180,7 +200,7 @@ describe('Plugin', () => {
                     const onDarkModeMediaQueryChange = addEventListener.mock.calls[0][1];
                     onDarkModeMediaQueryChange({ matches: true });
 
-                    expect(document.body).toHaveClass('-dark');
+                    expect(document.body).toHaveClass('dark-theme');
 
                     vi.clearAllMocks();
                 });
@@ -188,10 +208,13 @@ describe('Plugin', () => {
                 it('should not call handleColorMode() if not system color mode', () => {
                     const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
                     const addEventListener = vi.fn();
-                    matchMediaSpy.mockImplementation(() => ({
-                        matches: false,
-                        addEventListener
-                    }) as any);
+                    matchMediaSpy.mockImplementation(
+                        () =>
+                            ({
+                                matches: false,
+                                addEventListener
+                            } as any)
+                    );
 
                     const app = createApp();
                     (Inkline as any).install(app, { colorMode: 'light' });
@@ -201,7 +224,7 @@ describe('Plugin', () => {
                     const onDarkModeMediaQueryChange = addEventListener.mock.calls[0][1];
                     onDarkModeMediaQueryChange({ matches: true });
 
-                    expect(document.body).toHaveClass('-light');
+                    expect(document.body).toHaveClass('light-theme');
 
                     vi.clearAllMocks();
                 });
@@ -218,7 +241,7 @@ describe('Plugin', () => {
                         setLocale: expect.any(Function),
                         options: expect.objectContaining({ color: '', size: '' })
                     });
-                    expect(app.provide).toHaveBeenCalledWith('inkline', prototype);
+                    expect(app.provide).toHaveBeenCalledWith(InklineKey, prototype);
                     expect((app.config.globalProperties as any).$inkline).toEqual(prototype);
                 });
 

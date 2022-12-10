@@ -1,7 +1,8 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ITooltip } from '@inkline/inkline/components';
 import { keymap } from '@inkline/inkline/constants';
-import { Placeholder, PlaceholderButton } from '@inkline/inkline/__mocks__';
+import { createInkline, Placeholder, PlaceholderButton } from '@inkline/inkline/__mocks__';
+import { InklineKey } from '@inkline/inkline/plugin';
 
 describe('Components', () => {
     describe('ITooltip', () => {
@@ -23,7 +24,12 @@ describe('Components', () => {
         it('should render correctly', () => {
             const wrapper = render(ITooltip, {
                 props,
-                slots
+                slots,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();
@@ -37,10 +43,18 @@ describe('Components', () => {
                             color: props.color,
                             size: props.size
                         },
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
-                    expect(wrapper.container.firstChild).toHaveAttribute('id', expect.stringContaining('tooltip'));
+                    expect(wrapper.container.firstChild).toHaveAttribute(
+                        'id',
+                        expect.stringContaining('tooltip')
+                    );
                 });
             });
         });
@@ -50,7 +64,12 @@ describe('Components', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(ITooltip, {
                         props,
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
@@ -66,7 +85,12 @@ describe('Components', () => {
                 it('should show tooltip popup', async () => {
                     const wrapper = render(ITooltip, {
                         props,
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
                     const trigger = wrapper.container.querySelector('.tooltip-trigger');
 
@@ -82,7 +106,12 @@ describe('Components', () => {
                             disabled: true,
                             ...props
                         },
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
                     const trigger = wrapper.container.querySelector('.tooltip-trigger');
                     const popup = wrapper.container.querySelector('.tooltip');
@@ -97,7 +126,12 @@ describe('Components', () => {
                 it('should hide tooltip popup', async () => {
                     const wrapper = render(ITooltip, {
                         props,
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
                     const trigger = wrapper.container.querySelector('.tooltip-trigger');
 
@@ -110,7 +144,12 @@ describe('Components', () => {
                 it('should not hide tooltip popup if disabled', async () => {
                     const wrapper = render(ITooltip, {
                         props,
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
                     let trigger = wrapper.container.querySelector('.tooltip-trigger');
                     await fireEvent.mouseEnter(trigger as Element);
@@ -129,31 +168,21 @@ describe('Components', () => {
                 it('should hide tooltip popup', async () => {
                     const wrapper = render(ITooltip, {
                         props,
-                        slots
+                        slots,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
                     const trigger = wrapper.container.querySelector('.tooltip-trigger');
 
                     await fireEvent.mouseEnter(trigger as Element);
                     const popup = await wrapper.getByRole('tooltip');
-                    await fireEvent.keyUp(wrapper.container.firstChild as Element, { key: keymap.esc[0] });
+                    await fireEvent.keyUp(wrapper.container.firstChild as Element, {
+                        key: keymap.esc[0]
+                    });
                     expect(popup).not.toBeVisible();
-                });
-            });
-
-            describe('handleClickOutside()', () => {
-                it('should hide tooltip popup', async () => {
-                    const wrapper = {
-                        visible: true,
-                        $emit: vi.fn(),
-                        onClickOutside: vi.fn(),
-                        handleClickOutside: ITooltip.methods!.handleClickOutside
-                    };
-
-                    wrapper.handleClickOutside();
-
-                    expect(wrapper.visible).toEqual(false);
-                    expect(wrapper.onClickOutside).toHaveBeenCalled();
-                    expect(wrapper.$emit).toHaveBeenCalledWith('update:modelValue', false);
                 });
             });
         });

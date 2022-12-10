@@ -119,7 +119,7 @@ describe('Components', () => {
 
         describe('methods', () => {
             describe('onBlur()', () => {
-                it.only('should set touched and untouched', async () => {
+                it('should set touched and untouched', async () => {
                     const wrapper = render(IForm, {
                         global: {
                             stubs,

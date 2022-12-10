@@ -99,6 +99,7 @@ export const inklineGlobals: InklineGlobals = {
 };
 
 export const InklineKey = Symbol('inkline') as InjectionKey<InklineGlobalOptions>;
+export const InklineIconsKey = Symbol('inklineIcons') as InjectionKey<Record<string, SvgNode>>;
 
 /**
  * Inkline Vue.js plugin
@@ -148,7 +149,7 @@ export const Inkline: Plugin = {
             ...extendedOptions.icons
         };
 
-        app.provide('inklineIcons', icons);
+        app.provide(InklineIconsKey, icons);
 
         if (typeof window !== 'undefined') {
             /**

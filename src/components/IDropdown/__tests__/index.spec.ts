@@ -50,7 +50,7 @@ describe('Components', () => {
 
         describe('computed', () => {
             describe('classes', () => {
-                it.only('should add classes based on props', async () => {
+                it('should add classes based on props', async () => {
                     const wrapper = render(IDropdown, {
                         global: {
                             stubs,
@@ -117,7 +117,7 @@ describe('Components', () => {
             });
 
             describe('onTriggerKeyDown()', () => {
-                it('should not do anything if keydownTrigger is empty', async () => {
+                it('should not do anything if triggerKeyBindings is empty', async () => {
                     const wrapper = render(IDropdown, {
                         global: {
                             stubs,
@@ -126,7 +126,7 @@ describe('Components', () => {
                             }
                         },
                         props: {
-                            keydownTrigger: [],
+                            triggerKeyBindings: [],
                             ...props
                         },
                         slots
@@ -222,7 +222,7 @@ describe('Components', () => {
             });
 
             describe('onItemKeyDown()', () => {
-                it('should not do anything if keydownItem is empty', async () => {
+                it('should not do anything if itemKeyBindings is empty', async () => {
                     const wrapper = render(IDropdown, {
                         global: {
                             stubs,
@@ -232,7 +232,7 @@ describe('Components', () => {
                         },
                         props: {
                             visible: true,
-                            keydownItem: [],
+                            itemKeyBindings: [],
                             ...props
                         },
                         slots

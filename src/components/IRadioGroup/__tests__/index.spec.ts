@@ -1,5 +1,9 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IRadio, IRadioGroup } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { FormKey } from '@inkline/inkline/components/IForm';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('IRadioGroup', () => {
@@ -27,7 +31,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(IRadioGroup, {
-                global: { stubs },
+                global: {
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                },
                 props,
                 slots
             });
@@ -38,7 +47,12 @@ describe('Components', () => {
             describe('name', () => {
                 it('should have randomly generated name uid', async () => {
                     const wrapper = render(IRadioGroup, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
                             color: props.color,
                             size: props.size
@@ -46,7 +60,10 @@ describe('Components', () => {
                         slots
                     });
 
-                    expect(wrapper.container.firstChild).toHaveAttribute('name', expect.stringContaining('radio-group'));
+                    expect(wrapper.container.firstChild).toHaveAttribute(
+                        'name',
+                        expect.stringContaining('radio-group')
+                    );
                 });
             });
         });
@@ -55,7 +72,12 @@ describe('Components', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(IRadioGroup, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
                             disabled: true,
                             readonly: true,
@@ -77,17 +99,24 @@ describe('Components', () => {
 
             describe('checked', () => {
                 it('should be equal to schema.value if schema', async () => {
+                    const onBlur = vi.fn();
+                    const onInput = vi.fn();
                     const value = '1';
                     const wrapper = render(IRadioGroup, {
                         global: {
                             stubs,
                             provide: {
-                                form: {
-                                    schema: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    schema: ref({
                                         [props.name]: {
                                             value
                                         }
-                                    }
+                                    }),
+                                    onBlur,
+                                    onInput
                                 }
                             }
                         },
@@ -106,7 +135,10 @@ describe('Components', () => {
                     const modelValue = '2';
                     const wrapper = render(IRadioGroup, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props: {
                             modelValue,
@@ -125,7 +157,12 @@ describe('Components', () => {
             describe('onChange', () => {
                 it('should update modelValue when checking radio', async () => {
                     const wrapper = render(IRadioGroup, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
                             modelValue: [],
                             ...props
@@ -141,7 +178,12 @@ describe('Components', () => {
 
                 it('should update modelValue when checking another radio', async () => {
                     const wrapper = render(IRadioGroup, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
                             modelValue: '1',
                             ...props
@@ -156,12 +198,17 @@ describe('Components', () => {
                 });
 
                 it('should call parent form onInput when checking radio', async () => {
+                    const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(IRadioGroup, {
                         global: {
                             stubs,
                             provide: {
-                                form: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
                                     onInput
                                 }
                             }

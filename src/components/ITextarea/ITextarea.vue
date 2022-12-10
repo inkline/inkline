@@ -96,7 +96,7 @@ export default defineComponent({
         name: {
             type: String,
             default() {
-                return uid('input');
+                return uid('textarea');
             }
         },
         /**

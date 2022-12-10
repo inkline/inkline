@@ -2,6 +2,7 @@
 import { computed, defineComponent, PropType } from 'vue';
 import { breakpointClass, toDashCase } from '@grozav/utils';
 import { Classes } from '@inkline/inkline/types';
+import { breakpointClassName } from '@inkline/inkline/utils';
 
 const componentName = 'IColumn';
 
@@ -338,18 +339,14 @@ export default defineComponent({
     },
     setup(props) {
         const classes = computed(() =>
-            Object.keys(props).reduce((acc: Classes, property) => {
+            Object.keys(props).reduce<Record<string, boolean>>((acc, property) => {
                 const value = (props as Record<string, string | number | boolean>)[property] as
                     | string
                     | number
                     | boolean;
 
                 if (value) {
-                    const className = `-${property
-                        .replace('xxl', '2xl')
-                        .replace(/([A-Z])/g, '-$1')
-                        .replace(/([a-z])([0-9])/g, '$1-$2')
-                        .toLowerCase()}${typeof value !== 'boolean' && value ? `-${value}` : ''}`;
+                    const className = breakpointClassName(property, value);
 
                     acc[className] = true;
                 }

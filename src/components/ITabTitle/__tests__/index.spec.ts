@@ -1,5 +1,9 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ITabTitle } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { ref } from 'vue';
+import { TabsKey } from '@inkline/inkline/components/ITabs/mixin';
 
 describe('Components', () => {
     describe('ITabTitle', () => {
@@ -12,7 +16,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(ITabTitle, { props });
+            const wrapper = render(ITabTitle, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
@@ -20,47 +31,54 @@ describe('Components', () => {
         describe('props', () => {
             describe('for', () => {
                 it('should have randomly generated name uid', () => {
-                    const wrapper = render(ITabTitle);
+                    const wrapper = render(ITabTitle, {
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
 
-                    expect(wrapper.container.firstChild).toHaveAttribute('for', expect.stringContaining('tab'));
+                    expect(wrapper.container.firstChild).toHaveAttribute(
+                        'for',
+                        expect.stringContaining('tab')
+                    );
                 });
             });
         });
 
         describe('computed', () => {
             describe('classes', () => {
-                it('should have \'-active\' class if active', () => {
+                it("should have '-active' class if active", () => {
                     const wrapper = render(ITabTitle, {
                         global: {
                             provide: {
-                                tabs: {
-                                    active: 'tab'
+                                [InklineKey as symbol]: createInkline(),
+                                [TabsKey as symbol]: {
+                                    active: ref('tab')
                                 }
                             }
                         },
                         props
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        '-active'
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass('-active');
                 });
 
-                it('should not have \'-active\' class if not active', () => {
+                it("should not have '-active' class if not active", () => {
                     const wrapper = render(ITabTitle, {
                         global: {
                             provide: {
-                                tabs: {
-                                    active: 'other'
+                                [InklineKey as symbol]: createInkline(),
+                                [TabsKey as symbol]: {
+                                    active: ref('other')
                                 }
                             }
                         },
                         props
                     });
 
-                    expect(wrapper.container.firstChild).not.toHaveClass(
-                        '-active'
-                    );
+                    expect(wrapper.container.firstChild).not.toHaveClass('-active');
                 });
             });
         });
@@ -72,7 +90,9 @@ describe('Components', () => {
                     const wrapper = render(ITabTitle, {
                         global: {
                             provide: {
-                                tabs: {
+                                [InklineKey as symbol]: createInkline(),
+                                [TabsKey as symbol]: {
+                                    active: ref(null),
                                     setActive
                                 }
                             }

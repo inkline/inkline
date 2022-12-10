@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IListGroupItem } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IListGroupItem', () => {
@@ -11,7 +13,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(IListGroupItem, {
-                props
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();
@@ -25,13 +32,15 @@ describe('Components', () => {
                             active: true,
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        '-active',
-                        '-disabled'
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass('-active', '-disabled');
                 });
             });
 
@@ -41,6 +50,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -48,7 +62,14 @@ describe('Components', () => {
                 });
 
                 it('should be 1 otherwise', () => {
-                    const wrapper = render(IListGroupItem, { props });
+                    const wrapper = render(IListGroupItem, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
 
                     expect(wrapper.container.firstChild).toHaveAttribute('tabindex', '0');
                 });

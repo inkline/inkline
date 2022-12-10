@@ -4,6 +4,7 @@ import { toCamelCase } from '@grozav/utils';
 import { renderSvg } from '@inkline/inkline/utils';
 import { SvgNode } from '@inkline/inkline/types';
 import { useComponentSize } from '@inkline/inkline/composables';
+import { InklineIconsKey } from '@inkline/inkline/plugin';
 
 /**
  * The icon to be displayed
@@ -39,7 +40,7 @@ export default defineComponent({
         }
     },
     setup(props) {
-        const icons = inject('inklineIcons') as Record<string, SvgNode>;
+        const icons = inject(InklineIconsKey, {});
         const iconName = computed(() => toCamelCase(props.name));
         const icon = computed(() => icons[iconName.value]);
 
