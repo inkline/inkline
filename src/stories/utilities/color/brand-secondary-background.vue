@@ -1,39 +1,37 @@
 <template>
-    <div class="_background:secondary-05">Secondary 5%</div>
+    <div class="_background:secondary-shade-150!">Secondary Shade 15%</div>
 
-    <div class="_background:secondary-10">Secondary 10%</div>
+    <div class="_background:secondary-shade-100!">Secondary Shade 10%</div>
 
-    <div class="_background:secondary-15">Secondary 15%</div>
+    <div class="_background:secondary-shade-50!">Secondary Shade 5%</div>
 
-    <div class="_background:secondary-20">Secondary 20%</div>
+    <div class="_background:secondary!">Secondary</div>
 
-    <div class="_background:secondary-25">Secondary 25%</div>
+    <div class="_background:secondary-tint-50!">Secondary Tint 5%</div>
 
-    <div class="_background:secondary-30">Secondary 30%</div>
+    <div class="_background:secondary-tint-100!">Secondary Tint 10%</div>
 
-    <div class="_background:secondary-35">Secondary 35%</div>
+    <div class="_background:secondary-tint-150!">Secondary Tint 15%</div>
 
-    <div class="_background:secondary-40">Secondary 40%</div>
+    <hr />
 
-    <div class="_background:secondary-45">Secondary 45%</div>
+    <div class="_background:secondary-50!">Secondary 5%</div>
 
-    <div class="_background:secondary-50">Secondary 50%</div>
+    <div class="_background:secondary-100!">Secondary 10%</div>
 
-    <div class="_background:secondary-55">Secondary 55%</div>
+    <div class="_background:secondary-200!">Secondary 20%</div>
 
-    <div class="_background:secondary-60">Secondary 60%</div>
+    <div class="_background:secondary-300!">Secondary 30%</div>
 
-    <div class="_background:secondary-65">Secondary 65%</div>
+    <div class="_background:secondary-400!">Secondary 40%</div>
 
-    <div class="_background:secondary-70">Secondary 70%</div>
+    <div class="_background:secondary-500!">Secondary 50%</div>
 
-    <div class="_background:secondary-75">Secondary 75%</div>
+    <div class="_background:secondary-600!">Secondary 60%</div>
 
-    <div class="_background:secondary-80">Secondary 80%</div>
+    <div class="_background:secondary-700!">Secondary 70%</div>
 
-    <div class="_background:secondary-85">Secondary 85%</div>
+    <div class="_background:secondary-800!">Secondary 80%</div>
 
-    <div class="_background:secondary-90">Secondary 90%</div>
-
-    <div class="_background:secondary-95">Secondary 95%</div>
+    <div class="_background:secondary-900!">Secondary 90%</div>
 </template>

@@ -1,47 +1,47 @@
 <template>
-    <div class="_background:white">White</div>
+    <div class="_background:white!">White</div>
 
-    <div class="_background:gray">Gray</div>
+    <div class="_background:gray!">Gray</div>
 
-    <div class="_background:black">Black</div>
+    <div class="_background:black!">Black</div>
 
-    <div class="_background:transparent">Transparent</div>
+    <div class="_background:transparent!">Transparent</div>
 
-    <div class="_background:gray-05">Gray 5%</div>
+    <hr />
 
-    <div class="_background:gray-10">Gray 10%</div>
+    <div class="_background:gray-shade-150!">Gray Shade 15%</div>
 
-    <div class="_background:gray-15">Gray 15%</div>
+    <div class="_background:gray-shade-100!">Gray Shade 10%</div>
 
-    <div class="_background:gray-20">Gray 20%</div>
+    <div class="_background:gray-shade-50!">Gray Shade 5%</div>
 
-    <div class="_background:gray-25">Gray 25%</div>
+    <div class="_background:gray!">Gray</div>
 
-    <div class="_background:gray-30">Gray 30%</div>
+    <div class="_background:gray-tint-50!">Gray Tint 5%</div>
 
-    <div class="_background:gray-35">Gray 35%</div>
+    <div class="_background:gray-tint-100!">Gray Tint 10%</div>
 
-    <div class="_background:gray-40">Gray 40%</div>
+    <div class="_background:gray-tint-150!">Gray Tint 15%</div>
 
-    <div class="_background:gray-45">Gray 45%</div>
+    <hr />
 
-    <div class="_background:gray-50">Gray 50%</div>
+    <div class="_background:gray-50!">Gray 5%</div>
 
-    <div class="_background:gray-55">Gray 55%</div>
+    <div class="_background:gray-100!">Gray 10%</div>
 
-    <div class="_background:gray-60">Gray 60%</div>
+    <div class="_background:gray-200!">Gray 20%</div>
 
-    <div class="_background:gray-65">Gray 65%</div>
+    <div class="_background:gray-300!">Gray 30%</div>
 
-    <div class="_background:gray-70">Gray 70%</div>
+    <div class="_background:gray-400!">Gray 40%</div>
 
-    <div class="_background:gray-75">Gray 75%</div>
+    <div class="_background:gray-500!">Gray 50%</div>
 
-    <div class="_background:gray-80">Gray 80%</div>
+    <div class="_background:gray-600!">Gray 60%</div>
 
-    <div class="_background:gray-85">Gray 85%</div>
+    <div class="_background:gray-700!">Gray 70%</div>
 
-    <div class="_background:gray-90">Gray 90%</div>
+    <div class="_background:gray-800!">Gray 80%</div>
 
-    <div class="_background:gray-95">Gray 95%</div>
+    <div class="_background:gray-900!">Gray 90%</div>
 </template>

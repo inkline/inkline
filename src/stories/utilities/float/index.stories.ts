@@ -1,11 +1,9 @@
-import {
-    FloatBasicExample,
-    FloatResponsiveExample
-} from './index';
+import { FloatBasicExample, FloatResponsiveExample } from './index';
+import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     title: 'Utilities/Float'
 };
 
-export const Basic = () => FloatBasicExample;
-export const Responsive = () => FloatResponsiveExample;
+export const Basic = createStory(FloatBasicExample);
+export const Responsive = createStory(FloatResponsiveExample);

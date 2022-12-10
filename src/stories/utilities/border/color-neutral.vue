@@ -1,23 +1,7 @@
 <template>
-    <div class="_border-color:white"></div>
+    <div class="_border-color:white!"></div>
 
-    <div class="_border-color:gray-10"></div>
+    <div class="_border-color:gray"></div>
 
-    <div class="_border-color:gray-20"></div>
-
-    <div class="_border-color:gray-30"></div>
-
-    <div class="_border-color:gray-40"></div>
-
-    <div class="_border-color:gray-50"></div>
-
-    <div class="_border-color:gray-60"></div>
-
-    <div class="_border-color:gray-70"></div>
-
-    <div class="_border-color:gray-80"></div>
-
-    <div class="_border-color:gray-90"></div>
-
-    <div class="_border-color:black"></div>
+    <div class="_border-color:black!"></div>
 </template>

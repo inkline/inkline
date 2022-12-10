@@ -23,6 +23,7 @@
 @import '../src/components/ITable/css/preview';
 @import '../src/components/ITabs/css/preview';
 @import '../src/components/ITooltip/css/preview';
+@import '../src/css/preview';
 
 #root {
     min-height: calc(100vh - 2rem);
@@ -30,6 +31,16 @@
 
 .storybook-example {
     @extend %layout-local-preview;
+
+    @extend %border-utilities-preview;
+    @extend %color-utilities-preview;
+    @extend %flex-utilities-preview;
+    @extend %spacing-utilities-preview;
+    @extend %sizing-utilities-preview;
+
+    > hr {
+        margin-bottom: var(--margin-bottom-2);
+    }
 }
 
 #root,

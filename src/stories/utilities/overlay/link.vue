@@ -5,6 +5,6 @@
             content.
         </p>
 
-        <a class="_overlay-link" href="https://inkline.io">Example Link</a>
+        <a class="_overlay-link!" href="https://inkline.io">Example Link</a>
     </i-card>
 </template>

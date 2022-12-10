@@ -1,12 +1,14 @@
 import { Component, h } from 'vue';
 
-export const createStory = (component: Component) => (args: any) => ({
-    setup: () => () =>
-        h(
-            'div',
-            {
-                class: `storybook-example ${args.class || ''}`
-            },
-            [h(component, args)]
-        )
-});
+export const createStory =
+    (component: Component, storyArgs: { classes?: string } = {}) =>
+    (args: any) => ({
+        setup: () => () =>
+            h(
+                'div',
+                {
+                    class: `storybook-example ${storyArgs.classes || ''}`
+                },
+                [h(component, args)]
+            )
+    });

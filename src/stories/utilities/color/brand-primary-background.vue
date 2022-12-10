@@ -1,39 +1,37 @@
 <template>
-    <div class="_background:primary-05">Primary 5%</div>
+    <div class="_background:primary-shade-150!">Primary Shade 15%</div>
 
-    <div class="_background:primary-10">Primary 10%</div>
+    <div class="_background:primary-shade-100!">Primary Shade 10%</div>
 
-    <div class="_background:primary-15">Primary 15%</div>
+    <div class="_background:primary-shade-50!">Primary Shade 5%</div>
 
-    <div class="_background:primary-20">Primary 20%</div>
+    <div class="_background:primary!">Primary</div>
 
-    <div class="_background:primary-25">Primary 25%</div>
+    <div class="_background:primary-tint-50!">Primary Tint 5%</div>
 
-    <div class="_background:primary-30">Primary 30%</div>
+    <div class="_background:primary-tint-100!">Primary Tint 10%</div>
 
-    <div class="_background:primary-35">Primary 35%</div>
+    <div class="_background:primary-tint-150!">Primary Tint 15%</div>
 
-    <div class="_background:primary-40">Primary 40%</div>
+    <hr />
 
-    <div class="_background:primary-45">Primary 45%</div>
+    <div class="_background:primary-50!">Primary 5%</div>
 
-    <div class="_background:primary-50">Primary 50%</div>
+    <div class="_background:primary-100!">Primary 10%</div>
 
-    <div class="_background:primary-55">Primary 55%</div>
+    <div class="_background:primary-200!">Primary 20%</div>
 
-    <div class="_background:primary-60">Primary 60%</div>
+    <div class="_background:primary-300!">Primary 30%</div>
 
-    <div class="_background:primary-65">Primary 65%</div>
+    <div class="_background:primary-400!">Primary 40%</div>
 
-    <div class="_background:primary-70">Primary 70%</div>
+    <div class="_background:primary-500!">Primary 50%</div>
 
-    <div class="_background:primary-75">Primary 75%</div>
+    <div class="_background:primary-600!">Primary 60%</div>
 
-    <div class="_background:primary-80">Primary 80%</div>
+    <div class="_background:primary-700!">Primary 70%</div>
 
-    <div class="_background:primary-85">Primary 85%</div>
+    <div class="_background:primary-800!">Primary 80%</div>
 
-    <div class="_background:primary-90">Primary 90%</div>
-
-    <div class="_background:primary-95">Primary 95%</div>
+    <div class="_background:primary-900!">Primary 90%</div>
 </template>

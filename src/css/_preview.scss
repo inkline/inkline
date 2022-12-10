@@ -1,0 +1,175 @@
+///
+// Border Utilities
+///
+%border-utilities-preview {
+    > div[class^='_border'] {
+        height: 100px;
+        width: 100px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: transparent;
+        display: inline-flex;
+        margin-right: var(--margin-right);
+        margin-bottom: var(--margin-bottom);
+    }
+
+    > div[class='_border'],
+    > div[class^='_border-'] {
+        border-color: var(--color-gray-400);
+    }
+
+    > div[class='_border-top'] {
+        border-color: var(--color-gray-100);
+        border-top-color: var(--color-gray-500);
+
+        .dark-theme & {
+            border-color: var(--color-gray-800);
+            border-top-color: var(--color-gray-500);
+        }
+    }
+
+    > div[class='_border-right'] {
+        border-color: var(--color-gray-100);
+        border-right-color: var(--color-gray-500);
+
+        .dark-theme & {
+            border-color: var(--color-gray-800);
+            border-right-color: var(--color-gray-500);
+        }
+    }
+
+    > div[class='_border-bottom'] {
+        border-color: var(--color-gray-100);
+        border-bottom-color: var(--color-gray-500);
+
+        .dark-theme & {
+            border-color: var(--color-gray-800);
+            border-bottom-color: var(--color-gray-500);
+        }
+    }
+
+    > div[class='_border-left'] {
+        border-color: var(--color-gray-100);
+        border-left-color: var(--color-gray-500);
+
+        .dark-theme & {
+            border-color: var(--color-gray-800);
+            border-left-color: var(--color-gray-500);
+        }
+    }
+}
+
+///
+// Color Utilities
+///
+%color-utilities-preview {
+    > div[class^='_background'],
+    > div[class^='_color'] {
+        height: 80px;
+        width: 228px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--border-radius);
+        margin-right: var(--margin-right);
+        margin-bottom: var(--margin-bottom);
+    }
+}
+
+///
+// Flex Utilities
+///
+%flex-utilities-preview {
+    > div[class*='_display:flex'] {
+        margin-bottom: var(--margin-bottom);
+    }
+
+    > div[class*='_display:flex'],
+    > div[class*='_display:flex'] div {
+        padding: var(--padding-1-2);
+        background: var(--color-gray-100);
+        border: 1px solid var(--color-gray-300);
+
+        .dark-theme & {
+            background: var(--color-gray-800);
+            border-color: var(--color-gray-900);
+        }
+    }
+
+    > div[class*='_align-content'],
+    > div[class*='_flex-direction-column'],
+    > div[class*='_align-items'] {
+        min-height: 180px;
+    }
+
+    > div[class*='_display:flex'] {
+        > div[class^='_align-self'] {
+            + div {
+                height: 180px;
+            }
+        }
+    }
+}
+
+///
+// Spacing Utilities
+///
+%spacing-utilities-preview {
+    > div[class*='_margin'] {
+        padding: var(--padding-1-2);
+        background: var(--color-gray-100);
+        border: 1px solid var(--color-gray-300);
+        min-height: 25px;
+        display: flex;
+    }
+}
+
+///
+// Sizing Utilities
+///
+%sizing-utilities-preview {
+    > div[class*='_max-height'],
+    > div[class*='_max-width'],
+    > div[class*='_height'],
+    > div[class*='_width'] {
+        padding: var(--padding-1-2);
+        background: var(--color-gray-100);
+        border: 1px solid var(--color-gray-300);
+    }
+
+    > div[class*='_max-width'],
+    > div[class*='_width'] {
+        display: flex;
+    }
+
+    > div[class*='_max-height'],
+    > div[class*='_height'] {
+        display: inline-flex;
+    }
+
+    > div[class*='_height:25%'] {
+        height: 50px !important;
+    }
+
+    > div[class*='_height:50%'] {
+        height: 100px !important;
+    }
+
+    > div[class*='_height:75%'] {
+        height: 150px !important;
+    }
+
+    > div[class*='_max-height:100%'],
+    > div[class*='_height:100%'] {
+        height: 200px !important;
+    }
+
+    > div[class*='_width:100%'] {
+        width: auto !important;
+    }
+
+    > div[class*='_max-width:100%'] {
+        flex: 1 1 100%;
+        flex-direction: row;
+    }
+}

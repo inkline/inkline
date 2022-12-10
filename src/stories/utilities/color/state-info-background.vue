@@ -1,39 +1,37 @@
 <template>
-    <div class="_background:info-05">Info 5%</div>
+    <div class="_background:info-shade-150!">Info Shade 15%</div>
 
-    <div class="_background:info-10">Info 10%</div>
+    <div class="_background:info-shade-100!">Info Shade 10%</div>
 
-    <div class="_background:info-15">Info 15%</div>
+    <div class="_background:info-shade-50!">Info Shade 5%</div>
 
-    <div class="_background:info-20">Info 20%</div>
+    <div class="_background:info!">Info</div>
 
-    <div class="_background:info-25">Info 25%</div>
+    <div class="_background:info-tint-50!">Info Tint 5%</div>
 
-    <div class="_background:info-30">Info 30%</div>
+    <div class="_background:info-tint-100!">Info Tint 10%</div>
 
-    <div class="_background:info-35">Info 35%</div>
+    <div class="_background:info-tint-150!">Info Tint 15%</div>
 
-    <div class="_background:info-40">Info 40%</div>
+    <hr />
 
-    <div class="_background:info-45">Info 45%</div>
+    <div class="_background:info-50!">Info 5%</div>
 
-    <div class="_background:info-50">Info 50%</div>
+    <div class="_background:info-100!">Info 10%</div>
 
-    <div class="_background:info-55">Info 55%</div>
+    <div class="_background:info-200!">Info 20%</div>
 
-    <div class="_background:info-60">Info 60%</div>
+    <div class="_background:info-300!">Info 30%</div>
 
-    <div class="_background:info-65">Info 65%</div>
+    <div class="_background:info-400!">Info 40%</div>
 
-    <div class="_background:info-70">Info 70%</div>
+    <div class="_background:info-500!">Info 50%</div>
 
-    <div class="_background:info-75">Info 75%</div>
+    <div class="_background:info-600!">Info 60%</div>
 
-    <div class="_background:info-80">Info 80%</div>
+    <div class="_background:info-700!">Info 70%</div>
 
-    <div class="_background:info-85">Info 85%</div>
+    <div class="_background:info-800!">Info 80%</div>
 
-    <div class="_background:info-90">Info 90%</div>
-
-    <div class="_background:info-95">Info 95%</div>
+    <div class="_background:info-900!">Info 90%</div>
 </template>

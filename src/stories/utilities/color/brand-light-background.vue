@@ -1,23 +1,9 @@
 <template>
-    <div class="_background:light-25">Light 25%</div>
-
-    <div class="_background:light-30">Light 30%</div>
-
-    <div class="_background:light-35">Light 35%</div>
-
-    <div class="_background:light-40">Light 40%</div>
-
-    <div class="_background:light-45">Light 45%</div>
-
-    <div class="_background:light-50">Light 50%</div>
-
-    <div class="_background:light-55">Light 55%</div>
-
-    <div class="_background:light-60">Light 60%</div>
-
-    <div class="_background:light-65">Light 65%</div>
-
-    <div class="_background:light-70">Light 70%</div>
-
-    <div class="_background:light-75">Light 75%</div>
+    <div class="_background:light-shade-150!">Light Shade 15%</div>
+    <div class="_background:light-shade-100!">Light Shade 10%</div>
+    <div class="_background:light-shade-50!">Light Shade 5%</div>
+    <div class="_background:light!">Light</div>
+    <div class="_background:light-tint-50!">Light Tint 5%</div>
+    <div class="_background:light-tint-100!">Light Tint 10%</div>
+    <div class="_background:light-tint-150!">Light Tint 15%</div>
 </template>

@@ -1,23 +1,9 @@
 <template>
-    <div class="_background:dark-25">Dark 25%</div>
-
-    <div class="_background:dark-30">Dark 30%</div>
-
-    <div class="_background:dark-35">Dark 35%</div>
-
-    <div class="_background:dark-40">Dark 40%</div>
-
-    <div class="_background:dark-45">Dark 45%</div>
-
-    <div class="_background:dark-50">Dark 50%</div>
-
-    <div class="_background:dark-55">Dark 55%</div>
-
-    <div class="_background:dark-60">Dark 60%</div>
-
-    <div class="_background:dark-65">Dark 65%</div>
-
-    <div class="_background:dark-70">Dark 70%</div>
-
-    <div class="_background:dark-75">Dark 75%</div>
+    <div class="_background:dark-shade-150!">Dark Shade 15%</div>
+    <div class="_background:dark-shade-100!">Dark Shade 10%</div>
+    <div class="_background:dark-shade-50!">Dark Shade 5%</div>
+    <div class="_background:dark!">Dark</div>
+    <div class="_background:dark-tint-50!">Dark Tint 5%</div>
+    <div class="_background:dark-tint-100!">Dark Tint 10%</div>
+    <div class="_background:dark-tint-150!">Dark Tint 15%</div>
 </template>

@@ -1,13 +1,13 @@
 <template>
-    <ul class="_list:inline">
+    <ul class="_list:inline!">
         <li>Lorem ipsum</li>
         <li>Phasellus iaculis</li>
         <li>Nulla volutpat</li>
     </ul>
 
-    <hr class="_margin-y:2" />
+    <hr class="_margin-y:2!" />
 
-    <ul class="_list:unstyled">
+    <ul class="_list:unstyled!">
         <li>Lorem ipsum dolor sit amet</li>
         <li>Consectetur adipiscing elit</li>
         <li>Integer molestie lorem at massa</li>

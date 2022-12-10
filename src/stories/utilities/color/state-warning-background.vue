@@ -1,39 +1,37 @@
 <template>
-    <div class="_background:warning-05">Warning 5%</div>
+    <div class="_background:warning-shade-150!">Warning Shade 15%</div>
 
-    <div class="_background:warning-10">Warning 10%</div>
+    <div class="_background:warning-shade-100!">Warning Shade 10%</div>
 
-    <div class="_background:warning-15">Warning 15%</div>
+    <div class="_background:warning-shade-50!">Warning Shade 5%</div>
 
-    <div class="_background:warning-20">Warning 20%</div>
+    <div class="_background:warning!">Warning</div>
 
-    <div class="_background:warning-25">Warning 25%</div>
+    <div class="_background:warning-tint-50!">Warning Tint 5%</div>
 
-    <div class="_background:warning-30">Warning 30%</div>
+    <div class="_background:warning-tint-100!">Warning Tint 10%</div>
 
-    <div class="_background:warning-35">Warning 35%</div>
+    <div class="_background:warning-tint-150!">Warning Tint 15%</div>
 
-    <div class="_background:warning-40">Warning 40%</div>
+    <hr />
 
-    <div class="_background:warning-45">Warning 45%</div>
+    <div class="_background:warning-50!">Warning 5%</div>
 
-    <div class="_background:warning-50">Warning 50%</div>
+    <div class="_background:warning-100!">Warning 10%</div>
 
-    <div class="_background:warning-55">Warning 55%</div>
+    <div class="_background:warning-200!">Warning 20%</div>
 
-    <div class="_background:warning-60">Warning 60%</div>
+    <div class="_background:warning-300!">Warning 30%</div>
 
-    <div class="_background:warning-65">Warning 65%</div>
+    <div class="_background:warning-400!">Warning 40%</div>
 
-    <div class="_background:warning-70">Warning 70%</div>
+    <div class="_background:warning-500!">Warning 50%</div>
 
-    <div class="_background:warning-75">Warning 75%</div>
+    <div class="_background:warning-600!">Warning 60%</div>
 
-    <div class="_background:warning-80">Warning 80%</div>
+    <div class="_background:warning-700!">Warning 70%</div>
 
-    <div class="_background:warning-85">Warning 85%</div>
+    <div class="_background:warning-800!">Warning 80%</div>
 
-    <div class="_background:warning-90">Warning 90%</div>
-
-    <div class="_background:warning-95">Warning 95%</div>
+    <div class="_background:warning-900!">Warning 90%</div>
 </template>
