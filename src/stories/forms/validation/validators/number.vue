@@ -1,21 +1,21 @@
 <script>
-    export default {
-        data() {
-            return {
-                form: this.$inkline.form({
-                    input: {
-                        validators: [{ name: 'number' }]
-                    },
-                    inputNegative: {
-                        validators: [{ name: 'number', allowNegative: true }]
-                    },
-                    inputNegativeDecimal: {
-                        validators: [{ name: 'number', allowNegative: true, allowDecimal: true }]
-                    }
-                })
-            };
-        }
-    };
+export default {
+    data() {
+        return {
+            form: this.$inkline.form({
+                input: {
+                    validators: [{ name: 'number' }]
+                },
+                inputNegative: {
+                    validators: [{ name: 'number', allowNegative: true }]
+                },
+                inputNegativeDecimal: {
+                    validators: [{ name: 'number', allowNegative: true, allowDecimal: true }]
+                }
+            })
+        };
+    }
+};
 </script>
 <template>
     <i-form v-model="form">
@@ -39,4 +39,3 @@
         </i-form-group>
     </i-form>
 </template>
-

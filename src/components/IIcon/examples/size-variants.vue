@@ -1,7 +1,7 @@
 <template>
     <i-icon name="ink-check" size="sm" />
-    
+
     <i-icon name="ink-check" size="md" />
-    
+
     <i-icon name="ink-check" size="lg" />
 </template>

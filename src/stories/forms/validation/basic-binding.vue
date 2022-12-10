@@ -1,14 +1,14 @@
 <script>
-    export default {
-        data() {
-            return {
-                form: this.$inkline.form({
-                    username: {},
-                    password: {}
-                })
-            };
-        }
-    };
+export default {
+    data() {
+        return {
+            form: this.$inkline.form({
+                username: {},
+                password: {}
+            })
+        };
+    }
+};
 </script>
 <template>
     <i-form v-model="form">
@@ -21,9 +21,8 @@
             <i-input name="password" type="password" placeholder="Enter a password.." />
         </i-form-group>
     </i-form>
-    
+
     <pre class="_margin-top:2 _text:muted">
     {{ form }}
     </pre>
 </template>
-

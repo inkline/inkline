@@ -4,4 +4,3 @@
         <i-button class="_float:right"> Floating Right Button </i-button>
     </div>
 </template>
-

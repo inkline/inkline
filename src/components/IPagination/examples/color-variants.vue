@@ -16,7 +16,7 @@ export default {
         :items-per-page="itemsPerPage"
         color="light"
     />
-    
+
     <i-pagination
         v-model="page"
         :items-total="itemsTotal"

@@ -1,21 +1,21 @@
 <script>
-    export default {
-        data() {
-            return {
-                form: this.$inkline.form({
-                    input: {
-                        validators: [{ name: 'alpha' }]
-                    },
-                    inputSpaces: {
-                        validators: [{ name: 'alpha', allowSpaces: true }]
-                    },
-                    inputDashes: {
-                        validators: [{ name: 'alpha', allowDashes: true }]
-                    }
-                })
-            };
-        }
-    };
+export default {
+    data() {
+        return {
+            form: this.$inkline.form({
+                input: {
+                    validators: [{ name: 'alpha' }]
+                },
+                inputSpaces: {
+                    validators: [{ name: 'alpha', allowSpaces: true }]
+                },
+                inputDashes: {
+                    validators: [{ name: 'alpha', allowDashes: true }]
+                }
+            })
+        };
+    }
+};
 </script>
 <template>
     <i-form v-model="form">
@@ -39,4 +39,3 @@
         </i-form-group>
     </i-form>
 </template>
-

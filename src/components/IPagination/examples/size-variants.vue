@@ -10,9 +10,24 @@ export default {
 };
 </script>
 <template>
-    <i-pagination v-model="page" :items-total="itemsTotal" :items-per-page="itemsPerPage" size="sm" />
-    
-    <i-pagination v-model="page" :items-total="itemsTotal" :items-per-page="itemsPerPage" size="md" />
-    
-    <i-pagination v-model="page" :items-total="itemsTotal" :items-per-page="itemsPerPage" size="lg" />
+    <i-pagination
+        v-model="page"
+        :items-total="itemsTotal"
+        :items-per-page="itemsPerPage"
+        size="sm"
+    />
+
+    <i-pagination
+        v-model="page"
+        :items-total="itemsTotal"
+        :items-per-page="itemsPerPage"
+        size="md"
+    />
+
+    <i-pagination
+        v-model="page"
+        :items-total="itemsTotal"
+        :items-per-page="itemsPerPage"
+        size="lg"
+    />
 </template>

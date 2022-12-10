@@ -29,7 +29,7 @@
             </tr>
         </tbody>
     </i-table>
-    
+
     <i-table color="dark">
         <thead>
             <tr>
@@ -60,7 +60,7 @@
             </tr>
         </tbody>
     </i-table>
-    
+
     <i-table color="primary">
         <thead>
             <tr>
@@ -91,7 +91,7 @@
             </tr>
         </tbody>
     </i-table>
-    
+
     <i-table color="secondary">
         <thead>
             <tr>
@@ -122,7 +122,7 @@
             </tr>
         </tbody>
     </i-table>
-    
+
     <i-table color="info">
         <thead>
             <tr>
@@ -153,7 +153,7 @@
             </tr>
         </tbody>
     </i-table>
-    
+
     <i-table color="success">
         <thead>
             <tr>
@@ -184,7 +184,7 @@
             </tr>
         </tbody>
     </i-table>
-    
+
     <i-table color="warning">
         <thead>
             <tr>
@@ -215,7 +215,7 @@
             </tr>
         </tbody>
     </i-table>
-    
+
     <i-table color="danger">
         <thead>
             <tr>

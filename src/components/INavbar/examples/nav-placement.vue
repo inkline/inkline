@@ -9,7 +9,7 @@
             </i-nav>
         </i-navbar-collapsible>
     </i-navbar>
-    
+
     <i-navbar>
         <i-navbar-brand to="/"> Navbar </i-navbar-brand>
         <i-navbar-collapsible class="_justify-content:center">
@@ -20,7 +20,7 @@
             </i-nav>
         </i-navbar-collapsible>
     </i-navbar>
-    
+
     <i-navbar>
         <i-navbar-brand to="/"> Navbar </i-navbar-brand>
         <i-navbar-collapsible class="_justify-content:flex-end">

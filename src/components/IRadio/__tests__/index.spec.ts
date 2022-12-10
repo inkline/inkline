@@ -4,7 +4,6 @@ import { InklineKey } from '@inkline/inkline/plugin';
 import { createInkline } from '@inkline/inkline/__mocks__';
 import { RadioGroupKey } from '@inkline/inkline/components/IRadioGroup';
 import { ref } from 'vue';
-import { FormKey } from '@inkline/inkline/components/IForm';
 
 describe('Components', () => {
     describe('IRadio', () => {

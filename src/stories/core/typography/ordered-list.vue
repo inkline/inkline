@@ -18,4 +18,3 @@
         <li>Eget porttitor lorem</li>
     </ol>
 </template>
-

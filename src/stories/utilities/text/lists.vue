@@ -4,9 +4,9 @@
         <li>Phasellus iaculis</li>
         <li>Nulla volutpat</li>
     </ul>
-    
+
     <hr class="_margin-y:2" />
-    
+
     <ul class="_list:unstyled">
         <li>Lorem ipsum dolor sit amet</li>
         <li>Consectetur adipiscing elit</li>
@@ -23,4 +23,3 @@
         </li>
     </ul>
 </template>
-

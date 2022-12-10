@@ -35,8 +35,8 @@ export default {
                         <i-column>
                             <h1>Sidebar</h1>
                             <p>
-                                Example content for a page with a sidebar, a layout typically seen in
-                                Documentation pages and Web Application dashboards.
+                                Example content for a page with a sidebar, a layout typically seen
+                                in Documentation pages and Web Application dashboards.
                             </p>
                         </i-column>
                     </i-row>

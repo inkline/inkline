@@ -1,6 +1,9 @@
 <template>
     <i-list-group>
-        <i-list-group-item :to="{ name: 'docs-components-list-group' }" exact-active-class="-active">
+        <i-list-group-item
+            :to="{ name: 'docs-components-list-group' }"
+            exact-active-class="-active"
+        >
             Active Router Link
         </i-list-group-item>
         <i-list-group-item :to="{ name: 'index' }" active> Active Item </i-list-group-item>

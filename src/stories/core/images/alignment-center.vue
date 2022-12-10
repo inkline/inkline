@@ -3,4 +3,3 @@
         <img src="../../../assets/images/placeholder-400x400.jpg" alt="Centered image" />
     </div>
 </template>
-

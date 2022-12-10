@@ -22,7 +22,7 @@ export default {
             </i-dropdown>
         </template>
     </i-input>
-    
+
     <i-input v-model="value" placeholder="Type something..">
         <template #append>
             <i-dropdown>
@@ -37,7 +37,7 @@ export default {
             </i-dropdown>
         </template>
     </i-input>
-    
+
     <i-input v-model="value" placeholder="Type something..">
         <template #prepend>
             <i-dropdown>

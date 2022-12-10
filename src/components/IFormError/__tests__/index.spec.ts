@@ -2,7 +2,6 @@ import { render } from '@testing-library/vue';
 import { IFormError } from '@inkline/inkline/components';
 import { InklineKey } from '@inkline/inkline/plugin';
 import { createInkline } from '@inkline/inkline/__mocks__';
-import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
 import { FormKey } from '@inkline/inkline/components/IForm';
 import { ref } from 'vue';
 

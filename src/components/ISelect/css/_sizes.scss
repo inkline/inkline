@@ -72,14 +72,8 @@
             --select--sm--header--padding-bottom,
             calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-sm))
         );
-        --select--body--padding-right: var(
-            --select--sm--body--padding-right,
-            0
-        );
-        --select--body--padding-left: var(
-            --select--sm--body--padding-left,
-            0
-        );
+        --select--body--padding-right: var(--select--sm--body--padding-right, 0);
+        --select--body--padding-left: var(--select--sm--body--padding-left, 0);
         --select--footer--padding-top: var(
             --select--sm--footer--padding-top,
             calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-sm))
@@ -144,36 +138,30 @@
             calc(var(--padding-left) * var(--size-multiplier-md))
         );
         --select--option--padding-top: var(
-                --select--md--option--padding-top,
-                calc(calc(var(--select--padding-top) / 2) * var(--size-multiplier-md))
+            --select--md--option--padding-top,
+            calc(calc(var(--select--padding-top) / 2) * var(--size-multiplier-md))
         );
         --select--option--padding-bottom: var(
-                --select--md--option--padding-bottom,
-                calc(calc(var(--select--padding-bottom) / 2) * var(--size-multiplier-md))
+            --select--md--option--padding-bottom,
+            calc(calc(var(--select--padding-bottom) / 2) * var(--size-multiplier-md))
         );
         --select--header--padding-top: var(
-                --select--md--header--padding-top,
-                calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-md))
+            --select--md--header--padding-top,
+            calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-md))
         );
         --select--header--padding-bottom: var(
-                --select--md--header--padding-bottom,
-                calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-md))
+            --select--md--header--padding-bottom,
+            calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-md))
         );
-        --select--body--padding-right: var(
-                --select--md--body--padding-right,
-                0
-        );
-        --select--body--padding-left: var(
-                --select--md--body--padding-left,
-                0
-        );
+        --select--body--padding-right: var(--select--md--body--padding-right, 0);
+        --select--body--padding-left: var(--select--md--body--padding-left, 0);
         --select--footer--padding-top: var(
-                --select--md--footer--padding-top,
-                calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-md))
+            --select--md--footer--padding-top,
+            calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-md))
         );
         --select--footer--padding-bottom: var(
-                --select--md--footer--padding-bottom,
-                calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-md))
+            --select--md--footer--padding-bottom,
+            calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-md))
         );
     }
 
@@ -231,36 +219,30 @@
             calc(var(--padding-left) * var(--size-multiplier-lg))
         );
         --select--option--padding-top: var(
-                --select--lg--option--padding-top,
-                calc(calc(var(--select--padding-top) / 2) * var(--size-multiplier-lg))
+            --select--lg--option--padding-top,
+            calc(calc(var(--select--padding-top) / 2) * var(--size-multiplier-lg))
         );
         --select--option--padding-bottom: var(
-                --select--lg--option--padding-bottom,
-                calc(calc(var(--select--padding-bottom) / 2) * var(--size-multiplier-lg))
+            --select--lg--option--padding-bottom,
+            calc(calc(var(--select--padding-bottom) / 2) * var(--size-multiplier-lg))
         );
         --select--header--padding-top: var(
-                --select--lg--header--padding-top,
-                calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-lg))
+            --select--lg--header--padding-top,
+            calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-lg))
         );
         --select--header--padding-bottom: var(
-                --select--lg--header--padding-bottom,
-                calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-lg))
+            --select--lg--header--padding-bottom,
+            calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-lg))
         );
-        --select--body--padding-right: var(
-                --select--lg--body--padding-right,
-                0
-        );
-        --select--body--padding-left: var(
-                --select--lg--body--padding-left,
-                0
-        );
+        --select--body--padding-right: var(--select--lg--body--padding-right, 0);
+        --select--body--padding-left: var(--select--lg--body--padding-left, 0);
         --select--footer--padding-top: var(
-                --select--lg--footer--padding-top,
-                calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-lg))
+            --select--lg--footer--padding-top,
+            calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-lg))
         );
         --select--footer--padding-bottom: var(
-                --select--lg--footer--padding-bottom,
-                calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-lg))
+            --select--lg--footer--padding-bottom,
+            calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-lg))
         );
     }
 }

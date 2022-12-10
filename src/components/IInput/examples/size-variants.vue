@@ -9,8 +9,8 @@ export default {
 </script>
 <template>
     <i-input v-model="value" size="sm" placeholder="Type something.." />
-    
+
     <i-input v-model="value" size="md" placeholder="Type something.." />
-    
+
     <i-input v-model="value" size="lg" placeholder="Type something.." />
 </template>

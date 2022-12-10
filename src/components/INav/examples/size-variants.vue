@@ -4,13 +4,13 @@
         <i-nav-item>Item</i-nav-item>
         <i-nav-item>Item</i-nav-item>
     </i-nav>
-    
+
     <i-nav size="md">
         <i-nav-item>Item</i-nav-item>
         <i-nav-item>Item</i-nav-item>
         <i-nav-item>Item</i-nav-item>
     </i-nav>
-    
+
     <i-nav size="lg">
         <i-nav-item>Item</i-nav-item>
         <i-nav-item>Item</i-nav-item>

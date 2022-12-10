@@ -39,7 +39,10 @@
 
     &.-dark {
         --sidebar--background: var(--sidebar--dark--background, var(--color-dark));
-        --sidebar--border-top-color: var(--sidebar--dark--border-top-color, var(--color-dark-tint-50));
+        --sidebar--border-top-color: var(
+            --sidebar--dark--border-top-color,
+            var(--color-dark-tint-50)
+        );
         --sidebar--border-right-color: var(
             --sidebar--dark--border-right-color,
             var(--color-dark-tint-50)

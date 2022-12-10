@@ -9,7 +9,7 @@
             <i-dropdown-item>Separated item</i-dropdown-item>
         </template>
     </i-dropdown>
-    
+
     <i-dropdown size="md">
         <i-button>Medium Dropdown</i-button>
         <template #body>
@@ -20,7 +20,7 @@
             <i-dropdown-item>Separated item</i-dropdown-item>
         </template>
     </i-dropdown>
-    
+
     <i-dropdown size="lg">
         <i-button>Large Dropdown</i-button>
         <template #body>

@@ -7,4 +7,3 @@
         alt="Responsive image"
     />
 </template>
-

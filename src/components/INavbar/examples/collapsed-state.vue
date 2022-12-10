@@ -9,7 +9,7 @@ export default {
 </script>
 <template>
     <i-button @click="open = !open">Toggle Navbar</i-button>
-    
+
     <i-navbar v-model="open" :collapse="true" :collapse-on-click-outside="false">
         <i-navbar-brand to="/"> Navbar </i-navbar-brand>
         <i-navbar-collapsible>

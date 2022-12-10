@@ -4,4 +4,3 @@
         <div class="_flex-shrink:1">Flex Shrink</div>
     </div>
 </template>
-

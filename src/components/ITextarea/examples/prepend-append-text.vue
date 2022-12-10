@@ -13,13 +13,13 @@ export default {
             <span>https://</span>
         </template>
     </i-textarea>
-    
+
     <i-textarea v-model="value" placeholder="Type something..">
         <template #append>
             <span>.com</span>
         </template>
     </i-textarea>
-    
+
     <i-textarea v-model="value" placeholder="Type something..">
         <template #prepend>
             <span>https://</span>

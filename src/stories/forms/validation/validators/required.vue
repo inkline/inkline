@@ -1,15 +1,15 @@
 <script>
-    export default {
-        data() {
-            return {
-                form: this.$inkline.form({
-                    input: {
-                        validators: [{ name: 'required' }]
-                    }
-                })
-            };
-        }
-    };
+export default {
+    data() {
+        return {
+            form: this.$inkline.form({
+                input: {
+                    validators: [{ name: 'required' }]
+                }
+            })
+        };
+    }
+};
 </script>
 <template>
     <i-form v-model="form">
@@ -19,4 +19,3 @@
         </i-form-group>
     </i-form>
 </template>
-

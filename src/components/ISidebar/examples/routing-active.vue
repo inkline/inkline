@@ -18,7 +18,10 @@ export default {
         <i-layout vertical class="_padding-top:1/2">
             <i-sidebar v-model="open">
                 <i-nav vertical>
-                    <i-nav-item :to="{ name: 'docs-components-sidebar' }" exact-active-class="-active">
+                    <i-nav-item
+                        :to="{ name: 'docs-components-sidebar' }"
+                        exact-active-class="-active"
+                    >
                         Active Router Link
                     </i-nav-item>
                     <i-nav-item active> Active Item </i-nav-item>
@@ -30,8 +33,8 @@ export default {
                         <i-column>
                             <h1>Sidebar</h1>
                             <p>
-                                Example content for a page with a sidebar, a layout typically seen in
-                                Documentation pages and Web Application dashboards.
+                                Example content for a page with a sidebar, a layout typically seen
+                                in Documentation pages and Web Application dashboards.
                             </p>
                         </i-column>
                     </i-row>

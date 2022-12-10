@@ -39,7 +39,7 @@ export default {
             </i-layout-content>
         </i-layout>
     </i-layout>
-    
+
     <i-layout>
         <i-layout-header>
             <i-navbar fluid :collapse="false">
@@ -71,7 +71,7 @@ export default {
             </i-layout-content>
         </i-layout>
     </i-layout>
-    
+
     <i-layout>
         <i-layout-header>
             <i-navbar fluid :collapse="false">

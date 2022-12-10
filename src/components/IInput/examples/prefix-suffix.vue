@@ -11,11 +11,11 @@ export default {
     <i-input v-model="value" placeholder="Type something..">
         <template #prefix>@</template>
     </i-input>
-    
+
     <i-input v-model="value" placeholder="Type something..">
         <template #suffix>@</template>
     </i-input>
-    
+
     <i-input v-model="value" placeholder="Type something..">
         <template #prefix>@</template>
         <template #suffix>@</template>

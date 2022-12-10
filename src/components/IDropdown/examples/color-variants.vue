@@ -9,7 +9,7 @@
             <i-dropdown-item>Separated item</i-dropdown-item>
         </template>
     </i-dropdown>
-    
+
     <i-dropdown color="dark">
         <i-button color="dark">Dark Dropdown</i-button>
         <template #body>

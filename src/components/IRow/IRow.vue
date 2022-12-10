@@ -1,6 +1,5 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
-import { breakpointClass } from '@grozav/utils';
 import { breakpointClassName } from '@inkline/inkline/utils';
 
 const componentName = 'IRow';

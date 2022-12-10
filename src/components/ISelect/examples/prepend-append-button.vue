@@ -20,13 +20,13 @@ export default {
             <i-button>Button</i-button>
         </template>
     </i-input>
-    
+
     <i-input v-model="value" placeholder="Type something..">
         <template #append>
             <i-button>Button</i-button>
         </template>
     </i-input>
-    
+
     <i-input v-model="value" placeholder="Type something..">
         <template #prepend>
             <i-button>Button</i-button>

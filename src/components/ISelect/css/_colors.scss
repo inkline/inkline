@@ -5,7 +5,10 @@
 .select-wrapper {
     &.-light {
         --select--background: var(--select--white--background, var(--color-white));
-        --select--border-top-color: var(--select--light--border-top-color, var(--color-light-shade-50));
+        --select--border-top-color: var(
+            --select--light--border-top-color,
+            var(--color-light-shade-50)
+        );
         --select--border-right-color: var(
             --select--light--border-right-color,
             var(--color-light-shade-50)
@@ -31,19 +34,16 @@
             --select--light--option--disabled--color,
             var(--text--color-muted)
         );
-        --select--header--background: var(
-            --select--gray--header--background,
-            var(--color-gray-50)
-        );
-        --select--footer--background: var(
-            --select--gray--footer--background,
-            var(--color-gray-50)
-        );
+        --select--header--background: var(--select--gray--header--background, var(--color-gray-50));
+        --select--footer--background: var(--select--gray--footer--background, var(--color-gray-50));
     }
 
     &.-dark {
         --select--background: var(--select--dark--background, var(--color-dark));
-        --select--border-top-color: var(--select--dark--border-top-color, var(--color-dark-tint-50));
+        --select--border-top-color: var(
+            --select--dark--border-top-color,
+            var(--color-dark-tint-50)
+        );
         --select--border-right-color: var(
             --select--dark--border-right-color,
             var(--color-dark-tint-50)
@@ -52,7 +52,10 @@
             --select--dark--border-bottom-color,
             var(--color-dark-tint-50)
         );
-        --select--border-left-color: var(--select--dark--border-left-color, var(--color-dark-tint-50));
+        --select--border-left-color: var(
+            --select--dark--border-left-color,
+            var(--color-dark-tint-50)
+        );
         --select--color: var(--select--dark--color, var(--contrast-text--color-dark));
         --select--option--hover--background: var(
             --select--dark--option--hover--background,

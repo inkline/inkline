@@ -29,8 +29,8 @@ export default {
                         <i-column>
                             <h1>Small Sidebar</h1>
                             <p>
-                                Example content for a page with a sidebar, a layout typically seen in
-                                Documentation pages and Web Application dashboards.
+                                Example content for a page with a sidebar, a layout typically seen
+                                in Documentation pages and Web Application dashboards.
                             </p>
                         </i-column>
                     </i-row>
@@ -38,7 +38,7 @@ export default {
             </i-layout-content>
         </i-layout>
     </i-layout>
-    
+
     <i-layout>
         <i-layout-header>
             <i-navbar fluid :collapse="false">
@@ -60,8 +60,8 @@ export default {
                         <i-column>
                             <h1>Medium Sidebar</h1>
                             <p>
-                                Example content for a page with a sidebar, a layout typically seen in
-                                Documentation pages and Web Application dashboards.
+                                Example content for a page with a sidebar, a layout typically seen
+                                in Documentation pages and Web Application dashboards.
                             </p>
                         </i-column>
                     </i-row>
@@ -69,7 +69,7 @@ export default {
             </i-layout-content>
         </i-layout>
     </i-layout>
-    
+
     <i-layout>
         <i-layout-header>
             <i-navbar fluid :collapse="false">
@@ -91,8 +91,8 @@ export default {
                         <i-column>
                             <h1>Large Sidebar</h1>
                             <p>
-                                Example content for a page with a sidebar, a layout typically seen in
-                                Documentation pages and Web Application dashboards.
+                                Example content for a page with a sidebar, a layout typically seen
+                                in Documentation pages and Web Application dashboards.
                             </p>
                         </i-column>
                     </i-row>

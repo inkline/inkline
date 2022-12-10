@@ -4,4 +4,3 @@
         To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
     </p>
 </template>
-

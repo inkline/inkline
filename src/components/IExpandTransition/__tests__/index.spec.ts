@@ -1,4 +1,3 @@
-import { createMockInstance } from '@inkline/inkline/__mocks__/createMockInstance';
 import { IExpandTransition } from '../index';
 import { defineComponent, h } from 'vue';
 import { render } from '@testing-library/vue';

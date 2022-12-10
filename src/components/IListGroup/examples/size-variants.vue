@@ -5,14 +5,14 @@
         <i-list-group-item>List Group Item</i-list-group-item>
         <i-list-group-item>List Group Item</i-list-group-item>
     </i-list-group>
-    
+
     <i-list-group size="md">
         <i-list-group-item>List Group Item</i-list-group-item>
         <i-list-group-item>List Group Item</i-list-group-item>
         <i-list-group-item>List Group Item</i-list-group-item>
         <i-list-group-item>List Group Item</i-list-group-item>
     </i-list-group>
-    
+
     <i-list-group size="lg">
         <i-list-group-item>List Group Item</i-list-group-item>
         <i-list-group-item>List Group Item</i-list-group-item>

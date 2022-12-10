@@ -9,7 +9,7 @@
             <i-dropdown-item>Separated item</i-dropdown-item>
         </template>
     </i-dropdown>
-    
+
     <i-dropdown placement="bottom">
         <i-button>Bottom Dropdown</i-button>
         <template #body>
@@ -20,7 +20,7 @@
             <i-dropdown-item>Separated item</i-dropdown-item>
         </template>
     </i-dropdown>
-    
+
     <i-dropdown placement="left">
         <i-button>Left Dropdown</i-button>
         <template #body>
@@ -31,7 +31,7 @@
             <i-dropdown-item>Separated item</i-dropdown-item>
         </template>
     </i-dropdown>
-    
+
     <i-dropdown placement="right">
         <i-button>Right Dropdown</i-button>
         <template #body>

@@ -8,4 +8,3 @@
         />
     </picture>
 </template>
-

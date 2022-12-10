@@ -1,6 +1,5 @@
-import { fireEvent, render, waitFor } from '@testing-library/vue';
+import { fireEvent, render } from '@testing-library/vue';
 import { ISelect } from '@inkline/inkline/components';
-import { createMockInstance } from '@inkline/inkline/__mocks__/createMockInstance';
 import { keymap } from '@inkline/inkline/constants';
 import { InklineKey } from '@inkline/inkline/plugin';
 import { createInkline } from '@inkline/inkline/__mocks__';

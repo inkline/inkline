@@ -1,5 +1,4 @@
 export * from './createInkline';
-export * from './createMockInstance';
 export * from './globalProperties';
 export * from './localStorageMock';
 export * from './matchMediaMock';

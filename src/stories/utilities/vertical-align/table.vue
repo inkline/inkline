@@ -12,4 +12,3 @@
         </tbody>
     </table>
 </template>
-

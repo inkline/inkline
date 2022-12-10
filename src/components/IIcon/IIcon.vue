@@ -2,7 +2,6 @@
 import { h, computed, defineComponent, onMounted, inject } from 'vue';
 import { toCamelCase } from '@grozav/utils';
 import { renderSvg } from '@inkline/inkline/utils';
-import { SvgNode } from '@inkline/inkline/types';
 import { useComponentSize } from '@inkline/inkline/composables';
 import { InklineIconsKey } from '@inkline/inkline/plugin';
 

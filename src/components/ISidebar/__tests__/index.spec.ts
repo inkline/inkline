@@ -1,6 +1,5 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { INav, INavItem, ISidebar } from '@inkline/inkline/components';
-import { createMockInstance } from '@inkline/inkline/__mocks__/createMockInstance';
 import { InklineKey } from '@inkline/inkline/plugin';
 import { createInkline } from '@inkline/inkline/__mocks__';
 

@@ -13,13 +13,13 @@ export default {
             <span>https://</span>
         </template>
     </i-input>
-    
+
     <i-input v-model="value" placeholder="Type something..">
         <template #append>
             <span>.com</span>
         </template>
     </i-input>
-    
+
     <i-input v-model="value" placeholder="Type something..">
         <template #prepend>
             <span>https://</span>

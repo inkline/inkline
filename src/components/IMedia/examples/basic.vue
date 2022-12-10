@@ -10,8 +10,8 @@
         </template>
         <h3>Media Title</h3>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et...
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et...
         </p>
     </i-media>
 </template>

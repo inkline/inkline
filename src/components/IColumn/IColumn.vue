@@ -1,7 +1,5 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
-import { breakpointClass, toDashCase } from '@grozav/utils';
-import { Classes } from '@inkline/inkline/types';
 import { breakpointClassName } from '@inkline/inkline/utils';
 
 const componentName = 'IColumn';

@@ -1,26 +1,29 @@
 <script>
-    export default {
-        data() {
-            return {
-                form: this.$inkline.form({
-                    input: {
-                        validators: [{ name: 'alphanumeric' }]
-                    },
-                    inputSpaces: {
-                        validators: [{ name: 'alphanumeric', allowSpaces: true }]
-                    },
-                    inputDashes: {
-                        validators: [{ name: 'alphanumeric', allowDashes: true }]
-                    }
-                })
-            };
-        }
-    };
+export default {
+    data() {
+        return {
+            form: this.$inkline.form({
+                input: {
+                    validators: [{ name: 'alphanumeric' }]
+                },
+                inputSpaces: {
+                    validators: [{ name: 'alphanumeric', allowSpaces: true }]
+                },
+                inputDashes: {
+                    validators: [{ name: 'alphanumeric', allowDashes: true }]
+                }
+            })
+        };
+    }
+};
 </script>
 <template>
     <i-form v-model="form">
         <i-form-group>
-            <i-input name="input" placeholder="This field should contain only letters and numbers" />
+            <i-input
+                name="input"
+                placeholder="This field should contain only letters and numbers"
+            />
             <i-form-error for="input" />
         </i-form-group>
         <i-form-group>
@@ -39,4 +42,3 @@
         </i-form-group>
     </i-form>
 </template>
-

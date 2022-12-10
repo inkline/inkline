@@ -1,15 +1,15 @@
 <script>
-    export default {
-        data() {
-            return {
-                schema: this.$inkline.form({
-                    input: {
-                        value: 'Default value'
-                    }
-                })
-            };
-        }
-    };
+export default {
+    data() {
+        return {
+            schema: this.$inkline.form({
+                input: {
+                    value: 'Default value'
+                }
+            })
+        };
+    }
+};
 </script>
 <template>
     <i-form v-model="schema">
@@ -19,4 +19,3 @@
         </i-form-group>
     </i-form>
 </template>
-

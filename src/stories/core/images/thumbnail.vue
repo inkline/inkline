@@ -5,4 +5,3 @@
         alt="Thumbnail"
     />
 </template>
-

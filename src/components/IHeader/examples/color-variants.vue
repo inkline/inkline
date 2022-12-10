@@ -4,13 +4,13 @@
         <p>This is a header paragraph lorem ipsum dolor sit amet.</p>
         <i-button color="primary">Button</i-button>
     </i-header>
-    
+
     <i-header color="dark" class="_text-align:center">
         <h1>Inkline Dark Header</h1>
         <p>This is a header paragraph lorem ipsum dolor sit amet.</p>
         <i-button color="primary">Button</i-button>
     </i-header>
-    
+
     <i-header color="primary" class="_text-align:center">
         <h1>Inkline Primary Header</h1>
         <p>This is a header paragraph lorem ipsum dolor sit amet.</p>

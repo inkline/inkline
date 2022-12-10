@@ -20,13 +20,13 @@ export default {
             <span>@</span>
         </template>
     </i-select>
-    
+
     <i-select v-model="selected" :options="options" label="name" placeholder="Choose something..">
         <template #suffix>
             <span>@</span>
         </template>
     </i-select>
-    
+
     <i-select v-model="selected" :options="options" label="name" placeholder="Choose something..">
         <template #prefix>
             <span>@</span>

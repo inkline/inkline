@@ -9,7 +9,7 @@
             </i-nav>
         </i-navbar-collapsible>
     </i-navbar>
-    
+
     <i-navbar color="dark">
         <i-navbar-brand to="/"> Navbar </i-navbar-brand>
         <i-navbar-collapsible>

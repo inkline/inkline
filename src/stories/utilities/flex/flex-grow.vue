@@ -5,4 +5,3 @@
         <div>Flex Item</div>
     </div>
 </template>
-

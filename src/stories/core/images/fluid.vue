@@ -7,4 +7,3 @@
         alt="Fluid image"
     />
 </template>
-

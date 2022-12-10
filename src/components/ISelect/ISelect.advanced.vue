@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+/* eslint-disable */
 import { computed, inject, nextTick, PropType, provide, ref, useAttrs, useSlots, watch } from 'vue';
 import { isFocusable, isFunction, isKey, uid, getValueByPath } from '@grozav/utils';
 
