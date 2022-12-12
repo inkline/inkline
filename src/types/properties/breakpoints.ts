@@ -1,3 +1,3 @@
-export type BreakpointsProperty = Record<string, number>;
+export type BreakpointsProperty = Record<string, number | string>;
 
-export type ResolvedBreakpointsProperty = BreakpointsProperty;
+export type ResolvedBreakpointsProperty = Record<string, string>;

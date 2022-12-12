@@ -55,7 +55,9 @@ export const breakpointsMixinsGenerator: Generator<ResolvedTheme['breakpoints']>
     test: /(.*)breakpoints$/,
     skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ config, theme, value }) => {
-        const pairs = Object.entries(value).sort((a, b) => a[1] - b[1]);
+        const pairs = Object.entries(value).sort((a, b) => {
+            return parseInt(a[1], 10) - parseInt(b[1], 10);
+        });
         const language = ['.css', '.pcss'].includes(config.buildOptions.extName as string) ? 'css' : 'scss';
 
         const breakpoints = Object.keys(theme.breakpoints);
@@ -66,8 +68,9 @@ export const breakpointsMixinsGenerator: Generator<ResolvedTheme['breakpoints']>
                 const isFirst = index === 0;
                 const isLast = index === pairs.length - 1;
                 const nextValue: string | number = isLast ? Infinity : pairs[index + 1][1];
+
                 const nextUnitValue = typeof nextValue === 'string'
-                    ? `${parseInt(nextValue) - 0.01}${(nextValue as string).replace(/^\d+/, '')}`
+                    ? `${parseInt(nextValue, 10) - 0.01}${(nextValue as string).replace(/^\d+/, '')}`
                     : `${nextValue - 0.01}px`;
                 const unitValue = typeof value === 'string' ? value : `${value}px`;
 
