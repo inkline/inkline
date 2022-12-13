@@ -28,10 +28,19 @@ describe('resolvers', () => {
         });
 
         describe('resolve', () => {
-            it('should return value sides', () => {
+            it('should return value with unit', () => {
                 const config = {} as Configuration;
                 const theme = {} as Theme;
                 const value = 576;
+                const path = ['breakpoints', 'xs'];
+
+                expect(breakpointsResolver.apply({ config, theme, value, path })).toEqual(`${value}px`);
+            });
+
+            it('should return value with already set unit', () => {
+                const config = {} as Configuration;
+                const theme = {} as Theme;
+                const value = '36rem';
                 const path = ['breakpoints', 'xs'];
 
                 expect(breakpointsResolver.apply({ config, theme, value, path })).toEqual(value);

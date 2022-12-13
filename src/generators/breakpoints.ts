@@ -10,9 +10,7 @@ export const breakpointsGenerator: Generator<ResolvedTheme['breakpoints']> = {
     apply: ({ value }) => {
         return ['/**', ' * Breakpoint variables', ' */']
             .concat(Object.entries(value).map(([key, value]) => {
-                const unitValue = typeof value === 'string' ? value : `${value}px`;
-
-                return codegenSetCSSVariable(`breakpoint-${key}`, unitValue);
+                return codegenSetCSSVariable(`breakpoint-${key}`, value);
             }));
     }
 };

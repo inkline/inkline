@@ -6,7 +6,10 @@ export const breakpointsResolver: Resolver<Theme['breakpoints'][string], Resolve
     test: /(.*)breakpoints\.([\w-]+)$/,
     skip: /^variants/,
     set: '$1breakpoints.$2',
-    apply: (context) => parseValue(context)
+    apply: (context) => {
+        const value = parseValue(context);
+        return typeof value === 'string' ? value : `${value}px`;
+    }
 };
 
 export const breakpointsResolvers = [
