@@ -8,6 +8,6 @@ export interface Border {
     [key: string]: CSS.Property.BorderWidth | CSS.Property.BorderStyle | CSS.Property.BorderColor;
 }
 
-export type BorderProperty = CSS.Property.Border | Border | Partial<SidesProperty<Border>>
+export type BorderProperty = CSS.Property.Border | Border | Partial<SidesProperty<Border>>;
 
 export type ResolvedBorderProperty = SidesProperty<Border>;

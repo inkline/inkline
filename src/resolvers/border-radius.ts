@@ -11,7 +11,10 @@ export const borderRadiusResolver: Resolver<string, ResolvedTheme['borderRadius'
     apply: (context) => parseCornersValue(context)
 };
 
-export const borderRadiusDefaultResolver: Resolver<Theme['borderRadius'], ResolvedTheme['borderRadius']> = {
+export const borderRadiusDefaultResolver: Resolver<
+    Theme['borderRadius'],
+    ResolvedTheme['borderRadius']
+> = {
     name: 'borderRadius',
     test: /(.*)borderRadius\.default$/,
     skip: /^variants/,
@@ -19,7 +22,10 @@ export const borderRadiusDefaultResolver: Resolver<Theme['borderRadius'], Resolv
     apply: (context) => parseCornersValue(context)
 };
 
-export const borderRadiusCornerResolver: Resolver<CSS.Property.BorderRadius, ResolvedTheme['borderRadius'][string]> = {
+export const borderRadiusCornerResolver: Resolver<
+    CSS.Property.BorderRadius,
+    ResolvedTheme['borderRadius'][string]
+> = {
     name: 'borderRadius',
     test: /(.*)borderRadius\.([\w-]+)$/,
     skip: /^variants/,
@@ -27,13 +33,15 @@ export const borderRadiusCornerResolver: Resolver<CSS.Property.BorderRadius, Res
     apply: (context) => parseValue(context)
 };
 
-export const borderRadiusVariantResolver: Resolver<BorderRadiusPropertyVariant, ResolvedTheme['variants']['borderRadius'][string]> = {
+export const borderRadiusVariantResolver: Resolver<
+    BorderRadiusPropertyVariant,
+    ResolvedTheme['variants']['borderRadius'][string]
+> = {
     name: 'borderRadius',
     test: /^variants\.borderRadius\.([\w-]+)$/,
     set: 'variants.borderRadius.$1',
-    apply: (context) => typeof context.value === 'object'
-        ? parseRecursive(context)
-        : parseCornersValue(context)
+    apply: (context) =>
+        typeof context.value === 'object' ? parseRecursive(context) : parseCornersValue(context)
 };
 
 export const borderRadiusResolvers = [

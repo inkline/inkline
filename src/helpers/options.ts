@@ -1,8 +1,13 @@
-import { DEFAULT_CONFIG_FILE, DEFAULT_OUTPUT_DIR, DEFAULT_OUTPUT_EXTNAME, DEFAULT_THEME_SELECTOR } from '../constants';
+import {
+    DEFAULT_CONFIG_FILE,
+    DEFAULT_OUTPUT_DIR,
+    DEFAULT_OUTPUT_EXTNAME,
+    DEFAULT_THEME_SELECTOR
+} from '../constants';
 import { basename, dirname, extname, resolve } from 'pathe';
 import { BuildOptions, ResolvedBuildOptions } from '../types/build';
 
-export function getResolvedOptions (options: BuildOptions): ResolvedBuildOptions {
+export function getResolvedOptions(options: BuildOptions): ResolvedBuildOptions {
     const resolvedOptions: ResolvedBuildOptions = {
         configDir: '',
         configFile: '',

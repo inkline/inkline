@@ -24,7 +24,10 @@ export const animationDefaultResolver: Resolver<string, ResolvedTheme['animation
     apply: (context) => parseGenericComposedValue(context, setAnimationFieldsFn)
 };
 
-export const animationFieldResolver: Resolver<Animation[string], ResolvedTheme['animation'][string]> = {
+export const animationFieldResolver: Resolver<
+    Animation[string],
+    ResolvedTheme['animation'][string]
+> = {
     name: 'animation',
     test: /(.*)animation\.([\w-]+)$/,
     skip: /^variants/,

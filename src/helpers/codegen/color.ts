@@ -4,8 +4,6 @@ import { ResolvedColorProperty } from '../../types';
 const varRegEx = /var\(--(.+)\)/;
 
 export const codegenColorVariables = (name: string, color: ResolvedColorProperty, prefix: string = 'color') => {
-    let result: string[];
-
     if (typeof color === 'string') {
         const valueMatch = color.match(varRegEx);
         if (valueMatch) {

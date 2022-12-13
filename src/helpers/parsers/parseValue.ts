@@ -2,7 +2,7 @@ import { ConfigurationContext, FnProperty, Theme } from '../../types';
 import { parseFn } from './parseFn';
 import { interpolate } from '../interpolate';
 
-export function parseValue<ReturnType = unknown> (
+export function parseValue<ReturnType = unknown>(
     context: ConfigurationContext<Theme, ReturnType>
 ): ReturnType {
     const value = context.value;

@@ -1,5 +1,10 @@
 import { Generator, ResolvedTheme } from '../types';
-import { borderProperties, MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX, sidesPropertyKeys } from '../constants';
+import {
+    borderProperties,
+    MATCH_VARIANTS_REGEX,
+    MATCH_ELEMENTS_REGEX,
+    sidesPropertyKeys
+} from '../constants';
 import { codegenGetCSSVariable, codegenSetCSSVariable } from '../helpers';
 
 export const borderGenerator: Generator<ResolvedTheme['border']> = {
@@ -7,27 +12,35 @@ export const borderGenerator: Generator<ResolvedTheme['border']> = {
     location: 'root',
     test: /(.*)border$/,
     skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
-    apply: ({ value }) => ['/**', ' * Border variables', ' */']
-        .concat(
-            borderProperties.map((property) => {
-                const variables = sidesPropertyKeys
-                    .filter((side) => value[side][property])
-                    .map((side) =>
-                        codegenSetCSSVariable(`border-${side}-${property}`, value[side][property])
-                    );
+    apply: ({ value }) =>
+        ['/**', ' * Border variables', ' */'].concat(
+            borderProperties
+                .map((property) => {
+                    const variables = sidesPropertyKeys
+                        .filter((side) => value[side][property])
+                        .map((side) =>
+                            codegenSetCSSVariable(
+                                `border-${side}-${property}`,
+                                value[side][property]
+                            )
+                        );
 
-                return variables.length === 0
-                    ? []
-                    : [
+                    if (variables.length === 0) {
+                        return [];
+                    }
+
+                    return [
                         variables,
-                        codegenSetCSSVariable(`border-${property}`, sidesPropertyKeys.map((side) =>
-                            codegenGetCSSVariable(`border-${side}-${property}`)
-                        ).join(' '))
+                        codegenSetCSSVariable(
+                            `border-${property}`,
+                            sidesPropertyKeys
+                                .map((side) => codegenGetCSSVariable(`border-${side}-${property}`))
+                                .join(' ')
+                        )
                     ].flat();
-            }).flat()
+                })
+                .flat()
         )
 };
 
-export const borderGenerators = [
-    borderGenerator
-];
+export const borderGenerators = [borderGenerator];

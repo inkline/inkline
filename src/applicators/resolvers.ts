@@ -1,4 +1,4 @@
-import { Configuration, ConfigurationContext, Plugin, ResolvedTheme, Theme } from '../types';
+import { Configuration, ConfigurationContext, ResolvedTheme, Theme } from '../types';
 import { setValueByPath } from '@grozav/utils';
 
 /**

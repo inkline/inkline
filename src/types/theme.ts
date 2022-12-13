@@ -5,7 +5,8 @@ import {
     BorderRadiusPropertyVariant,
     BoxShadowProperty,
     BreakpointsProperty,
-    ColorProperty, ColorPropertyVariant,
+    ColorProperty,
+    ColorPropertyVariant,
     FontFamilyProperty,
     FontSizeProperty,
     FontSizePropertyVariant,
@@ -48,7 +49,7 @@ export interface ThemeVariants {
     padding: Record<string, MarginPropertyVariant>;
     size: {
         multiplier: Record<string, SizeMultiplierPropertyVariant>;
-    }
+    };
     typography: {
         fontSize: Record<string, FontSizePropertyVariant>;
     };
@@ -70,7 +71,7 @@ export interface Theme {
     size: {
         multiplier: SizeMultiplierProperty;
         percentages: SizePercentagesProperty;
-    },
+    };
     typography: {
         fontFamily: Record<string, FontFamilyProperty>;
         fontWeight: Record<string, FontWeightProperty>;

@@ -9,13 +9,12 @@ export const animationGenerator: Generator<ResolvedTheme['animation']> = {
     test: /(.*)animation$/,
     skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ value }) => {
-        return ['/**', ' * Animation variables', ' */']
-            .concat(
-                animationProperties.map((property) => codegenSetCSSVariable(`transition-${toDashCase(property)}`, value[property]))
-            );
+        return ['/**', ' * Animation variables', ' */'].concat(
+            animationProperties.map((property) =>
+                codegenSetCSSVariable(`transition-${toDashCase(property)}`, value[property])
+            )
+        );
     }
 };
 
-export const animationGenerators = [
-    animationGenerator
-];
+export const animationGenerators = [animationGenerator];

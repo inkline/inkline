@@ -1,4 +1,4 @@
-import { render } from 'micromustache';
+import { render, Scope } from 'micromustache';
 
 /**
  * Interpolate values from given scope
@@ -6,6 +6,9 @@ import { render } from 'micromustache';
  * @param template
  * @param scope
  */
-export const interpolate = <TemplateType = any, ScopeType = {}>(template: TemplateType, scope: ScopeType) => {
-    return render(`${template}`, scope, { tags: ['<%', '%>'] });
+export const interpolate = <TemplateType = any, ScopeType = {}>(
+    template: TemplateType,
+    scope: ScopeType
+) => {
+    return render(`${template}`, scope as Scope, { tags: ['<%', '%>'] });
 };

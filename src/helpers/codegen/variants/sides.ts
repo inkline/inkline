@@ -11,7 +11,12 @@ import { sidesPropertyKeys } from '../../../constants';
  * @param variantName
  * @param variant
  */
-export const codegenSidesPropertyVariant = (config: ResolvedConfiguration, property: 'margin' | 'padding', variantName: string, variant: SidesPropertyVariant): string[] => {
+export const codegenSidesPropertyVariant = (
+    config: ResolvedConfiguration,
+    property: 'margin' | 'padding',
+    variantName: string,
+    variant: SidesPropertyVariant
+): string[] => {
     const variantValue: SidesProperty<string> = {
         top: codegenGetCSSVariable(`${property}-top`),
         right: codegenGetCSSVariable(`${property}-right`),
@@ -20,14 +25,22 @@ export const codegenSidesPropertyVariant = (config: ResolvedConfiguration, prope
     };
 
     Object.keys(variant).forEach((modifierName) => {
-        const modifier = sidesModifiers[modifierName] || sidesModifiers[sidesModifierAliases[modifierName]];
+        const modifier =
+            sidesModifiers[modifierName] || sidesModifiers[sidesModifierAliases[modifierName]];
 
         modifier(variantValue, variant[modifierName] as string);
     });
 
-    return sidesPropertyKeys.map((side) =>
-        codegenSetCSSVariable(`${property}-${side}-${variantName}`, variantValue[side])
-    ).concat([
-        codegenSetCSSVariable(`${property}-${variantName}`, sidesPropertyKeys.map((side) => codegenGetCSSVariable(`${property}-${side}-${variantName}`)).join(' '))
-    ]);
+    return sidesPropertyKeys
+        .map((side) =>
+            codegenSetCSSVariable(`${property}-${side}-${variantName}`, variantValue[side])
+        )
+        .concat([
+            codegenSetCSSVariable(
+                `${property}-${variantName}`,
+                sidesPropertyKeys
+                    .map((side) => codegenGetCSSVariable(`${property}-${side}-${variantName}`))
+                    .join(' ')
+            )
+        ]);
 };

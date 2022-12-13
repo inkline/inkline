@@ -2,7 +2,7 @@ import { ConfigurationContext, CornersProperty, FnProperty, Theme } from '../../
 import { cornersPropertyKeys } from '../../constants';
 import { parseValue } from './parseValue';
 
-export function parseCornersValue<ValueType = unknown, ReturnType = string | number> (
+export function parseCornersValue<ValueType = unknown, ReturnType = string | number>(
     context: ConfigurationContext<Theme, ValueType | FnProperty<ValueType>>
 ): CornersProperty<ReturnType> {
     const value = parseValue(context);
@@ -19,8 +19,8 @@ export function parseCornersValue<ValueType = unknown, ReturnType = string | num
      * @param values
      */
 
-    const assignCornersFromArray = (values: Array<ReturnType | string>) => cornersPropertyKeys
-        .forEach((corner, index) => {
+    const assignCornersFromArray = (values: Array<ReturnType | string>) =>
+        cornersPropertyKeys.forEach((corner, index) => {
             corners[corner] = (values[index % 4] || values[index % 2] || values[0]) as ReturnType;
         });
 
@@ -30,10 +30,12 @@ export function parseCornersValue<ValueType = unknown, ReturnType = string | num
 
     if (Array.isArray(value)) {
         assignCornersFromArray(
-            (value as unknown as Array<ReturnType>).map((corner) => parseValue({
-                ...context,
-                value: corner
-            }))
+            (value as unknown as Array<ReturnType>).map((corner) =>
+                parseValue({
+                    ...context,
+                    value: corner
+                })
+            )
         );
     } else if (typeof value === 'string') {
         assignCornersFromArray(value.split(/\s+/));

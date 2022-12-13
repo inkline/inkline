@@ -1,4 +1,3 @@
-import { Configuration, UserConfiguration } from '../../types';
 import { interpolate } from '../interpolate';
 
 describe('helpers', () => {

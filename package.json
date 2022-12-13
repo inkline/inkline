@@ -17,7 +17,7 @@
         "postversion": "ts-node scripts/postversion.ts"
     },
     "devDependencies": {
-        "@grozav/eslint-config": "1.0.4",
+        "@grozav/eslint-config": "1.1.4",
         "@types/shelljs": "0.8.11",
         "eslint": "8.22",
         "jsdom": "20.0.1",

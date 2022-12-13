@@ -5,14 +5,17 @@ export interface ParseGenericComposedValueSetFn<ValueType = Record<string, strin
     (target: ValueType, values: string[]): void;
 }
 
-export function parseGenericComposedValue<ReturnType = unknown> (
+export function parseGenericComposedValue<ReturnType = unknown>(
     context: ConfigurationContext<Theme, string>,
     setFn: ParseGenericComposedValueSetFn<ReturnType>
 ): ReturnType {
     const value = parseValue(context);
     const result: ReturnType = {} as unknown as ReturnType;
 
-    setFn(result, value.split(/\s+([\w-]+\([^(]+\)?|[#\w-]+)/).filter((part) => part));
+    setFn(
+        result,
+        value.split(/\s+([\w-]+\([^(]+\)?|[#\w-]+)/).filter((part) => part)
+    );
 
     return result;
 }

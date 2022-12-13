@@ -37,7 +37,10 @@ export const boxShadowDefaultResolver: Resolver<string, ResolvedTheme['boxShadow
     apply: (context) => parseGenericComposedValue(context, setBoxShadowFieldsFn)
 };
 
-export const boxShadowFieldResolver: Resolver<BoxShadow[string], ResolvedTheme['boxShadow'][string]> = {
+export const boxShadowFieldResolver: Resolver<
+    BoxShadow[string],
+    ResolvedTheme['boxShadow'][string]
+> = {
     name: 'boxShadow',
     test: /(.*)boxShadow\.([\w-]+)$/,
     skip: /^variants/,

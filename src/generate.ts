@@ -1,24 +1,26 @@
-import { CodegenFile, CodegenGroup, GeneratorLocation, IntermediaryCodegenFile, ResolvedConfiguration } from './types';
+import {
+    CodegenFile,
+    CodegenGroup,
+    GeneratorLocation,
+    IntermediaryCodegenFile,
+    ResolvedConfiguration
+} from './types';
 import { applyGenerators } from './applicators';
 import { codegenIndent, interpolate } from './helpers';
 
-function generateCodeForRoot (
+function generateCodeForRoot(
     config: ResolvedConfiguration,
     themeName: keyof ResolvedConfiguration['theme'],
     groups: CodegenGroup[]
 ) {
-    return `${themeName === 'default'
-        ? ':root'
-        : interpolate(config.build.themeSelector, { themeName })
-    } {\n${
-        groups.map(({ lines }) => lines
-            .map((line) => codegenIndent(line))
-            .join('\n')
-        ).join('\n\n')
-    }\n}`;
+    return `${
+        themeName === 'default' ? ':root' : interpolate(config.build.themeSelector, { themeName })
+    } {\n${groups
+        .map(({ lines }) => lines.map((line) => codegenIndent(line)).join('\n'))
+        .join('\n\n')}\n}`;
 }
 
-function generateCodeForDefault (
+function generateCodeForDefault(
     config: ResolvedConfiguration,
     themeName: keyof ResolvedConfiguration['theme'],
     groups: CodegenGroup[]
@@ -33,18 +35,23 @@ function generateCodeForDefault (
  * @param themeName
  * @param locations
  */
-function generateCodeForLocations (
+function generateCodeForLocations(
     config: ResolvedConfiguration,
     themeName: keyof ResolvedConfiguration['theme'],
     locations: Record<GeneratorLocation, CodegenGroup[]>
 ) {
-    return Object.keys(locations).map((location) => {
-        switch (location) {
-        case 'default': return generateCodeForDefault(config, themeName, locations[location]);
-        case 'root': return generateCodeForRoot(config, themeName, locations[location]);
-        default: return generateCodeForRoot(config, themeName, locations[location]);
-        }
-    }).join('\n\n');
+    return Object.keys(locations)
+        .map((location) => {
+            switch (location) {
+                case 'default':
+                    return generateCodeForDefault(config, themeName, locations[location]);
+                case 'root':
+                    return generateCodeForRoot(config, themeName, locations[location]);
+                default:
+                    return generateCodeForRoot(config, themeName, locations[location]);
+            }
+        })
+        .join('\n\n');
 }
 
 /**
@@ -52,7 +59,7 @@ function generateCodeForLocations (
  *
  * @param groups
  */
-function sortCodegenGroups (groups: CodegenGroup[]) {
+function sortCodegenGroups(groups: CodegenGroup[]) {
     return groups.sort((a, b) => {
         if (a.priority === b.priority) {
             return a.name.localeCompare(b.name);
@@ -74,17 +81,16 @@ function sortCodegenGroups (groups: CodegenGroup[]) {
 //     return generateCodeForLocations(locations);
 // }
 
-export function generate (config: ResolvedConfiguration): Record<keyof ResolvedConfiguration['theme'], CodegenFile[]> {
+export function generate(
+    config: ResolvedConfiguration
+): Record<keyof ResolvedConfiguration['theme'], CodegenFile[]> {
     return Object.keys(config.theme).reduce((acc, themeName) => {
         const codegenGroups = sortCodegenGroups(
             applyGenerators(config, config.theme[themeName], config.theme[themeName])
         );
 
         const codegenFiles: CodegenFile[] = codegenGroups
-            .reduce((
-                acc,
-                codegenGroup
-            ) => {
+            .reduce((acc, codegenGroup) => {
                 const location: GeneratorLocation = codegenGroup.location;
                 let group = acc.find((group) => group.name === codegenGroup.name);
                 if (!group) {
@@ -111,9 +117,14 @@ export function generate (config: ResolvedConfiguration): Record<keyof ResolvedC
 
         acc[themeName] = codegenFiles.concat({
             name: 'index',
-            contents: codegenFiles.map((file) =>
-                `@import "${file.name}${config.buildOptions.extName === '.css' ? '.css' : ''}";`
-            ).join('\n')
+            contents: codegenFiles
+                .map(
+                    (file) =>
+                        `@import "${file.name}${
+                            config.buildOptions.extName === '.css' ? '.css' : ''
+                        }";`
+                )
+                .join('\n')
         });
 
         return acc;

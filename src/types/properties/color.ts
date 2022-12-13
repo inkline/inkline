@@ -7,7 +7,7 @@ export namespace ColorType {
         b: string | number;
         a?: string | number;
         [key: string]: string | number | undefined;
-    }
+    };
 
     export type HSLA = {
         h: string | number;
@@ -15,7 +15,7 @@ export namespace ColorType {
         l: string;
         a?: string | number;
         [key: string]: string | number | undefined;
-    }
+    };
 }
 
 export type ColorProperty = CSS.Property.Color | ColorType.RGBA | ColorType.HSLA;

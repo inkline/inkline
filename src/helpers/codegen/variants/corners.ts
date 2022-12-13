@@ -12,7 +12,12 @@ import { toDashCase } from '@grozav/utils';
  * @param variantName
  * @param variant
  */
-export const codegenCornersPropertyVariant = (config: ResolvedConfiguration, property: string, variantName: string, variant: CornersPropertyVariant): string[] => {
+export const codegenCornersPropertyVariant = (
+    config: ResolvedConfiguration,
+    property: string,
+    variantName: string,
+    variant: CornersPropertyVariant
+): string[] => {
     const [prefix, suffix] = property.split('-');
     const variantValue: CornersProperty<string> = {
         topLeft: codegenGetCSSVariable(`${prefix}-top-left-${suffix}`),
@@ -22,22 +27,30 @@ export const codegenCornersPropertyVariant = (config: ResolvedConfiguration, pro
     };
 
     Object.keys(variant).forEach((modifierName) => {
-        const modifier = cornersModifiers[modifierName] || cornersModifiers[cornersModifierAliases[modifierName]];
+        const modifier =
+            cornersModifiers[modifierName] ||
+            cornersModifiers[cornersModifierAliases[modifierName]];
 
         modifier(variantValue, variant[modifierName] as string);
     });
 
-    return cornersPropertyKeys.map((side) =>
-        codegenSetCSSVariable(
-            `${prefix}-${toDashCase(side)}-${suffix}-${variantName}`,
-            variantValue[side]
+    return cornersPropertyKeys
+        .map((side) =>
+            codegenSetCSSVariable(
+                `${prefix}-${toDashCase(side)}-${suffix}-${variantName}`,
+                variantValue[side]
+            )
         )
-    ).concat([
-        codegenSetCSSVariable(
-            `${prefix}-${suffix}-${variantName}`,
-            cornersPropertyKeys.map(
-                (side) => codegenGetCSSVariable(`${prefix}-${toDashCase(side)}-${suffix}-${variantName}`)
-            ).join(' ')
-        )
-    ]);
+        .concat([
+            codegenSetCSSVariable(
+                `${prefix}-${suffix}-${variantName}`,
+                cornersPropertyKeys
+                    .map((side) =>
+                        codegenGetCSSVariable(
+                            `${prefix}-${toDashCase(side)}-${suffix}-${variantName}`
+                        )
+                    )
+                    .join(' ')
+            )
+        ]);
 };

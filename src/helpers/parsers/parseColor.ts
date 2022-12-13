@@ -2,13 +2,14 @@ import {
     ColorProperty,
     ColorType,
     ConfigurationContext,
-    ResolvedColorProperty, ResolvedColorPropertyObject,
+    ResolvedColorProperty,
+    ResolvedColorPropertyObject,
     Theme
 } from '../../types';
 import color from 'color';
 import { parseValue } from './parseValue';
 
-export function parseColor (
+export function parseColor(
     context: ConfigurationContext<Theme, ColorProperty>
 ): ResolvedColorProperty {
     let value = context.value;

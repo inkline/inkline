@@ -1,7 +1,10 @@
 import { parseValue } from '../helpers';
 import { ResolvedTheme, Resolver, Theme } from '../types';
 
-export const breakpointsResolver: Resolver<Theme['breakpoints'][string], ResolvedTheme['breakpoints'][string]> = {
+export const breakpointsResolver: Resolver<
+    Theme['breakpoints'][string],
+    ResolvedTheme['breakpoints'][string]
+> = {
     name: 'breakpoints',
     test: /(.*)breakpoints\.([\w-]+)$/,
     skip: /^variants/,
@@ -12,6 +15,4 @@ export const breakpointsResolver: Resolver<Theme['breakpoints'][string], Resolve
     }
 };
 
-export const breakpointsResolvers = [
-    breakpointsResolver
-];
+export const breakpointsResolvers = [breakpointsResolver];

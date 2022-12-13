@@ -21,12 +21,10 @@ export const colorVariantResolver: Resolver<ColorPropertyVariant, ResolvedColorP
     name: 'color',
     test: /^variants\.(.*)color\.([\w-]+)\.([\w-]+)$/,
     set: 'variants.$1color.$2.$3',
-    apply: (context) => typeof context.value === 'object'
-        ? parseRecursive(context)
-        : parseColor(context as ConfigurationContext<Theme, ColorProperty>)
+    apply: (context) =>
+        typeof context.value === 'object'
+            ? parseRecursive(context)
+            : parseColor(context as ConfigurationContext<Theme, ColorProperty>)
 };
 
-export const colorResolvers = [
-    colorResolver,
-    colorVariantResolver
-];
+export const colorResolvers = [colorResolver, colorVariantResolver];

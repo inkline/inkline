@@ -1,7 +1,10 @@
 import { ResolvedTheme, Resolver, Theme, ThemeVariants } from '../types';
 import { parseColor, parseRecursive, parseValue } from '../helpers';
 
-export const typographyLineHeightResolver: Resolver<Theme['typography']['lineHeight'], ResolvedTheme['typography']['lineHeight']> = {
+export const typographyLineHeightResolver: Resolver<
+    Theme['typography']['lineHeight'],
+    ResolvedTheme['typography']['lineHeight']
+> = {
     name: 'typography',
     test: /(.*)typography\.lineHeight$/,
     skip: /^variants/,
@@ -9,7 +12,10 @@ export const typographyLineHeightResolver: Resolver<Theme['typography']['lineHei
     apply: (context) => parseValue(context)
 };
 
-export const typographyLetterSpacingResolver: Resolver<Theme['typography']['letterSpacing'], ResolvedTheme['typography']['letterSpacing']> = {
+export const typographyLetterSpacingResolver: Resolver<
+    Theme['typography']['letterSpacing'],
+    ResolvedTheme['typography']['letterSpacing']
+> = {
     name: 'typography',
     test: /(.*)typography\.letterSpacing$/,
     skip: /^variants/,
@@ -17,7 +23,10 @@ export const typographyLetterSpacingResolver: Resolver<Theme['typography']['lett
     apply: (context) => parseValue(context)
 };
 
-export const typographyFontSizeResolver: Resolver<Theme['typography']['fontSize'], ResolvedTheme['typography']['fontSize']> = {
+export const typographyFontSizeResolver: Resolver<
+    Theme['typography']['fontSize'],
+    ResolvedTheme['typography']['fontSize']
+> = {
     name: 'typography',
     test: /(.*)typography\.fontSize$/,
     skip: /^variants/,
@@ -25,16 +34,21 @@ export const typographyFontSizeResolver: Resolver<Theme['typography']['fontSize'
     apply: (context) => parseValue(context)
 };
 
-export const typographyFontSizeVariantResolver: Resolver<ThemeVariants['typography']['fontSize'][string], ThemeVariants['typography']['fontSize'][string]> = {
+export const typographyFontSizeVariantResolver: Resolver<
+    ThemeVariants['typography']['fontSize'][string],
+    ThemeVariants['typography']['fontSize'][string]
+> = {
     name: 'typography',
     test: /(.*)variants\.typography\.fontSize$/,
     set: '$1variants.typography.fontSize',
-    apply: (context) => typeof context.value === 'object'
-        ? parseRecursive(context)
-        : parseValue(context)
+    apply: (context) =>
+        typeof context.value === 'object' ? parseRecursive(context) : parseValue(context)
 };
 
-export const typographyFontWeightResolver: Resolver<Theme['typography']['fontWeight'][string], ResolvedTheme['typography']['fontWeight'][string]> = {
+export const typographyFontWeightResolver: Resolver<
+    Theme['typography']['fontWeight'][string],
+    ResolvedTheme['typography']['fontWeight'][string]
+> = {
     name: 'typography',
     test: /(.*)typography.fontWeight\.([\w-]+)$/,
     skip: /^variants/,
@@ -42,19 +56,22 @@ export const typographyFontWeightResolver: Resolver<Theme['typography']['fontWei
     apply: (context) => parseValue(context)
 };
 
-export const typographyFontFamilyResolver: Resolver<Theme['typography']['fontFamily'][string][string], ResolvedTheme['typography']['fontFamily'][string][string]> = {
+export const typographyFontFamilyResolver: Resolver<
+    Theme['typography']['fontFamily'][string][string],
+    ResolvedTheme['typography']['fontFamily'][string][string]
+> = {
     name: 'typography',
     test: /(.*)typography.fontFamily$/,
     skip: /^variants/,
-    set: [
-        '$1typography.fontFamily.primary.base',
-        '$1typography.fontFamily.secondary.base'
-    ],
+    set: ['$1typography.fontFamily.primary.base', '$1typography.fontFamily.secondary.base'],
     guard: (context) => typeof context.value === 'string',
     apply: (context) => parseValue(context)
 };
 
-export const typographyFontFamilyGroupResolver: Resolver<Theme['typography']['fontFamily'][string][string], ResolvedTheme['typography']['fontFamily'][string][string]> = {
+export const typographyFontFamilyGroupResolver: Resolver<
+    Theme['typography']['fontFamily'][string][string],
+    ResolvedTheme['typography']['fontFamily'][string][string]
+> = {
     name: 'typography',
     test: /(.*)typography.fontFamily\.(primary|secondary)$/,
     skip: /^variants/,
@@ -63,7 +80,10 @@ export const typographyFontFamilyGroupResolver: Resolver<Theme['typography']['fo
     apply: (context) => parseValue(context)
 };
 
-export const typographyFontFamilyTypeResolver: Resolver<Theme['typography']['fontFamily'][string][string], ResolvedTheme['typography']['fontFamily'][string][string]> = {
+export const typographyFontFamilyTypeResolver: Resolver<
+    Theme['typography']['fontFamily'][string][string],
+    ResolvedTheme['typography']['fontFamily'][string][string]
+> = {
     name: 'typography',
     test: /(.*)typography.fontFamily\.(primary|secondary)\.([\w-]+)$/,
     skip: /^variants/,
@@ -71,7 +91,10 @@ export const typographyFontFamilyTypeResolver: Resolver<Theme['typography']['fon
     apply: (context) => parseValue(context)
 };
 
-export const typographyContrastColorResolver: Resolver<Theme['color'][string], ResolvedTheme['color'][string]> = {
+export const typographyContrastColorResolver: Resolver<
+    Theme['color'][string],
+    ResolvedTheme['color'][string]
+> = {
     name: 'color',
     test: /(.*)contrastColor\.([\w-]+)$/,
     skip: /^variants/,

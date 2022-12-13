@@ -6,7 +6,7 @@ export type GeneratorLocation = 'default' | 'root' | string;
 export enum GeneratorPriority {
     High = 0,
     Medium = 1,
-    Low = 2,
+    Low = 2
 }
 
 export interface CodegenGroup {

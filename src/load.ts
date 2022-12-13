@@ -4,7 +4,7 @@ import { defaultConfig } from './defaults';
 import { resolve } from './resolve';
 import { PartialDeep } from 'type-fest';
 
-export async function loadConfig (
+export async function loadConfig(
     overrides: PartialDeep<Configuration>
 ): Promise<ResolvedConfiguration> {
     const { config } = await c12<Configuration>({
@@ -16,7 +16,7 @@ export async function loadConfig (
     return resolve(config as Configuration);
 }
 
-export async function loadConfigFromFile (
+export async function loadConfigFromFile(
     options: LoadConfigOptions<Configuration> = {}
 ): Promise<ResolvedConfiguration> {
     const { config } = await c12<Configuration>({

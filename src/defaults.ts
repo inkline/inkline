@@ -95,7 +95,7 @@ export const defaultConfig: Configuration = {
         ...paddingGenerators,
         ...scaleRatioGenerators,
         ...sizeGenerators,
-        ...typographyGenerators,
+        ...typographyGenerators
     ],
     theme: {
         default: {
@@ -167,9 +167,10 @@ export const defaultConfig: Configuration = {
             typography: {
                 fontFamily: {
                     primary: {
-                        base: '-apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen-Sans, Ubuntu, Cantarell, \'Helvetica Neue\', sans-serif',
-                        monospace: '\'SFMono-Regular\', Menlo, Monaco, Consolas, \'Liberation Mono\', \'Courier New\', monospace',
-                        print: '\'Georgia\', \'Times New Roman\', \'Times\', serif'
+                        base: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
+                        monospace:
+                            "'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+                        print: "'Georgia', 'Times New Roman', 'Times', serif"
                     },
                     secondary: {
                         base: 'var(--font-family-primary-base)',

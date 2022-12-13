@@ -1,23 +1,31 @@
 import { Generator, ResolvedTheme, ThemeVariants } from '../types';
 import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX, sidesPropertyKeys } from '../constants';
-import { codegenGetCSSVariable, codegenSetCSSVariable, codegenSidesPropertyVariant } from '../helpers';
+import {
+    codegenGetCSSVariable,
+    codegenSetCSSVariable,
+    codegenSidesPropertyVariant
+} from '../helpers';
 
 export const marginGenerator: Generator<ResolvedTheme['margin']> = {
     name: 'spacing',
     location: 'root',
     test: /(.*)margin$/,
     skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
-    apply: ({ value }) => ['/**', ' * Margin variables', ' */']
-        .concat(
-            sidesPropertyKeys.map(
-                (side) => codegenSetCSSVariable(`margin-${side}`, value[side])
+    apply: ({ value }) =>
+        ['/**', ' * Margin variables', ' */']
+            .concat(
+                sidesPropertyKeys.map((side) =>
+                    codegenSetCSSVariable(`margin-${side}`, value[side])
+                )
             )
-        )
-        .concat([
-            codegenSetCSSVariable('margin', sidesPropertyKeys.map(
-                (side) => codegenGetCSSVariable(`margin-${side}`)
-            ).join(' '))
-        ])
+            .concat([
+                codegenSetCSSVariable(
+                    'margin',
+                    sidesPropertyKeys
+                        .map((side) => codegenGetCSSVariable(`margin-${side}`))
+                        .join(' ')
+                )
+            ])
 };
 
 export const marginVariantGenerator: Generator<ThemeVariants['margin']> = {
@@ -27,12 +35,10 @@ export const marginVariantGenerator: Generator<ThemeVariants['margin']> = {
     apply: ({ config, value, path }) => {
         const key = path[path.length - 1];
 
-        return ['/**', ` * Margin ${key} variant variables`, ' */']
-            .concat(codegenSidesPropertyVariant(config, 'margin', key, value));
+        return ['/**', ` * Margin ${key} variant variables`, ' */'].concat(
+            codegenSidesPropertyVariant(config, 'margin', key, value)
+        );
     }
 };
 
-export const marginGenerators = [
-    marginGenerator,
-    marginVariantGenerator
-];
+export const marginGenerators = [marginGenerator, marginVariantGenerator];

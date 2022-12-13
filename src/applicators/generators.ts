@@ -18,7 +18,7 @@ import { capitalizeFirst, toDashCase } from '@grozav/utils';
  * @param target
  * @param parentPath
  */
-export function applyGenerators (
+export function applyGenerators(
     config: ResolvedConfiguration,
     theme: ResolvedTheme,
     source: ResolvedTheme | ResolvedTheme[keyof ResolvedTheme],
@@ -39,7 +39,11 @@ export function applyGenerators (
         let matches = 0;
         config.generators.forEach((generator) => {
             const tests = Array.isArray(generator.test) ? generator.test : [generator.test];
-            const skips = Array.isArray(generator.skip) ? generator.skip : (generator.skip ? [generator.skip] : []);
+            const skips = Array.isArray(generator.skip)
+                ? generator.skip
+                : generator.skip
+                ? [generator.skip]
+                : [];
 
             // Check if generator test path matches and type guard passes,
             // then set resolved value at target path
@@ -68,8 +72,9 @@ export function applyGenerators (
             } else {
                 const groupName = path[0];
                 const subgroup = path[1];
-                const existingGroup = target
-                    .find((group) => group.subgroup === subgroup && group.name === groupName);
+                const existingGroup = target.find(
+                    (group) => group.subgroup === subgroup && group.name === groupName
+                );
 
                 if (existingGroup) {
                     existingGroup.lines.push(...genericGenerator.apply(context));
@@ -78,7 +83,9 @@ export function applyGenerators (
 
                     target.push({
                         name: groupName,
-                        lines: ['/**', ` * ${subgroupName} variables`, ' */'].concat(genericGenerator.apply(context)),
+                        lines: ['/**', ` * ${subgroupName} variables`, ' */'].concat(
+                            genericGenerator.apply(context)
+                        ),
                         priority: genericGenerator.priority ?? GeneratorPriority.Medium,
                         location: 'root',
                         subgroup

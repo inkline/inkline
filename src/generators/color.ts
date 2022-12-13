@@ -17,7 +17,12 @@ import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX, MATCH_TYPOGRAPHY_REGEX } fr
  * @param variantName
  * @param variant
  */
-const codegenColorPropertyVariant = (config: ResolvedConfiguration, name: string, variantName: string, variant: ColorPropertyObjectVariant): string[] => {
+const codegenColorPropertyVariant = (
+    config: ResolvedConfiguration,
+    name: string,
+    variantName: string,
+    variant: ColorPropertyObjectVariant
+): string[] => {
     const variantValue: ResolvedTheme['color'][string] = {
         h: codegenGetCSSVariable(`color-${name}-h`),
         s: codegenGetCSSVariable(`color-${name}-s`),
@@ -26,11 +31,15 @@ const codegenColorPropertyVariant = (config: ResolvedConfiguration, name: string
     };
 
     Object.keys(variant).forEach((modifier) => {
-        (modifiers[modifier] || modifiers[modifierAliases[modifier]])(variantValue, variant[modifier]);
+        (modifiers[modifier] || modifiers[modifierAliases[modifier]])(
+            variantValue,
+            variant[modifier]
+        );
     });
 
-    return ['/**', ` * Color ${name}-${variantName} variant variables`, ' */']
-        .concat(codegenColorVariables(`${name}-${variantName}`, variantValue));
+    return ['/**', ` * Color ${name}-${variantName} variant variables`, ' */'].concat(
+        codegenColorVariables(`${name}-${variantName}`, variantValue)
+    );
 };
 
 export const colorGenerator: Generator<ResolvedTheme['color'][string]> = {
@@ -41,8 +50,9 @@ export const colorGenerator: Generator<ResolvedTheme['color'][string]> = {
     apply: ({ value, path }) => {
         const name = path[path.length - 1];
 
-        return ['/**', ` * Color ${name} variables`, ' */']
-            .concat(codegenColorVariables(name, value as ResolvedTheme['color'][string]));
+        return ['/**', ` * Color ${name} variables`, ' */'].concat(
+            codegenColorVariables(name, value as ResolvedTheme['color'][string])
+        );
     }
 };
 
@@ -57,7 +67,4 @@ export const colorVariantGenerator: Generator<ThemeVariants['color'][string][str
     }
 };
 
-export const colorGenerators = [
-    colorGenerator,
-    colorVariantGenerator
-];
+export const colorGenerators = [colorGenerator, colorVariantGenerator];

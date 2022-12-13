@@ -1,7 +1,7 @@
 import { Configuration, ResolvedConfiguration, Theme } from './types';
 import { applyResolvers } from './applicators';
 
-export function resolve (config: Configuration): ResolvedConfiguration {
+export function resolve(config: Configuration): ResolvedConfiguration {
     Object.keys(config.theme).forEach((themeName) => {
         const theme = config.theme[themeName] as Theme;
 

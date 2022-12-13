@@ -44,7 +44,7 @@ export const genericGenerator: Generator<string> = {
     location: 'root',
     test: /(.+)$/,
     apply: ({ value, path }) => {
-        const [_, ...variablePath] = path;
+        const [, ...variablePath] = path;
         const mappedPath = variablePath.map((part) => toDashCase(part));
 
         let cssVariableName = mappedPath[0];
