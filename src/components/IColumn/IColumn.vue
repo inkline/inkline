@@ -13,7 +13,7 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        xs: { type: [Boolean, String, Number] as PropType<string>, default: '' },
+        xs: { type: [Boolean, String, Number] as PropType<string>, default: false },
 
         /**
          * The number of columns to span for small screen sizes. Setting the prop to true will set the width automatically
@@ -21,7 +21,7 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        sm: { type: [Boolean, String, Number] as PropType<string>, default: '' },
+        sm: { type: [Boolean, String, Number] as PropType<string>, default: false },
 
         /**
          * The number of columns to span for medium screen sizes. Setting the prop to true will set the width automatically
@@ -29,7 +29,7 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        md: { type: [Boolean, String, Number] as PropType<string>, default: '' },
+        md: { type: [Boolean, String, Number] as PropType<string>, default: false },
 
         /**
          * The number of columns to span for large screen sizes. Setting the prop to true will set the width automatically
@@ -37,7 +37,7 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        lg: { type: [Boolean, String, Number] as PropType<string>, default: '' },
+        lg: { type: [Boolean, String, Number] as PropType<string>, default: false },
 
         /**
          * The number of columns to span for extra-large screen sizes. Setting the prop to true will set the width automatically
@@ -45,7 +45,7 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        xl: { type: [Boolean, String, Number] as PropType<string>, default: '' },
+        xl: { type: [Boolean, String, Number] as PropType<string>, default: false },
 
         /**
          * The number of columns to span for extra-extra-large screen sizes. Setting the prop to true will set the width automatically
@@ -53,7 +53,7 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        xxl: { type: [Boolean, String, Number] as PropType<string>, default: '' },
+        xxl: { type: [Boolean, String, Number] as PropType<string>, default: false },
 
         /**
          * Display the column as the first column

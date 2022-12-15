@@ -80,10 +80,6 @@
 // Flex Utilities
 ///
 %flex-utilities-preview {
-    > div[class*='_display:flex'] {
-        margin-bottom: var(--margin-bottom);
-    }
-
     > div[class*='_display:flex'],
     > div[class*='_display:flex'] div {
         padding: var(--padding-1-2);
@@ -103,6 +99,8 @@
     }
 
     > div[class*='_display:flex'] {
+        margin-bottom: var(--margin-bottom);
+
         > div[class^='_align-self'] {
             + div {
                 height: 180px;
