@@ -1,4 +1,4 @@
-import { FloatBasicExample, FloatResponsiveExample } from './index';
+import { FloatBasicExample } from './index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
@@ -6,4 +6,3 @@ export default {
 };
 
 export const Basic = createStory(FloatBasicExample);
-export const Responsive = createStory(FloatResponsiveExample);

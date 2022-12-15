@@ -1,9 +1,15 @@
 ._xs\:visible,
+._xs\:visible\!,
 ._sm\:visible,
+._sm\:visible\!,
 ._md\:visible,
+._md\:visible\!,
 ._lg\:visible,
+._lg\:visible\!,
 ._xl\:visible,
-._2xl\:visible {
+._xl\:visible\!,
+._2xl\:visible,
+._2xl\:visible\! {
   display: none !important;
 }
 ._border {
@@ -7134,6 +7140,12 @@
 ._max-height\:75\%\! {
   max-height: 75% !important;
 }
+._max-height\:auto {
+  max-height: auto;
+}
+._max-height\:auto\! {
+  max-height: auto !important;
+}
 ._max-height\:unset {
   max-height: unset;
 }
@@ -7211,6 +7223,12 @@
 }
 ._max-width\:75\%\! {
   max-width: 75% !important;
+}
+._max-width\:auto {
+  max-width: auto;
+}
+._max-width\:auto\! {
+  max-width: auto !important;
 }
 ._max-width\:unset {
   max-width: unset;
@@ -7613,23 +7631,115 @@
   text-decoration: underline !important;
 }
 @media (min-width: 0px) {
+  ._xs\:text-align\:center,
+  ._xs\:text\:center {
+    text-align: center;
+  }
+  ._xs\:text-align\:center\!,
+  ._xs\:text\:center\! {
+    text-align: center !important;
+  }
+  ._xs\:text-align\:left,
+  ._xs\:text\:left {
+    text-align: left;
+  }
+  ._xs\:text-align\:left\!,
+  ._xs\:text\:left\! {
+    text-align: left !important;
+  }
+  ._xs\:text-align\:right,
+  ._xs\:text\:right {
+    text-align: right;
+  }
+  ._xs\:text-align\:right\!,
+  ._xs\:text\:right\! {
+    text-align: right !important;
+  }
+  ._xs\:text-align\:justify,
+  ._xs\:text\:justify {
+    text-align: justify;
+  }
+  ._xs\:text-align\:justify\!,
+  ._xs\:text\:justify\! {
+    text-align: justify !important;
+  }
+  ._xs\:text-align\:start,
+  ._xs\:text\:start {
+    text-align: start;
+  }
+  ._xs\:text-align\:start\!,
+  ._xs\:text\:start\! {
+    text-align: start !important;
+  }
+  ._xs\:text-align\:end,
+  ._xs\:text\:end {
+    text-align: end;
+  }
+  ._xs\:text-align\:end\!,
+  ._xs\:text\:end\! {
+    text-align: end !important;
+  }
+  ._xs\:text-align\:inherit,
+  ._xs\:text\:inherit {
+    text-align: inherit;
+  }
+  ._xs\:text-align\:inherit\!,
+  ._xs\:text\:inherit\! {
+    text-align: inherit !important;
+  }
+  ._xs\:text-align\:initial,
+  ._xs\:text\:initial {
+    text-align: initial;
+  }
+  ._xs\:text-align\:initial\!,
+  ._xs\:text\:initial\! {
+    text-align: initial !important;
+  }
+  ._xs\:text-align\:revert,
+  ._xs\:text\:revert {
+    text-align: revert;
+  }
+  ._xs\:text-align\:revert\!,
+  ._xs\:text\:revert\! {
+    text-align: revert !important;
+  }
+  ._xs\:text-align\:unset,
+  ._xs\:text\:unset {
+    text-align: unset;
+  }
+  ._xs\:text-align\:unset\!,
+  ._xs\:text\:unset\! {
+    text-align: unset !important;
+  }
   ._xs\:visible,
   ._xs\:visible\:block,
   ._xs\:visible\:block\!,
-  ._xs\:visible\:flex,
-  ._xs\:visible\:flex\!,
-  ._xs\:visible\:grid,
-  ._xs\:visible\:grid\!,
-  ._xs\:visible\:inline,
-  ._xs\:visible\:inline-block,
-  ._xs\:visible\:inline-block\!,
-  ._xs\:visible\:inline-flex,
-  ._xs\:visible\:inline-flex\!,
-  ._xs\:visible\:inline-grid,
-  ._xs\:visible\:inline-grid\!,
-  ._xs\:visible\:inline\!,
   ._xs\:visible\! {
     display: block !important;
+  }
+  ._xs\:visible\:flex,
+  ._xs\:visible\:flex\! {
+    display: flex !important;
+  }
+  ._xs\:visible\:grid,
+  ._xs\:visible\:grid\! {
+    display: grid !important;
+  }
+  ._xs\:visible\:inline,
+  ._xs\:visible\:inline\! {
+    display: inline !important;
+  }
+  ._xs\:visible\:inline-block,
+  ._xs\:visible\:inline-block\! {
+    display: inline-block !important;
+  }
+  ._xs\:visible\:inline-flex,
+  ._xs\:visible\:inline-flex\! {
+    display: inline-flex !important;
+  }
+  ._xs\:visible\:inline-grid,
+  ._xs\:visible\:inline-grid\! {
+    display: inline-grid !important;
   }
   ._xs\:hidden,
   ._xs\:hidden\! {
@@ -7637,23 +7747,115 @@
   }
 }
 @media (min-width: 576px) {
+  ._sm\:text-align\:center,
+  ._sm\:text\:center {
+    text-align: center;
+  }
+  ._sm\:text-align\:center\!,
+  ._sm\:text\:center\! {
+    text-align: center !important;
+  }
+  ._sm\:text-align\:left,
+  ._sm\:text\:left {
+    text-align: left;
+  }
+  ._sm\:text-align\:left\!,
+  ._sm\:text\:left\! {
+    text-align: left !important;
+  }
+  ._sm\:text-align\:right,
+  ._sm\:text\:right {
+    text-align: right;
+  }
+  ._sm\:text-align\:right\!,
+  ._sm\:text\:right\! {
+    text-align: right !important;
+  }
+  ._sm\:text-align\:justify,
+  ._sm\:text\:justify {
+    text-align: justify;
+  }
+  ._sm\:text-align\:justify\!,
+  ._sm\:text\:justify\! {
+    text-align: justify !important;
+  }
+  ._sm\:text-align\:start,
+  ._sm\:text\:start {
+    text-align: start;
+  }
+  ._sm\:text-align\:start\!,
+  ._sm\:text\:start\! {
+    text-align: start !important;
+  }
+  ._sm\:text-align\:end,
+  ._sm\:text\:end {
+    text-align: end;
+  }
+  ._sm\:text-align\:end\!,
+  ._sm\:text\:end\! {
+    text-align: end !important;
+  }
+  ._sm\:text-align\:inherit,
+  ._sm\:text\:inherit {
+    text-align: inherit;
+  }
+  ._sm\:text-align\:inherit\!,
+  ._sm\:text\:inherit\! {
+    text-align: inherit !important;
+  }
+  ._sm\:text-align\:initial,
+  ._sm\:text\:initial {
+    text-align: initial;
+  }
+  ._sm\:text-align\:initial\!,
+  ._sm\:text\:initial\! {
+    text-align: initial !important;
+  }
+  ._sm\:text-align\:revert,
+  ._sm\:text\:revert {
+    text-align: revert;
+  }
+  ._sm\:text-align\:revert\!,
+  ._sm\:text\:revert\! {
+    text-align: revert !important;
+  }
+  ._sm\:text-align\:unset,
+  ._sm\:text\:unset {
+    text-align: unset;
+  }
+  ._sm\:text-align\:unset\!,
+  ._sm\:text\:unset\! {
+    text-align: unset !important;
+  }
   ._sm\:visible,
   ._sm\:visible\:block,
   ._sm\:visible\:block\!,
-  ._sm\:visible\:flex,
-  ._sm\:visible\:flex\!,
-  ._sm\:visible\:grid,
-  ._sm\:visible\:grid\!,
-  ._sm\:visible\:inline,
-  ._sm\:visible\:inline-block,
-  ._sm\:visible\:inline-block\!,
-  ._sm\:visible\:inline-flex,
-  ._sm\:visible\:inline-flex\!,
-  ._sm\:visible\:inline-grid,
-  ._sm\:visible\:inline-grid\!,
-  ._sm\:visible\:inline\!,
   ._sm\:visible\! {
     display: block !important;
+  }
+  ._sm\:visible\:flex,
+  ._sm\:visible\:flex\! {
+    display: flex !important;
+  }
+  ._sm\:visible\:grid,
+  ._sm\:visible\:grid\! {
+    display: grid !important;
+  }
+  ._sm\:visible\:inline,
+  ._sm\:visible\:inline\! {
+    display: inline !important;
+  }
+  ._sm\:visible\:inline-block,
+  ._sm\:visible\:inline-block\! {
+    display: inline-block !important;
+  }
+  ._sm\:visible\:inline-flex,
+  ._sm\:visible\:inline-flex\! {
+    display: inline-flex !important;
+  }
+  ._sm\:visible\:inline-grid,
+  ._sm\:visible\:inline-grid\! {
+    display: inline-grid !important;
   }
   ._sm\:hidden,
   ._sm\:hidden\! {
@@ -7661,23 +7863,115 @@
   }
 }
 @media (min-width: 768px) {
+  ._md\:text-align\:center,
+  ._md\:text\:center {
+    text-align: center;
+  }
+  ._md\:text-align\:center\!,
+  ._md\:text\:center\! {
+    text-align: center !important;
+  }
+  ._md\:text-align\:left,
+  ._md\:text\:left {
+    text-align: left;
+  }
+  ._md\:text-align\:left\!,
+  ._md\:text\:left\! {
+    text-align: left !important;
+  }
+  ._md\:text-align\:right,
+  ._md\:text\:right {
+    text-align: right;
+  }
+  ._md\:text-align\:right\!,
+  ._md\:text\:right\! {
+    text-align: right !important;
+  }
+  ._md\:text-align\:justify,
+  ._md\:text\:justify {
+    text-align: justify;
+  }
+  ._md\:text-align\:justify\!,
+  ._md\:text\:justify\! {
+    text-align: justify !important;
+  }
+  ._md\:text-align\:start,
+  ._md\:text\:start {
+    text-align: start;
+  }
+  ._md\:text-align\:start\!,
+  ._md\:text\:start\! {
+    text-align: start !important;
+  }
+  ._md\:text-align\:end,
+  ._md\:text\:end {
+    text-align: end;
+  }
+  ._md\:text-align\:end\!,
+  ._md\:text\:end\! {
+    text-align: end !important;
+  }
+  ._md\:text-align\:inherit,
+  ._md\:text\:inherit {
+    text-align: inherit;
+  }
+  ._md\:text-align\:inherit\!,
+  ._md\:text\:inherit\! {
+    text-align: inherit !important;
+  }
+  ._md\:text-align\:initial,
+  ._md\:text\:initial {
+    text-align: initial;
+  }
+  ._md\:text-align\:initial\!,
+  ._md\:text\:initial\! {
+    text-align: initial !important;
+  }
+  ._md\:text-align\:revert,
+  ._md\:text\:revert {
+    text-align: revert;
+  }
+  ._md\:text-align\:revert\!,
+  ._md\:text\:revert\! {
+    text-align: revert !important;
+  }
+  ._md\:text-align\:unset,
+  ._md\:text\:unset {
+    text-align: unset;
+  }
+  ._md\:text-align\:unset\!,
+  ._md\:text\:unset\! {
+    text-align: unset !important;
+  }
   ._md\:visible,
   ._md\:visible\:block,
   ._md\:visible\:block\!,
-  ._md\:visible\:flex,
-  ._md\:visible\:flex\!,
-  ._md\:visible\:grid,
-  ._md\:visible\:grid\!,
-  ._md\:visible\:inline,
-  ._md\:visible\:inline-block,
-  ._md\:visible\:inline-block\!,
-  ._md\:visible\:inline-flex,
-  ._md\:visible\:inline-flex\!,
-  ._md\:visible\:inline-grid,
-  ._md\:visible\:inline-grid\!,
-  ._md\:visible\:inline\!,
   ._md\:visible\! {
     display: block !important;
+  }
+  ._md\:visible\:flex,
+  ._md\:visible\:flex\! {
+    display: flex !important;
+  }
+  ._md\:visible\:grid,
+  ._md\:visible\:grid\! {
+    display: grid !important;
+  }
+  ._md\:visible\:inline,
+  ._md\:visible\:inline\! {
+    display: inline !important;
+  }
+  ._md\:visible\:inline-block,
+  ._md\:visible\:inline-block\! {
+    display: inline-block !important;
+  }
+  ._md\:visible\:inline-flex,
+  ._md\:visible\:inline-flex\! {
+    display: inline-flex !important;
+  }
+  ._md\:visible\:inline-grid,
+  ._md\:visible\:inline-grid\! {
+    display: inline-grid !important;
   }
   ._md\:hidden,
   ._md\:hidden\! {
@@ -7685,23 +7979,115 @@
   }
 }
 @media (min-width: 992px) {
+  ._lg\:text-align\:center,
+  ._lg\:text\:center {
+    text-align: center;
+  }
+  ._lg\:text-align\:center\!,
+  ._lg\:text\:center\! {
+    text-align: center !important;
+  }
+  ._lg\:text-align\:left,
+  ._lg\:text\:left {
+    text-align: left;
+  }
+  ._lg\:text-align\:left\!,
+  ._lg\:text\:left\! {
+    text-align: left !important;
+  }
+  ._lg\:text-align\:right,
+  ._lg\:text\:right {
+    text-align: right;
+  }
+  ._lg\:text-align\:right\!,
+  ._lg\:text\:right\! {
+    text-align: right !important;
+  }
+  ._lg\:text-align\:justify,
+  ._lg\:text\:justify {
+    text-align: justify;
+  }
+  ._lg\:text-align\:justify\!,
+  ._lg\:text\:justify\! {
+    text-align: justify !important;
+  }
+  ._lg\:text-align\:start,
+  ._lg\:text\:start {
+    text-align: start;
+  }
+  ._lg\:text-align\:start\!,
+  ._lg\:text\:start\! {
+    text-align: start !important;
+  }
+  ._lg\:text-align\:end,
+  ._lg\:text\:end {
+    text-align: end;
+  }
+  ._lg\:text-align\:end\!,
+  ._lg\:text\:end\! {
+    text-align: end !important;
+  }
+  ._lg\:text-align\:inherit,
+  ._lg\:text\:inherit {
+    text-align: inherit;
+  }
+  ._lg\:text-align\:inherit\!,
+  ._lg\:text\:inherit\! {
+    text-align: inherit !important;
+  }
+  ._lg\:text-align\:initial,
+  ._lg\:text\:initial {
+    text-align: initial;
+  }
+  ._lg\:text-align\:initial\!,
+  ._lg\:text\:initial\! {
+    text-align: initial !important;
+  }
+  ._lg\:text-align\:revert,
+  ._lg\:text\:revert {
+    text-align: revert;
+  }
+  ._lg\:text-align\:revert\!,
+  ._lg\:text\:revert\! {
+    text-align: revert !important;
+  }
+  ._lg\:text-align\:unset,
+  ._lg\:text\:unset {
+    text-align: unset;
+  }
+  ._lg\:text-align\:unset\!,
+  ._lg\:text\:unset\! {
+    text-align: unset !important;
+  }
   ._lg\:visible,
   ._lg\:visible\:block,
   ._lg\:visible\:block\!,
-  ._lg\:visible\:flex,
-  ._lg\:visible\:flex\!,
-  ._lg\:visible\:grid,
-  ._lg\:visible\:grid\!,
-  ._lg\:visible\:inline,
-  ._lg\:visible\:inline-block,
-  ._lg\:visible\:inline-block\!,
-  ._lg\:visible\:inline-flex,
-  ._lg\:visible\:inline-flex\!,
-  ._lg\:visible\:inline-grid,
-  ._lg\:visible\:inline-grid\!,
-  ._lg\:visible\:inline\!,
   ._lg\:visible\! {
     display: block !important;
+  }
+  ._lg\:visible\:flex,
+  ._lg\:visible\:flex\! {
+    display: flex !important;
+  }
+  ._lg\:visible\:grid,
+  ._lg\:visible\:grid\! {
+    display: grid !important;
+  }
+  ._lg\:visible\:inline,
+  ._lg\:visible\:inline\! {
+    display: inline !important;
+  }
+  ._lg\:visible\:inline-block,
+  ._lg\:visible\:inline-block\! {
+    display: inline-block !important;
+  }
+  ._lg\:visible\:inline-flex,
+  ._lg\:visible\:inline-flex\! {
+    display: inline-flex !important;
+  }
+  ._lg\:visible\:inline-grid,
+  ._lg\:visible\:inline-grid\! {
+    display: inline-grid !important;
   }
   ._lg\:hidden,
   ._lg\:hidden\! {
@@ -7709,23 +8095,115 @@
   }
 }
 @media (min-width: 1200px) {
+  ._xl\:text-align\:center,
+  ._xl\:text\:center {
+    text-align: center;
+  }
+  ._xl\:text-align\:center\!,
+  ._xl\:text\:center\! {
+    text-align: center !important;
+  }
+  ._xl\:text-align\:left,
+  ._xl\:text\:left {
+    text-align: left;
+  }
+  ._xl\:text-align\:left\!,
+  ._xl\:text\:left\! {
+    text-align: left !important;
+  }
+  ._xl\:text-align\:right,
+  ._xl\:text\:right {
+    text-align: right;
+  }
+  ._xl\:text-align\:right\!,
+  ._xl\:text\:right\! {
+    text-align: right !important;
+  }
+  ._xl\:text-align\:justify,
+  ._xl\:text\:justify {
+    text-align: justify;
+  }
+  ._xl\:text-align\:justify\!,
+  ._xl\:text\:justify\! {
+    text-align: justify !important;
+  }
+  ._xl\:text-align\:start,
+  ._xl\:text\:start {
+    text-align: start;
+  }
+  ._xl\:text-align\:start\!,
+  ._xl\:text\:start\! {
+    text-align: start !important;
+  }
+  ._xl\:text-align\:end,
+  ._xl\:text\:end {
+    text-align: end;
+  }
+  ._xl\:text-align\:end\!,
+  ._xl\:text\:end\! {
+    text-align: end !important;
+  }
+  ._xl\:text-align\:inherit,
+  ._xl\:text\:inherit {
+    text-align: inherit;
+  }
+  ._xl\:text-align\:inherit\!,
+  ._xl\:text\:inherit\! {
+    text-align: inherit !important;
+  }
+  ._xl\:text-align\:initial,
+  ._xl\:text\:initial {
+    text-align: initial;
+  }
+  ._xl\:text-align\:initial\!,
+  ._xl\:text\:initial\! {
+    text-align: initial !important;
+  }
+  ._xl\:text-align\:revert,
+  ._xl\:text\:revert {
+    text-align: revert;
+  }
+  ._xl\:text-align\:revert\!,
+  ._xl\:text\:revert\! {
+    text-align: revert !important;
+  }
+  ._xl\:text-align\:unset,
+  ._xl\:text\:unset {
+    text-align: unset;
+  }
+  ._xl\:text-align\:unset\!,
+  ._xl\:text\:unset\! {
+    text-align: unset !important;
+  }
   ._xl\:visible,
   ._xl\:visible\:block,
   ._xl\:visible\:block\!,
-  ._xl\:visible\:flex,
-  ._xl\:visible\:flex\!,
-  ._xl\:visible\:grid,
-  ._xl\:visible\:grid\!,
-  ._xl\:visible\:inline,
-  ._xl\:visible\:inline-block,
-  ._xl\:visible\:inline-block\!,
-  ._xl\:visible\:inline-flex,
-  ._xl\:visible\:inline-flex\!,
-  ._xl\:visible\:inline-grid,
-  ._xl\:visible\:inline-grid\!,
-  ._xl\:visible\:inline\!,
   ._xl\:visible\! {
     display: block !important;
+  }
+  ._xl\:visible\:flex,
+  ._xl\:visible\:flex\! {
+    display: flex !important;
+  }
+  ._xl\:visible\:grid,
+  ._xl\:visible\:grid\! {
+    display: grid !important;
+  }
+  ._xl\:visible\:inline,
+  ._xl\:visible\:inline\! {
+    display: inline !important;
+  }
+  ._xl\:visible\:inline-block,
+  ._xl\:visible\:inline-block\! {
+    display: inline-block !important;
+  }
+  ._xl\:visible\:inline-flex,
+  ._xl\:visible\:inline-flex\! {
+    display: inline-flex !important;
+  }
+  ._xl\:visible\:inline-grid,
+  ._xl\:visible\:inline-grid\! {
+    display: inline-grid !important;
   }
   ._xl\:hidden,
   ._xl\:hidden\! {
@@ -7733,23 +8211,115 @@
   }
 }
 @media (min-width: 1400px) {
+  ._2xl\:text-align\:center,
+  ._2xl\:text\:center {
+    text-align: center;
+  }
+  ._2xl\:text-align\:center\!,
+  ._2xl\:text\:center\! {
+    text-align: center !important;
+  }
+  ._2xl\:text-align\:left,
+  ._2xl\:text\:left {
+    text-align: left;
+  }
+  ._2xl\:text-align\:left\!,
+  ._2xl\:text\:left\! {
+    text-align: left !important;
+  }
+  ._2xl\:text-align\:right,
+  ._2xl\:text\:right {
+    text-align: right;
+  }
+  ._2xl\:text-align\:right\!,
+  ._2xl\:text\:right\! {
+    text-align: right !important;
+  }
+  ._2xl\:text-align\:justify,
+  ._2xl\:text\:justify {
+    text-align: justify;
+  }
+  ._2xl\:text-align\:justify\!,
+  ._2xl\:text\:justify\! {
+    text-align: justify !important;
+  }
+  ._2xl\:text-align\:start,
+  ._2xl\:text\:start {
+    text-align: start;
+  }
+  ._2xl\:text-align\:start\!,
+  ._2xl\:text\:start\! {
+    text-align: start !important;
+  }
+  ._2xl\:text-align\:end,
+  ._2xl\:text\:end {
+    text-align: end;
+  }
+  ._2xl\:text-align\:end\!,
+  ._2xl\:text\:end\! {
+    text-align: end !important;
+  }
+  ._2xl\:text-align\:inherit,
+  ._2xl\:text\:inherit {
+    text-align: inherit;
+  }
+  ._2xl\:text-align\:inherit\!,
+  ._2xl\:text\:inherit\! {
+    text-align: inherit !important;
+  }
+  ._2xl\:text-align\:initial,
+  ._2xl\:text\:initial {
+    text-align: initial;
+  }
+  ._2xl\:text-align\:initial\!,
+  ._2xl\:text\:initial\! {
+    text-align: initial !important;
+  }
+  ._2xl\:text-align\:revert,
+  ._2xl\:text\:revert {
+    text-align: revert;
+  }
+  ._2xl\:text-align\:revert\!,
+  ._2xl\:text\:revert\! {
+    text-align: revert !important;
+  }
+  ._2xl\:text-align\:unset,
+  ._2xl\:text\:unset {
+    text-align: unset;
+  }
+  ._2xl\:text-align\:unset\!,
+  ._2xl\:text\:unset\! {
+    text-align: unset !important;
+  }
   ._2xl\:visible,
   ._2xl\:visible\:block,
   ._2xl\:visible\:block\!,
-  ._2xl\:visible\:flex,
-  ._2xl\:visible\:flex\!,
-  ._2xl\:visible\:grid,
-  ._2xl\:visible\:grid\!,
-  ._2xl\:visible\:inline,
-  ._2xl\:visible\:inline-block,
-  ._2xl\:visible\:inline-block\!,
-  ._2xl\:visible\:inline-flex,
-  ._2xl\:visible\:inline-flex\!,
-  ._2xl\:visible\:inline-grid,
-  ._2xl\:visible\:inline-grid\!,
-  ._2xl\:visible\:inline\!,
   ._2xl\:visible\! {
     display: block !important;
+  }
+  ._2xl\:visible\:flex,
+  ._2xl\:visible\:flex\! {
+    display: flex !important;
+  }
+  ._2xl\:visible\:grid,
+  ._2xl\:visible\:grid\! {
+    display: grid !important;
+  }
+  ._2xl\:visible\:inline,
+  ._2xl\:visible\:inline\! {
+    display: inline !important;
+  }
+  ._2xl\:visible\:inline-block,
+  ._2xl\:visible\:inline-block\! {
+    display: inline-block !important;
+  }
+  ._2xl\:visible\:inline-flex,
+  ._2xl\:visible\:inline-flex\! {
+    display: inline-flex !important;
+  }
+  ._2xl\:visible\:inline-grid,
+  ._2xl\:visible\:inline-grid\! {
+    display: inline-grid !important;
   }
   ._2xl\:hidden,
   ._2xl\:hidden\! {

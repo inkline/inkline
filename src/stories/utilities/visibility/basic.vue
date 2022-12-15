@@ -9,11 +9,11 @@
 
     <p class="_xl:hidden!">This text is hidden starting from xl viewport size.</p>
 
-    <p class="_xxl:hidden!">This text is hidden starting from xxl viewport size.</p>
+    <p class="_2xl:hidden!">This text is hidden starting from 2xl viewport size.</p>
 
     <br />
 
-    <p class="_xs:visible:flex!">This text is visible starting from xs viewport size.</p>
+    <p class="_xs:visible!">This text is visible starting from xs viewport size.</p>
 
     <p class="_sm:visible!">This text is visible starting from sm viewport size.</p>
 
@@ -23,7 +23,7 @@
 
     <p class="_xl:visible!">This text is visible starting from xl viewport size.</p>
 
-    <p class="_xxl:visible!">This text is visible starting from xxl viewport size.</p>
+    <p class="_2xl:visible!">This text is visible starting from 2xl viewport size.</p>
 
     <br />
 
@@ -35,7 +35,7 @@
 
     <p class="_lg:visible! _xl:hidden!">This text is visible only on lg viewport size.</p>
 
-    <p class="_xl:visible! _xxl:hidden!">This text is visible only on xl viewport size.</p>
+    <p class="_xl:visible! _2xl:hidden!">This text is visible only on xl viewport size.</p>
 
-    <p class="_xxl:visible!">This text is visible only on xxl viewport size.</p>
+    <p class="_2xl:visible!">This text is visible only on 2xl viewport size.</p>
 </template>
