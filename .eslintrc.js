@@ -13,6 +13,8 @@ module.exports = {
         'vue/require-prop-types': 'off',
         'vue/comment-directive': 'off',
         'vue/no-dupe-keys': 'off',
-        'vue/v-on-event-hyphenation': 'off'
+        'vue/v-on-event-hyphenation': 'off',
+        'vue/singleline-html-element-content-newline': 'off',
+        'vue/html-self-closing': 'off'
     }
 };

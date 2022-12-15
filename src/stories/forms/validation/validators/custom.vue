@@ -7,7 +7,7 @@ const form = useForm({
             {
                 name: 'custom',
                 message: 'Please enter a value containing "inkline".',
-                validator: (v) => /inkline/.test(v)
+                validator: (v: string) => /inkline/.test(v)
             }
         ]
     }
@@ -18,7 +18,7 @@ const form = useForm({
         <i-form-group>
             <i-input
                 name="input"
-                placeholder='This field is custom validated. It needs to contain "inkline"'
+                placeholder="This field is custom validated. It needs to contain 'inkline'"
             />
             <i-form-error for="input" />
         </i-form-group>

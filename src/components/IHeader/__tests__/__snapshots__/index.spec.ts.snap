@@ -6,7 +6,7 @@ exports[`Components > IHeader > should render correctly 1`] = `
     <!-- @slot default Slot for default container content -->
     <div class=\\"row\\">
       <!-- @slot default Slot for default row content -->
-      <div class=\\"column -xs -sm -md -lg -xl -2xl\\">
+      <div class=\\"column\\">
         <!-- @slot default Slot for default column content -->
       </div>
     </div>
