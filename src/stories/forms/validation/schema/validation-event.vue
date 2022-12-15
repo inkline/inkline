@@ -1,16 +1,12 @@
-<script>
-export default {
-    data() {
-        return {
-            schema: this.$inkline.form({
-                input: {
-                    validateOn: 'input',
-                    validators: [{ name: 'minLength', value: 5 }]
-                }
-            })
-        };
+<script lang="ts" setup>
+import { useForm } from '@inkline/inkline/composables';
+
+const schema = useForm({
+    input: {
+        validateOn: 'input',
+        validators: [{ name: 'minLength', value: 5 }]
     }
-};
+});
 </script>
 <template>
     <i-form v-model="schema">

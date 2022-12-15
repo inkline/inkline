@@ -1,21 +1,17 @@
-<script>
-export default {
-    data() {
-        return {
-            form: this.$inkline.form({
-                input: {
-                    validators: [{ name: 'alphanumeric' }]
-                },
-                inputSpaces: {
-                    validators: [{ name: 'alphanumeric', allowSpaces: true }]
-                },
-                inputDashes: {
-                    validators: [{ name: 'alphanumeric', allowDashes: true }]
-                }
-            })
-        };
+<script lang="ts" setup>
+import { useForm } from '@inkline/inkline/composables';
+
+const form = useForm({
+    input: {
+        validators: [{ name: 'alphanumeric' }]
+    },
+    inputSpaces: {
+        validators: [{ name: 'alphanumeric', allowSpaces: true }]
+    },
+    inputDashes: {
+        validators: [{ name: 'alphanumeric', allowDashes: true }]
     }
-};
+});
 </script>
 <template>
     <i-form v-model="form">

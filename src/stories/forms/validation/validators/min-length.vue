@@ -1,15 +1,11 @@
-<script>
-export default {
-    data() {
-        return {
-            form: this.$inkline.form({
-                input: {
-                    validators: [{ name: 'minLength', value: 6 }]
-                }
-            })
-        };
+<script lang="ts" setup>
+import { useForm } from '@inkline/inkline/composables';
+
+const form = useForm({
+    input: {
+        validators: [{ name: 'minLength', value: 6 }]
     }
-};
+});
 </script>
 <template>
     <i-form v-model="form">

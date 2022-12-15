@@ -1,5 +1,5 @@
 import { clone, getValueByPath, setValueByPath, setValuesAlongPath } from '@grozav/utils';
-import { computed, inject, Ref, ref } from 'vue';
+import { computed, inject, Ref, ref, watch } from 'vue';
 import { FormKey } from '../components/IForm';
 import { FormGroupKey } from '../components/IFormGroup';
 import { validate } from '../validation';
@@ -25,6 +25,15 @@ export function useValidation(options: {
                   getValueByPath(form.schema.value, options.name!.value)
           )
         : ref<any | null>(options.schema?.value || null);
+
+    if (!form && options.schema?.value) {
+        watch(
+            () => options.schema?.value,
+            (value) => {
+                schema.value = value;
+            }
+        );
+    }
 
     /**
      * Determine if form event should trigger validation

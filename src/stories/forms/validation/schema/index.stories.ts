@@ -13,7 +13,6 @@ export default {
     title: 'Form Validation/Schema'
 };
 
-export const ObjectGroups = () => IFormValidationSchemaDefaultValueExample;
 export const DefaultValue = () => IFormValidationSchemaDefaultValueExample;
 export const ValidationMessage = () => IFormValidationSchemaValidationMessageExample;
 export const ValidationEvent = () => IFormValidationSchemaValidationEventExample;

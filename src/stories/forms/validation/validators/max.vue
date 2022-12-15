@@ -1,15 +1,11 @@
-<script>
-export default {
-    data() {
-        return {
-            form: this.$inkline.form({
-                input: {
-                    validators: [{ name: 'max', value: 100 }]
-                }
-            })
-        };
+<script lang="ts" setup>
+import { useForm } from '@inkline/inkline/composables';
+
+const form = useForm({
+    input: {
+        validators: [{ name: 'max', value: 100 }]
     }
-};
+});
 </script>
 <template>
     <i-form v-model="form">

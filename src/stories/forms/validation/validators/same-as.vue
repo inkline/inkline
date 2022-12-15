@@ -1,18 +1,14 @@
-<script>
-export default {
-    data() {
-        return {
-            form: this.$inkline.form({
-                password: {
-                    validators: [{ name: 'required' }]
-                },
-                passwordConfirmation: {
-                    validators: [{ name: 'sameAs', target: 'password', schema: () => this.form }]
-                }
-            })
-        };
+<script lang="ts" setup>
+import { useForm } from '@inkline/inkline/composables';
+
+const form = useForm({
+    password: {
+        validators: [{ name: 'required' }]
+    },
+    passwordConfirmation: {
+        validators: [{ name: 'sameAs', target: 'password', schema: () => form.value }]
     }
-};
+});
 </script>
 <template>
     <i-form v-model="form">
