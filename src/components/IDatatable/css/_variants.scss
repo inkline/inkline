@@ -1,0 +1,64 @@
+//
+// Variants
+//
+@each $variant-name, $variant in $datatable-variants {
+    .datatable.-#{$variant-name} {
+        border-top-color: map-get($variant, 'border-color');
+        color: map-get($variant, 'color');
+
+        th,
+        td {
+            background-color: map-get($variant, 'background');
+        }
+
+        // Bordered table
+        //
+        // Add borders to all sides of the table and table cells
+        //
+        &.-bordered {
+            &,
+            th,
+            td {
+                border-color: map-get($variant, 'border-color');
+            }
+        }
+
+        // Striped Table
+        //
+        // Default zebra-stripe styles (alternating gray and transparent backgrounds)
+        //
+        &.-striped {
+            > tr:nth-of-type(odd) {
+                tbody > tr:nth-of-type(odd) {
+                    th,
+                    td {
+                        background-color: map-get($variant, 'background-striped');
+                    }
+                }
+            }
+        }
+
+        &.-hover {
+            tbody tr {
+                &:hover {
+                    th,
+                    td {
+                        background-color: map-get($variant, 'background-hover');
+                    }
+                }
+            }
+        }
+
+        .dth {
+            &.-count {
+                .sortable-icon {
+                    display: none;
+                }
+            }
+
+            .inkline-icon {
+                color: rgba(map-get($variant, 'color'), 0.25);
+            }
+        }
+    }
+}

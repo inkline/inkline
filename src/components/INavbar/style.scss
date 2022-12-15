@@ -1,0 +1,68 @@
+/**
+ * Navbar
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_mixins';
+@import 'css/_variables';
+@import 'css/_variants';
+@import 'css/_sizes';
+
+@mixin navbar-collapse {
+    .navbar-items {
+        position: relative;
+        display: block;
+        width: 100%;
+
+        > .nav {
+            flex-direction: column;
+            align-items: flex-start;
+
+            > .item {
+                width: 100%;
+            }
+        }
+    }
+
+    .collapse-toggle {
+        display: inline-block;
+
+        + .brand {
+            order: -1;
+        }
+    }
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap; // allow us to do the line break for collapsing content
+    align-items: center;
+    justify-content: space-between;
+
+    > .container > .row > .column {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    ::v-deep .collapse-toggle {
+        display: none;
+    }
+
+    @each $breakpoint in (breakpoints-list()) {
+        &.-collapse-#{$breakpoint} ::v-deep {
+            @include breakpoint-down($breakpoint) {
+                @include navbar-collapse;
+            }
+        }
+    }
+
+    &.-collapse-true ::v-deep {
+        @include navbar-collapse;
+    }
+
+    @extend .navbar.-md;
+    @extend .navbar.-light;
+}

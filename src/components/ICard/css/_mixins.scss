@@ -1,0 +1,21 @@
+@function card-variant($variant) {
+    $card-variant-color: variant-color-by-luminance($variant, $card-color-for-light-variant, $card-color-for-dark-variant);
+    $card-variant-background: $variant;
+    $card-variant-border-color: darken($variant, 10%);
+    $card-variant-header-background: darken($variant, 5%);
+    $card-variant-header-border-color: $card-variant-border-color;
+    $card-variant-footer-background: $card-variant-header-background;
+    $card-variant-footer-border-color: $card-variant-header-border-color;
+
+    $variant-map: (
+        background: $card-variant-background,
+        color: $card-variant-color,
+        border-color: $card-variant-border-color,
+        header-background: $card-variant-header-background,
+        header-border-color: $card-variant-header-border-color,
+        footer-background: $card-variant-footer-background,
+        footer-border-color: $card-variant-footer-border-color
+    );
+
+    @return $variant-map;
+}

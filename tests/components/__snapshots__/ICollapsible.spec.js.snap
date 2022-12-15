@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components ICollapsible should render correctly 1`] = `<div role="tablist" aria-multiselectable="true" class="collapsible"></div>`;

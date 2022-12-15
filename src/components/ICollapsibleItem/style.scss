@@ -1,0 +1,68 @@
+/**
+ * Collapsible Item
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../ICollapsible/css/_variables';
+@import '../IIcon/css/_variables';
+@import '../IIcon/css/_mixins';
+
+.collapsible {
+    > .item {
+        position: relative;
+        display: block;
+
+        > .header {
+            border-width: 0;
+            border-bottom-width: 1px;
+            border-style: solid;
+            padding: $collapsible-item-padding;
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            outline: 0;
+
+            > .icon {
+                display: inline-block;
+                position: relative;
+                transition: transform $transition-duration $transition-easing;
+
+                &::after {
+                    @extend %icon;
+
+                    content: $icon-chevron-down;
+                }
+            }
+        }
+
+        &.-active > .header > .icon {
+            transform: rotate(180deg);
+        }
+
+        > .body {
+            display: block;
+            position: relative;
+
+            > .content {
+                padding: $collapsible-item-padding;
+            }
+        }
+
+        &:last-child > .header {
+            border-bottom-width: 0;
+        }
+    }
+
+    &.-unstyled {
+        > .item {
+            > .header,
+            > .body {
+                border: 0;
+                background-color: unset;
+                color: inherit;
+            }
+        }
+    }
+}

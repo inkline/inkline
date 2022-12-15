@@ -1,0 +1,40 @@
+//
+// Datatables
+//
+
+$datatable-cell-padding: 0.75rem !default;
+$datatable-cell-padding-sm: 0.3rem !default;
+
+$datatable-header-margin-bottom: $spacer !default;
+$datatable-footer-margin-top: $spacer !default;
+
+$datatable-border-width: $border-width !default;
+$datatable-border-color: $border-color !default;
+
+$datatable-sortable-icon-color: $color-gray-50 !default;
+$datatable-sortable-icon-color-active: $color-primary !default;
+
+$datatable-pagination-selector-margin-bottom: $spacer !default;
+$datatable-pagination-selector-margin-left: spacers('1/2') !default;
+$datatable-pagination-selector-margin-right: spacers('1/2') !default;
+$datatable-pagination-margin-bottom: spacers('1/2') !default;
+
+//
+// Enable datatable transitions
+//
+$transition-datatable: true !default;
+$transition: map_merge($transition, ('datatable': $transition-datatable));
+
+//
+// Variants
+//
+$datatable-color-for-light-variant: $color-for-light-variant !default;
+$datatable-color-for-dark-variant: $color-for-dark-variant !default;
+
+$datatable-variant-light: datatable-variant($color-white) !default;
+$datatable-variant-dark: datatable-variant($color-dark) !default;
+
+$datatable-variants: (
+    light: $datatable-variant-light,
+    dark: $datatable-variant-dark,
+) !default;

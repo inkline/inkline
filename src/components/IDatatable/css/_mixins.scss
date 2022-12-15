@@ -1,0 +1,17 @@
+@function datatable-variant($variant) {
+    $datatable-variant-color: variant-color-by-luminance($variant, $datatable-color-for-light-variant, $datatable-color-for-dark-variant);
+    $datatable-variant-background: $variant;
+    $datatable-variant-background-hover: variant-color-by-luminance($variant, darken-lightness($variant, 10%), lighten-lightness($variant, 10%));
+    $datatable-variant-background-striped: variant-color-by-luminance($variant, darken-lightness($variant, 5%), lighten-lightness($variant, 5%));
+    $datatable-variant-border-color: darken($variant, 10%);
+
+    $variant-map: (
+        color: $datatable-variant-color,
+        background: $datatable-variant-background,
+        background-hover: $datatable-variant-background-hover,
+        background-striped: $datatable-variant-background-striped,
+        border-color: $datatable-variant-border-color,
+    );
+
+    @return $variant-map;
+}

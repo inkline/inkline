@@ -1,0 +1,56 @@
+/**
+ * Collapsible
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_mixins';
+@import 'css/_variables';
+@import 'css/_variants';
+
+.tabs {
+    position: relative;
+    display: block;
+
+    &:not(.-custom) {
+        > .header {
+            > .button-group {
+                .button {
+                    &:first-child {
+                        border-bottom-left-radius: 0;
+                    }
+
+                    &:last-child {
+                        border-bottom-right-radius: 0;
+                    }
+                }
+            }
+        }
+
+        > .tab {
+            border-top-left-radius: 0;
+        }
+
+        &.-stretch {
+            > .tab {
+                border-top-right-radius: 0;
+            }
+        }
+    }
+
+    &.-stretch {
+        > .header {
+            width: 100%;
+
+            > .button-group {
+                display: flex;
+                flex-basis: 100%;
+
+                > .button {
+                    flex-grow: 1;
+                }
+            }
+        }
+    }
+
+    @extend .tabs.-light;
+}

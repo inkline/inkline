@@ -1,0 +1,55 @@
+@function modal-variant($variant) {
+    $modal-variant-fill-color: variant-color-by-luminance($variant, $modal-color-for-light-variant, $modal-color-for-dark-variant);
+    $modal-variant-fill-background: $variant;
+    $modal-variant-fill-header-background: darken-lightness($modal-variant-fill-background, 10%);
+    $modal-variant-fill-footer-background: $modal-variant-fill-background;
+    $modal-variant-fill-border-color: darken-lightness($variant, 10%);
+
+    $modal-variant-color-light: $modal-color-for-light-variant;
+    $modal-variant-background-light: $color-white;
+    $modal-variant-border-color-light: $border-color-light;
+    $modal-variant-header-color-light: variant-color-by-luminance($variant, $modal-color-for-light-variant, $modal-color-for-dark-variant);
+    $modal-variant-header-background-light: $variant;
+    $modal-variant-header-border-color-light: $modal-variant-fill-border-color;
+    $modal-variant-footer-color-light: $modal-variant-color-light;
+    $modal-variant-footer-background-light: $modal-variant-background-light;
+    $modal-variant-footer-border-color-light: $modal-variant-border-color-light;
+
+    $modal-variant-color-dark: $modal-color-for-dark-variant;
+    $modal-variant-background-dark: $color-dark;
+    $modal-variant-border-color-dark: $border-color-dark;
+    $modal-variant-header-color-dark: variant-color-by-luminance($variant, $modal-color-for-light-variant, $modal-color-for-dark-variant);
+    $modal-variant-header-background-dark: $variant;
+    $modal-variant-header-border-color-dark: $modal-variant-fill-border-color;
+    $modal-variant-footer-color-dark: $modal-variant-color-dark;
+    $modal-variant-footer-background-dark: $modal-variant-background-dark;
+    $modal-variant-footer-border-color-dark: $modal-variant-border-color-dark;
+
+    $variant-map: (
+        color-light: $modal-variant-color-light,
+        background-light: $modal-variant-background-light,
+        border-color-light: $modal-variant-border-color-light,
+        header-color-light: $modal-variant-header-color-light,
+        header-background-light: $modal-variant-header-background-light,
+        header-border-color-light: $modal-variant-header-border-color-light,
+        footer-color-light: $modal-variant-footer-color-light,
+        footer-background-light: $modal-variant-footer-background-light,
+        footer-border-color-light: $modal-variant-footer-border-color-light,
+        color-dark: $modal-variant-color-dark,
+        background-dark: $modal-variant-background-dark,
+        border-color-dark: $modal-variant-border-color-dark,
+        header-color-dark: $modal-variant-header-color-dark,
+        header-background-dark: $modal-variant-header-background-dark,
+        header-border-color-dark: $modal-variant-header-border-color-dark,
+        footer-color-dark: $modal-variant-footer-color-dark,
+        footer-background-dark: $modal-variant-footer-background-dark,
+        footer-border-color-dark: $modal-variant-footer-border-color-dark,
+        fill-color: $modal-variant-fill-color,
+        fill-background: $modal-variant-fill-background,
+        fill-header-background: $modal-variant-fill-header-background,
+        fill-footer-background: $modal-variant-fill-footer-background,
+        fill-border-color: $modal-variant-fill-border-color,
+    );
+
+    @return $variant-map;
+}

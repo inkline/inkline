@@ -1,0 +1,29 @@
+//
+// Modal sizes
+//
+@each $size in $sizes {
+    .modal.-#{$size} {
+        $_width: map_get($modal-width, $size);
+        $_border-radius: map_get($modal-border-radius, $size);
+        $_padding: map_get($modal-padding, $size);
+
+        max-width: $_width;
+        border-radius: $_border-radius;
+
+        > .header,
+        > .body,
+        > .footer {
+            padding: $_padding;
+        }
+
+        > .header {
+            border-top-left-radius: $_border-radius;
+            border-top-right-radius: $_border-radius;
+        }
+
+        > .footer {
+            border-bottom-left-radius: $_border-radius;
+            border-bottom-right-radius: $_border-radius;
+        }
+    }
+}

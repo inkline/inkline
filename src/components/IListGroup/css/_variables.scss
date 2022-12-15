@@ -1,0 +1,38 @@
+//
+// List Group Variables
+//
+$list-group-font-size: $font-size !default;
+
+$list-group-item-disabled-color: $text-muted !default;
+
+$list-group-item-padding-base: spacers('1') !default;
+$list-group-item-padding: size-map($list-group-item-padding-base, $sizes, $size-multipliers) !default;
+
+$list-group-border-width: $border-width !default;
+$list-group-border-style: solid !default;
+
+$list-group-background-color-light: $body-background-light !default;
+$list-group-border-color-light: $border-color-light !default;
+
+$list-group-background-color-dark: $body-background-dark !default;
+$list-group-border-color-dark: $border-color-dark !default;
+
+$list-group-border-radius: $border-radius !default;
+
+$list-group-item-active-background: colors('primary') !default;
+$list-group-item-active-color: colors('white') !default;
+$list-group-item-active-border-color: darken-lightness(colors('primary'), 6%) !default;
+
+//
+// Variants
+//
+$list-group-color-for-light-variant: $color-for-light-variant !default;
+$list-group-color-for-dark-variant: $color-for-dark-variant !default;
+
+$list-group-variant-light: list-group-variant($color-white) !default;
+$list-group-variant-dark: list-group-variant($color-gray-90) !default;
+
+$list-group-variants: (
+    light: $list-group-variant-light,
+    dark: $list-group-variant-dark
+) !default;

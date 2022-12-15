@@ -1,0 +1,100 @@
+/**
+ * Text
+ */
+
+._text-justify {
+    text-align: justify !important;
+}
+
+// Responsive alignment
+//
+@each $breakpoint-name, $breakpoint-value in $breakpoints {
+    $infix: breakpoint-infix($breakpoint-name);
+
+    @include breakpoint($breakpoint-name) {
+        ._text-left#{$infix} {
+            text-align: left !important;
+        }
+
+        ._text-right#{$infix} {
+            text-align: right !important;
+        }
+
+        ._text-center#{$infix} {
+            text-align: center !important;
+        }
+
+        ._text-wrap#{$infix} {
+            white-space: normal !important;
+        }
+
+        ._text-nowrap#{$infix} {
+            white-space: nowrap !important;
+        }
+
+        ._text-truncate#{$infix} {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
+// Transformation
+//
+._text-lowercase {
+    text-transform: lowercase !important;
+}
+
+._text-uppercase {
+    text-transform: uppercase !important;
+}
+
+._text-capitalize {
+    text-transform: capitalize !important;
+}
+
+// Weight and italics
+//
+@each $font-weight-name, $font-weight-value in $font-weight {
+    ._font-weight-#{$font-weight-name} {
+        font-weight: $font-weight-value !important;
+    }
+}
+
+._font-italic {
+    font-style: italic !important;
+}
+
+._text-muted {
+    color: $text-muted !important;
+}
+
+._text-hide {
+    text-indent: -10000px;
+}
+
+._text-break {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+._text-monospace {
+    font-family: $font-family-primary-monospace;
+}
+
+._text-reset {
+    color: inherit !important;
+}
+
+._text-decoration-none {
+    text-decoration: none !important;
+}
+
+// Font size
+//
+@each $size in $sizes {
+    ._font-size-#{$size} {
+        font-size: font-size($size);
+    }
+}

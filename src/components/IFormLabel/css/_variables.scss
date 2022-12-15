@@ -1,0 +1,10 @@
+//
+// Input variables
+//
+
+$label-margin-base: spacers('1/4') spacers('1') !default;
+$label-margin: size-map($label-margin-base, $sizes, $size-multipliers) !default;
+
+$label-error-color: $color-danger !default;
+
+$label-font-size: $font-size !default;

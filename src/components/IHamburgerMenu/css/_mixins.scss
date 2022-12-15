@@ -1,0 +1,9 @@
+@function hamburger-menu-variant($variant) {
+    $hamburger-menu-variant-background: $variant;
+
+    $variant-map: (
+        background: $hamburger-menu-variant-background
+    );
+
+    @return $variant-map;
+}

@@ -1,0 +1,14 @@
+//
+// Hamburger Menu variants
+//
+@each $variant-name, $variant in $hamburger-menu-variants {
+    .hamburger.-#{$variant-name} {
+        > .bars {
+            &,
+            &::before,
+            &::after {
+                background: map-get($variant, 'background');
+            }
+        }
+    }
+}

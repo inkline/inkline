@@ -1,0 +1,121 @@
+/**
+ * Tables
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_mixins';
+@import 'css/_variables';
+@import 'css/_variants';
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: $table-margin-bottom;
+
+    th,
+    td {
+        padding: $table-cell-padding;
+        vertical-align: top;
+        border-top: $table-border-width solid transparent;
+        transition: color $transition-duration $transition-easing, background-color $transition-duration $transition-easing, border-color $transition-duration $transition-easing;
+    }
+
+    thead th {
+        vertical-align: bottom;
+        border-bottom-width: (2 * $table-border-width);
+        border-bottom-color: $table-border-color;
+    }
+
+    tbody + tbody {
+        border-top: (2 * $table-border-width) solid transparent;
+    }
+
+    // Condensed table w/ half padding
+    //
+    &.-condensed {
+        th,
+        td {
+            padding: $table-cell-padding-sm;
+        }
+    }
+
+    // Bordered version
+    //
+    // Add borders all around the table and between all the columns.
+    //
+    &.-bordered {
+        border: $table-border-width solid transparent;
+
+        th,
+        td {
+            border: $table-border-width solid $table-border-color;
+        }
+    }
+
+    // No wrap
+    //
+    // Set table cell white-space to nowrap
+    //
+    &.-nowrap {
+        th,
+        td {
+            white-space: nowrap;
+        }
+    }
+
+    // Hover table
+    //
+    // Placed here since it has to come after the potential zebra striping
+    //
+    &.-hover {
+        tbody tr {
+            th,
+            td {
+                @if $transition-enabled and transition('table') {
+                    transition: background-color $transition-duration ease;
+                }
+            }
+        }
+    }
+
+    th,
+    td,
+    tbody + tbody {
+        border-top-color: $table-border-color;
+    }
+
+    @extend .table.-light;
+}
+
+// Responsive tables
+//
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your table will overflow.
+//
+.table-wrapper {
+    display: block;
+    position: relative;
+
+    &.-responsive {
+        @each $breakpoint-name, $breakpoint-value in $breakpoints {
+            $infix: breakpoint-infix($breakpoint-name);
+
+            &#{$infix} {
+                @include breakpoint-down($breakpoint-name) {
+                    display: block;
+                    width: 100%;
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+                    // Prevent double border on horizontal scroll due to use of `display: block`
+                    .table {
+                        &.-bordered {
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

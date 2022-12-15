@@ -1,0 +1,38 @@
+//
+// Card variables
+//
+$card-font-size: $font-size !default;
+$card-font-weight: font-weight(normal) !default;
+$card-line-height: $line-height !default;
+
+$card-border-width: $border-width !default;
+$card-border-radius: $border-radius !default;
+
+$card-padding-base: spacers('1') !default;
+$card-padding: size-map($card-padding-base, $sizes, $size-multipliers) !default;
+
+//
+// Variants
+//
+$card-color-for-light-variant: $color-for-light-variant !default;
+$card-color-for-dark-variant: $color-for-dark-variant !default;
+
+$card-variant-primary: card-variant($color-primary) !default;
+$card-variant-secondary: card-variant($color-secondary) !default;
+$card-variant-light: card-variant($color-white) !default;
+$card-variant-dark: card-variant($color-dark) !default;
+$card-variant-info: card-variant($color-info) !default;
+$card-variant-success: card-variant($color-success) !default;
+$card-variant-warning: card-variant($color-warning) !default;
+$card-variant-danger: card-variant($color-danger) !default;
+
+$card-variants: (
+    primary: $card-variant-primary,
+    secondary: $card-variant-secondary,
+    light: $card-variant-light,
+    dark: $card-variant-dark,
+    info: $card-variant-info,
+    success: $card-variant-success,
+    warning: $card-variant-warning,
+    danger: $card-variant-danger,
+) !default;

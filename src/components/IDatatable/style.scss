@@ -1,0 +1,160 @@
+/**
+ * Datatable
+ */
+
+@import '../../css/config';
+@import '../../css/mixins';
+@import '../ITable/style';
+@import '../IIcon/css/_variables';
+@import '../IIcon/css/_mixins';
+@import 'css/_mixins';
+@import 'css/_variables';
+@import 'css/_variants';
+
+.datatable {
+    margin-bottom: 0;
+
+    .dtd,
+    .dth {
+        > span {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &.-count > span {
+            justify-content: flex-end;
+        }
+
+        &.-align-left > span {
+            justify-content: flex-start;
+        }
+
+        &.-align-center > span {
+            justify-content: center;
+        }
+
+        &.-align-right > span {
+            justify-content: flex-end;
+        }
+
+        &.-sticky {
+            position: sticky;
+            left: 0;
+        }
+    }
+
+    .dth {
+        &.-sortable {
+            cursor: pointer;
+        }
+
+        .sortable-icon {
+            position: relative;
+            margin-left: auto;
+
+            .-sort-asc,
+            .-sort-desc {
+                color: $datatable-sortable-icon-color-active;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+
+    .dtd {
+        > .expand-row {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+
+            &:active,
+            &:focus {
+                outline: 0;
+            }
+
+            > .icon {
+                display: inline-block;
+                position: relative;
+                transition: transform $transition-duration $transition-easing;
+
+                &::after {
+                    @extend %icon;
+
+                    content: $icon-chevron-down;
+                }
+            }
+
+            &.-active > .icon {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    @extend .table;
+    @extend .table.-light;
+    @extend .datatable.-light;
+}
+
+.datatable-wrapper {
+    .header-wrapper,
+    .footer-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include breakpoint-down(xs) {
+            flex-direction: column;
+        }
+    }
+
+    .header-wrapper {
+        margin-bottom: $datatable-header-margin-bottom;
+
+        .pagination-select {
+            display: flex;
+            align-items: center;
+
+            .select {
+                max-width: 100px;
+                margin-bottom: 0;
+                margin-left: $datatable-pagination-selector-margin-left;
+                margin-right: $datatable-pagination-selector-margin-right;
+            }
+        }
+
+        .filtering-input {
+            margin-left: auto;
+        }
+
+        @include breakpoint-down(lg) {
+            .filtering-input {
+                margin-left: $spacer;
+            }
+        }
+
+        @include breakpoint-down(xs) {
+            .pagination-select {
+                margin-bottom: $spacer;
+            }
+
+            .filtering-input {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    }
+
+    .footer-wrapper {
+        margin-top: $datatable-footer-margin-top;
+
+        @include breakpoint-down(sm) {
+            flex-direction: column-reverse;
+
+            .pagination {
+                margin-bottom: $datatable-pagination-margin-bottom;
+            }
+        }
+    }
+}

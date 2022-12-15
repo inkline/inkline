@@ -1,0 +1,30 @@
+//
+// Borders
+//
+
+$border-width: 1px !default;
+$border-color: colors('gray-30') !default;
+$border-color-light: $border-color !default;
+$border-color-dark: colors('gray-70') !default;
+
+$border-radius-enabled: true !default;
+
+$border-radius-base: 0.25rem !default;
+$border-radius-xs: $border-radius-base * map_get($size-multipliers, 'xs') !default;
+$border-radius-sm: $border-radius-base * map_get($size-multipliers, 'sm') !default;
+$border-radius-md: $border-radius-base * map_get($size-multipliers, 'md') !default;
+$border-radius-lg: $border-radius-base * map_get($size-multipliers, 'lg') !default;
+$border-radius-xl: $border-radius-base * map_get($size-multipliers, 'xl') !default;
+
+$border-radius: (
+    'xs': $border-radius-xs,
+    'sm': $border-radius-sm,
+    'md': $border-radius-md,
+    'lg': $border-radius-lg,
+    'xl': $border-radius-xl,
+) !default;
+
+// Quick accessor to the border-radius map
+@function border-radius($key) {
+    @return map_get($border-radius, $key);
+}

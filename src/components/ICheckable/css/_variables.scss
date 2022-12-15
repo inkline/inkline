@@ -1,0 +1,39 @@
+//
+// Variables
+//
+$form-check-disabled-color: $text-muted !default;
+$form-check-margin-right: $spacer !default;
+
+$form-check-indicator-color: $color-black !default;
+$form-check-indicator-checked-color: $color-white !default;
+$form-check-indicator-active-color: $color-white !default;
+$form-check-indicator-disabled-color: $color-gray-30 !default;
+$form-check-indicator-checked-background-color: $color-primary !default;
+$form-check-indicator-active-background-color: $color-primary !default;
+$form-check-indicator-disabled-background-color: $color-gray-40 !default;
+$form-check-indicator-disabled-checked-background-color-light: $color-gray-40 !default;
+$form-check-indicator-disabled-checked-background-color-dark: $color-gray-60 !default;
+
+$form-check-indicator-size: 1rem !default;
+$form-check-indicator-gutter: $spacer-1-2 !default;
+$form-check-indicator-margin-normalize: $form-check-indicator-size / 4 !default;
+
+$form-check-indicator-box-shadow: 0 0 0 1px rgba($color-black, 0.2), inset 0 0.25rem 0.25rem rgba($color-black, 0.1) !default;
+$form-check-indicator-focused-box-shadow: 0 0 0 1px $body-background, 0 0 0.2rem 0.2rem rgba($color-primary, 0.33) !default;
+$form-check-indicator-checked-box-shadow: none !default;
+$form-check-indicator-active-box-shadow: none !default;
+$form-check-indicator-background-size: 0.5rem !default;
+
+//
+// Variants
+//
+$checkable-color-for-light-variant: $color-for-light-variant !default;
+$checkable-color-for-dark-variant: $color-for-dark-variant !default;
+
+$checkable-variant-light: checkable-variant($color-white) !default;
+$checkable-variant-dark: checkable-variant($color-dark) !default;
+
+$checkable-variants: (
+    light: $checkable-variant-light,
+    dark: $checkable-variant-dark
+) !default;

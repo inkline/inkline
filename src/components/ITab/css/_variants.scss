@@ -1,0 +1,12 @@
+//
+// Collapsible Item variants
+//
+@each $variant-name, $variant in $tabs-variants {
+    .tabs.-#{$variant-name} {
+        > .tab {
+            border-color: map-get($variant, 'border-color');
+            color: map-get($variant, 'color');
+            background: map-get($variant, 'background');
+        }
+    }
+}

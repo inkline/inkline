@@ -1,0 +1,70 @@
+//
+// Modal variants
+//
+@each $variant-name, $variant in $modal-variants {
+    .modal.-#{$variant-name} {
+        > .header {
+            border-color: map-get($variant, 'header-border-color-light');
+            color: map-get($variant, 'header-color-light');
+            background: map-get($variant, 'header-background-light');
+        }
+
+        > .body {
+            color: map-get($variant, 'color-light');
+            background: map-get($variant, 'background-light');
+            border-color: map-get($variant, 'border-color-light');
+        }
+
+        > .footer {
+            border-color: map-get($variant, 'footer-border-color-light');
+            color: map-get($variant, 'footer-color-light');
+            background: map-get($variant, 'footer-background-light');
+        }
+
+        .inkline.-dark & {
+            > .header {
+                border-color: map-get($variant, 'header-border-color-dark');
+                color: map-get($variant, 'header-color-dark');
+                background: map-get($variant, 'header-background-dark');
+            }
+
+            > .body {
+                color: map-get($variant, 'color-dark');
+                background: map-get($variant, 'background-dark');
+                border-color: map-get($variant, 'border-color-dark');
+            }
+
+            > .footer {
+                border-color: map-get($variant, 'footer-border-color-dark');
+                color: map-get($variant, 'footer-color-dark');
+                background: map-get($variant, 'footer-background-dark');
+            }
+        }
+
+        &.-fill,
+        .inkline.-dark &.-fill {
+            > .header,
+            > .body,
+            > .footer {
+                color: map-get($variant, 'fill-color');
+                border-color: map-get($variant, 'fill-border-color');
+            }
+
+            > .header {
+                background: map-get($variant, 'fill-header-background');
+
+                > .close {
+                    color: map-get($variant, 'fill-color');
+                }
+            }
+
+            > .body {
+                background: map-get($variant, 'fill-background');
+            }
+
+            > .footer {
+                background: map-get($variant, 'fill-footer-background');
+            }
+        }
+    }
+}

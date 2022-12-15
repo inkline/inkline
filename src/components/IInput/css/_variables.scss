@@ -1,0 +1,37 @@
+//
+// Input variables
+//
+$label-margin-bottom: 0.5rem !default;
+
+$input-line-height: $line-height !default;
+
+$input-padding-base: spacers('1/2') spacers('1') !default;
+$input-padding: size-map($input-padding-base, $sizes, $size-multipliers) !default;
+
+$input-prefix-padding-base: nth($input-padding-base, 2) * 4 !default;
+$input-prefix-padding: size-map($input-prefix-padding-base, $sizes, $size-multipliers) !default;
+$input-prefix-border-width: 1px !default;
+
+$input-font-size: $font-size !default;
+
+$input-border-width: $border-width !default;
+$input-border-radius: $border-radius !default;
+
+$input-box-shadow: inset 0 1px 1px rgba($color-black, 0.05) !default;
+$input-transition: background-color $transition-duration $transition-easing, color $transition-duration $transition-easing, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
+
+$input-icon-circle-size: 1.2rem !default;
+
+//
+// Variants
+//
+$input-color-for-light-variant: $color-for-light-variant !default;
+$input-color-for-dark-variant: $color-for-dark-variant !default;
+
+$input-variant-light: input-variant($color-white) !default;
+$input-variant-dark: input-variant($color-dark) !default;
+
+$input-variants: (
+    light: $input-variant-light,
+    dark: $input-variant-dark
+) !default;

@@ -1,0 +1,27 @@
+/**
+    * Inline code
+    */
+
+code {
+    font-family: font-family-primary(monospace);
+    padding: $code-padding;
+    font-size: $code-font-size;
+    color: $code-color;
+    background-color: $code-background;
+    border-radius: border-radius(md);
+    transition-property: background-color, color, text-shadow;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-easing;
+
+    // Streamline the style when inside anchors to avoid broken underline and more
+    a > & {
+        padding: 0;
+        color: inherit;
+        background-color: inherit;
+    }
+}
+
+.inkline.-dark code {
+    background-color: $code-background-dark;
+    color: $code-color-dark;
+}

@@ -1,0 +1,15 @@
+<button
+    v-bind="$attrs"
+    class="button"
+    :is="isTag"
+    :tag="tag"
+    :tabindex="tabIndex"
+    :class="classes"
+    :disabled="isDisabled || loading"
+    @click="emitClick">
+    <slot v-if="loading" name="loading">
+        <i-loader size="auto"></i-loader>
+    </slot>
+    <slot v-if="!loading"></slot>
+</button>
+

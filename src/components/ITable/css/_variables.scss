@@ -1,0 +1,36 @@
+//
+// Tables
+//
+$table-margin-bottom: $spacer !default;
+
+$table-cell-padding: 0.75rem !default;
+$table-cell-padding-sm: 0.3rem !default;
+
+$table-border-width: $border-width !default;
+$table-border-color: $border-color !default;
+
+//
+// Variants
+//
+$table-color-for-light-variant: $color-for-light-variant !default;
+$table-color-for-dark-variant: $color-for-dark-variant !default;
+
+$table-variant-primary: table-variant($color-primary) !default;
+$table-variant-secondary: table-variant($color-secondary) !default;
+$table-variant-light: table-variant($color-white) !default;
+$table-variant-dark: table-variant($color-dark) !default;
+$table-variant-info: table-variant($color-info) !default;
+$table-variant-success: table-variant($color-success) !default;
+$table-variant-warning: table-variant($color-warning) !default;
+$table-variant-danger: table-variant($color-danger) !default;
+
+$table-variants: (
+    primary: $table-variant-primary,
+    secondary: $table-variant-secondary,
+    light: $table-variant-light,
+    dark: $table-variant-dark,
+    info: $table-variant-info,
+    success: $table-variant-success,
+    warning: $table-variant-warning,
+    danger: $table-variant-danger,
+) !default;

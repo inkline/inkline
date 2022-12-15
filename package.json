@@ -1,0 +1,104 @@
+{
+  "name": "@inkline/inkline",
+  "version": "2.3.6",
+  "description": "Inkline is the customizable Vue.js UI/UX Library, designed for creating flawless content-rich responsive web applications",
+  "author": "Alex Grozav <alex@grozav.com>",
+  "scripts": {
+    "build": "npm run build:inkline",
+    "build:inkline": "vue-cli-service build --target lib --name Inkline src/inkline.js",
+    "postbuild": "node scripts/postbuild.js",
+    "lint": "npm run lint:script && npm run lint:style",
+    "coveralls": "cat coverage/lcov.info | coveralls",
+    "dev": "vue-cli-service serve",
+    "dist": "node ./scripts/dist.js && node ./scripts/bower.js",
+    "lint:script": "vue-cli-service lint",
+    "lint:style": "vue-cli-service lint:style",
+    "prepublishOnly": "npm run build",
+    "test": "vue-cli-service test:unit --coverage",
+    "test:dev": "vue-cli-service test:unit --watch"
+  },
+  "main": "dist/inkline.js",
+  "module": "dist/inkline.js",
+  "jsdelivr": "dist/inkline.js",
+  "unpkg": "dist/inkline.js",
+  "files": [
+    "dist/",
+    "src/",
+    "types/",
+    "nuxt/",
+    "babel.config.js",
+    "LICENSE",
+    "package.json",
+    "README.md",
+    "vue.config.js"
+  ],
+  "dependencies": {
+    "@popperjs/core": "^2.4.2",
+    "fuse.js": "^6.4.0"
+  },
+  "devDependencies": {
+    "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
+    "@babel/core": "^7.10.3",
+    "@babel/types": "^7.10.3",
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-eslint": "^4.4.6",
+    "@vue/cli-plugin-unit-jest": "^4.4.6",
+    "@vue/cli-service": "^4.4.6",
+    "@vue/test-utils": "^1.0.3",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.5.1",
+    "coveralls": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "handlebars": "^4.7.6",
+    "node-sass": "<5.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "sass-loader": "<11.0.0",
+    "stylelint": "^13.6.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-scss": "^3.18.0",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^3.8.0"
+  },
+  "peerDependencies": {
+    "vue": ">=2.0"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/inkline"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "bugs": {
+    "url": "https://github.com/inkline/inkline/issues"
+  },
+  "homepage": "http://inkline.io",
+  "keywords": [
+    "inkline",
+    "vue",
+    "vuejs",
+    "javascript",
+    "scss",
+    "responsive",
+    "front-end",
+    "components",
+    "ui",
+    "ux",
+    "framework",
+    "validation"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inkline/inkline.git"
+  },
+  "types": "types/index.d.ts",
+  "gitHead": "f1538ce4fc953d4090885c0d023bb357e2d1a2b7"
+}

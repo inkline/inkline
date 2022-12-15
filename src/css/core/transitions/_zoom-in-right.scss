@@ -1,0 +1,15 @@
+$zoom-in-right-transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) !default;
+
+.zoom-in-right-transition-enter-active,
+.zoom-in-right-transition-leave-active {
+    opacity: 1;
+    transform: scale(1, 1);
+    transition: $zoom-in-right-transition;
+    transform-origin: top right;
+}
+
+.zoom-in-right-transition-enter,
+.zoom-in-right-transition-leave-active {
+    opacity: 0;
+    transform: scale(0.45, 0.45);
+}

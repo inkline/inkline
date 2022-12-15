@@ -1,0 +1,5 @@
+<div class="form-group" :class="classes" role="inputgroup">
+    <slot></slot>
+
+    <i-form-error v-if="validate" :schema="inputSchema"></i-form-error>
+</div>

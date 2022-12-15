@@ -1,0 +1,41 @@
+//
+// Pagination variants
+// Add the required color variants to all pagination variations
+//
+@each $variant-name, $variant in $pagination-variants {
+    .pagination.-#{$variant-name} {
+        > .item {
+            color: map-get($variant, 'color');
+            background-color: map-get($variant, 'background');
+            border-color: map-get($variant, 'border-color');
+
+            &:hover:not(.-disabled),
+            &:focus:not(.-disabled) {
+                background: map-get($variant, 'background-hover');
+            }
+
+            &.-active {
+                background-color: $pagination-item-background-active;
+                border-color: darken-lightness($pagination-item-background-active, 5%);
+
+                &:hover,
+                &:focus {
+                    background-color: $pagination-item-background-active;
+                }
+            }
+
+            &.-disabled {
+                opacity: $pagination-nav-disabled-opacity;
+                color: map-get($variant, 'color-disabled');
+            }
+
+            &.-quick-next,
+            &.-quick-previous {
+                &.-disabled {
+                    opacity: $pagination-nav-disabled-opacity;
+                    border-color: map-get($variant, 'background');
+                }
+            }
+        }
+    }
+}

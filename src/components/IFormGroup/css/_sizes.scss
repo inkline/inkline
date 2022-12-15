@@ -1,0 +1,10 @@
+//
+// Input Group Sizes
+//
+@each $size in $sizes {
+    .form-group.-#{$size} {
+        > .form-input-label {
+            @include form-input-label-size($size);
+        }
+    }
+}

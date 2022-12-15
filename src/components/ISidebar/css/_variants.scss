@@ -1,0 +1,12 @@
+//
+// Sidebar variants
+//
+@each $variant-name, $variant in $sidebar-variants {
+    .sidebar-wrapper.-#{$variant-name} {
+        color: map-get($variant, 'color');
+
+        .sidebar {
+            background: map-get($variant, 'background');
+        }
+    }
+}

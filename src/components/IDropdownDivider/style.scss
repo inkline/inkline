@@ -1,0 +1,12 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+
+/*
+ * Dropdown Divider
+ */
+.dropdown > .menu > .divider {
+    display: block;
+    height: 1px;
+    width: 100%;
+    clear: both;
+}

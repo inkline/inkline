@@ -1,0 +1,11 @@
+//
+// Loading spinner sizes
+//
+@each $size in $sizes {
+    $_loader-size: map_get($loader-size, $size);
+
+    .loader.-#{$size} {
+        width: $_loader-size;
+        height: $_loader-size;
+    }
+}

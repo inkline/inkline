@@ -1,0 +1,36 @@
+//
+// Nav Variables
+//
+$pagination-font-size: $font-size !default;
+
+$pagination-item-disabled-color: $text-muted !default;
+
+$pagination-item-padding-base: spacers('1/2') spacers('1/3') !default;
+$pagination-item-padding: size-map($pagination-item-padding-base, $sizes, $size-multipliers) !default;
+
+$pagination-item-min-width-base: 40px !default;
+$pagination-item-min-width: size-map($pagination-item-min-width-base, $sizes, $size-multipliers) !default;
+
+$pagination-item-spacing: 0.25rem !default;
+
+$pagination-item-border-width: $border-width !default;
+$pagination-item-border-radius: $border-radius !default;
+
+$pagination-item-background-active: colors('primary') !default;
+$pagination-item-color-active: colors('white') !default;
+
+$pagination-nav-disabled-opacity: 0.85 !default;
+
+//
+// Themes
+//
+$pagination-color-for-light-variant: $color-for-light-variant !default;
+$pagination-color-for-dark-variant: $color-for-dark-variant !default;
+
+$pagination-variant-light: pagination-variant($color-light) !default;
+$pagination-variant-dark: pagination-variant($color-dark) !default;
+
+$pagination-variants: (
+    light: $pagination-variant-light,
+    dark: $pagination-variant-dark
+) !default;

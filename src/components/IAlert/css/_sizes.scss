@@ -1,0 +1,36 @@
+//
+// Alert sizes
+//
+@each $size in $sizes {
+    $_border_radius: map_get($alert-border-radius, $size);
+    $_font-size: map_get($alert-font-size, $size);
+    $_padding: map_get($alert-padding, $size);
+
+    .alert.-#{$size} {
+        border-radius: $_border_radius;
+        font-size: $_font-size;
+
+        > .content {
+            padding: $_padding;
+        }
+
+        > .title {
+            margin-bottom: $_padding;
+        }
+
+        > .link + .link {
+            margin-left: $_padding;
+        }
+
+        > .dismiss {
+            padding: ($_padding / 2);
+            margin-right: ($_padding / 2);
+            margin-left: ($_padding / 2);
+        }
+
+        > .icon {
+            padding-left: $_padding;
+            padding-right: $_padding;
+        }
+    }
+}

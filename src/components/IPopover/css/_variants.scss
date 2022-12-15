@@ -1,0 +1,25 @@
+//
+// Popover variants
+//
+@each $variant-name, $variant in $popover-variants {
+    .popover.-#{$variant-name} {
+        color: map-get($variant, 'color');
+        background-color: map-get($variant, 'background');
+        border-color: map-get($variant, 'border-color');
+
+        > .header,
+        > .footer {
+            border-color: map-get($variant, 'border-color');
+        }
+
+        > .header {
+            background-color: map-get($variant, 'header-background');
+        }
+
+        > .footer {
+            background-color: map-get($variant, 'footer-background');
+        }
+
+        @include popup-arrow-variant((background: map-get($variant, 'background'), border-color: map-get($variant, 'border-color')));
+    }
+}

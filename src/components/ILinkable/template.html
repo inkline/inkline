@@ -1,0 +1,8 @@
+<component v-if="isComponent" :is="isTag" class="item" :class="classes" v-bind="attributes" :disabled="isDisabled" :aria-disabled="isDisabled"
+           @click.native="onClick">
+    <slot></slot>
+</component>
+<component v-else :is="isTag" class="item" :class="classes" v-bind="attributes" :disabled="isDisabled" :aria-disabled="isDisabled"
+           @click="onClick">
+    <slot></slot>
+</component>

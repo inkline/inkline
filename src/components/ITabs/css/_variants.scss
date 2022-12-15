@@ -1,0 +1,8 @@
+//
+// Tabs variants
+//
+@each $variant-name, $variant in $tabs-variants {
+    .tabs.-#{$variant-name} {
+        border-color: map-get($variant, 'border-color');
+    }
+}

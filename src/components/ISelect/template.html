@@ -1,0 +1,58 @@
+<i-dropdown
+        class="select"
+        :class="classes"
+        :disabled="isDisabled || isReadonly || isMobile"
+        :readonly="isReadonly"
+        :size="size"
+        :arrow="arrow"
+        :id="id"
+        :tabindex="-1"
+        hide-on-click
+        ref="dropdown">
+    <i-input
+            ref="input"
+            :value="labelModel"
+            :name="name"
+            :placeholder="placeholder"
+            :readonly="isReadonly || !filterable"
+            :disabled="isDisabled"
+            :aria-disabled="isDisabled"
+            :tabindex="isMobile ? -1 : tabIndex"
+            @click="emitClick"
+            @focus="emitFocus"
+            @blur="emitBlur"
+            @keydown="emitKeydown"
+            @keyup="emitKeyup"
+            @keydown.space.stop.prevent="clickInputRef">
+        <slot name="prepend" slot="prepend"></slot>
+        <slot name="prefix" slot="prefix"></slot>
+        <slot name="suffix" slot="suffix"></slot>
+        <slot name="append" slot="append"></slot>
+    </i-input>
+
+    <select v-model="model"
+            v-show="isMobile"
+            :placeholder="placeholder"
+            :name="name"
+            :readonly="!isMobile"
+            :disabled="isDisabled"
+            ref="select"
+            class="form-select"
+            @click="emitClick"
+            @focus="emitFocus"
+            @blur="emitBlur"
+            @change="emitChange"
+            @input="changeInputRef"
+            @keydown.space.stop.prevent="clickInputRef">
+        <option v-for="option in options"
+                :key="option.id"
+                :value="option.value"
+                :disabled="option.disabled">
+            {{ option.label }}
+        </option>
+    </select>
+
+    <i-dropdown-menu ref="dropdownMenu" :size="size">
+        <slot></slot>
+    </i-dropdown-menu>
+</i-dropdown>

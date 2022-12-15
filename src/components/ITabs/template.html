@@ -1,0 +1,27 @@
+<div class="tabs"
+     :class="classes"
+     role="tablist"
+     aria-multiselectable="true">
+    <div class="header">
+        <slot name="header" :tabs="tabs" :active="active" :set-active="onHeadingClick">
+            <i-button-group>
+                <i-button role="tab"
+                    v-for="tab in tabs"
+                    :variant="variant"
+                    :key="tab.id"
+                    :active="active === tab.id"
+                    :aria-expanded="active === tab.id"
+                    :aria-controls="`tab-content-${tab.id}`"
+                    :aria-describedby="`tab-content-${tab.id}`"
+                    :id="`tab-heading-${tab.id}`"
+                    tabindex="0"
+                    @click="onHeadingClick(tab)">
+                    <custom-slot v-if="tab.$slots.title" :components="tab.$slots.title" />
+                    <template v-else>{{tab.title}}</template>
+                </i-button>
+            </i-button-group>
+        </slot>
+    </div>
+
+    <slot></slot>
+</div>

@@ -1,0 +1,29 @@
+//
+// Progress Bar variables
+//
+
+//
+// Variants
+//
+$progress-bar-color-for-light-variant: $color-for-light-variant !default;
+$progress-bar-color-for-dark-variant: $color-for-dark-variant !default;
+
+$progress-bar-variant-primary: progress-bar-variant($color-primary) !default;
+$progress-bar-variant-secondary: progress-bar-variant($color-secondary) !default;
+$progress-bar-variant-light: progress-bar-variant($color-light) !default;
+$progress-bar-variant-dark: progress-bar-variant($color-dark) !default;
+$progress-bar-variant-info: progress-bar-variant($color-info) !default;
+$progress-bar-variant-success: progress-bar-variant($color-success) !default;
+$progress-bar-variant-warning: progress-bar-variant($color-warning) !default;
+$progress-bar-variant-danger: progress-bar-variant($color-danger) !default;
+
+$progress-bar-variants: (
+    primary: $progress-bar-variant-primary,
+    secondary: $progress-bar-variant-secondary,
+    light: $progress-bar-variant-light,
+    dark: $progress-bar-variant-dark,
+    info: $progress-bar-variant-info,
+    success: $progress-bar-variant-success,
+    warning: $progress-bar-variant-warning,
+    danger: $progress-bar-variant-danger
+) !default;

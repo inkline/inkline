@@ -1,0 +1,128 @@
+@import '../mixins/_variants';
+
+//
+// Themes
+//
+// Generate color themes based on the --colors, --brand-colors and --social-colors
+// variables for components. If the color group is in the list, Inkline will
+// generate themes for the specified color group.
+//
+$background-variants: (
+    primary: $color-primary,
+    secondary: $color-secondary,
+    info: $color-info,
+    warning: $color-warning,
+    danger: $color-danger,
+    success: $color-success,
+    light: $color-light,
+    dark: $color-dark,
+    transparent: $color-transparent,
+    white: $color-white,
+    gray-10: $color-gray-10,
+    gray-20: $color-gray-20,
+    gray-30: $color-gray-30,
+    gray-40: $color-gray-40,
+    gray-50: $color-gray-50,
+    gray-60: $color-gray-60,
+    gray-70: $color-gray-70,
+    gray-80: $color-gray-80,
+    gray-90: $color-gray-90,
+    black: $color-black,
+    red: $color-red,
+    orange: $color-orange,
+    yellow: $color-yellow,
+    green: $color-green,
+    teal: $color-teal,
+    blue: $color-blue,
+    purple: $color-purple,
+    pink: $color-pink,
+    facebook: $color-facebook,
+    twitter: $color-twitter,
+    google: $color-google,
+    instagram: $color-instagram,
+    dribbble: $color-dribbble,
+    behance: $color-behance,
+    flickr: $color-flickr,
+    linkedin: $color-linkedin,
+    youtube: $color-youtube,
+    pinterest: $color-pinterest,
+    github: $color-github,
+    gitlab: $color-gitlab,
+    tumblr: $color-tumblr,
+    twitch: $color-twitch,
+    envato: $color-envato,
+    vine: $color-vine,
+) !default;
+
+$border-variants: (
+    primary: $color-primary,
+    secondary: $color-secondary,
+    info: $color-info,
+    warning: $color-warning,
+    danger: $color-danger,
+    success: $color-success,
+    light: $color-light,
+    dark: $color-dark,
+    transparent: $color-transparent,
+    white: $color-white,
+    gray-10: $color-gray-10,
+    gray-20: $color-gray-20,
+    gray-30: $color-gray-30,
+    gray-40: $color-gray-40,
+    gray-50: $color-gray-50,
+    gray-60: $color-gray-60,
+    gray-70: $color-gray-70,
+    gray-80: $color-gray-80,
+    gray-90: $color-gray-90,
+    black: $color-black,
+    red: $color-red,
+    orange: $color-orange,
+    yellow: $color-yellow,
+    green: $color-green,
+    teal: $color-teal,
+    blue: $color-blue,
+    purple: $color-purple,
+    pink: $color-pink,
+) !default;
+
+$text-variants: (
+    primary: $color-primary,
+    secondary: $color-secondary,
+    info: $color-info,
+    warning: $color-warning,
+    danger: $color-danger,
+    success: $color-success,
+    light: $color-light,
+    dark: $color-dark,
+    white: $color-white,
+    gray-10: $color-gray-10,
+    gray-20: $color-gray-20,
+    gray-30: $color-gray-30,
+    gray-40: $color-gray-40,
+    gray-50: $color-gray-50,
+    gray-60: $color-gray-60,
+    gray-70: $color-gray-70,
+    gray-80: $color-gray-80,
+    gray-90: $color-gray-90,
+    black: $color-black,
+    red: $color-red,
+    orange: $color-orange,
+    yellow: $color-yellow,
+    green: $color-green,
+    teal: $color-teal,
+    blue: $color-blue,
+    purple: $color-purple,
+    pink: $color-pink,
+) !default;
+
+// Initialize theme choice collection
+//
+$variants: (
+    'background': add-variant($background-variants, $color-groups),
+    'border': add-variant($border-variants, $color-groups),
+    'text': add-variant($text-variants, $color-groups),
+);
+
+@function variants($key) {
+    @return map_get($variants, $key);
+}

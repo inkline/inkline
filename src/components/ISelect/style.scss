@@ -1,0 +1,60 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../IDropdown/css/_variables';
+@import '../IDropdown/css/_mixins';
+@import '../IInput/css/_mixins';
+@import '../IIcon/css/_variables';
+@import '../IIcon/css/_mixins';
+@import 'css/_variables';
+
+/**
+ * Select
+ */
+.select {
+    width: 100%;
+
+    > .menu {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    > .form-select {
+        display: block;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 1;
+        -webkit-appearance: menulist-button;
+    }
+
+    > .form-input-group {
+        &::after {
+            @extend %icon;
+
+            content: $icon-caret-down;
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            right: $spacer;
+            margin-top: -6px;
+            width: 12px;
+            height: 6px;
+            z-index: 1;
+            font-size: 12px;
+        }
+    }
+
+    &[readonly] > .form-input-group ::v-deep > .form-input {
+        > input[readonly] {
+            cursor: default;
+        }
+    }
+
+    &.-suffixed > .form-input-group::after {
+        right: $spacer * 4;
+    }
+}

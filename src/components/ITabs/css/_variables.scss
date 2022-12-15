@@ -1,0 +1,19 @@
+//
+// Tabs Variables
+//
+$tabs-border-radius: border-radius('md') !default;
+$tabs-body-padding: $spacer !default;
+
+//
+// Themes
+//
+$tabs-color-for-light-variant: $color-for-light-variant !default;
+$tabs-color-for-dark-variant: $color-for-dark-variant !default;
+
+$tabs-variant-light: tabs-variant($color-white) !default;
+$tabs-variant-dark: tabs-variant($color-dark) !default;
+
+$tabs-variants: (
+    light: $tabs-variant-light,
+    dark: $tabs-variant-dark
+) !default;

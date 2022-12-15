@@ -1,0 +1,5 @@
+@import '../mixins/clearfix';
+
+._clearfix {
+    @extend %clearfix;
+}

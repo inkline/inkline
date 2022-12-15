@@ -1,0 +1,19 @@
+//
+// Collapsible Variables
+//
+$collapsible-border-radius: border-radius('md') !default;
+$collapsible-item-padding: $spacer !default;
+
+//
+// Themes
+//
+$collapsible-color-for-light-variant: $color-for-light-variant !default;
+$collapsible-color-for-dark-variant: $color-for-dark-variant !default;
+
+$collapsible-variant-light: collapsible-variant($color-light) !default;
+$collapsible-variant-dark: collapsible-variant($color-dark) !default;
+
+$collapsible-variants: (
+    light: $collapsible-variant-light,
+    dark: $collapsible-variant-dark
+) !default;

@@ -1,0 +1,15 @@
+$zoom-in-bottom-transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) !default;
+
+.zoom-in-bottom-transition-enter-active,
+.zoom-in-bottom-transition-leave-active {
+    opacity: 1;
+    transform: scaleY(1);
+    transition: $zoom-in-bottom-transition;
+    transform-origin: center bottom;
+}
+
+.zoom-in-bottom-transition-enter,
+.zoom-in-bottom-transition-leave-active {
+    opacity: 0;
+    transform: scaleY(0);
+}

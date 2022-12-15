@@ -1,0 +1,86 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_variables';
+@import 'css/_mixins';
+
+.inkline-icon {
+    @extend %icon;
+
+    &.-circle::before { content: $icon-circle; }
+    &.-chevron-down::before { content: $icon-chevron-down; }
+    &.-caret-down::before { content: $icon-caret-down; }
+    &.-home::before { content: $icon-home; }
+    &.-calendar::before { content: $icon-calendar; }
+    &.-warning::before { content: $icon-warning; }
+    &.-danger::before { content: $icon-danger; }
+    &.-plus::before { content: $icon-plus; }
+    &.-minus::before { content: $icon-minus; }
+    &.-info::before { content: $icon-info; }
+    &.-times::before { content: $icon-times; }
+    &.-check::before { content: $icon-check; }
+    &.-sort-asc::before { content: $icon-sort-asc; }
+    &.-sort-desc::before { content: $icon-sort-desc; }
+    &.-sort::before { content: $icon-sort; }
+    &.-search::before { content: $icon-search; }
+    &.-book::before { content: $icon-book; }
+    &.-file::before { content: $icon-file; }
+    &.-stack::before { content: $icon-stack; }
+    &.-folder::before { content: $icon-folder; }
+    &.-cart::before { content: $icon-cart; }
+    &.-phone::before { content: $icon-phone; }
+    &.-envelope::before { content: $icon-envelope; }
+    &.-location::before { content: $icon-location; }
+    &.-clock::before { content: $icon-clock; }
+    &.-user::before { content: $icon-user; }
+    &.-key::before { content: $icon-key; }
+    &.-lock::before { content: $icon-lock; }
+    &.-settings::before { content: $icon-settings; }
+    &.-magic::before { content: $icon-magic; }
+    &.-dashboard::before { content: $icon-dashboard; }
+    &.-earth::before { content: $icon-earth; }
+    &.-link::before { content: $icon-link; }
+    &.-attachment::before { content: $icon-attachment; }
+    &.-light::before { content: $icon-light; }
+    &.-dark::before { content: $icon-dark; }
+    &.-star-empty::before { content: $icon-star-empty; }
+    &.-star-half::before { content: $icon-star-half; }
+    &.-star-full::before { content: $icon-star-full; }
+    &.-heart::before { content: $icon-heart; }
+    &.-code::before { content: $icon-code; }
+
+    &.-chevron-up::before {
+        content: $icon-chevron-down;
+        transform: rotate(180deg);
+    }
+
+    &.-chevron-left::before {
+        content: $icon-chevron-down;
+        transform: rotate(90deg);
+    }
+
+    &.-chevron-right::before {
+        content: $icon-chevron-down;
+        transform: rotate(-90deg);
+    }
+
+    &.-caret-up::before {
+        content: $icon-caret-down;
+        transform: rotate(180deg);
+    }
+
+    &.-caret-left::before {
+        content: $icon-caret-down;
+        transform: rotate(90deg);
+    }
+
+    &.-caret-right::before {
+        content: $icon-caret-down;
+        transform: rotate(-90deg);
+    }
+
+    @each $size in $sizes {
+        &.-#{$size} {
+            font-size: font-size($size);
+        }
+    }
+}

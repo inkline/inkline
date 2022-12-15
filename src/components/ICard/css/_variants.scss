@@ -1,0 +1,23 @@
+//
+// Card variants
+//
+@each $variant-name, $variant in $card-variants {
+    .card.-#{$variant-name} {
+        color: map-get($variant, 'color');
+        background: map-get($variant, 'background');
+
+        > .body {
+            border-color: map-get($variant, 'border-color');
+        }
+
+        > .header {
+            background: map-get($variant, 'header-background');
+            border-color: map-get($variant, 'header-border-color');
+        }
+
+        > .footer {
+            background: map-get($variant, 'footer-background');
+            border-color: map-get($variant, 'footer-border-color');
+        }
+    }
+}

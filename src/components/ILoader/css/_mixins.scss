@@ -1,0 +1,9 @@
+@function loader-variant($variant) {
+    $loader-variant-background: $variant;
+
+    $variant-map: (
+        background: $loader-variant-background,
+    );
+
+    @return $variant-map;
+}

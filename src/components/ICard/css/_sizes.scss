@@ -1,0 +1,70 @@
+//
+// Card sizes
+//
+@each $size in $sizes {
+    $_border-radius: map_get($card-border-radius, $size);
+    $_font-size: map_get($card-font-size, $size);
+    $_padding: map_get($card-padding, $size);
+
+    .card.-#{$size} {
+        border-radius: $_border-radius;
+        font-size: $_font-size;
+
+        > .header {
+            padding: $_padding;
+
+            &:first-child {
+                border-top-left-radius: $_border-radius;
+                border-top-right-radius: $_border-radius;
+            }
+        }
+
+        > .body {
+            padding: $_padding;
+            border-radius: $_border-radius;
+
+            > .title {
+                margin-bottom: $_padding;
+            }
+
+            > .subtitle {
+                margin-top: $_padding / 2;
+            }
+
+            > .link + .link {
+                margin-left: $_padding;
+            }
+        }
+
+        > .footer {
+            padding: $_padding;
+
+            &:last-child {
+                border-bottom-left-radius: $_border-radius;
+                border-bottom-right-radius: $_border-radius;
+            }
+        }
+
+        > img {
+            border-top-left-radius: $_border-radius;
+            border-top-right-radius: $_border-radius;
+        }
+
+        &:last-child {
+            border-bottom-left-radius: $_border-radius;
+            border-bottom-right-radius: $_border-radius;
+        }
+
+        > .list-group:first-child,
+        .item:first-child {
+            border-top-left-radius: $_border-radius;
+            border-top-right-radius: $_border-radius;
+        }
+
+        > .list-group:last-child,
+        .item:last-child {
+            border-bottom-left-radius: $_border-radius;
+            border-bottom-right-radius: $_border-radius;
+        }
+    }
+}

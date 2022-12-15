@@ -1,0 +1,26 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_mixins';
+@import 'css/_variables';
+@import 'css/_variants';
+@import 'css/_sizes';
+
+/**
+ * Dropdown
+ */
+.dropdown {
+    display: inline-block;
+    position: relative;
+
+    > *:first-child {
+        cursor: pointer;
+    }
+
+    > .menu .dropdown {
+        width: 100%;
+        display: block;
+    }
+
+    @extend .dropdown.-md;
+    @extend .dropdown.-light;
+}

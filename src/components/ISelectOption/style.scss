@@ -1,0 +1,35 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../ISelect/css/_variables';
+@import 'css/_variables';
+
+/**
+ * Select Option
+ */
+.select > .menu > .option {
+    display: block;
+    width: 100%;
+    clear: both;
+    font-weight: $font-weight-normal;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: $select-option-padding;
+
+    @if transition('dropdown') {
+        transition: background-color $transition-duration $transition-easing;
+    }
+
+    &.-disabled,
+    &:disabled {
+        pointer-events: none;
+        background-color: transparent;
+        background-image: none;
+    }
+
+    &.-active {
+        font-weight: bold;
+    }
+}

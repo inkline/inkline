@@ -1,0 +1,11 @@
+//
+// Progress variants
+//
+@each $variant-name, $variant in $progress-bar-variants {
+    .progress {
+        > .bar.-#{$variant-name} {
+            color: map-get($variant, 'color');
+            background: map-get($variant, 'background');
+        }
+    }
+}

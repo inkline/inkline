@@ -1,0 +1,24 @@
+//
+// Loading spinner variables
+//
+$loader-size-base: 64px !default;
+$loader-size: size-map($loader-size-base, $sizes, $size-multipliers) !default;
+
+$loader-animation-duration: 1.2s !default;
+
+$loader-item-count: 12 !default;
+$loader-item-size: 8% !default;
+
+//
+// Variants
+//
+$loader-color-for-light-variant: $color-for-light-variant !default;
+$loader-color-for-dark-variant: $color-for-dark-variant !default;
+
+$loader-variant-light: loader-variant($color-white) !default;
+$loader-variant-dark: loader-variant($color-gray-90) !default;
+
+$loader-variants: (
+    light: $loader-variant-light,
+    dark: $loader-variant-dark
+) !default;

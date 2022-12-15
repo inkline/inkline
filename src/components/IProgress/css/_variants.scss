@@ -1,0 +1,8 @@
+//
+// Progress variants
+//
+@each $variant-name, $variant in $progress-variants {
+    .progress.-#{$variant-name} {
+        background: map-get($variant, 'background');
+    }
+}

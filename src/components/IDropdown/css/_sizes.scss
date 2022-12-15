@@ -1,0 +1,24 @@
+//
+// Dropdown Menu sizes
+//
+@each $size in $sizes {
+    .form.-#{$size} .select,
+    .form-group.-#{$size} .select,
+    .select.-#{$size},
+    .dropdown.-#{$size} {
+        ::v-deep > .menu {
+            border-radius: map-get($dropdown-border-radius, $size);
+            font-size: map-get($dropdown-font-size, $size);
+            padding: map-get($dropdown-padding, $size);
+
+            .item,
+            .dropdown > .item {
+                padding: map-get($dropdown-item-padding, $size);
+            }
+
+            > .divider {
+                margin: map-get($dropdown-divider-margin, $size);
+            }
+        }
+    }
+}

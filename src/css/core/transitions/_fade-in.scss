@@ -1,0 +1,11 @@
+$fade-in-transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1) !default;
+
+.fade-in-transition-enter-active,
+.fade-in-transition-leave-active {
+    transition: $fade-in-transition;
+}
+
+.fade-in-transition-enter,
+.fade-in-transition-leave-active {
+    opacity: 0;
+}

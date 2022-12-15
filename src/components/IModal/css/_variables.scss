@@ -1,0 +1,51 @@
+//
+// Modal Variables
+//
+
+$modal-font-size: $font-size !default;
+$modal-font-weight: font-weight('normal') !default;
+$modal-line-height: $line-height !default;
+
+$modal-margin: spacers('1') !default;
+
+$modal-width-base: 480px !default;
+$modal-width: size-map($modal-width-base, $sizes, $size-multipliers) !default;
+
+$modal-border-width: $border-width !default;
+$modal-border-radius: $border-radius !default;
+
+$modal-border-color-light: $border-color-light !default;
+$modal-background-light: colors('white') !default;
+$modal-border-color-dark: $border-color-dark !default;
+$modal-background-dark: colors('dark') !default;
+
+$modal-overlay-background: rgba(0, 0, 0, 0.75) !default;
+
+$modal-padding-base: spacers('1') !default;
+$modal-padding: size-map($modal-padding-base, $sizes, $size-multipliers) !default;
+
+//
+// Variants
+//
+$modal-color-for-light-variant: $color-for-light-variant !default;
+$modal-color-for-dark-variant: $color-for-dark-variant !default;
+
+$modal-variant-primary: modal-variant($color-primary) !default;
+$modal-variant-secondary: modal-variant($color-secondary) !default;
+$modal-variant-light: modal-variant($color-light) !default;
+$modal-variant-dark: modal-variant($color-dark) !default;
+$modal-variant-info: modal-variant($color-info) !default;
+$modal-variant-success: modal-variant($color-success) !default;
+$modal-variant-warning: modal-variant($color-warning) !default;
+$modal-variant-danger: modal-variant($color-danger) !default;
+
+$modal-variants: (
+    primary: $modal-variant-primary,
+    secondary: $modal-variant-secondary,
+    light: $modal-variant-light,
+    dark: $modal-variant-dark,
+    info: $modal-variant-info,
+    success: $modal-variant-success,
+    warning: $modal-variant-warning,
+    danger: $modal-variant-danger,
+) !default;

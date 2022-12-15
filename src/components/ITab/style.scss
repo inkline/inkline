@@ -1,0 +1,29 @@
+/**
+ * Collapsible Item
+ */
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import '../ITabs/css/_mixins';
+@import '../ITabs/css/_variables';
+@import 'css/_variants';
+
+.tabs {
+    > .tab {
+        position: relative;
+        display: block;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: $tabs-border-radius;
+        transition-property: background-color, border-color, color;
+        transition-duration: $transition-duration;
+        transition-timing-function: $transition-easing;
+
+        > .body {
+            display: block;
+            position: relative;
+            padding: $tabs-body-padding;
+        }
+    }
+
+    @extend .tabs.-light;
+}

@@ -1,0 +1,10 @@
+//
+// Checkbox Button Sizes
+//
+@each $size in $sizes {
+    $_font-size: map_get($button-font-size, $size);
+
+    .button.-checkbox.-#{$size} {
+        font-size: $_font-size;
+    }
+}

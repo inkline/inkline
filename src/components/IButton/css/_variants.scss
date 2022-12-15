@@ -1,0 +1,94 @@
+//
+// Button variants
+// Add the required color variants to all button variations
+//
+@each $variant-name, $variant in $button-variants {
+    .button.-#{$variant-name} {
+        color: map-get($variant, 'color');
+        background: map-get($variant, 'background');
+        border-color: map-get($variant, 'border-color');
+
+        &.-disabled,
+        &:disabled {
+            opacity: $button-opacity-disabled-light;
+
+            .inkline.-dark & {
+                opacity: $button-opacity-disabled-dark;
+            }
+        }
+
+        &:not(:disabled):not(.-disabled) {
+            &:hover,
+            &.-hovered {
+                background: map-get($variant, 'background-hover');
+                border-color: map-get($variant, 'border-color-hover');
+            }
+
+            &:active,
+            &.-active {
+                background: map-get($variant, 'background-active');
+            }
+
+            &:focus,
+            &.-focused {
+                box-shadow: 0 0 0 2px rgba(map-get($variant, 'background'), 0.25);
+            }
+        }
+
+        &.-outline {
+            background: map-get($variant, 'outline-background');
+            color: map-get($variant, 'outline-color');
+            border-color: map-get($variant, 'outline-border-color');
+
+            &:not(:disabled):not(.-disabled) {
+                &:hover,
+                &.-hovered,
+                &:focus,
+                &.-focused {
+                    color: map-get($variant, 'outline-color-hover');
+                    background: map-get($variant, 'outline-background-hover');
+                    border-color: map-get($variant, 'outline-border-color-hover');
+                }
+
+                &:active,
+                &.-active {
+                    background: map-get($variant, 'outline-background-active');
+                }
+            }
+        }
+
+        &.-link {
+            color: map-get($variant, 'link-color');
+            background-color: transparent;
+            border-color: transparent;
+
+            &:not(:disabled):not(.-disabled) {
+                &:hover,
+                &.-hovered,
+                &:focus,
+                &.-focused {
+                    color: map-get($variant, 'link-color-active');
+                    background-color: transparent;
+                    border-color: transparent;
+                }
+            }
+        }
+
+        ::v-deep .loader {
+            > .loader-item {
+                background-color: map-get($variant, 'color') !important;
+            }
+        }
+
+        //
+        // Button group border accent
+        //
+        .button-group:not(.-vertical) > &:not(:first-child) {
+            border-left-color: map-get($variant, 'background-hover');
+        }
+
+        .button-group.-vertical > &:not(:first-child) {
+            border-top-color: map-get($variant, 'background-hover');
+        }
+    }
+}

@@ -1,0 +1,24 @@
+//
+// Collapsible variants
+//
+@each $variant-name, $variant in $collapsible-variants {
+    .collapsible.-#{$variant-name} {
+        border-color: map-get($variant, 'border-color');
+
+        ::v-deep > .item {
+            > .header,
+            > .body {
+                border-color: map-get($variant, 'border-color');
+                color: map-get($variant, 'color');
+            }
+
+            > .header {
+                background: map-get($variant, 'background');
+            }
+
+            > .body {
+                background-color: map-get($variant, 'body-background');
+            }
+        }
+    }
+}

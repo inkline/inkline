@@ -1,0 +1,22 @@
+//
+// Progress Variables
+//
+$progress-background: $color-gray-30 !default;
+$progress-border-radius: $border-radius !default;
+
+$progress-height-base: $spacer-1-2 !default;
+$progress-height: size-map($progress-height-base, $sizes, $size-multipliers) !default;
+
+//
+// Variants
+//
+$progress-color-for-light-variant: $color-for-light-variant !default;
+$progress-color-for-dark-variant: $color-for-dark-variant !default;
+
+$progress-variant-light: progress-variant($color-light) !default;
+$progress-variant-dark: progress-variant($color-dark) !default;
+
+$progress-variants: (
+    light: $progress-variant-light,
+    dark: $progress-variant-dark
+) !default;

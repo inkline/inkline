@@ -1,0 +1,23 @@
+//
+// Core
+//
+
+$body-background: $color-white !default;
+$body-color: $color-gray-80 !default;
+
+$body-background-light: $body-background !default;
+$body-color-light: $body-color !default;
+
+$body-background-dark: $color-gray-90 !default;
+$body-color-dark: $color-gray-10 !default;
+
+$body-variants: (
+    'dark': (
+        'background': $body-background-dark,
+        'color': $body-color-dark,
+    ),
+    'light': (
+        'background': $body-background-light,
+        'color': $body-color-light,
+    )
+);

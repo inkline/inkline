@@ -1,0 +1,29 @@
+//
+// Toggle variables
+//
+$toggle-width-base: 40px !default;
+$toggle-width: size-map($toggle-width-base, $sizes, $size-multipliers) !default;
+$toggle-height-base: 20px !default;
+$toggle-height: size-map($toggle-height-base, $sizes, $size-multipliers) !default;
+$toggle-border-radius-base: $toggle-height-base !default;
+$toggle-border-radius: size-map($toggle-border-radius-base, $sizes, $size-multipliers) !default;
+$toggle-transition-duration: $transition-duration !default;
+
+$toggle-indicator-size-base: 16px !default;
+$toggle-indicator-size: size-map($toggle-indicator-size-base, $sizes, $size-multipliers) !default;
+$toggle-indicator-border-radius-base: $toggle-indicator-size-base !default;
+$toggle-indicator-border-radius: size-map($toggle-indicator-border-radius-base, $sizes, $size-multipliers) !default;
+
+//
+// Themes
+//
+$toggle-color-for-light-variant: $color-for-light-variant !default;
+$toggle-color-for-dark-variant: $color-for-dark-variant !default;
+
+$toggle-variant-light: toggle-variant($color-gray-40) !default;
+$toggle-variant-dark: toggle-variant($color-dark) !default;
+
+$toggle-variants: (
+    light: $toggle-variant-light,
+    dark: $toggle-variant-dark
+) !default;

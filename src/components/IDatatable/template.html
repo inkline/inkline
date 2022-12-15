@@ -1,0 +1,134 @@
+<div class="datatable-wrapper">
+    <div class="header-wrapper">
+        <slot name="header-wrapper"
+              :rows-from="rowsFrom + 1" :rows-to="rowsTo" :rows-count="rowsLength"
+              :page="page" :rows-per-page="rowsPerPage" :filter="filter"
+              :on-page-change="setValueCallback('page')"
+              :on-rows-per-page-change="setValueCallback('rowsPerPage')"
+              :on-filter-change="setValueCallback('filter')">
+            <div class="pagination-select" v-if="pagination">
+                <template v-for="part in i18nConfig.pagination.rowsPerPage">
+                    <i-select v-model="rowsPerPage" :size="paginationConfig.size" v-if="part === 'rowsPerPage'">
+                        <i-select-option v-for="(item, index) in paginationConfig.rowsPerPageOptions" :value="item" :label="'' + item" :key="index" />
+                    </i-select>
+                    <template v-else>{{part}}</template>
+                </template>
+            </div>
+            <div class="filtering-input" v-if="filtering">
+                <i-input v-model="filter" :placeholder="i18nConfig.filtering.inputPlaceholder">
+                    <i-icon icon="search" slot="suffix" />
+                </i-input>
+            </div>
+        </slot>
+    </div>
+    <div class="table-wrapper" :class="classes['wrapper']">
+        <table class="datatable" :class="classes['root']">
+            <thead>
+                <tr class="dtr">
+                    <slot name="header" :sortBy="sortBy">
+                        <th class="dth" :class="columnClass(column)" :style="columnStyle(column)"
+                            v-for="(column, index) in tableColumns" v-if="!column.custom" :key="index" :ref="tableColumns"
+                            @click="onTableHeadingClick($event, column)">
+                            <span v-if="!column.headerComponent">
+                                {{tableColumnsHeaderRendered[column.path]}}
+                                <i-icon class="sortable-icon" v-if="column.sortable" icon="sort">
+                                    <i-icon v-if="sortBy === column.path" :icon="`sort-${sortDirection}`" />
+                                </i-icon>
+                            </span>
+                            <span v-else :is="column.headerComponent" :column="column" :index="index" :sort-by="sortBy" />
+                        </th>
+                    </slot>
+                    <th class="dth" v-if="hasExpandableRows" />
+                </tr>
+            </thead>
+            <tbody>
+                <template v-for="(row, rowIndex) in tableRowsRendered">
+                    <tr :key="row.id"
+                        class="dtr"
+                        :class="rowClass(tableRows[row.indexRef])"
+                        :style="rowStyle(tableRows[row.indexRef])"
+                        @click="onTableRowClick($event, row)">
+                        <slot name="row" :row="tableRows[row.indexRef]" :index="row.indexRef">
+                            <td v-for="(column, columnIndex) in tableColumns" v-if="!column.custom" :key="row.id + '-' + columnIndex"
+                                class="dtd"
+                                :class="columnClass(column, tableRows[row.indexRef])"
+                                :style="columnStyle(column, tableRows[row.indexRef])"
+                                @click="onTableDataClick($event, column, row)">
+                                <span v-if="!column.component">
+                                    {{row[column.path]}}
+                                </span>
+                                <span v-else :is="column.component" :row="row" :data="tableRows[row.indexRef]" :column="column" />
+                            </td>
+                        </slot>
+                        <td class="dtd" v-if="hasExpandableRows">
+                            <span role="tab" class="expand-row" :class="{ '-active': expanded[row.id] }"
+                               :id="`expand-row-${row.id}`"
+                               :aria-expanded="expanded[row.id]"
+                               :aria-controls="`expandable-row-${row.id}`"
+                               :aria-describedby="`expandable-row-${row.id}`"
+                               @click="onClickExpand(row.id)"
+                               tabindex="0">
+                                <i class="icon" />
+                            </span>
+                        </td>
+                    </tr>
+                    <tr class="dtr" :class="rowClass(row)" v-if="hasExpandableRows" v-show="expanded[row.id]"
+                        role="tabpanel"
+                        :id="`expandable-row-${row.id}`" :key="row.id + '-expandable'"
+                        :aria-hidden="!expanded[row.id]"
+                        :aria-labelledby="`expand-row-${row.id}`">
+                            <slot name="expand" :columns="tableColumns" :row="row" :expaned="expanded[row.id]" />
+                    </tr>
+                </template>
+
+                <tr class="dtr" v-if="tableRows.length === 0">
+                    <td class="dtd" :colspan="tableColumns.length">
+                        <slot name="filtering-no-results" v-if="filter">
+                            <div class="_text-center">{{ i18nConfig.filtering.noResultsFound }}</div>
+                        </slot>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot v-if="footer">
+                <tr class="dtr">
+                    <slot name="footer">
+                        <th class="dth" :class="columnClass(column)" :style="columnStyle(column)"
+                            v-for="(column, index) in tableColumns" v-if="!column.custom" :key="index">
+                            <span v-if="!column.footerComponent">
+                                {{tableColumnsFooterRendered[column.path]}}
+                            </span>
+                            <span v-else :is="column.footerComponent" :column="column" :index="index"></span>
+                        </th>
+                    </slot>
+                    <th class="dth" v-if="hasExpandableRows"></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="footer-wrapper" v-if="pagination">
+        <slot name="footer-wrapper"
+              :rows-from="rowsFrom + 1" :rows-to="rowsTo" :rows-count="rowsLength"
+              :page="page" :rows-per-page="rowsPerPage" :filter="filter"
+              :on-page-change="setValueCallback('page')"
+              :on-rows-per-page-change="setValueCallback('rowsPerPage')"
+              :on-filter-change="setValueCallback('filter')">
+            <div class="pagination-range">
+                <template v-for="part in i18nConfig.pagination.rowsRange">
+                    <template v-if="part === 'rowsFrom'">{{ rowsFrom + 1 }}</template>
+                    <template v-else-if="part === 'rowsTo'">{{ rowsTo }}</template>
+                    <template v-else-if="part === 'rowsCount'">{{ rowsLength }}</template>
+                    <template v-else> {{ part }} </template>
+                </template>
+            </div>
+            <slot name="pagination" :page="page" :rows-per-page="rowsPerPage" :rows-count="rowsLength">
+                <i-pagination
+                    :items="rowsLength"
+                    :items-per-page="rowsPerPage"
+                    :limit="paginationConfig.limit"
+                    :size="paginationConfig.size"
+                    :variant="paginationConfig.variant"
+                    v-model="page" />
+            </slot>
+        </slot>
+    </div>
+</div>

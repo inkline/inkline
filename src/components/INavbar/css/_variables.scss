@@ -1,0 +1,25 @@
+//
+// Navbar Variables
+//
+$navbar-padding-base: spacers('1/2') 0 !default;
+$navbar-padding: size-map($navbar-padding-base, $sizes, $size-multipliers) !default;
+
+$navbar-brand-margin: $spacer !default;
+$navbar-brand-font-size: font-size('md') !default;
+
+$navbar-brand-padding-base: spacers('1/2') 0 !default;
+$navbar-brand-padding: size-map($navbar-brand-padding-base, $sizes, $size-multipliers) !default;
+
+//
+// Variants
+//
+$navbar-color-for-light-variant: $color-for-light-variant !default;
+$navbar-color-for-dark-variant: $color-for-dark-variant !default;
+
+$navbar-variant-light: navbar-variant($color-light) !default;
+$navbar-variant-dark: navbar-variant($color-dark) !default;
+
+$navbar-variants: (
+    light: $navbar-variant-light,
+    dark: $navbar-variant-dark
+) !default;

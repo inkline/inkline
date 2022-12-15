@@ -1,0 +1,49 @@
+@import '../../css/config/index';
+@import '../../css/mixins/index';
+@import 'css/_mixins';
+@import 'css/_variables';
+@import 'css/_sizes';
+@import 'css/_variants';
+
+/**
+ * Checkbox
+ */
+.toggle {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0;
+
+    .toggle-input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        cursor: pointer;
+
+        &:disabled + .indicator,
+        &[readonly] + .indicator {
+            cursor: default;
+        }
+    }
+
+    .indicator {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: $toggle-transition-duration;
+
+        &::before {
+            position: absolute;
+            content: "";
+            display: block;
+            top: 50%;
+            transform: translate(0, -50%);
+            transition: $toggle-transition-duration;
+        }
+    }
+
+    @extend .toggle.-light;
+    @extend .toggle.-md;
+}
