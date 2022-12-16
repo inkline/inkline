@@ -58,15 +58,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div
-        class="collapsible-item"
-        :class="classes"
-        :name="name"
-        tabindex="0"
-        @click="onClick"
-        @keydown.prevent.enter="onClick"
-        @keydown.prevent.space="onClick"
-    >
+    <div class="collapsible-item" :class="classes" :name="name">
         <a
             :id="`collapsible-item-heading-${name}`"
             class="collapsible-header"
@@ -74,6 +66,10 @@ export default defineComponent({
             :aria-expanded="active ? 'true' : 'false'"
             :aria-controls="`collapsible-item-content-${name}`"
             :aria-describedby="`collapsible-item-content-${name}`"
+            tabindex="0"
+            @click="onClick"
+            @keydown.prevent.enter="onClick"
+            @keydown.prevent.space="onClick"
         >
             <!-- @slot header Slot for collapsible item header content -->
             <slot name="header"> {{ title }} </slot>
