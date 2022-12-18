@@ -2,17 +2,28 @@
 
 exports[`Components > IDropdown > should render correctly 1`] = `
 "<div class=\\"dropdown-wrapper\\" aria-haspopup=\\"true\\">
-  <div class=\\"dropdown-trigger\\"><button class=\\"button -light -md\\" tag=\\"button\\" role=\\"button\\" tabindex=\\"0\\" aria-disabled=\\"false\\" aria-pressed=\\"false\\" aria-busy=\\"false\\" aria-live=\\"polite\\">
+  <div class=\\"dropdown-trigger\\">
+    <!-- @slot default Slot for dropdown trigger --><button class=\\"button -light -md\\" tag=\\"button\\" role=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\">
+      <!-- @slot loading Slot for button loading state -->
       <!--v-if-->
-    </button></div>
-  <transition-stub>
-    <div class=\\"dropdown -light -md\\" role=\\"menu\\" aria-hidden=\\"true\\" style=\\"display: none;\\"><span data-popper-arrow=\\"\\"></span>
+      <!-- @slot default Slot for default button content -->
+    </button>
+  </div>
+  <transition-stub name=\\"zoom-in-top-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+    <div class=\\"dropdown -light -md\\" role=\\"menu\\" aria-hidden=\\"true\\" style=\\"display: none;\\"><span class=\\"arrow\\"></span>
       <!--v-if-->
       <div class=\\"dropdown-body\\">
-        <div class=\\"dropdown-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-disabled=\\"false\\" aria-pressed=\\"false\\"></div>
-        <div class=\\"dropdown-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-disabled=\\"false\\" aria-pressed=\\"false\\"></div>
+        <!-- @slot body Slot for dropdown body content -->
+        <div class=\\"dropdown-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-pressed=\\"false\\">
+          <!-- @slot default Slot for default dropdown item content -->
+        </div>
+        <div class=\\"dropdown-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-pressed=\\"false\\">
+          <!-- @slot default Slot for default dropdown item content -->
+        </div>
         <div class=\\"dropdown-divider\\" role=\\"separator\\"></div>
-        <div class=\\"dropdown-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-disabled=\\"false\\" aria-pressed=\\"false\\"></div>
+        <div class=\\"dropdown-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-pressed=\\"false\\">
+          <!-- @slot default Slot for default dropdown item content -->
+        </div>
       </div>
       <!--v-if-->
     </div>

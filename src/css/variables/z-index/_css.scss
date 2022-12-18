@@ -1,8 +1,0 @@
-// Z-index
-//
-
-:root {
-    @each $z-index-key, $z-index-value in $z-index {
-        --z-index--#{$z-index-key}: #{$z-index-value};
-    }
-}

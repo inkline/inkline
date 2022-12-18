@@ -1,1 +1,9 @@
-<template src="./fluid.html" />
+<template>
+    <i-container fluid>
+        <i-row>
+            <i-column xs></i-column>
+            <i-column xs></i-column>
+            <i-column xs></i-column>
+        </i-row>
+    </i-container>
+</template>

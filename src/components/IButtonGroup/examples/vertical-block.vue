@@ -1,1 +1,7 @@
-<template src="./vertical-block.html" />
+<template>
+    <i-button-group block vertical>
+        <i-button>Left</i-button>
+        <i-button>Middle</i-button>
+        <i-button>Right</i-button>
+    </i-button-group>
+</template>

@@ -1,0 +1,1 @@
+export { default as ICollapsibleItem } from './ICollapsibleItem.vue';

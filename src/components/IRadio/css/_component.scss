@@ -1,0 +1,368 @@
+////
+/// The background of the radio component indicator
+/// @name radio--background
+/// @type color
+////
+
+////
+/// The background of the radio component indicator when checked
+/// @name radio--background--checked
+/// @type color
+////
+
+////
+/// The background of the radio component indicator when disabled
+/// @name radio--background--disabled
+/// @type color
+////
+
+////
+/// The background of the radio component indicator when checked and disabled
+/// @name radio--background--checked-disabled
+/// @type color
+////
+
+////
+/// The border-color of the radio component indicator
+/// @name radio--border-color
+/// @type color
+////
+
+////
+/// The border-color of the radio component indicator when checked
+/// @name radio--border-color--checked
+/// @type color
+////
+
+////
+/// The border-color of the radio component indicator when disabled
+/// @name radio--border-color--disabled
+/// @type color
+////
+
+////
+/// The border-color of the radio component indicator when checked and disabled
+/// @name radio--border-color--checked-disabled
+/// @type color
+////
+
+////
+/// The border style of the radio component indicator
+/// @name radio--border-style
+////
+
+////
+/// The border top width of the radio component indicator
+/// @name radio--border-top-width
+////
+
+////
+/// The border right width of the radio component indicator
+/// @name radio--border-right-width
+////
+
+////
+/// The border bottom width of the radio component indicator
+/// @name radio--border-bottom-width
+////
+
+////
+/// The border left width of the radio component indicator
+/// @name radio--border-left-width
+////
+
+////
+/// The border width of the radio component indicator
+/// @name radio--border-width
+////
+
+////
+/// The border top left radius of the radio component indicator
+/// @name radio--border-top-left-radius
+////
+
+////
+/// The border top right radius of the radio component indicator
+/// @name radio--border-top-right-radius
+////
+
+////
+/// The border bottom right radius of the radio component indicator
+/// @name radio--border-bottom-right-radius
+////
+
+////
+/// The border bottom left radius of the radio component indicator
+/// @name radio--border-bottom-left-radius
+////
+
+////
+/// The border radius of the radio component indicator
+/// @name radio--border-radius
+////
+
+////
+/// The box shadow horizontal offset of the radio component indicator
+/// @name radio--box-shadow-offset-x
+////
+
+////
+/// The box shadow vertical offset of the radio component indicator
+/// @name radio--box-shadow-offset-y
+////
+
+////
+/// The box shadow blur radius of the radio component indicator
+/// @name radio--box-shadow-blur-radius
+////
+
+////
+/// The box shadow spread radius of the radio component indicator
+/// @name radio--box-shadow-spread-radius
+////
+
+////
+/// The box shadow spread radius of the radio component indicator
+/// @name radio--box-shadow-color
+////
+
+////
+/// The box shadow of the radio component indicator
+/// @name radio--box-shadow
+////
+
+////
+/// The color of the radio component indicator icon
+/// @name radio--color
+/// @type color
+////
+
+////
+/// The color of the radio component indicator icon when disabled
+/// @name radio--color--disabled
+/// @type color
+////
+
+////
+/// The right margin of the radio component indicator
+/// @name radio--margin-right
+////
+
+////
+/// The size of the radio component indicator
+/// @name radio--size
+/// @type size
+////
+
+////
+/// The size of the radio component indicator check mark icon
+/// @name radio--checkmark--size
+/// @type size
+////
+
+////
+/// The font size of the radio component label
+/// @name radio--label--font-size
+/// @type size
+////
+
+////
+/// The label color of the radio component label
+/// @name radio--label--color
+/// @type color
+////
+
+////
+/// The label color of the radio component when disabled
+/// @name radio--label--disabled--color
+/// @type color
+////
+
+.radio {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    outline: none;
+    cursor: pointer;
+    margin-right: var(--radio--margin-right, var(--margin-right));
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &.-disabled {
+        cursor: default;
+
+        .radio-label {
+            &::before,
+            &::after {
+                cursor: default;
+            }
+        }
+    }
+
+    .radio-label {
+        margin-bottom: 0;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        transition-property: var(--radio--transition-property, color);
+        transition-duration: var(--radio--transition-duration, var(--transition-duration));
+        transition-timing-function: var(
+            --radio--transition-timing-function,
+            var(--transition-timing-function)
+        );
+        color: var(--radio--label--color);
+        font-size: var(--radio--label--font-size);
+
+        &::before,
+        &::after {
+            width: var(--radio--size);
+            height: var(--radio--size);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        &::before {
+            content: '';
+            user-select: none;
+            border-color: var(
+                --radio--border-color,
+                (
+                    var(--radio--border-top-color, var(--border-top-color))
+                        var(--radio--border-right-color, var(--border-right-color))
+                        var(--radio--border-bottom-color, var(--border-bottom-color))
+                        var(--radio--border-left-color, var(--border-left-color))
+                )
+            );
+            border-style: var(
+                --radio--border-style,
+                (
+                    var(--radio--border-top-style, var(--border-top-style))
+                        var(--radio--border-right-style, var(--border-right-style))
+                        var(--radio--border-bottom-style, var(--border-bottom-style))
+                        var(--radio--border-left-style, var(--border-left-style))
+                )
+            );
+            border-width: var(
+                --radio--border-width,
+                (
+                    var(--radio--border-top-width, var(--border-top-width))
+                        var(--radio--border-right-width, var(--border-right-width))
+                        var(--radio--border-bottom-width, var(--border-bottom-width))
+                        var(--radio--border-left-width, var(--border-left-width))
+                )
+            );
+            border-radius: 100%;
+            box-shadow: var(
+                --radio--box-shadow,
+                var(--radio--box-shadow-x-offset, var(--box-shadow-offset-x))
+                    var(--radio--box-shadow-y-offset, var(--box-shadow-offset-y))
+                    var(--radio--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                    var(--radio--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+                    var(--radio--box-shadow-color, var(--box-shadow-color))
+            );
+            margin-right: var(--radio--margin-right, var(--margin-right-1-2));
+            transition-property: var(--radio--transition-property, background-color, border-color);
+            transition-duration: var(--radio--transition-duration, var(--transition-duration));
+            transition-timing-function: var(
+                --radio--transition-timing-function,
+                var(--transition-timing-function)
+            );
+            background-color: var(--radio--background);
+        }
+
+        &::after {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            z-index: 1;
+            text-align: center;
+            background-color: var(--radio--color);
+            margin-top: calc(var(--radio--size) / -2);
+            mask-image: url($ink-circle);
+            -webkit-mask-image: url($ink-circle);
+            mask-size: var(--radio--checkmark--size) var(--radio--checkmark--size);
+            -webkit-mask-size: var(--radio--checkmark--size) var(--radio--checkmark--size);
+        }
+    }
+
+    input {
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 0; // Put the input behind the label so it doesn't overlay text
+        opacity: 0;
+        height: 0;
+        width: 0;
+
+        &:focus,
+        &:active {
+            outline: none;
+        }
+
+        &:checked ~ .radio-label {
+            &::before {
+                border-color: var(--radio--checked--border-color, var(--radio--border-color));
+                background: var(--radio--checked--background, var(--radio--background));
+            }
+
+            &::after {
+                content: '';
+                mask-position: center center;
+                -webkit-mask-position: center center;
+                mask-repeat: no-repeat;
+                -webkit-mask-repeat: no-repeat;
+            }
+        }
+
+        &:disabled,
+        &[readonly] {
+            ~ .radio-label {
+                color: var(--radio--disabled--label--color, var(--radio--label--color));
+            }
+
+            &:checked {
+                ~ .radio-label {
+                    &::before {
+                        border-color: var(
+                            --radio--checked--disabled--border-color,
+                            var(--radio--border-color)
+                        );
+                        background: var(
+                            --radio--checked--disabled--background,
+                            var(--radio--background)
+                        );
+                    }
+
+                    &::after {
+                        cursor: not-allowed;
+                        background: var(--radio--disabled--color, var(--radio--color));
+                    }
+                }
+            }
+        }
+    }
+
+    &.-native {
+        input {
+            top: auto;
+            left: auto;
+            position: relative;
+            opacity: 1;
+            height: auto;
+            width: auto;
+            margin-right: var(--radio--margin-right, var(--margin-right-1-2));
+        }
+
+        .radio-label {
+            &::after,
+            &::before {
+                display: none;
+            }
+        }
+    }
+}

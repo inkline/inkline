@@ -1,4 +1,4 @@
-import ILoader from '../index.vue';
+import { ILoader } from '../index';
 import {
     ILoaderBasicExample,
     ILoaderColorVariantsExample,

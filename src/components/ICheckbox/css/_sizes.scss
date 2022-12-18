@@ -3,130 +3,87 @@
  */
 
 .checkbox {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    @include variant('sm', 'form') {
-        ////
-        /// The border top left radius of the checkbox component indicator, for the sm size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border top right radius of the checkbox component indicator, for the sm size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border bottom right radius of the checkbox component indicator, for the sm size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border bottom left radius of the checkbox component indicator, for the sm size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The size of the checkbox component indicator, for the sm size variant
-        /// @name size
-        ////
-        ----size: calc(#{1rem} * #{size-multiplier('sm')});
-        ////
-        /// The size of the checkbox component indicator check mark icon, for the sm size variant
-        /// @name checkmark--size
-        ////
-        ----checkmark--size: calc(#{8px} * #{size-multiplier('sm')});
-        ////
-        /// The font size of the checkbox component label, for the sm size variant
-        /// @name label--font-size
-        ////
-        ----label--font-size: calc(#{font-size()} * #{size-multiplier('sm')});
+    &.-sm {
+        --checkbox--border-top-left-radius: var(
+            --checkbox--sm--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-sm))
+        );
+        --checkbox--border-top-right-radius: var(
+            --checkbox--sm--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-sm))
+        );
+        --checkbox--border-bottom-right-radius: var(
+            --checkbox--sm--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))
+        );
+        --checkbox--border-bottom-left-radius: var(
+            --checkbox--sm--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))
+        );
+        --checkbox--size: var(--checkbox--sm--size, calc(#{1rem} * var(--size-multiplier-sm)));
+        --checkbox--checkmark--size: var(
+            --checkbox--sm--checkmark--size,
+            calc(#{8px} * var(--size-multiplier-sm))
+        );
+        --checkbox--label--font-size: var(
+            --checkbox--sm--label--font-size,
+            calc(var(--font-size) * var(--size-multiplier-sm))
+        );
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    @include variant('md', 'form') {
-        ////
-        /// The border top left radius of the checkbox component indicator, for the md size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border top right radius of the checkbox component indicator, for the md size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border bottom right radius of the checkbox component indicator, for the md size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border bottom left radius of the checkbox component indicator, for the md size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')});
-        ////
-        /// The size of the checkbox component indicator, for the md size variant
-        /// @name size
-        ////
-        ----size: calc(#{1rem} * #{size-multiplier('md')});
-        ////
-        /// The size of the checkbox component indicator check mark icon, for the md size variant
-        /// @name checkmark--size
-        ////
-        ----checkmark--size: calc(#{8px} * #{size-multiplier('md')});
-        ////
-        /// The font size of the checkbox component label, for the md size variant
-        /// @name label--font-size
-        ////
-        ----label--font-size: calc(#{font-size()} * #{size-multiplier('md')});
+
+    &.-md {
+        --checkbox--border-top-left-radius: var(
+            --checkbox--md--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-md))
+        );
+        --checkbox--border-top-right-radius: var(
+            --checkbox--md--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-md))
+        );
+        --checkbox--border-bottom-right-radius: var(
+            --checkbox--md--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))
+        );
+        --checkbox--border-bottom-left-radius: var(
+            --checkbox--md--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))
+        );
+        --checkbox--size: var(--checkbox--md--size, calc(#{1rem} * var(--size-multiplier-md)));
+        --checkbox--checkmark--size: var(
+            --checkbox--md--checkmark--size,
+            calc(#{8px} * var(--size-multiplier-md))
+        );
+        --checkbox--label--font-size: var(
+            --checkbox--md--label--font-size,
+            calc(var(--font-size) * var(--size-multiplier-md))
+        );
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    @include variant('lg', 'form') {
-        ////
-        /// The border top left radius of the checkbox component indicator, for the lg size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border top right radius of the checkbox component indicator, for the lg size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border bottom right radius of the checkbox component indicator, for the lg size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border bottom left radius of the checkbox component indicator, for the lg size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The size of the checkbox component indicator, for the lg size variant
-        /// @name size
-        ////
-        ----size: calc(#{1rem} * #{size-multiplier('lg')});
-        ////
-        /// The size of the checkbox component indicator check mark icon, for the lg size variant
-        /// @name checkmark--size
-        ////
-        ----checkmark--size: calc(#{8px} * #{size-multiplier('lg')});
-        ////
-        /// The font size of the checkbox component label, for the lg size variant
-        /// @name label--font-size
-        ////
-        ----label--font-size: calc(#{font-size()} * #{size-multiplier('lg')});
+
+    &.-lg {
+        --checkbox--border-top-left-radius: var(
+            --checkbox--lg--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-lg))
+        );
+        --checkbox--border-top-right-radius: var(
+            --checkbox--lg--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-lg))
+        );
+        --checkbox--border-bottom-right-radius: var(
+            --checkbox--lg--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))
+        );
+        --checkbox--border-bottom-left-radius: var(
+            --checkbox--lg--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))
+        );
+        --checkbox--size: var(--checkbox--lg--size, calc(#{1rem} * var(--size-multiplier-lg)));
+        --checkbox--checkmark--size: var(
+            --checkbox--lg--checkmark--size,
+            calc(#{8px} * var(--size-multiplier-lg))
+        );
+        --checkbox--label--font-size: var(
+            --checkbox--lg--label--font-size,
+            calc(var(--font-size) * var(--size-multiplier-lg))
+        );
     }
 }

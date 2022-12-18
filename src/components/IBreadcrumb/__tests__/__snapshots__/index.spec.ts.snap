@@ -2,6 +2,8 @@
 
 exports[`Components > IBreadcrumb > should render correctly 1`] = `
 "<nav class=\\"breadcrumb -light -md\\" aria-label=\\"Breadcrumbs\\">
-  <ol></ol>
+  <ol>
+    <!-- @slot default Slot for default breadcrumb content -->
+  </ol>
 </nav>"
 `;

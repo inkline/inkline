@@ -1,2 +1,27 @@
-<template src="./group-color-variants.demo.html" />
-<script src="./group-color-variants.demo.js" />
+<script lang="ts" setup>
+import { ref } from 'vue';
+
+const light = ref('apple');
+const dark = ref('apple');
+</script>
+<template>
+    <div>
+        <div class="_background:white _display:flex _align-items:center _padding:1">
+            <i-checkbox-group v-model="light" color="light">
+                <i-checkbox value="apple">Apple</i-checkbox>
+                <i-checkbox value="banana">Banana</i-checkbox>
+                <i-checkbox value="strawberry">Strawberry</i-checkbox>
+                <i-checkbox value="mango">Mango</i-checkbox>
+            </i-checkbox-group>
+        </div>
+
+        <div class="_background:gray-90 _display:flex _align-items:center _padding:1">
+            <i-checkbox-group v-model="dark" color="dark">
+                <i-checkbox value="apple">Apple</i-checkbox>
+                <i-checkbox value="banana">Banana</i-checkbox>
+                <i-checkbox value="strawberry">Strawberry</i-checkbox>
+                <i-checkbox value="mango">Mango</i-checkbox>
+            </i-checkbox-group>
+        </div>
+    </div>
+</template>

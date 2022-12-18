@@ -1,4 +1,4 @@
-import IPagination from '../index.vue';
+import { IPagination } from '../index';
 import {
     IPaginationBasicExample,
     IPaginationColorVariantsExample,

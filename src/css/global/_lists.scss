@@ -1,0 +1,68 @@
+/**
+ * Lists
+ */
+
+ol {
+    padding-left: var(--ol--padding-left, var(--list--padding-left, var(--padding-left-lg)));
+    margin-top: var(--ol--margin-top, var(--list--margin-top, 0));
+    margin-bottom: var(--ol--margin-bottom, var(--list--margin-bottom, var(--margin-bottom)));
+}
+
+ul {
+    padding-left: var(--ul--padding-left, var(--list--padding-left, var(--padding-left-lg)));
+    margin-top: var(--ul--margin-top, var(--list--margin-top, 0));
+    margin-bottom: var(--ul--margin-bottom, var(--list--margin-bottom, var(--margin-bottom)));
+}
+
+dl {
+    margin-top: var(--dl--margin-top, var(--list--margin-top, 0));
+    margin-bottom: var(--dl--margin-bottom, var(--list--margin-bottom, var(--margin-bottom)));
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+    margin-bottom: 0;
+}
+
+dt {
+    font-weight: var(--dl--dt--font-weight, var(--font-weight-bold));
+}
+
+dd {
+    margin-bottom: var(--dl--dd--margin-bottom, var(--margin-bottom-sm));
+    margin-left: var(--dl--dd--margin-left, 0); // Undo browser default
+}
+
+ul,
+ol,
+dl,
+.list {
+    > .item,
+    > li {
+        margin-bottom: var(--list--item--margin-bottom, var(--margin-bottom-1-2));
+    }
+
+    &.-unstyled,
+    &._list\:unstyled {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    &.-inline,
+    &._list\:inline {
+        padding-left: 0;
+        list-style: none;
+
+        > .item,
+        > li {
+            display: inline-flex;
+            margin-bottom: 0;
+
+            &:not(:last-child) {
+                margin-right: var(--list--inline--item--margin-right, var(--margin-right));
+            }
+        }
+    }
+}

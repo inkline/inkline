@@ -3,100 +3,63 @@
  */
 
 .progress {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    @include variant('sm') {
-        ////
-        /// The border top left radius of the progress component, for the sm size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border top right radius of the progress component, for the sm size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border bottom right radius of the progress component, for the sm size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border bottom left radius of the progress component, for the sm size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The height of the progress component, for the sm size variant
-        /// @name height
-        ////
-        ----height: calc(#{spacing('3/4')} * #{size-multiplier('sm')});
+    &.-sm {
+        --progress--border-top-left-radius: var(
+            --progress--sm--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-sm))
+        );
+        --progress--border-top-right-radius: var(
+            --progress--sm--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-sm))
+        );
+        --progress--border-bottom-right-radius: var(
+            --progress--sm--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))
+        );
+        --progress--border-bottom-left-radius: var(
+            --progress--sm--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))
+        );
+        --progress--height: var(--progress--sm--height, calc(0.75rem * var(--size-multiplier-sm)));
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    @include variant('md') {
-        ////
-        /// The border top left radius of the progress component, for the md size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border top right radius of the progress component, for the md size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border bottom right radius of the progress component, for the md size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border bottom left radius of the progress component, for the md size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')});
-        ////
-        /// The height of the progress component, for the md size variant
-        /// @name height
-        ////
-        ----height: calc(#{spacing('3/4')} * #{size-multiplier('md')});
+
+    &.-md {
+        --progress--border-top-left-radius: var(
+            --progress--md--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-md))
+        );
+        --progress--border-top-right-radius: var(
+            --progress--md--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-md))
+        );
+        --progress--border-bottom-right-radius: var(
+            --progress--md--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))
+        );
+        --progress--border-bottom-left-radius: var(
+            --progress--md--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))
+        );
+        --progress--height: var(--progress--md--height, calc(0.75rem * var(--size-multiplier-md)));
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    @include variant('lg') {
-        ////
-        /// The border top left radius of the progress component, for the lg size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border top right radius of the progress component, for the lg size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border bottom right radius of the progress component, for the lg size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border bottom left radius of the progress component, for the lg size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The height of the progress component, for the lg size variant
-        /// @name height
-        ////
-        ----height: calc(#{spacing('3/4')} * #{size-multiplier('lg')});
+
+    &.-lg {
+        --progress--border-top-left-radius: var(
+            --progress--lg--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-lg))
+        );
+        --progress--border-top-right-radius: var(
+            --progress--lg--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-lg))
+        );
+        --progress--border-bottom-right-radius: var(
+            --progress--lg--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))
+        );
+        --progress--border-bottom-left-radius: var(
+            --progress--lg--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))
+        );
+        --progress--height: var(--progress--lg--height, calc(0.75rem * var(--size-multiplier-lg)));
     }
 }

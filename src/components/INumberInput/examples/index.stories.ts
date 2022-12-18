@@ -1,4 +1,4 @@
-import INumberInput from '../index.vue';
+import { INumberInput } from '../index';
 import {
     INumberInputBasicExample,
     INumberInputColorVariantsExample,

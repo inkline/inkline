@@ -3,190 +3,120 @@
  */
 
 .tabs {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    @include variant('sm') {
-        ////
-        /// The border top left radius of the tabs component, for the sm size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border top right radius of the tabs component, for the sm size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border bottom right radius of the tabs component, for the sm size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border bottom left radius of the tabs component, for the sm size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The font size of the tabs component, for the sm size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
-        ////
-        /// The padding top of the tabs component, for the sm size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('sm')});
-        ////
-        /// The padding right of the tabs component, for the sm size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('sm')});
-        ////
-        /// The padding bottom of the tabs component, for the sm size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('sm')});
-        ////
-        /// The padding left of the tabs component, for the sm size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('sm')});
-        ////
-        /// The padding bottom of the tabs component header, for the sm size variant
-        /// @name header--padding-bottom
-        ////
-        ----header--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('sm')});
-        ////
-        /// The padding left of the tabs component header, for the sm size variant
-        /// @name header--padding-left
-        ////
-        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('sm')});
+    &.-sm {
+        --tabs--border-top-left-radius: var(
+            --tabs--sm--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-sm))
+        );
+        --tabs--border-top-right-radius: var(
+            --tabs--sm--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-sm))
+        );
+        --tabs--border-bottom-right-radius: var(
+            --tabs--sm--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))
+        );
+        --tabs--border-bottom-left-radius: var(
+            --tabs--sm--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))
+        );
+        --tabs--font-size: var(
+            --tabs--sm--font-size,
+            calc(var(--font-size) * var(--size-multiplier-sm))
+        );
+        --tabs--padding-top: var(
+            --tabs--sm--padding-top,
+            calc(var(--padding-top) * var(--size-multiplier-sm))
+        );
+        --tabs--padding-right: var(
+            --tabs--sm--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-sm))
+        );
+        --tabs--padding-bottom: var(
+            --tabs--sm--padding-bottom,
+            calc(var(--padding-bottom) * var(--size-multiplier-sm))
+        );
+        --tabs--padding-left: var(
+            --tabs--sm--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-sm))
+        );
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    @include variant('md') {
-        ////
-        /// The border top left radius of the tabs component, for the md size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border top right radius of the tabs component, for the md size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border bottom right radius of the tabs component, for the md size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border bottom left radius of the tabs component, for the md size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')});
-        ////
-        /// The font size of the tabs component, for the md size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
-        ////
-        /// The padding top of the tabs component, for the md size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('md')});
-        ////
-        /// The padding right of the tabs component, for the md size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('md')});
-        ////
-        /// The padding bottom of the tabs component, for the md size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('md')});
-        ////
-        /// The padding left of the tabs component, for the md size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('md')});
-        ////
-        /// The padding bottom of the tabs component header, for the md size variant
-        /// @name header--padding-bottom
-        ////
-        ----header--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('md')});
-        ////
-        /// The padding left of the tabs component header, for the md size variant
-        /// @name header--padding-left
-        ////
-        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('md')});
+
+    &.-md {
+        --tabs--border-top-left-radius: var(
+            --tabs--md--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-md))
+        );
+        --tabs--border-top-right-radius: var(
+            --tabs--md--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-md))
+        );
+        --tabs--border-bottom-right-radius: var(
+            --tabs--md--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))
+        );
+        --tabs--border-bottom-left-radius: var(
+            --tabs--md--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))
+        );
+        --tabs--font-size: var(
+            --tabs--md--font-size,
+            calc(var(--font-size) * var(--size-multiplier-md))
+        );
+        --tabs--padding-top: var(
+            --tabs--md--padding-top,
+            calc(var(--padding-top) * var(--size-multiplier-md))
+        );
+        --tabs--padding-right: var(
+            --tabs--md--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-md))
+        );
+        --tabs--padding-bottom: var(
+            --tabs--md--padding-bottom,
+            calc(var(--padding-bottom) * var(--size-multiplier-md))
+        );
+        --tabs--padding-left: var(
+            --tabs--md--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-md))
+        );
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    @include variant('lg') {
-        ////
-        /// The border top left radius of the tabs component, for the lg size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border top right radius of the tabs component, for the lg size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border bottom right radius of the tabs component, for the lg size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border bottom left radius of the tabs component, for the lg size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The font size of the tabs component, for the lg size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
-        ////
-        /// The padding top of the tabs component, for the lg size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{var(--padding-top)} * #{size-multiplier('lg')});
-        ////
-        /// The padding right of the tabs component, for the lg size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('lg')});
-        ////
-        /// The padding bottom of the tabs component, for the lg size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{var(--padding-bottom)} * #{size-multiplier('lg')});
-        ////
-        /// The padding left of the tabs component, for the lg size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('lg')});
-        ////
-        /// The padding bottom of the tabs component header, for the lg size variant
-        /// @name header--padding-bottom
-        ////
-        ----header--padding-bottom: calc(#{var(----padding-bottom)} * #{size-multiplier('lg')});
-        ////
-        /// The padding left of the tabs component header, for the lg size variant
-        /// @name header--padding-left
-        ////
-        ----header--padding-left: calc(#{var(----padding-left)} * #{size-multiplier('lg')});
+
+    &.-lg {
+        --tabs--border-top-left-radius: var(
+            --tabs--lg--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-lg))
+        );
+        --tabs--border-top-right-radius: var(
+            --tabs--lg--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-lg))
+        );
+        --tabs--border-bottom-right-radius: var(
+            --tabs--lg--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))
+        );
+        --tabs--border-bottom-left-radius: var(
+            --tabs--lg--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))
+        );
+        --tabs--font-size: var(
+            --tabs--lg--font-size,
+            calc(var(--font-size) * var(--size-multiplier-lg))
+        );
+        --tabs--padding-top: var(
+            --tabs--lg--padding-top,
+            calc(var(--padding-top) * var(--size-multiplier-lg))
+        );
+        --tabs--padding-right: var(
+            --tabs--lg--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-lg))
+        );
+        --tabs--padding-bottom: var(
+            --tabs--lg--padding-bottom,
+            calc(var(--padding-bottom) * var(--size-multiplier-lg))
+        );
+        --tabs--padding-left: var(
+            --tabs--lg--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-lg))
+        );
     }
 }

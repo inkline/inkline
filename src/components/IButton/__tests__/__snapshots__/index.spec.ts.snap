@@ -1,7 +1,9 @@
 // Vitest Snapshot v1
 
 exports[`Components > IButton > should render correctly 1`] = `
-"<button class=\\"button -light -md\\" tag=\\"button\\" role=\\"button\\" tabindex=\\"0\\" aria-disabled=\\"false\\" aria-pressed=\\"false\\" aria-busy=\\"false\\" aria-live=\\"polite\\">
+"<button class=\\"button -light -md\\" tag=\\"button\\" role=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\">
+  <!-- @slot loading Slot for button loading state -->
   <!--v-if-->
+  <!-- @slot default Slot for default button content -->
 </button>"
 `;

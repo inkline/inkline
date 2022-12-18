@@ -3,40 +3,15 @@
  */
 
 .loader {
-    ////
-    /// Variables for the primary color variant
-    /// @name primary
-    /// @type variant
-    ////
-    @include variant('primary') {
-        ////
-        /// The background of the loader component, for the primary color variant
-        /// @name background
-        ////
-        ----background: #{color('primary')};
+    &.-primary {
+        --loader--background: var(--loader--primary--background, var(--color-primary));
     }
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light') {
-        ////
-        /// The background of the loader component, for the light color variant
-        /// @name background
-        ////
-        ----background: #{color('light')};
+
+    &.-light {
+        --loader--background: var(--loader--light--background, var(--color-dark));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark') {
-        ////
-        /// The background of the loader component, for the dark color variant
-        /// @name background
-        ////
-        ----background: #{color('dark')};
+
+    &.-dark {
+        --loader--background: var(--loader--dark--background, var(--color-light));
     }
 }

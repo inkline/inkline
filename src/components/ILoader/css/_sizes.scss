@@ -3,40 +3,15 @@
  */
 
 .loader {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    @include variant('sm') {
-        ////
-        /// The size of the loader component, for the sm size variant
-        /// @name size
-        ////
-        ----size: calc(#{64px} * #{size-multiplier('sm')});
+    &.-sm {
+        --loader--size: var(--loader--sm--size, calc(64px * var(--size-multiplier-sm)));
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    @include variant('md') {
-        ////
-        /// The size of the loader component, for the md size variant
-        /// @name size
-        ////
-        ----size: calc(#{64px} * #{size-multiplier('md')});
+
+    &.-md {
+        --loader--size: var(--loader--md--size, calc(64px * var(--size-multiplier-md)));
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    @include variant('lg') {
-        ////
-        /// The size of the loader component, for the lg size variant
-        /// @name size
-        ////
-        ----size: calc(#{64px} * #{size-multiplier('lg')});
+
+    &.-lg {
+        --loader--size: var(--loader--lg--size, calc(64px * var(--size-multiplier-lg)));
     }
 }

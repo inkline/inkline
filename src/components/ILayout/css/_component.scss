@@ -1,0 +1,29 @@
+/**
+ * Layout
+ */
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+
+    &,
+    * {
+        box-sizing: border-box;
+    }
+
+    &.-vertical {
+        flex-direction: row;
+        height: 100%;
+
+        > .layout,
+        > .container {
+            overflow-x: hidden;
+        }
+    }
+
+    > .container {
+        flex: auto;
+    }
+}

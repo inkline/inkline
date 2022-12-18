@@ -1,4 +1,4 @@
-import ICard from '../index.vue';
+import ICard from '../ICard.vue';
 import {
     ICardBasicExample,
     ICardBodyExample,
@@ -7,7 +7,12 @@ import {
     ICardImageExample,
     ICardSizeVariantsExample
 } from './index';
-import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
+import {
+    colorArgType,
+    createStory,
+    sizeArgType,
+    createExampleStory
+} from '@inkline/inkline/__storybook__';
 
 export default {
     component: ICard,
@@ -15,15 +20,12 @@ export default {
     argTypes: {
         ...colorArgType(),
         ...sizeArgType()
-    },
-    parameters: {
-        layout: 'custom-card'
     }
 };
 
 export const Basic = createStory(ICardBasicExample);
-export const Body = () => ICardBodyExample;
-export const HeaderFooter = () => ICardHeaderFooterExample;
-export const ColorVariants = () => ICardColorVariantsExample;
-export const Image = () => ICardImageExample;
-export const SizeVariants = () => ICardSizeVariantsExample;
+export const Body = createExampleStory(ICardBodyExample);
+export const HeaderFooter = createExampleStory(ICardHeaderFooterExample);
+export const ColorVariants = createExampleStory(ICardColorVariantsExample);
+export const Image = createExampleStory(ICardImageExample);
+export const SizeVariants = createExampleStory(ICardSizeVariantsExample);

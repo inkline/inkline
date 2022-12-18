@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`Components > ISelectOption > should render correctly 1`] = `
+"<div class=\\"select-option\\" role=\\"option\\" tabindex=\\"0\\">
+  <!-- @slot default Slot for select option label -->
+</div>"
+`;

@@ -1,3 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Components > IListGroupItem > should render correctly 1`] = `"<div class=\\"list-group-item\\" tag=\\"div\\" role=\\"listitem\\" tabindex=\\"0\\" disabled=\\"false\\" aria-disabled=\\"false\\"></div>"`;

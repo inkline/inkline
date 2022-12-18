@@ -1,1 +1,3 @@
-<template src="./basic.html" />
+<template>
+    <i-loader />
+</template>

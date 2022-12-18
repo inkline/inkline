@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Components > IFormError > should render correctly 1`] = `
-"<transition-stub style=\\"display: none;\\">
-  <!--v-if-->
-</transition-stub>"
-`;

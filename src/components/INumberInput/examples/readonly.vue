@@ -1,2 +1,12 @@
-<template src="./readonly.html" />
-<script src="./readonly.js" />
+<script>
+export default {
+    data() {
+        return {
+            value: 10
+        };
+    }
+};
+</script>
+<template>
+    <i-number-input v-model="value" readonly placeholder="Enter a number.." />
+</template>

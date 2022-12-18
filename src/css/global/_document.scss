@@ -1,0 +1,24 @@
+/**
+ * Document
+ */
+
+// Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
+//
+// @credit https://github.com/twbs/bootstrap
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+// Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
+::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+}
+
+:root {
+    @media (prefers-reduced-motion: no-preference) {
+        scroll-behavior: smooth;
+    }
+}

@@ -1,2 +1,13 @@
-<template src="./color-variants.demo.html" />
-<script src="./color-variants.demo.js" />
+<script>
+export default {
+    data() {
+        return {
+            active: false
+        };
+    }
+};
+</script>
+<template>
+    <i-hamburger-menu v-model="active" color="light" />
+    <i-hamburger-menu v-model="active" color="dark" />
+</template>

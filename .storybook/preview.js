@@ -15,16 +15,16 @@ addons.getChannel().on('DARK_MODE', (isDarkMode) => {
 
 export const parameters = {
     actions: {
-        argTypesRegex: "^on[A-Z].*"
+        argTypesRegex: '^on[A-Z].*'
     },
     controls: {
         matchers: {
-            date: /Date$/,
-        },
+            date: /Date$/
+        }
     },
     darkMode: {
         stylePreview: true,
         dark,
         light
     }
-}
+};

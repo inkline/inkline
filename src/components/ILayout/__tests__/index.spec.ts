@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { ILayout } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('ILayout', () => {
@@ -11,7 +13,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(ILayout, {
-                props
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();
@@ -24,12 +31,15 @@ describe('Components', () => {
                         props: {
                             vertical: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        '-vertical'
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass('-vertical');
                 });
             });
         });

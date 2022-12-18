@@ -1,1 +1,3 @@
-<template src="./basic.html" />
+<template>
+    <i-badge>Badge</i-badge>
+</template>

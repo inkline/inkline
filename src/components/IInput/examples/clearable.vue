@@ -1,2 +1,12 @@
-<template src="./clearable.html" />
-<script src="./clearable.js" />
+<script>
+export default {
+    data() {
+        return {
+            value: 'This input is clearable.'
+        };
+    }
+};
+</script>
+<template>
+    <i-input v-model="value" clearable placeholder="Type something.." />
+</template>

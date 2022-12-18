@@ -1,2 +1,17 @@
-<template src="./default-value.html" />
-<script src="./default-value.js" />
+<script lang="ts" setup>
+import { useForm } from '@inkline/inkline/composables';
+
+const schema = useForm({
+    input: {
+        value: 'Default value'
+    }
+});
+</script>
+<template>
+    <i-form v-model="schema">
+        <i-form-group>
+            <i-form-label for="input-with-default-value"> Input with default value </i-form-label>
+            <i-input id="input-with-default-value" name="input" placeholder="Type something.." />
+        </i-form-group>
+    </i-form>
+</template>

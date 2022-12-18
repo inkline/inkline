@@ -1,0 +1,7 @@
+%list-group-preview {
+    > .list-group {
+        + .list-group {
+            margin-top: var(--margin-top);
+        }
+    }
+}

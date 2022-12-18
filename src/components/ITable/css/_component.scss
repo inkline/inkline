@@ -1,0 +1,377 @@
+////
+/// The background of the table component
+/// @name table--background
+/// @type color
+////
+
+////
+/// The background of the table component when hovered
+/// @name table--background--hover
+/// @type color
+////
+
+////
+/// The background of the table component when striped
+/// @name table--background--striped
+/// @type color
+////
+
+////
+/// The border style of the table component
+/// @name table--border-style
+////
+
+////
+/// The border top width of the table component
+/// @name table--border-top-width
+////
+
+////
+/// The border right width of the table component
+/// @name table--border-right-width
+////
+
+////
+/// The border bottom width of the table component
+/// @name table--border-bottom-width
+////
+
+////
+/// The border left width of the table component
+/// @name table--border-left-width
+////
+
+////
+/// The border width of the table component
+/// @name table--border-width
+////
+
+////
+/// The border color of the table component
+/// @name table--border-color
+/// @type color
+////
+
+////
+/// The color of the table component
+/// @name table--color
+/// @type color
+////
+
+////
+/// The bottom margin of the table component
+/// @name table--margin-bottom
+////
+
+////
+/// The padding top of the table component
+/// @name table--padding-top
+////
+
+////
+/// The padding right of the table component
+/// @name table--padding-right
+////
+
+////
+/// The padding bottom of the table component
+/// @name table--padding-bottom
+////
+
+////
+/// The padding left of the table component
+/// @name table--padding-left
+////
+
+////
+/// The padding of the table component
+/// @name table--padding
+////
+
+////
+/// The padding top of the table component
+/// @name table--padding-top--condensed
+////
+
+////
+/// The padding right of the table component
+/// @name table--padding-right--condensed
+////
+
+////
+/// The padding bottom of the table component
+/// @name table--padding-bottom--condensed
+////
+
+////
+/// The padding left of the table component
+/// @name table--padding-left--condensed
+////
+
+////
+/// The padding of the table component
+/// @name table--padding--condensed
+////
+
+@use '../../../css/mixins';
+@use '../../../css/functions';
+
+/**
+ * Tables
+ */
+
+// Responsive tables
+//
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your table will overflow.
+//
+.table-wrapper {
+    display: block;
+    position: relative;
+
+    &.-responsive {
+        @each $breakpoint-key in $breakpoint-keys {
+            $infix: mixins.breakpoint-infix($breakpoint-key);
+
+            &#{$infix} {
+                @include mixins.breakpoint-down($breakpoint-key) {
+                    display: block;
+                    width: 100%;
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+                    // Prevent double border on horizontal scroll due to use of `display: block`
+                    .table {
+                        &.-border {
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: var(--table--margin-bottom, var(--margin-bottom));
+        border-top-color: var(
+            --table--border-color,
+            var(--table--border-top-color, var(--border-top-color))
+                var(--table--border-right-color, var(--border-right-color))
+                var(--table--border-bottom-color, var(--border-bottom-color))
+                var(--table--border-left-color, var(--border-left-color))
+        );
+        color: var(--table--color);
+
+        th,
+        td {
+            padding: var(
+                --table--padding,
+                var(--table--padding-top, var(--padding-top))
+                    var(--table--padding-right, var(--padding-right))
+                    var(--table--padding-bottom, var(--padding-bottom))
+                    var(--table--padding-left, var(--padding-left))
+            );
+            vertical-align: top;
+            border-style: var(
+                --table--border-style,
+                var(--table--border-top-style, var(--border-top-style))
+                    var(--table--border-right-style, var(--border-right-style))
+                    var(--table--border-bottom-style, var(--border-bottom-style))
+                    var(--table--border-left-style, var(--border-left-style))
+            );
+            border-color: var(
+                --table--border-color,
+                var(--table--border-top-color, var(--border-top-color))
+                    var(--table--border-right-color, var(--border-right-color))
+                    var(--table--border-bottom-color, var(--border-bottom-color))
+                    var(--table--border-left-color, var(--border-left-color))
+            );
+            border-width: var(
+                --table--border-width,
+                var(--table--border-top-width, 0) var(--table--border-right-width, 0)
+                    var(--table--border-bottom-width, var(--border-bottom-width))
+                    var(--table--border-left-width, 0)
+            );
+            background-color: var(--table--background);
+            transition-duration: var(--table--transition-duration, var(--transition-duration));
+            transition-timing-function: var(
+                --table--transition-timing-function,
+                var(--transition-timing-function)
+            );
+            transition-property: var(--table--transition-property, color, background-color, border);
+        }
+
+        thead th {
+            vertical-align: bottom;
+            border-bottom-width: var(
+                --table--thead--th--border-bottom-width,
+                var(--table--border-bottom-width, var(--border-bottom-width))
+            );
+        }
+
+        tbody + tbody {
+            border-top-style: var(--table--tbody--adjacent--border-top-style, solid);
+            border-top-width: var(
+                --table--tbody--adjacent--border-top-width,
+                var(--table--border-top-width, var(--border-top-width))
+            );
+            border-top-color: var(--table--tbody--adjacent--border-top-color, transparent);
+        }
+
+        th,
+        td,
+        tbody + tbody {
+            border-color: var(
+                --table--border-color,
+                var(--table--border-top-color, var(--border-top-color))
+                    var(--table--border-right-color, var(--border-right-color))
+                    var(--table--border-bottom-color, var(--border-bottom-color))
+                    var(--table--border-left-color, var(--border-left-color))
+            );
+        }
+    }
+
+    // Condensed table w/ half padding
+    //
+    &.-condensed .table {
+        th,
+        td {
+            padding: var(
+                --table--condensed--padding,
+                var(
+                        --table--condensed--padding-top,
+                        calc(var(--table--padding-top, var(--padding-top)) * 0.5)
+                    )
+                    var(
+                        --table--condensed--padding-right,
+                        calc(var(--table--padding-right, var(--padding-right)) * 0.5)
+                    )
+                    var(
+                        --table--condensed--padding-bottom,
+                        calc(var(--table--padding-bottom, var(--padding-bottom)) * 0.5)
+                    )
+                    var(
+                        --table--condensed--padding-left,
+                        calc(var(--table--padding-left, var(--padding-left)) * 0.5)
+                    )
+            );
+        }
+    }
+
+    // Border version
+    //
+    // Add borders all around the table and between all the columns.
+    //
+    &.-border .table {
+        border-style: var(
+            --table--border-style,
+            (
+                var(--table--border-top-style, var(--border-top-style))
+                    var(--table--border-right-style, var(--border-right-style))
+                    var(--table--border-bottom-style, var(--border-bottom-style))
+                    var(--table--border-left-style, var(--border-left-style))
+            )
+        );
+        border-color: var(
+            --table--border-color,
+            (
+                var(--table--border-top-color, var(--border-top-color))
+                    var(--table--border-right-color, var(--border-right-color))
+                    var(--table--border-bottom-color, var(--border-bottom-color))
+                    var(--table--border-left-color, var(--border-left-color))
+            )
+        );
+        border-width: var(
+            --table--border-width,
+            (
+                var(--table--border-top-width, var(--border-top-width))
+                    var(--table--border-right-width, var(--border-right-width))
+                    var(--table--border-bottom-width, var(--border-bottom-width))
+                    var(--table--border-left-width, var(--border-left-width))
+            )
+        );
+
+        th,
+        td {
+            border-style: var(
+                --table--border-style,
+                var(--table--border-top-style, var(--border-top-style))
+                    var(--table--border-right-style, var(--border-right-style))
+                    var(--table--border-bottom-style, var(--border-bottom-style))
+                    var(--table--border-left-style, var(--border-left-style))
+            );
+            border-color: var(
+                --table--border-color,
+                var(--table--border-top-color, var(--border-top-color))
+                    var(--table--border-right-color, var(--border-right-color))
+                    var(--table--border-bottom-color, var(--border-bottom-color))
+                    var(--table--border-left-color, var(--border-left-color))
+            );
+            border-width: var(
+                --table--border-width,
+                var(--table--border-top-width, var(--border-top-width))
+                    var(--table--border-right-width, var(--border-right-width))
+                    var(--table--border-bottom-width, var(--border-bottom-width))
+                    var(--table--border-left-width, var(--border-left-width))
+            );
+        }
+    }
+
+    // No wrap
+    //
+    // Set table cell white-space to nowrap
+    //
+    &.-nowrap .table {
+        th,
+        td {
+            white-space: nowrap;
+        }
+    }
+
+    // Striped Table
+    //
+    // Default zebra-stripe styles (alternating gray and transparent backgrounds)
+    //
+    &.-striped .table {
+        > tr:nth-of-type(odd),
+        tbody > tr:nth-of-type(odd) {
+            th,
+            td {
+                background: var(--table--striped--background);
+            }
+        }
+    }
+
+    // Hover table
+    //
+    // Placed here since it has to come after the potential zebra striping
+    //
+    &.-hover .table {
+        tbody tr {
+            th,
+            td {
+                transition-property: var(
+                    --table--transition-property,
+                    color,
+                    background-color,
+                    border
+                );
+                transition-duration: var(--table--transition-duration, var(--transition-duration));
+                transition-timing-function: var(
+                    --table--transition-timing-function,
+                    var(--transition-timing-function)
+                );
+            }
+
+            &:hover {
+                th,
+                td {
+                    background: var(--table--hover--background);
+                }
+            }
+        }
+    }
+}

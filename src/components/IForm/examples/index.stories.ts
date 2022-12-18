@@ -1,4 +1,4 @@
-import IForm from '../index.vue';
+import IForm from '../IForm.vue';
 import {
     IFormBasicExample,
     IFormDisabledExample,
@@ -7,7 +7,12 @@ import {
     IFormSizeVariantsMdExample,
     IFormSizeVariantsLgExample
 } from './index';
-import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
+import {
+    colorArgType,
+    createStory,
+    sizeArgType,
+    createExampleStory
+} from '@inkline/inkline/__storybook__';
 
 export default {
     component: IForm,
@@ -19,8 +24,8 @@ export default {
 };
 
 export const Basic = createStory(IFormBasicExample);
-export const Disabled = () => IFormDisabledExample;
-export const Readonly = () => IFormReadonlyExample;
-export const SizeVariantsSm = () => IFormSizeVariantsSmExample;
-export const SizeVariantsMd = () => IFormSizeVariantsMdExample;
-export const SizeVariantsLg = () => IFormSizeVariantsLgExample;
+export const Disabled = createExampleStory(IFormDisabledExample);
+export const Readonly = createExampleStory(IFormReadonlyExample);
+export const SizeVariantsSm = createExampleStory(IFormSizeVariantsSmExample);
+export const SizeVariantsMd = createExampleStory(IFormSizeVariantsMdExample);
+export const SizeVariantsLg = createExampleStory(IFormSizeVariantsLgExample);

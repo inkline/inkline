@@ -1,4 +1,4 @@
-import IDropdown from '../index.vue';
+import { IDropdown } from '../index';
 import {
     IDropdownBasicExample,
     IDropdownColorVariantsExample,

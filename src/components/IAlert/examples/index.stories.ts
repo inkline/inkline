@@ -1,4 +1,5 @@
-import IAlert from '../index.vue';
+import { Meta } from '@storybook/vue3';
+import IAlert from '../IAlert.vue';
 import {
     IAlertBasicExample,
     IAlertColorVariantsExample,
@@ -7,7 +8,12 @@ import {
     IAlertIconExample,
     IAlertSizeVariantsExample
 } from './index';
-import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
+import {
+    colorArgType,
+    createStory,
+    sizeArgType,
+    createExampleStory
+} from '@inkline/inkline/__storybook__';
 
 export default {
     component: IAlert,
@@ -16,11 +22,11 @@ export default {
         ...colorArgType(['info', 'success', 'warning', 'danger']),
         ...sizeArgType()
     }
-};
+} as Meta<typeof IAlert>;
 
 export const Basic = createStory(IAlertBasicExample);
-export const ColorVariants = () => IAlertColorVariantsExample;
-export const Dismissible = () => IAlertDismissibleExample;
-export const Content = () => IAlertContentExample;
-export const Icon = () => IAlertIconExample;
-export const SizeVariants = () => IAlertSizeVariantsExample;
+export const ColorVariants = createExampleStory(IAlertColorVariantsExample);
+export const Dismissible = createExampleStory(IAlertDismissibleExample);
+export const Content = createExampleStory(IAlertContentExample);
+export const Icon = createExampleStory(IAlertIconExample);
+export const SizeVariants = createExampleStory(IAlertSizeVariantsExample);

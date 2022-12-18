@@ -19,20 +19,11 @@
         "composite": true,
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
-        "lib": [
-            "esnext",
-            "dom",
-            "dom.iterable",
-            "scripthost"
-        ],
-        "typeRoots" : [
-            "../node_modules/@types"
-        ],
+        "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+        "typeRoots": ["../node_modules/@types"],
         "paths": {
             "@inkline/inkline/*": ["../src/*"]
         }
     },
-    "include": [
-        "**/*"
-    ]
+    "include": ["**/*"]
 }

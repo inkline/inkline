@@ -3,85 +3,42 @@
  */
 
 .header {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    @include variant('sm') {
-        ////
-        /// The padding top of the header component, for the sm size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{10rem} * #{size-multiplier('sm')});
-        ////
-        /// The padding right of the header component, for the sm size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{0rem} * #{size-multiplier('sm')});
-        ////
-        /// The padding bottom of the header component, for the sm size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{10rem} * #{size-multiplier('sm')});
-        ////
-        /// The padding left of the header component, for the sm size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{0rem} * #{size-multiplier('sm')});
+    &.-sm {
+        --header--padding-top: var(
+            --header--sm--padding-top,
+            calc(10rem * var(--size-multiplier-xs))
+        );
+        --header--padding-right: var(--header--sm--padding-right, 0);
+        --header--padding-bottom: var(
+            --header--sm--padding-bottom,
+            calc(10rem * var(--size-multiplier-xs))
+        );
+        --header--padding-left: var(--header--sm--padding-left, 0);
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    @include variant('md') {
-        ////
-        /// The padding top of the header component, for the md size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{10rem} * #{size-multiplier('md')});
-        ////
-        /// The padding right of the header component, for the md size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{0rem} * #{size-multiplier('md')});
-        ////
-        /// The padding bottom of the header component, for the md size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{10rem} * #{size-multiplier('md')});
-        ////
-        /// The padding left of the header component, for the md size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{0rem} * #{size-multiplier('md')});
+
+    &.-md {
+        --header--padding-top: var(
+            --header--md--padding-top,
+            calc(10rem * var(--size-multiplier-md))
+        );
+        --header--padding-right: var(--header--md--padding-right, 0);
+        --header--padding-bottom: var(
+            --header--md--padding-bottom,
+            calc(10rem * var(--size-multiplier-md))
+        );
+        --header--padding-left: var(--header--md--padding-left, 0);
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    @include variant('lg') {
-        ////
-        /// The padding top of the header component, for the lg size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{10rem} * #{size-multiplier('lg')});
-        ////
-        /// The padding right of the header component, for the lg size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{0rem} * #{size-multiplier('lg')});
-        ////
-        /// The padding bottom of the header component, for the lg size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{10rem} * #{size-multiplier('lg')});
-        ////
-        /// The padding left of the header component, for the lg size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{0rem} * #{size-multiplier('lg')});
+
+    &.-lg {
+        --header--padding-top: var(
+            --header--lg--padding-top,
+            calc(10rem * var(--size-multiplier-xl))
+        );
+        --header--padding-right: var(--header--lg--padding-right, 0);
+        --header--padding-bottom: var(
+            --header--lg--padding-bottom,
+            calc(10rem * var(--size-multiplier-xl))
+        );
+        --header--padding-left: var(--header--lg--padding-left, 0);
     }
 }

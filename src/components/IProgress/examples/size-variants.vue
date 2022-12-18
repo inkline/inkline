@@ -1,1 +1,13 @@
-<template src="./size-variants.html" />
+<template>
+    <i-progress size="sm">
+        <i-progress-bar :value="65" />
+    </i-progress>
+
+    <i-progress size="md">
+        <i-progress-bar :value="65" />
+    </i-progress>
+
+    <i-progress size="lg">
+        <i-progress-bar :value="65" />
+    </i-progress>
+</template>

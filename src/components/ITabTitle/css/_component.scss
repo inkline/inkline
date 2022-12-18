@@ -1,0 +1,138 @@
+.tabs {
+    .tab-title {
+        position: relative;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        border-style: var(
+            --tabs--title--border-style,
+            var(
+                    --tabs--title--border-top-style,
+                    var(--tabs--border-top-style, var(--border-top-style))
+                )
+                var(
+                    --tabs--title--border-right-style,
+                    var(--tabs--border-right-style, var(--border-right-style))
+                )
+                var(
+                    --tabs--title--border-bottom-style,
+                    var(--tabs--border-bottom-style, var(--border-bottom-style))
+                )
+                var(
+                    --tabs--title--border-left-style,
+                    var(--tabs--border-left-style, var(--border-left-style))
+                )
+        );
+        border-width: var(
+            --tabs--title--border-width,
+            var(--tabs--title--border-top-width, 0)
+                var(
+                    --tabs--title--border-right-width,
+                    var(--tabs--border-right-width, var(--border-right-width))
+                )
+                var(--tabs--title--border-bottom-width, 0) var(--tabs--title--border-left-width, 0)
+        );
+        border-color: var(
+            --tabs--title--border-color,
+            var(
+                    --tabs--title--border-top-color,
+                    var(--tabs--border-top-color, var(--border-top-color))
+                )
+                var(
+                    --tabs--title--border-right-color,
+                    var(--tabs--border-right-color, var(--border-right-color))
+                )
+                var(
+                    --tabs--title--border-bottom-color,
+                    var(--tabs--border-bottom-color, var(--border-bottom-color))
+                )
+                var(
+                    --tabs--title--border-left-color,
+                    var(--tabs--border-left-color, var(--border-left-color))
+                )
+        );
+        padding: var(
+            --tabs--title--padding,
+            var(--tabs--title--padding-top, var(--tabs--padding-top, var(--padding-top)))
+                var(--tabs--title--padding-right, var(--tabs--padding-right, var(--padding-right)))
+                var(
+                    --tabs--title--padding-bottom,
+                    var(--tabs--padding-bottom, var(--padding-bottom))
+                )
+                var(--tabs--title--padding-left, var(--tabs--padding-left, var(--padding-left)))
+        );
+        font-size: var(--tabs--title--font-size, var(--tabs--font-size, var(--font-size)));
+        transition-property: var(
+            --tabs--title--transition-property,
+            var(--tabs--transition-property, background-color, border-color, color)
+        );
+        transition-duration: var(
+            --tabs--title--transition-duration,
+            var(--tabs--transition-duration, var(--transition-duration))
+        );
+        transition-timing-function: var(
+            --tabs--title--transition-timing-function,
+            var(--tabs--transition-timing-function, var(--transition-timing-function))
+        );
+        color: var(--tabs--title--color, var(--tabs--color));
+        background: var(--tabs--title--background, var(--tabs--background));
+
+        &.-active {
+            color: var(--tabs--title--active--color, var(--tabs--title--color, var(--tabs--color)));
+            background: var(
+                --tabs--title--active--background,
+                var(--tabs--title--background, var(--tabs--background))
+            );
+            border-color: var(
+                --tabs--title--border-color,
+                var(
+                        --tabs--title--active--border-top-color,
+                        var(
+                            --tabs--title--border-top-color,
+                            var(--tabs--border-top-color, var(--border-top-color))
+                        )
+                    )
+                    var(
+                        --tabs--title--active--border-right-color,
+                        var(
+                            --tabs--title--border-right-color,
+                            var(--tabs--border-right-color, var(--border-right-color))
+                        )
+                    )
+                    var(
+                        --tabs--title--active--border-bottom-color,
+                        var(
+                            --tabs--title--border-bottom-color,
+                            var(--tabs--border-bottom-color, var(--border-bottom-color))
+                        )
+                    )
+                    var(
+                        --tabs--title--active--border-left-color,
+                        var(
+                            --tabs--title--border-left-color,
+                            var(--tabs--border-left-color, var(--border-left-color))
+                        )
+                    )
+            );
+            font-weight: var(--tabs--title--active--font-weight, var(--font-weight-semibold));
+        }
+
+        &:hover,
+        &:focus {
+            background: var(--tabs--title--hover--background, var(--tabs--title--background));
+            cursor: pointer;
+            outline: none;
+        }
+    }
+
+    &.-stretch {
+        > .tabs-header .tab-title {
+            flex-grow: 1;
+
+            &:last-child {
+                border-right-width: var(--tabs--stretch--title--border-right-width, 0);
+            }
+        }
+    }
+}

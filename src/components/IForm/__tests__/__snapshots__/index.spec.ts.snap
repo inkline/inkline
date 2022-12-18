@@ -1,7 +1,8 @@
 // Vitest Snapshot v1
 
 exports[`Components > IForm > should render correctly 1`] = `
-"<form class=\\"form -light -md\\" role=\\"form\\" name=\\"form\\" data-v-7688bb10=\\"\\">
+"<form class=\\"form -md -light\\" role=\\"form\\" name=\\"form\\" disabled=\\"false\\">
+  <!-- @slot default Slot for form content -->
   <div class=\\"input-wrapper -light -md\\">
     <!--v-if-->
     <div class=\\"input\\">

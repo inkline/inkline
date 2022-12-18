@@ -3,160 +3,123 @@
  */
 
 .input-wrapper {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    @include variant('sm', 'form') {
-        ////
-        /// The border top left radius of the input component, for the sm size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border top right radius of the input component, for the sm size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border bottom right radius of the input component, for the sm size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border bottom left radius of the input component, for the sm size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The font size of the input component, for the sm size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
-        ////
-        /// The padding top of the input component, for the sm size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('sm')});
-        ////
-        /// The padding right of the input component, for the sm size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('sm')});
-        ////
-        /// The padding bottom of the input component, for the sm size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('sm')});
-        ////
-        /// The padding left of the input component, for the sm size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('sm')});
+    &.-sm {
+        --input--border-top-left-radius: var(
+            --input--sm--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-sm))
+        );
+        --input--border-top-right-radius: var(
+            --input--sm--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-sm))
+        );
+        --input--border-bottom-right-radius: var(
+            --input--sm--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))
+        );
+        --input--border-bottom-left-radius: var(
+            --input--sm--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))
+        );
+        --input--font-size: var(
+            --input--sm--font-size,
+            calc(var(--font-size) * var(--size-multiplier-sm))
+        );
+        --input--padding-top: var(
+            --input--sm--padding-top,
+            calc(var(--padding-top) * 0.5 * var(--size-multiplier-sm))
+        );
+        --input--padding-right: var(
+            --input--sm--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-sm))
+        );
+        --input--padding-bottom: var(
+            --input--sm--padding-bottom,
+            calc(var(--padding-bottom) * 0.5 * var(--size-multiplier-sm))
+        );
+        --input--padding-left: var(
+            --input--sm--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-sm))
+        );
+        --input--clear--size: calc(1.2rem * var(--size-multiplier-sm));
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    @include variant('md', 'form') {
-        ////
-        /// The border top left radius of the input component, for the md size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border top right radius of the input component, for the md size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border bottom right radius of the input component, for the md size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border bottom left radius of the input component, for the md size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')});
-        ////
-        /// The font size of the input component, for the md size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
-        ////
-        /// The padding top of the input component, for the md size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('md')});
-        ////
-        /// The padding right of the input component, for the md size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('md')});
-        ////
-        /// The padding bottom of the input component, for the md size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('md')});
-        ////
-        /// The padding left of the input component, for the md size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('md')});
+
+    &.-md {
+        --input--border-top-left-radius: var(
+            --input--md--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-md))
+        );
+        --input--border-top-right-radius: var(
+            --input--md--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-md))
+        );
+        --input--border-bottom-right-radius: var(
+            --input--md--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))
+        );
+        --input--border-bottom-left-radius: var(
+            --input--md--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))
+        );
+        --input--font-size: var(
+            --input--md--font-size,
+            calc(var(--font-size) * var(--size-multiplier-md))
+        );
+        --input--padding-top: var(
+            --input--md--padding-top,
+            calc(var(--padding-top) * 0.5 * var(--size-multiplier-md))
+        );
+        --input--padding-right: var(
+            --input--md--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-md))
+        );
+        --input--padding-bottom: var(
+            --input--md--padding-bottom,
+            calc(var(--padding-bottom) * 0.5 * var(--size-multiplier-md))
+        );
+        --input--padding-left: var(
+            --input--md--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-md))
+        );
+        --input--clear--size: calc(1.2rem * var(--size-multiplier-md));
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    @include variant('lg', 'form') {
-        ////
-        /// The border top left radius of the input component, for the lg size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border top right radius of the input component, for the lg size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border bottom right radius of the input component, for the lg size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border bottom left radius of the input component, for the lg size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The font size of the input component, for the lg size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
-        ////
-        /// The padding top of the input component, for the lg size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('lg')});
-        ////
-        /// The padding right of the input component, for the lg size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('lg')});
-        ////
-        /// The padding bottom of the input component, for the lg size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('lg')});
-        ////
-        /// The padding left of the input component, for the lg size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('lg')});
+
+    &.-lg {
+        --input--border-top-left-radius: var(
+            --input--lg--border-top-left-radius,
+            calc(var(--border-top-left-radius) * var(--size-multiplier-lg))
+        );
+        --input--border-top-right-radius: var(
+            --input--lg--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-lg))
+        );
+        --input--border-bottom-right-radius: var(
+            --input--lg--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))
+        );
+        --input--border-bottom-left-radius: var(
+            --input--lg--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))
+        );
+        --input--font-size: var(
+            --input--lg--font-size,
+            calc(var(--font-size) * var(--size-multiplier-lg))
+        );
+        --input--padding-top: var(
+            --input--lg--padding-top,
+            calc(var(--padding-top) * 0.5 * var(--size-multiplier-lg))
+        );
+        --input--padding-right: var(
+            --input--lg--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-lg))
+        );
+        --input--padding-bottom: var(
+            --input--lg--padding-bottom,
+            calc(var(--padding-bottom) * 0.5 * var(--size-multiplier-lg))
+        );
+        --input--padding-left: var(
+            --input--lg--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-lg))
+        );
+        --input--clear--size: calc(1.2rem * var(--size-multiplier-lg));
     }
 }

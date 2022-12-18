@@ -1,4 +1,4 @@
-import { getValueByPath } from '@inkline/inkline/helpers';
+import { getValueByPath } from '@grozav/utils';
 
 export function sameAs (value: any, options: any = {}) {
     if (!options.target) {

@@ -1,4 +1,4 @@
-import IInput from '../index.vue';
+import IInput from '../IInput.vue';
 import {
     IInputBasicExample,
     IInputColorVariantsExample,

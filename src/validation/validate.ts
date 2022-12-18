@@ -9,13 +9,11 @@ import { translate } from '@inkline/inkline/i18n';
  * @param path
  * @returns {*}
  */
-export function validateFormInput (schema: any, path = '') {
+export function validateFormInput(schema: any, path = '') {
     const errors: any[] = [];
 
     schema.valid = (schema.validators || []).reduce((acc: boolean, rawValidator: any) => {
-        const validator = typeof rawValidator === 'string'
-            ? { name: rawValidator }
-            : rawValidator;
+        const validator = typeof rawValidator === 'string' ? { name: rawValidator } : rawValidator;
 
         const valid = validators[validator.name](schema.value, validator);
         if (!valid) {
@@ -26,7 +24,8 @@ export function validateFormInput (schema: any, path = '') {
                 ...params
             };
 
-            const errorMessage = (message instanceof Function ? message() : message) ||
+            const errorMessage =
+                (message instanceof Function ? message() : message) ||
                 translate(`validation.${name}`, i18nParams);
 
             errors.push({ name, message: errorMessage, path });
@@ -47,11 +46,15 @@ export function validateFormInput (schema: any, path = '') {
  * @param name
  * @returns {*}
  */
-export function validateFormGroup (schema: any, name = '') {
+export function validateFormGroup(schema: any, name = '') {
     schema.valid = Object.keys(schema)
         .filter((key) => !reservedValidationFields.includes(key))
         .reduce((acc, key) => {
-            if (Object.keys(schema[key]).length === 0 || schema[key].validators || schema[key].value) {
+            if (
+                Object.keys(schema[key]).length === 0 ||
+                schema[key].validators ||
+                schema[key].value
+            ) {
                 schema[key] = validateFormInput(schema[key], `${name}` ? `${name}.${key}` : key);
             } else {
                 schema[key] = validateFormGroup(schema[key], `${name}` ? `${name}.${key}` : key);
@@ -70,6 +73,6 @@ export function validateFormGroup (schema: any, name = '') {
  * @param schema
  * @returns {*}
  */
-export function validate (schema: any) {
-    return validateFormGroup(schema, '');
+export function validate(schema: any) {
+    return validateFormGroup(schema);
 }

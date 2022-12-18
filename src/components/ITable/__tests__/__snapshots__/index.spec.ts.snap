@@ -2,6 +2,8 @@
 
 exports[`Components > ITable > should render correctly 1`] = `
 "<div class=\\"table-wrapper -light -responsive\\">
-  <table class=\\"table\\"></table>
+  <table class=\\"table\\">
+    <!-- @slot default Slot for table rows and data -->
+  </table>
 </div>"
 `;

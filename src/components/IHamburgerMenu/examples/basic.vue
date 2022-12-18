@@ -1,2 +1,12 @@
-<template src="./basic.html" />
-<script src="./basic.js" />
+<script>
+export default {
+    data() {
+        return {
+            active: false
+        };
+    }
+};
+</script>
+<template>
+    <i-hamburger-menu v-model="active" />
+</template>

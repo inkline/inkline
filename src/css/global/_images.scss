@@ -1,0 +1,12 @@
+/**
+ * Images
+ */
+
+img,
+svg {
+    vertical-align: middle;
+}
+
+figure {
+    margin: 0 0 var(--figure--margin-bottom, var(--margin-bottom));
+}

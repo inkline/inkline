@@ -1,0 +1,21 @@
+.zoom-in-top-transition-enter-active,
+.zoom-in-top-transition-leave-active {
+    transition-property: var(--zoom-in-top-transition--transition-property, transform, opacity);
+    transition-duration: var(
+        --zoom-in-top-transition--transition-duration,
+        var(--transition-duration)
+    );
+    transition-timing-function: var(
+        --zoom-in-top-transition--transition-timing-function,
+        cubic-bezier(0.23, 1, 0.32, 1)
+    );
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: center top;
+}
+
+.zoom-in-top-transition-enter-from,
+.zoom-in-top-transition-leave-active {
+    opacity: 0;
+    transform: scaleY(0);
+}

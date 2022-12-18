@@ -1,9 +1,8 @@
-import {
-    OverflowBasicExample
-} from './index';
+import { OverflowBasicExample } from './index';
+import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     title: 'Utilities/Overflow'
 };
 
-export const Basic = () => OverflowBasicExample;
+export const Basic = createStory(OverflowBasicExample);

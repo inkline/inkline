@@ -1,13 +1,21 @@
 // Vitest Snapshot v1
 
 exports[`Components > IModal > should render correctly 1`] = `
-"<transition-stub>
-  <div class=\\"modal-wrapper -light -md\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"false\\" id=\\"modal\\" name=\\"modal\\" aria-labelledby=\\"modal-header\\">
-    <transition-stub>
+"<transition-stub name=\\"fade-in-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <div id=\\"modal\\" class=\\"modal-wrapper -light -md\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"false\\" name=\\"modal\\" aria-labelledby=\\"modal-header\\">
+    <transition-stub name=\\"zoom-in-center-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
       <div class=\\"modal\\">
-        <div class=\\"modal-header\\" id=\\"modal-header\\">Header<button class=\\"close\\" aria-hidden=\\"true\\" aria-label=\\"Close\\"><i class=\\"icon\\"></i></button></div>
-        <div class=\\"modal-body\\">Body</div>
-        <div class=\\"modal-footer\\">Footer</div>
+        <div id=\\"modal-header\\" class=\\"modal-header\\">
+          <!-- @slot footer Slot for modal header content -->Header<button class=\\"close\\" aria-hidden=\\"true\\" aria-label=\\"Close\\">
+            <!-- @slot close Close icon slot --><i class=\\"icon\\"></i>
+          </button>
+        </div>
+        <div class=\\"modal-body\\">
+          <!-- @slot default Slot for modal body content -->Body
+        </div>
+        <div class=\\"modal-footer\\">
+          <!-- @slot footer Slot for modal footer content -->Footer
+        </div>
       </div>
     </transition-stub>
   </div>

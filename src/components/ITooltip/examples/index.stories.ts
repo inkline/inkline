@@ -1,4 +1,4 @@
-import ITooltip from '../index.vue';
+import { ITooltip } from '../index';
 import {
     ITooltipBasicExample,
     ITooltipColorVariantsExample,

@@ -1,1 +1,13 @@
-<template src="./routing-active.html" />
+<template>
+    <i-navbar>
+        <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
+        <i-navbar-collapsible>
+            <i-nav>
+                <i-nav-item :to="{ name: 'docs-components-navbar' }" exact-active-class="-active">
+                    Active Router Link
+                </i-nav-item>
+                <i-nav-item active> Active Item </i-nav-item>
+            </i-nav>
+        </i-navbar-collapsible>
+    </i-navbar>
+</template>

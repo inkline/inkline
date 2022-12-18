@@ -1,2 +1,16 @@
-<template src="./size-variants.demo.html" />
-<script src="./size-variants.demo.js" />
+<script>
+export default {
+    data() {
+        return {
+            value: ''
+        };
+    }
+};
+</script>
+<template>
+    <i-input v-model="value" size="sm" placeholder="Type something.." />
+
+    <i-input v-model="value" size="md" placeholder="Type something.." />
+
+    <i-input v-model="value" size="lg" placeholder="Type something.." />
+</template>

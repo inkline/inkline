@@ -1,0 +1,16 @@
+// Vitest Snapshot v1
+
+exports[`Components > IRadioGroup > should render correctly 1`] = `
+"<div class=\\"form-group radio-group -light -md -disabled -readonly\\" name=\\"radio-group\\" role=\\"radiogroup\\">
+  <!-- @slot default Slot for default radio group options -->
+  <div class=\\"radio -light -md\\" role=\\"radio\\" aria-checked=\\"false\\"><input type=\\"radio\\" name=\\"radio-1\\"><label class=\\"radio-label\\" tabindex=\\"0\\">
+      <!-- @slot default Slot for default radio label -->
+    </label></div>
+  <div class=\\"radio -light -md\\" role=\\"radio\\" aria-checked=\\"false\\"><input type=\\"radio\\" name=\\"radio-2\\"><label class=\\"radio-label\\" tabindex=\\"0\\">
+      <!-- @slot default Slot for default radio label -->
+    </label></div>
+  <div class=\\"radio -light -md\\" role=\\"radio\\" aria-checked=\\"false\\"><input type=\\"radio\\" name=\\"radio-3\\"><label class=\\"radio-label\\" tabindex=\\"0\\">
+      <!-- @slot default Slot for default radio label -->
+    </label></div>
+</div>"
+`;

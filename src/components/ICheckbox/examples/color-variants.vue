@@ -1,2 +1,28 @@
-<template src="./color-variants.demo.html" />
-<script src="./color-variants.demo.js" />
+<script lang="ts">
+export default {
+    data() {
+        return {
+            light: false,
+            dark: false
+        };
+    }
+};
+</script>
+
+<template>
+    <div>
+        <div
+            class="_background:white _display:flex _align-items:center _padding:1"
+            style="height: 50px"
+        >
+            <i-checkbox v-model="light" color="light">Light</i-checkbox>
+        </div>
+
+        <div
+            class="_background:gray-90 _display:flex _align-items:center _padding:1"
+            style="height: 50px"
+        >
+            <i-checkbox v-model="dark" color="dark">Dark</i-checkbox>
+        </div>
+    </div>
+</template>

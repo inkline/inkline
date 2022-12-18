@@ -17,25 +17,26 @@ import {
     TextWrapExample,
     TextListsExample
 } from './index';
+import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {
     title: 'Utilities/Text'
 };
 
-export const FontMonospace = () => TextFontMonospaceExample;
-export const FontSize = () => TextFontSizeExample;
-export const FontStyleItalic = () => TextFontStyleItalicExample;
-export const FontWeightRelative = () => TextFontWeightRelativeExample;
-export const FontWeight = () => TextFontWeightExample;
-export const AlignJustify = () => TextAlignJustifyExample;
-export const AlignResponsive = () => TextAlignResponsiveExample;
-export const Align = () => TextAlignExample;
-export const Break = () => TextBreakExample;
-export const Decoration = () => TextDecorationExample;
-export const Muted = () => TextMutedExample;
-export const Nowrap = () => TextNowrapExample;
-export const Reset = () => TextResetExample;
-export const Transform = () => TextTransformExample;
-export const Truncate = () => TextTruncateExample;
-export const Wrap = () => TextWrapExample;
-export const Lists = () => TextListsExample;
+export const FontMonospace = createStory(TextFontMonospaceExample);
+export const FontSize = createStory(TextFontSizeExample);
+export const FontStyleItalic = createStory(TextFontStyleItalicExample);
+export const FontWeightRelative = createStory(TextFontWeightRelativeExample);
+export const FontWeight = createStory(TextFontWeightExample);
+export const AlignJustify = createStory(TextAlignJustifyExample);
+export const AlignResponsive = createStory(TextAlignResponsiveExample);
+export const Align = createStory(TextAlignExample);
+export const Break = createStory(TextBreakExample);
+export const Decoration = createStory(TextDecorationExample);
+export const Muted = createStory(TextMutedExample);
+export const Nowrap = createStory(TextNowrapExample);
+export const Reset = createStory(TextResetExample);
+export const Transform = createStory(TextTransformExample);
+export const Truncate = createStory(TextTruncateExample);
+export const Wrap = createStory(TextWrapExample);
+export const Lists = createStory(TextListsExample);

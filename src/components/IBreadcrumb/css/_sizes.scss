@@ -3,70 +3,48 @@
  */
 
 .breadcrumb {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    @include variant('sm') {
-        ////
-        /// The font size of the breadcrumb component, for the sm size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('sm')});
-        ////
-        /// The padding right of the breadcrumb component, for the sm size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('sm')});
-        ////
-        /// The padding left of the breadcrumb component, for the sm size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('sm')});
+    &.-sm {
+        --breadcrumb--font-size: var(
+            --breadcrumb--sm--font-size,
+            calc(var(--font-size) * var(--size-multiplier-sm))
+        );
+        --breadcrumb--padding-left: var(
+            --breadcrumb--sm--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-sm))
+        );
+        --breadcrumb--padding-right: var(
+            --breadcrumb--sm--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-sm))
+        );
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    @include variant('md') {
-        ////
-        /// The font size of the breadcrumb component, for the md size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('md')});
-        ////
-        /// The padding right of the breadcrumb component, for the md size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('md')});
-        ////
-        /// The padding left of the breadcrumb component, for the md size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('md')});
+
+    &.-md {
+        --breadcrumb--font-size: var(
+            --breadcrumb--md--font-size,
+            calc(var(--font-size) * var(--size-multiplier-md))
+        );
+        --breadcrumb--padding-left: var(
+            --breadcrumb--md--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-md))
+        );
+        --breadcrumb--padding-right: var(
+            --breadcrumb--md--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-md))
+        );
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    @include variant('lg') {
-        ////
-        /// The font size of the breadcrumb component, for the lg size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{font-size()} * #{size-multiplier('lg')});
-        ////
-        /// The padding right of the breadcrumb component, for the lg size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{var(--padding-right)} * #{size-multiplier('lg')});
-        ////
-        /// The padding left of the breadcrumb component, for the lg size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{var(--padding-left)} * #{size-multiplier('lg')});
+
+    &.-lg {
+        --breadcrumb--font-size: var(
+            --breadcrumb--lg--font-size,
+            calc(var(--font-size) * var(--size-multiplier-lg))
+        );
+        --breadcrumb--padding-left: var(
+            --breadcrumb--lg--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-lg))
+        );
+        --breadcrumb--padding-right: var(
+            --breadcrumb--lg--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-lg))
+        );
     }
 }

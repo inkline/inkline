@@ -1,1 +1,5 @@
-<template src="./state-active.html" />
+<template>
+    <i-button active>Active Default Button</i-button>
+
+    <i-button active color="primary">Active Primary Button</i-button>
+</template>

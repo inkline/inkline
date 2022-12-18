@@ -1,0 +1,16 @@
+// Vitest Snapshot v1
+
+exports[`Components > ICheckboxGroup > should render correctly 1`] = `
+"<div class=\\"form-group checkbox-group -light -md -disabled -readonly\\" name=\\"checkbox-group\\" role=\\"checkboxgroup\\">
+  <!-- @slot default Slot for default checkbox group options -->
+  <div class=\\"checkbox -light -md\\" aria-checked=\\"false\\" role=\\"checkbox\\"><input type=\\"checkbox\\" name=\\"checkbox-1\\" aria-hidden=\\"true\\" aria-checked=\\"false\\"><label class=\\"checkbox-label\\" tabindex=\\"0\\">
+      <!-- @slot default Slot for default checkbox label -->
+    </label></div>
+  <div class=\\"checkbox -light -md\\" aria-checked=\\"false\\" role=\\"checkbox\\"><input type=\\"checkbox\\" name=\\"checkbox-2\\" aria-hidden=\\"true\\" aria-checked=\\"false\\"><label class=\\"checkbox-label\\" tabindex=\\"0\\">
+      <!-- @slot default Slot for default checkbox label -->
+    </label></div>
+  <div class=\\"checkbox -light -md\\" aria-checked=\\"false\\" role=\\"checkbox\\"><input type=\\"checkbox\\" name=\\"checkbox-3\\" aria-hidden=\\"true\\" aria-checked=\\"false\\"><label class=\\"checkbox-label\\" tabindex=\\"0\\">
+      <!-- @slot default Slot for default checkbox label -->
+    </label></div>
+</div>"
+`;

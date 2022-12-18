@@ -1,18 +1,23 @@
 // Vitest Snapshot v1
 
 exports[`Components > IPopover > should render correctly 1`] = `
-"<div class=\\"popover-wrapper -primary -md\\" id=\\"popover\\">
-  <div class=\\"popover-trigger\\" aria-describedby=\\"popover-popup\\" aria-disabled=\\"false\\" aria-expanded=\\"false\\"><button> Button </button></div>
-  <transition-stub>
-    <div class=\\"popover\\" role=\\"tooltip\\" aria-live=\\"polite\\" id=\\"popover-popup\\" aria-hidden=\\"true\\" style=\\"display: none;\\"><span data-popper-arrow=\\"\\"></span>
+"<div id=\\"popover\\" class=\\"popover-wrapper -primary -md\\">
+  <div class=\\"popover-trigger\\" aria-describedby=\\"popover-popup\\" aria-disabled=\\"false\\" aria-expanded=\\"false\\">
+    <!-- @slot default Slot for popover trigger --><button>Button</button>
+  </div>
+  <transition-stub name=\\"zoom-in-top-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+    <div id=\\"popover-popup\\" class=\\"popover\\" role=\\"tooltip\\" aria-live=\\"polite\\" aria-hidden=\\"true\\" style=\\"display: none;\\"><span class=\\"arrow\\"></span>
       <div class=\\"popover-header\\">
-        <div> Placeholder </div>
+        <!-- @slot header Slot for popover header content -->
+        <div>Placeholder</div>
       </div>
       <div class=\\"popover-body\\">
-        <div> Placeholder </div>
+        <!-- @slot body Slot for popover body content -->
+        <div>Placeholder</div>
       </div>
       <div class=\\"popover-footer\\">
-        <div> Placeholder </div>
+        <!-- @slot footer Slot for popover footer content -->
+        <div>Placeholder</div>
       </div>
     </div>
   </transition-stub>

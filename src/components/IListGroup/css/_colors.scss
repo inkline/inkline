@@ -3,118 +3,105 @@
  */
 
 .list-group {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light') {
-        ////
-        /// The background of the list group component, for the light color variant
-        /// @name background
-        ////
-        ----background: #{color('white')};
-        ////
-        /// The background of the list group component when active, for the light color variant
-        /// @name background--active
-        ////
-        ----background--active: #{color('primary')};
-        ////
-        /// The border top color of the list group component, for the light color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('light')};
-        ////
-        /// The border right color of the list group component, for the light color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('light')};
-        ////
-        /// The border bottom color of the list group component, for the light color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('light')};
-        ////
-        /// The border left color of the list group component, for the light color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('light')};
-        ////
-        /// The border-color of the list group component, for the light color variant
-        /// @name border-color--active
-        ////
-        ----border-color--active: #{color('primary-55')};
-        ////
-        /// The color of the list group component item, for the light color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-light)};
-        ////
-        /// The color of the list group component item when active, for the light color variant
-        /// @name color--active
-        ////
-        ----color--active: #{contrast-color($color-primary)};
-        ////
-        /// The color of the list group component item when disabled, for the light color variant
-        /// @name color--disabled
-        ////
-        ----color--disabled: #{var(--text-muted)};
+    &.-light {
+        --list-group--background: var(--list-group--light--background, var(--color-white));
+        --list-group--color: var(--list-group--light--color, var(--contrast-text--color-white));
+        --list-group--border-top-color: var(
+            --list-group--light--border-top-color,
+            var(--color-light-shade-50)
+        );
+        --list-group--border-right-color: var(
+            --list-group--light--border-right-color,
+            var(--color-light-shade-50)
+        );
+        --list-group--border-bottom-color: var(
+            --list-group--light--border-bottom-color,
+            var(--color-light-shade-50)
+        );
+        --list-group--border-left-color: var(
+            --list-group--light--border-left-color,
+            var(--color-light-shade-50)
+        );
+
+        --list-group--active--background: var(
+            --list-group--light--active--background,
+            var(--color-primary)
+        );
+        --list-group--active--color: var(
+            --list-group--light--active--color,
+            var(--contrast-text--color-primary)
+        );
+        --list-group--active--border-top-color: var(
+            --list-group--light--active--border-top-color,
+            var(--color-primary-shade-50)
+        );
+        --list-group--active--border-right-color: var(
+            --list-group--light--active--border-right-color,
+            var(--color-primary-shade-50)
+        );
+        --list-group--active--border-bottom-color: var(
+            --list-group--light--active--border-bottom-color,
+            var(--color-primary-shade-50)
+        );
+        --list-group--active--border-left-color: var(
+            --list-group--light--active--border-left-color,
+            var(--color-primary-shade-50)
+        );
+
+        --list-group--disabled--color: var(
+            --list-group--light--disabled--color,
+            var(--text--color-muted)
+        );
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark') {
-        ////
-        /// The background of the list group component, for the dark color variant
-        /// @name background
-        ////
-        ----background: #{color('dark')};
-        ////
-        /// The background of the list group component when active, for the dark color variant
-        /// @name background--active
-        ////
-        ----background--active: #{color('primary')};
-        ////
-        /// The border top color of the list group component, for the dark color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('dark-60')};
-        ////
-        /// The border right color of the list group component, for the dark color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('dark-60')};
-        ////
-        /// The border bottom color of the list group component, for the dark color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('dark-60')};
-        ////
-        /// The border left color of the list group component, for the dark color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('dark-60')};
-        ////
-        /// The border-color of the list group component, for the dark color variant
-        /// @name border-color--active
-        ////
-        ----border-color--active: #{color('primary-55')};
-        ////
-        /// The color of the list group component item, for the dark color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-dark)};
-        ////
-        /// The color of the list group component item when active, for the dark color variant
-        /// @name color--active
-        ////
-        ----color--active: #{contrast-color($color-primary)};
-        ////
-        /// The color of the list group component item when disabled, for the dark color variant
-        /// @name color--disabled
-        ////
-        ----color--disabled: #{var(--text-muted)};
+
+    &.-dark {
+        --list-group--background: var(--list-group--dark--background, var(--color-dark));
+        --list-group--color: var(--list-group--dark--color, var(--contrast-text--color-dark));
+        --list-group--border-top-color: var(
+            --list-group--dark--border-top-color,
+            var(--color-dark-tint-50)
+        );
+        --list-group--border-right-color: var(
+            --list-group--dark--border-right-color,
+            var(--color-dark-tint-50)
+        );
+        --list-group--border-bottom-color: var(
+            --list-group--dark--border-bottom-color,
+            var(--color-dark-tint-50)
+        );
+        --list-group--border-left-color: var(
+            --list-group--dark--border-left-color,
+            var(--color-dark-tint-50)
+        );
+
+        --list-group--active--background: var(
+            --list-group--dark--active--background,
+            var(--color-primary)
+        );
+        --list-group--active--color: var(
+            --list-group--dark--active--color,
+            var(--contrast-text--color-primary)
+        );
+        --list-group--active--border-top-color: var(
+            --list-group--dark--active--border-top-color,
+            var(--color-primary-shade-50)
+        );
+        --list-group--active--border-right-color: var(
+            --list-group--dark--active--border-right-color,
+            var(--color-primary-shade-50)
+        );
+        --list-group--active--border-bottom-color: var(
+            --list-group--dark--active--border-bottom-color,
+            var(--color-primary-shade-50)
+        );
+        --list-group--active--border-left-color: var(
+            --list-group--dark--active--border-left-color,
+            var(--color-primary-shade-50)
+        );
+
+        --list-group--disabled--color: var(
+            --list-group--dark--disabled--color,
+            var(--text--color-muted)
+        );
     }
 }

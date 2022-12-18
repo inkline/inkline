@@ -1,11 +1,13 @@
 // Vitest Snapshot v1
 
 exports[`Components > ITooltip > should render correctly 1`] = `
-"<div class=\\"tooltip-wrapper -primary -md\\" id=\\"tooltip\\">
-  <div class=\\"tooltip-trigger\\" aria-describedby=\\"tooltip-popup\\" aria-disabled=\\"false\\" aria-expanded=\\"false\\"><button> Button </button></div>
-  <transition-stub>
-    <div class=\\"tooltip\\" role=\\"tooltip\\" aria-live=\\"polite\\" id=\\"tooltip-popup\\" aria-hidden=\\"true\\" style=\\"display: none;\\"><span data-popper-arrow=\\"\\"></span>
-      <div> Placeholder </div>
+"<div id=\\"tooltip\\" class=\\"tooltip-wrapper -primary -md\\">
+  <div class=\\"tooltip-trigger\\" aria-describedby=\\"tooltip-popup\\" aria-expanded=\\"false\\">
+    <!-- @slot default Slot for tooltip trigger --><button>Button</button>
+  </div>
+  <transition-stub name=\\"zoom-in-top-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+    <div id=\\"tooltip-popup\\" class=\\"tooltip\\" role=\\"tooltip\\" aria-live=\\"polite\\" aria-hidden=\\"true\\" style=\\"display: none;\\"><span class=\\"arrow\\"></span><!-- @slot body Slot for tooltip body content -->
+      <div>Placeholder</div>
     </div>
   </transition-stub>
 </div>"

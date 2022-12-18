@@ -3,148 +3,170 @@
  */
 
 .toggle {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light', 'form') {
-        ////
-        /// The background of the toggle component, for the light color variant
-        /// @name background
-        ////
-        ----background: #{color('light')};
-        ////
-        /// The background of the toggle component when checked, for the light color variant
-        /// @name background--checked
-        ////
-        ----background--checked: #{color('primary')};
-        ////
-        /// The background of the toggle component when disabled, for the light color variant
-        /// @name background--disabled
-        ////
-        ----background--disabled: #{color('light-40')};
-        ////
-        /// The background of the toggle component when checked and disabled, for the light color variant
-        /// @name background--checked-disabled
-        ////
-        ----background--checked-disabled: #{color('primary-25')};
-        ////
-        /// The border-color of the toggle component, for the light color variant
-        /// @name border-color
-        ////
-        ----border-color: #{color('light-55')};
-        ////
-        /// The border-color of the toggle component when checked, for the light color variant
-        /// @name border-color--checked
-        ////
-        ----border-color--checked: #{color('primary-55')};
-        ////
-        /// The border-color of the toggle component when disabled, for the light color variant
-        /// @name border-color--disabled
-        ////
-        ----border-color--disabled: #{color('light')};
-        ////
-        /// The border-color of the toggle component when checked and disabled, for the light color variant
-        /// @name border-color--checked-disabled
-        ////
-        ----border-color--checked-disabled: #{color('primary-30')};
-        ////
-        /// The background of the toggle component indicator, for the light color variant
-        /// @name indicator--background
-        ////
-        ----indicator--background: #{color('white')};
-        ////
-        /// The background of the toggle component indicator when disabled, for the light color variant
-        /// @name indicator--background--disabled
-        ////
-        ----indicator--background--disabled: #{color('gray-05')};
-        ////
-        /// The background of the toggle component indicator when checked and disabled, for the light color variant
-        /// @name indicator--background--checked-disabled
-        ////
-        ----indicator--background--checked-disabled: #{color('gray-10')};
-        ////
-        /// The color of the toggle component label, for the light color variant
-        /// @name label--color
-        ////
-        ----label--color: #{contrast-color($color-light)};
-        ////
-        /// The color of the toggle component label when disabled, for the light color variant
-        /// @name label--color--disabled
-        ////
-        ----label--color--disabled: #{color('light-70')};
+    &.-light {
+        --toggle--background: var(--toggle--light--background, var(--color-light));
+        --toggle--border-top-color: var(
+            --toggle--light--border-top-color,
+            var(--color-light-shade-50)
+        );
+        --toggle--border-right-color: var(
+            --toggle--light--border-right-color,
+            var(--color-light-shade-50)
+        );
+        --toggle--border-bottom-color: var(
+            --toggle--light--border-bottom-color,
+            var(--color-light-shade-50)
+        );
+        --toggle--border-left-color: var(
+            --toggle--light--border-left-color,
+            var(--color-light-shade-50)
+        );
+        --toggle--indicator--background: var(
+            --toggle--white--indicator--background,
+            var(--color-white)
+        );
+        --toggle--label--color: var(
+            --toggle--light--label--color,
+            var(--contrast-text--color-white)
+        );
+
+        --toggle--checked--background: var(
+            --toggle--primary--checked--background,
+            var(--color-primary)
+        );
+        --toggle--checked--border-top-color: var(
+            --toggle--primary--checked--border-top-color,
+            var(--color-primary-shade-50)
+        );
+        --toggle--checked--border-right-color: var(
+            --toggle--primary--checked--border-right-color,
+            var(--color-primary-shade-50)
+        );
+        --toggle--checked--border-bottom-color: var(
+            --toggle--primary--checked--border-bottom-color,
+            var(--color-primary-shade-50)
+        );
+        --toggle--checked--border-left-color: var(
+            --toggle--primary--checked--border-left-color,
+            var(--color-primary-shade-50)
+        );
+
+        --toggle--disabled--background: var(
+            --toggle--light--disabled--background,
+            var(--color-light-shade-50)
+        );
+        --toggle--disabled--border-top-color: var(
+            --toggle--light--disabled--border-top-color,
+            var(--color-light-shade-50)
+        );
+        --toggle--disabled--border-right-color: var(
+            --toggle--light--disabled--border-right-color,
+            var(--color-light-shade-50)
+        );
+        --toggle--disabled--border-bottom-color: var(
+            --toggle--light--disabled--border-bottom-color,
+            var(--color-light-shade-50)
+        );
+        --toggle--disabled--border-left-color: var(
+            --toggle--light--disabled--border-left-color,
+            var(--color-light-shade-50)
+        );
+        --toggle--disabled--indicator--background: var(
+            --toggle--disabled--gray--indicator--background,
+            var(--color-gray-50)
+        );
+        --toggle--disabled--label--color: var(
+            --toggle--light--disabled--label--color,
+            var(--text--color-muted)
+        );
+
+        --toggle--checked--disabled--background: var(
+            --toggle--primary--checked--disabled--background,
+            var(--color-primary-200)
+        );
+        --toggle--checked--disabled--border-color: var(
+            --toggle--primary--checked--disabled--border-color,
+            var(--color-primary-300)
+        );
+        --toggle--checked--disabled--indicator--background: var(
+            --toggle--checked--gray--indicator--disabled--background,
+            var(--color-gray-50)
+        );
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark', 'form') {
-        ////
-        /// The background of the toggle component, for the dark color variant
-        /// @name background
-        ////
-        ----background: #{color('dark')};
-        ////
-        /// The background of the toggle component when checked, for the dark color variant
-        /// @name background--checked
-        ////
-        ----background--checked: #{color('primary')};
-        ////
-        /// The background of the toggle component when disabled, for the dark color variant
-        /// @name background--disabled
-        ////
-        ----background--disabled: #{color('dark-40')};
-        ////
-        /// The background of the toggle component when checked and disabled, for the dark color variant
-        /// @name background--checked-disabled
-        ////
-        ----background--checked-disabled: #{color('primary-75')};
-        ////
-        /// The border-color of the toggle component, for the dark color variant
-        /// @name border-color
-        ////
-        ----border-color: #{color('dark')};
-        ////
-        /// The border-color of the toggle component when checked, for the dark color variant
-        /// @name border-color--checked
-        ////
-        ----border-color--checked: #{color('primary-55')};
-        ////
-        /// The border-color of the toggle component when disabled, for the dark color variant
-        /// @name border-color--disabled
-        ////
-        ----border-color--disabled: #{color('dark')};
-        ////
-        /// The border-color of the toggle component when checked and disabled, for the dark color variant
-        /// @name border-color--checked-disabled
-        ////
-        ----border-color--checked-disabled: #{color('primary-70')};
-        ////
-        /// The background of the toggle component indicator, for the dark color variant
-        /// @name indicator--background
-        ////
-        ----indicator--background: #{color('white')};
-        ////
-        /// The background of the toggle component indicator when disabled, for the dark color variant
-        /// @name indicator--background--disabled
-        ////
-        ----indicator--background--disabled: #{color('gray-30')};
-        ////
-        /// The background of the toggle component indicator when checked and disabled, for the dark color variant
-        /// @name indicator--background--checked-disabled
-        ////
-        ----indicator--background--checked-disabled: #{color('dark-25')};
-        ////
-        /// The color of the toggle component label, for the dark color variant
-        /// @name label--color
-        ////
-        ----label--color: #{contrast-color($color-dark)};
-        ////
-        /// The color of the toggle component label when disabled, for the dark color variant
-        /// @name label--color--disabled
-        ////
-        ----label--color--disabled: #{color('dark-30')};
+
+    &.-dark {
+        --toggle--background: var(--toggle--dark--background, var(--color-dark));
+        --toggle--border-top-color: var(
+            --toggle--dark--border-top-color,
+            var(--color-dark-tint-50)
+        );
+        --toggle--border-right-color: var(
+            --toggle--dark--border-right-color,
+            var(--color-dark-tint-50)
+        );
+        --toggle--border-bottom-color: var(
+            --toggle--dark--border-bottom-color,
+            var(--color-dark-tint-50)
+        );
+        --toggle--border-left-color: var(
+            --toggle--dark--border-left-color,
+            var(--color-dark-tint-50)
+        );
+        --toggle--indicator--background: var(
+            --toggle--white--indicator--background,
+            var(--color-white)
+        );
+        --toggle--label--color: var(--toggle--dark--label--color, var(--contrast-text--color-dark));
+
+        --toggle--checked--background: var(
+            --toggle--primary--checked--background,
+            var(--color-primary)
+        );
+        --toggle--checked--border-top-color: var(
+            --toggle--primary--checked--border-top-color,
+            var(--color-primary-tint-50)
+        );
+        --toggle--checked--border-right-color: var(
+            --toggle--primary--checked--border-right-color,
+            var(--color-primary-tint-50)
+        );
+        --toggle--checked--border-bottom-color: var(
+            --toggle--primary--checked--border-bottom-color,
+            var(--color-primary-tint-50)
+        );
+        --toggle--checked--border-left-color: var(
+            --toggle--primary--checked--border-left-color,
+            var(--color-primary-tint-50)
+        );
+
+        --toggle--disabled--background: var(
+            --toggle--dark--disabled--background,
+            var(--color-dark-tint-100)
+        );
+        --toggle--disabled--border-color: var(
+            --toggle--dark--disabled--border-color,
+            var(--color-dark-tint-50)
+        );
+        --toggle--disabled--indicator--background: var(
+            --toggle--dark--disabled--indicator--background,
+            var(--color-gray-400)
+        );
+        --toggle--disabled--label--color: var(
+            --toggle--dark--disabled--label--color,
+            var(--text--color-muted)
+        );
+
+        --toggle--checked--disabled--background: var(
+            --toggle--primary--checked--disabled--background,
+            var(--color-primary-800)
+        );
+        --toggle--checked--disabled--border-color: var(
+            --toggle--primary--checked--disabled--border-color,
+            var(--color-primary-900)
+        );
+        --toggle--checked--disabled--indicator--background: var(
+            --toggle--dark--checked--disabled--indicator--background,
+            var(--color-gray-300)
+        );
     }
 }

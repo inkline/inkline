@@ -1,0 +1,1 @@
+export { default as INavbarBrand } from './INavbarBrand.vue';

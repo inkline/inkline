@@ -1,2 +1,46 @@
-<template src="./size-variants.html" />
-<script src="./size-variants.js" />
+<script>
+export default {
+    data() {
+        return {
+            active: 'tab-1'
+        };
+    }
+};
+</script>
+<template>
+    <i-tabs v-model="active" size="sm">
+        <template #header>
+            <i-tab-title for="tab-1"> Tab 1 </i-tab-title>
+            <i-tab-title for="tab-2"> Tab 2 </i-tab-title>
+            <i-tab-title for="tab-3"> Tab 3 </i-tab-title>
+        </template>
+
+        <i-tab name="tab-1"> Tab 1 content </i-tab>
+        <i-tab name="tab-2"> Tab 2 content </i-tab>
+        <i-tab name="tab-3"> Tab 3 content </i-tab>
+    </i-tabs>
+
+    <i-tabs v-model="active" size="md">
+        <template #header>
+            <i-tab-title for="tab-1"> Tab 1 </i-tab-title>
+            <i-tab-title for="tab-2"> Tab 2 </i-tab-title>
+            <i-tab-title for="tab-3"> Tab 3 </i-tab-title>
+        </template>
+
+        <i-tab name="tab-1"> Tab 1 content </i-tab>
+        <i-tab name="tab-2"> Tab 2 content </i-tab>
+        <i-tab name="tab-3"> Tab 3 content </i-tab>
+    </i-tabs>
+
+    <i-tabs v-model="active" size="lg">
+        <template #header>
+            <i-tab-title for="tab-1"> Tab 1 </i-tab-title>
+            <i-tab-title for="tab-2"> Tab 2 </i-tab-title>
+            <i-tab-title for="tab-3"> Tab 3 </i-tab-title>
+        </template>
+
+        <i-tab name="tab-1"> Tab 1 content </i-tab>
+        <i-tab name="tab-2"> Tab 2 content </i-tab>
+        <i-tab name="tab-3"> Tab 3 content </i-tab>
+    </i-tabs>
+</template>

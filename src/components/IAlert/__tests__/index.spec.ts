@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IAlert } from '@inkline/inkline/components';
-import { Placeholder } from '@inkline/inkline/__mocks__';
+import { createInkline, Placeholder } from '@inkline/inkline/__mocks__';
+import { InklineKey } from '@inkline/inkline/plugin';
 
 describe('Components', () => {
     describe('IAlert', () => {
@@ -14,7 +15,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IAlert, { props });
+            const wrapper = render(IAlert, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
@@ -28,6 +36,11 @@ describe('Components', () => {
                         props: {
                             dismissible: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -41,21 +54,6 @@ describe('Components', () => {
             });
         });
 
-        describe('watch', () => {
-            describe('modelValue', () => {
-                it('should set dismissed', () => {
-                    const wrapper = {
-                        dismissed: false,
-                        fn: (IAlert as any).watch.modelValue
-                    };
-
-                    wrapper.fn(false);
-
-                    expect(wrapper.dismissed).toEqual(true);
-                });
-            });
-        });
-
         describe('methods', () => {
             describe('dismiss()', () => {
                 it('should hide the alert when clicking the dismiss button', async () => {
@@ -64,6 +62,11 @@ describe('Components', () => {
                             dismissible: true,
                             modelValue: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 

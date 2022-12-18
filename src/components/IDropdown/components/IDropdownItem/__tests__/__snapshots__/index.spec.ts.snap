@@ -1,3 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Components > IDropdownItem > should render correctly 1`] = `"<div class=\\"dropdown-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-disabled=\\"false\\" aria-pressed=\\"false\\"></div>"`;

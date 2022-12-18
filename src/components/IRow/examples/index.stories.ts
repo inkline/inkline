@@ -1,4 +1,4 @@
-import IRow from '../index.vue';
+import { IRow } from '../index';
 import {
     IRowBasicExample,
     IRowDistributionAroundExample,

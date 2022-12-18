@@ -1,0 +1,135 @@
+@use '../../../css/mixins';
+@use '../../../css/functions';
+@use 'sass:math';
+@use 'sass:list';
+
+// Prevent columns from becoming too narrow when at smaller grid tiers by
+// always setting `width: 100%`. This works because we use `flex` values
+// later on to override this initial width.
+//
+@mixin column-full-width() {
+    flex-grow: 0;
+    flex-basis: 100%;
+    width: 100%;
+}
+
+// Create a flexible column that takes up the space it can
+//
+@mixin column-flexible() {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+}
+
+// Add a `max-width` to ensure content within each column does not blow out
+// the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+// do not appear to require this.
+//
+@mixin column-fixed-width($columns, $columns-count) {
+    flex-grow: 1;
+    flex-basis: calc(#{$columns-count} * 100% / #{$columns});
+    max-width: calc(#{$columns-count} * 100% / #{$columns});
+}
+
+/**
+ * Column
+ */
+.col,
+.column {
+    @include column-flexible();
+
+    box-sizing: border-box;
+    min-height: 1px;
+    position: relative;
+
+    @each $breakpoint-key in mixins.$breakpoint-keys {
+        @include mixins.breakpoint-up($breakpoint-key) {
+            padding-left: calc(var(--grid--#{$breakpoint-key}--gutter) / 2);
+            padding-right: calc(var(--grid--#{$breakpoint-key}--gutter) / 2);
+        }
+    }
+
+    // Column Responsive Sizes
+    //
+    @each $breakpoint-key in list.append(mixins.$breakpoint-keys, '') {
+        $breakpoint: functions.escape(mixins.breakpoint-infix($breakpoint-key));
+
+        @if $breakpoint-key != '' {
+            &.#{$breakpoint},
+            &.#{$breakpoint}-auto {
+                @include column-full-width();
+            }
+        }
+
+        @include mixins.breakpoint-up($breakpoint-key) {
+            @if $breakpoint-key != '' {
+                &.#{$breakpoint} {
+                    @include column-flexible();
+                }
+
+                &.#{$breakpoint}-auto {
+                    flex: 1 0 auto;
+                    max-width: auto;
+                }
+            }
+
+            &.-first#{$breakpoint} {
+                order: -1;
+            }
+
+            &.-last#{$breakpoint} {
+                order: 1;
+            }
+        }
+
+        @for $column-count from 1 through mixins.$columns {
+            @if $breakpoint-key != '' {
+                &.#{$breakpoint}-#{$column-count} {
+                    @include column-full-width();
+                }
+            }
+
+            @include mixins.breakpoint-up($breakpoint-key) {
+                // Column width
+                //
+                @if $breakpoint-key != '' {
+                    &.#{$breakpoint}-#{$column-count} {
+                        @include column-fixed-width(var(--grid--columns), $column-count);
+                    }
+                }
+
+                // Column offset
+                //
+                &.-offset#{$breakpoint}-#{$column-count} {
+                    margin-left: calc(#{$column-count} * 100% / var(--grid--columns));
+                }
+
+                // Column push
+                //
+                &.-push#{$breakpoint}-#{$column-count} {
+                    left: calc(#{$column-count} * 100% / var(--grid--columns));
+                }
+
+                // Column pull
+                //
+                &.-pull#{$breakpoint}-#{$column-count} {
+                    right: calc(#{$column-count} * 100% / var(--grid--columns));
+                }
+            }
+        }
+
+        @include breakpoint-up($breakpoint-key) {
+            &.-offset#{$breakpoint}-0 {
+                margin-left: 0;
+            }
+
+            &.-push#{$breakpoint}-0 {
+                left: 0;
+            }
+
+            &.-pull#{$breakpoint}-0 {
+                right: 0;
+            }
+        }
+    }
+}

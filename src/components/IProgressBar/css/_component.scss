@@ -1,0 +1,26 @@
+////
+/// The color of the progress-bar component
+/// @name progress-bar--color
+/// @type color
+////
+
+////
+/// The background of the progress-bar component
+/// @name progress-bar--background
+/// @type color
+////
+
+/**
+ * Progress bar
+ */
+
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    height: 100%;
+    color: var(--progress-bar--color);
+    background: var(--progress-bar--background);
+}

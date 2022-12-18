@@ -3,78 +3,36 @@
  */
 
 .tooltip-wrapper {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light') {
-        ////
-        /// The background of the tooltip component, for the light color variant
-        /// @name background
-        ////
-        ----background: #{color('white')};
-        ////
-        /// The border top color of the tooltip component, for the light color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('light')};
-        ////
-        /// The border right color of the tooltip component, for the light color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('light')};
-        ////
-        /// The border bottom color of the tooltip component, for the light color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('light')};
-        ////
-        /// The border left color of the tooltip component, for the light color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('light')};
-        ////
-        /// The color of the tooltip component item, for the light color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-white)};
+    &.-light {
+        --tooltip--background: var(--tooltip--white--background, var(--color-white));
+        --tooltip--border-top-color: var(--tooltip--light--border-top-color, var(--color-light));
+        --tooltip--border-right-color: var(
+            --tooltip--light--border-right-color,
+            var(--color-light)
+        );
+        --tooltip--border-bottom-color: var(
+            --tooltip--light--border-bottom-color,
+            var(--color-light)
+        );
+        --tooltip--border-left-color: var(--tooltip--light--border-left-color, var(--color-light));
+        --tooltip--color: var(--tooltip--white--color, var(--contrast-text--color-white));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark') {
-        ////
-        /// The background of the tooltip component, for the dark color variant
-        /// @name background
-        ////
-        ----background: #{color('dark')};
-        ////
-        /// The border top color of the tooltip component, for the dark color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('dark-60')};
-        ////
-        /// The border right color of the tooltip component, for the dark color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('dark-60')};
-        ////
-        /// The border bottom color of the tooltip component, for the dark color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('dark-60')};
-        ////
-        /// The border left color of the tooltip component, for the dark color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('dark-60')};
-        ////
-        /// The color of the tooltip component item, for the dark color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-dark)};
+
+    &.-dark {
+        --tooltip--background: var(--tooltip--dark--background, var(--color-dark));
+        --tooltip--border-top-color: var(--tooltip--dark--border-top-color, var(--color-dark-600));
+        --tooltip--border-right-color: var(
+            --tooltip--dark--border-right-color,
+            var(--color-dark-600)
+        );
+        --tooltip--border-bottom-color: var(
+            --tooltip--dark--border-bottom-color,
+            var(--color-dark-600)
+        );
+        --tooltip--border-left-color: var(
+            --tooltip--dark--border-left-color,
+            var(--color-dark-600)
+        );
+        --tooltip--color: var(--tooltip--dark--color, var(--contrast-text--color-dark));
     }
 }

@@ -1,2 +1,23 @@
-<template src="./size-variants.demo.html" />
-<script src="./size-variants.demo.js" />
+<script>
+export default {
+    data() {
+        return {
+            selected: null,
+            options: [
+                { id: 1, label: 'Richard Hendricks' },
+                { id: 2, label: 'Bertram Gilfoyle' },
+                { id: 3, label: 'Dinesh Chugtai' },
+                { id: 4, label: 'Jared Dunn' },
+                { id: 5, label: 'Erlich Bachman' }
+            ]
+        };
+    }
+};
+</script>
+<template>
+    <i-select v-model="selected" :options="options" placeholder="Choose something.." size="sm" />
+
+    <i-select v-model="selected" :options="options" placeholder="Choose something.." size="md" />
+
+    <i-select v-model="selected" :options="options" placeholder="Choose something.." size="lg" />
+</template>

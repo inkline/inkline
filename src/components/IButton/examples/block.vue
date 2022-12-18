@@ -1,1 +1,3 @@
-<template src="./block.html" />
+<template>
+    <i-button block>Block Button</i-button>
+</template>

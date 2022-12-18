@@ -3,40 +3,15 @@
  */
 
 .inkline-icon {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    @include variant('sm') {
-        ////
-        /// The size of the icon component, for the sm size variant
-        /// @name size
-        ////
-        ----size: calc(#{1rem} * #{size-multiplier('sm')});
+    &.-sm {
+        --icon--size: var(--icon--sm--size, calc(var(--font-size) * var(--size-multiplier-sm)));
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    @include variant('md') {
-        ////
-        /// The size of the icon component, for the md size variant
-        /// @name size
-        ////
-        ----size: calc(#{1rem} * #{size-multiplier('md')});
+
+    &.-md {
+        --icon--size: var(--icon--md--size, calc(var(--font-size) * var(--size-multiplier-md)));
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    @include variant('lg') {
-        ////
-        /// The size of the icon component, for the lg size variant
-        /// @name size
-        ////
-        ----size: calc(#{1rem} * #{size-multiplier('lg')});
+
+    &.-lg {
+        --icon--size: var(--icon--lg--size, calc(var(--font-size) * var(--size-multiplier-lg)));
     }
 }

@@ -3,28 +3,11 @@
  */
 
 .hamburger-menu {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light') {
-        ////
-        /// The background of the hamburger-menu component, for the light color variant
-        /// @name background
-        ////
-        ----background: #{color('dark')};
+    &.-light {
+        --hamburger-menu--background: var(--hamburger-menu--light--background, var(--color-dark));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark') {
-        ////
-        /// The background of the hamburger-menu component, for the dark color variant
-        /// @name background
-        ////
-        ----background: #{color('light')};
+
+    &.-dark {
+        --hamburger-menu--background: var(--hamburger-menu--dark--background, var(--color-light));
     }
 }

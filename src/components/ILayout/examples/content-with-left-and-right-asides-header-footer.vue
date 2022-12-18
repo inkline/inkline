@@ -1,2 +1,11 @@
-<template src="./content-with-left-and-right-asides-header-footer.html" />
-<style src="./with-aside.scss" lang="scss" scoped />
+<template>
+    <i-layout>
+        <i-layout-header> Header </i-layout-header>
+        <i-layout vertical>
+            <i-layout-aside> Left Aside </i-layout-aside>
+            <i-layout-content> Content </i-layout-content>
+            <i-layout-aside> Right Aside </i-layout-aside>
+        </i-layout>
+        <i-layout-footer> Footer </i-layout-footer>
+    </i-layout>
+</template>

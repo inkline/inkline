@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IIcon } from '@inkline/inkline/components';
+import { InklineIconsKey, InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IIcon', () => {
@@ -17,9 +19,10 @@ describe('Components', () => {
                 props,
                 global: {
                     provide: {
-                        inklineIcons: {
+                        [InklineIconsKey as symbol]: {
                             inkPlus: {}
-                        }
+                        },
+                        [InklineKey as symbol]: createInkline()
                     }
                 }
             });

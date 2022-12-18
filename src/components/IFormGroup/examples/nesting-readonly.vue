@@ -1,0 +1,26 @@
+<script>
+export default {
+    data() {
+        return {
+            input: '',
+            textarea: '',
+            checkbox: false
+        };
+    }
+};
+</script>
+<template>
+    <i-form>
+        <i-form-group readonly>
+            <i-form-group>
+                <i-form-label>Input</i-form-label>
+                <i-input v-model="input" placeholder="Type something.." />
+            </i-form-group>
+
+            <i-form-group>
+                <i-form-label>Textarea</i-form-label>
+                <i-textarea v-model="textarea" placeholder="Write a comment.." />
+            </i-form-group>
+        </i-form-group>
+    </i-form>
+</template>

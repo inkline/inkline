@@ -3,70 +3,39 @@
  */
 
 .radio {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    @include variant('sm', 'form') {
-        ////
-        /// The size of the radio component indicator, for the sm size variant
-        /// @name size
-        ////
-        ----size: calc(#{1rem} * #{size-multiplier('sm')});
-        ////
-        /// The size of the radio component indicator check mark icon, for the sm size variant
-        /// @name checkmark--size
-        ////
-        ----checkmark--size: calc(#{8px} * #{size-multiplier('sm')});
-        ////
-        /// The font size of the radio component label, for the sm size variant
-        /// @name label--font-size
-        ////
-        ----label--font-size: calc(#{font-size()} * #{size-multiplier('sm')});
+    &.-sm {
+        --radio--size: var(--radio--sm--size, calc(#{1rem} * var(--size-multiplier-sm)));
+        --radio--checkmark--size: var(
+            --radio--sm--checkmark--size,
+            calc(#{8px} * var(--size-multiplier-sm))
+        );
+        --radio--label--font-size: var(
+            --radio--sm--label--font-size,
+            calc(var(--font-size) * var(--size-multiplier-sm))
+        );
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    @include variant('md', 'form') {
-        ////
-        /// The size of the radio component indicator, for the md size variant
-        /// @name size
-        ////
-        ----size: calc(#{1rem} * #{size-multiplier('md')});
-        ////
-        /// The size of the radio component indicator check mark icon, for the md size variant
-        /// @name checkmark--size
-        ////
-        ----checkmark--size: calc(#{8px} * #{size-multiplier('md')});
-        ////
-        /// The font size of the radio component label, for the md size variant
-        /// @name label--font-size
-        ////
-        ----label--font-size: calc(#{font-size()} * #{size-multiplier('md')});
+
+    &.-md {
+        --radio--size: var(--radio--md--size, calc(#{1rem} * var(--size-multiplier-md)));
+        --radio--checkmark--size: var(
+            --radio--md--checkmark--size,
+            calc(#{8px} * var(--size-multiplier-md))
+        );
+        --radio--label--font-size: var(
+            --radio--md--label--font-size,
+            calc(var(--font-size) * var(--size-multiplier-md))
+        );
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    @include variant('lg', 'form') {
-        ////
-        /// The size of the radio component indicator, for the lg size variant
-        /// @name size
-        ////
-        ----size: calc(#{1rem} * #{size-multiplier('lg')});
-        ////
-        /// The size of the radio component indicator check mark icon, for the lg size variant
-        /// @name checkmark--size
-        ////
-        ----checkmark--size: calc(#{8px} * #{size-multiplier('lg')});
-        ////
-        /// The font size of the radio component label, for the lg size variant
-        /// @name label--font-size
-        ////
-        ----label--font-size: calc(#{font-size()} * #{size-multiplier('lg')});
+
+    &.-lg {
+        --radio--size: var(--radio--lg--size, calc(#{1rem} * var(--size-multiplier-lg)));
+        --radio--checkmark--size: var(
+            --radio--lg--checkmark--size,
+            calc(#{8px} * var(--size-multiplier-lg))
+        );
+        --radio--label--font-size: var(
+            --radio--lg--label--font-size,
+            calc(var(--font-size) * var(--size-multiplier-lg))
+        );
     }
 }

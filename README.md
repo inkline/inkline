@@ -50,19 +50,21 @@
 <br/>
 
 ## Table of contents
-- [Installation](#installation)
-- [Join the beta](#join-the-beta)
-- [Bugs and feature requests](#bugs-and-feature-requests)
-- [Contributing](#contributing)
-- [Community](#community)
-- [Releases](#releases)
-- [Versioning](#versioning)
-- [Creators](#creators)
-- [Copyright and license](#copyright-and-license)
+
+-   [Installation](#installation)
+-   [Bugs and feature requests](#bugs-and-feature-requests)
+-   [Contributing](#contributing)
+-   [Community](#community)
+-   [Releases](#releases)
+-   [Versioning](#versioning)
+-   [Creator](#creator)
+-   [Copyright and license](#copyright-and-license)
 
 ## Installation
 
-Read the [Getting Started guide](https://inkline.io/docs/introduction) or choose one of the guides below. Inkline offers official integrations for Vite.js (recommended), Vue.js CLI and Nuxt.js, but can be easily installed for a custom Vue.js configuration as well.
+Read the [Getting Started guide](https://inkline.io/docs/introduction) or choose one of the guides
+below. Inkline offers official integrations for Vite.js (recommended), Vue.js CLI and Nuxt.js, but
+can be easily installed for a custom Vue.js configuration as well.
 
 <a href="https://inkline.io/docs/introduction/installation/vite">
     <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/installation-vitejs.png" width="526" alt="Nuxt.js Installation - Inkline" />
@@ -84,37 +86,49 @@ Read the [Getting Started guide](https://inkline.io/docs/introduction) or choose
     <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/installation-cdn.png" width="526" alt="CDN Installation - Inkline" />
 </a>
 
-
 ## Bugs and feature requests
-Have a bug or a feature request? Please first search for existing and closed issues.
-If your problem or idea is not addressed yet, [please open a new issue](https://github.com/inkline/inkline/issues/new).
+
+Have a bug or a feature request? Please first search for existing and closed issues. If your problem
+or idea is not addressed yet,
+[please open a new issue](https://github.com/inkline/inkline/issues/new).
 
 ## Community
+
 Get updates on Inkline's development and chat with the project maintainers and community members.
-- Follow [@inkline on Twitter](https://twitter.com/inkline).
-- Join [Inkline on Discord](https://chat.inkline.io).
-- Developers should use the keyword `inkline` on packages which modify or add to the functionality of Inkline when distributing through [npm](https://www.npmjs.com/browse/keyword/inkline) or similar delivery mechanisms for maximum discoverability.
+
+-   Follow [@inkline on Twitter](https://twitter.com/inkline).
+-   Join [Inkline on Discord](https://chat.inkline.io).
+-   Developers should use the keyword `inkline` on packages which modify or add to the functionality
+    of Inkline when distributing through [npm](https://www.npmjs.com/browse/keyword/inkline) or
+    similar delivery mechanisms for maximum discoverability.
 
 ## Releases
-[Previous releases](https://github.com/inkline/inkline/releases) and their documentation are also available for download.
+
+[Previous releases](https://github.com/inkline/inkline/releases) and their documentation are also
+available for download.
 
 ## Versioning
-For increased transparency and backward compatibility,
-Inkline is maintained under [the Semantic Versioning guidelines](https://semver.org/).
+
+For increased transparency and backward compatibility, Inkline is maintained under
+[the Semantic Versioning guidelines](https://semver.org/).
 
 ## Creator
-**Alex Grozav**
 
-- <https://grozav.com>
-- <https://twitter.com/alexgrozav>
-- <https://facebook.com/alexgrozav>
-- <https://github.com/alexgrozav>
+### **Alex Grozav**
 
-If you use Inkline in your daily work and feel that it has made your life easier, please consider sponsoring me on [Github Sponsors](https://github.com/sponsors/alexgrozav). 💖
+-   <https://grozav.com>
+-   <https://twitter.com/alexgrozav>
+-   <https://facebook.com/alexgrozav>
+-   <https://github.com/alexgrozav>
+
+If you use Inkline in your daily work and feel that it has made your life easier, please consider
+sponsoring me on [Github Sponsors](https://github.com/sponsors/alexgrozav). 💖
 
 ## Contributing
-Please read through our [contributing guidelines](./.github/CONTRIBUTING.md).
-There you can find directions for opening issues, feature requests, coding standards, and how to setup a local development environment.
+
+Please read through our [contributing guidelines](./.github/CONTRIBUTING.md). There you can find
+directions for opening issues, feature requests, coding standards, and how to setup a local
+development environment.
 
 Thanks goes to these wonderful people:
 
@@ -153,5 +167,7 @@ Thanks goes to these wonderful people:
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## Copyright and license
+
 Code copyright 2017-2022 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
-Code released under the [MIT License](https://github.com/inkline/inkline/blob/master/packages/inkline/LICENSE).
+Code released under the
+[MIT License](https://github.com/inkline/inkline/blob/master/packages/inkline/LICENSE).

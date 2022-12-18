@@ -1,0 +1,480 @@
+////
+/// The background of the toggle component
+/// @name toggle--background
+/// @type color
+////
+
+////
+/// The background of the toggle component when checked
+/// @name toggle--checked--background
+/// @type color
+////
+
+////
+/// The background of the toggle component when disabled
+/// @name toggle--background--disabled
+/// @type color
+////
+
+////
+/// The background of the toggle component when checked and disabled
+/// @name toggle--checked--disabled--background
+/// @type color
+////
+
+////
+/// The border-color of the toggle component
+/// @name toggle--border-color
+/// @type color
+////
+
+////
+/// The border-color of the toggle component when checked
+/// @name toggle--checked--border-color
+/// @type color
+////
+
+////
+/// The border-color of the toggle component when disabled
+/// @name toggle--border-color--disabled
+/// @type color
+////
+
+////
+/// The border-color of the toggle component when checked and disabled
+/// @name toggle--checked--disabled--border-color
+/// @type color
+////
+
+////
+/// The border style of the toggle component
+/// @name toggle--border-style
+////
+
+////
+/// The border top width of the toggle component
+/// @name toggle--border-top-width
+////
+
+////
+/// The border right width of the toggle component
+/// @name toggle--border-right-width
+////
+
+////
+/// The border bottom width of the toggle component
+/// @name toggle--border-bottom-width
+////
+
+////
+/// The border left width of the toggle component
+/// @name toggle--border-left-width
+////
+
+////
+/// The border width of the toggle component
+/// @name toggle--border-width
+////
+
+////
+/// The border top left radius of the toggle component
+/// @name toggle--border-top-left-radius
+////
+
+////
+/// The border top right radius of the toggle component
+/// @name toggle--border-top-right-radius
+////
+
+////
+/// The border bottom right radius of the toggle component
+/// @name toggle--border-bottom-right-radius
+////
+
+////
+/// The border bottom left radius of the toggle component
+/// @name toggle--border-bottom-left-radius
+////
+
+////
+/// The border radius of the toggle component
+/// @name toggle--border-radius
+////
+
+////
+/// The box shadow horizontal offset of the toggle component
+/// @name toggle--box-shadow-offset-x
+////
+
+////
+/// The box shadow vertical offset of the toggle component
+/// @name toggle--box-shadow-offset-y
+////
+
+////
+/// The box shadow blur radius of the toggle component
+/// @name toggle--box-shadow-blur-radius
+////
+
+////
+/// The box shadow spread radius of the toggle component
+/// @name toggle--box-shadow-spread-radius
+////
+
+////
+/// The box shadow spread radius of the toggle component
+/// @name toggle--box-shadow-color
+////
+
+////
+/// The box shadow of the toggle component
+/// @name toggle--box-shadow
+////
+
+////
+/// The right margin of the toggle component
+/// @name toggle--margin-right
+////
+
+////
+/// The right margin of the toggle component
+/// @name toggle--margin-top
+////
+
+////
+/// The width of the toggle component
+/// @name toggle--width
+/// @type size
+////
+
+////
+/// The height of the toggle component
+/// @name toggle--height
+/// @type size
+////
+
+////
+/// The transition duration of the toggle component
+/// @name toggle--transition-duration
+////
+
+////
+/// The background of the toggle component indicator
+/// @name toggle--indicator--background
+/// @type color
+////
+
+////
+/// The background of the toggle component indicator when checked
+/// @name toggle--checked--indicator--background
+////
+
+////
+/// The background of the toggle component indicator when disabled
+/// @name toggle--disabled--indicator--background
+/// @type color
+////
+
+////
+/// The background of the toggle component indicator when checked and disabled
+/// @name toggle--checked--disabled--indicator--background
+/// @type color
+////
+
+////
+/// The border top left radius of the toggle component indicator
+/// @name toggle--indicator--border-top-left-radius
+/// @type size
+////
+
+////
+/// The border top right radius of the toggle component indicator
+/// @name toggle--indicator--border-top-right-radius
+/// @type size
+////
+
+////
+/// The border bottom right radius of the toggle component indicator
+/// @name toggle--indicator--border-bottom-right-radius
+/// @type size
+////
+
+////
+/// The border bottom left radius of the toggle component indicator
+/// @name toggle--indicator--border-bottom-left-radius
+/// @type size
+////
+
+////
+/// The border radius of the toggle component indicator
+/// @name toggle--indicator--border-radius
+////
+
+////
+/// The width of the toggle component indicator
+/// @name toggle--indicator--width
+/// @type size
+////
+
+////
+/// The height of the toggle component indicator
+/// @name toggle--indicator--height
+/// @type size
+////
+
+////
+/// The color of the toggle component label
+/// @name toggle--label--color
+/// @type color
+////
+
+////
+/// The color of the toggle component label when disabled
+/// @name toggle--disabled--label--color
+/// @type color
+////
+
+////
+/// The font size of the toggle component label
+/// @name toggle--label--font-size
+/// @type size
+////
+
+/**
+ * Toggle
+ */
+
+.toggle {
+    position: relative;
+    margin-bottom: 0;
+    display: flex;
+
+    > input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &:checked + .toggle-label {
+            &::before {
+                background: var(--toggle--checked--background, var(--color-primary));
+                border-color: var(
+                    --toggle--checked--border-color,
+                    var(--toggle--checked--border-top-color, var(--color-primary))
+                        var(--toggle--checked--border-right-color, var(--color-primary))
+                        var(--toggle--checked--border-bottom-color, var(--color-primary))
+                        var(--toggle--checked--border-left-color, var(--color-primary))
+                );
+            }
+
+            &::after {
+                background: var(--toggle--checked--indicator--background, var(--color-white));
+                transform: translate(calc(var(--toggle--width, 40px) * 0.5), 0);
+            }
+        }
+
+        &:focus + .toggle-label::before {
+            box-shadow: 0 0 1px var(--toggle--checked--background);
+        }
+
+        &:disabled + .toggle-label,
+        &[readonly] + .toggle-label {
+            cursor: default;
+            color: var(--toggle--disabled--label--color);
+
+            &::before {
+                background: var(--toggle--disabled--background);
+                border-color: var(
+                    --toggle--disabled--border-color,
+                    var(
+                            --toggle--disabled--border-top-color,
+                            var(--toggle--border-top-color, var(--border-top-color))
+                        )
+                        var(
+                            --toggle--disabled--border-right-color,
+                            var(--toggle--border-right-color, var(--border-right-color))
+                        )
+                        var(
+                            --toggle--disabled--border-bottom-color,
+                            var(--toggle--border-bottom-color, var(--border-bottom-color))
+                        )
+                        var(
+                            --toggle--disabled--border-left-color,
+                            var(--toggle--border-left-color, var(--border-left-color))
+                        )
+                );
+            }
+
+            &::after {
+                background: var(--toggle--disabled--indicator--background);
+            }
+        }
+
+        &:disabled:checked + .toggle-label,
+        &[readonly]:checked + .toggle-label {
+            &::before {
+                background: var(--toggle--checked--disabled--background);
+                border-color: var(
+                    --toggle--checked--disabled--border-color,
+                    var(--toggle--checked--disabled--border-top-color, var(--color-primary))
+                        var(--toggle--checked--disabled--border-right-color, var(--color-primary))
+                        var(--toggle--checked--disabled--border-bottom-color, var(--color-primary))
+                        var(--toggle--checked--disabled--border-left-color, var(--color-primary))
+                );
+            }
+
+            &::after {
+                background: var(--toggle--checked--disabled--indicator--background);
+            }
+        }
+    }
+
+    .toggle-label {
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin: 0;
+        color: var(--toggle--label--color, var(--toggle--color));
+        font-size: var(--toggle--label--font-size, var(--toggle--font-size, var(--font-size)));
+
+        &::before {
+            content: '';
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            transition-duration: var(--toggle--transition-duration, var(--transition-duration));
+            transition-property: var(
+                --toggle--transition-property,
+                background-color,
+                border-color,
+                transform
+            );
+            transition-timing-function: var(
+                --toggle--transition-timing-function,
+                var(--transition-timing-function)
+            );
+            border-width: var(
+                --toggle--border-width,
+                (
+                    var(--toggle--border-top-width, var(--border-top-width))
+                        var(--toggle--border-right-width, var(--border-right-width))
+                        var(--toggle--border-bottom-width, var(--border-bottom-width))
+                        var(--toggle--border-left-width, var(--border-left-width))
+                )
+            );
+            border-style: var(
+                --toggle--border-style,
+                (
+                    var(--toggle--border-top-style, var(--border-top-style))
+                        var(--toggle--border-right-style, var(--border-right-style))
+                        var(--toggle--border-bottom-style, var(--border-bottom-style))
+                        var(--toggle--border-left-style, var(--border-left-style))
+                )
+            );
+            border-color: var(
+                --toggle--border-color,
+                (
+                    var(--toggle--border-top-color, var(--border-top-color))
+                        var(--toggle--border-right-color, var(--border-right-color))
+                        var(--toggle--border-bottom-color, var(--border-bottom-color))
+                        var(--toggle--border-left-color, var(--border-left-color))
+                )
+            );
+            margin-right: var(--toggle--margin-right, var(--margin-right));
+            flex-shrink: 0;
+            flex-grow: 0;
+            background-color: var(--toggle--background);
+            width: var(--toggle--width, 40px);
+            height: var(--toggle--height, 20px);
+            border-radius: var(
+                --toggle--border-radius,
+                var(--toggle--border-top-left-radius, var(--border-top-left-radius))
+                    var(--toggle--border-top-right-radius, var(--border-top-right-radius))
+                    var(--toggle--border-bottom-right-radius, var(--border-bottom-right-radius))
+                    var(--toggle--border-bottom-left-radius, var(--border-bottom-left-radius))
+            );
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 0;
+            z-index: 1;
+            transform: translate(0, 0);
+            transition-duration: var(--toggle--transition-duration, var(--transition-duration));
+            transition-property: var(
+                --toggle--transition-property,
+                background-color,
+                border-color,
+                transform
+            );
+            transition-timing-function: var(
+                --toggle--transition-timing-function,
+                var(--transition-timing-function)
+            );
+            background-color: var(--toggle--indicator--background);
+            height: var(--toggle--indicator--width, 16px);
+            width: var(--toggle--indicator--height, 16px);
+            border-radius: var(
+                --toggle--indicator--border-radius,
+                (
+                    var(
+                            --toggle--indicator--border-top-left-radius,
+                            var(--toggle--border-top-left-radius, var(--border-top-left-radius))
+                        )
+                        var(
+                            --toggle--indicator--border-top-right-radius,
+                            var(--toggle--border-top-right-radius, var(--border-top-right-radius))
+                        )
+                        var(
+                            --toggle--indicator--border-bottom-right-radius,
+                            var(
+                                --toggle--border-bottom-right-radius,
+                                var(--border-bottom-right-radius)
+                            )
+                        )
+                        var(
+                            --toggle--indicator--border-bottom-left-radius,
+                            var(
+                                --toggle--border-bottom-left-radius,
+                                var(--border-bottom-left-radius)
+                            )
+                        )
+                )
+            );
+            margin-top: calc(var(--toggle--indicator--height, 16px) / -2);
+            margin-left: calc(
+                var(--toggle--height, 20px) / 2 - var(--toggle--indicator--height, 16px) / 2
+            );
+        }
+    }
+
+    &.-rounded {
+        .toggle-label {
+            &::before {
+                border-radius: var(
+                    --toggle--rounded--border-radius,
+                    var(--toggle--rounded--border-top-left-radius, var(--toggle--height))
+                        var(--toggle--rounded--border-top-right-radius, var(--toggle--height))
+                        var(--toggle--rounded--border-bottom-right-radius, var(--toggle--height))
+                        var(--toggle--rounded--border-bottom-left-radius, var(--toggle--height))
+                );
+            }
+
+            &::after {
+                border-radius: var(
+                    --toggle--rounded--indicator--border-radius,
+                    var(--toggle--rounded--indicator--border-top-left-radius, 50%)
+                        var(--toggle--rounded--indicator--border-top-right-radius, 50%)
+                        var(--toggle--rounded--indicator--border-bottom-right-radius, 50%)
+                        var(--toggle--rounded--indicator--border-bottom-left-radius, 50%)
+                );
+            }
+        }
+    }
+}

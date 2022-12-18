@@ -1,16 +1,12 @@
-@import 'animations';
-@import 'sizes';
-@import 'spacing';
-@import 'colors';
+@import 'scale-ratio';
+@import 'size';
+@import 'animation';
 @import 'border';
-@import 'breakpoints';
-@import 'grid';
-
+@import 'border-radius';
 @import 'box-shadow';
-@import 'core';
-@import 'gutter';
-@import 'images';
-@import 'print';
-@import 'ratios';
+@import 'breakpoints';
+@import 'color';
+@import 'elements';
+@import 'mixins';
+@import 'spacing';
 @import 'typography';
-@import 'z-index';

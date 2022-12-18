@@ -1,0 +1,1 @@
+export { default as IColumn } from './IColumn.vue';

@@ -3,108 +3,63 @@
  */
 
 .navbar {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light') {
-        ////
-        /// The background of the navbar component, for the light color variant
-        /// @name background
-        ////
-        ----background: #{color('light')};
-        ////
-        /// The border top color of the navbar component, for the light color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('light-60')};
-        ////
-        /// The border right color of the navbar component, for the light color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('light-60')};
-        ////
-        /// The border bottom color of the navbar component, for the light color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('light-60')};
-        ////
-        /// The border left color of the navbar component, for the light color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('light-60')};
-        ////
-        /// The color of the navbar component, for the light color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-light)};
-        ////
-        /// The background of the navbar component item, for the light color variant
-        /// @name item--background
-        ////
-        ----item--background: #{color('light')};
-        ////
-        /// The background of the navbar component item when hovered or focused, for the light color variant
-        /// @name item--background--hover
-        ////
-        ----item--background--hover: #{color('light-55')};
-        ////
-        /// The background of the collapsed navbar component, for the light color variant
-        /// @name collapsed--background
-        ////
-        ----collapsed--background: #{color('light')};
+    &.-light {
+        --navbar--background: var(--navbar--light--background, var(--color-light));
+        --navbar--border-top-color: var(
+            --navbar--light--border-top-color,
+            var(--color-light-shade-50)
+        );
+        --navbar--border-right-color: var(
+            --navbar--light--border-right-color,
+            var(--color-light-shade-50)
+        );
+        --navbar--border-bottom-color: var(
+            --navbar--light--border-bottom-color,
+            var(--color-light-shade-50)
+        );
+        --navbar--border-left-color: var(
+            --navbar--light--border-left-color,
+            var(--color-light-shade-50)
+        );
+        --navbar--color: var(--navbar--light--color, var(--contrast-text--color-light));
+        --navbar--item--background: var(--navbar--light--item--background, var(--color-light));
+        --navbar--item--hover--background: var(
+            --navbar--light--item--hover--background,
+            var(--color-light-shade-50)
+        );
+        --navbar--collapsed--background: var(
+            --navbar--light--collapsed--background,
+            var(--color-light)
+        );
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark') {
-        ////
-        /// The background of the navbar component, for the dark color variant
-        /// @name background
-        ////
-        ----background: #{color('dark')};
-        ////
-        /// The border top color of the navbar component, for the dark color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('dark-40')};
-        ////
-        /// The border right color of the navbar component, for the dark color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('dark-40')};
-        ////
-        /// The border bottom color of the navbar component, for the dark color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('dark-40')};
-        ////
-        /// The border left color of the navbar component, for the dark color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('dark-40')};
-        ////
-        /// The color of the navbar component, for the dark color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-dark)};
-        ////
-        /// The background of the navbar component item, for the dark color variant
-        /// @name item--background
-        ////
-        ----item--background: #{color('dark')};
-        ////
-        /// The background of the navbar component item when hovered or focused, for the dark color variant
-        /// @name item--background--hover
-        ////
-        ----item--background--hover: #{color('dark-45')};
-        ////
-        /// The background of the collapsed navbar component, for the dark color variant
-        /// @name collapsed--background
-        ////
-        ----collapsed--background: #{color('dark')};
+
+    &.-dark {
+        --navbar--background: var(--navbar--dark--background, var(--color-dark));
+        --navbar--border-top-color: var(
+            --navbar--dark--border-top-color,
+            var(--color-dark-tint-50)
+        );
+        --navbar--border-right-color: var(
+            --navbar--dark--border-right-color,
+            var(--color-dark-tint-50)
+        );
+        --navbar--border-bottom-color: var(
+            --navbar--dark--border-bottom-color,
+            var(--color-dark-tint-50)
+        );
+        --navbar--border-left-color: var(
+            --navbar--dark--border-left-color,
+            var(--color-dark-tint-50)
+        );
+        --navbar--color: var(--navbar--dark--color, var(--contrast-text--color-dark));
+        --navbar--item--background: var(--navbar--dark--item--background, var(--color-dark));
+        --navbar--item--hover--background: var(
+            --navbar--dark--item--hover--background,
+            var(--color-dark-tint-50)
+        );
+        --navbar--collapsed--background: var(
+            --navbar--dark--collapsed--background,
+            var(--color-dark)
+        );
     }
 }

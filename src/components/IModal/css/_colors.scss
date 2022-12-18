@@ -3,380 +3,211 @@
  */
 
 .modal-wrapper {
-    ////
-    /// Variables for the primary color variant
-    /// @name primary
-    /// @type variant
-    ////
-    @include variant('primary') {
-        ////
-        /// The background of the modal component, for the primary color variant
-        /// @name background
-        ////
-        ----background: #{color('primary')};
-        ////
-        /// The border top color of the modal component, for the primary color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('primary-60')};
-        ////
-        /// The border right color of the modal component, for the primary color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('primary-60')};
-        ////
-        /// The border bottom color of the modal component, for the primary color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('primary-60')};
-        ////
-        /// The border left color of the modal component, for the primary color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('primary-60')};
-        ////
-        /// The color of the modal component, for the primary color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-primary)};
-        ////
-        /// The background of the modal component header, for the primary color variant
-        /// @name header--background
-        ////
-        ----header--background: #{color('primary-55')};
-        ////
-        /// The background of the modal component footer, for the primary color variant
-        /// @name footer--background
-        ////
-        ----footer--background: #{color('primary-55')};
+    &.-primary {
+        --modal--background: var(--modal--primary--background, var(--color-primary));
+        --modal--border-top-color: var(
+            --modal--primary--border-top-color,
+            var(--color-primary-shade-50)
+        );
+        --modal--border-right-color: var(
+            --modal--primary--border-right-color,
+            var(--color-primary-shade-50)
+        );
+        --modal--border-bottom-color: var(
+            --modal--primary--border-bottom-color,
+            var(--color-primary-shade-50)
+        );
+        --modal--border-left-color: var(
+            --modal--primary--border-left-color,
+            var(--color-primary-shade-50)
+        );
+        --modal--color: var(--modal--primary--color, var(--contrast-text--color-primary));
+        --modal--header--background: var(
+            --modal--primary--header--background,
+            var(--color-primary-shade-50)
+        );
+        --modal--footer--background: var(
+            --modal--primary--footer--background,
+            var(--color-primary-shade-50)
+        );
     }
-    ////
-    /// Variables for the secondary color variant
-    /// @name secondary
-    /// @type variant
-    ////
-    @include variant('secondary') {
-        ////
-        /// The background of the modal component, for the secondary color variant
-        /// @name background
-        ////
-        ----background: #{color('secondary')};
-        ////
-        /// The border top color of the modal component, for the secondary color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('secondary-60')};
-        ////
-        /// The border right color of the modal component, for the secondary color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('secondary-60')};
-        ////
-        /// The border bottom color of the modal component, for the secondary color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('secondary-60')};
-        ////
-        /// The border left color of the modal component, for the secondary color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('secondary-60')};
-        ////
-        /// The color of the modal component, for the secondary color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-secondary)};
-        ////
-        /// The background of the modal component header, for the secondary color variant
-        /// @name header--background
-        ////
-        ----header--background: #{color('secondary-55')};
-        ////
-        /// The background of the modal component footer, for the secondary color variant
-        /// @name footer--background
-        ////
-        ----footer--background: #{color('secondary-55')};
+
+    &.-secondary {
+        --modal--background: var(--modal--secondary--background, var(--color-secondary));
+        --modal--border-top-color: var(
+            --modal--secondary--border-top-color,
+            var(--color-secondary-shade-50)
+        );
+        --modal--border-right-color: var(
+            --modal--secondary--border-right-color,
+            var(--color-secondary-shade-50)
+        );
+        --modal--border-bottom-color: var(
+            --modal--secondary--border-bottom-color,
+            var(--color-secondary-shade-50)
+        );
+        --modal--border-left-color: var(
+            --modal--secondary--border-left-color,
+            var(--color-secondary-shade-50)
+        );
+        --modal--color: var(--modal--secondary--color, var(--contrast-text--color-secondary));
+        --modal--header--background: var(
+            --modal--secondary--header--background,
+            var(--color-secondary-shade-50)
+        );
+        --modal--footer--background: var(
+            --modal--secondary--footer--background,
+            var(--color-secondary-shade-50)
+        );
     }
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light') {
-        ////
-        /// The background of the modal component, for the light color variant
-        /// @name background
-        ////
-        ----background: #{color('white')};
-        ////
-        /// The border top color of the modal component, for the light color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('light')};
-        ////
-        /// The border right color of the modal component, for the light color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('light')};
-        ////
-        /// The border bottom color of the modal component, for the light color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('light')};
-        ////
-        /// The border left color of the modal component, for the light color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('light')};
-        ////
-        /// The color of the modal component, for the light color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-light)};
-        ////
-        /// The background of the modal component header, for the light color variant
-        /// @name header--background
-        ////
-        ----header--background: #{color('light-25')};
-        ////
-        /// The background of the modal component footer, for the light color variant
-        /// @name footer--background
-        ////
-        ----footer--background: #{color('light-25')};
+
+    &.-light {
+        --modal--background: var(--modal--white--background, var(--color-white));
+        --modal--border-top-color: var(--modal--light--border-top-color, var(--color-light));
+        --modal--border-right-color: var(--modal--light--border-right-color, var(--color-light));
+        --modal--border-bottom-color: var(--modal--light--border-bottom-color, var(--color-light));
+        --modal--border-left-color: var(--modal--light--border-left-color, var(--color-light));
+        --modal--color: var(--modal--light--color, var(--contrast-text--color-white));
+        --modal--header--background: var(--modal--light--header--background, var(--color-gray-50));
+        --modal--footer--background: var(--modal--light--footer--background, var(--color-gray-50));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark') {
-        ////
-        /// The background of the modal component, for the dark color variant
-        /// @name background
-        ////
-        ----background: #{color('dark')};
-        ////
-        /// The border top color of the modal component, for the dark color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('dark-60')};
-        ////
-        /// The border right color of the modal component, for the dark color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('dark-60')};
-        ////
-        /// The border bottom color of the modal component, for the dark color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('dark-60')};
-        ////
-        /// The border left color of the modal component, for the dark color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('dark-60')};
-        ////
-        /// The color of the modal component, for the dark color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-dark)};
-        ////
-        /// The background of the modal component header, for the dark color variant
-        /// @name header--background
-        ////
-        ----header--background: #{color('dark-55')};
-        ////
-        /// The background of the modal component footer, for the dark color variant
-        /// @name footer--background
-        ////
-        ----footer--background: #{color('dark-55')};
+
+    &.-dark {
+        --modal--background: var(--modal--dark--background, var(--color-dark));
+        --modal--border-top-color: var(--modal--dark--border-top-color, var(--color-dark-tint-50));
+        --modal--border-right-color: var(
+            --modal--dark--border-right-color,
+            var(--color-dark-tint-50)
+        );
+        --modal--border-bottom-color: var(
+            --modal--dark--border-bottom-color,
+            var(--color-dark-tint-50)
+        );
+        --modal--border-left-color: var(
+            --modal--dark--border-left-color,
+            var(--color-dark-tint-50)
+        );
+        --modal--color: var(--modal--dark--color, var(--contrast-text--color-dark));
+        --modal--header--background: var(
+            --modal--dark--header--background,
+            var(--color-dark-tint-50)
+        );
+        --modal--footer--background: var(
+            --modal--dark--footer--background,
+            var(--color-dark-tint-50)
+        );
     }
-    ////
-    /// Variables for the info color variant
-    /// @name info
-    /// @type variant
-    ////
-    @include variant('info') {
-        ////
-        /// The background of the modal component, for the info color variant
-        /// @name background
-        ////
-        ----background: #{color('info')};
-        ////
-        /// The border top color of the modal component, for the info color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('info-60')};
-        ////
-        /// The border right color of the modal component, for the info color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('info-60')};
-        ////
-        /// The border bottom color of the modal component, for the info color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('info-60')};
-        ////
-        /// The border left color of the modal component, for the info color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('info-60')};
-        ////
-        /// The color of the modal component, for the info color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-info)};
-        ////
-        /// The background of the modal component header, for the info color variant
-        /// @name header--background
-        ////
-        ----header--background: #{color('info-55')};
-        ////
-        /// The background of the modal component footer, for the info color variant
-        /// @name footer--background
-        ////
-        ----footer--background: #{color('info-55')};
+
+    &.-info {
+        --modal--background: var(--modal--info--background, var(--color-info));
+        --modal--border-top-color: var(--modal--info--border-top-color, var(--color-info-shade-50));
+        --modal--border-right-color: var(
+            --modal--info--border-right-color,
+            var(--color-info-shade-50)
+        );
+        --modal--border-bottom-color: var(
+            --modal--info--border-bottom-color,
+            var(--color-info-shade-50)
+        );
+        --modal--border-left-color: var(
+            --modal--info--border-left-color,
+            var(--color-info-shade-50)
+        );
+        --modal--color: var(--modal--info--color, var(--contrast-text--color-info));
+        --modal--header--background: var(
+            --modal--info--header--background,
+            var(--color-info-shade-50)
+        );
+        --modal--footer--background: var(
+            --modal--info--footer--background,
+            var(--color-info-shade-50)
+        );
     }
-    ////
-    /// Variables for the success color variant
-    /// @name success
-    /// @type variant
-    ////
-    @include variant('success') {
-        ////
-        /// The background of the modal component, for the success color variant
-        /// @name background
-        ////
-        ----background: #{color('success')};
-        ////
-        /// The border top color of the modal component, for the success color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('success-60')};
-        ////
-        /// The border right color of the modal component, for the success color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('success-60')};
-        ////
-        /// The border bottom color of the modal component, for the success color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('success-60')};
-        ////
-        /// The border left color of the modal component, for the success color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('success-60')};
-        ////
-        /// The color of the modal component, for the success color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-success)};
-        ////
-        /// The background of the modal component header, for the success color variant
-        /// @name header--background
-        ////
-        ----header--background: #{color('success-55')};
-        ////
-        /// The background of the modal component footer, for the success color variant
-        /// @name footer--background
-        ////
-        ----footer--background: #{color('success-55')};
+
+    &.-success {
+        --modal--background: var(--modal--success--background, var(--color-success));
+        --modal--border-top-color: var(
+            --modal--success--border-top-color,
+            var(--color-success-shade-50)
+        );
+        --modal--border-right-color: var(
+            --modal--success--border-right-color,
+            var(--color-success-shade-50)
+        );
+        --modal--border-bottom-color: var(
+            --modal--success--border-bottom-color,
+            var(--color-success-shade-50)
+        );
+        --modal--border-left-color: var(
+            --modal--success--border-left-color,
+            var(--color-success-shade-50)
+        );
+        --modal--color: var(--modal--success--color, var(--contrast-text--color-success));
+        --modal--header--background: var(
+            --modal--success--header--background,
+            var(--color-success-shade-50)
+        );
+        --modal--footer--background: var(
+            --modal--success--footer--background,
+            var(--color-success-shade-50)
+        );
     }
-    ////
-    /// Variables for the warning color variant
-    /// @name warning
-    /// @type variant
-    ////
-    @include variant('warning') {
-        ////
-        /// The background of the modal component, for the warning color variant
-        /// @name background
-        ////
-        ----background: #{color('warning')};
-        ////
-        /// The border top color of the modal component, for the warning color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('warning-60')};
-        ////
-        /// The border right color of the modal component, for the warning color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('warning-60')};
-        ////
-        /// The border bottom color of the modal component, for the warning color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('warning-60')};
-        ////
-        /// The border left color of the modal component, for the warning color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('warning-60')};
-        ////
-        /// The color of the modal component, for the warning color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-warning)};
-        ////
-        /// The background of the modal component header, for the warning color variant
-        /// @name header--background
-        ////
-        ----header--background: #{color('warning-55')};
-        ////
-        /// The background of the modal component footer, for the warning color variant
-        /// @name footer--background
-        ////
-        ----footer--background: #{color('warning-55')};
+
+    &.-warning {
+        --modal--background: var(--modal--warning--background, var(--color-warning));
+        --modal--border-top-color: var(
+            --modal--warning--border-top-color,
+            var(--color-warning-shade-50)
+        );
+        --modal--border-right-color: var(
+            --modal--warning--border-right-color,
+            var(--color-warning-shade-50)
+        );
+        --modal--border-bottom-color: var(
+            --modal--warning--border-bottom-color,
+            var(--color-warning-shade-50)
+        );
+        --modal--border-left-color: var(
+            --modal--warning--border-left-color,
+            var(--color-warning-shade-50)
+        );
+        --modal--color: var(--modal--warning--color, var(--contrast-text--color-warning));
+        --modal--header--background: var(
+            --modal--warning--header--background,
+            var(--color-warning-shade-50)
+        );
+        --modal--footer--background: var(
+            --modal--warning--footer--background,
+            var(--color-warning-shade-50)
+        );
     }
-    ////
-    /// Variables for the danger color variant
-    /// @name danger
-    /// @type variant
-    ////
-    @include variant('danger') {
-        ////
-        /// The background of the modal component, for the danger color variant
-        /// @name background
-        ////
-        ----background: #{color('danger')};
-        ////
-        /// The border top color of the modal component, for the danger color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('danger-60')};
-        ////
-        /// The border right color of the modal component, for the danger color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('danger-60')};
-        ////
-        /// The border bottom color of the modal component, for the danger color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('danger-60')};
-        ////
-        /// The border left color of the modal component, for the danger color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('danger-60')};
-        ////
-        /// The color of the modal component, for the danger color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-danger)};
-        ////
-        /// The background of the modal component header, for the danger color variant
-        /// @name header--background
-        ////
-        ----header--background: #{color('danger-55')};
-        ////
-        /// The background of the modal component footer, for the danger color variant
-        /// @name footer--background
-        ////
-        ----footer--background: #{color('danger-55')};
+
+    &.-danger {
+        --modal--background: var(--modal--danger--background, var(--color-danger));
+        --modal--border-top-color: var(
+            --modal--danger--border-top-color,
+            var(--color-danger-shade-50)
+        );
+        --modal--border-right-color: var(
+            --modal--danger--border-right-color,
+            var(--color-danger-shade-50)
+        );
+        --modal--border-bottom-color: var(
+            --modal--danger--border-bottom-color,
+            var(--color-danger-shade-50)
+        );
+        --modal--border-left-color: var(
+            --modal--danger--border-left-color,
+            var(--color-danger-shade-50)
+        );
+        --modal--color: var(--modal--danger--color, var(--contrast-text--color-danger));
+        --modal--header--background: var(
+            --modal--danger--header--background,
+            var(--color-danger-shade-50)
+        );
+        --modal--footer--background: var(
+            --modal--danger--footer--background,
+            var(--color-danger-shade-50)
+        );
     }
 }

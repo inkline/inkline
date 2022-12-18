@@ -1,9 +1,14 @@
+@use '../mixins';
+@use '../functions';
+@use 'sass:math';
+@use 'sass:list';
+
 /**
  * Text
  */
 
-@each $breakpoint-key in $breakpoint-prefix-keys {
-    $prefix: breakpoint-prefix($breakpoint-key);
+@each $breakpoint-key in list.append(mixins.$breakpoint-keys, '') {
+    $prefix: functions.escape(mixins.breakpoint-prefix($breakpoint-key));
 
     @include breakpoint-up($breakpoint-key) {
         ._#{$prefix}text\:left,

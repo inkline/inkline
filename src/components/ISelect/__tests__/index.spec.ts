@@ -1,16 +1,17 @@
-import { fireEvent, render, waitFor } from '@testing-library/vue';
+import { fireEvent, render } from '@testing-library/vue';
 import { ISelect } from '@inkline/inkline/components';
-import { createMockInstance } from '@inkline/inkline/__mocks__/createMockInstance';
 import { keymap } from '@inkline/inkline/constants';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { ref } from 'vue';
+import { FormKey } from '@inkline/inkline/components/IForm';
 
 describe('Components', () => {
     describe('ISelect', () => {
         const options = [
-            {
-                label: 'Option 1', value: 1
-            },
-            { label: 'Option 2', value: 2 },
-            { label: 'Option 3', value: 3 }
+            { id: 0, label: 'Option 1', value: 1 },
+            { id: 1, label: 'Option 2', value: 2 },
+            { id: 2, label: 'Option 3', value: 3 }
         ];
 
         const props = {
@@ -18,7 +19,7 @@ describe('Components', () => {
             color: 'primary',
             size: 'md',
             options,
-            modelValue: options[0]
+            modelValue: options[0].id
         };
 
         it('should be named correctly', () => {
@@ -27,7 +28,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(ISelect, {
-                props
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();
@@ -42,10 +48,18 @@ describe('Components', () => {
                             size: props.size,
                             options: props.options,
                             modelValue: props.modelValue
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
-                    expect(wrapper.container.firstChild).toHaveAttribute('id', expect.stringContaining('select'));
+                    expect(wrapper.container.firstChild).toHaveAttribute(
+                        'id',
+                        expect.stringContaining('select')
+                    );
                 });
             });
 
@@ -56,6 +70,11 @@ describe('Components', () => {
                             name: 'select',
                             color: 'primary',
                             size: 'md'
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -64,72 +83,21 @@ describe('Components', () => {
             });
         });
 
-        describe('watch', () => {
-            describe('value', () => {
-                it('should set inputValue using computeLabel', () => {
-                    const wrapper = createMockInstance(ISelect, { props });
-                    const value = 'example';
-
-                    wrapper.watchValue = (ISelect as any).watch.value;
-                    wrapper.watchValue(value);
-
-                    expect(wrapper.computeLabel).toHaveBeenCalledWith(value);
-                });
-            });
-
-            describe('options', () => {
-                it('should call createPopper if visible', () => {
-                    const wrapper = createMockInstance(ISelect, { props });
-
-                    wrapper.visible = true;
-                    wrapper.createPopper = vi.fn();
-                    wrapper.watchOptions = (ISelect as any).watch.options;
-                    wrapper.watchOptions();
-
-                    expect(wrapper.createPopper).toHaveBeenCalled();
-                });
-
-                it('should not call createPopper if not visible', () => {
-                    const wrapper = createMockInstance(ISelect, { props });
-
-                    wrapper.visible = false;
-                    wrapper.createPopper = vi.fn();
-                    wrapper.watchOptions = (ISelect as any).watch.options;
-                    wrapper.watchOptions();
-
-                    expect(wrapper.createPopper).not.toHaveBeenCalled();
-                });
-            });
-        });
-
         describe('computed', () => {
             describe('wrapperClasses', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(ISelect, {
-                        props
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         `-${props.color}`,
                         `-${props.size}`
-                    );
-                });
-            });
-
-            describe('popupClasses', () => {
-                it('should add classes based on props', async () => {
-                    const wrapper = render(ISelect, {
-                        props: {
-                            ...props,
-                            disabled: true,
-                            readonly: true
-                        }
-                    });
-                    const popup = wrapper.container.querySelector('[role="listbox"]');
-
-                    expect(popup).toHaveClass(
-                        '-disabled',
-                        '-readonly'
                     );
                 });
             });
@@ -140,6 +108,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const input = wrapper.container.querySelector('input');
@@ -148,7 +121,14 @@ describe('Components', () => {
                 });
 
                 it('should be 1 otherwise', () => {
-                    const wrapper = render(ISelect, { props });
+                    const wrapper = render(ISelect, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
                     const input = wrapper.container.querySelector('input');
 
                     expect(input).toHaveAttribute('tabindex', '0');
@@ -161,29 +141,16 @@ describe('Components', () => {
                         props: {
                             clearable: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const clear = wrapper.container.querySelector('.input-clear');
 
                     expect(clear).toBeVisible();
-                });
-            });
-
-            describe('value', () => {
-                it('should be schema.value if parent schema', () => {
-                    const wrapper = createMockInstance(ISelect, { props });
-
-                    wrapper.schema = {
-                        value: options[1]
-                    };
-
-                    expect(wrapper.value).toEqual(options[1]);
-                });
-
-                it('should be modelValue otherwise', () => {
-                    const wrapper = createMockInstance(ISelect, { props });
-
-                    expect(wrapper.value).toEqual(props.modelValue);
                 });
             });
 
@@ -195,6 +162,11 @@ describe('Components', () => {
                             ...props,
                             modelValue: null,
                             placeholder
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const input = wrapper.container.querySelector('input');
@@ -208,7 +180,12 @@ describe('Components', () => {
             describe('onInput()', () => {
                 it('should hide the menu, and update value', async () => {
                     const wrapper = render(ISelect, {
-                        props
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
                     const input = wrapper.container.querySelector('input');
 
@@ -218,7 +195,33 @@ describe('Components', () => {
                     await fireEvent.click(optionElements[1]);
 
                     expect(menu).not.toBeVisible();
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([options[1]]);
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([options[1].id]);
+                });
+
+                it('should call parent form onInput', async () => {
+                    const onBlur = vi.fn();
+                    const onInput = vi.fn();
+                    const wrapper = render(ISelect, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
+                                    onInput
+                                }
+                            }
+                        }
+                    });
+                    const input = wrapper.container.querySelector('input');
+
+                    await fireEvent.click(input as Element);
+                    const optionElements = await wrapper.getAllByRole('option');
+                    await fireEvent.click(optionElements[1]);
+
+                    expect(onInput).toHaveBeenCalled();
                 });
             });
 
@@ -228,6 +231,11 @@ describe('Components', () => {
                         props: {
                             ...props,
                             clearable: true
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const clear = wrapper.container.querySelector('.input-clear');
@@ -244,6 +252,11 @@ describe('Components', () => {
                         props: {
                             ...props,
                             options: []
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const input = wrapper.container.querySelector('input');
@@ -256,41 +269,16 @@ describe('Components', () => {
 
                 it('should open select', async () => {
                     const wrapper = render(ISelect, {
-                        props
-                    });
-                    const input = wrapper.container.querySelector('input');
-
-                    await fireEvent.focus(input as Element);
-                    const menu = await wrapper.getByRole('listbox');
-
-                    expect(menu).toBeVisible();
-                });
-
-                it('should clear input value if autocomplete', async () => {
-                    const wrapper = render(ISelect, {
-                        props: {
-                            ...props,
-                            autocomplete: true
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const input = wrapper.container.querySelector('input');
 
-                    await fireEvent.focus(input as Element);
-
-                    expect(input).toHaveValue('');
-                });
-
-                it('should open menu if input minLength is 0', async () => {
-                    const wrapper = render(ISelect, {
-                        props: {
-                            ...props,
-                            autocomplete: true,
-                            minLength: 0
-                        }
-                    });
-                    const input = wrapper.container.querySelector('input');
-
-                    await fireEvent.focus(input as Element);
+                    await fireEvent.click(input as Element);
                     const menu = await wrapper.getByRole('listbox');
 
                     expect(menu).toBeVisible();
@@ -300,24 +288,25 @@ describe('Components', () => {
             describe('onBlur()', () => {
                 it('should hide menu, set input value and call parent.onblur', async () => {
                     const onBlur = vi.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(ISelect, {
                         global: {
                             provide: {
-                                form: {
-                                    onBlur
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
+                                    onInput
                                 }
                             }
                         },
                         props
                     });
-                    const input = wrapper.container.querySelector('input');
+                    const input = wrapper.container.querySelector('input') as Element;
 
-                    await fireEvent.focus(input as Element);
-                    const menu = await wrapper.getByRole('listbox');
-                    await fireEvent.blur(input as Element);
+                    await fireEvent.blur(input);
 
-                    expect(menu).not.toBeVisible();
-                    expect(input).toHaveValue(options[0].label);
                     expect(onBlur).toHaveBeenCalled();
                 });
             });
@@ -325,65 +314,52 @@ describe('Components', () => {
             describe('onClick()', () => {
                 it('should show menu', async () => {
                     const wrapper = render(ISelect, {
-                        props
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
-                    const input = wrapper.container.querySelector('input');
+                    const input = wrapper.container.querySelector('input') as Element;
 
-                    await fireEvent.click(input as Element);
+                    await fireEvent.click(input);
                     const menu = await wrapper.getByRole('listbox');
 
                     expect(menu).toBeVisible();
                 });
-
-                it('should clear input value if autocomplete', async () => {
-                    const wrapper = render(ISelect, {
-                        props: {
-                            ...props,
-                            autocomplete: true
-                        }
-                    });
-                    const input = wrapper.container.querySelector('input');
-
-                    await fireEvent.click(input as Element);
-
-                    expect(input).toHaveValue('');
-                });
-            });
-
-            describe('onClickOutside()', () => {
-                it('should hide the menu', async () => {
-                    const wrapper = createMockInstance(ISelect, { props });
-
-                    wrapper.hide = vi.fn();
-                    wrapper.onClickOutside();
-
-                    expect(wrapper.hide).toHaveBeenCalled();
-                });
             });
 
             describe('onCaretClick()', () => {
-                it('should focus the input', async () => {
+                it('should open the input', async () => {
                     const wrapper = render(ISelect, {
-                        props: {
-                            ...props,
-                            autocomplete: true
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const caret = wrapper.container.querySelector('.select-caret');
-                    const input = wrapper.container.querySelector('input');
 
                     await fireEvent.click(caret as Element);
 
-                    expect(input).toHaveFocus();
+                    const dropdown = await wrapper.getByRole('listbox');
+                    expect(dropdown).toBeVisible();
                 });
             });
 
             describe('onTriggerKeyDown()', () => {
-                it('should not do anything if keydownTrigger is empty', async () => {
+                it('should not do anything if triggerKeyBindings is empty', async () => {
                     const wrapper = render(ISelect, {
                         props: {
-                            keydownTrigger: [],
+                            triggerKeyBindings: [],
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const trigger: HTMLElement = wrapper.container.querySelector('input')!;
@@ -396,7 +372,12 @@ describe('Components', () => {
                     describe(key, () => {
                         it('should open the dropdown', async () => {
                             const wrapper = render(ISelect, {
-                                props
+                                props,
+                                global: {
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
+                                }
                             });
                             const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                             await fireEvent.keyDown(trigger, { key: keymap[key][1] });
@@ -409,7 +390,12 @@ describe('Components', () => {
                 describe('enter', () => {
                     it('should open the dropdown', async () => {
                         const wrapper = render(ISelect, {
-                            props
+                            props,
+                            global: {
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
+                            }
                         });
                         const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                         await fireEvent.keyDown(trigger, { key: keymap.enter[0] });
@@ -422,7 +408,12 @@ describe('Components', () => {
                     describe(key, () => {
                         it('should close the dropdown', async () => {
                             const wrapper = render(ISelect, {
-                                props
+                                props,
+                                global: {
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
+                                }
                             });
                             const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                             await fireEvent.click(trigger);
@@ -435,11 +426,16 @@ describe('Components', () => {
             });
 
             describe('onItemKeyDown()', () => {
-                it('should not do anything if keydownItem is empty', async () => {
+                it('should not do anything if itemKeyBindings is empty', async () => {
                     const wrapper = render(ISelect, {
                         props: {
-                            keydownItem: [],
+                            itemKeyBindings: [],
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const trigger: HTMLElement = wrapper.container.querySelector('input')!;
@@ -454,6 +450,11 @@ describe('Components', () => {
                         const wrapper = render(ISelect, {
                             props: {
                                 ...props
+                            },
+                            global: {
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
                             }
                         });
                         const trigger: HTMLElement = wrapper.container.querySelector('input')!;
@@ -468,6 +469,11 @@ describe('Components', () => {
                         const wrapper = render(ISelect, {
                             props: {
                                 ...props
+                            },
+                            global: {
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
                             }
                         });
                         const trigger: HTMLElement = wrapper.container.querySelector('input')!;
@@ -484,6 +490,11 @@ describe('Components', () => {
                         const wrapper = render(ISelect, {
                             props: {
                                 ...props
+                            },
+                            global: {
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
                             }
                         });
                         const trigger: HTMLElement = wrapper.container.querySelector('input')!;
@@ -498,13 +509,20 @@ describe('Components', () => {
                         const wrapper = render(ISelect, {
                             props: {
                                 ...props
+                            },
+                            global: {
+                                provide: {
+                                    [InklineKey as symbol]: createInkline()
+                                }
                             }
                         });
                         const trigger: HTMLElement = wrapper.container.querySelector('input')!;
                         await fireEvent.click(trigger);
                         const menuItems = await wrapper.getAllByRole('option');
                         menuItems[1].focus();
-                        await fireEvent.keyDown(menuItems[menuItems.length - 1], { key: keymap.down[0] });
+                        await fireEvent.keyDown(menuItems[menuItems.length - 1], {
+                            key: keymap.down[0]
+                        });
                         expect(menuItems[menuItems.length - 1]).toHaveFocus();
                     });
                 });
@@ -516,6 +534,11 @@ describe('Components', () => {
                                 props: {
                                     hideOnItemClick: false,
                                     ...props
+                                },
+                                global: {
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
                                 }
                             });
                             const trigger: HTMLElement = wrapper.container.querySelector('input')!;
@@ -530,6 +553,11 @@ describe('Components', () => {
                                 props: {
                                     hideOnItemClick: true,
                                     ...props
+                                },
+                                global: {
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
                                 }
                             });
                             const trigger: HTMLElement = wrapper.container.querySelector('input')!;
@@ -549,6 +577,11 @@ describe('Components', () => {
                                 props: {
                                     hideOnItemClick: true,
                                     ...props
+                                },
+                                global: {
+                                    provide: {
+                                        [InklineKey as symbol]: createInkline()
+                                    }
                                 }
                             });
                             const trigger: HTMLElement = wrapper.container.querySelector('input')!;
@@ -559,270 +592,6 @@ describe('Components', () => {
                             expect(menu).not.toBeVisible();
                         });
                     });
-                });
-            });
-
-            describe('getFocusableItems()', () => {
-                it('should return focusable children', async () => {
-                    const children = [
-                        { tabIndex: 1 },
-                        { tabIndex: 2 },
-                        { tabIndex: 3 }
-                    ];
-                    const wrapper = createMockInstance(ISelect, {
-                        props,
-                        methods: {
-                            hide: vi.fn()
-                        },
-                        mocks: {
-                            $refs: {
-                                options: {
-                                    children
-                                }
-                            }
-                        }
-                    });
-
-                    const result = wrapper.getFocusableItems();
-                    expect(result).toEqual(children);
-                });
-            });
-
-            describe('getElementHeight()', () => {
-                it('should return computed style height', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props
-                    });
-                    const element = document.createElement('div');
-
-                    element.style.height = '400px';
-
-                    const result = wrapper.getElementHeight(element);
-                    expect(result).toEqual(400);
-                });
-
-                it('should return NaN if height unavailable', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props
-                    });
-                    const element = document.createElement('div');
-
-                    const result = wrapper.getElementHeight(element);
-                    expect(result).toEqual(NaN);
-                });
-            });
-
-            describe('inputMatchesLabel()', () => {
-                it('should return true if given value equals selected value label', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props
-                    });
-
-                    expect(wrapper.inputMatchesLabel(options[0].label)).toEqual(true);
-                });
-
-                it('should return undefined if given value does not equal selected value label', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props
-                    });
-
-                    expect(wrapper.inputMatchesLabel('Other')).toEqual(false);
-                });
-
-                it('should return undefined if no selected value', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props: {
-                            ...props,
-                            modelValue: null
-                        }
-                    });
-
-                    expect(wrapper.inputMatchesLabel(options[0].label)).toEqual(null);
-                });
-            });
-
-            describe('inputMatchesLength()', () => {
-                it('should return true if minLength is 0', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props: {
-                            ...props,
-                            minLength: 0
-                        }
-                    });
-
-                    expect(wrapper.inputMatchesLength('')).toEqual(true);
-                });
-
-                it('should return true if value length greater than or equal to minLength', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props: {
-                            ...props,
-                            minLength: 3
-                        }
-                    });
-
-                    expect(wrapper.inputMatchesLength('abc')).toEqual(true);
-                });
-
-                it('should return false if value length less than minLength', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props: {
-                            ...props,
-                            minLength: 3
-                        }
-                    });
-
-                    expect(wrapper.inputMatchesLength('ab')).toEqual(false);
-                });
-            });
-
-            describe('inputShouldShowSelect()', () => {
-                it('should return true if not autocomplete', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props: {
-                            ...props,
-                            autocomplete: false
-                        }
-                    });
-
-                    expect(wrapper.inputShouldShowSelect('')).toEqual(true);
-                });
-
-                it('should return true if autocomplete, matches min length and doesn\'t match label', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props: {
-                            ...props,
-                            minLength: 3,
-                            autocomplete: true
-                        }
-                    });
-
-                    expect(wrapper.inputShouldShowSelect('abc')).toEqual(true);
-                });
-
-                it('should return false if autocomplete and matches label', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props: {
-                            ...props,
-                            minLength: 3,
-                            autocomplete: true
-                        }
-                    });
-
-                    expect(wrapper.inputShouldShowSelect(options[0].label)).toEqual(false);
-                });
-
-                it('should return false if autocomplete and doesn\'t match min length', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props: {
-                            ...props,
-                            minLength: 3,
-                            autocomplete: true
-                        }
-                    });
-
-                    expect(wrapper.inputShouldShowSelect('ab')).toEqual(false);
-                });
-            });
-
-            describe('computeLabel()', () => {
-                it('should return inputValue if option not an object', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props
-                    });
-
-                    expect(wrapper.computeLabel('abc')).toEqual(wrapper.inputValue);
-                });
-
-                it('should evaluate label function if function provided', async () => {
-                    const option = { name: 'abc' };
-                    const wrapper = createMockInstance(ISelect, {
-                        props: {
-                            ...props,
-                            label: (o: any) => o.name
-                        }
-                    });
-
-                    expect(wrapper.computeLabel(option)).toEqual(option.name);
-                });
-            });
-
-            describe('onScroll()', () => {
-                it('should not emit if total is not set', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props: {
-                            ...props,
-                            total: undefined
-                        }
-                    });
-
-                    wrapper.onScroll();
-
-                    expect(wrapper.$emit).not.toHaveBeenCalledWith('pagination');
-                });
-
-                it('should emit pagination event', async () => {
-                    const body = document.createElement('div');
-                    body.scrollTop = 100;
-                    body.style.height = '500px';
-
-                    const options = document.createElement('div');
-                    options.style.height = '300px';
-
-                    const wrapper = createMockInstance(ISelect, {
-                        props: {
-                            ...props,
-                            total: 100
-                        },
-                        $refs: {
-                            body,
-                            options
-                        }
-                    });
-
-                    wrapper.onScroll();
-
-                    expect(wrapper.$emit).toHaveBeenCalledWith('pagination');
-                });
-            });
-
-            describe('onWindowResize()', () => {
-                it('should call onScroll', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props
-                    });
-
-                    wrapper.onWindowResize();
-
-                    expect(wrapper.onScroll).toHaveBeenCalled();
-                });
-
-                it('should createPopper if visible', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props,
-                        data: {
-                            visible: true
-                        },
-                        mocks: {
-                            createPopper: vi.fn(() => {})
-                        }
-                    });
-
-                    wrapper.onWindowResize();
-
-                    await waitFor(() => expect(wrapper.createPopper).toHaveBeenCalled());
-                });
-            });
-
-            describe('onEscape()', () => {
-                it('should call hide', async () => {
-                    const wrapper = createMockInstance(ISelect, {
-                        props
-                    });
-
-                    wrapper.onEscape();
-
-                    expect(wrapper.hide).toHaveBeenCalled();
                 });
             });
         });

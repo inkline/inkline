@@ -1,4 +1,4 @@
-import INav from '../index.vue';
+import { INav } from '../index';
 import {
     INavBasicExample,
     INavColorVariantsExample,

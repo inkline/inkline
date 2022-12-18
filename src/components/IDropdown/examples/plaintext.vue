@@ -1,1 +1,10 @@
-<template src="./plaintext.html" />
+<template>
+    <i-dropdown>
+        <i-button>Dropdown</i-button>
+        <template #body>
+            <i-dropdown-item plaintext>Item 1</i-dropdown-item>
+            <i-dropdown-item plaintext>Item 2</i-dropdown-item>
+            <i-dropdown-item plaintext>Item 3</i-dropdown-item>
+        </template>
+    </i-dropdown>
+</template>

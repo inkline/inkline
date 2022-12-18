@@ -1,1 +1,8 @@
-<template src="./basic.html" />
+<template>
+    <i-popover>
+        <i-button>Popover</i-button>
+        <template #header> Popover Header </template>
+        <template #body> This is the popover body. Useful information goes here. </template>
+        <template #footer> Popover Footer </template>
+    </i-popover>
+</template>

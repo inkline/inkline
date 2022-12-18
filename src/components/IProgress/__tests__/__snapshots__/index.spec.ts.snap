@@ -2,6 +2,9 @@
 
 exports[`Components > IProgress > should render correctly 1`] = `
 "<div class=\\"progress -primary -md\\">
-  <div class=\\"progress-bar -primary\\" style=\\"width: 50%;\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"50\\"></div>
+  <!-- @slot default Slot for progress bars -->
+  <div class=\\"progress-bar -primary\\" style=\\"width: 50%;\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"50\\">
+    <!-- @slot default Slot for default progress bar content -->
+  </div>
 </div>"
 `;

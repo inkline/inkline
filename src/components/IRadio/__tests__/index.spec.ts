@@ -1,5 +1,9 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IRadio } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { RadioGroupKey } from '@inkline/inkline/components/IRadioGroup';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('IRadio', () => {
@@ -14,7 +18,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IRadio, { props });
+            const wrapper = render(IRadio, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
@@ -25,6 +36,11 @@ describe('Components', () => {
                         props: {
                             color: props.color,
                             size: props.size
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const inputElement = wrapper.container.querySelector('input');
@@ -43,6 +59,11 @@ describe('Components', () => {
                             readonly: true,
                             native: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -62,8 +83,11 @@ describe('Components', () => {
                     const wrapper = render(IRadio, {
                         global: {
                             provide: {
-                                formGroup: {
-                                    checked: value
+                                [InklineKey as symbol]: createInkline(),
+                                [RadioGroupKey as symbol]: {
+                                    value: ref(value),
+                                    disabled: ref(false),
+                                    readonly: ref(false)
                                 }
                             }
                         },
@@ -84,6 +108,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const labelElement = wrapper.container.querySelector('label');
@@ -92,7 +121,14 @@ describe('Components', () => {
                 });
 
                 it('should be 1 otherwise', () => {
-                    const wrapper = render(IRadio, { props });
+                    const wrapper = render(IRadio, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
                     const labelElement = wrapper.container.querySelector('label');
 
                     expect(labelElement).toHaveAttribute('tabindex', '0');
@@ -107,6 +143,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const labelElement = wrapper.container.querySelector('label');
@@ -121,6 +162,11 @@ describe('Components', () => {
                         props: {
                             readonly: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const labelElement = wrapper.container.querySelector('label');
@@ -131,7 +177,14 @@ describe('Components', () => {
                 });
 
                 it('should change input value on click when clicking label', () => {
-                    const wrapper = render(IRadio, { props });
+                    const wrapper = render(IRadio, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
                     const labelElement = wrapper.container.querySelector('label');
                     const inputElement = wrapper.container.querySelector('input');
 
@@ -141,30 +194,18 @@ describe('Components', () => {
             });
 
             describe('onChange()', () => {
-                it('should call parent onInput', () => {
-                    const onInput = vi.fn();
-                    const wrapper = render(IRadio, {
-                        global: {
-                            provide: {
-                                form: {
-                                    onInput
-                                }
-                            }
-                        },
-                        props
-                    });
-                    const inputElement = wrapper.container.querySelector('input');
-
-                    fireEvent.change(inputElement as Element);
-                    expect(onInput).toHaveBeenCalled();
-                });
-
-                it('should call parent onChange if formGroup', () => {
+                it('should call parent radio group onChange', () => {
+                    const onBlur = vi.fn();
                     const onChange = vi.fn();
                     const wrapper = render(IRadio, {
                         global: {
                             provide: {
-                                formGroup: {
+                                [InklineKey as symbol]: createInkline(),
+                                [RadioGroupKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    value: ref(''),
+                                    onBlur,
                                     onChange
                                 }
                             }
@@ -179,13 +220,19 @@ describe('Components', () => {
             });
 
             describe('onBlur()', () => {
-                it('should call parent onBlur if defined', () => {
+                it('should call parent radio group onBlur', () => {
                     const onBlur = vi.fn();
+                    const onChange = vi.fn();
                     const wrapper = render(IRadio, {
                         global: {
                             provide: {
-                                form: {
-                                    onBlur
+                                [InklineKey as symbol]: createInkline(),
+                                [RadioGroupKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    value: ref(''),
+                                    onBlur,
+                                    onChange
                                 }
                             }
                         },
@@ -195,22 +242,6 @@ describe('Components', () => {
 
                     fireEvent.blur(labelElement as Element);
                     expect(onBlur).toHaveBeenCalled();
-                });
-
-                it('should not call parent onBlur if not defined', () => {
-                    const onBlur = vi.fn();
-                    const wrapper = render(IRadio, {
-                        global: {
-                            provide: {
-                                form: {}
-                            }
-                        },
-                        props
-                    });
-                    const labelElement = wrapper.container.querySelector('label');
-
-                    fireEvent.blur(labelElement as Element);
-                    expect(onBlur).not.toHaveBeenCalled();
                 });
             });
         });

@@ -1,80 +1,9 @@
-/* stylelint-disable scss/media-feature-value-dollar-variable */
-
-@use 'sass:list';
-
-// Breakpoints
-//
-
-// Creates a media query for a specific breakpoint interval
-//
-// @param media Breakpoint identifier
-//
-@mixin breakpoint-only($media) {
-    @if $media == 'xxl' {
-        @media screen and (min-width: breakpoint('xxl')) {
-            @content;
-        }
-    } @else if $media == 'xs' {
-        @media screen and (max-width: breakpoint('sm') - 1) {
-            @content;
-        }
-    } @else if contains($breakpoint-keys, $media) {
-        $index: list.index($breakpoint-keys, $media);
-        $next-media: list.nth($breakpoint-keys, $index + 1);
-
-        @media screen and (min-width: breakpoint($media)) and (max-width: breakpoint($next-media) - 1) {
-            @content;
-        }
-    } @else {
-        @content;
-    }
-}
-
-// Creates a media query up to the specified breakpoint
-//
-// @param media Breakpoint identifier
-//
-@mixin breakpoint-down($media) {
-    @if $media == 'xxl' {
-        @content;
-    } @else if contains($breakpoint-keys, $media) {
-        $index: list.index($breakpoint-keys, $media);
-        $next-media: null;
-
-        @if $index + 1 <= length($breakpoint-keys) {
-            $next-media: list.nth($breakpoint-keys, $index + 1);
-        }
-
-        @media screen and (max-width: breakpoint($next-media) - 1) {
-            @content;
-        }
-    } @else {
-        @content;
-    }
-}
-
-// Creates a media query starting from the specified breakpoint
-//
-// @param media Breakpoint identifier
-//
-@mixin breakpoint-up($media) {
-    @if $media == 'xs' {
-        @content;
-    } @else if contains($breakpoint-keys, $media) {
-        @media screen and (min-width: breakpoint($media)) {
-            @content;
-        }
-    } @else {
-        @content;
-    }
-}
-
 // Get the infix name of a breakpoint
 //
 // @param media Breakpoint identifier
 //
 @function breakpoint-infix($media) {
-    @if $media == '_' {
+    @if $media == '' {
         @return '';
     } @else {
         @return '-' + $media;
@@ -86,11 +15,9 @@
 // @param media Breakpoint identifier
 //
 @function breakpoint-prefix($media) {
-    @if $media == '_' {
+    @if $media == '' {
         @return '';
     } @else {
         @return $media + '\\:';
     }
 }
-
-/* stylelint-enable scss/media-feature-value-dollar-variable */

@@ -1,4 +1,4 @@
-import ICheckbox from '../index.vue';
+import ICheckbox from '../ICheckbox.vue';
 import {
     ICheckboxBasicExample,
     ICheckboxColorVariantsExample,
@@ -12,7 +12,12 @@ import {
     ICheckboxReadonlyExample,
     ICheckboxSizeVariantsExample
 } from './index';
-import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
+import {
+    colorArgType,
+    createStory,
+    sizeArgType,
+    createExampleStory
+} from '@inkline/inkline/__storybook__';
 
 export default {
     component: ICheckbox,
@@ -24,13 +29,13 @@ export default {
 };
 
 export const Basic = createStory(ICheckboxBasicExample);
-export const ColorVariants = () => ICheckboxColorVariantsExample;
-export const Disabled = () => ICheckboxDisabledExample;
-export const Group = () => ICheckboxGroupExample;
-export const GroupDisabled = () => ICheckboxGroupDisabledExample;
-export const GroupSizeVariants = () => ICheckboxGroupSizeVariantsExample;
-export const GroupColorVariants = () => ICheckboxGroupColorVariantsExample;
-export const Indeterminate = () => ICheckboxIndeterminateExample;
-export const Native = () => ICheckboxNativeExample;
-export const Readonly = () => ICheckboxReadonlyExample;
-export const SizeVariants = () => ICheckboxSizeVariantsExample;
+export const ColorVariants = createExampleStory(ICheckboxColorVariantsExample);
+export const Disabled = createExampleStory(ICheckboxDisabledExample);
+export const Group = createExampleStory(ICheckboxGroupExample);
+export const GroupDisabled = createExampleStory(ICheckboxGroupDisabledExample);
+export const GroupSizeVariants = createExampleStory(ICheckboxGroupSizeVariantsExample);
+export const GroupColorVariants = createExampleStory(ICheckboxGroupColorVariantsExample);
+export const Indeterminate = createExampleStory(ICheckboxIndeterminateExample);
+export const Native = createExampleStory(ICheckboxNativeExample);
+export const Readonly = createExampleStory(ICheckboxReadonlyExample);
+export const SizeVariants = createExampleStory(ICheckboxSizeVariantsExample);

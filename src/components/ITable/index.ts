@@ -1,0 +1,1 @@
+export { default as ITable } from './ITable.vue';

@@ -1,1 +1,11 @@
-<template src="./color-variants.html" />
+<template>
+    <i-tooltip color="light">
+        <i-button color="light">Light Tooltip</i-button>
+        <template #body>Tooltip</template>
+    </i-tooltip>
+
+    <i-tooltip color="dark">
+        <i-button color="dark">Dark Tooltip</i-button>
+        <template #body>Tooltip</template>
+    </i-tooltip>
+</template>

@@ -3,55 +3,18 @@
  */
 
 .header {
-    ////
-    /// Variables for the primary color variant
-    /// @name primary
-    /// @type variant
-    ////
-    @include variant('primary') {
-        ////
-        /// The background of the header component, for the primary color variant
-        /// @name background
-        ////
-        ----background: #{color('primary')};
-        ////
-        /// The color of the header component, for the primary color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-primary)};
+    &.-primary {
+        --header--background: var(--header--primary--background, var(--color-primary));
+        --header--color: var(--header--primary--color, var(--contrast-text--color-primary));
     }
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light') {
-        ////
-        /// The background of the header component, for the light color variant
-        /// @name background
-        ////
-        ----background: #{color('light')};
-        ////
-        /// The color of the header component, for the light color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-light)};
+
+    &.-light {
+        --header--background: var(--header--light--background, var(--color-light));
+        --header--color: var(--header--light--color, var(--contrast-text--color-light));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark') {
-        ////
-        /// The background of the header component, for the dark color variant
-        /// @name background
-        ////
-        ----background: #{color('dark')};
-        ////
-        /// The color of the header component, for the dark color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-dark)};
+
+    &.-dark {
+        --header--background: var(--header--dark--background, var(--color-dark));
+        --header--color: var(--header--dark--color, var(--contrast-text--color-dark));
     }
 }

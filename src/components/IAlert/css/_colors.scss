@@ -3,172 +3,75 @@
  */
 
 .alert {
-    ////
-    /// Variables for the info color variant
-    /// @name info
-    /// @type variant
-    ////
-    @include variant('info') {
-        ////
-        /// The background of the alert component, for the info color variant
-        /// @name background
-        ////
-        ----background: #{color('info')};
-        ////
-        /// The border top color of the alert component, for the info color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('info-60')};
-        ////
-        /// The border right color of the alert component, for the info color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('info-60')};
-        ////
-        /// The border bottom color of the alert component, for the info color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('info-60')};
-        ////
-        /// The border left color of the alert component, for the info color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('info-60')};
-        ////
-        /// The text color of the alert component, for the info color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-info)};
-        ////
-        /// The code background of the alert component, for the info color variant
-        /// @name code--background
-        ////
-        ----code--background: #{color('info-60')};
+    &.-info {
+        --alert--background: var(--alert--info--background, var(--color-info-100));
+        --alert--border-top-color: var(--alert--info--border-top-color, var(--color-info-500));
+        --alert--border-right-color: var(--alert--info--border-right-color, var(--color-info-500));
+        --alert--border-bottom-color: var(
+            --alert--info--border-bottom-color,
+            var(--color-info-500)
+        );
+        --alert--border-left-color: var(--alert--info--border-left-color, var(--color-info-500));
+        --alert--color: var(--alert--info--color, var(--color-info-800));
     }
-    ////
-    /// Variables for the success color variant
-    /// @name success
-    /// @type variant
-    ////
-    @include variant('success') {
-        ////
-        /// The background of the alert component, for the success color variant
-        /// @name background
-        ////
-        ----background: #{color('success')};
-        ////
-        /// The border top color of the alert component, for the success color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('success-60')};
-        ////
-        /// The border right color of the alert component, for the success color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('success-60')};
-        ////
-        /// The border bottom color of the alert component, for the success color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('success-60')};
-        ////
-        /// The border left color of the alert component, for the success color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('success-60')};
-        ////
-        /// The text color of the alert component, for the success color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-success)};
-        ////
-        /// The code background of the alert component, for the success color variant
-        /// @name code--background
-        ////
-        ----code--background: #{color('success-60')};
+
+    &.-success {
+        --alert--background: var(--alert--success--background, var(--color-success-100));
+        --alert--border-top-color: var(
+            --alert--success--border-top-color,
+            var(--color-success-500)
+        );
+        --alert--border-right-color: var(
+            --alert--success--border-right-color,
+            var(--color-success-500)
+        );
+        --alert--border-bottom-color: var(
+            --alert--success--border-bottom-color,
+            var(--color-success-500)
+        );
+        --alert--border-left-color: var(
+            --alert--success--border-left-color,
+            var(--color-success-500)
+        );
+        --alert--color: var(--alert--success--color, var(--color-success-800));
     }
-    ////
-    /// Variables for the warning color variant
-    /// @name warning
-    /// @type variant
-    ////
-    @include variant('warning') {
-        ////
-        /// The background of the alert component, for the warning color variant
-        /// @name background
-        ////
-        ----background: #{color('warning')};
-        ////
-        /// The border top color of the alert component, for the warning color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('warning-60')};
-        ////
-        /// The border right color of the alert component, for the warning color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('warning-60')};
-        ////
-        /// The border bottom color of the alert component, for the warning color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('warning-60')};
-        ////
-        /// The border left color of the alert component, for the warning color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('warning-60')};
-        ////
-        /// The text color of the alert component, for the warning color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-warning)};
-        ////
-        /// The code background of the alert component, for the warning color variant
-        /// @name code--background
-        ////
-        ----code--background: #{color('warning-60')};
+
+    &.-warning {
+        --alert--background: var(--alert--warning--background, var(--color-warning-100));
+        --alert--border-top-color: var(
+            --alert--warning--border-top-color,
+            var(--color-warning-500)
+        );
+        --alert--border-right-color: var(
+            --alert--warning--border-right-color,
+            var(--color-warning-500)
+        );
+        --alert--border-bottom-color: var(
+            --alert--warning--border-bottom-color,
+            var(--color-warning-500)
+        );
+        --alert--border-left-color: var(
+            --alert--warning--border-left-color,
+            var(--color-warning-500)
+        );
+        --alert--color: var(--alert--warning--color, var(--color-warning-800));
     }
-    ////
-    /// Variables for the danger color variant
-    /// @name danger
-    /// @type variant
-    ////
-    @include variant('danger') {
-        ////
-        /// The background of the alert component, for the danger color variant
-        /// @name background
-        ////
-        ----background: #{color('danger')};
-        ////
-        /// The border top color of the alert component, for the danger color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('danger-60')};
-        ////
-        /// The border right color of the alert component, for the danger color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('danger-60')};
-        ////
-        /// The border bottom color of the alert component, for the danger color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('danger-60')};
-        ////
-        /// The border left color of the alert component, for the danger color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('danger-60')};
-        ////
-        /// The text color of the alert component, for the danger color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-danger)};
-        ////
-        /// The code background of the alert component, for the danger color variant
-        /// @name code--background
-        ////
-        ----code--background: #{color('danger-60')};
+
+    &.-danger {
+        --alert--background: var(--alert--danger--background, var(--color-danger-100));
+        --alert--border-top-color: var(--alert--danger--border-top-color, var(--color-danger-500));
+        --alert--border-right-color: var(
+            --alert--danger--border-right-color,
+            var(--color-danger-500)
+        );
+        --alert--border-bottom-color: var(
+            --alert--danger--border-bottom-color,
+            var(--color-danger-500)
+        );
+        --alert--border-left-color: var(
+            --alert--danger--border-left-color,
+            var(--color-danger-500)
+        );
+        --alert--color: var(--alert--danger--color, var(--color-danger-800));
     }
 }

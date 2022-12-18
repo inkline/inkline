@@ -1,0 +1,42 @@
+/**
+ * Body
+ *
+ * As a best practice, apply a default `background-color`.
+ * Prevent adjustments of font size after orientation changes in iOS.
+ * Change the default tap highlight to be completely transparent in iOS.
+ */
+
+////
+/// The color of the body element
+/// @name body--color
+/// @type color
+////
+
+////
+/// The background of the body element
+/// @name body--background
+/// @type background
+////
+
+////
+/// The text-align of the body element
+/// @name body--text-align
+/// @type text-align
+////
+
+body {
+    color: var(--body--color, var(--text--color-dark));
+    background-color: var(--body--background, var(--color-white));
+    font-family: var(--body--font-family, var(--font-family-primary-base));
+    font-size: var(--body--font-size, var(--font-size));
+    line-height: var(--body--line-height, var(--line-height));
+    text-align: var(--body--text-align, left);
+    transition-property: var(--body--transition-property, (background-color, color));
+    transition-duration: var(--body--transition-duration, var(--transition-duration));
+    transition-timing-function: var(
+        --body--transition-timing-function,
+        var(--transition-timing-function)
+    );
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: var(--body--tap-highlight-color, rgba(0, 0, 0, 0));
+}

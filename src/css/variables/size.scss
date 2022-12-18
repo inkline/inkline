@@ -1,0 +1,26 @@
+:root {
+    /**
+     * Size multiplier variable
+     */
+    --size-multiplier: 1;
+
+    /**
+     * Size percentage variables
+     */
+    --size-percentages-0: 0%;
+    --size-percentages-25: 25%;
+    --size-percentages-50: 50%;
+    --size-percentages-75: 75%;
+    --size-percentages-100: 100%;
+
+    /**
+     * Size multiplier variants variables
+     */
+    --size-multiplier-2xs: calc(var(--size-multiplier) / var(--scale-ratio-pow-3));
+    --size-multiplier-xs: calc(var(--size-multiplier) / var(--scale-ratio-pow-2));
+    --size-multiplier-sm: calc(var(--size-multiplier) / var(--scale-ratio-pow-1));
+    --size-multiplier-md: var(--size-multiplier);
+    --size-multiplier-lg: calc(var(--size-multiplier) * var(--scale-ratio-pow-1));
+    --size-multiplier-xl: calc(var(--size-multiplier) * var(--scale-ratio-pow-2));
+    --size-multiplier-2xl: calc(var(--size-multiplier) * var(--scale-ratio-pow-3));
+}

@@ -1,9 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`mixins > LinkableMixin > computed > isTag > should be <a> if href attribute 1`] = `"<a is=\\"a\\" href=\\"https://inkline.io\\"></a>"`;
-
-exports[`mixins > LinkableMixin > computed > isTag > should be <router-link> if to attribute 1`] = `"<a is=\\"router-link\\" to=\\"https://inkline.io\\"></a>"`;
-
-exports[`mixins > LinkableMixin > computed > isTag > should be <tag> if not href attribute 1`] = `"<a is=\\"a\\" href=\\"https://inkline.io\\"></a>"`;
-
-exports[`mixins > LinkableMixin > should render correctly 1`] = `"<a is=\\"a\\"></a>"`;

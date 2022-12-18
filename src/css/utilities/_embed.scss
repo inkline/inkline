@@ -6,7 +6,7 @@
  * Credit: Nicolas Gallagher and SUIT CSS.
  */
 
-[class^="_embed"] {
+[class^='_embed'] {
     position: relative;
     display: block;
     width: 100%;
@@ -34,17 +34,25 @@
 }
 
 ._embed\:21\:9 {
-    &::before { padding-top: math.percentage(math.div(9, 21)); }
+    &::before {
+        padding-top: math.percentage(math.div(9, 21));
+    }
 }
 
 ._embed\:16\:9 {
-    &::before { padding-top: math.percentage(math.div(9, 16)); }
+    &::before {
+        padding-top: math.percentage(math.div(9, 16));
+    }
 }
 
 ._embed\:4\:3 {
-    &::before { padding-top: math.percentage(math.div(3, 4)); }
+    &::before {
+        padding-top: math.percentage(math.div(3, 4));
+    }
 }
 
 ._embed\:1\:1 {
-    &::before { padding-top: math.percentage(math.div(1, 1)); }
+    &::before {
+        padding-top: math.percentage(math.div(1, 1));
+    }
 }

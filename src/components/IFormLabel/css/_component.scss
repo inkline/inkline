@@ -1,0 +1,71 @@
+////
+/// The font size of the form label component
+/// @name form-label--font-size
+/// @type size
+////
+
+////
+/// The margin top of the form label component
+/// @name form-label--margin-top
+////
+
+////
+/// The margin right of the form label component
+/// @name form-label--margin-right
+////
+
+////
+/// The margin bottom of the form label component
+/// @name form-label--margin-bottom
+////
+
+////
+/// The margin left of the form label component
+/// @name form-label--margin-left
+////
+
+/**
+ * Form Label
+ */
+
+.form-label {
+    position: relative;
+    flex-basis: 100%;
+    transition-property: var(--form-label--transition-property, color);
+    transition-duration: var(--form-label--transition-duration, var(--transition-duration));
+    transition-timing-function: var(
+        --form-label--transition-timing-function,
+        var(--transition-timing-function)
+    );
+    font-size: var(--form-label--font-size, var(--font-size));
+    margin: var(
+        --form-label--margin,
+        var(--form-label--margin-top, 0) var(--form-label--margin-right, 0)
+            var(--form-label--margin-bottom, var(--margin-bottom-1-4))
+            var(--form-label--margin-left, 0)
+    );
+
+    &.-right {
+        margin-right: 0;
+        order: 1;
+    }
+
+    .form-group.-required > & {
+        &::after {
+            color: var(--form-label--required--color, var(--color-danger));
+            content: ' *';
+        }
+    }
+
+    .form-group.-error > & {
+        color: var(--form-label--error--color, var(--color-danger));
+    }
+
+    .form-group.-inline > & {
+        margin-right: var(--form-label--inline--margin-right, var(--margin-right));
+
+        &.-right {
+            margin-left: var(--form-label--inline--margin-left, var(--margin-left));
+        }
+    }
+}

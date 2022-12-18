@@ -1,1 +1,8 @@
-<template src="./vertical-alignment-middle.html" />
+<template>
+    <i-container>
+        <i-row middle>
+            <i-column xs="6"></i-column>
+            <i-column xs="6"></i-column>
+        </i-row>
+    </i-container>
+</template>

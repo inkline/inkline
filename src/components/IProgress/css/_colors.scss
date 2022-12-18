@@ -3,68 +3,43 @@
  */
 
 .progress {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light') {
-        ////
-        /// The background of the progress component, for the light color variant
-        /// @name background
-        ////
-        ----background: #{color('light')};
-        ////
-        /// The border top color of the progress component, for the light color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('light-55')};
-        ////
-        /// The border right color of the progress component, for the light color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('light-55')};
-        ////
-        /// The border bottom color of the progress component, for the light color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('light-55')};
-        ////
-        /// The border left color of the progress component, for the light color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('light-55')};
+    &.-light {
+        --progress--background: var(--progress--light--background, var(--color-light));
+        --progress--border-top-color: var(
+            --progress--light--border-top-color,
+            var(--color-light-shade-50)
+        );
+        --progress--border-right-color: var(
+            --progress--light--border-right-color,
+            var(--color-light-shade-50)
+        );
+        --progress--border-bottom-color: var(
+            --progress--light--border-bottom-color,
+            var(--color-light-shade-50)
+        );
+        --progress--border-left-color: var(
+            --progress--light--border-left-color,
+            var(--color-light-shade-50)
+        );
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark') {
-        ////
-        /// The background of the progress component, for the dark color variant
-        /// @name background
-        ////
-        ----background: #{color('dark-60')};
-        ////
-        /// The border top color of the progress component, for the dark color variant
-        /// @name border-top-color
-        ////
-        ----border-top-color: #{color('dark-45')};
-        ////
-        /// The border right color of the progress component, for the dark color variant
-        /// @name border-right-color
-        ////
-        ----border-right-color: #{color('dark-45')};
-        ////
-        /// The border bottom color of the progress component, for the dark color variant
-        /// @name border-bottom-color
-        ////
-        ----border-bottom-color: #{color('dark-45')};
-        ////
-        /// The border left color of the progress component, for the dark color variant
-        /// @name border-left-color
-        ////
-        ----border-left-color: #{color('dark-45')};
+
+    &.-dark {
+        --progress--background: var(--progress--dark--background, var(--color-dark));
+        --progress--border-top-color: var(
+            --progress--dark--border-top-color,
+            var(--color-dark-tint-50)
+        );
+        --progress--border-right-color: var(
+            --progress--dark--border-right-color,
+            var(--color-dark-tint-50)
+        );
+        --progress--border-bottom-color: var(
+            --progress--dark--border-bottom-color,
+            var(--color-dark-tint-50)
+        );
+        --progress--border-left-color: var(
+            --progress--dark--border-left-color,
+            var(--color-dark-tint-50)
+        );
     }
 }

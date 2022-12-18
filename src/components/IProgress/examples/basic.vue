@@ -1,1 +1,5 @@
-<template src="./basic.html" />
+<template>
+    <i-progress>
+        <i-progress-bar :value="65" />
+    </i-progress>
+</template>

@@ -1,11 +1,11 @@
 name: Build
-on: [ 'push', 'pull_request' ]
+on: [ 'push' ]
 jobs:
     build:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                node: [ '14' ]
+                node: [ '16' ]
         name: Node ${{ matrix.node }}
         steps:
             -   name: Set up repository

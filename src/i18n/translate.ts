@@ -1,4 +1,4 @@
-import { getValueByPath, isFunction } from '@inkline/inkline/helpers';
+import { getValueByPath, isFunction } from '@grozav/utils';
 import { i18n } from '@inkline/inkline/i18n';
 
 /**
@@ -7,9 +7,9 @@ import { i18n } from '@inkline/inkline/i18n';
  * @param path
  * @param params
  */
-export function translate (path: string, params: { [key: string]: any } = {}): string {
+export function translate(path: string, params: { [key: string]: any } = {}): string {
     const valueByPath = getValueByPath(i18n.messages[i18n.locale], path);
-    const string = isFunction(valueByPath) ? valueByPath(params) : valueByPath || path;
+    const string = (isFunction(valueByPath) ? valueByPath(params) : valueByPath) || path;
 
     return Object.keys(params).reduce((acc, key) => {
         return acc.replace(new RegExp(`{${key}}`, 'g'), `${params[key]}`);

@@ -1,1 +1,6 @@
-<template src="./basic.html" />
+<template>
+    <i-tooltip>
+        <i-button>Tooltip</i-button>
+        <template #body>Tooltip</template>
+    </i-tooltip>
+</template>

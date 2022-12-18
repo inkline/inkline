@@ -3,48 +3,15 @@
  */
 
 .breadcrumb {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light') {
-        ////
-        /// The text color of the breadcrumb component, for the light color variant
-        /// @name color
-        ////
-        ----color: #{color('gray-90')};
-        ////
-        /// The link color of the breadcrumb component, for the light color variant
-        /// @name color--link
-        ////
-        ----color--link: #{color('primary')};
-        ////
-        /// The text active color of the breadcrumb component, for the light color variant
-        /// @name color--active
-        ////
-        ----color--active: #{color('gray-70')};
+    &.-light {
+        --breadcrumb--color: var(--text--color-dark);
+        --breadcrumb--link--color: var(--color-primary);
+        --breadcrumb--active--color: var(--color-gray-500);
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark') {
-        ////
-        /// The text color of the breadcrumb component, for the dark color variant
-        /// @name color
-        ////
-        ----color: #{color('white')};
-        ////
-        /// The link color of the breadcrumb component, for the dark color variant
-        /// @name color--link
-        ////
-        ----color--link: #{color('primary')};
-        ////
-        /// The text active color of the breadcrumb component, for the dark color variant
-        /// @name color--active
-        ////
-        ----color--active: #{color('gray-40')};
+
+    &.-dark {
+        --breadcrumb--color: var(--text--color-light);
+        --breadcrumb--link--color: var(--color-primary);
+        --breadcrumb--active--color: var(--color-gray-500);
     }
 }

@@ -1,1 +1,7 @@
-<template src="./circle.html" />
+<template>
+    <i-button circle size="sm">S</i-button>
+
+    <i-button circle>M</i-button>
+
+    <i-button circle size="lg">L</i-button>
+</template>

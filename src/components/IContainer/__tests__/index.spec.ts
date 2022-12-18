@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IContainer } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('IContainer', () => {
@@ -10,7 +12,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IContainer, { props });
+            const wrapper = render(IContainer, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
@@ -21,12 +30,15 @@ describe('Components', () => {
                     const wrapper = render(IContainer, {
                         props: {
                             fluid: true
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        '-fluid'
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass('-fluid');
                 });
             });
         });

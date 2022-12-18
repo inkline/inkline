@@ -1,4 +1,4 @@
-import IMedia from '../index.vue';
+import { IMedia } from '../index';
 import {
     IMediaAlignmentExample,
     IMediaBasicExample,

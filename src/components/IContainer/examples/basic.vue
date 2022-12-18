@@ -1,1 +1,7 @@
-<template src="./basic.html" />
+<template>
+    <i-container>
+        <i-row>
+            <i-column> Container </i-column>
+        </i-row>
+    </i-container>
+</template>

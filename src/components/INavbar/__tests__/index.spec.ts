@@ -1,5 +1,13 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { INav, INavbar, INavbarBrand, INavbarCollapsible, INavItem } from '@inkline/inkline/components';
+import {
+    INav,
+    INavbar,
+    INavbarBrand,
+    INavbarCollapsible,
+    INavItem
+} from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('INavbar', () => {
@@ -35,7 +43,10 @@ describe('Components', () => {
         it('should render correctly', () => {
             const wrapper = render(INavbar, {
                 global: {
-                    stubs
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
                 },
                 props,
                 slots
@@ -49,7 +60,10 @@ describe('Components', () => {
                 it('should add classes based on props', async () => {
                     const wrapper = render(INavbar, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props: {
                             modelValue: true,
@@ -76,7 +90,10 @@ describe('Components', () => {
                 it('should close the navbar if open', async () => {
                     const wrapper = render(INavbar, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props: {
                             collapseOnItemClick: true,
@@ -91,22 +108,6 @@ describe('Components', () => {
                     await fireEvent.click(items[0]);
 
                     expect(wrapper.emitted()['update:modelValue'][0]).toEqual([false]);
-                });
-            });
-
-            describe('onClickOutside()', () => {
-                it('should close the navbar if open', () => {
-                    const setOpen = vi.fn();
-                    const wrapper = {
-                        collapseOnClickOutside: true,
-                        open: true,
-                        setOpen,
-                        onClickOutside: INavbar.methods!.onClickOutside
-                    };
-
-                    wrapper.onClickOutside();
-
-                    expect(setOpen).toHaveBeenCalledWith(false);
                 });
             });
         });

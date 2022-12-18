@@ -3,7 +3,7 @@
 exports[`Components > IPagination > should render correctly 1`] = `
 "<nav class=\\"pagination -light -md\\" role=\\"navigation\\" aria-label=\\"Pagination\\">
   <ul class=\\"pagination-items\\">
-    <li class=\\"pagination-item -previous -disabled\\"><span aria-hidden=\\"true\\">&lt;</span></li>
+    <li class=\\"pagination-item -previous -disabled\\"><span aria-hidden=\\"true\\"><!-- @slot previous Slot for previous button content -->&lt;</span></li>
     <li class=\\"pagination-item -first -active\\"> 1 </li>
     <!--v-if-->
     <li class=\\"pagination-item\\" aria-current=\\"false\\">2</li>
@@ -11,7 +11,7 @@ exports[`Components > IPagination > should render correctly 1`] = `
     <li class=\\"pagination-item\\" aria-current=\\"false\\">4</li>
     <!--v-if-->
     <li class=\\"pagination-item -last\\">5</li>
-    <li class=\\"pagination-item -next\\"><span aria-hidden=\\"true\\">&gt;</span></li>
+    <li class=\\"pagination-item -next\\"><span aria-hidden=\\"true\\"><!-- @slot next Slot for next button content -->&gt;</span></li>
   </ul>
 </nav>"
 `;

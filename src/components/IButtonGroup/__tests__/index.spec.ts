@@ -1,5 +1,9 @@
 import { render } from '@testing-library/vue';
 import { IButtonGroup } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { ButtonGroupKey } from '@inkline/inkline/components/IButtonGroup/mixin';
+import { ref } from 'vue';
 
 describe('Components', () => {
     describe('IButtonGroup', () => {
@@ -10,7 +14,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IButtonGroup, { props });
+            const wrapper = render(IButtonGroup, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
@@ -24,6 +35,11 @@ describe('Components', () => {
                             block: true,
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -41,6 +57,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -51,39 +72,12 @@ describe('Components', () => {
                     const wrapper = render(IButtonGroup, {
                         global: {
                             provide: {
-                                buttonGroup: {
-                                    disabled: true
-                                }
-                            }
-                        },
-                        props
-                    });
-
-                    expect(wrapper.container.firstChild).toHaveAttribute('aria-disabled', 'true');
-                });
-
-                it('should be disabled if form is disabled', () => {
-                    const wrapper = render(IButtonGroup, {
-                        global: {
-                            provide: {
-                                form: {
-                                    disabled: true
-                                }
-                            }
-                        },
-                        props
-                    });
-
-                    expect(wrapper.container.firstChild).toHaveAttribute('aria-disabled', 'true');
-                });
-
-                it('should be disabled if formGroup is disabled', () => {
-                    const wrapper = render(IButtonGroup, {
-                        global: {
-                            provide: {
-                                formGroup: {
-                                    disabled: true
-                                }
+                                [ButtonGroupKey as symbol]: {
+                                    disabled: ref(true),
+                                    color: ref(''),
+                                    size: ref('')
+                                },
+                                [InklineKey as symbol]: createInkline()
                             }
                         },
                         props

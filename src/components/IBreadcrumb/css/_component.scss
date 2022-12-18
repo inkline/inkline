@@ -1,0 +1,53 @@
+////
+/// The text color of the breadcrumb component
+/// @name breadcrumb--color
+/// @type color
+////
+
+////
+/// The link color of the breadcrumb component
+/// @name breadcrumb--link--color
+/// @type color
+////
+
+////
+/// The text active color of the breadcrumb component
+/// @name breadcrumb--active--color
+/// @type color
+////
+
+////
+/// The font size of the breadcrumb component
+/// @name breadcrumb--font-size
+/// @type size
+////
+
+////
+/// The bottom margin of the breadcrumb component
+/// @name breadcrumb--margin-bottom
+////
+
+////
+/// The padding right of the breadcrumb component
+/// @name breadcrumb--padding-right
+/// @type size
+////
+
+////
+/// The padding left of the breadcrumb component
+/// @name breadcrumb--padding-left
+/// @type size
+////
+
+.breadcrumb {
+    display: flex;
+    margin-bottom: var(--breadcrumb--margin-bottom, var(--margin-bottom));
+    font-size: var(--breadcrumb--font-size, var(--font-size));
+
+    ol {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        list-style: none;
+    }
+}

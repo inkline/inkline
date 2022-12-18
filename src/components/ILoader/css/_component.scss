@@ -1,0 +1,92 @@
+////
+/// The animation duration of the loader component
+/// @name loader--animation-duration
+////
+
+////
+/// The size of the loader component
+/// @name loader--size
+/// @type size
+////
+
+////
+/// The background of the loader component
+/// @name loader--background
+/// @type color
+////
+
+/**
+ * Loader
+ */
+
+.loader {
+    display: inline-block;
+    position: relative;
+    width: var(--loader--size);
+    height: var(--loader--size);
+
+    &::before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+    }
+
+    .loader-text,
+    > svg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .loader-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    > svg {
+        animation: loader-rotate var(--loader--animation-duration, 1.2s) linear infinite;
+        transform-origin: center center;
+
+        > circle {
+            stroke: var(--loader--background);
+            stroke-dasharray: 89, 200;
+            stroke-dashoffset: -35px;
+            animation: loader-dash var(--loader--animation-duration, 1.2s) ease-in-out infinite;
+            stroke-linecap: round;
+        }
+    }
+
+    &.-auto {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@keyframes loader-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}

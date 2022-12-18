@@ -1,5 +1,9 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IToggle } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
+import { ref } from 'vue';
+import { FormKey } from '@inkline/inkline/components/IForm';
 
 describe('Components', () => {
     describe('IToggle', () => {
@@ -14,7 +18,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IToggle, { props });
+            const wrapper = render(IToggle, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
@@ -25,6 +36,11 @@ describe('Components', () => {
                         props: {
                             color: props.color,
                             size: props.size
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const inputElement = wrapper.container.querySelector('input');
@@ -42,6 +58,11 @@ describe('Components', () => {
                             disabled: true,
                             readonly: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 
@@ -56,16 +77,23 @@ describe('Components', () => {
 
             describe('checked', () => {
                 it('should be equal to schema.value if schema', () => {
+                    const onBlur = vi.fn();
+                    const onInput = vi.fn();
                     const value = true;
                     const wrapper = render(IToggle, {
                         global: {
                             provide: {
-                                form: {
-                                    schema: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    schema: ref({
                                         [props.name]: {
                                             value
                                         }
-                                    }
+                                    }),
+                                    onBlur,
+                                    onInput
                                 }
                             }
                         },
@@ -85,6 +113,11 @@ describe('Components', () => {
                         props: {
                             modelValue: value,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const inputElement = wrapper.container.querySelector('input');
@@ -99,6 +132,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const labelElement = wrapper.container.querySelector('label');
@@ -107,7 +145,14 @@ describe('Components', () => {
                 });
 
                 it('should be 1 otherwise', () => {
-                    const wrapper = render(IToggle, { props });
+                    const wrapper = render(IToggle, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
                     const labelElement = wrapper.container.querySelector('label');
 
                     expect(labelElement).toHaveAttribute('tabindex', '0');
@@ -122,6 +167,11 @@ describe('Components', () => {
                         props: {
                             disabled: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const labelElement = wrapper.container.querySelector('label');
@@ -136,6 +186,11 @@ describe('Components', () => {
                         props: {
                             readonly: true,
                             ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
                     const labelElement = wrapper.container.querySelector('label');
@@ -146,7 +201,14 @@ describe('Components', () => {
                 });
 
                 it('should change input value on click when clicking label', () => {
-                    const wrapper = render(IToggle, { props });
+                    const wrapper = render(IToggle, {
+                        props,
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
                     const labelElement = wrapper.container.querySelector('label');
                     const inputElement = wrapper.container.querySelector('input');
 
@@ -157,11 +219,16 @@ describe('Components', () => {
 
             describe('onChange()', () => {
                 it('should call parent onInput', () => {
+                    const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(IToggle, {
                         global: {
                             provide: {
-                                form: {
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
                                     onInput
                                 }
                             }
@@ -179,11 +246,16 @@ describe('Components', () => {
             describe('onBlur()', () => {
                 it('should call parent onBlur if defined', () => {
                     const onBlur = vi.fn();
+                    const onInput = vi.fn();
                     const wrapper = render(IToggle, {
                         global: {
                             provide: {
-                                form: {
-                                    onBlur
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
+                                    onInput
                                 }
                             }
                         },
@@ -193,22 +265,6 @@ describe('Components', () => {
 
                     fireEvent.blur(labelElement as Element);
                     expect(onBlur).toHaveBeenCalled();
-                });
-
-                it('should not call parent onBlur if not defined', () => {
-                    const onBlur = vi.fn();
-                    const wrapper = render(IToggle, {
-                        global: {
-                            provide: {
-                                form: {}
-                            }
-                        },
-                        props
-                    });
-                    const labelElement = wrapper.container.querySelector('label');
-
-                    fireEvent.blur(labelElement as Element);
-                    expect(onBlur).not.toHaveBeenCalled();
                 });
             });
         });

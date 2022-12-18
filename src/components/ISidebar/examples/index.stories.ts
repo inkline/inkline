@@ -1,4 +1,4 @@
-import ISidebar from '../index.vue';
+import { ISidebar } from '../index';
 import {
     ISidebarBasicExample,
     ISidebarCollapseBreakpointExample,
@@ -12,7 +12,7 @@ import {
     ISidebarRoutingExample,
     ISidebarRoutingActiveExample
 } from './index';
-import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
+import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {
     component: ISidebar,
@@ -23,7 +23,7 @@ export default {
     }
 };
 
-export const Basic = createStory(ISidebarBasicExample);
+export const Basic = () => ISidebarBasicExample;
 export const CollapseBreakpoint = () => ISidebarCollapseBreakpointExample;
 export const CollapseTrue = () => ISidebarCollapseTrueExample;
 export const CollapseFalse = () => ISidebarCollapseFalseExample;

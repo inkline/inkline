@@ -1,3 +1,7 @@
 // Vitest Snapshot v1
 
-exports[`Components > IRow > should render correctly 1`] = `"<div class=\\"row\\"></div>"`;
+exports[`Components > IRow > should render correctly 1`] = `
+"<div class=\\"row\\">
+  <!-- @slot default Slot for default row content -->
+</div>"
+`;

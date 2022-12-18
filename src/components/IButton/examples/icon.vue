@@ -1,1 +1,17 @@
-<template src="./icon.html" />
+<template>
+    <i-button>
+        <i-icon name="ink-plus" class="_margin-right:1/2" />
+        Button Icon
+    </i-button>
+
+    <i-button>
+        Button Icon
+        <i-icon name="ink-plus" class="_margin-left:1/2" />
+    </i-button>
+
+    <i-button>
+        <i-icon name="ink-plus" class="_margin-right:1/2" />
+        Button Icon
+        <i-icon name="ink-plus" class="_margin-left:1/2" />
+    </i-button>
+</template>

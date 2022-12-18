@@ -3,48 +3,15 @@
  */
 
 .nav {
-    ////
-    /// Variables for the light color variant
-    /// @name light
-    /// @type variant
-    ////
-    @include variant('light') {
-        ////
-        /// The color of the nav component item, for the light color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-light)};
-        ////
-        /// The color of the nav component item when active, for the light color variant
-        /// @name color--active
-        ////
-        ----color--active: #{contrast-color($color-primary)};
-        ////
-        /// The color of the nav component item when disabled, for the light color variant
-        /// @name color--disabled
-        ////
-        ----color--disabled: #{var(--text-muted)};
+    &.-light {
+        --nav--color: var(--nav--light--color, var(--contrast-text--color-light));
+        --nav--active--color: var(--nav--light--active--color, var(--contrast-text--color-light));
+        --nav--disabled--color: var(--nav--light--disabled--color, var(--text--color-muted));
     }
-    ////
-    /// Variables for the dark color variant
-    /// @name dark
-    /// @type variant
-    ////
-    @include variant('dark') {
-        ////
-        /// The color of the nav component item, for the dark color variant
-        /// @name color
-        ////
-        ----color: #{contrast-color($color-dark)};
-        ////
-        /// The color of the nav component item when active, for the dark color variant
-        /// @name color--active
-        ////
-        ----color--active: #{contrast-color($color-primary)};
-        ////
-        /// The color of the nav component item when disabled, for the dark color variant
-        /// @name color--disabled
-        ////
-        ----color--disabled: #{var(--text-muted)};
+
+    &.-dark {
+        --nav--color: var(--nav--dark--color, var(--contrast-text--color-dark));
+        --nav--active--color: var(--nav--primary--active--color, var(--contrast-text--color-dark));
+        --nav--disabled--color: var(--nav--dark--disabled--color, var(--text--color-muted));
     }
 }

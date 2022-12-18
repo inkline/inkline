@@ -1,0 +1,890 @@
+////
+/// The background of the select component
+/// @name select--background
+/// @type color
+////
+
+////
+/// The border top color of the select component
+/// @name select--border-top-color
+/// @type color
+////
+
+////
+/// The border right color of the select component
+/// @name select--border-right-color
+/// @type color
+////
+
+////
+/// The border bottom color of the select component
+/// @name select--border-bottom-color
+/// @type color
+////
+
+////
+/// The border left color of the select component
+/// @name select--border-left-color
+/// @type color
+////
+
+////
+/// The border color of the select component
+/// @name select--border-color
+////
+
+////
+/// The border style of the select component
+/// @name select--border-style
+////
+
+////
+/// The border top width of the select component
+/// @name select--border-top-width
+////
+
+////
+/// The border right width of the select component
+/// @name select--border-right-width
+////
+
+////
+/// The border bottom width of the select component
+/// @name select--border-bottom-width
+////
+
+////
+/// The border left width of the select component
+/// @name select--border-left-width
+////
+
+////
+/// The border width of the select component
+/// @name select--border-width
+////
+
+////
+/// The border top left radius of the select component
+/// @name select--border-top-left-radius
+/// @type size
+////
+
+////
+/// The border top right radius of the select component
+/// @name select--border-top-right-radius
+/// @type size
+////
+
+////
+/// The border bottom right radius of the select component
+/// @name select--border-bottom-right-radius
+/// @type size
+////
+
+////
+/// The border bottom left radius of the select component
+/// @name select--border-bottom-left-radius
+/// @type size
+////
+
+////
+/// The border radius of the select component
+/// @name select--border-radius
+////
+
+////
+/// The box shadow horizontal offset of the select component
+/// @name select--box-shadow-offset-x
+////
+
+////
+/// The box shadow vertical offset of the select component
+/// @name select--box-shadow-offset-y
+////
+
+////
+/// The box shadow blur radius of the select component
+/// @name select--box-shadow-blur-radius
+////
+
+////
+/// The box shadow spread radius of the select component
+/// @name select--box-shadow-spread-radius
+////
+
+////
+/// The box shadow spread radius of the select component
+/// @name select--box-shadow-color
+////
+
+////
+/// The box shadow of the select component
+/// @name select--box-shadow
+////
+
+////
+/// The color of the select component item
+/// @name select--color
+/// @type color
+////
+
+////
+/// The font size of the select component
+/// @name select--font-size
+/// @type size
+////
+
+////
+/// The font weight of the select component
+/// @name select--font-weight
+////
+
+////
+/// The line height of the select component
+/// @name select--line-height
+////
+
+////
+/// The margin top of the select component
+/// @name select--margin-top
+/// @type size
+////
+
+////
+/// The margin right of the select component
+/// @name select--margin-right
+/// @type size
+////
+
+////
+/// The margin bottom of the select component
+/// @name select--margin-bottom
+/// @type size
+////
+
+////
+/// The margin left of the select component
+/// @name select--margin-left
+/// @type size
+////
+
+////
+/// The margin of the select component
+/// @name select--margin
+////
+
+////
+/// The padding top of the select component
+/// @name select--padding-top
+/// @type size
+////
+
+////
+/// The padding right of the select component
+/// @name select--padding-right
+/// @type size
+////
+
+////
+/// The padding bottom of the select component
+/// @name select--padding-bottom
+/// @type size
+////
+
+////
+/// The padding left of the select component
+/// @name select--padding-left
+/// @type size
+////
+
+////
+/// The padding of the select component
+/// @name select--padding
+////
+
+////
+/// The minimum width of the select component
+/// @name select--min-width
+////
+
+////
+/// The maximum width of the select component
+/// @name select--max-width
+////
+
+////
+/// The maximum height of the select component body
+/// @name select--max-height
+////
+
+////
+/// The z-index of the select component
+/// @name select--z-index
+////
+
+////
+/// The background of the select component option
+/// @name select--option--background
+////
+
+////
+/// The background of the select component option when hovered or focused
+/// @name select--option--hover--background
+/// @type color
+////
+
+////
+/// The background of the select component option when active
+/// @name select--option--background--active
+////
+
+////
+/// The background of the select component option when disabled
+/// @name select--option--disabled--background
+/// @type color
+////
+
+////
+/// The border top left radius of the modal component
+/// @name select--option--border-top-left-radius
+////
+
+////
+/// The border top right radius of the modal component
+/// @name select--option--border-top-right-radius
+////
+
+////
+/// The border bottom right radius of the modal component
+/// @name select--option--border-bottom-right-radius
+////
+
+////
+/// The border bottom left radius of the modal component
+/// @name select--option--border-bottom-left-radius
+////
+
+////
+/// The border radius of the modal component
+/// @name select--option--border-radius
+////
+
+////
+/// The color of the select component option
+/// @name select--option--color
+////
+
+////
+/// The color of the select component option when hovered or focused
+/// @name select--option--hover--color
+////
+
+////
+/// The color of the select component option when active
+/// @name select--option--color--active
+////
+
+////
+/// The color of the select component option when disabled
+/// @name select--option--disabled--color
+/// @type color
+////
+
+////
+/// The padding top of the select component option
+/// @name select--option--padding-top
+////
+
+////
+/// The padding right of the select component option
+/// @name select--option--padding-right
+////
+
+////
+/// The padding bottom of the select component option
+/// @name select--option--padding-bottom
+/// @type size
+////
+
+////
+/// The padding left of the select component option
+/// @name select--option--padding-left
+/// @type size
+////
+
+////
+/// The padding of the select component option
+/// @name select--option--padding
+////
+
+////
+/// The margin of the select component divider
+/// @name select--divider--margin
+////
+
+////
+/// The background of the select component header
+/// @name select--header--background
+/// @type color
+////
+
+////
+/// The border color of the select component header
+/// @name select--header--border-color
+////
+
+////
+/// The border style of the select component header
+/// @name select--header--border-style
+////
+
+////
+/// The border top width of the select component header
+/// @name select--header--border-top-width
+////
+
+////
+/// The border right width of the select component header
+/// @name select--header--border-right-width
+////
+
+////
+/// The border bottom width of the select component header
+/// @name select--header--border-bottom-width
+////
+
+////
+/// The border left width of the select component header
+/// @name select--header--border-left-width
+////
+
+////
+/// The border width of the select component header
+/// @name select--header--border-width
+////
+
+////
+/// The color of the select component header
+/// @name select--header--color
+////
+
+////
+/// The padding top of the select component header
+/// @name select--header--padding-top
+////
+
+////
+/// The padding right of the select component header
+/// @name select--header--padding-right
+////
+
+////
+/// The padding bottom of the select component header
+/// @name select--header--padding-bottom
+/// @type size
+////
+
+////
+/// The padding left of the select component header
+/// @name select--header--padding-left
+/// @type size
+////
+
+////
+/// The padding of the select component header
+/// @name select--header--padding
+////
+
+////
+/// The background of the select component body
+/// @name select--body--background
+////
+
+////
+/// The border color of the select component body
+/// @name select--body--border-color
+////
+
+////
+/// The border style of the select component body
+/// @name select--body--border-style
+////
+
+////
+/// The border top width of the select component body
+/// @name select--body--border-top-width
+////
+
+////
+/// The border right width of the select component body
+/// @name select--body--border-right-width
+////
+
+////
+/// The border bottom width of the select component body
+/// @name select--body--border-bottom-width
+////
+
+////
+/// The border left width of the select component body
+/// @name select--body--border-left-width
+////
+
+////
+/// The border width of the select component body
+/// @name select--body--border-width
+////
+
+////
+/// The color of the select component body
+/// @name select--body--color
+////
+
+////
+/// The padding top of the select component body
+/// @name select--body--padding-top
+////
+
+////
+/// The padding right of the select component body
+/// @name select--body--padding-right
+////
+
+////
+/// The padding bottom of the select component body
+/// @name select--body--padding-bottom
+/// @type size
+////
+
+////
+/// The padding left of the select component body
+/// @name select--body--padding-left
+/// @type size
+////
+
+////
+/// The padding of the select component body
+/// @name select--body--padding
+////
+
+////
+/// The background of the select component footer
+/// @name select--footer--background
+/// @type color
+////
+
+////
+/// The border color of the select component footer
+/// @name select--footer--border-color
+////
+
+////
+/// The border style of the select component footer
+/// @name select--footer--border-style
+////
+
+////
+/// The border top width of the select component footer
+/// @name select--footer--border-top-width
+////
+
+////
+/// The border right width of the select component footer
+/// @name select--footer--border-right-width
+////
+
+////
+/// The border bottom width of the select component footer
+/// @name select--footer--border-bottom-width
+////
+
+////
+/// The border left width of the select component footer
+/// @name select--footer--border-left-width
+////
+
+////
+/// The border width of the select component footer
+/// @name select--footer--border-width
+////
+
+////
+/// The color of the select component footer
+/// @name select--footer--color
+////
+
+////
+/// The padding top of the select component footer
+/// @name select--footer--padding-top
+////
+
+////
+/// The padding right of the select component footer
+/// @name select--footer--padding-right
+////
+
+////
+/// The padding bottom of the select component footer
+/// @name select--footer--padding-bottom
+/// @type size
+////
+
+////
+/// The padding left of the select component footer
+/// @name select--footer--padding-left
+/// @type size
+////
+
+////
+/// The padding of the select component footer
+/// @name select--footer--padding
+////
+
+@import '../../../css/mixins';
+
+.select-wrapper {
+    display: block;
+    position: relative;
+
+    .select {
+        @include popup(var(--select--z-index, 2000));
+        @include popup-arrow();
+        @include popup-arrow-size-variant(var(--select--arrow--size, 6px));
+
+        text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+        list-style: none;
+        line-height: var(--select-line-height);
+        //background-clip: padding-box;
+        display: block;
+        white-space: normal;
+        width: 100%;
+        min-width: var(--select--min-width, 240px);
+        max-width: var(--select--max-width, 90vw);
+        color: var(--select--color);
+        font-size: var(--select--font-size, var(--font-size));
+        box-shadow: var(
+            --select--box-shadow,
+            var(--select--box-shadow-x-offset, var(--box-shadow-offset-x))
+                var(--select--box-shadow-y-offset, var(--box-shadow-offset-y))
+                var(--select--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                var(--select--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+                var(--select--box-shadow-color, var(--box-shadow-color))
+        );
+
+        > .select-header {
+            border-style: var(
+                --select--header--border-style,
+                var(
+                        --select--header--border-top-style,
+                        var(--select--border-top-style, var(--border-top-style))
+                    )
+                    var(
+                        --select--header--border-right-style,
+                        var(--select--border-right-style, var(--border-right-style))
+                    )
+                    var(
+                        --select--header--border-bottom-style,
+                        var(--select--border-bottom-style, var(--border-bottom-style))
+                    )
+                    var(
+                        --select--header--border-left-style,
+                        var(--select--border-left-style, var(--border-left-style))
+                    )
+            );
+            border-width: var(
+                --select--header--border-width,
+                var(
+                        --select--header--border-top-width,
+                        var(--select--border-top-width, var(--border-top-width))
+                    )
+                    var(
+                        --select--header--border-right-width,
+                        var(--select--border-right-width, var(--border-right-width))
+                    )
+                    var(
+                        --select--header--border-bottom-width,
+                        var(--select--border-bottom-width, var(--border-bottom-width))
+                    )
+                    var(
+                        --select--header--border-left-width,
+                        var(--select--border-left-width, var(--border-left-width))
+                    )
+            );
+            border-color: var(
+                --select--header--border-color,
+                var(
+                        --select--header--border-top-color,
+                        var(--select--border-top-color, var(--border-top-color))
+                    )
+                    var(
+                        --select--header--border-right-color,
+                        var(--select--border-right-color, var(--border-right-color))
+                    )
+                    var(
+                        --select--header--border-bottom-color,
+                        var(--select--border-bottom-color, var(--border-bottom-color))
+                    )
+                    var(
+                        --select--header--border-left-color,
+                        var(--select--border-left-color, var(--border-left-color))
+                    )
+            );
+            background-color: var(--select--header--background, var(--select--background));
+            padding: var(
+                --select--header--padding,
+                var(--select--header--padding-top, var(--select--padding-top, var(--padding-top)))
+                    var(
+                        --select--header--padding-right,
+                        var(--select--padding-right, var(--padding-right))
+                    )
+                    var(
+                        --select--header--padding-bottom,
+                        var(--select--padding-bottom, var(--padding-bottom))
+                    )
+                    var(
+                        --select--header--padding-left,
+                        var(--select--padding-left, var(--padding-left))
+                    )
+            );
+        }
+
+        > .select-body {
+            overflow: auto;
+            border-style: var(
+                --select--body--border-style,
+                var(
+                        --select--body--border-top-style,
+                        var(--select--border-top-style, var(--border-top-style))
+                    )
+                    var(
+                        --select--body--border-right-style,
+                        var(--select--border-right-style, var(--border-right-style))
+                    )
+                    var(
+                        --select--body--border-bottom-style,
+                        var(--select--border-bottom-style, var(--border-bottom-style))
+                    )
+                    var(
+                        --select--body--border-left-style,
+                        var(--select--border-left-style, var(--border-left-style))
+                    )
+            );
+            border-width: var(
+                --select--body--border-width,
+                var(
+                        --select--body--border-top-width,
+                        var(--select--border-top-width, var(--border-top-width))
+                    )
+                    var(
+                        --select--body--border-right-width,
+                        var(--select--border-right-width, var(--border-right-width))
+                    )
+                    var(
+                        --select--body--border-bottom-width,
+                        var(--select--border-bottom-width, var(--border-bottom-width))
+                    )
+                    var(
+                        --select--body--border-left-width,
+                        var(--select--border-left-width, var(--border-left-width))
+                    )
+            );
+            border-color: var(
+                --select--body--border-color,
+                var(
+                        --select--body--border-top-color,
+                        var(--select--border-top-color, var(--border-top-color))
+                    )
+                    var(
+                        --select--body--border-right-color,
+                        var(--select--border-right-color, var(--border-right-color))
+                    )
+                    var(
+                        --select--body--border-bottom-color,
+                        var(--select--border-bottom-color, var(--border-bottom-color))
+                    )
+                    var(
+                        --select--body--border-left-color,
+                        var(--select--border-left-color, var(--border-left-color))
+                    )
+            );
+            background-color: var(--select--body--background, var(--select--background));
+            padding: var(
+                --select--body--padding,
+                var(--select--body--padding-top, var(--select--padding-top, var(--padding-top)))
+                    var(
+                        --select--body--padding-right,
+                        var(--select--padding-right, var(--padding-right))
+                    )
+                    var(
+                        --select--body--padding-bottom,
+                        var(--select--padding-bottom, var(--padding-bottom))
+                    )
+                    var(
+                        --select--body--padding-left,
+                        var(--select--padding-left, var(--padding-left))
+                    )
+            );
+            max-height: var(--select--max-height, 300px);
+
+            .select-divider {
+                background-color: var(
+                    --select--divider--border-color,
+                    var(--select--border-top, var(--border-top-color))
+                );
+            }
+
+            .select-no-results {
+                text-align: center;
+            }
+        }
+
+        > .select-footer {
+            border-style: var(
+                --select--footer--border-style,
+                var(
+                        --select--footer--border-top-style,
+                        var(--select--border-top-style, var(--border-top-style))
+                    )
+                    var(
+                        --select--footer--border-right-style,
+                        var(--select--border-right-style, var(--border-right-style))
+                    )
+                    var(
+                        --select--footer--border-bottom-style,
+                        var(--select--border-bottom-style, var(--border-bottom-style))
+                    )
+                    var(
+                        --select--footer--border-left-style,
+                        var(--select--border-left-style, var(--border-left-style))
+                    )
+            );
+            border-width: var(
+                --select--footer--border-width,
+                var(
+                        --select--footer--border-top-width,
+                        var(--select--border-top-width, var(--border-top-width))
+                    )
+                    var(
+                        --select--footer--border-right-width,
+                        var(--select--border-right-width, var(--border-right-width))
+                    )
+                    var(
+                        --select--footer--border-bottom-width,
+                        var(--select--border-bottom-width, var(--border-bottom-width))
+                    )
+                    var(
+                        --select--footer--border-left-width,
+                        var(--select--border-left-width, var(--border-left-width))
+                    )
+            );
+            border-color: var(
+                --select--footer--border-color,
+                var(
+                        --select--footer--border-top-color,
+                        var(--select--border-top-color, var(--border-top-color))
+                    )
+                    var(
+                        --select--footer--border-right-color,
+                        var(--select--border-right-color, var(--border-right-color))
+                    )
+                    var(
+                        --select--footer--border-bottom-color,
+                        var(--select--border-bottom-color, var(--border-bottom-color))
+                    )
+                    var(
+                        --select--footer--border-left-color,
+                        var(--select--border-left-color, var(--border-left-color))
+                    )
+            );
+            background-color: var(--select--footer--background, var(--select--background));
+            padding: var(
+                --select--footer--padding,
+                var(--select--footer--padding-top, var(--select--padding-top, var(--padding-top)))
+                    var(
+                        --select--footer--padding-right,
+                        var(--select--padding-right, var(--padding-right))
+                    )
+                    var(
+                        --select--footer--padding-bottom,
+                        var(--select--padding-bottom, var(--padding-bottom))
+                    )
+                    var(
+                        --select--footer--padding-left,
+                        var(--select--padding-left, var(--padding-left))
+                    )
+            );
+        }
+
+        > *:nth-child(2) {
+            border-top-left-radius: var(
+                --select--border-top-left-radius,
+                var(--border-top-left-radius)
+            );
+            border-top-right-radius: var(
+                --select--border-top-right-radius,
+                var(--border-top-right-radius)
+            );
+        }
+
+        > *:last-child {
+            border-bottom-left-radius: var(
+                --select--border-bottom-left-radius,
+                var(--border-bottom-left-radius)
+            );
+            border-bottom-right-radius: var(
+                --select--border-bottom-right-radius,
+                var(--border-bottom-right-radius)
+            );
+        }
+
+        @include popup-arrow-color-variant-for-side(
+            'top',
+            var(--select--background),
+            var(--select--border-bottom-color, var(--border-bottom-color))
+        );
+
+        @include popup-arrow-color-variant-for-side(
+            'right',
+            var(--select--background),
+            var(--select--border-left-color, var(--border-left-color))
+        );
+
+        @include popup-arrow-color-variant-for-side(
+            'bottom',
+            var(--select--background),
+            var(--select--border-top-color, var(--border-top-color))
+        );
+
+        @include popup-arrow-color-variant-for-side(
+            'left',
+            var(--select--background),
+            var(--select--border-right-color, var(--border-right-color))
+        );
+    }
+
+    &.-error {
+        > .input-wrapper .input {
+            border-color: var(--input--error--border-color, var(--color-danger));
+        }
+    }
+
+    .input-wrapper {
+        * + .select-caret {
+            margin-left: var(--margin-left);
+        }
+
+        .input-suffix > .select-caret {
+            cursor: pointer;
+            mask-image: url($ink-caret-down);
+            -webkit-mask-image: url($ink-caret-down);
+            mask-position: center center;
+            -webkit-mask-position: center center;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            background-color: var(--select--color);
+            height: var(--select--font-size, var(--font-size));
+            width: var(--select--font-size, var(--font-size));
+            mask-size: var(--select--font-size, var(--font-size)) var(--font-size);
+        }
+    }
+}

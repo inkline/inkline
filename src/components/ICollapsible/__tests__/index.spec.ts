@@ -1,5 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ICollapsible, ICollapsibleItem } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('ICollapsible', () => {
@@ -25,7 +27,12 @@ describe('Components', () => {
 
         it('should render correctly', () => {
             const wrapper = render(ICollapsible, {
-                global: { stubs },
+                global: {
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                },
                 props,
                 slots
             });
@@ -37,7 +44,12 @@ describe('Components', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(ICollapsible, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props,
                         slots
                     });
@@ -54,7 +66,12 @@ describe('Components', () => {
             describe('onItemClick()', () => {
                 it('should open the clicked item', async () => {
                     const wrapper = render(ICollapsible, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props,
                         slots
                     });
@@ -66,7 +83,12 @@ describe('Components', () => {
 
                 it('should close the clicked item if open', async () => {
                     const wrapper = render(ICollapsible, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props,
                         slots
                     });
@@ -80,7 +102,12 @@ describe('Components', () => {
 
                 it('should open multiple items if not accordion', async () => {
                     const wrapper = render(ICollapsible, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props,
                         slots
                     });
@@ -95,7 +122,12 @@ describe('Components', () => {
 
                 it('should close the clicked item if open and accordion', async () => {
                     const wrapper = render(ICollapsible, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
                             accordion: true,
                             ...props
@@ -112,7 +144,12 @@ describe('Components', () => {
 
                 it('should open one item at a time if accordion', async () => {
                     const wrapper = render(ICollapsible, {
-                        global: { stubs },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        },
                         props: {
                             accordion: true,
                             ...props

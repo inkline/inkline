@@ -1,0 +1,598 @@
+////
+/// The background of the sidebar component
+/// @name -collapse-fixed--background
+/// @type color
+////
+
+////
+/// The border top color of the sidebar component
+/// @name -collapse-fixed--border-top-color
+/// @type color
+////
+
+////
+/// The border right color of the sidebar component
+/// @name -collapse-fixed--border-right-color
+/// @type color
+////
+
+////
+/// The border bottom color of the sidebar component
+/// @name -collapse-fixed--border-bottom-color
+/// @type color
+////
+
+////
+/// The border left color of the sidebar component
+/// @name -collapse-fixed--border-left-color
+/// @type color
+////
+
+////
+/// The border color of the sidebar component
+/// @name -collapse-fixed--border-color
+////
+
+////
+/// The border style of the sidebar component
+/// @name -collapse-fixed--border-style
+////
+
+////
+/// The border top width of the sidebar component
+/// @name -collapse-fixed--border-top-width
+////
+
+////
+/// The border right width of the sidebar component
+/// @name -collapse-fixed--border-right-width
+////
+
+////
+/// The border bottom width of the sidebar component
+/// @name -collapse-fixed--border-bottom-width
+////
+
+////
+/// The border left width of the sidebar component
+/// @name -collapse-fixed--border-left-width
+////
+
+////
+/// The border width of the sidebar component
+/// @name -collapse-fixed--border-width
+////
+
+////
+/// The border top left radius of the sidebar component
+/// @name -collapse-fixed--border-top-left-radius
+/// @type size
+////
+
+////
+/// The border top right radius of the sidebar component
+/// @name -collapse-fixed--border-top-right-radius
+/// @type size
+////
+
+////
+/// The border bottom right radius of the sidebar component
+/// @name -collapse-fixed--border-bottom-right-radius
+/// @type size
+////
+
+////
+/// The border bottom left radius of the sidebar component
+/// @name -collapse-fixed--border-bottom-left-radius
+/// @type size
+////
+
+////
+/// The border radius of the sidebar component
+/// @name -collapse-fixed--border-radius
+////
+
+////
+/// The box shadow horizontal offset of the sidebar component
+/// @name -collapse-fixed--box-shadow-offset-x
+////
+
+////
+/// The box shadow vertical offset of the sidebar component
+/// @name -collapse-fixed--box-shadow-offset-y
+////
+
+////
+/// The box shadow blur radius of the sidebar component
+/// @name -collapse-fixed--box-shadow-blur-radius
+////
+
+////
+/// The box shadow spread radius of the sidebar component
+/// @name -collapse-fixed--box-shadow-spread-radius
+////
+
+////
+/// The box shadow spread radius of the sidebar component
+/// @name -collapse-fixed--box-shadow-color
+////
+
+////
+/// The box shadow of the sidebar component
+/// @name -collapse-fixed--box-shadow
+////
+
+////
+/// The color of the sidebar component
+/// @name -collapse-fixed--color
+/// @type color
+////
+
+////
+/// The font size of the sidebar component
+/// @name -collapse-fixed--font-size
+/// @type size
+////
+
+////
+/// The padding top of the sidebar component
+/// @name -collapse-fixed--padding-top
+/// @type size
+////
+
+////
+/// The padding right of the sidebar component
+/// @name -collapse-fixed--padding-right
+/// @type size
+////
+
+////
+/// The padding bottom of the sidebar component
+/// @name -collapse-fixed--padding-bottom
+/// @type size
+////
+
+////
+/// The padding left of the sidebar component
+/// @name -collapse-fixed--padding-left
+/// @type size
+////
+
+////
+/// The padding of the sidebar component
+/// @name -collapse-fixed--padding
+////
+
+////
+/// The width of the sidebar component
+/// @name -collapse-fixed--width
+/// @type size
+////
+
+////
+/// The z-index of the sidebar component
+/// @name -collapse-fixed--z-index
+////
+
+////
+/// The color of the sidebar component item
+/// @name -collapse-fixed--item--color
+/// @type color
+////
+
+////
+/// The color of the sidebar component item when hovered
+/// @name -collapse-fixed--item--hover--color
+/// @type color
+////
+
+////
+/// The background of the sidebar component item
+/// @name -collapse-fixed--item--background
+/// @type color
+////
+
+////
+/// The background of the sidebar component item when hovered or focused
+/// @name -collapse-fixed--item--hover--background
+/// @type color
+////
+
+////
+/// The border top left radius of the sidebar component item
+/// @name -collapse-fixed--item--border-top-left-radius
+////
+
+////
+/// The border top right radius of the sidebar component item
+/// @name -collapse-fixed--item--border-top-right-radius
+////
+
+////
+/// The border bottom right radius of the sidebar component item
+/// @name -collapse-fixed--item--border-bottom-right-radius
+////
+
+////
+/// The border bottom left radius of the sidebar component item
+/// @name -collapse-fixed--item--border-bottom-left-radius
+////
+
+////
+/// The border radius of the sidebar component item
+/// @name -collapse-fixed--item--border-radius
+////
+
+////
+/// The padding top of the sidebar component item
+/// @name -collapse-fixed--item--padding-top
+/// @type size
+////
+
+////
+/// The padding right of the sidebar component item
+/// @name -collapse-fixed--item--padding-right
+/// @type size
+////
+
+////
+/// The padding bottom of the sidebar component item
+/// @name -collapse-fixed--item--padding-bottom
+/// @type size
+////
+
+////
+/// The padding left of the sidebar component item
+/// @name -collapse-fixed--item--padding-left
+/// @type size
+////
+
+////
+/// The padding of the sidebar component item
+/// @name -collapse-fixed--item--padding
+////
+
+////
+/// The background of the sidebar component overlay
+/// @name -collapse-fixed--overlay--background
+////
+
+@use '../../../css/mixins';
+@use '../../../css/functions';
+
+@mixin sidebar-wrapper-collapse {
+    &.-collapse-fixed {
+        position: fixed;
+        top: 0;
+    }
+
+    &.-collapse-absolute {
+        position: absolute;
+    }
+
+    &.-collapse-fixed,
+    &.-collapse-absolute {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.sidebar-wrapper {
+    position: relative;
+    min-height: 100%;
+    min-width: 0;
+    overflow: hidden;
+    z-index: var(--sidebar--z-index, 1030);
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: var(--sidebar--width, 14rem);
+
+    .sidebar {
+        position: absolute;
+        height: 100%;
+        z-index: 1;
+        color: var(--sidebar--color);
+        background: var(--sidebar--background);
+        width: var(--sidebar--width, 14rem);
+        box-shadow: var(
+            --sidebar--box-shadow,
+            (
+                var(--sidebar--box-shadow-x-offset, var(--box-shadow-offset-x))
+                    var(--sidebar--box-shadow-y-offset, var(--box-shadow-offset-y))
+                    var(--sidebar--box-shadow-blur-radius, var(--box-shadow-blur-radius))
+                    var(--sidebar--box-shadow-spread-radius, var(--box-shadow-spread-radius))
+                    var(--sidebar--box-shadow-color, var(--box-shadow-color))
+            )
+        );
+        border-width: var(
+            --sidebar--border-width,
+            (
+                var(--sidebar--border-top-width, var(--border-top-width))
+                    var(--sidebar--border-right-width, var(--border-right-width))
+                    var(--sidebar--border-bottom-width, var(--border-bottom-width))
+                    var(--sidebar--border-left-width, var(--border-left-width))
+            )
+        );
+        border-style: var(
+            --sidebar--border-style,
+            (
+                var(--sidebar--border-top-style, var(--border-top-style))
+                    var(--sidebar--border-right-style, var(--border-right-style))
+                    var(--sidebar--border-bottom-style, var(--border-bottom-style))
+                    var(--sidebar--border-left-style, var(--border-left-style))
+            )
+        );
+        border-color: var(
+            --sidebar--border-color,
+            (
+                var(--sidebar--border-top-color, var(--border-top-color))
+                    var(--sidebar--border-right-color, var(--border-right-color))
+                    var(--sidebar--border-bottom-color, var(--border-bottom-color))
+                    var(--sidebar--border-left-color, var(--border-left-color))
+            )
+        );
+        border-radius: var(
+            --sidebar--border-radius,
+            (
+                var(--sidebar--border-top-left-radius, var(--border-top-left-radius))
+                    var(--sidebar--border-top-right-radius, var(--border-top-right-radius))
+                    var(--sidebar--border-bottom-right-radius, var(--border-bottom-right-radius))
+                    var(--sidebar--border-bottom-left-radius, var(--border-bottom-left-radius))
+            )
+        );
+        padding: var(
+            --sidebar--padding,
+            (
+                var(--sidebar--padding-top, var(--padding-top))
+                    var(--sidebar--padding-right, var(--padding-right))
+                    var(--sidebar--padding-bottom, var(--padding-bottom))
+                    var(--sidebar--padding-left, var(--padding-left))
+            )
+        );
+
+        .sidebar-content {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+
+            // Hack for fixing margin collapse bug
+            // https://github.com/ant-design/ant-design/issues/7967
+            // solution from https://stackoverflow.com/a/33132624/3040605
+            padding-top: 0.1px;
+            margin-top: -0.1px;
+
+            .nav .nav-item,
+            .collapsible .collapsible-header {
+                padding: var(
+                    --sidebar--item--padding,
+                    var(
+                            --sidebar--item--padding-top,
+                            var(--sidebar--padding-top, var(--padding-top))
+                        )
+                        var(
+                            --sidebar--item--padding-right,
+                            var(--sidebar--padding-right, var(--padding-right))
+                        )
+                        var(
+                            --sidebar--item--padding-bottom,
+                            var(--sidebar--padding-bottom, var(--padding-bottom))
+                        )
+                        var(
+                            --sidebar--item--padding-left,
+                            var(--sidebar--padding-left, var(--padding-left))
+                        )
+                );
+                border-radius: var(
+                    --sidebar--item--border-radius,
+                    var(
+                            --sidebar--item--border-top-left-radius,
+                            var(--sidebar--border-top-left-radius, var(--border-top-left-radius))
+                        )
+                        var(
+                            --sidebar--item--border-top-right-radius,
+                            var(--sidebar--border-top-right-radius, var(--border-top-right-radius))
+                        )
+                        var(
+                            --sidebar--item--border-bottom-right-radius,
+                            var(
+                                --sidebar--border-bottom-right-radius,
+                                var(--border-bottom-right-radius)
+                            )
+                        )
+                        var(
+                            --sidebar--item--border-bottom-left-radius,
+                            var(
+                                --sidebar--border-bottom-left-radius,
+                                var(--border-bottom-left-radius)
+                            )
+                        )
+                );
+            }
+
+            .nav {
+                .nav-item {
+                    &.-active {
+                        cursor: pointer;
+                    }
+                }
+
+                &.-vertical {
+                    .nav-item {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .collapsible {
+                width: 100%;
+                border: 0;
+
+                .collapsible-item {
+                    box-shadow: none;
+                }
+
+                .collapsible-header {
+                    border-width: 0;
+                    transition-property: var(--sidebar--transition-property, (background, color));
+                    transition-duration: var(
+                        --sidebar--transition-duration,
+                        var(--transition-duration)
+                    );
+                    transition-timing-function: var(
+                        --sidebar--transition-timing-function,
+                        var(--transition-timing-function)
+                    );
+                }
+
+                .collapsible-body {
+                    border-width: 0;
+                    background: transparent;
+
+                    .content {
+                        padding: 0;
+                    }
+                }
+            }
+
+            .nav-item,
+            .collapsible-header {
+                color: var(--sidebar--item--color);
+                background-color: var(--sidebar--item--background);
+
+                &.-focused,
+                &.-hovered,
+                &:focus,
+                &:hover {
+                    color: var(--sidebar--item--hover--color);
+                    background: var(--sidebar--item--hover--background);
+                }
+            }
+        }
+    }
+
+    &.-collapse-relative {
+        &.-placement-left .sidebar {
+            right: 0;
+        }
+
+        &.-placement-right .sidebar {
+            left: 0;
+        }
+    }
+
+    &.-collapse-absolute,
+    &.-collapse-fixed {
+        &.-placement-left .sidebar {
+            left: 0;
+        }
+
+        &.-placement-right .sidebar {
+            right: 0;
+        }
+    }
+
+    .sidebar-overlay {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background: var(--sidebar--overlay--background, rgba(0, 0, 0, 0.5));
+        border-top-left-radius: var(
+            --sidebar--border-top-left-radius,
+            var(--border-top-left-radius)
+        );
+        border-bottom-left-radius: var(
+            --sidebar--border-bottom-left-radius,
+            var(--border-bottom-left-radius)
+        );
+    }
+
+    @each $breakpoint in $breakpoint-keys {
+        &.-collapse-#{$breakpoint} {
+            @include breakpoint-down($breakpoint) {
+                @include sidebar-wrapper-collapse;
+            }
+        }
+    }
+
+    &.-collapse-true {
+        @include sidebar-wrapper-collapse;
+    }
+
+    &.sidebar-wrapper-transition-enter-to,
+    &.sidebar-wrapper-transition-leave {
+        width: var(--sidebar--width);
+    }
+}
+
+/**
+ * Sidebar animation
+ */
+
+//
+// Sidebar Wrapper
+//
+.sidebar-wrapper-transition-enter-active,
+.sidebar-wrapper-transition-leave-active {
+    transition: width var(--sidebar--transition-duration, var(--transition-duration))
+        var(--sidebar--transition-timing-function, var(--transition-timing-function));
+}
+
+.sidebar-wrapper-none-transition-enter-active,
+.sidebar-wrapper-none-transition-leave-active {
+    transition: none var(--sidebar--transition-duration, var(--transition-duration))
+        var(--sidebar--transition-timing-function, var(--transition-timing-function));
+}
+
+.sidebar-wrapper-transition-enter-from,
+.sidebar-wrapper-transition-leave-to {
+    width: 0;
+}
+
+//
+// Sidebar
+//
+.sidebar-transition-enter-active,
+.sidebar-transition-leave-active {
+    transition: transform var(--sidebar--transition-duration, var(--transition-duration))
+        var(--sidebar--transition-timing-function, var(--transition-timing-function));
+    transform-origin: left;
+}
+
+.sidebar-transition-enter-from,
+.sidebar-transition-leave-to {
+    transform: translateX(-100%);
+}
+
+.sidebar-transition-enter-to,
+.sidebar-transition-leave-from {
+    transform: translateX(0);
+}
+
+.sidebar-wrapper.-placement-right {
+    .sidebar-transition-enter-active,
+    .sidebar-transition-leave-active {
+        transform-origin: right;
+    }
+
+    .sidebar-transition-enter-from,
+    .sidebar-transition-leave-to {
+        transform: translateX(100%);
+    }
+}
+
+//
+// Sidebar Overlay
+//
+.sidebar-overlay-transition-enter-active,
+.sidebar-overlay-transition-leave-active {
+    transition: opacity var(--sidebar--transition-duration, var(--transition-duration))
+        var(--sidebar--transition-timing-function, var(--transition-timing-function));
+}
+
+.sidebar-overlay-transition-enter-from,
+.sidebar-overlay-transition-leave-to,
+.sidebar-overlay-transition-leave-active {
+    opacity: 0;
+}

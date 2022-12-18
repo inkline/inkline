@@ -1,1 +1,5 @@
-<template src="./basic.demo.html" />
+<template>
+    <i-container>
+        <i-row> Row </i-row>
+    </i-container>
+</template>

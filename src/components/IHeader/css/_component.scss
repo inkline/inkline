@@ -1,0 +1,98 @@
+////
+/// The background of the header component
+/// @name header--background
+/// @type color
+////
+
+////
+/// The color of the header component
+/// @name header--color
+/// @type color
+////
+
+////
+/// The padding top of the header component
+/// @name header--padding-top
+/// @type size
+////
+
+////
+/// The padding right of the header component
+/// @name header--padding-right
+/// @type size
+////
+
+////
+/// The padding bottom of the header component
+/// @name header--padding-bottom
+/// @type size
+////
+
+////
+/// The padding left of the header component
+/// @name header--padding-left
+/// @type size
+////
+
+////
+/// The padding of the header component
+/// @name header--padding
+////
+
+/**
+ * Header
+ */
+.header {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    transition-property: var(--header--transition-property, background-color);
+    transition-duration: var(--header--transition-duration, var(--transition-duration));
+    transition-timing-function: var(
+        --header--transition-timing-function,
+        var(--transition-timing-function)
+    );
+    color: var(--header--color);
+    background: var(--header--background);
+    padding: var(
+        --header--padding,
+        (
+            var(--header--padding-top, 10rem) var(--header--padding-right, 0)
+                var(--header--padding-bottom, 10rem) var(--header--padding-left, 0)
+        )
+    );
+
+    /* stylelint-disable selector-list-comma-newline-after */
+    > .container,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        margin-top: 0;
+    }
+    /* stylelint-enable */
+
+    &.-cover {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: unset;
+        background-size: cover;
+    }
+
+    &.-fullscreen {
+        padding: 0;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}

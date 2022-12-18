@@ -1,9 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Components > ICheckboxGroup > should render correctly 1`] = `
-"<div class=\\"form-group checkbox-group -light -md\\" name=\\"checkbox-group\\" role=\\"checkboxgroup\\" data-v-2cd6530c=\\"\\">
-  <div class=\\"checkbox -light\\" aria-checked=\\"false\\" role=\\"checkbox\\"><input type=\\"checkbox\\" tabindex=\\"-1\\" name=\\"checkbox-1\\" aria-hidden=\\"true\\"><label class=\\"checkbox-label\\" aria-checked=\\"false\\" tabindex=\\"0\\"></label></div>
-  <div class=\\"checkbox -light\\" aria-checked=\\"false\\" role=\\"checkbox\\"><input type=\\"checkbox\\" tabindex=\\"-1\\" name=\\"checkbox-2\\" aria-hidden=\\"true\\"><label class=\\"checkbox-label\\" aria-checked=\\"false\\" tabindex=\\"0\\"></label></div>
-  <div class=\\"checkbox -light\\" aria-checked=\\"false\\" role=\\"checkbox\\"><input type=\\"checkbox\\" tabindex=\\"-1\\" name=\\"checkbox-3\\" aria-hidden=\\"true\\"><label class=\\"checkbox-label\\" aria-checked=\\"false\\" tabindex=\\"0\\"></label></div>
-</div>"
-`;

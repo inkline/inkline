@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue';
 import { ITable } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('ITable', () => {
@@ -12,7 +14,14 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            const wrapper = render(ITable, { props });
+            const wrapper = render(ITable, {
+                props,
+                global: {
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
+            });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
@@ -29,6 +38,11 @@ describe('Components', () => {
                             hover: true,
                             nowrap: true,
                             responsive: true
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         }
                     });
 

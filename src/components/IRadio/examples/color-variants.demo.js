@@ -1,5 +1,5 @@
 export default {
-    data () {
+    data() {
         return {
             light: 'apple',
             dark: 'apple'

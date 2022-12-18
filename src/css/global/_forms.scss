@@ -1,0 +1,147 @@
+/**
+ * Forms
+ */
+
+label {
+    display: inline-block;
+}
+
+// Remove the default `border-radius` that macOS Chrome adds.
+
+button {
+    border-radius: 0;
+}
+
+// Explicitly remove focus outline in Chromium when it shouldn't be
+// visible (e.g. as result of mouse click or touch tap). It already
+// should be doing this automatically, but seems to currently be
+// confused and applies its very visible two-tone outline anyway.
+button:focus:not(:focus-visible) {
+    outline: 0;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+// Set the cursor for non-`<button>` buttons
+[role='button'] {
+    cursor: pointer;
+}
+
+select {
+    // Remove the inheritance of word-wrap in Safari.
+    word-wrap: normal;
+
+    // Undo the opacity change from Chrome
+    &:disabled {
+        opacity: 1;
+    }
+}
+
+// Remove the dropdown arrow only from text type inputs built with datalists in Chrome.
+// See https://stackoverflow.com/a/54997118
+[list]:not(
+        [type='date'],
+        [type='datetime-local'],
+        [type='month'],
+        [type='week'],
+        [type='time']
+    )::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
+
+// Prevent a WebKit bug where webkit-appearance destroys native `audio` and `video` controls in Android 4.
+// Correct the inability to style clickable types in iOS and Safari.
+// Opinionated: add "hand" cursor to non-disabled button elements.
+// @credit https://github.com/twbs/bootstrap
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    -webkit-appearance: button;
+
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
+// Textareas should really only resize vertically so they don't break their (horizontal) containers.
+textarea {
+    resize: vertical;
+}
+
+// Browsers set a default `min-width: min-content;` on fieldsets,
+// unlike e.g. `<div>`s, which have `min-width: 0;` by default.
+// So we reset that to ensure fieldsets behave more like a standard block element.
+// See https://github.com/twbs/bootstrap/issues/12359
+// and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
+// Reset the default outline behavior of fieldsets so they don't affect page layout.
+fieldset {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+// By using `float: left`, the legend will behave like a block element.
+// This way the border of a fieldset wraps around the legend if present.
+// Fix wrapping bug.
+// See https://github.com/twbs/bootstrap/issues/29712
+legend {
+    float: left;
+    width: 100%;
+    padding: 0;
+    margin-bottom: var(--legend--margin-bottom, var(--margin-bottom));
+    font-size: var(--legend--font-size, var(--font-size-lg));
+    line-height: inherit;
+
+    + * {
+        clear: left;
+    }
+}
+
+// Fix height of inputs with a type of datetime-local, date, month, week, or time
+// See https://github.com/twbs/bootstrap/issues/18842
+::-webkit-datetime-edit-fields-wrapper,
+::-webkit-datetime-edit-text,
+::-webkit-datetime-edit-minute,
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-year-field {
+    padding: 0;
+}
+
+::-webkit-inner-spin-button {
+    height: auto;
+}
+
+// Correct the outline style in Safari.
+// Add rounded corners on search inputs in iOS
+[type='search'] {
+    outline-offset: -2px;
+    -webkit-appearance: textfield;
+}
+
+// Remove the inner padding in Chrome and Safari on macOS.
+::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+// Remove padding around color pickers in webkit browsers
+::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+// Inherit font family and line height for file input buttons
+// Correct the inability to style clickable types in iOS and Safari.
+::file-selector-button {
+    font: inherit;
+    -webkit-appearance: button;
+}

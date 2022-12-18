@@ -1,0 +1,1 @@
+export { default as IRow } from './IRow.vue';

@@ -1,5 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ITabs, ITab, ITabTitle } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
     describe('ITabs', () => {
@@ -33,7 +35,10 @@ describe('Components', () => {
         it('should render correctly', () => {
             const wrapper = render(ITabs, {
                 global: {
-                    stubs
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
                 },
                 props,
                 slots
@@ -47,7 +52,10 @@ describe('Components', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(ITabs, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props: {
                             ...props,
@@ -56,11 +64,7 @@ describe('Components', () => {
                         slots
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        '-light',
-                        '-md',
-                        '-stretch'
-                    );
+                    expect(wrapper.container.firstChild).toHaveClass('-light', '-md', '-stretch');
                 });
             });
         });
@@ -70,7 +74,10 @@ describe('Components', () => {
                 it('should add classes based on props', async () => {
                     const wrapper = render(ITabs, {
                         global: {
-                            stubs
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
                         },
                         props,
                         slots
@@ -79,9 +86,7 @@ describe('Components', () => {
                     const tabTitles = await wrapper.getAllByRole('tab');
                     await fireEvent.click(tabTitles[0]);
 
-                    expect(tabTitles[0]).toHaveClass(
-                        '-active'
-                    );
+                    expect(tabTitles[0]).toHaveClass('-active');
                     expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['tab-1']);
                 });
             });

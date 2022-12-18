@@ -1,1 +1,9 @@
-<template src="./routing.demo.html" />
+<template>
+    <i-dropdown>
+        <i-button>Dropdown</i-button>
+        <template #body>
+            <i-dropdown-item href="https://inkline.io">Link</i-dropdown-item>
+            <i-dropdown-item :to="{ name: 'index' }">Router Link</i-dropdown-item>
+        </template>
+    </i-dropdown>
+</template>

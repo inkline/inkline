@@ -1,1 +1,5 @@
-<template src="./state-disabled.html" />
+<template>
+    <i-button disabled>Disabled Default Button</i-button>
+
+    <i-button disabled color="primary">Disabled Primary Button</i-button>
+</template>

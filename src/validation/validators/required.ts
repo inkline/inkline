@@ -1,4 +1,4 @@
-export function required (value: any, options: any = { invalidateFalse: false }): boolean {
+export function required(value: any, options: any = { invalidateFalse: false }): boolean {
     if (value === undefined || value === null) {
         return false;
     }

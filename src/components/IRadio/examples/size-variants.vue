@@ -1,2 +1,16 @@
-<template src="./size-variants.html" />
-<script src="./size-variants.js" />
+<script>
+export default {
+    data() {
+        return {
+            checked: ''
+        };
+    }
+};
+</script>
+<template>
+    <i-radio-group v-model="checked">
+        <i-radio value="small" size="sm">Small</i-radio>
+        <i-radio value="medium" size="md">Medium</i-radio>
+        <i-radio value="large" size="lg">Large</i-radio>
+    </i-radio-group>
+</template>

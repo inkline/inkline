@@ -3,160 +3,120 @@
  */
 
 .badge {
-    ////
-    /// Variables for the sm size variant
-    /// @name sm
-    /// @type variant
-    ////
-    @include variant('sm') {
-        ////
-        /// The border top left radius of the badge component, for the sm size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border top right radius of the badge component, for the sm size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border bottom right radius of the badge component, for the sm size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The border bottom left radius of the badge component, for the sm size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')});
-        ////
-        /// The font size of the badge component, for the sm size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{65%} * #{size-multiplier('sm')});
-        ////
-        /// The padding top of the badge component, for the sm size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('sm')});
-        ////
-        /// The padding right of the badge component, for the sm size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{calc(var(--padding-right) / 2)} * #{size-multiplier('sm')});
-        ////
-        /// The padding bottom of the badge component, for the sm size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('sm')});
-        ////
-        /// The padding left of the badge component, for the sm size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{calc(var(--padding-left) / 2)} * #{size-multiplier('sm')});
+    &.-sm {
+        --badge--border-top-left-radius: var(
+            --badge--sm--border-top-left-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-sm))
+        );
+        --badge--border-top-right-radius: var(
+            --badge--sm--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-sm))
+        );
+        --badge--border-bottom-right-radius: var(
+            --badge--sm--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))
+        );
+        --badge--border-bottom-left-radius: var(
+            --badge--sm--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))
+        );
+        --badge--font-size: var(
+            --badge--sm--font-size,
+            calc(calc(var(--font-size) * var(--size-multiplier-sm)) * 0.8)
+        );
+        --badge--padding-top: var(
+            --badge--sm--padding-top,
+            calc(calc(var(--padding-top) * var(--size-multiplier-sm)) * 0.25)
+        );
+        --badge--padding-right: var(
+            --badge--sm--padding-right,
+            calc(calc(var(--padding-right) * var(--size-multiplier-sm)) * 0.5)
+        );
+        --badge--padding-bottom: var(
+            --badge--sm--padding-bottom,
+            calc(calc(var(--padding-bottom) * var(--size-multiplier-sm)) * 0.25)
+        );
+        --badge--padding-left: var(
+            --badge--sm--padding-left,
+            calc(calc(var(--padding-left) * var(--size-multiplier-sm)) * 0.5)
+        );
     }
-    ////
-    /// Variables for the md size variant
-    /// @name md
-    /// @type variant
-    ////
-    @include variant('md') {
-        ////
-        /// The border top left radius of the badge component, for the md size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border top right radius of the badge component, for the md size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border bottom right radius of the badge component, for the md size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')});
-        ////
-        /// The border bottom left radius of the badge component, for the md size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')});
-        ////
-        /// The font size of the badge component, for the md size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{75%} * #{size-multiplier('md')});
-        ////
-        /// The padding top of the badge component, for the md size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('md')});
-        ////
-        /// The padding right of the badge component, for the md size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{calc(var(--padding-right) / 2)} * #{size-multiplier('md')});
-        ////
-        /// The padding bottom of the badge component, for the md size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('md')});
-        ////
-        /// The padding left of the badge component, for the md size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{calc(var(--padding-left) / 2)} * #{size-multiplier('md')});
+
+    &.-md {
+        --badge--border-top-left-radius: var(
+            --badge--md--border-top-left-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-md))
+        );
+        --badge--border-top-right-radius: var(
+            --badge--md--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-md))
+        );
+        --badge--border-bottom-right-radius: var(
+            --badge--md--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))
+        );
+        --badge--border-bottom-left-radius: var(
+            --badge--md--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))
+        );
+        --badge--font-size: var(
+            --badge--md--font-size,
+            calc(calc(var(--font-size) * var(--size-multiplier-md)) * 0.8)
+        );
+        --badge--padding-top: var(
+            --badge--md--padding-top,
+            calc(calc(var(--padding-top) * var(--size-multiplier-md)) * 0.25)
+        );
+        --badge--padding-right: var(
+            --badge--md--padding-right,
+            calc(calc(var(--padding-right) * var(--size-multiplier-md)) * 0.5)
+        );
+        --badge--padding-bottom: var(
+            --badge--md--padding-bottom,
+            calc(calc(var(--padding-bottom) * var(--size-multiplier-md)) * 0.25)
+        );
+        --badge--padding-left: var(
+            --badge--md--padding-left,
+            calc(calc(var(--padding-left) * var(--size-multiplier-md)) * 0.5)
+        );
     }
-    ////
-    /// Variables for the lg size variant
-    /// @name lg
-    /// @type variant
-    ////
-    @include variant('lg') {
-        ////
-        /// The border top left radius of the badge component, for the lg size variant
-        /// @name border-top-left-radius
-        ////
-        ----border-top-left-radius: calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border top right radius of the badge component, for the lg size variant
-        /// @name border-top-right-radius
-        ////
-        ----border-top-right-radius: calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border bottom right radius of the badge component, for the lg size variant
-        /// @name border-bottom-right-radius
-        ////
-        ----border-bottom-right-radius: calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The border bottom left radius of the badge component, for the lg size variant
-        /// @name border-bottom-left-radius
-        ////
-        ----border-bottom-left-radius: calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')});
-        ////
-        /// The font size of the badge component, for the lg size variant
-        /// @name font-size
-        ////
-        ----font-size: calc(#{85%} * #{size-multiplier('lg')});
-        ////
-        /// The padding top of the badge component, for the lg size variant
-        /// @name padding-top
-        ////
-        ----padding-top: calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('lg')});
-        ////
-        /// The padding right of the badge component, for the lg size variant
-        /// @name padding-right
-        ////
-        ----padding-right: calc(#{calc(var(--padding-right) / 2)} * #{size-multiplier('lg')});
-        ////
-        /// The padding bottom of the badge component, for the lg size variant
-        /// @name padding-bottom
-        ////
-        ----padding-bottom: calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('lg')});
-        ////
-        /// The padding left of the badge component, for the lg size variant
-        /// @name padding-left
-        ////
-        ----padding-left: calc(#{calc(var(--padding-left) / 2)} * #{size-multiplier('lg')});
+
+    &.-lg {
+        --badge--border-top-left-radius: var(
+            --badge--lg--border-top-left-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-lg))
+        );
+        --badge--border-top-right-radius: var(
+            --badge--lg--border-top-right-radius,
+            calc(var(--border-top-right-radius) * var(--size-multiplier-lg))
+        );
+        --badge--border-bottom-right-radius: var(
+            --badge--lg--border-bottom-right-radius,
+            calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))
+        );
+        --badge--border-bottom-left-radius: var(
+            --badge--lg--border-bottom-left-radius,
+            calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))
+        );
+        --badge--font-size: var(
+            --badge--lg--font-size,
+            calc(calc(var(--font-size) * var(--size-multiplier-lg)) * 0.8)
+        );
+        --badge--padding-top: var(
+            --badge--lg--padding-top,
+            calc(calc(var(--padding-top) * var(--size-multiplier-lg)) * 0.25)
+        );
+        --badge--padding-right: var(
+            --badge--lg--padding-right,
+            calc(calc(var(--padding-right) * var(--size-multiplier-lg)) * 0.5)
+        );
+        --badge--padding-bottom: var(
+            --badge--lg--padding-bottom,
+            calc(calc(var(--padding-bottom) * var(--size-multiplier-lg)) * 0.25)
+        );
+        --badge--padding-left: var(
+            --badge--lg--padding-left,
+            calc(calc(var(--padding-left) * var(--size-multiplier-lg)) * 0.5)
+        );
     }
 }
