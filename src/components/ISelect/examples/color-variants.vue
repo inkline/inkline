@@ -15,12 +15,7 @@ export default {
 };
 </script>
 <template>
-    <ISelect
-        v-model="selected"
-        :options="options"
-        placeholder="Choose something.."
-        color="light"
-    />
+    <ISelect v-model="selected" :options="options" placeholder="Choose something.." color="light" />
 
     <ISelect v-model="selected" :options="options" placeholder="Choose something.." color="dark" />
 </template>

@@ -9,7 +9,7 @@
         "build:unbuild": "unbuild",
         "build:vite": "vite build",
         "postbuild": "ts-node ./scripts/postbuild.ts",
-        "lint": "run-s lint:*",
+        "lint": "run-p lint:script lint:style lint:markdown",
         "lint:script": "eslint --ext .vue,.js,.ts src",
         "lint:prettier": "prettier --write --loglevel warn \"**/*.{js,json,css,scss,vue,html}\"",
         "lint:style": "stylelint \"src/**/*.{scss,vue}\"",

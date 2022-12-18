@@ -16,10 +16,7 @@ const form = useForm({
 <template>
     <IForm v-model="form">
         <IFormGroup>
-            <IInput
-                name="input"
-                placeholder="This field should contain only letters and numbers"
-            />
+            <IInput name="input" placeholder="This field should contain only letters and numbers" />
             <IFormError for="input" />
         </IFormGroup>
         <IFormGroup>
