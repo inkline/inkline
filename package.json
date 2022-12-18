@@ -71,6 +71,7 @@
         "@vue/tsconfig": "^0.1.3",
         "babel-loader": "^8.2.5",
         "c8": "^7.12.0",
+        "esbuild": "^0.16.8",
         "eslint": "^8.25.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-vue": "^9.6.0",
