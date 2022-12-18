@@ -8,7 +8,7 @@ export default {
 };
 </script>
 <template>
-    <i-input v-model="value" color="light" placeholder="Type something.." />
+    <IInput v-model="value" color="light" placeholder="Type something.." />
 
-    <i-input v-model="value" color="dark" placeholder="Type something.." />
+    <IInput v-model="value" color="dark" placeholder="Type something.." />
 </template>

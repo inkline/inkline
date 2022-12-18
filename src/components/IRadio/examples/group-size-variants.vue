@@ -8,24 +8,24 @@ export default {
 };
 </script>
 <template>
-    <i-radio-group v-model="checked" size="sm">
-        <i-radio value="apple">Apple</i-radio>
-        <i-radio value="banana">Banana</i-radio>
-        <i-radio value="strawberry">Strawberry</i-radio>
-        <i-radio value="mango">Mango</i-radio>
-    </i-radio-group>
+    <IRadioGroup v-model="checked" size="sm">
+        <IRadio value="apple">Apple</IRadio>
+        <IRadio value="banana">Banana</IRadio>
+        <IRadio value="strawberry">Strawberry</IRadio>
+        <IRadio value="mango">Mango</IRadio>
+    </IRadioGroup>
 
-    <i-radio-group v-model="checked" size="md">
-        <i-radio value="apple">Apple</i-radio>
-        <i-radio value="banana">Banana</i-radio>
-        <i-radio value="strawberry">Strawberry</i-radio>
-        <i-radio value="mango">Mango</i-radio>
-    </i-radio-group>
+    <IRadioGroup v-model="checked" size="md">
+        <IRadio value="apple">Apple</IRadio>
+        <IRadio value="banana">Banana</IRadio>
+        <IRadio value="strawberry">Strawberry</IRadio>
+        <IRadio value="mango">Mango</IRadio>
+    </IRadioGroup>
 
-    <i-radio-group v-model="checked" size="lg">
-        <i-radio value="apple">Apple</i-radio>
-        <i-radio value="banana">Banana</i-radio>
-        <i-radio value="strawberry">Strawberry</i-radio>
-        <i-radio value="mango">Mango</i-radio>
-    </i-radio-group>
+    <IRadioGroup v-model="checked" size="lg">
+        <IRadio value="apple">Apple</IRadio>
+        <IRadio value="banana">Banana</IRadio>
+        <IRadio value="strawberry">Strawberry</IRadio>
+        <IRadio value="mango">Mango</IRadio>
+    </IRadioGroup>
 </template>

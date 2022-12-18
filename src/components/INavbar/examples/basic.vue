@@ -1,19 +1,19 @@
 <template>
-    <i-navbar>
-        <i-navbar-brand to="/"> Navbar </i-navbar-brand>
-        <i-navbar-collapsible>
-            <i-nav>
-                <i-nav-item to="/"> Home </i-nav-item>
-                <i-nav-item to="/about"> About </i-nav-item>
-                <i-nav-item to="/contact"> Contact </i-nav-item>
-            </i-nav>
-            <i-input placeholder="Type something..">
+    <INavbar>
+        <INavbarBrand to="/"> Navbar </INavbarBrand>
+        <INavbarCollapsible>
+            <INav>
+                <INavItem to="/"> Home </INavItem>
+                <INavItem to="/about"> About </INavItem>
+                <INavItem to="/contact"> Contact </INavItem>
+            </INav>
+            <IInput placeholder="Type something..">
                 <template #append>
-                    <i-button color="primary">
-                        <i-icon name="ink-search" />
-                    </i-button>
+                    <IButton color="primary">
+                        <IIcon name="ink-search" />
+                    </IButton>
                 </template>
-            </i-input>
-        </i-navbar-collapsible>
-    </i-navbar>
+            </IInput>
+        </INavbarCollapsible>
+    </INavbar>
 </template>

@@ -1,6 +1,6 @@
 <template>
-    <i-breadcrumb>
-        <i-breadcrumb-item>Home</i-breadcrumb-item>
-        <i-breadcrumb-item active>Breadcrumbs</i-breadcrumb-item>
-    </i-breadcrumb>
+    <IBreadcrumb>
+        <IBreadcrumbItem>Home</IBreadcrumbItem>
+        <IBreadcrumbItem active>Breadcrumbs</IBreadcrumbItem>
+    </IBreadcrumb>
 </template>

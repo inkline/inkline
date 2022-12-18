@@ -8,17 +8,17 @@ export default {
 };
 </script>
 <template>
-    <i-radio-group v-model="checked" color="light">
-        <i-radio value="apple">Apple</i-radio>
-        <i-radio value="banana">Banana</i-radio>
-        <i-radio value="strawberry">Strawberry</i-radio>
-        <i-radio value="mango">Mango</i-radio>
-    </i-radio-group>
+    <IRadioGroup v-model="checked" color="light">
+        <IRadio value="apple">Apple</IRadio>
+        <IRadio value="banana">Banana</IRadio>
+        <IRadio value="strawberry">Strawberry</IRadio>
+        <IRadio value="mango">Mango</IRadio>
+    </IRadioGroup>
 
-    <i-radio-group v-model="checked" color="dark">
-        <i-radio value="apple">Apple</i-radio>
-        <i-radio value="banana">Banana</i-radio>
-        <i-radio value="strawberry">Strawberry</i-radio>
-        <i-radio value="mango">Mango</i-radio>
-    </i-radio-group>
+    <IRadioGroup v-model="checked" color="dark">
+        <IRadio value="apple">Apple</IRadio>
+        <IRadio value="banana">Banana</IRadio>
+        <IRadio value="strawberry">Strawberry</IRadio>
+        <IRadio value="mango">Mango</IRadio>
+    </IRadioGroup>
 </template>

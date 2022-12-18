@@ -8,9 +8,9 @@ export default {
 };
 </script>
 <template>
-    <i-textarea v-model="value" size="sm" placeholder="Type something.." />
+    <ITextarea v-model="value" size="sm" placeholder="Type something.." />
 
-    <i-textarea v-model="value" size="md" placeholder="Type something.." />
+    <ITextarea v-model="value" size="md" placeholder="Type something.." />
 
-    <i-textarea v-model="value" size="lg" placeholder="Type something.." />
+    <ITextarea v-model="value" size="lg" placeholder="Type something.." />
 </template>

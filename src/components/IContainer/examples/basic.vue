@@ -1,7 +1,7 @@
 <template>
-    <i-container>
-        <i-row>
-            <i-column> Container </i-column>
-        </i-row>
-    </i-container>
+    <IContainer>
+        <IRow>
+            <IColumn> Container </IColumn>
+        </IRow>
+    </IContainer>
 </template>

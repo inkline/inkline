@@ -1,5 +1,5 @@
 <template>
-    <i-button active>Active Default Button</i-button>
+    <IButton active>Active Default Button</IButton>
 
-    <i-button active color="primary">Active Primary Button</i-button>
+    <IButton active color="primary">Active Primary Button</IButton>
 </template>

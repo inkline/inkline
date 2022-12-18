@@ -1,29 +1,29 @@
 <template>
-    <i-popover placement="top">
-        <i-button>Top Popover</i-button>
+    <IPopover placement="top">
+        <IButton>Top Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 
-    <i-popover placement="bottom">
-        <i-button>Bottom Popover</i-button>
+    <IPopover placement="bottom">
+        <IButton>Bottom Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 
-    <i-popover placement="left">
-        <i-button>Left Popover</i-button>
+    <IPopover placement="left">
+        <IButton>Left Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 
-    <i-popover placement="right">
-        <i-button>Right Popover</i-button>
+    <IPopover placement="right">
+        <IButton>Right Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 </template>

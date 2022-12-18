@@ -1,16 +1,16 @@
 <template>
-    <i-tooltip size="sm">
-        <i-button>Small Tooltip</i-button>
+    <ITooltip size="sm">
+        <IButton>Small Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 
-    <i-tooltip size="md">
-        <i-button>Medium Tooltip</i-button>
+    <ITooltip size="md">
+        <IButton>Medium Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 
-    <i-tooltip size="lg">
-        <i-button>Large Tooltip</i-button>
+    <ITooltip size="lg">
+        <IButton>Large Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 </template>

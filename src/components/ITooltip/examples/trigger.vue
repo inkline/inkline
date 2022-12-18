@@ -5,28 +5,28 @@ const visible = ref(false);
 </script>
 
 <template>
-    <i-tooltip events="click">
-        <i-button>Click Tooltip</i-button>
+    <ITooltip events="click">
+        <IButton>Click Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 
-    <i-tooltip events="hover">
-        <i-button>Hover Tooltip</i-button>
+    <ITooltip events="hover">
+        <IButton>Hover Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 
-    <i-tooltip events="focus">
-        <i-button type="submit">Focus Tooltip</i-button>
+    <ITooltip events="focus">
+        <IButton type="submit">Focus Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 
-    <i-tooltip :events="['focus', 'hover']">
-        <i-button>Multiple Events Tooltip</i-button>
+    <ITooltip :events="['focus', 'hover']">
+        <IButton>Multiple Events Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 
-    <i-tooltip v-model:visible="visible" events="manual">
-        <i-button @click="visible = !visible">Manual Tooltip</i-button>
+    <ITooltip v-model:visible="visible" events="manual">
+        <IButton @click="visible = !visible">Manual Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 </template>

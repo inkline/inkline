@@ -1,7 +1,7 @@
 <template>
-    <i-button-group vertical>
-        <i-button>Button 1</i-button>
-        <i-button>Button 2</i-button>
-        <i-button>Button 3</i-button>
-    </i-button-group>
+    <IButtonGroup vertical>
+        <IButton>Button 1</IButton>
+        <IButton>Button 2</IButton>
+        <IButton>Button 3</IButton>
+    </IButtonGroup>
 </template>

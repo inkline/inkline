@@ -8,60 +8,60 @@ export default {
 };
 </script>
 <template>
-    <i-textarea v-model="value" placeholder="Type something..">
+    <ITextarea v-model="value" placeholder="Type something..">
         <template #prepend>
-            <i-dropdown>
-                <i-button>Dropdown</i-button>
+            <IDropdown>
+                <IButton>Dropdown</IButton>
                 <template #body>
-                    <i-dropdown-item>Action</i-dropdown-item>
-                    <i-dropdown-item>Another action</i-dropdown-item>
-                    <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-                    <i-dropdown-divider />
-                    <i-dropdown-item>Separated item</i-dropdown-item>
+                    <IDropdownItem>Action</IDropdownItem>
+                    <IDropdownItem>Another action</IDropdownItem>
+                    <IDropdownItem disabled>Disabled action</IDropdownItem>
+                    <IDropdownDivider />
+                    <IDropdownItem>Separated item</IDropdownItem>
                 </template>
-            </i-dropdown>
+            </IDropdown>
         </template>
-    </i-textarea>
+    </ITextarea>
 
-    <i-textarea v-model="value" placeholder="Type something..">
+    <ITextarea v-model="value" placeholder="Type something..">
         <template #append>
-            <i-dropdown>
-                <i-button>Dropdown</i-button>
+            <IDropdown>
+                <IButton>Dropdown</IButton>
                 <template #body>
-                    <i-dropdown-item>Action</i-dropdown-item>
-                    <i-dropdown-item>Another action</i-dropdown-item>
-                    <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-                    <i-dropdown-divider />
-                    <i-dropdown-item>Separated item</i-dropdown-item>
+                    <IDropdownItem>Action</IDropdownItem>
+                    <IDropdownItem>Another action</IDropdownItem>
+                    <IDropdownItem disabled>Disabled action</IDropdownItem>
+                    <IDropdownDivider />
+                    <IDropdownItem>Separated item</IDropdownItem>
                 </template>
-            </i-dropdown>
+            </IDropdown>
         </template>
-    </i-textarea>
+    </ITextarea>
 
-    <i-textarea v-model="value" placeholder="Type something..">
+    <ITextarea v-model="value" placeholder="Type something..">
         <template #prepend>
-            <i-dropdown>
-                <i-button>Dropdown</i-button>
+            <IDropdown>
+                <IButton>Dropdown</IButton>
                 <template #body>
-                    <i-dropdown-item>Action</i-dropdown-item>
-                    <i-dropdown-item>Another action</i-dropdown-item>
-                    <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-                    <i-dropdown-divider />
-                    <i-dropdown-item>Separated item</i-dropdown-item>
+                    <IDropdownItem>Action</IDropdownItem>
+                    <IDropdownItem>Another action</IDropdownItem>
+                    <IDropdownItem disabled>Disabled action</IDropdownItem>
+                    <IDropdownDivider />
+                    <IDropdownItem>Separated item</IDropdownItem>
                 </template>
-            </i-dropdown>
+            </IDropdown>
         </template>
         <template #append>
-            <i-dropdown>
-                <i-button>Dropdown</i-button>
+            <IDropdown>
+                <IButton>Dropdown</IButton>
                 <template #body>
-                    <i-dropdown-item>Action</i-dropdown-item>
-                    <i-dropdown-item>Another action</i-dropdown-item>
-                    <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-                    <i-dropdown-divider />
-                    <i-dropdown-item>Separated item</i-dropdown-item>
+                    <IDropdownItem>Action</IDropdownItem>
+                    <IDropdownItem>Another action</IDropdownItem>
+                    <IDropdownItem disabled>Disabled action</IDropdownItem>
+                    <IDropdownDivider />
+                    <IDropdownItem>Separated item</IDropdownItem>
                 </template>
-            </i-dropdown>
+            </IDropdown>
         </template>
-    </i-textarea>
+    </ITextarea>
 </template>

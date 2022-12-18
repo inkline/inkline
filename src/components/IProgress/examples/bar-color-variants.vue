@@ -1,33 +1,33 @@
 <template>
-    <i-progress>
-        <i-progress-bar color="primary" :value="65" />
-    </i-progress>
+    <IProgress>
+        <IProgressBar color="primary" :value="65" />
+    </IProgress>
 
-    <i-progress>
-        <i-progress-bar color="secondary" :value="65" />
-    </i-progress>
+    <IProgress>
+        <IProgressBar color="secondary" :value="65" />
+    </IProgress>
 
-    <i-progress>
-        <i-progress-bar color="info" :value="65" />
-    </i-progress>
+    <IProgress>
+        <IProgressBar color="info" :value="65" />
+    </IProgress>
 
-    <i-progress>
-        <i-progress-bar color="success" :value="65" />
-    </i-progress>
+    <IProgress>
+        <IProgressBar color="success" :value="65" />
+    </IProgress>
 
-    <i-progress>
-        <i-progress-bar color="warning" :value="65" />
-    </i-progress>
+    <IProgress>
+        <IProgressBar color="warning" :value="65" />
+    </IProgress>
 
-    <i-progress>
-        <i-progress-bar color="danger" :value="65" />
-    </i-progress>
+    <IProgress>
+        <IProgressBar color="danger" :value="65" />
+    </IProgress>
 
-    <i-progress color="light">
-        <i-progress-bar color="dark" :value="65" />
-    </i-progress>
+    <IProgress color="light">
+        <IProgressBar color="dark" :value="65" />
+    </IProgress>
 
-    <i-progress color="dark">
-        <i-progress-bar color="light" :value="65" />
-    </i-progress>
+    <IProgress color="dark">
+        <IProgressBar color="light" :value="65" />
+    </IProgress>
 </template>

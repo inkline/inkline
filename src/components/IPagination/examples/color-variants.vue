@@ -10,14 +10,14 @@ export default {
 };
 </script>
 <template>
-    <i-pagination
+    <IPagination
         v-model="page"
         :items-total="itemsTotal"
         :items-per-page="itemsPerPage"
         color="light"
     />
 
-    <i-pagination
+    <IPagination
         v-model="page"
         :items-total="itemsTotal"
         :items-per-page="itemsPerPage"

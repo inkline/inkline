@@ -1,16 +1,16 @@
 <template>
-    <i-card size="sm">
+    <ICard size="sm">
         Some quick example text to build on the card title and make up the bulk of the card's
         content.
-    </i-card>
+    </ICard>
 
-    <i-card size="md">
+    <ICard size="md">
         Some quick example text to build on the card title and make up the bulk of the card's
         content.
-    </i-card>
+    </ICard>
 
-    <i-card size="lg">
+    <ICard size="lg">
         Some quick example text to build on the card title and make up the bulk of the card's
         content.
-    </i-card>
+    </ICard>
 </template>

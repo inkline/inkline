@@ -10,27 +10,27 @@ export default {
 };
 </script>
 <template>
-    <i-button @click="sm = true"> Show Small Modal </i-button>
+    <IButton @click="sm = true"> Show Small Modal </IButton>
 
-    <i-modal v-model="sm" size="sm">
+    <IModal v-model="sm" size="sm">
         <template #header> Small Modal </template>
         This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 
-    <i-button @click="md = true"> Show Medium Modal </i-button>
+    <IButton @click="md = true"> Show Medium Modal </IButton>
 
-    <i-modal v-model="md" size="md">
+    <IModal v-model="md" size="md">
         <template #header> Medium Modal </template>
         This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 
-    <i-button @click="lg = true"> Show Large Modal </i-button>
+    <IButton @click="lg = true"> Show Large Modal </IButton>
 
-    <i-modal v-model="lg" size="lg">
+    <IModal v-model="lg" size="lg">
         <template #header> Large Modal </template>
         This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 </template>

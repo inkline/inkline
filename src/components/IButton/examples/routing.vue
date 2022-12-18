@@ -1,5 +1,5 @@
 <template>
-    <i-button href="https://inkline.io"> Button Link </i-button>
+    <IButton href="https://inkline.io"> Button Link </IButton>
 
-    <i-button :to="{ name: 'docs-components-button' }"> Button Route </i-button>
+    <IButton :to="{ name: 'docs-components-button' }"> Button Route </IButton>
 </template>

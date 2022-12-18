@@ -1,6 +1,6 @@
 <template>
-    <i-nav>
-        <i-nav-item href="https://inkline.io">Link</i-nav-item>
-        <i-nav-item :to="{ name: 'index' }">Router Link</i-nav-item>
-    </i-nav>
+    <INav>
+        <INavItem href="https://inkline.io">Link</INavItem>
+        <INavItem :to="{ name: 'index' }">Router Link</INavItem>
+    </INav>
 </template>

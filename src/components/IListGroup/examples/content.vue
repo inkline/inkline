@@ -1,25 +1,25 @@
 <template>
-    <i-list-group>
-        <i-list-group-item>
+    <IListGroup>
+        <IListGroupItem>
             <h4>List Group Heading</h4>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua.
             </p>
-        </i-list-group-item>
-        <i-list-group-item>
+        </IListGroupItem>
+        <IListGroupItem>
             <h4>List Group Heading</h4>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua.
             </p>
-        </i-list-group-item>
-        <i-list-group-item>
+        </IListGroupItem>
+        <IListGroupItem>
             <h4>List Group Heading</h4>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua.
             </p>
-        </i-list-group-item>
-    </i-list-group>
+        </IListGroupItem>
+    </IListGroup>
 </template>

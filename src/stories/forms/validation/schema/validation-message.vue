@@ -8,17 +8,17 @@ const schema = useForm({
 });
 </script>
 <template>
-    <i-form v-model="schema">
-        <i-form-group>
-            <i-form-label for="input-with-custom-error-message">
+    <IForm v-model="schema">
+        <IFormGroup>
+            <IFormLabel for="input-with-custom-error-message">
                 Input with custom error message
-            </i-form-label>
-            <i-input
+            </IFormLabel>
+            <IInput
                 id="input-with-custom-error-message"
                 name="input"
                 placeholder="Type something.."
             />
-            <i-form-error for="input" />
-        </i-form-group>
-    </i-form>
+            <IFormError for="input" />
+        </IFormGroup>
+    </IForm>
 </template>

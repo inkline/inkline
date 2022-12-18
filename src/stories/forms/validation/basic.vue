@@ -56,69 +56,69 @@ function onSubmit() {
 }
 </script>
 <template>
-    <i-form v-model="schema">
-        <i-form-group>
-            <i-form-label>Input</i-form-label>
-            <i-input name="input" placeholder="Type something.." />
-            <i-form-error for="input" />
-        </i-form-group>
+    <IForm v-model="schema">
+        <IFormGroup>
+            <IFormLabel>Input</IFormLabel>
+            <IInput name="input" placeholder="Type something.." />
+            <IFormError for="input" />
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Number Input</i-form-label>
-            <i-number-input name="numberInput" placeholder="Type something.." />
-            <i-form-error for="numberInput" />
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Number Input</IFormLabel>
+            <INumberInput name="numberInput" placeholder="Type something.." />
+            <IFormError for="numberInput" />
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Textarea</i-form-label>
-            <i-textarea name="textarea" placeholder="Write a comment.." />
-            <i-form-error for="textarea" />
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Textarea</IFormLabel>
+            <ITextarea name="textarea" placeholder="Write a comment.." />
+            <IFormError for="textarea" />
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Select</i-form-label>
-            <i-select name="select" :options="options" placeholder="Choose an option" />
-            <i-form-error for="select" />
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Select</IFormLabel>
+            <ISelect name="select" :options="options" placeholder="Choose an option" />
+            <IFormError for="select" />
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Checkbox</i-form-label>
-            <i-checkbox name="checkbox">Apple</i-checkbox>
-            <i-form-error for="checkbox" />
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Checkbox</IFormLabel>
+            <ICheckbox name="checkbox">Apple</ICheckbox>
+            <IFormError for="checkbox" />
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Checkbox Group</i-form-label>
-            <i-checkbox-group name="checkboxGroup">
-                <i-checkbox value="apple">Apple</i-checkbox>
-                <i-checkbox value="banana">Banana</i-checkbox>
-                <i-checkbox value="strawberry">Strawberry</i-checkbox>
-                <i-checkbox value="mango">Mango</i-checkbox>
-            </i-checkbox-group>
-            <i-form-error for="checkboxGroup" />
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Checkbox Group</IFormLabel>
+            <ICheckboxGroup name="checkboxGroup">
+                <ICheckbox value="apple">Apple</ICheckbox>
+                <ICheckbox value="banana">Banana</ICheckbox>
+                <ICheckbox value="strawberry">Strawberry</ICheckbox>
+                <ICheckbox value="mango">Mango</ICheckbox>
+            </ICheckboxGroup>
+            <IFormError for="checkboxGroup" />
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Radio Group</i-form-label>
-            <i-radio-group name="radioGroup">
-                <i-radio value="coconut">Coconut</i-radio>
-                <i-radio value="passionfruit">Passion fruit</i-radio>
-                <i-radio value="apricot">Apricot</i-radio>
-                <i-radio value="">None</i-radio>
-            </i-radio-group>
-            <i-form-error for="radioGroup" />
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Radio Group</IFormLabel>
+            <IRadioGroup name="radioGroup">
+                <IRadio value="coconut">Coconut</IRadio>
+                <IRadio value="passionfruit">Passion fruit</IRadio>
+                <IRadio value="apricot">Apricot</IRadio>
+                <IRadio value="">None</IRadio>
+            </IRadioGroup>
+            <IFormError for="radioGroup" />
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Toggle</i-form-label>
-            <i-toggle name="toggle" />
-            <i-form-error for="toggle" />
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Toggle</IFormLabel>
+            <IToggle name="toggle" />
+            <IFormError for="toggle" />
+        </IFormGroup>
 
-        <i-form-group>
-            <i-button type="button" :loading="loading" @click="onSubmit">Submit</i-button>
-        </i-form-group>
+        <IFormGroup>
+            <IButton type="button" :loading="loading" @click="onSubmit">Submit</IButton>
+        </IFormGroup>
 
         <pre class="_margin-top:1">{{ prettySchema }}</pre>
-    </i-form>
+    </IForm>
 </template>

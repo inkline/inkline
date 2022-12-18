@@ -1,10 +1,10 @@
 <template>
-    <i-container>
-        <i-row reverse>
-            <i-column xs="3">1</i-column>
-            <i-column xs="3">2</i-column>
-            <i-column xs="3">3</i-column>
-            <i-column xs="3">4</i-column>
-        </i-row>
-    </i-container>
+    <IContainer>
+        <IRow reverse>
+            <IColumn xs="3">1</IColumn>
+            <IColumn xs="3">2</IColumn>
+            <IColumn xs="3">3</IColumn>
+            <IColumn xs="3">4</IColumn>
+        </IRow>
+    </IContainer>
 </template>

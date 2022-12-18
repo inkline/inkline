@@ -22,19 +22,19 @@ const groupValidationStatus = computed(() => {
 });
 </script>
 <template>
-    <i-form v-model="schema">
-        <i-form-group name="group">
-            <i-form-group v-for="(_, index) in schema.group" :key="index">
-                <i-form-label>
+    <IForm v-model="schema">
+        <IFormGroup name="group">
+            <IFormGroup v-for="(_, index) in schema.group" :key="index">
+                <IFormLabel>
                     Input for <code>group.{{ index }}</code>
-                </i-form-label>
-                <i-input :name="`group.${index}`" placeholder="Type something.." />
-                <i-form-error :for="`group.${index}`" />
-            </i-form-group>
-        </i-form-group>
+                </IFormLabel>
+                <IInput :name="`group.${index}`" placeholder="Type something.." />
+                <IFormError :for="`group.${index}`" />
+            </IFormGroup>
+        </IFormGroup>
         <p>
             Validation status for <code>group</code> (requires both inputs to be filled):
             <strong>{{ groupValidationStatus }}</strong>
         </p>
-    </i-form>
+    </IForm>
 </template>

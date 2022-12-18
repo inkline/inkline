@@ -1,45 +1,45 @@
 <template>
-    <i-dropdown placement="top">
-        <i-button>Top Dropdown</i-button>
+    <IDropdown placement="top">
+        <IButton>Top Dropdown</IButton>
         <template #body>
-            <i-dropdown-item>Action</i-dropdown-item>
-            <i-dropdown-item>Another action</i-dropdown-item>
-            <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-            <i-dropdown-divider />
-            <i-dropdown-item>Separated item</i-dropdown-item>
+            <IDropdownItem>Action</IDropdownItem>
+            <IDropdownItem>Another action</IDropdownItem>
+            <IDropdownItem disabled>Disabled action</IDropdownItem>
+            <IDropdownDivider />
+            <IDropdownItem>Separated item</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 
-    <i-dropdown placement="bottom">
-        <i-button>Bottom Dropdown</i-button>
+    <IDropdown placement="bottom">
+        <IButton>Bottom Dropdown</IButton>
         <template #body>
-            <i-dropdown-item>Action</i-dropdown-item>
-            <i-dropdown-item>Another action</i-dropdown-item>
-            <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-            <i-dropdown-divider />
-            <i-dropdown-item>Separated item</i-dropdown-item>
+            <IDropdownItem>Action</IDropdownItem>
+            <IDropdownItem>Another action</IDropdownItem>
+            <IDropdownItem disabled>Disabled action</IDropdownItem>
+            <IDropdownDivider />
+            <IDropdownItem>Separated item</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 
-    <i-dropdown placement="left">
-        <i-button>Left Dropdown</i-button>
+    <IDropdown placement="left">
+        <IButton>Left Dropdown</IButton>
         <template #body>
-            <i-dropdown-item>Action</i-dropdown-item>
-            <i-dropdown-item>Another action</i-dropdown-item>
-            <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-            <i-dropdown-divider />
-            <i-dropdown-item>Separated item</i-dropdown-item>
+            <IDropdownItem>Action</IDropdownItem>
+            <IDropdownItem>Another action</IDropdownItem>
+            <IDropdownItem disabled>Disabled action</IDropdownItem>
+            <IDropdownDivider />
+            <IDropdownItem>Separated item</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 
-    <i-dropdown placement="right">
-        <i-button>Right Dropdown</i-button>
+    <IDropdown placement="right">
+        <IButton>Right Dropdown</IButton>
         <template #body>
-            <i-dropdown-item>Action</i-dropdown-item>
-            <i-dropdown-item>Another action</i-dropdown-item>
-            <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-            <i-dropdown-divider />
-            <i-dropdown-item>Separated item</i-dropdown-item>
+            <IDropdownItem>Action</IDropdownItem>
+            <IDropdownItem>Another action</IDropdownItem>
+            <IDropdownItem disabled>Disabled action</IDropdownItem>
+            <IDropdownDivider />
+            <IDropdownItem>Separated item</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 </template>

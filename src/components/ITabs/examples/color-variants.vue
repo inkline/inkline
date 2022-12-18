@@ -8,27 +8,27 @@ export default {
 };
 </script>
 <template>
-    <i-tabs v-model="active" color="light">
+    <ITabs v-model="active" color="light">
         <template #header>
-            <i-tab-title for="tab-1"> Tab 1 </i-tab-title>
-            <i-tab-title for="tab-2"> Tab 2 </i-tab-title>
-            <i-tab-title for="tab-3"> Tab 3 </i-tab-title>
+            <ITabTitle for="tab-1"> Tab 1 </ITabTitle>
+            <ITabTitle for="tab-2"> Tab 2 </ITabTitle>
+            <ITabTitle for="tab-3"> Tab 3 </ITabTitle>
         </template>
 
-        <i-tab name="tab-1"> Tab 1 content </i-tab>
-        <i-tab name="tab-2"> Tab 2 content </i-tab>
-        <i-tab name="tab-3"> Tab 3 content </i-tab>
-    </i-tabs>
+        <ITab name="tab-1"> Tab 1 content </ITab>
+        <ITab name="tab-2"> Tab 2 content </ITab>
+        <ITab name="tab-3"> Tab 3 content </ITab>
+    </ITabs>
 
-    <i-tabs v-model="active" color="dark">
+    <ITabs v-model="active" color="dark">
         <template #header>
-            <i-tab-title for="tab-1"> Tab 1 </i-tab-title>
-            <i-tab-title for="tab-2"> Tab 2 </i-tab-title>
-            <i-tab-title for="tab-3"> Tab 3 </i-tab-title>
+            <ITabTitle for="tab-1"> Tab 1 </ITabTitle>
+            <ITabTitle for="tab-2"> Tab 2 </ITabTitle>
+            <ITabTitle for="tab-3"> Tab 3 </ITabTitle>
         </template>
 
-        <i-tab name="tab-1"> Tab 1 content </i-tab>
-        <i-tab name="tab-2"> Tab 2 content </i-tab>
-        <i-tab name="tab-3"> Tab 3 content </i-tab>
-    </i-tabs>
+        <ITab name="tab-1"> Tab 1 content </ITab>
+        <ITab name="tab-2"> Tab 2 content </ITab>
+        <ITab name="tab-3"> Tab 3 content </ITab>
+    </ITabs>
 </template>

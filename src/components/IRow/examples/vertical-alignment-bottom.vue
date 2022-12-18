@@ -1,8 +1,8 @@
 <template>
-    <i-container>
-        <i-row bottom>
-            <i-column xs="6"></i-column>
-            <i-column xs="6"></i-column>
-        </i-row>
-    </i-container>
+    <IContainer>
+        <IRow bottom>
+            <IColumn xs="6"></IColumn>
+            <IColumn xs="6"></IColumn>
+        </IRow>
+    </IContainer>
 </template>

@@ -1,3 +1,3 @@
 <template>
-    <i-loader> 99% </i-loader>
+    <ILoader> 99% </ILoader>
 </template>

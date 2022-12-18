@@ -238,7 +238,7 @@ export default defineComponent({
     >
         <!-- @slot loading Slot for button loading state -->
         <slot v-if="loading" name="loading">
-            <i-loader />
+            <ILoader />
         </slot>
         <!-- @slot default Slot for default button content -->
         <slot v-if="!loading" />

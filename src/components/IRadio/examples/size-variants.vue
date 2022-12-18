@@ -8,9 +8,9 @@ export default {
 };
 </script>
 <template>
-    <i-radio-group v-model="checked">
-        <i-radio value="small" size="sm">Small</i-radio>
-        <i-radio value="medium" size="md">Medium</i-radio>
-        <i-radio value="large" size="lg">Large</i-radio>
-    </i-radio-group>
+    <IRadioGroup v-model="checked">
+        <IRadio value="small" size="sm">Small</IRadio>
+        <IRadio value="medium" size="md">Medium</IRadio>
+        <IRadio value="large" size="lg">Large</IRadio>
+    </IRadioGroup>
 </template>

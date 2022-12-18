@@ -1,13 +1,13 @@
 <template>
-    <i-icon name="ink-check" class="_color:primary" />
+    <IIcon name="ink-check" class="_color:primary" />
 
-    <i-icon name="ink-check" class="_color:secondary" />
+    <IIcon name="ink-check" class="_color:secondary" />
 
-    <i-icon name="ink-check" class="_color:info" />
+    <IIcon name="ink-check" class="_color:info" />
 
-    <i-icon name="ink-check" class="_color:success" />
+    <IIcon name="ink-check" class="_color:success" />
 
-    <i-icon name="ink-check" class="_color:warning" />
+    <IIcon name="ink-check" class="_color:warning" />
 
-    <i-icon name="ink-check" class="_color:danger" />
+    <IIcon name="ink-check" class="_color:danger" />
 </template>

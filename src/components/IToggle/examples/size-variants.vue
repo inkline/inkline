@@ -8,9 +8,9 @@ export default {
 };
 </script>
 <template>
-    <i-toggle v-model="toggled" size="sm">I accept the terms and conditions</i-toggle>
+    <IToggle v-model="toggled" size="sm">I accept the terms and conditions</IToggle>
 
-    <i-toggle v-model="toggled" size="md">I accept the terms and conditions</i-toggle>
+    <IToggle v-model="toggled" size="md">I accept the terms and conditions</IToggle>
 
-    <i-toggle v-model="toggled" size="lg">I accept the terms and conditions</i-toggle>
+    <IToggle v-model="toggled" size="lg">I accept the terms and conditions</IToggle>
 </template>

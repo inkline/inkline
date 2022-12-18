@@ -788,7 +788,7 @@ export default defineComponent({
         :aria-expanded="visible ? 'true' : 'false'"
         @keyup.esc="onEscape"
     >
-        <i-input
+        <IInput
             ref="triggerRef"
             v-model="inputValue"
             autocomplete="off"
@@ -834,7 +834,7 @@ export default defineComponent({
                 <!-- @slot clearable Slot for the select clearable button -->
                 <slot name="clearable" />
             </template>
-        </i-input>
+        </IInput>
 
         <transition name="zoom-in-top-transition">
             <div
@@ -857,7 +857,7 @@ export default defineComponent({
                     </div>
                     <div ref="optionsRef" class="select-options">
                         <slot />
-                        <i-select-option
+                        <ISelectOption
                             v-for="option in options"
                             :key="option[idField]"
                             :active="value === option[idField]"
@@ -869,7 +869,7 @@ export default defineComponent({
                             <slot name="option" :option="option">
                                 {{ getLabel(option) }}
                             </slot>
-                        </i-select-option>
+                        </ISelectOption>
                     </div>
                 </div>
                 <div v-if="$slots.footer" class="select-footer">

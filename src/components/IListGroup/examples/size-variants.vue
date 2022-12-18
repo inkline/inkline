@@ -1,22 +1,22 @@
 <template>
-    <i-list-group size="sm">
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-    </i-list-group>
+    <IListGroup size="sm">
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+    </IListGroup>
 
-    <i-list-group size="md">
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-    </i-list-group>
+    <IListGroup size="md">
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+    </IListGroup>
 
-    <i-list-group size="lg">
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-    </i-list-group>
+    <IListGroup size="lg">
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+    </IListGroup>
 </template>

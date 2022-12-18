@@ -1,5 +1,5 @@
 <template>
-    <i-container>
-        <i-row> Row </i-row>
-    </i-container>
+    <IContainer>
+        <IRow> Row </IRow>
+    </IContainer>
 </template>

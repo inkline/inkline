@@ -7,21 +7,21 @@ const dark = ref('apple');
 <template>
     <div>
         <div class="_background:white _display:flex _align-items:center _padding:1">
-            <i-checkbox-group v-model="light" color="light">
-                <i-checkbox value="apple">Apple</i-checkbox>
-                <i-checkbox value="banana">Banana</i-checkbox>
-                <i-checkbox value="strawberry">Strawberry</i-checkbox>
-                <i-checkbox value="mango">Mango</i-checkbox>
-            </i-checkbox-group>
+            <ICheckboxGroup v-model="light" color="light">
+                <ICheckbox value="apple">Apple</ICheckbox>
+                <ICheckbox value="banana">Banana</ICheckbox>
+                <ICheckbox value="strawberry">Strawberry</ICheckbox>
+                <ICheckbox value="mango">Mango</ICheckbox>
+            </ICheckboxGroup>
         </div>
 
         <div class="_background:gray-90 _display:flex _align-items:center _padding:1">
-            <i-checkbox-group v-model="dark" color="dark">
-                <i-checkbox value="apple">Apple</i-checkbox>
-                <i-checkbox value="banana">Banana</i-checkbox>
-                <i-checkbox value="strawberry">Strawberry</i-checkbox>
-                <i-checkbox value="mango">Mango</i-checkbox>
-            </i-checkbox-group>
+            <ICheckboxGroup v-model="dark" color="dark">
+                <ICheckbox value="apple">Apple</ICheckbox>
+                <ICheckbox value="banana">Banana</ICheckbox>
+                <ICheckbox value="strawberry">Strawberry</ICheckbox>
+                <ICheckbox value="mango">Mango</ICheckbox>
+            </ICheckboxGroup>
         </div>
     </div>
 </template>

@@ -58,7 +58,7 @@ export default {
 };
 </script>
 <template>
-    <i-select
+    <ISelect
         v-model="selected"
         :options="options"
         :label="renderLabel"
@@ -67,5 +67,5 @@ export default {
         <template #option="{ option }">
             {{ option.address.city }}, {{ option.address.country }}
         </template>
-    </i-select>
+    </ISelect>
 </template>

@@ -67,56 +67,56 @@ export default {
 };
 </script>
 <template>
-    <i-form v-model="schema" @submit="onSubmit">
-        <i-form-group name="group1">
-            <i-form-label for="input1">Input 1</i-form-label>
-            <i-input id="input1" name="input1" placeholder="Type something.." />
-        </i-form-group>
+    <IForm v-model="schema" @submit="onSubmit">
+        <IFormGroup name="group1">
+            <IFormLabel for="input1">Input 1</IFormLabel>
+            <IInput id="input1" name="input1" placeholder="Type something.." />
+        </IFormGroup>
 
-        <i-form-group name="group2">
-            <i-form-label>Input 2</i-form-label>
-            <i-input name="input1" placeholder="Type something.." />
+        <IFormGroup name="group2">
+            <IFormLabel>Input 2</IFormLabel>
+            <IInput name="input1" placeholder="Type something.." />
 
-            <i-form-group name="group1">
-                <i-form-label>Input 3</i-form-label>
-                <i-input name="input1" placeholder="Type something.." />
-            </i-form-group>
-        </i-form-group>
+            <IFormGroup name="group1">
+                <IFormLabel>Input 3</IFormLabel>
+                <IInput name="input1" placeholder="Type something.." />
+            </IFormGroup>
+        </IFormGroup>
 
-        <i-form-group name="group3">
-            <i-form-group v-for="(input, index) in schema.group3" :key="index">
-                <i-form-label>Input {{ index }}</i-form-label>
-                <i-input :name="index" placeholder="Type something.." />
-            </i-form-group>
+        <IFormGroup name="group3">
+            <IFormGroup v-for="(input, index) in schema.group3" :key="index">
+                <IFormLabel>Input {{ index }}</IFormLabel>
+                <IInput :name="index" placeholder="Type something.." />
+            </IFormGroup>
 
-            <i-button type="button" @click="addRow">Add Row</i-button>
-        </i-form-group>
+            <IButton type="button" @click="addRow">Add Row</IButton>
+        </IFormGroup>
 
-        <i-form name="form4">
-            <i-form-group name="group1">
-                <i-form-label>Input</i-form-label>
-                <i-input name="input1" placeholder="Type something.." />
-            </i-form-group>
-        </i-form>
+        <IForm name="form4">
+            <IFormGroup name="group1">
+                <IFormLabel>Input</IFormLabel>
+                <IInput name="input1" placeholder="Type something.." />
+            </IFormGroup>
+        </IForm>
 
-        <i-form-group>
-            <i-form-label>Input 1</i-form-label>
-            <i-input name="group5.input1" placeholder="Type something.." />
+        <IFormGroup>
+            <IFormLabel>Input 1</IFormLabel>
+            <IInput name="group5.input1" placeholder="Type something.." />
 
             <div v-if="schema.group5.example">
-                <i-form-label>Input 2</i-form-label>
-                <i-input name="group5.example" placeholder="Type something.." />
+                <IFormLabel>Input 2</IFormLabel>
+                <IInput name="group5.example" placeholder="Type something.." />
             </div>
 
-            <i-form-group name="group5.group1">
-                <i-form-label>Input 3</i-form-label>
-                <i-input name="input1" placeholder="Type something.." />
-            </i-form-group>
-        </i-form-group>
+            <IFormGroup name="group5.group1">
+                <IFormLabel>Input 3</IFormLabel>
+                <IInput name="input1" placeholder="Type something.." />
+            </IFormGroup>
+        </IFormGroup>
 
-        <i-form-group>
-            <i-button type="submit">Submit</i-button>
-            <i-button type="button" class="_margin-left" @click="setRow">Set Row</i-button>
-        </i-form-group>
-    </i-form>
+        <IFormGroup>
+            <IButton type="submit">Submit</IButton>
+            <IButton type="button" class="_margin-left" @click="setRow">Set Row</IButton>
+        </IFormGroup>
+    </IForm>
 </template>

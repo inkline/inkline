@@ -1,8 +1,8 @@
 <template>
-    <i-dropdown>
-        <i-button>Dropdown</i-button>
+    <IDropdown>
+        <IButton>Dropdown</IButton>
         <template #body>
             <div class="_padding:1">This is a freeform dropdown example.</div>
         </template>
-    </i-dropdown>
+    </IDropdown>
 </template>

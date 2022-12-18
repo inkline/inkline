@@ -1,34 +1,34 @@
 <template>
-    <i-dropdown size="sm">
-        <i-button>Small Dropdown</i-button>
+    <IDropdown size="sm">
+        <IButton>Small Dropdown</IButton>
         <template #body>
-            <i-dropdown-item>Action</i-dropdown-item>
-            <i-dropdown-item>Another action</i-dropdown-item>
-            <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-            <i-dropdown-divider />
-            <i-dropdown-item>Separated item</i-dropdown-item>
+            <IDropdownItem>Action</IDropdownItem>
+            <IDropdownItem>Another action</IDropdownItem>
+            <IDropdownItem disabled>Disabled action</IDropdownItem>
+            <IDropdownDivider />
+            <IDropdownItem>Separated item</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 
-    <i-dropdown size="md">
-        <i-button>Medium Dropdown</i-button>
+    <IDropdown size="md">
+        <IButton>Medium Dropdown</IButton>
         <template #body>
-            <i-dropdown-item>Action</i-dropdown-item>
-            <i-dropdown-item>Another action</i-dropdown-item>
-            <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-            <i-dropdown-divider />
-            <i-dropdown-item>Separated item</i-dropdown-item>
+            <IDropdownItem>Action</IDropdownItem>
+            <IDropdownItem>Another action</IDropdownItem>
+            <IDropdownItem disabled>Disabled action</IDropdownItem>
+            <IDropdownDivider />
+            <IDropdownItem>Separated item</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 
-    <i-dropdown size="lg">
-        <i-button>Large Dropdown</i-button>
+    <IDropdown size="lg">
+        <IButton>Large Dropdown</IButton>
         <template #body>
-            <i-dropdown-item>Action</i-dropdown-item>
-            <i-dropdown-item>Another action</i-dropdown-item>
-            <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-            <i-dropdown-divider />
-            <i-dropdown-item>Separated item</i-dropdown-item>
+            <IDropdownItem>Action</IDropdownItem>
+            <IDropdownItem>Another action</IDropdownItem>
+            <IDropdownItem disabled>Disabled action</IDropdownItem>
+            <IDropdownDivider />
+            <IDropdownItem>Separated item</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 </template>

@@ -86,13 +86,13 @@ export default defineComponent({
 
 <template>
     <header class="header" :class="classes">
-        <i-container :fluid="fluid">
-            <i-row>
-                <i-column>
+        <IContainer :fluid="fluid">
+            <IRow>
+                <IColumn>
                     <!-- @slot default Slot for default header content -->
                     <slot />
-                </i-column>
-            </i-row>
-        </i-container>
+                </IColumn>
+            </IRow>
+        </IContainer>
     </header>
 </template>

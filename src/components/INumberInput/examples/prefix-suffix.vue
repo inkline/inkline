@@ -8,16 +8,16 @@ export default {
 };
 </script>
 <template>
-    <i-number-input v-model="value" placeholder="Enter a number..">
+    <INumberInput v-model="value" placeholder="Enter a number..">
         <template #prefix>@</template>
-    </i-number-input>
+    </INumberInput>
 
-    <i-number-input v-model="value" placeholder="Enter a number..">
+    <INumberInput v-model="value" placeholder="Enter a number..">
         <template #suffix>@</template>
-    </i-number-input>
+    </INumberInput>
 
-    <i-number-input v-model="value" placeholder="Enter a number..">
+    <INumberInput v-model="value" placeholder="Enter a number..">
         <template #prefix>@</template>
         <template #suffix>@</template>
-    </i-number-input>
+    </INumberInput>
 </template>

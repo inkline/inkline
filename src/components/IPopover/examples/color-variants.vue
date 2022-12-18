@@ -1,15 +1,15 @@
 <template>
-    <i-popover color="light">
-        <i-button color="light">Light Popover</i-button>
+    <IPopover color="light">
+        <IButton color="light">Light Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 
-    <i-popover color="dark">
-        <i-button color="dark">Dark Popover</i-button>
+    <IPopover color="dark">
+        <IButton color="dark">Dark Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 </template>

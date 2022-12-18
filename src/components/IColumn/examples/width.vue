@@ -1,54 +1,54 @@
 <template>
-    <i-container>
-        <i-row>
-            <i-column xs="12"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="1"></i-column>
-            <i-column xs="11"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="2"></i-column>
-            <i-column xs="10"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="3"></i-column>
-            <i-column xs="9"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="4"></i-column>
-            <i-column xs="8"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="5"></i-column>
-            <i-column xs="7"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="6"></i-column>
-            <i-column xs="6"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="7"></i-column>
-            <i-column xs="5"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="8"></i-column>
-            <i-column xs="4"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="9"></i-column>
-            <i-column xs="3"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="10"></i-column>
-            <i-column xs="2"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="11"></i-column>
-            <i-column xs="1"></i-column>
-        </i-row>
-        <i-row>
-            <i-column xs="12"></i-column>
-        </i-row>
-    </i-container>
+    <IContainer>
+        <IRow>
+            <IColumn xs="12"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="1"></IColumn>
+            <IColumn xs="11"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="2"></IColumn>
+            <IColumn xs="10"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="3"></IColumn>
+            <IColumn xs="9"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="4"></IColumn>
+            <IColumn xs="8"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="5"></IColumn>
+            <IColumn xs="7"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="6"></IColumn>
+            <IColumn xs="6"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="7"></IColumn>
+            <IColumn xs="5"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="8"></IColumn>
+            <IColumn xs="4"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="9"></IColumn>
+            <IColumn xs="3"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="10"></IColumn>
+            <IColumn xs="2"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="11"></IColumn>
+            <IColumn xs="1"></IColumn>
+        </IRow>
+        <IRow>
+            <IColumn xs="12"></IColumn>
+        </IRow>
+    </IContainer>
 </template>

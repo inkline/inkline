@@ -1,11 +1,11 @@
 <template>
-    <i-layout>
-        <i-layout-header> Header </i-layout-header>
-        <i-layout vertical>
-            <i-layout-aside> Left Aside </i-layout-aside>
-            <i-layout-content> Content </i-layout-content>
-            <i-layout-aside> Right Aside </i-layout-aside>
-        </i-layout>
-        <i-layout-footer> Footer </i-layout-footer>
-    </i-layout>
+    <ILayout>
+        <ILayoutHeader> Header </ILayoutHeader>
+        <ILayout vertical>
+            <ILayoutAside> Left Aside </ILayoutAside>
+            <ILayoutContent> Content </ILayoutContent>
+            <ILayoutAside> Right Aside </ILayoutAside>
+        </ILayout>
+        <ILayoutFooter> Footer </ILayoutFooter>
+    </ILayout>
 </template>

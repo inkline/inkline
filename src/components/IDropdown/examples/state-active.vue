@@ -1,14 +1,14 @@
 <template>
-    <i-dropdown>
-        <i-button>Dropdown</i-button>
+    <IDropdown>
+        <IButton>Dropdown</IButton>
         <template #body>
-            <i-dropdown-item
+            <IDropdownItem
                 :to="{ name: 'docs-components-dropdown' }"
                 exact-active-class="-active"
             >
                 Active Router Link
-            </i-dropdown-item>
-            <i-dropdown-item active>Active Item</i-dropdown-item>
+            </IDropdownItem>
+            <IDropdownItem active>Active Item</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 </template>

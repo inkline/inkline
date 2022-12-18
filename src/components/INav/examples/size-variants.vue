@@ -1,19 +1,19 @@
 <template>
-    <i-nav size="sm">
-        <i-nav-item>Item</i-nav-item>
-        <i-nav-item>Item</i-nav-item>
-        <i-nav-item>Item</i-nav-item>
-    </i-nav>
+    <INav size="sm">
+        <INavItem>Item</INavItem>
+        <INavItem>Item</INavItem>
+        <INavItem>Item</INavItem>
+    </INav>
 
-    <i-nav size="md">
-        <i-nav-item>Item</i-nav-item>
-        <i-nav-item>Item</i-nav-item>
-        <i-nav-item>Item</i-nav-item>
-    </i-nav>
+    <INav size="md">
+        <INavItem>Item</INavItem>
+        <INavItem>Item</INavItem>
+        <INavItem>Item</INavItem>
+    </INav>
 
-    <i-nav size="lg">
-        <i-nav-item>Item</i-nav-item>
-        <i-nav-item>Item</i-nav-item>
-        <i-nav-item>Item</i-nav-item>
-    </i-nav>
+    <INav size="lg">
+        <INavItem>Item</INavItem>
+        <INavItem>Item</INavItem>
+        <INavItem>Item</INavItem>
+    </INav>
 </template>

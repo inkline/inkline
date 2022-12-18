@@ -14,27 +14,27 @@ const form = useForm({
 });
 </script>
 <template>
-    <i-form v-model="form">
-        <i-form-group>
-            <i-input
+    <IForm v-model="form">
+        <IFormGroup>
+            <IInput
                 name="input"
                 placeholder="This field should contain only letters and numbers"
             />
-            <i-form-error for="input" />
-        </i-form-group>
-        <i-form-group>
-            <i-input
+            <IFormError for="input" />
+        </IFormGroup>
+        <IFormGroup>
+            <IInput
                 name="inputSpaces"
                 placeholder="This field should contain only letters, numbers and spaces"
             />
-            <i-form-error for="inputSpaces" />
-        </i-form-group>
-        <i-form-group>
-            <i-input
+            <IFormError for="inputSpaces" />
+        </IFormGroup>
+        <IFormGroup>
+            <IInput
                 name="inputDashes"
                 placeholder="This field should contain only letters, numbers and dashes"
             />
-            <i-form-error for="inputDashes" />
-        </i-form-group>
-    </i-form>
+            <IFormError for="inputDashes" />
+        </IFormGroup>
+    </IForm>
 </template>

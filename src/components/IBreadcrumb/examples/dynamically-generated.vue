@@ -7,9 +7,9 @@ const items = [
 </script>
 
 <template>
-    <i-breadcrumb>
-        <i-breadcrumb-item v-for="item in items" v-bind="item" :key="item.title">
+    <IBreadcrumb>
+        <IBreadcrumbItem v-for="item in items" v-bind="item" :key="item.title">
             {{ item.title }}
-        </i-breadcrumb-item>
-    </i-breadcrumb>
+        </IBreadcrumbItem>
+    </IBreadcrumb>
 </template>

@@ -1,13 +1,13 @@
 <template>
-    <i-progress size="sm">
-        <i-progress-bar :value="65" />
-    </i-progress>
+    <IProgress size="sm">
+        <IProgressBar :value="65" />
+    </IProgress>
 
-    <i-progress size="md">
-        <i-progress-bar :value="65" />
-    </i-progress>
+    <IProgress size="md">
+        <IProgressBar :value="65" />
+    </IProgress>
 
-    <i-progress size="lg">
-        <i-progress-bar :value="65" />
-    </i-progress>
+    <IProgress size="lg">
+        <IProgressBar :value="65" />
+    </IProgress>
 </template>

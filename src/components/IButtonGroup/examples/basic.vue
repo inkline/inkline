@@ -1,7 +1,7 @@
 <template>
-    <i-button-group>
-        <i-button>Left</i-button>
-        <i-button>Middle</i-button>
-        <i-button>Right</i-button>
-    </i-button-group>
+    <IButtonGroup>
+        <IButton>Left</IButton>
+        <IButton>Middle</IButton>
+        <IButton>Right</IButton>
+    </IButtonGroup>
 </template>

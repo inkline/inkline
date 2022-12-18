@@ -1,7 +1,7 @@
 <template>
-    <i-button circle size="sm">S</i-button>
+    <IButton circle size="sm">S</IButton>
 
-    <i-button circle>M</i-button>
+    <IButton circle>M</IButton>
 
-    <i-button circle size="lg">L</i-button>
+    <IButton circle size="lg">L</IButton>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <i-progress :min="100" :max="200">
-        <i-progress-bar :value="150" />
-    </i-progress>
+    <IProgress :min="100" :max="200">
+        <IProgressBar :value="150" />
+    </IProgress>
 </template>

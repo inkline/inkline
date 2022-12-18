@@ -43,18 +43,18 @@ const form = useForm({
 });
 </script>
 <template>
-    <i-form v-model="form">
-        <i-form-group>
-            <i-form-label>Username</i-form-label>
-            <i-input name="username" placeholder="Enter a username.." />
-            <i-form-error for="username" />
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Password</i-form-label>
-            <i-input name="password" type="password" placeholder="Enter a password.." />
-            <i-form-error for="password" />
-        </i-form-group>
-    </i-form>
+    <IForm v-model="form">
+        <IFormGroup>
+            <IFormLabel>Username</IFormLabel>
+            <IInput name="username" placeholder="Enter a username.." />
+            <IFormError for="username" />
+        </IFormGroup>
+        <IFormGroup>
+            <IFormLabel>Password</IFormLabel>
+            <IInput name="password" type="password" placeholder="Enter a password.." />
+            <IFormError for="password" />
+        </IFormGroup>
+    </IForm>
 
     <pre class="_margin-top:2 _text:muted">{{ form }}</pre>
 </template>

@@ -11,18 +11,18 @@ const form = useForm({
 });
 </script>
 <template>
-    <i-form v-model="form">
-        <i-form-group>
-            <i-input type="password" name="password" placeholder="Enter your password" />
-            <i-form-error for="password" />
-        </i-form-group>
-        <i-form-group>
-            <i-input
+    <IForm v-model="form">
+        <IFormGroup>
+            <IInput type="password" name="password" placeholder="Enter your password" />
+            <IFormError for="password" />
+        </IFormGroup>
+        <IFormGroup>
+            <IInput
                 type="password"
                 name="passwordConfirmation"
                 placeholder="Confirm your password"
             />
-            <i-form-error for="passwordConfirmation" />
-        </i-form-group>
-    </i-form>
+            <IFormError for="passwordConfirmation" />
+        </IFormGroup>
+    </IForm>
 </template>

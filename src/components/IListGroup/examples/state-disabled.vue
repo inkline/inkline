@@ -1,5 +1,5 @@
 <template>
-    <i-list-group>
-        <i-list-group-item disabled>Disabled List Group Item</i-list-group-item>
-    </i-list-group>
+    <IListGroup>
+        <IListGroupItem disabled>Disabled List Group Item</IListGroupItem>
+    </IListGroup>
 </template>

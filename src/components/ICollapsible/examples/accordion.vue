@@ -1,7 +1,7 @@
 <template>
-    <i-collapsible accordion>
-        <i-collapsible-item title="Item 1"> Item 1 content </i-collapsible-item>
-        <i-collapsible-item title="Item 2"> Item 2 content </i-collapsible-item>
-        <i-collapsible-item title="Item 3"> Item 3 content </i-collapsible-item>
-    </i-collapsible>
+    <ICollapsible accordion>
+        <ICollapsibleItem title="Item 1"> Item 1 content </ICollapsibleItem>
+        <ICollapsibleItem title="Item 2"> Item 2 content </ICollapsibleItem>
+        <ICollapsibleItem title="Item 3"> Item 3 content </ICollapsibleItem>
+    </ICollapsible>
 </template>

@@ -1,14 +1,14 @@
 <template>
-    <i-dropdown>
-        <i-button>Dropdown</i-button>
+    <IDropdown>
+        <IButton>Dropdown</IButton>
         <template #header> Dropdown Header </template>
         <template #body>
-            <i-dropdown-item>Action</i-dropdown-item>
-            <i-dropdown-item>Another action</i-dropdown-item>
-            <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-            <i-dropdown-divider />
-            <i-dropdown-item>Separated item</i-dropdown-item>
+            <IDropdownItem>Action</IDropdownItem>
+            <IDropdownItem>Another action</IDropdownItem>
+            <IDropdownItem disabled>Disabled action</IDropdownItem>
+            <IDropdownDivider />
+            <IDropdownItem>Separated item</IDropdownItem>
         </template>
         <template #footer> Dropdown Footer </template>
-    </i-dropdown>
+    </IDropdown>
 </template>

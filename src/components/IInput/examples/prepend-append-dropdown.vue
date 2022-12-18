@@ -8,60 +8,60 @@ export default {
 };
 </script>
 <template>
-    <i-input v-model="value" placeholder="Type something..">
+    <IInput v-model="value" placeholder="Type something..">
         <template #prepend>
-            <i-dropdown>
-                <i-button>Dropdown</i-button>
+            <IDropdown>
+                <IButton>Dropdown</IButton>
                 <template #body>
-                    <i-dropdown-item>Action</i-dropdown-item>
-                    <i-dropdown-item>Another action</i-dropdown-item>
-                    <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-                    <i-dropdown-divider />
-                    <i-dropdown-item>Separated item</i-dropdown-item>
+                    <IDropdownItem>Action</IDropdownItem>
+                    <IDropdownItem>Another action</IDropdownItem>
+                    <IDropdownItem disabled>Disabled action</IDropdownItem>
+                    <IDropdownDivider />
+                    <IDropdownItem>Separated item</IDropdownItem>
                 </template>
-            </i-dropdown>
+            </IDropdown>
         </template>
-    </i-input>
+    </IInput>
 
-    <i-input v-model="value" placeholder="Type something..">
+    <IInput v-model="value" placeholder="Type something..">
         <template #append>
-            <i-dropdown>
-                <i-button>Dropdown</i-button>
+            <IDropdown>
+                <IButton>Dropdown</IButton>
                 <template #body>
-                    <i-dropdown-item>Action</i-dropdown-item>
-                    <i-dropdown-item>Another action</i-dropdown-item>
-                    <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-                    <i-dropdown-divider />
-                    <i-dropdown-item>Separated item</i-dropdown-item>
+                    <IDropdownItem>Action</IDropdownItem>
+                    <IDropdownItem>Another action</IDropdownItem>
+                    <IDropdownItem disabled>Disabled action</IDropdownItem>
+                    <IDropdownDivider />
+                    <IDropdownItem>Separated item</IDropdownItem>
                 </template>
-            </i-dropdown>
+            </IDropdown>
         </template>
-    </i-input>
+    </IInput>
 
-    <i-input v-model="value" placeholder="Type something..">
+    <IInput v-model="value" placeholder="Type something..">
         <template #prepend>
-            <i-dropdown>
-                <i-button>Dropdown</i-button>
+            <IDropdown>
+                <IButton>Dropdown</IButton>
                 <template #body>
-                    <i-dropdown-item>Action</i-dropdown-item>
-                    <i-dropdown-item>Another action</i-dropdown-item>
-                    <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-                    <i-dropdown-divider />
-                    <i-dropdown-item>Separated item</i-dropdown-item>
+                    <IDropdownItem>Action</IDropdownItem>
+                    <IDropdownItem>Another action</IDropdownItem>
+                    <IDropdownItem disabled>Disabled action</IDropdownItem>
+                    <IDropdownDivider />
+                    <IDropdownItem>Separated item</IDropdownItem>
                 </template>
-            </i-dropdown>
+            </IDropdown>
         </template>
         <template #append>
-            <i-dropdown>
-                <i-button>Dropdown</i-button>
+            <IDropdown>
+                <IButton>Dropdown</IButton>
                 <template #body>
-                    <i-dropdown-item>Action</i-dropdown-item>
-                    <i-dropdown-item>Another action</i-dropdown-item>
-                    <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-                    <i-dropdown-divider />
-                    <i-dropdown-item>Separated item</i-dropdown-item>
+                    <IDropdownItem>Action</IDropdownItem>
+                    <IDropdownItem>Another action</IDropdownItem>
+                    <IDropdownItem disabled>Disabled action</IDropdownItem>
+                    <IDropdownDivider />
+                    <IDropdownItem>Separated item</IDropdownItem>
                 </template>
-            </i-dropdown>
+            </IDropdown>
         </template>
-    </i-input>
+    </IInput>
 </template>

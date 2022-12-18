@@ -8,10 +8,10 @@ const form = useForm({
 });
 </script>
 <template>
-    <i-form v-model="form">
-        <i-form-group>
-            <i-input name="input" placeholder="This field requires at least 6 characters." />
-            <i-form-error for="input" />
-        </i-form-group>
-    </i-form>
+    <IForm v-model="form">
+        <IFormGroup>
+            <IInput name="input" placeholder="This field requires at least 6 characters." />
+            <IFormError for="input" />
+        </IFormGroup>
+    </IForm>
 </template>

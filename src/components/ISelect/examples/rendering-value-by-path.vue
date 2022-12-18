@@ -52,7 +52,7 @@ export default {
 };
 </script>
 <template>
-    <i-select
+    <ISelect
         v-model="selected"
         :options="options"
         label="address.city"

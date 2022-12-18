@@ -1,8 +1,8 @@
 <template>
-    <i-nav>
-        <i-nav-item :to="{ name: 'docs-components-nav' }" exact-active-class="-active">
+    <INav>
+        <INavItem :to="{ name: 'docs-components-nav' }" exact-active-class="-active">
             Active Router Link
-        </i-nav-item>
-        <i-nav-item active> Active Item </i-nav-item>
-    </i-nav>
+        </INavItem>
+        <INavItem active> Active Item </INavItem>
+    </INav>
 </template>

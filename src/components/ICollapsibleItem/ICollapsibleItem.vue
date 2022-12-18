@@ -75,7 +75,7 @@ export default defineComponent({
             <slot name="header"> {{ title }} </slot>
             <i class="icon" />
         </a>
-        <i-expand-transition>
+        <IExpandTransition>
             <div
                 v-show="active"
                 :id="`collapsible-item-content-${name}`"
@@ -89,6 +89,6 @@ export default defineComponent({
                     <slot />
                 </div>
             </div>
-        </i-expand-transition>
+        </IExpandTransition>
     </div>
 </template>

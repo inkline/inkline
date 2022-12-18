@@ -1,9 +1,9 @@
 <template>
-    <i-container>
-        <i-row between>
-            <i-column xs="3"></i-column>
-            <i-column xs="3"></i-column>
-            <i-column xs="3"></i-column>
-        </i-row>
-    </i-container>
+    <IContainer>
+        <IRow between>
+            <IColumn xs="3"></IColumn>
+            <IColumn xs="3"></IColumn>
+            <IColumn xs="3"></IColumn>
+        </IRow>
+    </IContainer>
 </template>

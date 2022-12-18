@@ -8,10 +8,10 @@ const form = useForm({
 });
 </script>
 <template>
-    <i-form v-model="form">
-        <i-form-group>
-            <i-input name="input" placeholder="This field should contain an email" />
-            <i-form-error for="input" />
-        </i-form-group>
-    </i-form>
+    <IForm v-model="form">
+        <IFormGroup>
+            <IInput name="input" placeholder="This field should contain an email" />
+            <IFormError for="input" />
+        </IFormGroup>
+    </IForm>
 </template>

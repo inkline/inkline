@@ -1,17 +1,17 @@
 <template>
-    <i-button color="primary">Primary</i-button>
+    <IButton color="primary">Primary</IButton>
 
-    <i-button color="secondary">Secondary</i-button>
+    <IButton color="secondary">Secondary</IButton>
 
-    <i-button color="success">Success</i-button>
+    <IButton color="success">Success</IButton>
 
-    <i-button color="danger">Danger</i-button>
+    <IButton color="danger">Danger</IButton>
 
-    <i-button color="warning">Warning</i-button>
+    <IButton color="warning">Warning</IButton>
 
-    <i-button color="info">Info</i-button>
+    <IButton color="info">Info</IButton>
 
-    <i-button color="light">Light</i-button>
+    <IButton color="light">Light</IButton>
 
-    <i-button color="dark">Dark</i-button>
+    <IButton color="dark">Dark</IButton>
 </template>

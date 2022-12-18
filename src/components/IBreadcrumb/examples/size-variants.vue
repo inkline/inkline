@@ -1,16 +1,16 @@
 <template>
-    <i-breadcrumb size="sm">
-        <i-breadcrumb-item href="/">Sizes</i-breadcrumb-item>
-        <i-breadcrumb-item active>Small</i-breadcrumb-item>
-    </i-breadcrumb>
+    <IBreadcrumb size="sm">
+        <IBreadcrumbItem href="/">Sizes</IBreadcrumbItem>
+        <IBreadcrumbItem active>Small</IBreadcrumbItem>
+    </IBreadcrumb>
 
-    <i-breadcrumb size="md">
-        <i-breadcrumb-item href="/">Sizes</i-breadcrumb-item>
-        <i-breadcrumb-item active>Medium</i-breadcrumb-item>
-    </i-breadcrumb>
+    <IBreadcrumb size="md">
+        <IBreadcrumbItem href="/">Sizes</IBreadcrumbItem>
+        <IBreadcrumbItem active>Medium</IBreadcrumbItem>
+    </IBreadcrumb>
 
-    <i-breadcrumb size="lg">
-        <i-breadcrumb-item href="/">Sizes</i-breadcrumb-item>
-        <i-breadcrumb-item active>Large</i-breadcrumb-item>
-    </i-breadcrumb>
+    <IBreadcrumb size="lg">
+        <IBreadcrumbItem href="/">Sizes</IBreadcrumbItem>
+        <IBreadcrumbItem active>Large</IBreadcrumbItem>
+    </IBreadcrumb>
 </template>

@@ -1,19 +1,19 @@
 <template>
-    <i-header size="sm" class="_text-align:center">
+    <IHeader size="sm" class="_text-align:center">
         <h1>Small Inkline Header</h1>
         <p>This is a small header paragraph lorem ipsum dolor sit amet.</p>
-        <i-button color="primary">Button</i-button>
-    </i-header>
+        <IButton color="primary">Button</IButton>
+    </IHeader>
 
-    <i-header size="md" class="_text-align:center">
+    <IHeader size="md" class="_text-align:center">
         <h1>Medium Inkline Header</h1>
         <p>This is a small header paragraph lorem ipsum dolor sit amet.</p>
-        <i-button color="primary">Button</i-button>
-    </i-header>
+        <IButton color="primary">Button</IButton>
+    </IHeader>
 
-    <i-header size="lg" class="_text-align:center">
+    <IHeader size="lg" class="_text-align:center">
         <h1>Large Inkline Header</h1>
         <p>This is a small header paragraph lorem ipsum dolor sit amet.</p>
-        <i-button color="primary">Button</i-button>
-    </i-header>
+        <IButton color="primary">Button</IButton>
+    </IHeader>
 </template>

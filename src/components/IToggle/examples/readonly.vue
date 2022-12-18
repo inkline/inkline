@@ -8,5 +8,5 @@ export default {
 };
 </script>
 <template>
-    <i-toggle v-model="toggled" readonly>I accept the terms and conditions</i-toggle>
+    <IToggle v-model="toggled" readonly>I accept the terms and conditions</IToggle>
 </template>

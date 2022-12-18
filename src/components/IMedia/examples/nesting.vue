@@ -1,5 +1,5 @@
 <template>
-    <i-media>
+    <IMedia>
         <template #image>
             <img
                 src="../../../assets/images/placeholder-100x100.jpg"
@@ -15,7 +15,7 @@
             exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
 
-        <i-media>
+        <IMedia>
             <template #image>
                 <img
                     src="../../../assets/images/placeholder-100x100.jpg"
@@ -30,6 +30,6 @@
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
-        </i-media>
-    </i-media>
+        </IMedia>
+    </IMedia>
 </template>

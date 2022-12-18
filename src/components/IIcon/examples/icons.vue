@@ -1,29 +1,29 @@
 <template>
-    <i-icon name="ink-check" />
+    <IIcon name="ink-check" />
 
-    <i-icon name="ink-info" />
+    <IIcon name="ink-info" />
 
-    <i-icon name="ink-warning" />
+    <IIcon name="ink-warning" />
 
-    <i-icon name="ink-danger" />
+    <IIcon name="ink-danger" />
 
-    <i-icon name="ink-chevron-down" />
+    <IIcon name="ink-chevron-down" />
 
-    <i-icon name="ink-caret-down" />
+    <IIcon name="ink-caret-down" />
 
-    <i-icon name="ink-plus" />
+    <IIcon name="ink-plus" />
 
-    <i-icon name="ink-minus" />
+    <IIcon name="ink-minus" />
 
-    <i-icon name="ink-times" />
+    <IIcon name="ink-times" />
 
-    <i-icon name="ink-circle" />
+    <IIcon name="ink-circle" />
 
-    <i-icon name="ink-sort" />
+    <IIcon name="ink-sort" />
 
-    <i-icon name="ink-sort-asc" />
+    <IIcon name="ink-sort-asc" />
 
-    <i-icon name="ink-sort-desc" />
+    <IIcon name="ink-sort-desc" />
 
-    <i-icon name="ink-search" />
+    <IIcon name="ink-search" />
 </template>

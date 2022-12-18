@@ -1,7 +1,7 @@
 <template>
-    <i-button size="sm">Small Button</i-button>
+    <IButton size="sm">Small Button</IButton>
 
-    <i-button size="md">Medium Button</i-button>
+    <IButton size="md">Medium Button</IButton>
 
-    <i-button size="lg">Large Button</i-button>
+    <IButton size="lg">Large Button</IButton>
 </template>

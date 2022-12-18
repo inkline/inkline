@@ -1,3 +1,3 @@
 <template>
-    <i-icon />
+    <IIcon />
 </template>

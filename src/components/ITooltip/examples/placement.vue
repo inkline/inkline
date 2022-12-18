@@ -1,21 +1,21 @@
 <template>
-    <i-tooltip placement="top">
-        <i-button>Top Tooltip</i-button>
+    <ITooltip placement="top">
+        <IButton>Top Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 
-    <i-tooltip placement="bottom">
-        <i-button>Bottom Tooltip</i-button>
+    <ITooltip placement="bottom">
+        <IButton>Bottom Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 
-    <i-tooltip placement="left">
-        <i-button>Left Tooltip</i-button>
+    <ITooltip placement="left">
+        <IButton>Left Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 
-    <i-tooltip placement="right">
-        <i-button>Right Tooltip</i-button>
+    <ITooltip placement="right">
+        <IButton>Right Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 </template>

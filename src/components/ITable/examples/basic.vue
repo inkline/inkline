@@ -1,5 +1,5 @@
 <template>
-    <i-table>
+    <ITable>
         <thead>
             <tr>
                 <th>#</th>
@@ -28,5 +28,5 @@
                 <td>@alicecooper</td>
             </tr>
         </tbody>
-    </i-table>
+    </ITable>
 </template>

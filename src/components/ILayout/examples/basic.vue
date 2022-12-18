@@ -1,5 +1,5 @@
 <template>
-    <i-layout>
-        <i-layout-content> Content </i-layout-content>
-    </i-layout>
+    <ILayout>
+        <ILayoutContent> Content </ILayoutContent>
+    </ILayout>
 </template>

@@ -9,17 +9,17 @@ const schema = useForm({
 });
 </script>
 <template>
-    <i-form v-model="schema">
-        <i-form-group>
-            <i-form-label for="input-with-custom-validation-event">
+    <IForm v-model="schema">
+        <IFormGroup>
+            <IFormLabel for="input-with-custom-validation-event">
                 Input validated on input
-            </i-form-label>
-            <i-input
+            </IFormLabel>
+            <IInput
                 id="input-with-custom-validation-event"
                 name="input"
                 placeholder="Type something.."
             />
-            <i-form-error for="input" :visible="['invalid']" />
-        </i-form-group>
-    </i-form>
+            <IFormError for="input" :visible="['invalid']" />
+        </IFormGroup>
+    </IForm>
 </template>

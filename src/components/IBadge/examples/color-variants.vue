@@ -1,17 +1,17 @@
 <template>
-    <i-badge color="primary">Primary</i-badge>
+    <IBadge color="primary">Primary</IBadge>
 
-    <i-badge color="secondary">Secondary</i-badge>
+    <IBadge color="secondary">Secondary</IBadge>
 
-    <i-badge color="light">Light</i-badge>
+    <IBadge color="light">Light</IBadge>
 
-    <i-badge color="dark">Dark</i-badge>
+    <IBadge color="dark">Dark</IBadge>
 
-    <i-badge color="info">Info</i-badge>
+    <IBadge color="info">Info</IBadge>
 
-    <i-badge color="success">Success</i-badge>
+    <IBadge color="success">Success</IBadge>
 
-    <i-badge color="warning">Warning</i-badge>
+    <IBadge color="warning">Warning</IBadge>
 
-    <i-badge color="danger">Danger</i-badge>
+    <IBadge color="danger">Danger</IBadge>
 </template>

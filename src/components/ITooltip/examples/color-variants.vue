@@ -1,11 +1,11 @@
 <template>
-    <i-tooltip color="light">
-        <i-button color="light">Light Tooltip</i-button>
+    <ITooltip color="light">
+        <IButton color="light">Light Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 
-    <i-tooltip color="dark">
-        <i-button color="dark">Dark Tooltip</i-button>
+    <ITooltip color="dark">
+        <IButton color="dark">Dark Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 </template>

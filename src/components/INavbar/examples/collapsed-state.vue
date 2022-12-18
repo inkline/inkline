@@ -8,16 +8,16 @@ export default {
 };
 </script>
 <template>
-    <i-button @click="open = !open">Toggle Navbar</i-button>
+    <IButton @click="open = !open">Toggle Navbar</IButton>
 
-    <i-navbar v-model="open" :collapse="true" :collapse-on-click-outside="false">
-        <i-navbar-brand to="/"> Navbar </i-navbar-brand>
-        <i-navbar-collapsible>
-            <i-nav>
-                <i-nav-item to="/"> Home </i-nav-item>
-                <i-nav-item to="/about"> About </i-nav-item>
-                <i-nav-item to="/contact"> Contact </i-nav-item>
-            </i-nav>
-        </i-navbar-collapsible>
-    </i-navbar>
+    <INavbar v-model="open" :collapse="true" :collapse-on-click-outside="false">
+        <INavbarBrand to="/"> Navbar </INavbarBrand>
+        <INavbarCollapsible>
+            <INav>
+                <INavItem to="/"> Home </INavItem>
+                <INavItem to="/about"> About </INavItem>
+                <INavItem to="/contact"> Contact </INavItem>
+            </INav>
+        </INavbarCollapsible>
+    </INavbar>
 </template>

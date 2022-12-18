@@ -1,5 +1,5 @@
 <template>
-    <i-table responsive>
+    <ITable responsive>
         <thead>
             <tr>
                 <th>#</th>
@@ -40,5 +40,5 @@
                 <td>Table Cell</td>
             </tr>
         </tbody>
-    </i-table>
+    </ITable>
 </template>

@@ -1,34 +1,34 @@
 <template>
-    <i-navbar>
-        <i-navbar-brand to="/"> Navbar </i-navbar-brand>
-        <i-navbar-collapsible class="_justify-content:flex-start">
-            <i-nav>
-                <i-nav-item to="/"> Home </i-nav-item>
-                <i-nav-item to="/about"> About </i-nav-item>
-                <i-nav-item to="/contact"> Contact </i-nav-item>
-            </i-nav>
-        </i-navbar-collapsible>
-    </i-navbar>
+    <INavbar>
+        <INavbarBrand to="/"> Navbar </INavbarBrand>
+        <INavbarCollapsible class="_justify-content:flex-start">
+            <INav>
+                <INavItem to="/"> Home </INavItem>
+                <INavItem to="/about"> About </INavItem>
+                <INavItem to="/contact"> Contact </INavItem>
+            </INav>
+        </INavbarCollapsible>
+    </INavbar>
 
-    <i-navbar>
-        <i-navbar-brand to="/"> Navbar </i-navbar-brand>
-        <i-navbar-collapsible class="_justify-content:center">
-            <i-nav>
-                <i-nav-item to="/"> Home </i-nav-item>
-                <i-nav-item to="/about"> About </i-nav-item>
-                <i-nav-item to="/contact"> Contact </i-nav-item>
-            </i-nav>
-        </i-navbar-collapsible>
-    </i-navbar>
+    <INavbar>
+        <INavbarBrand to="/"> Navbar </INavbarBrand>
+        <INavbarCollapsible class="_justify-content:center">
+            <INav>
+                <INavItem to="/"> Home </INavItem>
+                <INavItem to="/about"> About </INavItem>
+                <INavItem to="/contact"> Contact </INavItem>
+            </INav>
+        </INavbarCollapsible>
+    </INavbar>
 
-    <i-navbar>
-        <i-navbar-brand to="/"> Navbar </i-navbar-brand>
-        <i-navbar-collapsible class="_justify-content:flex-end">
-            <i-nav>
-                <i-nav-item to="/"> Home </i-nav-item>
-                <i-nav-item to="/about"> About </i-nav-item>
-                <i-nav-item to="/contact"> Contact </i-nav-item>
-            </i-nav>
-        </i-navbar-collapsible>
-    </i-navbar>
+    <INavbar>
+        <INavbarBrand to="/"> Navbar </INavbarBrand>
+        <INavbarCollapsible class="_justify-content:flex-end">
+            <INav>
+                <INavItem to="/"> Home </INavItem>
+                <INavItem to="/about"> About </INavItem>
+                <INavItem to="/contact"> Contact </INavItem>
+            </INav>
+        </INavbarCollapsible>
+    </INavbar>
 </template>

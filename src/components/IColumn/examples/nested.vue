@@ -1,20 +1,20 @@
 <template>
-    <i-container>
-        <i-row>
-            <i-column xs="8">
-                <i-row>
-                    <i-column xs="3"></i-column>
-                    <i-column xs="3"></i-column>
-                    <i-column xs="3"></i-column>
-                    <i-column xs="3"></i-column>
-                </i-row>
-            </i-column>
-            <i-column xs="4">
-                <i-row>
-                    <i-column xs="6"></i-column>
-                    <i-column xs="6"></i-column>
-                </i-row>
-            </i-column>
-        </i-row>
-    </i-container>
+    <IContainer>
+        <IRow>
+            <IColumn xs="8">
+                <IRow>
+                    <IColumn xs="3"></IColumn>
+                    <IColumn xs="3"></IColumn>
+                    <IColumn xs="3"></IColumn>
+                    <IColumn xs="3"></IColumn>
+                </IRow>
+            </IColumn>
+            <IColumn xs="4">
+                <IRow>
+                    <IColumn xs="6"></IColumn>
+                    <IColumn xs="6"></IColumn>
+                </IRow>
+            </IColumn>
+        </IRow>
+    </IContainer>
 </template>

@@ -1,12 +1,12 @@
 <template>
-    <i-navbar collapse="lg">
-        <i-navbar-brand to="/"> Navbar </i-navbar-brand>
-        <i-navbar-collapsible>
-            <i-nav>
-                <i-nav-item to="/"> Home </i-nav-item>
-                <i-nav-item to="/about"> About </i-nav-item>
-                <i-nav-item to="/contact"> Contact </i-nav-item>
-            </i-nav>
-        </i-navbar-collapsible>
-    </i-navbar>
+    <INavbar collapse="lg">
+        <INavbarBrand to="/"> Navbar </INavbarBrand>
+        <INavbarCollapsible>
+            <INav>
+                <INavItem to="/"> Home </INavItem>
+                <INavItem to="/about"> About </INavItem>
+                <INavItem to="/contact"> Contact </INavItem>
+            </INav>
+        </INavbarCollapsible>
+    </INavbar>
 </template>

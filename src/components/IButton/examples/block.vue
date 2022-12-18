@@ -1,3 +1,3 @@
 <template>
-    <i-button block>Block Button</i-button>
+    <IButton block>Block Button</IButton>
 </template>

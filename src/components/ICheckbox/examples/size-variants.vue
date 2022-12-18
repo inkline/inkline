@@ -6,9 +6,9 @@ const sm = ref(false);
 const lg = ref(false);
 </script>
 <template>
-    <i-checkbox v-model="sm" size="sm">Small</i-checkbox>
+    <ICheckbox v-model="sm" size="sm">Small</ICheckbox>
 
-    <i-checkbox v-model="md" size="md">Medium</i-checkbox>
+    <ICheckbox v-model="md" size="md">Medium</ICheckbox>
 
-    <i-checkbox v-model="lg" size="lg">Large</i-checkbox>
+    <ICheckbox v-model="lg" size="lg">Large</ICheckbox>
 </template>

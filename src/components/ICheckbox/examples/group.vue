@@ -5,10 +5,10 @@ const checked = ref(['apple']);
 </script>
 
 <template>
-    <i-checkbox-group v-model="checked">
-        <i-checkbox value="apple">Apple</i-checkbox>
-        <i-checkbox value="banana">Banana</i-checkbox>
-        <i-checkbox value="strawberry">Strawberry</i-checkbox>
-        <i-checkbox value="mango">Mango</i-checkbox>
-    </i-checkbox-group>
+    <ICheckboxGroup v-model="checked">
+        <ICheckbox value="apple">Apple</ICheckbox>
+        <ICheckbox value="banana">Banana</ICheckbox>
+        <ICheckbox value="strawberry">Strawberry</ICheckbox>
+        <ICheckbox value="mango">Mango</ICheckbox>
+    </ICheckboxGroup>
 </template>

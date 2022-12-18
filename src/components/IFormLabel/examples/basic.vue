@@ -8,8 +8,8 @@ export default {
 };
 </script>
 <template>
-    <i-form-group>
-        <i-form-label>Input Label Default</i-form-label>
-        <i-input v-model="value" placeholder="Type something.." />
-    </i-form-group>
+    <IFormGroup>
+        <IFormLabel>Input Label Default</IFormLabel>
+        <IInput v-model="value" placeholder="Type something.." />
+    </IFormGroup>
 </template>

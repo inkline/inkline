@@ -384,7 +384,7 @@ export default defineComponent({
     >
         <div class="input-prepend">
             <slot name="prepend" />
-            <i-button
+            <IButton
                 type="button"
                 :color="color"
                 :size="size"
@@ -393,7 +393,7 @@ export default defineComponent({
                 @click="decrease"
             >
                 -
-            </i-button>
+            </IButton>
         </div>
         <div class="input">
             <span v-if="$slots.prefix" class="input-prefix">
@@ -430,7 +430,7 @@ export default defineComponent({
             </span>
         </div>
         <div class="input-append">
-            <i-button
+            <IButton
                 type="button"
                 :color="color"
                 :size="size"
@@ -439,7 +439,7 @@ export default defineComponent({
                 @click="increase"
             >
                 +
-            </i-button>
+            </IButton>
             <slot name="append" />
         </div>
     </div>

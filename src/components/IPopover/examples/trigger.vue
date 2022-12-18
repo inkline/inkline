@@ -8,38 +8,38 @@ export default {
 };
 </script>
 <template>
-    <i-popover events="click">
-        <i-button>Click Popover</i-button>
+    <IPopover events="click">
+        <IButton>Click Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 
-    <i-popover events="hover">
-        <i-button>Hover Popover</i-button>
+    <IPopover events="hover">
+        <IButton>Hover Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 
-    <i-popover events="focus">
-        <i-button type="submit">Focus Popover</i-button>
+    <IPopover events="focus">
+        <IButton type="submit">Focus Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 
-    <i-popover :events="['focus', 'hover']">
-        <i-button>Multiple Events Popover</i-button>
+    <IPopover :events="['focus', 'hover']">
+        <IButton>Multiple Events Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 
-    <i-popover v-model:visible="visible" events="manual">
-        <i-button @click="visible = !visible">Manual Popover</i-button>
+    <IPopover v-model:visible="visible" events="manual">
+        <IButton @click="visible = !visible">Manual Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 </template>

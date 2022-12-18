@@ -1,9 +1,9 @@
 <template>
-    <i-dropdown>
-        <i-button>Dropdown</i-button>
+    <IDropdown>
+        <IButton>Dropdown</IButton>
         <template #body>
-            <i-dropdown-item href="https://inkline.io">Link</i-dropdown-item>
-            <i-dropdown-item :to="{ name: 'index' }">Router Link</i-dropdown-item>
+            <IDropdownItem href="https://inkline.io">Link</IDropdownItem>
+            <IDropdownItem :to="{ name: 'index' }">Router Link</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 </template>

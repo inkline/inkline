@@ -8,5 +8,5 @@ export default {
 };
 </script>
 <template>
-    <i-number-input v-model="value" clearable placeholder="Enter a number.." />
+    <INumberInput v-model="value" clearable placeholder="Enter a number.." />
 </template>

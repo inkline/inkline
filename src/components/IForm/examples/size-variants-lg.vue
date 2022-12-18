@@ -30,53 +30,53 @@ export default {
 </script>
 
 <template>
-    <i-form size="lg" @submit="onSubmit">
-        <i-form-group>
-            <i-form-label>Input</i-form-label>
-            <i-input v-model="input" placeholder="Type something.." />
-        </i-form-group>
+    <IForm size="lg" @submit="onSubmit">
+        <IFormGroup>
+            <IFormLabel>Input</IFormLabel>
+            <IInput v-model="input" placeholder="Type something.." />
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Textarea</i-form-label>
-            <i-textarea v-model="textarea" placeholder="Write a comment.." />
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Textarea</IFormLabel>
+            <ITextarea v-model="textarea" placeholder="Write a comment.." />
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Select</i-form-label>
-            <i-select v-model="select" :options="options" placeholder="Choose an option" />
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Select</IFormLabel>
+            <ISelect v-model="select" :options="options" placeholder="Choose an option" />
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Checkbox Group</i-form-label>
-            <i-checkbox-group v-model="checkboxGroup">
-                <i-checkbox value="apple">Apple</i-checkbox>
-                <i-checkbox value="banana">Banana</i-checkbox>
-                <i-checkbox value="strawberry">Strawberry</i-checkbox>
-                <i-checkbox value="mango">Mango</i-checkbox>
-            </i-checkbox-group>
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Checkbox Group</IFormLabel>
+            <ICheckboxGroup v-model="checkboxGroup">
+                <ICheckbox value="apple">Apple</ICheckbox>
+                <ICheckbox value="banana">Banana</ICheckbox>
+                <ICheckbox value="strawberry">Strawberry</ICheckbox>
+                <ICheckbox value="mango">Mango</ICheckbox>
+            </ICheckboxGroup>
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Radio Group</i-form-label>
-            <i-radio-group v-model="radioGroup">
-                <i-radio value="coconut">Coconut</i-radio>
-                <i-radio value="passionfruit">Passion fruit</i-radio>
-                <i-radio value="apricot">Apricot</i-radio>
-            </i-radio-group>
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Radio Group</IFormLabel>
+            <IRadioGroup v-model="radioGroup">
+                <IRadio value="coconut">Coconut</IRadio>
+                <IRadio value="passionfruit">Passion fruit</IRadio>
+                <IRadio value="apricot">Apricot</IRadio>
+            </IRadioGroup>
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Toggle</i-form-label>
-            <i-toggle v-model="toggle">I confirm this toggle</i-toggle>
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Toggle</IFormLabel>
+            <IToggle v-model="toggle">I confirm this toggle</IToggle>
+        </IFormGroup>
 
-        <i-form-group>
-            <i-form-label>Checkbox</i-form-label>
-            <i-checkbox v-model="checkbox">I accept the terms and conditions</i-checkbox>
-        </i-form-group>
+        <IFormGroup>
+            <IFormLabel>Checkbox</IFormLabel>
+            <ICheckbox v-model="checkbox">I accept the terms and conditions</ICheckbox>
+        </IFormGroup>
 
-        <i-form-group>
-            <i-button type="submit" :loading="loading"> Submit </i-button>
-        </i-form-group>
-    </i-form>
+        <IFormGroup>
+            <IButton type="submit" :loading="loading"> Submit </IButton>
+        </IFormGroup>
+    </IForm>
 </template>

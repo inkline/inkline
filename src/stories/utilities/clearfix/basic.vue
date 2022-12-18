@@ -1,6 +1,6 @@
 <template>
     <div class="_clearfix!">
-        <i-button class="_float:left!"> Floating Left Button </i-button>
-        <i-button class="_float:right!"> Floating Right Button </i-button>
+        <IButton class="_float:left!"> Floating Left Button </IButton>
+        <IButton class="_float:right!"> Floating Right Button </IButton>
     </div>
 </template>

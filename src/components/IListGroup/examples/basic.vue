@@ -1,9 +1,9 @@
 <template>
-    <i-list-group>
-        <i-list-group-item active>Active</i-list-group-item>
-        <i-list-group-item href="https://inkline.io">Link</i-list-group-item>
-        <i-list-group-item :to="{ name: 'index' }">Router Link</i-list-group-item>
-        <i-list-group-item>Item</i-list-group-item>
-        <i-list-group-item disabled>Disabled</i-list-group-item>
-    </i-list-group>
+    <IListGroup>
+        <IListGroupItem active>Active</IListGroupItem>
+        <IListGroupItem href="https://inkline.io">Link</IListGroupItem>
+        <IListGroupItem :to="{ name: 'index' }">Router Link</IListGroupItem>
+        <IListGroupItem>Item</IListGroupItem>
+        <IListGroupItem disabled>Disabled</IListGroupItem>
+    </IListGroup>
 </template>

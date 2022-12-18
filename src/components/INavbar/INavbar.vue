@@ -171,8 +171,8 @@ export default defineComponent({
 
 <template>
     <nav ref="navbarRef" class="navbar" :class="classes" v-bind="$attrs">
-        <i-container :fluid="fluid">
-            <i-hamburger-menu
+        <IContainer :fluid="fluid">
+            <IHamburgerMenu
                 class="collapse-toggle"
                 :animation="menuAnimation"
                 :color="color"
@@ -181,6 +181,6 @@ export default defineComponent({
             />
             <!-- @slot default Slot for default navbar content -->
             <slot />
-        </i-container>
+        </IContainer>
     </nav>
 </template>

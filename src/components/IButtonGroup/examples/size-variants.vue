@@ -1,19 +1,19 @@
 <template>
-    <i-button-group size="sm">
-        <i-button>Left</i-button>
-        <i-button>Middle</i-button>
-        <i-button>Right</i-button>
-    </i-button-group>
+    <IButtonGroup size="sm">
+        <IButton>Left</IButton>
+        <IButton>Middle</IButton>
+        <IButton>Right</IButton>
+    </IButtonGroup>
 
-    <i-button-group size="md">
-        <i-button>Left</i-button>
-        <i-button>Middle</i-button>
-        <i-button>Right</i-button>
-    </i-button-group>
+    <IButtonGroup size="md">
+        <IButton>Left</IButton>
+        <IButton>Middle</IButton>
+        <IButton>Right</IButton>
+    </IButtonGroup>
 
-    <i-button-group size="lg">
-        <i-button>Left</i-button>
-        <i-button>Middle</i-button>
-        <i-button>Right</i-button>
-    </i-button-group>
+    <IButtonGroup size="lg">
+        <IButton>Left</IButton>
+        <IButton>Middle</IButton>
+        <IButton>Right</IButton>
+    </IButtonGroup>
 </template>

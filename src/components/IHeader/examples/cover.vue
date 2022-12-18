@@ -1,9 +1,9 @@
 <template>
-    <i-header id="cover-header" cover class="_text-align:center _color:white">
+    <IHeader id="cover-header" cover class="_text-align:center _color:white">
         <h1>Cover Inkline Header</h1>
         <p>This is a cover background header paragraph lorem ipsum dolor sit amet.</p>
-        <i-button color="primary">Button</i-button>
-    </i-header>
+        <IButton color="primary">Button</IButton>
+    </IHeader>
 </template>
 <style lang="scss">
 #cover-header {

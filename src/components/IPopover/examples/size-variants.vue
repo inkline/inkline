@@ -1,22 +1,22 @@
 <template>
-    <i-popover size="sm">
-        <i-button>Small Popover</i-button>
+    <IPopover size="sm">
+        <IButton>Small Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 
-    <i-popover size="md">
-        <i-button>Medium Popover</i-button>
+    <IPopover size="md">
+        <IButton>Medium Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 
-    <i-popover size="lg">
-        <i-button>Large Popover</i-button>
+    <IPopover size="lg">
+        <IButton>Large Popover</IButton>
         <template #header> Popover Header </template>
         <template #body> This is the popover body. Useful information goes here. </template>
         <template #footer> Popover Footer </template>
-    </i-popover>
+    </IPopover>
 </template>

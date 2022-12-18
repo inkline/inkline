@@ -1,7 +1,7 @@
 <template>
-    <i-button type="button">Button</i-button>
+    <IButton type="button">Button</IButton>
 
-    <i-button type="submit">Submit</i-button>
+    <IButton type="submit">Submit</IButton>
 
-    <i-button type="reset">Reset</i-button>
+    <IButton type="reset">Reset</IButton>
 </template>

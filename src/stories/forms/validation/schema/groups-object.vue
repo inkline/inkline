@@ -22,20 +22,20 @@ const groupValidationStatus = computed(() => {
 });
 </script>
 <template>
-    <i-form v-model="schema">
-        <i-form-group>
-            <i-form-label>Input for <code>group.input1</code></i-form-label>
-            <i-input name="group.input1" placeholder="Type something.." />
-            <i-form-error for="group.input1" />
-        </i-form-group>
-        <i-form-group>
-            <i-form-label>Input for <code>group.input2</code></i-form-label>
-            <i-input name="group.input2" placeholder="Type something.." />
-            <i-form-error for="group.input2" />
-        </i-form-group>
+    <IForm v-model="schema">
+        <IFormGroup>
+            <IFormLabel>Input for <code>group.input1</code></IFormLabel>
+            <IInput name="group.input1" placeholder="Type something.." />
+            <IFormError for="group.input1" />
+        </IFormGroup>
+        <IFormGroup>
+            <IFormLabel>Input for <code>group.input2</code></IFormLabel>
+            <IInput name="group.input2" placeholder="Type something.." />
+            <IFormError for="group.input2" />
+        </IFormGroup>
         <p>
             Validation status for <code>group</code> (requires both inputs to be filled):
             <strong>{{ groupValidationStatus }}</strong>
         </p>
-    </i-form>
+    </IForm>
 </template>

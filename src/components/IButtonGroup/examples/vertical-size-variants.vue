@@ -1,19 +1,19 @@
 <template>
-    <i-button-group vertical size="sm">
-        <i-button>Top</i-button>
-        <i-button>Middle</i-button>
-        <i-button>Bottom</i-button>
-    </i-button-group>
+    <IButtonGroup vertical size="sm">
+        <IButton>Top</IButton>
+        <IButton>Middle</IButton>
+        <IButton>Bottom</IButton>
+    </IButtonGroup>
 
-    <i-button-group vertical size="md">
-        <i-button>Top</i-button>
-        <i-button>Middle</i-button>
-        <i-button>Bottom</i-button>
-    </i-button-group>
+    <IButtonGroup vertical size="md">
+        <IButton>Top</IButton>
+        <IButton>Middle</IButton>
+        <IButton>Bottom</IButton>
+    </IButtonGroup>
 
-    <i-button-group vertical size="lg">
-        <i-button>Top</i-button>
-        <i-button>Middle</i-button>
-        <i-button>Bottom</i-button>
-    </i-button-group>
+    <IButtonGroup vertical size="lg">
+        <IButton>Top</IButton>
+        <IButton>Middle</IButton>
+        <IButton>Bottom</IButton>
+    </IButtonGroup>
 </template>

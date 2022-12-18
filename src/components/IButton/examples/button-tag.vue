@@ -1,15 +1,15 @@
 <template>
-    <i-button tag="a">Link Button</i-button>
+    <IButton tag="a">Link Button</IButton>
 
-    <i-button tag="button" type="button">Button</i-button>
+    <IButton tag="button" type="button">Button</IButton>
 
-    <i-button tag="button" type="submit">Submit Button</i-button>
+    <IButton tag="button" type="submit">Submit Button</IButton>
 
-    <i-button tag="button" type="reset">Reset Button</i-button>
+    <IButton tag="button" type="reset">Reset Button</IButton>
 
-    <i-button tag="input" type="button" value="Input">Input</i-button>
+    <IButton tag="input" type="button" value="Input">Input</IButton>
 
-    <i-button tag="input" type="submit" value="Submit Input">Submit Input</i-button>
+    <IButton tag="input" type="submit" value="Submit Input">Submit Input</IButton>
 
-    <i-button tag="input" type="reset" value="Reset Input">Reset Input</i-button>
+    <IButton tag="input" type="reset" value="Reset Input">Reset Input</IButton>
 </template>

@@ -1,17 +1,17 @@
 <template>
-    <i-button>
-        <i-icon name="ink-plus" class="_margin-right:1/2" />
+    <IButton>
+        <IIcon name="ink-plus" class="_margin-right:1/2" />
         Button Icon
-    </i-button>
+    </IButton>
 
-    <i-button>
+    <IButton>
         Button Icon
-        <i-icon name="ink-plus" class="_margin-left:1/2" />
-    </i-button>
+        <IIcon name="ink-plus" class="_margin-left:1/2" />
+    </IButton>
 
-    <i-button>
-        <i-icon name="ink-plus" class="_margin-right:1/2" />
+    <IButton>
+        <IIcon name="ink-plus" class="_margin-right:1/2" />
         Button Icon
-        <i-icon name="ink-plus" class="_margin-left:1/2" />
-    </i-button>
+        <IIcon name="ink-plus" class="_margin-left:1/2" />
+    </IButton>
 </template>

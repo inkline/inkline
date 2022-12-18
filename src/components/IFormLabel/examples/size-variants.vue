@@ -8,18 +8,18 @@ export default {
 };
 </script>
 <template>
-    <i-form-group>
-        <i-form-label size="sm">Input</i-form-label>
-        <i-input v-model="input" placeholder="Type something.." />
-    </i-form-group>
+    <IFormGroup>
+        <IFormLabel size="sm">Input</IFormLabel>
+        <IInput v-model="input" placeholder="Type something.." />
+    </IFormGroup>
 
-    <i-form-group>
-        <i-form-label size="md">Input</i-form-label>
-        <i-input v-model="input" placeholder="Type something.." />
-    </i-form-group>
+    <IFormGroup>
+        <IFormLabel size="md">Input</IFormLabel>
+        <IInput v-model="input" placeholder="Type something.." />
+    </IFormGroup>
 
-    <i-form-group>
-        <i-form-label size="lg">Input</i-form-label>
-        <i-input v-model="input" placeholder="Type something.." />
-    </i-form-group>
+    <IFormGroup>
+        <IFormLabel size="lg">Input</IFormLabel>
+        <IInput v-model="input" placeholder="Type something.." />
+    </IFormGroup>
 </template>

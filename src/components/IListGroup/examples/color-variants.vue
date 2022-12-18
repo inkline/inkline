@@ -1,15 +1,15 @@
 <template>
-    <i-list-group color="light">
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-    </i-list-group>
+    <IListGroup color="light">
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+    </IListGroup>
 
-    <i-list-group color="dark">
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-        <i-list-group-item>List Group Item</i-list-group-item>
-    </i-list-group>
+    <IListGroup color="dark">
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+        <IListGroupItem>List Group Item</IListGroupItem>
+    </IListGroup>
 </template>

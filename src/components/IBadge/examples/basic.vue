@@ -1,3 +1,3 @@
 <template>
-    <i-badge>Badge</i-badge>
+    <IBadge>Badge</IBadge>
 </template>

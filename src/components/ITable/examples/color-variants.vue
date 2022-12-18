@@ -1,5 +1,5 @@
 <template>
-    <i-table color="light">
+    <ITable color="light">
         <thead>
             <tr>
                 <th>#</th>
@@ -28,9 +28,9 @@
                 <td>@alicecooper</td>
             </tr>
         </tbody>
-    </i-table>
+    </ITable>
 
-    <i-table color="dark">
+    <ITable color="dark">
         <thead>
             <tr>
                 <th>#</th>
@@ -59,9 +59,9 @@
                 <td>@alicecooper</td>
             </tr>
         </tbody>
-    </i-table>
+    </ITable>
 
-    <i-table color="primary">
+    <ITable color="primary">
         <thead>
             <tr>
                 <th>#</th>
@@ -90,9 +90,9 @@
                 <td>@alicecooper</td>
             </tr>
         </tbody>
-    </i-table>
+    </ITable>
 
-    <i-table color="secondary">
+    <ITable color="secondary">
         <thead>
             <tr>
                 <th>#</th>
@@ -121,9 +121,9 @@
                 <td>@alicecooper</td>
             </tr>
         </tbody>
-    </i-table>
+    </ITable>
 
-    <i-table color="info">
+    <ITable color="info">
         <thead>
             <tr>
                 <th>#</th>
@@ -152,9 +152,9 @@
                 <td>@alicecooper</td>
             </tr>
         </tbody>
-    </i-table>
+    </ITable>
 
-    <i-table color="success">
+    <ITable color="success">
         <thead>
             <tr>
                 <th>#</th>
@@ -183,9 +183,9 @@
                 <td>@alicecooper</td>
             </tr>
         </tbody>
-    </i-table>
+    </ITable>
 
-    <i-table color="warning">
+    <ITable color="warning">
         <thead>
             <tr>
                 <th>#</th>
@@ -214,9 +214,9 @@
                 <td>@alicecooper</td>
             </tr>
         </tbody>
-    </i-table>
+    </ITable>
 
-    <i-table color="danger">
+    <ITable color="danger">
         <thead>
             <tr>
                 <th>#</th>
@@ -245,5 +245,5 @@
                 <td>@alicecooper</td>
             </tr>
         </tbody>
-    </i-table>
+    </ITable>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <i-media>
+    <IMedia>
         <template #image>
             <img
                 class="_align-self:flex-start"
@@ -15,9 +15,9 @@
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
             exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
-    </i-media>
+    </IMedia>
 
-    <i-media>
+    <IMedia>
         <template #image>
             <img
                 class="_align-self:center"
@@ -33,9 +33,9 @@
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
             exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
-    </i-media>
+    </IMedia>
 
-    <i-media>
+    <IMedia>
         <template #image>
             <img
                 class="_align-self:flex-end"
@@ -51,5 +51,5 @@
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
             exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
-    </i-media>
+    </IMedia>
 </template>

@@ -1,7 +1,7 @@
 <template>
-    <i-loader size="sm" />
+    <ILoader size="sm" />
 
-    <i-loader size="md" />
+    <ILoader size="md" />
 
-    <i-loader size="lg" />
+    <ILoader size="lg" />
 </template>

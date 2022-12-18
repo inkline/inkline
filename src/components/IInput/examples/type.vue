@@ -8,13 +8,13 @@ export default {
 };
 </script>
 <template>
-    <i-input v-model="value" type="text" placeholder="Enter some text.." />
+    <IInput v-model="value" type="text" placeholder="Enter some text.." />
 
-    <i-input v-model="value" type="password" placeholder="Enter a password.." />
+    <IInput v-model="value" type="password" placeholder="Enter a password.." />
 
-    <i-input v-model="value" type="date" placeholder="Enter a date.." />
+    <IInput v-model="value" type="date" placeholder="Enter a date.." />
 
-    <i-input v-model="value" type="email" placeholder="Enter an email.." />
+    <IInput v-model="value" type="email" placeholder="Enter an email.." />
 
-    <i-input v-model="value" type="number" placeholder="Enter a number.." />
+    <IInput v-model="value" type="number" placeholder="Enter a number.." />
 </template>

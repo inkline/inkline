@@ -1,16 +1,16 @@
 <template>
-    <i-collapsible>
-        <i-collapsible-item>
+    <ICollapsible>
+        <ICollapsibleItem>
             <template #header>Item 1</template>
             Item 1 content
-        </i-collapsible-item>
-        <i-collapsible-item>
+        </ICollapsibleItem>
+        <ICollapsibleItem>
             <template #header>Item 2</template>
             Item 2 content
-        </i-collapsible-item>
-        <i-collapsible-item>
+        </ICollapsibleItem>
+        <ICollapsibleItem>
             <template #header>Item 3</template>
             Item 3 content
-        </i-collapsible-item>
-    </i-collapsible>
+        </ICollapsibleItem>
+    </ICollapsible>
 </template>

@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-    <i-checkbox v-model="unchecked" disabled>Unchecked</i-checkbox>
+    <ICheckbox v-model="unchecked" disabled>Unchecked</ICheckbox>
 
-    <i-checkbox v-model="checked" disabled>Checked</i-checkbox>
+    <ICheckbox v-model="checked" disabled>Checked</ICheckbox>
 </template>

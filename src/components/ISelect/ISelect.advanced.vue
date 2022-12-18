@@ -784,7 +784,7 @@ function computeLabel(option: Record<string, any> | string | number): string {
         :aria-expanded="popupVisible ? 'true' : 'false'"
         @keyup.esc="onEscape"
     >
-        <i-input
+        <IInput
             ref="trigger"
             v-model="inputValue"
             autocomplete="off"
@@ -831,7 +831,7 @@ function computeLabel(option: Record<string, any> | string | number): string {
                 <!-- @slot clearable Slot for the select clearable button -->
                 <slot name="clearable" />
             </template>
-        </i-input>
+        </IInput>
 
         <transition name="zoom-in-top-transition">
             <div
@@ -855,7 +855,7 @@ function computeLabel(option: Record<string, any> | string | number): string {
                     </div>
                     <div ref="options" class="select-options">
                         <slot />
-                        <i-select-option
+                        <ISelectOption
                             v-for="option in options"
                             :key="option[idField]"
                             :active="value && value[idField] === option[idField]"
@@ -865,14 +865,14 @@ function computeLabel(option: Record<string, any> | string | number): string {
                         >
                             <!-- @slot option Slot for the select option content -->
                             <slot name="option" :option="option">
-                                <i-mark
+                                <IMark
                                     v-if="autocomplete && inputValue !== computeLabel(option)"
                                     :text="computeLabel(option)"
                                     :query="inputValue"
                                 />
                                 <template v-else> {{ computeLabel(option) }} </template>
                             </slot>
-                        </i-select-option>
+                        </ISelectOption>
                     </div>
                 </div>
                 <div v-if="$slots.footer" class="select-footer">

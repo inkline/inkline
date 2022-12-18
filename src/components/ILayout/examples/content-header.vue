@@ -1,6 +1,6 @@
 <template>
-    <i-layout>
-        <i-layout-header> Header </i-layout-header>
-        <i-layout-content> Content </i-layout-content>
-    </i-layout>
+    <ILayout>
+        <ILayoutHeader> Header </ILayoutHeader>
+        <ILayoutContent> Content </ILayoutContent>
+    </ILayout>
 </template>

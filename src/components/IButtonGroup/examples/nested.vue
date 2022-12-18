@@ -1,9 +1,9 @@
 <template>
-    <i-button-group>
-        <i-button>Button 1</i-button>
-        <i-button-group>
-            <i-button>Button 2</i-button>
-            <i-button>Button 3</i-button>
-        </i-button-group>
-    </i-button-group>
+    <IButtonGroup>
+        <IButton>Button 1</IButton>
+        <IButtonGroup>
+            <IButton>Button 2</IButton>
+            <IButton>Button 3</IButton>
+        </IButtonGroup>
+    </IButtonGroup>
 </template>

@@ -1,9 +1,9 @@
 <template>
-    <i-progress color="light">
-        <i-progress-bar :value="65" />
-    </i-progress>
+    <IProgress color="light">
+        <IProgressBar :value="65" />
+    </IProgress>
 
-    <i-progress color="dark">
-        <i-progress-bar :value="65" />
-    </i-progress>
+    <IProgress color="dark">
+        <IProgressBar :value="65" />
+    </IProgress>
 </template>

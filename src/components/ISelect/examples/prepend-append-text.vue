@@ -15,24 +15,24 @@ export default {
 };
 </script>
 <template>
-    <i-select v-model="selected" :options="options" label="name" placeholder="Choose something..">
+    <ISelect v-model="selected" :options="options" label="name" placeholder="Choose something..">
         <template #prepend>
             <span>I choose</span>
         </template>
-    </i-select>
+    </ISelect>
 
-    <i-select v-model="selected" :options="options" label="name" placeholder="Choose something..">
+    <ISelect v-model="selected" :options="options" label="name" placeholder="Choose something..">
         <template #append>
             <span>as an example</span>
         </template>
-    </i-select>
+    </ISelect>
 
-    <i-select v-model="selected" :options="options" label="name" placeholder="Choose something..">
+    <ISelect v-model="selected" :options="options" label="name" placeholder="Choose something..">
         <template #prepend>
             <span>I choose</span>
         </template>
         <template #append>
             <span>as an example</span>
         </template>
-    </i-select>
+    </ISelect>
 </template>

@@ -40,22 +40,22 @@ function replaceField() {
 }
 </script>
 <template>
-    <i-form v-model="schema">
-        <i-form-group name="group">
-            <i-form-group v-for="(_, index) in schema.group" :key="index">
-                <i-form-label>
+    <IForm v-model="schema">
+        <IFormGroup name="group">
+            <IFormGroup v-for="(_, index) in schema.group" :key="index">
+                <IFormLabel>
                     Input for <code>group.{{ index }}</code>
-                </i-form-label>
-                <i-input :name="`group.${index}`" placeholder="Type something.." />
-                <i-form-error :for="`group.${index}`" />
-            </i-form-group>
-        </i-form-group>
-        <i-form-group>
-            <i-button type="button" @click="addField"> Add </i-button>&nbsp;
-            <i-button type="button" @click="removeField"> Remove First </i-button>&nbsp;
-            <i-button type="button" @click="replaceField"> Replace First </i-button>
-        </i-form-group>
-    </i-form>
+                </IFormLabel>
+                <IInput :name="`group.${index}`" placeholder="Type something.." />
+                <IFormError :for="`group.${index}`" />
+            </IFormGroup>
+        </IFormGroup>
+        <IFormGroup>
+            <IButton type="button" @click="addField"> Add </IButton>&nbsp;
+            <IButton type="button" @click="removeField"> Remove First </IButton>&nbsp;
+            <IButton type="button" @click="replaceField"> Replace First </IButton>
+        </IFormGroup>
+    </IForm>
 
     <pre>{{ prettySchema }}</pre>
 </template>

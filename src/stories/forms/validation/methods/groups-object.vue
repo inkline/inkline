@@ -34,34 +34,34 @@ function setAddress() {
 }
 </script>
 <template>
-    <i-form v-model="schema">
-        <i-form-group name="group">
-            <i-form-group>
-                <i-form-label>First name</i-form-label>
-                <i-input name="group.firstName" placeholder="Type something.." />
-                <i-form-error for="group.firstName" />
-            </i-form-group>
-            <i-form-group>
-                <i-form-label>Last name</i-form-label>
-                <i-input name="group.lastName" placeholder="Type something.." />
-                <i-form-error for="group.lastName" />
-            </i-form-group>
-            <i-form-group v-if="schema.group.email">
-                <i-form-label>Email</i-form-label>
-                <i-input name="group.email" placeholder="Type something.." />
-                <i-form-error for="group.email" />
-            </i-form-group>
-            <i-form-group v-if="schema.group.address">
-                <i-form-label>Address</i-form-label>
-                <i-input name="group.address" placeholder="Type something.." />
-                <i-form-error for="group.address" />
-            </i-form-group>
-        </i-form-group>
-        <i-form-group>
-            <i-button type="button" @click="setEmail"> Set Email </i-button>&nbsp;
-            <i-button type="button" @click="setAddress"> Set Address </i-button>&nbsp;
-        </i-form-group>
-    </i-form>
+    <IForm v-model="schema">
+        <IFormGroup name="group">
+            <IFormGroup>
+                <IFormLabel>First name</IFormLabel>
+                <IInput name="group.firstName" placeholder="Type something.." />
+                <IFormError for="group.firstName" />
+            </IFormGroup>
+            <IFormGroup>
+                <IFormLabel>Last name</IFormLabel>
+                <IInput name="group.lastName" placeholder="Type something.." />
+                <IFormError for="group.lastName" />
+            </IFormGroup>
+            <IFormGroup v-if="schema.group.email">
+                <IFormLabel>Email</IFormLabel>
+                <IInput name="group.email" placeholder="Type something.." />
+                <IFormError for="group.email" />
+            </IFormGroup>
+            <IFormGroup v-if="schema.group.address">
+                <IFormLabel>Address</IFormLabel>
+                <IInput name="group.address" placeholder="Type something.." />
+                <IFormError for="group.address" />
+            </IFormGroup>
+        </IFormGroup>
+        <IFormGroup>
+            <IButton type="button" @click="setEmail"> Set Email </IButton>&nbsp;
+            <IButton type="button" @click="setAddress"> Set Address </IButton>&nbsp;
+        </IFormGroup>
+    </IForm>
 
     <pre>{{ prettySchema }}</pre>
 </template>

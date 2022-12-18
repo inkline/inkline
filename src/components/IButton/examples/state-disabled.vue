@@ -1,5 +1,5 @@
 <template>
-    <i-button disabled>Disabled Default Button</i-button>
+    <IButton disabled>Disabled Default Button</IButton>
 
-    <i-button disabled color="primary">Disabled Primary Button</i-button>
+    <IButton disabled color="primary">Disabled Primary Button</IButton>
 </template>

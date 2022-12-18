@@ -1,9 +1,9 @@
 <template>
-    <i-container fluid>
-        <i-row>
-            <i-column xs></i-column>
-            <i-column xs></i-column>
-            <i-column xs></i-column>
-        </i-row>
-    </i-container>
+    <IContainer fluid>
+        <IRow>
+            <IColumn xs></IColumn>
+            <IColumn xs></IColumn>
+            <IColumn xs></IColumn>
+        </IRow>
+    </IContainer>
 </template>

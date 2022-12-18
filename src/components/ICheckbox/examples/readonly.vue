@@ -5,5 +5,5 @@ const checked = ref(true);
 </script>
 
 <template>
-    <i-checkbox v-model="checked" readonly>Apple</i-checkbox>
+    <ICheckbox v-model="checked" readonly>Apple</ICheckbox>
 </template>

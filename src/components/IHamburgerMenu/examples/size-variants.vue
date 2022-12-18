@@ -8,7 +8,7 @@ export default {
 };
 </script>
 <template>
-    <i-hamburger-menu v-model="active" size="sm" />
-    <i-hamburger-menu v-model="active" size="md" />
-    <i-hamburger-menu v-model="active" size="lg" />
+    <IHamburgerMenu v-model="active" size="sm" />
+    <IHamburgerMenu v-model="active" size="md" />
+    <IHamburgerMenu v-model="active" size="lg" />
 </template>

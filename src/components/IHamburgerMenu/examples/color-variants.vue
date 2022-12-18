@@ -8,6 +8,6 @@ export default {
 };
 </script>
 <template>
-    <i-hamburger-menu v-model="active" color="light" />
-    <i-hamburger-menu v-model="active" color="dark" />
+    <IHamburgerMenu v-model="active" color="light" />
+    <IHamburgerMenu v-model="active" color="dark" />
 </template>

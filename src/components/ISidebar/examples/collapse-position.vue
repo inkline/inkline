@@ -8,99 +8,99 @@ export default {
 };
 </script>
 <template>
-    <i-layout>
-        <i-layout-header>
-            <i-navbar fluid :collapse="false">
-                <i-navbar-brand to="/"> Dashboard </i-navbar-brand>
-                <i-hamburger-menu v-model="open" animation="arrow-left" />
-            </i-navbar>
-        </i-layout-header>
-        <i-layout vertical class="_padding-top:1/2">
-            <i-sidebar v-model="open" :collapse="true" collapse-position="relative">
-                <i-nav vertical>
-                    <i-nav-item to="/"> Home </i-nav-item>
-                    <i-nav-item to="/about"> Contact </i-nav-item>
-                    <i-nav-item to="/contact"> Contact </i-nav-item>
-                </i-nav>
-            </i-sidebar>
-            <i-layout-content>
-                <i-container fluid>
-                    <i-row>
-                        <i-column>
+    <ILayout>
+        <ILayoutHeader>
+            <INavbar fluid :collapse="false">
+                <INavbarBrand to="/"> Dashboard </INavbarBrand>
+                <IHamburgerMenu v-model="open" animation="arrow-left" />
+            </INavbar>
+        </ILayoutHeader>
+        <ILayout vertical class="_padding-top:1/2">
+            <ISidebar v-model="open" :collapse="true" collapse-position="relative">
+                <INav vertical>
+                    <INavItem to="/"> Home </INavItem>
+                    <INavItem to="/about"> Contact </INavItem>
+                    <INavItem to="/contact"> Contact </INavItem>
+                </INav>
+            </ISidebar>
+            <ILayoutContent>
+                <IContainer fluid>
+                    <IRow>
+                        <IColumn>
                             <h1>Sidebar Collapse Relative</h1>
                             <p>
                                 Example content for a page with a sidebar that collapses on large
                                 screens, a layout typically seen in Documentation pages and Web
                                 Application dashboards.
                             </p>
-                        </i-column>
-                    </i-row>
-                </i-container>
-            </i-layout-content>
-        </i-layout>
-    </i-layout>
+                        </IColumn>
+                    </IRow>
+                </IContainer>
+            </ILayoutContent>
+        </ILayout>
+    </ILayout>
 
-    <i-layout>
-        <i-layout-header>
-            <i-navbar fluid :collapse="false">
-                <i-navbar-brand to="/"> Dashboard </i-navbar-brand>
-                <i-hamburger-menu v-model="open" animation="arrow-left" />
-            </i-navbar>
-        </i-layout-header>
-        <i-layout vertical class="_padding-top:1/2">
-            <i-sidebar v-model="open" :collapse="true" collapse-position="absolute">
-                <i-nav vertical>
-                    <i-nav-item to="/"> Home </i-nav-item>
-                    <i-nav-item to="/about"> Contact </i-nav-item>
-                    <i-nav-item to="/contact"> Contact </i-nav-item>
-                </i-nav>
-            </i-sidebar>
-            <i-layout-content>
-                <i-container fluid>
-                    <i-row>
-                        <i-column>
+    <ILayout>
+        <ILayoutHeader>
+            <INavbar fluid :collapse="false">
+                <INavbarBrand to="/"> Dashboard </INavbarBrand>
+                <IHamburgerMenu v-model="open" animation="arrow-left" />
+            </INavbar>
+        </ILayoutHeader>
+        <ILayout vertical class="_padding-top:1/2">
+            <ISidebar v-model="open" :collapse="true" collapse-position="absolute">
+                <INav vertical>
+                    <INavItem to="/"> Home </INavItem>
+                    <INavItem to="/about"> Contact </INavItem>
+                    <INavItem to="/contact"> Contact </INavItem>
+                </INav>
+            </ISidebar>
+            <ILayoutContent>
+                <IContainer fluid>
+                    <IRow>
+                        <IColumn>
                             <h1>Sidebar Collapse Absolute</h1>
                             <p>
                                 Example content for a page with a sidebar that collapses on large
                                 screens, a layout typically seen in Documentation pages and Web
                                 Application dashboards.
                             </p>
-                        </i-column>
-                    </i-row>
-                </i-container>
-            </i-layout-content>
-        </i-layout>
-    </i-layout>
+                        </IColumn>
+                    </IRow>
+                </IContainer>
+            </ILayoutContent>
+        </ILayout>
+    </ILayout>
 
-    <i-layout>
-        <i-layout-header>
-            <i-navbar fluid :collapse="false">
-                <i-navbar-brand to="/"> Dashboard </i-navbar-brand>
-                <i-hamburger-menu v-model="open" animation="arrow-left" />
-            </i-navbar>
-        </i-layout-header>
-        <i-layout vertical class="_padding-top:1/2">
-            <i-sidebar v-model="open" :collapse="true" collapse-position="fixed">
-                <i-nav vertical>
-                    <i-nav-item to="/"> Home </i-nav-item>
-                    <i-nav-item to="/about"> Contact </i-nav-item>
-                    <i-nav-item to="/contact"> Contact </i-nav-item>
-                </i-nav>
-            </i-sidebar>
-            <i-layout-content>
-                <i-container fluid>
-                    <i-row>
-                        <i-column>
+    <ILayout>
+        <ILayoutHeader>
+            <INavbar fluid :collapse="false">
+                <INavbarBrand to="/"> Dashboard </INavbarBrand>
+                <IHamburgerMenu v-model="open" animation="arrow-left" />
+            </INavbar>
+        </ILayoutHeader>
+        <ILayout vertical class="_padding-top:1/2">
+            <ISidebar v-model="open" :collapse="true" collapse-position="fixed">
+                <INav vertical>
+                    <INavItem to="/"> Home </INavItem>
+                    <INavItem to="/about"> Contact </INavItem>
+                    <INavItem to="/contact"> Contact </INavItem>
+                </INav>
+            </ISidebar>
+            <ILayoutContent>
+                <IContainer fluid>
+                    <IRow>
+                        <IColumn>
                             <h1>Sidebar Collapse Fixed</h1>
                             <p>
                                 Example content for a page with a sidebar that collapses on large
                                 screens, a layout typically seen in Documentation pages and Web
                                 Application dashboards.
                             </p>
-                        </i-column>
-                    </i-row>
-                </i-container>
-            </i-layout-content>
-        </i-layout>
-    </i-layout>
+                        </IColumn>
+                    </IRow>
+                </IContainer>
+            </ILayoutContent>
+        </ILayout>
+    </ILayout>
 </template>

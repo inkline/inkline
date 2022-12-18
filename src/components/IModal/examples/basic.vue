@@ -8,11 +8,11 @@ export default {
 };
 </script>
 <template>
-    <i-button @click="visible = true"> Show Modal </i-button>
+    <IButton @click="visible = true"> Show Modal </IButton>
 
-    <i-modal v-model="visible">
+    <IModal v-model="visible">
         <template #header> Modal Header </template>
         This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 </template>

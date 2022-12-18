@@ -8,24 +8,24 @@ export default {
 };
 </script>
 <template>
-    <i-number-input v-model="value" placeholder="Enter a number..">
+    <INumberInput v-model="value" placeholder="Enter a number..">
         <template #prepend>
             <span>https://</span>
         </template>
-    </i-number-input>
+    </INumberInput>
 
-    <i-number-input v-model="value" placeholder="Enter a number..">
+    <INumberInput v-model="value" placeholder="Enter a number..">
         <template #append>
             <span>.com</span>
         </template>
-    </i-number-input>
+    </INumberInput>
 
-    <i-number-input v-model="value" placeholder="Enter a number..">
+    <INumberInput v-model="value" placeholder="Enter a number..">
         <template #prepend>
             <span>https://</span>
         </template>
         <template #append>
             <span>.com</span>
         </template>
-    </i-number-input>
+    </INumberInput>
 </template>

@@ -1,7 +1,7 @@
 <template>
-    <i-badge size="sm">Small</i-badge>
+    <IBadge size="sm">Small</IBadge>
 
-    <i-badge size="md">Medium</i-badge>
+    <IBadge size="md">Medium</IBadge>
 
-    <i-badge size="lg">Large</i-badge>
+    <IBadge size="lg">Large</IBadge>
 </template>

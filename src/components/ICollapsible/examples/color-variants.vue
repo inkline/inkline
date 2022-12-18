@@ -1,19 +1,19 @@
 <template>
-    <i-collapsible color="light">
-        <i-collapsible-item title="Item 1"> Item 1 content </i-collapsible-item>
-        <i-collapsible-item title="Item 2"> Item 2 content </i-collapsible-item>
-        <i-collapsible-item title="Item 3"> Item 3 content </i-collapsible-item>
-    </i-collapsible>
+    <ICollapsible color="light">
+        <ICollapsibleItem title="Item 1"> Item 1 content </ICollapsibleItem>
+        <ICollapsibleItem title="Item 2"> Item 2 content </ICollapsibleItem>
+        <ICollapsibleItem title="Item 3"> Item 3 content </ICollapsibleItem>
+    </ICollapsible>
 
-    <i-collapsible color="dark">
-        <i-collapsible-item title="Item 1"> Item 1 content </i-collapsible-item>
-        <i-collapsible-item title="Item 2"> Item 2 content </i-collapsible-item>
-        <i-collapsible-item title="Item 3"> Item 3 content </i-collapsible-item>
-    </i-collapsible>
+    <ICollapsible color="dark">
+        <ICollapsibleItem title="Item 1"> Item 1 content </ICollapsibleItem>
+        <ICollapsibleItem title="Item 2"> Item 2 content </ICollapsibleItem>
+        <ICollapsibleItem title="Item 3"> Item 3 content </ICollapsibleItem>
+    </ICollapsible>
 
-    <i-collapsible color="blank">
-        <i-collapsible-item title="Item 1"> Item 1 content </i-collapsible-item>
-        <i-collapsible-item title="Item 2"> Item 2 content </i-collapsible-item>
-        <i-collapsible-item title="Item 3"> Item 3 content </i-collapsible-item>
-    </i-collapsible>
+    <ICollapsible color="blank">
+        <ICollapsibleItem title="Item 1"> Item 1 content </ICollapsibleItem>
+        <ICollapsibleItem title="Item 2"> Item 2 content </ICollapsibleItem>
+        <ICollapsibleItem title="Item 3"> Item 3 content </ICollapsibleItem>
+    </ICollapsible>
 </template>

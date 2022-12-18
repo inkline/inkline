@@ -8,65 +8,65 @@ export default {
 };
 </script>
 <template>
-    <i-layout>
-        <i-layout-header>
-            <i-navbar fluid :collapse="false">
-                <i-navbar-brand to="/"> Dashboard </i-navbar-brand>
-                <i-hamburger-menu v-model="open" animation="arrow-left" class="_lg:hidden" />
-            </i-navbar>
-        </i-layout-header>
-        <i-layout vertical class="_padding-top:1/2">
-            <i-sidebar v-model="open" placement="left">
-                <i-nav vertical>
-                    <i-nav-item to="/"> Home </i-nav-item>
-                    <i-nav-item to="/about"> About </i-nav-item>
-                    <i-nav-item to="/contact"> Contact </i-nav-item>
-                </i-nav>
-            </i-sidebar>
-            <i-layout-content>
-                <i-container fluid>
-                    <i-row>
-                        <i-column>
+    <ILayout>
+        <ILayoutHeader>
+            <INavbar fluid :collapse="false">
+                <INavbarBrand to="/"> Dashboard </INavbarBrand>
+                <IHamburgerMenu v-model="open" animation="arrow-left" class="_lg:hidden" />
+            </INavbar>
+        </ILayoutHeader>
+        <ILayout vertical class="_padding-top:1/2">
+            <ISidebar v-model="open" placement="left">
+                <INav vertical>
+                    <INavItem to="/"> Home </INavItem>
+                    <INavItem to="/about"> About </INavItem>
+                    <INavItem to="/contact"> Contact </INavItem>
+                </INav>
+            </ISidebar>
+            <ILayoutContent>
+                <IContainer fluid>
+                    <IRow>
+                        <IColumn>
                             <h1>Left Sidebar</h1>
                             <p>
                                 Example content for a page with a sidebar, a layout typically seen
                                 in Documentation pages and Web Application dashboards.
                             </p>
-                        </i-column>
-                    </i-row>
-                </i-container>
-            </i-layout-content>
-        </i-layout>
-    </i-layout>
+                        </IColumn>
+                    </IRow>
+                </IContainer>
+            </ILayoutContent>
+        </ILayout>
+    </ILayout>
 
-    <i-layout>
-        <i-layout-header>
-            <i-navbar fluid :collapse="false">
-                <i-navbar-brand to="/"> Dashboard </i-navbar-brand>
-                <i-hamburger-menu v-model="open" animation="arrow-left" class="_lg:hidden" />
-            </i-navbar>
-        </i-layout-header>
-        <i-layout vertical class="_padding-top:1/2">
-            <i-layout-content>
-                <i-container fluid>
-                    <i-row>
-                        <i-column>
+    <ILayout>
+        <ILayoutHeader>
+            <INavbar fluid :collapse="false">
+                <INavbarBrand to="/"> Dashboard </INavbarBrand>
+                <IHamburgerMenu v-model="open" animation="arrow-left" class="_lg:hidden" />
+            </INavbar>
+        </ILayoutHeader>
+        <ILayout vertical class="_padding-top:1/2">
+            <ILayoutContent>
+                <IContainer fluid>
+                    <IRow>
+                        <IColumn>
                             <h1>Left Sidebar</h1>
                             <p>
                                 Example content for a page with a sidebar, a layout typically seen
                                 in Documentation pages and Web Application dashboards.
                             </p>
-                        </i-column>
-                    </i-row>
-                </i-container>
-            </i-layout-content>
-            <i-sidebar v-model="open" placement="right">
-                <i-nav vertical>
-                    <i-nav-item to="/"> Home </i-nav-item>
-                    <i-nav-item to="/about"> About </i-nav-item>
-                    <i-nav-item to="/contact"> Contact </i-nav-item>
-                </i-nav>
-            </i-sidebar>
-        </i-layout>
-    </i-layout>
+                        </IColumn>
+                    </IRow>
+                </IContainer>
+            </ILayoutContent>
+            <ISidebar v-model="open" placement="right">
+                <INav vertical>
+                    <INavItem to="/"> Home </INavItem>
+                    <INavItem to="/about"> About </INavItem>
+                    <INavItem to="/contact"> Contact </INavItem>
+                </INav>
+            </ISidebar>
+        </ILayout>
+    </ILayout>
 </template>

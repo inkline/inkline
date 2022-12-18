@@ -1,21 +1,21 @@
 <template>
-    <i-navbar>
-        <i-navbar-brand to="/"> Navbar </i-navbar-brand>
-        <i-navbar-collapsible>
-            <i-nav>
-                <i-nav-item to="/"> Home </i-nav-item>
-                <i-dropdown>
-                    <i-nav-item stop-propagation>Dropdown</i-nav-item>
+    <INavbar>
+        <INavbarBrand to="/"> Navbar </INavbarBrand>
+        <INavbarCollapsible>
+            <INav>
+                <INavItem to="/"> Home </INavItem>
+                <IDropdown>
+                    <INavItem stop-propagation>Dropdown</INavItem>
                     <template #body>
-                        <i-dropdown-item>Action</i-dropdown-item>
-                        <i-dropdown-item>Another action</i-dropdown-item>
-                        <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-                        <i-dropdown-divider />
-                        <i-dropdown-item>Separated item</i-dropdown-item>
+                        <IDropdownItem>Action</IDropdownItem>
+                        <IDropdownItem>Another action</IDropdownItem>
+                        <IDropdownItem disabled>Disabled action</IDropdownItem>
+                        <IDropdownDivider />
+                        <IDropdownItem>Separated item</IDropdownItem>
                     </template>
-                </i-dropdown>
-                <i-nav-item to="/contact"> Contact </i-nav-item>
-            </i-nav>
-        </i-navbar-collapsible>
-    </i-navbar>
+                </IDropdown>
+                <INavItem to="/contact"> Contact </INavItem>
+            </INav>
+        </INavbarCollapsible>
+    </INavbar>
 </template>

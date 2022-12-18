@@ -1,13 +1,13 @@
 <template>
-    <i-breadcrumb color="light">
-        <i-breadcrumb-item href="/">Home</i-breadcrumb-item>
-        <i-breadcrumb-item>Library</i-breadcrumb-item>
-        <i-breadcrumb-item active>Light</i-breadcrumb-item>
-    </i-breadcrumb>
+    <IBreadcrumb color="light">
+        <IBreadcrumbItem href="/">Home</IBreadcrumbItem>
+        <IBreadcrumbItem>Library</IBreadcrumbItem>
+        <IBreadcrumbItem active>Light</IBreadcrumbItem>
+    </IBreadcrumb>
 
-    <i-breadcrumb color="dark">
-        <i-breadcrumb-item href="/">Home</i-breadcrumb-item>
-        <i-breadcrumb-item>Library</i-breadcrumb-item>
-        <i-breadcrumb-item active>Dark</i-breadcrumb-item>
-    </i-breadcrumb>
+    <IBreadcrumb color="dark">
+        <IBreadcrumbItem href="/">Home</IBreadcrumbItem>
+        <IBreadcrumbItem>Library</IBreadcrumbItem>
+        <IBreadcrumbItem active>Dark</IBreadcrumbItem>
+    </IBreadcrumb>
 </template>

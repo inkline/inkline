@@ -1,16 +1,16 @@
 <template>
-    <i-alert size="sm">
+    <IAlert size="sm">
         Some quick example text to build on the alert title and make up the bulk of the alert's
         content.
-    </i-alert>
+    </IAlert>
 
-    <i-alert size="md">
+    <IAlert size="md">
         Some quick example text to build on the alert title and make up the bulk of the alert's
         content.
-    </i-alert>
+    </IAlert>
 
-    <i-alert size="lg">
+    <IAlert size="lg">
         Some quick example text to build on the alert title and make up the bulk of the alert's
         content.
-    </i-alert>
+    </IAlert>
 </template>

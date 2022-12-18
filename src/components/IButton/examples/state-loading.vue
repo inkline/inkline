@@ -1,11 +1,11 @@
 <template>
-    <i-button :loading="true"> Disabled Default Button </i-button>
+    <IButton :loading="true"> Disabled Default Button </IButton>
 
-    <i-button :loading="true">
+    <IButton :loading="true">
         Button
         <template #loading>
-            <i-loader color="dark" class="_margin-right:1/2" />
+            <ILoader color="dark" class="_margin-right:1/2" />
             Loading
         </template>
-    </i-button>
+    </IButton>
 </template>

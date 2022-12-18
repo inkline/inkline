@@ -1,6 +1,6 @@
 <template>
-    <i-tooltip>
-        <i-button>Tooltip</i-button>
+    <ITooltip>
+        <IButton>Tooltip</IButton>
         <template #body>Tooltip</template>
-    </i-tooltip>
+    </ITooltip>
 </template>

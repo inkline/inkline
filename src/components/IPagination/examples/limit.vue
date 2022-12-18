@@ -10,7 +10,7 @@ export default {
 };
 </script>
 <template>
-    <i-pagination
+    <IPagination
         v-model="page"
         :limit="3"
         :items-total="itemsTotal"

@@ -4,5 +4,5 @@ import { ref } from 'vue';
 const checked = ref(false);
 </script>
 <template>
-    <i-checkbox v-model="checked" native>Apple</i-checkbox>
+    <ICheckbox v-model="checked" native>Apple</ICheckbox>
 </template>

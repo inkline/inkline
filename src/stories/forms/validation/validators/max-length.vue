@@ -8,10 +8,10 @@ const form = useForm({
 });
 </script>
 <template>
-    <i-form v-model="form">
-        <i-form-group>
-            <i-input name="input" placeholder="This field accepts up to 12 characters." />
-            <i-form-error for="input" />
-        </i-form-group>
-    </i-form>
+    <IForm v-model="form">
+        <IFormGroup>
+            <IInput name="input" placeholder="This field accepts up to 12 characters." />
+            <IFormError for="input" />
+        </IFormGroup>
+    </IForm>
 </template>

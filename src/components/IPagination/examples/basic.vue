@@ -10,5 +10,5 @@ export default {
 };
 </script>
 <template>
-    <i-pagination v-model="page" :items-total="itemsTotal" :items-per-page="itemsPerPage" />
+    <IPagination v-model="page" :items-total="itemsTotal" :items-per-page="itemsPerPage" />
 </template>

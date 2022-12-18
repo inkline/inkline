@@ -1,23 +1,23 @@
 <template>
-    <i-dropdown color="light">
-        <i-button color="light">Light Dropdown</i-button>
+    <IDropdown color="light">
+        <IButton color="light">Light Dropdown</IButton>
         <template #body>
-            <i-dropdown-item>Action</i-dropdown-item>
-            <i-dropdown-item>Another action</i-dropdown-item>
-            <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-            <i-dropdown-divider />
-            <i-dropdown-item>Separated item</i-dropdown-item>
+            <IDropdownItem>Action</IDropdownItem>
+            <IDropdownItem>Another action</IDropdownItem>
+            <IDropdownItem disabled>Disabled action</IDropdownItem>
+            <IDropdownDivider />
+            <IDropdownItem>Separated item</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 
-    <i-dropdown color="dark">
-        <i-button color="dark">Dark Dropdown</i-button>
+    <IDropdown color="dark">
+        <IButton color="dark">Dark Dropdown</IButton>
         <template #body>
-            <i-dropdown-item>Action</i-dropdown-item>
-            <i-dropdown-item>Another action</i-dropdown-item>
-            <i-dropdown-item disabled>Disabled action</i-dropdown-item>
-            <i-dropdown-divider />
-            <i-dropdown-item>Separated item</i-dropdown-item>
+            <IDropdownItem>Action</IDropdownItem>
+            <IDropdownItem>Another action</IDropdownItem>
+            <IDropdownItem disabled>Disabled action</IDropdownItem>
+            <IDropdownDivider />
+            <IDropdownItem>Separated item</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 </template>

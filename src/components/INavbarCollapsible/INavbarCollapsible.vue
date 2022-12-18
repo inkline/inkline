@@ -31,7 +31,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <i-expand-transition>
+    <IExpandTransition>
         <div
             v-show="visible"
             class="navbar-collapsible"
@@ -41,5 +41,5 @@ export default defineComponent({
             <!-- @slot default Slot for default navbar collapsible content -->
             <slot />
         </div>
-    </i-expand-transition>
+    </IExpandTransition>
 </template>

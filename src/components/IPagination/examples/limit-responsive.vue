@@ -14,7 +14,7 @@ export default {
 };
 </script>
 <template>
-    <i-pagination
+    <IPagination
         v-model="page"
         :limit="limitResponsive"
         :items-total="itemsTotal"

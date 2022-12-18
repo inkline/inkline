@@ -1,29 +1,29 @@
 <template>
-    <i-alert color="info">
+    <IAlert color="info">
         <template #icon>
-            <i-icon name="ink-info" />
+            <IIcon name="ink-info" />
         </template>
         <p>Heads up! This alert needs your attention, but it's not super important.</p>
-    </i-alert>
+    </IAlert>
 
-    <i-alert color="success">
+    <IAlert color="success">
         <template #icon>
-            <i-icon name="ink-check" />
+            <IIcon name="ink-check" />
         </template>
         <p>Well done! You successfully read this important alert message.</p>
-    </i-alert>
+    </IAlert>
 
-    <i-alert color="warning">
+    <IAlert color="warning">
         <template #icon>
-            <i-icon name="ink-warning" />
+            <IIcon name="ink-warning" />
         </template>
         <p>Warning! Better check yourself, you're not looking too good.</p>
-    </i-alert>
+    </IAlert>
 
-    <i-alert color="danger">
+    <IAlert color="danger">
         <template #icon>
-            <i-icon name="ink-danger" />
+            <IIcon name="ink-danger" />
         </template>
         <p>Oh snap! Change a few things up and try submitting again.</p>
-    </i-alert>
+    </IAlert>
 </template>

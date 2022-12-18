@@ -1,8 +1,8 @@
 <template>
-    <i-nav vertical>
-        <i-nav-item href="https://inkline.io">Link</i-nav-item>
-        <i-nav-item :to="{ name: 'docs-components-nav' }">Router Link</i-nav-item>
-        <i-nav-item>Item</i-nav-item>
-        <i-nav-item disabled>Disabled</i-nav-item>
-    </i-nav>
+    <INav vertical>
+        <INavItem href="https://inkline.io">Link</INavItem>
+        <INavItem :to="{ name: 'docs-components-nav' }">Router Link</INavItem>
+        <INavItem>Item</INavItem>
+        <INavItem disabled>Disabled</INavItem>
+    </INav>
 </template>

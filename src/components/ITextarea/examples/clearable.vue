@@ -8,5 +8,5 @@ export default {
 };
 </script>
 <template>
-    <i-textarea v-model="value" clearable placeholder="Type something.." />
+    <ITextarea v-model="value" clearable placeholder="Type something.." />
 </template>

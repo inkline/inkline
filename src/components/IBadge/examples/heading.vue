@@ -1,13 +1,13 @@
 <template>
-    <h1>Heading 1 <i-badge color="primary">New</i-badge></h1>
+    <h1>Heading 1 <IBadge color="primary">New</IBadge></h1>
 
-    <h2>Heading 2 <i-badge color="primary">New</i-badge></h2>
+    <h2>Heading 2 <IBadge color="primary">New</IBadge></h2>
 
-    <h3>Heading 3 <i-badge color="primary">New</i-badge></h3>
+    <h3>Heading 3 <IBadge color="primary">New</IBadge></h3>
 
-    <h4>Heading 4 <i-badge color="primary">New</i-badge></h4>
+    <h4>Heading 4 <IBadge color="primary">New</IBadge></h4>
 
-    <h5>Heading 5 <i-badge color="primary">New</i-badge></h5>
+    <h5>Heading 5 <IBadge color="primary">New</IBadge></h5>
 
-    <h6>Heading 6 <i-badge color="primary">New</i-badge></h6>
+    <h6>Heading 6 <IBadge color="primary">New</IBadge></h6>
 </template>

@@ -1,10 +1,10 @@
 <template>
-    <i-dropdown>
-        <i-button>Dropdown</i-button>
+    <IDropdown>
+        <IButton>Dropdown</IButton>
         <template #body>
-            <i-dropdown-item plaintext>Item 1</i-dropdown-item>
-            <i-dropdown-item plaintext>Item 2</i-dropdown-item>
-            <i-dropdown-item plaintext>Item 3</i-dropdown-item>
+            <IDropdownItem plaintext>Item 1</IDropdownItem>
+            <IDropdownItem plaintext>Item 2</IDropdownItem>
+            <IDropdownItem plaintext>Item 3</IDropdownItem>
         </template>
-    </i-dropdown>
+    </IDropdown>
 </template>

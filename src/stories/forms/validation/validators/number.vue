@@ -14,24 +14,24 @@ const form = useForm({
 });
 </script>
 <template>
-    <i-form v-model="form">
-        <i-form-group>
-            <i-input name="input" placeholder="This field should contain only numbers" />
-            <i-form-error for="input" />
-        </i-form-group>
-        <i-form-group>
-            <i-input
+    <IForm v-model="form">
+        <IFormGroup>
+            <IInput name="input" placeholder="This field should contain only numbers" />
+            <IFormError for="input" />
+        </IFormGroup>
+        <IFormGroup>
+            <IInput
                 name="inputNegative"
                 placeholder="This field should contain positive or negative numbers"
             />
-            <i-form-error for="inputNegative" />
-        </i-form-group>
-        <i-form-group>
-            <i-input
+            <IFormError for="inputNegative" />
+        </IFormGroup>
+        <IFormGroup>
+            <IInput
                 name="inputNegativeDecimal"
                 placeholder="This field should contain positive or negative decimal numbers"
             />
-            <i-form-error for="inputNegativeDecimal" />
-        </i-form-group>
-    </i-form>
+            <IFormError for="inputNegativeDecimal" />
+        </IFormGroup>
+    </IForm>
 </template>

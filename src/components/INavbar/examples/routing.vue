@@ -1,11 +1,11 @@
 <template>
-    <i-navbar>
-        <i-navbar-brand to="/">Navbar</i-navbar-brand>
-        <i-navbar-collapsible>
-            <i-nav>
-                <i-nav-item to="/"> Home </i-nav-item>
-                <i-nav-item to="/about"> About </i-nav-item>
-            </i-nav>
-        </i-navbar-collapsible>
-    </i-navbar>
+    <INavbar>
+        <INavbarBrand to="/">Navbar</INavbarBrand>
+        <INavbarCollapsible>
+            <INav>
+                <INavItem to="/"> Home </INavItem>
+                <INavItem to="/about"> About </INavItem>
+            </INav>
+        </INavbarCollapsible>
+    </INavbar>
 </template>

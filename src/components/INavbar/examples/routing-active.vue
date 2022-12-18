@@ -1,13 +1,13 @@
 <template>
-    <i-navbar>
-        <i-navbar-brand :to="{ name: 'docs-components-navbar' }">Navbar</i-navbar-brand>
-        <i-navbar-collapsible>
-            <i-nav>
-                <i-nav-item :to="{ name: 'docs-components-navbar' }" exact-active-class="-active">
+    <INavbar>
+        <INavbarBrand :to="{ name: 'docs-components-navbar' }">Navbar</INavbarBrand>
+        <INavbarCollapsible>
+            <INav>
+                <INavItem :to="{ name: 'docs-components-navbar' }" exact-active-class="-active">
                     Active Router Link
-                </i-nav-item>
-                <i-nav-item active> Active Item </i-nav-item>
-            </i-nav>
-        </i-navbar-collapsible>
-    </i-navbar>
+                </INavItem>
+                <INavItem active> Active Item </INavItem>
+            </INav>
+        </INavbarCollapsible>
+    </INavbar>
 </template>

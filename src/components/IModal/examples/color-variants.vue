@@ -15,91 +15,91 @@ export default {
 };
 </script>
 <template>
-    <i-button color="primary" @click="primary = true"> Show Primary Modal </i-button>
+    <IButton color="primary" @click="primary = true"> Show Primary Modal </IButton>
 
-    <i-modal v-model="primary" color="primary">
+    <IModal v-model="primary" color="primary">
         <template #header> Primary Modal </template>
         <div class="_display:flex _align-items:center">
-            <i-icon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
+            <IIcon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
             This is the modal body. Useful information goes here.
         </div>
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 
-    <i-button color="secondary" @click="secondary = true"> Show Secondary Modal </i-button>
+    <IButton color="secondary" @click="secondary = true"> Show Secondary Modal </IButton>
 
-    <i-modal v-model="secondary" color="secondary">
+    <IModal v-model="secondary" color="secondary">
         <template #header> Secondary Modal </template>
         <div class="_display:flex _align-items:center">
-            <i-icon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
+            <IIcon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
             This is the modal body. Useful information goes here.
         </div>
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 
-    <i-button color="light" @click="light = true"> Show Light Modal </i-button>
+    <IButton color="light" @click="light = true"> Show Light Modal </IButton>
 
-    <i-modal v-model="light" color="light">
+    <IModal v-model="light" color="light">
         <template #header> Light Modal </template>
         <div class="_display:flex _align-items:center">
-            <i-icon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
+            <IIcon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
             This is the modal body. Useful information goes here.
         </div>
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 
-    <i-button color="dark" @click="dark = true"> Show Dark Modal </i-button>
+    <IButton color="dark" @click="dark = true"> Show Dark Modal </IButton>
 
-    <i-modal v-model="dark" color="dark">
+    <IModal v-model="dark" color="dark">
         <template #header> Dark Modal </template>
         <div class="_display:flex _align-items:center">
-            <i-icon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
+            <IIcon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
             This is the modal body. Useful information goes here.
         </div>
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 
-    <i-button color="info" @click="info = true"> Show Info Modal </i-button>
+    <IButton color="info" @click="info = true"> Show Info Modal </IButton>
 
-    <i-modal v-model="info" color="info">
+    <IModal v-model="info" color="info">
         <template #header> Info Modal </template>
         <div class="_display:flex _align-items:center">
-            <i-icon name="ink-info" class="font-size:lg _margin-y:0 _margin-right:1" />
+            <IIcon name="ink-info" class="font-size:lg _margin-y:0 _margin-right:1" />
             This is the modal body. Useful information goes here.
         </div>
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 
-    <i-button color="success" @click="success = true"> Show Success Modal </i-button>
+    <IButton color="success" @click="success = true"> Show Success Modal </IButton>
 
-    <i-modal v-model="success" color="success">
+    <IModal v-model="success" color="success">
         <template #header> Success Modal </template>
         <div class="_display:flex _align-items:center">
-            <i-icon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
+            <IIcon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
             This is the modal body. Useful information goes here.
         </div>
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 
-    <i-button color="warning" @click="warning = true"> Show Warning Modal </i-button>
+    <IButton color="warning" @click="warning = true"> Show Warning Modal </IButton>
 
-    <i-modal v-model="warning" color="warning">
+    <IModal v-model="warning" color="warning">
         <template #header> Warning Modal </template>
         <div class="_display:flex _align-items:center">
-            <i-icon name="ink-warning" class="font-size:lg _margin-y:0 _margin-right:1" />
+            <IIcon name="ink-warning" class="font-size:lg _margin-y:0 _margin-right:1" />
             This is the modal body. Useful information goes here.
         </div>
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 
-    <i-button color="danger" @click="danger = true"> Show Danger Modal </i-button>
+    <IButton color="danger" @click="danger = true"> Show Danger Modal </IButton>
 
-    <i-modal v-model="danger" color="danger">
+    <IModal v-model="danger" color="danger">
         <template #header> Danger Modal </template>
         <div class="_display:flex _align-items:center">
-            <i-icon name="ink-danger" class="font-size:lg _margin-y:0 _margin-right:1" />
+            <IIcon name="ink-danger" class="font-size:lg _margin-y:0 _margin-right:1" />
             This is the modal body. Useful information goes here.
         </div>
         <template #footer> Modal Footer </template>
-    </i-modal>
+    </IModal>
 </template>

@@ -8,16 +8,16 @@ export default {
 };
 </script>
 <template>
-    <i-textarea v-model="value" placeholder="Type something..">
+    <ITextarea v-model="value" placeholder="Type something..">
         <template #prefix>@</template>
-    </i-textarea>
+    </ITextarea>
 
-    <i-textarea v-model="value" placeholder="Type something..">
+    <ITextarea v-model="value" placeholder="Type something..">
         <template #suffix>@</template>
-    </i-textarea>
+    </ITextarea>
 
-    <i-textarea v-model="value" placeholder="Type something..">
+    <ITextarea v-model="value" placeholder="Type something..">
         <template #prefix>@</template>
         <template #suffix>@</template>
-    </i-textarea>
+    </ITextarea>
 </template>

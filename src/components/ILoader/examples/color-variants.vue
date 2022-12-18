@@ -1,7 +1,7 @@
 <template>
-    <i-loader color="primary" />
+    <ILoader color="primary" />
 
-    <i-loader color="light" />
+    <ILoader color="light" />
 
-    <i-loader color="dark" />
+    <ILoader color="dark" />
 </template>

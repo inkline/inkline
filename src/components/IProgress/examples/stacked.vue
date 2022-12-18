@@ -1,7 +1,7 @@
 <template>
-    <i-progress>
-        <i-progress-bar color="success" value="40" />
-        <i-progress-bar color="warning" value="20" />
-        <i-progress-bar color="danger" value="10" />
-    </i-progress>
+    <IProgress>
+        <IProgressBar color="success" value="40" />
+        <IProgressBar color="warning" value="20" />
+        <IProgressBar color="danger" value="10" />
+    </IProgress>
 </template>

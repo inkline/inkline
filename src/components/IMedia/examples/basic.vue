@@ -1,5 +1,5 @@
 <template>
-    <i-media>
+    <IMedia>
         <template #image>
             <img
                 src="../../../assets/images/placeholder-100x100.jpg"
@@ -13,5 +13,5 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et...
         </p>
-    </i-media>
+    </IMedia>
 </template>

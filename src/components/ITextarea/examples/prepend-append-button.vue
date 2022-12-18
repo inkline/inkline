@@ -8,24 +8,24 @@ export default {
 };
 </script>
 <template>
-    <i-textarea v-model="value" placeholder="Type something..">
+    <ITextarea v-model="value" placeholder="Type something..">
         <template #prepend>
-            <i-button>Button</i-button>
+            <IButton>Button</IButton>
         </template>
-    </i-textarea>
+    </ITextarea>
 
-    <i-textarea v-model="value" placeholder="Type something..">
+    <ITextarea v-model="value" placeholder="Type something..">
         <template #append>
-            <i-button>Button</i-button>
+            <IButton>Button</IButton>
         </template>
-    </i-textarea>
+    </ITextarea>
 
-    <i-textarea v-model="value" placeholder="Type something..">
+    <ITextarea v-model="value" placeholder="Type something..">
         <template #prepend>
-            <i-button>Button</i-button>
+            <IButton>Button</IButton>
         </template>
         <template #append>
-            <i-button>Button</i-button>
+            <IButton>Button</IButton>
         </template>
-    </i-textarea>
+    </ITextarea>
 </template>

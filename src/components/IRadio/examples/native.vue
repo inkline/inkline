@@ -8,10 +8,10 @@ export default {
 };
 </script>
 <template>
-    <i-radio-group v-model="checked">
-        <i-radio value="apple" native>Apple</i-radio>
-        <i-radio value="banana" native>Banana</i-radio>
-        <i-radio value="strawberry" native>Strawberry</i-radio>
-        <i-radio value="mango" native>Mango</i-radio>
-    </i-radio-group>
+    <IRadioGroup v-model="checked">
+        <IRadio value="apple" native>Apple</IRadio>
+        <IRadio value="banana" native>Banana</IRadio>
+        <IRadio value="strawberry" native>Strawberry</IRadio>
+        <IRadio value="mango" native>Mango</IRadio>
+    </IRadioGroup>
 </template>

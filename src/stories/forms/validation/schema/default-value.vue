@@ -8,10 +8,10 @@ const schema = useForm({
 });
 </script>
 <template>
-    <i-form v-model="schema">
-        <i-form-group>
-            <i-form-label for="input-with-default-value"> Input with default value </i-form-label>
-            <i-input id="input-with-default-value" name="input" placeholder="Type something.." />
-        </i-form-group>
-    </i-form>
+    <IForm v-model="schema">
+        <IFormGroup>
+            <IFormLabel for="input-with-default-value"> Input with default value </IFormLabel>
+            <IInput id="input-with-default-value" name="input" placeholder="Type something.." />
+        </IFormGroup>
+    </IForm>
 </template>

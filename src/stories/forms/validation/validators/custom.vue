@@ -14,13 +14,13 @@ const form = useForm({
 });
 </script>
 <template>
-    <i-form v-model="form">
-        <i-form-group>
-            <i-input
+    <IForm v-model="form">
+        <IFormGroup>
+            <IInput
                 name="input"
                 placeholder="This field is custom validated. It needs to contain 'inkline'"
             />
-            <i-form-error for="input" />
-        </i-form-group>
-    </i-form>
+            <IFormError for="input" />
+        </IFormGroup>
+    </IForm>
 </template>

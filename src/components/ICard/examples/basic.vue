@@ -1,5 +1,5 @@
 <template>
-    <i-card>
+    <ICard>
         <template #image>
             <img src="../../../assets/images/placeholder-500x250.jpg" alt="Card Image" />
         </template>
@@ -9,5 +9,5 @@
             content.
         </p>
         <a class="card-link" href="https://inkline.io"> Example Link </a>
-    </i-card>
+    </ICard>
 </template>
