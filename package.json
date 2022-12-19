@@ -21,7 +21,7 @@
     "playground": "ts-node scripts/playground.ts"
   },
   "devDependencies": {
-    "@grozav/eslint-config": "latest",
+    "@grozav/eslint-config": "^1.1.4",
     "@nuxt/module-builder": "^0.2.0",
     "@nuxt/schema": "^3.0.0-rc.13",
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
