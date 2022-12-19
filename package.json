@@ -21,7 +21,7 @@
     "playground": "ts-node scripts/playground.ts"
   },
   "devDependencies": {
-    "@grozav/eslint-config": "^1.1.4",
+    "@grozav/eslint-config": "latest",
     "@nuxt/module-builder": "^0.2.0",
     "@nuxt/schema": "^3.0.0-rc.13",
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
@@ -51,10 +51,10 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@grozav/utils": "latest",
-    "@inkline/config": "latest",
+    "@grozav/utils": ">=1",
+    "@inkline/config": ">=1",
     "@inkline/inkline": "latest",
-    "@nuxt/kit": "^3.0.0-rc.13",
+    "@nuxt/kit": "^3.0.0",
     "unplugin": "^0.9.6"
   },
   "main": "index.js",

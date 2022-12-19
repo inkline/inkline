@@ -11,6 +11,7 @@ import { NuxtModule } from "@nuxt/schema";
 import { UserOptions } from "./plugin/types";
 import { watch } from "./plugin/watch";
 import { build } from "./plugin/build";
+import { getResolvedConfiguration } from "./plugin/config";
 
 interface ModuleConfig {
     import?: {
@@ -59,6 +60,9 @@ export const module: NuxtModule<PluginConfig & ModuleConfig & UserOptions> =
                 outputDir,
                 extName,
             };
+            const resolvedPluginOptions =
+                getResolvedConfiguration(pluginOptions);
+
             const templatesDir = fileURLToPath(
                 new URL("./templates", import.meta.url)
             );
@@ -68,6 +72,9 @@ export const module: NuxtModule<PluginConfig & ModuleConfig & UserOptions> =
             if (importOptions.styles !== false) {
                 nuxt.options.css = nuxt.options.css || [];
 
+                nuxt.options.css.unshift(
+                    `${resolvedPluginOptions.outputDir}/css/index.scss`
+                );
                 nuxt.options.css.unshift("@inkline/inkline/css/_base.scss");
 
                 if (importOptions.utilities !== false) {
