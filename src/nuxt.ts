@@ -73,7 +73,7 @@ export const module: NuxtModule<PluginConfig & ModuleConfig & UserOptions> =
                 nuxt.options.css = nuxt.options.css || [];
 
                 nuxt.options.css.unshift(
-                    `${resolvedPluginOptions.outputDir}/css/index.scss`
+                    `${resolvedPluginOptions.outputDir}/index.scss`
                 );
                 nuxt.options.css.unshift("@inkline/inkline/css/_base.scss");
 
