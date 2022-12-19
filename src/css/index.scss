@@ -1,11 +1,4 @@
-@import 'normalize.css';
-@import 'variables';
-@import 'variables/dark';
-
-@import 'functions';
-@import 'mixins';
-@import 'transitions';
-@import 'utilities';
-@import 'global';
-@import 'icons';
-@import 'components';
+@import "variables";
+@import "variables/dark";
+@import "base";
+@import "utilities";
