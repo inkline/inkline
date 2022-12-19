@@ -46,7 +46,6 @@ function generateCodeForLocations(
                 case 'default':
                     return generateCodeForDefault(config, themeName, locations[location]);
                 case 'root':
-                    return generateCodeForRoot(config, themeName, locations[location]);
                 default:
                     return generateCodeForRoot(config, themeName, locations[location]);
             }
@@ -84,7 +83,13 @@ function sortCodegenGroups(groups: CodegenGroup[]) {
 export function generate(
     config: ResolvedConfiguration
 ): Record<keyof ResolvedConfiguration['theme'], CodegenFile[]> {
-    return Object.keys(config.theme).reduce((acc, themeName) => {
+    const extName = config.buildOptions.extName === '.css' ? '.css' : '';
+    const themeKeys = Object.keys(config.theme) as (keyof ResolvedConfiguration['theme'])[];
+    const themeImports = themeKeys
+        .filter((key) => key !== 'default')
+        .map((key) => `@import "${key}${extName ? `/index${extName}` : ''}";`);
+
+    return themeKeys.reduce((acc, themeName) => {
         const codegenGroups = sortCodegenGroups(
             applyGenerators(config, config.theme[themeName], config.theme[themeName])
         );
@@ -115,16 +120,14 @@ export function generate(
                 contents: generateCodeForLocations(config, themeName, group.locations)
             }));
 
+        const indexFileContents = codegenFiles
+            .map((file) => `@import "${file.name}${extName}";`)
+            .concat(themeName === 'default' ? themeImports : []) // Import additional themes in default theme index file
+            .join('\n');
+
         acc[themeName] = codegenFiles.concat({
             name: 'index',
-            contents: codegenFiles
-                .map(
-                    (file) =>
-                        `@import "${file.name}${
-                            config.buildOptions.extName === '.css' ? '.css' : ''
-                        }";`
-                )
-                .join('\n')
+            contents: indexFileContents
         });
 
         return acc;
