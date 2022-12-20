@@ -15,105 +15,100 @@ import { getResolvedConfiguration } from "./plugin/config";
 
 interface ModuleConfig {
     import?: {
+        mode?: "global" | "auto";
         styles?: boolean;
         scripts?: boolean;
         utilities?: boolean;
     };
-    global?: boolean;
 }
 
-const defaultImportOptions = {
+const defaultImportOptions: ModuleConfig["import"] = {
+    mode: "global",
     styles: true,
     scripts: true,
     utilities: true,
 };
 
-export const module: NuxtModule<PluginConfig & ModuleConfig & UserOptions> =
-    defineNuxtModule({
-        meta: {
-            name: "@inkline/nuxt",
-            version: "3",
-            configKey: "inkline",
-            compatibility: {
-                nuxt: ">=2.0.0",
-                bridge: true,
-            },
+export type InklineModule = { globals: PluginConfig } & ModuleConfig &
+    UserOptions;
+
+export const module: NuxtModule<InklineModule> = defineNuxtModule({
+    meta: {
+        name: "@inkline/nuxt",
+        version: "3",
+        configKey: "inkline",
+        compatibility: {
+            nuxt: ">=2.0.0",
+            bridge: true,
         },
-        async setup(
-            {
-                import: importOptions,
-                global,
-                configFile,
-                outputDir,
-                extName,
-                ...moduleOptions
-            },
-            nuxt
-        ) {
-            importOptions = {
-                ...defaultImportOptions,
-                ...importOptions,
-            };
+    },
+    async setup(
+        { import: importOptions, configFile, outputDir, extName, globals },
+        nuxt
+    ) {
+        importOptions = {
+            ...defaultImportOptions,
+            ...importOptions,
+        };
 
-            const pluginOptions: UserOptions = {
-                configFile,
-                outputDir,
-                extName,
-            };
-            const resolvedPluginOptions =
-                getResolvedConfiguration(pluginOptions);
+        const pluginOptions: UserOptions = {
+            configFile,
+            outputDir,
+            extName,
+        };
+        const resolvedPluginOptions = getResolvedConfiguration(pluginOptions);
 
-            const templatesDir = fileURLToPath(
-                new URL("./templates", import.meta.url)
+        const templatesDir = fileURLToPath(
+            new URL("./templates", import.meta.url)
+        );
+        const inklineRequire = createRequire(import.meta.url);
+
+        // Add CSS imports
+        if (importOptions.styles !== false) {
+            nuxt.options.css = nuxt.options.css || [];
+
+            nuxt.options.css.unshift(
+                `${resolvedPluginOptions.outputDir}/index.scss`
             );
-            const inklineRequire = createRequire(import.meta.url);
+            nuxt.options.css.unshift("@inkline/inkline/css/_base.scss");
 
-            // Add CSS imports
-            if (importOptions.styles !== false) {
-                nuxt.options.css = nuxt.options.css || [];
-
-                nuxt.options.css.unshift(
-                    `${resolvedPluginOptions.outputDir}/index.scss`
+            if (importOptions.utilities !== false) {
+                nuxt.options.css.push(
+                    "@inkline/inkline/css/utilities/index.scss"
                 );
-                nuxt.options.css.unshift("@inkline/inkline/css/_base.scss");
-
-                if (importOptions.utilities !== false) {
-                    nuxt.options.css.push(
-                        "@inkline/inkline/css/utilities/index.scss"
-                    );
-                }
             }
+        }
 
-            // Add to transpile
-            nuxt.options.build.transpile.push("@inkline/inkline");
+        // Add to transpile
+        nuxt.options.build.transpile.push("@inkline/inkline");
 
-            if (importOptions.scripts !== false) {
-                // Add plugin template
-                addPluginTemplate({
-                    src: resolve(templatesDir, "nuxt.ejs"),
-                    options: moduleOptions,
-                });
-            }
-
-            // Add dynamic component imports
-            await addComponentsDir({
-                path: join(
-                    dirname(inklineRequire.resolve("@inkline/inkline")),
-                    "components"
-                ),
-                pathPrefix: false,
-                pattern: "**/*.vue",
-                ignore: ["**/examples/*.vue"],
-                transpile: true,
-                global: global !== false,
+        if (importOptions.scripts !== false) {
+            // Add plugin template
+            addPluginTemplate({
+                src: resolve(templatesDir, "nuxt.ejs"),
+                options: globals,
             });
+        }
 
-            if (nuxt.options.dev) {
-                watch(pluginOptions);
-            } else {
-                build(pluginOptions);
-            }
-        },
-    });
+        // Add dynamic component imports
+        await addComponentsDir({
+            path: join(
+                dirname(inklineRequire.resolve("@inkline/inkline")),
+                "components"
+            ),
+            pathPrefix: false,
+            pattern: "**/*.vue",
+            ignore: ["**/examples/*.vue"],
+            transpile: true,
+            global: importOptions.mode === "global",
+        });
+
+        if (nuxt.options.dev) {
+            watch(pluginOptions);
+        } else {
+            build(pluginOptions);
+        }
+    },
+});
 
 export default module;

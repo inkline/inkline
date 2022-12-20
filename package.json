@@ -53,7 +53,7 @@
   "dependencies": {
     "@grozav/utils": ">=1",
     "@inkline/config": ">=1",
-    "@inkline/inkline": "latest",
+    "@inkline/inkline": "next",
     "@nuxt/kit": "^3.0.0",
     "unplugin": "^0.9.6"
   },
