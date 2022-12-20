@@ -198,5 +198,43 @@ export default defineNuxtConfig({
 });
 ~~~
 
-## License
-ISC
+## Bugs and feature requests
+
+Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/inkline/inkline/issues/new).
+
+## Community
+
+Get updates on Inkline's development and chat with the project maintainers and community members.
+
+-   Follow [@inkline on Twitter](https://twitter.com/inkline).
+-   Join [Inkline on Discord](https://chat.inkline.io).
+-   Developers should use the keyword `inkline` on packages which modify or add to the functionality of Inkline when distributing through [npm](https://www.npmjs.com/browse/keyword/inkline) or similar delivery mechanisms for maximum discoverability.
+
+## Releases
+
+[Previous releases](https://github.com/inkline/plugin/releases) and their documentation are also available for download.
+
+## Versioning
+
+For increased transparency and backward compatibility, Inkline is maintained under [the Semantic Versioning guidelines](https://semver.org/).
+
+## Creator
+
+### **Alex Grozav**
+
+-   <https://grozav.com>
+-   <https://twitter.com/alexgrozav>
+-   <https://facebook.com/alexgrozav>
+-   <https://github.com/alexgrozav>
+
+If you use Inkline in your daily work and feel that it has made your life easier, please consider
+sponsoring me on [Github Sponsors](https://github.com/sponsors/alexgrozav). 💖
+
+## Contributing
+
+Please read through our [contributing guidelines](https://github.com/inkline/inkline/blob/main/.github/CONTRIBUTING.md). There you can find directions for opening issues, feature requests, coding standards, and how to setup a local development environment.
+
+## Copyright and license
+Code copyright 2022-Present [Inkline Plugin Authors](https://github.com/inkline/plugin/graphs/contributors).
+Code released under the
+[ISC License](https://github.com/inkline/plugin/blob/main/LICENSE).
