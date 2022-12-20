@@ -72,6 +72,109 @@ export default defineConfig({
 }
 ~~~
 
+### Border `theme[name].border`
+
+~~~ts
+import { defineConfig } from '@inkline/config';
+
+export default defineConfig({
+    theme: {
+        default: {
+            border: '1px solid #c4cdd0'
+        }
+    }
+});
+~~~
+
+**Output**:
+
+~~~scss
+:root {
+    --border-top-width: 1px;
+    --border-right-width: 1px;
+    --border-bottom-width: 1px;
+    --border-left-width: 1px;
+    --border-width: var(--border-top-width) var(--border-right-width) var(--border-bottom-width) var(--border-left-width);
+    --border-top-style: solid;
+    --border-right-style: solid;
+    --border-bottom-style: solid;
+    --border-left-style: solid;
+    --border-style: var(--border-top-style) var(--border-right-style) var(--border-bottom-style) var(--border-left-style);
+    --border-top-color: #c4cdd0;
+    --border-right-color: #c4cdd0;
+    --border-bottom-color: #c4cdd0;
+    --border-left-color: #c4cdd0;
+    --border-color: var(--border-top-color) var(--border-right-color) var(--border-bottom-color) var(--border-left-color);
+}
+~~~
+
+Border sides can also be specified individually as strings or objects.
+
+~~~ts
+import { defineConfig } from '@inkline/config';
+
+export default defineConfig({
+    theme: {
+        default: {
+            border: {
+                top: {
+                    width: '1px',
+                    style: 'solid',
+                    color: '#c4cdd0'
+                },
+                right: '1px solid #c4cdd0',
+                bottom: '1px solid #c4cdd0',
+                left: '1px solid #c4cdd0'
+            }
+        }
+    }
+});
+~~~
+
+### Border Radius `theme[name].borderRadius`
+
+~~~ts
+import { defineConfig } from '@inkline/config';
+
+export default defineConfig({
+    theme: {
+        default: {
+            borderRadius: '4px'
+        }
+    }
+});
+~~~
+
+**Output**:
+
+~~~scss
+:root {
+    --border-top-left-radius: 4px;
+    --border-top-right-radius: 4px;
+    --border-bottom-right-radius: 4px;
+    --border-bottom-left-radius: 4px;
+    --border-radius: var(--border-top-left-radius) var(--border-top-right-radius) var(--border-bottom-right-radius) var(--border-bottom-left-radius);
+}
+~~~
+
+Border radius corners can also be specified individually, or as an array of values.
+
+~~~ts
+import { defineConfig } from '@inkline/config';
+
+export default defineConfig({
+    theme: {
+        default: {
+            borderRadius: {
+                topLeft: '4px',
+                topRight: '4px',
+                bottomRight: '4px',
+                bottomLeft: '4px',
+            }
+        }
+    }
+});
+~~~
 
 ### Box Shadow `theme[name].boxShadow`
 
@@ -292,110 +395,6 @@ export default defineConfig({
 });
 ~~~
 
-### Border `theme[name].border`
-
-~~~ts
-import { defineConfig } from '@inkline/config';
-
-export default defineConfig({
-    theme: {
-        default: {
-            border: '1px solid #c4cdd0'
-        }
-    }
-});
-~~~
-
-**Output**:
-
-~~~scss
-:root {
-    --border-top-width: 1px;
-    --border-right-width: 1px;
-    --border-bottom-width: 1px;
-    --border-left-width: 1px;
-    --border-width: var(--border-top-width) var(--border-right-width) var(--border-bottom-width) var(--border-left-width);
-    --border-top-style: solid;
-    --border-right-style: solid;
-    --border-bottom-style: solid;
-    --border-left-style: solid;
-    --border-style: var(--border-top-style) var(--border-right-style) var(--border-bottom-style) var(--border-left-style);
-    --border-top-color: #c4cdd0;
-    --border-right-color: #c4cdd0;
-    --border-bottom-color: #c4cdd0;
-    --border-left-color: #c4cdd0;
-    --border-color: var(--border-top-color) var(--border-right-color) var(--border-bottom-color) var(--border-left-color);
-}
-~~~
-
-Border sides can also be specified individually as strings or objects.
-
-~~~ts
-import { defineConfig } from '@inkline/config';
-
-export default defineConfig({
-    theme: {
-        default: {
-            border: {
-                top: {
-                    width: '1px',
-                    style: 'solid',
-                    color: '#c4cdd0'
-                },
-                right: '1px solid #c4cdd0',
-                bottom: '1px solid #c4cdd0',
-                left: '1px solid #c4cdd0'
-            }
-        }
-    }
-});
-~~~
-
-### Border Radius `theme[name].borderRadius`
-
-~~~ts
-import { defineConfig } from '@inkline/config';
-
-export default defineConfig({
-    theme: {
-        default: {
-            borderRadius: '4px'
-        }
-    }
-});
-~~~
-
-**Output**:
-
-~~~scss
-:root {
-    --border-top-left-radius: 4px;
-    --border-top-right-radius: 4px;
-    --border-bottom-right-radius: 4px;
-    --border-bottom-left-radius: 4px;
-    --border-radius: var(--border-top-left-radius) var(--border-top-right-radius) var(--border-bottom-right-radius) var(--border-bottom-left-radius);
-}
-~~~
-
-Border radius corners can also be specified individually, or as an array of values.
-
-~~~ts
-import { defineConfig } from '@inkline/config';
-
-export default defineConfig({
-    theme: {
-        default: {
-            borderRadius: {
-                topLeft: '4px',
-                topRight: '4px',
-                bottomRight: '4px',
-                bottomLeft: '4px',
-            }
-        }
-    }
-});
-~~~
-
 ### Scale Ratio `theme[name].scaleRatio`
 
 ~~~ts
@@ -441,3 +440,229 @@ export default defineConfig({
     --scale-ratio-pow-6: calc(var(--scale-ratio-pow-5) * var(--scale-ratio));
 }
 ~~~
+
+### Size `theme[name].size`
+
+~~~ts
+import { defineConfig } from '@inkline/config';
+
+export default defineConfig({
+    theme: {
+        default: {
+            size: {
+                multiplier: 1,
+                percentages: {
+                    0: '0%',
+                    25: '25%',
+                    50: '50%',
+                    75: '75%',
+                    100: '100%'
+                }
+            }
+        }
+    }
+});
+~~~
+
+**Output**:
+
+~~~scss
+:root {
+    --size-multiplier: 1;
+    --size-percentages-0: 0%;
+    --size-percentages-25: 25%;
+    --size-percentages-50: 50%;
+    --size-percentages-75: 75%;
+    --size-percentages-100: 100%;
+}
+~~~
+
+
+### Typography `theme[name].typography`
+
+~~~ts
+import { defineConfig } from '@inkline/config';
+
+export default defineConfig({
+    theme: {
+        default: {
+            typography: {
+                fontFamily: {
+                    primary: {
+                        base: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
+                        monospace:
+                            "'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+                        print: "'Georgia', 'Times New Roman', 'Times', serif"
+                    },
+                    secondary: {
+                        base: 'var(--font-family-primary-base)',
+                        monospace: 'var(--font-family-primary-monospace)',
+                        print: 'var(--font-family-primary-print)'
+                    }
+                },
+                fontWeight: {
+                    extralight: 200,
+                    light: 300,
+                    normal: 'normal',
+                    semibold: 600,
+                    bold: 'bold',
+                    black: 900,
+                    lighter: 'lighter',
+                    bolder: 'bolder'
+                },
+                fontSize: '1rem',
+                lineHeight: 1.5,
+                letterSpacing: 0,
+                color: {
+                    dark: 'var(--color-gray-900)',
+                    muted: 'var(--color-gray-600)',
+                    light: 'var(--color-gray-100)'
+                },
+                contrastColor: {
+                    light: 'var(--color-gray-900)',
+                    dark: 'var(--color-white)'
+                }
+            }
+        }
+    }
+});
+~~~
+
+**Output**:
+
+~~~scss
+:root {
+    --font-family-primary-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    --font-family-primary-monospace: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --font-family-primary-print: 'Georgia', 'Times New Roman', 'Times', serif;
+    --font-family-secondary-base: var(--font-family-primary-base);
+    --font-family-secondary-monospace: var(--font-family-primary-monospace);
+    --font-family-secondary-print: var(--font-family-primary-print);
+    --font-weight-extralight: 200;
+    --font-weight-light: 300;
+    --font-weight-normal: normal;
+    --font-weight-semibold: 600;
+    --font-weight-bold: bold;
+    --font-weight-black: 900;
+    --font-weight-lighter: lighter;
+    --font-weight-bolder: bolder;
+    --font-size: 1rem;
+    --line-height: 1.5;
+    --letter-spacing: 0;
+    --contrast-color--light: var(--color-gray-900);
+    --contrast-color--dark: var(--color-white);
+}
+~~~
+
+### Elements `theme[name].elements`
+
+The `elements` property provides a way to add generic element-specific variables. Each nested key inside of `elements` will be concatenated to the variable name using a `--` (double dash), unless it's part of a known CSS property (i.e. `body.margin.top` -> `body--margin-top`). 
+
+~~~ts
+import { defineConfig } from '@inkline/config';
+
+export default defineConfig({
+    theme: {
+        default: {
+            elements: {
+                body: {
+                    background: 'var(--color-white)',
+                    color: 'var(--color-gray-900)'
+                },
+                grid: {
+                    columns: 12,
+                    gutter: '28px'
+                }
+            }
+        }
+    }
+});
+~~~
+
+**Output**:
+
+~~~scss
+:root {
+    --body--background: var(--color-white);
+    --body--color: var(--color-gray-900);
+    --grid--columns: 12;
+    --grid--gutter: 28px;
+}
+~~~
+
+
+### Variants `theme[name].variants`
+
+Variants provide a way to apply modifiers to generate multiple variable versions based on the initial base value. 
+
+~~~ts
+import { defineConfig } from '@inkline/config';
+
+export default defineConfig({
+    theme: {
+        default: {
+            variants: {
+                color: {
+                    primary: {
+                        'shade-50': { darken: 5 },
+                        'tint-50': { lighten: 5 }
+                    }
+                }, 
+                margin: {
+                        '1-2': { divide: 2 },
+                        2: { multiply: 2 }
+                }
+            }
+        }
+    }
+});
+~~~
+
+**Output**:
+
+~~~scss
+:root {
+    --color-primary-shade-50-h: var(--color-primary-h);
+    --color-primary-shade-50-s: var(--color-primary-s);
+    --color-primary-shade-50-l: calc(var(--color-primary-l) - 5%);
+    --color-primary-shade-50-a: var(--color-primary-a);
+    --color-primary-shade-50: hsla(var(--color-primary-shade-50-h), var(--color-primary-shade-50-s), var(--color-primary-shade-50-l), var(--color-primary-shade-50-a));
+    --color-primary-tint-50-h: var(--color-primary-h);
+    --color-primary-tint-50-s: var(--color-primary-s);
+    --color-primary-tint-50-l: calc(var(--color-primary-l) + 5%);
+    --color-primary-tint-50-a: var(--color-primary-a);
+    --color-primary-tint-50: hsla(var(--color-primary-tint-50-h), var(--color-primary-tint-50-s), var(--color-primary-tint-50-l), var(--color-primary-tint-50-a));
+    --margin-top-1-2: calc(var(--margin-top) / 2);
+    --margin-right-1-2: calc(var(--margin-right) / 2);
+    --margin-bottom-1-2: calc(var(--margin-bottom) / 2);
+    --margin-left-1-2: calc(var(--margin-left) / 2);
+    --margin-1-2: var(--margin-top-1-2) var(--margin-right-1-2) var(--margin-bottom-1-2) var(--margin-left-1-2);
+--margin-top-2: calc(var(--margin-top) * 2);
+    --margin-right-2: calc(var(--margin-right) * 2);
+    --margin-bottom-2: calc(var(--margin-bottom) * 2);
+    --margin-left-2: calc(var(--margin-left) * 2);
+    --margin-2: var(--margin-top-2) var(--margin-right-2) var(--margin-bottom-2) var(--margin-left-2);
+}
+~~~
+
+Color type values accept the following variant modifiers:
+
+- `hue` or `h`
+- `saturation` or `s`
+- `lightness` or `l`
+- `alpha` or `a`
+- `lighten`
+- `darken`
+- `saturate`
+- `desaturate`
+- `grayscale`
+- `fade`
+- `opaquer`
+- `rotate`
+
+Number type values accept the following variant modifiers:
+
+- `multiply`
+- `divide`
+- `add`
+- `subtract`
