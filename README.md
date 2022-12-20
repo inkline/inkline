@@ -235,6 +235,4 @@ sponsoring me on [Github Sponsors](https://github.com/sponsors/alexgrozav). 💖
 Please read through our [contributing guidelines](https://github.com/inkline/inkline/blob/main/.github/CONTRIBUTING.md). There you can find directions for opening issues, feature requests, coding standards, and how to setup a local development environment.
 
 ## Copyright and license
-Code copyright 2022-Present [Inkline Plugin Authors](https://github.com/inkline/plugin/graphs/contributors).
-Code released under the
-[ISC License](https://github.com/inkline/plugin/blob/main/LICENSE).
+Code copyright 2022-Present [Inkline Plugin Authors](https://github.com/inkline/plugin/graphs/contributors). Code released under the [ISC License](https://github.com/inkline/plugin/blob/main/LICENSE).
