@@ -101,8 +101,8 @@ import { inkline } from '@inkline/plugin/vite';
 export default defineConfig({
     plugins: [
         inkline({
-            configFile: `${process.cwd()}/inkline.config.ts`,
-            outputDir: `${process.cwd()}/.inkline/css`,
+            configFile: resolve(process.cwd(), 'inkline.config.ts'),
+            outputDir: resolve(__dirname, 'src/css/variables'),
             extName: '.scss'
         })
     ]
@@ -126,13 +126,14 @@ module.exports = {
 Optionally, configure the integration with your preferred options:
 
 ~~~ts
+const { resolve } = require('path');
 const inkline = require('@inkline/plugin/webpack');
 
 module.exports = {
     plugins: [
         inkline({
-            configFile: `${process.cwd()}/inkline.config.ts`,
-            outputDir: `${process.cwd()}/.inkline/css`,
+            configFile: resolve(process.cwd(), 'inkline.config.ts'),
+            outputDir: resolve(__dirname, 'src/css/variables'),
             extName: '.scss'
         })
     ]
@@ -154,6 +155,8 @@ export default defineNuxtConfig({
 Optionally, configure the integration with your preferred options:
 
 ~~~ts
+import { resolve } from 'path';
+
 export default defineNuxtConfig({
     modules: ['@inkline/plugin/nuxt'],
     inkline: {
@@ -174,8 +177,8 @@ export default defineNuxtConfig({
          * @description provides configuration file specific options
          */
          
-        configFile: `${process.cwd()}/inkline.config.ts`,
-        outputDir: `${process.cwd()}/.inkline/css`,
+        configFile: resolve(process.cwd(), 'inkline.config.ts'),
+        outputDir: resolve(__dirname, 'src/css/variables'),
         extName: '.scss',
         
         /**
