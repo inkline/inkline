@@ -77,9 +77,73 @@ Visit [Configuration Reference](https://github.com/inkline/config) for details.
 
 ## Integrations
 
+### Vite.js
+
+Add `@inkline/plugin/vite` to your `vite.config.ts` file's `plugins`.
+
+~~~ts
+import { defineConfig } from 'vite';
+import { inkline } from '@inkline/plugin/vite';
+
+export default defineConfig({
+    plugins: [
+        inkline()
+    ]
+});
+~~~
+
+Optionally, configure the integration with your preferred options:
+
+~~~ts
+import { defineConfig } from 'vite';
+import { inkline } from '@inkline/plugin/vite';
+
+export default defineConfig({
+    plugins: [
+        inkline({
+            configFile: `${process.cwd()}/inkline.config.ts`,
+            outputDir: `${process.cwd()}/.inkline/css`,
+            extName: '.scss'
+        })
+    ]
+});
+~~~
+
+### Webpack.js
+
+Add `@inkline/plugin/vite` to your `webpack.config.js` file's `plugins`.
+
+~~~ts
+const inkline = require('@inkline/plugin/webpack');
+
+module.exports = {
+    plugins: [
+        inkline()
+    ]
+};
+~~~
+
+Optionally, configure the integration with your preferred options:
+
+~~~ts
+const inkline = require('@inkline/plugin/webpack');
+
+module.exports = {
+    plugins: [
+        inkline({
+            configFile: `${process.cwd()}/inkline.config.ts`,
+            outputDir: `${process.cwd()}/.inkline/css`,
+            extName: '.scss'
+        })
+    ]
+};
+~~~
+
+
+
 ### Nuxt.js
 
-All you need to do is add `@inkline/plugin/nuxt` to your `nuxt.config.ts` file's modules.
+Add `@inkline/plugin/nuxt` to your `nuxt.config.ts` file's `modules`.
 
 ~~~ts
 export default defineNuxtConfig({
@@ -130,8 +194,6 @@ export default defineNuxtConfig({
     }
 });
 ~~~
-
-
 
 ## License
 ISC
