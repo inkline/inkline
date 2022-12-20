@@ -74,9 +74,7 @@ export default defineConfig({
 
 ## Configuration
 
-### Reference
-
-Read the [configuration reference](./docs/config.md) for more details.
+Read the [Configuration Reference](./docs/config.md) to learn about available configuration options.
 
 ### Defaults
 
