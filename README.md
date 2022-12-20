@@ -7,7 +7,7 @@
 <h1 align="center">@inkline/plugin</h1>
 
 <p align="center">
-    The easiest and fastests way to use Inkline with your favorite development environment. We officially support integrations with <a href="https://nuxt.com">Nuxt.js</a>, <a href="https://vitejs.dev">Vite.js</a>, and <a href="https://webpack.js.org">Webpack.js</a>.
+    The easiest and fastest way to use Inkline with your favorite development environment. We officially support integrations with <a href="https://nuxt.com">Nuxt.js</a>, <a href="https://vitejs.dev">Vite.js</a>, and <a href="https://webpack.js.org">Webpack.js</a>.
     <br/>
     <br/>
     <br/>
