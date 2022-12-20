@@ -395,3 +395,49 @@ export default defineConfig({
     }
 });
 ~~~
+
+### Scale Ratio `theme[name].scaleRatio`
+
+~~~ts
+import { defineConfig } from '@inkline/config';
+
+export default defineConfig({
+    theme: {
+        default: {
+            scaleRatio: {
+                minorSecond: 1.067,
+                majorSecond: 1.125,
+                minorThird: 1.2,
+                majorThird: 1.25,
+                perfectFourth: 1.333,
+                augmentedFourth: 1.414,
+                perfectFifth: 1.5,
+                golden: 1.618,
+                primary: 'var(--scale-ratio-minor-third)'
+            }
+        }
+    }
+});
+~~~
+
+**Output**:
+
+~~~scss
+:root {
+    --scale-ratio-minor-second: 1.067;
+    --scale-ratio-major-second: 1.125;
+    --scale-ratio-minor-third: 1.2;
+    --scale-ratio-major-third: 1.25;
+    --scale-ratio-perfect-fourth: 1.333;
+    --scale-ratio-augmented-fourth: 1.414;
+    --scale-ratio-perfect-fifth: 1.5;
+    --scale-ratio-golden: 1.618;
+    --scale-ratio: var(--scale-ratio-minor-third);
+    --scale-ratio-pow-1: var(--scale-ratio);
+    --scale-ratio-pow-2: calc(var(--scale-ratio-pow-1) * var(--scale-ratio));
+    --scale-ratio-pow-3: calc(var(--scale-ratio-pow-2) * var(--scale-ratio));
+    --scale-ratio-pow-4: calc(var(--scale-ratio-pow-3) * var(--scale-ratio));
+    --scale-ratio-pow-5: calc(var(--scale-ratio-pow-4) * var(--scale-ratio));
+    --scale-ratio-pow-6: calc(var(--scale-ratio-pow-5) * var(--scale-ratio));
+}
+~~~
