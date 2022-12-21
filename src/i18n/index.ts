@@ -1,25 +1,30 @@
-import { en } from '@inkline/inkline/i18n/messages/en';
-export * from '@inkline/inkline/i18n/translate';
+import { en } from "@inkline/inkline/i18n/messages";
+export * from "@inkline/inkline/i18n/translate";
 
 export interface InternationalizationMessages {
-    [key: string]: string | string[] | (() => string) | ((params: any) => string) | InternationalizationMessages;
+    [key: string]:
+        | string
+        | string[]
+        | (() => string)
+        | ((params: any) => string)
+        | InternationalizationMessages;
 }
 
 export interface Internationalization {
     locale: string;
     messages: {
-        [key: string]: InternationalizationMessages
-    }
+        [key: string]: InternationalizationMessages;
+    };
 }
 
 /**
  * Internationalization options
  */
 export const i18n: Internationalization = {
-    locale: 'en',
+    locale: "en",
     messages: {
-        en
-    }
+        en,
+    },
 };
 
 /**
@@ -27,6 +32,6 @@ export const i18n: Internationalization = {
  *
  * @param locale
  */
-export function setLocale (locale: string) {
+export function setLocale(locale: string) {
     i18n.locale = locale;
 }
