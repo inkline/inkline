@@ -138,6 +138,11 @@
             "import": "./i18n/index.mjs",
             "types": "./i18n/index.d.ts"
         },
+        "./i18n/messages/en": {
+            "require": "./i18n/messages/en.js",
+            "import": "./i18n/messages/en.mjs",
+            "types": "./i18n/messages/en.d.ts"
+        },
         "./types": {
             "types": "./types/index.d.ts"
         },
