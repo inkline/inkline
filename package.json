@@ -117,6 +117,11 @@
             "import": "./components/index.mjs",
             "types": "./components/index.d.ts"
         },
+        "./composables": {
+            "require": "./composables/index.js",
+            "import": "./composables/index.mjs",
+            "types": "./composables/index.d.ts"
+        },
         "./constants": {
             "require": "./constants/index.js",
             "import": "./constants/index.mjs",
@@ -127,35 +132,28 @@
             "import": "./controllers/index.mjs",
             "types": "./controllers/index.d.ts"
         },
-        "./directives": {
-            "require": "./directives/index.js",
-            "import": "./directives/index.mjs",
-            "types": "./directives/index.d.ts"
-        },
-        "./helpers": {
-            "require": "./helpers/index.js",
-            "import": "./helpers/index.mjs",
-            "types": "./helpers/index.d.ts"
-        },
         "./i18n": {
             "require": "./i18n/index.js",
             "import": "./i18n/index.mjs",
             "types": "./i18n/index.d.ts"
         },
-        "./mixins": {
-            "require": "./mixins/index.js",
-            "import": "./mixins/index.mjs",
-            "types": "./mixins/index.d.ts"
+        "./types": {
+            "types": "./types/index.d.ts"
         },
-        "./transitions": {
-            "require": "./transitions/index.js",
-            "import": "./transitions/index.mjs",
-            "types": "./transitions/index.d.ts"
+        "./utils": {
+            "require": "./utils/index.js",
+            "import": "./utils/index.mjs",
+            "types": "./utils/index.d.ts"
         },
         "./validation": {
             "require": "./validation/index.js",
             "import": "./validation/index.mjs",
             "types": "./validation/index.d.ts"
+        },
+        "./validation/validators": {
+            "require": "./validation/validators/index.js",
+            "import": "./validation/validators/index.mjs",
+            "types": "./validation/validators/index.d.ts"
         },
         "./*": "./*"
     },
