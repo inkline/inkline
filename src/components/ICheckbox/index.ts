@@ -1,1 +1,1 @@
-export { default as ICheckbox } from './ICheckbox.vue';
+export { default as ICheckbox } from '@inkline/inkline/components/ICheckbox/ICheckbox.vue';

@@ -1,4 +1,4 @@
-import { alpha as validators } from './constants';
+import { alpha as validators } from '@inkline/inkline/validation/validators/constants';
 
 export function alpha (rawValue: any, options: any = {}): boolean {
     const locale = options.locale || 'en-US';

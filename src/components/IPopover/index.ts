@@ -1,1 +1,1 @@
-export { default as IPopover } from './IPopover.vue';
+export { default as IPopover } from '@inkline/inkline/components/IPopover/IPopover.vue';

@@ -15,7 +15,7 @@ import {
     TypographyTextWrappingExample,
     TypographyUnorderedListExample,
     TypographyUnstyledListExample
-} from './index';
+} from '@inkline/inkline/stories/core/typography/index';
 
 export default {
     title: 'Core/Typography'

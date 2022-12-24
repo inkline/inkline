@@ -1,10 +1,10 @@
-import { ITabs } from '../index';
+import { ITabs } from '@inkline/inkline/components/ITabs/index';
 import {
     ITabsBasicExample,
     ITabsColorVariantsExample,
     ITabsSizeVariantsExample,
     ITabsStretchExample
-} from './index';
+} from '@inkline/inkline/components/ITabs/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

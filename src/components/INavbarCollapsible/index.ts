@@ -1,1 +1,1 @@
-export { default as INavbarCollapsible } from './INavbarCollapsible.vue';
+export { default as INavbarCollapsible } from '@inkline/inkline/components/INavbarCollapsible/INavbarCollapsible.vue';

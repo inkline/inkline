@@ -1,4 +1,4 @@
-import IForm from '../IForm.vue';
+import IForm from '@inkline/inkline/components/IForm/IForm.vue';
 import {
     IFormBasicExample,
     IFormDisabledExample,
@@ -6,7 +6,7 @@ import {
     IFormSizeVariantsSmExample,
     IFormSizeVariantsMdExample,
     IFormSizeVariantsLgExample
-} from './index';
+} from '@inkline/inkline/components/IForm/examples/index';
 import {
     colorArgType,
     createStory,

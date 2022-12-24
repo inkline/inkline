@@ -2,7 +2,7 @@
 import { computed, defineComponent, inject, provide } from 'vue';
 import { NavbarKey } from '@inkline/inkline/components/INavbar/mixin';
 import { SidebarKey } from '@inkline/inkline/components/ISidebar/mixin';
-import { NavKey } from './mixin';
+import { NavKey } from '@inkline/inkline/components/INav/mixin';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'INav';

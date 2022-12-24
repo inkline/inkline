@@ -1,11 +1,11 @@
-import { IPopover } from '../index';
+import { IPopover } from '@inkline/inkline/components/IPopover/index';
 import {
     IPopoverBasicExample,
     IPopoverColorVariantsExample,
     IPopoverSizeVariantsExample,
     IPopoverPlacementExample,
     IPopoverTriggerExample
-} from './index';
+} from '@inkline/inkline/components/IPopover/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

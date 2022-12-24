@@ -1,4 +1,4 @@
-import { ICollapsible } from '../index';
+import { ICollapsible } from '@inkline/inkline/components/ICollapsible/index';
 import {
     ICollapsibleAccordionExample,
     ICollapsibleBasicExample,
@@ -6,7 +6,7 @@ import {
     ICollapsibleDefaultOpenExample,
     ICollapsibleHeaderExample,
     ICollapsibleSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/ICollapsible/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

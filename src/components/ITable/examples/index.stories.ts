@@ -1,4 +1,4 @@
-import { ITable } from '../index';
+import { ITable } from '@inkline/inkline/components/ITable/index';
 import {
     ITableBasicExample,
     ITableBorderedExample,
@@ -6,7 +6,7 @@ import {
     ITableHoverExample,
     ITableResponsiveExample,
     ITableStripedExample
-} from './index';
+} from '@inkline/inkline/components/ITable/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

@@ -1,5 +1,5 @@
-import { computed, Ref } from 'vue';
-import { useInkline } from './inkline';
+import { computed, Ref } from "vue";
+import { useInkline } from "@inkline/inkline/composables";
 
 export function useLinkable(props: {
     to: Ref<string | Record<string, unknown> | undefined>;
@@ -13,7 +13,7 @@ export function useLinkable(props: {
             return inkline?.options?.routerComponent;
         } else {
             if (props.href.value) {
-                return 'a';
+                return "a";
             } else {
                 return props.tag.value;
             }

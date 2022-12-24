@@ -1,4 +1,4 @@
-import { INav } from '../index';
+import { INav } from '@inkline/inkline/components/INav/index';
 import {
     INavBasicExample,
     INavColorVariantsExample,
@@ -6,7 +6,7 @@ import {
     INavSizeVariantsExample,
     INavStateActiveExample,
     INavVerticalExample
-} from './index';
+} from '@inkline/inkline/components/INav/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

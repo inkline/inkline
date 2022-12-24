@@ -1,11 +1,11 @@
-import { IHeader } from '../index';
+import { IHeader } from '@inkline/inkline/components/IHeader/index';
 import {
     IHeaderBasicExample,
     IHeaderColorVariantsExample,
     IHeaderCoverExample,
     IHeaderFullscreenExample,
     IHeaderSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/IHeader/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

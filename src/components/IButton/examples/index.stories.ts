@@ -1,4 +1,4 @@
-import IButton from '../IButton.vue';
+import IButton from '@inkline/inkline/components/IButton/IButton.vue';
 import {
     IButtonBasicExample,
     IButtonBlockExample,
@@ -14,7 +14,7 @@ import {
     IButtonStateActiveExample,
     IButtonStateDisabledExample,
     IButtonStateLoadingExample
-} from './index';
+} from '@inkline/inkline/components/IButton/examples/index';
 import {
     colorArgType,
     createStory,

@@ -1,4 +1,4 @@
-import { OverflowBasicExample } from './index';
+import { OverflowBasicExample } from '@inkline/inkline/stories/utilities/overflow/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

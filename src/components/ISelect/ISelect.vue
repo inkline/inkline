@@ -8,33 +8,43 @@ import {
     provide,
     ref,
     toRef,
-    watch
-} from 'vue';
-import { isFocusable, isKey, uid, getValueByPath, isFunction } from '@grozav/utils';
+    watch,
+} from "vue";
+import {
+    isFocusable,
+    isKey,
+    uid,
+    getValueByPath,
+    isFunction,
+} from "@grozav/utils";
 
-import { IInput } from '@inkline/inkline/components';
-import { FormKey } from '@inkline/inkline/components/IForm';
-import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
+import { IInput } from "@inkline/inkline/components";
+import { FormKey } from "@inkline/inkline/components/IForm/mixin";
+import { FormGroupKey } from "@inkline/inkline/components/IFormGroup/mixin";
 import {
     useClickOutside,
     useComponentColor,
     useComponentSize,
     useFormValidationError,
-    useValidation
-} from '@inkline/inkline/composables';
-import { PopupEvent, usePopupControl } from '@inkline/inkline/composables/popup';
-import { Placement } from '@floating-ui/dom';
-import { SelectKey, SelectOption } from '@inkline/inkline/components/ISelect/mixin';
-import { ISelectOption } from '@inkline/inkline/components/ISelectOption';
-import { extractRefHTMLElement } from '@inkline/inkline/utils';
+    useValidation,
+    PopupEvent,
+    usePopupControl,
+} from "@inkline/inkline/composables";
+import { Placement } from "@floating-ui/dom";
+import {
+    SelectKey,
+    SelectOption,
+} from "@inkline/inkline/components/ISelect/mixin";
+import { ISelectOption } from "@inkline/inkline/components/ISelectOption";
+import { extractRefHTMLElement } from "@inkline/inkline/utils";
 
-const componentName = 'ISelect';
+const componentName = "ISelect";
 
 export default defineComponent({
     name: componentName,
     components: {
         IInput,
-        ISelectOption
+        ISelectOption,
     },
     props: {
         /**
@@ -45,7 +55,7 @@ export default defineComponent({
          */
         animationDuration: {
             type: Number,
-            default: 300
+            default: 300,
         },
         /**
          * Enable autocomplete functionality
@@ -55,7 +65,7 @@ export default defineComponent({
          */
         autocomplete: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * Displays an arrow on the dropdown pointing to the trigger element
@@ -65,7 +75,7 @@ export default defineComponent({
          */
         arrow: {
             type: Boolean,
-            default: true
+            default: true,
         },
         /**
          * The color variant of the select
@@ -75,7 +85,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         /**
          * Display the select as clearable
@@ -85,7 +95,7 @@ export default defineComponent({
          */
         clearable: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The disabled state of the select
@@ -95,7 +105,7 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The error state of the checkbox, computed based on schema by default.
@@ -106,7 +116,7 @@ export default defineComponent({
          */
         error: {
             type: [Array, Boolean] as PropType<boolean | string[]>,
-            default: () => ['touched', 'dirty', 'invalid']
+            default: () => ["touched", "dirty", "invalid"],
         },
         /**
          * The events used to trigger the dropdown
@@ -116,7 +126,7 @@ export default defineComponent({
          */
         events: {
             type: [String, Array] as PropType<PopupEvent | PopupEvent[]>,
-            default: (): string[] => ['click']
+            default: (): string[] => ["click"],
         },
         /**
          * The field to be used for identifying the options
@@ -126,7 +136,7 @@ export default defineComponent({
          */
         idField: {
             type: String,
-            default: 'id'
+            default: "id",
         },
         /**
          * The keydown events bound to the trigger element
@@ -136,7 +146,14 @@ export default defineComponent({
          */
         triggerKeyBindings: {
             type: Array,
-            default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+            default: (): string[] => [
+                "up",
+                "down",
+                "enter",
+                "space",
+                "tab",
+                "esc",
+            ],
         },
         /**
          * The keydown events bound to the select option elements
@@ -146,7 +163,14 @@ export default defineComponent({
          */
         itemKeyBindings: {
             type: Array,
-            default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+            default: (): string[] => [
+                "up",
+                "down",
+                "enter",
+                "space",
+                "tab",
+                "esc",
+            ],
         },
         /**
          * Determines whether hover state should be transferred from trigger to popup
@@ -156,7 +180,7 @@ export default defineComponent({
          */
         interactable: {
             type: Boolean,
-            default: true
+            default: true,
         },
         /**
          * Used to extract the label from the select option and select value
@@ -166,7 +190,7 @@ export default defineComponent({
          */
         label: {
             type: [String, Function],
-            default: 'label'
+            default: "label",
         },
         /**
          * The loading state of the select
@@ -176,7 +200,7 @@ export default defineComponent({
          */
         loading: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * Used to set the field value
@@ -186,7 +210,7 @@ export default defineComponent({
          */
         modelValue: {
             type: [String, Number, Boolean],
-            default: null
+            default: null,
         },
         /**
          * Used to manually control the visibility of the select dropdown
@@ -196,7 +220,7 @@ export default defineComponent({
          */
         visible: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The minimum input length to open the select dropdown at
@@ -206,7 +230,7 @@ export default defineComponent({
          */
         minLength: {
             type: Number,
-            default: 0
+            default: 0,
         },
         /**
          * The unique identifier of the select
@@ -216,7 +240,7 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default: (): string => uid('select')
+            default: (): string => uid("select"),
         },
         /**
          * The options to be displayed in the select component
@@ -226,7 +250,7 @@ export default defineComponent({
          */
         options: {
             type: Array as PropType<SelectOption[]>,
-            default: () => []
+            default: () => [],
         },
         /**
          * The placeholder of the select input
@@ -236,7 +260,7 @@ export default defineComponent({
          */
         placeholder: {
             type: String,
-            default: ''
+            default: "",
         },
         /**
          * The offset of the dropdown relative to the trigger element
@@ -246,7 +270,7 @@ export default defineComponent({
          */
         offset: {
             type: Number,
-            default: 6
+            default: 6,
         },
         /**
          * The placement of the select dropdown
@@ -256,7 +280,7 @@ export default defineComponent({
          */
         placement: {
             type: String as PropType<Placement>,
-            default: 'bottom'
+            default: "bottom",
         },
         /**
          * Used to override the floating-ui options used for creating the dropdown
@@ -266,7 +290,7 @@ export default defineComponent({
          */
         popupOptions: {
             type: Object,
-            default: (): any => ({})
+            default: (): any => ({}),
         },
         /**
          * The readonly state of the select
@@ -276,7 +300,7 @@ export default defineComponent({
          */
         readonly: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The number of pixels until scroll end before loading the next page
@@ -286,7 +310,7 @@ export default defineComponent({
          */
         scrollTolerance: {
             type: Number,
-            default: 160
+            default: 160,
         },
         /**
          * Selects the first option when pressing enter
@@ -296,7 +320,7 @@ export default defineComponent({
          */
         selectFirstOptionOnEnter: {
             type: Boolean,
-            default: true
+            default: true,
         },
         /**
          * The size variant of the select
@@ -306,7 +330,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         /**
          * The tabindex of the select
@@ -316,7 +340,7 @@ export default defineComponent({
          */
         tabindex: {
             type: [Number, String],
-            default: 0
+            default: 0,
         },
         /**
          * The type of the select
@@ -326,7 +350,7 @@ export default defineComponent({
          */
         type: {
             type: String,
-            default: 'text'
+            default: "text",
         },
         /**
          * The total number of options, used for infinite scrolling
@@ -336,7 +360,7 @@ export default defineComponent({
          */
         total: {
             type: Number,
-            default: undefined
+            default: undefined,
         },
         /**
          * Delay in milliseconds before the popover is hidden on hover
@@ -346,7 +370,7 @@ export default defineComponent({
          */
         hoverHideDelay: {
             type: Number,
-            default: 300
+            default: 300,
         },
         /**
          * Enable select validation using schema
@@ -356,40 +380,40 @@ export default defineComponent({
          */
         validate: {
             type: Boolean,
-            default: true
-        }
+            default: true,
+        },
     },
     emits: [
         /**
          * Event emitted for setting the modelValue
          * @event update:modelValue
          */
-        'update:modelValue',
+        "update:modelValue",
         /**
          * Event emitted for setting the visible
          * @event update:visible
          */
-        'update:visible',
+        "update:visible",
         /**
          * Event emitted when clicking outside the select component
          * @event click:outside
          */
-        'click:outside',
+        "click:outside",
         /**
          * Event emitted when input value changes
          * @event search
          */
-        'search',
+        "search",
         /**
          * Event emitted when the next page needs to be loaded
          * @event pagination
          */
-        'pagination',
+        "pagination",
         /**
          * Event emitted when clearing the select element
          * @event clear
          */
-        'clear'
+        "clear",
     ],
     setup(props, { emit }) {
         const form = inject(FormKey, null);
@@ -402,19 +426,19 @@ export default defineComponent({
         const arrowRef = ref<HTMLElement | null>(null);
         const optionsRef = ref<HTMLElement | null>(null);
 
-        const name = toRef(props, 'name');
-        const validate = toRef(props, 'validate');
+        const name = toRef(props, "name");
+        const validate = toRef(props, "validate");
         const {
             schema,
             onInput: schemaOnInput,
-            onBlur: schemaOnBlur
+            onBlur: schemaOnBlur,
         } = useValidation({
             name,
-            validate
+            validate,
         });
         const { hasError } = useFormValidationError({
             schema,
-            error: props.error
+            error: props.error,
         });
 
         const value = computed(() => {
@@ -426,28 +450,49 @@ export default defineComponent({
         });
 
         const valueOption = computed<SelectOption | undefined>(() => {
-            return props.options.find((option) => option[props.idField] === value.value);
+            return props.options.find(
+                (option) => option[props.idField] === value.value
+            );
         });
 
-        const inputValue = ref(valueOption.value ? getLabel(valueOption.value) : '');
+        const inputValue = ref(
+            valueOption.value ? getLabel(valueOption.value) : ""
+        );
 
         const disabled = computed(
-            () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
+            () =>
+                !!(
+                    props.disabled ||
+                    formGroup?.disabled.value ||
+                    form?.disabled.value
+                )
         );
         const readonly = computed(
-            () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
+            () =>
+                !!(
+                    props.readonly ||
+                    formGroup?.readonly.value ||
+                    form?.readonly.value
+                )
         );
         const tabindex = computed(() => (disabled.value ? -1 : props.tabindex));
 
         const currentColor = computed(
             () => props.color || formGroup?.color.value || form?.color.value
         );
-        const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
+        const currentSize = computed(
+            () => props.size || formGroup?.size.value || form?.size.value
+        );
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
 
         const clearable = computed(() => {
-            return props.clearable && !disabled.value && !readonly.value && value.value !== '';
+            return (
+                props.clearable &&
+                !disabled.value &&
+                !readonly.value &&
+                value.value !== ""
+            );
         });
 
         const componentProps = computed(() => ({
@@ -459,32 +504,37 @@ export default defineComponent({
             visible: props.visible,
             animationDuration: props.animationDuration,
             hoverHideDelay: props.hoverHideDelay,
-            offset: props.offset
+            offset: props.offset,
         }));
-        const { visible, hide, show, createPopup, onClickOutside } = usePopupControl({
-            triggerRef,
-            popupRef,
-            arrowRef,
-            componentProps,
-            emit
-        });
+        const { visible, hide, show, createPopup, onClickOutside } =
+            usePopupControl({
+                triggerRef,
+                popupRef,
+                arrowRef,
+                componentProps,
+                emit,
+            });
 
         const wrapperClasses = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            '-disabled': disabled.value,
-            '-readonly': readonly.value,
-            '-error': hasError.value
+            "-disabled": disabled.value,
+            "-readonly": readonly.value,
+            "-error": hasError.value,
         }));
 
         const inputPlaceholder = computed(() => {
-            return valueOption.value ? getLabel(valueOption.value) : props.placeholder;
+            return valueOption.value
+                ? getLabel(valueOption.value)
+                : props.placeholder;
         });
 
         watch(
             () => value.value,
             () => {
-                inputValue.value = valueOption.value ? getLabel(valueOption.value) : '';
+                inputValue.value = valueOption.value
+                    ? getLabel(valueOption.value)
+                    : "";
             }
         );
 
@@ -499,11 +549,11 @@ export default defineComponent({
 
         useClickOutside({ elementRef: wrapperRef, fn: onClickOutside });
 
-        const idField = toRef(props, 'idField');
+        const idField = toRef(props, "idField");
         provide(SelectKey, {
             value,
             idField,
-            onInput
+            onInput,
         });
 
         /**
@@ -521,13 +571,13 @@ export default defineComponent({
             inputValue.value = getLabel(option);
 
             schemaOnInput(props.name, option[props.idField]);
-            emit('update:modelValue', option[props.idField]);
+            emit("update:modelValue", option[props.idField]);
 
             hide();
         }
 
         function onClear() {
-            emit('update:modelValue', null);
+            emit("update:modelValue", null);
         }
 
         function onBlur(event: MouseEvent) {
@@ -589,13 +639,17 @@ export default defineComponent({
             }
 
             const focusableItems = getFocusableItems();
-            const activeIndex = focusableItems.findIndex((item: any) => item.active);
+            const activeIndex = focusableItems.findIndex(
+                (item: any) => item.active
+            );
             const initialIndex = activeIndex > -1 ? activeIndex : 0;
             const focusTarget = focusableItems[initialIndex];
 
             switch (true) {
-                case isKey('up', event) && props.triggerKeyBindings.includes('up'):
-                case isKey('down', event) && props.triggerKeyBindings.includes('down'):
+                case isKey("up", event) &&
+                    props.triggerKeyBindings.includes("up"):
+                case isKey("down", event) &&
+                    props.triggerKeyBindings.includes("down"):
                     show();
 
                     setTimeout(
@@ -609,8 +663,10 @@ export default defineComponent({
                     event.stopPropagation();
                     break;
 
-                case isKey('enter', event) && props.triggerKeyBindings.includes('enter'):
-                case isKey('space', event) && props.triggerKeyBindings.includes('space'):
+                case isKey("enter", event) &&
+                    props.triggerKeyBindings.includes("enter"):
+                case isKey("space", event) &&
+                    props.triggerKeyBindings.includes("space"):
                     if (!visible.value) {
                         show();
                         setTimeout(() => {
@@ -621,8 +677,10 @@ export default defineComponent({
                     event.preventDefault();
                     break;
 
-                case isKey('tab', event) && props.triggerKeyBindings.includes('tab'):
-                case isKey('esc', event) && props.triggerKeyBindings.includes('esc'):
+                case isKey("tab", event) &&
+                    props.triggerKeyBindings.includes("tab"):
+                case isKey("esc", event) &&
+                    props.triggerKeyBindings.includes("esc"):
                     hide();
                     break;
             }
@@ -634,18 +692,24 @@ export default defineComponent({
             }
 
             switch (true) {
-                case isKey('up', event) && props.itemKeyBindings.includes('up'):
-                case isKey('down', event) && props.itemKeyBindings.includes('down'):
+                case isKey("up", event) && props.itemKeyBindings.includes("up"):
+                case isKey("down", event) &&
+                    props.itemKeyBindings.includes("down"):
                     const focusableItems = getFocusableItems();
 
-                    const currentIndex = focusableItems.findIndex((item) => item === event.target);
+                    const currentIndex = focusableItems.findIndex(
+                        (item) => item === event.target
+                    );
                     const maxIndex = focusableItems.length - 1;
                     let nextIndex;
 
-                    if (isKey('up', event)) {
+                    if (isKey("up", event)) {
                         nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
                     } else {
-                        nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
+                        nextIndex =
+                            currentIndex < maxIndex
+                                ? currentIndex + 1
+                                : maxIndex;
                     }
 
                     focusableItems[nextIndex].focus();
@@ -654,8 +718,10 @@ export default defineComponent({
                     event.stopPropagation();
                     break;
 
-                case isKey('enter', event) && props.itemKeyBindings.includes('enter'):
-                case isKey('space', event) && props.itemKeyBindings.includes('space'):
+                case isKey("enter", event) &&
+                    props.itemKeyBindings.includes("enter"):
+                case isKey("space", event) &&
+                    props.itemKeyBindings.includes("space"):
                     const target = event.target as HTMLElement;
 
                     target.click();
@@ -666,8 +732,10 @@ export default defineComponent({
                     event.preventDefault();
                     break;
 
-                case isKey('tab', event) && props.itemKeyBindings.includes('tab'):
-                case isKey('esc', event) && props.itemKeyBindings.includes('esc'):
+                case isKey("tab", event) &&
+                    props.itemKeyBindings.includes("tab"):
+                case isKey("esc", event) &&
+                    props.itemKeyBindings.includes("esc"):
                     hide();
                     setTimeout(() => {
                         focusInput();
@@ -695,7 +763,7 @@ export default defineComponent({
                 return;
             }
 
-            const input = inputWrapper.querySelector('input');
+            const input = inputWrapper.querySelector("input");
             if (!input) {
                 return;
             }
@@ -709,7 +777,8 @@ export default defineComponent({
             }
 
             const focusableItems = [];
-            const children = optionsRef.value.children as HTMLCollectionOf<HTMLElement>;
+            const children = optionsRef.value
+                .children as HTMLCollectionOf<HTMLElement>;
 
             for (const child of children) {
                 if (isFocusable(child)) {
@@ -737,12 +806,16 @@ export default defineComponent({
         // }
 
         function getLabel(option: SelectOption | string | number): string {
-            if (typeof option !== 'object') {
+            if (typeof option !== "object") {
                 return inputValue.value;
             }
 
             return isFunction(props.label)
-                ? (props.label as (option: Record<string, any> | string | number) => void)(option)
+                ? (
+                      props.label as (
+                          option: Record<string, any> | string | number
+                      ) => void
+                  )(option)
                 : getValueByPath(option, props.label as string);
         }
 
@@ -769,9 +842,9 @@ export default defineComponent({
             onInput,
             onClear,
             onEscape,
-            getLabel
+            getLabel,
         };
-    }
+    },
 });
 </script>
 
@@ -851,7 +924,10 @@ export default defineComponent({
                     <slot name="header" />
                 </div>
                 <div ref="bodyRef" class="select-body">
-                    <div v-if="!$slots.default && options.length === 0" class="select-no-results">
+                    <div
+                        v-if="!$slots.default && options.length === 0"
+                        class="select-no-results"
+                    >
                         <!-- @slot no-results Slot for showing no options message -->
                         <slot name="no-results"> There are no options. </slot>
                     </div>

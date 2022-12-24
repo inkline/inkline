@@ -1,4 +1,4 @@
-import IFormGroup from '../iFormGroup.vue';
+import IFormGroup from '@inkline/inkline/components/IFormGroup/iFormGroup.vue';
 import {
     IFormGroupBasicExample,
     IFormGroupDisabledExample,
@@ -9,7 +9,7 @@ import {
     IFormGroupSizeVariantsSmExample,
     IFormGroupSizeVariantsMdExample,
     IFormGroupSizeVariantsLgExample
-} from './index';
+} from '@inkline/inkline/components/IFormGroup/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

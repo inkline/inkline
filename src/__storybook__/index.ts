@@ -1,3 +1,3 @@
-export * from './argTypes';
-export * from './createStory';
-export * from './createExampleStory';
+export * from '@inkline/inkline/__storybook__/argTypes';
+export * from '@inkline/inkline/__storybook__/createStory';
+export * from '@inkline/inkline/__storybook__/createExampleStory';

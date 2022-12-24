@@ -1,22 +1,41 @@
 <script lang="ts" setup>
 /* eslint-disable */
-import { computed, inject, nextTick, PropType, provide, ref, useAttrs, useSlots, watch } from 'vue';
-import { isFocusable, isFunction, isKey, uid, getValueByPath } from '@grozav/utils';
+import {
+    computed,
+    inject,
+    nextTick,
+    PropType,
+    provide,
+    ref,
+    useAttrs,
+    useSlots,
+    watch,
+} from "vue";
+import {
+    isFocusable,
+    isFunction,
+    isKey,
+    uid,
+    getValueByPath,
+} from "@grozav/utils";
 
-import { FormKey } from '@inkline/inkline/components/IForm';
-import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
+import { FormKey } from "@inkline/inkline/components/IForm/mixin";
+import { FormGroupKey } from "@inkline/inkline/components/IFormGroup/mixin";
 import {
     useClickOutside,
     useComponentColor,
     useComponentSize,
     useFormValidationError,
-    useValidation
-} from '@inkline/inkline/composables';
-import { PopupEvent, usePopupControl } from '@inkline/inkline/composables/popup';
-import { Placement } from '@floating-ui/dom';
-import { SelectKey, SelectOption } from '@inkline/inkline/components/ISelect/mixin';
+    useValidation,
+} from "@inkline/inkline/composables";
+import { PopupEvent, usePopupControl } from "@inkline/inkline/composables";
+import { Placement } from "@floating-ui/dom";
+import {
+    SelectKey,
+    SelectOption,
+} from "@inkline/inkline/components/ISelect/mixin";
 
-const componentName = 'ISelect';
+const componentName = "ISelect";
 
 const props = defineProps({
     /**
@@ -27,7 +46,7 @@ const props = defineProps({
      */
     animationDuration: {
         type: Number,
-        default: 300
+        default: 300,
     },
     /**
      * Enable autocomplete functionality
@@ -37,7 +56,7 @@ const props = defineProps({
      */
     autocomplete: {
         type: Boolean,
-        default: false
+        default: false,
     },
     /**
      * Displays an arrow on the dropdown pointing to the trigger element
@@ -47,7 +66,7 @@ const props = defineProps({
      */
     arrow: {
         type: Boolean,
-        default: true
+        default: true,
     },
     /**
      * The color variant of the select
@@ -57,7 +76,7 @@ const props = defineProps({
      */
     color: {
         type: String,
-        default: undefined
+        default: undefined,
     },
     /**
      * Display the select as clearable
@@ -67,7 +86,7 @@ const props = defineProps({
      */
     clearable: {
         type: Boolean,
-        default: false
+        default: false,
     },
     /**
      * The disabled state of the select
@@ -77,7 +96,7 @@ const props = defineProps({
      */
     disabled: {
         type: Boolean,
-        default: false
+        default: false,
     },
     /**
      * The error state of the checkbox, computed based on schema by default.
@@ -88,7 +107,7 @@ const props = defineProps({
      */
     error: {
         type: [Array, Boolean] as PropType<boolean | string[]>,
-        default: () => ['touched', 'dirty', 'invalid']
+        default: () => ["touched", "dirty", "invalid"],
     },
     /**
      * The events used to trigger the dropdown
@@ -98,7 +117,7 @@ const props = defineProps({
      */
     events: {
         type: [String, Array] as PropType<PopupEvent | PopupEvent[]>,
-        default: (): string[] => ['click']
+        default: (): string[] => ["click"],
     },
     /**
      * The field to be used for identifying the options
@@ -108,7 +127,7 @@ const props = defineProps({
      */
     idField: {
         type: String,
-        default: 'id'
+        default: "id",
     },
     /**
      * The keydown events bound to the trigger element
@@ -118,7 +137,7 @@ const props = defineProps({
      */
     triggerKeyBindings: {
         type: Array,
-        default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+        default: (): string[] => ["up", "down", "enter", "space", "tab", "esc"],
     },
     /**
      * The keydown events bound to the select option elements
@@ -128,7 +147,7 @@ const props = defineProps({
      */
     itemKeyBindings: {
         type: Array,
-        default: (): string[] => ['up', 'down', 'enter', 'space', 'tab', 'esc']
+        default: (): string[] => ["up", "down", "enter", "space", "tab", "esc"],
     },
     /**
      * Determines whether hover state should be transferred from trigger to popup
@@ -138,7 +157,7 @@ const props = defineProps({
      */
     interactable: {
         type: Boolean,
-        default: true
+        default: true,
     },
     /**
      * Used to extract the label from the select option and select value
@@ -148,7 +167,7 @@ const props = defineProps({
      */
     label: {
         type: [String, Function],
-        default: 'label'
+        default: "label",
     },
     /**
      * The loading state of the select
@@ -158,7 +177,7 @@ const props = defineProps({
      */
     loading: {
         type: Boolean,
-        default: false
+        default: false,
     },
     /**
      * Used to set the field value
@@ -168,7 +187,7 @@ const props = defineProps({
      */
     modelValue: {
         type: [Object, String, Number],
-        default: null
+        default: null,
     },
     /**
      * Used to manually control the visibility of the select dropdown
@@ -178,7 +197,7 @@ const props = defineProps({
      */
     visible: {
         type: Boolean,
-        default: false
+        default: false,
     },
     /**
      * The minimum input length to open the select dropdown at
@@ -188,7 +207,7 @@ const props = defineProps({
      */
     minLength: {
         type: Number,
-        default: 0
+        default: 0,
     },
     /**
      * The unique identifier of the select
@@ -198,7 +217,7 @@ const props = defineProps({
      */
     name: {
         type: String,
-        default: (): string => uid('select')
+        default: (): string => uid("select"),
     },
     /**
      * The options to be displayed in the select component
@@ -208,7 +227,7 @@ const props = defineProps({
      */
     options: {
         type: Array,
-        default: (): SelectOption[] => []
+        default: (): SelectOption[] => [],
     },
     /**
      * The placeholder of the select input
@@ -218,7 +237,7 @@ const props = defineProps({
      */
     placeholder: {
         type: String,
-        default: ''
+        default: "",
     },
     /**
      * The offset of the dropdown relative to the trigger element
@@ -228,7 +247,7 @@ const props = defineProps({
      */
     offset: {
         type: Number,
-        default: 6
+        default: 6,
     },
     /**
      * The placement of the select dropdown
@@ -238,7 +257,7 @@ const props = defineProps({
      */
     placement: {
         type: String as PropType<Placement>,
-        default: 'bottom'
+        default: "bottom",
     },
     /**
      * Used to override the floating-ui options used for creating the dropdown
@@ -248,7 +267,7 @@ const props = defineProps({
      */
     popupOptions: {
         type: Object,
-        default: (): any => ({})
+        default: (): any => ({}),
     },
     /**
      * The readonly state of the select
@@ -258,7 +277,7 @@ const props = defineProps({
      */
     readonly: {
         type: Boolean,
-        default: false
+        default: false,
     },
     /**
      * The number of pixels until scroll end before loading the next page
@@ -268,7 +287,7 @@ const props = defineProps({
      */
     scrollTolerance: {
         type: Number,
-        default: 160
+        default: 160,
     },
     /**
      * Selects the first option when pressing enter
@@ -278,7 +297,7 @@ const props = defineProps({
      */
     selectFirstOptionOnEnter: {
         type: Boolean,
-        default: true
+        default: true,
     },
     /**
      * The size variant of the select
@@ -288,7 +307,7 @@ const props = defineProps({
      */
     size: {
         type: String,
-        default: ''
+        default: "",
     },
     /**
      * The tabindex of the select
@@ -298,7 +317,7 @@ const props = defineProps({
      */
     tabindex: {
         type: [Number, String],
-        default: 0
+        default: 0,
     },
     /**
      * The type of the select
@@ -308,7 +327,7 @@ const props = defineProps({
      */
     type: {
         type: String,
-        default: 'text'
+        default: "text",
     },
     /**
      * The total number of options, used for infinite scrolling
@@ -317,7 +336,7 @@ const props = defineProps({
      * @name total
      */
     total: {
-        type: Number
+        type: Number,
     },
     /**
      * Delay in milliseconds before the popover is hidden on hover
@@ -327,8 +346,8 @@ const props = defineProps({
      */
     hoverHideDelay: {
         type: Number,
-        default: 300
-    }
+        default: 300,
+    },
 });
 
 const attrs = useAttrs();
@@ -339,27 +358,27 @@ const emit = defineEmits([
      * Event emitted for setting the modelValue
      * @event update:modelValue
      */
-    'update:modelValue',
+    "update:modelValue",
     /**
      * Event emitted for setting the visible
      * @event update:visible
      */
-    'update:visible',
+    "update:visible",
     /**
      * Event emitted when input value changes
      * @event search
      */
-    'search',
+    "search",
     /**
      * Event emitted when the next page needs to be loaded
      * @event pagination
      */
-    'pagination',
+    "pagination",
     /**
      * Event emitted when clearing the select element
      * @event clear
      */
-    'clear'
+    "clear",
 ]);
 
 const form = inject(FormKey, null);
@@ -373,30 +392,36 @@ const arrowRef = ref<HTMLElement | null>(null);
 const optionsRef = ref<HTMLElement | null>(null);
 
 const animating = ref(false);
-const inputValue = ref(computeLabel(props.modelValue) || '');
+const inputValue = ref(computeLabel(props.modelValue) || "");
 
 const {
     schema,
     onInput: schemaOnInput,
-    onBlur: schemaOnBlur
+    onBlur: schemaOnBlur,
 } = useValidation({
-    name: props.name
+    name: props.name,
 });
 const { hasError } = useFormValidationError({
     schema,
-    error: props.error
+    error: props.error,
 });
 
 const disabled = computed(
-    () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
+    () =>
+        !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
 );
 const readonly = computed(
-    () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
+    () =>
+        !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
 );
 const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
-const currentColor = computed(() => props.color || formGroup?.color.value || form?.color.value);
-const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
+const currentColor = computed(
+    () => props.color || formGroup?.color.value || form?.color.value
+);
+const currentSize = computed(
+    () => props.size || formGroup?.size.value || form?.size.value
+);
 const { color } = useComponentColor({ componentName, currentColor });
 const { size } = useComponentSize({ componentName, currentSize });
 
@@ -409,7 +434,12 @@ const value = computed(() => {
 });
 
 const clearable = computed(() => {
-    return props.clearable && !disabled.value && !readonly.value && value.value !== '';
+    return (
+        props.clearable &&
+        !disabled.value &&
+        !readonly.value &&
+        value.value !== ""
+    );
 });
 
 const componentProps = computed(() => ({
@@ -421,7 +451,7 @@ const componentProps = computed(() => ({
     visible: props.visible,
     animationDuration: props.animationDuration,
     hoverHideDelay: props.hoverHideDelay,
-    offset: props.offset
+    offset: props.offset,
 }));
 const {
     visible: popupVisible,
@@ -429,24 +459,24 @@ const {
     show,
     createPopup,
     focusTrigger,
-    onClickOutside
+    onClickOutside,
 } = usePopupControl({
     triggerRef,
     popupRef,
     arrowRef,
     componentProps,
-    emit
+    emit,
 });
 
 const wrapperClasses = computed(() => ({
     [`-${color.value}`]: true,
     [`-${size.value}`]: true,
-    '-error': hasError.value
+    "-error": hasError.value,
 }));
 
 const popupClasses = computed(() => ({
-    '-disabled': disabled.value,
-    '-readonly': readonly.value
+    "-disabled": disabled.value,
+    "-readonly": readonly.value,
 }));
 
 const inputPlaceholder = computed(() => {
@@ -456,7 +486,7 @@ const inputPlaceholder = computed(() => {
 watch(
     () => value.value,
     (newValue) => {
-        inputValue.value = computeLabel(newValue) || '';
+        inputValue.value = computeLabel(newValue) || "";
     }
 );
 
@@ -470,7 +500,7 @@ watch(
             show();
         }
 
-        emit('search', inputValue.value);
+        emit("search", inputValue.value);
     }
 );
 
@@ -487,7 +517,7 @@ useClickOutside({ elementRef: wrapperRef, fn: onClickOutside });
 
 provide(SelectKey, {
     value,
-    onInput
+    onInput,
 });
 
 /**
@@ -509,12 +539,12 @@ function onInput(option: SelectOption, label?: string) {
     }
 
     schemaOnInput(props.name, option);
-    emit('update:modelValue', option);
+    emit("update:modelValue", option);
 }
 
 function onClear() {
     animating.value = true;
-    emit('update:modelValue', null);
+    emit("update:modelValue", null);
     nextTick(() => {
         animating.value = false;
     });
@@ -528,11 +558,12 @@ function onFocus(event: MouseEvent) {
     }
 
     if (props.autocomplete) {
-        inputValue.value = '';
+        inputValue.value = "";
     }
 
     const focusShouldShowSelect =
-        !event.relatedTarget || !wrapperRef.value?.contains(event.relatedTarget);
+        !event.relatedTarget ||
+        !wrapperRef.value?.contains(event.relatedTarget);
 
     if (focusShouldShowSelect && inputShouldShowSelect(inputValue.value)) {
         show();
@@ -541,7 +572,8 @@ function onFocus(event: MouseEvent) {
 
 function onBlur(event: MouseEvent) {
     const blurShouldHideSelect =
-        !event.relatedTarget || !wrapperRef.value?.contains(event.relatedTarget);
+        !event.relatedTarget ||
+        !wrapperRef.value?.contains(event.relatedTarget);
 
     if (blurShouldHideSelect) {
         hide();
@@ -553,7 +585,7 @@ function onBlur(event: MouseEvent) {
 
 function onClick() {
     if (props.autocomplete) {
-        inputValue.value = '';
+        inputValue.value = "";
     }
 
     if (inputShouldShowSelect(inputValue.value)) {
@@ -580,7 +612,11 @@ function onClickCaret(event: MouseEvent) {
  */
 
 function onScroll() {
-    if (typeof props.total !== 'undefined' || !bodyRef.value || !optionsRef.value) {
+    if (
+        typeof props.total !== "undefined" ||
+        !bodyRef.value ||
+        !optionsRef.value
+    ) {
         return;
     }
 
@@ -588,11 +624,17 @@ function onScroll() {
     const viewportHeight = parseInt(getComputedStyle(bodyRef.value).height, 10);
     const totalHeight = parseInt(getComputedStyle(optionsRef.value).height, 10);
 
-    const shouldLoadNextPage = scrollTop + viewportHeight > totalHeight - props.scrollTolerance;
+    const shouldLoadNextPage =
+        scrollTop + viewportHeight > totalHeight - props.scrollTolerance;
     const endReached = props.options.length >= props.total;
 
-    if (shouldLoadNextPage && !endReached && props.options.length > 0 && !props.loading) {
-        emit('pagination');
+    if (
+        shouldLoadNextPage &&
+        !endReached &&
+        props.options.length > 0 &&
+        !props.loading
+    ) {
+        emit("pagination");
     }
 }
 
@@ -621,8 +663,8 @@ function onTriggerKeyDown(event: KeyboardEvent) {
     const focusTarget = focusableItems[initialIndex];
 
     switch (true) {
-        case isKey('up', event) && props.triggerKeyBindings.includes('up'):
-        case isKey('down', event) && props.triggerKeyBindings.includes('down'):
+        case isKey("up", event) && props.triggerKeyBindings.includes("up"):
+        case isKey("down", event) && props.triggerKeyBindings.includes("down"):
             show();
 
             setTimeout(
@@ -636,7 +678,8 @@ function onTriggerKeyDown(event: KeyboardEvent) {
             event.stopPropagation();
             break;
 
-        case isKey('enter', event) && props.triggerKeyBindings.includes('enter'):
+        case isKey("enter", event) &&
+            props.triggerKeyBindings.includes("enter"):
             if (
                 props.selectFirstOptionOnEnter &&
                 (!value.value || !inputMatchesLabel(inputValue.value))
@@ -662,8 +705,8 @@ function onTriggerKeyDown(event: KeyboardEvent) {
             event.preventDefault();
             break;
 
-        case isKey('tab', event) && props.triggerKeyBindings.includes('tab'):
-        case isKey('esc', event) && props.triggerKeyBindings.includes('esc'):
+        case isKey("tab", event) && props.triggerKeyBindings.includes("tab"):
+        case isKey("esc", event) && props.triggerKeyBindings.includes("esc"):
             hide();
             break;
     }
@@ -675,18 +718,21 @@ function onItemKeyDown(event: KeyboardEvent) {
     }
 
     switch (true) {
-        case isKey('up', event) && props.itemKeyBindings.includes('up'):
-        case isKey('down', event) && props.itemKeyBindings.includes('down'):
+        case isKey("up", event) && props.itemKeyBindings.includes("up"):
+        case isKey("down", event) && props.itemKeyBindings.includes("down"):
             const focusableItems = getFocusableItems();
 
-            const currentIndex = focusableItems.findIndex((item) => item === event.target);
+            const currentIndex = focusableItems.findIndex(
+                (item) => item === event.target
+            );
             const maxIndex = focusableItems.length - 1;
             let nextIndex;
 
-            if (isKey('up', event)) {
+            if (isKey("up", event)) {
                 nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
             } else {
-                nextIndex = currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
+                nextIndex =
+                    currentIndex < maxIndex ? currentIndex + 1 : maxIndex;
             }
 
             focusableItems[nextIndex].focus();
@@ -695,8 +741,8 @@ function onItemKeyDown(event: KeyboardEvent) {
             event.stopPropagation();
             break;
 
-        case isKey('enter', event) && props.itemKeyBindings.includes('enter'):
-        case isKey('space', event) && props.itemKeyBindings.includes('space'):
+        case isKey("enter", event) && props.itemKeyBindings.includes("enter"):
+        case isKey("space", event) && props.itemKeyBindings.includes("space"):
             const target = event.target as HTMLElement;
 
             target.click();
@@ -705,8 +751,8 @@ function onItemKeyDown(event: KeyboardEvent) {
             event.preventDefault();
             break;
 
-        case isKey('tab', event) && props.itemKeyBindings.includes('tab'):
-        case isKey('esc', event) && props.itemKeyBindings.includes('esc'):
+        case isKey("tab", event) && props.itemKeyBindings.includes("tab"):
+        case isKey("esc", event) && props.itemKeyBindings.includes("esc"):
             hide();
             focus();
 
@@ -749,7 +795,10 @@ function inputMatchesLabel(value: string): boolean {
 }
 
 function inputMatchesLength(value: string): boolean {
-    return props.minLength === 0 || ((value as any) && value.length >= props.minLength);
+    return (
+        props.minLength === 0 ||
+        ((value as any) && value.length >= props.minLength)
+    );
 }
 
 function inputShouldShowSelect(value: string): boolean {
@@ -761,12 +810,16 @@ function inputShouldShowSelect(value: string): boolean {
 }
 
 function computeLabel(option: Record<string, any> | string | number): string {
-    if (typeof option !== 'object') {
+    if (typeof option !== "object") {
         return inputValue.value;
     }
 
     return isFunction(props.label)
-        ? (props.label as (option: Record<string, any> | string | number) => void)(option)
+        ? (
+              props.label as (
+                  option: Record<string, any> | string | number
+              ) => void
+          )(option)
         : getValueByPath(option, props.label as string);
 }
 </script>
@@ -849,16 +902,23 @@ function computeLabel(option: Record<string, any> | string | number): string {
                     <slot name="header" />
                 </div>
                 <div ref="body" class="select-body" @scroll="onScroll">
-                    <div v-if="!$slots.default && options.length === 0" class="select-no-results">
+                    <div
+                        v-if="!$slots.default && options.length === 0"
+                        class="select-no-results"
+                    >
                         <!-- @slot no-results Slot for showing no results message -->
-                        <slot name="no-results"> There are no results for your query. </slot>
+                        <slot name="no-results">
+                            There are no results for your query.
+                        </slot>
                     </div>
                     <div ref="options" class="select-options">
                         <slot />
                         <ISelectOption
                             v-for="option in options"
                             :key="option[idField]"
-                            :active="value && value[idField] === option[idField]"
+                            :active="
+                                value && value[idField] === option[idField]
+                            "
                             :disabled="option.disabled"
                             :value="option"
                             @keydown="onItemKeyDown"
@@ -866,11 +926,16 @@ function computeLabel(option: Record<string, any> | string | number): string {
                             <!-- @slot option Slot for the select option content -->
                             <slot name="option" :option="option">
                                 <IMark
-                                    v-if="autocomplete && inputValue !== computeLabel(option)"
+                                    v-if="
+                                        autocomplete &&
+                                        inputValue !== computeLabel(option)
+                                    "
                                     :text="computeLabel(option)"
                                     :query="inputValue"
                                 />
-                                <template v-else> {{ computeLabel(option) }} </template>
+                                <template v-else>
+                                    {{ computeLabel(option) }}
+                                </template>
                             </slot>
                         </ISelectOption>
                     </div>

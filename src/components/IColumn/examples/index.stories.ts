@@ -1,4 +1,4 @@
-import { IColumn } from '../index';
+import { IColumn } from '@inkline/inkline/components/IColumn/index';
 import {
     IColumnBasicExample,
     IColumnAutoWidthExample,
@@ -10,7 +10,7 @@ import {
     IColumnReorderingLastExample,
     IColumnResponsiveExample,
     IColumnWidthExample
-} from './index';
+} from '@inkline/inkline/components/IColumn/examples/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

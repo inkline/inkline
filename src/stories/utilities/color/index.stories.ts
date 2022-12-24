@@ -15,7 +15,7 @@ import {
     ColorStateSuccessBackgroundExample,
     ColorStateTextExample,
     ColorStateWarningBackgroundExample
-} from './index';
+} from '@inkline/inkline/stories/utilities/color/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

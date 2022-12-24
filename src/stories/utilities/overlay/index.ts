@@ -1,2 +1,2 @@
-export { default as OverlayBasicExample } from './basic.vue';
-export { default as OverlayLinkExample } from './link.vue';
+export { default as OverlayBasicExample } from '@inkline/inkline/stories/utilities/overlay/basic.vue';
+export { default as OverlayLinkExample } from '@inkline/inkline/stories/utilities/overlay/link.vue';

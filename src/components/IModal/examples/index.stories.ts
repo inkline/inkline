@@ -1,9 +1,9 @@
-import { IModal } from '../index';
+import { IModal } from '@inkline/inkline/components/IModal/index';
 import {
     IModalBasicExample,
     IModalColorVariantsExample,
     IModalSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/IModal/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

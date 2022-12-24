@@ -1,1 +1,1 @@
-export { default as IProgress } from './IProgress.vue';
+export { default as IProgress } from '@inkline/inkline/components/IProgress/IProgress.vue';

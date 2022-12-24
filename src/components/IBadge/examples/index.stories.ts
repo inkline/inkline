@@ -1,10 +1,10 @@
-import IBadge from '../IBadge.vue';
+import IBadge from '@inkline/inkline/components/IBadge/IBadge.vue';
 import {
     IBadgeBasicExample,
     IBadgeColorVariantsExample,
     IBadgeHeadingExample,
     IBadgeSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/IBadge/examples/index';
 import {
     colorArgType,
     createStory,

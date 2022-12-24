@@ -1,1 +1,1 @@
-export { default as IDropdown } from './IDropdown.vue';
+export { default as IDropdown } from '@inkline/inkline/components/IDropdown/IDropdown.vue';

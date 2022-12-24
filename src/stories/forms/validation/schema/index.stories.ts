@@ -5,7 +5,7 @@ import {
     IFormValidationSchemaErrorVisibilityExample,
     IFormValidationSchemaGroupsObjectExample,
     IFormValidationSchemaGroupsArrayExample
-} from './index';
+} from '@inkline/inkline/stories/forms/validation/schema/index';
 import { IForm } from '@inkline/inkline/components';
 
 export default {

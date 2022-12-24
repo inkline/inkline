@@ -1,7 +1,7 @@
 import {
     IFormValidationMethodsGroupsObjectExample,
     IFormValidationMethodsGroupsArrayExample
-} from './index';
+} from '@inkline/inkline/stories/forms/validation/methods/index';
 import { IForm } from '@inkline/inkline/components';
 
 export default {

@@ -1,1 +1,1 @@
-export { default as VisibilityBasicExample } from './basic.vue';
+export { default as VisibilityBasicExample } from '@inkline/inkline/stories/utilities/visibility/basic.vue';

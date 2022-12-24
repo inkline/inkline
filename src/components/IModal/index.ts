@@ -1,1 +1,1 @@
-export { default as IModal } from './IModal.vue';
+export { default as IModal } from '@inkline/inkline/components/IModal/IModal.vue';

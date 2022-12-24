@@ -1,1 +1,1 @@
-export { default as IDropdownDivider } from './IDropdownDivider.vue';
+export { default as IDropdownDivider } from '@inkline/inkline/components/IDropdownDivider/IDropdownDivider.vue';

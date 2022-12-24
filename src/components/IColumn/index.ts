@@ -1,1 +1,1 @@
-export { default as IColumn } from './IColumn.vue';
+export { default as IColumn } from '@inkline/inkline/components/IColumn/IColumn.vue';

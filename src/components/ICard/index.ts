@@ -1,1 +1,1 @@
-export { default as ICard } from './ICard.vue';
+export { default as ICard } from '@inkline/inkline/components/ICard/ICard.vue';

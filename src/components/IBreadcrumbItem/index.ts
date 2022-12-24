@@ -1,1 +1,1 @@
-export { default as IBreadcrumbItem } from './IBreadcrumbItem.vue';
+export { default as IBreadcrumbItem } from '@inkline/inkline/components/IBreadcrumbItem/IBreadcrumbItem.vue';

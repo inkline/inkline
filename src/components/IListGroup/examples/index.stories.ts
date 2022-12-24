@@ -1,4 +1,4 @@
-import { IListGroup } from '../index';
+import { IListGroup } from '@inkline/inkline/components/IListGroup/index';
 import {
     IListGroupBasicExample,
     IListGroupBorderlessExample,
@@ -7,7 +7,7 @@ import {
     IListGroupSizeVariantsExample,
     IListGroupStateActiveExample,
     IListGroupStateDisabledExample
-} from './index';
+} from '@inkline/inkline/components/IListGroup/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

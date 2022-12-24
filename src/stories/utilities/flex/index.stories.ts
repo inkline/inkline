@@ -13,7 +13,7 @@ import {
     FlexJustifyContentExample,
     FlexMarginAutoExample,
     FlexOrderExample
-} from './index';
+} from '@inkline/inkline/stories/utilities/flex/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

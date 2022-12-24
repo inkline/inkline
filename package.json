@@ -133,6 +133,11 @@
             "import": "./controllers/index.mjs",
             "types": "./controllers/index.d.ts"
         },
+        "./icons": {
+            "require": "./icons.js",
+            "import": "./icons.mjs",
+            "types": "./icons.d.ts"
+        },
         "./i18n": {
             "require": "./i18n/index.js",
             "import": "./i18n/index.mjs",
@@ -142,6 +147,16 @@
             "require": "./i18n/messages/index.js",
             "import": "./i18n/messages/index.mjs",
             "types": "./i18n/messages/index.d.ts"
+        },
+        "./i18n/translate": {
+            "require": "./i18n/translate.js",
+            "import": "./i18n/translate.mjs",
+            "types": "./i18n/translate.d.ts"
+        },
+        "./plugin": {
+            "require": "./plugin.js",
+            "import": "./plugin.mjs",
+            "types": "./plugin.d.ts"
         },
         "./types": {
             "types": "./types/index.d.ts"

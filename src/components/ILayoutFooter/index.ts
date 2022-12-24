@@ -1,1 +1,1 @@
-export { default as ILayoutFooter } from './ILayoutFooter.vue';
+export { default as ILayoutFooter } from '@inkline/inkline/components/ILayoutFooter/ILayoutFooter.vue';

@@ -1,1 +1,1 @@
-export { default as INavItem } from './INavItem.vue';
+export { default as INavItem } from '@inkline/inkline/components/INavItem/INavItem.vue';

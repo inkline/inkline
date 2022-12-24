@@ -1,4 +1,4 @@
-import { ITextarea } from '../index';
+import { ITextarea } from '@inkline/inkline/components/ITextarea/index';
 import {
     ITextareaBasicExample,
     ITextareaColorVariantsExample,
@@ -10,7 +10,7 @@ import {
     ITextareaPrependAppendButtonExample,
     ITextareaPrependAppendDropdownExample,
     ITextareaPrefixSuffixExample
-} from './index';
+} from '@inkline/inkline/components/ITextarea/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

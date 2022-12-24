@@ -1,1 +1,1 @@
-export { default as INumberInput } from './INumberInput.vue';
+export { default as INumberInput } from '@inkline/inkline/components/INumberInput/INumberInput.vue';

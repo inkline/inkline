@@ -1,1 +1,1 @@
-export { default as ICollapsible } from './ICollapsible.vue';
+export { default as ICollapsible } from '@inkline/inkline/components/ICollapsible/ICollapsible.vue';

@@ -1,9 +1,9 @@
-import { IMedia } from '../index';
+import { IMedia } from '@inkline/inkline/components/IMedia/index';
 import {
     IMediaAlignmentExample,
     IMediaBasicExample,
     IMediaNestingExample
-} from './index';
+} from '@inkline/inkline/components/IMedia/examples/index';
 import { createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

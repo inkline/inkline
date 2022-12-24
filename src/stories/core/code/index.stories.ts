@@ -4,7 +4,7 @@ import {
     CodeSampleOutputExample,
     CodeUserInputExample,
     CodeVariablesExample
-} from './index';
+} from '@inkline/inkline/stories/core/code/index';
 
 export default {
     title: 'Core/Code'

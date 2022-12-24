@@ -1,4 +1,4 @@
-import { IPagination } from '../index';
+import { IPagination } from '@inkline/inkline/components/IPagination/index';
 import {
     IPaginationBasicExample,
     IPaginationColorVariantsExample,
@@ -6,7 +6,7 @@ import {
     IPaginationLimitResponsiveExample,
     IPaginationQuickLinksExample,
     IPaginationSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/IPagination/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

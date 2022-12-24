@@ -1,4 +1,4 @@
-import IButtonGroup from '../IButtonGroup.vue';
+import IButtonGroup from '@inkline/inkline/components/IButtonGroup/IButtonGroup.vue';
 import {
     IButtonGroupBasicExample,
     IButtonGroupBlockExample,
@@ -9,7 +9,7 @@ import {
     IButtonGroupVerticalExample,
     IButtonGroupVerticalBlockExample,
     IButtonGroupVerticalSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/IButtonGroup/examples/index';
 import { createStory, createExampleStory } from '@inkline/inkline/__storybook__';
 
 export default {

@@ -1,26 +1,26 @@
-import { alpha } from './alpha';
-import { alphanumeric } from './alphanumeric';
-import { custom } from './custom';
-import { number } from './number';
-import { email } from './email';
-import { max } from './max';
-import { maxLength } from './maxLength';
-import { min } from './min';
-import { minLength } from './minLength';
-import { required } from './required';
-import { sameAs } from './sameAs';
+import { alpha } from '@inkline/inkline/validation/validators/alpha';
+import { alphanumeric } from '@inkline/inkline/validation/validators/alphanumeric';
+import { custom } from '@inkline/inkline/validation/validators/custom';
+import { number } from '@inkline/inkline/validation/validators/number';
+import { email } from '@inkline/inkline/validation/validators/email';
+import { max } from '@inkline/inkline/validation/validators/max';
+import { maxLength } from '@inkline/inkline/validation/validators/maxLength';
+import { min } from '@inkline/inkline/validation/validators/min';
+import { minLength } from '@inkline/inkline/validation/validators/minLength';
+import { required } from '@inkline/inkline/validation/validators/required';
+import { sameAs } from '@inkline/inkline/validation/validators/sameAs';
 
-export { alpha } from './alpha';
-export { alphanumeric } from './alphanumeric';
-export { custom } from './custom';
-export { number } from './number';
-export { email } from './email';
-export { max } from './max';
-export { maxLength } from './maxLength';
-export { min } from './min';
-export { minLength } from './minLength';
-export { required } from './required';
-export { sameAs } from './sameAs';
+export { alpha } from '@inkline/inkline/validation/validators/alpha';
+export { alphanumeric } from '@inkline/inkline/validation/validators/alphanumeric';
+export { custom } from '@inkline/inkline/validation/validators/custom';
+export { number } from '@inkline/inkline/validation/validators/number';
+export { email } from '@inkline/inkline/validation/validators/email';
+export { max } from '@inkline/inkline/validation/validators/max';
+export { maxLength } from '@inkline/inkline/validation/validators/maxLength';
+export { min } from '@inkline/inkline/validation/validators/min';
+export { minLength } from '@inkline/inkline/validation/validators/minLength';
+export { required } from '@inkline/inkline/validation/validators/required';
+export { sameAs } from '@inkline/inkline/validation/validators/sameAs';
 
 export const validators: {
     [key: string]: (value: any, options: any) => boolean

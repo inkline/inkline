@@ -1,1 +1,1 @@
-export { default as ILoader } from './ILoader.vue';
+export { default as ILoader } from '@inkline/inkline/components/ILoader/ILoader.vue';

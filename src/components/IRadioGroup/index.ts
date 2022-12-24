@@ -1,2 +1,2 @@
-export { default as IRadioGroup } from './IRadioGroup.vue';
-export * from './mixin';
+export { default as IRadioGroup } from '@inkline/inkline/components/IRadioGroup/IRadioGroup.vue';
+export * from '@inkline/inkline/components/IRadioGroup/mixin';

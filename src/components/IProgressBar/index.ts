@@ -1,1 +1,1 @@
-export { default as IProgressBar } from './IProgressBar.vue';
+export { default as IProgressBar } from '@inkline/inkline/components/IProgressBar/IProgressBar.vue';

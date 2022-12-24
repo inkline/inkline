@@ -6,7 +6,7 @@
  * @generated
  */
 
-import { SvgNode } from './types';
+import { SvgNode } from '@inkline/inkline/types';
 
 export const inkCaretDown: SvgNode = { name: 'svg', type: 'element', value: '', attributes: { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '16', height: '28', viewBox: '0 0 16 28', fill: 'currentColor' }, children: [{ name: 'title', type: 'element', value: '', attributes: {}, children: [{ name: '', type: 'text', value: 'caret-down', attributes: {}, children: [] }] }, { name: 'path', type: 'element', value: '', attributes: { d: 'M16 11c0 0.266-0.109 0.516-0.297 0.703l-7 7c-0.187 0.187-0.438 0.297-0.703 0.297s-0.516-0.109-0.703-0.297l-7-7c-0.187-0.187-0.297-0.438-0.297-0.703 0-0.547 0.453-1 1-1h14c0.547 0 1 0.453 1 1z' }, children: [] }] };
 export const inkCheck: SvgNode = { name: 'svg', type: 'element', value: '', attributes: { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '28', height: '28', viewBox: '0 0 28 28', fill: 'currentColor' }, children: [{ name: 'title', type: 'element', value: '', attributes: {}, children: [{ name: '', type: 'text', value: 'check', attributes: {}, children: [] }] }, { name: 'path', type: 'element', value: '', attributes: { d: 'M23.625 3.5l-13.125 13.125-6.125-6.125-4.375 4.375 10.5 10.5 17.5-17.5z' }, children: [] }] };

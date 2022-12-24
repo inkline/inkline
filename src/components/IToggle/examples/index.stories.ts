@@ -1,4 +1,4 @@
-import { IToggle } from '../index';
+import { IToggle } from '@inkline/inkline/components/IToggle/index';
 import {
     IToggleBasicExample,
     IToggleColorVariantsExample,
@@ -6,7 +6,7 @@ import {
     IToggleReadonlyExample,
     IToggleRoundedExample,
     IToggleSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/IToggle/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

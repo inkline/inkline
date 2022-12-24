@@ -1,4 +1,4 @@
-import IInput from '../IInput.vue';
+import IInput from '@inkline/inkline/components/IInput/IInput.vue';
 import {
     IInputBasicExample,
     IInputColorVariantsExample,
@@ -11,7 +11,7 @@ import {
     IInputPrependAppendDropdownExample,
     IInputPrefixSuffixExample,
     IInputTypeExample
-} from './index';
+} from '@inkline/inkline/components/IInput/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

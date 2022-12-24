@@ -1,1 +1,1 @@
-export { default as ITabTitle } from './ITabTitle.vue';
+export { default as ITabTitle } from '@inkline/inkline/components/ITabTitle/ITabTitle.vue';

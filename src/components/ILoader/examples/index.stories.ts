@@ -1,11 +1,11 @@
-import { ILoader } from '../index';
+import { ILoader } from '@inkline/inkline/components/ILoader/index';
 import {
     ILoaderBasicExample,
     ILoaderColorVariantsExample,
     ILoaderSizeAutoExample,
     ILoaderSizeVariantsExample,
     ILoaderTextExample
-} from './index';
+} from '@inkline/inkline/components/ILoader/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

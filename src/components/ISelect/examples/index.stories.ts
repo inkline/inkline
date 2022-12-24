@@ -1,4 +1,4 @@
-import { ISelect } from '../index';
+import { ISelect } from '@inkline/inkline/components/ISelect/index';
 import {
     ISelectBasicExample,
     ISelectColorVariantsExample,
@@ -14,7 +14,7 @@ import {
     ISelectRenderingRenderFunctionExample,
     ISelectRenderingValueByPathExample,
     ISelectRenderingScopedSlotExample
-} from './index';
+} from '@inkline/inkline/components/ISelect/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 import { useServer } from '@inkline/inkline/__mocks__/useServer';
 

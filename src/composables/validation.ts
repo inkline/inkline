@@ -1,9 +1,14 @@
-import { clone, getValueByPath, setValueByPath, setValuesAlongPath } from '@grozav/utils';
-import { computed, inject, Ref, ref, watch } from 'vue';
-import { FormKey } from '../components/IForm';
-import { FormGroupKey } from '../components/IFormGroup';
-import { validate } from '../validation';
-import { useInkline } from './inkline';
+import {
+    clone,
+    getValueByPath,
+    setValueByPath,
+    setValuesAlongPath,
+} from "@grozav/utils";
+import { computed, inject, Ref, ref, watch } from "vue";
+import { FormKey } from "@inkline/inkline/components/IForm";
+import { FormGroupKey } from "@inkline/inkline/components/IFormGroup";
+import { validate } from "@inkline/inkline/validation";
+import { useInkline } from "@inkline/inkline/composables";
 
 export function useValidation(options: {
     name?: Ref<string>;
@@ -75,9 +80,12 @@ export function useValidation(options: {
         }
 
         clonedSchema = setValueByPath(clonedSchema, `${name}.value`, value);
-        clonedSchema = setValuesAlongPath(clonedSchema, name, { pristine: false, dirty: true });
+        clonedSchema = setValuesAlongPath(clonedSchema, name, {
+            pristine: false,
+            dirty: true,
+        });
 
-        if (shouldValidate(targetSchema, 'input')) {
+        if (shouldValidate(targetSchema, "input")) {
             clonedSchema = validate(clonedSchema);
         }
 
@@ -108,7 +116,7 @@ export function useValidation(options: {
 
         clonedSchema = setValuesAlongPath(clonedSchema, name, {
             untouched: false,
-            touched: true
+            touched: true,
         });
 
         if (shouldValidate(targetSchema, event.type)) {
@@ -131,9 +139,9 @@ export function useValidation(options: {
         }
 
         let clonedSchema = clone(schema.value);
-        clonedSchema = setValuesAlongPath(validate(clonedSchema), '', {
+        clonedSchema = setValuesAlongPath(validate(clonedSchema), "", {
             untouched: false,
-            touched: true
+            touched: true,
         });
 
         if (clonedSchema.valid) {
@@ -189,16 +197,21 @@ export function useValidation(options: {
     return { schema, onSubmit, onInput, onBlur };
 }
 
-export function useFormValidationError(options: { schema: Ref; error: boolean | string[] }) {
+export function useFormValidationError(options: {
+    schema: Ref;
+    error: boolean | string[];
+}) {
     const hasError = computed(() => {
-        if (typeof options.error === 'boolean') {
+        if (typeof options.error === "boolean") {
             return options.error;
         } else if (options.schema.value && options.error) {
             let visible = true;
 
-            ([] as string[]).concat(options.error as string[]).forEach((status) => {
-                visible = visible && options.schema.value[status];
-            });
+            ([] as string[])
+                .concat(options.error as string[])
+                .forEach((status) => {
+                    visible = visible && options.schema.value[status];
+                });
 
             return visible;
         }

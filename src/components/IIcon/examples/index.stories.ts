@@ -1,10 +1,10 @@
-import { IIcon } from '../index';
+import { IIcon } from '@inkline/inkline/components/IIcon/index';
 import {
     IIconBasicExample,
     IIconIconsExample,
     IIconColorVariantsExample,
     IIconSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/IIcon/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

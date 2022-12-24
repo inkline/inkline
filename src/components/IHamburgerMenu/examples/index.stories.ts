@@ -1,10 +1,10 @@
-import { IHamburgerMenu } from '../index';
+import { IHamburgerMenu } from '@inkline/inkline/components/IHamburgerMenu/index';
 import {
     IHamburgerMenuAnimationExample,
     IHamburgerMenuBasicExample,
     IHamburgerMenuColorVariantsExample,
     IHamburgerMenuSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/IHamburgerMenu/examples/index';
 import { colorArgType, createStory } from '@inkline/inkline/__storybook__';
 
 export default {

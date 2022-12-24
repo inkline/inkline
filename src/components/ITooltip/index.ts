@@ -1,1 +1,1 @@
-export { default as ITooltip } from './ITooltip.vue';
+export { default as ITooltip } from '@inkline/inkline/components/ITooltip/ITooltip.vue';

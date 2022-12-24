@@ -1,2 +1,2 @@
-export { default as IForm } from './IForm.vue';
-export * from './mixin';
+export { default as IForm } from '@inkline/inkline/components/IForm/IForm.vue';
+export * from '@inkline/inkline/components/IForm/mixin';

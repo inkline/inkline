@@ -1,4 +1,4 @@
-import { IDropdown } from '../index';
+import { IDropdown } from '@inkline/inkline/components/IDropdown/index';
 import {
     IDropdownBasicExample,
     IDropdownColorVariantsExample,
@@ -10,7 +10,7 @@ import {
     IDropdownRoutingExample,
     IDropdownStateActiveExample,
     IDropdownTriggerExample
-} from './index';
+} from '@inkline/inkline/components/IDropdown/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

@@ -2,7 +2,7 @@ import {
     IFormValidationBasicExample,
     IFormValidationBasicBindingExample,
     IFormValidationBasicValidatorsExample
-} from './index';
+} from '@inkline/inkline/stories/forms/validation/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 import { IForm } from '@inkline/inkline/components';
 

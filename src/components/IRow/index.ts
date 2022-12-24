@@ -1,1 +1,1 @@
-export { default as IRow } from './IRow.vue';
+export { default as IRow } from '@inkline/inkline/components/IRow/IRow.vue';

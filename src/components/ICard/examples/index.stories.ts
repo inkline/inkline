@@ -1,4 +1,4 @@
-import ICard from '../ICard.vue';
+import ICard from '@inkline/inkline/components/ICard/ICard.vue';
 import {
     ICardBasicExample,
     ICardBodyExample,
@@ -6,7 +6,7 @@ import {
     ICardColorVariantsExample,
     ICardImageExample,
     ICardSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/ICard/examples/index';
 import {
     colorArgType,
     createStory,

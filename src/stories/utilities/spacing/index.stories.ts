@@ -4,7 +4,7 @@ import {
     SpacingLeftExample,
     SpacingRightExample,
     SpacingTopExample
-} from './index';
+} from '@inkline/inkline/stories/utilities/spacing/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

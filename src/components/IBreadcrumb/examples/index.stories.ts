@@ -1,11 +1,11 @@
-import IBreadcrumb from '../IBreadcrumb.vue';
+import IBreadcrumb from '@inkline/inkline/components/IBreadcrumb/IBreadcrumb.vue';
 import {
     IBreadcrumbBasicExample,
     IBreadcrumbColorVariantsExample,
     IBreadcrumbRoutingExample,
     IBreadcrumbSizeVariantsExample,
     IBreadcrumbDynamicallyGeneratedExample
-} from './index';
+} from '@inkline/inkline/components/IBreadcrumb/examples/index';
 import {
     colorArgType,
     createStory,

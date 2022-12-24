@@ -1,4 +1,4 @@
-import { VisibilityBasicExample } from './index';
+import { VisibilityBasicExample } from '@inkline/inkline/stories/utilities/visibility/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

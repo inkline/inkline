@@ -1,4 +1,4 @@
-import { alphanumeric as validators } from './constants';
+import { alphanumeric as validators } from '@inkline/inkline/validation/validators/constants';
 
 export function alphanumeric (rawValue: any, options: any = {}): boolean {
     const locale = options.locale || 'en-US';

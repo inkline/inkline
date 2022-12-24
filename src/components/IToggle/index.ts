@@ -1,1 +1,1 @@
-export { default as IToggle } from './IToggle.vue';
+export { default as IToggle } from '@inkline/inkline/components/IToggle/IToggle.vue';

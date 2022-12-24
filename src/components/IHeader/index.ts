@@ -1,1 +1,1 @@
-export { default as IHeader } from './IHeader.vue';
+export { default as IHeader } from '@inkline/inkline/components/IHeader/IHeader.vue';

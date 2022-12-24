@@ -1,4 +1,4 @@
-import { IProgress } from '../index';
+import { IProgress } from '@inkline/inkline/components/IProgress/index';
 import {
     IProgressBasicExample,
     IProgressBarColorVariantsExample,
@@ -6,7 +6,7 @@ import {
     IProgressSizeVariantsExample,
     IProgressStackedExample,
     IProgressValueExample
-} from './index';
+} from '@inkline/inkline/components/IProgress/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

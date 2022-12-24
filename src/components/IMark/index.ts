@@ -1,1 +1,1 @@
-export { default as IMark } from './IMark.vue';
+export { default as IMark } from '@inkline/inkline/components/IMark/IMark.vue';

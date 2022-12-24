@@ -5,7 +5,7 @@ import {
     BorderColorStateExample,
     BorderRadiusExample,
     BorderRemoveExample
-} from './index';
+} from '@inkline/inkline/stories/utilities/border/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

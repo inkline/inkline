@@ -1,4 +1,4 @@
-import { ISidebar } from '../index';
+import { ISidebar } from '@inkline/inkline/components/ISidebar/index';
 import {
     ISidebarBasicExample,
     ISidebarCollapseBreakpointExample,
@@ -11,7 +11,7 @@ import {
     ISidebarPlacementExample,
     ISidebarRoutingExample,
     ISidebarRoutingActiveExample
-} from './index';
+} from '@inkline/inkline/components/ISidebar/examples/index';
 import { colorArgType, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

@@ -1,4 +1,4 @@
-import { ITooltip } from '../index';
+import { ITooltip } from '@inkline/inkline/components/ITooltip/index';
 import {
     ITooltipBasicExample,
     ITooltipColorVariantsExample,
@@ -6,7 +6,7 @@ import {
     ITooltipFreeformExample,
     ITooltipPlacementExample,
     ITooltipTriggerExample
-} from './index';
+} from '@inkline/inkline/components/ITooltip/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

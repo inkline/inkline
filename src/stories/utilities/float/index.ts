@@ -1,1 +1,1 @@
-export { default as FloatBasicExample } from './basic.vue';
+export { default as FloatBasicExample } from '@inkline/inkline/stories/utilities/float/basic.vue';

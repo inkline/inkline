@@ -1,4 +1,4 @@
-import { IExpandTransition } from '../index';
+import { IExpandTransition } from '@inkline/inkline/components/IExpandTransition/index';
 import { defineComponent, h } from 'vue';
 import { render } from '@testing-library/vue';
 

@@ -1,1 +1,1 @@
-export { default as OverflowBasicExample } from './basic.vue';
+export { default as OverflowBasicExample } from '@inkline/inkline/stories/utilities/overflow/basic.vue';

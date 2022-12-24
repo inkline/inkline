@@ -1,1 +1,1 @@
-export { default as IExpandTransition } from './IExpandTransition.vue';
+export { default as IExpandTransition } from '@inkline/inkline/components/IExpandTransition/IExpandTransition.vue';

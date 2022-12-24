@@ -1,4 +1,4 @@
-import { IRadio } from '../index';
+import { IRadio } from '@inkline/inkline/components/IRadio/index';
 import {
     IRadioBasicExample,
     IRadioColorVariantsExample,
@@ -8,7 +8,7 @@ import {
     IRadioNativeExample,
     IRadioReadonlyExample,
     IRadioSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/IRadio/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

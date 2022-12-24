@@ -1,17 +1,24 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, provide, toRef } from 'vue';
+import {
+    computed,
+    defineComponent,
+    inject,
+    PropType,
+    provide,
+    toRef,
+} from "vue";
 import {
     useComponentColor,
     useComponentSize,
     useValidation,
-    useFormValidationError
-} from '@inkline/inkline/composables';
-import { CheckboxGroupKey } from './mixin';
-import { uid } from '@grozav/utils';
-import { FormKey } from '../IForm';
-import { FormGroupKey } from '../IFormGroup';
+    useFormValidationError,
+} from "@inkline/inkline/composables";
+import { CheckboxGroupKey } from "./mixin";
+import { uid } from "@grozav/utils";
+import { FormKey } from "../IForm/mixin";
+import { FormGroupKey } from "../IFormGroup/mixin";
 
-const componentName = 'ICheckboxGroup';
+const componentName = "ICheckboxGroup";
 
 export default defineComponent({
     name: componentName,
@@ -24,7 +31,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         /**
          * The disabled state of the checkbox group
@@ -34,7 +41,7 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The error state of the checkbox, computed based on schema by default.
@@ -45,7 +52,7 @@ export default defineComponent({
          */
         error: {
             type: [Array, Boolean] as PropType<boolean | string[]>,
-            default: () => ['touched', 'dirty', 'invalid']
+            default: () => ["touched", "dirty", "invalid"],
         },
         /**
          * Display the checkbox group as inline
@@ -55,7 +62,7 @@ export default defineComponent({
          */
         inline: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The indeterminate state of the checkbox group
@@ -65,7 +72,7 @@ export default defineComponent({
          */
         indeterminate: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * Used to set the checkbox group value
@@ -74,7 +81,7 @@ export default defineComponent({
          */
         modelValue: {
             type: Array,
-            default: () => []
+            default: () => [],
         },
         /**
          * The unique identifier of the checkbox group
@@ -85,8 +92,8 @@ export default defineComponent({
         name: {
             type: String,
             default() {
-                return uid('checkbox-group');
-            }
+                return uid("checkbox-group");
+            },
         },
         /**
          * The readonly state of the checkbox group
@@ -96,7 +103,7 @@ export default defineComponent({
          */
         readonly: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The size variant of the checkbox group
@@ -106,7 +113,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         /**
          * Enable checkbox group validation using schema
@@ -116,15 +123,15 @@ export default defineComponent({
          */
         validate: {
             type: Boolean,
-            default: true
-        }
+            default: true,
+        },
     },
     emits: [
         /**
          * Event emitted for setting the modelValue
          * @event update:modelValue
          */
-        'update:modelValue'
+        "update:modelValue",
     ],
     setup(props, { emit }) {
         const form = inject(FormKey, null);
@@ -133,39 +140,51 @@ export default defineComponent({
         const currentColor = computed(
             () => props.color || formGroup?.color.value || form?.color.value
         );
-        const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
+        const currentSize = computed(
+            () => props.size || formGroup?.size.value || form?.size.value
+        );
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
 
         const disabled = computed(
-            () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
+            () =>
+                !!(
+                    props.disabled ||
+                    formGroup?.disabled.value ||
+                    form?.disabled.value
+                )
         );
         const readonly = computed(
-            () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
+            () =>
+                !!(
+                    props.readonly ||
+                    formGroup?.readonly.value ||
+                    form?.readonly.value
+                )
         );
 
-        const name = toRef(props, 'name');
-        const validate = toRef(props, 'validate');
+        const name = toRef(props, "name");
+        const validate = toRef(props, "validate");
         const {
             schema,
             onInput: schemaOnInput,
-            onBlur: schemaOnBlur
+            onBlur: schemaOnBlur,
         } = useValidation({
             name,
-            validate
+            validate,
         });
         const { hasError } = useFormValidationError({
             schema,
-            error: props.error
+            error: props.error,
         });
 
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            '-disabled': disabled,
-            '-readonly': readonly,
-            '-inline': props.inline,
-            '-error': hasError.value
+            "-disabled": disabled,
+            "-readonly": readonly,
+            "-inline": props.inline,
+            "-error": hasError.value,
         }));
 
         const value = computed(() => {
@@ -194,7 +213,7 @@ export default defineComponent({
             }
 
             schemaOnInput(props.name, modelValue);
-            emit('update:modelValue', modelValue);
+            emit("update:modelValue", modelValue);
         }
 
         function onBlur(event: FocusEvent) {
@@ -209,18 +228,23 @@ export default defineComponent({
             color,
             size,
             onChange,
-            onBlur
+            onBlur,
         });
 
         return {
-            classes
+            classes,
         };
-    }
+    },
 });
 </script>
 
 <template>
-    <div class="form-group checkbox-group" :class="classes" :name="name" role="checkboxgroup">
+    <div
+        class="form-group checkbox-group"
+        :class="classes"
+        :name="name"
+        role="checkboxgroup"
+    >
         <!-- @slot default Slot for default checkbox group options -->
         <slot />
     </div>

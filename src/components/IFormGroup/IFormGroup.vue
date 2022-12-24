@@ -1,15 +1,15 @@
 <script lang="ts">
-import { computed, defineComponent, inject, provide, toRef } from 'vue';
+import { computed, defineComponent, inject, provide, toRef } from "vue";
 import {
     useComponentColor,
     useComponentSize,
     useFormValidationError,
-    useValidation
-} from '@inkline/inkline/composables';
-import { FormKey } from '../IForm';
-import { FormGroupKey } from './mixin';
+    useValidation,
+} from "@inkline/inkline/composables";
+import { FormKey } from "../IForm/mixin";
+import { FormGroupKey } from "./mixin";
 
-const componentName = 'IFormGroup';
+const componentName = "IFormGroup";
 
 export default defineComponent({
     name: componentName,
@@ -22,7 +22,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         /**
          * The disabled state of the form group
@@ -32,7 +32,7 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * Display the form group as inline
@@ -42,7 +42,7 @@ export default defineComponent({
          */
         inline: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The identifier of the form group
@@ -52,7 +52,7 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default: ''
+            default: "",
         },
         /**
          * The readonly state of the form group
@@ -62,7 +62,7 @@ export default defineComponent({
          */
         readonly: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The required state of the form group
@@ -72,7 +72,7 @@ export default defineComponent({
          */
         required: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The size variant of the form group
@@ -82,7 +82,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         /**
          * Enable form validation using schema
@@ -92,43 +92,55 @@ export default defineComponent({
          */
         validate: {
             type: Boolean,
-            default: true
-        }
+            default: true,
+        },
     },
     setup(props) {
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
 
-        const name = toRef(props, 'name');
-        const validate = toRef(props, 'validate');
+        const name = toRef(props, "name");
+        const validate = toRef(props, "validate");
         const { schema, onBlur, onInput } = useValidation({ name, validate });
         const { hasError } = useFormValidationError({
             schema,
-            error: ['invalid']
+            error: ["invalid"],
         });
 
         const currentColor = computed(
             () => props.color || formGroup?.color.value || form?.color.value
         );
-        const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
+        const currentSize = computed(
+            () => props.size || formGroup?.size.value || form?.size.value
+        );
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
 
         const disabled = computed(
-            () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
+            () =>
+                !!(
+                    props.disabled ||
+                    formGroup?.disabled.value ||
+                    form?.disabled.value
+                )
         );
         const readonly = computed(
-            () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
+            () =>
+                !!(
+                    props.readonly ||
+                    formGroup?.readonly.value ||
+                    form?.readonly.value
+                )
         );
 
         const classes = computed(() => ({
             [`-${size.value}`]: true,
             [`-${color.value}`]: true,
-            '-disabled': disabled.value,
-            '-readonly': readonly.value,
-            '-inline': props.inline,
-            '-error': hasError.value,
-            '-required': props.required // @TODO Add required state based on required validator this.input.schema?.validators.some(v => v.name === 'required')
+            "-disabled": disabled.value,
+            "-readonly": readonly.value,
+            "-inline": props.inline,
+            "-error": hasError.value,
+            "-required": props.required, // @TODO Add required state based on required validator this.input.schema?.validators.some(v => v.name === 'required')
         }));
 
         provide(FormGroupKey, {
@@ -137,7 +149,7 @@ export default defineComponent({
             size,
             color,
             onBlur,
-            onInput
+            onInput,
         });
 
         return {
@@ -147,9 +159,9 @@ export default defineComponent({
             size,
             color,
             onBlur,
-            onInput
+            onInput,
         };
-    }
+    },
 });
 </script>
 

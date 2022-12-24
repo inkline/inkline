@@ -1,4 +1,4 @@
-import ICheckbox from '../ICheckbox.vue';
+import ICheckbox from '@inkline/inkline/components/ICheckbox/ICheckbox.vue';
 import {
     ICheckboxBasicExample,
     ICheckboxColorVariantsExample,
@@ -11,7 +11,7 @@ import {
     ICheckboxNativeExample,
     ICheckboxReadonlyExample,
     ICheckboxSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/ICheckbox/examples/index';
 import {
     colorArgType,
     createStory,

@@ -1,1 +1,1 @@
-export { default as IPagination } from './IPagination.vue';
+export { default as IPagination } from '@inkline/inkline/components/IPagination/IPagination.vue';

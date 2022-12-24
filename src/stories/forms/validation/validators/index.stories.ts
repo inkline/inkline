@@ -10,7 +10,7 @@ import {
     IFormValidationValidatorsRequiredExample,
     IFormValidationValidatorsSameAsExample,
     IFormValidationValidatorsCustomExample
-} from './index';
+} from '@inkline/inkline/stories/forms/validation/validators/index';
 import { IForm } from '@inkline/inkline/components';
 
 export default {

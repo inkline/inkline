@@ -1,3 +1,3 @@
-export { default as IFormValidationBasicExample } from './basic.vue';
-export { default as IFormValidationBasicBindingExample } from './basic-binding.vue';
-export { default as IFormValidationBasicValidatorsExample } from './basic-validators.vue';
+export { default as IFormValidationBasicExample } from '@inkline/inkline/stories/forms/validation/basic.vue';
+export { default as IFormValidationBasicBindingExample } from '@inkline/inkline/stories/forms/validation/basic-binding.vue';
+export { default as IFormValidationBasicValidatorsExample } from '@inkline/inkline/stories/forms/validation/basic-validators.vue';

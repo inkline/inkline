@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/vue3';
-import IAlert from '../IAlert.vue';
+import IAlert from '@inkline/inkline/components/IAlert/IAlert.vue';
 import {
     IAlertBasicExample,
     IAlertColorVariantsExample,
@@ -7,7 +7,7 @@ import {
     IAlertContentExample,
     IAlertIconExample,
     IAlertSizeVariantsExample
-} from './index';
+} from '@inkline/inkline/components/IAlert/examples/index';
 import {
     colorArgType,
     createStory,

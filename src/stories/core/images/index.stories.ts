@@ -8,7 +8,7 @@ import {
     ImagesPolaroidExample,
     ImagesResponsiveExample,
     ImagesThumbnailExample
-} from './index';
+} from '@inkline/inkline/stories/core/images/index';
 
 export default {
     title: 'Core/Images'

@@ -1,4 +1,4 @@
-import { INavbar } from '../index';
+import { INavbar } from '@inkline/inkline/components/INavbar/index';
 import {
     INavbarBasicExample,
     INavbarCollapseBreakpointExample,
@@ -11,7 +11,7 @@ import {
     INavbarSizeVariantsExample,
     INavbarRoutingExample,
     INavbarRoutingActiveExample
-} from './index';
+} from '@inkline/inkline/components/INavbar/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

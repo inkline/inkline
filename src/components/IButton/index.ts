@@ -1,1 +1,1 @@
-export { default as IButton } from './IButton.vue';
+export { default as IButton } from '@inkline/inkline/components/IButton/IButton.vue';

@@ -1,1 +1,1 @@
-export { default as IListGroupItem } from './IListGroupItem.vue';
+export { default as IListGroupItem } from '@inkline/inkline/components/IListGroupItem/IListGroupItem.vue';

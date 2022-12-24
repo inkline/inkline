@@ -1,4 +1,4 @@
-import { ILayout } from '../index';
+import { ILayout } from '@inkline/inkline/components/ILayout/index';
 import {
     ILayoutBasicExample,
     ILayoutContentHeaderExample,
@@ -9,7 +9,7 @@ import {
     ILayoutLeftAndRightAsidesWithContentHeaderFooterExample,
     ILayoutLeftAsideWithContentHeaderFooterExample,
     ILayoutRightAsideWithContentHeaderFooterExample
-} from './index';
+} from '@inkline/inkline/components/ILayout/examples/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

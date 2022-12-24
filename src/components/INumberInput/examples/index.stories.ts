@@ -1,4 +1,4 @@
-import { INumberInput } from '../index';
+import { INumberInput } from '@inkline/inkline/components/INumberInput/index';
 import {
     INumberInputBasicExample,
     INumberInputColorVariantsExample,
@@ -13,7 +13,7 @@ import {
     INumberInputPrependAppendButtonExample,
     INumberInputPrependAppendDropdownExample,
     INumberInputPrefixSuffixExample
-} from './index';
+} from '@inkline/inkline/components/INumberInput/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 
 export default {

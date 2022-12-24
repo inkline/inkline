@@ -1,1 +1,1 @@
-export { default as ILayout } from './ILayout.vue';
+export { default as ILayout } from '@inkline/inkline/components/ILayout/ILayout.vue';

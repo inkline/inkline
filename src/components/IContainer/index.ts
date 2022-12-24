@@ -1,1 +1,1 @@
-export { default as IContainer } from './IContainer.vue';
+export { default as IContainer } from '@inkline/inkline/components/IContainer/IContainer.vue';

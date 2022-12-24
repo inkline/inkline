@@ -16,7 +16,7 @@ import {
     TextTruncateExample,
     TextWrapExample,
     TextListsExample
-} from './index';
+} from '@inkline/inkline/stories/utilities/text/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

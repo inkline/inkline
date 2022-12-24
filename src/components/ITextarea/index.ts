@@ -1,1 +1,1 @@
-export { default as ITextarea } from './ITextarea.vue';
+export { default as ITextarea } from '@inkline/inkline/components/ITextarea/ITextarea.vue';

@@ -1,4 +1,4 @@
-import { IRow } from '../index';
+import { IRow } from '@inkline/inkline/components/IRow/index';
 import {
     IRowBasicExample,
     IRowDistributionAroundExample,
@@ -10,7 +10,7 @@ import {
     IRowVerticalAlignmentTopExample,
     IRowVerticalAlignmentMiddleExample,
     IRowVerticalAlignmentBottomExample
-} from './index';
+} from '@inkline/inkline/components/IRow/examples/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

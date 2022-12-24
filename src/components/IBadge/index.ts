@@ -1,1 +1,1 @@
-export { default as IBadge } from './IBadge.vue';
+export { default as IBadge } from '@inkline/inkline/components/IBadge/IBadge.vue';

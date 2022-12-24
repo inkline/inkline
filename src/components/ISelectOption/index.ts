@@ -1,1 +1,1 @@
-export { default as ISelectOption } from './ISelectOption.vue';
+export { default as ISelectOption } from '@inkline/inkline/components/ISelectOption/ISelectOption.vue';
