@@ -1,32 +1,72 @@
 import glob from "fast-glob";
-import { basename, resolve } from "path";
-import { readFileSync, writeFileSync } from "fs";
+import { basename, dirname, resolve } from "path";
+import { readFile, writeFile } from "fs/promises";
 
 const baseDir = resolve(__dirname, "..", "..");
+const srcDir = resolve(baseDir, "src");
 const packageJSONPath = resolve(baseDir, "package.json");
-const packageJSON = JSON.parse(readFileSync(packageJSONPath, "utf-8"));
-const components = glob.sync(resolve(baseDir, "src", "components", "*"), {
-    onlyDirectories: true,
-});
 
-packageJSON.exports = Object.keys(packageJSON.exports).reduce<
-    Record<string, any>
->((acc, key) => {
-    if (!key.startsWith("./components/")) {
-        acc[key] = packageJSON.exports[key];
-    }
+const packageExports: Record<
+    string,
+    string | { require?: string; import?: string; types?: string }
+> = {
+    ".": {
+        require: "./inkline.js",
+        import: "./inkline.mjs",
+        types: "./inkline.d.ts",
+    },
+    "./types": {
+        types: "./types/index.d.ts",
+    },
+    "./*": "./*",
+};
 
-    return acc;
-}, {});
+const defaultIgnore = [
+    resolve(srcDir, "__storybook__", "**"),
+    resolve(srcDir, "__mocks__", "**"),
+    resolve(srcDir, "playground", "**"),
+    resolve(srcDir, "stories", "**"),
+];
 
-components.forEach((componentDir) => {
-    const componentName = basename(componentDir);
+(async () => {
+    const packageJSON = JSON.parse(await readFile(packageJSONPath, "utf-8"));
+    const tsFiles = await glob(resolve(srcDir, "**", "*.ts"), {
+        ignore: [
+            ...defaultIgnore,
+            resolve(srcDir, "**", "*.{d,spec,stories}.ts"),
+            resolve(srcDir, "main.ts"),
+        ],
+    });
 
-    packageJSON.exports[`./components/${componentName}`] = {
-        require: `./components/${componentName}/index.js`,
-        import: `./components/${componentName}/index.mjs`,
-        types: `./components/${componentName}/index.d.ts`,
-    };
-});
+    const vueFiles = await glob(resolve(srcDir, "**", "*.vue"), {
+        ignore: [...defaultIgnore, resolve(srcDir, "**", "examples")],
+    });
 
-writeFileSync(packageJSONPath, JSON.stringify(packageJSON, null, 4));
+    tsFiles.forEach((file) => {
+        const exportFile = basename(file, ".ts");
+        const exportDir = dirname(file).replace(srcDir, "");
+        const importPath = `.${exportDir}/${exportFile}`;
+        const exportPath = importPath.replace(/\/index$/, "");
+
+        packageExports[exportPath] = {
+            require: `${importPath}.js`,
+            import: `${importPath}.mjs`,
+            types: `${importPath}.d.ts`,
+        };
+    });
+
+    vueFiles.forEach((file) => {
+        const exportFile = basename(file, ".vue");
+        const exportDir = dirname(file).replace(srcDir, "");
+        const importPath = `.${exportDir}/${exportFile}`;
+
+        packageExports[`${importPath}.vue`] = {
+            require: `${importPath}.js`,
+            import: `${importPath}.vue`,
+        };
+    });
+
+    packageJSON.exports = packageExports;
+
+    await writeFile(packageJSONPath, JSON.stringify(packageJSON, null, 4));
+})();

@@ -17,7 +17,7 @@ import path from "path";
      * Copy files from tmp/cjs to lib
      */
 
-    const cjsFiles = await glob(path.resolve(cjsDir, "**/*"));
+    const cjsFiles = await glob(path.resolve(cjsDir, "**/*.js"));
     cjsFiles.forEach((file) => shell.mv(file, file.replace("tmp/cjs", "lib")));
     shell.rm("-rf", cjsDir);
 
