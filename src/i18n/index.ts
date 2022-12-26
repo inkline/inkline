@@ -1,5 +1,5 @@
-import { en } from "./messages";
-export * from "./translate";
+import { en } from "@inkline/inkline/i18n/messages";
+export * from "@inkline/inkline/i18n/translate";
 
 export interface InternationalizationMessages {
     [key: string]:

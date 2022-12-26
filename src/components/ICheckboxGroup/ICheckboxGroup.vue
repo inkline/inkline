@@ -13,10 +13,10 @@ import {
     useValidation,
     useFormValidationError,
 } from "@inkline/inkline/composables";
-import { CheckboxGroupKey } from "./mixin";
+import { CheckboxGroupKey } from "@inkline/inkline/components/ICheckboxGroup/mixin";
 import { uid } from "@grozav/utils";
-import { FormKey } from "../IForm/mixin";
-import { FormGroupKey } from "../IFormGroup/mixin";
+import { FormKey } from "@inkline/inkline/components/IForm/mixin";
+import { FormGroupKey } from "@inkline/inkline/components/IFormGroup/mixin";
 
 const componentName = "ICheckboxGroup";
 

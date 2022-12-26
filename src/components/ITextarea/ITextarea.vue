@@ -8,8 +8,8 @@ import {
     useFormValidationError,
     useValidation,
 } from "@inkline/inkline/composables";
-import { FormKey } from "../IForm/mixin";
-import { FormGroupKey } from "../IFormGroup/mixin";
+import { FormKey } from "@inkline/inkline/components/IForm/mixin";
+import { FormGroupKey } from "@inkline/inkline/components/IFormGroup/mixin";
 
 const componentName = "ITextarea";
 

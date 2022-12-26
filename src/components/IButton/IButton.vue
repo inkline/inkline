@@ -7,8 +7,8 @@ import {
 } from "@inkline/inkline/composables";
 import { ILoader } from "@inkline/inkline/components/ILoader";
 import { ButtonGroupKey } from "@inkline/inkline/components/IButtonGroup/mixin";
-import { FormKey } from "../IForm/mixin";
-import { FormGroupKey } from "../IFormGroup/mixin";
+import { FormKey } from "@inkline/inkline/components/IForm/mixin";
+import { FormGroupKey } from "@inkline/inkline/components/IFormGroup/mixin";
 
 const componentName = "IButton";
 

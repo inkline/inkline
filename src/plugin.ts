@@ -5,7 +5,7 @@ import { initialize as initializeForm } from "@inkline/inkline/validation";
 import { setLocale } from "@inkline/inkline/i18n";
 import * as inklineIcons from "@inkline/inkline/icons";
 import { SvgNode } from "@inkline/inkline/types";
-import { OverlayController } from "./controllers";
+import { OverlayController } from "@inkline/inkline/controllers";
 
 export interface PrototypeConfig {
     colorMode: "system" | "light" | "dark" | string;
