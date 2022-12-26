@@ -1,6 +1,9 @@
 <template>
     <div id="app">
         <h1>Hello world</h1>
+        <div>
+            <i-button>Button</i-button>
+        </div>
     </div>
 </template>
 

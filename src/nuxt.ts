@@ -11,7 +11,7 @@ import { NuxtModule } from "@nuxt/schema";
 import { UserOptions } from "./plugin/types";
 import { watch } from "./plugin/watch";
 import { build } from "./plugin/build";
-import { getResolvedConfiguration } from "./plugin/config";
+import { getResolvedOptions } from "@inkline/config";
 
 interface ModuleConfig {
     import?: {
@@ -56,7 +56,7 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
             outputDir,
             extName,
         };
-        const resolvedPluginOptions = getResolvedConfiguration(pluginOptions);
+        const resolvedPluginOptions = getResolvedOptions(pluginOptions);
 
         const templatesDir = fileURLToPath(
             new URL("./templates", import.meta.url)
