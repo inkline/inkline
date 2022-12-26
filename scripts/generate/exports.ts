@@ -38,10 +38,6 @@ const defaultIgnore = [
         ],
     });
 
-    const vueFiles = await glob(resolve(srcDir, "**", "*.vue"), {
-        ignore: [...defaultIgnore, resolve(srcDir, "**", "examples")],
-    });
-
     tsFiles.forEach((file) => {
         const exportFile = basename(file, ".ts");
         const exportDir = dirname(file).replace(srcDir, "");
@@ -52,17 +48,6 @@ const defaultIgnore = [
             require: `${importPath}.js`,
             import: `${importPath}.mjs`,
             types: `${importPath}.d.ts`,
-        };
-    });
-
-    vueFiles.forEach((file) => {
-        const exportFile = basename(file, ".vue");
-        const exportDir = dirname(file).replace(srcDir, "");
-        const importPath = `.${exportDir}/${exportFile}`;
-
-        packageExports[`${importPath}.vue`] = {
-            require: `${importPath}.js`,
-            import: `${importPath}.vue`,
         };
     });
 

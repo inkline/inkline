@@ -11,7 +11,6 @@
         "postbuild": "run-s postbuild:*",
         "postbuild:normalize": "ts-node ./scripts/postbuild/normalize.ts",
         "postbuild:components": "ts-node ./scripts/postbuild/components.ts",
-        "postbuild:imports": "ts-node ./scripts/postbuild/imports.ts",
         "lint": "run-p lint:script lint:style lint:markdown",
         "lint:script": "eslint --ext .vue,.js,.ts src",
         "lint:prettier": "prettier --write --loglevel warn \"**/*.{js,json,css,scss,vue,html}\"",
@@ -180,6 +179,16 @@
             "import": "./controllers/index.mjs",
             "types": "./controllers/index.d.ts"
         },
+        "./i18n": {
+            "require": "./i18n/index.js",
+            "import": "./i18n/index.mjs",
+            "types": "./i18n/index.d.ts"
+        },
+        "./i18n/translate": {
+            "require": "./i18n/translate.js",
+            "import": "./i18n/translate.mjs",
+            "types": "./i18n/translate.d.ts"
+        },
         "./composables/click-outside": {
             "require": "./composables/click-outside.js",
             "import": "./composables/click-outside.mjs",
@@ -235,16 +244,6 @@
             "import": "./composables/validation.mjs",
             "types": "./composables/validation.d.ts"
         },
-        "./i18n": {
-            "require": "./i18n/index.js",
-            "import": "./i18n/index.mjs",
-            "types": "./i18n/index.d.ts"
-        },
-        "./i18n/translate": {
-            "require": "./i18n/translate.js",
-            "import": "./i18n/translate.mjs",
-            "types": "./i18n/translate.d.ts"
-        },
         "./utils/breakpointClassName": {
             "require": "./utils/breakpointClassName.js",
             "import": "./utils/breakpointClassName.mjs",
@@ -280,15 +279,15 @@
             "import": "./validation/validate.mjs",
             "types": "./validation/validate.d.ts"
         },
-        "./components/IBreadcrumbItem": {
-            "require": "./components/IBreadcrumbItem/index.js",
-            "import": "./components/IBreadcrumbItem/index.mjs",
-            "types": "./components/IBreadcrumbItem/index.d.ts"
+        "./components/IBreadcrumb": {
+            "require": "./components/IBreadcrumb/index.js",
+            "import": "./components/IBreadcrumb/index.mjs",
+            "types": "./components/IBreadcrumb/index.d.ts"
         },
-        "./components/IBreadcrumbItem/manifest": {
-            "require": "./components/IBreadcrumbItem/manifest.js",
-            "import": "./components/IBreadcrumbItem/manifest.mjs",
-            "types": "./components/IBreadcrumbItem/manifest.d.ts"
+        "./components/IBreadcrumb/manifest": {
+            "require": "./components/IBreadcrumb/manifest.js",
+            "import": "./components/IBreadcrumb/manifest.mjs",
+            "types": "./components/IBreadcrumb/manifest.d.ts"
         },
         "./components/IBadge": {
             "require": "./components/IBadge/index.js",
@@ -310,46 +309,6 @@
             "import": "./components/IAlert/manifest.mjs",
             "types": "./components/IAlert/manifest.d.ts"
         },
-        "./components/IButton": {
-            "require": "./components/IButton/index.js",
-            "import": "./components/IButton/index.mjs",
-            "types": "./components/IButton/index.d.ts"
-        },
-        "./components/IButton/manifest": {
-            "require": "./components/IButton/manifest.js",
-            "import": "./components/IButton/manifest.mjs",
-            "types": "./components/IButton/manifest.d.ts"
-        },
-        "./components/IBreadcrumb": {
-            "require": "./components/IBreadcrumb/index.js",
-            "import": "./components/IBreadcrumb/index.mjs",
-            "types": "./components/IBreadcrumb/index.d.ts"
-        },
-        "./components/IBreadcrumb/manifest": {
-            "require": "./components/IBreadcrumb/manifest.js",
-            "import": "./components/IBreadcrumb/manifest.mjs",
-            "types": "./components/IBreadcrumb/manifest.d.ts"
-        },
-        "./components/ICard": {
-            "require": "./components/ICard/index.js",
-            "import": "./components/ICard/index.mjs",
-            "types": "./components/ICard/index.d.ts"
-        },
-        "./components/ICard/manifest": {
-            "require": "./components/ICard/manifest.js",
-            "import": "./components/ICard/manifest.mjs",
-            "types": "./components/ICard/manifest.d.ts"
-        },
-        "./components/ICheckbox": {
-            "require": "./components/ICheckbox/index.js",
-            "import": "./components/ICheckbox/index.mjs",
-            "types": "./components/ICheckbox/index.d.ts"
-        },
-        "./components/ICheckbox/manifest": {
-            "require": "./components/ICheckbox/manifest.js",
-            "import": "./components/ICheckbox/manifest.mjs",
-            "types": "./components/ICheckbox/manifest.d.ts"
-        },
         "./components/IButtonGroup": {
             "require": "./components/IButtonGroup/index.js",
             "import": "./components/IButtonGroup/index.mjs",
@@ -365,20 +324,45 @@
             "import": "./components/IButtonGroup/mixin.mjs",
             "types": "./components/IButtonGroup/mixin.d.ts"
         },
-        "./components/ICheckboxGroup": {
-            "require": "./components/ICheckboxGroup/index.js",
-            "import": "./components/ICheckboxGroup/index.mjs",
-            "types": "./components/ICheckboxGroup/index.d.ts"
+        "./components/ICard": {
+            "require": "./components/ICard/index.js",
+            "import": "./components/ICard/index.mjs",
+            "types": "./components/ICard/index.d.ts"
         },
-        "./components/ICheckboxGroup/manifest": {
-            "require": "./components/ICheckboxGroup/manifest.js",
-            "import": "./components/ICheckboxGroup/manifest.mjs",
-            "types": "./components/ICheckboxGroup/manifest.d.ts"
+        "./components/ICard/manifest": {
+            "require": "./components/ICard/manifest.js",
+            "import": "./components/ICard/manifest.mjs",
+            "types": "./components/ICard/manifest.d.ts"
         },
-        "./components/ICheckboxGroup/mixin": {
-            "require": "./components/ICheckboxGroup/mixin.js",
-            "import": "./components/ICheckboxGroup/mixin.mjs",
-            "types": "./components/ICheckboxGroup/mixin.d.ts"
+        "./components/IBreadcrumbItem": {
+            "require": "./components/IBreadcrumbItem/index.js",
+            "import": "./components/IBreadcrumbItem/index.mjs",
+            "types": "./components/IBreadcrumbItem/index.d.ts"
+        },
+        "./components/IBreadcrumbItem/manifest": {
+            "require": "./components/IBreadcrumbItem/manifest.js",
+            "import": "./components/IBreadcrumbItem/manifest.mjs",
+            "types": "./components/IBreadcrumbItem/manifest.d.ts"
+        },
+        "./components/IButton": {
+            "require": "./components/IButton/index.js",
+            "import": "./components/IButton/index.mjs",
+            "types": "./components/IButton/index.d.ts"
+        },
+        "./components/IButton/manifest": {
+            "require": "./components/IButton/manifest.js",
+            "import": "./components/IButton/manifest.mjs",
+            "types": "./components/IButton/manifest.d.ts"
+        },
+        "./components/ICheckbox": {
+            "require": "./components/ICheckbox/index.js",
+            "import": "./components/ICheckbox/index.mjs",
+            "types": "./components/ICheckbox/index.d.ts"
+        },
+        "./components/ICheckbox/manifest": {
+            "require": "./components/ICheckbox/manifest.js",
+            "import": "./components/ICheckbox/manifest.mjs",
+            "types": "./components/ICheckbox/manifest.d.ts"
         },
         "./components/ICollapsible": {
             "require": "./components/ICollapsible/index.js",
@@ -394,6 +378,21 @@
             "require": "./components/ICollapsible/mixin.js",
             "import": "./components/ICollapsible/mixin.mjs",
             "types": "./components/ICollapsible/mixin.d.ts"
+        },
+        "./components/ICheckboxGroup": {
+            "require": "./components/ICheckboxGroup/index.js",
+            "import": "./components/ICheckboxGroup/index.mjs",
+            "types": "./components/ICheckboxGroup/index.d.ts"
+        },
+        "./components/ICheckboxGroup/manifest": {
+            "require": "./components/ICheckboxGroup/manifest.js",
+            "import": "./components/ICheckboxGroup/manifest.mjs",
+            "types": "./components/ICheckboxGroup/manifest.d.ts"
+        },
+        "./components/ICheckboxGroup/mixin": {
+            "require": "./components/ICheckboxGroup/mixin.js",
+            "import": "./components/ICheckboxGroup/mixin.mjs",
+            "types": "./components/ICheckboxGroup/mixin.d.ts"
         },
         "./components/IColumn": {
             "require": "./components/IColumn/index.js",
@@ -440,6 +439,11 @@
             "import": "./components/ICollapsibleItem/manifest.mjs",
             "types": "./components/ICollapsibleItem/manifest.d.ts"
         },
+        "./components/IExpandTransition": {
+            "require": "./components/IExpandTransition/index.js",
+            "import": "./components/IExpandTransition/index.mjs",
+            "types": "./components/IExpandTransition/index.d.ts"
+        },
         "./components/IDropdownDivider": {
             "require": "./components/IDropdownDivider/index.js",
             "import": "./components/IDropdownDivider/index.mjs",
@@ -460,11 +464,6 @@
             "import": "./components/IDropdownItem/manifest.mjs",
             "types": "./components/IDropdownItem/manifest.d.ts"
         },
-        "./components/IExpandTransition": {
-            "require": "./components/IExpandTransition/index.js",
-            "import": "./components/IExpandTransition/index.mjs",
-            "types": "./components/IExpandTransition/index.d.ts"
-        },
         "./components/IForm": {
             "require": "./components/IForm/index.js",
             "import": "./components/IForm/index.mjs",
@@ -479,6 +478,16 @@
             "require": "./components/IForm/mixin.js",
             "import": "./components/IForm/mixin.mjs",
             "types": "./components/IForm/mixin.d.ts"
+        },
+        "./components/IHamburgerMenu": {
+            "require": "./components/IHamburgerMenu/index.js",
+            "import": "./components/IHamburgerMenu/index.mjs",
+            "types": "./components/IHamburgerMenu/index.d.ts"
+        },
+        "./components/IHamburgerMenu/manifest": {
+            "require": "./components/IHamburgerMenu/manifest.js",
+            "import": "./components/IHamburgerMenu/manifest.mjs",
+            "types": "./components/IHamburgerMenu/manifest.d.ts"
         },
         "./components/IFormGroup": {
             "require": "./components/IFormGroup/index.js",
@@ -495,16 +504,6 @@
             "import": "./components/IFormGroup/mixin.mjs",
             "types": "./components/IFormGroup/mixin.d.ts"
         },
-        "./components/IHamburgerMenu": {
-            "require": "./components/IHamburgerMenu/index.js",
-            "import": "./components/IHamburgerMenu/index.mjs",
-            "types": "./components/IHamburgerMenu/index.d.ts"
-        },
-        "./components/IHamburgerMenu/manifest": {
-            "require": "./components/IHamburgerMenu/manifest.js",
-            "import": "./components/IHamburgerMenu/manifest.mjs",
-            "types": "./components/IHamburgerMenu/manifest.d.ts"
-        },
         "./components/IFormError": {
             "require": "./components/IFormError/index.js",
             "import": "./components/IFormError/index.mjs",
@@ -515,16 +514,6 @@
             "import": "./components/IFormError/manifest.mjs",
             "types": "./components/IFormError/manifest.d.ts"
         },
-        "./components/IHeader": {
-            "require": "./components/IHeader/index.js",
-            "import": "./components/IHeader/index.mjs",
-            "types": "./components/IHeader/index.d.ts"
-        },
-        "./components/IHeader/manifest": {
-            "require": "./components/IHeader/manifest.js",
-            "import": "./components/IHeader/manifest.mjs",
-            "types": "./components/IHeader/manifest.d.ts"
-        },
         "./components/IIcon": {
             "require": "./components/IIcon/index.js",
             "import": "./components/IIcon/index.mjs",
@@ -534,6 +523,16 @@
             "require": "./components/IIcon/manifest.js",
             "import": "./components/IIcon/manifest.mjs",
             "types": "./components/IIcon/manifest.d.ts"
+        },
+        "./components/IHeader": {
+            "require": "./components/IHeader/index.js",
+            "import": "./components/IHeader/index.mjs",
+            "types": "./components/IHeader/index.d.ts"
+        },
+        "./components/IHeader/manifest": {
+            "require": "./components/IHeader/manifest.js",
+            "import": "./components/IHeader/manifest.mjs",
+            "types": "./components/IHeader/manifest.d.ts"
         },
         "./components/IFormLabel": {
             "require": "./components/IFormLabel/index.js",
@@ -555,16 +554,6 @@
             "import": "./components/IInput/manifest.mjs",
             "types": "./components/IInput/manifest.d.ts"
         },
-        "./components/ILayoutFooter": {
-            "require": "./components/ILayoutFooter/index.js",
-            "import": "./components/ILayoutFooter/index.mjs",
-            "types": "./components/ILayoutFooter/index.d.ts"
-        },
-        "./components/ILayoutFooter/manifest": {
-            "require": "./components/ILayoutFooter/manifest.js",
-            "import": "./components/ILayoutFooter/manifest.mjs",
-            "types": "./components/ILayoutFooter/manifest.d.ts"
-        },
         "./components/ILayoutContent": {
             "require": "./components/ILayoutContent/index.js",
             "import": "./components/ILayoutContent/index.mjs",
@@ -575,15 +564,15 @@
             "import": "./components/ILayoutContent/manifest.mjs",
             "types": "./components/ILayoutContent/manifest.d.ts"
         },
-        "./components/ILayout": {
-            "require": "./components/ILayout/index.js",
-            "import": "./components/ILayout/index.mjs",
-            "types": "./components/ILayout/index.d.ts"
+        "./components/ILayoutFooter": {
+            "require": "./components/ILayoutFooter/index.js",
+            "import": "./components/ILayoutFooter/index.mjs",
+            "types": "./components/ILayoutFooter/index.d.ts"
         },
-        "./components/ILayout/manifest": {
-            "require": "./components/ILayout/manifest.js",
-            "import": "./components/ILayout/manifest.mjs",
-            "types": "./components/ILayout/manifest.d.ts"
+        "./components/ILayoutFooter/manifest": {
+            "require": "./components/ILayoutFooter/manifest.js",
+            "import": "./components/ILayoutFooter/manifest.mjs",
+            "types": "./components/ILayoutFooter/manifest.d.ts"
         },
         "./components/ILayoutAside": {
             "require": "./components/ILayoutAside/index.js",
@@ -594,6 +583,16 @@
             "require": "./components/ILayoutAside/manifest.js",
             "import": "./components/ILayoutAside/manifest.mjs",
             "types": "./components/ILayoutAside/manifest.d.ts"
+        },
+        "./components/ILayout": {
+            "require": "./components/ILayout/index.js",
+            "import": "./components/ILayout/index.mjs",
+            "types": "./components/ILayout/index.d.ts"
+        },
+        "./components/ILayout/manifest": {
+            "require": "./components/ILayout/manifest.js",
+            "import": "./components/ILayout/manifest.mjs",
+            "types": "./components/ILayout/manifest.d.ts"
         },
         "./components/ILoader": {
             "require": "./components/ILoader/index.js",
@@ -625,6 +624,11 @@
             "import": "./components/ILayoutHeader/manifest.mjs",
             "types": "./components/ILayoutHeader/manifest.d.ts"
         },
+        "./components/IMark": {
+            "require": "./components/IMark/index.js",
+            "import": "./components/IMark/index.mjs",
+            "types": "./components/IMark/index.d.ts"
+        },
         "./components/IListGroupItem": {
             "require": "./components/IListGroupItem/index.js",
             "import": "./components/IListGroupItem/index.mjs",
@@ -634,11 +638,6 @@
             "require": "./components/IListGroupItem/manifest.js",
             "import": "./components/IListGroupItem/manifest.mjs",
             "types": "./components/IListGroupItem/manifest.d.ts"
-        },
-        "./components/IMark": {
-            "require": "./components/IMark/index.js",
-            "import": "./components/IMark/index.mjs",
-            "types": "./components/IMark/index.d.ts"
         },
         "./components/IMedia": {
             "require": "./components/IMedia/index.js",
@@ -675,16 +674,6 @@
             "import": "./components/INav/mixin.mjs",
             "types": "./components/INav/mixin.d.ts"
         },
-        "./components/INavItem": {
-            "require": "./components/INavItem/index.js",
-            "import": "./components/INavItem/index.mjs",
-            "types": "./components/INavItem/index.d.ts"
-        },
-        "./components/INavItem/manifest": {
-            "require": "./components/INavItem/manifest.js",
-            "import": "./components/INavItem/manifest.mjs",
-            "types": "./components/INavItem/manifest.d.ts"
-        },
         "./components/INavbar": {
             "require": "./components/INavbar/index.js",
             "import": "./components/INavbar/index.mjs",
@@ -700,15 +689,15 @@
             "import": "./components/INavbar/mixin.mjs",
             "types": "./components/INavbar/mixin.d.ts"
         },
-        "./components/INavbarBrand": {
-            "require": "./components/INavbarBrand/index.js",
-            "import": "./components/INavbarBrand/index.mjs",
-            "types": "./components/INavbarBrand/index.d.ts"
+        "./components/INavItem": {
+            "require": "./components/INavItem/index.js",
+            "import": "./components/INavItem/index.mjs",
+            "types": "./components/INavItem/index.d.ts"
         },
-        "./components/INavbarBrand/manifest": {
-            "require": "./components/INavbarBrand/manifest.js",
-            "import": "./components/INavbarBrand/manifest.mjs",
-            "types": "./components/INavbarBrand/manifest.d.ts"
+        "./components/INavItem/manifest": {
+            "require": "./components/INavItem/manifest.js",
+            "import": "./components/INavItem/manifest.mjs",
+            "types": "./components/INavItem/manifest.d.ts"
         },
         "./components/INumberInput": {
             "require": "./components/INumberInput/index.js",
@@ -719,6 +708,16 @@
             "require": "./components/INumberInput/manifest.js",
             "import": "./components/INumberInput/manifest.mjs",
             "types": "./components/INumberInput/manifest.d.ts"
+        },
+        "./components/INavbarBrand": {
+            "require": "./components/INavbarBrand/index.js",
+            "import": "./components/INavbarBrand/index.mjs",
+            "types": "./components/INavbarBrand/index.d.ts"
+        },
+        "./components/INavbarBrand/manifest": {
+            "require": "./components/INavbarBrand/manifest.js",
+            "import": "./components/INavbarBrand/manifest.mjs",
+            "types": "./components/INavbarBrand/manifest.d.ts"
         },
         "./components/INavbarCollapsible": {
             "require": "./components/INavbarCollapsible/index.js",
@@ -770,6 +769,16 @@
             "import": "./components/IRadio/manifest.mjs",
             "types": "./components/IRadio/manifest.d.ts"
         },
+        "./components/IRow": {
+            "require": "./components/IRow/index.js",
+            "import": "./components/IRow/index.mjs",
+            "types": "./components/IRow/index.d.ts"
+        },
+        "./components/IRow/manifest": {
+            "require": "./components/IRow/manifest.js",
+            "import": "./components/IRow/manifest.mjs",
+            "types": "./components/IRow/manifest.d.ts"
+        },
         "./components/IProgressBar": {
             "require": "./components/IProgressBar/index.js",
             "import": "./components/IProgressBar/index.mjs",
@@ -784,31 +793,6 @@
             "require": "./components/IProgressBar/mixin.js",
             "import": "./components/IProgressBar/mixin.mjs",
             "types": "./components/IProgressBar/mixin.d.ts"
-        },
-        "./components/ISelect": {
-            "require": "./components/ISelect/index.js",
-            "import": "./components/ISelect/index.mjs",
-            "types": "./components/ISelect/index.d.ts"
-        },
-        "./components/ISelect/manifest": {
-            "require": "./components/ISelect/manifest.js",
-            "import": "./components/ISelect/manifest.mjs",
-            "types": "./components/ISelect/manifest.d.ts"
-        },
-        "./components/ISelect/mixin": {
-            "require": "./components/ISelect/mixin.js",
-            "import": "./components/ISelect/mixin.mjs",
-            "types": "./components/ISelect/mixin.d.ts"
-        },
-        "./components/IRow": {
-            "require": "./components/IRow/index.js",
-            "import": "./components/IRow/index.mjs",
-            "types": "./components/IRow/index.d.ts"
-        },
-        "./components/IRow/manifest": {
-            "require": "./components/IRow/manifest.js",
-            "import": "./components/IRow/manifest.mjs",
-            "types": "./components/IRow/manifest.d.ts"
         },
         "./components/IRadioGroup": {
             "require": "./components/IRadioGroup/index.js",
@@ -825,6 +809,21 @@
             "import": "./components/IRadioGroup/mixin.mjs",
             "types": "./components/IRadioGroup/mixin.d.ts"
         },
+        "./components/ISelect": {
+            "require": "./components/ISelect/index.js",
+            "import": "./components/ISelect/index.mjs",
+            "types": "./components/ISelect/index.d.ts"
+        },
+        "./components/ISelect/manifest": {
+            "require": "./components/ISelect/manifest.js",
+            "import": "./components/ISelect/manifest.mjs",
+            "types": "./components/ISelect/manifest.d.ts"
+        },
+        "./components/ISelect/mixin": {
+            "require": "./components/ISelect/mixin.js",
+            "import": "./components/ISelect/mixin.mjs",
+            "types": "./components/ISelect/mixin.d.ts"
+        },
         "./components/ITabTitle": {
             "require": "./components/ITabTitle/index.js",
             "import": "./components/ITabTitle/index.mjs",
@@ -834,16 +833,6 @@
             "require": "./components/ITabTitle/manifest.js",
             "import": "./components/ITabTitle/manifest.mjs",
             "types": "./components/ITabTitle/manifest.d.ts"
-        },
-        "./components/ISelectOption": {
-            "require": "./components/ISelectOption/index.js",
-            "import": "./components/ISelectOption/index.mjs",
-            "types": "./components/ISelectOption/index.d.ts"
-        },
-        "./components/ISelectOption/manifest": {
-            "require": "./components/ISelectOption/manifest.js",
-            "import": "./components/ISelectOption/manifest.mjs",
-            "types": "./components/ISelectOption/manifest.d.ts"
         },
         "./components/ISidebar": {
             "require": "./components/ISidebar/index.js",
@@ -870,15 +859,15 @@
             "import": "./components/ITab/manifest.mjs",
             "types": "./components/ITab/manifest.d.ts"
         },
-        "./components/ITable": {
-            "require": "./components/ITable/index.js",
-            "import": "./components/ITable/index.mjs",
-            "types": "./components/ITable/index.d.ts"
+        "./components/ISelectOption": {
+            "require": "./components/ISelectOption/index.js",
+            "import": "./components/ISelectOption/index.mjs",
+            "types": "./components/ISelectOption/index.d.ts"
         },
-        "./components/ITable/manifest": {
-            "require": "./components/ITable/manifest.js",
-            "import": "./components/ITable/manifest.mjs",
-            "types": "./components/ITable/manifest.d.ts"
+        "./components/ISelectOption/manifest": {
+            "require": "./components/ISelectOption/manifest.js",
+            "import": "./components/ISelectOption/manifest.mjs",
+            "types": "./components/ISelectOption/manifest.d.ts"
         },
         "./components/ITabs": {
             "require": "./components/ITabs/index.js",
@@ -894,6 +883,16 @@
             "require": "./components/ITabs/mixin.js",
             "import": "./components/ITabs/mixin.mjs",
             "types": "./components/ITabs/mixin.d.ts"
+        },
+        "./components/ITable": {
+            "require": "./components/ITable/index.js",
+            "import": "./components/ITable/index.mjs",
+            "types": "./components/ITable/index.d.ts"
+        },
+        "./components/ITable/manifest": {
+            "require": "./components/ITable/manifest.js",
+            "import": "./components/ITable/manifest.mjs",
+            "types": "./components/ITable/manifest.d.ts"
         },
         "./components/ITextarea": {
             "require": "./components/ITextarea/index.js",
@@ -1000,6 +999,11 @@
             "import": "./validation/validators/sameAs.mjs",
             "types": "./validation/validators/sameAs.d.ts"
         },
+        "./components/IBreadcrumb/examples": {
+            "require": "./components/IBreadcrumb/examples/index.js",
+            "import": "./components/IBreadcrumb/examples/index.mjs",
+            "types": "./components/IBreadcrumb/examples/index.d.ts"
+        },
         "./components/IBadge/examples": {
             "require": "./components/IBadge/examples/index.js",
             "import": "./components/IBadge/examples/index.mjs",
@@ -1010,30 +1014,25 @@
             "import": "./components/IAlert/examples/index.mjs",
             "types": "./components/IAlert/examples/index.d.ts"
         },
-        "./components/IButton/examples": {
-            "require": "./components/IButton/examples/index.js",
-            "import": "./components/IButton/examples/index.mjs",
-            "types": "./components/IButton/examples/index.d.ts"
-        },
-        "./components/IBreadcrumb/examples": {
-            "require": "./components/IBreadcrumb/examples/index.js",
-            "import": "./components/IBreadcrumb/examples/index.mjs",
-            "types": "./components/IBreadcrumb/examples/index.d.ts"
+        "./components/IButtonGroup/examples": {
+            "require": "./components/IButtonGroup/examples/index.js",
+            "import": "./components/IButtonGroup/examples/index.mjs",
+            "types": "./components/IButtonGroup/examples/index.d.ts"
         },
         "./components/ICard/examples": {
             "require": "./components/ICard/examples/index.js",
             "import": "./components/ICard/examples/index.mjs",
             "types": "./components/ICard/examples/index.d.ts"
         },
+        "./components/IButton/examples": {
+            "require": "./components/IButton/examples/index.js",
+            "import": "./components/IButton/examples/index.mjs",
+            "types": "./components/IButton/examples/index.d.ts"
+        },
         "./components/ICheckbox/examples": {
             "require": "./components/ICheckbox/examples/index.js",
             "import": "./components/ICheckbox/examples/index.mjs",
             "types": "./components/ICheckbox/examples/index.d.ts"
-        },
-        "./components/IButtonGroup/examples": {
-            "require": "./components/IButtonGroup/examples/index.js",
-            "import": "./components/IButtonGroup/examples/index.mjs",
-            "types": "./components/IButtonGroup/examples/index.d.ts"
         },
         "./components/ICollapsible/examples": {
             "require": "./components/ICollapsible/examples/index.js",
@@ -1060,25 +1059,25 @@
             "import": "./components/IForm/examples/index.mjs",
             "types": "./components/IForm/examples/index.d.ts"
         },
-        "./components/IFormGroup/examples": {
-            "require": "./components/IFormGroup/examples/index.js",
-            "import": "./components/IFormGroup/examples/index.mjs",
-            "types": "./components/IFormGroup/examples/index.d.ts"
-        },
         "./components/IHamburgerMenu/examples": {
             "require": "./components/IHamburgerMenu/examples/index.js",
             "import": "./components/IHamburgerMenu/examples/index.mjs",
             "types": "./components/IHamburgerMenu/examples/index.d.ts"
         },
-        "./components/IHeader/examples": {
-            "require": "./components/IHeader/examples/index.js",
-            "import": "./components/IHeader/examples/index.mjs",
-            "types": "./components/IHeader/examples/index.d.ts"
+        "./components/IFormGroup/examples": {
+            "require": "./components/IFormGroup/examples/index.js",
+            "import": "./components/IFormGroup/examples/index.mjs",
+            "types": "./components/IFormGroup/examples/index.d.ts"
         },
         "./components/IIcon/examples": {
             "require": "./components/IIcon/examples/index.js",
             "import": "./components/IIcon/examples/index.mjs",
             "types": "./components/IIcon/examples/index.d.ts"
+        },
+        "./components/IHeader/examples": {
+            "require": "./components/IHeader/examples/index.js",
+            "import": "./components/IHeader/examples/index.mjs",
+            "types": "./components/IHeader/examples/index.d.ts"
         },
         "./components/IFormLabel/examples": {
             "require": "./components/IFormLabel/examples/index.js",
@@ -1150,281 +1149,45 @@
             "import": "./components/IRadio/examples/index.mjs",
             "types": "./components/IRadio/examples/index.d.ts"
         },
-        "./components/ISelect/examples": {
-            "require": "./components/ISelect/examples/index.js",
-            "import": "./components/ISelect/examples/index.mjs",
-            "types": "./components/ISelect/examples/index.d.ts"
-        },
         "./components/IRow/examples": {
             "require": "./components/IRow/examples/index.js",
             "import": "./components/IRow/examples/index.mjs",
             "types": "./components/IRow/examples/index.d.ts"
+        },
+        "./components/ISelect/examples": {
+            "require": "./components/ISelect/examples/index.js",
+            "import": "./components/ISelect/examples/index.mjs",
+            "types": "./components/ISelect/examples/index.d.ts"
         },
         "./components/ISidebar/examples": {
             "require": "./components/ISidebar/examples/index.js",
             "import": "./components/ISidebar/examples/index.mjs",
             "types": "./components/ISidebar/examples/index.d.ts"
         },
-        "./components/ITable/examples": {
-            "require": "./components/ITable/examples/index.js",
-            "import": "./components/ITable/examples/index.mjs",
-            "types": "./components/ITable/examples/index.d.ts"
-        },
         "./components/ITabs/examples": {
             "require": "./components/ITabs/examples/index.js",
             "import": "./components/ITabs/examples/index.mjs",
             "types": "./components/ITabs/examples/index.d.ts"
+        },
+        "./components/ITable/examples": {
+            "require": "./components/ITable/examples/index.js",
+            "import": "./components/ITable/examples/index.mjs",
+            "types": "./components/ITable/examples/index.d.ts"
         },
         "./components/ITextarea/examples": {
             "require": "./components/ITextarea/examples/index.js",
             "import": "./components/ITextarea/examples/index.mjs",
             "types": "./components/ITextarea/examples/index.d.ts"
         },
-        "./components/IToggle/examples": {
-            "require": "./components/IToggle/examples/index.js",
-            "import": "./components/IToggle/examples/index.mjs",
-            "types": "./components/IToggle/examples/index.d.ts"
-        },
         "./components/ITooltip/examples": {
             "require": "./components/ITooltip/examples/index.js",
             "import": "./components/ITooltip/examples/index.mjs",
             "types": "./components/ITooltip/examples/index.d.ts"
         },
-        "./components/IAlert/IAlert.vue": {
-            "require": "./components/IAlert/IAlert.js",
-            "import": "./components/IAlert/IAlert.vue"
-        },
-        "./components/IBadge/IBadge.vue": {
-            "require": "./components/IBadge/IBadge.js",
-            "import": "./components/IBadge/IBadge.vue"
-        },
-        "./components/IBreadcrumb/IBreadcrumb.vue": {
-            "require": "./components/IBreadcrumb/IBreadcrumb.js",
-            "import": "./components/IBreadcrumb/IBreadcrumb.vue"
-        },
-        "./components/IBreadcrumbItem/IBreadcrumbItem.vue": {
-            "require": "./components/IBreadcrumbItem/IBreadcrumbItem.js",
-            "import": "./components/IBreadcrumbItem/IBreadcrumbItem.vue"
-        },
-        "./components/IButton/IButton.vue": {
-            "require": "./components/IButton/IButton.js",
-            "import": "./components/IButton/IButton.vue"
-        },
-        "./components/IButtonGroup/IButtonGroup.vue": {
-            "require": "./components/IButtonGroup/IButtonGroup.js",
-            "import": "./components/IButtonGroup/IButtonGroup.vue"
-        },
-        "./components/ICard/ICard.vue": {
-            "require": "./components/ICard/ICard.js",
-            "import": "./components/ICard/ICard.vue"
-        },
-        "./components/ICheckbox/ICheckbox.vue": {
-            "require": "./components/ICheckbox/ICheckbox.js",
-            "import": "./components/ICheckbox/ICheckbox.vue"
-        },
-        "./components/ICheckboxGroup/ICheckboxGroup.vue": {
-            "require": "./components/ICheckboxGroup/ICheckboxGroup.js",
-            "import": "./components/ICheckboxGroup/ICheckboxGroup.vue"
-        },
-        "./components/ICollapsible/ICollapsible.vue": {
-            "require": "./components/ICollapsible/ICollapsible.js",
-            "import": "./components/ICollapsible/ICollapsible.vue"
-        },
-        "./components/ICollapsibleItem/ICollapsibleItem.vue": {
-            "require": "./components/ICollapsibleItem/ICollapsibleItem.js",
-            "import": "./components/ICollapsibleItem/ICollapsibleItem.vue"
-        },
-        "./components/IColumn/IColumn.vue": {
-            "require": "./components/IColumn/IColumn.js",
-            "import": "./components/IColumn/IColumn.vue"
-        },
-        "./components/IContainer/IContainer.vue": {
-            "require": "./components/IContainer/IContainer.js",
-            "import": "./components/IContainer/IContainer.vue"
-        },
-        "./components/IDropdown/IDropdown.vue": {
-            "require": "./components/IDropdown/IDropdown.js",
-            "import": "./components/IDropdown/IDropdown.vue"
-        },
-        "./components/IDropdownDivider/IDropdownDivider.vue": {
-            "require": "./components/IDropdownDivider/IDropdownDivider.js",
-            "import": "./components/IDropdownDivider/IDropdownDivider.vue"
-        },
-        "./components/IDropdownItem/IDropdownItem.vue": {
-            "require": "./components/IDropdownItem/IDropdownItem.js",
-            "import": "./components/IDropdownItem/IDropdownItem.vue"
-        },
-        "./components/IExpandTransition/IExpandTransition.vue": {
-            "require": "./components/IExpandTransition/IExpandTransition.js",
-            "import": "./components/IExpandTransition/IExpandTransition.vue"
-        },
-        "./components/IForm/IForm.vue": {
-            "require": "./components/IForm/IForm.js",
-            "import": "./components/IForm/IForm.vue"
-        },
-        "./components/IFormError/IFormError.vue": {
-            "require": "./components/IFormError/IFormError.js",
-            "import": "./components/IFormError/IFormError.vue"
-        },
-        "./components/IFormGroup/IFormGroup.vue": {
-            "require": "./components/IFormGroup/IFormGroup.js",
-            "import": "./components/IFormGroup/IFormGroup.vue"
-        },
-        "./components/IFormLabel/IFormLabel.vue": {
-            "require": "./components/IFormLabel/IFormLabel.js",
-            "import": "./components/IFormLabel/IFormLabel.vue"
-        },
-        "./components/IHamburgerMenu/IHamburgerMenu.vue": {
-            "require": "./components/IHamburgerMenu/IHamburgerMenu.js",
-            "import": "./components/IHamburgerMenu/IHamburgerMenu.vue"
-        },
-        "./components/IHeader/IHeader.vue": {
-            "require": "./components/IHeader/IHeader.js",
-            "import": "./components/IHeader/IHeader.vue"
-        },
-        "./components/IIcon/IIcon.vue": {
-            "require": "./components/IIcon/IIcon.js",
-            "import": "./components/IIcon/IIcon.vue"
-        },
-        "./components/IInput/IInput.vue": {
-            "require": "./components/IInput/IInput.js",
-            "import": "./components/IInput/IInput.vue"
-        },
-        "./components/ILayout/ILayout.vue": {
-            "require": "./components/ILayout/ILayout.js",
-            "import": "./components/ILayout/ILayout.vue"
-        },
-        "./components/ILayoutAside/ILayoutAside.vue": {
-            "require": "./components/ILayoutAside/ILayoutAside.js",
-            "import": "./components/ILayoutAside/ILayoutAside.vue"
-        },
-        "./components/ILayoutContent/ILayoutContent.vue": {
-            "require": "./components/ILayoutContent/ILayoutContent.js",
-            "import": "./components/ILayoutContent/ILayoutContent.vue"
-        },
-        "./components/ILayoutFooter/ILayoutFooter.vue": {
-            "require": "./components/ILayoutFooter/ILayoutFooter.js",
-            "import": "./components/ILayoutFooter/ILayoutFooter.vue"
-        },
-        "./components/ILayoutHeader/ILayoutHeader.vue": {
-            "require": "./components/ILayoutHeader/ILayoutHeader.js",
-            "import": "./components/ILayoutHeader/ILayoutHeader.vue"
-        },
-        "./components/IListGroup/IListGroup.vue": {
-            "require": "./components/IListGroup/IListGroup.js",
-            "import": "./components/IListGroup/IListGroup.vue"
-        },
-        "./components/IListGroupItem/IListGroupItem.vue": {
-            "require": "./components/IListGroupItem/IListGroupItem.js",
-            "import": "./components/IListGroupItem/IListGroupItem.vue"
-        },
-        "./components/ILoader/ILoader.vue": {
-            "require": "./components/ILoader/ILoader.js",
-            "import": "./components/ILoader/ILoader.vue"
-        },
-        "./components/IMark/IMark.vue": {
-            "require": "./components/IMark/IMark.js",
-            "import": "./components/IMark/IMark.vue"
-        },
-        "./components/IMedia/IMedia.vue": {
-            "require": "./components/IMedia/IMedia.js",
-            "import": "./components/IMedia/IMedia.vue"
-        },
-        "./components/IModal/IModal.vue": {
-            "require": "./components/IModal/IModal.js",
-            "import": "./components/IModal/IModal.vue"
-        },
-        "./components/INav/INav.vue": {
-            "require": "./components/INav/INav.js",
-            "import": "./components/INav/INav.vue"
-        },
-        "./components/INavItem/INavItem.vue": {
-            "require": "./components/INavItem/INavItem.js",
-            "import": "./components/INavItem/INavItem.vue"
-        },
-        "./components/INavbar/INavbar.vue": {
-            "require": "./components/INavbar/INavbar.js",
-            "import": "./components/INavbar/INavbar.vue"
-        },
-        "./components/INavbarBrand/INavbarBrand.vue": {
-            "require": "./components/INavbarBrand/INavbarBrand.js",
-            "import": "./components/INavbarBrand/INavbarBrand.vue"
-        },
-        "./components/INavbarCollapsible/INavbarCollapsible.vue": {
-            "require": "./components/INavbarCollapsible/INavbarCollapsible.js",
-            "import": "./components/INavbarCollapsible/INavbarCollapsible.vue"
-        },
-        "./components/INumberInput/INumberInput.vue": {
-            "require": "./components/INumberInput/INumberInput.js",
-            "import": "./components/INumberInput/INumberInput.vue"
-        },
-        "./components/IPagination/IPagination.vue": {
-            "require": "./components/IPagination/IPagination.js",
-            "import": "./components/IPagination/IPagination.vue"
-        },
-        "./components/IPopover/IPopover.vue": {
-            "require": "./components/IPopover/IPopover.js",
-            "import": "./components/IPopover/IPopover.vue"
-        },
-        "./components/IProgress/IProgress.vue": {
-            "require": "./components/IProgress/IProgress.js",
-            "import": "./components/IProgress/IProgress.vue"
-        },
-        "./components/IProgressBar/IProgressBar.vue": {
-            "require": "./components/IProgressBar/IProgressBar.js",
-            "import": "./components/IProgressBar/IProgressBar.vue"
-        },
-        "./components/IRadio/IRadio.vue": {
-            "require": "./components/IRadio/IRadio.js",
-            "import": "./components/IRadio/IRadio.vue"
-        },
-        "./components/IRadioGroup/IRadioGroup.vue": {
-            "require": "./components/IRadioGroup/IRadioGroup.js",
-            "import": "./components/IRadioGroup/IRadioGroup.vue"
-        },
-        "./components/IRow/IRow.vue": {
-            "require": "./components/IRow/IRow.js",
-            "import": "./components/IRow/IRow.vue"
-        },
-        "./components/ISelect/ISelect.vue": {
-            "require": "./components/ISelect/ISelect.js",
-            "import": "./components/ISelect/ISelect.vue"
-        },
-        "./components/ISelectOption/ISelectOption.vue": {
-            "require": "./components/ISelectOption/ISelectOption.js",
-            "import": "./components/ISelectOption/ISelectOption.vue"
-        },
-        "./components/ISidebar/ISidebar.vue": {
-            "require": "./components/ISidebar/ISidebar.js",
-            "import": "./components/ISidebar/ISidebar.vue"
-        },
-        "./components/ITab/ITab.vue": {
-            "require": "./components/ITab/ITab.js",
-            "import": "./components/ITab/ITab.vue"
-        },
-        "./components/ITabTitle/ITabTitle.vue": {
-            "require": "./components/ITabTitle/ITabTitle.js",
-            "import": "./components/ITabTitle/ITabTitle.vue"
-        },
-        "./components/ITable/ITable.vue": {
-            "require": "./components/ITable/ITable.js",
-            "import": "./components/ITable/ITable.vue"
-        },
-        "./components/ITabs/ITabs.vue": {
-            "require": "./components/ITabs/ITabs.js",
-            "import": "./components/ITabs/ITabs.vue"
-        },
-        "./components/ITextarea/ITextarea.vue": {
-            "require": "./components/ITextarea/ITextarea.js",
-            "import": "./components/ITextarea/ITextarea.vue"
-        },
-        "./components/IToggle/IToggle.vue": {
-            "require": "./components/IToggle/IToggle.js",
-            "import": "./components/IToggle/IToggle.vue"
-        },
-        "./components/ITooltip/ITooltip.vue": {
-            "require": "./components/ITooltip/ITooltip.js",
-            "import": "./components/ITooltip/ITooltip.vue"
+        "./components/IToggle/examples": {
+            "require": "./components/IToggle/examples/index.js",
+            "import": "./components/IToggle/examples/index.mjs",
+            "types": "./components/IToggle/examples/index.d.ts"
         }
     },
     "funding": {
