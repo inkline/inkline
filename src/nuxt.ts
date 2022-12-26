@@ -23,7 +23,7 @@ interface ModuleConfig {
 }
 
 const defaultImportOptions: ModuleConfig["import"] = {
-    mode: "global",
+    mode: "auto",
     styles: true,
     scripts: true,
     utilities: true,
