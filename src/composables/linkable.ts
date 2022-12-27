@@ -9,8 +9,10 @@ export function useLinkable(props: {
     const inkline = useInkline();
 
     const tag = computed((): string => {
-        if (props.to.value) {
-            return inkline?.options?.routerComponent;
+        const routerComponent = inkline?.options?.routerComponent;
+
+        if (props.to.value && routerComponent) {
+            return routerComponent;
         } else {
             if (props.href.value) {
                 return "a";

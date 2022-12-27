@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { InjectionKey, Plugin, reactive, watch } from "vue";
+import { Component, InjectionKey, Plugin, reactive, watch } from "vue";
 import { addClass, isKey, removeClass } from "@grozav/utils";
 import { initialize as initializeForm } from "@inkline/inkline/validation";
 import { setLocale } from "@inkline/inkline/i18n";
@@ -11,7 +11,7 @@ export interface PrototypeConfig {
     colorMode: "system" | "light" | "dark" | string;
     locale: string;
     validateOn: string[];
-    routerComponent: string;
+    routerComponent: any;
     color: string;
     size: string;
     componentOptions: any;
@@ -68,7 +68,7 @@ export const defaultOptions: PluginConfig = {
     validateOn: ["input", "blur"],
     color: "",
     size: "",
-    routerComponent: "router-link",
+    routerComponent: "RouterLink",
     componentOptions: {},
 };
 

@@ -1,30 +1,34 @@
-import addons from '@storybook/addons';
-import { app } from '@storybook/vue3';
-import { light, dark } from './theme';
-import { Inkline, components } from '../src/inkline';
-import '../src/inkline.scss';
-import './preview.scss';
+import addons from "@storybook/addons";
+import { app } from "@storybook/vue3";
+import { light, dark } from "./theme";
+import { Inkline, components } from "../src/inkline";
+import "../src/inkline.scss";
+import "./preview.scss";
+import { RouterLink } from "vue-router";
 
 app.use(Inkline, {
-    components
+    components,
+    routerComponent: RouterLink,
 });
 
-addons.getChannel().on('DARK_MODE', (isDarkMode) => {
-    app.config.globalProperties.$inkline.options.colorMode = isDarkMode ? 'dark' : 'light';
+addons.getChannel().on("DARK_MODE", (isDarkMode) => {
+    app.config.globalProperties.$inkline.options.colorMode = isDarkMode
+        ? "dark"
+        : "light";
 });
 
 export const parameters = {
     actions: {
-        argTypesRegex: '^on[A-Z].*'
+        argTypesRegex: "^on[A-Z].*",
     },
     controls: {
         matchers: {
-            date: /Date$/
-        }
+            date: /Date$/,
+        },
     },
     darkMode: {
         stylePreview: true,
         dark,
-        light
-    }
+        light,
+    },
 };
