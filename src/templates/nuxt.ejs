@@ -2,5 +2,5 @@ import { defineNuxtPlugin } from '#app';
 import { Inkline } from '@inkline/inkline';
 
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(Inkline<% if (options) { %>, <%= JSON.stringify(options, 4) %><% } %>);
+    nuxtApp.vueApp.use(Inkline, <%= JSON.stringify(options, 4) %>);
 });

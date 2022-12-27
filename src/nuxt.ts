@@ -2,6 +2,7 @@ import {
     defineNuxtModule,
     addPluginTemplate,
     addComponentsDir,
+    addPlugin,
 } from "@nuxt/kit";
 import { join, resolve, dirname } from "path";
 import { fileURLToPath } from "url";
@@ -29,7 +30,7 @@ const defaultImportOptions: ModuleConfig["import"] = {
     utilities: true,
 };
 
-export type InklineModule = { globals: PluginConfig } & ModuleConfig &
+export type InklineModule = { globals: Partial<PluginConfig> } & ModuleConfig &
     UserOptions;
 
 export const module: NuxtModule<InklineModule> = defineNuxtModule({
@@ -85,9 +86,20 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
         if (importOptions.scripts !== false) {
             // Add plugin template
             addPluginTemplate({
+                mode: "all",
                 src: resolve(templatesDir, "nuxt.ejs"),
-                options: globals,
+                write: true,
+                filename: "inkline.mjs",
+                options: {
+                    routerComponent: "NuxtLink",
+                    ...globals,
+                },
             });
+
+            // addPlugin({
+            //     mode: "all",
+            //     src: resolve(templatesDir, "nuxt.js"),
+            // });
         }
 
         // Add dynamic component imports
