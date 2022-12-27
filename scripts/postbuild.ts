@@ -9,7 +9,7 @@ import path from "path";
      * Change directory to root
      */
 
-    const rootDir = path.resolve(__dirname, "..", "..");
+    const rootDir = path.resolve(__dirname, "..");
     const cjsDir = path.resolve(rootDir, "tmp", "cjs");
     shell.cd(rootDir);
 
