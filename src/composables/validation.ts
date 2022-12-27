@@ -53,7 +53,7 @@ export function useValidation(options: {
 
         const events = schema.validateOn
             ? [].concat(schema.validateOn)
-            : inkline.options.validateOn;
+            : inkline?.options?.validateOn;
 
         return events!.includes(eventName);
     }

@@ -1,5 +1,5 @@
-import { computed, Ref } from 'vue';
-import { useInkline } from '@inkline/inkline/composables';
+import { computed, Ref } from "vue";
+import { useInkline } from "@inkline/inkline/composables";
 
 export interface ComponentColorProps {
     componentName: string;
@@ -9,19 +9,21 @@ export interface ComponentColorProps {
 export function useComponentColor(props: ComponentColorProps) {
     const inkline = useInkline();
     const color = computed(() => {
-        let colorClass = props.currentColor.value || 'light';
+        let colorClass = props.currentColor.value || "light";
 
-        if (!props.currentColor.value && inkline.options) {
+        if (!props.currentColor.value && inkline?.options) {
             if (inkline.options.componentOptions[props.componentName]?.color) {
-                colorClass = inkline.options.componentOptions[props.componentName]?.color;
+                colorClass =
+                    inkline.options.componentOptions[props.componentName]
+                        ?.color;
             } else if (inkline.options.color) {
                 colorClass = inkline.options.color;
-            } else if (inkline.options.colorMode === 'system') {
+            } else if (inkline.options.colorMode === "system") {
                 colorClass =
-                    typeof window !== 'undefined' &&
-                    window.matchMedia?.('(prefers-color-scheme: dark)').matches
-                        ? 'dark'
-                        : 'light';
+                    typeof window !== "undefined" &&
+                    window.matchMedia?.("(prefers-color-scheme: dark)").matches
+                        ? "dark"
+                        : "light";
             } else {
                 colorClass = inkline.options.colorMode;
             }
