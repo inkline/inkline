@@ -8,7 +8,7 @@ export function useLinkable(props: {
 }) {
     const inkline = useInkline();
 
-    const tag = computed((): string => {
+    const tag = computed<string | any>(() => {
         const routerComponent = inkline?.options?.routerComponent;
 
         if (props.to.value && routerComponent) {
