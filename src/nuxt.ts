@@ -2,7 +2,6 @@ import {
     defineNuxtModule,
     addPluginTemplate,
     addComponentsDir,
-    addPlugin,
 } from "@nuxt/kit";
 import { join, resolve, dirname } from "path";
 import { fileURLToPath } from "url";
@@ -95,11 +94,6 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
                     ...globals,
                 },
             });
-
-            // addPlugin({
-            //     mode: "all",
-            //     src: resolve(templatesDir, "nuxt.js"),
-            // });
         }
 
         // Add dynamic component imports
