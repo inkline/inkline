@@ -73,9 +73,7 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
             nuxt.options.css.unshift("@inkline/inkline/css/_base.scss");
 
             if (importOptions.utilities !== false) {
-                nuxt.options.css.push(
-                    "@inkline/inkline/css/utilities/index.scss"
-                );
+                nuxt.options.css.push("@inkline/inkline/css/_utilities.scss");
             }
         }
 
