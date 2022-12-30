@@ -298,7 +298,7 @@ export const defaultConfig: Configuration = {
             },
             elements: {
                 body: {
-                    background: 'var(--color-gray-900)',
+                    background: 'var(--color-gray-800)',
                     color: 'var(--color-gray-100)'
                 }
             }
