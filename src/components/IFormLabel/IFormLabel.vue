@@ -1,10 +1,10 @@
 <script lang="ts">
-import { computed, defineComponent, inject, ref, toRef } from "vue";
-import { useComponentSize } from "@inkline/inkline/composables";
-import { FormKey } from "@inkline/inkline/components/IForm/mixin";
-import { FormGroupKey } from "@inkline/inkline/components/IFormGroup/mixin";
+import { computed, defineComponent, inject, ref, toRef } from 'vue';
+import { useComponentSize } from '@inkline/inkline/composables';
+import { FormKey } from '@inkline/inkline/components/IForm/mixin';
+import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
 
-const componentName = "IFormLabel";
+const componentName = 'IFormLabel';
 
 export default defineComponent({
     name: componentName,
@@ -17,7 +17,7 @@ export default defineComponent({
          */
         for: {
             type: String,
-            default: "",
+            default: ''
         },
         /**
          * The placement of the form label
@@ -27,7 +27,7 @@ export default defineComponent({
          */
         placement: {
             type: String,
-            default: "",
+            default: ''
         },
         /**
          * The size variant of the form label
@@ -37,8 +37,8 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: "md",
-        },
+            default: 'md'
+        }
     },
     setup(props) {
         const labelRef = ref<HTMLLabelElement | null>(null);
@@ -46,16 +46,14 @@ export default defineComponent({
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
 
-        const currentFor = toRef(props, "for");
+        const currentFor = toRef(props, 'for');
 
-        const currentSize = computed(
-            () => props.size || formGroup?.size.value || form?.size.value
-        );
+        const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
         const { size } = useComponentSize({ componentName, currentSize });
 
         const classes = computed(() => ({
             [`-${size.value}`]: true,
-            [`-${props.placement}`]: Boolean(props.placement),
+            [`-${props.placement}`]: Boolean(props.placement)
         }));
 
         function onClick() {
@@ -66,9 +64,7 @@ export default defineComponent({
             if (labelRef.value) {
                 const nextSibling = labelRef.value?.nextSibling as HTMLElement;
 
-                (
-                    nextSibling?.querySelector("input, textarea") as HTMLElement
-                )?.focus?.();
+                (nextSibling?.querySelector('input, textarea') as HTMLElement)?.focus?.();
             }
         }
 
@@ -76,9 +72,9 @@ export default defineComponent({
             labelRef,
             currentFor,
             classes,
-            onClick,
+            onClick
         };
-    },
+    }
 });
 </script>
 

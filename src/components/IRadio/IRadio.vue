@@ -1,17 +1,17 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, ref, toRef } from "vue";
-import { uid } from "@grozav/utils";
-import { RadioGroupKey } from "@inkline/inkline/components/IRadioGroup/mixin";
-import { FormKey } from "@inkline/inkline/components/IForm/mixin";
-import { FormGroupKey } from "@inkline/inkline/components/IFormGroup/mixin";
+import { computed, defineComponent, inject, PropType, ref, toRef } from 'vue';
+import { uid } from '@grozav/utils';
+import { RadioGroupKey } from '@inkline/inkline/components/IRadioGroup/mixin';
+import { FormKey } from '@inkline/inkline/components/IForm/mixin';
+import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
 import {
     useComponentColor,
     useComponentSize,
     useFormValidationError,
-    useValidation,
-} from "@inkline/inkline/composables";
+    useValidation
+} from '@inkline/inkline/composables';
 
-const componentName = "IRadio";
+const componentName = 'IRadio';
 
 export default defineComponent({
     name: componentName,
@@ -24,7 +24,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * The disabled state of the radio
@@ -34,7 +34,7 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The error state of the radio, computed based on schema by default.
@@ -45,7 +45,7 @@ export default defineComponent({
          */
         error: {
             type: [Array, Boolean] as PropType<boolean | string[]>,
-            default: () => ["touched", "dirty", "invalid"],
+            default: () => ['touched', 'dirty', 'invalid']
         },
         /**
          * Used to set the radio value when used inside a radio group
@@ -53,7 +53,7 @@ export default defineComponent({
          * @name value
          */
         value: {
-            default: undefined,
+            default: undefined
         },
         /**
          * Used to set the radio value when used by itself
@@ -61,7 +61,7 @@ export default defineComponent({
          * @name modelValue
          */
         modelValue: {
-            default: false,
+            default: false
         },
         /**
          * The unique identifier of the radio
@@ -72,8 +72,8 @@ export default defineComponent({
         name: {
             type: String,
             default() {
-                return uid("radio");
-            },
+                return uid('radio');
+            }
         },
         /**
          * Displays the native browser radio input indicator
@@ -83,7 +83,7 @@ export default defineComponent({
          */
         native: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The readonly state of the radio
@@ -93,7 +93,7 @@ export default defineComponent({
          */
         readonly: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The size variant of the radio
@@ -104,7 +104,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * The tabindex of the radio
@@ -114,15 +114,15 @@ export default defineComponent({
          */
         tabindex: {
             type: [Number, String],
-            default: 0,
-        },
+            default: 0
+        }
     },
     emits: [
         /**
          * Event emitted for setting the modelValue
          * @event update:modelValue
          */
-        "update:modelValue",
+        'update:modelValue'
     ],
     setup(props, { emit }) {
         const inputRef = ref<HTMLInputElement | null>(null);
@@ -139,11 +139,7 @@ export default defineComponent({
                 form?.color.value
         );
         const currentSize = computed(
-            () =>
-                props.size ||
-                radioGroup?.size.value ||
-                formGroup?.size.value ||
-                form?.size.value
+            () => props.size || radioGroup?.size.value || formGroup?.size.value || form?.size.value
         );
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
@@ -163,26 +159,26 @@ export default defineComponent({
                 form?.readonly.value
         );
 
-        const name = toRef(props, "name");
+        const name = toRef(props, 'name');
         const {
             schema,
             onInput: schemaOnInput,
-            onBlur: schemaOnBlur,
+            onBlur: schemaOnBlur
         } = useValidation({
-            name,
+            name
         });
         const { hasError } = useFormValidationError({
             schema,
-            error: props.error,
+            error: props.error
         });
 
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            "-disabled": disabled.value,
-            "-readonly": readonly.value,
-            "-native": props.native,
-            "-error": hasError.value,
+            '-disabled': disabled.value,
+            '-readonly': readonly.value,
+            '-native': props.native,
+            '-error': hasError.value
         }));
 
         const checked = computed(() => {
@@ -206,7 +202,7 @@ export default defineComponent({
                 schemaOnInput(props.name, target.checked);
             }
 
-            emit("update:modelValue", target.checked);
+            emit('update:modelValue', target.checked);
         }
 
         function labelOnBlur(event: FocusEvent) {
@@ -235,9 +231,9 @@ export default defineComponent({
             inputRef,
             onChange,
             labelOnBlur,
-            labelOnClick,
+            labelOnClick
         };
-    },
+    }
 });
 </script>
 

@@ -48,7 +48,7 @@
         "@grozav/eslint-config": "^1.1.4",
         "@grozav/stylelint-config": "^1.0.0",
         "@inkline/cli": "^1.2.1",
-        "@inkline/config": "^1.7.4",
+        "@inkline/config": "^1.7.8",
         "@storybook/addon-a11y": "^6.5.12",
         "@storybook/addon-actions": "^6.5.12",
         "@storybook/addon-essentials": "^6.5.12",

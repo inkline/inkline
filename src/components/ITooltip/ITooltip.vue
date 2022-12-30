@@ -1,16 +1,16 @@
 <script lang="ts">
-import { PropType, ref, computed, defineComponent } from "vue";
-import { uid } from "@grozav/utils";
+import { PropType, ref, computed, defineComponent } from 'vue';
+import { uid } from '@grozav/utils';
 import {
     PopupEvent,
     usePopupControl,
     useClickOutside,
     useComponentColor,
-    useComponentSize,
-} from "@inkline/inkline/composables";
-import { Placement } from "@floating-ui/dom";
+    useComponentSize
+} from '@inkline/inkline/composables';
+import { Placement } from '@floating-ui/dom';
 
-const componentName = "ITooltip";
+const componentName = 'ITooltip';
 
 export default defineComponent({
     name: componentName,
@@ -23,7 +23,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * The disabled state of the tooltip
@@ -33,7 +33,7 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * Used to manually control the visibility of the tooltip
@@ -43,7 +43,7 @@ export default defineComponent({
          */
         visible: {
             type: Boolean,
-            default: undefined,
+            default: undefined
         },
         /**
          * The identifier of the tooltip
@@ -54,8 +54,8 @@ export default defineComponent({
         name: {
             type: String,
             default(): string {
-                return uid("tooltip");
-            },
+                return uid('tooltip');
+            }
         },
         /**
          * Displays an arrow on the tooltip pointing to the trigger element
@@ -65,7 +65,7 @@ export default defineComponent({
          */
         arrow: {
             type: Boolean,
-            default: true,
+            default: true
         },
         /**
          * The placement of the tooltip
@@ -75,7 +75,7 @@ export default defineComponent({
          */
         placement: {
             type: String as PropType<Placement>,
-            default: "top",
+            default: 'top'
         },
         /**
          * The events used to trigger the tooltip
@@ -85,7 +85,7 @@ export default defineComponent({
          */
         events: {
             type: [String, Array] as PropType<PopupEvent | PopupEvent[]>,
-            default: (): string[] => ["hover", "focus"],
+            default: (): string[] => ['hover', 'focus']
         },
         /**
          * The offset of the tooltip relative to the trigger element
@@ -95,7 +95,7 @@ export default defineComponent({
          */
         offset: {
             type: Number,
-            default: 6,
+            default: 6
         },
         /**
          * Determines whether hover state should be transferred from trigger to popup
@@ -105,7 +105,7 @@ export default defineComponent({
          */
         interactable: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * Used to override the floating-ui options used for creating the tooltip
@@ -115,7 +115,7 @@ export default defineComponent({
          */
         popupOptions: {
             type: Object,
-            default: (): any => ({}),
+            default: (): any => ({})
         },
         /**
          * The size variant of the tooltip
@@ -125,7 +125,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * Delay in milliseconds before the tooltip is hidden on hover
@@ -135,7 +135,7 @@ export default defineComponent({
          */
         hoverHideDelay: {
             type: Number,
-            default: 300,
+            default: 300
         },
         /**
          * Animation duration in milliseconds
@@ -145,20 +145,20 @@ export default defineComponent({
          */
         animationDuration: {
             type: Number,
-            default: 300,
-        },
+            default: 300
+        }
     },
     emits: [
         /**
          * Event emitted for setting the visible
          * @event update:visible
          */
-        "update:visible",
+        'update:visible',
         /**
          * Event emitted when clicking outside the tooltip
          * @event click:outside
          */
-        "click:outside",
+        'click:outside'
     ],
     setup(props, { emit }) {
         const wrapperRef = ref<HTMLElement | null>(null);
@@ -179,14 +179,14 @@ export default defineComponent({
             visible: props.visible,
             animationDuration: props.animationDuration,
             hoverHideDelay: props.hoverHideDelay,
-            offset: props.offset,
+            offset: props.offset
         }));
         const { visible, onKeyEscape, onClickOutside } = usePopupControl({
             triggerRef,
             popupRef,
             arrowRef,
             componentProps,
-            emit,
+            emit
         });
 
         useClickOutside({ elementRef: wrapperRef, fn: onClickOutside });
@@ -194,7 +194,7 @@ export default defineComponent({
         const classes = computed(() => {
             return {
                 [`-${color.value}`]: true,
-                [`-${size.value}`]: true,
+                [`-${size.value}`]: true
             };
         });
 
@@ -205,9 +205,9 @@ export default defineComponent({
             arrowRef,
             visible,
             onKeyEscape,
-            classes,
+            classes
         };
-    },
+    }
 });
 </script>
 

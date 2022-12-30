@@ -1,21 +1,17 @@
 <script lang="ts">
-import { computed, defineComponent, inject, toRef } from "vue";
-import {
-    useComponentColor,
-    useComponentSize,
-    useLinkable,
-} from "@inkline/inkline/composables";
-import { ILoader } from "@inkline/inkline/components/ILoader";
-import { ButtonGroupKey } from "@inkline/inkline/components/IButtonGroup/mixin";
-import { FormKey } from "@inkline/inkline/components/IForm/mixin";
-import { FormGroupKey } from "@inkline/inkline/components/IFormGroup/mixin";
+import { computed, defineComponent, inject, toRef } from 'vue';
+import { useComponentColor, useComponentSize, useLinkable } from '@inkline/inkline/composables';
+import { ILoader } from '@inkline/inkline/components/ILoader';
+import { ButtonGroupKey } from '@inkline/inkline/components/IButtonGroup/mixin';
+import { FormKey } from '@inkline/inkline/components/IForm/mixin';
+import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
 
-const componentName = "IButton";
+const componentName = 'IButton';
 
 export default defineComponent({
     name: componentName,
     components: {
-        ILoader,
+        ILoader
     },
     props: {
         /**
@@ -26,7 +22,7 @@ export default defineComponent({
          */
         active: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * Display the button as a block, spanning the full container width
@@ -36,7 +32,7 @@ export default defineComponent({
          */
         block: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * Display the button as a circle
@@ -46,7 +42,7 @@ export default defineComponent({
          */
         circle: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The color variant of the button
@@ -56,7 +52,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * The disabled state of the button
@@ -66,7 +62,7 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * Renders the component as an anchor link with a `href` attribute
@@ -76,7 +72,7 @@ export default defineComponent({
          */
         href: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * Display the button as a link
@@ -86,7 +82,7 @@ export default defineComponent({
          */
         link: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The loading state of the button
@@ -96,7 +92,7 @@ export default defineComponent({
          */
         loading: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * Display the button as an outline button
@@ -106,7 +102,7 @@ export default defineComponent({
          */
         outline: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * Set the HTML tag to be used for rendering the button
@@ -116,7 +112,7 @@ export default defineComponent({
          */
         tag: {
             type: String,
-            default: "button",
+            default: 'button'
         },
         /**
          * The tabindex of the button
@@ -126,7 +122,7 @@ export default defineComponent({
          */
         tabindex: {
             type: [Number, String],
-            default: 0,
+            default: 0
         },
         /**
          * Renders the component as a Router Link component with a `to` attribute
@@ -136,7 +132,7 @@ export default defineComponent({
          */
         to: {
             type: [String, Object],
-            default: undefined,
+            default: undefined
         },
         /**
          * The size variant of the button
@@ -146,26 +142,22 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: undefined,
-        },
+            default: undefined
+        }
     },
     setup(props) {
         const buttonGroup = inject(ButtonGroupKey, null);
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
 
-        const currentColor = computed(
-            () => props.color || buttonGroup?.color.value
-        );
-        const currentSize = computed(
-            () => props.size || buttonGroup?.size.value
-        );
+        const currentColor = computed(() => props.color || buttonGroup?.color.value);
+        const currentSize = computed(() => props.size || buttonGroup?.size.value);
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
 
-        const to = toRef(props, "to");
-        const href = toRef(props, "href");
-        const currentTag = toRef(props, "tag");
+        const to = toRef(props, 'to');
+        const href = toRef(props, 'href');
+        const currentTag = toRef(props, 'tag');
         const { tag: isTag } = useLinkable({ to, href, tag: currentTag });
 
         const disabled = computed(() => {
@@ -179,40 +171,38 @@ export default defineComponent({
         });
 
         const ariaBusy = computed(() => {
-            if (role.value !== "button") {
+            if (role.value !== 'button') {
                 return null;
             }
-            return props.loading ? "true" : null;
+            return props.loading ? 'true' : null;
         });
 
         const ariaDisabled = computed(() => {
-            return disabled.value ? "true" : null;
+            return disabled.value ? 'true' : null;
         });
 
         const ariaPressed = computed(() => {
-            if (role.value !== "button") {
+            if (role.value !== 'button') {
                 return null;
             }
-            return props.active ? "true" : null;
+            return props.active ? 'true' : null;
         });
 
         const classes = computed(() => {
             return {
                 [`-${color.value}`]: true,
                 [`-${size.value}`]: true,
-                "-active": props.active,
-                "-block": props.block,
-                "-circle": props.circle,
-                "-disabled": disabled.value,
-                "-link": props.link,
-                "-outline": props.outline,
-                "-loading": props.loading,
+                '-active': props.active,
+                '-block': props.block,
+                '-circle': props.circle,
+                '-disabled': disabled.value,
+                '-link': props.link,
+                '-outline': props.outline,
+                '-loading': props.loading
             };
         });
 
-        const role = computed(() =>
-            props.to || props.href ? "link" : "button"
-        );
+        const role = computed(() => (props.to || props.href ? 'link' : 'button'));
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
         return {
@@ -223,9 +213,9 @@ export default defineComponent({
             isTag,
             role,
             tabIndex,
-            classes,
+            classes
         };
-    },
+    }
 });
 </script>
 

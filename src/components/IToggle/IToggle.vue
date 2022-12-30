@@ -1,16 +1,16 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, ref, toRef } from "vue";
-import { uid } from "@grozav/utils";
-import { FormKey } from "@inkline/inkline/components/IForm/mixin";
-import { FormGroupKey } from "@inkline/inkline/components/IFormGroup/mixin";
+import { computed, defineComponent, inject, PropType, ref, toRef } from 'vue';
+import { uid } from '@grozav/utils';
+import { FormKey } from '@inkline/inkline/components/IForm/mixin';
+import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
 import {
     useComponentColor,
     useComponentSize,
     useFormValidationError,
-    useValidation,
-} from "@inkline/inkline/composables";
+    useValidation
+} from '@inkline/inkline/composables';
 
-const componentName = "IToggle";
+const componentName = 'IToggle';
 
 export default defineComponent({
     name: componentName,
@@ -23,7 +23,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * The disabled state of the checkbox
@@ -33,7 +33,7 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The error state of the checkbox, computed based on schema by default.
@@ -44,7 +44,7 @@ export default defineComponent({
          */
         error: {
             type: [Array, Boolean] as PropType<boolean | string[]>,
-            default: () => ["touched", "dirty", "invalid"],
+            default: () => ['touched', 'dirty', 'invalid']
         },
         /**
          * The indeterminate state of the checkbox
@@ -54,7 +54,7 @@ export default defineComponent({
          */
         indeterminate: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * Used to set the checkbox value when used inside a checkbox group
@@ -62,7 +62,7 @@ export default defineComponent({
          * @name value
          */
         value: {
-            default: undefined,
+            default: undefined
         },
         /**
          * Used to set the checkbox value when used by itself
@@ -70,7 +70,7 @@ export default defineComponent({
          * @name modelValue
          */
         modelValue: {
-            default: false,
+            default: false
         },
         /**
          * The unique identifier of the checkbox
@@ -81,8 +81,8 @@ export default defineComponent({
         name: {
             type: String,
             default() {
-                return uid("toggle");
-            },
+                return uid('toggle');
+            }
         },
         /**
          * Displays the native browser checkbox input indicator
@@ -92,7 +92,7 @@ export default defineComponent({
          */
         native: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The readonly state of the checkbox
@@ -102,7 +102,7 @@ export default defineComponent({
          */
         readonly: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The size variant of the checkbox
@@ -113,7 +113,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * The tabindex of the checkbox
@@ -123,7 +123,7 @@ export default defineComponent({
          */
         tabindex: {
             type: [Number, String],
-            default: 0,
+            default: 0
         },
         /**
          * Enable toggle validation using schema
@@ -133,15 +133,15 @@ export default defineComponent({
          */
         validate: {
             type: Boolean,
-            default: true,
-        },
+            default: true
+        }
     },
     emits: [
         /**
          * Event emitted for setting the modelValue
          * @event update:modelValue
          */
-        "update:modelValue",
+        'update:modelValue'
     ],
     setup(props, { emit }) {
         const inputRef = ref<HTMLInputElement | null>(null);
@@ -152,47 +152,39 @@ export default defineComponent({
         const currentColor = computed(
             () => props.color || formGroup?.color.value || form?.color.value
         );
-        const currentSize = computed(
-            () => props.size || formGroup?.size.value || form?.size.value
-        );
+        const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
 
         const disabled = computed(
-            () =>
-                props.disabled ||
-                formGroup?.disabled.value ||
-                form?.disabled.value
+            () => props.disabled || formGroup?.disabled.value || form?.disabled.value
         );
         const readonly = computed(
-            () =>
-                props.readonly ||
-                formGroup?.readonly.value ||
-                form?.readonly.value
+            () => props.readonly || formGroup?.readonly.value || form?.readonly.value
         );
 
-        const name = toRef(props, "name");
-        const validate = toRef(props, "validate");
+        const name = toRef(props, 'name');
+        const validate = toRef(props, 'validate');
         const {
             schema,
             onInput: schemaOnInput,
-            onBlur: schemaOnBlur,
+            onBlur: schemaOnBlur
         } = useValidation({
             name,
-            validate,
+            validate
         });
         const { hasError } = useFormValidationError({
             schema,
-            error: props.error,
+            error: props.error
         });
 
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            "-disabled": disabled.value,
-            "-readonly": readonly.value,
-            "-native": props.native,
-            "-error": hasError.value,
+            '-disabled': disabled.value,
+            '-readonly': readonly.value,
+            '-native': props.native,
+            '-error': hasError.value
         }));
 
         const checked = computed(() => {
@@ -211,7 +203,7 @@ export default defineComponent({
             const target = event.target as HTMLInputElement;
 
             schemaOnInput(props.name, target.checked);
-            emit("update:modelValue", target.checked);
+            emit('update:modelValue', target.checked);
         }
 
         function labelOnBlur(event: FocusEvent) {
@@ -236,9 +228,9 @@ export default defineComponent({
             tabindex,
             onChange,
             labelOnBlur,
-            labelOnClick,
+            labelOnClick
         };
-    },
+    }
 });
 </script>
 

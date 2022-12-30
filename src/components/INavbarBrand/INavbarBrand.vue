@@ -1,8 +1,8 @@
 <script lang="ts">
-import { defineComponent, toRef } from "vue";
-import { useLinkable } from "@inkline/inkline/composables";
+import { defineComponent, toRef } from 'vue';
+import { useLinkable } from '@inkline/inkline/composables';
 
-const componentName = "INavbarBrand";
+const componentName = 'INavbarBrand';
 
 export default defineComponent({
     name: componentName,
@@ -15,7 +15,7 @@ export default defineComponent({
          */
         href: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * Set the HTML tag to be used for rendering the nav item
@@ -25,7 +25,7 @@ export default defineComponent({
          */
         tag: {
             type: String,
-            default: "div",
+            default: 'div'
         },
         /**
          * Renders the component as a Router Link component with a `to` attribute
@@ -35,20 +35,20 @@ export default defineComponent({
          */
         to: {
             type: [String, Object],
-            default: undefined,
-        },
+            default: undefined
+        }
     },
     setup(props) {
-        const to = toRef(props, "to");
-        const href = toRef(props, "href");
-        const currentTag = toRef(props, "tag");
+        const to = toRef(props, 'to');
+        const href = toRef(props, 'href');
+        const currentTag = toRef(props, 'tag');
         const { tag } = useLinkable({ to, href, tag: currentTag });
 
         return {
             tag,
-            currentTag,
+            currentTag
         };
-    },
+    }
 });
 </script>
 

@@ -1,31 +1,23 @@
 <script lang="ts">
-import {
-    computed,
-    defineComponent,
-    inject,
-    PropType,
-    ref,
-    toRef,
-    watch,
-} from "vue";
-import { IButton } from "@inkline/inkline/components/IButton";
-import { filterKeys, uid } from "@grozav/utils";
-import { InputElementEvent } from "@inkline/inkline/types";
+import { computed, defineComponent, inject, PropType, ref, toRef, watch } from 'vue';
+import { IButton } from '@inkline/inkline/components/IButton';
+import { filterKeys, uid } from '@grozav/utils';
+import { InputElementEvent } from '@inkline/inkline/types';
 import {
     useComponentColor,
     useComponentSize,
     useFormValidationError,
-    useValidation,
-} from "@inkline/inkline/composables";
-import { FormKey } from "@inkline/inkline/components/IForm/mixin";
-import { FormGroupKey } from "@inkline/inkline/components/IFormGroup/mixin";
+    useValidation
+} from '@inkline/inkline/composables';
+import { FormKey } from '@inkline/inkline/components/IForm/mixin';
+import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
 
-const componentName = "INumberInput";
+const componentName = 'INumberInput';
 
 export default defineComponent({
     name: componentName,
     components: {
-        IButton,
+        IButton
     },
     props: {
         /**
@@ -36,7 +28,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * Display the input as clearable
@@ -46,7 +38,7 @@ export default defineComponent({
          */
         clearable: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The disabled state of the input
@@ -56,7 +48,7 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The error state of the checkbox, computed based on schema by default.
@@ -67,7 +59,7 @@ export default defineComponent({
          */
         error: {
             type: [Array, Boolean] as PropType<boolean | string[]>,
-            default: () => ["touched", "dirty", "invalid"],
+            default: () => ['touched', 'dirty', 'invalid']
         },
         /**
          * The id of the internal input element
@@ -77,7 +69,7 @@ export default defineComponent({
          */
         id: {
             type: String,
-            default: "",
+            default: ''
         },
         /**
          * Used to set the field value
@@ -87,7 +79,7 @@ export default defineComponent({
          */
         modelValue: {
             type: [String, Number],
-            default: "",
+            default: ''
         },
         /**
          * The unique identifier of the input
@@ -98,8 +90,8 @@ export default defineComponent({
         name: {
             type: String,
             default(): string {
-                return uid("input");
-            },
+                return uid('input');
+            }
         },
         /**
          * Display the input as plaintext, disabling interaction
@@ -109,7 +101,7 @@ export default defineComponent({
          */
         plaintext: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The readonly state of the input
@@ -119,7 +111,7 @@ export default defineComponent({
          */
         readonly: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * The size variant of the input
@@ -129,7 +121,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * The tabindex of the input
@@ -139,7 +131,7 @@ export default defineComponent({
          */
         tabindex: {
             type: [Number, String],
-            default: 0,
+            default: 0
         },
         /**
          * The minimum allowed input value
@@ -149,7 +141,7 @@ export default defineComponent({
          */
         min: {
             type: [Number, String],
-            default: -Infinity,
+            default: -Infinity
         },
         /**
          * The maximum allowed input value
@@ -159,7 +151,7 @@ export default defineComponent({
          */
         max: {
             type: [Number, String],
-            default: Infinity,
+            default: Infinity
         },
         /**
          * The precision of the input value, for floating point numbers
@@ -169,7 +161,7 @@ export default defineComponent({
          */
         precision: {
             type: Number,
-            default: 0,
+            default: 0
         },
         /**
          * The increment step to increase or decrease the value by
@@ -179,7 +171,7 @@ export default defineComponent({
          */
         step: {
             type: Number,
-            default: 1,
+            default: 1
         },
         /**
          * The aria-label of the clear button
@@ -189,7 +181,7 @@ export default defineComponent({
          */
         clearAriaLabel: {
             type: String,
-            default: "Clear",
+            default: 'Clear'
         },
         /**
          * Enable number input validation using schema
@@ -199,70 +191,58 @@ export default defineComponent({
          */
         validate: {
             type: Boolean,
-            default: true,
-        },
+            default: true
+        }
     },
     emits: [
         /**
          * Event emitted for setting the modelValue
          * @event update:modelValue
          */
-        "update:modelValue",
+        'update:modelValue',
         /**
          * Event emitted when clearing the input element
          * @event clear
          */
-        "clear",
+        'clear'
     ],
     setup(props, { attrs, emit, slots }) {
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
 
-        const currentColor = toRef(props, "color");
-        const currentSize = toRef(props, "size");
+        const currentColor = toRef(props, 'color');
+        const currentSize = toRef(props, 'size');
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
 
         const disabled = computed(
-            () =>
-                !!(
-                    props.disabled ||
-                    formGroup?.disabled.value ||
-                    form?.disabled.value
-                )
+            () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
         );
         const readonly = computed(
-            () =>
-                !!(
-                    props.readonly ||
-                    formGroup?.readonly.value ||
-                    form?.readonly.value
-                )
+            () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
 
         const input = ref<HTMLInputElement | null>(null);
 
-        const wrapperAttrsAllowlist = ["class", "className", /^data-/];
+        const wrapperAttrsAllowlist = ['class', 'className', /^data-/];
         const wrapperAttrs = computed(() =>
             filterKeys(attrs, { allowlist: wrapperAttrsAllowlist })
         );
-        const inputAttrs = computed(() =>
-            filterKeys(attrs, { denylist: wrapperAttrsAllowlist })
-        );
+        const inputAttrs = computed(() => filterKeys(attrs, { denylist: wrapperAttrsAllowlist }));
 
-        const name = toRef(props, "name");
-        const validate = toRef(props, "validate");
+        const name = toRef(props, 'name');
+        const validate = toRef(props, 'validate');
         const {
             schema,
             onInput: schemaOnInput,
-            onBlur: schemaOnBlur,
+            onBlur: schemaOnBlur
         } = useValidation({
             name,
-            validate,
+            validate
         });
         const { hasError } = useFormValidationError({
             schema,
-            error: props.error,
+            error: props.error
         });
 
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
@@ -276,49 +256,37 @@ export default defineComponent({
         });
 
         const clearable = computed(() => {
-            return (
-                props.clearable &&
-                !disabled.value &&
-                !readonly.value &&
-                value.value !== ""
-            );
+            return props.clearable && !disabled.value && !readonly.value && value.value !== '';
         });
 
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            "-disabled": disabled.value,
-            "-error": hasError.value,
-            "-readonly": readonly.value,
-            "-prefixed": Boolean(slots.prefix),
-            "-suffixed": Boolean(slots.suffix),
-            "-prepended": Boolean(slots.prepend),
-            "-appended": Boolean(slots.append),
+            '-disabled': disabled.value,
+            '-error': hasError.value,
+            '-readonly': readonly.value,
+            '-prefixed': Boolean(slots.prefix),
+            '-suffixed': Boolean(slots.suffix),
+            '-prepended': Boolean(slots.prepend),
+            '-appended': Boolean(slots.append)
         }));
 
         watch(
             () => value.value,
             (value) => {
-                let newValue = (value || "")
+                let newValue = (value || '')
                     .toString()
-                    .replace(/^[^0-9-]/, "")
-                    .replace(/^(-)[^0-9]/, "$1")
+                    .replace(/^[^0-9-]/, '')
+                    .replace(/^(-)[^0-9]/, '$1')
                     .replace(
-                        new RegExp(
-                            `^(-?[0-9]+)[^0-9${props.precision > 0 ? "." : ""}]`
-                        ),
-                        "$1"
+                        new RegExp(`^(-?[0-9]+)[^0-9${props.precision > 0 ? '.' : ''}]`),
+                        '$1'
                     );
 
                 if (props.precision > 0) {
                     newValue = newValue
-                        .replace(/^(-?[0-9]+\.)[^0-9]/, "$1")
-                        .replace(
-                            new RegExp(
-                                `^(-?[0-9]+\\.[0-9]{0,${props.precision}}).*`
-                            ),
-                            "$1"
-                        );
+                        .replace(/^(-?[0-9]+\.)[^0-9]/, '$1')
+                        .replace(new RegExp(`^(-?[0-9]+\\.[0-9]{0,${props.precision}}).*`), '$1');
                 }
 
                 if (parseFloat(newValue) >= parseFloat(props.max as string))
@@ -327,7 +295,7 @@ export default defineComponent({
                     newValue = props.min.toString();
 
                 schemaOnInput(props.name, newValue);
-                emit("update:modelValue", newValue);
+                emit('update:modelValue', newValue);
             }
         );
 
@@ -337,7 +305,7 @@ export default defineComponent({
 
         function updateModelValue(value: string) {
             schemaOnInput(props.name, value);
-            emit("update:modelValue", value);
+            emit('update:modelValue', value);
         }
 
         function onInput(event: Event) {
@@ -347,9 +315,9 @@ export default defineComponent({
         }
 
         function onClear(event: Event) {
-            emit("clear", event);
+            emit('clear', event);
 
-            updateModelValue("");
+            updateModelValue('');
         }
 
         function decrease() {
@@ -357,9 +325,7 @@ export default defineComponent({
                 return;
             }
 
-            updateModelValue(
-                formatPrecision((Number(value.value) - props.step).toString())
-            );
+            updateModelValue(formatPrecision((Number(value.value) - props.step).toString()));
         }
 
         function increase() {
@@ -367,17 +333,15 @@ export default defineComponent({
                 return;
             }
 
-            updateModelValue(
-                formatPrecision((Number(value.value) + props.step).toString())
-            );
+            updateModelValue(formatPrecision((Number(value.value) + props.step).toString()));
         }
 
         function formatPrecision(value: string) {
-            const parts = value.split(".");
-            let decimals = parts[1] || "";
+            const parts = value.split('.');
+            let decimals = parts[1] || '';
 
             for (let i = decimals.length; i < props.precision; i += 1) {
-                decimals += "0";
+                decimals += '0';
             }
 
             return props.precision > 0 ? `${parts[0]}.${decimals}` : parts[0];
@@ -405,9 +369,9 @@ export default defineComponent({
             onClear,
             decrease,
             increase,
-            onBlurFormatPrecision,
+            onBlurFormatPrecision
         };
-    },
+    }
 });
 </script>
 

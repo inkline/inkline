@@ -1,14 +1,11 @@
 <script lang="ts">
-import { computed, defineComponent, inject, provide } from "vue";
-import { NavbarKey } from "@inkline/inkline/components/INavbar/mixin";
-import { SidebarKey } from "@inkline/inkline/components/ISidebar/mixin";
-import { NavKey } from "@inkline/inkline/components/INav/mixin";
-import {
-    useComponentColor,
-    useComponentSize,
-} from "@inkline/inkline/composables";
+import { computed, defineComponent, inject, provide } from 'vue';
+import { NavbarKey } from '@inkline/inkline/components/INavbar/mixin';
+import { SidebarKey } from '@inkline/inkline/components/ISidebar/mixin';
+import { NavKey } from '@inkline/inkline/components/INav/mixin';
+import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
-const componentName = "INav";
+const componentName = 'INav';
 
 export default defineComponent({
     name: componentName,
@@ -21,7 +18,7 @@ export default defineComponent({
          */
         color: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * The size variant of the nav
@@ -31,7 +28,7 @@ export default defineComponent({
          */
         size: {
             type: String,
-            default: undefined,
+            default: undefined
         },
         /**
          * Display the nav with vertical orientation
@@ -41,8 +38,8 @@ export default defineComponent({
          */
         vertical: {
             type: Boolean,
-            default: false,
-        },
+            default: false
+        }
     },
     setup(props) {
         const navbar = inject(NavbarKey, null);
@@ -56,11 +53,11 @@ export default defineComponent({
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            "-vertical": props.vertical,
+            '-vertical': props.vertical
         }));
 
         provide(NavKey, {
-            onItemClick,
+            onItemClick
         });
 
         function onItemClick(event: Event) {
@@ -72,9 +69,9 @@ export default defineComponent({
         }
 
         return {
-            classes,
+            classes
         };
-    },
+    }
 });
 </script>
 
