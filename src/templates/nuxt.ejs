@@ -1,6 +1,11 @@
 import { defineNuxtPlugin } from '#app';
+import { NuxtLink } from '#components';
+import { markRaw } from 'vue';
 import { Inkline } from '@inkline/inkline/plugin';
 
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(Inkline, <%= JSON.stringify(options, 4) %>);
+    nuxtApp.vueApp.use(Inkline, {
+        routerComponent: markRaw(NuxtLink),
+        ...<%= JSON.stringify(options, 4) %>
+    });
 });

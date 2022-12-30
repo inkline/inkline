@@ -89,10 +89,7 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
                 src: resolve(templatesDir, "nuxt.ejs"),
                 write: true,
                 filename: "inkline.mjs",
-                options: {
-                    routerComponent: "NuxtLink",
-                    ...globals,
-                },
+                options: globals,
             });
         }
 
