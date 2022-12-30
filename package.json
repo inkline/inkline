@@ -1,6 +1,6 @@
 {
   "name": "@inkline/plugin",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "scripts": {
     "start": "npm run build",
     "dev": "npm run dev:vite",
