@@ -1,4 +1,4 @@
-import { computed, Ref } from "vue";
+import { computed, resolveComponent, Ref } from "vue";
 import { useInkline } from "@inkline/inkline/composables";
 
 export function useLinkable(props: {
@@ -12,7 +12,7 @@ export function useLinkable(props: {
         const routerComponent = inkline?.options?.routerComponent;
 
         if (props.to.value && routerComponent) {
-            return routerComponent;
+            return resolveComponent(routerComponent);
         } else {
             if (props.href.value) {
                 return "a";
