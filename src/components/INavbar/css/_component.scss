@@ -386,7 +386,7 @@
 
     transition-property: var(
         --navbar--transition-property,
-        (background-color, border-color, color)
+        (background-color, border-color)
     );
     transition-timing-function: var(
         --navbar--transition-timing-function,
@@ -406,6 +406,19 @@
     }
 
     .navbar-collapsible {
+        transition-property: var(
+            --navbar--transition-property,
+            (background-color, border-color)
+        );
+        transition-timing-function: var(
+            --navbar--transition-timing-function,
+            var(--transition-timing-function)
+        );
+        transition-duration: var(
+            --navbar--transition-duration,
+            var(--transition-duration)
+        );
+
         .nav-item {
             color: var(--navbar--item--color);
             padding: var(
