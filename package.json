@@ -103,6 +103,7 @@
         "vue-tsc": "^1.0.8"
     },
     "peerDependencies": {
+        "@inkline/config": ">=1",
         "vue": ">=3.0.0"
     },
     "files": [
