@@ -12,7 +12,9 @@ export function useLinkable(props: {
         const routerComponent = inkline?.options?.routerComponent;
 
         if (props.to.value && routerComponent) {
-            return resolveComponent(routerComponent);
+            return typeof routerComponent === "string"
+                ? resolveComponent(routerComponent)
+                : routerComponent;
         } else {
             if (props.href.value) {
                 return "a";
