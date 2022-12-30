@@ -52,10 +52,13 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@grozav/utils": ">=1",
-    "@inkline/config": ">=1",
+    "@grozav/utils": "^1.1.6",
     "@nuxt/kit": "^3.0.0",
     "unplugin": "^0.9.6"
+  },
+  "peerDependencies": {
+    "@inkline/config": ">=1",
+    "@inkline/inkline": ">=4"
   },
   "main": "index.js",
   "module": "index.mjs",
