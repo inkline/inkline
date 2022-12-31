@@ -104,5 +104,33 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/alexgrozav"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "bugs": {
+    "url": "https://github.com/inkline/inkline/issues"
+  },
+  "homepage": "https://inkline.io",
+  "keywords": [
+    "inkline",
+    "vue",
+    "vuejs",
+    "plugin",
+    "nuxt",
+    "nuxtjs",
+    "webpack",
+    "vite"
+  ],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inkline/plugin.git"
   }
 }
