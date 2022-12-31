@@ -1,6 +1,6 @@
 import { inject } from 'vue';
-import { InklineGlobalOptions, InklineKey } from '@inkline/inkline/plugin';
+import { InklineGlobal, InklineKey } from '@inkline/inkline/plugin';
 
 export function useInkline() {
-    return inject(InklineKey) as InklineGlobalOptions;
+    return inject(InklineKey) as InklineGlobal;
 }

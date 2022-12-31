@@ -1,19 +1,19 @@
 import {
-    createInklineGlobals,
-    handleColorMode,
+    createInklineGlobal,
+    onChangeColorMode,
     Inkline,
     InklineIconsKey,
     InklineKey,
-    PrototypeConfig
+    InklineOptions
 } from '@inkline/inkline/plugin';
 import * as inklineIcons from '@inkline/inkline/icons';
 import { IButton } from '@inkline/inkline/components';
 import { i18n } from '@inkline/inkline/i18n';
 
 describe('Plugin', () => {
-    describe('handleColorMode()', () => {
+    describe('onChangeColorMode()', () => {
         it('should set given colorMode if not system color mode', () => {
-            handleColorMode('color');
+            onChangeColorMode('color');
 
             expect(document.body).toHaveClass('color-theme');
         });
@@ -28,7 +28,7 @@ describe('Plugin', () => {
                     } as any)
             );
 
-            handleColorMode('system');
+            onChangeColorMode('system');
 
             expect(document.body).toHaveClass('light-theme');
 
@@ -45,7 +45,7 @@ describe('Plugin', () => {
                     } as any)
             );
 
-            handleColorMode('system');
+            onChangeColorMode('system');
 
             expect(document.body).toHaveClass('dark-theme');
 
@@ -55,7 +55,7 @@ describe('Plugin', () => {
 
     describe('createInklineGlobals()', () => {
         it('should create a new prototype with given options', () => {
-            const options: PrototypeConfig = {
+            const options: InklineOptions = {
                 colorMode: 'system',
                 locale: 'en',
                 validateOn: ['blur'],
@@ -64,7 +64,7 @@ describe('Plugin', () => {
                 routerComponent: 'router-link',
                 componentOptions: {}
             };
-            const prototype = createInklineGlobals(options);
+            const prototype = createInklineGlobal(options);
 
             expect(prototype).toHaveProperty('form');
             expect(prototype).toHaveProperty('setLocale');
@@ -181,7 +181,7 @@ describe('Plugin', () => {
             });
 
             describe('onDarkModeMediaQueryChange()', () => {
-                it('should call handleColorMode() =', () => {
+                it('should call onChangeColorMode() =', () => {
                     const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
                     const addEventListener = vi.fn();
                     matchMediaSpy.mockImplementation(
@@ -205,7 +205,7 @@ describe('Plugin', () => {
                     vi.clearAllMocks();
                 });
 
-                it('should not call handleColorMode() if not system color mode', () => {
+                it('should not call onChangeColorMode() if not system color mode', () => {
                     const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
                     const addEventListener = vi.fn();
                     matchMediaSpy.mockImplementation(
