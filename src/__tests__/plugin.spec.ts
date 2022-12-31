@@ -1,5 +1,5 @@
 import {
-    createPrototype,
+    createInklineGlobals,
     handleColorMode,
     Inkline,
     InklineIconsKey,
@@ -53,7 +53,7 @@ describe('Plugin', () => {
         });
     });
 
-    describe('createPrototype()', () => {
+    describe('createInklineGlobals()', () => {
         it('should create a new prototype with given options', () => {
             const options: PrototypeConfig = {
                 colorMode: 'system',
@@ -64,7 +64,7 @@ describe('Plugin', () => {
                 routerComponent: 'router-link',
                 componentOptions: {}
             };
-            const prototype = createPrototype(options);
+            const prototype = createInklineGlobals(options);
 
             expect(prototype).toHaveProperty('form');
             expect(prototype).toHaveProperty('setLocale');

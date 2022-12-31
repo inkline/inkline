@@ -1,3 +1,3 @@
-import { createPrototype, defaultOptions } from '@inkline/inkline/plugin';
+import { createInklineGlobals, defaultOptions } from '@inkline/inkline/plugin';
 
-export const $inkline = createPrototype(defaultOptions);
+export const $inkline = createInklineGlobals(defaultOptions);
