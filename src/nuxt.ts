@@ -6,7 +6,7 @@ import {
 import { join, resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
-import { PluginConfig } from "@inkline/inkline";
+import { InklinePluginOptions } from "@inkline/inkline";
 import { NuxtModule } from "@nuxt/schema";
 import { UserOptions } from "./plugin/types";
 import { watch } from "./plugin/watch";
@@ -29,7 +29,9 @@ const defaultImportOptions: ModuleConfig["import"] = {
     utilities: true,
 };
 
-export type InklineModule = { globals: Partial<PluginConfig> } & ModuleConfig &
+export type InklineModule = {
+    globals: Partial<InklinePluginOptions>;
+} & ModuleConfig &
     UserOptions;
 
 export const module: NuxtModule<InklineModule> = defineNuxtModule({
@@ -87,7 +89,7 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
                 src: resolve(templatesDir, "nuxt.ejs"),
                 write: true,
                 filename: "inkline.mjs",
-                options: globals,
+                options: globals || {},
             });
         }
 

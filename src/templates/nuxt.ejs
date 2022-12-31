@@ -1,11 +1,19 @@
 import { defineNuxtPlugin } from '#app';
 import { NuxtLink } from '#components';
 import { markRaw } from 'vue';
-import { Inkline } from '@inkline/inkline/plugin';
+import { Inkline, InklineKey, colorModeLocalStorageKey } from '@inkline/inkline/plugin';
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(Inkline, {
+        renderMode: 'universal',
         routerComponent: markRaw(NuxtLink),
         ...<%= JSON.stringify(options, 4) %>
     });
+
+    nuxtApp.hook('app:mounted', () => {
+        const storedColorMode = localStorage.getItem(colorModeLocalStorageKey);
+        if (storedColorMode) {
+            nuxtApp.vueApp.config.globalProperties.$inkline.options.colorMode = storedColorMode;
+        }
+    })
 });

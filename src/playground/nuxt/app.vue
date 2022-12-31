@@ -1,3 +1,20 @@
+<script lang="ts">
+import { defineComponent, computed } from 'vue';
+import { useInkline } from "@inkline/inkline";
+
+export default defineComponent({
+  setup() {
+    const inkline = useInkline();
+    const colorMode = computed(() => inkline.options.colorMode);
+
+    function toggleColorMode () {
+      inkline.options.colorMode = colorMode.value === 'light' ? 'dark' : 'light';
+    }
+
+    return { colorMode, toggleColorMode };
+  },
+});
+</script>
 <template>
     <div id="app">
         <h1>Hello world</h1>
@@ -28,6 +45,9 @@
                 </i-navbar-collapsible>
             </i-navbar>
         </div>
+        <i-button class="_margin-top:1" @click="toggleColorMode">
+            Switch to {{ colorMode === 'dark' ? 'light' : 'dark' }} mode
+        </i-button>
     </div>
 </template>
 
