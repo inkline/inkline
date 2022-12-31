@@ -10,7 +10,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         ...<%= JSON.stringify(options, 4) %>
     });
 
-    nuxtApp.hook('app:mounted', () => {
+    nuxtApp.hook('app:suspense:resolve', () => {
         const storedColorMode = localStorage.getItem(colorModeLocalStorageKey);
         if (storedColorMode) {
             nuxtApp.vueApp.config.globalProperties.$inkline.options.colorMode = storedColorMode;
