@@ -4,7 +4,7 @@ exports[`Components > INavbar > should render correctly 1`] = `
 "<nav class=\\"navbar -collapse-md -light -md\\">
   <div class=\\"container\\">
     <!-- @slot default Slot for default container content -->
-    <div class=\\"hamburger-menu -light -md -close collapse-toggle\\"><span class=\\"hamburger-menu-bars\\"></span></div><!-- @slot default Slot for default navbar content -->
+    <div class=\\"collapse-toggle hamburger-menu -light -md -close\\"><span class=\\"hamburger-menu-bars\\"></span></div><!-- @slot default Slot for default navbar content -->
     <div class=\\"navbar-brand\\" tag=\\"div\\" translate=\\"no\\">
       <!-- @slot default Slot for default navbar brand content -->
     </div>

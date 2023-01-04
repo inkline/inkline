@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Components > IButtonGroup > should render correctly 1`] = `
-"<div class=\\"button-group -md -light\\" role=\\"group\\">
+"<div role=\\"group\\" class=\\"button-group -md -light\\">
   <!-- @slot default Slot for default button group content -->
 </div>"
 `;

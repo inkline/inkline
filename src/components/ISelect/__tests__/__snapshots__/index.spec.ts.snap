@@ -2,7 +2,7 @@
 
 exports[`Components > ISelect > props > options > should render correctly without options 1`] = `
 "<div id=\\"select\\" class=\\"select-wrapper -primary -md\\" name=\\"select\\" role=\\"combobox\\" aria-haspopup=\\"listbox\\" aria-owns=\\"select-options\\" aria-expanded=\\"false\\">
-  <div class=\\"input-wrapper -primary -md -suffixed\\" autocomplete=\\"off\\" aria-autocomplete=\\"both\\" aria-controls=\\"select-options\\" placeholder=\\"\\">
+  <div class=\\"input-wrapper -primary -md -suffixed\\">
     <!--v-if-->
     <div class=\\"input\\">
       <!--v-if--><input autocomplete=\\"off\\" aria-autocomplete=\\"both\\" aria-controls=\\"select-options\\" placeholder=\\"\\" name=\\"select-input\\" type=\\"text\\" tabindex=\\"0\\" aria-disabled=\\"false\\" readonly=\\"\\" aria-readonly=\\"true\\"><span class=\\"input-suffix\\"><!-- @slot clearable Slot for the clearable button --><!--v-if--><!-- @slot suffix Slot for the input suffix content --><!-- @slot suffix Slot for the select suffix content --><button class=\\"select-caret\\" aria-hidden=\\"true\\" role=\\"button\\"></button></span>
@@ -26,7 +26,7 @@ exports[`Components > ISelect > props > options > should render correctly withou
 
 exports[`Components > ISelect > should render correctly 1`] = `
 "<div id=\\"select\\" class=\\"select-wrapper -primary -md\\" name=\\"select\\" role=\\"combobox\\" aria-haspopup=\\"listbox\\" aria-owns=\\"select-options\\" aria-expanded=\\"false\\">
-  <div class=\\"input-wrapper -primary -md -suffixed\\" autocomplete=\\"off\\" aria-autocomplete=\\"both\\" aria-controls=\\"select-options\\" placeholder=\\"Option 1\\">
+  <div class=\\"input-wrapper -primary -md -suffixed\\">
     <!--v-if-->
     <div class=\\"input\\">
       <!--v-if--><input autocomplete=\\"off\\" aria-autocomplete=\\"both\\" aria-controls=\\"select-options\\" placeholder=\\"Option 1\\" name=\\"select-input\\" type=\\"text\\" tabindex=\\"0\\" aria-disabled=\\"false\\" readonly=\\"\\" aria-readonly=\\"true\\"><span class=\\"input-suffix\\"><!-- @slot clearable Slot for the clearable button --><!--v-if--><!-- @slot suffix Slot for the input suffix content --><!-- @slot suffix Slot for the select suffix content --><button class=\\"select-caret\\" aria-hidden=\\"true\\" role=\\"button\\"></button></span>
