@@ -19,8 +19,8 @@ export default defineComponent({
             default: false
         },
         /**
-         * The color variant of the button
-         * @type light | dark | blank
+         * The color variant of the collapsible
+         * @type light | dark | transparent
          * @default
          * @name color
          */

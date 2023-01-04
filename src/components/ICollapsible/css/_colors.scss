@@ -52,4 +52,44 @@
             var(--color-dark-tint-50)
         );
     }
+
+    &.-transparent {
+        --collapsible--background: var(--collapsible--transparent--background, transparent);
+        --collapsible--border-top-color: var(
+            --collapsible--transparent--border-top-color,
+            transparent
+        );
+        --collapsible--border-right-color: var(
+            --collapsible--transparent--border-right-color,
+            transparent
+        );
+        --collapsible--border-bottom-color: var(
+            --collapsible--transparent--border-bottom-color,
+            transparent
+        );
+        --collapsible--border-left-color: var(
+            --collapsible--transparent--border-left-color,
+            transparent
+        );
+        --collapsible--color: var(--collapsible--transparent--color, inherit);
+        --collapsible--body--background: var(
+            --collapsible--transparent--body--background,
+            transparent
+        );
+        --collapsible--box-shadow-color: transparent;
+
+        .light-theme & {
+            --collapsible--icon--color: var(
+                --collapsible--transparent--icon--color,
+                var(--color-dark)
+            );
+        }
+
+        .dark-theme & {
+            --collapsible--icon--color: var(
+                --collapsible--transparent--icon--color,
+                var(--color-light)
+            );
+        }
+    }
 }
