@@ -362,6 +362,32 @@
             // solution from https://stackoverflow.com/a/33132624/3040605
             padding-top: 0.1px;
             margin-top: -0.1px;
+
+            .nav {
+                &.-vertical {
+                    .nav-item {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .collapsible {
+                width: 100%;
+            }
+
+            .nav-item,
+            .collapsible-header {
+                color: var(--sidebar--item--color);
+                background-color: var(--sidebar--item--background);
+
+                &.-focused,
+                &.-hovered,
+                &:focus,
+                &:hover {
+                    color: var(--sidebar--item--hover--color);
+                    background: var(--sidebar--item--hover--background);
+                }
+            }
         }
     }
 

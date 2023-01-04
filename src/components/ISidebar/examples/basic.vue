@@ -19,7 +19,7 @@ export default {
             <ISidebar v-model="open">
                 <INav vertical>
                     <INavItem to="/"> Home </INavItem>
-                    <ICollapsible>
+                    <ICollapsible color="transparent">
                         <ICollapsibleItem title="Menu">
                             <INavItem to="/about"> Item 1 </INavItem>
                             <INavItem to="/about"> Item 2 </INavItem>

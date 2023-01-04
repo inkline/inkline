@@ -24,7 +24,13 @@ export default {
             <ISidebar v-model="open" color="light">
                 <INav vertical>
                     <INavItem to="/"> Home </INavItem>
-                    <INavItem to="/about"> Contact </INavItem>
+                    <ICollapsible color="transparent">
+                        <ICollapsibleItem title="Menu">
+                            <INavItem to="/about"> Item 1 </INavItem>
+                            <INavItem to="/about"> Item 2 </INavItem>
+                            <INavItem to="/about"> Item 3 </INavItem>
+                        </ICollapsibleItem>
+                    </ICollapsible>
                     <INavItem to="/contact"> Contact </INavItem>
                 </INav>
             </ISidebar>
@@ -60,7 +66,13 @@ export default {
             <ISidebar v-model="open" color="dark">
                 <INav vertical>
                     <INavItem to="/"> Home </INavItem>
-                    <INavItem to="/about"> Contact </INavItem>
+                    <ICollapsible color="transparent">
+                        <ICollapsibleItem title="Menu">
+                            <INavItem to="/about"> Item 1 </INavItem>
+                            <INavItem to="/about"> Item 2 </INavItem>
+                            <INavItem to="/about"> Item 3 </INavItem>
+                        </ICollapsibleItem>
+                    </ICollapsible>
                     <INavItem to="/contact"> Contact </INavItem>
                 </INav>
             </ISidebar>

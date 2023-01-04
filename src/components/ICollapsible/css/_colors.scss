@@ -78,14 +78,16 @@
         );
         --collapsible--box-shadow-color: transparent;
 
-        .light-theme & {
+        .light-theme &,
+        .-light & {
             --collapsible--icon--color: var(
                 --collapsible--transparent--icon--color,
                 var(--color-dark)
             );
         }
 
-        .dark-theme & {
+        .dark-theme &,
+        .-dark & {
             --collapsible--icon--color: var(
                 --collapsible--transparent--icon--color,
                 var(--color-light)

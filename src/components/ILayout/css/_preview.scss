@@ -3,6 +3,10 @@
     > div > .layout {
         min-height: 360px;
     }
+
+    > .layout + .layout {
+        margin-top: var(--margin-top);
+    }
 }
 
 %layout-local-preview {
