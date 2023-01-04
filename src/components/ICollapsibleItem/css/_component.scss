@@ -140,13 +140,16 @@
             );
 
             > .icon {
-                background-color: var(--collapsible--header--color, var(--collapsible--color));
-                width: var(--collapsible--font-size, var(--font-size));
-                height: var(--collapsible--font-size, var(--font-size));
-                mask-size: var(--collapsible--font-size, var(--font-size))
-                    var(--collapsible--font-size, var(--font-size));
+                background-color: var(
+                    --collapsible--icon--color,
+                    var(--collapsible--header--color, var(--collapsible--color))
+                );
+                width: var(--collapsible--icon--size, 12px);
+                height: var(--collapsible--icon--size, 12px);
+                mask-size: var(--collapsible--icon--size, 12px) var(--collapsible--icon--size, 12px);
                 display: inline-block;
                 position: relative;
+                transform: rotate(-90deg);
                 transition-property: var(
                     --collapsible--transition-property,
                     (var(--collapsible--transition-property, (background-color, transform)))
@@ -323,7 +326,7 @@
                 border-bottom-right-radius: 0;
 
                 > .icon {
-                    transform: rotate(180deg);
+                    transform: rotate(0deg);
                 }
             }
         }
