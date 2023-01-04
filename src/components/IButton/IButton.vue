@@ -202,7 +202,7 @@ export default defineComponent({
             };
         });
 
-        const role = computed(() => (props.to || props.href ? 'link' : 'button'));
+        const role = computed(() => (props.to || props.href ? null : 'button'));
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
         return {
