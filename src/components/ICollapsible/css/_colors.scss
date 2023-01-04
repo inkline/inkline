@@ -81,7 +81,7 @@
         .light-theme &,
         .-light & {
             --collapsible--icon--color: var(
-                --collapsible--transparent--icon--color,
+                --collapsible--transparent--icon--light--color,
                 var(--color-dark)
             );
         }
@@ -89,7 +89,7 @@
         .dark-theme &,
         .-dark & {
             --collapsible--icon--color: var(
-                --collapsible--transparent--icon--color,
+                --collapsible--transparent--icon--dark--color,
                 var(--color-light)
             );
         }

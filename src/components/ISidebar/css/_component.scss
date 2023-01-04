@@ -374,20 +374,6 @@
             .collapsible {
                 width: 100%;
             }
-
-            .nav-item,
-            .collapsible-header {
-                color: var(--sidebar--item--color);
-                background-color: var(--sidebar--item--background);
-
-                &.-focused,
-                &.-hovered,
-                &:focus,
-                &:hover {
-                    color: var(--sidebar--item--hover--color);
-                    background: var(--sidebar--item--hover--background);
-                }
-            }
         }
     }
 

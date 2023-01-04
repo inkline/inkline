@@ -337,17 +337,4 @@
             }
         }
     }
-
-    &.-blank {
-        > .collapsible-item {
-            box-shadow: none;
-
-            > .collapsible-header,
-            > .collapsible-body {
-                border: 0;
-                background-color: unset;
-                color: inherit;
-            }
-        }
-    }
 }
