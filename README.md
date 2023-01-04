@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://inkline.io/">
-        <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/logo/logo-black.svg" alt="Inkline" width=72 height=72>
+        <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/logo/logo-black.svg" alt="Inkline" width=72 height=72>
     </a>
 </p>
 
@@ -12,7 +12,7 @@
     <br/>
     <br/>
     <a href="https://inkline.io">
-        <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/homepage.png" width="1009" alt="Vue.js UI/UX Library - Inkline" />
+        <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/homepage.png" width="1009" alt="Vue.js UI/UX Library - Inkline" />
     </a>
     <br/>
     <br/>
@@ -67,23 +67,23 @@ below. Inkline offers official integrations for Vite.js (recommended), Vue.js CL
 can be easily installed for a custom Vue.js configuration as well.
 
 <a href="https://inkline.io/docs/introduction/installation/vite">
-    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/installation-vitejs.png" width="526" alt="Nuxt.js Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/installation-vitejs.png" width="526" alt="Nuxt.js Installation - Inkline" />
 </a>
 
 <a href="https://inkline.io/docs/introduction/installation/vue-cli">
-    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/installation-vuejs.png" width="526" alt="Vue CLI Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/installation-vuejs.png" width="526" alt="Vue CLI Installation - Inkline" />
 </a>
 
 <a href="https://inkline.io/docs/introduction/installation/nuxt">
-    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/installation-nuxtjs.png" width="526" alt="Nuxt.js Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/installation-nuxtjs.png" width="526" alt="Nuxt.js Installation - Inkline" />
 </a>
 
 <a href="https://inkline.io/docs/introduction/installation/generic">
-    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/installation-generic.png" width="526" alt="Custom Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/installation-generic.png" width="526" alt="Custom Installation - Inkline" />
 </a>
 
 <a href="https://inkline.io/docs/introduction/installation/cdn">
-    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/src/assets/images/github/installation-cdn.png" width="526" alt="CDN Installation - Inkline" />
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/installation-cdn.png" width="526" alt="CDN Installation - Inkline" />
 </a>
 
 ## Bugs and feature requests
