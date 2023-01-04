@@ -58,8 +58,8 @@
     "unplugin": "^0.9.6"
   },
   "peerDependencies": {
-    "@inkline/config": ">=1",
-    "@inkline/inkline": ">3"
+    "@inkline/config": "*",
+    "@inkline/inkline": "*"
   },
   "main": "index.js",
   "module": "index.mjs",
