@@ -5,6 +5,7 @@ const componentName = 'ILayout';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Display the layout on a vertical orientation
@@ -30,7 +31,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <main class="layout" :class="classes">
+    <main v-bind="$attrs" class="layout" :class="classes">
         <!-- @slot default Slot for default layout content -->
         <slot />
     </main>

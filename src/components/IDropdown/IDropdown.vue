@@ -28,6 +28,7 @@ const componentName = 'IDropdown';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The duration of the hide and show animation
@@ -407,7 +408,13 @@ export default defineComponent({
 </script>
 
 <template>
-    <div ref="wrapperRef" class="dropdown-wrapper" aria-haspopup="true" @keyup.esc="onKeyEscape">
+    <div
+        v-bind="$attrs"
+        ref="wrapperRef"
+        class="dropdown-wrapper"
+        aria-haspopup="true"
+        @keyup.esc="onKeyEscape"
+    >
         <div ref="triggerRef" class="dropdown-trigger">
             <!-- @slot default Slot for dropdown trigger -->
             <slot />

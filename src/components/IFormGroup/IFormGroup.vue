@@ -13,6 +13,7 @@ const componentName = 'IFormGroup';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the form group
@@ -154,7 +155,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <fieldset class="form-group" :class="classes" :name="name" role="group">
+    <fieldset v-bind="$attrs" class="form-group" :class="classes" :name="name" role="group">
         <!-- @slot default Slot for default form group content -->
         <slot />
     </fieldset>

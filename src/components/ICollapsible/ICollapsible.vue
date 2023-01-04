@@ -7,6 +7,7 @@ const componentName = 'ICollapsible';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Display the collapsible as an accordion, keeping a maximum of one open collapsible item
@@ -107,7 +108,13 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="collapsible" :class="classes" role="tablist" aria-multiselectable="true">
+    <div
+        v-bind="$attrs"
+        class="collapsible"
+        :class="classes"
+        role="tablist"
+        aria-multiselectable="true"
+    >
         <!-- @slot Default slot for collapsible items -->
         <slot />
     </div>

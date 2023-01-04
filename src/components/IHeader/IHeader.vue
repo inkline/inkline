@@ -14,6 +14,7 @@ export default defineComponent({
         IRow,
         IColumn
     },
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the header
@@ -85,7 +86,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <header class="header" :class="classes">
+    <header v-bind="$attrs" class="header" :class="classes">
         <IContainer :fluid="fluid">
             <IRow>
                 <IColumn>

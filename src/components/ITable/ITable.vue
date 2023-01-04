@@ -6,6 +6,7 @@ const componentName = 'ITable';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Display the table with borders
@@ -101,7 +102,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="table-wrapper" :class="classes">
+    <div v-bind="$attrs" class="table-wrapper" :class="classes">
         <table class="table">
             <!-- @slot default Slot for table rows and data -->
             <slot />

@@ -9,6 +9,7 @@ const componentName = 'INav';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the nav

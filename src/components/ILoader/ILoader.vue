@@ -6,6 +6,7 @@ const componentName = 'ILoader';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the loader
@@ -47,7 +48,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="loader" :class="classes" role="img" aria-hidden="true">
+    <div v-bind="$attrs" class="loader" :class="classes" role="img" aria-hidden="true">
         <span v-if="$slots.default" class="loader-text">
             <!-- @slot default Slot for default loader content -->
             <slot />

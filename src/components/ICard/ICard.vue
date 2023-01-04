@@ -6,6 +6,7 @@ const componentName = 'ICard';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the card
@@ -44,7 +45,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="card" :class="classes">
+    <div v-bind="$attrs" class="card" :class="classes">
         <header v-if="!!$slots.header" class="card-header">
             <!-- @slot header Slot for card header content -->
             <slot name="header" />

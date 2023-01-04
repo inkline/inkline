@@ -15,6 +15,7 @@ const componentName = 'IRadioGroup';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the radio group
@@ -204,7 +205,13 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="form-group radio-group" :class="classes" :name="name" role="radiogroup">
+    <div
+        v-bind="$attrs"
+        class="form-group radio-group"
+        :class="classes"
+        :name="name"
+        role="radiogroup"
+    >
         <!-- @slot default Slot for default radio group options -->
         <slot />
     </div>

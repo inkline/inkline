@@ -6,6 +6,7 @@ const componentName = 'IListGroup';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Display the list group border
@@ -58,7 +59,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="list-group" :class="classes" role="list">
+    <div v-bind="$attrs" class="list-group" :class="classes" role="list">
         <!-- @slot default Slot for list group items -->
         <slot />
     </div>

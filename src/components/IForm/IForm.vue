@@ -186,6 +186,7 @@ export default defineComponent({
 
 <template>
     <form
+        v-bind="$attrs"
         class="form"
         :class="classes"
         role="form"

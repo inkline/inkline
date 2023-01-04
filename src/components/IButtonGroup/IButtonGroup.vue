@@ -7,6 +7,7 @@ const componentName = 'IButtonGroup';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Display the button group with vertical orientation
@@ -95,11 +96,11 @@ export default defineComponent({
 
 <template>
     <div
+        v-bind="$attrs"
+        role="group"
         class="button-group"
         :class="classes"
-        role="group"
         :aria-disabled="disabled ? 'true' : null"
-        v-bind="$attrs"
     >
         <!-- @slot default Slot for default button group content -->
         <slot />

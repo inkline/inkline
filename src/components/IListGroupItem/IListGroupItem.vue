@@ -6,6 +6,7 @@ const componentName = 'IListGroupItem';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The active state of the list group item

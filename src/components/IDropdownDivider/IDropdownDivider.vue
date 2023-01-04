@@ -5,10 +5,11 @@ const componentName = 'IDropdownDivider';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     setup() {}
 });
 </script>
 
 <template>
-    <div class="dropdown-divider" role="separator" />
+    <div v-bind="$attrs" class="dropdown-divider" role="separator" />
 </template>

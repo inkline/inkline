@@ -7,6 +7,7 @@ const componentName = 'INavItem';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The active state of the nav item

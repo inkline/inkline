@@ -6,6 +6,7 @@ const componentName = 'INavbarBrand';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Renders the component as an anchor link with a `href` attribute

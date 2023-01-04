@@ -6,6 +6,7 @@ const componentName = 'IAlert';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The size variant of the alert
@@ -102,7 +103,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div v-show="!dismissed" class="alert" role="alert" :class="classes">
+    <div v-show="!dismissed" v-bind="$attrs" class="alert" role="alert" :class="classes">
         <span v-if="$slots.icon" class="icon" role="img" aria-hidden="true">
             <!-- @slot icon Slot for alert icon -->
             <slot name="icon" />

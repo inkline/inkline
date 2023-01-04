@@ -13,6 +13,7 @@ export default defineComponent({
     components: {
         ILoader
     },
+    inheritAttrs: false,
     props: {
         /**
          * The active state of the button

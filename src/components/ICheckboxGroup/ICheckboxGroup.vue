@@ -15,6 +15,7 @@ const componentName = 'ICheckboxGroup';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the checkbox group
@@ -220,7 +221,13 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="form-group checkbox-group" :class="classes" :name="name" role="checkboxgroup">
+    <div
+        v-bind="$attrs"
+        class="form-group checkbox-group"
+        :class="classes"
+        :name="name"
+        role="checkboxgroup"
+    >
         <!-- @slot default Slot for default checkbox group options -->
         <slot />
     </div>

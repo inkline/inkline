@@ -5,6 +5,7 @@ const componentName = 'IContainer';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Display the container as fluid, always spanning 100% width
@@ -28,7 +29,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="container" :class="classes">
+    <div v-bind="$attrs" class="container" :class="classes">
         <!-- @slot default Slot for default container content -->
         <slot />
     </div>

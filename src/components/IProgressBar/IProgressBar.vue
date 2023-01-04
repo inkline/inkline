@@ -6,6 +6,7 @@ const componentName = 'IProgressBar';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the progress bar
@@ -81,6 +82,7 @@ export default defineComponent({
 
 <template>
     <div
+        v-bind="$attrs"
         class="progress-bar"
         :class="classes"
         :style="style"

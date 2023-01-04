@@ -7,6 +7,7 @@ const componentName = 'ISidebar';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The aria-label of the sidebar
@@ -182,6 +183,7 @@ export default defineComponent({
     <transition :name="sidebarWrapperTransition">
         <aside
             v-show="open || !collapsible"
+            v-bind="$attrs"
             ref="wrapperRef"
             role="complementary"
             class="sidebar-wrapper"

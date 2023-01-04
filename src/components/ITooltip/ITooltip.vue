@@ -14,6 +14,7 @@ const componentName = 'ITooltip';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the tooltip
@@ -213,6 +214,7 @@ export default defineComponent({
 
 <template>
     <div
+        v-bind="$attrs"
         :id="name"
         ref="wrapperRef"
         class="tooltip-wrapper"

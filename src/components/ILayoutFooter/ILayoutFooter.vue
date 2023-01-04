@@ -4,12 +4,13 @@ import { defineComponent } from 'vue';
 const componentName = 'ILayoutFooter';
 
 export default defineComponent({
-    name: componentName
+    name: componentName,
+    inheritAttrs: false
 });
 </script>
 
 <template>
-    <footer class="layout-footer">
+    <footer v-bind="$attrs" class="layout-footer">
         <!-- @slot default Slot for default layout footer content -->
         <slot />
     </footer>

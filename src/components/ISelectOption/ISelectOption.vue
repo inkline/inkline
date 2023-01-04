@@ -6,6 +6,7 @@ const componentName = 'ISelectOption';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The active state of the select option
@@ -106,6 +107,7 @@ export default defineComponent({
 
 <template>
     <div
+        v-bind="$attrs"
         class="select-option"
         :class="classes"
         role="option"

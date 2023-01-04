@@ -4,12 +4,13 @@ import { defineComponent } from 'vue';
 const componentName = 'IMedia';
 
 export default defineComponent({
-    name: componentName
+    name: componentName,
+    inheritAttrs: false
 });
 </script>
 
 <template>
-    <div class="media">
+    <div v-bind="$attrs" class="media">
         <!-- @slot image Slot for media image -->
         <slot name="image" />
         <div class="media-body">

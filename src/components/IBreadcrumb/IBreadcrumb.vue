@@ -6,6 +6,7 @@ const componentName = 'IBreadcrumb';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The aria-label of the breadcrumbs
@@ -57,7 +58,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <nav class="breadcrumb" :class="classes" :aria-label="ariaLabel">
+    <nav v-bind="$attrs" class="breadcrumb" :class="classes" :aria-label="ariaLabel">
         <ol>
             <!-- @slot default Slot for default breadcrumb content -->
             <slot />

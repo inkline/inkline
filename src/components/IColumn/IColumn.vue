@@ -6,6 +6,7 @@ const componentName = 'IColumn';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The number of columns to span for extra-small screen sizes. Setting the prop to true will set the width automatically
@@ -361,7 +362,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="column" :class="classes">
+    <div v-bind="$attrs" class="column" :class="classes">
         <!-- @slot default Slot for default column content -->
         <slot />
     </div>

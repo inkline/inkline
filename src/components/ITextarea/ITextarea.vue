@@ -15,6 +15,7 @@ const componentName = 'ITextarea';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the input
@@ -284,7 +285,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div :id="id && `${id}-wrapper`" class="input-wrapper" :class="classes" v-bind="wrapperAttrs">
+    <div v-bind="wrapperAttrs" :id="id && `${id}-wrapper`" class="input-wrapper" :class="classes">
         <div v-if="$slots.prepend" class="input-prepend">
             <slot name="prepend" />
         </div>

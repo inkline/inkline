@@ -6,6 +6,7 @@ const componentName = 'IBreadcrumbItem';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The active state of the breadcrumb item
@@ -83,6 +84,7 @@ export default defineComponent({
 
         return {
             tag,
+            currentTag,
             classes,
             tabIndex
         };
@@ -91,10 +93,12 @@ export default defineComponent({
 </script>
 
 <template>
-    <li class="breadcrumb-item" :class="classes">
+    <li v-bind="$attrs" class="breadcrumb-item" :class="classes">
         <component
-            v-bind="$attrs"
             :is="tag"
+            :tag="currentTag"
+            :to="to"
+            :href="href"
             :tabindex="tabIndex"
             :aria-current="active ? 'location' : undefined"
         >

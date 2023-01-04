@@ -15,6 +15,7 @@ const componentName = 'IRadio';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the radio
@@ -239,6 +240,7 @@ export default defineComponent({
 
 <template>
     <div
+        v-bind="$attrs"
         class="radio"
         :class="classes"
         role="radio"

@@ -7,6 +7,7 @@ const componentName = 'ITab';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The title of the tab
@@ -50,6 +51,7 @@ export default defineComponent({
 <template>
     <div
         v-show="active"
+        v-bind="$attrs"
         class="tab"
         :class="classes"
         role="tabpanel"

@@ -6,6 +6,7 @@ const componentName = 'IFormError';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The schema path of the target input to show the errors for.
@@ -63,7 +64,13 @@ export default defineComponent({
 
 <template>
     <transition v-if="schema" name="fade-in-transition">
-        <ul v-if="errors.length > 0" v-show="visible" class="form-error" aria-live="polite">
+        <ul
+            v-if="errors.length > 0"
+            v-show="visible"
+            v-bind="$attrs"
+            class="form-error"
+            aria-live="polite"
+        >
             <li v-for="(error, index) in errors" :key="`${index}-${error.name}`">
                 {{ error.message }}
             </li>

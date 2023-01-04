@@ -8,6 +8,7 @@ const componentName = 'IModal';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Determines if the modal should close when pressing escape
@@ -225,6 +226,7 @@ export default defineComponent({
     <transition name="fade-in-transition">
         <div
             v-show="visible"
+            v-bind="$attrs"
             :id="name"
             ref="wrapperRef"
             class="modal-wrapper"

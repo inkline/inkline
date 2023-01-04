@@ -11,6 +11,7 @@ export default defineComponent({
     components: {
         IExpandTransition
     },
+    inheritAttrs: false,
     setup() {
         const navbar = inject(NavbarKey, null);
         const { isServer } = useIsServer();
@@ -34,6 +35,7 @@ export default defineComponent({
     <IExpandTransition>
         <div
             v-show="visible"
+            v-bind="$attrs"
             class="navbar-collapsible"
             :aria-hidden="visible ? 'false' : 'true'"
             :aria-expanded="visible ? 'true' : 'false'"

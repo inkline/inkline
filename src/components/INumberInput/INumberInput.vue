@@ -19,6 +19,7 @@ export default defineComponent({
     components: {
         IButton
     },
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the input
@@ -377,10 +378,10 @@ export default defineComponent({
 
 <template>
     <div
+        v-bind="wrapperAttrs"
         :id="id && `${id}-wrapper`"
         class="input-wrapper -prepended -appended"
         :class="classes"
-        v-bind="wrapperAttrs"
     >
         <div class="input-prepend">
             <slot name="prepend" />

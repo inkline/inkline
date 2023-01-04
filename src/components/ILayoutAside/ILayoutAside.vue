@@ -4,12 +4,13 @@ import { defineComponent } from 'vue';
 const componentName = 'ILayoutAside';
 
 export default defineComponent({
-    name: componentName
+    name: componentName,
+    inheritAttrs: false
 });
 </script>
 
 <template>
-    <aside class="layout-aside">
+    <aside v-bind="$attrs" class="layout-aside">
         <div class="layout-aside-children">
             <!-- @slot default Slot for default layout aside content -->
             <slot />

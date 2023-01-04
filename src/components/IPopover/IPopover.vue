@@ -14,6 +14,7 @@ const componentName = 'IPopover';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the popover
@@ -218,6 +219,7 @@ export default defineComponent({
 
 <template>
     <div
+        v-bind="$attrs"
         :id="name"
         ref="wrapperRef"
         class="popover-wrapper"

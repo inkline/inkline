@@ -8,6 +8,7 @@ const componentName = 'IFormLabel';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The id of the target input to be focused by the form label. If left empty, clicking the form label will focus the next sibling input
@@ -80,11 +81,11 @@ export default defineComponent({
 
 <template>
     <label
+        v-bind="$attrs"
         ref="labelRef"
         class="form-label"
         :class="classes"
         :for="currentFor"
-        v-bind="$attrs"
         @click="onClick"
     >
         <!-- @slot default Slot for default form label content  -->

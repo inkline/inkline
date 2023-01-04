@@ -1,5 +1,5 @@
 <template>
-    <INav>
+    <INav class="texs">
         <INavItem href="https://inkline.io">Link</INavItem>
         <INavItem :to="{ name: 'index' }">Router Link</INavItem>
         <INavItem>Item</INavItem>

@@ -14,6 +14,7 @@ const componentName = 'IToggle';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the checkbox
@@ -236,6 +237,7 @@ export default defineComponent({
 
 <template>
     <div
+        v-bind="$attrs"
         class="toggle"
         :class="classes"
         :aria-checked="checked"

@@ -7,6 +7,7 @@ const componentName = 'ITabs';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the tabs
@@ -97,7 +98,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="tabs" :class="classes" role="tablist" aria-multiselectable="true">
+    <div v-bind="$attrs" class="tabs" :class="classes" role="tablist" aria-multiselectable="true">
         <div class="tabs-header">
             <!-- @slot header Slot for tabs header -->
             <slot name="header" />

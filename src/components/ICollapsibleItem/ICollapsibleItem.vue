@@ -11,6 +11,7 @@ export default defineComponent({
     components: {
         IExpandTransition
     },
+    inheritAttrs: false,
     props: {
         /**
          * The unique identifier of the collapsible item, used for determining if the item is open or not
@@ -58,7 +59,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="collapsible-item" :class="classes" :name="name">
+    <div v-bind="$attrs" class="collapsible-item" :class="classes" :name="name">
         <a
             :id="`collapsible-item-heading-${name}`"
             class="collapsible-header"

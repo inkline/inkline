@@ -6,6 +6,7 @@ const componentName = 'IHamburgerMenu';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The animation of the hamburger menu
@@ -81,7 +82,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="hamburger-menu" :class="classes" @click="onClick">
+    <div v-bind="$attrs" class="hamburger-menu" :class="classes" @click="onClick">
         <span class="hamburger-menu-bars"></span>
     </div>
 </template>

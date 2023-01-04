@@ -37,6 +37,7 @@ export default defineComponent({
         IInput,
         ISelectOption
     },
+    inheritAttrs: false,
     props: {
         /**
          * The duration of the hide and show animation
@@ -778,6 +779,7 @@ export default defineComponent({
 
 <template>
     <div
+        v-bind="$attrs"
         :id="name"
         ref="wrapperRef"
         class="select-wrapper"

@@ -6,6 +6,7 @@ const componentName = 'IBadge';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the badge
@@ -47,7 +48,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="badge" :class="classes">
+    <div v-bind="$attrs" class="badge" :class="classes">
         <!-- @slot default Slot for default badge content -->
         <slot />
     </div>

@@ -4,12 +4,13 @@ import { defineComponent } from 'vue';
 const componentName = 'ILayoutHeader';
 
 export default defineComponent({
-    name: componentName
+    name: componentName,
+    inheritAttrs: false
 });
 </script>
 
 <template>
-    <header class="layout-header">
+    <header v-bind="$attrs" class="layout-header">
         <!-- @slot default Slot for default layout header content -->
         <slot />
     </header>

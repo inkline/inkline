@@ -18,6 +18,7 @@ export default defineComponent({
         IContainer,
         IHamburgerMenu
     },
+    inheritAttrs: false,
     props: {
         /**
          * Determines if the navbar should close when clicking a navbar item
@@ -170,7 +171,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <nav ref="navbarRef" class="navbar" :class="classes" v-bind="$attrs">
+    <nav v-bind="$attrs" ref="navbarRef" class="navbar" :class="classes">
         <IContainer :fluid="fluid">
             <IHamburgerMenu
                 class="collapse-toggle"

@@ -4,12 +4,13 @@ import { defineComponent } from 'vue';
 const componentName = 'ILayoutContent';
 
 export default defineComponent({
-    name: componentName
+    name: componentName,
+    inheritAttrs: false
 });
 </script>
 
 <template>
-    <section class="layout-content">
+    <section v-bind="$attrs" class="layout-content">
         <!-- @slot default Slot for default layout content children -->
         <slot />
     </section>

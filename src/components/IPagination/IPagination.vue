@@ -8,6 +8,7 @@ const componentName = 'IPagination';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The aria-label of the pagination
@@ -276,7 +277,13 @@ export default defineComponent({
 </script>
 
 <template>
-    <nav class="pagination" :class="classes" role="navigation" :aria-label="ariaLabel">
+    <nav
+        v-bind="$attrs"
+        class="pagination"
+        :class="classes"
+        role="navigation"
+        :aria-label="ariaLabel"
+    >
         <ul class="pagination-items">
             <li
                 v-if="showPrevious"

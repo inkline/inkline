@@ -6,6 +6,7 @@ const componentName = 'IRow';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Justify the content to the start of the row
@@ -568,7 +569,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="row" :class="classes">
+    <div v-bind="$attrs" class="row" :class="classes">
         <!-- @slot default Slot for default row content -->
         <slot />
     </div>

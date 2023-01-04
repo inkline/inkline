@@ -7,6 +7,7 @@ const componentName = 'IProgress';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the progress component
@@ -73,7 +74,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="progress" :class="classes">
+    <div v-bind="$attrs" class="progress" :class="classes">
         <!-- @slot default Slot for progress bars -->
         <slot />
     </div>

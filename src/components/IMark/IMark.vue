@@ -6,6 +6,7 @@ const componentName = 'IMark';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * String to be marked
@@ -43,7 +44,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <span>
+    <span v-bind="$attrs">
         <template v-for="(part, index) of parts" :key="index">
             <mark v-if="part.marked">{{ part.text }}</mark>
             <template v-else>{{ part.text }}</template>
