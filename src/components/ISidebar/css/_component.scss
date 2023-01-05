@@ -294,6 +294,17 @@
         color: var(--sidebar--color);
         background: var(--sidebar--background);
         width: var(--sidebar--width, 14rem);
+        transition-property: var(
+            --sidebar--transition-property,
+            background-color,
+            color,
+            border-color
+        );
+        transition-duration: var(--sidebar--transition-duration, var(--transition-duration));
+        transition-timing-function: var(
+            --sidebar--transition-timing-function,
+            var(--transition-timing-function)
+        );
         box-shadow: var(
             --sidebar--box-shadow,
             (
