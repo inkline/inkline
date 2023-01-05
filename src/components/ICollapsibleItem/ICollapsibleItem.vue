@@ -61,7 +61,7 @@ export default defineComponent({
 <template>
     <div v-bind="$attrs" class="collapsible-item" :class="classes" :name="name">
         <a
-            :id="`collapsible-item-heading-${name}`"
+            :id="`collapsible-item-header-${name}`"
             class="collapsible-header"
             role="tab"
             :aria-expanded="active ? 'true' : 'false'"
@@ -79,11 +79,11 @@ export default defineComponent({
         <IExpandTransition>
             <div
                 v-show="active"
-                :id="`collapsible-item-content-${name}`"
+                :id="`collapsible-item-body-${name}`"
                 class="collapsible-body"
                 role="tabpanel"
                 :aria-hidden="active ? 'false' : 'true'"
-                :aria-labelledby="`collapsible-item-heading-${name}`"
+                :aria-labelledby="`collapsible-item-header-${name}`"
             >
                 <div class="content">
                     <!-- @slot default Slot for default collapsible item content -->
