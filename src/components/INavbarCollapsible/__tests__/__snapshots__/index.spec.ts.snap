@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Components > INavbarCollapsible > should render correctly 1`] = `
-"<transition-stub name=\\"expand\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" data-v-8631fbff=\\"\\">
+"<transition-stub name=\\"expand\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
   <div class=\\"navbar-collapsible\\" aria-hidden=\\"false\\" aria-expanded=\\"true\\">
     <!-- @slot default Slot for default navbar collapsible content -->
   </div>

@@ -8,7 +8,7 @@ exports[`Components > INavbar > should render correctly 1`] = `
     <div class=\\"navbar-brand\\" tag=\\"div\\" translate=\\"no\\">
       <!-- @slot default Slot for default navbar brand content -->
     </div>
-    <transition-stub name=\\"expand\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" data-v-8631fbff=\\"\\">
+    <transition-stub name=\\"expand\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"navbar-collapsible\\" aria-hidden=\\"false\\" aria-expanded=\\"true\\">
         <!-- @slot default Slot for default navbar collapsible content -->
         <nav class=\\"nav -light -md\\" role=\\"menubar\\">
