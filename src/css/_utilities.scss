@@ -7740,11 +7740,25 @@
 ._white-space\:pre\! {
     white-space: pre !important;
 }
-._text\:muted {
-    color: var(--text--color-muted);
+._text\:muted,
+._text\:weak {
+    color: var(--text--color-weak);
 }
-._text\:muted\! {
-    color: var(--text--color-muted) !important;
+._text\:muted\!,
+._text\:weak\! {
+    color: var(--text--color-weak) !important;
+}
+._text\:weaker {
+    color: var(--text--color-weaker);
+}
+._text\:weaker\! {
+    color: var(--text--color-weaker) !important;
+}
+._text\:weakest {
+    color: var(--text--color-weakest);
+}
+._text\:weakest\! {
+    color: var(--text--color-weakest) !important;
 }
 ._text\:reset {
     color: inherit;
