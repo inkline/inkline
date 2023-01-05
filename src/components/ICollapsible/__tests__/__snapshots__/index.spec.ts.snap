@@ -3,22 +3,22 @@
 exports[`Components > ICollapsible > should render correctly 1`] = `
 "<div class=\\"collapsible -light -md\\" role=\\"tablist\\" aria-multiselectable=\\"true\\">
   <!-- @slot Default slot for collapsible items -->
-  <div class=\\"collapsible-item\\" name=\\"collapsible-item-1\\"><a id=\\"collapsible-item-heading-collapsible-item-1\\" class=\\"collapsible-header\\" role=\\"tab\\" aria-expanded=\\"false\\" aria-controls=\\"collapsible-item-content-collapsible-item-1\\" aria-describedby=\\"collapsible-item-content-collapsible-item-1\\" tabindex=\\"0\\">
+  <div class=\\"collapsible-item\\" name=\\"collapsible-item-1\\"><a id=\\"collapsible-item-header-collapsible-item-1\\" class=\\"collapsible-header\\" role=\\"tab\\" aria-expanded=\\"false\\" aria-controls=\\"collapsible-item-content-collapsible-item-1\\" aria-describedby=\\"collapsible-item-content-collapsible-item-1\\" tabindex=\\"0\\">
       <!-- @slot header Slot for collapsible item header content --><i class=\\"icon\\"></i>
     </a>
     <transition-stub name=\\"expand\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" data-v-8631fbff=\\"\\">
-      <div id=\\"collapsible-item-content-collapsible-item-1\\" class=\\"collapsible-body\\" role=\\"tabpanel\\" aria-hidden=\\"true\\" aria-labelledby=\\"collapsible-item-heading-collapsible-item-1\\" style=\\"display: none;\\">
+      <div id=\\"collapsible-item-body-collapsible-item-1\\" class=\\"collapsible-body\\" role=\\"tabpanel\\" aria-hidden=\\"true\\" aria-labelledby=\\"collapsible-item-header-collapsible-item-1\\" style=\\"display: none;\\">
         <div class=\\"content\\">
           <!-- @slot default Slot for default collapsible item content -->
         </div>
       </div>
     </transition-stub>
   </div>
-  <div class=\\"collapsible-item\\" name=\\"collapsible-item-2\\"><a id=\\"collapsible-item-heading-collapsible-item-2\\" class=\\"collapsible-header\\" role=\\"tab\\" aria-expanded=\\"false\\" aria-controls=\\"collapsible-item-content-collapsible-item-2\\" aria-describedby=\\"collapsible-item-content-collapsible-item-2\\" tabindex=\\"0\\">
+  <div class=\\"collapsible-item\\" name=\\"collapsible-item-2\\"><a id=\\"collapsible-item-header-collapsible-item-2\\" class=\\"collapsible-header\\" role=\\"tab\\" aria-expanded=\\"false\\" aria-controls=\\"collapsible-item-content-collapsible-item-2\\" aria-describedby=\\"collapsible-item-content-collapsible-item-2\\" tabindex=\\"0\\">
       <!-- @slot header Slot for collapsible item header content --><i class=\\"icon\\"></i>
     </a>
     <transition-stub name=\\"expand\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" data-v-8631fbff=\\"\\">
-      <div id=\\"collapsible-item-content-collapsible-item-2\\" class=\\"collapsible-body\\" role=\\"tabpanel\\" aria-hidden=\\"true\\" aria-labelledby=\\"collapsible-item-heading-collapsible-item-2\\" style=\\"display: none;\\">
+      <div id=\\"collapsible-item-body-collapsible-item-2\\" class=\\"collapsible-body\\" role=\\"tabpanel\\" aria-hidden=\\"true\\" aria-labelledby=\\"collapsible-item-header-collapsible-item-2\\" style=\\"display: none;\\">
         <div class=\\"content\\">
           <!-- @slot default Slot for default collapsible item content -->
         </div>
