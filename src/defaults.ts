@@ -192,9 +192,11 @@ export const defaultConfig: Configuration = {
                 lineHeight: 1.5,
                 letterSpacing: 0,
                 color: {
-                    dark: 'var(--color-gray-900)',
-                    muted: 'var(--color-gray-600)',
-                    light: 'var(--color-gray-100)'
+                    dark: 'var(--color-dark)',
+                    weak: 'var(--color-gray-700)',
+                    weaker: 'var(--color-gray-500)',
+                    weakest: 'var(--color-gray-300)',
+                    light: 'var(--color-light)'
                 },
                 contrastColor: {
                     light: 'var(--color-gray-900)',
@@ -293,7 +295,9 @@ export const defaultConfig: Configuration = {
             },
             typography: {
                 color: {
-                    muted: 'var(--color-gray-400)'
+                    weak: 'var(--color-gray-300)',
+                    weaker: 'var(--color-gray-500)',
+                    weakest: 'var(--color-gray-700)'
                 }
             },
             elements: {
