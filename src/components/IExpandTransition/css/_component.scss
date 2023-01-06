@@ -11,12 +11,6 @@
     height: 0;
 }
 
-* {
-    will-change: height;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
 .expand-enter-from,
 .expand-enter-active,
 .expand-leave-active,
