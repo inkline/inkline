@@ -1,5 +1,5 @@
 {
-  "name": "@inkline/cli",
+  "name": "inkline",
   "version": "1.2.1",
   "description": "CLI for Inkline, the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
   "scripts": {
@@ -33,9 +33,9 @@
     "vitest": "0.22.1"
   },
   "dependencies": {
-    "@grozav/logger": "latest",
-    "@grozav/utils": "latest",
-    "@inkline/config": "latest",
+    "@grozav/logger": "*",
+    "@grozav/utils": "*",
+    "@inkline/config": "*",
     "chalk": "^4.1.2",
     "commander": "^9.3.0",
     "object-inspect": "1.12.2"
