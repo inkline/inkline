@@ -1,9 +1,8 @@
-import { DevEnvType, DevEnv, InitEnv } from '../types';
+import { DevEnvType, DevEnv, InitEnv, PackageJsonSchema } from '../types';
 import { addAfter, addAfterImports, addAfterRequires } from './addAfter';
 import { getPluginCjsPreamble, getPluginTsPreamble } from './preamble';
 import { resolve } from 'pathe';
 import { existsSync } from 'fs';
-import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 import { capitalizeFirst } from '@grozav/utils';
 import { readFile, writeFile } from 'fs/promises';
 import {
@@ -32,7 +31,10 @@ export async function initDevEnvConfigFile(devEnv: DevEnv, { isTypescript }: Ini
     Logger.log(`Created ${devEnv.configFile}`);
 }
 
-export async function detectDevEnv({ cwd, isTypescript }: InitEnv): Promise<DevEnv> {
+export async function detectDevEnv(
+    packageJson: PackageJsonSchema,
+    { cwd, isTypescript }: InitEnv
+): Promise<DevEnv> {
     const nuxtTs: DevEnv = {
         type: DevEnvType.Nuxt,
         configFile: resolve(cwd, 'nuxt.config.ts'),
@@ -85,7 +87,7 @@ export async function detectDevEnv({ cwd, isTypescript }: InitEnv): Promise<DevE
 
     if (!inferredDevEnvironment) {
         const packageJsonPath = resolve(cwd, 'package.json');
-        let packageJson: JSONSchemaForNPMPackageJsonFiles = {};
+        let packageJson: PackageJsonSchema = {};
         if (existsSync(packageJsonPath)) {
             const packageJsonContents = await readFile(packageJsonPath, 'utf-8');
             packageJson = JSON.parse(packageJsonContents);

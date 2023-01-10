@@ -2,6 +2,16 @@ import inspect from 'object-inspect';
 import { defaultConfig } from '@inkline/config';
 import { DevEnvType, DevEnv } from './types';
 
+export const packageJsonExtension = {
+    dependencies: {
+        '@inkline/inkline': 'next'
+    },
+    devDependencies: {
+        '@inkline/plugin': '^1.0.0',
+        '@inkline/config': '^1.0.0'
+    }
+};
+
 export const defaultFileIndent = '    ';
 
 export const unknownDevEnvironment: DevEnv = {

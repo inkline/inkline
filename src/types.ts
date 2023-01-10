@@ -1,3 +1,5 @@
+import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
+
 export namespace Commands {
     export namespace Init {
         export const name = 'init';
@@ -62,3 +64,5 @@ export interface InitEnv {
     hasSrcDir: boolean;
     cwd: string;
 }
+
+export type PackageJsonSchema = JSONSchemaForNPMPackageJsonFiles;
