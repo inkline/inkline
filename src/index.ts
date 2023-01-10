@@ -4,14 +4,15 @@ import chalk from 'chalk';
 import { program } from 'commander';
 import { Commands } from './types';
 import { generateCss, generateScss, init } from './commands';
+import { createRequire } from 'node:module';
 
-// @ts-ignore
-import packageJSON from '../package.json';
+const require = createRequire(import.meta.url);
+const packageJson = require('../package.json');
 
 program
     .name(chalk.blue('inkline'))
-    .description(packageJSON.description)
-    .version(packageJSON.version);
+    .description(packageJson.description)
+    .version(packageJson.version);
 
 program
     .command(Commands.Init.name)
