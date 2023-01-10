@@ -1,3 +1,3 @@
-export * from './generate-css';
-export * from './generate-scss';
+export * from './generateCss';
+export * from './generateScss';
 export * from './init';

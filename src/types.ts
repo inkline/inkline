@@ -10,7 +10,7 @@ export namespace Commands {
     }
 
     export namespace Generate {
-        export namespace CSS {
+        export namespace Css {
             export const name = 'css';
             export const messages = {
                 success: 'CSS generated successfully.',
@@ -20,11 +20,11 @@ export namespace Commands {
             export interface Options {
                 config?: string;
                 outputDir?: string;
-                extName: '.css'
+                extName: '.css';
             }
         }
 
-        export namespace SCSS {
+        export namespace Scss {
             export const name = 'scss';
             export const messages = {
                 success: 'SCSS generated successfully.',
@@ -34,8 +34,27 @@ export namespace Commands {
             export interface Options {
                 config?: string;
                 outputDir?: string;
-                extName: '.scss'
+                extName: '.scss';
             }
         }
     }
+}
+
+export enum DevEnvType {
+    Nuxt = 'nuxt',
+    Vite = 'vite',
+    Webpack = 'webpack',
+    Unknown = 'unknown'
+}
+
+export interface DevEnv {
+    type: DevEnvType;
+    configFile: string;
+    initialized?: boolean;
+}
+
+export interface InitEnv {
+    isTypescript: boolean;
+    hasSrcDir: boolean;
+    cwd: string;
 }

@@ -7,6 +7,13 @@ export default defineConfig({
                 duration: '300ms',
                 timingFunction: 'ease'
             },
+            boxShadow: {
+                offsetX: '0',
+                offsetY: '0.5rem',
+                blurRadius: '1rem',
+                spreadRadius: '-0.75rem',
+                color: 'rgba(0, 0, 0, 0.15)'
+            },
             breakpoints: {
                 xs: 0,
                 sm: 576,
@@ -16,15 +23,18 @@ export default defineConfig({
                 '2xl': 1400
             },
             color: {
-                red: '#ee1411',
-                orange: '#f65809',
-                yellow: '#ffbb00',
-                green: '#36c989',
-                teal: '#49b6ab',
-                blue: '#1db1e2',
-                purple: '#7559a6',
-                pink: '#f20d61',
+                red: '#f2413d',
+                orange: '#f98e5a',
+                yellow: '#ffda77',
+                green: '#2fb079',
+                teal: '#48b4a9',
+                blue: '#178bb2',
+                purple: '#8268ae',
+                pink: '#fc778a',
                 white: '#ffffff',
+                light: 'var(--color-gray-100)',
+                gray: '#8e9fa4',
+                dark: 'var(--color-gray-800)',
                 black: '#000000',
                 primary: '<% theme.color.blue %>',
                 secondary: '<% theme.color.purple %>',
@@ -83,7 +93,52 @@ export default defineConfig({
                 },
                 fontSize: '1rem',
                 lineHeight: 1.5,
-                letterSpacing: 0
+                letterSpacing: 0,
+                color: {
+                    dark: 'var(--color-dark)',
+                    weak: 'var(--color-gray-700)',
+                    weaker: 'var(--color-gray-500)',
+                    weakest: 'var(--color-gray-300)',
+                    light: 'var(--color-light)'
+                },
+                contrastColor: {
+                    light: 'var(--color-gray-900)',
+                    dark: 'var(--color-white)'
+                }
+            },
+            elements: {
+                body: {
+                    background: 'var(--color-white)',
+                    color: 'var(--color-gray-900)'
+                },
+                grid: {
+                    columns: 12,
+                    gutter: '28px',
+                    xs: {
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-xs))',
+                        width: '100%'
+                    },
+                    sm: {
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-sm))',
+                        width: 'calc(var(--breakpoint-sm) - var(--grid--sm--gutter))'
+                    },
+                    md: {
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-md))',
+                        width: 'calc(var(--breakpoint-md) - var(--grid--md--gutter))'
+                    },
+                    lg: {
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-lg))',
+                        width: 'calc(var(--breakpoint-lg) - var(--grid--lg--gutter))'
+                    },
+                    xl: {
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-xl))',
+                        width: 'calc(var(--breakpoint-xl) - var(--grid--xl--gutter))'
+                    },
+                    '2xl': {
+                        gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-2xl))',
+                        width: 'calc(var(--breakpoint-2xl) - var(--grid--2xl--gutter))'
+                    }
+                }
             },
             variants: {
                 borderRadius: {
@@ -105,177 +160,393 @@ export default defineConfig({
                 },
                 color: {
                     primary: {
+                        50: {
+                            lightness: 95
+                        },
                         100: {
-                            lightness: 10
+                            lightness: 90
                         },
                         200: {
-                            lightness: 20
+                            lightness: 80
                         },
                         300: {
-                            lightness: 30
+                            lightness: 70
                         },
                         400: {
-                            lightness: 40
+                            lightness: 60
                         },
                         500: {
                             lightness: 50
                         },
                         600: {
-                            lightness: 60
+                            lightness: 40
                         },
                         700: {
-                            lightness: 70
+                            lightness: 30
                         },
                         800: {
-                            lightness: 80
+                            lightness: 20
                         },
                         900: {
-                            lightness: 90
+                            lightness: 10
+                        },
+                        'shade-150': {
+                            darken: 15
+                        },
+                        'shade-100': {
+                            darken: 10
+                        },
+                        'shade-50': {
+                            darken: 5
+                        },
+                        'tint-50': {
+                            lighten: 5
+                        },
+                        'tint-100': {
+                            lighten: 10
+                        },
+                        'tint-150': {
+                            lighten: 15
                         }
                     },
                     secondary: {
+                        50: {
+                            lightness: 95
+                        },
                         100: {
-                            lightness: 10
+                            lightness: 90
                         },
                         200: {
-                            lightness: 20
+                            lightness: 80
                         },
                         300: {
-                            lightness: 30
+                            lightness: 70
                         },
                         400: {
-                            lightness: 40
+                            lightness: 60
                         },
                         500: {
                             lightness: 50
                         },
                         600: {
-                            lightness: 60
+                            lightness: 40
                         },
                         700: {
-                            lightness: 70
+                            lightness: 30
                         },
                         800: {
-                            lightness: 80
+                            lightness: 20
                         },
                         900: {
-                            lightness: 90
+                            lightness: 10
+                        },
+                        'shade-150': {
+                            darken: 15
+                        },
+                        'shade-100': {
+                            darken: 10
+                        },
+                        'shade-50': {
+                            darken: 5
+                        },
+                        'tint-50': {
+                            lighten: 5
+                        },
+                        'tint-100': {
+                            lighten: 10
+                        },
+                        'tint-150': {
+                            lighten: 15
                         }
                     },
                     info: {
+                        50: {
+                            lightness: 95
+                        },
                         100: {
-                            lightness: 10
+                            lightness: 90
                         },
                         200: {
-                            lightness: 20
+                            lightness: 80
                         },
                         300: {
-                            lightness: 30
+                            lightness: 70
                         },
                         400: {
-                            lightness: 40
+                            lightness: 60
                         },
                         500: {
                             lightness: 50
                         },
                         600: {
-                            lightness: 60
+                            lightness: 40
                         },
                         700: {
-                            lightness: 70
+                            lightness: 30
                         },
                         800: {
-                            lightness: 80
+                            lightness: 20
                         },
                         900: {
-                            lightness: 90
+                            lightness: 10
+                        },
+                        'shade-150': {
+                            darken: 15
+                        },
+                        'shade-100': {
+                            darken: 10
+                        },
+                        'shade-50': {
+                            darken: 5
+                        },
+                        'tint-50': {
+                            lighten: 5
+                        },
+                        'tint-100': {
+                            lighten: 10
+                        },
+                        'tint-150': {
+                            lighten: 15
                         }
                     },
                     success: {
+                        50: {
+                            lightness: 95
+                        },
                         100: {
-                            lightness: 10
+                            lightness: 90
                         },
                         200: {
-                            lightness: 20
+                            lightness: 80
                         },
                         300: {
-                            lightness: 30
+                            lightness: 70
                         },
                         400: {
-                            lightness: 40
+                            lightness: 60
                         },
                         500: {
                             lightness: 50
                         },
                         600: {
-                            lightness: 60
+                            lightness: 40
                         },
                         700: {
-                            lightness: 70
+                            lightness: 30
                         },
                         800: {
-                            lightness: 80
+                            lightness: 20
                         },
                         900: {
-                            lightness: 90
+                            lightness: 10
+                        },
+                        'shade-150': {
+                            darken: 15
+                        },
+                        'shade-100': {
+                            darken: 10
+                        },
+                        'shade-50': {
+                            darken: 5
+                        },
+                        'tint-50': {
+                            lighten: 5
+                        },
+                        'tint-100': {
+                            lighten: 10
+                        },
+                        'tint-150': {
+                            lighten: 15
                         }
                     },
                     warning: {
+                        50: {
+                            lightness: 95
+                        },
                         100: {
-                            lightness: 10
+                            lightness: 90
                         },
                         200: {
-                            lightness: 20
+                            lightness: 80
                         },
                         300: {
-                            lightness: 30
+                            lightness: 70
                         },
                         400: {
-                            lightness: 40
+                            lightness: 60
                         },
                         500: {
                             lightness: 50
                         },
                         600: {
-                            lightness: 60
+                            lightness: 40
                         },
                         700: {
-                            lightness: 70
+                            lightness: 30
                         },
                         800: {
-                            lightness: 80
+                            lightness: 20
                         },
                         900: {
-                            lightness: 90
+                            lightness: 10
+                        },
+                        'shade-150': {
+                            darken: 15
+                        },
+                        'shade-100': {
+                            darken: 10
+                        },
+                        'shade-50': {
+                            darken: 5
+                        },
+                        'tint-50': {
+                            lighten: 5
+                        },
+                        'tint-100': {
+                            lighten: 10
+                        },
+                        'tint-150': {
+                            lighten: 15
                         }
                     },
                     danger: {
+                        50: {
+                            lightness: 95
+                        },
                         100: {
-                            lightness: 10
+                            lightness: 90
                         },
                         200: {
-                            lightness: 20
+                            lightness: 80
                         },
                         300: {
-                            lightness: 30
+                            lightness: 70
                         },
                         400: {
-                            lightness: 40
+                            lightness: 60
                         },
                         500: {
                             lightness: 50
                         },
                         600: {
-                            lightness: 60
+                            lightness: 40
                         },
                         700: {
-                            lightness: 70
+                            lightness: 30
                         },
                         800: {
-                            lightness: 80
+                            lightness: 20
                         },
                         900: {
+                            lightness: 10
+                        },
+                        'shade-150': {
+                            darken: 15
+                        },
+                        'shade-100': {
+                            darken: 10
+                        },
+                        'shade-50': {
+                            darken: 5
+                        },
+                        'tint-50': {
+                            lighten: 5
+                        },
+                        'tint-100': {
+                            lighten: 10
+                        },
+                        'tint-150': {
+                            lighten: 15
+                        }
+                    },
+                    gray: {
+                        50: {
+                            lightness: 95
+                        },
+                        100: {
                             lightness: 90
+                        },
+                        200: {
+                            lightness: 80
+                        },
+                        300: {
+                            lightness: 70
+                        },
+                        400: {
+                            lightness: 60
+                        },
+                        500: {
+                            lightness: 50
+                        },
+                        600: {
+                            lightness: 40
+                        },
+                        700: {
+                            lightness: 30
+                        },
+                        800: {
+                            lightness: 20
+                        },
+                        900: {
+                            lightness: 10
+                        },
+                        'shade-150': {
+                            darken: 15
+                        },
+                        'shade-100': {
+                            darken: 10
+                        },
+                        'shade-50': {
+                            darken: 5
+                        },
+                        'tint-50': {
+                            lighten: 5
+                        },
+                        'tint-100': {
+                            lighten: 10
+                        },
+                        'tint-150': {
+                            lighten: 15
+                        }
+                    },
+                    light: {
+                        'shade-150': {
+                            darken: 15
+                        },
+                        'shade-100': {
+                            darken: 10
+                        },
+                        'shade-50': {
+                            darken: 5
+                        },
+                        'tint-50': {
+                            lighten: 5
+                        },
+                        'tint-100': {
+                            lighten: 10
+                        },
+                        'tint-150': {
+                            lighten: 15
+                        }
+                    },
+                    dark: {
+                        'shade-150': {
+                            darken: 15
+                        },
+                        'shade-100': {
+                            darken: 10
+                        },
+                        'shade-50': {
+                            darken: 5
+                        },
+                        'tint-50': {
+                            lighten: 5
+                        },
+                        'tint-100': {
+                            lighten: 10
+                        },
+                        'tint-150': {
+                            lighten: 15
                         }
                     }
                 },
@@ -379,6 +650,9 @@ export default defineConfig({
                 },
                 size: {
                     multiplier: {
+                        '2xs': {
+                            divide: 'var(--scale-ratio-pow-3)'
+                        },
                         xs: {
                             divide: 'var(--scale-ratio-pow-2)'
                         },
@@ -391,6 +665,9 @@ export default defineConfig({
                         },
                         xl: {
                             multiply: 'var(--scale-ratio-pow-2)'
+                        },
+                        '2xl': {
+                            multiply: 'var(--scale-ratio-pow-3)'
                         }
                     }
                 },
@@ -416,11 +693,21 @@ export default defineConfig({
             }
         },
         dark: {
-            color: {
-                red: '#ff0000'
-            },
             border: {
                 color: '#4a4a4c'
+            },
+            typography: {
+                color: {
+                    weak: 'var(--color-gray-300)',
+                    weaker: 'var(--color-gray-500)',
+                    weakest: 'var(--color-gray-700)'
+                }
+            },
+            elements: {
+                body: {
+                    background: 'var(--color-gray-800)',
+                    color: 'var(--color-gray-100)'
+                }
             }
         }
     }

@@ -1,32 +1,35 @@
 import { existsSync } from 'fs';
 import { writeFile } from 'fs/promises';
 import { resolve } from 'pathe';
-import { Commands } from '../types';
 import { Logger } from '@grozav/logger';
-import inspect from 'object-inspect';
-import { defaultConfig } from '@inkline/config';
+import { defaultConfigFileContents } from '../constants';
+import { addPluginToDevEnvConfigFile, detectDevEnv, initDevEnvConfigFile } from '../helpers';
+import type { InitEnv } from '../types';
+import { Commands, DevEnvType } from '../types';
 
-const defaultConfigFileContents = `import { defineConfig } from '@inkline/config';
+async function createConfigFile(env: InitEnv) {
+    const outputFilePath = resolve(env.cwd, `inkline.config.${env.isTypescript ? 'ts' : 'js'}`);
 
-export default defineConfig(${
-    inspect({
-        theme: defaultConfig.theme
-    }, {
-        indent: 4,
-        depth: Infinity
-    }).replace(/(\d+[a-zA-Z]+):/g, '\'$1\':')
-});
-`;
+    await writeFile(outputFilePath, defaultConfigFileContents);
 
-export async function init (options: Commands.Init.Options) {
+    Logger.default(`Created ${outputFilePath}`);
+}
+
+export async function init(options: Commands.Init.Options) {
     try {
         const cwd = process.cwd();
+        const hasSrcDir = existsSync(resolve(cwd, 'src'));
         const isTypescript = existsSync(resolve(cwd, 'tsconfig.json'));
-        const outputFilePath = resolve(cwd, isTypescript ? 'inkline.config.ts' : 'inkline.config.js');
+        const initEnv: InitEnv = { cwd, hasSrcDir, isTypescript };
 
-        await writeFile(outputFilePath, defaultConfigFileContents);
+        const devEnv = await detectDevEnv(initEnv);
+        if (!devEnv.initialized && devEnv.type !== DevEnvType.Unknown) {
+            await initDevEnvConfigFile(devEnv, initEnv);
+        }
+        await addPluginToDevEnvConfigFile(devEnv, initEnv);
 
-        Logger.default(`Created ${outputFilePath}`);
+        await createConfigFile(initEnv);
+
         Logger.success(Commands.Init.messages.success);
     } catch (error) {
         Logger.error(Commands.Init.messages.error);
