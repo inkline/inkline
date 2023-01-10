@@ -1,11 +1,19 @@
 import { existsSync } from 'fs';
-import { readFile, writeFile } from 'fs/promises';
+import { writeFile } from 'fs/promises';
 import { resolve } from 'pathe';
 import { Logger } from '@grozav/logger';
 import { defaultConfigFileContents, packageJsonExtension } from '../constants';
-import { extendPackageJson } from '../helpers';
+import {
+    addPluginToDevEnvConfigFile,
+    addPluginToEntryFile,
+    detectDevEnv,
+    detectEntryFile,
+    extendPackageJson,
+    initDevEnvConfigFile
+} from '../helpers';
 import type { InitEnv } from '../types';
-import { Commands, PackageJsonSchema } from '../types';
+import { Commands, DevEnvType, PackageJsonSchema } from '../types';
+import shelljs from 'shelljs';
 
 async function createConfigFile(env: InitEnv) {
     const outputFilePath = resolve(env.cwd, `inkline.config.${env.isTypescript ? 'ts' : 'js'}`);
@@ -28,23 +36,25 @@ export async function init(options: Commands.Init.Options) {
             packageJson = await extendPackageJson(packageJsonPath, packageJsonExtension);
         }
 
-        // if (!options.manual) {
-        //     const devEnv = await detectDevEnv(packageJson, initEnv);
-        //     if (!devEnv.initialized && devEnv.type !== DevEnvType.Unknown) {
-        //         await initDevEnvConfigFile(devEnv, initEnv);
-        //     }
-        //
-        //     await addPluginToDevEnvConfigFile(devEnv, initEnv);
-        //
-        //     if (devEnv.type !== DevEnvType.Nuxt) {
-        //         const entryFile = await detectEntryFile(initEnv);
-        //         if (entryFile) {
-        //             await addPluginToEntryFile(entryFile, initEnv);
-        //         }
-        //     }
-        // }
+        if (!options.manual) {
+            const devEnv = await detectDevEnv(packageJson, initEnv);
+            if (!devEnv.initialized && devEnv.type !== DevEnvType.Unknown) {
+                await initDevEnvConfigFile(devEnv, initEnv);
+            }
+
+            await addPluginToDevEnvConfigFile(devEnv, initEnv);
+
+            if (devEnv.type !== DevEnvType.Nuxt) {
+                const entryFile = await detectEntryFile(initEnv);
+                if (entryFile) {
+                    await addPluginToEntryFile(entryFile, initEnv);
+                }
+            }
+        }
 
         await createConfigFile(initEnv);
+
+        await shelljs.exec('npm install');
 
         Logger.success(Commands.Init.messages.success);
     } catch (error) {
