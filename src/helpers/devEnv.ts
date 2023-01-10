@@ -114,7 +114,9 @@ export async function detectDevEnv({ cwd, isTypescript }: InitEnv): Promise<DevE
             `Detected ${capitalizeFirst(inferredDevEnvironment.type)}.js development environment`
         );
     } else {
-        Logger.log('Could not determine development environment. Please see manual setup steps.');
+        Logger.warning(
+            'Could not determine development environment. Please see manual setup steps.'
+        );
     }
 
     return inferredDevEnvironment || unknownDevEnvironment;
@@ -126,7 +128,9 @@ export function insertOrUpdateConfigReference(
     code: string
 ): string[] {
     const pluginsRegEx = new RegExp(`${configProperty}:\\s*\\[\\s*`);
-    const exportLineIndex = lines.findIndex((line) => line.includes('export default') || line.includes('module.exports'));
+    const exportLineIndex = lines.findIndex(
+        (line) => line.includes('export default') || line.includes('module.exports')
+    );
     const indent = getIndent(lines);
 
     const pluginsLineIndex = lines.findIndex((line) => pluginsRegEx.test(line));
@@ -137,7 +141,9 @@ export function insertOrUpdateConfigReference(
         lines[pluginsLineIndex] = pluginsLine.replace(
             pluginsRegEx,
             `plugins: [
-${indent}${indent}${code},${!isEmptyArray && isArrayClosing ? `\n${indent}` : ''}${isArrayClosing ? indent : ''}`
+${indent}${indent}${code},${!isEmptyArray && isArrayClosing ? `\n${indent}` : ''}${
+                isArrayClosing ? indent : ''
+            }`
         );
     } else {
         lines = addAfter(lines, exportLineIndex, [
@@ -206,6 +212,7 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
         }
     }
 
-    // await writeFile(devEnv.configFile, nuxtConfig);
-    console.log(configFileLines.join('\n'));
+    await writeFile(devEnv.configFile, configFileLines.join('\n'), 'utf-8');
+
+    Logger.log(`Updated ${devEnv.configFile}`);
 }

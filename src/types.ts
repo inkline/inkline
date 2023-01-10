@@ -6,7 +6,11 @@ export namespace Commands {
             error: 'An unexpected error occurred.'
         };
 
-        export interface Options {}
+        export interface Options {
+            manual?: boolean;
+            typescript?: boolean;
+            type?: DevEnvType;
+        }
     }
 
     export namespace Generate {

@@ -16,6 +16,7 @@ program
 program
     .command(Commands.Init.name)
     .description('Initialize Inkline and create a configuration file.')
+    .option('-m, --manual', 'Skip file processing and create a configuration file only.')
     .action(async (type: string, options: Commands.Init.Options) => {
         await init(options);
     });
