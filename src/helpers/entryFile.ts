@@ -53,7 +53,7 @@ export async function addPluginToEntryFile(entryFile: string, env: InitEnv) {
 
         await writeFile(entryFile, entryFileLines.join('\n'), 'utf-8');
 
-        Logger.log(`Updated ${entryFile}`);
+        Logger.default(`Updated ${entryFile}`);
     } else {
         Logger.warning('Could not determine entry file. Please see manual setup steps.');
     }

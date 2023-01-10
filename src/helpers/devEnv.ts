@@ -28,7 +28,7 @@ export async function initDevEnvConfigFile(devEnv: DevEnv, { isTypescript }: Ini
         }
     }
 
-    Logger.log(`Created ${devEnv.configFile}`);
+    Logger.default(`Created ${devEnv.configFile}`);
 }
 
 export async function detectDevEnv(
@@ -216,5 +216,5 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
 
     await writeFile(devEnv.configFile, configFileLines.join('\n'), 'utf-8');
 
-    Logger.log(`Updated ${devEnv.configFile}`);
+    Logger.default(`Updated ${devEnv.configFile}`);
 }

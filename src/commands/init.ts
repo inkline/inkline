@@ -13,7 +13,7 @@ import {
 } from '../helpers';
 import type { InitEnv } from '../types';
 import { Commands, DevEnvType, PackageJsonSchema } from '../types';
-import shelljs from 'shelljs';
+import { execShellCommand } from '../helpers/exec';
 
 async function createConfigFile(env: InitEnv) {
     const outputFilePath = resolve(env.cwd, `inkline.config.${env.isTypescript ? 'ts' : 'js'}`);
@@ -54,7 +54,9 @@ export async function init(options: Commands.Init.Options) {
 
         await createConfigFile(initEnv);
 
-        await shelljs.exec('npm install');
+        Logger.default('Installing dependencies...');
+
+        await execShellCommand('npm install');
 
         Logger.success(Commands.Init.messages.success);
     } catch (error) {
