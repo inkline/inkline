@@ -1,6 +1,6 @@
 import { DevEnvType, DevEnv, InitEnv, PackageJsonSchema } from '../types';
 import { addAfter, addAfterImports, addAfterRequires } from './addAfter';
-import { getPluginCjsPreamble, getPluginTsPreamble } from './preamble';
+import { getPluginCjsPreamble, getPluginPreamble } from './preamble';
 import { resolve } from 'pathe';
 import { existsSync } from 'fs';
 import { capitalizeFirst } from '@grozav/utils';
@@ -169,7 +169,7 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
     if (devEnv.type === 'nuxt') {
         configFileLines = addAfterImports(
             configFileLines,
-            getPluginTsPreamble(configFileLines, devEnv, env)
+            getPluginPreamble(configFileLines, devEnv, env)
         );
 
         configFileLines = insertOrUpdateConfigReference(
@@ -180,7 +180,7 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
     } else if (devEnv.type === 'vite') {
         configFileLines = addAfterImports(configFileLines, [
             `import { inkline } from '@inkline/plugin/vite';`,
-            ...getPluginTsPreamble(configFileLines, devEnv, env)
+            ...getPluginPreamble(configFileLines, devEnv, env)
         ]);
 
         configFileLines = insertOrUpdateConfigReference(
@@ -192,7 +192,7 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
         if (env.isTypescript && devEnv.configFile.endsWith('.ts')) {
             configFileLines = addAfterImports(configFileLines, [
                 `import { inkline } from '@inkline/plugin/webpack';`,
-                ...getPluginTsPreamble(configFileLines, devEnv, env)
+                ...getPluginPreamble(configFileLines, devEnv, env)
             ]);
 
             configFileLines = insertOrUpdateConfigReference(

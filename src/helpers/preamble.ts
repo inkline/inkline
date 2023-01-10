@@ -14,16 +14,16 @@ ${indent}outputDir: path.resolve(__dirname, '${outputDir}')
 `.split('\n');
 }
 
-export function getPluginTsPreamble(lines: string[], devEnv: DevEnv, env: InitEnv) {
+export function getPluginPreamble(lines: string[], devEnv: DevEnv, env: InitEnv) {
     const indent = getIndent(lines);
     const outputDir = `${env.hasSrcDir ? 'src/' : ''}css/variables`;
     const hasPathImport = lines.some((line) => /from ['"]path['"]/.test(line));
+    const isTypescript = devEnv.configFile.endsWith('.ts');
 
-    return `${
-        hasPathImport ? '' : `import * as path from 'path';\n`
-    }import { UserOptions } from '@inkline/plugin/types';
-
-const inklineConfig: UserOptions = {
+    return `${hasPathImport ? '' : `import * as path from 'path';\n`}${
+        isTypescript ? `import type { UserOptions } from '@inkline/plugin/types';\n` : ''
+    }
+const inklineConfig${isTypescript ? `: UserOptions` : ''} = {
 ${indent}outputDir: path.resolve(__dirname, '${outputDir}')
 };
 `.split('\n');

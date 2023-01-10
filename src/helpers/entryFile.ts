@@ -57,6 +57,4 @@ export async function addPluginToEntryFile(entryFile: string, env: InitEnv) {
     } else {
         Logger.warning('Could not determine entry file. Please see manual setup steps.');
     }
-
-    console.log(entryFileLines.join('\n'));
 }
