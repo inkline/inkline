@@ -6,7 +6,7 @@ import { Commands } from './types';
 import { generateCss, generateScss, init } from './commands';
 
 // @ts-ignore
-import packageJSON from '../package.json' assert { type: 'json' };
+import packageJSON from '../package.json';
 
 program
     .name(chalk.blue('inkline'))

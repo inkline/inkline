@@ -63,5 +63,6 @@
   },
   "bin": {
     "inkline": "./index.js"
-  }
+  },
+  "license": "MIT"
 }
