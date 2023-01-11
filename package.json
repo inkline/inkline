@@ -20,7 +20,6 @@
   "devDependencies": {
     "@grozav/eslint-config": "^1.1.4",
     "@inkline/config": "^1.0.0",
-    "@inkline/plugin": "^1.0.0",
     "@schemastore/package": "^0.0.6",
     "@types/object-inspect": "1.8.1",
     "@types/prettier": "^2.7.2",
@@ -38,10 +37,9 @@
     "vitest": "0.22.1"
   },
   "dependencies": {
-    "@grozav/logger": "*",
-    "@grozav/utils": "*",
-    "@inkline/config": "*",
-    "@inkline/inkline": "next",
+    "@grozav/logger": ">=1",
+    "@grozav/utils": ">=1",
+    "@inkline/config": ">=1",
     "chalk": "^4.1.2",
     "commander": "^9.3.0",
     "object-inspect": "1.12.2"
