@@ -5,7 +5,7 @@ import { readFile, writeFile } from 'fs/promises';
 import { addAfterImports } from './addAfter';
 import { Logger } from '@grozav/logger';
 import prettier from 'prettier';
-import { defaultPrettierConfig } from '../constants';
+import { defaultPrettierConfig, manualInstallationUrl } from '../constants';
 
 export function detectEntryFile(env: InitEnv): string | undefined {
     const possibleEntryFiles = [];
@@ -22,16 +22,10 @@ export function detectEntryFile(env: InitEnv): string | undefined {
         possibleEntryFiles.push(resolve(env.cwd, 'src/index.js'));
     }
 
-    const entryFile = possibleEntryFiles.find((file) => existsSync(file));
-
-    if (!entryFile) {
-        Logger.warning('Could not determine entry file. Please see manual setup steps.');
-    }
-
-    return entryFile;
+    return possibleEntryFiles.find((file) => existsSync(file));
 }
 
-export async function addPluginToEntryFile(entryFile: string, env: InitEnv) {
+export async function addPluginToEntryFile(entryFile: string, env: InitEnv): Promise<boolean> {
     const entryFileContents = await readFile(entryFile, 'utf-8');
     let entryFileLines = entryFileContents.split('\n');
 
@@ -57,8 +51,8 @@ export async function addPluginToEntryFile(entryFile: string, env: InitEnv) {
 
         await writeFile(entryFile, formattedCode, 'utf-8');
 
-        Logger.default(`Updated ${entryFile}`);
-    } else {
-        Logger.warning('Could not determine entry file. Please see manual setup steps.');
+        return true;
     }
+
+    return false;
 }

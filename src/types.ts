@@ -53,8 +53,14 @@ export enum DevEnvType {
     Unknown = 'unknown'
 }
 
+export enum DevLibraryType {
+    Vue = 'vue',
+    Unknown = 'unknown'
+}
+
 export interface DevEnv {
     type: DevEnvType;
+    library: DevLibraryType;
     configFile: string;
     initialized?: boolean;
 }

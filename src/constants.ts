@@ -1,7 +1,9 @@
 import inspect from 'object-inspect';
 import { defaultConfig } from '@inkline/config';
-import { DevEnvType, DevEnv } from './types';
+import { DevEnvType, DevEnv, DevLibraryType } from './types';
 import { RequiredOptions as PrettierOptions } from 'prettier';
+
+export const manualInstallationUrl = 'https://www.inkline.io/docs/installation/manual';
 
 export const defaultPrettierConfig: Partial<PrettierOptions> = {
     parser: 'typescript',
@@ -25,6 +27,7 @@ export const defaultFileIndent = '    ';
 
 export const unknownDevEnvironment: DevEnv = {
     type: DevEnvType.Unknown,
+    library: DevLibraryType.Unknown,
     configFile: ''
 };
 
@@ -55,15 +58,13 @@ export const defaultWebpackTsDevEnvConfigFileContents = `import * as path from '
 import * as webpack from 'webpack';
 import 'webpack-dev-server';
 
-const config: webpack.Configuration = {
+export default <webpack.Configuration>{
   entry: path.resolve(__dirname, 'src', 'main.ts'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   }
 };
-
-export default config;
 `;
 
 export const defaultWebpackJsDevEnvConfigFileContents = `const path = require('path');

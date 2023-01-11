@@ -1,4 +1,4 @@
-import { DevEnvType, DevEnv, InitEnv, PackageJsonSchema } from '../types';
+import { DevEnv, DevEnvType, DevLibraryType, InitEnv, PackageJsonSchema } from '../types';
 import { addAfter, addAfterImports, addAfterRequires } from './addAfter';
 import { getPluginCjsPreamble, getPluginPreamble } from './preamble';
 import { resolve } from 'pathe';
@@ -6,18 +6,21 @@ import { existsSync } from 'fs';
 import { capitalizeFirst } from '@grozav/utils';
 import { readFile, writeFile } from 'fs/promises';
 import {
-    unknownDevEnvironment,
     defaultNuxtDevEnvConfigFileContents,
+    defaultPrettierConfig,
     defaultViteDevEnvConfigFileContents,
     defaultWebpackJsDevEnvConfigFileContents,
     defaultWebpackTsDevEnvConfigFileContents,
-    defaultPrettierConfig
+    manualInstallationUrl,
+    unknownDevEnvironment
 } from '../constants';
 import { Logger } from '@grozav/logger';
 import prettier from 'prettier';
-import { config } from 'shelljs';
 
-export async function initDevEnvConfigFile(devEnv: DevEnv, { isTypescript }: InitEnv) {
+export async function initDevEnvConfigFile(
+    devEnv: DevEnv,
+    { isTypescript }: InitEnv
+): Promise<boolean> {
     let configFileContents;
     if (devEnv.type === 'nuxt') {
         configFileContents = defaultNuxtDevEnvConfigFileContents;
@@ -35,9 +38,11 @@ export async function initDevEnvConfigFile(devEnv: DevEnv, { isTypescript }: Ini
         const formattedCode = prettier.format(configFileContents, defaultPrettierConfig);
 
         await writeFile(devEnv.configFile, formattedCode, 'utf-8');
+
+        return true;
     }
 
-    Logger.default(`Created ${devEnv.configFile}`);
+    return false;
 }
 
 export async function detectDevEnv(
@@ -46,36 +51,42 @@ export async function detectDevEnv(
 ): Promise<DevEnv> {
     const nuxtTs: DevEnv = {
         type: DevEnvType.Nuxt,
+        library: DevLibraryType.Vue,
         configFile: resolve(cwd, 'nuxt.config.ts'),
         initialized: true
     };
 
     const nuxtJs: DevEnv = {
         type: DevEnvType.Nuxt,
+        library: DevLibraryType.Vue,
         configFile: resolve(cwd, 'nuxt.config.js'),
         initialized: true
     };
 
     const viteTs: DevEnv = {
         type: DevEnvType.Vite,
+        library: DevLibraryType.Vue,
         configFile: resolve(cwd, 'vite.config.ts'),
         initialized: true
     };
 
     const viteJs: DevEnv = {
         type: DevEnvType.Vite,
+        library: DevLibraryType.Vue,
         configFile: resolve(cwd, 'vite.config.js'),
         initialized: true
     };
 
     const webpackTs: DevEnv = {
         type: DevEnvType.Webpack,
+        library: DevLibraryType.Vue,
         configFile: resolve(cwd, 'webpack.config.ts'),
         initialized: true
     };
 
     const webpackJs: DevEnv = {
         type: DevEnvType.Webpack,
+        library: DevLibraryType.Vue,
         configFile: resolve(cwd, 'webpack.config.js'),
         initialized: true
     };
@@ -120,16 +131,6 @@ export async function detectDevEnv(
         }
     }
 
-    if (inferredDevEnvironment) {
-        Logger.success(
-            `Detected ${capitalizeFirst(inferredDevEnvironment.type)}.js development environment`
-        );
-    } else {
-        Logger.warning(
-            'Could not determine development environment. Please see manual setup steps.'
-        );
-    }
-
     return inferredDevEnvironment || unknownDevEnvironment;
 }
 
@@ -148,11 +149,21 @@ export function insertOrUpdateConfigReference(
         const pluginsLine = lines[pluginsLineIndex];
         lines[pluginsLineIndex] = pluginsLine.replace(
             pluginsRegEx,
-            `plugins: [
+            `${configProperty}: [
         ${code},`
         );
     } else {
-        lines = addAfter(lines, exportLineIndex, [`plugins: [`, `   ${code},`, `],`]);
+        const exportDefaultSplitRegEx = /.+\{/;
+        if (exportDefaultSplitRegEx.test(lines[exportLineIndex])) {
+            lines[exportLineIndex] = lines[exportLineIndex].replace(
+                exportDefaultSplitRegEx,
+                (match) => `${match}\n ${configProperty}: [\n${code}\n],`
+            );
+        } else {
+            Logger.warning(
+                `Could not automatically add "${configProperty}" property into config file`
+            );
+        }
     }
 
     return lines;
@@ -167,11 +178,6 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
     let configFileLines = configFile.split('\n');
 
     if (devEnv.type === 'nuxt') {
-        configFileLines = addAfterImports(
-            configFileLines,
-            getPluginPreamble(configFileLines, devEnv, env)
-        );
-
         configFileLines = insertOrUpdateConfigReference(
             configFileLines,
             'plugins',

@@ -5,6 +5,7 @@ import { Logger } from '@grozav/logger';
 import {
     defaultConfigFileContents,
     defaultPrettierConfig,
+    manualInstallationUrl,
     packageJsonExtension
 } from '../constants';
 import {
@@ -19,6 +20,7 @@ import type { InitEnv } from '../types';
 import { Commands, DevEnvType, PackageJsonSchema } from '../types';
 import { execShellCommand } from '../helpers/exec';
 import prettier from 'prettier';
+import { capitalizeFirst } from '@grozav/utils';
 
 async function createConfigFile(env: InitEnv) {
     const outputFilePath = resolve(env.cwd, `inkline.config.${env.isTypescript ? 'ts' : 'js'}`);
@@ -31,21 +33,41 @@ async function createConfigFile(env: InitEnv) {
 
 export async function init(options: Commands.Init.Options) {
     try {
+        let initSuccessful = true;
+
         const cwd = process.cwd();
         const hasSrcDir = existsSync(resolve(cwd, 'src'));
         const isTypescript = existsSync(resolve(cwd, 'tsconfig.json'));
         const initEnv: InitEnv = { cwd, hasSrcDir, isTypescript };
 
         const packageJsonPath = resolve(cwd, 'package.json');
+        const packageJsonFound = existsSync(packageJsonPath);
         let packageJson: PackageJsonSchema = {};
-        if (existsSync(packageJsonPath)) {
+        if (packageJsonFound) {
             packageJson = await extendPackageJson(packageJsonPath, packageJsonExtension);
+            Logger.default(`Updated ${packageJsonPath}`);
+        } else {
+            initSuccessful = false;
+            Logger.warning(`Could not find a package.json file.`);
         }
 
         if (!options.manual) {
             const devEnv = await detectDevEnv(packageJson, initEnv);
+
+            if (devEnv.type === DevEnvType.Unknown) {
+                Logger.warning(`Could not determine development environment.`);
+                initSuccessful = false;
+            } else {
+                Logger.success(
+                    `Detected ${capitalizeFirst(devEnv.type)}.js development environment`
+                );
+            }
+
             if (!devEnv.initialized && devEnv.type !== DevEnvType.Unknown) {
-                await initDevEnvConfigFile(devEnv, initEnv);
+                const created = await initDevEnvConfigFile(devEnv, initEnv);
+                if (created) {
+                    Logger.default(`Created ${devEnv.configFile}`);
+                }
             }
 
             await addPluginToDevEnvConfigFile(devEnv, initEnv);
@@ -53,18 +75,35 @@ export async function init(options: Commands.Init.Options) {
             if (devEnv.type !== DevEnvType.Nuxt) {
                 const entryFile = await detectEntryFile(initEnv);
                 if (entryFile) {
-                    await addPluginToEntryFile(entryFile, initEnv);
+                    const updated = await addPluginToEntryFile(entryFile, initEnv);
+
+                    if (updated) {
+                        Logger.default(`Updated ${entryFile}`);
+                    } else {
+                        Logger.warning(`Could not determine entry file.`);
+                    }
+                } else {
+                    Logger.warning(`Could not determine entry file.`);
+                    initSuccessful = false;
                 }
             }
         }
 
         await createConfigFile(initEnv);
 
-        Logger.default('Installing dependencies...');
+        if (packageJsonFound) {
+            Logger.default('Installing dependencies...');
 
-        await execShellCommand('npm install');
+            await execShellCommand('npm install');
+        }
 
-        Logger.success(Commands.Init.messages.success);
+        if (initSuccessful) {
+            Logger.success(Commands.Init.messages.success);
+        } else {
+            Logger.warning(
+                `Inkline partially initialized. Please see manual setup steps: ${manualInstallationUrl}`
+            );
+        }
     } catch (error) {
         Logger.error(Commands.Init.messages.error);
         Logger.log(error);

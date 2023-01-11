@@ -15,7 +15,5 @@ export async function extendPackageJson(
 
     await writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-    Logger.default(`Updated ${packageJsonPath}`);
-
     return packageJson;
 }
