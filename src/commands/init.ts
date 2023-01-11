@@ -2,7 +2,11 @@ import { existsSync } from 'fs';
 import { writeFile } from 'fs/promises';
 import { resolve } from 'pathe';
 import { Logger } from '@grozav/logger';
-import { defaultConfigFileContents, packageJsonExtension } from '../constants';
+import {
+    defaultConfigFileContents,
+    defaultPrettierConfig,
+    packageJsonExtension
+} from '../constants';
 import {
     addPluginToDevEnvConfigFile,
     addPluginToEntryFile,
@@ -18,7 +22,7 @@ import prettier from 'prettier';
 
 async function createConfigFile(env: InitEnv) {
     const outputFilePath = resolve(env.cwd, `inkline.config.${env.isTypescript ? 'ts' : 'js'}`);
-    const formattedCode = prettier.format(defaultConfigFileContents, { parser: 'typescript' });
+    const formattedCode = prettier.format(defaultConfigFileContents, defaultPrettierConfig);
 
     await writeFile(outputFilePath, formattedCode);
 

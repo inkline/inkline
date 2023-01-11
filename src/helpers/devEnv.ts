@@ -10,7 +10,8 @@ import {
     defaultNuxtDevEnvConfigFileContents,
     defaultViteDevEnvConfigFileContents,
     defaultWebpackJsDevEnvConfigFileContents,
-    defaultWebpackTsDevEnvConfigFileContents
+    defaultWebpackTsDevEnvConfigFileContents,
+    defaultPrettierConfig
 } from '../constants';
 import { Logger } from '@grozav/logger';
 import prettier from 'prettier';
@@ -31,7 +32,7 @@ export async function initDevEnvConfigFile(devEnv: DevEnv, { isTypescript }: Ini
     }
 
     if (configFileContents) {
-        const formattedCode = prettier.format(configFileContents, { parser: 'typescript' });
+        const formattedCode = prettier.format(configFileContents, defaultPrettierConfig);
 
         await writeFile(devEnv.configFile, formattedCode, 'utf-8');
     }
@@ -213,7 +214,7 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
         }
     }
 
-    const formattedCode = prettier.format(configFileLines.join('\n'), { parser: 'typescript' });
+    const formattedCode = prettier.format(configFileLines.join('\n'), defaultPrettierConfig);
 
     await writeFile(devEnv.configFile, formattedCode, 'utf-8');
 

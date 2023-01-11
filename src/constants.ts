@@ -1,6 +1,15 @@
 import inspect from 'object-inspect';
 import { defaultConfig } from '@inkline/config';
 import { DevEnvType, DevEnv } from './types';
+import { RequiredOptions as PrettierOptions } from 'prettier';
+
+export const defaultPrettierConfig: Partial<PrettierOptions> = {
+    parser: 'typescript',
+    trailingComma: 'none',
+    tabWidth: 4,
+    semi: true,
+    singleQuote: true
+};
 
 export const packageJsonExtension = {
     dependencies: {
