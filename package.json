@@ -1,6 +1,6 @@
 {
   "name": "inkline",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "CLI for Inkline, the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
   "scripts": {
     "start": "npm run build && node --experimental-specifier-resolution=node lib/index.mjs",
