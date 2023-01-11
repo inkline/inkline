@@ -14,11 +14,13 @@ import {
 import type { InitEnv } from '../types';
 import { Commands, DevEnvType, PackageJsonSchema } from '../types';
 import { execShellCommand } from '../helpers/exec';
+import prettier from 'prettier';
 
 async function createConfigFile(env: InitEnv) {
     const outputFilePath = resolve(env.cwd, `inkline.config.${env.isTypescript ? 'ts' : 'js'}`);
+    const formattedCode = prettier.format(defaultConfigFileContents, { parser: 'typescript' });
 
-    await writeFile(outputFilePath, defaultConfigFileContents);
+    await writeFile(outputFilePath, formattedCode);
 
     Logger.default(`Created ${outputFilePath}`);
 }

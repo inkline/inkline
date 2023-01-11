@@ -13,19 +13,27 @@ import {
     defaultWebpackTsDevEnvConfigFileContents
 } from '../constants';
 import { Logger } from '@grozav/logger';
-import { getIndent } from './getIndent';
+import prettier from 'prettier';
+import { config } from 'shelljs';
 
 export async function initDevEnvConfigFile(devEnv: DevEnv, { isTypescript }: InitEnv) {
+    let configFileContents;
     if (devEnv.type === 'nuxt') {
-        await writeFile(devEnv.configFile, defaultNuxtDevEnvConfigFileContents);
+        configFileContents = defaultNuxtDevEnvConfigFileContents;
     } else if (devEnv.type === 'vite') {
-        await writeFile(devEnv.configFile, defaultViteDevEnvConfigFileContents);
+        configFileContents = defaultViteDevEnvConfigFileContents;
     } else if (devEnv.type === 'webpack') {
         if (isTypescript) {
-            await writeFile(devEnv.configFile, defaultWebpackTsDevEnvConfigFileContents);
+            configFileContents = defaultWebpackTsDevEnvConfigFileContents;
         } else {
-            await writeFile(devEnv.configFile, defaultWebpackJsDevEnvConfigFileContents);
+            configFileContents = defaultWebpackJsDevEnvConfigFileContents;
         }
+    }
+
+    if (configFileContents) {
+        const formattedCode = prettier.format(configFileContents, { parser: 'typescript' });
+
+        await writeFile(devEnv.configFile, formattedCode, 'utf-8');
     }
 
     Logger.default(`Created ${devEnv.configFile}`);
@@ -133,26 +141,17 @@ export function insertOrUpdateConfigReference(
     const exportLineIndex = lines.findIndex(
         (line) => line.includes('export default') || line.includes('module.exports')
     );
-    const indent = getIndent(lines);
 
     const pluginsLineIndex = lines.findIndex((line) => pluginsRegEx.test(line));
     if (pluginsLineIndex !== -1) {
         const pluginsLine = lines[pluginsLineIndex];
-        const isEmptyArray = /\[\s*],?$/.test(pluginsLine.trim());
-        const isArrayClosing = /],?$/.test(pluginsLine.trim());
         lines[pluginsLineIndex] = pluginsLine.replace(
             pluginsRegEx,
             `plugins: [
-${indent}${indent}${code},${!isEmptyArray && isArrayClosing ? `\n${indent}` : ''}${
-                isArrayClosing ? indent : ''
-            }`
+        ${code},`
         );
     } else {
-        lines = addAfter(lines, exportLineIndex, [
-            `${indent}plugins: [`,
-            `${indent}${indent}${code},`,
-            `${indent}],`
-        ]);
+        lines = addAfter(lines, exportLineIndex, [`plugins: [`, `   ${code},`, `],`]);
     }
 
     return lines;
@@ -214,7 +213,9 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
         }
     }
 
-    await writeFile(devEnv.configFile, configFileLines.join('\n'), 'utf-8');
+    const formattedCode = prettier.format(configFileLines.join('\n'), { parser: 'typescript' });
+
+    await writeFile(devEnv.configFile, formattedCode, 'utf-8');
 
     Logger.default(`Updated ${devEnv.configFile}`);
 }

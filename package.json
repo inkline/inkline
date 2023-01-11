@@ -19,8 +19,11 @@
   },
   "devDependencies": {
     "@grozav/eslint-config": "^1.1.4",
+    "@inkline/config": "^1.0.0",
+    "@inkline/plugin": "^1.0.0",
     "@schemastore/package": "^0.0.6",
     "@types/object-inspect": "1.8.1",
+    "@types/prettier": "^2.7.2",
     "@types/shelljs": "0.8.11",
     "eslint": "8.22.0",
     "np": "^7.6.2",
@@ -32,18 +35,16 @@
     "typescript": "^4.5.4",
     "unbuild": "0.7.6",
     "vite": "3.0.9",
-    "vitest": "0.22.1",
-    "@inkline/plugin": "^1.0.0",
-    "@inkline/config": "^1.0.0"
+    "vitest": "0.22.1"
   },
   "dependencies": {
     "@grozav/logger": "*",
     "@grozav/utils": "*",
     "@inkline/config": "*",
+    "@inkline/inkline": "next",
     "chalk": "^4.1.2",
     "commander": "^9.3.0",
-    "object-inspect": "1.12.2",
-    "@inkline/inkline": "next"
+    "object-inspect": "1.12.2"
   },
   "main": "index.js",
   "module": "index.mjs",

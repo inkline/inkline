@@ -4,6 +4,7 @@ import { existsSync } from 'fs';
 import { readFile, writeFile } from 'fs/promises';
 import { addAfterImports } from './addAfter';
 import { Logger } from '@grozav/logger';
+import prettier from 'prettier';
 
 export function detectEntryFile(env: InitEnv): string | undefined {
     const possibleEntryFiles = [];
@@ -51,7 +52,9 @@ export async function addPluginToEntryFile(entryFile: string, env: InitEnv) {
             `import '@inkline/inkline/css/utilities.scss';`
         ]);
 
-        await writeFile(entryFile, entryFileLines.join('\n'), 'utf-8');
+        const formattedCode = prettier.format(entryFileLines.join('\n'), { parser: 'typescript' });
+
+        await writeFile(entryFile, formattedCode, 'utf-8');
 
         Logger.default(`Updated ${entryFile}`);
     } else {
