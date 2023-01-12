@@ -53,6 +53,21 @@ Generate a default `inkline.config.ts` theme configuration file.
 [Read more about configuration files.](https://github.com/inkline/config)
 
 
+| Option       | Description                                                |
+|--------------|------------------------------------------------------------|
+| -m, --manual | Skip file processing and create a configuration file only. |
+
+### Generate SCSS
+
+```bash
+inkline generate scss
+```
+
+Generate CSS Variables based on your `inkline.config.ts` theme configuration file. The default output folder for your generated CSS files is `.inkline/css`. 
+
+[Read more about configuration files.](https://github.com/inkline/config)
+
+
 | Option                 | Description                             |
 |------------------------|-----------------------------------------|
 | -c, --config <path>    | Path to inkline configuration file.     |
