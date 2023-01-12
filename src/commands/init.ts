@@ -14,11 +14,11 @@ import {
     detectDevEnv,
     detectEntryFile,
     extendPackageJson,
-    initDevEnvConfigFile
+    initDevEnvConfigFile,
+    execShellCommand
 } from '../helpers';
 import type { InitEnv } from '../types';
 import { Commands, DevEnvType, PackageJsonSchema } from '../types';
-import { execShellCommand } from '../helpers/exec';
 import prettier from 'prettier';
 import { capitalizeFirst } from '@grozav/utils';
 

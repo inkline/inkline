@@ -2,6 +2,7 @@ export * from './addAfter';
 export * from './addBefore';
 export * from './devEnv';
 export * from './entryFile';
+export * from './exec';
 export * from './getIndent';
 export * from './getIndex';
 export * from './packageJson';

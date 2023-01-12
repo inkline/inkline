@@ -58,6 +58,26 @@
       "import": "./index.mjs",
       "types": "./index.d.ts"
     },
+    "./commands": {
+      "require": "./commands/index.js",
+      "import": "./commands/index.mjs",
+      "types": "./commands/index.d.ts"
+    },
+    "./helpers": {
+      "require": "./helpers/index.js",
+      "import": "./helpers/index.mjs",
+      "types": "./helpers/index.d.ts"
+    },
+    "./constants": {
+      "require": "./constants.js",
+      "import": "./constants.mjs",
+      "types": "./constants.d.ts"
+    },
+    "./types": {
+      "require": "./types.js",
+      "import": "./types.mjs",
+      "types": "./types.d.ts"
+    },
     "./*": "./*"
   },
   "publishConfig": {
