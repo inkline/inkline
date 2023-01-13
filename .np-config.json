@@ -1,4 +1,5 @@
 {
     "yarn": false,
-    "contents": "./lib"
+    "contents": "./lib",
+    "cleanup": false
 }
