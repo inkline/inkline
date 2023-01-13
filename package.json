@@ -1,6 +1,6 @@
 {
     "name": "@inkline/config",
-    "version": "1.7.10",
+    "version": "1.7.11",
     "scripts": {
         "start": "npm run build && node lib/playground.mjs",
         "dev": "vite",
