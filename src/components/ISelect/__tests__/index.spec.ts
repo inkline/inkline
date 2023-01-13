@@ -251,7 +251,7 @@ describe('Components', () => {
 
                     await fireEvent.focus(input as Element);
 
-                    expect(menu).not.toBeVisible();
+                    expect(menu.parentElement).toHaveAttribute('appear', 'false');
                 });
 
                 it('should open select', async () => {
@@ -537,7 +537,7 @@ describe('Components', () => {
                             const menu = await wrapper.getByRole('listbox');
                             const menuItems = await wrapper.getAllByRole('option');
                             await fireEvent.keyDown(menuItems[0], { key: keymap[key][0] });
-                            expect(menu).not.toBeVisible();
+                            expect(menu.parentElement).toHaveAttribute('appear', 'false');
                         });
                     });
                 });
@@ -556,7 +556,7 @@ describe('Components', () => {
                             const menu = await wrapper.getByRole('listbox');
                             const menuItems = await wrapper.getAllByRole('option');
                             await fireEvent.keyDown(menuItems[0], { key: keymap[key][0] });
-                            expect(menu).not.toBeVisible();
+                            expect(menu.parentElement).toHaveAttribute('appear', 'false');
                         });
                     });
                 });
