@@ -11,3 +11,4 @@ shell.rm('-r', 'lib/**/__tests__');
 
 shell.cp('./README.md', 'lib');
 shell.cp('./LICENSE', 'lib');
+shell.cp('./package.json', 'lib');

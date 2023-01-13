@@ -141,7 +141,7 @@ export const defaultConfig: Configuration = {
             },
             margin: '1rem',
             padding: '1rem',
-            border: '1px solid #c4cdd0',
+            border: '1px solid var(--color-gray-200)',
             borderRadius: '4px',
             scaleRatio: {
                 minorSecond: 1.067,
@@ -291,7 +291,7 @@ export const defaultConfig: Configuration = {
         },
         dark: {
             border: {
-                color: '#4a4a4c'
+                color: 'var(--color-gray-700)'
             },
             typography: {
                 color: {
@@ -301,6 +301,9 @@ export const defaultConfig: Configuration = {
                 }
             },
             elements: {
+                code: {
+                    background: 'var(--color-dark-shade-50)'
+                },
                 body: {
                     background: 'var(--color-gray-800)',
                     color: 'var(--color-gray-100)'
