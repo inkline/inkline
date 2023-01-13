@@ -12,9 +12,10 @@ export default defineBuildConfig({
             builder: 'mkdist',
             format: 'cjs',
             input: './src',
-            outDir: './lib-cjs'
+            outDir: './tmp/cjs'
         }
     ],
     clean: false,
-    declaration: true
+    declaration: true,
+    failOnWarn: false
 });

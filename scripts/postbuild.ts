@@ -11,15 +11,15 @@ import path from 'path';
 
     const rootDir = path.resolve(__dirname, '..');
     const libDir = path.resolve(rootDir, 'lib');
-    const cjsDir = path.resolve(rootDir, 'lib-cjs');
+    const cjsDir = path.resolve(rootDir, 'tmp', 'cjs');
     shell.cd(rootDir);
 
     /**
      * Copy files from src to lib
      */
 
-    const cjsFiles = await glob(path.resolve(cjsDir, '**/*'));
-    cjsFiles.forEach(file => shell.mv(file, file.replace('lib-cjs', 'lib')));
+    const cjsFiles = await glob(path.resolve(cjsDir, '**/*.js'));
+    cjsFiles.forEach(file => shell.mv(file, file.replace('tmp/cjs', 'lib')));
     shell.rm('-rf', cjsDir);
 
     /**
