@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Components > IFormError > should render correctly 1`] = `
-"<transition-stub style=\\"display: none;\\">
+"<transition-stub name=\\"fade-in-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" style=\\"display: none;\\">
   <!--v-if-->
 </transition-stub>"
 `;

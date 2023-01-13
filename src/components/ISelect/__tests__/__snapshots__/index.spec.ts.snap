@@ -9,7 +9,7 @@ exports[`Components > ISelect > props > options > should render correctly withou
     </div>
     <!--v-if-->
   </div>
-  <transition-stub>
+  <transition-stub name=\\"zoom-in-top-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <div class=\\"select\\" id=\\"select-options\\" role=\\"listbox\\" aria-hidden=\\"true\\" style=\\"display: none;\\"><span data-popper-arrow=\\"\\"></span>
       <!--v-if-->
       <div class=\\"select-body\\">
@@ -31,7 +31,7 @@ exports[`Components > ISelect > should render correctly 1`] = `
     </div>
     <!--v-if-->
   </div>
-  <transition-stub>
+  <transition-stub name=\\"zoom-in-top-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <div class=\\"select\\" id=\\"select-options\\" role=\\"listbox\\" aria-hidden=\\"true\\" style=\\"display: none;\\"><span data-popper-arrow=\\"\\"></span>
       <!--v-if-->
       <div class=\\"select-body\\">

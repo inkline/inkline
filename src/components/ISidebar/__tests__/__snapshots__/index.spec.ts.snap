@@ -1,9 +1,9 @@
 // Vitest Snapshot v1
 
 exports[`Components > ISidebar > should render correctly 1`] = `
-"<transition-stub>
+"<transition-stub name=\\"sidebar-wrapper-none-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
   <aside role=\\"complementary\\" class=\\"sidebar-wrapper -collapse-md -light -md -collapse-absolute -placement-left\\" aria-label=\\"Sidebar\\">
-    <transition-stub>
+    <transition-stub name=\\"sidebar-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
       <div class=\\"sidebar\\">
         <div class=\\"sidebar-content\\">
           <nav class=\\"nav -light -md\\" role=\\"menubar\\">
@@ -14,7 +14,7 @@ exports[`Components > ISidebar > should render correctly 1`] = `
         </div>
       </div>
     </transition-stub>
-    <transition-stub>
+    <transition-stub name=\\"sidebar-overlay-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"sidebar-overlay\\" style=\\"display: none;\\"></div>
     </transition-stub>
   </aside>

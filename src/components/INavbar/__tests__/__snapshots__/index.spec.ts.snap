@@ -7,7 +7,7 @@ exports[`Components > INavbar > should render correctly 1`] = `
       <div class=\\"column\\">
         <div class=\\"hamburger-menu -light -close collapse-toggle\\"><span class=\\"hamburger-menu-bars\\"></span></div>
         <div class=\\"navbar-brand\\" tag=\\"div\\" translate=\\"no\\"></div>
-        <transition-stub data-v-1ace5b61=\\"\\">
+        <transition-stub name=\\"expand\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" data-v-1ace5b61=\\"\\">
           <div class=\\"navbar-collapsible\\" aria-hidden=\\"false\\" aria-expanded=\\"true\\">
             <nav class=\\"nav -light -md\\" role=\\"menubar\\">
               <div class=\\"nav-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-disabled=\\"false\\">Item 1</div>

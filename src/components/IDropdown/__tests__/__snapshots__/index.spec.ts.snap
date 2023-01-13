@@ -5,7 +5,7 @@ exports[`Components > IDropdown > should render correctly 1`] = `
   <div class=\\"dropdown-trigger\\"><button class=\\"button -light -md\\" tag=\\"button\\" role=\\"button\\" tabindex=\\"0\\" aria-disabled=\\"false\\" aria-pressed=\\"false\\" aria-busy=\\"false\\" aria-live=\\"polite\\">
       <!--v-if-->
     </button></div>
-  <transition-stub>
+  <transition-stub name=\\"zoom-in-top-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <div class=\\"dropdown -light -md\\" role=\\"menu\\" aria-hidden=\\"true\\" style=\\"display: none;\\"><span data-popper-arrow=\\"\\"></span>
       <!--v-if-->
       <div class=\\"dropdown-body\\">
