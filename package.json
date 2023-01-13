@@ -5,7 +5,7 @@
   "author": "Alex Grozav <alex@grozav.com>",
   "scripts": {
     "dev": "npm run storybook",
-    "build": "rimraf lib lib-cjs dist && npm-run-all --parallel build:*",
+    "build": "rimraf lib tmp/cjs dist && npm-run-all --parallel build:*",
     "build:unbuild": "unbuild",
     "build:vite": "vite build",
     "postbuild": "ts-node ./scripts/postbuild.ts",
