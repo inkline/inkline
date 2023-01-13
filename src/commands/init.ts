@@ -33,6 +33,7 @@ async function createConfigFile(env: InitEnv) {
 
 export async function init(options: Commands.Init.Options) {
     try {
+        Logger.info('Initializing Inkline');
         let initSuccessful = true;
 
         const cwd = process.cwd();
@@ -44,6 +45,7 @@ export async function init(options: Commands.Init.Options) {
         const packageJsonFound = existsSync(packageJsonPath);
         let packageJson: PackageJsonSchema = {};
         if (packageJsonFound) {
+            Logger.success(`Detected package.json file.`);
             packageJson = await extendPackageJson(packageJsonPath, packageJsonExtension);
             Logger.default(`Updated ${packageJsonPath}`);
         } else {

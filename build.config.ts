@@ -1,4 +1,5 @@
 export default {
+    failOnWarn: false,
     entries: [
         {
             builder: 'mkdist',
@@ -14,7 +15,7 @@ export default {
             ext: 'js',
             input: './src',
             outDir: './lib',
-            declaration: false
+            declaration: true
         }
     ]
 };

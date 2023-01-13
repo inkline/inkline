@@ -3,7 +3,7 @@
   "version": "2.3.2",
   "description": "CLI for Inkline, the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
   "scripts": {
-    "start": "npm run build && node --experimental-specifier-resolution=node lib/index.mjs",
+    "start": "npm run build && node lib/index.mjs",
     "dev": "vite",
     "build": "unbuild && cp package.json lib",
     "postbuild": "ts-node scripts/postbuild.ts",
@@ -24,16 +24,18 @@
     "@types/object-inspect": "1.8.1",
     "@types/prettier": "^2.7.2",
     "@types/shelljs": "0.8.11",
-    "eslint": "8.22.0",
+    "eslint": "8.31",
+    "fast-glob": "^3.2.12",
+    "mjscjs": "^1.1.0",
     "np": "^7.6.2",
     "npm-run-all": "4.1.5",
-    "pathe": "0.3.5",
+    "pathe": "^1.0.0",
     "shelljs": "0.8.5",
     "ts-node": "10.9.1",
     "typescript": "^4.5.4",
-    "unbuild": "0.7.6",
-    "vite": "3.0.9",
-    "vitest": "0.22.1"
+    "unbuild": "^1.0.2",
+    "vite": "^4.0.4",
+    "vitest": "^0.27.1"
   },
   "dependencies": {
     "@grozav/logger": ">=1",
@@ -41,8 +43,8 @@
     "@inkline/config": ">=1",
     "chalk": "^4.1.2",
     "commander": "^9.3.0",
-    "prettier": "^2.8.2",
-    "object-inspect": "1.12.2"
+    "object-inspect": "^1.12.3",
+    "prettier": "^2.8.2"
   },
   "main": "index.js",
   "module": "index.mjs",
