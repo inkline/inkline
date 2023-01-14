@@ -24,7 +24,16 @@ import path from 'path';
     shell.rm('-rf', cjsDir);
 
     const scssFiles = await glob(path.resolve(srcDir, '**/*.scss'));
-    scssFiles.forEach(file => shell.cp(file, file.replace('src', 'lib')));
+    scssFiles.forEach(file => {
+        const destFile = file.replace('src', 'lib');
+        const destDir = path.dirname(destFile);
+
+        if (!shell.test('-d', destDir)) {
+            shell.mkdir('-p', destDir);
+        }
+
+        shell.cp(file, destFile);
+    });
 
     /**
      * Replace references in .vue files
