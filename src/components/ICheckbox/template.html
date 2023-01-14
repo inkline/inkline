@@ -3,6 +3,7 @@
     :class="classes"
     :aria-checked="checked ? 'true' : 'false'"
     role="checkbox"
+    v-bind="$attrs"
 >
     <input
         ref="input"

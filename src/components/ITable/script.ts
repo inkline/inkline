@@ -12,6 +12,7 @@ const componentName = 'ITable';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Display the table with borders

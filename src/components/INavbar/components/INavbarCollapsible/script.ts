@@ -19,6 +19,7 @@ export default defineComponent({
             default: () => ({})
         }
     },
+    inheritAttrs: false,
     computed: {
         visible () {
             const isServer = typeof window === 'undefined';

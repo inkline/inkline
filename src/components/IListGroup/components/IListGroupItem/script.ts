@@ -17,6 +17,7 @@ export default defineComponent({
     mixins: [
         LinkableMixin
     ],
+    inheritAttrs: false,
     props: {
         /**
          * The active state of the list group item

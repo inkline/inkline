@@ -16,6 +16,7 @@ const componentName = 'IBadge';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the badge

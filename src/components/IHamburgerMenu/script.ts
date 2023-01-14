@@ -9,6 +9,7 @@ const componentName = 'IHamburgerMenu';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The animation of the hamburger menu

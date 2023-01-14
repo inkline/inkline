@@ -1,4 +1,10 @@
-<div class="tabs" :class="classes" role="tablist" aria-multiselectable="true">
+<div
+    v-bind="$attrs"
+    class="tabs"
+    :class="classes"
+    role="tablist"
+    aria-multiselectable="true"
+>
     <div class="tabs-header">
         <slot name="header" />
     </div>

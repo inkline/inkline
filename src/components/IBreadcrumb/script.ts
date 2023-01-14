@@ -16,6 +16,7 @@ const componentName = 'IBreadcrumb';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The aria-label of the breadcrumbs

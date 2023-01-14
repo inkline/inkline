@@ -1,3 +1,7 @@
-<div class="progress" :class="classes">
+<div
+    v-bind="$attrs"
+    class="progress"
+    :class="classes"
+>
     <slot />
 </div>

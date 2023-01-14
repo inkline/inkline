@@ -17,6 +17,7 @@ export default defineComponent({
             default: () => ({ min: 0, max: 100 })
         }
     },
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the progress bar

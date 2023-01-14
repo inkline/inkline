@@ -323,6 +323,7 @@ const componentName = 'IColumn';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: properties,
     computed: {
         classes () {

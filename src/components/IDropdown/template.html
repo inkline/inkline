@@ -4,6 +4,7 @@
     aria-haspopup="true"
     v-click-outside="onClickOutside"
     @keyup.esc="onEscape"
+    v-bind="$attrs"
 >
     <div class="dropdown-trigger" ref="trigger">
         <slot />

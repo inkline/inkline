@@ -1,3 +1,7 @@
-<div class="row" :class="classes">
+<div
+    v-bind="$attrs"
+    class="row"
+    :class="classes"
+>
     <slot />
 </div>

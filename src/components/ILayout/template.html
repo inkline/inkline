@@ -1,3 +1,7 @@
-<main class="layout" :class="classes">
+<main
+    v-bind="$attrs"
+    class="layout"
+    :class="classes"
+>
     <slot />
 </main>

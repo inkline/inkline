@@ -7,6 +7,7 @@ const componentName = 'IMark';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         text: {
             type: String,

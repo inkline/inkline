@@ -14,6 +14,7 @@ const componentName = 'IIcon';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * @description The icon to be displayed

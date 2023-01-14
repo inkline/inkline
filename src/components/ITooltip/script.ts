@@ -30,6 +30,7 @@ export default defineComponent({
         ClickOutside
     },
     mixins: [PopupMixin, PopupControlsMixin],
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the tooltip
@@ -170,10 +171,10 @@ export default defineComponent({
             this.visible = false;
             this.$emit('update:modelValue', false);
         },
-        handleClickOutside () {
+        handleClickOutside (event: MouseEvent) {
             this.visible = false;
             this.$emit('update:modelValue', false);
-            this.onClickOutside();
+            this.onClickOutside(event);
         }
     }
 });

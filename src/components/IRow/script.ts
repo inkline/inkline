@@ -464,6 +464,7 @@ const componentName = 'IRow';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         noGutter: {
             type: Boolean,

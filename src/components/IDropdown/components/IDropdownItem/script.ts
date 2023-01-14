@@ -22,6 +22,7 @@ export default defineComponent({
             default: () => ({})
         }
     },
+    inheritAttrs: false,
     props: {
         /**
          * The active state of the dropdown item

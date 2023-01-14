@@ -1,4 +1,8 @@
-<div class="toggle" :class="classes">
+<div
+    v-bind="$attrs"
+    class="toggle"
+    :class="classes"
+>
     <input
         ref="input"
         type="checkbox"

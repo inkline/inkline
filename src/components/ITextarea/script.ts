@@ -42,6 +42,7 @@ const componentName = 'ITextarea';
 export default defineComponent({
     name: componentName,
     extends: IInput,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the textarea

@@ -1,5 +1,7 @@
 <div
     class="container"
-    :class="classes">
+    :class="classes"
+    v-bind="$attrs"
+>
     <slot />
 </div>

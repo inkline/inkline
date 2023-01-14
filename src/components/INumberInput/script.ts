@@ -13,6 +13,7 @@ export default defineComponent({
         IButton
     },
     extends: IInput,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the input

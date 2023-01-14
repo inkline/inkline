@@ -1,4 +1,7 @@
-<div class="media">
+<div
+    v-bind="$attrs"
+    class="media"
+>
     <slot name="image"></slot>
     <div class="media-body">
         <slot></slot>

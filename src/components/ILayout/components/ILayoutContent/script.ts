@@ -9,5 +9,6 @@ import { defineComponent } from 'vue';
 const componentName = 'ILayoutContent';
 
 export default defineComponent({
-    name: componentName
+    name: componentName,
+    inheritAttrs: false
 });

@@ -21,6 +21,7 @@ export default defineComponent({
             tabs: this
         };
     },
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the tabs

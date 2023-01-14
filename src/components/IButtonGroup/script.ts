@@ -27,6 +27,7 @@ export default defineComponent({
             buttonGroup: this
         };
     },
+    inheritAttrs: false,
     props: {
         /**
          * Display the button group with vertical orientation

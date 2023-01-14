@@ -11,6 +11,7 @@ const componentName = 'IContainer';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Display the container as fluid, always spanning 100% width

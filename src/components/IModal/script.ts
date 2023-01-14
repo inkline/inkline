@@ -39,6 +39,7 @@ export default defineComponent({
     directives: {
         ClickOutside
     },
+    inheritAttrs: false,
     props: {
         /**
          * Determines if the modal should close when pressing escape

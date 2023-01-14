@@ -11,6 +11,7 @@ const componentName = 'ILayout';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Display the layout on a vertical orientation

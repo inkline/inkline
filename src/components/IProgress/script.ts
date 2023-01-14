@@ -21,6 +21,7 @@ export default defineComponent({
             progress: this
         };
     },
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the progress component

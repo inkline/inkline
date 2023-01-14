@@ -24,6 +24,7 @@ const componentName = 'IAlert';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The size variant of the alert

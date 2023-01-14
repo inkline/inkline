@@ -26,6 +26,7 @@ export default defineComponent({
             formGroup: this
         };
     },
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the radio group

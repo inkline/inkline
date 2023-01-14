@@ -24,6 +24,7 @@ const componentName = 'IPagination';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The aria-label of the pagination

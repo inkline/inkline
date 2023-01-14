@@ -25,6 +25,7 @@ export default defineComponent({
             default: (): any => ({})
         }
     },
+    inheritAttrs: false,
     props: {
         /**
          * The active state of the select option

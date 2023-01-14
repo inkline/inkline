@@ -34,6 +34,7 @@ const componentName = 'ICard';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the card

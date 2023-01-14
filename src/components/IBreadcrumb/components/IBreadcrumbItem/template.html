@@ -1,10 +1,10 @@
 <li
     class="breadcrumb-item"
     :class="classes"
+    v-bind="$attrs"
 >
     <a
         :is="isTag"
-        v-bind="$attrs"
         :tabindex="tabIndex"
         :aria-current="active ? 'location' : null"
     >

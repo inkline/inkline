@@ -21,6 +21,7 @@ export default defineComponent({
     mixins: [
         FormComponentMixin
     ],
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the checkbox

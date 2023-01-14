@@ -29,6 +29,7 @@ export default defineComponent({
             })
         }
     },
+    inheritAttrs: false,
     props: {
         /**
          * The unique identifier of the collapsible item, used for determining if the item is open or not

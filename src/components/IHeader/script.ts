@@ -25,6 +25,7 @@ export default defineComponent({
         IRow,
         IColumn
     },
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the header

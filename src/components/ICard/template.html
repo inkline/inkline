@@ -1,4 +1,8 @@
-<div class="card" :class="classes">
+<div
+    class="card"
+    :class="classes"
+    v-bind="$attrs"
+>
     <header class="card-header" v-if="!!$slots.header">
         <slot name="header" />
     </header>

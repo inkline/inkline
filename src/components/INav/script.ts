@@ -33,6 +33,7 @@ export default defineComponent({
             })
         }
     },
+    inheritAttrs: false,
     props: {
         /**
          * The color variant of the nav

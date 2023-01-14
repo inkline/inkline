@@ -39,6 +39,7 @@ export default defineComponent({
             navbar: this
         };
     },
+    inheritAttrs: false,
     props: {
         /**
          * Determines if the navbar should close when clicking a navbar item

@@ -1,4 +1,6 @@
-<span>
+<span
+    v-bind="$attrs"
+>
 	<template v-for="{ text, marked } of parts">
 		<mark v-if="marked">{{ text }}</mark>
 		<template v-else>{{ text }}</template>

@@ -21,6 +21,7 @@ export default defineComponent({
             collapsible: this
         };
     },
+    inheritAttrs: false,
     props: {
         /**
          * Display the collapsible as an accordion, keeping a maximum of one open collapsible item

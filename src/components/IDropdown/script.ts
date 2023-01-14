@@ -61,6 +61,7 @@ export default defineComponent({
             })
         }
     },
+    inheritAttrs: false,
     props: {
         /**
          * The duration of the hide and show animation
@@ -257,10 +258,10 @@ export default defineComponent({
             this.visible = false;
             this.$emit('update:modelValue', false);
         },
-        handleClickOutside () {
+        handleClickOutside (event: MouseEvent) {
             this.visible = false;
             this.$emit('update:modelValue', false);
-            this.onClickOutside();
+            this.onClickOutside(event);
         },
         getFocusableItems (): HTMLElement[] {
             const focusableItems = [];

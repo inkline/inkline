@@ -25,6 +25,7 @@ export default defineComponent({
             sidebar: this
         };
     },
+    inheritAttrs: false,
     props: {
         /**
          * The aria-label of the sidebar

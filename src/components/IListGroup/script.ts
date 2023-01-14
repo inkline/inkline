@@ -16,6 +16,7 @@ const componentName = 'IListGroup';
 
 export default defineComponent({
     name: componentName,
+    inheritAttrs: false,
     props: {
         /**
          * Display the list group border

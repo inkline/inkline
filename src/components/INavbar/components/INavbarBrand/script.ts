@@ -16,6 +16,7 @@ export default defineComponent({
     mixins: [
         LinkableMixin
     ],
+    inheritAttrs: false,
     props: {
         /**
          * Set the HTML tag to be used for rendering the nav item
