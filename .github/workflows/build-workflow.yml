@@ -14,7 +14,7 @@ jobs:
                 uses: actions/setup-node@v1
                 with:
                     node-version: ${{ matrix.node }}
-            -   run: npm install
+            -   run: npm install --force # --force is required until Storybook dependencies upgrade to vite@4
             -   run: npm run lint
             -   run: npm run test
             -   run: npm run build
