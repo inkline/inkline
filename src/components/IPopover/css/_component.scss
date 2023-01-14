@@ -1,3 +1,5 @@
+@use '../../../css/mixins';
+
 ////
 /// The background of the popover component
 /// @name popover--background
@@ -441,9 +443,9 @@
 }
 
 .popover {
-    @include popup(var(--popover--z-index, 2000));
-    @include popup-arrow();
-    @include popup-arrow-size-variant(var(--popover--arrow--size, 6px));
+    @include mixins.popup(var(--popover--z-index, 2000));
+    @include mixins.popup-arrow();
+    @include mixins.popup-arrow-size-variant(var(--popover--arrow--size, 6px));
 
     text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
     list-style: none;
@@ -711,25 +713,25 @@
         );
     }
 
-    @include popup-arrow-color-variant-for-side(
+    @include mixins.popup-arrow-color-variant-for-side(
         'top',
         var(--popover--background),
         var(--popover--border-bottom-color, var(--border-bottom-color))
     );
 
-    @include popup-arrow-color-variant-for-side(
+    @include mixins.popup-arrow-color-variant-for-side(
         'right',
         var(--popover--background),
         var(--popover--border-left-color, var(--border-left-color))
     );
 
-    @include popup-arrow-color-variant-for-side(
+    @include mixins.popup-arrow-color-variant-for-side(
         'bottom',
         var(--popover--background),
         var(--popover--border-top-color, var(--border-top-color))
     );
 
-    @include popup-arrow-color-variant-for-side(
+    @include mixins.popup-arrow-color-variant-for-side(
         'left',
         var(--popover--background),
         var(--popover--border-right-color, var(--border-right-color))

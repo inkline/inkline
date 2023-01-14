@@ -130,7 +130,7 @@
     position: relative;
 
     &.-responsive {
-        @each $breakpoint-key in $breakpoint-keys {
+        @each $breakpoint-key in mixins.$breakpoint-keys {
             $infix: mixins.breakpoint-infix($breakpoint-key);
 
             &#{$infix} {

@@ -424,9 +424,9 @@
         );
     }
 
-    @each $breakpoint in $breakpoint-keys {
+    @each $breakpoint in mixins.$breakpoint-keys {
         &.-collapse-#{$breakpoint} {
-            @include breakpoint-down($breakpoint) {
+            @include mixins.breakpoint-down($breakpoint) {
                 @include sidebar-wrapper-collapse;
             }
         }

@@ -10,16 +10,29 @@ import path from "path";
      */
 
     const rootDir = path.resolve(__dirname, "..");
+    const srcDir = path.resolve(rootDir, 'src');
     const cjsDir = path.resolve(rootDir, "tmp", "cjs");
     shell.cd(rootDir);
 
     /**
-     * Copy files from tmp/cjs to lib
+     * Copy files to lib
      */
 
     const cjsFiles = await glob(path.resolve(cjsDir, "**/*.js"));
     cjsFiles.forEach((file) => shell.mv(file, file.replace("tmp/cjs", "lib")));
     shell.rm("-rf", cjsDir);
+
+    const scssFiles = await glob(path.resolve(srcDir, '**/*.scss'));
+    scssFiles.forEach(file => {
+        const destFile = file.replace('src', 'lib');
+        const destDir = path.dirname(destFile);
+
+        if (!shell.test('-d', destDir)) {
+            shell.mkdir('-p', destDir);
+        }
+
+        shell.cp(file, destFile);
+    });
 
     /**
      * Resolve sourcemaps

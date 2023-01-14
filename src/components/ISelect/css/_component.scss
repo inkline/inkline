@@ -540,16 +540,17 @@
 /// @name select--footer--padding
 ////
 
-@import '../../../css/mixins';
+@use '../../../css/mixins';
+@use '../../../css/icons';
 
 .select-wrapper {
     display: block;
     position: relative;
 
     .select {
-        @include popup(var(--select--z-index, 2000));
-        @include popup-arrow();
-        @include popup-arrow-size-variant(var(--select--arrow--size, 6px));
+        @include mixins.popup(var(--select--z-index, 2000));
+        @include mixins.popup-arrow();
+        @include mixins.popup-arrow-size-variant(var(--select--arrow--size, 6px));
 
         text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
         list-style: none;
@@ -837,25 +838,25 @@
             );
         }
 
-        @include popup-arrow-color-variant-for-side(
+        @include mixins.popup-arrow-color-variant-for-side(
             'top',
             var(--select--background),
             var(--select--border-bottom-color, var(--border-bottom-color))
         );
 
-        @include popup-arrow-color-variant-for-side(
+        @include mixins.popup-arrow-color-variant-for-side(
             'right',
             var(--select--background),
             var(--select--border-left-color, var(--border-left-color))
         );
 
-        @include popup-arrow-color-variant-for-side(
+        @include mixins.popup-arrow-color-variant-for-side(
             'bottom',
             var(--select--background),
             var(--select--border-top-color, var(--border-top-color))
         );
 
-        @include popup-arrow-color-variant-for-side(
+        @include mixins.popup-arrow-color-variant-for-side(
             'left',
             var(--select--background),
             var(--select--border-right-color, var(--border-right-color))
@@ -875,8 +876,8 @@
 
         .input-suffix > .select-caret {
             cursor: pointer;
-            mask-image: url($ink-caret-down);
-            -webkit-mask-image: url($ink-caret-down);
+            mask-image: url("#{icons.$ink-caret-down}");
+            -webkit-mask-image: url("#{icons.$ink-caret-down}");
             mask-position: center center;
             -webkit-mask-position: center center;
             mask-repeat: no-repeat;

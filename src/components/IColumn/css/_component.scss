@@ -118,7 +118,7 @@
             }
         }
 
-        @include breakpoint-up($breakpoint-key) {
+        @include mixins.breakpoint-up($breakpoint-key) {
             &.-offset#{$breakpoint}-0 {
                 margin-left: 0;
             }
