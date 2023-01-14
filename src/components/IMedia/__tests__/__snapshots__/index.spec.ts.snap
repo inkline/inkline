@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Components > IMedia > should render correctly 1`] = `
-"<div class=\\"media\\" color=\\"light\\" size=\\"md\\">
+"<div color=\\"light\\" size=\\"md\\" class=\\"media\\">
   <div class=\\"media-body\\"></div>
 </div>"
 `;
