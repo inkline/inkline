@@ -1,13 +1,18 @@
 /**
- * Navbar Items
+ * Navbar Collapsible
  */
-.navbar {
-    .navbar-collapsible {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-grow: 1;
-        flex-shrink: 1;
-        justify-content: space-between;
-        align-items: center;
-    }
+
+.navbar-collapsible {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: space-between;
+    align-items: center;
+    transition-property: var(--navbar--transition-property, (height, background-color, border-color));
+    transition-timing-function: var(
+            --navbar--transition-timing-function,
+            var(--transition-timing-function)
+    );
+    transition-duration: var(--navbar--transition-duration, var(--transition-duration));
 }

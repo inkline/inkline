@@ -254,7 +254,6 @@
         position: relative;
         display: block;
         width: 100%;
-        margin-top: var(--navbar--padding-top, var(--margin-top));
         border-radius: var(
             --navbar--border-radius,
             var(--navbar--border-top-left-radius, var(--border-top-left-radius))
@@ -266,6 +265,10 @@
         .nav {
             flex-direction: column;
             align-items: flex-start;
+
+            &:first-child {
+                margin-top: var(--navbar--collapsed--margin-top, var(--margin-top));
+            }
 
             .nav-item {
                 width: 100%;
@@ -373,13 +376,6 @@
     }
 
     .navbar-collapsible {
-        transition-property: var(--navbar--transition-property, (background-color, border-color));
-        transition-timing-function: var(
-            --navbar--transition-timing-function,
-            var(--transition-timing-function)
-        );
-        transition-duration: var(--navbar--transition-duration, var(--transition-duration));
-
         .nav-item {
             color: var(--navbar--item--color);
             padding: var(

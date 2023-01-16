@@ -13,16 +13,15 @@ export default defineComponent({
             element.style.visibility = 'hidden';
             element.style.height = 'auto';
 
-            const height = getStyleProperty(element, 'height');
+            const height = element.offsetHeight;
 
-            element.style.width = null as any;
-            element.style.position = null as any;
-            element.style.visibility = null as any;
-            element.style.height = 0 as any;
+            element.style.width = '';
+            element.style.position = '';
+            element.style.visibility = '';
+            element.style.height = '0';
 
-            getStyleProperty(element, 'height'); // Force rerender element to set correct height
             setTimeout(() => {
-                element.style.height = height;
+                element.style.height = `${height}px`;
             });
         }
 
@@ -31,11 +30,11 @@ export default defineComponent({
         }
 
         function onLeave(element: HTMLElement) {
-            element.style.height = getStyleProperty(element, 'height');
+            const height = element.offsetHeight;
 
-            getStyleProperty(element, 'height'); // Force rerender element to set correct height
+            element.style.height = `${height}px`;
             setTimeout(() => {
-                element.style.height = 0 as any;
+                element.style.height = '0';
             });
         }
 
