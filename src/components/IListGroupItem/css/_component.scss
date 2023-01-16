@@ -11,7 +11,7 @@
         border-bottom-color: var(--list-group--border-bottom-color, var(--border-bottom-color));
         transition-property: color, border-color;
         transition-duration: var(--transition-duration);
-        transition-timing-function: var(--transition-easing);
+        transition-timing-function: var(--transition-timing-function);
         padding: var(
             --list-group--padding,
             var(--list-group--padding-top, var(--padding-top))

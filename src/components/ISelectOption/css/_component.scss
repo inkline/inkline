@@ -48,7 +48,7 @@
     );
     transition-timing-function: var(
         --select--option--transition-timing-function,
-        var(--transition-easing)
+        var(--transition-timing-function)
     );
     transition-duration: var(--select--option--transition-duration, var(--transition-duration));
 

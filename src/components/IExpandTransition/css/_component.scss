@@ -2,7 +2,7 @@
 .expand-leave-active {
     transition-property: height;
     transition-duration: var(--transition-duration);
-    transition-timing-function: var(--transition-easing);
+    transition-timing-function: var(--transition-timing-function);
     overflow: hidden;
 }
 
