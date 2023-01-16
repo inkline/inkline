@@ -55,6 +55,8 @@ describe('Components', () => {
                             provide: {
                                 [InklineKey as symbol]: createInkline(),
                                 [TabsKey as symbol]: {
+                                    registerTab: () => {},
+                                    unregisterTab: () => {},
                                     active: ref('tab')
                                 }
                             }
@@ -71,6 +73,8 @@ describe('Components', () => {
                             provide: {
                                 [InklineKey as symbol]: createInkline(),
                                 [TabsKey as symbol]: {
+                                    registerTab: () => {},
+                                    unregisterTab: () => {},
                                     active: ref('other')
                                 }
                             }

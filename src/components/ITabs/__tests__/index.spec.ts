@@ -15,24 +15,43 @@ describe('Components', () => {
             size: 'md'
         };
 
+        const slotsDefault = {
+            default: [
+                '<i-tab name="tab-1" title="Tab 1">Tab 1 content</i-tab>',
+                '<i-tab name="tab-2" title="Tab 2">Tab 2 content</i-tab>',
+                '<i-tab name="tab-3" title="Tab 3">Tab 3 content</i-tab>'
+            ]
+        };
+
         const slots = {
             header: [
                 '<i-tab-title for="tab-1">Tab 1</i-tab-title>',
                 '<i-tab-title for="tab-2">Tab 2</i-tab-title>',
                 '<i-tab-title for="tab-3">Tab 3</i-tab-title>'
             ],
-            default: [
-                '<i-tab name="tab-1">Tab 1 content</i-tab>',
-                '<i-tab name="tab-2">Tab 2 content</i-tab>',
-                '<i-tab name="tab-3">Tab 3 content</i-tab>'
-            ]
+            ...slotsDefault
         };
 
         it('should be named correctly', () => {
             expect(ITabs.name).toEqual('ITabs');
         });
 
-        it('should render correctly', () => {
+        it('should render correctly without header', () => {
+            const wrapper = render(ITabs, {
+                global: {
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                },
+                props,
+                slots: slotsDefault
+            });
+
+            expect(wrapper.html()).toMatchSnapshot();
+        });
+
+        it('should render correctly with header', () => {
             const wrapper = render(ITabs, {
                 global: {
                     stubs,
