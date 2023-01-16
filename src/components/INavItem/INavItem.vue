@@ -102,7 +102,7 @@ export default defineComponent({
             '-disabled': disabled.value
         }));
 
-        const role = computed(() => (props.to || props.href ? 'link' : 'menuitem'));
+        const role = computed(() => (props.to || props.href ? null : 'menuitem'));
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
         function onClick(event: Event) {

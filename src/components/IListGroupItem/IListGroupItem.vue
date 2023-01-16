@@ -84,7 +84,7 @@ export default defineComponent({
             return disabled.value ? 'true' : null;
         });
 
-        const role = computed(() => (props.to || props.href ? 'link' : 'listitem'));
+        const role = computed(() => (props.to || props.href ? null : 'listitem'));
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
         const classes = computed(() => ({
