@@ -1,6 +1,7 @@
 import { ITabs } from '@inkline/inkline/components/ITabs/index';
 import {
     ITabsBasicExample,
+    ITabsAdvancedExample,
     ITabsColorVariantsExample,
     ITabsSizeVariantsExample,
     ITabsStretchExample
@@ -17,6 +18,7 @@ export default {
 };
 
 export const Basic = createStory(ITabsBasicExample);
+export const Advanced = createStory(ITabsAdvancedExample);
 export const ColorVariants = () => ITabsColorVariantsExample;
 export const SizeVariants = () => ITabsSizeVariantsExample;
 export const Stretch = () => ITabsStretchExample;

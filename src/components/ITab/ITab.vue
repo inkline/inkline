@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject } from 'vue';
+import { computed, defineComponent, inject, onBeforeUnmount, onMounted } from "vue";
 import { uid } from '@grozav/utils';
 import { TabsKey } from '@inkline/inkline/components/ITabs/mixin';
 
@@ -39,6 +39,14 @@ export default defineComponent({
         const classes = computed(() => ({
             '-active': active.value
         }));
+
+        onMounted(() => {
+            tabs?.registerTab(props.name, props.title);
+        });
+
+        onBeforeUnmount(() => {
+            tabs?.unregisterTab(props.name);
+        });
 
         return {
             active,
