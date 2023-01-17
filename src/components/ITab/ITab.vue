@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, onBeforeUnmount, onMounted } from "vue";
+import { computed, defineComponent, inject, onBeforeUnmount, onBeforeMount, onMounted } from "vue";
 import { uid } from '@grozav/utils';
 import { TabsKey } from '@inkline/inkline/components/ITabs/mixin';
 
@@ -41,11 +41,11 @@ export default defineComponent({
         }));
 
         onMounted(() => {
-            tabs?.registerTab(props.name, props.title);
+            tabs?.synchronize();
         });
 
         onBeforeUnmount(() => {
-            tabs?.unregisterTab(props.name);
+            tabs?.synchronize();
         });
 
         return {
@@ -64,6 +64,7 @@ export default defineComponent({
         :class="classes"
         role="tabpanel"
         :name="name"
+        :title="title"
         :aria-hidden="!active"
         :aria-labelledby="`tab-heading-${name}`"
     >

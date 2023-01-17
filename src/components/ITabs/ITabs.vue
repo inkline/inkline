@@ -4,6 +4,11 @@ import { useComponentColor, useComponentSize } from '@inkline/inkline/composable
 import { TabsKey } from '@inkline/inkline/components/ITabs/mixin';
 import { ITabTitle } from "@inkline/inkline/components/ITabTitle";
 
+interface Tab {
+    name: string;
+    title: string;
+}
+
 const componentName = 'ITabs';
 
 export default defineComponent({
@@ -59,8 +64,9 @@ export default defineComponent({
          */
         'update:modelValue'
     ],
-    setup(props, { emit }) {
-        const tabs = ref<Array<Record<string, string>>>([]);
+    setup(props, { emit, slots }) {
+        const tabsRef = ref<HTMLElement | null>(null);
+        const tabs = ref<Array<Tab>>([]);
         const active = ref(props.modelValue);
 
         const currentColor = computed(() => props.color);
@@ -84,13 +90,12 @@ export default defineComponent({
         provide(TabsKey, {
             active,
             setActive,
-            registerTab,
-            unregisterTab
+            synchronize,
         });
 
         onMounted(() => {
-            if (active.value === '') {
-                setActive(tabs.value[0].id);
+            if (active.value === '' && tabs.value[0]) {
+                setActive(tabs.value[0].name);
             }
         });
 
@@ -99,18 +104,25 @@ export default defineComponent({
             emit('update:modelValue', active.value);
         }
 
-        function registerTab(id: string, title: string) {
-            if (!tabs.value.find((tab) => tab.id === id)) {
-                tabs.value.push({ id, title });
-            }
-        }
+        function synchronize() {
+            if (tabsRef.value && !slots.header) {
+                const currentTabs: Tab[] = [];
+                const tabNodes = tabsRef.value.querySelectorAll('.tab');
 
-        function unregisterTab(id: string) {
-            tabs.value = tabs.value.filter((tab) => tab.id !== id);
+                for (const tabNode of tabNodes) {
+                    const name = tabNode.getAttribute('name')!;
+                    const title = tabNode.getAttribute('title') || name;
+
+                    currentTabs.push({ name, title });
+                }
+
+                tabs.value = currentTabs;
+            }
         }
 
         return {
             tabs,
+            tabsRef,
             active,
             classes,
             setActive
@@ -120,11 +132,18 @@ export default defineComponent({
 </script>
 
 <template>
-    <div v-bind="$attrs" class="tabs" :class="classes" role="tablist" aria-multiselectable="true">
+    <div
+        v-bind="$attrs"
+        ref="tabsRef"
+        class="tabs"
+        :class="classes"
+        role="tablist"
+        aria-multiselectable="true"
+    >
         <div class="tabs-header">
             <!-- @slot header Slot for tabs header -->
             <slot name="header">
-                <ITabTitle v-for="tab in tabs" :key="tab.id" :for="tab.id">{{ tab.title }}</ITabTitle>
+                <ITabTitle v-for="tab in tabs" :key="tab.name" :for="tab.name">{{ tab.title }}</ITabTitle>
             </slot>
         </div>
 
