@@ -138,25 +138,26 @@ Thanks goes to these wonderful people:
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/alexgrozav"><img class="avatar" src="https://avatars3.githubusercontent.com/u/6179477?v=4" width="50px;" alt="Alex Grozav"/></a></td>
-      <td align="center"><a href="https://github.com/mtancoigne"><img class="avatar" src="https://avatars3.githubusercontent.com/u/1732268?v=4" width="50px;" alt="Manuel Tancoigne"/></a></td>
-      <td align="center"><a href="https://github.com/renielDev"><img class="avatar" src="https://avatars1.githubusercontent.com/u/14147493?v=4" width="50px;" alt="Reniel Salvador"/></a></td>
-      <td align="center"><a href="https://github.com/TheJaredWilcurt"><img class="avatar" src="https://avatars1.githubusercontent.com/u/4629794?v=4" width="50px;" alt="The Jared Wilcurt"/></a></td>
-      <td align="center"><a href="https://github.com/Eternal-Rise"><img class="avatar" src="https://avatars2.githubusercontent.com/u/34982358?v=4" width="50px;" alt="Bogdan Saliuk"/></a></td>
-      <td align="center"><a href="https://github.com/marbocub"><img class="avatar" src="https://avatars3.githubusercontent.com/u/1912821?v=4" width="50px;" alt="marbocub"/></a></td>
-      <td align="center"><a href="https://dimitrio.dev/"><img class="avatar" src="https://avatars3.githubusercontent.com/u/16154728?v=4" width="50px;" alt="Dimitrios Mandamadiotis"/></a></td>
-      <td align="center"><a href="https://github.com/roiLeo"><img class="avatar" src="https://avatars1.githubusercontent.com/u/9987732?v=4" width="50px;" alt="roiLeo"/></a></td>
-      <td align="center"><a href="https://github.com/milaan-muc"><img class="avatar" src="https://avatars.githubusercontent.com/u/3469112?v=4" width="50px;" alt="milaan-muc"/></a></td>
-      <td align="center"><a href="https://github.com/masihtak"><img class="avatar" src="https://avatars.githubusercontent.com/u/4639192?v=4" width="50px;" alt="Masih Abjadi"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/alexgrozav"><img class="avatar" src="https://avatars3.githubusercontent.com/u/6179477?v=4" width="50px;" alt="Alex Grozav"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/mtancoigne"><img class="avatar" src="https://avatars3.githubusercontent.com/u/1732268?v=4" width="50px;" alt="Manuel Tancoigne"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/renielDev"><img class="avatar" src="https://avatars1.githubusercontent.com/u/14147493?v=4" width="50px;" alt="Reniel Salvador"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/TheJaredWilcurt"><img class="avatar" src="https://avatars1.githubusercontent.com/u/4629794?v=4" width="50px;" alt="The Jared Wilcurt"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/Eternal-Rise"><img class="avatar" src="https://avatars2.githubusercontent.com/u/34982358?v=4" width="50px;" alt="Bogdan Saliuk"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/marbocub"><img class="avatar" src="https://avatars3.githubusercontent.com/u/1912821?v=4" width="50px;" alt="marbocub"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://dimitrio.dev/"><img class="avatar" src="https://avatars3.githubusercontent.com/u/16154728?v=4" width="50px;" alt="Dimitrios Mandamadiotis"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/roiLeo"><img class="avatar" src="https://avatars1.githubusercontent.com/u/9987732?v=4" width="50px;" alt="roiLeo"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/milaan-muc"><img class="avatar" src="https://avatars.githubusercontent.com/u/3469112?v=4" width="50px;" alt="milaan-muc"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/masihtak"><img class="avatar" src="https://avatars.githubusercontent.com/u/4639192?v=4" width="50px;" alt="Masih Abjadi"/></a></td>
     </tr>
     <tr>
-      <td align="center"><a href="https://github.com/IDisposable"><img class="avatar" src="https://avatars.githubusercontent.com/u/874059?v=4" width="50px;" alt="Marc Brooks"/></a></td>
-      <td align="center"><a href="https://github.com/onno-timmerman"><img class="avatar" src="https://avatars.githubusercontent.com/u/178425?v=4" width="50px;" alt="code-on"/></a></td>
-      <td align="center"><a href="https://github.com/agarbutt"><img class="avatar" src="https://avatars.githubusercontent.com/u/734757?v=4" width="50px;" alt="Andrew Garbutt"/></a></td>
-      <td align="center"><a href="https://github.com/skyroses"><img class="avatar" src="https://avatars.githubusercontent.com/u/46625964?v=4" width="50px;" alt="Kamil"/></a></td>
-      <td align="center"><a href="https://github.com/FerroEduardo"><img class="avatar" src="https://avatars.githubusercontent.com/u/47820549?v=4" width="50px;" alt="Eduardo Cabral"/></a></td>
-      <td align="center"><a href="https://github.com/joewelds"><img class="avatar" src="https://avatars.githubusercontent.com/u/28027932?v=4" width="50px;" alt="Joe"/></a></td>
-      <td align="center"><a href="https://github.com/simondib"><img class="avatar" src="https://avatars.githubusercontent.com/u/7483506?v=4" width="50px;" alt="Simon"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/IDisposable"><img class="avatar" src="https://avatars.githubusercontent.com/u/874059?v=4" width="50px;" alt="Marc Brooks"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/onno-timmerman"><img class="avatar" src="https://avatars.githubusercontent.com/u/178425?v=4" width="50px;" alt="code-on"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/agarbutt"><img class="avatar" src="https://avatars.githubusercontent.com/u/734757?v=4" width="50px;" alt="Andrew Garbutt"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/skyroses"><img class="avatar" src="https://avatars.githubusercontent.com/u/46625964?v=4" width="50px;" alt="Kamil"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/FerroEduardo"><img class="avatar" src="https://avatars.githubusercontent.com/u/47820549?v=4" width="50px;" alt="Eduardo Cabral"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/joewelds"><img class="avatar" src="https://avatars.githubusercontent.com/u/28027932?v=4" width="50px;" alt="Joe"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://github.com/simondib"><img class="avatar" src="https://avatars.githubusercontent.com/u/7483506?v=4" width="50px;" alt="Simon"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://littlebitgay.de"><img class="avatar" src="https://avatars.githubusercontent.com/u/43795814?v=4" width="50px;" alt="thunfisch987"/></a></td>
     </tr>
   </tbody>
 </table>
