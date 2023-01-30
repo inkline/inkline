@@ -156,6 +156,10 @@
                 var(--alert--padding-bottom, var(--padding-bottom))
                 var(--alert--padding-left, var(--padding-left))
         );
+
+        > .title {
+            font-weight: var(--toast--title--font-weight, var(--font-weight-semibold));
+        }
     }
 
     > .icon {

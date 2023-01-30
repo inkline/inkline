@@ -39,7 +39,7 @@
     "types": "inkline.d.ts",
     "dependencies": {
         "@floating-ui/dom": "^1.0.4",
-        "@grozav/utils": "^1.1.6",
+        "@grozav/utils": "1.2",
         "@popperjs/core": "2.11.6",
         "normalize.css": "^8.0.1"
     },

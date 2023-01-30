@@ -63,10 +63,10 @@
 
     &.-light {
         --card--background: var(--card--white--background, var(--color-white));
-        --card--border-top-color: var(--card--light--border-top-color, var(--color-light));
-        --card--border-right-color: var(--card--light--border-right-color, var(--color-light));
-        --card--border-bottom-color: var(--card--light--border-bottom-color, var(--color-light));
-        --card--border-left-color: var(--card--light--border-left-color, var(--color-light));
+        --card--border-top-color: var(--card--light--border-top-color, var(--color-light-shade-50));
+        --card--border-right-color: var(--card--light--border-right-color, var(--color-light-shade-50));
+        --card--border-bottom-color: var(--card--light--border-bottom-color, var(--color-light-shade-50));
+        --card--border-left-color: var(--card--light--border-left-color, var(--color-light-shade-50));
         --card--color: var(--card--light--color, var(--contrast-text--color-light));
         --card--header--background: var(--card--light--header--background, var(--color-light-250));
         --card--footer--background: var(--card--light--footer--background, var(--color-light-250));

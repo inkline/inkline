@@ -1,5 +1,5 @@
 import {
-    createInklineGlobal,
+    createInklineService,
     onChangeColorMode,
     Inkline,
     InklineIconsKey,
@@ -64,7 +64,7 @@ describe('Plugin', () => {
                 routerComponent: 'router-link',
                 componentOptions: {}
             };
-            const prototype = createInklineGlobal(options);
+            const prototype = createInklineService(options);
 
             expect(prototype).toHaveProperty('form');
             expect(prototype).toHaveProperty('setLocale');

@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IForm, IInput } from '@inkline/inkline/components';
-import { createInklineGlobal, defaultOptions, InklineKey } from '@inkline/inkline/plugin';
+import { createInklineService, defaultOptions, InklineKey } from '@inkline/inkline/plugin';
 import { createInkline } from '@inkline/inkline/__mocks__';
 
 describe('Components', () => {
@@ -16,7 +16,7 @@ describe('Components', () => {
         };
 
         const mocks = {
-            $inkline: createInklineGlobal(defaultOptions)
+            $inkline: createInklineService(defaultOptions)
         };
 
         const stubs = {

@@ -22,6 +22,7 @@
 @import '../src/components/ISidebar/css/preview';
 @import '../src/components/ITable/css/preview';
 @import '../src/components/ITabs/css/preview';
+@import '../src/components/IToast/css/preview';
 @import '../src/components/ITooltip/css/preview';
 @import '../src/css/preview';
 
@@ -68,4 +69,5 @@
     @extend %sidebar-preview;
     @extend %table-preview;
     @extend %tabs-preview;
+    @extend %toast-preview;
 }

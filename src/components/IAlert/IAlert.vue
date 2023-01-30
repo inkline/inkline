@@ -109,6 +109,10 @@ export default defineComponent({
             <slot name="icon" />
         </span>
         <div class="content">
+            <div v-if="$slots.title" class="title">
+                <!-- @slot default Slot for toast title -->
+                <slot name="title" />
+            </div>
             <!-- @slot default Slot for default alert content -->
             <slot />
         </div>

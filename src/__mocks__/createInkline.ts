@@ -1,5 +1,5 @@
-import { createInklineGlobal, defaultOptions } from '@inkline/inkline/plugin';
+import { createInklineService, defaultOptions } from '@inkline/inkline/plugin';
 
 export function createInkline() {
-    return createInklineGlobal(defaultOptions);
+    return createInklineService(defaultOptions);
 }

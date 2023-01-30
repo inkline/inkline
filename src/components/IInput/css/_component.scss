@@ -470,7 +470,7 @@
                 var(--input--padding-left, var(--padding-left))
             );
 
-            > button {
+            > button:not(.button) {
                 background: transparent;
                 border: 0;
                 color: inherit;

@@ -1,0 +1,5 @@
+%toast-preview {
+    > .toast + .toast {
+        margin-top: var(--margin-top);
+    }
+}

@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`Components > IToast > should render correctly 1`] = `
+"<div class=\\"toast -primary -md\\" role=\\"toast\\">
+  <!--v-if-->
+  <div class=\\"content\\">
+    <!-- @slot default Slot for default toast content -->
+  </div>
+  <!--v-if-->
+</div>"
+`;
