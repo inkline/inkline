@@ -15,6 +15,7 @@ export default defineComponent({
     inheritAttrs: false,
     setup() {
         const inkline = useInkline();
+
         const toastPositions = ref<Record<ToastPosition, ToastOptions[]>>({
             'top-left': [],
             top: [],
@@ -27,6 +28,15 @@ export default defineComponent({
         });
 
         onMounted(() => {
+            addEventListeners();
+        });
+
+        const classes = computed(() => ({
+        }));
+
+        function addEventListeners() {
+            console.log('adddd');
+
             toastEventBus.on('show', ((options) => {
                 const color = options?.color || inkline.options.toast?.color || 'light';
                 const duration = options?.duration || inkline.options.toast?.duration || null;
@@ -41,10 +51,7 @@ export default defineComponent({
                     position
                 });
             }) as ToastService['show']);
-        });
-
-        const classes = computed(() => ({
-        }));
+        }
 
         return {
             toastPositions,

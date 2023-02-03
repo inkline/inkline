@@ -470,7 +470,7 @@
                 var(--input--padding-left, var(--padding-left))
             );
 
-            > button:not(.button) {
+            > button:not(.button):not(.select-caret) {
                 background: transparent;
                 border: 0;
                 color: inherit;

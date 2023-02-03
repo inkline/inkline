@@ -58,5 +58,6 @@ export { ITab } from "@inkline/inkline/components/ITab";
 export { ITabTitle } from "@inkline/inkline/components/ITabTitle";
 export { ITextarea } from "@inkline/inkline/components/ITextarea";
 export { IToast } from "@inkline/inkline/components/IToast";
+export { IToastContainer } from "@inkline/inkline/components/IToastContainer";
 export { IToggle } from "@inkline/inkline/components/IToggle";
 export { ITooltip } from "@inkline/inkline/components/ITooltip";

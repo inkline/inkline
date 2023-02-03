@@ -58,5 +58,10 @@ export const parameters = {
         stylePreview: true,
         dark,
         light
+    },
+    docs: {
+        source: {
+            type: "code"
+        }
     }
 };

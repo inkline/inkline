@@ -5,6 +5,7 @@ export * from "@inkline/inkline/composables/isServer";
 export * from "@inkline/inkline/composables/linkable";
 export * from "@inkline/inkline/composables/componentColor";
 export * from "@inkline/inkline/composables/componentSize";
-export * from "@inkline/inkline/composables/validation";
 export * from "@inkline/inkline/composables/form";
 export * from "@inkline/inkline/composables/popup";
+export * from "@inkline/inkline/composables/toast";
+export * from "@inkline/inkline/composables/validation";

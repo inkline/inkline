@@ -1,7 +1,7 @@
 import { InjectionKey, Plugin, VNode } from "vue";
 import { createEventBus } from "@grozav/utils";
 
-export type ToastPosition = "top-left" | "top" | "top-right" | "right" | "bottom-right" | "bottom" | "bottom-left" | "left";
+export type ToastPosition = "top-left" | "top" | "top-right" | "right" | "bottom-right" | "bottom" | "bottom-left" | "left" | string;
 
 export interface ToastOptions {
     id: string;

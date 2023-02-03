@@ -1,1 +1,1 @@
-export { default as IToast } from '@inkline/inkline/components/IToast/IToast.vue';
+export { default as IToastContainer } from '@inkline/inkline/components/IToastContainer/IToastContainer.vue';
