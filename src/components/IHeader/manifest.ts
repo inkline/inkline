@@ -9,45 +9,34 @@ export const manifest = {
     props: [
         {
             name: 'color',
-            type: [
-                'primary',
-                'light',
-                'dark'
-            ],
+            type: ['primary', 'light', 'dark'],
             default: 'light',
             description: 'The color variant of the header'
         },
         {
             name: 'cover',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Display the header background as cover, always covering the whole header width or height'
+            description:
+                'Display the header background as cover, always covering the whole header width or height'
         },
         {
             name: 'fluid',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Display the inner content container as fluid, covering 100% of the header width'
+            description:
+                'Display the inner content container as fluid, covering 100% of the header width'
         },
         {
             name: 'fullscreen',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'true',
-            description: 'Display the header as fullscreen, covering 100% screen height and 100% screen width'
+            description:
+                'Display the header as fullscreen, covering 100% screen height and 100% screen width'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the header'
         }
@@ -62,7 +51,7 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The background of the header component'
             },
             {
@@ -111,14 +100,16 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'primary\')',
-                        description: 'The background of the header component, for the primary color variant'
+                        value: "color('primary')",
+                        description:
+                            'The background of the header component, for the primary color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-primary)',
-                        description: 'The color of the header component, for the primary color variant'
+                        description:
+                            'The color of the header component, for the primary color variant'
                     }
                 ]
             },
@@ -130,14 +121,16 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The background of the header component, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The background of the header component, for the light color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-light)',
-                        description: 'The color of the header component, for the light color variant'
+                        description:
+                            'The color of the header component, for the light color variant'
                     }
                 ]
             },
@@ -149,8 +142,9 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the header component, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the header component, for the dark color variant'
                     },
                     {
                         name: 'color',
@@ -168,26 +162,30 @@ export const manifest = {
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{10rem} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding top of the header component, for the sm size variant'
+                        value: "calc(#{10rem} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding top of the header component, for the sm size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{0} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding right of the header component, for the sm size variant'
+                        value: "calc(#{0} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding right of the header component, for the sm size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{10rem} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the header component, for the sm size variant'
+                        value: "calc(#{10rem} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the header component, for the sm size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{0} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the header component, for the sm size variant'
+                        value: "calc(#{0} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the header component, for the sm size variant'
                     }
                 ]
             },
@@ -199,26 +197,30 @@ export const manifest = {
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{10rem} * #{size-multiplier(\'md\')})',
-                        description: 'The padding top of the header component, for the md size variant'
+                        value: "calc(#{10rem} * #{size-multiplier('md')})",
+                        description:
+                            'The padding top of the header component, for the md size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{0} * #{size-multiplier(\'md\')})',
-                        description: 'The padding right of the header component, for the md size variant'
+                        value: "calc(#{0} * #{size-multiplier('md')})",
+                        description:
+                            'The padding right of the header component, for the md size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{10rem} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the header component, for the md size variant'
+                        value: "calc(#{10rem} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the header component, for the md size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{0} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the header component, for the md size variant'
+                        value: "calc(#{0} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the header component, for the md size variant'
                     }
                 ]
             },
@@ -230,26 +232,30 @@ export const manifest = {
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{10rem} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding top of the header component, for the lg size variant'
+                        value: "calc(#{10rem} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding top of the header component, for the lg size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{0} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding right of the header component, for the lg size variant'
+                        value: "calc(#{0} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding right of the header component, for the lg size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{10rem} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the header component, for the lg size variant'
+                        value: "calc(#{10rem} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the header component, for the lg size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{0} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the header component, for the lg size variant'
+                        value: "calc(#{0} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the header component, for the lg size variant'
                     }
                 ]
             }

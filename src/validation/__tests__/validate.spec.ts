@@ -17,9 +17,7 @@ describe('validation', () => {
         it('should validate schema with validator object if validator passes', () => {
             const schema: any = {
                 value: 'value',
-                validators: [
-                    { name: 'required' }
-                ]
+                validators: [{ name: 'required' }]
             };
 
             validateFormInput(schema);
@@ -64,9 +62,7 @@ describe('validation', () => {
         it('should invalidate schema with custom message if validator fails', () => {
             const schema: any = {
                 value: '',
-                validators: [
-                    { name: 'required', message: 'Field is required' }
-                ]
+                validators: [{ name: 'required', message: 'Field is required' }]
             };
 
             validateFormInput(schema);
@@ -83,9 +79,7 @@ describe('validation', () => {
         it('should invalidate schema with custom message function if validator fails', () => {
             const schema: any = {
                 value: '',
-                validators: [
-                    { name: 'required', message: () => 'Field is required' }
-                ]
+                validators: [{ name: 'required', message: () => 'Field is required' }]
             };
 
             validateFormInput(schema);

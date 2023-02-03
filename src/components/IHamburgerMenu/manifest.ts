@@ -9,32 +9,19 @@ export const manifest = {
     props: [
         {
             name: 'animation',
-            type: [
-                'close',
-                'arrow-up',
-                'arrow-down',
-                'arrow-left',
-                'arrow-right',
-                'plus',
-                'minus'
-            ],
+            type: ['close', 'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right', 'plus', 'minus'],
             default: 'close',
             description: 'The animation of the hamburger menu'
         },
         {
             name: 'color',
-            type: [
-                'light',
-                'dark'
-            ],
+            type: ['light', 'dark'],
             default: 'light',
             description: 'The color variant of the hamburger menu'
         },
         {
             name: 'modelValue',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Used to set the hamburger menu as opened or closed'
         }
@@ -49,7 +36,7 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'dark\')',
+                value: "color('dark')",
                 description: 'The background of the hamburger-menu component'
             },
             {
@@ -128,8 +115,9 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the hamburger-menu component, for the light color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the hamburger-menu component, for the light color variant'
                     }
                 ]
             },
@@ -141,8 +129,9 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The background of the hamburger-menu component, for the dark color variant'
+                        value: "color('light')",
+                        description:
+                            'The background of the hamburger-menu component, for the dark color variant'
                     }
                 ]
             }

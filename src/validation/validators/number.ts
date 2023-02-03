@@ -1,4 +1,7 @@
-export function number (value: any, options: any = { allowNegative: false, allowDecimal: false }): boolean {
+export function number(
+    value: any,
+    options: any = { allowNegative: false, allowDecimal: false }
+): boolean {
     let regExpString = '\\d+';
 
     if (options.allowNegative) {

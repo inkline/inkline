@@ -30,77 +30,55 @@ export const manifest = {
     props: [
         {
             name: 'color',
-            type: [
-                'light',
-                'dark'
-            ],
+            type: ['light', 'dark'],
             default: 'light',
             description: 'The color variant of the textarea'
         },
         {
             name: 'clearable',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the textarea as clearable'
         },
         {
             name: 'disabled',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The disabled state of the textarea'
         },
         {
             name: 'id',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: '',
             description: 'The id of the internal textarea element'
         },
         {
             name: 'modelValue',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Used to set the field value'
         },
         {
             name: 'name',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'uid()',
             description: 'The unique identifier of the textarea'
         },
         {
             name: 'readonly',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The readonly state of the textarea'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the textarea'
         },
         {
             name: 'tabindex',
-            type: [
-                'Number',
-                'String'
-            ],
+            type: ['Number', 'String'],
             default: '1',
             description: 'The tabindex of the textarea'
         }

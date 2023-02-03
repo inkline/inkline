@@ -1,4 +1,4 @@
-export function min (value: any, options: any = { value: 0 }): boolean {
+export function min(value: any, options: any = { value: 0 }): boolean {
     if (value === undefined || value === null) {
         return false;
     }

@@ -32,8 +32,8 @@ export interface ManifestCSS {
         color: string;
         [key: string]: string;
     };
-    variables: ManifestCSSVariable[]
-    variants: ManifestCSSVariant[]
+    variables: ManifestCSSVariable[];
+    variants: ManifestCSSVariant[];
 }
 
 export interface Manifest {

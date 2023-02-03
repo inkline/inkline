@@ -23,46 +23,31 @@ export const manifest = {
     props: [
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the alert'
         },
         {
             name: 'color',
-            type: [
-                'info',
-                'success',
-                'warning',
-                'danger'
-            ],
+            type: ['info', 'success', 'warning', 'danger'],
             default: 'info',
             description: 'The color variant of the alert'
         },
         {
             name: 'modelValue',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'true',
             description: 'Used to show or hide a dismissible alert'
         },
         {
             name: 'dismissible',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Shows a dismiss icon on the alert'
         },
         {
             name: 'dismissAriaLabel',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'Dismiss',
             description: 'The aria-label to use for the dismiss button'
         }
@@ -77,31 +62,31 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'info\')',
+                value: "color('info')",
                 description: 'The background of the alert component'
             },
             {
                 name: 'border-top-color',
                 type: 'color',
-                value: 'color(\'info-60\')',
+                value: "color('info-60')",
                 description: 'The border top color of the alert component'
             },
             {
                 name: 'border-right-color',
                 type: 'color',
-                value: 'color(\'info-60\')',
+                value: "color('info-60')",
                 description: 'The border right color of the alert component'
             },
             {
                 name: 'border-bottom-color',
                 type: 'color',
-                value: 'color(\'info-60\')',
+                value: "color('info-60')",
                 description: 'The border bottom color of the alert component'
             },
             {
                 name: 'border-left-color',
                 type: 'color',
-                value: 'color(\'info-60\')',
+                value: "color('info-60')",
                 description: 'The border left color of the alert component'
             },
             {
@@ -227,7 +212,7 @@ export const manifest = {
             {
                 name: 'font-weight',
                 type: '',
-                value: 'font-weight(\'normal\')',
+                value: "font-weight('normal')",
                 description: 'The font weight of the alert component'
             },
             {
@@ -275,7 +260,7 @@ export const manifest = {
             {
                 name: 'code--background',
                 type: 'color',
-                value: 'color(\'info-60\')',
+                value: "color('info-60')",
                 description: 'The code background of the alert component'
             },
             {
@@ -306,44 +291,51 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'info\')',
-                        description: 'The background of the alert component, for the info color variant'
+                        value: "color('info')",
+                        description:
+                            'The background of the alert component, for the info color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'info-60\')',
-                        description: 'The border top color of the alert component, for the info color variant'
+                        value: "color('info-60')",
+                        description:
+                            'The border top color of the alert component, for the info color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'info-60\')',
-                        description: 'The border right color of the alert component, for the info color variant'
+                        value: "color('info-60')",
+                        description:
+                            'The border right color of the alert component, for the info color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'info-60\')',
-                        description: 'The border bottom color of the alert component, for the info color variant'
+                        value: "color('info-60')",
+                        description:
+                            'The border bottom color of the alert component, for the info color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'info-60\')',
-                        description: 'The border left color of the alert component, for the info color variant'
+                        value: "color('info-60')",
+                        description:
+                            'The border left color of the alert component, for the info color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-info)',
-                        description: 'The text color of the alert component, for the info color variant'
+                        description:
+                            'The text color of the alert component, for the info color variant'
                     },
                     {
                         name: 'code--background',
                         type: '',
-                        value: 'color(\'info-60\')',
-                        description: 'The code background of the alert component, for the info color variant'
+                        value: "color('info-60')",
+                        description:
+                            'The code background of the alert component, for the info color variant'
                     }
                 ]
             },
@@ -355,44 +347,51 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'success\')',
-                        description: 'The background of the alert component, for the success color variant'
+                        value: "color('success')",
+                        description:
+                            'The background of the alert component, for the success color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'success-60\')',
-                        description: 'The border top color of the alert component, for the success color variant'
+                        value: "color('success-60')",
+                        description:
+                            'The border top color of the alert component, for the success color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'success-60\')',
-                        description: 'The border right color of the alert component, for the success color variant'
+                        value: "color('success-60')",
+                        description:
+                            'The border right color of the alert component, for the success color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'success-60\')',
-                        description: 'The border bottom color of the alert component, for the success color variant'
+                        value: "color('success-60')",
+                        description:
+                            'The border bottom color of the alert component, for the success color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'success-60\')',
-                        description: 'The border left color of the alert component, for the success color variant'
+                        value: "color('success-60')",
+                        description:
+                            'The border left color of the alert component, for the success color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-success)',
-                        description: 'The text color of the alert component, for the success color variant'
+                        description:
+                            'The text color of the alert component, for the success color variant'
                     },
                     {
                         name: 'code--background',
                         type: '',
-                        value: 'color(\'success-60\')',
-                        description: 'The code background of the alert component, for the success color variant'
+                        value: "color('success-60')",
+                        description:
+                            'The code background of the alert component, for the success color variant'
                     }
                 ]
             },
@@ -404,44 +403,51 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'warning\')',
-                        description: 'The background of the alert component, for the warning color variant'
+                        value: "color('warning')",
+                        description:
+                            'The background of the alert component, for the warning color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'warning-60\')',
-                        description: 'The border top color of the alert component, for the warning color variant'
+                        value: "color('warning-60')",
+                        description:
+                            'The border top color of the alert component, for the warning color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'warning-60\')',
-                        description: 'The border right color of the alert component, for the warning color variant'
+                        value: "color('warning-60')",
+                        description:
+                            'The border right color of the alert component, for the warning color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'warning-60\')',
-                        description: 'The border bottom color of the alert component, for the warning color variant'
+                        value: "color('warning-60')",
+                        description:
+                            'The border bottom color of the alert component, for the warning color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'warning-60\')',
-                        description: 'The border left color of the alert component, for the warning color variant'
+                        value: "color('warning-60')",
+                        description:
+                            'The border left color of the alert component, for the warning color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-warning)',
-                        description: 'The text color of the alert component, for the warning color variant'
+                        description:
+                            'The text color of the alert component, for the warning color variant'
                     },
                     {
                         name: 'code--background',
                         type: '',
-                        value: 'color(\'warning-60\')',
-                        description: 'The code background of the alert component, for the warning color variant'
+                        value: "color('warning-60')",
+                        description:
+                            'The code background of the alert component, for the warning color variant'
                     }
                 ]
             },
@@ -453,44 +459,51 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'danger\')',
-                        description: 'The background of the alert component, for the danger color variant'
+                        value: "color('danger')",
+                        description:
+                            'The background of the alert component, for the danger color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'danger-60\')',
-                        description: 'The border top color of the alert component, for the danger color variant'
+                        value: "color('danger-60')",
+                        description:
+                            'The border top color of the alert component, for the danger color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'danger-60\')',
-                        description: 'The border right color of the alert component, for the danger color variant'
+                        value: "color('danger-60')",
+                        description:
+                            'The border right color of the alert component, for the danger color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'danger-60\')',
-                        description: 'The border bottom color of the alert component, for the danger color variant'
+                        value: "color('danger-60')",
+                        description:
+                            'The border bottom color of the alert component, for the danger color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'danger-60\')',
-                        description: 'The border left color of the alert component, for the danger color variant'
+                        value: "color('danger-60')",
+                        description:
+                            'The border left color of the alert component, for the danger color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-danger)',
-                        description: 'The text color of the alert component, for the danger color variant'
+                        description:
+                            'The text color of the alert component, for the danger color variant'
                     },
                     {
                         name: 'code--background',
                         type: '',
-                        value: 'color(\'danger-60\')',
-                        description: 'The code background of the alert component, for the danger color variant'
+                        value: "color('danger-60')",
+                        description:
+                            'The code background of the alert component, for the danger color variant'
                     }
                 ]
             },
@@ -502,56 +515,64 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top left radius of the alert component, for the sm size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top left radius of the alert component, for the sm size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top right radius of the alert component, for the sm size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top right radius of the alert component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom right radius of the alert component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom right radius of the alert component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom left radius of the alert component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom left radius of the alert component, for the sm size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('sm')})",
                         description: 'The font size of the alert component, for the sm size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding top of the alert component, for the sm size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding top of the alert component, for the sm size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding right of the alert component, for the sm size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding right of the alert component, for the sm size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the alert component, for the sm size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the alert component, for the sm size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the alert component, for the sm size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the alert component, for the sm size variant'
                     }
                 ]
             },
@@ -563,56 +584,64 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top left radius of the alert component, for the md size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top left radius of the alert component, for the md size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top right radius of the alert component, for the md size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top right radius of the alert component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom right radius of the alert component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom right radius of the alert component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom left radius of the alert component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom left radius of the alert component, for the md size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('md')})",
                         description: 'The font size of the alert component, for the md size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding top of the alert component, for the md size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding top of the alert component, for the md size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding right of the alert component, for the md size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding right of the alert component, for the md size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the alert component, for the md size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the alert component, for the md size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the alert component, for the md size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the alert component, for the md size variant'
                     }
                 ]
             },
@@ -624,56 +653,64 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top left radius of the alert component, for the lg size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top left radius of the alert component, for the lg size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top right radius of the alert component, for the lg size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top right radius of the alert component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom right radius of the alert component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom right radius of the alert component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom left radius of the alert component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom left radius of the alert component, for the lg size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('lg')})",
                         description: 'The font size of the alert component, for the lg size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding top of the alert component, for the lg size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding top of the alert component, for the lg size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding right of the alert component, for the lg size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding right of the alert component, for the lg size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the alert component, for the lg size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the alert component, for the lg size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the alert component, for the lg size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the alert component, for the lg size variant'
                     }
                 ]
             }

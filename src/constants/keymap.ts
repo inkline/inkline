@@ -1,5 +1,5 @@
 export interface Keymap {
-    [key: string]: Array<number | string>
+    [key: string]: Array<number | string>;
 }
 
 export const keymap: Keymap = {

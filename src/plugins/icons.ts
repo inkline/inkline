@@ -1,4 +1,4 @@
-import { InjectionKey, Plugin } from "vue";
+import { InjectionKey, Plugin } from 'vue';
 import * as inklineIcons from '@inkline/inkline/icons';
 import { SvgNode } from '@inkline/inkline/types';
 

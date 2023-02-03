@@ -12,16 +12,9 @@ export const sizeArgType = () => ({
     }
 });
 
-export const colorArgType = (options = [
-    'primary',
-    'secondary',
-    'light',
-    'dark',
-    'info',
-    'success',
-    'warning',
-    'danger'
-]) => ({
+export const colorArgType = (
+    options = ['primary', 'secondary', 'light', 'dark', 'info', 'success', 'warning', 'danger']
+) => ({
     color: {
         options,
         control: {

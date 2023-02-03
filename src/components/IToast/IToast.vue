@@ -27,7 +27,7 @@ export default defineComponent({
         color: {
             type: String,
             default: undefined
-        },
+        }
     },
     setup(props) {
         const currentColor = computed(() => props.color);
@@ -37,11 +37,11 @@ export default defineComponent({
 
         const classes = computed(() => ({
             [`-${color.value}`]: Boolean(color.value),
-            [`-${size.value}`]: Boolean(size.value),
+            [`-${size.value}`]: Boolean(size.value)
         }));
 
         return {
-            classes,
+            classes
         };
     }
 });

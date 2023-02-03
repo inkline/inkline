@@ -1,6 +1,6 @@
-import { Plugin, watch } from "vue";
-import { addClass, removeClass } from "@grozav/utils";
-import type { InklineService } from "@inkline/inkline/plugin";
+import { Plugin, watch } from 'vue';
+import { addClass, removeClass } from '@grozav/utils';
+import type { InklineService } from '@inkline/inkline/plugin';
 
 export interface InklineColorModeOptions {
     colorMode: 'system' | 'light' | 'dark' | string;
@@ -11,7 +11,6 @@ export interface InklineColorModePluginOptions {
     inkline: InklineService;
     renderMode: 'client' | 'universal';
 }
-
 
 /**
  * Color mode change handler
@@ -68,10 +67,7 @@ export const ColorModePlugin: Plugin = {
              * Get preferred theme based on selected color mode
              */
 
-            if (
-                inkline.options.colorModeStrategy === 'localStorage' &&
-                renderMode === 'client'
-            ) {
+            if (inkline.options.colorModeStrategy === 'localStorage' && renderMode === 'client') {
                 const storedColorMode = localStorage.getItem(colorModeLocalStorageKey);
                 if (storedColorMode) {
                     inkline.options.colorMode = storedColorMode;

@@ -11,7 +11,9 @@ describe('Helpers', () => {
         for (const event of ['blur', 'focus', 'mouseenter', 'mouseleave']) {
             describe(event, () => {
                 it('should return event.target.value', () => {
-                    expect((eventValueMap as any)[event]({ target: { value: 'abc' } })).toEqual('abc');
+                    expect((eventValueMap as any)[event]({ target: { value: 'abc' } })).toEqual(
+                        'abc'
+                    );
                 });
             });
         }

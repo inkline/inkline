@@ -5,25 +5,40 @@
 .toast {
     &.-light {
         --toast--background: var(--toast--light--background, var(--color-white));
-        --toast--border-top-color: var(--toast--light--border-top-color, var(--color-light-shade-50));
-        --toast--border-right-color: var(--toast--light--border-right-color, var(--color-light-shade-50));
+        --toast--border-top-color: var(
+            --toast--light--border-top-color,
+            var(--color-light-shade-50)
+        );
+        --toast--border-right-color: var(
+            --toast--light--border-right-color,
+            var(--color-light-shade-50)
+        );
         --toast--border-bottom-color: var(
             --toast--light--border-bottom-color,
             var(--color-light-shade-50)
         );
-        --toast--border-left-color: var(--toast--light--border-left-color, var(--color-light-shade-50));
+        --toast--border-left-color: var(
+            --toast--light--border-left-color,
+            var(--color-light-shade-50)
+        );
         --toast--color: var(--toast--light--color, var(--contrast-text--color-light));
     }
 
     &.-dark {
         --toast--background: var(--toast--dark--background, var(--color-dark));
         --toast--border-top-color: var(--toast--dark--border-top-color, var(--color-dark-tint-50));
-        --toast--border-right-color: var(--toast--dark--border-right-color, var(--color-dark-tint-50));
+        --toast--border-right-color: var(
+            --toast--dark--border-right-color,
+            var(--color-dark-tint-50)
+        );
         --toast--border-bottom-color: var(
             --toast--dark--border-bottom-color,
             var(--color-dark-tint-50)
         );
-        --toast--border-left-color: var(--toast--dark--border-left-color, var(--color-dark-tint-50));
+        --toast--border-left-color: var(
+            --toast--dark--border-left-color,
+            var(--color-dark-tint-50)
+        );
         --toast--color: var(--toast--dark--color, var(--contrast-text--color-dark));
     }
 

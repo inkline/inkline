@@ -15,37 +15,26 @@ export const manifest = {
     props: [
         {
             name: 'accordion',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Display the collapsible as an accordion, keeping a maximum of one open collapsible item'
+            description:
+                'Display the collapsible as an accordion, keeping a maximum of one open collapsible item'
         },
         {
             name: 'color',
-            type: [
-                'light',
-                'dark',
-                'blank'
-            ],
+            type: ['light', 'dark', 'blank'],
             default: 'light',
             description: 'The color variant of the button'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the collapsible'
         },
         {
             name: 'modelValue',
-            type: [
-                'String[]'
-            ],
+            type: ['String[]'],
             default: '',
             description: 'Used to determine which collapsible item is open'
         }
@@ -60,31 +49,31 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The background of the collapsible component'
             },
             {
                 name: 'border-top-color',
                 type: 'color',
-                value: 'color(\'light-60\')',
+                value: "color('light-60')",
                 description: 'The border top color of the collapsible component'
             },
             {
                 name: 'border-right-color',
                 type: 'color',
-                value: 'color(\'light-60\')',
+                value: "color('light-60')",
                 description: 'The border right color of the collapsible component'
             },
             {
                 name: 'border-bottom-color',
                 type: 'color',
-                value: 'color(\'light-60\')',
+                value: "color('light-60')",
                 description: 'The border bottom color of the collapsible component'
             },
             {
                 name: 'border-left-color',
                 type: 'color',
-                value: 'color(\'light-60\')',
+                value: "color('light-60')",
                 description: 'The border left color of the collapsible component'
             },
             {
@@ -324,7 +313,7 @@ export const manifest = {
             {
                 name: 'body--background',
                 type: 'color',
-                value: 'color(\'white\')',
+                value: "color('white')",
                 description: 'The background of the collapsible component body'
             },
             {
@@ -415,44 +404,51 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The background of the collapsible component, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The background of the collapsible component, for the light color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'light-60\')',
-                        description: 'The border top color of the collapsible component, for the light color variant'
+                        value: "color('light-60')",
+                        description:
+                            'The border top color of the collapsible component, for the light color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'light-60\')',
-                        description: 'The border right color of the collapsible component, for the light color variant'
+                        value: "color('light-60')",
+                        description:
+                            'The border right color of the collapsible component, for the light color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'light-60\')',
-                        description: 'The border bottom color of the collapsible component, for the light color variant'
+                        value: "color('light-60')",
+                        description:
+                            'The border bottom color of the collapsible component, for the light color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'light-60\')',
-                        description: 'The border left color of the collapsible component, for the light color variant'
+                        value: "color('light-60')",
+                        description:
+                            'The border left color of the collapsible component, for the light color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-light)',
-                        description: 'The color of the collapsible component, for the light color variant'
+                        description:
+                            'The color of the collapsible component, for the light color variant'
                     },
                     {
                         name: 'body--background',
                         type: '',
-                        value: 'color(\'white\')',
-                        description: 'The background of the collapsible component body, for the light color variant'
+                        value: "color('white')",
+                        description:
+                            'The background of the collapsible component body, for the light color variant'
                     }
                 ]
             },
@@ -464,44 +460,51 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the collapsible component, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the collapsible component, for the dark color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'dark-40\')',
-                        description: 'The border top color of the collapsible component, for the dark color variant'
+                        value: "color('dark-40')",
+                        description:
+                            'The border top color of the collapsible component, for the dark color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'dark-40\')',
-                        description: 'The border right color of the collapsible component, for the dark color variant'
+                        value: "color('dark-40')",
+                        description:
+                            'The border right color of the collapsible component, for the dark color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'dark-40\')',
-                        description: 'The border bottom color of the collapsible component, for the dark color variant'
+                        value: "color('dark-40')",
+                        description:
+                            'The border bottom color of the collapsible component, for the dark color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'dark-40\')',
-                        description: 'The border left color of the collapsible component, for the dark color variant'
+                        value: "color('dark-40')",
+                        description:
+                            'The border left color of the collapsible component, for the dark color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-dark)',
-                        description: 'The color of the collapsible component, for the dark color variant'
+                        description:
+                            'The color of the collapsible component, for the dark color variant'
                     },
                     {
                         name: 'body--background',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The background of the collapsible component body, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The background of the collapsible component body, for the dark color variant'
                     }
                 ]
             },
@@ -513,104 +516,121 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top left radius of the collapsible component, for the sm size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top left radius of the collapsible component, for the sm size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top right radius of the collapsible component, for the sm size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top right radius of the collapsible component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom right radius of the collapsible component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom right radius of the collapsible component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom left radius of the collapsible component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom left radius of the collapsible component, for the sm size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
-                        description: 'The font size of the collapsible component, for the sm size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('sm')})",
+                        description:
+                            'The font size of the collapsible component, for the sm size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding top of the collapsible component, for the sm size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding top of the collapsible component, for the sm size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding right of the collapsible component, for the sm size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding right of the collapsible component, for the sm size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the collapsible component, for the sm size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the collapsible component, for the sm size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the collapsible component, for the sm size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the collapsible component, for the sm size variant'
                     },
                     {
                         name: 'header--padding-top',
                         type: '',
-                        value: 'calc(#{var(----padding-top)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding top of the collapsible component header, for the sm size variant'
+                        value: "calc(#{var(----padding-top)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding top of the collapsible component header, for the sm size variant'
                     },
                     {
                         name: 'header--padding-right',
                         type: '',
-                        value: 'calc(#{var(----padding-right)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding right of the collapsible component header, for the sm size variant'
+                        value: "calc(#{var(----padding-right)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding right of the collapsible component header, for the sm size variant'
                     },
                     {
                         name: 'header--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the collapsible component header, for the sm size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the collapsible component header, for the sm size variant'
                     },
                     {
                         name: 'header--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the collapsible component header, for the sm size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the collapsible component header, for the sm size variant'
                     },
                     {
                         name: 'body--padding-top',
                         type: '',
-                        value: 'calc(#{var(----padding-top)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding top of the collapsible component body, for the sm size variant'
+                        value: "calc(#{var(----padding-top)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding top of the collapsible component body, for the sm size variant'
                     },
                     {
                         name: 'body--padding-right',
                         type: '',
-                        value: 'calc(#{var(----padding-right)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding right of the collapsible component body, for the sm size variant'
+                        value: "calc(#{var(----padding-right)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding right of the collapsible component body, for the sm size variant'
                     },
                     {
                         name: 'body--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the collapsible component body, for the sm size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the collapsible component body, for the sm size variant'
                     },
                     {
                         name: 'body--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the collapsible component body, for the sm size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the collapsible component body, for the sm size variant'
                     }
                 ]
             },
@@ -622,104 +642,121 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top left radius of the collapsible component, for the md size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top left radius of the collapsible component, for the md size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top right radius of the collapsible component, for the md size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top right radius of the collapsible component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom right radius of the collapsible component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom right radius of the collapsible component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom left radius of the collapsible component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom left radius of the collapsible component, for the md size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
-                        description: 'The font size of the collapsible component, for the md size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('md')})",
+                        description:
+                            'The font size of the collapsible component, for the md size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding top of the collapsible component, for the md size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding top of the collapsible component, for the md size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding right of the collapsible component, for the md size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding right of the collapsible component, for the md size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the collapsible component, for the md size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the collapsible component, for the md size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the collapsible component, for the md size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the collapsible component, for the md size variant'
                     },
                     {
                         name: 'header--padding-top',
                         type: '',
-                        value: 'calc(#{var(----padding-top)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding top of the collapsible component header, for the md size variant'
+                        value: "calc(#{var(----padding-top)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding top of the collapsible component header, for the md size variant'
                     },
                     {
                         name: 'header--padding-right',
                         type: '',
-                        value: 'calc(#{var(----padding-right)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding right of the collapsible component header, for the md size variant'
+                        value: "calc(#{var(----padding-right)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding right of the collapsible component header, for the md size variant'
                     },
                     {
                         name: 'header--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the collapsible component header, for the md size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the collapsible component header, for the md size variant'
                     },
                     {
                         name: 'header--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the collapsible component header, for the md size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the collapsible component header, for the md size variant'
                     },
                     {
                         name: 'body--padding-top',
                         type: '',
-                        value: 'calc(#{var(----padding-top)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding top of the collapsible component body, for the md size variant'
+                        value: "calc(#{var(----padding-top)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding top of the collapsible component body, for the md size variant'
                     },
                     {
                         name: 'body--padding-right',
                         type: '',
-                        value: 'calc(#{var(----padding-right)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding right of the collapsible component body, for the md size variant'
+                        value: "calc(#{var(----padding-right)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding right of the collapsible component body, for the md size variant'
                     },
                     {
                         name: 'body--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the collapsible component body, for the md size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the collapsible component body, for the md size variant'
                     },
                     {
                         name: 'body--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the collapsible component body, for the md size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the collapsible component body, for the md size variant'
                     }
                 ]
             },
@@ -731,104 +768,121 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top left radius of the collapsible component, for the lg size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top left radius of the collapsible component, for the lg size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top right radius of the collapsible component, for the lg size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top right radius of the collapsible component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom right radius of the collapsible component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom right radius of the collapsible component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom left radius of the collapsible component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom left radius of the collapsible component, for the lg size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
-                        description: 'The font size of the collapsible component, for the lg size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('lg')})",
+                        description:
+                            'The font size of the collapsible component, for the lg size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding top of the collapsible component, for the lg size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding top of the collapsible component, for the lg size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding right of the collapsible component, for the lg size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding right of the collapsible component, for the lg size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the collapsible component, for the lg size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the collapsible component, for the lg size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the collapsible component, for the lg size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the collapsible component, for the lg size variant'
                     },
                     {
                         name: 'header--padding-top',
                         type: '',
-                        value: 'calc(#{var(----padding-top)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding top of the collapsible component header, for the lg size variant'
+                        value: "calc(#{var(----padding-top)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding top of the collapsible component header, for the lg size variant'
                     },
                     {
                         name: 'header--padding-right',
                         type: '',
-                        value: 'calc(#{var(----padding-right)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding right of the collapsible component header, for the lg size variant'
+                        value: "calc(#{var(----padding-right)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding right of the collapsible component header, for the lg size variant'
                     },
                     {
                         name: 'header--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the collapsible component header, for the lg size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the collapsible component header, for the lg size variant'
                     },
                     {
                         name: 'header--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the collapsible component header, for the lg size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the collapsible component header, for the lg size variant'
                     },
                     {
                         name: 'body--padding-top',
                         type: '',
-                        value: 'calc(#{var(----padding-top)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding top of the collapsible component body, for the lg size variant'
+                        value: "calc(#{var(----padding-top)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding top of the collapsible component body, for the lg size variant'
                     },
                     {
                         name: 'body--padding-right',
                         type: '',
-                        value: 'calc(#{var(----padding-right)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding right of the collapsible component body, for the lg size variant'
+                        value: "calc(#{var(----padding-right)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding right of the collapsible component body, for the lg size variant'
                     },
                     {
                         name: 'body--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the collapsible component body, for the lg size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the collapsible component body, for the lg size variant'
                     },
                     {
                         name: 'body--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the collapsible component body, for the lg size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the collapsible component body, for the lg size variant'
                     }
                 ]
             }

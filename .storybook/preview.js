@@ -1,5 +1,5 @@
-import addons from '@storybook/addons';
-import { app } from '@storybook/vue3';
+import { addons } from '@storybook/addons';
+import { setup } from '@storybook/vue3';
 import { defineComponent, h, markRaw, computed } from 'vue';
 import { light, dark } from './theme';
 import { Inkline, components } from '../src/inkline';
@@ -36,13 +36,15 @@ const RouterLink = defineComponent({
     }
 });
 
-app.use(Inkline, {
-    components,
-    routerComponent: markRaw(RouterLink)
-});
+setup((app) => {
+    app.use(Inkline, {
+        components,
+        routerComponent: markRaw(RouterLink)
+    });
 
-addons.getChannel().on('DARK_MODE', (isDarkMode) => {
-    app.config.globalProperties.$inkline.options.colorMode = isDarkMode ? 'dark' : 'light';
+    addons.getChannel().on('DARK_MODE', (isDarkMode) => {
+        app.config.globalProperties.$inkline.options.colorMode = isDarkMode ? 'dark' : 'light';
+    });
 });
 
 export const parameters = {
@@ -61,7 +63,7 @@ export const parameters = {
     },
     docs: {
         source: {
-            type: "code"
+            type: 'code'
         }
     }
 };

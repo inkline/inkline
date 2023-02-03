@@ -12,7 +12,7 @@ export const manifest = {
             {
                 name: 'font-size',
                 type: '',
-                value: 'font-size(\'sm\')',
+                value: "font-size('sm')",
                 description: 'The font size of the form error component'
             },
             {
@@ -48,7 +48,7 @@ export const manifest = {
             {
                 name: 'color',
                 type: '',
-                value: 'color(\'danger\')',
+                value: "color('danger')",
                 description: 'The color of the form error component'
             }
         ],
@@ -58,19 +58,14 @@ export const manifest = {
     props: [
         {
             name: 'for',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: '',
             description: 'The schema path of the target input to show the errors for.'
         },
         {
             name: 'visible',
-            type: [
-                'Array',
-                'String'
-            ],
-            default: '\'touched\', \'dirty\', \'invalid\'',
+            type: ['Array', 'String'],
+            default: "'touched', 'dirty', 'invalid'",
             description: 'Set the validation statuses for which the form error should be visible.'
         }
     ]

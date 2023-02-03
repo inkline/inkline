@@ -8,9 +8,7 @@ export const manifest = {
     props: [
         {
             name: 'for',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: '',
             description: 'The name of the referenced tab'
         }

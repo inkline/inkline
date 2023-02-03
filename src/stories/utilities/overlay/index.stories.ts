@@ -1,4 +1,7 @@
-import { OverlayBasicExample, OverlayLinkExample } from '@inkline/inkline/stories/utilities/overlay/index';
+import {
+    OverlayBasicExample,
+    OverlayLinkExample
+} from '@inkline/inkline/stories/utilities/overlay/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

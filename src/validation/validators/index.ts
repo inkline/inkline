@@ -23,7 +23,7 @@ export { required } from '@inkline/inkline/validation/validators/required';
 export { sameAs } from '@inkline/inkline/validation/validators/sameAs';
 
 export const validators: {
-    [key: string]: (value: any, options: any) => boolean
+    [key: string]: (value: any, options: any) => boolean;
 } = {
     alpha,
     alphanumeric,
@@ -38,10 +38,13 @@ export const validators: {
     sameAs
 };
 
-export function registerValidator (name: string, validator: (value: any, options: any) => boolean): void {
+export function registerValidator(
+    name: string,
+    validator: (value: any, options: any) => boolean
+): void {
     validators[name] = validator;
 }
 
-export function unregisterValidator (name: string): void {
+export function unregisterValidator(name: string): void {
     delete validators[name];
 }

@@ -285,8 +285,8 @@
             text-align: center;
             background-color: var(--radio--color);
             margin-top: calc(var(--radio--size) / -2);
-            mask-image: url("#{icons.$ink-circle}");
-            -webkit-mask-image: url("#{icons.$ink-circle}");
+            mask-image: url('#{icons.$ink-circle}');
+            -webkit-mask-image: url('#{icons.$ink-circle}');
             mask-size: var(--radio--checkmark--size) var(--radio--checkmark--size);
             -webkit-mask-size: var(--radio--checkmark--size) var(--radio--checkmark--size);
         }

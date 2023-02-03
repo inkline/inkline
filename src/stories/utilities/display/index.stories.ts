@@ -1,4 +1,7 @@
-import { DisplayBlockExample, DisplayInlineExample } from '@inkline/inkline/stories/utilities/display/index';
+import {
+    DisplayBlockExample,
+    DisplayInlineExample
+} from '@inkline/inkline/stories/utilities/display/index';
 import { createStory } from '@inkline/inkline/__storybook__';
 
 export default {

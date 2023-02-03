@@ -1,7 +1,16 @@
-import { InjectionKey, Plugin, VNode } from "vue";
-import { createEventBus } from "@grozav/utils";
+import { InjectionKey, Plugin, VNode } from 'vue';
+import { createEventBus } from '@grozav/utils';
 
-export type ToastPosition = "top-left" | "top" | "top-right" | "right" | "bottom-right" | "bottom" | "bottom-left" | "left" | string;
+export type ToastPosition =
+    | 'top-left'
+    | 'top'
+    | 'top-right'
+    | 'right'
+    | 'bottom-right'
+    | 'bottom'
+    | 'bottom-left'
+    | 'left'
+    | string;
 
 export interface ToastOptions {
     id: string;
@@ -9,7 +18,16 @@ export interface ToastOptions {
     message: string | VNode | VNode[];
     position: ToastPosition;
     duration: number | null;
-    color: 'light' | 'dark' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger' | string;
+    color:
+        | 'light'
+        | 'dark'
+        | 'primary'
+        | 'secondary'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | 'danger'
+        | string;
 }
 
 export interface InklineToastOptions {

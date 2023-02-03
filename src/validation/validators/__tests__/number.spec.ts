@@ -15,31 +15,39 @@ describe('Validators', () => {
         });
 
         it('should return true negative float', () => {
-            expect(number('-10.99', {
-                allowNegative: true,
-                allowDecimal: true
-            })).toEqual(true);
+            expect(
+                number('-10.99', {
+                    allowNegative: true,
+                    allowDecimal: true
+                })
+            ).toEqual(true);
         });
 
         it('should return false for characters other than 0-9', () => {
-            expect(number('-a10.99', {
-                allowNegative: true,
-                allowDecimal: true
-            })).toEqual(false);
+            expect(
+                number('-a10.99', {
+                    allowNegative: true,
+                    allowDecimal: true
+                })
+            ).toEqual(false);
         });
 
         it('should return true if all array entries are decimal', () => {
-            expect(number(['10', '10.99', '-10', '-10.99'], {
-                allowNegative: true,
-                allowDecimal: true
-            })).toEqual(true);
+            expect(
+                number(['10', '10.99', '-10', '-10.99'], {
+                    allowNegative: true,
+                    allowDecimal: true
+                })
+            ).toEqual(true);
         });
 
         it('should return false if not all array entries are decimal', () => {
-            expect(number(['10', '10.99', 'string', '-10', '-10.99'], {
-                allowNegative: true,
-                allowDecimal: true
-            })).toEqual(false);
+            expect(
+                number(['10', '10.99', 'string', '-10', '-10.99'], {
+                    allowNegative: true,
+                    allowDecimal: true
+                })
+            ).toEqual(false);
         });
     });
 });

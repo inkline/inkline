@@ -1,8 +1,8 @@
 <script lang="ts">
-import { computed, defineComponent, onMounted, provide, ref, watch } from "vue";
+import { computed, defineComponent, onMounted, provide, ref, watch } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 import { TabsKey } from '@inkline/inkline/components/ITabs/mixin';
-import { ITabTitle } from "@inkline/inkline/components/ITabTitle";
+import { ITabTitle } from '@inkline/inkline/components/ITabTitle';
 
 interface Tab {
     name: string;
@@ -90,7 +90,7 @@ export default defineComponent({
         provide(TabsKey, {
             active,
             setActive,
-            synchronize,
+            synchronize
         });
 
         onMounted(() => {
@@ -143,7 +143,9 @@ export default defineComponent({
         <div class="tabs-header">
             <!-- @slot header Slot for tabs header -->
             <slot name="header">
-                <ITabTitle v-for="tab in tabs" :key="tab.name" :for="tab.name">{{ tab.title }}</ITabTitle>
+                <ITabTitle v-for="tab in tabs" :key="tab.name" :for="tab.name">{{
+                    tab.title
+                }}</ITabTitle>
             </slot>
         </div>
 

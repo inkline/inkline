@@ -3,9 +3,7 @@ const postcssConfig = require('../postcss.config');
 const { resolve } = require('path');
 
 module.exports = {
-    stories: [
-        '../src/**/*.stories.@(js|jsx|ts|tsx)',
-    ],
+    stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
     addons: [
         {
             name: '@storybook/addon-postcss',
@@ -24,9 +22,9 @@ module.exports = {
         'storybook-dark-mode'
     ],
     staticDirs: ['../public'],
-    framework: '@storybook/vue3',
-    core: {
-        builder: '@storybook/builder-vite'
+    framework: {
+        name: '@storybook/vue3-vite',
+        options: {}
     },
     features: {
         // storyStoreV7: true
@@ -42,7 +40,11 @@ module.exports = {
                         replacement: `${resolve(__dirname, '..')}/src/`
                     }
                 ]
-            }
+            },
+            define: { 'process.env': {} },
         });
+    },
+    docs: {
+        autodocs: true
     }
 };

@@ -6,10 +6,12 @@ import { setLocale } from '@inkline/inkline/i18n';
 import {
     ColorModePlugin,
     InklineColorModeOptions,
-    InklineColorModePluginOptions, InklineToastOptions,
-    OverlayPlugin, ToastPlugin
-} from "@inkline/inkline/plugins";
-import { IconsPlugin, InklineIconsPluginOptions } from "@inkline/inkline/plugins/icons";
+    InklineColorModePluginOptions,
+    InklineToastOptions,
+    OverlayPlugin,
+    ToastPlugin
+} from '@inkline/inkline/plugins';
+import { IconsPlugin, InklineIconsPluginOptions } from '@inkline/inkline/plugins/icons';
 
 export interface InklineOptions extends InklineColorModeOptions, InklineToastOptions {
     locale: string;
@@ -51,7 +53,6 @@ export function createInklineService({
         options: reactive(options)
     };
 }
-
 
 /**
  * Default configuration options

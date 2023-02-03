@@ -1,6 +1,6 @@
-import { isKey } from "@grozav/utils";
-import { OverlayController } from "@inkline/inkline/controllers";
-import { Plugin } from "vue";
+import { isKey } from '@grozav/utils';
+import { OverlayController } from '@inkline/inkline/controllers';
+import { Plugin } from 'vue';
 
 export const OverlayPlugin: Plugin = {
     install: (app) => {

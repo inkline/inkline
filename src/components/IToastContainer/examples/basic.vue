@@ -1,8 +1,10 @@
 <script lang="ts">
-import { useToast } from "@inkline/inkline/composables";
-import { defineComponent, ref } from "vue";
+import { useToast } from '@inkline/inkline/composables';
+import { defineComponent, ref } from 'vue';
+import IFormGroup from "@inkline/inkline/components/IFormGroup/IFormGroup.vue";
 
 export default defineComponent({
+    components: { IFormGroup },
     setup() {
         const toastService = useToast();
 
@@ -38,16 +40,38 @@ export default defineComponent({
             });
         }
 
-        return { toastPosition, toastPositionOptions, toastColor, toastColorOptions, onClickShowToast };
+        return {
+            toastPosition,
+            toastPositionOptions,
+            toastColor,
+            toastColorOptions,
+            onClickShowToast
+        };
     }
 });
 </script>
 <template>
-    <div>
-        <IToastContainer />
-        <ISelect v-model="toastPosition" label="id" :options="toastPositionOptions" placeholder="Toast position" />
-        <ISelect v-model="toastColor" label="id" :options="toastColorOptions" placeholder="Toast color" />
-        <IInput placeholder="Toast duration" />
+    <IToastContainer />
+    <IForm>
+        <IFormGroup>
+            <ISelect
+                v-model="toastPosition"
+                label="id"
+                :options="toastPositionOptions"
+                placeholder="Toast position"
+            />
+        </IFormGroup>
+        <IFormGroup>
+            <ISelect
+                v-model="toastColor"
+                label="id"
+                :options="toastColorOptions"
+                placeholder="Toast color"
+            />
+        </IFormGroup>
+        <IFormGroup>
+            <IInput placeholder="Toast duration" />
+        </IFormGroup>
         <IButton class="_margin-top:1" @click="onClickShowToast">Show toast</IButton>
-    </div>
+    </IForm>
 </template>

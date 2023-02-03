@@ -9,9 +9,7 @@ export const manifest = {
     props: [
         {
             name: 'fluid',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the container as fluid, always spanning 100% width'
         }
@@ -31,31 +29,31 @@ export const manifest = {
             {
                 name: 'width--sm',
                 type: '',
-                value: 'calc(#{breakpoint(\'sm\')} - #{gutter(\'sm\')})',
+                value: "calc(#{breakpoint('sm')} - #{gutter('sm')})",
                 description: 'The width of the container component on small screens'
             },
             {
                 name: 'width--md',
                 type: '',
-                value: 'calc(#{breakpoint(\'md\')} - #{gutter(\'md\')})',
+                value: "calc(#{breakpoint('md')} - #{gutter('md')})",
                 description: 'The width of the container component on medium screens'
             },
             {
                 name: 'width--lg',
                 type: '',
-                value: 'calc(#{breakpoint(\'lg\')} - #{gutter(\'lg\')})',
+                value: "calc(#{breakpoint('lg')} - #{gutter('lg')})",
                 description: 'The width of the container component on large screens'
             },
             {
                 name: 'width--xl',
                 type: '',
-                value: 'calc(#{breakpoint(\'xl\')} - #{gutter(\'xl\')})',
+                value: "calc(#{breakpoint('xl')} - #{gutter('xl')})",
                 description: 'The width of the container component on extralarge screens'
             },
             {
                 name: 'width--xxl',
                 type: '',
-                value: 'calc(#{breakpoint(\'xxl\')} - #{gutter(\'xxl\')})',
+                value: "calc(#{breakpoint('xxl')} - #{gutter('xxl')})",
                 description: 'The width of the container component on extralarge screens'
             }
         ],

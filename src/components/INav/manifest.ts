@@ -9,28 +9,19 @@ export const manifest = {
     props: [
         {
             name: 'color',
-            type: [
-                'light',
-                'dark'
-            ],
+            type: ['light', 'dark'],
             default: 'light',
             description: 'The color variant of the nav'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the nav'
         },
         {
             name: 'vertical',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the nav with vertical orientation'
         }
@@ -50,8 +41,8 @@ export const manifest = {
             description: 'The color of the list group component item when active',
             type: 'color',
             variants: {
-                light: 'color(\'primary\')',
-                dark: 'color(\'primary\')'
+                light: "color('primary')",
+                dark: "color('primary')"
             }
         },
         {
@@ -124,7 +115,7 @@ export const manifest = {
             {
                 name: 'color-active',
                 type: 'color',
-                value: 'color(\'primary\')',
+                value: "color('primary')",
                 description: 'The color of the nav component item when active'
             },
             {
@@ -144,19 +135,22 @@ export const manifest = {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-light)',
-                        description: 'The color of the nav component item, for the light color variant'
+                        description:
+                            'The color of the nav component item, for the light color variant'
                     },
                     {
                         name: 'color--active',
                         type: '',
                         value: 'contrast-color($color-primary)',
-                        description: 'The color of the nav component item when active, for the light color variant'
+                        description:
+                            'The color of the nav component item when active, for the light color variant'
                     },
                     {
                         name: 'color--disabled',
                         type: '',
                         value: 'var(--text-muted)',
-                        description: 'The color of the nav component item when disabled, for the light color variant'
+                        description:
+                            'The color of the nav component item when disabled, for the light color variant'
                     }
                 ]
             },
@@ -169,19 +163,22 @@ export const manifest = {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-dark)',
-                        description: 'The color of the nav component item, for the dark color variant'
+                        description:
+                            'The color of the nav component item, for the dark color variant'
                     },
                     {
                         name: 'color--active',
                         type: '',
                         value: 'contrast-color($color-primary)',
-                        description: 'The color of the nav component item when active, for the dark color variant'
+                        description:
+                            'The color of the nav component item when active, for the dark color variant'
                     },
                     {
                         name: 'color--disabled',
                         type: '',
                         value: 'var(--text-muted)',
-                        description: 'The color of the nav component item when disabled, for the dark color variant'
+                        description:
+                            'The color of the nav component item when disabled, for the dark color variant'
                     }
                 ]
             },
@@ -193,32 +190,35 @@ export const manifest = {
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('sm')})",
                         description: 'The font size of the nav component, for the sm size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'sm\')})',
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('sm')})",
                         description: 'The padding top of the nav component, for the sm size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding right of the nav component, for the sm size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding right of the nav component, for the sm size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the nav component, for the sm size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the nav component, for the sm size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the nav component, for the sm size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the nav component, for the sm size variant'
                     }
                 ]
             },
@@ -230,32 +230,35 @@ export const manifest = {
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('md')})",
                         description: 'The font size of the nav component, for the md size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'md\')})',
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('md')})",
                         description: 'The padding top of the nav component, for the md size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding right of the nav component, for the md size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding right of the nav component, for the md size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the nav component, for the md size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the nav component, for the md size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the nav component, for the md size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the nav component, for the md size variant'
                     }
                 ]
             },
@@ -267,32 +270,35 @@ export const manifest = {
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('lg')})",
                         description: 'The font size of the nav component, for the lg size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'lg\')})',
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('lg')})",
                         description: 'The padding top of the nav component, for the lg size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding right of the nav component, for the lg size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding right of the nav component, for the lg size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the nav component, for the lg size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the nav component, for the lg size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the nav component, for the lg size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the nav component, for the lg size variant'
                     }
                 ]
             }

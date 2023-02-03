@@ -13,17 +13,14 @@ export const manifest = {
     props: [
         {
             name: 'name',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'uid()',
-            description: 'The unique identifier of the collapsible item, used for determining if the item is open or not'
+            description:
+                'The unique identifier of the collapsible item, used for determining if the item is open or not'
         },
         {
             name: 'title',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: '',
             description: 'The title of the collapsible item'
         }

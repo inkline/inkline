@@ -1,9 +1,9 @@
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref } from "vue";
-import { useInkline } from "@inkline/inkline/composables";
-import { toastEventBus, ToastOptions, ToastPosition, ToastService } from "@inkline/inkline/plugins";
-import { uid } from "@grozav/utils";
-import { IToast } from "@inkline/inkline/components/IToast";
+import { computed, defineComponent, onMounted, ref } from 'vue';
+import { useInkline } from '@inkline/inkline/composables';
+import { toastEventBus, ToastOptions, ToastPosition, ToastService } from '@inkline/inkline/plugins';
+import { uid } from '@grozav/utils';
+import { IToast } from '@inkline/inkline/components/IToast';
 
 const componentName = 'IToast';
 
@@ -27,20 +27,18 @@ export default defineComponent({
             left: []
         });
 
+        const classes = computed(() => ({}));
+
         onMounted(() => {
             addEventListeners();
         });
 
-        const classes = computed(() => ({
-        }));
-
         function addEventListeners() {
-            console.log('adddd');
-
             toastEventBus.on('show', ((options) => {
                 const color = options?.color || inkline.options.toast?.color || 'light';
                 const duration = options?.duration || inkline.options.toast?.duration || null;
-                const position: ToastPosition = options?.position || inkline.options.toast?.position || 'top-right';
+                const position: ToastPosition =
+                    options?.position || inkline.options.toast?.position || 'top-right';
 
                 toastPositions.value[position].push({
                     id: uid('toast'),
@@ -55,7 +53,7 @@ export default defineComponent({
 
         return {
             toastPositions,
-            classes,
+            classes
         };
     }
 });

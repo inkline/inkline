@@ -532,8 +532,8 @@
             &::before {
                 background-color: var(--input--clear--color);
                 content: '';
-                mask-image: url("#{icons.$ink-times}");
-                -webkit-mask-image: url("#{icons.$ink-times}");
+                mask-image: url('#{icons.$ink-times}');
+                -webkit-mask-image: url('#{icons.$ink-times}');
                 mask-position: center center;
                 -webkit-mask-position: center center;
                 mask-repeat: no-repeat;

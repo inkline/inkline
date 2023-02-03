@@ -1,132 +1,126 @@
-import { fireEvent, render } from "@testing-library/vue";
-import { IInput } from "@inkline/inkline/components";
-import { createInkline, Placeholder } from "@inkline/inkline/__mocks__";
-import { InklineKey } from "@inkline/inkline/plugin";
-import { FormKey } from "@inkline/inkline/components/IForm/mixin";
-import { ref } from "vue";
+import { fireEvent, render } from '@testing-library/vue';
+import { IInput } from '@inkline/inkline/components';
+import { createInkline, Placeholder } from '@inkline/inkline/__mocks__';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { FormKey } from '@inkline/inkline/components/IForm/mixin';
+import { ref } from 'vue';
 
-describe("Components", () => {
-    describe("IInput", () => {
+describe('Components', () => {
+    describe('IInput', () => {
         const props = {
-            color: "light",
-            size: "md",
-            name: "input",
+            color: 'light',
+            size: 'md',
+            name: 'input'
         };
 
-        it("should be named correctly", () => {
-            expect(IInput.name).toEqual("IInput");
+        it('should be named correctly', () => {
+            expect(IInput.name).toEqual('IInput');
         });
 
-        it("should render correctly", () => {
+        it('should render correctly', () => {
             const wrapper = render(IInput, {
                 props,
                 global: {
                     provide: {
-                        [InklineKey as symbol]: createInkline(),
-                    },
-                },
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
             expect(wrapper.html()).toMatchSnapshot();
         });
 
-        describe("props", () => {
-            describe("name", () => {
-                it("should have randomly generated name uid", () => {
+        describe('props', () => {
+            describe('name', () => {
+                it('should have randomly generated name uid', () => {
                     const wrapper = render(IInput, {
                         props: {
                             color: props.color,
-                            size: props.size,
+                            size: props.size
                         },
                         global: {
                             provide: {
-                                [InklineKey as symbol]: createInkline(),
-                            },
-                        },
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
-                    const inputElement =
-                        wrapper.container.querySelector("input")!;
+                    const inputElement = wrapper.container.querySelector('input')!;
 
-                    expect(inputElement).toHaveAttribute(
-                        "name",
-                        expect.stringContaining("input")
-                    );
+                    expect(inputElement).toHaveAttribute('name', expect.stringContaining('input'));
                 });
             });
         });
 
-        describe("computed", () => {
-            describe("classes", () => {
-                it("should add classes based on props", () => {
+        describe('computed', () => {
+            describe('classes', () => {
+                it('should add classes based on props', () => {
                     const wrapper = render(IInput, {
                         props: {
                             disabled: true,
                             error: true,
                             readonly: true,
-                            ...props,
+                            ...props
                         },
                         slots: {
                             prefix: [Placeholder],
                             suffix: [Placeholder],
                             prepend: [Placeholder],
-                            append: [Placeholder],
+                            append: [Placeholder]
                         },
                         global: {
                             provide: {
-                                [InklineKey as symbol]: createInkline(),
-                            },
-                        },
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         `-${props.color}`,
                         `-${props.size}`,
-                        "-disabled",
-                        "-error",
-                        "-readonly",
-                        "-prefixed",
-                        "-suffixed",
-                        "-prepended",
-                        "-appended"
+                        '-disabled',
+                        '-error',
+                        '-readonly',
+                        '-prefixed',
+                        '-suffixed',
+                        '-prepended',
+                        '-appended'
                     );
                 });
             });
 
-            describe("hasError", () => {
-                it("should have error if boolean and true", () => {
+            describe('hasError', () => {
+                it('should have error if boolean and true', () => {
                     const wrapper = render(IInput, {
                         props: {
                             error: true,
-                            ...props,
+                            ...props
                         },
                         global: {
                             provide: {
-                                [InklineKey as symbol]: createInkline(),
-                            },
-                        },
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass("-error");
+                    expect(wrapper.container.firstChild).toHaveClass('-error');
                 });
 
-                it("should not have error if boolean and false", () => {
+                it('should not have error if boolean and false', () => {
                     const wrapper = render(IInput, {
                         props: {
                             error: false,
-                            ...props,
+                            ...props
                         },
                         global: {
                             provide: {
-                                [InklineKey as symbol]: createInkline(),
-                            },
-                        },
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
-                    expect(wrapper.container.firstChild).not.toHaveClass(
-                        "-error"
-                    );
+                    expect(wrapper.container.firstChild).not.toHaveClass('-error');
                 });
 
-                it("should have error if schema touched, dirty and invalid", () => {
+                it('should have error if schema touched, dirty and invalid', () => {
                     const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(IInput, {
@@ -140,80 +134,78 @@ describe("Components", () => {
                                         [props.name]: {
                                             touched: true,
                                             dirty: true,
-                                            invalid: true,
-                                        },
+                                            invalid: true
+                                        }
                                     }),
                                     onBlur,
-                                    onInput,
-                                },
-                            },
+                                    onInput
+                                }
+                            }
                         },
-                        props,
+                        props
                     });
 
-                    expect(wrapper.container.firstChild).toHaveClass("-error");
+                    expect(wrapper.container.firstChild).toHaveClass('-error');
                 });
             });
 
-            describe("tabIndex", () => {
-                it("should be -1 if disabled", async () => {
+            describe('tabIndex', () => {
+                it('should be -1 if disabled', async () => {
                     const wrapper = render(IInput, {
                         props: {
                             disabled: true,
-                            ...props,
+                            ...props
                         },
                         global: {
                             provide: {
-                                [InklineKey as symbol]: createInkline(),
-                            },
-                        },
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
 
-                    const input: HTMLElement =
-                        wrapper.container.querySelector("input")!;
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
-                    expect(input).toHaveAttribute("tabindex", "-1");
+                    expect(input).toHaveAttribute('tabindex', '-1');
                 });
 
-                it("should be 1 otherwise", async () => {
+                it('should be 1 otherwise', async () => {
                     const wrapper = render(IInput, {
                         props,
                         global: {
                             provide: {
-                                [InklineKey as symbol]: createInkline(),
-                            },
-                        },
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
-                    const input: HTMLElement =
-                        wrapper.container.querySelector("input")!;
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
-                    expect(input).toHaveAttribute("tabindex", "0");
+                    expect(input).toHaveAttribute('tabindex', '0');
                 });
             });
 
-            describe("isClearable", () => {
-                it("should be clearable if not disabled, not readonly, and has value", async () => {
+            describe('isClearable', () => {
+                it('should be clearable if not disabled, not readonly, and has value', async () => {
                     const wrapper = render(IInput, {
                         props: {
-                            modelValue: "abc",
+                            modelValue: 'abc',
                             clearable: true,
-                            ...props,
+                            ...props
                         },
                         global: {
                             provide: {
-                                [InklineKey as symbol]: createInkline(),
-                            },
-                        },
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
-                    const clear = await wrapper.findByLabelText("Clear");
+                    const clear = await wrapper.findByLabelText('Clear');
 
                     expect(clear).toBeVisible();
                 });
             });
 
-            describe("value", () => {
-                it("should be schema.value if schema", async () => {
-                    const value = "value";
+            describe('value', () => {
+                it('should be schema.value if schema', async () => {
+                    const value = 'value';
                     const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(IInput, {
@@ -225,46 +217,44 @@ describe("Components", () => {
                                     readonly: ref(false),
                                     schema: ref({
                                         [props.name]: {
-                                            value,
-                                        },
+                                            value
+                                        }
                                     }),
                                     onBlur,
-                                    onInput,
-                                },
-                            },
+                                    onInput
+                                }
+                            }
                         },
-                        props,
+                        props
                     });
-                    const input: HTMLElement =
-                        wrapper.container.querySelector("input")!;
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
                     expect(input).toHaveValue(value);
                 });
 
-                it("should be modelValue otherwise", async () => {
-                    const value = "value";
+                it('should be modelValue otherwise', async () => {
+                    const value = 'value';
                     const wrapper = render(IInput, {
                         props: {
                             modelValue: value,
-                            ...props,
+                            ...props
                         },
                         global: {
                             provide: {
-                                [InklineKey as symbol]: createInkline(),
-                            },
-                        },
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
-                    const input: HTMLElement =
-                        wrapper.container.querySelector("input")!;
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
                     expect(input).toHaveValue(value);
                 });
             });
         });
 
-        describe("methods", () => {
-            describe("onBlur()", () => {
-                it("should call parent onBlur if parent.onBlur", async () => {
+        describe('methods', () => {
+            describe('onBlur()', () => {
+                it('should call parent onBlur if parent.onBlur', async () => {
                     const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(IInput, {
@@ -275,14 +265,13 @@ describe("Components", () => {
                                     disabled: ref(false),
                                     readonly: ref(false),
                                     onBlur,
-                                    onInput,
-                                },
-                            },
+                                    onInput
+                                }
+                            }
                         },
-                        props,
+                        props
                     });
-                    const input: HTMLElement =
-                        wrapper.container.querySelector("input")!;
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
                     await fireEvent.blur(input);
 
@@ -290,9 +279,9 @@ describe("Components", () => {
                 });
             });
 
-            describe("onInput()", () => {
-                it("should call parent onInput if parent.onInput", async () => {
-                    const value = "value";
+            describe('onInput()', () => {
+                it('should call parent onInput if parent.onInput', async () => {
+                    const value = 'value';
                     const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(IInput, {
@@ -303,46 +292,41 @@ describe("Components", () => {
                                     disabled: ref(false),
                                     readonly: ref(false),
                                     onBlur,
-                                    onInput,
-                                },
-                            },
+                                    onInput
+                                }
+                            }
                         },
-                        props,
+                        props
                     });
-                    const input: HTMLElement =
-                        wrapper.container.querySelector("input")!;
+                    const input: HTMLElement = wrapper.container.querySelector('input')!;
 
-                    await fireEvent.update(input, "value");
+                    await fireEvent.update(input, 'value');
 
                     expect(onInput).toHaveBeenCalled();
-                    expect(wrapper.emitted()["update:modelValue"][0]).toEqual([
-                        value,
-                    ]);
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([value]);
                 });
             });
 
-            describe("onClear()", () => {
-                it("should emit clear event", async () => {
+            describe('onClear()', () => {
+                it('should emit clear event', async () => {
                     const wrapper = render(IInput, {
                         props: {
-                            modelValue: "abc",
+                            modelValue: 'abc',
                             clearable: true,
-                            ...props,
+                            ...props
                         },
                         global: {
                             provide: {
-                                [InklineKey as symbol]: createInkline(),
-                            },
-                        },
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
                     });
-                    const clear = await wrapper.findByLabelText("Clear");
+                    const clear = await wrapper.findByLabelText('Clear');
 
                     await fireEvent.click(clear);
 
                     expect(wrapper.emitted().clear[0]).toBeDefined();
-                    expect(wrapper.emitted()["update:modelValue"][0]).toEqual([
-                        "",
-                    ]);
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['']);
                 });
             });
         });

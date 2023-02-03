@@ -8,44 +8,31 @@ export const manifest = {
     props: [
         {
             name: 'active',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The active state of the select option'
         },
         {
             name: 'disabled',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The disabled state of the select option'
         },
         {
             name: 'label',
-            type: [
-                'String'
-            ],
-            default: '\'\'',
+            type: ['String'],
+            default: "''",
             description: 'The label of the select option'
         },
         {
             name: 'tabindex',
-            type: [
-                'Number',
-                'String'
-            ],
+            type: ['Number', 'String'],
             default: '1',
             description: 'The tabindex of the list group item'
         },
         {
             name: 'value',
-            type: [
-                'Object',
-                'String',
-                'Number'
-            ],
+            type: ['Object', 'String', 'Number'],
             default: '',
             description: 'The select option value'
         }
