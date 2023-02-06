@@ -277,7 +277,7 @@
             }
         }
 
-        &:first-child {
+        &:first-of-type {
             > .collapsible-header {
                 border-top-left-radius: var(
                     --collapsible--header--border-top-left-radius,
@@ -290,7 +290,7 @@
             }
         }
 
-        &:last-child {
+        &:last-of-type {
             > .collapsible-header {
                 border-bottom-left-radius: var(
                     --collapsible--header--border-bottom-left-radius,

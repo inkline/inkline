@@ -189,7 +189,7 @@
     cursor: pointer;
     margin-right: var(--radio--margin-right, var(--margin-right));
 
-    &:last-child {
+    &:last-of-type {
         margin-right: 0;
     }
 

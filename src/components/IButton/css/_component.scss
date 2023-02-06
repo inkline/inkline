@@ -296,11 +296,11 @@
     // Button group border accent
     //
 
-    .button-group:not(.-vertical) > &:not(:first-child) {
+    .button-group:not(.-vertical) > &:not(:first-of-type) {
         --button--border-left-color: var(--button--hover--background);
     }
 
-    .button-group.-vertical > &:not(:first-child) {
+    .button-group.-vertical > &:not(:first-of-type) {
         --button--border-top-color: var(--button--hover--background);
     }
 }
