@@ -1,18 +1,25 @@
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref } from 'vue';
+import { computed, defineComponent, onMounted, ref, TransitionGroup } from 'vue';
 import { useInkline } from '@inkline/inkline/composables';
 import { toastEventBus, ToastOptions, ToastPosition, ToastService } from '@inkline/inkline/plugins';
 import { uid } from '@grozav/utils';
 import { IToast } from '@inkline/inkline/components/IToast';
 
-const componentName = 'IToast';
+const componentName = 'IToastContainer';
 
 export default defineComponent({
     name: componentName,
     components: {
-        IToast
+        IToast,
+        TransitionGroup
     },
     inheritAttrs: false,
+    props: {
+        showDuration: {
+            type: Boolean,
+            default: true
+        }
+    },
     setup() {
         const inkline = useInkline();
 
@@ -26,6 +33,7 @@ export default defineComponent({
             'bottom-left': [],
             left: []
         });
+        const toastPositionKeys = ref<ToastPosition[]>(Object.keys(toastPositions.value));
 
         const classes = computed(() => ({}));
 
@@ -53,6 +61,7 @@ export default defineComponent({
 
         return {
             toastPositions,
+            toastPositionKeys,
             classes
         };
     }
@@ -62,23 +71,25 @@ export default defineComponent({
 <template>
     <div v-bind="$attrs" class="toast-container" :class="classes">
         <div
-            v-for="position in toastPositions"
+            v-for="position in toastPositionKeys"
             :key="position"
-            :class="`toast-position ${position}`"
+            :class="`toast-position -${position}`"
         >
-            <i-toast
-                v-for="toast in position"
-                :key="toast.id"
-                :color="toast.color"
-                :duration="toast.duration"
-                :position="toast.position"
-            >
-                <template #icon>
-                    <i-icon name="ink-circle" />
-                </template>
-                <template #title>{{ toast.title }}</template>
-                <p>{{ toast.message }}</p>
-            </i-toast>
+            <TransitionGroup name="toast-transition">
+                <IToast
+                    v-for="toast in toastPositions[position]"
+                    :key="toast.id"
+                    :color="toast.color"
+                    :duration="toast.duration"
+                    :position="toast.position"
+                >
+                    <template #icon>
+                        <i-icon name="ink-circle" />
+                    </template>
+                    <template #title>{{ toast.title }}</template>
+                    <p>{{ toast.message }}</p>
+                </IToast>
+            </TransitionGroup>
         </div>
     </div>
 </template>

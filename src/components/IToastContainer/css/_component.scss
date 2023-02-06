@@ -2,6 +2,137 @@
  * Toast Container
  */
 
+@mixin toast-container--toast-transition {
+    .toast-transition-enter-from,
+    .toast-transition-leave-to {
+        @content;
+    }
+}
+
 .toast-container {
     position: relative;
+
+    .toast-position {
+        position: fixed;
+        width: 320px;
+        max-width: 100%;
+        z-index: var(--toast-container--z-index, 2010);
+        margin: var(
+            --toast-container--margin,
+            var(--toast-container--margin-top, var(--margin-top))
+                var(--toast-container--margin-right, var(--margin-right))
+                var(--toast-container--margin-bottom, var(--margin-bottom))
+                var(--toast-container--margin-left, var(--margin-left))
+        );
+        max-height: 100%;
+        overflow: auto;
+
+        &.-top-left {
+            top: 0;
+            left: 0;
+
+            @include toast-container--toast-transition {
+                transform: var(--toast-container--top-left--toast--transform, translateX(-30px));
+            }
+        }
+
+        &.-top {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            @include toast-container--toast-transition {
+                transform: var(--toast-container--top-left--toast--transform, translateY(-30px));
+            }
+        }
+
+        &.-top-right {
+            top: 0;
+            right: 0;
+
+            @include toast-container--toast-transition {
+                transform: var(--toast-container--top-left--toast--transform, translateX(30px));
+            }
+        }
+
+        &.-right {
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+
+            @include toast-container--toast-transition {
+                transform: var(--toast-container--top-left--toast--transform, translateX(30px));
+            }
+        }
+
+        &.-bottom-right {
+            bottom: 0;
+            right: 0;
+
+            @include toast-container--toast-transition {
+                transform: var(--toast-container--top-left--toast--transform, translateX(30px));
+            }
+        }
+
+        &.-bottom {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            @include toast-container--toast-transition {
+                transform: var(--toast-container--top-left--toast--transform, translateY(30px));
+            }
+        }
+
+        &.-bottom-left {
+            bottom: 0;
+            left: 0;
+
+            @include toast-container--toast-transition {
+                transform: var(--toast-container--bottom-left--toast--transform, translateX(-30px));
+            }
+        }
+
+        &.-left {
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+
+            @include toast-container--toast-transition {
+                transform: var(--toast-container--top-left--toast--transform, translateX(-30px));
+            }
+        }
+
+        > .toast {
+            + .toast {
+                margin-top: var(--toast-container--toast--margin-top, var(--margin-top));
+            }
+        }
+    }
+}
+
+.toast-transition-move, /* apply transition to moving elements */
+.toast-transition-enter-active,
+.toast-transition-leave-active {
+    transition-property: var(--toast-container--toast--transition-property, transform, opacity);
+    transition-duration: var(
+        --toast-container--toast--transition-duration,
+        var(--transition-duration)
+    );
+    transition-timing-function: var(
+        --toast-container--toast--transition-timing-function,
+        var(--transition-timing-function)
+    );
+}
+
+.toast-transition-enter-from,
+.toast-transition-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.toast-transition-leave-active {
+    position: absolute;
 }

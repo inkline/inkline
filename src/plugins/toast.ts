@@ -28,6 +28,7 @@ export interface ToastOptions {
         | 'warning'
         | 'danger'
         | string;
+    icon: string | VNode | VNode[];
 }
 
 export interface InklineToastOptions {
