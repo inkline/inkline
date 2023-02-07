@@ -1,6 +1,6 @@
-import { defineComponent } from 'vue';
-import { LinkableMixin } from '@inkline/inkline/mixins';
-import { Classes } from '@inkline/inkline/types';
+import { defineComponent } from "vue";
+import { LinkableMixin } from "@inkline/inkline/mixins";
+import { Classes } from "@inkline/inkline/types";
 
 /**
  * Slot for default breadcrumb item content
@@ -15,13 +15,11 @@ import { Classes } from '@inkline/inkline/types';
  * @default a
  */
 
-const componentName = 'IBreadcrumbItem';
+const componentName = "IBreadcrumbItem";
 
 export default defineComponent({
     name: componentName,
-    mixins: [
-        LinkableMixin
-    ],
+    mixins: [LinkableMixin],
     inheritAttrs: false,
     props: {
         /**
@@ -32,7 +30,7 @@ export default defineComponent({
          */
         active: {
             type: Boolean,
-            default: false
+            default: false,
         },
         /**
          * The disabled state of the breadcrumb item
@@ -42,7 +40,27 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false
+            default: false,
+        },
+        /**
+         * The href property of the breadcrumb item rendered as anchor
+         * @type string
+         * @default undefined
+         * @name href
+         */
+        href: {
+            type: String,
+            default: "",
+        },
+        /**
+         * The to property of the breadcrumb item rendered as router link component
+         * @type string | object
+         * @default undefined
+         * @name to
+         */
+        to: {
+            type: [String, Object],
+            default: "",
         },
         /**
          * The tabindex of the breadcrumb item
@@ -52,18 +70,18 @@ export default defineComponent({
          */
         tabindex: {
             type: [Number, String],
-            default: 0
-        }
+            default: 0,
+        },
     },
     computed: {
-        classes (): Classes {
+        classes(): Classes {
             return {
-                '-active': this.active,
-                '-disabled': this.disabled
+                "-active": this.active,
+                "-disabled": this.disabled,
             };
         },
-        tabIndex (): number | string {
+        tabIndex(): number | string {
             return this.disabled || this.active ? -1 : this.tabindex;
-        }
-    }
+        },
+    },
 });
