@@ -13,7 +13,7 @@
     "lint:script": "eslint --ext .vue,.js,.ts src",
     "lint:style": "stylelint \"src/**/*.scss\"",
     "prerelease": "npm run lint && npm run test && npm run build",
-    "release": "np",
+    "release": "np --branch inkline@3",
     "postrelease": "ts-node scripts/postrelease.ts",
     "postversion": "ts-node scripts/postversion.ts",
     "test": "vitest run --coverage",
