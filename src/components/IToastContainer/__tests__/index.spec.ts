@@ -1,21 +1,19 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { IToast } from '@inkline/inkline/components';
+import { IToastContainer } from '@inkline/inkline/components';
 import { createInkline, Placeholder } from '@inkline/inkline/__mocks__';
 import { InklineKey } from '@inkline/inkline/plugin';
+import { createEventBus } from '@grozav/utils';
 
 describe('Components', () => {
-    describe('IToast', () => {
-        const props = {
-            color: 'primary',
-            size: 'md'
-        };
+    describe('IToastContainer', () => {
+        const props = {};
 
         it('should be named correctly', () => {
-            expect(IToast.name).toEqual('IToast');
+            expect(IToastContainer.name).toEqual('IToastContainer');
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IToast, {
+            const wrapper = render(IToastContainer, {
                 props,
                 global: {
                     provide: {
@@ -26,41 +24,13 @@ describe('Components', () => {
             expect(wrapper.html()).toMatchSnapshot();
         });
 
-        describe('computed', () => {
-            describe('classes', () => {
-                it('should add classes based on props', () => {
-                    const wrapper = render(IToast, {
-                        slots: {
-                            icon: [Placeholder]
-                        },
-                        props: {
-                            dismissible: true,
-                            ...props
-                        },
-                        global: {
-                            provide: {
-                                [InklineKey as symbol]: createInkline()
-                            }
-                        }
-                    });
-
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        `-${props.color}`,
-                        `-${props.size}`,
-                        '-dismissible',
-                        '-with-icon'
-                    );
-                });
-            });
-        });
-
         describe('methods', () => {
-            describe('dismiss()', () => {
+            describe('showToast()', () => {
                 it('should hide the alert when clicking the dismiss button', async () => {
-                    const wrapper = render(IToast, {
+                    const eventBus = createEventBus();
+                    const wrapper = render(IToastContainer, {
                         props: {
-                            dismissible: true,
-                            modelValue: true,
+                            eventBus,
                             ...props
                         },
                         global: {
@@ -70,11 +40,16 @@ describe('Components', () => {
                         }
                     });
 
-                    expect(wrapper.container.firstChild).toBeVisible();
-                    const dismissButton = await wrapper.findByLabelText('Dismiss');
-                    await fireEvent.click(dismissButton);
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([false]);
-                    expect(wrapper.container.firstChild).not.toBeVisible();
+                    eventBus.emit('show', { position: 'top-left' });
+                    eventBus.emit('show', { position: 'top' });
+                    eventBus.emit('show', { position: 'top-right' });
+                    eventBus.emit('show', { position: 'right' });
+                    eventBus.emit('show', { position: 'bottom-right' });
+                    eventBus.emit('show', { position: 'bottom' });
+                    eventBus.emit('show', { position: 'bottom-left' });
+                    eventBus.emit('show', { position: 'left' });
+
+                    expect(wrapper.container).toMatchSnapshot();
                 });
             });
         });

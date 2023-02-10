@@ -1,37 +1,5 @@
 // Vitest Snapshot v1
 
-exports[`Components > ITabs > should render correctly 1`] = `
-"<div class=\\"tabs -light -md\\" role=\\"tablist\\" aria-multiselectable=\\"true\\">
-  <div class=\\"tabs-header\\">
-    <!-- @slot header Slot for tabs header -->
-    <div class=\\"tab-title\\" role=\\"tab\\" for=\\"tab-1\\" active=\\"false\\" aria-expanded=\\"false\\" aria-controls=\\"tab-content-tab-1\\" aria-describedby=\\"tab-content-tab-1\\" tabindex=\\"0\\">
-      <!-- @slot default Slot for tab title content -->Tab 1
-    </div>
-    <div class=\\"tab-title\\" role=\\"tab\\" for=\\"tab-2\\" active=\\"false\\" aria-expanded=\\"false\\" aria-controls=\\"tab-content-tab-2\\" aria-describedby=\\"tab-content-tab-2\\" tabindex=\\"0\\">
-      <!-- @slot default Slot for tab title content -->Tab 2
-    </div>
-    <div class=\\"tab-title\\" role=\\"tab\\" for=\\"tab-3\\" active=\\"false\\" aria-expanded=\\"false\\" aria-controls=\\"tab-content-tab-3\\" aria-describedby=\\"tab-content-tab-3\\" tabindex=\\"0\\">
-      <!-- @slot default Slot for tab title content -->Tab 3
-    </div>
-  </div><!-- @slot default Slot for tab components -->
-  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-1\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-1\\" style=\\"display: none;\\">
-    <div class=\\"tab-body\\">
-      <!-- @slot default Slot for tab content -->Tab 1 content
-    </div>
-  </div>
-  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-2\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-2\\" style=\\"display: none;\\">
-    <div class=\\"tab-body\\">
-      <!-- @slot default Slot for tab content -->Tab 2 content
-    </div>
-  </div>
-  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-3\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-3\\" style=\\"display: none;\\">
-    <div class=\\"tab-body\\">
-      <!-- @slot default Slot for tab content -->Tab 3 content
-    </div>
-  </div>
-</div>"
-`;
-
 exports[`Components > ITabs > should render correctly with header 1`] = `
 "<div class=\\"tabs -light -md\\" role=\\"tablist\\" aria-multiselectable=\\"true\\">
   <div class=\\"tabs-header\\">
@@ -46,17 +14,17 @@ exports[`Components > ITabs > should render correctly with header 1`] = `
       <!-- @slot default Slot for tab title content -->Tab 3
     </div>
   </div><!-- @slot default Slot for tab components -->
-  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-1\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-1\\" style=\\"display: none;\\">
+  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-1\\" title=\\"Tab 1\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-1\\" style=\\"display: none;\\">
     <div class=\\"tab-body\\">
       <!-- @slot default Slot for tab content -->Tab 1 content
     </div>
   </div>
-  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-2\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-2\\" style=\\"display: none;\\">
+  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-2\\" title=\\"Tab 2\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-2\\" style=\\"display: none;\\">
     <div class=\\"tab-body\\">
       <!-- @slot default Slot for tab content -->Tab 2 content
     </div>
   </div>
-  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-3\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-3\\" style=\\"display: none;\\">
+  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-3\\" title=\\"Tab 3\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-3\\" style=\\"display: none;\\">
     <div class=\\"tab-body\\">
       <!-- @slot default Slot for tab content -->Tab 3 content
     </div>
@@ -69,17 +37,17 @@ exports[`Components > ITabs > should render correctly without header 1`] = `
   <div class=\\"tabs-header\\">
     <!-- @slot header Slot for tabs header -->
   </div><!-- @slot default Slot for tab components -->
-  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-1\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-1\\" style=\\"display: none;\\">
+  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-1\\" title=\\"Tab 1\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-1\\" style=\\"display: none;\\">
     <div class=\\"tab-body\\">
       <!-- @slot default Slot for tab content -->Tab 1 content
     </div>
   </div>
-  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-2\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-2\\" style=\\"display: none;\\">
+  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-2\\" title=\\"Tab 2\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-2\\" style=\\"display: none;\\">
     <div class=\\"tab-body\\">
       <!-- @slot default Slot for tab content -->Tab 2 content
     </div>
   </div>
-  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-3\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-3\\" style=\\"display: none;\\">
+  <div class=\\"tab\\" role=\\"tabpanel\\" name=\\"tab-3\\" title=\\"Tab 3\\" aria-hidden=\\"true\\" aria-labelledby=\\"tab-heading-tab-3\\" style=\\"display: none;\\">
     <div class=\\"tab-body\\">
       <!-- @slot default Slot for tab content -->Tab 3 content
     </div>

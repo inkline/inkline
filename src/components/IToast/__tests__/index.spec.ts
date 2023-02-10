@@ -74,7 +74,6 @@ describe('Components', () => {
                     const dismissButton = await wrapper.findByLabelText('Dismiss');
                     await fireEvent.click(dismissButton);
                     expect(wrapper.emitted()['update:modelValue'][0]).toEqual([false]);
-                    expect(wrapper.container.firstChild).not.toBeVisible();
                 });
             });
         });

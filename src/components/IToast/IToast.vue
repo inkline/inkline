@@ -126,7 +126,7 @@ export default defineComponent({
          */
         'update:modelValue'
     ],
-    setup(props, { emit }) {
+    setup(props, { emit, slots }) {
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
         const { color } = useComponentColor({ componentName, currentColor });
@@ -135,7 +135,8 @@ export default defineComponent({
         const classes = computed(() => ({
             [`-${color.value}`]: Boolean(color.value),
             [`-${size.value}`]: Boolean(size.value),
-            '-dismissible': props.dismissible
+            '-dismissible': props.dismissible,
+            '-with-icon': Boolean(slots.icon)
         }));
 
         const styles = computed(() => ({

@@ -66,7 +66,7 @@ export default defineComponent({
          */
         'update:modelValue'
     ],
-    setup(props, { emit }) {
+    setup(props, { emit, slots }) {
         const dismissed = ref(false);
 
         const currentColor = computed(() => props.color);
@@ -78,7 +78,7 @@ export default defineComponent({
             [`-${color.value}`]: Boolean(color.value),
             [`-${size.value}`]: Boolean(size.value),
             '-dismissible': props.dismissible,
-            '-with-icon': Boolean(useSlots().icon)
+            '-with-icon': Boolean(slots.icon)
         }));
 
         watch(

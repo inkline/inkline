@@ -9,3 +9,147 @@ exports[`Components > IAlert > should render correctly 1`] = `
   <!--v-if-->
 </div>"
 `;
+
+exports[`Components > IToastContainer > methods > showToast() > should hide the alert when clicking the dismiss button 1`] = `
+<div>
+  <div
+    class="toast-container"
+  >
+    
+    <div
+      class="toast-position -top-left"
+    >
+      <transition-group-stub
+        appear="false"
+        css="true"
+        name="toast-transition"
+        persisted="false"
+      >
+        
+        
+      </transition-group-stub>
+    </div>
+    <div
+      class="toast-position -top"
+    >
+      <transition-group-stub
+        appear="false"
+        css="true"
+        name="toast-transition"
+        persisted="false"
+      >
+        
+        
+      </transition-group-stub>
+    </div>
+    <div
+      class="toast-position -top-right"
+    >
+      <transition-group-stub
+        appear="false"
+        css="true"
+        name="toast-transition"
+        persisted="false"
+      >
+        
+        
+      </transition-group-stub>
+    </div>
+    <div
+      class="toast-position -right"
+    >
+      <transition-group-stub
+        appear="false"
+        css="true"
+        name="toast-transition"
+        persisted="false"
+      >
+        
+        
+      </transition-group-stub>
+    </div>
+    <div
+      class="toast-position -bottom-right"
+    >
+      <transition-group-stub
+        appear="false"
+        css="true"
+        name="toast-transition"
+        persisted="false"
+      >
+        
+        
+      </transition-group-stub>
+    </div>
+    <div
+      class="toast-position -bottom"
+    >
+      <transition-group-stub
+        appear="false"
+        css="true"
+        name="toast-transition"
+        persisted="false"
+      >
+        
+        
+      </transition-group-stub>
+    </div>
+    <div
+      class="toast-position -bottom-left"
+    >
+      <transition-group-stub
+        appear="false"
+        css="true"
+        name="toast-transition"
+        persisted="false"
+      >
+        
+        
+      </transition-group-stub>
+    </div>
+    <div
+      class="toast-position -left"
+    >
+      <transition-group-stub
+        appear="false"
+        css="true"
+        name="toast-transition"
+        persisted="false"
+      >
+        
+        
+      </transition-group-stub>
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`Components > IToastContainer > should render correctly 1`] = `
+"<div class=\\"toast-container\\">
+  <div class=\\"toast-position -top-left\\">
+    <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"></transition-group-stub>
+  </div>
+  <div class=\\"toast-position -top\\">
+    <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"></transition-group-stub>
+  </div>
+  <div class=\\"toast-position -top-right\\">
+    <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"></transition-group-stub>
+  </div>
+  <div class=\\"toast-position -right\\">
+    <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"></transition-group-stub>
+  </div>
+  <div class=\\"toast-position -bottom-right\\">
+    <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"></transition-group-stub>
+  </div>
+  <div class=\\"toast-position -bottom\\">
+    <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"></transition-group-stub>
+  </div>
+  <div class=\\"toast-position -bottom-left\\">
+    <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"></transition-group-stub>
+  </div>
+  <div class=\\"toast-position -left\\">
+    <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"></transition-group-stub>
+  </div>
+</div>"
+`;
