@@ -16,8 +16,11 @@ export interface ToastOptions {
     id: string;
     title: string | VNode | VNode[];
     message: string | VNode | VNode[];
+    icon: string | VNode | VNode[];
     position: ToastPosition;
-    duration: number | null;
+    duration: number;
+    dismissible?: boolean;
+    showProgress?: boolean;
     color:
         | 'light'
         | 'dark'
@@ -28,7 +31,6 @@ export interface ToastOptions {
         | 'warning'
         | 'danger'
         | string;
-    icon: string | VNode | VNode[];
 }
 
 export interface InklineToastOptions {

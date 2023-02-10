@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, h, VNode } from 'vue';
+import { computed, defineComponent, h, onMounted, PropType, VNode } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 import { IIcon } from '@inkline/inkline/components';
 
@@ -39,17 +39,94 @@ export default defineComponent({
             default: undefined
         },
         /**
+         * The duration of the toast, in milliseconds. A duration of 0 will show the toast indefinitely.
+         * @type Number
+         * @default 0
+         * @name duration
+         */
+        duration: {
+            type: Number,
+            default: 0
+        },
+        /**
+         * Show progress bar for the duration of the toast
+         * @type Boolean
+         * @default true
+         * @name duration
+         */
+        showProgress: {
+            type: Boolean,
+            default: true
+        },
+        /**
          * The icon to be rendered in the toast
          * @type string | VNode | VNode[]
          * @default undefined
          * @name icon
          */
         icon: {
-            type: String,
+            type: [String, Object] as PropType<string | VNode | VNode[]>,
             default: undefined
+        },
+        /**
+         * The title to be rendered in the toast
+         * @type string | VNode | VNode[]
+         * @default undefined
+         * @name title
+         */
+        title: {
+            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            default: undefined
+        },
+        /**
+         * The message to be rendered in the toast
+         * @type string | VNode | VNode[]
+         * @default undefined
+         * @name message
+         */
+        message: {
+            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            default: undefined
+        },
+        /**
+         * Used to show or hide a dismissible toast
+         * @type Boolean
+         * @default true
+         * @name modelValue
+         */
+        modelValue: {
+            type: Boolean,
+            default: true
+        },
+        /**
+         * Shows a dismiss icon on the toast
+         * @type Boolean
+         * @default false
+         * @name dismissible
+         */
+        dismissible: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * The aria-label to use for the dismiss button
+         * @type String
+         * @default Dismiss
+         * @name dismissAriaLabel
+         */
+        dismissAriaLabel: {
+            type: String,
+            default: 'Dismiss'
         }
     },
-    setup(props) {
+    emits: [
+        /**
+         * Event emitted when the toast is dismissed
+         * @event dismiss
+         */
+        'update:modelValue'
+    ],
+    setup(props, { emit }) {
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
         const { color } = useComponentColor({ componentName, currentColor });
@@ -57,36 +134,86 @@ export default defineComponent({
 
         const classes = computed(() => ({
             [`-${color.value}`]: Boolean(color.value),
-            [`-${size.value}`]: Boolean(size.value)
+            [`-${size.value}`]: Boolean(size.value),
+            '-dismissible': props.dismissible
+        }));
+
+        const styles = computed(() => ({
+            '--toast--duration': `${props.duration}ms`
         }));
 
         const icon = computed(() =>
             typeof props.icon !== 'undefined' ? props.icon : iconByType[color.value]
         );
 
+        const progressVisible = computed(
+            () => props.showProgress && props.duration && props.duration !== 0
+        );
+
+        const isVNode = computed(() => ({
+            icon: typeof icon.value === 'object',
+            title: typeof props.title === 'object',
+            message: typeof props.message === 'object'
+        }));
+
+        onMounted(() => {
+            if (props.duration && props.duration !== 0) {
+                setTimeout(() => {
+                    emit('update:modelValue', false);
+                }, props.duration);
+            }
+        });
+
+        function dismiss() {
+            emit('update:modelValue', false);
+        }
+
         return {
             classes,
-            icon
+            styles,
+            icon,
+            isVNode,
+            progressVisible,
+            dismiss
         };
     }
 });
 </script>
 
 <template>
-    <div v-bind="$attrs" class="toast" :class="classes">
-        <span v-if="icon || $slots.icon" class="icon" role="img" aria-hidden="true">
+    <div v-bind="$attrs" class="toast" :class="classes" :style="styles">
+        <span v-if="icon || $slots.icon" class="toast-icon" role="img" aria-hidden="true">
             <!-- @slot icon Slot for toast icon -->
             <slot name="icon">
-                <component :is="icon" />
+                <component :is="icon" v-if="isVNode.icon" />
             </slot>
         </span>
-        <div class="content">
-            <div v-if="$slots.title" class="title">
+        <div class="toast-content">
+            <div v-if="title || $slots.title" class="toast-title">
                 <!-- @slot default Slot for toast title -->
-                <slot name="title" />
+                <slot name="title">
+                    <component :is="title" v-if="title && isVNode.title" />
+                    <span v-else>{{ title }}</span>
+                </slot>
             </div>
             <!-- @slot default Slot for default toast content -->
-            <slot />
+            <slot>
+                <component :is="message" v-if="message && isVNode.message" />
+                <span v-else>{{ message }}</span>
+            </slot>
+        </div>
+        <span
+            v-if="dismissible"
+            class="toast-dismiss"
+            role="button"
+            :aria-label="dismissAriaLabel"
+            @click="dismiss"
+        >
+            <!-- @slot dismiss Slot for toast dismiss button -->
+            <slot name="dismiss">&times;</slot>
+        </span>
+        <div v-if="progressVisible" class="toast-progress">
+            <div class="toast-progress-bar"></div>
         </div>
     </div>
 </template>

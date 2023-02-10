@@ -2,13 +2,6 @@
  * Toast Container
  */
 
-@mixin toast-container--toast-transition {
-    .toast-transition-enter-from,
-    .toast-transition-leave-to {
-        @content;
-    }
-}
-
 .toast-container {
     position: relative;
 
@@ -25,87 +18,59 @@
                 var(--toast-container--margin-left, var(--margin-left))
         );
         max-height: 100%;
-        overflow: auto;
+        overflow: visible;
 
         &.-top-left {
             top: 0;
             left: 0;
-
-            @include toast-container--toast-transition {
-                transform: var(--toast-container--top-left--toast--transform, translateX(-30px));
-            }
         }
 
         &.-top {
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-
-            @include toast-container--toast-transition {
-                transform: var(--toast-container--top-left--toast--transform, translateY(-30px));
-            }
         }
 
         &.-top-right {
             top: 0;
             right: 0;
-
-            @include toast-container--toast-transition {
-                transform: var(--toast-container--top-left--toast--transform, translateX(30px));
-            }
         }
 
         &.-right {
             top: 50%;
             right: 0;
             transform: translateY(-50%);
-
-            @include toast-container--toast-transition {
-                transform: var(--toast-container--top-left--toast--transform, translateX(30px));
-            }
         }
 
         &.-bottom-right {
             bottom: 0;
             right: 0;
-
-            @include toast-container--toast-transition {
-                transform: var(--toast-container--top-left--toast--transform, translateX(30px));
-            }
         }
 
         &.-bottom {
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-
-            @include toast-container--toast-transition {
-                transform: var(--toast-container--top-left--toast--transform, translateY(30px));
-            }
         }
 
         &.-bottom-left {
             bottom: 0;
             left: 0;
-
-            @include toast-container--toast-transition {
-                transform: var(--toast-container--bottom-left--toast--transform, translateX(-30px));
-            }
         }
 
         &.-left {
             top: 50%;
             left: 0;
             transform: translateY(-50%);
-
-            @include toast-container--toast-transition {
-                transform: var(--toast-container--top-left--toast--transform, translateX(-30px));
-            }
         }
 
         > .toast {
-            + .toast {
-                margin-top: var(--toast-container--toast--margin-top, var(--margin-top));
+            width: 320px;
+            max-width: 100%;
+            margin-bottom: var(--toast-container--toast--margin-bottom, var(--margin-bottom));
+
+            &:last-of-type {
+                margin-bottom: 0;
             }
         }
     }
@@ -128,7 +93,6 @@
 .toast-transition-enter-from,
 .toast-transition-leave-to {
     opacity: 0;
-    transform: translateX(30px);
 }
 
 /* ensure leaving items are taken out of layout flow so that moving

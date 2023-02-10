@@ -10,6 +10,7 @@ export default defineComponent({
 
         const toastPosition = ref('');
         const toastColor = ref('');
+        const toastDuration = ref('');
 
         const toastPositionOptions = [
             { id: 'top-left' },
@@ -32,11 +33,14 @@ export default defineComponent({
         ];
 
         function onClickShowToast() {
+            const duration = parseInt(toastDuration.value);
+
             toastService.show({
                 title: 'Toast title',
                 message: 'Toast message',
                 position: toastPosition.value,
-                color: toastColor.value
+                color: toastColor.value,
+                duration: isNaN(duration) ? undefined : duration
             });
         }
 
@@ -45,6 +49,7 @@ export default defineComponent({
             toastPositionOptions,
             toastColor,
             toastColorOptions,
+            toastDuration,
             onClickShowToast
         };
     }
@@ -70,7 +75,7 @@ export default defineComponent({
             />
         </IFormGroup>
         <IFormGroup>
-            <IInput placeholder="Toast duration" />
+            <IInput v-model="toastDuration" placeholder="Toast duration" />
         </IFormGroup>
         <IButton class="_margin-top:1" @click="onClickShowToast">Show toast</IButton>
     </IForm>
