@@ -22,9 +22,11 @@ describe('validation', () => {
 
             initialize(schema);
 
-            Object.entries({ ...defaultValidationValues, ...defaultFieldValidationValues }).forEach(([key, value]) => {
-                expect(schema.field[key]).toEqual(value);
-            });
+            Object.entries({ ...defaultValidationValues, ...defaultFieldValidationValues }).forEach(
+                ([key, value]) => {
+                    expect(schema.field[key]).toEqual(value);
+                }
+            );
         });
 
         it('should determine that schema is field using validators', () => {

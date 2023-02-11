@@ -1,4 +1,4 @@
-import IFormGroup from '@inkline/inkline/components/IFormGroup/iFormGroup.vue';
+import IFormGroup from '@inkline/inkline/components/IFormGroup/IFormGroup.vue';
 import {
     IFormGroupBasicExample,
     IFormGroupDisabledExample,

@@ -22,7 +22,11 @@ export const parseBlocks = (filePath: string, options = {}): ContextBlock[] => {
             const context = [];
 
             let brackets = 0;
-            for (let lineNumber = lastSourceLineNumber + 1; lineNumber < lines.length; lineNumber += 1) {
+            for (
+                let lineNumber = lastSourceLineNumber + 1;
+                lineNumber < lines.length;
+                lineNumber += 1
+            ) {
                 const line = lines[lineNumber];
 
                 if (/{/.test(line)) {
@@ -40,10 +44,10 @@ export const parseBlocks = (filePath: string, options = {}): ContextBlock[] => {
                 }
             }
 
-            return ({
+            return {
                 ...block,
                 context
-            });
+            };
         })
         .filter((block) => block.tags.length > 0);
 };

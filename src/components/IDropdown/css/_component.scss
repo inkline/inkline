@@ -678,7 +678,7 @@
         );
     }
 
-    > *:last-child {
+    > *:last-of-type {
         border-bottom-left-radius: var(
             --dropdown--border-bottom-left-radius,
             var(--border-bottom-left-radius)

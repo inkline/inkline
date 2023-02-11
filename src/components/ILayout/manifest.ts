@@ -8,9 +8,7 @@ export const manifest = {
     props: [
         {
             name: 'vertical',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the layout on a vertical orientation'
         }

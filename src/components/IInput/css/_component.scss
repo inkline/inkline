@@ -292,7 +292,7 @@
     }
 
     .input-prepend,
-    .input-prepend > *:first-child {
+    .input-prepend > *:first-of-type {
         border-top-left-radius: var(--input--border-top-left-radius, var(--border-top-left-radius));
         border-bottom-left-radius: var(
             --input--border-bottom-left-radius,
@@ -301,7 +301,7 @@
     }
 
     .input-append,
-    .input-append > *:last-child {
+    .input-append > *:last-of-type {
         border-top-right-radius: var(
             --input--border-top-right-radius,
             var(--border-top-right-radius)
@@ -424,7 +424,7 @@
 
             // Disabled and read-only inputs
             //
-            // HTML5 says that controls under a fieldset > legend:first-child won't be
+            // HTML5 says that controls under a fieldset > legend:first-of-type won't be
             // disabled if the fieldset is disabled. Due to implementation difficulty, we
             // don't honor that edge case we style them as disabled anyway.
             &:disabled,
@@ -470,7 +470,7 @@
                 var(--input--padding-left, var(--padding-left))
             );
 
-            > button {
+            > button:not(.button):not(.select-caret) {
                 background: transparent;
                 border: 0;
                 color: inherit;
@@ -532,8 +532,8 @@
             &::before {
                 background-color: var(--input--clear--color);
                 content: '';
-                mask-image: url("#{icons.$ink-times}");
-                -webkit-mask-image: url("#{icons.$ink-times}");
+                mask-image: url('#{icons.$ink-times}');
+                -webkit-mask-image: url('#{icons.$ink-times}');
                 mask-position: center center;
                 -webkit-mask-position: center center;
                 mask-repeat: no-repeat;

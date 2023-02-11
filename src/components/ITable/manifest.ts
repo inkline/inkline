@@ -9,70 +9,44 @@ export const manifest = {
     props: [
         {
             name: 'border',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the table with borders'
         },
         {
             name: 'condensed',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the table rows as condensed'
         },
         {
             name: 'striped',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the table rows as alternating stripes'
         },
         {
             name: 'hover',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Set the table rows as hoverable'
         },
         {
             name: 'responsive',
-            type: [
-                'Boolean',
-                'xs',
-                'sm',
-                'md',
-                'lg',
-                'xl',
-                'xxl'
-            ],
+            type: ['Boolean', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'],
             default: 'false',
-            description: 'Set the table to be responsive, enabling horizontal scroll when overflowing the parent container'
+            description:
+                'Set the table to be responsive, enabling horizontal scroll when overflowing the parent container'
         },
         {
             name: 'nowrap',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the table rows without wrapping white-space'
         },
         {
             name: 'color',
-            type: [
-                'primary',
-                'success',
-                'light',
-                'dark',
-                'info',
-                'success',
-                'warning',
-                'danger'
-            ],
+            type: ['primary', 'success', 'light', 'dark', 'info', 'success', 'warning', 'danger'],
             default: 'light',
             description: 'The color variant of the table'
         }
@@ -87,19 +61,19 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'white\')',
+                value: "color('white')",
                 description: 'The background of the table component'
             },
             {
                 name: 'background--hover',
                 type: 'color',
-                value: 'color(\'light-30\')',
+                value: "color('light-30')",
                 description: 'The background of the table component when hovered'
             },
             {
                 name: 'background--striped',
                 type: 'color',
-                value: 'color(\'light-25\')',
+                value: "color('light-25')",
                 description: 'The background of the table component when striped'
             },
             {
@@ -141,7 +115,7 @@ export const manifest = {
             {
                 name: 'border-color',
                 type: 'color',
-                value: 'color(\'light-25\')',
+                value: "color('light-25')",
                 description: 'The border color of the table component'
             },
             {
@@ -226,32 +200,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'primary\')',
-                        description: 'The background of the table component, for the primary color variant'
+                        value: "color('primary')",
+                        description:
+                            'The background of the table component, for the primary color variant'
                     },
                     {
                         name: 'background--hover',
                         type: '',
-                        value: 'color(\'primary-60\')',
-                        description: 'The background of the table component when hovered, for the primary color variant'
+                        value: "color('primary-60')",
+                        description:
+                            'The background of the table component when hovered, for the primary color variant'
                     },
                     {
                         name: 'background--striped',
                         type: '',
-                        value: 'color(\'primary-55\')',
-                        description: 'The background of the table component when striped, for the primary color variant'
+                        value: "color('primary-55')",
+                        description:
+                            'The background of the table component when striped, for the primary color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'primary-55\')',
-                        description: 'The border color of the table component, for the primary color variant'
+                        value: "color('primary-55')",
+                        description:
+                            'The border color of the table component, for the primary color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-primary)',
-                        description: 'The color of the table component, for the primary color variant'
+                        description:
+                            'The color of the table component, for the primary color variant'
                     }
                 ]
             },
@@ -263,32 +242,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'secondary\')',
-                        description: 'The background of the table component, for the secondary color variant'
+                        value: "color('secondary')",
+                        description:
+                            'The background of the table component, for the secondary color variant'
                     },
                     {
                         name: 'background--hover',
                         type: '',
-                        value: 'color(\'secondary-60\')',
-                        description: 'The background of the table component when hovered, for the secondary color variant'
+                        value: "color('secondary-60')",
+                        description:
+                            'The background of the table component when hovered, for the secondary color variant'
                     },
                     {
                         name: 'background--striped',
                         type: '',
-                        value: 'color(\'secondary-55\')',
-                        description: 'The background of the table component when striped, for the secondary color variant'
+                        value: "color('secondary-55')",
+                        description:
+                            'The background of the table component when striped, for the secondary color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'secondary-55\')',
-                        description: 'The border color of the table component, for the secondary color variant'
+                        value: "color('secondary-55')",
+                        description:
+                            'The border color of the table component, for the secondary color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-secondary)',
-                        description: 'The color of the table component, for the secondary color variant'
+                        description:
+                            'The color of the table component, for the secondary color variant'
                     }
                 ]
             },
@@ -300,26 +284,30 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'white\')',
-                        description: 'The background of the table component, for the light color variant'
+                        value: "color('white')",
+                        description:
+                            'The background of the table component, for the light color variant'
                     },
                     {
                         name: 'background--hover',
                         type: '',
-                        value: 'color(\'light-30\')',
-                        description: 'The background of the table component when hovered, for the light color variant'
+                        value: "color('light-30')",
+                        description:
+                            'The background of the table component when hovered, for the light color variant'
                     },
                     {
                         name: 'background--striped',
                         type: '',
-                        value: 'color(\'light-25\')',
-                        description: 'The background of the table component when striped, for the light color variant'
+                        value: "color('light-25')",
+                        description:
+                            'The background of the table component when striped, for the light color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'light-25\')',
-                        description: 'The border color of the table component, for the light color variant'
+                        value: "color('light-25')",
+                        description:
+                            'The border color of the table component, for the light color variant'
                     },
                     {
                         name: 'color',
@@ -337,26 +325,30 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the table component, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the table component, for the dark color variant'
                     },
                     {
                         name: 'background--hover',
                         type: '',
-                        value: 'color(\'gray-40\')',
-                        description: 'The background of the table component when hovered, for the dark color variant'
+                        value: "color('gray-40')",
+                        description:
+                            'The background of the table component when hovered, for the dark color variant'
                     },
                     {
                         name: 'background--striped',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The background of the table component when striped, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The background of the table component when striped, for the dark color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border color of the table component, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border color of the table component, for the dark color variant'
                     },
                     {
                         name: 'color',
@@ -374,26 +366,30 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'info\')',
-                        description: 'The background of the table component, for the info color variant'
+                        value: "color('info')",
+                        description:
+                            'The background of the table component, for the info color variant'
                     },
                     {
                         name: 'background--hover',
                         type: '',
-                        value: 'color(\'info-60\')',
-                        description: 'The background of the table component when hovered, for the info color variant'
+                        value: "color('info-60')",
+                        description:
+                            'The background of the table component when hovered, for the info color variant'
                     },
                     {
                         name: 'background--striped',
                         type: '',
-                        value: 'color(\'info-55\')',
-                        description: 'The background of the table component when striped, for the info color variant'
+                        value: "color('info-55')",
+                        description:
+                            'The background of the table component when striped, for the info color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'info-55\')',
-                        description: 'The border color of the table component, for the info color variant'
+                        value: "color('info-55')",
+                        description:
+                            'The border color of the table component, for the info color variant'
                     },
                     {
                         name: 'color',
@@ -411,32 +407,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'success\')',
-                        description: 'The background of the table component, for the success color variant'
+                        value: "color('success')",
+                        description:
+                            'The background of the table component, for the success color variant'
                     },
                     {
                         name: 'background--hover',
                         type: '',
-                        value: 'color(\'success-60\')',
-                        description: 'The background of the table component when hovered, for the success color variant'
+                        value: "color('success-60')",
+                        description:
+                            'The background of the table component when hovered, for the success color variant'
                     },
                     {
                         name: 'background--striped',
                         type: '',
-                        value: 'color(\'success-55\')',
-                        description: 'The background of the table component when striped, for the success color variant'
+                        value: "color('success-55')",
+                        description:
+                            'The background of the table component when striped, for the success color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'success-55\')',
-                        description: 'The border color of the table component, for the success color variant'
+                        value: "color('success-55')",
+                        description:
+                            'The border color of the table component, for the success color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-success)',
-                        description: 'The color of the table component, for the success color variant'
+                        description:
+                            'The color of the table component, for the success color variant'
                     }
                 ]
             },
@@ -448,32 +449,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'warning\')',
-                        description: 'The background of the table component, for the warning color variant'
+                        value: "color('warning')",
+                        description:
+                            'The background of the table component, for the warning color variant'
                     },
                     {
                         name: 'background--hover',
                         type: '',
-                        value: 'color(\'warning-60\')',
-                        description: 'The background of the table component when hovered, for the warning color variant'
+                        value: "color('warning-60')",
+                        description:
+                            'The background of the table component when hovered, for the warning color variant'
                     },
                     {
                         name: 'background--striped',
                         type: '',
-                        value: 'color(\'warning-55\')',
-                        description: 'The background of the table component when striped, for the warning color variant'
+                        value: "color('warning-55')",
+                        description:
+                            'The background of the table component when striped, for the warning color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'warning-55\')',
-                        description: 'The border color of the table component, for the warning color variant'
+                        value: "color('warning-55')",
+                        description:
+                            'The border color of the table component, for the warning color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-warning)',
-                        description: 'The color of the table component, for the warning color variant'
+                        description:
+                            'The color of the table component, for the warning color variant'
                     }
                 ]
             },
@@ -485,32 +491,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'danger\')',
-                        description: 'The background of the table component, for the danger color variant'
+                        value: "color('danger')",
+                        description:
+                            'The background of the table component, for the danger color variant'
                     },
                     {
                         name: 'background--hover',
                         type: '',
-                        value: 'color(\'danger-60\')',
-                        description: 'The background of the table component when hovered, for the danger color variant'
+                        value: "color('danger-60')",
+                        description:
+                            'The background of the table component when hovered, for the danger color variant'
                     },
                     {
                         name: 'background--striped',
                         type: '',
-                        value: 'color(\'danger-55\')',
-                        description: 'The background of the table component when striped, for the danger color variant'
+                        value: "color('danger-55')",
+                        description:
+                            'The background of the table component when striped, for the danger color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'danger-55\')',
-                        description: 'The border color of the table component, for the danger color variant'
+                        value: "color('danger-55')",
+                        description:
+                            'The border color of the table component, for the danger color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-danger)',
-                        description: 'The color of the table component, for the danger color variant'
+                        description:
+                            'The color of the table component, for the danger color variant'
                     }
                 ]
             }

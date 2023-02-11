@@ -1,34 +1,34 @@
-import { render } from "@testing-library/vue";
-import { IFormError } from "@inkline/inkline/components";
-import { InklineKey } from "@inkline/inkline/plugin";
-import { createInkline } from "@inkline/inkline/__mocks__";
-import { FormKey } from "@inkline/inkline/components/IForm/mixin";
-import { ref } from "vue";
+import { render } from '@testing-library/vue';
+import { IFormError } from '@inkline/inkline/components';
+import { InklineKey } from '@inkline/inkline/plugin';
+import { createInkline } from '@inkline/inkline/__tests__/utils';
+import { FormKey } from '@inkline/inkline/components/IForm/mixin';
+import { ref } from 'vue';
 
-describe("Components", () => {
-    describe("IFormError", () => {
+describe('Components', () => {
+    describe('IFormError', () => {
         const props = {
-            for: "input",
+            for: 'input'
         };
 
-        it("should be named correctly", () => {
-            expect(IFormError.name).toEqual("IFormError");
+        it('should be named correctly', () => {
+            expect(IFormError.name).toEqual('IFormError');
         });
 
-        it("should render correctly", () => {
+        it('should render correctly', () => {
             const wrapper = render(IFormError, {
                 props,
                 global: {
                     provide: {
-                        [InklineKey as symbol]: createInkline(),
-                    },
-                },
+                        [InklineKey as symbol]: createInkline()
+                    }
+                }
             });
 
             expect(wrapper.html()).toMatchSnapshot();
         });
 
-        it("should get errors from schema using for prop", () => {
+        it('should get errors from schema using for prop', () => {
             const wrapper = render(IFormError, {
                 global: {
                     provide: {
@@ -39,20 +39,20 @@ describe("Components", () => {
                                     touched: true,
                                     dirty: true,
                                     invalid: true,
-                                    errors: [{ message: "Error" }],
-                                },
-                            }),
-                        },
-                    },
+                                    errors: [{ message: 'Error' }]
+                                }
+                            })
+                        }
+                    }
                 },
-                props,
+                props
             });
-            const errors = wrapper.container.querySelectorAll("li");
+            const errors = wrapper.container.querySelectorAll('li');
 
             expect(errors).toHaveLength(1);
         });
 
-        it("should not show errors if schema is valid", () => {
+        it('should not show errors if schema is valid', () => {
             const wrapper = render(IFormError, {
                 global: {
                     provide: {
@@ -63,35 +63,35 @@ describe("Components", () => {
                                     touched: true,
                                     dirty: true,
                                     invalid: false,
-                                    errors: [],
-                                },
-                            }),
-                        },
-                    },
+                                    errors: []
+                                }
+                            })
+                        }
+                    }
                 },
-                props,
+                props
             });
-            const errors = wrapper.container.querySelectorAll("li");
+            const errors = wrapper.container.querySelectorAll('li');
 
             expect(errors).toHaveLength(0);
         });
 
-        it("should not show errors if no schema present", () => {
+        it('should not show errors if no schema present', () => {
             const wrapper = render(IFormError, {
                 global: {
                     provide: {
                         [InklineKey as symbol]: createInkline(),
-                        [FormKey as symbol]: {},
-                    },
+                        [FormKey as symbol]: {}
+                    }
                 },
-                props,
+                props
             });
-            const errors = wrapper.container.querySelectorAll("li");
+            const errors = wrapper.container.querySelectorAll('li');
 
             expect(errors).toHaveLength(0);
         });
 
-        it("should not show errors if no for prop", () => {
+        it('should not show errors if no for prop', () => {
             const wrapper = render(IFormError, {
                 global: {
                     provide: {
@@ -102,23 +102,23 @@ describe("Components", () => {
                                     touched: true,
                                     dirty: true,
                                     invalid: true,
-                                    errors: [{ message: "Error" }],
-                                },
-                            }),
-                        },
-                    },
+                                    errors: [{ message: 'Error' }]
+                                }
+                            })
+                        }
+                    }
                 },
                 props: {
                     ...props,
-                    for: undefined,
-                },
+                    for: undefined
+                }
             });
-            const errors = wrapper.container.querySelectorAll("li");
+            const errors = wrapper.container.querySelectorAll('li');
 
             expect(errors).toHaveLength(0);
         });
 
-        it("should show errors by default if error visible prop is empty", () => {
+        it('should show errors by default if error visible prop is empty', () => {
             const wrapper = render(IFormError, {
                 global: {
                     provide: {
@@ -129,23 +129,23 @@ describe("Components", () => {
                                     touched: false,
                                     dirty: false,
                                     invalid: true,
-                                    errors: [{ message: "Error" }],
-                                },
-                            }),
-                        },
-                    },
+                                    errors: [{ message: 'Error' }]
+                                }
+                            })
+                        }
+                    }
                 },
                 props: {
                     ...props,
-                    visible: undefined,
-                },
+                    visible: undefined
+                }
             });
-            const errors = wrapper.container.querySelectorAll("li");
+            const errors = wrapper.container.querySelectorAll('li');
 
             expect(errors).toHaveLength(1);
         });
 
-        it("should show errors when touched if error visible prop is touched", () => {
+        it('should show errors when touched if error visible prop is touched', () => {
             const wrapper = render(IFormError, {
                 global: {
                     provide: {
@@ -156,18 +156,18 @@ describe("Components", () => {
                                     touched: true,
                                     dirty: false,
                                     invalid: true,
-                                    errors: [{ message: "Error" }],
-                                },
-                            }),
-                        },
-                    },
+                                    errors: [{ message: 'Error' }]
+                                }
+                            })
+                        }
+                    }
                 },
                 props: {
                     ...props,
-                    visible: ["touched"],
-                },
+                    visible: ['touched']
+                }
             });
-            const errors = wrapper.container.querySelectorAll("li");
+            const errors = wrapper.container.querySelectorAll('li');
 
             expect(errors).toHaveLength(1);
         });

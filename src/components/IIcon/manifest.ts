@@ -3,19 +3,13 @@ export const manifest = {
     props: [
         {
             name: 'name',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: '',
             description: 'The icon to be displayed'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the icon'
         }
@@ -43,7 +37,7 @@ export const manifest = {
                     {
                         name: 'size',
                         type: '',
-                        value: 'calc(#{1rem} * #{size-multiplier(\'sm\')})',
+                        value: "calc(#{1rem} * #{size-multiplier('sm')})",
                         description: 'The size of the icon component, for the sm size variant'
                     }
                 ]
@@ -56,7 +50,7 @@ export const manifest = {
                     {
                         name: 'size',
                         type: '',
-                        value: 'calc(#{1rem} * #{size-multiplier(\'md\')})',
+                        value: "calc(#{1rem} * #{size-multiplier('md')})",
                         description: 'The size of the icon component, for the md size variant'
                     }
                 ]
@@ -69,7 +63,7 @@ export const manifest = {
                     {
                         name: 'size',
                         type: '',
-                        value: 'calc(#{1rem} * #{size-multiplier(\'lg\')})',
+                        value: "calc(#{1rem} * #{size-multiplier('lg')})",
                         description: 'The size of the icon component, for the lg size variant'
                     }
                 ]

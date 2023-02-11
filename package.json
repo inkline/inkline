@@ -1,1228 +1,1231 @@
 {
-    "name": "@inkline/inkline",
-    "version": "4.0.0-rc.8",
-    "description": "Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
-    "author": "Alex Grozav <alex@grozav.com>",
-    "scripts": {
-        "dev": "npm run storybook",
-        "prebuild": "ts-node ./scripts/prebuild.ts",
-        "build": "run-p build:*",
-        "build:unbuild": "unbuild",
-        "build:vite": "vite build",
-        "postbuild": "ts-node ./scripts/postbuild.ts",
-        "lint": "run-p lint:script lint:style lint:markdown",
-        "lint:script": "eslint --ext .vue,.js,.ts src",
-        "lint:prettier": "prettier --write --loglevel warn \"**/*.{js,json,css,scss,vue,html}\"",
-        "lint:style": "stylelint \"src/**/*.{scss,vue}\"",
-        "lint:markdown": "markdownlint '**/*.md'",
-        "prerelease": "npm run lint && npm run test && npm run build",
-        "release": "np",
-        "postrelease": "ts-node scripts/postrelease.ts",
-        "postversion": "ts-node scripts/postversion.ts",
-        "test": "vitest run --coverage",
-        "test:dev": "vitest",
-        "test:dev:ui": "vitest --ui",
-        "coveralls": "cat coverage/lcov.info | coveralls",
-        "generate:config": "inkline generate scss --outputDir ./src/css/variables",
-        "generate:exports": "ts-node ./scripts/generate/exports.ts",
-        "generate:utilities": "ts-node ./scripts/generate/utilities.ts",
-        "generate:manifest": "ts-node ./scripts/manifest.ts",
-        "generate:manifest:sass": "ts-node ./scripts/manifest-sass.ts",
-        "storybook": "start-storybook -p 6006",
-        "storybook:build": "build-storybook",
-        "stylelint-check": "stylelint-config-prettier-check"
+  "name": "@inkline/inkline",
+  "version": "4.0.0-rc.8",
+  "description": "Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
+  "author": "Alex Grozav <alex@grozav.com>",
+  "scripts": {
+    "dev": "npm run storybook",
+    "prebuild": "ts-node ./scripts/prebuild.ts",
+    "build": "run-p build:*",
+    "build:unbuild": "unbuild",
+    "build:vite": "vite build",
+    "postbuild": "ts-node ./scripts/postbuild.ts",
+    "lint": "run-p lint:script lint:style lint:markdown",
+    "lint:script": "eslint --ext .vue,.js,.ts src",
+    "lint:prettier": "prettier --write --loglevel warn \"{src,scripts,.storybook}/**/*.{js,ts,json,css,scss,vue,html}\"",
+    "lint:style": "stylelint \"src/**/*.{scss,vue}\"",
+    "lint:markdown": "markdownlint '**/*.md'",
+    "prerelease": "npm run lint && npm run test && npm run build",
+    "release": "np",
+    "postrelease": "ts-node scripts/postrelease.ts",
+    "postversion": "ts-node scripts/postversion.ts",
+    "test": "vitest run --coverage",
+    "test:dev": "vitest",
+    "test:dev:ui": "vitest --ui",
+    "coveralls": "cat coverage/lcov.info | coveralls",
+    "generate:config": "inkline generate scss --outputDir ./src/css/variables",
+    "generate:exports": "ts-node ./scripts/generate/exports.ts",
+    "generate:utilities": "ts-node ./scripts/generate/utilities.ts",
+    "generate:manifest": "ts-node ./scripts/manifest.ts",
+    "generate:manifest:sass": "ts-node ./scripts/manifest-sass.ts",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "stylelint-check": "stylelint-config-prettier-check"
+  },
+  "main": "inkline.js",
+  "module": "inkline.mjs",
+  "jsdelivr": "inkline.js",
+  "unpkg": "inkline.js",
+  "types": "inkline.d.ts",
+  "dependencies": {
+    "@floating-ui/dom": "^1.0.4",
+    "@grozav/utils": "1.2",
+    "@popperjs/core": "2.11.6",
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@grozav/eslint-config": "^1.1.4",
+    "@grozav/stylelint-config": "^1.0.0",
+    "@inkline/cli": "^1.2.1",
+    "@inkline/config": "^1.7.10",
+    "@storybook/addon-a11y": "^7.0.0-beta.40",
+    "@storybook/addon-actions": "^7.0.0-beta.40",
+    "@storybook/addon-essentials": "^7.0.0-beta.40",
+    "@storybook/addon-interactions": "^7.0.0-beta.40",
+    "@storybook/addon-links": "^7.0.0-beta.40",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/testing-library": "^0.0.14-next.1",
+    "@storybook/vue3": "^7.0.0-beta.40",
+    "@storybook/vue3-vite": "^7.0.0-beta.40",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/vue": "^6.6.1",
+    "@types/jsdom": "^20.0.0",
+    "@types/node": "18.11",
+    "@types/prettier": "^2.7.1",
+    "@types/shelljs": "^0.8.11",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitest/coverage-c8": "^0.27.1",
+    "@vitest/ui": "^0.27.1",
+    "@vue/eslint-config-typescript": "^11.0.2",
+    "@vue/test-utils": "^2.1.0",
+    "@vue/tsconfig": "^0.1.3",
+    "babel-loader": "^9.1.2",
+    "c8": "^7.12.0",
+    "esbuild": "^0.17.0",
+    "eslint": "^8.25.0",
+    "eslint-plugin-storybook": "^0.6.10",
+    "eslint-plugin-vue": "^9.6.0",
+    "fast-glob": "^3.2.12",
+    "jsdom": "^21.0.0",
+    "markdownlint": "^0.27.0",
+    "markdownlint-cli": "^0.33.0",
+    "miragejs": "^0.1.45",
+    "np": "^7.6.2",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.18",
+    "postcss-html": "^1.5.0",
+    "postcss-preset-env": "^7.8.2",
+    "prettier": "^2.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.55.0",
+    "shelljs": "^0.8.5",
+    "storybook": "^7.0.0-beta.40",
+    "storybook-dark-mode": "^2.0.5",
+    "stylelint": "^14.14.0",
+    "ts-node": "^10.9.1",
+    "typescript": "4.9",
+    "unbuild": "^1.1.1",
+    "vite": "^4.0.4",
+    "vitest": "^0.27.1",
+    "vue": "^3.2.41",
+    "vue-loader": "^17.0.0",
+    "vue-router": "^4.1.6",
+    "vue-tsc": "^1.0.24"
+  },
+  "peerDependencies": {
+    "@inkline/config": ">=1",
+    "vue": ">=3.0.0"
+  },
+  "files": [
+    "**/*"
+  ],
+  "exports": {
+    ".": {
+      "require": "./inkline.js",
+      "import": "./inkline.mjs",
+      "types": "./inkline.d.ts"
     },
-    "main": "inkline.js",
-    "module": "inkline.mjs",
-    "jsdelivr": "inkline.js",
-    "unpkg": "inkline.js",
-    "types": "inkline.d.ts",
-    "dependencies": {
-        "@floating-ui/dom": "^1.0.4",
-        "@grozav/utils": "^1.1.6",
-        "@popperjs/core": "2.11.6",
-        "normalize.css": "^8.0.1"
+    "./types": {
+      "types": "./types/index.d.ts"
     },
-    "devDependencies": {
-        "@babel/core": "^7.19.3",
-        "@grozav/eslint-config": "^1.1.4",
-        "@grozav/stylelint-config": "^1.0.0",
-        "@inkline/cli": "^1.2.1",
-        "@inkline/config": "^1.7.10",
-        "@storybook/addon-a11y": "^6.5.12",
-        "@storybook/addon-actions": "^6.5.12",
-        "@storybook/addon-essentials": "^6.5.12",
-        "@storybook/addon-interactions": "^6.5.12",
-        "@storybook/addon-links": "^6.5.12",
-        "@storybook/addon-postcss": "^2.0.0",
-        "@storybook/builder-vite": "^0.2.4",
-        "@storybook/testing-library": "^0.0.13",
-        "@storybook/vue3": "^6.5.12",
-        "@testing-library/jest-dom": "^5.16.5",
-        "@testing-library/vue": "^6.6.1",
-        "@types/jsdom": "^20.0.0",
-        "@types/node": "18.11",
-        "@types/prettier": "^2.7.1",
-        "@types/shelljs": "^0.8.11",
-        "@vitejs/plugin-vue": "^4.0.0",
-        "@vitest/coverage-c8": "^0.27.1",
-        "@vitest/ui": "^0.27.1",
-        "@vue/eslint-config-typescript": "^11.0.2",
-        "@vue/test-utils": "^2.1.0",
-        "@vue/tsconfig": "^0.1.3",
-        "babel-loader": "^9.1.2",
-        "c8": "^7.12.0",
-        "esbuild": "^0.17.0",
-        "eslint": "^8.25.0",
-        "eslint-plugin-vue": "^9.6.0",
-        "fast-glob": "^3.2.12",
-        "jsdom": "^21.0.0",
-        "markdownlint": "^0.27.0",
-        "markdownlint-cli": "^0.33.0",
-        "miragejs": "^0.1.45",
-        "np": "^7.6.2",
-        "npm-run-all": "^4.1.5",
-        "postcss": "^8.4.18",
-        "postcss-html": "^1.5.0",
-        "postcss-preset-env": "^7.8.2",
-        "prettier": "^2.7.1",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "sass": "^1.55.0",
-        "shelljs": "^0.8.5",
-        "storybook-dark-mode": "^2.0.5",
-        "stylelint": "^14.14.0",
-        "ts-node": "^10.9.1",
-        "typescript": "4.9",
-        "unbuild": "^1.1.1",
-        "vite": "^4.0.4",
-        "vitest": "^0.27.1",
-        "vue": "^3.2.41",
-        "vue-loader": "^17.0.0",
-        "vue-router": "^4.1.6",
-        "vue-tsc": "^1.0.24"
+    "./*": "./*",
+    "./icons": {
+      "require": "./icons.js",
+      "import": "./icons.mjs",
+      "types": "./icons.d.ts"
     },
-    "peerDependencies": {
-        "@inkline/config": ">=1",
-        "vue": ">=3.0.0"
+    "./inkline.config": {
+      "require": "./inkline.config.js",
+      "import": "./inkline.config.mjs",
+      "types": "./inkline.config.d.ts"
     },
-    "files": [
-        "**/*"
-    ],
-    "exports": {
-        ".": {
-            "require": "./inkline.js",
-            "import": "./inkline.mjs",
-            "types": "./inkline.d.ts"
-        },
-        "./types": {
-            "types": "./types/index.d.ts"
-        },
-        "./*": "./*",
-        "./icons": {
-            "require": "./icons.js",
-            "import": "./icons.mjs",
-            "types": "./icons.d.ts"
-        },
-        "./inkline.config": {
-            "require": "./inkline.config.js",
-            "import": "./inkline.config.mjs",
-            "types": "./inkline.config.d.ts"
-        },
-        "./inkline": {
-            "require": "./inkline.js",
-            "import": "./inkline.mjs",
-            "types": "./inkline.d.ts"
-        },
-        "./plugin": {
-            "require": "./plugin.js",
-            "import": "./plugin.mjs",
-            "types": "./plugin.d.ts"
-        },
-        "./components": {
-            "require": "./components/index.js",
-            "import": "./components/index.mjs",
-            "types": "./components/index.d.ts"
-        },
-        "./constants/breakpoints": {
-            "require": "./constants/breakpoints.js",
-            "import": "./constants/breakpoints.mjs",
-            "types": "./constants/breakpoints.d.ts"
-        },
-        "./constants/eventValueMap": {
-            "require": "./constants/eventValueMap.js",
-            "import": "./constants/eventValueMap.mjs",
-            "types": "./constants/eventValueMap.d.ts"
-        },
-        "./constants": {
-            "require": "./constants/index.js",
-            "import": "./constants/index.mjs",
-            "types": "./constants/index.d.ts"
-        },
-        "./constants/keymap": {
-            "require": "./constants/keymap.js",
-            "import": "./constants/keymap.mjs",
-            "types": "./constants/keymap.d.ts"
-        },
-        "./constants/validation": {
-            "require": "./constants/validation.js",
-            "import": "./constants/validation.mjs",
-            "types": "./constants/validation.d.ts"
-        },
-        "./controllers/OverlayController": {
-            "require": "./controllers/OverlayController.js",
-            "import": "./controllers/OverlayController.mjs",
-            "types": "./controllers/OverlayController.d.ts"
-        },
-        "./controllers": {
-            "require": "./controllers/index.js",
-            "import": "./controllers/index.mjs",
-            "types": "./controllers/index.d.ts"
-        },
-        "./i18n": {
-            "require": "./i18n/index.js",
-            "import": "./i18n/index.mjs",
-            "types": "./i18n/index.d.ts"
-        },
-        "./i18n/translate": {
-            "require": "./i18n/translate.js",
-            "import": "./i18n/translate.mjs",
-            "types": "./i18n/translate.d.ts"
-        },
-        "./composables/click-outside": {
-            "require": "./composables/click-outside.js",
-            "import": "./composables/click-outside.mjs",
-            "types": "./composables/click-outside.d.ts"
-        },
-        "./composables/collapsible": {
-            "require": "./composables/collapsible.js",
-            "import": "./composables/collapsible.mjs",
-            "types": "./composables/collapsible.d.ts"
-        },
-        "./composables/componentColor": {
-            "require": "./composables/componentColor.js",
-            "import": "./composables/componentColor.mjs",
-            "types": "./composables/componentColor.d.ts"
-        },
-        "./composables/componentSize": {
-            "require": "./composables/componentSize.js",
-            "import": "./composables/componentSize.mjs",
-            "types": "./composables/componentSize.d.ts"
-        },
-        "./composables/form": {
-            "require": "./composables/form.js",
-            "import": "./composables/form.mjs",
-            "types": "./composables/form.d.ts"
-        },
-        "./composables": {
-            "require": "./composables/index.js",
-            "import": "./composables/index.mjs",
-            "types": "./composables/index.d.ts"
-        },
-        "./composables/inkline": {
-            "require": "./composables/inkline.js",
-            "import": "./composables/inkline.mjs",
-            "types": "./composables/inkline.d.ts"
-        },
-        "./composables/isServer": {
-            "require": "./composables/isServer.js",
-            "import": "./composables/isServer.mjs",
-            "types": "./composables/isServer.d.ts"
-        },
-        "./composables/linkable": {
-            "require": "./composables/linkable.js",
-            "import": "./composables/linkable.mjs",
-            "types": "./composables/linkable.d.ts"
-        },
-        "./composables/popup": {
-            "require": "./composables/popup.js",
-            "import": "./composables/popup.mjs",
-            "types": "./composables/popup.d.ts"
-        },
-        "./composables/validation": {
-            "require": "./composables/validation.js",
-            "import": "./composables/validation.mjs",
-            "types": "./composables/validation.d.ts"
-        },
-        "./utils/breakpointClassName": {
-            "require": "./utils/breakpointClassName.js",
-            "import": "./utils/breakpointClassName.mjs",
-            "types": "./utils/breakpointClassName.d.ts"
-        },
-        "./utils/extractRefHTMLElement": {
-            "require": "./utils/extractRefHTMLElement.js",
-            "import": "./utils/extractRefHTMLElement.mjs",
-            "types": "./utils/extractRefHTMLElement.d.ts"
-        },
-        "./utils": {
-            "require": "./utils/index.js",
-            "import": "./utils/index.mjs",
-            "types": "./utils/index.d.ts"
-        },
-        "./utils/renderSvg": {
-            "require": "./utils/renderSvg.js",
-            "import": "./utils/renderSvg.mjs",
-            "types": "./utils/renderSvg.d.ts"
-        },
-        "./validation": {
-            "require": "./validation/index.js",
-            "import": "./validation/index.mjs",
-            "types": "./validation/index.d.ts"
-        },
-        "./validation/initialize": {
-            "require": "./validation/initialize.js",
-            "import": "./validation/initialize.mjs",
-            "types": "./validation/initialize.d.ts"
-        },
-        "./validation/validate": {
-            "require": "./validation/validate.js",
-            "import": "./validation/validate.mjs",
-            "types": "./validation/validate.d.ts"
-        },
-        "./components/IBreadcrumb": {
-            "require": "./components/IBreadcrumb/index.js",
-            "import": "./components/IBreadcrumb/index.mjs",
-            "types": "./components/IBreadcrumb/index.d.ts"
-        },
-        "./components/IBreadcrumb/manifest": {
-            "require": "./components/IBreadcrumb/manifest.js",
-            "import": "./components/IBreadcrumb/manifest.mjs",
-            "types": "./components/IBreadcrumb/manifest.d.ts"
-        },
-        "./components/IBadge": {
-            "require": "./components/IBadge/index.js",
-            "import": "./components/IBadge/index.mjs",
-            "types": "./components/IBadge/index.d.ts"
-        },
-        "./components/IBadge/manifest": {
-            "require": "./components/IBadge/manifest.js",
-            "import": "./components/IBadge/manifest.mjs",
-            "types": "./components/IBadge/manifest.d.ts"
-        },
-        "./components/IAlert": {
-            "require": "./components/IAlert/index.js",
-            "import": "./components/IAlert/index.mjs",
-            "types": "./components/IAlert/index.d.ts"
-        },
-        "./components/IAlert/manifest": {
-            "require": "./components/IAlert/manifest.js",
-            "import": "./components/IAlert/manifest.mjs",
-            "types": "./components/IAlert/manifest.d.ts"
-        },
-        "./components/IButtonGroup": {
-            "require": "./components/IButtonGroup/index.js",
-            "import": "./components/IButtonGroup/index.mjs",
-            "types": "./components/IButtonGroup/index.d.ts"
-        },
-        "./components/IButtonGroup/manifest": {
-            "require": "./components/IButtonGroup/manifest.js",
-            "import": "./components/IButtonGroup/manifest.mjs",
-            "types": "./components/IButtonGroup/manifest.d.ts"
-        },
-        "./components/IButtonGroup/mixin": {
-            "require": "./components/IButtonGroup/mixin.js",
-            "import": "./components/IButtonGroup/mixin.mjs",
-            "types": "./components/IButtonGroup/mixin.d.ts"
-        },
-        "./components/ICard": {
-            "require": "./components/ICard/index.js",
-            "import": "./components/ICard/index.mjs",
-            "types": "./components/ICard/index.d.ts"
-        },
-        "./components/ICard/manifest": {
-            "require": "./components/ICard/manifest.js",
-            "import": "./components/ICard/manifest.mjs",
-            "types": "./components/ICard/manifest.d.ts"
-        },
-        "./components/IBreadcrumbItem": {
-            "require": "./components/IBreadcrumbItem/index.js",
-            "import": "./components/IBreadcrumbItem/index.mjs",
-            "types": "./components/IBreadcrumbItem/index.d.ts"
-        },
-        "./components/IBreadcrumbItem/manifest": {
-            "require": "./components/IBreadcrumbItem/manifest.js",
-            "import": "./components/IBreadcrumbItem/manifest.mjs",
-            "types": "./components/IBreadcrumbItem/manifest.d.ts"
-        },
-        "./components/IButton": {
-            "require": "./components/IButton/index.js",
-            "import": "./components/IButton/index.mjs",
-            "types": "./components/IButton/index.d.ts"
-        },
-        "./components/IButton/manifest": {
-            "require": "./components/IButton/manifest.js",
-            "import": "./components/IButton/manifest.mjs",
-            "types": "./components/IButton/manifest.d.ts"
-        },
-        "./components/ICheckbox": {
-            "require": "./components/ICheckbox/index.js",
-            "import": "./components/ICheckbox/index.mjs",
-            "types": "./components/ICheckbox/index.d.ts"
-        },
-        "./components/ICheckbox/manifest": {
-            "require": "./components/ICheckbox/manifest.js",
-            "import": "./components/ICheckbox/manifest.mjs",
-            "types": "./components/ICheckbox/manifest.d.ts"
-        },
-        "./components/ICollapsible": {
-            "require": "./components/ICollapsible/index.js",
-            "import": "./components/ICollapsible/index.mjs",
-            "types": "./components/ICollapsible/index.d.ts"
-        },
-        "./components/ICollapsible/manifest": {
-            "require": "./components/ICollapsible/manifest.js",
-            "import": "./components/ICollapsible/manifest.mjs",
-            "types": "./components/ICollapsible/manifest.d.ts"
-        },
-        "./components/ICollapsible/mixin": {
-            "require": "./components/ICollapsible/mixin.js",
-            "import": "./components/ICollapsible/mixin.mjs",
-            "types": "./components/ICollapsible/mixin.d.ts"
-        },
-        "./components/ICheckboxGroup": {
-            "require": "./components/ICheckboxGroup/index.js",
-            "import": "./components/ICheckboxGroup/index.mjs",
-            "types": "./components/ICheckboxGroup/index.d.ts"
-        },
-        "./components/ICheckboxGroup/manifest": {
-            "require": "./components/ICheckboxGroup/manifest.js",
-            "import": "./components/ICheckboxGroup/manifest.mjs",
-            "types": "./components/ICheckboxGroup/manifest.d.ts"
-        },
-        "./components/ICheckboxGroup/mixin": {
-            "require": "./components/ICheckboxGroup/mixin.js",
-            "import": "./components/ICheckboxGroup/mixin.mjs",
-            "types": "./components/ICheckboxGroup/mixin.d.ts"
-        },
-        "./components/IColumn": {
-            "require": "./components/IColumn/index.js",
-            "import": "./components/IColumn/index.mjs",
-            "types": "./components/IColumn/index.d.ts"
-        },
-        "./components/IColumn/manifest": {
-            "require": "./components/IColumn/manifest.js",
-            "import": "./components/IColumn/manifest.mjs",
-            "types": "./components/IColumn/manifest.d.ts"
-        },
-        "./components/IContainer": {
-            "require": "./components/IContainer/index.js",
-            "import": "./components/IContainer/index.mjs",
-            "types": "./components/IContainer/index.d.ts"
-        },
-        "./components/IContainer/manifest": {
-            "require": "./components/IContainer/manifest.js",
-            "import": "./components/IContainer/manifest.mjs",
-            "types": "./components/IContainer/manifest.d.ts"
-        },
-        "./components/IDropdown": {
-            "require": "./components/IDropdown/index.js",
-            "import": "./components/IDropdown/index.mjs",
-            "types": "./components/IDropdown/index.d.ts"
-        },
-        "./components/IDropdown/manifest": {
-            "require": "./components/IDropdown/manifest.js",
-            "import": "./components/IDropdown/manifest.mjs",
-            "types": "./components/IDropdown/manifest.d.ts"
-        },
-        "./components/IDropdown/mixin": {
-            "require": "./components/IDropdown/mixin.js",
-            "import": "./components/IDropdown/mixin.mjs",
-            "types": "./components/IDropdown/mixin.d.ts"
-        },
-        "./components/ICollapsibleItem": {
-            "require": "./components/ICollapsibleItem/index.js",
-            "import": "./components/ICollapsibleItem/index.mjs",
-            "types": "./components/ICollapsibleItem/index.d.ts"
-        },
-        "./components/ICollapsibleItem/manifest": {
-            "require": "./components/ICollapsibleItem/manifest.js",
-            "import": "./components/ICollapsibleItem/manifest.mjs",
-            "types": "./components/ICollapsibleItem/manifest.d.ts"
-        },
-        "./components/IExpandTransition": {
-            "require": "./components/IExpandTransition/index.js",
-            "import": "./components/IExpandTransition/index.mjs",
-            "types": "./components/IExpandTransition/index.d.ts"
-        },
-        "./components/IDropdownDivider": {
-            "require": "./components/IDropdownDivider/index.js",
-            "import": "./components/IDropdownDivider/index.mjs",
-            "types": "./components/IDropdownDivider/index.d.ts"
-        },
-        "./components/IDropdownDivider/manifest": {
-            "require": "./components/IDropdownDivider/manifest.js",
-            "import": "./components/IDropdownDivider/manifest.mjs",
-            "types": "./components/IDropdownDivider/manifest.d.ts"
-        },
-        "./components/IDropdownItem": {
-            "require": "./components/IDropdownItem/index.js",
-            "import": "./components/IDropdownItem/index.mjs",
-            "types": "./components/IDropdownItem/index.d.ts"
-        },
-        "./components/IDropdownItem/manifest": {
-            "require": "./components/IDropdownItem/manifest.js",
-            "import": "./components/IDropdownItem/manifest.mjs",
-            "types": "./components/IDropdownItem/manifest.d.ts"
-        },
-        "./components/IForm": {
-            "require": "./components/IForm/index.js",
-            "import": "./components/IForm/index.mjs",
-            "types": "./components/IForm/index.d.ts"
-        },
-        "./components/IForm/manifest": {
-            "require": "./components/IForm/manifest.js",
-            "import": "./components/IForm/manifest.mjs",
-            "types": "./components/IForm/manifest.d.ts"
-        },
-        "./components/IForm/mixin": {
-            "require": "./components/IForm/mixin.js",
-            "import": "./components/IForm/mixin.mjs",
-            "types": "./components/IForm/mixin.d.ts"
-        },
-        "./components/IHamburgerMenu": {
-            "require": "./components/IHamburgerMenu/index.js",
-            "import": "./components/IHamburgerMenu/index.mjs",
-            "types": "./components/IHamburgerMenu/index.d.ts"
-        },
-        "./components/IHamburgerMenu/manifest": {
-            "require": "./components/IHamburgerMenu/manifest.js",
-            "import": "./components/IHamburgerMenu/manifest.mjs",
-            "types": "./components/IHamburgerMenu/manifest.d.ts"
-        },
-        "./components/IFormGroup": {
-            "require": "./components/IFormGroup/index.js",
-            "import": "./components/IFormGroup/index.mjs",
-            "types": "./components/IFormGroup/index.d.ts"
-        },
-        "./components/IFormGroup/manifest": {
-            "require": "./components/IFormGroup/manifest.js",
-            "import": "./components/IFormGroup/manifest.mjs",
-            "types": "./components/IFormGroup/manifest.d.ts"
-        },
-        "./components/IFormGroup/mixin": {
-            "require": "./components/IFormGroup/mixin.js",
-            "import": "./components/IFormGroup/mixin.mjs",
-            "types": "./components/IFormGroup/mixin.d.ts"
-        },
-        "./components/IFormError": {
-            "require": "./components/IFormError/index.js",
-            "import": "./components/IFormError/index.mjs",
-            "types": "./components/IFormError/index.d.ts"
-        },
-        "./components/IFormError/manifest": {
-            "require": "./components/IFormError/manifest.js",
-            "import": "./components/IFormError/manifest.mjs",
-            "types": "./components/IFormError/manifest.d.ts"
-        },
-        "./components/IIcon": {
-            "require": "./components/IIcon/index.js",
-            "import": "./components/IIcon/index.mjs",
-            "types": "./components/IIcon/index.d.ts"
-        },
-        "./components/IIcon/manifest": {
-            "require": "./components/IIcon/manifest.js",
-            "import": "./components/IIcon/manifest.mjs",
-            "types": "./components/IIcon/manifest.d.ts"
-        },
-        "./components/IHeader": {
-            "require": "./components/IHeader/index.js",
-            "import": "./components/IHeader/index.mjs",
-            "types": "./components/IHeader/index.d.ts"
-        },
-        "./components/IHeader/manifest": {
-            "require": "./components/IHeader/manifest.js",
-            "import": "./components/IHeader/manifest.mjs",
-            "types": "./components/IHeader/manifest.d.ts"
-        },
-        "./components/IFormLabel": {
-            "require": "./components/IFormLabel/index.js",
-            "import": "./components/IFormLabel/index.mjs",
-            "types": "./components/IFormLabel/index.d.ts"
-        },
-        "./components/IFormLabel/manifest": {
-            "require": "./components/IFormLabel/manifest.js",
-            "import": "./components/IFormLabel/manifest.mjs",
-            "types": "./components/IFormLabel/manifest.d.ts"
-        },
-        "./components/IInput": {
-            "require": "./components/IInput/index.js",
-            "import": "./components/IInput/index.mjs",
-            "types": "./components/IInput/index.d.ts"
-        },
-        "./components/IInput/manifest": {
-            "require": "./components/IInput/manifest.js",
-            "import": "./components/IInput/manifest.mjs",
-            "types": "./components/IInput/manifest.d.ts"
-        },
-        "./components/ILayoutContent": {
-            "require": "./components/ILayoutContent/index.js",
-            "import": "./components/ILayoutContent/index.mjs",
-            "types": "./components/ILayoutContent/index.d.ts"
-        },
-        "./components/ILayoutContent/manifest": {
-            "require": "./components/ILayoutContent/manifest.js",
-            "import": "./components/ILayoutContent/manifest.mjs",
-            "types": "./components/ILayoutContent/manifest.d.ts"
-        },
-        "./components/ILayoutFooter": {
-            "require": "./components/ILayoutFooter/index.js",
-            "import": "./components/ILayoutFooter/index.mjs",
-            "types": "./components/ILayoutFooter/index.d.ts"
-        },
-        "./components/ILayoutFooter/manifest": {
-            "require": "./components/ILayoutFooter/manifest.js",
-            "import": "./components/ILayoutFooter/manifest.mjs",
-            "types": "./components/ILayoutFooter/manifest.d.ts"
-        },
-        "./components/ILayoutAside": {
-            "require": "./components/ILayoutAside/index.js",
-            "import": "./components/ILayoutAside/index.mjs",
-            "types": "./components/ILayoutAside/index.d.ts"
-        },
-        "./components/ILayoutAside/manifest": {
-            "require": "./components/ILayoutAside/manifest.js",
-            "import": "./components/ILayoutAside/manifest.mjs",
-            "types": "./components/ILayoutAside/manifest.d.ts"
-        },
-        "./components/ILayout": {
-            "require": "./components/ILayout/index.js",
-            "import": "./components/ILayout/index.mjs",
-            "types": "./components/ILayout/index.d.ts"
-        },
-        "./components/ILayout/manifest": {
-            "require": "./components/ILayout/manifest.js",
-            "import": "./components/ILayout/manifest.mjs",
-            "types": "./components/ILayout/manifest.d.ts"
-        },
-        "./components/ILoader": {
-            "require": "./components/ILoader/index.js",
-            "import": "./components/ILoader/index.mjs",
-            "types": "./components/ILoader/index.d.ts"
-        },
-        "./components/ILoader/manifest": {
-            "require": "./components/ILoader/manifest.js",
-            "import": "./components/ILoader/manifest.mjs",
-            "types": "./components/ILoader/manifest.d.ts"
-        },
-        "./components/IListGroup": {
-            "require": "./components/IListGroup/index.js",
-            "import": "./components/IListGroup/index.mjs",
-            "types": "./components/IListGroup/index.d.ts"
-        },
-        "./components/IListGroup/manifest": {
-            "require": "./components/IListGroup/manifest.js",
-            "import": "./components/IListGroup/manifest.mjs",
-            "types": "./components/IListGroup/manifest.d.ts"
-        },
-        "./components/ILayoutHeader": {
-            "require": "./components/ILayoutHeader/index.js",
-            "import": "./components/ILayoutHeader/index.mjs",
-            "types": "./components/ILayoutHeader/index.d.ts"
-        },
-        "./components/ILayoutHeader/manifest": {
-            "require": "./components/ILayoutHeader/manifest.js",
-            "import": "./components/ILayoutHeader/manifest.mjs",
-            "types": "./components/ILayoutHeader/manifest.d.ts"
-        },
-        "./components/IMark": {
-            "require": "./components/IMark/index.js",
-            "import": "./components/IMark/index.mjs",
-            "types": "./components/IMark/index.d.ts"
-        },
-        "./components/IListGroupItem": {
-            "require": "./components/IListGroupItem/index.js",
-            "import": "./components/IListGroupItem/index.mjs",
-            "types": "./components/IListGroupItem/index.d.ts"
-        },
-        "./components/IListGroupItem/manifest": {
-            "require": "./components/IListGroupItem/manifest.js",
-            "import": "./components/IListGroupItem/manifest.mjs",
-            "types": "./components/IListGroupItem/manifest.d.ts"
-        },
-        "./components/IMedia": {
-            "require": "./components/IMedia/index.js",
-            "import": "./components/IMedia/index.mjs",
-            "types": "./components/IMedia/index.d.ts"
-        },
-        "./components/IMedia/manifest": {
-            "require": "./components/IMedia/manifest.js",
-            "import": "./components/IMedia/manifest.mjs",
-            "types": "./components/IMedia/manifest.d.ts"
-        },
-        "./components/IModal": {
-            "require": "./components/IModal/index.js",
-            "import": "./components/IModal/index.mjs",
-            "types": "./components/IModal/index.d.ts"
-        },
-        "./components/IModal/manifest": {
-            "require": "./components/IModal/manifest.js",
-            "import": "./components/IModal/manifest.mjs",
-            "types": "./components/IModal/manifest.d.ts"
-        },
-        "./components/INav": {
-            "require": "./components/INav/index.js",
-            "import": "./components/INav/index.mjs",
-            "types": "./components/INav/index.d.ts"
-        },
-        "./components/INav/manifest": {
-            "require": "./components/INav/manifest.js",
-            "import": "./components/INav/manifest.mjs",
-            "types": "./components/INav/manifest.d.ts"
-        },
-        "./components/INav/mixin": {
-            "require": "./components/INav/mixin.js",
-            "import": "./components/INav/mixin.mjs",
-            "types": "./components/INav/mixin.d.ts"
-        },
-        "./components/INavbar": {
-            "require": "./components/INavbar/index.js",
-            "import": "./components/INavbar/index.mjs",
-            "types": "./components/INavbar/index.d.ts"
-        },
-        "./components/INavbar/manifest": {
-            "require": "./components/INavbar/manifest.js",
-            "import": "./components/INavbar/manifest.mjs",
-            "types": "./components/INavbar/manifest.d.ts"
-        },
-        "./components/INavbar/mixin": {
-            "require": "./components/INavbar/mixin.js",
-            "import": "./components/INavbar/mixin.mjs",
-            "types": "./components/INavbar/mixin.d.ts"
-        },
-        "./components/INavItem": {
-            "require": "./components/INavItem/index.js",
-            "import": "./components/INavItem/index.mjs",
-            "types": "./components/INavItem/index.d.ts"
-        },
-        "./components/INavItem/manifest": {
-            "require": "./components/INavItem/manifest.js",
-            "import": "./components/INavItem/manifest.mjs",
-            "types": "./components/INavItem/manifest.d.ts"
-        },
-        "./components/INumberInput": {
-            "require": "./components/INumberInput/index.js",
-            "import": "./components/INumberInput/index.mjs",
-            "types": "./components/INumberInput/index.d.ts"
-        },
-        "./components/INumberInput/manifest": {
-            "require": "./components/INumberInput/manifest.js",
-            "import": "./components/INumberInput/manifest.mjs",
-            "types": "./components/INumberInput/manifest.d.ts"
-        },
-        "./components/INavbarBrand": {
-            "require": "./components/INavbarBrand/index.js",
-            "import": "./components/INavbarBrand/index.mjs",
-            "types": "./components/INavbarBrand/index.d.ts"
-        },
-        "./components/INavbarBrand/manifest": {
-            "require": "./components/INavbarBrand/manifest.js",
-            "import": "./components/INavbarBrand/manifest.mjs",
-            "types": "./components/INavbarBrand/manifest.d.ts"
-        },
-        "./components/INavbarCollapsible": {
-            "require": "./components/INavbarCollapsible/index.js",
-            "import": "./components/INavbarCollapsible/index.mjs",
-            "types": "./components/INavbarCollapsible/index.d.ts"
-        },
-        "./components/INavbarCollapsible/manifest": {
-            "require": "./components/INavbarCollapsible/manifest.js",
-            "import": "./components/INavbarCollapsible/manifest.mjs",
-            "types": "./components/INavbarCollapsible/manifest.d.ts"
-        },
-        "./components/IPagination": {
-            "require": "./components/IPagination/index.js",
-            "import": "./components/IPagination/index.mjs",
-            "types": "./components/IPagination/index.d.ts"
-        },
-        "./components/IPagination/manifest": {
-            "require": "./components/IPagination/manifest.js",
-            "import": "./components/IPagination/manifest.mjs",
-            "types": "./components/IPagination/manifest.d.ts"
-        },
-        "./components/IPopover": {
-            "require": "./components/IPopover/index.js",
-            "import": "./components/IPopover/index.mjs",
-            "types": "./components/IPopover/index.d.ts"
-        },
-        "./components/IPopover/manifest": {
-            "require": "./components/IPopover/manifest.js",
-            "import": "./components/IPopover/manifest.mjs",
-            "types": "./components/IPopover/manifest.d.ts"
-        },
-        "./components/IProgress": {
-            "require": "./components/IProgress/index.js",
-            "import": "./components/IProgress/index.mjs",
-            "types": "./components/IProgress/index.d.ts"
-        },
-        "./components/IProgress/manifest": {
-            "require": "./components/IProgress/manifest.js",
-            "import": "./components/IProgress/manifest.mjs",
-            "types": "./components/IProgress/manifest.d.ts"
-        },
-        "./components/IRadio": {
-            "require": "./components/IRadio/index.js",
-            "import": "./components/IRadio/index.mjs",
-            "types": "./components/IRadio/index.d.ts"
-        },
-        "./components/IRadio/manifest": {
-            "require": "./components/IRadio/manifest.js",
-            "import": "./components/IRadio/manifest.mjs",
-            "types": "./components/IRadio/manifest.d.ts"
-        },
-        "./components/IRow": {
-            "require": "./components/IRow/index.js",
-            "import": "./components/IRow/index.mjs",
-            "types": "./components/IRow/index.d.ts"
-        },
-        "./components/IRow/manifest": {
-            "require": "./components/IRow/manifest.js",
-            "import": "./components/IRow/manifest.mjs",
-            "types": "./components/IRow/manifest.d.ts"
-        },
-        "./components/IProgressBar": {
-            "require": "./components/IProgressBar/index.js",
-            "import": "./components/IProgressBar/index.mjs",
-            "types": "./components/IProgressBar/index.d.ts"
-        },
-        "./components/IProgressBar/manifest": {
-            "require": "./components/IProgressBar/manifest.js",
-            "import": "./components/IProgressBar/manifest.mjs",
-            "types": "./components/IProgressBar/manifest.d.ts"
-        },
-        "./components/IProgressBar/mixin": {
-            "require": "./components/IProgressBar/mixin.js",
-            "import": "./components/IProgressBar/mixin.mjs",
-            "types": "./components/IProgressBar/mixin.d.ts"
-        },
-        "./components/IRadioGroup": {
-            "require": "./components/IRadioGroup/index.js",
-            "import": "./components/IRadioGroup/index.mjs",
-            "types": "./components/IRadioGroup/index.d.ts"
-        },
-        "./components/IRadioGroup/manifest": {
-            "require": "./components/IRadioGroup/manifest.js",
-            "import": "./components/IRadioGroup/manifest.mjs",
-            "types": "./components/IRadioGroup/manifest.d.ts"
-        },
-        "./components/IRadioGroup/mixin": {
-            "require": "./components/IRadioGroup/mixin.js",
-            "import": "./components/IRadioGroup/mixin.mjs",
-            "types": "./components/IRadioGroup/mixin.d.ts"
-        },
-        "./components/ISelect": {
-            "require": "./components/ISelect/index.js",
-            "import": "./components/ISelect/index.mjs",
-            "types": "./components/ISelect/index.d.ts"
-        },
-        "./components/ISelect/manifest": {
-            "require": "./components/ISelect/manifest.js",
-            "import": "./components/ISelect/manifest.mjs",
-            "types": "./components/ISelect/manifest.d.ts"
-        },
-        "./components/ISelect/mixin": {
-            "require": "./components/ISelect/mixin.js",
-            "import": "./components/ISelect/mixin.mjs",
-            "types": "./components/ISelect/mixin.d.ts"
-        },
-        "./components/ITabTitle": {
-            "require": "./components/ITabTitle/index.js",
-            "import": "./components/ITabTitle/index.mjs",
-            "types": "./components/ITabTitle/index.d.ts"
-        },
-        "./components/ITabTitle/manifest": {
-            "require": "./components/ITabTitle/manifest.js",
-            "import": "./components/ITabTitle/manifest.mjs",
-            "types": "./components/ITabTitle/manifest.d.ts"
-        },
-        "./components/ISidebar": {
-            "require": "./components/ISidebar/index.js",
-            "import": "./components/ISidebar/index.mjs",
-            "types": "./components/ISidebar/index.d.ts"
-        },
-        "./components/ISidebar/manifest": {
-            "require": "./components/ISidebar/manifest.js",
-            "import": "./components/ISidebar/manifest.mjs",
-            "types": "./components/ISidebar/manifest.d.ts"
-        },
-        "./components/ISidebar/mixin": {
-            "require": "./components/ISidebar/mixin.js",
-            "import": "./components/ISidebar/mixin.mjs",
-            "types": "./components/ISidebar/mixin.d.ts"
-        },
-        "./components/ITab": {
-            "require": "./components/ITab/index.js",
-            "import": "./components/ITab/index.mjs",
-            "types": "./components/ITab/index.d.ts"
-        },
-        "./components/ITab/manifest": {
-            "require": "./components/ITab/manifest.js",
-            "import": "./components/ITab/manifest.mjs",
-            "types": "./components/ITab/manifest.d.ts"
-        },
-        "./components/ISelectOption": {
-            "require": "./components/ISelectOption/index.js",
-            "import": "./components/ISelectOption/index.mjs",
-            "types": "./components/ISelectOption/index.d.ts"
-        },
-        "./components/ISelectOption/manifest": {
-            "require": "./components/ISelectOption/manifest.js",
-            "import": "./components/ISelectOption/manifest.mjs",
-            "types": "./components/ISelectOption/manifest.d.ts"
-        },
-        "./components/ITabs": {
-            "require": "./components/ITabs/index.js",
-            "import": "./components/ITabs/index.mjs",
-            "types": "./components/ITabs/index.d.ts"
-        },
-        "./components/ITabs/manifest": {
-            "require": "./components/ITabs/manifest.js",
-            "import": "./components/ITabs/manifest.mjs",
-            "types": "./components/ITabs/manifest.d.ts"
-        },
-        "./components/ITabs/mixin": {
-            "require": "./components/ITabs/mixin.js",
-            "import": "./components/ITabs/mixin.mjs",
-            "types": "./components/ITabs/mixin.d.ts"
-        },
-        "./components/ITable": {
-            "require": "./components/ITable/index.js",
-            "import": "./components/ITable/index.mjs",
-            "types": "./components/ITable/index.d.ts"
-        },
-        "./components/ITable/manifest": {
-            "require": "./components/ITable/manifest.js",
-            "import": "./components/ITable/manifest.mjs",
-            "types": "./components/ITable/manifest.d.ts"
-        },
-        "./components/ITextarea": {
-            "require": "./components/ITextarea/index.js",
-            "import": "./components/ITextarea/index.mjs",
-            "types": "./components/ITextarea/index.d.ts"
-        },
-        "./components/ITextarea/manifest": {
-            "require": "./components/ITextarea/manifest.js",
-            "import": "./components/ITextarea/manifest.mjs",
-            "types": "./components/ITextarea/manifest.d.ts"
-        },
-        "./components/IToggle": {
-            "require": "./components/IToggle/index.js",
-            "import": "./components/IToggle/index.mjs",
-            "types": "./components/IToggle/index.d.ts"
-        },
-        "./components/IToggle/manifest": {
-            "require": "./components/IToggle/manifest.js",
-            "import": "./components/IToggle/manifest.mjs",
-            "types": "./components/IToggle/manifest.d.ts"
-        },
-        "./components/ITooltip": {
-            "require": "./components/ITooltip/index.js",
-            "import": "./components/ITooltip/index.mjs",
-            "types": "./components/ITooltip/index.d.ts"
-        },
-        "./components/ITooltip/manifest": {
-            "require": "./components/ITooltip/manifest.js",
-            "import": "./components/ITooltip/manifest.mjs",
-            "types": "./components/ITooltip/manifest.d.ts"
-        },
-        "./i18n/messages/en": {
-            "require": "./i18n/messages/en.js",
-            "import": "./i18n/messages/en.mjs",
-            "types": "./i18n/messages/en.d.ts"
-        },
-        "./i18n/messages": {
-            "require": "./i18n/messages/index.js",
-            "import": "./i18n/messages/index.mjs",
-            "types": "./i18n/messages/index.d.ts"
-        },
-        "./validation/validators/alpha": {
-            "require": "./validation/validators/alpha.js",
-            "import": "./validation/validators/alpha.mjs",
-            "types": "./validation/validators/alpha.d.ts"
-        },
-        "./validation/validators/alphanumeric": {
-            "require": "./validation/validators/alphanumeric.js",
-            "import": "./validation/validators/alphanumeric.mjs",
-            "types": "./validation/validators/alphanumeric.d.ts"
-        },
-        "./validation/validators/constants": {
-            "require": "./validation/validators/constants.js",
-            "import": "./validation/validators/constants.mjs",
-            "types": "./validation/validators/constants.d.ts"
-        },
-        "./validation/validators/custom": {
-            "require": "./validation/validators/custom.js",
-            "import": "./validation/validators/custom.mjs",
-            "types": "./validation/validators/custom.d.ts"
-        },
-        "./validation/validators/email": {
-            "require": "./validation/validators/email.js",
-            "import": "./validation/validators/email.mjs",
-            "types": "./validation/validators/email.d.ts"
-        },
-        "./validation/validators": {
-            "require": "./validation/validators/index.js",
-            "import": "./validation/validators/index.mjs",
-            "types": "./validation/validators/index.d.ts"
-        },
-        "./validation/validators/max": {
-            "require": "./validation/validators/max.js",
-            "import": "./validation/validators/max.mjs",
-            "types": "./validation/validators/max.d.ts"
-        },
-        "./validation/validators/maxLength": {
-            "require": "./validation/validators/maxLength.js",
-            "import": "./validation/validators/maxLength.mjs",
-            "types": "./validation/validators/maxLength.d.ts"
-        },
-        "./validation/validators/min": {
-            "require": "./validation/validators/min.js",
-            "import": "./validation/validators/min.mjs",
-            "types": "./validation/validators/min.d.ts"
-        },
-        "./validation/validators/minLength": {
-            "require": "./validation/validators/minLength.js",
-            "import": "./validation/validators/minLength.mjs",
-            "types": "./validation/validators/minLength.d.ts"
-        },
-        "./validation/validators/number": {
-            "require": "./validation/validators/number.js",
-            "import": "./validation/validators/number.mjs",
-            "types": "./validation/validators/number.d.ts"
-        },
-        "./validation/validators/required": {
-            "require": "./validation/validators/required.js",
-            "import": "./validation/validators/required.mjs",
-            "types": "./validation/validators/required.d.ts"
-        },
-        "./validation/validators/sameAs": {
-            "require": "./validation/validators/sameAs.js",
-            "import": "./validation/validators/sameAs.mjs",
-            "types": "./validation/validators/sameAs.d.ts"
-        },
-        "./components/IBreadcrumb/examples": {
-            "require": "./components/IBreadcrumb/examples/index.js",
-            "import": "./components/IBreadcrumb/examples/index.mjs",
-            "types": "./components/IBreadcrumb/examples/index.d.ts"
-        },
-        "./components/IBadge/examples": {
-            "require": "./components/IBadge/examples/index.js",
-            "import": "./components/IBadge/examples/index.mjs",
-            "types": "./components/IBadge/examples/index.d.ts"
-        },
-        "./components/IAlert/examples": {
-            "require": "./components/IAlert/examples/index.js",
-            "import": "./components/IAlert/examples/index.mjs",
-            "types": "./components/IAlert/examples/index.d.ts"
-        },
-        "./components/IButtonGroup/examples": {
-            "require": "./components/IButtonGroup/examples/index.js",
-            "import": "./components/IButtonGroup/examples/index.mjs",
-            "types": "./components/IButtonGroup/examples/index.d.ts"
-        },
-        "./components/ICard/examples": {
-            "require": "./components/ICard/examples/index.js",
-            "import": "./components/ICard/examples/index.mjs",
-            "types": "./components/ICard/examples/index.d.ts"
-        },
-        "./components/IButton/examples": {
-            "require": "./components/IButton/examples/index.js",
-            "import": "./components/IButton/examples/index.mjs",
-            "types": "./components/IButton/examples/index.d.ts"
-        },
-        "./components/ICheckbox/examples": {
-            "require": "./components/ICheckbox/examples/index.js",
-            "import": "./components/ICheckbox/examples/index.mjs",
-            "types": "./components/ICheckbox/examples/index.d.ts"
-        },
-        "./components/ICollapsible/examples": {
-            "require": "./components/ICollapsible/examples/index.js",
-            "import": "./components/ICollapsible/examples/index.mjs",
-            "types": "./components/ICollapsible/examples/index.d.ts"
-        },
-        "./components/IColumn/examples": {
-            "require": "./components/IColumn/examples/index.js",
-            "import": "./components/IColumn/examples/index.mjs",
-            "types": "./components/IColumn/examples/index.d.ts"
-        },
-        "./components/IContainer/examples": {
-            "require": "./components/IContainer/examples/index.js",
-            "import": "./components/IContainer/examples/index.mjs",
-            "types": "./components/IContainer/examples/index.d.ts"
-        },
-        "./components/IDropdown/examples": {
-            "require": "./components/IDropdown/examples/index.js",
-            "import": "./components/IDropdown/examples/index.mjs",
-            "types": "./components/IDropdown/examples/index.d.ts"
-        },
-        "./components/IForm/examples": {
-            "require": "./components/IForm/examples/index.js",
-            "import": "./components/IForm/examples/index.mjs",
-            "types": "./components/IForm/examples/index.d.ts"
-        },
-        "./components/IHamburgerMenu/examples": {
-            "require": "./components/IHamburgerMenu/examples/index.js",
-            "import": "./components/IHamburgerMenu/examples/index.mjs",
-            "types": "./components/IHamburgerMenu/examples/index.d.ts"
-        },
-        "./components/IFormGroup/examples": {
-            "require": "./components/IFormGroup/examples/index.js",
-            "import": "./components/IFormGroup/examples/index.mjs",
-            "types": "./components/IFormGroup/examples/index.d.ts"
-        },
-        "./components/IIcon/examples": {
-            "require": "./components/IIcon/examples/index.js",
-            "import": "./components/IIcon/examples/index.mjs",
-            "types": "./components/IIcon/examples/index.d.ts"
-        },
-        "./components/IHeader/examples": {
-            "require": "./components/IHeader/examples/index.js",
-            "import": "./components/IHeader/examples/index.mjs",
-            "types": "./components/IHeader/examples/index.d.ts"
-        },
-        "./components/IFormLabel/examples": {
-            "require": "./components/IFormLabel/examples/index.js",
-            "import": "./components/IFormLabel/examples/index.mjs",
-            "types": "./components/IFormLabel/examples/index.d.ts"
-        },
-        "./components/IInput/examples": {
-            "require": "./components/IInput/examples/index.js",
-            "import": "./components/IInput/examples/index.mjs",
-            "types": "./components/IInput/examples/index.d.ts"
-        },
-        "./components/ILayout/examples": {
-            "require": "./components/ILayout/examples/index.js",
-            "import": "./components/ILayout/examples/index.mjs",
-            "types": "./components/ILayout/examples/index.d.ts"
-        },
-        "./components/ILoader/examples": {
-            "require": "./components/ILoader/examples/index.js",
-            "import": "./components/ILoader/examples/index.mjs",
-            "types": "./components/ILoader/examples/index.d.ts"
-        },
-        "./components/IListGroup/examples": {
-            "require": "./components/IListGroup/examples/index.js",
-            "import": "./components/IListGroup/examples/index.mjs",
-            "types": "./components/IListGroup/examples/index.d.ts"
-        },
-        "./components/IMedia/examples": {
-            "require": "./components/IMedia/examples/index.js",
-            "import": "./components/IMedia/examples/index.mjs",
-            "types": "./components/IMedia/examples/index.d.ts"
-        },
-        "./components/IModal/examples": {
-            "require": "./components/IModal/examples/index.js",
-            "import": "./components/IModal/examples/index.mjs",
-            "types": "./components/IModal/examples/index.d.ts"
-        },
-        "./components/INav/examples": {
-            "require": "./components/INav/examples/index.js",
-            "import": "./components/INav/examples/index.mjs",
-            "types": "./components/INav/examples/index.d.ts"
-        },
-        "./components/INavbar/examples": {
-            "require": "./components/INavbar/examples/index.js",
-            "import": "./components/INavbar/examples/index.mjs",
-            "types": "./components/INavbar/examples/index.d.ts"
-        },
-        "./components/INumberInput/examples": {
-            "require": "./components/INumberInput/examples/index.js",
-            "import": "./components/INumberInput/examples/index.mjs",
-            "types": "./components/INumberInput/examples/index.d.ts"
-        },
-        "./components/IPagination/examples": {
-            "require": "./components/IPagination/examples/index.js",
-            "import": "./components/IPagination/examples/index.mjs",
-            "types": "./components/IPagination/examples/index.d.ts"
-        },
-        "./components/IPopover/examples": {
-            "require": "./components/IPopover/examples/index.js",
-            "import": "./components/IPopover/examples/index.mjs",
-            "types": "./components/IPopover/examples/index.d.ts"
-        },
-        "./components/IProgress/examples": {
-            "require": "./components/IProgress/examples/index.js",
-            "import": "./components/IProgress/examples/index.mjs",
-            "types": "./components/IProgress/examples/index.d.ts"
-        },
-        "./components/IRadio/examples": {
-            "require": "./components/IRadio/examples/index.js",
-            "import": "./components/IRadio/examples/index.mjs",
-            "types": "./components/IRadio/examples/index.d.ts"
-        },
-        "./components/IRow/examples": {
-            "require": "./components/IRow/examples/index.js",
-            "import": "./components/IRow/examples/index.mjs",
-            "types": "./components/IRow/examples/index.d.ts"
-        },
-        "./components/ISelect/examples": {
-            "require": "./components/ISelect/examples/index.js",
-            "import": "./components/ISelect/examples/index.mjs",
-            "types": "./components/ISelect/examples/index.d.ts"
-        },
-        "./components/ISidebar/examples": {
-            "require": "./components/ISidebar/examples/index.js",
-            "import": "./components/ISidebar/examples/index.mjs",
-            "types": "./components/ISidebar/examples/index.d.ts"
-        },
-        "./components/ITabs/examples": {
-            "require": "./components/ITabs/examples/index.js",
-            "import": "./components/ITabs/examples/index.mjs",
-            "types": "./components/ITabs/examples/index.d.ts"
-        },
-        "./components/ITable/examples": {
-            "require": "./components/ITable/examples/index.js",
-            "import": "./components/ITable/examples/index.mjs",
-            "types": "./components/ITable/examples/index.d.ts"
-        },
-        "./components/ITextarea/examples": {
-            "require": "./components/ITextarea/examples/index.js",
-            "import": "./components/ITextarea/examples/index.mjs",
-            "types": "./components/ITextarea/examples/index.d.ts"
-        },
-        "./components/ITooltip/examples": {
-            "require": "./components/ITooltip/examples/index.js",
-            "import": "./components/ITooltip/examples/index.mjs",
-            "types": "./components/ITooltip/examples/index.d.ts"
-        },
-        "./components/IToggle/examples": {
-            "require": "./components/IToggle/examples/index.js",
-            "import": "./components/IToggle/examples/index.mjs",
-            "types": "./components/IToggle/examples/index.d.ts"
-        }
+    "./inkline": {
+      "require": "./inkline.js",
+      "import": "./inkline.mjs",
+      "types": "./inkline.d.ts"
     },
-    "funding": {
-        "type": "github",
-        "url": "https://github.com/sponsors/alexgrozav"
+    "./plugin": {
+      "require": "./plugin.js",
+      "import": "./plugin.mjs",
+      "types": "./plugin.d.ts"
     },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not ie <= 8"
-    ],
-    "bugs": {
-        "url": "https://github.com/inkline/inkline/issues"
+    "./components": {
+      "require": "./components/index.js",
+      "import": "./components/index.mjs",
+      "types": "./components/index.d.ts"
     },
-    "homepage": "https://inkline.io",
-    "keywords": [
-        "inkline",
-        "vue",
-        "vuejs",
-        "ui",
-        "ux",
-        "dx",
-        "components",
-        "library",
-        "framework",
-        "typescript",
-        "javascript",
-        "scss",
-        "responsive",
-        "front end",
-        "validation"
-    ],
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/inkline/inkline.git"
+    "./constants/breakpoints": {
+      "require": "./constants/breakpoints.js",
+      "import": "./constants/breakpoints.mjs",
+      "types": "./constants/breakpoints.d.ts"
+    },
+    "./constants/eventValueMap": {
+      "require": "./constants/eventValueMap.js",
+      "import": "./constants/eventValueMap.mjs",
+      "types": "./constants/eventValueMap.d.ts"
+    },
+    "./constants": {
+      "require": "./constants/index.js",
+      "import": "./constants/index.mjs",
+      "types": "./constants/index.d.ts"
+    },
+    "./constants/keymap": {
+      "require": "./constants/keymap.js",
+      "import": "./constants/keymap.mjs",
+      "types": "./constants/keymap.d.ts"
+    },
+    "./constants/validation": {
+      "require": "./constants/validation.js",
+      "import": "./constants/validation.mjs",
+      "types": "./constants/validation.d.ts"
+    },
+    "./controllers/OverlayController": {
+      "require": "./controllers/OverlayController.js",
+      "import": "./controllers/OverlayController.mjs",
+      "types": "./controllers/OverlayController.d.ts"
+    },
+    "./controllers": {
+      "require": "./controllers/index.js",
+      "import": "./controllers/index.mjs",
+      "types": "./controllers/index.d.ts"
+    },
+    "./i18n": {
+      "require": "./i18n/index.js",
+      "import": "./i18n/index.mjs",
+      "types": "./i18n/index.d.ts"
+    },
+    "./i18n/translate": {
+      "require": "./i18n/translate.js",
+      "import": "./i18n/translate.mjs",
+      "types": "./i18n/translate.d.ts"
+    },
+    "./composables/click-outside": {
+      "require": "./composables/click-outside.js",
+      "import": "./composables/click-outside.mjs",
+      "types": "./composables/click-outside.d.ts"
+    },
+    "./composables/collapsible": {
+      "require": "./composables/collapsible.js",
+      "import": "./composables/collapsible.mjs",
+      "types": "./composables/collapsible.d.ts"
+    },
+    "./composables/componentColor": {
+      "require": "./composables/componentColor.js",
+      "import": "./composables/componentColor.mjs",
+      "types": "./composables/componentColor.d.ts"
+    },
+    "./composables/componentSize": {
+      "require": "./composables/componentSize.js",
+      "import": "./composables/componentSize.mjs",
+      "types": "./composables/componentSize.d.ts"
+    },
+    "./composables/form": {
+      "require": "./composables/form.js",
+      "import": "./composables/form.mjs",
+      "types": "./composables/form.d.ts"
+    },
+    "./composables": {
+      "require": "./composables/index.js",
+      "import": "./composables/index.mjs",
+      "types": "./composables/index.d.ts"
+    },
+    "./composables/inkline": {
+      "require": "./composables/inkline.js",
+      "import": "./composables/inkline.mjs",
+      "types": "./composables/inkline.d.ts"
+    },
+    "./composables/isServer": {
+      "require": "./composables/isServer.js",
+      "import": "./composables/isServer.mjs",
+      "types": "./composables/isServer.d.ts"
+    },
+    "./composables/linkable": {
+      "require": "./composables/linkable.js",
+      "import": "./composables/linkable.mjs",
+      "types": "./composables/linkable.d.ts"
+    },
+    "./composables/popup": {
+      "require": "./composables/popup.js",
+      "import": "./composables/popup.mjs",
+      "types": "./composables/popup.d.ts"
+    },
+    "./composables/validation": {
+      "require": "./composables/validation.js",
+      "import": "./composables/validation.mjs",
+      "types": "./composables/validation.d.ts"
+    },
+    "./utils/breakpointClassName": {
+      "require": "./utils/breakpointClassName.js",
+      "import": "./utils/breakpointClassName.mjs",
+      "types": "./utils/breakpointClassName.d.ts"
+    },
+    "./utils/extractRefHTMLElement": {
+      "require": "./utils/extractRefHTMLElement.js",
+      "import": "./utils/extractRefHTMLElement.mjs",
+      "types": "./utils/extractRefHTMLElement.d.ts"
+    },
+    "./utils": {
+      "require": "./utils/index.js",
+      "import": "./utils/index.mjs",
+      "types": "./utils/index.d.ts"
+    },
+    "./utils/renderSvg": {
+      "require": "./utils/renderSvg.js",
+      "import": "./utils/renderSvg.mjs",
+      "types": "./utils/renderSvg.d.ts"
+    },
+    "./validation": {
+      "require": "./validation/index.js",
+      "import": "./validation/index.mjs",
+      "types": "./validation/index.d.ts"
+    },
+    "./validation/initialize": {
+      "require": "./validation/initialize.js",
+      "import": "./validation/initialize.mjs",
+      "types": "./validation/initialize.d.ts"
+    },
+    "./validation/validate": {
+      "require": "./validation/validate.js",
+      "import": "./validation/validate.mjs",
+      "types": "./validation/validate.d.ts"
+    },
+    "./components/IBreadcrumb": {
+      "require": "./components/IBreadcrumb/index.js",
+      "import": "./components/IBreadcrumb/index.mjs",
+      "types": "./components/IBreadcrumb/index.d.ts"
+    },
+    "./components/IBreadcrumb/manifest": {
+      "require": "./components/IBreadcrumb/manifest.js",
+      "import": "./components/IBreadcrumb/manifest.mjs",
+      "types": "./components/IBreadcrumb/manifest.d.ts"
+    },
+    "./components/IBadge": {
+      "require": "./components/IBadge/index.js",
+      "import": "./components/IBadge/index.mjs",
+      "types": "./components/IBadge/index.d.ts"
+    },
+    "./components/IBadge/manifest": {
+      "require": "./components/IBadge/manifest.js",
+      "import": "./components/IBadge/manifest.mjs",
+      "types": "./components/IBadge/manifest.d.ts"
+    },
+    "./components/IAlert": {
+      "require": "./components/IAlert/index.js",
+      "import": "./components/IAlert/index.mjs",
+      "types": "./components/IAlert/index.d.ts"
+    },
+    "./components/IAlert/manifest": {
+      "require": "./components/IAlert/manifest.js",
+      "import": "./components/IAlert/manifest.mjs",
+      "types": "./components/IAlert/manifest.d.ts"
+    },
+    "./components/IButtonGroup": {
+      "require": "./components/IButtonGroup/index.js",
+      "import": "./components/IButtonGroup/index.mjs",
+      "types": "./components/IButtonGroup/index.d.ts"
+    },
+    "./components/IButtonGroup/manifest": {
+      "require": "./components/IButtonGroup/manifest.js",
+      "import": "./components/IButtonGroup/manifest.mjs",
+      "types": "./components/IButtonGroup/manifest.d.ts"
+    },
+    "./components/IButtonGroup/mixin": {
+      "require": "./components/IButtonGroup/mixin.js",
+      "import": "./components/IButtonGroup/mixin.mjs",
+      "types": "./components/IButtonGroup/mixin.d.ts"
+    },
+    "./components/ICard": {
+      "require": "./components/ICard/index.js",
+      "import": "./components/ICard/index.mjs",
+      "types": "./components/ICard/index.d.ts"
+    },
+    "./components/ICard/manifest": {
+      "require": "./components/ICard/manifest.js",
+      "import": "./components/ICard/manifest.mjs",
+      "types": "./components/ICard/manifest.d.ts"
+    },
+    "./components/IBreadcrumbItem": {
+      "require": "./components/IBreadcrumbItem/index.js",
+      "import": "./components/IBreadcrumbItem/index.mjs",
+      "types": "./components/IBreadcrumbItem/index.d.ts"
+    },
+    "./components/IBreadcrumbItem/manifest": {
+      "require": "./components/IBreadcrumbItem/manifest.js",
+      "import": "./components/IBreadcrumbItem/manifest.mjs",
+      "types": "./components/IBreadcrumbItem/manifest.d.ts"
+    },
+    "./components/IButton": {
+      "require": "./components/IButton/index.js",
+      "import": "./components/IButton/index.mjs",
+      "types": "./components/IButton/index.d.ts"
+    },
+    "./components/IButton/manifest": {
+      "require": "./components/IButton/manifest.js",
+      "import": "./components/IButton/manifest.mjs",
+      "types": "./components/IButton/manifest.d.ts"
+    },
+    "./components/ICheckbox": {
+      "require": "./components/ICheckbox/index.js",
+      "import": "./components/ICheckbox/index.mjs",
+      "types": "./components/ICheckbox/index.d.ts"
+    },
+    "./components/ICheckbox/manifest": {
+      "require": "./components/ICheckbox/manifest.js",
+      "import": "./components/ICheckbox/manifest.mjs",
+      "types": "./components/ICheckbox/manifest.d.ts"
+    },
+    "./components/ICollapsible": {
+      "require": "./components/ICollapsible/index.js",
+      "import": "./components/ICollapsible/index.mjs",
+      "types": "./components/ICollapsible/index.d.ts"
+    },
+    "./components/ICollapsible/manifest": {
+      "require": "./components/ICollapsible/manifest.js",
+      "import": "./components/ICollapsible/manifest.mjs",
+      "types": "./components/ICollapsible/manifest.d.ts"
+    },
+    "./components/ICollapsible/mixin": {
+      "require": "./components/ICollapsible/mixin.js",
+      "import": "./components/ICollapsible/mixin.mjs",
+      "types": "./components/ICollapsible/mixin.d.ts"
+    },
+    "./components/ICheckboxGroup": {
+      "require": "./components/ICheckboxGroup/index.js",
+      "import": "./components/ICheckboxGroup/index.mjs",
+      "types": "./components/ICheckboxGroup/index.d.ts"
+    },
+    "./components/ICheckboxGroup/manifest": {
+      "require": "./components/ICheckboxGroup/manifest.js",
+      "import": "./components/ICheckboxGroup/manifest.mjs",
+      "types": "./components/ICheckboxGroup/manifest.d.ts"
+    },
+    "./components/ICheckboxGroup/mixin": {
+      "require": "./components/ICheckboxGroup/mixin.js",
+      "import": "./components/ICheckboxGroup/mixin.mjs",
+      "types": "./components/ICheckboxGroup/mixin.d.ts"
+    },
+    "./components/IColumn": {
+      "require": "./components/IColumn/index.js",
+      "import": "./components/IColumn/index.mjs",
+      "types": "./components/IColumn/index.d.ts"
+    },
+    "./components/IColumn/manifest": {
+      "require": "./components/IColumn/manifest.js",
+      "import": "./components/IColumn/manifest.mjs",
+      "types": "./components/IColumn/manifest.d.ts"
+    },
+    "./components/IContainer": {
+      "require": "./components/IContainer/index.js",
+      "import": "./components/IContainer/index.mjs",
+      "types": "./components/IContainer/index.d.ts"
+    },
+    "./components/IContainer/manifest": {
+      "require": "./components/IContainer/manifest.js",
+      "import": "./components/IContainer/manifest.mjs",
+      "types": "./components/IContainer/manifest.d.ts"
+    },
+    "./components/IDropdown": {
+      "require": "./components/IDropdown/index.js",
+      "import": "./components/IDropdown/index.mjs",
+      "types": "./components/IDropdown/index.d.ts"
+    },
+    "./components/IDropdown/manifest": {
+      "require": "./components/IDropdown/manifest.js",
+      "import": "./components/IDropdown/manifest.mjs",
+      "types": "./components/IDropdown/manifest.d.ts"
+    },
+    "./components/IDropdown/mixin": {
+      "require": "./components/IDropdown/mixin.js",
+      "import": "./components/IDropdown/mixin.mjs",
+      "types": "./components/IDropdown/mixin.d.ts"
+    },
+    "./components/ICollapsibleItem": {
+      "require": "./components/ICollapsibleItem/index.js",
+      "import": "./components/ICollapsibleItem/index.mjs",
+      "types": "./components/ICollapsibleItem/index.d.ts"
+    },
+    "./components/ICollapsibleItem/manifest": {
+      "require": "./components/ICollapsibleItem/manifest.js",
+      "import": "./components/ICollapsibleItem/manifest.mjs",
+      "types": "./components/ICollapsibleItem/manifest.d.ts"
+    },
+    "./components/IExpandTransition": {
+      "require": "./components/IExpandTransition/index.js",
+      "import": "./components/IExpandTransition/index.mjs",
+      "types": "./components/IExpandTransition/index.d.ts"
+    },
+    "./components/IDropdownDivider": {
+      "require": "./components/IDropdownDivider/index.js",
+      "import": "./components/IDropdownDivider/index.mjs",
+      "types": "./components/IDropdownDivider/index.d.ts"
+    },
+    "./components/IDropdownDivider/manifest": {
+      "require": "./components/IDropdownDivider/manifest.js",
+      "import": "./components/IDropdownDivider/manifest.mjs",
+      "types": "./components/IDropdownDivider/manifest.d.ts"
+    },
+    "./components/IDropdownItem": {
+      "require": "./components/IDropdownItem/index.js",
+      "import": "./components/IDropdownItem/index.mjs",
+      "types": "./components/IDropdownItem/index.d.ts"
+    },
+    "./components/IDropdownItem/manifest": {
+      "require": "./components/IDropdownItem/manifest.js",
+      "import": "./components/IDropdownItem/manifest.mjs",
+      "types": "./components/IDropdownItem/manifest.d.ts"
+    },
+    "./components/IForm": {
+      "require": "./components/IForm/index.js",
+      "import": "./components/IForm/index.mjs",
+      "types": "./components/IForm/index.d.ts"
+    },
+    "./components/IForm/manifest": {
+      "require": "./components/IForm/manifest.js",
+      "import": "./components/IForm/manifest.mjs",
+      "types": "./components/IForm/manifest.d.ts"
+    },
+    "./components/IForm/mixin": {
+      "require": "./components/IForm/mixin.js",
+      "import": "./components/IForm/mixin.mjs",
+      "types": "./components/IForm/mixin.d.ts"
+    },
+    "./components/IHamburgerMenu": {
+      "require": "./components/IHamburgerMenu/index.js",
+      "import": "./components/IHamburgerMenu/index.mjs",
+      "types": "./components/IHamburgerMenu/index.d.ts"
+    },
+    "./components/IHamburgerMenu/manifest": {
+      "require": "./components/IHamburgerMenu/manifest.js",
+      "import": "./components/IHamburgerMenu/manifest.mjs",
+      "types": "./components/IHamburgerMenu/manifest.d.ts"
+    },
+    "./components/IFormGroup": {
+      "require": "./components/IFormGroup/index.js",
+      "import": "./components/IFormGroup/index.mjs",
+      "types": "./components/IFormGroup/index.d.ts"
+    },
+    "./components/IFormGroup/manifest": {
+      "require": "./components/IFormGroup/manifest.js",
+      "import": "./components/IFormGroup/manifest.mjs",
+      "types": "./components/IFormGroup/manifest.d.ts"
+    },
+    "./components/IFormGroup/mixin": {
+      "require": "./components/IFormGroup/mixin.js",
+      "import": "./components/IFormGroup/mixin.mjs",
+      "types": "./components/IFormGroup/mixin.d.ts"
+    },
+    "./components/IFormError": {
+      "require": "./components/IFormError/index.js",
+      "import": "./components/IFormError/index.mjs",
+      "types": "./components/IFormError/index.d.ts"
+    },
+    "./components/IFormError/manifest": {
+      "require": "./components/IFormError/manifest.js",
+      "import": "./components/IFormError/manifest.mjs",
+      "types": "./components/IFormError/manifest.d.ts"
+    },
+    "./components/IIcon": {
+      "require": "./components/IIcon/index.js",
+      "import": "./components/IIcon/index.mjs",
+      "types": "./components/IIcon/index.d.ts"
+    },
+    "./components/IIcon/manifest": {
+      "require": "./components/IIcon/manifest.js",
+      "import": "./components/IIcon/manifest.mjs",
+      "types": "./components/IIcon/manifest.d.ts"
+    },
+    "./components/IHeader": {
+      "require": "./components/IHeader/index.js",
+      "import": "./components/IHeader/index.mjs",
+      "types": "./components/IHeader/index.d.ts"
+    },
+    "./components/IHeader/manifest": {
+      "require": "./components/IHeader/manifest.js",
+      "import": "./components/IHeader/manifest.mjs",
+      "types": "./components/IHeader/manifest.d.ts"
+    },
+    "./components/IFormLabel": {
+      "require": "./components/IFormLabel/index.js",
+      "import": "./components/IFormLabel/index.mjs",
+      "types": "./components/IFormLabel/index.d.ts"
+    },
+    "./components/IFormLabel/manifest": {
+      "require": "./components/IFormLabel/manifest.js",
+      "import": "./components/IFormLabel/manifest.mjs",
+      "types": "./components/IFormLabel/manifest.d.ts"
+    },
+    "./components/IInput": {
+      "require": "./components/IInput/index.js",
+      "import": "./components/IInput/index.mjs",
+      "types": "./components/IInput/index.d.ts"
+    },
+    "./components/IInput/manifest": {
+      "require": "./components/IInput/manifest.js",
+      "import": "./components/IInput/manifest.mjs",
+      "types": "./components/IInput/manifest.d.ts"
+    },
+    "./components/ILayoutContent": {
+      "require": "./components/ILayoutContent/index.js",
+      "import": "./components/ILayoutContent/index.mjs",
+      "types": "./components/ILayoutContent/index.d.ts"
+    },
+    "./components/ILayoutContent/manifest": {
+      "require": "./components/ILayoutContent/manifest.js",
+      "import": "./components/ILayoutContent/manifest.mjs",
+      "types": "./components/ILayoutContent/manifest.d.ts"
+    },
+    "./components/ILayoutFooter": {
+      "require": "./components/ILayoutFooter/index.js",
+      "import": "./components/ILayoutFooter/index.mjs",
+      "types": "./components/ILayoutFooter/index.d.ts"
+    },
+    "./components/ILayoutFooter/manifest": {
+      "require": "./components/ILayoutFooter/manifest.js",
+      "import": "./components/ILayoutFooter/manifest.mjs",
+      "types": "./components/ILayoutFooter/manifest.d.ts"
+    },
+    "./components/ILayoutAside": {
+      "require": "./components/ILayoutAside/index.js",
+      "import": "./components/ILayoutAside/index.mjs",
+      "types": "./components/ILayoutAside/index.d.ts"
+    },
+    "./components/ILayoutAside/manifest": {
+      "require": "./components/ILayoutAside/manifest.js",
+      "import": "./components/ILayoutAside/manifest.mjs",
+      "types": "./components/ILayoutAside/manifest.d.ts"
+    },
+    "./components/ILayout": {
+      "require": "./components/ILayout/index.js",
+      "import": "./components/ILayout/index.mjs",
+      "types": "./components/ILayout/index.d.ts"
+    },
+    "./components/ILayout/manifest": {
+      "require": "./components/ILayout/manifest.js",
+      "import": "./components/ILayout/manifest.mjs",
+      "types": "./components/ILayout/manifest.d.ts"
+    },
+    "./components/ILoader": {
+      "require": "./components/ILoader/index.js",
+      "import": "./components/ILoader/index.mjs",
+      "types": "./components/ILoader/index.d.ts"
+    },
+    "./components/ILoader/manifest": {
+      "require": "./components/ILoader/manifest.js",
+      "import": "./components/ILoader/manifest.mjs",
+      "types": "./components/ILoader/manifest.d.ts"
+    },
+    "./components/IListGroup": {
+      "require": "./components/IListGroup/index.js",
+      "import": "./components/IListGroup/index.mjs",
+      "types": "./components/IListGroup/index.d.ts"
+    },
+    "./components/IListGroup/manifest": {
+      "require": "./components/IListGroup/manifest.js",
+      "import": "./components/IListGroup/manifest.mjs",
+      "types": "./components/IListGroup/manifest.d.ts"
+    },
+    "./components/ILayoutHeader": {
+      "require": "./components/ILayoutHeader/index.js",
+      "import": "./components/ILayoutHeader/index.mjs",
+      "types": "./components/ILayoutHeader/index.d.ts"
+    },
+    "./components/ILayoutHeader/manifest": {
+      "require": "./components/ILayoutHeader/manifest.js",
+      "import": "./components/ILayoutHeader/manifest.mjs",
+      "types": "./components/ILayoutHeader/manifest.d.ts"
+    },
+    "./components/IMark": {
+      "require": "./components/IMark/index.js",
+      "import": "./components/IMark/index.mjs",
+      "types": "./components/IMark/index.d.ts"
+    },
+    "./components/IListGroupItem": {
+      "require": "./components/IListGroupItem/index.js",
+      "import": "./components/IListGroupItem/index.mjs",
+      "types": "./components/IListGroupItem/index.d.ts"
+    },
+    "./components/IListGroupItem/manifest": {
+      "require": "./components/IListGroupItem/manifest.js",
+      "import": "./components/IListGroupItem/manifest.mjs",
+      "types": "./components/IListGroupItem/manifest.d.ts"
+    },
+    "./components/IMedia": {
+      "require": "./components/IMedia/index.js",
+      "import": "./components/IMedia/index.mjs",
+      "types": "./components/IMedia/index.d.ts"
+    },
+    "./components/IMedia/manifest": {
+      "require": "./components/IMedia/manifest.js",
+      "import": "./components/IMedia/manifest.mjs",
+      "types": "./components/IMedia/manifest.d.ts"
+    },
+    "./components/IModal": {
+      "require": "./components/IModal/index.js",
+      "import": "./components/IModal/index.mjs",
+      "types": "./components/IModal/index.d.ts"
+    },
+    "./components/IModal/manifest": {
+      "require": "./components/IModal/manifest.js",
+      "import": "./components/IModal/manifest.mjs",
+      "types": "./components/IModal/manifest.d.ts"
+    },
+    "./components/INav": {
+      "require": "./components/INav/index.js",
+      "import": "./components/INav/index.mjs",
+      "types": "./components/INav/index.d.ts"
+    },
+    "./components/INav/manifest": {
+      "require": "./components/INav/manifest.js",
+      "import": "./components/INav/manifest.mjs",
+      "types": "./components/INav/manifest.d.ts"
+    },
+    "./components/INav/mixin": {
+      "require": "./components/INav/mixin.js",
+      "import": "./components/INav/mixin.mjs",
+      "types": "./components/INav/mixin.d.ts"
+    },
+    "./components/INavbar": {
+      "require": "./components/INavbar/index.js",
+      "import": "./components/INavbar/index.mjs",
+      "types": "./components/INavbar/index.d.ts"
+    },
+    "./components/INavbar/manifest": {
+      "require": "./components/INavbar/manifest.js",
+      "import": "./components/INavbar/manifest.mjs",
+      "types": "./components/INavbar/manifest.d.ts"
+    },
+    "./components/INavbar/mixin": {
+      "require": "./components/INavbar/mixin.js",
+      "import": "./components/INavbar/mixin.mjs",
+      "types": "./components/INavbar/mixin.d.ts"
+    },
+    "./components/INavItem": {
+      "require": "./components/INavItem/index.js",
+      "import": "./components/INavItem/index.mjs",
+      "types": "./components/INavItem/index.d.ts"
+    },
+    "./components/INavItem/manifest": {
+      "require": "./components/INavItem/manifest.js",
+      "import": "./components/INavItem/manifest.mjs",
+      "types": "./components/INavItem/manifest.d.ts"
+    },
+    "./components/INumberInput": {
+      "require": "./components/INumberInput/index.js",
+      "import": "./components/INumberInput/index.mjs",
+      "types": "./components/INumberInput/index.d.ts"
+    },
+    "./components/INumberInput/manifest": {
+      "require": "./components/INumberInput/manifest.js",
+      "import": "./components/INumberInput/manifest.mjs",
+      "types": "./components/INumberInput/manifest.d.ts"
+    },
+    "./components/INavbarBrand": {
+      "require": "./components/INavbarBrand/index.js",
+      "import": "./components/INavbarBrand/index.mjs",
+      "types": "./components/INavbarBrand/index.d.ts"
+    },
+    "./components/INavbarBrand/manifest": {
+      "require": "./components/INavbarBrand/manifest.js",
+      "import": "./components/INavbarBrand/manifest.mjs",
+      "types": "./components/INavbarBrand/manifest.d.ts"
+    },
+    "./components/INavbarCollapsible": {
+      "require": "./components/INavbarCollapsible/index.js",
+      "import": "./components/INavbarCollapsible/index.mjs",
+      "types": "./components/INavbarCollapsible/index.d.ts"
+    },
+    "./components/INavbarCollapsible/manifest": {
+      "require": "./components/INavbarCollapsible/manifest.js",
+      "import": "./components/INavbarCollapsible/manifest.mjs",
+      "types": "./components/INavbarCollapsible/manifest.d.ts"
+    },
+    "./components/IPagination": {
+      "require": "./components/IPagination/index.js",
+      "import": "./components/IPagination/index.mjs",
+      "types": "./components/IPagination/index.d.ts"
+    },
+    "./components/IPagination/manifest": {
+      "require": "./components/IPagination/manifest.js",
+      "import": "./components/IPagination/manifest.mjs",
+      "types": "./components/IPagination/manifest.d.ts"
+    },
+    "./components/IPopover": {
+      "require": "./components/IPopover/index.js",
+      "import": "./components/IPopover/index.mjs",
+      "types": "./components/IPopover/index.d.ts"
+    },
+    "./components/IPopover/manifest": {
+      "require": "./components/IPopover/manifest.js",
+      "import": "./components/IPopover/manifest.mjs",
+      "types": "./components/IPopover/manifest.d.ts"
+    },
+    "./components/IProgress": {
+      "require": "./components/IProgress/index.js",
+      "import": "./components/IProgress/index.mjs",
+      "types": "./components/IProgress/index.d.ts"
+    },
+    "./components/IProgress/manifest": {
+      "require": "./components/IProgress/manifest.js",
+      "import": "./components/IProgress/manifest.mjs",
+      "types": "./components/IProgress/manifest.d.ts"
+    },
+    "./components/IRadio": {
+      "require": "./components/IRadio/index.js",
+      "import": "./components/IRadio/index.mjs",
+      "types": "./components/IRadio/index.d.ts"
+    },
+    "./components/IRadio/manifest": {
+      "require": "./components/IRadio/manifest.js",
+      "import": "./components/IRadio/manifest.mjs",
+      "types": "./components/IRadio/manifest.d.ts"
+    },
+    "./components/IRow": {
+      "require": "./components/IRow/index.js",
+      "import": "./components/IRow/index.mjs",
+      "types": "./components/IRow/index.d.ts"
+    },
+    "./components/IRow/manifest": {
+      "require": "./components/IRow/manifest.js",
+      "import": "./components/IRow/manifest.mjs",
+      "types": "./components/IRow/manifest.d.ts"
+    },
+    "./components/IProgressBar": {
+      "require": "./components/IProgressBar/index.js",
+      "import": "./components/IProgressBar/index.mjs",
+      "types": "./components/IProgressBar/index.d.ts"
+    },
+    "./components/IProgressBar/manifest": {
+      "require": "./components/IProgressBar/manifest.js",
+      "import": "./components/IProgressBar/manifest.mjs",
+      "types": "./components/IProgressBar/manifest.d.ts"
+    },
+    "./components/IProgressBar/mixin": {
+      "require": "./components/IProgressBar/mixin.js",
+      "import": "./components/IProgressBar/mixin.mjs",
+      "types": "./components/IProgressBar/mixin.d.ts"
+    },
+    "./components/IRadioGroup": {
+      "require": "./components/IRadioGroup/index.js",
+      "import": "./components/IRadioGroup/index.mjs",
+      "types": "./components/IRadioGroup/index.d.ts"
+    },
+    "./components/IRadioGroup/manifest": {
+      "require": "./components/IRadioGroup/manifest.js",
+      "import": "./components/IRadioGroup/manifest.mjs",
+      "types": "./components/IRadioGroup/manifest.d.ts"
+    },
+    "./components/IRadioGroup/mixin": {
+      "require": "./components/IRadioGroup/mixin.js",
+      "import": "./components/IRadioGroup/mixin.mjs",
+      "types": "./components/IRadioGroup/mixin.d.ts"
+    },
+    "./components/ISelect": {
+      "require": "./components/ISelect/index.js",
+      "import": "./components/ISelect/index.mjs",
+      "types": "./components/ISelect/index.d.ts"
+    },
+    "./components/ISelect/manifest": {
+      "require": "./components/ISelect/manifest.js",
+      "import": "./components/ISelect/manifest.mjs",
+      "types": "./components/ISelect/manifest.d.ts"
+    },
+    "./components/ISelect/mixin": {
+      "require": "./components/ISelect/mixin.js",
+      "import": "./components/ISelect/mixin.mjs",
+      "types": "./components/ISelect/mixin.d.ts"
+    },
+    "./components/ITabTitle": {
+      "require": "./components/ITabTitle/index.js",
+      "import": "./components/ITabTitle/index.mjs",
+      "types": "./components/ITabTitle/index.d.ts"
+    },
+    "./components/ITabTitle/manifest": {
+      "require": "./components/ITabTitle/manifest.js",
+      "import": "./components/ITabTitle/manifest.mjs",
+      "types": "./components/ITabTitle/manifest.d.ts"
+    },
+    "./components/ISidebar": {
+      "require": "./components/ISidebar/index.js",
+      "import": "./components/ISidebar/index.mjs",
+      "types": "./components/ISidebar/index.d.ts"
+    },
+    "./components/ISidebar/manifest": {
+      "require": "./components/ISidebar/manifest.js",
+      "import": "./components/ISidebar/manifest.mjs",
+      "types": "./components/ISidebar/manifest.d.ts"
+    },
+    "./components/ISidebar/mixin": {
+      "require": "./components/ISidebar/mixin.js",
+      "import": "./components/ISidebar/mixin.mjs",
+      "types": "./components/ISidebar/mixin.d.ts"
+    },
+    "./components/ITab": {
+      "require": "./components/ITab/index.js",
+      "import": "./components/ITab/index.mjs",
+      "types": "./components/ITab/index.d.ts"
+    },
+    "./components/ITab/manifest": {
+      "require": "./components/ITab/manifest.js",
+      "import": "./components/ITab/manifest.mjs",
+      "types": "./components/ITab/manifest.d.ts"
+    },
+    "./components/ISelectOption": {
+      "require": "./components/ISelectOption/index.js",
+      "import": "./components/ISelectOption/index.mjs",
+      "types": "./components/ISelectOption/index.d.ts"
+    },
+    "./components/ISelectOption/manifest": {
+      "require": "./components/ISelectOption/manifest.js",
+      "import": "./components/ISelectOption/manifest.mjs",
+      "types": "./components/ISelectOption/manifest.d.ts"
+    },
+    "./components/ITabs": {
+      "require": "./components/ITabs/index.js",
+      "import": "./components/ITabs/index.mjs",
+      "types": "./components/ITabs/index.d.ts"
+    },
+    "./components/ITabs/manifest": {
+      "require": "./components/ITabs/manifest.js",
+      "import": "./components/ITabs/manifest.mjs",
+      "types": "./components/ITabs/manifest.d.ts"
+    },
+    "./components/ITabs/mixin": {
+      "require": "./components/ITabs/mixin.js",
+      "import": "./components/ITabs/mixin.mjs",
+      "types": "./components/ITabs/mixin.d.ts"
+    },
+    "./components/ITable": {
+      "require": "./components/ITable/index.js",
+      "import": "./components/ITable/index.mjs",
+      "types": "./components/ITable/index.d.ts"
+    },
+    "./components/ITable/manifest": {
+      "require": "./components/ITable/manifest.js",
+      "import": "./components/ITable/manifest.mjs",
+      "types": "./components/ITable/manifest.d.ts"
+    },
+    "./components/ITextarea": {
+      "require": "./components/ITextarea/index.js",
+      "import": "./components/ITextarea/index.mjs",
+      "types": "./components/ITextarea/index.d.ts"
+    },
+    "./components/ITextarea/manifest": {
+      "require": "./components/ITextarea/manifest.js",
+      "import": "./components/ITextarea/manifest.mjs",
+      "types": "./components/ITextarea/manifest.d.ts"
+    },
+    "./components/IToggle": {
+      "require": "./components/IToggle/index.js",
+      "import": "./components/IToggle/index.mjs",
+      "types": "./components/IToggle/index.d.ts"
+    },
+    "./components/IToggle/manifest": {
+      "require": "./components/IToggle/manifest.js",
+      "import": "./components/IToggle/manifest.mjs",
+      "types": "./components/IToggle/manifest.d.ts"
+    },
+    "./components/ITooltip": {
+      "require": "./components/ITooltip/index.js",
+      "import": "./components/ITooltip/index.mjs",
+      "types": "./components/ITooltip/index.d.ts"
+    },
+    "./components/ITooltip/manifest": {
+      "require": "./components/ITooltip/manifest.js",
+      "import": "./components/ITooltip/manifest.mjs",
+      "types": "./components/ITooltip/manifest.d.ts"
+    },
+    "./i18n/messages/en": {
+      "require": "./i18n/messages/en.js",
+      "import": "./i18n/messages/en.mjs",
+      "types": "./i18n/messages/en.d.ts"
+    },
+    "./i18n/messages": {
+      "require": "./i18n/messages/index.js",
+      "import": "./i18n/messages/index.mjs",
+      "types": "./i18n/messages/index.d.ts"
+    },
+    "./validation/validators/alpha": {
+      "require": "./validation/validators/alpha.js",
+      "import": "./validation/validators/alpha.mjs",
+      "types": "./validation/validators/alpha.d.ts"
+    },
+    "./validation/validators/alphanumeric": {
+      "require": "./validation/validators/alphanumeric.js",
+      "import": "./validation/validators/alphanumeric.mjs",
+      "types": "./validation/validators/alphanumeric.d.ts"
+    },
+    "./validation/validators/constants": {
+      "require": "./validation/validators/constants.js",
+      "import": "./validation/validators/constants.mjs",
+      "types": "./validation/validators/constants.d.ts"
+    },
+    "./validation/validators/custom": {
+      "require": "./validation/validators/custom.js",
+      "import": "./validation/validators/custom.mjs",
+      "types": "./validation/validators/custom.d.ts"
+    },
+    "./validation/validators/email": {
+      "require": "./validation/validators/email.js",
+      "import": "./validation/validators/email.mjs",
+      "types": "./validation/validators/email.d.ts"
+    },
+    "./validation/validators": {
+      "require": "./validation/validators/index.js",
+      "import": "./validation/validators/index.mjs",
+      "types": "./validation/validators/index.d.ts"
+    },
+    "./validation/validators/max": {
+      "require": "./validation/validators/max.js",
+      "import": "./validation/validators/max.mjs",
+      "types": "./validation/validators/max.d.ts"
+    },
+    "./validation/validators/maxLength": {
+      "require": "./validation/validators/maxLength.js",
+      "import": "./validation/validators/maxLength.mjs",
+      "types": "./validation/validators/maxLength.d.ts"
+    },
+    "./validation/validators/min": {
+      "require": "./validation/validators/min.js",
+      "import": "./validation/validators/min.mjs",
+      "types": "./validation/validators/min.d.ts"
+    },
+    "./validation/validators/minLength": {
+      "require": "./validation/validators/minLength.js",
+      "import": "./validation/validators/minLength.mjs",
+      "types": "./validation/validators/minLength.d.ts"
+    },
+    "./validation/validators/number": {
+      "require": "./validation/validators/number.js",
+      "import": "./validation/validators/number.mjs",
+      "types": "./validation/validators/number.d.ts"
+    },
+    "./validation/validators/required": {
+      "require": "./validation/validators/required.js",
+      "import": "./validation/validators/required.mjs",
+      "types": "./validation/validators/required.d.ts"
+    },
+    "./validation/validators/sameAs": {
+      "require": "./validation/validators/sameAs.js",
+      "import": "./validation/validators/sameAs.mjs",
+      "types": "./validation/validators/sameAs.d.ts"
+    },
+    "./components/IBreadcrumb/examples": {
+      "require": "./components/IBreadcrumb/examples/index.js",
+      "import": "./components/IBreadcrumb/examples/index.mjs",
+      "types": "./components/IBreadcrumb/examples/index.d.ts"
+    },
+    "./components/IBadge/examples": {
+      "require": "./components/IBadge/examples/index.js",
+      "import": "./components/IBadge/examples/index.mjs",
+      "types": "./components/IBadge/examples/index.d.ts"
+    },
+    "./components/IAlert/examples": {
+      "require": "./components/IAlert/examples/index.js",
+      "import": "./components/IAlert/examples/index.mjs",
+      "types": "./components/IAlert/examples/index.d.ts"
+    },
+    "./components/IButtonGroup/examples": {
+      "require": "./components/IButtonGroup/examples/index.js",
+      "import": "./components/IButtonGroup/examples/index.mjs",
+      "types": "./components/IButtonGroup/examples/index.d.ts"
+    },
+    "./components/ICard/examples": {
+      "require": "./components/ICard/examples/index.js",
+      "import": "./components/ICard/examples/index.mjs",
+      "types": "./components/ICard/examples/index.d.ts"
+    },
+    "./components/IButton/examples": {
+      "require": "./components/IButton/examples/index.js",
+      "import": "./components/IButton/examples/index.mjs",
+      "types": "./components/IButton/examples/index.d.ts"
+    },
+    "./components/ICheckbox/examples": {
+      "require": "./components/ICheckbox/examples/index.js",
+      "import": "./components/ICheckbox/examples/index.mjs",
+      "types": "./components/ICheckbox/examples/index.d.ts"
+    },
+    "./components/ICollapsible/examples": {
+      "require": "./components/ICollapsible/examples/index.js",
+      "import": "./components/ICollapsible/examples/index.mjs",
+      "types": "./components/ICollapsible/examples/index.d.ts"
+    },
+    "./components/IColumn/examples": {
+      "require": "./components/IColumn/examples/index.js",
+      "import": "./components/IColumn/examples/index.mjs",
+      "types": "./components/IColumn/examples/index.d.ts"
+    },
+    "./components/IContainer/examples": {
+      "require": "./components/IContainer/examples/index.js",
+      "import": "./components/IContainer/examples/index.mjs",
+      "types": "./components/IContainer/examples/index.d.ts"
+    },
+    "./components/IDropdown/examples": {
+      "require": "./components/IDropdown/examples/index.js",
+      "import": "./components/IDropdown/examples/index.mjs",
+      "types": "./components/IDropdown/examples/index.d.ts"
+    },
+    "./components/IForm/examples": {
+      "require": "./components/IForm/examples/index.js",
+      "import": "./components/IForm/examples/index.mjs",
+      "types": "./components/IForm/examples/index.d.ts"
+    },
+    "./components/IHamburgerMenu/examples": {
+      "require": "./components/IHamburgerMenu/examples/index.js",
+      "import": "./components/IHamburgerMenu/examples/index.mjs",
+      "types": "./components/IHamburgerMenu/examples/index.d.ts"
+    },
+    "./components/IFormGroup/examples": {
+      "require": "./components/IFormGroup/examples/index.js",
+      "import": "./components/IFormGroup/examples/index.mjs",
+      "types": "./components/IFormGroup/examples/index.d.ts"
+    },
+    "./components/IIcon/examples": {
+      "require": "./components/IIcon/examples/index.js",
+      "import": "./components/IIcon/examples/index.mjs",
+      "types": "./components/IIcon/examples/index.d.ts"
+    },
+    "./components/IHeader/examples": {
+      "require": "./components/IHeader/examples/index.js",
+      "import": "./components/IHeader/examples/index.mjs",
+      "types": "./components/IHeader/examples/index.d.ts"
+    },
+    "./components/IFormLabel/examples": {
+      "require": "./components/IFormLabel/examples/index.js",
+      "import": "./components/IFormLabel/examples/index.mjs",
+      "types": "./components/IFormLabel/examples/index.d.ts"
+    },
+    "./components/IInput/examples": {
+      "require": "./components/IInput/examples/index.js",
+      "import": "./components/IInput/examples/index.mjs",
+      "types": "./components/IInput/examples/index.d.ts"
+    },
+    "./components/ILayout/examples": {
+      "require": "./components/ILayout/examples/index.js",
+      "import": "./components/ILayout/examples/index.mjs",
+      "types": "./components/ILayout/examples/index.d.ts"
+    },
+    "./components/ILoader/examples": {
+      "require": "./components/ILoader/examples/index.js",
+      "import": "./components/ILoader/examples/index.mjs",
+      "types": "./components/ILoader/examples/index.d.ts"
+    },
+    "./components/IListGroup/examples": {
+      "require": "./components/IListGroup/examples/index.js",
+      "import": "./components/IListGroup/examples/index.mjs",
+      "types": "./components/IListGroup/examples/index.d.ts"
+    },
+    "./components/IMedia/examples": {
+      "require": "./components/IMedia/examples/index.js",
+      "import": "./components/IMedia/examples/index.mjs",
+      "types": "./components/IMedia/examples/index.d.ts"
+    },
+    "./components/IModal/examples": {
+      "require": "./components/IModal/examples/index.js",
+      "import": "./components/IModal/examples/index.mjs",
+      "types": "./components/IModal/examples/index.d.ts"
+    },
+    "./components/INav/examples": {
+      "require": "./components/INav/examples/index.js",
+      "import": "./components/INav/examples/index.mjs",
+      "types": "./components/INav/examples/index.d.ts"
+    },
+    "./components/INavbar/examples": {
+      "require": "./components/INavbar/examples/index.js",
+      "import": "./components/INavbar/examples/index.mjs",
+      "types": "./components/INavbar/examples/index.d.ts"
+    },
+    "./components/INumberInput/examples": {
+      "require": "./components/INumberInput/examples/index.js",
+      "import": "./components/INumberInput/examples/index.mjs",
+      "types": "./components/INumberInput/examples/index.d.ts"
+    },
+    "./components/IPagination/examples": {
+      "require": "./components/IPagination/examples/index.js",
+      "import": "./components/IPagination/examples/index.mjs",
+      "types": "./components/IPagination/examples/index.d.ts"
+    },
+    "./components/IPopover/examples": {
+      "require": "./components/IPopover/examples/index.js",
+      "import": "./components/IPopover/examples/index.mjs",
+      "types": "./components/IPopover/examples/index.d.ts"
+    },
+    "./components/IProgress/examples": {
+      "require": "./components/IProgress/examples/index.js",
+      "import": "./components/IProgress/examples/index.mjs",
+      "types": "./components/IProgress/examples/index.d.ts"
+    },
+    "./components/IRadio/examples": {
+      "require": "./components/IRadio/examples/index.js",
+      "import": "./components/IRadio/examples/index.mjs",
+      "types": "./components/IRadio/examples/index.d.ts"
+    },
+    "./components/IRow/examples": {
+      "require": "./components/IRow/examples/index.js",
+      "import": "./components/IRow/examples/index.mjs",
+      "types": "./components/IRow/examples/index.d.ts"
+    },
+    "./components/ISelect/examples": {
+      "require": "./components/ISelect/examples/index.js",
+      "import": "./components/ISelect/examples/index.mjs",
+      "types": "./components/ISelect/examples/index.d.ts"
+    },
+    "./components/ISidebar/examples": {
+      "require": "./components/ISidebar/examples/index.js",
+      "import": "./components/ISidebar/examples/index.mjs",
+      "types": "./components/ISidebar/examples/index.d.ts"
+    },
+    "./components/ITabs/examples": {
+      "require": "./components/ITabs/examples/index.js",
+      "import": "./components/ITabs/examples/index.mjs",
+      "types": "./components/ITabs/examples/index.d.ts"
+    },
+    "./components/ITable/examples": {
+      "require": "./components/ITable/examples/index.js",
+      "import": "./components/ITable/examples/index.mjs",
+      "types": "./components/ITable/examples/index.d.ts"
+    },
+    "./components/ITextarea/examples": {
+      "require": "./components/ITextarea/examples/index.js",
+      "import": "./components/ITextarea/examples/index.mjs",
+      "types": "./components/ITextarea/examples/index.d.ts"
+    },
+    "./components/ITooltip/examples": {
+      "require": "./components/ITooltip/examples/index.js",
+      "import": "./components/ITooltip/examples/index.mjs",
+      "types": "./components/ITooltip/examples/index.d.ts"
+    },
+    "./components/IToggle/examples": {
+      "require": "./components/IToggle/examples/index.js",
+      "import": "./components/IToggle/examples/index.mjs",
+      "types": "./components/IToggle/examples/index.d.ts"
     }
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/alexgrozav"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "bugs": {
+    "url": "https://github.com/inkline/inkline/issues"
+  },
+  "homepage": "https://inkline.io",
+  "keywords": [
+    "inkline",
+    "vue",
+    "vuejs",
+    "ui",
+    "ux",
+    "dx",
+    "components",
+    "library",
+    "framework",
+    "typescript",
+    "javascript",
+    "scss",
+    "responsive",
+    "front end",
+    "validation"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inkline/inkline.git"
+  }
 }

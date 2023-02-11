@@ -2,9 +2,7 @@
  * @jest-environment node
  */
 
-import {
-    Inkline
-} from '@inkline/inkline/plugin';
+import { Inkline } from '@inkline/inkline/plugin';
 
 describe('SSR', () => {
     describe('Plugin', () => {
@@ -27,7 +25,9 @@ describe('SSR', () => {
 
                     (Inkline as any).install(app, { colorMode: 'server' });
 
-                    expect(app.config.globalProperties.$inkline.options.colorMode).toEqual('server');
+                    expect(app.config.globalProperties.$inkline.options.colorMode).toEqual(
+                        'server'
+                    );
                 });
             });
         });

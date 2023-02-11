@@ -15,58 +15,37 @@ export const manifest = {
     props: [
         {
             name: 'collapseOnItemClick',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'true',
             description: 'Determines if the navbar should close when clicking a navbar item'
         },
         {
             name: 'collapseOnClickOutside',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'true',
             description: 'Determines if the navbar should close when clicking outside'
         },
         {
             name: 'color',
-            type: [
-                'light',
-                'dark'
-            ],
+            type: ['light', 'dark'],
             default: 'light',
             description: 'The color variant of the navbar'
         },
         {
             name: 'fluid',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the inner container as fluid, spanning 100% width'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the navbar'
         },
         {
             name: 'menuAnimation',
-            type: [
-                'close',
-                'arrow-up',
-                'arrow-down',
-                'arrow-left',
-                'arrow-right',
-                'plus',
-                'minus'
-            ],
+            type: ['close', 'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right', 'plus', 'minus'],
             default: 'close',
             description: 'The animation of the hamburger menu component used for collapsing'
         }
@@ -81,31 +60,31 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The background of the navbar component'
             },
             {
                 name: 'border-top-color',
                 type: 'color',
-                value: 'color(\'light-60\')',
+                value: "color('light-60')",
                 description: 'The border top color of the navbar component'
             },
             {
                 name: 'border-right-color',
                 type: 'color',
-                value: 'color(\'light-60\')',
+                value: "color('light-60')",
                 description: 'The border right color of the navbar component'
             },
             {
                 name: 'border-bottom-color',
                 type: 'color',
-                value: 'color(\'light-60\')',
+                value: "color('light-60')",
                 description: 'The border bottom color of the navbar component'
             },
             {
                 name: 'border-left-color',
                 type: 'color',
-                value: 'color(\'light-60\')',
+                value: "color('light-60')",
                 description: 'The border left color of the navbar component'
             },
             {
@@ -261,13 +240,13 @@ export const manifest = {
             {
                 name: 'item--background',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The background of the navbar component item'
             },
             {
                 name: 'item--background--hover',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The background of the navbar component item when hovered or focused'
             },
             {
@@ -315,7 +294,7 @@ export const manifest = {
             {
                 name: 'collapsed--background',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The background of the collapsed navbar component'
             },
             {
@@ -340,7 +319,8 @@ export const manifest = {
                 name: 'collapsed--item--background--hover',
                 type: '',
                 value: 'var(----item--background--hover)',
-                description: 'The background of the collapsed navbar component item when hovered or focused'
+                description:
+                    'The background of the collapsed navbar component item when hovered or focused'
             },
             {
                 name: 'brand--margin-right',
@@ -358,56 +338,65 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The background of the navbar component, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The background of the navbar component, for the light color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'light-60\')',
-                        description: 'The border top color of the navbar component, for the light color variant'
+                        value: "color('light-60')",
+                        description:
+                            'The border top color of the navbar component, for the light color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'light-60\')',
-                        description: 'The border right color of the navbar component, for the light color variant'
+                        value: "color('light-60')",
+                        description:
+                            'The border right color of the navbar component, for the light color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'light-60\')',
-                        description: 'The border bottom color of the navbar component, for the light color variant'
+                        value: "color('light-60')",
+                        description:
+                            'The border bottom color of the navbar component, for the light color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'light-60\')',
-                        description: 'The border left color of the navbar component, for the light color variant'
+                        value: "color('light-60')",
+                        description:
+                            'The border left color of the navbar component, for the light color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-light)',
-                        description: 'The color of the navbar component, for the light color variant'
+                        description:
+                            'The color of the navbar component, for the light color variant'
                     },
                     {
                         name: 'item--background',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The background of the navbar component item, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The background of the navbar component item, for the light color variant'
                     },
                     {
                         name: 'item--background--hover',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The background of the navbar component item when hovered or focused, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The background of the navbar component item when hovered or focused, for the light color variant'
                     },
                     {
                         name: 'collapsed--background',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The background of the collapsed navbar component, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The background of the collapsed navbar component, for the light color variant'
                     }
                 ]
             },
@@ -419,32 +408,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the navbar component, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the navbar component, for the dark color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'dark-40\')',
-                        description: 'The border top color of the navbar component, for the dark color variant'
+                        value: "color('dark-40')",
+                        description:
+                            'The border top color of the navbar component, for the dark color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'dark-40\')',
-                        description: 'The border right color of the navbar component, for the dark color variant'
+                        value: "color('dark-40')",
+                        description:
+                            'The border right color of the navbar component, for the dark color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'dark-40\')',
-                        description: 'The border bottom color of the navbar component, for the dark color variant'
+                        value: "color('dark-40')",
+                        description:
+                            'The border bottom color of the navbar component, for the dark color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'dark-40\')',
-                        description: 'The border left color of the navbar component, for the dark color variant'
+                        value: "color('dark-40')",
+                        description:
+                            'The border left color of the navbar component, for the dark color variant'
                     },
                     {
                         name: 'color',
@@ -455,20 +449,23 @@ export const manifest = {
                     {
                         name: 'item--background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the navbar component item, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the navbar component item, for the dark color variant'
                     },
                     {
                         name: 'item--background--hover',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The background of the navbar component item when hovered or focused, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The background of the navbar component item when hovered or focused, for the dark color variant'
                     },
                     {
                         name: 'collapsed--background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the collapsed navbar component, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the collapsed navbar component, for the dark color variant'
                     }
                 ]
             },
@@ -480,68 +477,79 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top left radius of the navbar component, for the sm size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top left radius of the navbar component, for the sm size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top right radius of the navbar component, for the sm size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top right radius of the navbar component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom right radius of the navbar component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom right radius of the navbar component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom left radius of the navbar component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom left radius of the navbar component, for the sm size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
-                        description: 'The font size of the navbar component, for the sm size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('sm')})",
+                        description:
+                            'The font size of the navbar component, for the sm size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding top of the navbar component, for the sm size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding top of the navbar component, for the sm size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the navbar component, for the sm size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the navbar component, for the sm size variant'
                     },
                     {
                         name: 'item--padding-top',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding top of the navbar component, for the sm size variant'
+                        value: "calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding top of the navbar component, for the sm size variant'
                     },
                     {
                         name: 'item--padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding right of the navbar component, for the sm size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding right of the navbar component, for the sm size variant'
                     },
                     {
                         name: 'item--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the navbar component, for the sm size variant'
+                        value: "calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the navbar component, for the sm size variant'
                     },
                     {
                         name: 'item--padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the navbar component, for the sm size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the navbar component, for the sm size variant'
                     }
                 ]
             },
@@ -553,68 +561,79 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top left radius of the navbar component, for the md size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top left radius of the navbar component, for the md size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top right radius of the navbar component, for the md size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top right radius of the navbar component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom right radius of the navbar component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom right radius of the navbar component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom left radius of the navbar component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom left radius of the navbar component, for the md size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
-                        description: 'The font size of the navbar component, for the md size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('md')})",
+                        description:
+                            'The font size of the navbar component, for the md size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding top of the navbar component, for the md size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding top of the navbar component, for the md size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the navbar component, for the md size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the navbar component, for the md size variant'
                     },
                     {
                         name: 'item--padding-top',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding top of the navbar component, for the md size variant'
+                        value: "calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding top of the navbar component, for the md size variant'
                     },
                     {
                         name: 'item--padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding right of the navbar component, for the md size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding right of the navbar component, for the md size variant'
                     },
                     {
                         name: 'item--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the navbar component, for the md size variant'
+                        value: "calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the navbar component, for the md size variant'
                     },
                     {
                         name: 'item--padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the navbar component, for the md size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the navbar component, for the md size variant'
                     }
                 ]
             },
@@ -626,68 +645,79 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top left radius of the navbar component, for the lg size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top left radius of the navbar component, for the lg size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top right radius of the navbar component, for the lg size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top right radius of the navbar component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom right radius of the navbar component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom right radius of the navbar component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom left radius of the navbar component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom left radius of the navbar component, for the lg size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
-                        description: 'The font size of the navbar component, for the lg size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('lg')})",
+                        description:
+                            'The font size of the navbar component, for the lg size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding top of the navbar component, for the lg size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding top of the navbar component, for the lg size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the navbar component, for the lg size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the navbar component, for the lg size variant'
                     },
                     {
                         name: 'item--padding-top',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding top of the navbar component, for the lg size variant'
+                        value: "calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding top of the navbar component, for the lg size variant'
                     },
                     {
                         name: 'item--padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding right of the navbar component, for the lg size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding right of the navbar component, for the lg size variant'
                     },
                     {
                         name: 'item--padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the navbar component, for the lg size variant'
+                        value: "calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the navbar component, for the lg size variant'
                     },
                     {
                         name: 'item--padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the navbar component, for the lg size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the navbar component, for the lg size variant'
                     }
                 ]
             }

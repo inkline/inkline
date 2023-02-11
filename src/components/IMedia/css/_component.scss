@@ -15,11 +15,11 @@
     > .media-body {
         flex: 0 1 auto;
 
-        > *:first-child {
+        > *:first-of-type {
             margin-top: 0;
         }
 
-        > *:last-child {
+        > *:last-of-type {
             margin-bottom: 0;
         }
     }

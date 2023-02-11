@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ref, useSlots, computed, watch, defineComponent } from 'vue';
+import { ref, computed, watch, defineComponent } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'IAlert';
@@ -66,7 +66,7 @@ export default defineComponent({
          */
         'update:modelValue'
     ],
-    setup(props, { emit }) {
+    setup(props, { emit, slots }) {
         const dismissed = ref(false);
 
         const currentColor = computed(() => props.color);
@@ -78,7 +78,7 @@ export default defineComponent({
             [`-${color.value}`]: Boolean(color.value),
             [`-${size.value}`]: Boolean(size.value),
             '-dismissible': props.dismissible,
-            '-with-icon': Boolean(useSlots().icon)
+            '-with-icon': Boolean(slots.icon)
         }));
 
         watch(
@@ -109,6 +109,10 @@ export default defineComponent({
             <slot name="icon" />
         </span>
         <div class="content">
+            <div v-if="$slots.title" class="title">
+                <!-- @slot default Slot for toast title -->
+                <slot name="title" />
+            </div>
             <!-- @slot default Slot for default alert content -->
             <slot />
         </div>

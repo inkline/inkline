@@ -19,69 +19,49 @@ export const manifest = {
     props: [
         {
             name: 'ariaLabel',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'Pagination',
             description: 'The aria-label of the pagination'
         },
         {
             name: 'color',
-            type: [
-                'light',
-                'dark'
-            ],
+            type: ['light', 'dark'],
             default: 'light',
             description: 'The color variant of the pagination'
         },
         {
             name: 'itemsPerPage',
-            type: [
-                'Number'
-            ],
+            type: ['Number'],
             default: '20',
             description: 'The number of items per page to be displayed'
         },
         {
             name: 'itemsTotal',
-            type: [
-                'Number'
-            ],
+            type: ['Number'],
             default: '0',
             description: 'The total number of items'
         },
         {
             name: 'limit',
-            type: [
-                'Number',
-                'Object'
-            ],
+            type: ['Number', 'Object'],
             default: '',
             description: 'The maximum number of pagination buttons to show on each breakpoint'
         },
         {
             name: 'quickLink',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the quick link buttons'
         },
         {
             name: 'modelValue',
-            type: [
-                'Number'
-            ],
+            type: ['Number'],
             default: '1',
             description: 'Used to determine the current page'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the pagination'
         }
@@ -96,43 +76,44 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The background of the pagination component item'
             },
             {
                 name: 'background--hover',
                 type: 'color',
-                value: 'color(\'light-55\')',
-                description: 'The background of the pagination component item when hovered or focused'
+                value: "color('light-55')",
+                description:
+                    'The background of the pagination component item when hovered or focused'
             },
             {
                 name: 'background--active',
                 type: 'color',
-                value: 'color(\'primary\')',
+                value: "color('primary')",
                 description: 'The background of the pagination component item when active'
             },
             {
                 name: 'border-top-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border top color of the pagination component item'
             },
             {
                 name: 'border-right-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border right color of the pagination component item'
             },
             {
                 name: 'border-bottom-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border bottom color of the pagination component item'
             },
             {
                 name: 'border-left-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border left color of the pagination component item'
             },
             {
@@ -144,7 +125,7 @@ export const manifest = {
             {
                 name: 'border-color--active',
                 type: 'color',
-                value: 'color(\'primary-55\')',
+                value: "color('primary-55')",
                 description: 'The border color of the pagination component item when active'
             },
             {
@@ -349,62 +330,72 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The background of the pagination component item, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The background of the pagination component item, for the light color variant'
                     },
                     {
                         name: 'background--hover',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The background of the pagination component item when hovered or focused, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The background of the pagination component item when hovered or focused, for the light color variant'
                     },
                     {
                         name: 'background--active',
                         type: '',
-                        value: 'color(\'primary\')',
-                        description: 'The background of the pagination component item when active, for the light color variant'
+                        value: "color('primary')",
+                        description:
+                            'The background of the pagination component item when active, for the light color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border top color of the pagination component item, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border top color of the pagination component item, for the light color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border right color of the pagination component item, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border right color of the pagination component item, for the light color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border bottom color of the pagination component item, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border bottom color of the pagination component item, for the light color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border left color of the pagination component item, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border left color of the pagination component item, for the light color variant'
                     },
                     {
                         name: 'border-color--active',
                         type: '',
-                        value: 'color(\'primary-55\')',
-                        description: 'The border color of the pagination component item when active, for the light color variant'
+                        value: "color('primary-55')",
+                        description:
+                            'The border color of the pagination component item when active, for the light color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-light)',
-                        description: 'The border color of the pagination component item when active, for the light color variant'
+                        description:
+                            'The border color of the pagination component item when active, for the light color variant'
                     },
                     {
                         name: 'color--active',
                         type: '',
                         value: 'contrast-color($color-primary)',
-                        description: 'The border color of the pagination component item when active, for the light color variant'
+                        description:
+                            'The border color of the pagination component item when active, for the light color variant'
                     }
                 ]
             },
@@ -416,62 +407,72 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the pagination component item, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the pagination component item, for the dark color variant'
                     },
                     {
                         name: 'background--hover',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The background of the pagination component item when hovered or focused, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The background of the pagination component item when hovered or focused, for the dark color variant'
                     },
                     {
                         name: 'background--active',
                         type: '',
-                        value: 'color(\'primary\')',
-                        description: 'The background of the pagination component item when active, for the dark color variant'
+                        value: "color('primary')",
+                        description:
+                            'The background of the pagination component item when active, for the dark color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border top color of the pagination component item, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border top color of the pagination component item, for the dark color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border right color of the pagination component item, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border right color of the pagination component item, for the dark color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border bottom color of the pagination component item, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border bottom color of the pagination component item, for the dark color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border left color of the pagination component item, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border left color of the pagination component item, for the dark color variant'
                     },
                     {
                         name: 'border-color--active',
                         type: '',
-                        value: 'color(\'primary-55\')',
-                        description: 'The border color of the pagination component item when active, for the dark color variant'
+                        value: "color('primary-55')",
+                        description:
+                            'The border color of the pagination component item when active, for the dark color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-dark)',
-                        description: 'The border color of the pagination component item when active, for the dark color variant'
+                        description:
+                            'The border color of the pagination component item when active, for the dark color variant'
                     },
                     {
                         name: 'color--active',
                         type: '',
                         value: 'contrast-color($color-primary)',
-                        description: 'The border color of the pagination component item when active, for the dark color variant'
+                        description:
+                            'The border color of the pagination component item when active, for the dark color variant'
                     }
                 ]
             },
@@ -483,62 +484,72 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top left radius of the pagination component, for the sm size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top left radius of the pagination component, for the sm size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top right radius of the pagination component, for the sm size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top right radius of the pagination component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom right radius of the pagination component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom right radius of the pagination component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom left radius of the pagination component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom left radius of the pagination component, for the sm size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
-                        description: 'The font size of the pagination component, for the sm size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('sm')})",
+                        description:
+                            'The font size of the pagination component, for the sm size variant'
                     },
                     {
                         name: 'margin-right',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-right) / 4)} * #{size-multiplier(\'sm\')})',
-                        description: 'The margin right of the pagination component, for the sm size variant'
+                        value: "calc(#{calc(var(--margin-right) / 4)} * #{size-multiplier('sm')})",
+                        description:
+                            'The margin right of the pagination component, for the sm size variant'
                     },
                     {
                         name: 'margin-left',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-left) / 4)} * #{size-multiplier(\'sm\')})',
-                        description: 'The margin left of the pagination component, for the sm size variant'
+                        value: "calc(#{calc(var(--margin-left) / 4)} * #{size-multiplier('sm')})",
+                        description:
+                            'The margin left of the pagination component, for the sm size variant'
                     },
                     {
                         name: 'min-width',
                         type: '',
-                        value: 'calc(#{40px} * #{size-multiplier(\'sm\')})',
-                        description: 'The minimum width of the pagination component items, for the sm size variant'
+                        value: "calc(#{40px} * #{size-multiplier('sm')})",
+                        description:
+                            'The minimum width of the pagination component items, for the sm size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-right) / 2)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding right of the pagination component, for the sm size variant'
+                        value: "calc(#{calc(var(--padding-right) / 2)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding right of the pagination component, for the sm size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-left) / 2)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the pagination component, for the sm size variant'
+                        value: "calc(#{calc(var(--padding-left) / 2)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the pagination component, for the sm size variant'
                     }
                 ]
             },
@@ -550,62 +561,72 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top left radius of the pagination component, for the md size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top left radius of the pagination component, for the md size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top right radius of the pagination component, for the md size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top right radius of the pagination component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom right radius of the pagination component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom right radius of the pagination component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom left radius of the pagination component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom left radius of the pagination component, for the md size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
-                        description: 'The font size of the pagination component, for the md size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('md')})",
+                        description:
+                            'The font size of the pagination component, for the md size variant'
                     },
                     {
                         name: 'margin-right',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-right) / 4)} * #{size-multiplier(\'md\')})',
-                        description: 'The margin right of the pagination component, for the md size variant'
+                        value: "calc(#{calc(var(--margin-right) / 4)} * #{size-multiplier('md')})",
+                        description:
+                            'The margin right of the pagination component, for the md size variant'
                     },
                     {
                         name: 'margin-left',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-left) / 4)} * #{size-multiplier(\'md\')})',
-                        description: 'The margin left of the pagination component, for the md size variant'
+                        value: "calc(#{calc(var(--margin-left) / 4)} * #{size-multiplier('md')})",
+                        description:
+                            'The margin left of the pagination component, for the md size variant'
                     },
                     {
                         name: 'min-width',
                         type: '',
-                        value: 'calc(#{40px} * #{size-multiplier(\'md\')})',
-                        description: 'The minimum width of the pagination component items, for the md size variant'
+                        value: "calc(#{40px} * #{size-multiplier('md')})",
+                        description:
+                            'The minimum width of the pagination component items, for the md size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-right) / 2)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding right of the pagination component, for the md size variant'
+                        value: "calc(#{calc(var(--padding-right) / 2)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding right of the pagination component, for the md size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-left) / 2)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the pagination component, for the md size variant'
+                        value: "calc(#{calc(var(--padding-left) / 2)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the pagination component, for the md size variant'
                     }
                 ]
             },
@@ -617,62 +638,72 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top left radius of the pagination component, for the lg size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top left radius of the pagination component, for the lg size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top right radius of the pagination component, for the lg size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top right radius of the pagination component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom right radius of the pagination component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom right radius of the pagination component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom left radius of the pagination component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom left radius of the pagination component, for the lg size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
-                        description: 'The font size of the pagination component, for the lg size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('lg')})",
+                        description:
+                            'The font size of the pagination component, for the lg size variant'
                     },
                     {
                         name: 'margin-right',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-right) / 4)} * #{size-multiplier(\'lg\')})',
-                        description: 'The margin right of the pagination component, for the lg size variant'
+                        value: "calc(#{calc(var(--margin-right) / 4)} * #{size-multiplier('lg')})",
+                        description:
+                            'The margin right of the pagination component, for the lg size variant'
                     },
                     {
                         name: 'margin-left',
                         type: '',
-                        value: 'calc(#{calc(var(--margin-left) / 4)} * #{size-multiplier(\'lg\')})',
-                        description: 'The margin left of the pagination component, for the lg size variant'
+                        value: "calc(#{calc(var(--margin-left) / 4)} * #{size-multiplier('lg')})",
+                        description:
+                            'The margin left of the pagination component, for the lg size variant'
                     },
                     {
                         name: 'min-width',
                         type: '',
-                        value: 'calc(#{40px} * #{size-multiplier(\'lg\')})',
-                        description: 'The minimum width of the pagination component items, for the lg size variant'
+                        value: "calc(#{40px} * #{size-multiplier('lg')})",
+                        description:
+                            'The minimum width of the pagination component items, for the lg size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-right) / 2)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding right of the pagination component, for the lg size variant'
+                        value: "calc(#{calc(var(--padding-right) / 2)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding right of the pagination component, for the lg size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-left) / 2)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the pagination component, for the lg size variant'
+                        value: "calc(#{calc(var(--padding-left) / 2)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the pagination component, for the lg size variant'
                     }
                 ]
             }

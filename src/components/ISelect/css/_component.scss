@@ -827,7 +827,7 @@
             );
         }
 
-        > *:last-child {
+        > *:last-of-type {
             border-bottom-left-radius: var(
                 --select--border-bottom-left-radius,
                 var(--border-bottom-left-radius)
@@ -876,8 +876,8 @@
 
         .input-suffix > .select-caret {
             cursor: pointer;
-            mask-image: url("#{icons.$ink-caret-down}");
-            -webkit-mask-image: url("#{icons.$ink-caret-down}");
+            mask-image: url('#{icons.$ink-caret-down}');
+            -webkit-mask-image: url('#{icons.$ink-caret-down}');
             mask-position: center center;
             -webkit-mask-position: center center;
             mask-repeat: no-repeat;

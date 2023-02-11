@@ -32,7 +32,9 @@ describe('i18n', () => {
             const params = { param: 'example' };
 
             i18n.messages.en.interpolated = value;
-            expect(translate('interpolated', params)).toEqual(value.replace('{param}', params.param));
+            expect(translate('interpolated', params)).toEqual(
+                value.replace('{param}', params.param)
+            );
         });
 
         it('should translate using current locale', () => {

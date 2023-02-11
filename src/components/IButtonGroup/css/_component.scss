@@ -37,7 +37,7 @@
         }
     }
 
-    > .button:first-child {
+    > .button:first-of-type {
         margin-left: 0;
     }
 
@@ -58,8 +58,8 @@
 
     // Reset rounded corners
     &:not(.-vertical) {
-        > .button:last-child,
-        > [class$='-wrapper']:last-child > * > .button:last-child {
+        > .button:last-of-type,
+        > [class$='-wrapper']:last-of-type > * > .button:last-of-type {
             border-top-right-radius: var(
                 --button-group--border-top-right-radius,
                 var(--button--border-top-right-radius)
@@ -70,8 +70,8 @@
             );
         }
 
-        > .button:first-child,
-        > [class$='-wrapper']:first-child > * > .button:first-child {
+        > .button:first-of-type,
+        > [class$='-wrapper']:first-of-type > * > .button:first-of-type {
             border-top-left-radius: var(
                 --button-group--border-top-left-radius,
                 var(--button--border-top-left-radius)
@@ -82,19 +82,19 @@
             );
         }
 
-        > .button:not(:last-child),
-        > .button-group:not(:last-child) .button,
-        > [class$='-wrapper']:not(:last-child) > * > .button,
-        > .button-group:not(:last-child) [class$='-wrapper'] > * > .button {
+        > .button:not(:last-of-type),
+        > .button-group:not(:last-of-type) .button,
+        > [class$='-wrapper']:not(:last-of-type) > * > .button,
+        > .button-group:not(:last-of-type) [class$='-wrapper'] > * > .button {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
             border-right: 0;
         }
 
-        > .button:not(:first-child),
-        > .button-group:not(:first-child) .button,
-        > [class$='-wrapper']:not(:first-child) > * > .button,
-        > .button-group:not(:first-child) [class$='-wrapper'] > * > .button {
+        > .button:not(:first-of-type),
+        > .button-group:not(:first-of-type) .button,
+        > [class$='-wrapper']:not(:first-of-type) > * > .button,
+        > .button-group:not(:first-of-type) [class$='-wrapper'] > * > .button {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
@@ -111,8 +111,8 @@
             width: 100%;
         }
 
-        > .button:last-child,
-        > [class$='-wrapper']:last-child > * > .button:last-child {
+        > .button:last-of-type,
+        > [class$='-wrapper']:last-of-type > * > .button:last-of-type {
             border-bottom-left-radius: var(
                 --button-group--border-bottom-left-radius,
                 var(--button--border-bottom-left-radius)
@@ -123,8 +123,8 @@
             );
         }
 
-        > .button:first-child,
-        > [class$='-wrapper']:first-child > * > .button:first-child {
+        > .button:first-of-type,
+        > [class$='-wrapper']:first-of-type > * > .button:first-of-type {
             border-top-left-radius: var(
                 --button-group--border-top-left-radius,
                 var(--button--border-top-left-radius)
@@ -135,19 +135,19 @@
             );
         }
 
-        > .button:not(:last-child),
-        > .button-group:not(:last-child) .button,
-        > [class$='-wrapper']:not(:last-child) > * > .button,
-        > .button-group:not(:last-child) [class$='-wrapper'] > * > .button {
+        > .button:not(:last-of-type),
+        > .button-group:not(:last-of-type) .button,
+        > [class$='-wrapper']:not(:last-of-type) > * > .button,
+        > .button-group:not(:last-of-type) [class$='-wrapper'] > * > .button {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             border-bottom: 0;
         }
 
-        > .button:not(:first-child),
-        > .button-group:not(:first-child) .button,
-        > [class$='-wrapper']:not(:first-child) > * > .button,
-        > .button-group:not(:first-child) [class$='-wrapper'] > * > .button {
+        > .button:not(:first-of-type),
+        > .button-group:not(:first-of-type) .button,
+        > [class$='-wrapper']:not(:first-of-type) > * > .button,
+        > .button-group:not(:first-of-type) [class$='-wrapper'] > * > .button {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }

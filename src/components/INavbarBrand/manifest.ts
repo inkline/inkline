@@ -8,9 +8,7 @@ export const manifest = {
     props: [
         {
             name: 'tag',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'div',
             description: 'Set the HTML tag to be used for rendering the nav item'
         }

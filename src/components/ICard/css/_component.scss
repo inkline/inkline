@@ -540,12 +540,12 @@
         }
 
         + .list-group {
-            .list-group-item:first-child {
+            .list-group-item:first-of-type {
                 border-top: 0;
             }
         }
 
-        &:first-child {
+        &:first-of-type {
             border-top-left-radius: var(
                 --card--header--border-top-left-radius,
                 var(--card--border-top-left-radius)
@@ -662,21 +662,21 @@
             var(--card--transition-timing-function, var(--transition-timing-function))
         );
 
-        &:not(:first-child) {
+        &:not(:first-of-type) {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
 
-        &:not(:last-child) {
+        &:not(:last-of-type) {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
         }
 
-        > *:first-child {
+        > *:first-of-type {
             margin-top: 0;
         }
 
-        > *:last-child {
+        > *:last-of-type {
             margin-bottom: 0;
         }
     }
@@ -765,7 +765,7 @@
             var(--card--transition-timing-function, var(--transition-timing-function))
         );
 
-        &:last-child {
+        &:last-of-type {
             border-bottom-left-radius: var(
                 --card--footer--border-bottom-left-radius,
                 var(--card--border-bottom-left-radius)
@@ -794,13 +794,13 @@
         margin-left: 0;
     }
 
-    &:last-child {
+    &:last-of-type {
         border-bottom-left-radius: var(--card--border-bottom-left-radius);
         border-bottom-right-radius: var(--card--border-bottom-right-radius);
     }
 
-    > .list-group:first-child,
-    .list-group-item:first-child {
+    > .list-group:first-of-type,
+    .list-group-item:first-of-type {
         border-top-left-radius: var(
             --card--list-group--border-top-left-radius,
             var(--card--border-top-left-radius)
@@ -811,8 +811,8 @@
         );
     }
 
-    > .list-group:last-child,
-    .list-group-item:last-child {
+    > .list-group:last-of-type,
+    .list-group-item:last-of-type {
         border-bottom-left-radius: var(
             --card--list-group--border-bottom-left-radius,
             var(--card--border-bottom-left-radius)

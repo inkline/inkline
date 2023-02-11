@@ -9,28 +9,20 @@ export const manifest = {
     props: [
         {
             name: 'for',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: '',
-            description: 'The id of the target input to be focused by the form label. If left empty, clicking the form label will focus the next sibling input'
+            description:
+                'The id of the target input to be focused by the form label. If left empty, clicking the form label will focus the next sibling input'
         },
         {
             name: 'placement',
-            type: [
-                'left',
-                'right'
-            ],
+            type: ['left', 'right'],
             default: 'left',
             description: 'The placement of the form label'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the form label'
         }
@@ -83,8 +75,9 @@ export const manifest = {
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
-                        description: 'The font size of the form label component, for the sm size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('sm')})",
+                        description:
+                            'The font size of the form label component, for the sm size variant'
                     }
                 ]
             },
@@ -96,8 +89,9 @@ export const manifest = {
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
-                        description: 'The font size of the form label component, for the md size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('md')})",
+                        description:
+                            'The font size of the form label component, for the md size variant'
                     }
                 ]
             },
@@ -109,8 +103,9 @@ export const manifest = {
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
-                        description: 'The font size of the form label component, for the lg size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('lg')})",
+                        description:
+                            'The font size of the form label component, for the lg size variant'
                     }
                 ]
             }

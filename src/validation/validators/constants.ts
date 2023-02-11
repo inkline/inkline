@@ -66,20 +66,53 @@ export const decimal: { [key: string]: string } = {
 };
 
 export const arabicLocales: string[] = [
-    'AE', 'BH', 'DZ', 'EG', 'IQ', 'JO', 'KW', 'LB', 'LY',
-    'MA', 'QM', 'QA', 'SA', 'SD', 'SY', 'TN', 'YE'
+    'AE',
+    'BH',
+    'DZ',
+    'EG',
+    'IQ',
+    'JO',
+    'KW',
+    'LB',
+    'LY',
+    'MA',
+    'QM',
+    'QA',
+    'SA',
+    'SD',
+    'SY',
+    'TN',
+    'YE'
 ];
 
-export const englishLocales: string[] = [
-    'AU', 'GB', 'HK', 'IN', 'NZ', 'ZA', 'ZM'
-];
+export const englishLocales: string[] = ['AU', 'GB', 'HK', 'IN', 'NZ', 'ZA', 'ZM'];
 
 // Source: https://en.wikipedia.org/wiki/Decimal_mark
 export const dotDecimal: string[] = ['ar-EG', 'ar-LB', 'ar-LY'];
 export const commaDecimal: string[] = [
-    'bg-BG', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR', 'en-ZM', 'es-ES', 'fr-FR', 'it-IT', 'ku-IQ',
-    'hu-HU', 'nb-NO', 'nn-NO', 'nl-NL', 'pl-PL', 'pt-PT', 'ru-RU', 'sl-SI', 'sr-RS@latin',
-    'sr-RS', 'sv-SE', 'tr-TR', 'uk-UA'
+    'bg-BG',
+    'cs-CZ',
+    'da-DK',
+    'de-DE',
+    'el-GR',
+    'en-ZM',
+    'es-ES',
+    'fr-FR',
+    'it-IT',
+    'ku-IQ',
+    'hu-HU',
+    'nb-NO',
+    'nn-NO',
+    'nl-NL',
+    'pl-PL',
+    'pt-PT',
+    'ru-RU',
+    'sl-SI',
+    'sr-RS@latin',
+    'sr-RS',
+    'sv-SE',
+    'tr-TR',
+    'uk-UA'
 ];
 
 englishLocales.forEach((locale) => {

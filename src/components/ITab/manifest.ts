@@ -8,17 +8,13 @@ export const manifest = {
     props: [
         {
             name: 'title',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: '',
             description: 'The title of the tab'
         },
         {
             name: 'name',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'uid()',
             description: 'The name of the tab, used as an identifier'
         }

@@ -266,7 +266,7 @@
             flex-direction: column;
             align-items: flex-start;
 
-            &:first-child {
+            &:first-of-type {
                 margin-top: var(--navbar--collapsed--margin-top, var(--margin-top));
             }
 

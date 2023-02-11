@@ -702,7 +702,7 @@
         );
     }
 
-    > *:last-child {
+    > *:last-of-type {
         border-bottom-left-radius: var(
             --popover--border-bottom-left-radius,
             var(--border-bottom-left-radius)

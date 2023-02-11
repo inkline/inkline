@@ -16,7 +16,7 @@ import {
     ISelectRenderingScopedSlotExample
 } from '@inkline/inkline/components/ISelect/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
-import { useServer } from '@inkline/inkline/__mocks__/useServer';
+import { useServer } from '@inkline/inkline/__tests__/utils/useServer';
 
 useServer();
 

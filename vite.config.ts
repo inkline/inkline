@@ -11,14 +11,14 @@ export default defineConfig({
     plugins: [
         vue({
             include: [/\.vue$/, /\.md$/],
-        }),
+        })
     ],
     resolve: {
         alias: [
             {
                 find: /^@inkline\/inkline\//,
                 replacement: `${resolve(__dirname)}/src/`,
-            },
+            }
         ],
     },
     build: {
@@ -52,6 +52,6 @@ export default defineConfig({
         },
     },
     optimizeDeps: {
-        exclude: ["coverage", "dist", "lib", "package", "scripts"],
+        exclude: ["coverage", "dist", "lib", "package", "scripts"]
     },
 });

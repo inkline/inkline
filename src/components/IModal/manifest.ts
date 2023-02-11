@@ -23,82 +23,55 @@ export const manifest = {
     props: [
         {
             name: 'closeOnPressEscape',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'true',
             description: 'Determines if the modal should close when pressing escape'
         },
         {
             name: 'closeAriaLabel',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'Close',
             description: 'The aria-label attribute of the close button'
         },
         {
             name: 'color',
-            type: [
-                'primary',
-                'success',
-                'light',
-                'dark',
-                'info',
-                'success',
-                'warning',
-                'danger'
-            ],
+            type: ['primary', 'success', 'light', 'dark', 'info', 'success', 'warning', 'danger'],
             default: 'light',
             description: 'The color variant of the modal'
         },
         {
             name: 'disabled',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The disabled state of the modal'
         },
         {
             name: 'hideOnClickOutside',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'true',
             description: 'Determines if the modal should close when clicking the overlay'
         },
         {
             name: 'name',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'uid()',
             description: 'The identifier of the modal'
         },
         {
             name: 'showClose',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Determines if the close icon should be visible in the modal header'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the modal'
         },
         {
             name: 'modelValue',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Used to determine if modal is visible or not'
         },
@@ -127,31 +100,31 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'white\')',
+                value: "color('white')",
                 description: 'The background of the modal component'
             },
             {
                 name: 'border-top-color',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The border top color of the modal component'
             },
             {
                 name: 'border-right-color',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The border right color of the modal component'
             },
             {
                 name: 'border-bottom-color',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The border bottom color of the modal component'
             },
             {
                 name: 'border-left-color',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The border left color of the modal component'
             },
             {
@@ -277,7 +250,7 @@ export const manifest = {
             {
                 name: 'font-weight',
                 type: '',
-                value: 'font-weight(\'normal\')',
+                value: "font-weight('normal')",
                 description: 'The font weight of the modal component'
             },
             {
@@ -355,7 +328,7 @@ export const manifest = {
             {
                 name: 'header--background',
                 type: 'color',
-                value: 'color(\'light-25\')',
+                value: "color('light-25')",
                 description: 'The background of the modal component header'
             },
             {
@@ -523,7 +496,7 @@ export const manifest = {
             {
                 name: 'footer--background',
                 type: 'color',
-                value: 'color(\'light-25\')',
+                value: "color('light-25')",
                 description: 'The background of the modal component footer'
             },
             {
@@ -620,50 +593,58 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'primary\')',
-                        description: 'The background of the modal component, for the primary color variant'
+                        value: "color('primary')",
+                        description:
+                            'The background of the modal component, for the primary color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'primary-60\')',
-                        description: 'The border top color of the modal component, for the primary color variant'
+                        value: "color('primary-60')",
+                        description:
+                            'The border top color of the modal component, for the primary color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'primary-60\')',
-                        description: 'The border right color of the modal component, for the primary color variant'
+                        value: "color('primary-60')",
+                        description:
+                            'The border right color of the modal component, for the primary color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'primary-60\')',
-                        description: 'The border bottom color of the modal component, for the primary color variant'
+                        value: "color('primary-60')",
+                        description:
+                            'The border bottom color of the modal component, for the primary color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'primary-60\')',
-                        description: 'The border left color of the modal component, for the primary color variant'
+                        value: "color('primary-60')",
+                        description:
+                            'The border left color of the modal component, for the primary color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-primary)',
-                        description: 'The color of the modal component, for the primary color variant'
+                        description:
+                            'The color of the modal component, for the primary color variant'
                     },
                     {
                         name: 'header--background',
                         type: '',
-                        value: 'color(\'primary-55\')',
-                        description: 'The background of the modal component header, for the primary color variant'
+                        value: "color('primary-55')",
+                        description:
+                            'The background of the modal component header, for the primary color variant'
                     },
                     {
                         name: 'footer--background',
                         type: '',
-                        value: 'color(\'primary-55\')',
-                        description: 'The background of the modal component footer, for the primary color variant'
+                        value: "color('primary-55')",
+                        description:
+                            'The background of the modal component footer, for the primary color variant'
                     }
                 ]
             },
@@ -675,50 +656,58 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'secondary\')',
-                        description: 'The background of the modal component, for the secondary color variant'
+                        value: "color('secondary')",
+                        description:
+                            'The background of the modal component, for the secondary color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'secondary-60\')',
-                        description: 'The border top color of the modal component, for the secondary color variant'
+                        value: "color('secondary-60')",
+                        description:
+                            'The border top color of the modal component, for the secondary color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'secondary-60\')',
-                        description: 'The border right color of the modal component, for the secondary color variant'
+                        value: "color('secondary-60')",
+                        description:
+                            'The border right color of the modal component, for the secondary color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'secondary-60\')',
-                        description: 'The border bottom color of the modal component, for the secondary color variant'
+                        value: "color('secondary-60')",
+                        description:
+                            'The border bottom color of the modal component, for the secondary color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'secondary-60\')',
-                        description: 'The border left color of the modal component, for the secondary color variant'
+                        value: "color('secondary-60')",
+                        description:
+                            'The border left color of the modal component, for the secondary color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-secondary)',
-                        description: 'The color of the modal component, for the secondary color variant'
+                        description:
+                            'The color of the modal component, for the secondary color variant'
                     },
                     {
                         name: 'header--background',
                         type: '',
-                        value: 'color(\'secondary-55\')',
-                        description: 'The background of the modal component header, for the secondary color variant'
+                        value: "color('secondary-55')",
+                        description:
+                            'The background of the modal component header, for the secondary color variant'
                     },
                     {
                         name: 'footer--background',
                         type: '',
-                        value: 'color(\'secondary-55\')',
-                        description: 'The background of the modal component footer, for the secondary color variant'
+                        value: "color('secondary-55')",
+                        description:
+                            'The background of the modal component footer, for the secondary color variant'
                     }
                 ]
             },
@@ -730,32 +719,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'white\')',
-                        description: 'The background of the modal component, for the light color variant'
+                        value: "color('white')",
+                        description:
+                            'The background of the modal component, for the light color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The border top color of the modal component, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The border top color of the modal component, for the light color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The border right color of the modal component, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The border right color of the modal component, for the light color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The border bottom color of the modal component, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The border bottom color of the modal component, for the light color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The border left color of the modal component, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The border left color of the modal component, for the light color variant'
                     },
                     {
                         name: 'color',
@@ -766,14 +760,16 @@ export const manifest = {
                     {
                         name: 'header--background',
                         type: '',
-                        value: 'color(\'light-25\')',
-                        description: 'The background of the modal component header, for the light color variant'
+                        value: "color('light-25')",
+                        description:
+                            'The background of the modal component header, for the light color variant'
                     },
                     {
                         name: 'footer--background',
                         type: '',
-                        value: 'color(\'light-25\')',
-                        description: 'The background of the modal component footer, for the light color variant'
+                        value: "color('light-25')",
+                        description:
+                            'The background of the modal component footer, for the light color variant'
                     }
                 ]
             },
@@ -785,32 +781,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the modal component, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the modal component, for the dark color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'dark-60\')',
-                        description: 'The border top color of the modal component, for the dark color variant'
+                        value: "color('dark-60')",
+                        description:
+                            'The border top color of the modal component, for the dark color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'dark-60\')',
-                        description: 'The border right color of the modal component, for the dark color variant'
+                        value: "color('dark-60')",
+                        description:
+                            'The border right color of the modal component, for the dark color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'dark-60\')',
-                        description: 'The border bottom color of the modal component, for the dark color variant'
+                        value: "color('dark-60')",
+                        description:
+                            'The border bottom color of the modal component, for the dark color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'dark-60\')',
-                        description: 'The border left color of the modal component, for the dark color variant'
+                        value: "color('dark-60')",
+                        description:
+                            'The border left color of the modal component, for the dark color variant'
                     },
                     {
                         name: 'color',
@@ -821,14 +822,16 @@ export const manifest = {
                     {
                         name: 'header--background',
                         type: '',
-                        value: 'color(\'dark-55\')',
-                        description: 'The background of the modal component header, for the dark color variant'
+                        value: "color('dark-55')",
+                        description:
+                            'The background of the modal component header, for the dark color variant'
                     },
                     {
                         name: 'footer--background',
                         type: '',
-                        value: 'color(\'dark-55\')',
-                        description: 'The background of the modal component footer, for the dark color variant'
+                        value: "color('dark-55')",
+                        description:
+                            'The background of the modal component footer, for the dark color variant'
                     }
                 ]
             },
@@ -840,32 +843,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'info\')',
-                        description: 'The background of the modal component, for the info color variant'
+                        value: "color('info')",
+                        description:
+                            'The background of the modal component, for the info color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'info-60\')',
-                        description: 'The border top color of the modal component, for the info color variant'
+                        value: "color('info-60')",
+                        description:
+                            'The border top color of the modal component, for the info color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'info-60\')',
-                        description: 'The border right color of the modal component, for the info color variant'
+                        value: "color('info-60')",
+                        description:
+                            'The border right color of the modal component, for the info color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'info-60\')',
-                        description: 'The border bottom color of the modal component, for the info color variant'
+                        value: "color('info-60')",
+                        description:
+                            'The border bottom color of the modal component, for the info color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'info-60\')',
-                        description: 'The border left color of the modal component, for the info color variant'
+                        value: "color('info-60')",
+                        description:
+                            'The border left color of the modal component, for the info color variant'
                     },
                     {
                         name: 'color',
@@ -876,14 +884,16 @@ export const manifest = {
                     {
                         name: 'header--background',
                         type: '',
-                        value: 'color(\'info-55\')',
-                        description: 'The background of the modal component header, for the info color variant'
+                        value: "color('info-55')",
+                        description:
+                            'The background of the modal component header, for the info color variant'
                     },
                     {
                         name: 'footer--background',
                         type: '',
-                        value: 'color(\'info-55\')',
-                        description: 'The background of the modal component footer, for the info color variant'
+                        value: "color('info-55')",
+                        description:
+                            'The background of the modal component footer, for the info color variant'
                     }
                 ]
             },
@@ -895,50 +905,58 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'success\')',
-                        description: 'The background of the modal component, for the success color variant'
+                        value: "color('success')",
+                        description:
+                            'The background of the modal component, for the success color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'success-60\')',
-                        description: 'The border top color of the modal component, for the success color variant'
+                        value: "color('success-60')",
+                        description:
+                            'The border top color of the modal component, for the success color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'success-60\')',
-                        description: 'The border right color of the modal component, for the success color variant'
+                        value: "color('success-60')",
+                        description:
+                            'The border right color of the modal component, for the success color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'success-60\')',
-                        description: 'The border bottom color of the modal component, for the success color variant'
+                        value: "color('success-60')",
+                        description:
+                            'The border bottom color of the modal component, for the success color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'success-60\')',
-                        description: 'The border left color of the modal component, for the success color variant'
+                        value: "color('success-60')",
+                        description:
+                            'The border left color of the modal component, for the success color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-success)',
-                        description: 'The color of the modal component, for the success color variant'
+                        description:
+                            'The color of the modal component, for the success color variant'
                     },
                     {
                         name: 'header--background',
                         type: '',
-                        value: 'color(\'success-55\')',
-                        description: 'The background of the modal component header, for the success color variant'
+                        value: "color('success-55')",
+                        description:
+                            'The background of the modal component header, for the success color variant'
                     },
                     {
                         name: 'footer--background',
                         type: '',
-                        value: 'color(\'success-55\')',
-                        description: 'The background of the modal component footer, for the success color variant'
+                        value: "color('success-55')",
+                        description:
+                            'The background of the modal component footer, for the success color variant'
                     }
                 ]
             },
@@ -950,50 +968,58 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'warning\')',
-                        description: 'The background of the modal component, for the warning color variant'
+                        value: "color('warning')",
+                        description:
+                            'The background of the modal component, for the warning color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'warning-60\')',
-                        description: 'The border top color of the modal component, for the warning color variant'
+                        value: "color('warning-60')",
+                        description:
+                            'The border top color of the modal component, for the warning color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'warning-60\')',
-                        description: 'The border right color of the modal component, for the warning color variant'
+                        value: "color('warning-60')",
+                        description:
+                            'The border right color of the modal component, for the warning color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'warning-60\')',
-                        description: 'The border bottom color of the modal component, for the warning color variant'
+                        value: "color('warning-60')",
+                        description:
+                            'The border bottom color of the modal component, for the warning color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'warning-60\')',
-                        description: 'The border left color of the modal component, for the warning color variant'
+                        value: "color('warning-60')",
+                        description:
+                            'The border left color of the modal component, for the warning color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-warning)',
-                        description: 'The color of the modal component, for the warning color variant'
+                        description:
+                            'The color of the modal component, for the warning color variant'
                     },
                     {
                         name: 'header--background',
                         type: '',
-                        value: 'color(\'warning-55\')',
-                        description: 'The background of the modal component header, for the warning color variant'
+                        value: "color('warning-55')",
+                        description:
+                            'The background of the modal component header, for the warning color variant'
                     },
                     {
                         name: 'footer--background',
                         type: '',
-                        value: 'color(\'warning-55\')',
-                        description: 'The background of the modal component footer, for the warning color variant'
+                        value: "color('warning-55')",
+                        description:
+                            'The background of the modal component footer, for the warning color variant'
                     }
                 ]
             },
@@ -1005,50 +1031,58 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'danger\')',
-                        description: 'The background of the modal component, for the danger color variant'
+                        value: "color('danger')",
+                        description:
+                            'The background of the modal component, for the danger color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'danger-60\')',
-                        description: 'The border top color of the modal component, for the danger color variant'
+                        value: "color('danger-60')",
+                        description:
+                            'The border top color of the modal component, for the danger color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'danger-60\')',
-                        description: 'The border right color of the modal component, for the danger color variant'
+                        value: "color('danger-60')",
+                        description:
+                            'The border right color of the modal component, for the danger color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'danger-60\')',
-                        description: 'The border bottom color of the modal component, for the danger color variant'
+                        value: "color('danger-60')",
+                        description:
+                            'The border bottom color of the modal component, for the danger color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'danger-60\')',
-                        description: 'The border left color of the modal component, for the danger color variant'
+                        value: "color('danger-60')",
+                        description:
+                            'The border left color of the modal component, for the danger color variant'
                     },
                     {
                         name: 'color',
                         type: '',
                         value: 'contrast-color($color-danger)',
-                        description: 'The color of the modal component, for the danger color variant'
+                        description:
+                            'The color of the modal component, for the danger color variant'
                     },
                     {
                         name: 'header--background',
                         type: '',
-                        value: 'color(\'danger-55\')',
-                        description: 'The background of the modal component header, for the danger color variant'
+                        value: "color('danger-55')",
+                        description:
+                            'The background of the modal component header, for the danger color variant'
                     },
                     {
                         name: 'footer--background',
                         type: '',
-                        value: 'color(\'danger-55\')',
-                        description: 'The background of the modal component footer, for the danger color variant'
+                        value: "color('danger-55')",
+                        description:
+                            'The background of the modal component footer, for the danger color variant'
                     }
                 ]
             },
@@ -1060,122 +1094,140 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top left radius of the modal component, for the sm size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top left radius of the modal component, for the sm size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top right radius of the modal component, for the sm size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top right radius of the modal component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom right radius of the modal component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom right radius of the modal component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom left radius of the modal component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom left radius of the modal component, for the sm size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('sm')})",
                         description: 'The font size of the modal component, for the sm size variant'
                     },
                     {
                         name: 'margin-top',
                         type: '',
-                        value: 'calc(#{var(--margin-top)} * #{size-multiplier(\'sm\')})',
-                        description: 'The margin top of the modal component, for the sm size variant'
+                        value: "calc(#{var(--margin-top)} * #{size-multiplier('sm')})",
+                        description:
+                            'The margin top of the modal component, for the sm size variant'
                     },
                     {
                         name: 'margin-right',
                         type: '',
-                        value: 'calc(#{var(--margin-right)} * #{size-multiplier(\'sm\')})',
-                        description: 'The margin right of the modal component, for the sm size variant'
+                        value: "calc(#{var(--margin-right)} * #{size-multiplier('sm')})",
+                        description:
+                            'The margin right of the modal component, for the sm size variant'
                     },
                     {
                         name: 'margin-bottom',
                         type: '',
-                        value: 'calc(#{var(--margin-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The margin bottom of the modal component, for the sm size variant'
+                        value: "calc(#{var(--margin-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The margin bottom of the modal component, for the sm size variant'
                     },
                     {
                         name: 'margin-left',
                         type: '',
-                        value: 'calc(#{var(--margin-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The margin left of the modal component, for the sm size variant'
+                        value: "calc(#{var(--margin-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The margin left of the modal component, for the sm size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding top of the modal component, for the sm size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding top of the modal component, for the sm size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding right of the modal component, for the sm size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding right of the modal component, for the sm size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the modal component, for the sm size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the modal component, for the sm size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the modal component, for the sm size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the modal component, for the sm size variant'
                     },
                     {
                         name: 'width',
                         type: '',
-                        value: 'calc(#{480px} * #{size-multiplier(\'sm\')})',
+                        value: "calc(#{480px} * #{size-multiplier('sm')})",
                         description: 'The width of the modal component, for the sm size variant'
                     },
                     {
                         name: 'header--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the modal component header, for the sm size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the modal component header, for the sm size variant'
                     },
                     {
                         name: 'header--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the modal component header, for the sm size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the modal component header, for the sm size variant'
                     },
                     {
                         name: 'body--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the modal component body, for the sm size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the modal component body, for the sm size variant'
                     },
                     {
                         name: 'body--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the modal component body, for the sm size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the modal component body, for the sm size variant'
                     },
                     {
                         name: 'footer--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the modal component footer, for the sm size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the modal component footer, for the sm size variant'
                     },
                     {
                         name: 'footer--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the modal component footer, for the sm size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the modal component footer, for the sm size variant'
                     }
                 ]
             },
@@ -1187,122 +1239,140 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top left radius of the modal component, for the md size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top left radius of the modal component, for the md size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top right radius of the modal component, for the md size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top right radius of the modal component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom right radius of the modal component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom right radius of the modal component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom left radius of the modal component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom left radius of the modal component, for the md size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('md')})",
                         description: 'The font size of the modal component, for the md size variant'
                     },
                     {
                         name: 'margin-top',
                         type: '',
-                        value: 'calc(#{var(--margin-top)} * #{size-multiplier(\'md\')})',
-                        description: 'The margin top of the modal component, for the md size variant'
+                        value: "calc(#{var(--margin-top)} * #{size-multiplier('md')})",
+                        description:
+                            'The margin top of the modal component, for the md size variant'
                     },
                     {
                         name: 'margin-right',
                         type: '',
-                        value: 'calc(#{var(--margin-right)} * #{size-multiplier(\'md\')})',
-                        description: 'The margin right of the modal component, for the md size variant'
+                        value: "calc(#{var(--margin-right)} * #{size-multiplier('md')})",
+                        description:
+                            'The margin right of the modal component, for the md size variant'
                     },
                     {
                         name: 'margin-bottom',
                         type: '',
-                        value: 'calc(#{var(--margin-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The margin bottom of the modal component, for the md size variant'
+                        value: "calc(#{var(--margin-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The margin bottom of the modal component, for the md size variant'
                     },
                     {
                         name: 'margin-left',
                         type: '',
-                        value: 'calc(#{var(--margin-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The margin left of the modal component, for the md size variant'
+                        value: "calc(#{var(--margin-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The margin left of the modal component, for the md size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding top of the modal component, for the md size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding top of the modal component, for the md size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding right of the modal component, for the md size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding right of the modal component, for the md size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the modal component, for the md size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the modal component, for the md size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the modal component, for the md size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the modal component, for the md size variant'
                     },
                     {
                         name: 'width',
                         type: '',
-                        value: 'calc(#{480px} * #{size-multiplier(\'md\')})',
+                        value: "calc(#{480px} * #{size-multiplier('md')})",
                         description: 'The width of the modal component, for the md size variant'
                     },
                     {
                         name: 'header--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the modal component header, for the md size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the modal component header, for the md size variant'
                     },
                     {
                         name: 'header--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the modal component header, for the md size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the modal component header, for the md size variant'
                     },
                     {
                         name: 'body--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the modal component body, for the md size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the modal component body, for the md size variant'
                     },
                     {
                         name: 'body--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the modal component body, for the md size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the modal component body, for the md size variant'
                     },
                     {
                         name: 'footer--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the modal component footer, for the md size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the modal component footer, for the md size variant'
                     },
                     {
                         name: 'footer--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the modal component footer, for the md size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the modal component footer, for the md size variant'
                     }
                 ]
             },
@@ -1314,122 +1384,140 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top left radius of the modal component, for the lg size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top left radius of the modal component, for the lg size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top right radius of the modal component, for the lg size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top right radius of the modal component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom right radius of the modal component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom right radius of the modal component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom left radius of the modal component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom left radius of the modal component, for the lg size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('lg')})",
                         description: 'The font size of the modal component, for the lg size variant'
                     },
                     {
                         name: 'margin-top',
                         type: '',
-                        value: 'calc(#{var(--margin-top)} * #{size-multiplier(\'lg\')})',
-                        description: 'The margin top of the modal component, for the lg size variant'
+                        value: "calc(#{var(--margin-top)} * #{size-multiplier('lg')})",
+                        description:
+                            'The margin top of the modal component, for the lg size variant'
                     },
                     {
                         name: 'margin-right',
                         type: '',
-                        value: 'calc(#{var(--margin-right)} * #{size-multiplier(\'lg\')})',
-                        description: 'The margin right of the modal component, for the lg size variant'
+                        value: "calc(#{var(--margin-right)} * #{size-multiplier('lg')})",
+                        description:
+                            'The margin right of the modal component, for the lg size variant'
                     },
                     {
                         name: 'margin-bottom',
                         type: '',
-                        value: 'calc(#{var(--margin-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The margin bottom of the modal component, for the lg size variant'
+                        value: "calc(#{var(--margin-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The margin bottom of the modal component, for the lg size variant'
                     },
                     {
                         name: 'margin-left',
                         type: '',
-                        value: 'calc(#{var(--margin-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The margin left of the modal component, for the lg size variant'
+                        value: "calc(#{var(--margin-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The margin left of the modal component, for the lg size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{var(--padding-top)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding top of the modal component, for the lg size variant'
+                        value: "calc(#{var(--padding-top)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding top of the modal component, for the lg size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding right of the modal component, for the lg size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding right of the modal component, for the lg size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{var(--padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the modal component, for the lg size variant'
+                        value: "calc(#{var(--padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the modal component, for the lg size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the modal component, for the lg size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the modal component, for the lg size variant'
                     },
                     {
                         name: 'width',
                         type: '',
-                        value: 'calc(#{480px} * #{size-multiplier(\'lg\')})',
+                        value: "calc(#{480px} * #{size-multiplier('lg')})",
                         description: 'The width of the modal component, for the lg size variant'
                     },
                     {
                         name: 'header--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the modal component header, for the lg size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the modal component header, for the lg size variant'
                     },
                     {
                         name: 'header--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the modal component header, for the lg size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the modal component header, for the lg size variant'
                     },
                     {
                         name: 'body--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the modal component body, for the lg size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the modal component body, for the lg size variant'
                     },
                     {
                         name: 'body--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the modal component body, for the lg size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the modal component body, for the lg size variant'
                     },
                     {
                         name: 'footer--padding-bottom',
                         type: '',
-                        value: 'calc(#{var(----padding-bottom)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the modal component footer, for the lg size variant'
+                        value: "calc(#{var(----padding-bottom)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the modal component footer, for the lg size variant'
                     },
                     {
                         name: 'footer--padding-left',
                         type: '',
-                        value: 'calc(#{var(----padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the modal component footer, for the lg size variant'
+                        value: "calc(#{var(----padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the modal component footer, for the lg size variant'
                     }
                 ]
             }

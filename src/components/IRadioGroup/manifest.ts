@@ -14,58 +14,43 @@ export const manifest = {
     props: [
         {
             name: 'color',
-            type: [
-                'light',
-                'dark'
-            ],
+            type: ['light', 'dark'],
             default: 'light',
             description: 'The color variant of the radio group'
         },
         {
             name: 'disabled',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The disabled state of the radio group'
         },
         {
             name: 'inline',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the radio group as inline'
         },
         {
             name: 'modelValue',
             type: [],
-            default: '\'\'',
+            default: "''",
             description: 'Used to set the radio group value'
         },
         {
             name: 'name',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'uid()',
             description: 'The unique identifier of the radio group'
         },
         {
             name: 'readonly',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The readonly state of the radio group'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the radio group'
         }

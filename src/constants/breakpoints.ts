@@ -1,5 +1,5 @@
 export interface Breakpoints {
-    [key: string]: number[]
+    [key: string]: number[];
 }
 
 /**

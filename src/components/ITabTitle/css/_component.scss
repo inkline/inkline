@@ -130,7 +130,7 @@
         > .tabs-header .tab-title {
             flex-grow: 1;
 
-            &:last-child {
+            &:last-of-type {
                 border-right-width: var(--tabs--stretch--title--border-right-width, 0);
             }
         }

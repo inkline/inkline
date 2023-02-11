@@ -22,10 +22,11 @@
 @import '../src/components/ISidebar/css/preview';
 @import '../src/components/ITable/css/preview';
 @import '../src/components/ITabs/css/preview';
+@import '../src/components/IToast/css/preview';
 @import '../src/components/ITooltip/css/preview';
 @import '../src/css/preview';
 
-#root {
+#storybook-root {
     min-height: calc(100vh - 2rem);
 }
 
@@ -43,7 +44,8 @@
     }
 }
 
-#root,
+#storybook-root,
+.sb-story > div,
 .storybook-example {
     @extend %alert-preview;
     @extend %badge-preview;
@@ -68,4 +70,5 @@
     @extend %sidebar-preview;
     @extend %table-preview;
     @extend %tabs-preview;
+    @extend %toast-preview;
 }

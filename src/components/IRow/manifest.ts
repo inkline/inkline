@@ -8,507 +8,394 @@ export const manifest = {
     props: [
         {
             name: 'start',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the start of the row'
         },
         {
             name: 'start-xs',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the start of the row on extra-small screens'
         },
         {
             name: 'start-sm',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the start of the row on small screens'
         },
         {
             name: 'start-md',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the start of the row on medium screens'
         },
         {
             name: 'start-lg',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the start of the row on large screens'
         },
         {
             name: 'start-xl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the start of the row on extra-large screens'
         },
         {
             name: 'start-xxl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the start of the row on extra-extra-large screens'
         },
         {
             name: 'center',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the center of the row'
         },
         {
             name: 'center-xs',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the center of the row on extra-small screens'
         },
         {
             name: 'center-sm',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the center of the row on small screens'
         },
         {
             name: 'center-md',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the center of the row on medium screens'
         },
         {
             name: 'center-lg',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the center of the row on large screens'
         },
         {
             name: 'center-xl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the center of the row on extra-large screens'
         },
         {
             name: 'center-xxl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the center of the row on extra-extra-large screens'
         },
         {
             name: 'end',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the end of the row'
         },
         {
             name: 'end-xs',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the end of the row on extra-small screens'
         },
         {
             name: 'end-sm',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the end of the row on small screens'
         },
         {
             name: 'end-md',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the end of the row on medium screens'
         },
         {
             name: 'end-lg',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the end of the row on large screens'
         },
         {
             name: 'end-xl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the end of the row on extra-large screens'
         },
         {
             name: 'end-xxl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the end of the row on extra-extra-large screens'
         },
         {
             name: 'top',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the top of the row'
         },
         {
             name: 'top-xs',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the top of the row on extra-small screens'
         },
         {
             name: 'top-sm',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the top of the row on small screens'
         },
         {
             name: 'top-md',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the top of the row on medium screens'
         },
         {
             name: 'top-lg',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the top of the row on large screens'
         },
         {
             name: 'top-xl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the top of the row on extra-large screens'
         },
         {
             name: 'top-xxl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the top of the row on extra-extra-large screens'
         },
         {
             name: 'middle',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the middle of the row'
         },
         {
             name: 'middle-xs',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the middle of the row on extra-small screens'
         },
         {
             name: 'middle-sm',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the middle of the row on small screens'
         },
         {
             name: 'middle-md',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the middle of the row on medium screens'
         },
         {
             name: 'middle-lg',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the middle of the row on large screens'
         },
         {
             name: 'middle-xl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the middle of the row on extra-large screens'
         },
         {
             name: 'middle-xxl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the middle of the row on extra-extra-large screens'
         },
         {
             name: 'bottom',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the bottom of the row'
         },
         {
             name: 'bottom-xs',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the bottom of the row on extra-small screens'
         },
         {
             name: 'bottom-sm',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the bottom of the row on small screens'
         },
         {
             name: 'bottom-md',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the bottom of the row on medium screens'
         },
         {
             name: 'bottom-lg',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the bottom of the row on large screens'
         },
         {
             name: 'bottom-xl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the bottom of the row on extra-large screens'
         },
         {
             name: 'bottom-xxl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the bottom of the row on extra-extra-large screens'
         },
         {
             name: 'around',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to have space around each item inside the row'
         },
         {
             name: 'around-xs',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space around each item inside the row on extra-small screens'
+            description:
+                'Justify the content to have space around each item inside the row on extra-small screens'
         },
         {
             name: 'around-sm',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space around each item inside the row on small screens'
+            description:
+                'Justify the content to have space around each item inside the row on small screens'
         },
         {
             name: 'around-md',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space around each item inside the row on medium screens'
+            description:
+                'Justify the content to have space around each item inside the row on medium screens'
         },
         {
             name: 'around-lg',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space around each item inside the row on large screens'
+            description:
+                'Justify the content to have space around each item inside the row on large screens'
         },
         {
             name: 'around-xl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space around each item inside the row on extra-large screens'
+            description:
+                'Justify the content to have space around each item inside the row on extra-large screens'
         },
         {
             name: 'around-xxl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space around each item inside the row on extra-extra-large screens'
+            description:
+                'Justify the content to have space around each item inside the row on extra-extra-large screens'
         },
         {
             name: 'between',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to have space between each item inside the row'
         },
         {
             name: 'between-xs',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space between each item inside the row on extra-small screens'
+            description:
+                'Justify the content to have space between each item inside the row on extra-small screens'
         },
         {
             name: 'between-sm',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space between each item inside the row on small screens'
+            description:
+                'Justify the content to have space between each item inside the row on small screens'
         },
         {
             name: 'between-md',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space between each item inside the row on medium screens'
+            description:
+                'Justify the content to have space between each item inside the row on medium screens'
         },
         {
             name: 'between-lg',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space between each item inside the row on large screens'
+            description:
+                'Justify the content to have space between each item inside the row on large screens'
         },
         {
             name: 'between-xl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space between each item inside the row on extra-large screens'
+            description:
+                'Justify the content to have space between each item inside the row on extra-large screens'
         },
         {
             name: 'between-xxl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Justify the content to have space between each item inside the row on extra-extra-large screens'
+            description:
+                'Justify the content to have space between each item inside the row on extra-extra-large screens'
         },
         {
             name: 'reverse',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Order the content in reverse order inside the row'
         },
         {
             name: 'reverse-xs',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Order the content in reverse order inside the row on extra-small screens'
         },
         {
             name: 'reverse-sm',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Order the content in reverse order inside the row on small screens'
         },
         {
             name: 'reverse-md',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Order the content in reverse order inside the row on medium screens'
         },
         {
             name: 'reverse-lg',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Order the content in reverse order inside the row on large screens'
         },
         {
             name: 'reverse-xl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Order the content in reverse order inside the row on extra-large screens'
         },
         {
             name: 'reverse-xxl',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
-            description: 'Order the content in reverse order inside the row on extra-extra-large screens'
+            description:
+                'Order the content in reverse order inside the row on extra-extra-large screens'
         }
     ],
     events: [],

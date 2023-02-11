@@ -15,33 +15,26 @@ export const manifest = {
     props: [
         {
             name: 'color',
-            type: [
-                'light',
-                'dark'
-            ],
+            type: ['light', 'dark'],
             default: 'light',
             description: 'The color variant of the radio'
         },
         {
             name: 'disabled',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The disabled state of the radio'
         },
         {
             name: 'indeterminate',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The indeterminate state of the radio'
         },
         {
             name: 'value',
             type: [],
-            default: '\'\'',
+            default: "''",
             description: 'Used to set the radio value when used inside a radio group'
         },
         {
@@ -52,44 +45,31 @@ export const manifest = {
         },
         {
             name: 'name',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'uid()',
             description: 'The unique identifier of the radio'
         },
         {
             name: 'native',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Displays the native browser radio input indicator'
         },
         {
             name: 'readonly',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The readonly state of the radio'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the radio'
         },
         {
             name: 'tabindex',
-            type: [
-                'Number',
-                'String'
-            ],
+            type: ['Number', 'String'],
             default: '0',
             description: 'The tabindex of the radio'
         }
@@ -105,50 +85,52 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'white\')',
+                value: "color('white')",
                 description: 'The background of the radio component indicator'
             },
             {
                 name: 'background--checked',
                 type: 'color',
-                value: 'color(\'primary\')',
+                value: "color('primary')",
                 description: 'The background of the radio component indicator when checked'
             },
             {
                 name: 'background--disabled',
                 type: 'color',
-                value: 'color(\'light-25\')',
+                value: "color('light-25')",
                 description: 'The background of the radio component indicator when disabled'
             },
             {
                 name: 'background--checked-disabled',
                 type: 'color',
-                value: 'color(\'primary-25\')',
-                description: 'The background of the radio component indicator when checked and disabled'
+                value: "color('primary-25')",
+                description:
+                    'The background of the radio component indicator when checked and disabled'
             },
             {
                 name: 'border-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border-color of the radio component indicator'
             },
             {
                 name: 'border-color--checked',
                 type: 'color',
-                value: 'color(\'primary-55\')',
+                value: "color('primary-55')",
                 description: 'The border-color of the radio component indicator when checked'
             },
             {
                 name: 'border-color--disabled',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The border-color of the radio component indicator when disabled'
             },
             {
                 name: 'border-color--checked-disabled',
                 type: 'color',
-                value: 'color(\'primary-30\')',
-                description: 'The border-color of the radio component indicator when checked and disabled'
+                value: "color('primary-30')",
+                description:
+                    'The border-color of the radio component indicator when checked and disabled'
             },
             {
                 name: 'border-style',
@@ -255,13 +237,13 @@ export const manifest = {
             {
                 name: 'color',
                 type: 'color',
-                value: 'color(\'white\')',
+                value: "color('white')",
                 description: 'The color of the radio component indicator icon'
             },
             {
                 name: 'color--disabled',
                 type: 'color',
-                value: 'color(\'light-25\')',
+                value: "color('light-25')",
                 description: 'The color of the radio component indicator icon when disabled'
             },
             {
@@ -297,7 +279,7 @@ export const manifest = {
             {
                 name: 'label--color--disabled',
                 type: 'color',
-                value: 'color(\'light-70\')',
+                value: "color('light-70')",
                 description: 'The label color of the radio component when disabled'
             }
         ],
@@ -310,74 +292,86 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'white\')',
-                        description: 'The background of the radio component indicator, for the light color variant'
+                        value: "color('white')",
+                        description:
+                            'The background of the radio component indicator, for the light color variant'
                     },
                     {
                         name: 'background--checked',
                         type: '',
-                        value: 'color(\'primary\')',
-                        description: 'The background of the radio component indicator when checked, for the light color variant'
+                        value: "color('primary')",
+                        description:
+                            'The background of the radio component indicator when checked, for the light color variant'
                     },
                     {
                         name: 'background--disabled',
                         type: '',
-                        value: 'color(\'light-25\')',
-                        description: 'The background of the radio component indicator when disabled, for the light color variant'
+                        value: "color('light-25')",
+                        description:
+                            'The background of the radio component indicator when disabled, for the light color variant'
                     },
                     {
                         name: 'background--checked-disabled',
                         type: '',
-                        value: 'color(\'primary-25\')',
-                        description: 'The background of the radio component indicator when checked and disabled, for the light color variant'
+                        value: "color('primary-25')",
+                        description:
+                            'The background of the radio component indicator when checked and disabled, for the light color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border-color of the radio component indicator, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border-color of the radio component indicator, for the light color variant'
                     },
                     {
                         name: 'border-color--checked',
                         type: '',
-                        value: 'color(\'primary-55\')',
-                        description: 'The border-color of the radio component indicator when checked, for the light color variant'
+                        value: "color('primary-55')",
+                        description:
+                            'The border-color of the radio component indicator when checked, for the light color variant'
                     },
                     {
                         name: 'border-color--disabled',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The border-color of the radio component indicator when disabled, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The border-color of the radio component indicator when disabled, for the light color variant'
                     },
                     {
                         name: 'border-color--checked-disabled',
                         type: '',
-                        value: 'color(\'primary-30\')',
-                        description: 'The border-color of the radio component indicator when checked and disabled, for the light color variant'
+                        value: "color('primary-30')",
+                        description:
+                            'The border-color of the radio component indicator when checked and disabled, for the light color variant'
                     },
                     {
                         name: 'color',
                         type: '',
-                        value: 'color(\'white\')',
-                        description: 'The color of the radio component indicator icon, for the light color variant'
+                        value: "color('white')",
+                        description:
+                            'The color of the radio component indicator icon, for the light color variant'
                     },
                     {
                         name: 'color--disabled',
                         type: '',
-                        value: 'color(\'light-25\')',
-                        description: 'The color of the radio component indicator icon when disabled, for the light color variant'
+                        value: "color('light-25')",
+                        description:
+                            'The color of the radio component indicator icon when disabled, for the light color variant'
                     },
                     {
                         name: 'label--color',
                         type: '',
                         value: 'contrast-color($color-light)',
-                        description: 'The label color of the radio component label, for the light color variant'
+                        description:
+                            'The label color of the radio component label, for the light color variant'
                     },
                     {
                         name: 'label--color--disabled',
                         type: '',
-                        value: 'color(\'light-70\')',
-                        description: 'The label color of the radio component when disabled, for the light color variant'
+                        value: "color('light-70')",
+                        description:
+                            'The label color of the radio component when disabled, for the light color variant'
                     }
                 ]
             },
@@ -389,74 +383,86 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the radio component indicator, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the radio component indicator, for the dark color variant'
                     },
                     {
                         name: 'background--checked',
                         type: '',
-                        value: 'color(\'primary\')',
-                        description: 'The background of the radio component indicator when checked, for the dark color variant'
+                        value: "color('primary')",
+                        description:
+                            'The background of the radio component indicator when checked, for the dark color variant'
                     },
                     {
                         name: 'background--disabled',
                         type: '',
-                        value: 'color(\'dark-25\')',
-                        description: 'The background of the radio component indicator when disabled, for the dark color variant'
+                        value: "color('dark-25')",
+                        description:
+                            'The background of the radio component indicator when disabled, for the dark color variant'
                     },
                     {
                         name: 'background--checked-disabled',
                         type: '',
-                        value: 'color(\'primary-75\')',
-                        description: 'The background of the radio component indicator when checked and disabled, for the dark color variant'
+                        value: "color('primary-75')",
+                        description:
+                            'The background of the radio component indicator when checked and disabled, for the dark color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The border-color of the radio component indicator, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The border-color of the radio component indicator, for the dark color variant'
                     },
                     {
                         name: 'border-color--checked',
                         type: '',
-                        value: 'color(\'primary-55\')',
-                        description: 'The border-color of the radio component indicator when checked, for the dark color variant'
+                        value: "color('primary-55')",
+                        description:
+                            'The border-color of the radio component indicator when checked, for the dark color variant'
                     },
                     {
                         name: 'border-color--disabled',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The border-color of the radio component indicator when disabled, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The border-color of the radio component indicator when disabled, for the dark color variant'
                     },
                     {
                         name: 'border-color--checked-disabled',
                         type: '',
-                        value: 'color(\'primary-70\')',
-                        description: 'The border-color of the radio component indicator when checked and disabled, for the dark color variant'
+                        value: "color('primary-70')",
+                        description:
+                            'The border-color of the radio component indicator when checked and disabled, for the dark color variant'
                     },
                     {
                         name: 'color',
                         type: '',
-                        value: 'color(\'white\')',
-                        description: 'The color of the radio component indicator icon, for the dark color variant'
+                        value: "color('white')",
+                        description:
+                            'The color of the radio component indicator icon, for the dark color variant'
                     },
                     {
                         name: 'color--disabled',
                         type: '',
-                        value: 'color(\'dark-25\')',
-                        description: 'The color of the radio component indicator icon when disabled, for the dark color variant'
+                        value: "color('dark-25')",
+                        description:
+                            'The color of the radio component indicator icon when disabled, for the dark color variant'
                     },
                     {
                         name: 'label--color',
                         type: '',
                         value: 'contrast-color($color-dark)',
-                        description: 'The label color of the radio component label, for the dark color variant'
+                        description:
+                            'The label color of the radio component label, for the dark color variant'
                     },
                     {
                         name: 'label--color--disabled',
                         type: '',
-                        value: 'color(\'dark-30\')',
-                        description: 'The label color of the radio component when disabled, for the dark color variant'
+                        value: "color('dark-30')",
+                        description:
+                            'The label color of the radio component when disabled, for the dark color variant'
                     }
                 ]
             },
@@ -468,20 +474,23 @@ export const manifest = {
                     {
                         name: 'size',
                         type: '',
-                        value: 'calc(#{1rem} * #{size-multiplier(\'sm\')})',
-                        description: 'The size of the radio component indicator, for the sm size variant'
+                        value: "calc(#{1rem} * #{size-multiplier('sm')})",
+                        description:
+                            'The size of the radio component indicator, for the sm size variant'
                     },
                     {
                         name: 'checkmark--size',
                         type: '',
-                        value: 'calc(#{8px} * #{size-multiplier(\'sm\')})',
-                        description: 'The size of the radio component indicator check mark icon, for the sm size variant'
+                        value: "calc(#{8px} * #{size-multiplier('sm')})",
+                        description:
+                            'The size of the radio component indicator check mark icon, for the sm size variant'
                     },
                     {
                         name: 'label--font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
-                        description: 'The font size of the radio component label, for the sm size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('sm')})",
+                        description:
+                            'The font size of the radio component label, for the sm size variant'
                     }
                 ]
             },
@@ -493,20 +502,23 @@ export const manifest = {
                     {
                         name: 'size',
                         type: '',
-                        value: 'calc(#{1rem} * #{size-multiplier(\'md\')})',
-                        description: 'The size of the radio component indicator, for the md size variant'
+                        value: "calc(#{1rem} * #{size-multiplier('md')})",
+                        description:
+                            'The size of the radio component indicator, for the md size variant'
                     },
                     {
                         name: 'checkmark--size',
                         type: '',
-                        value: 'calc(#{8px} * #{size-multiplier(\'md\')})',
-                        description: 'The size of the radio component indicator check mark icon, for the md size variant'
+                        value: "calc(#{8px} * #{size-multiplier('md')})",
+                        description:
+                            'The size of the radio component indicator check mark icon, for the md size variant'
                     },
                     {
                         name: 'label--font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
-                        description: 'The font size of the radio component label, for the md size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('md')})",
+                        description:
+                            'The font size of the radio component label, for the md size variant'
                     }
                 ]
             },
@@ -518,20 +530,23 @@ export const manifest = {
                     {
                         name: 'size',
                         type: '',
-                        value: 'calc(#{1rem} * #{size-multiplier(\'lg\')})',
-                        description: 'The size of the radio component indicator, for the lg size variant'
+                        value: "calc(#{1rem} * #{size-multiplier('lg')})",
+                        description:
+                            'The size of the radio component indicator, for the lg size variant'
                     },
                     {
                         name: 'checkmark--size',
                         type: '',
-                        value: 'calc(#{8px} * #{size-multiplier(\'lg\')})',
-                        description: 'The size of the radio component indicator check mark icon, for the lg size variant'
+                        value: "calc(#{8px} * #{size-multiplier('lg')})",
+                        description:
+                            'The size of the radio component indicator check mark icon, for the lg size variant'
                     },
                     {
                         name: 'label--font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
-                        description: 'The font size of the radio component label, for the lg size variant'
+                        value: "calc(#{font-size()} * #{size-multiplier('lg')})",
+                        description:
+                            'The font size of the radio component label, for the lg size variant'
                     }
                 ]
             }

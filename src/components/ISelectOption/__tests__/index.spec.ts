@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ISelectOption } from '@inkline/inkline/components';
 import { InklineKey } from '@inkline/inkline/plugin';
-import { createInkline } from '@inkline/inkline/__mocks__';
+import { createInkline } from '@inkline/inkline/__tests__/utils';
 import { SelectKey } from '@inkline/inkline/components/ISelect/mixin';
 import { ref } from 'vue';
 

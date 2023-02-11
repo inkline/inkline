@@ -35,111 +35,79 @@ export const manifest = {
     props: [
         {
             name: 'color',
-            type: [
-                'light',
-                'dark'
-            ],
+            type: ['light', 'dark'],
             default: 'light',
             description: 'The color variant of the input'
         },
         {
             name: 'clearable',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the input as clearable'
         },
         {
             name: 'disabled',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The disabled state of the input'
         },
         {
             name: 'error',
-            type: [
-                'Boolean',
-                'Array'
-            ],
-            default: '\'touched\', \'dirty\', \'invalid\'',
+            type: ['Boolean', 'Array'],
+            default: "'touched', 'dirty', 'invalid'",
             description: 'The error state of the input, computed based on schema by default.'
         },
         {
             name: 'id',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: '',
             description: 'The id of the internal input element'
         },
         {
             name: 'modelValue',
-            type: [
-                'String',
-                'Number'
-            ],
-            default: '\'\'',
+            type: ['String', 'Number'],
+            default: "''",
             description: 'Used to set the field value'
         },
         {
             name: 'name',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'uid()',
             description: 'The unique identifier of the input'
         },
         {
             name: 'plaintext',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the input as plaintext, disabling interaction'
         },
         {
             name: 'readonly',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The readonly state of the input'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the input'
         },
         {
             name: 'tabindex',
-            type: [
-                'Number',
-                'String'
-            ],
+            type: ['Number', 'String'],
             default: '1',
             description: 'The tabindex of the input'
         },
         {
             name: 'type',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'text',
             description: 'The type of the input'
         },
         {
             name: 'clearAriaLabel',
-            type: [
-                'String'
-            ],
+            type: ['String'],
             default: 'Clear',
             description: 'The aria-label of the clear button'
         }
@@ -155,31 +123,31 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'white\')',
+                value: "color('white')",
                 description: 'The background of the input component'
             },
             {
                 name: 'background--disabled',
                 type: 'color',
-                value: 'color(\'light-25\')',
+                value: "color('light-25')",
                 description: 'The background of the input component when disabled'
             },
             {
                 name: 'border-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border color of the input component'
             },
             {
                 name: 'border-color--hover',
                 type: 'color',
-                value: 'color(\'light-60\')',
+                value: "color('light-60')",
                 description: 'The border color of the input component when hovered'
             },
             {
                 name: 'border-color--focus',
                 type: 'color',
-                value: 'color(\'primary\')',
+                value: "color('primary')",
                 description: 'The border color of the input component when focused'
             },
             {
@@ -293,7 +261,7 @@ export const manifest = {
             {
                 name: 'color--disabled',
                 type: 'color',
-                value: 'color(\'light-75\')',
+                value: "color('light-75')",
                 description: 'The color of the input component when disabled'
             },
             {
@@ -347,19 +315,19 @@ export const manifest = {
             {
                 name: 'clear--background--hover',
                 type: 'color',
-                value: 'color(\'light-30\')',
+                value: "color('light-30')",
                 description: 'The background of the input component clear button'
             },
             {
                 name: 'clear--background--active',
                 type: 'color',
-                value: 'color(\'light-40\')',
+                value: "color('light-40')",
                 description: 'The background of the input component clear button'
             },
             {
                 name: 'clear--color',
                 type: 'color',
-                value: 'color(\'light-70\')',
+                value: "color('light-70')",
                 description: 'The color of the input component clear button'
             },
             {
@@ -371,7 +339,7 @@ export const manifest = {
             {
                 name: 'placeholder--color',
                 type: 'color',
-                value: 'color(\'light-60\')',
+                value: "color('light-60')",
                 description: 'The color of the input component placeholder'
             },
             {
@@ -395,7 +363,7 @@ export const manifest = {
             {
                 name: 'prefix-suffix--color',
                 type: 'color',
-                value: 'color(\'light-70\')',
+                value: "color('light-70')",
                 description: 'The color of the input component prefix and suffix'
             },
             {
@@ -413,7 +381,7 @@ export const manifest = {
             {
                 name: 'prepend-append--background',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The background of the input component prepend and append'
             }
         ],
@@ -426,32 +394,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'white\')',
-                        description: 'The background of the input component, for the light color variant'
+                        value: "color('white')",
+                        description:
+                            'The background of the input component, for the light color variant'
                     },
                     {
                         name: 'background--disabled',
                         type: '',
-                        value: 'color(\'light-25\')',
-                        description: 'The background of the input component when disabled, for the light color variant'
+                        value: "color('light-25')",
+                        description:
+                            'The background of the input component when disabled, for the light color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border color of the input component, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border color of the input component, for the light color variant'
                     },
                     {
                         name: 'border-color--hover',
                         type: '',
-                        value: 'color(\'light-60\')',
-                        description: 'The border color of the input component when hovered, for the light color variant'
+                        value: "color('light-60')",
+                        description:
+                            'The border color of the input component when hovered, for the light color variant'
                     },
                     {
                         name: 'border-color--focus',
                         type: '',
-                        value: 'color(\'primary\')',
-                        description: 'The border color of the input component when focused, for the light color variant'
+                        value: "color('primary')",
+                        description:
+                            'The border color of the input component when focused, for the light color variant'
                     },
                     {
                         name: 'color',
@@ -462,50 +435,58 @@ export const manifest = {
                     {
                         name: 'color--disabled',
                         type: '',
-                        value: 'color(\'light-75\')',
-                        description: 'The color of the input component when disabled, for the light color variant'
+                        value: "color('light-75')",
+                        description:
+                            'The color of the input component when disabled, for the light color variant'
                     },
                     {
                         name: 'clear--background',
                         type: '',
                         value: 'transparent',
-                        description: 'The background of the input component clear button, for the light color variant'
+                        description:
+                            'The background of the input component clear button, for the light color variant'
                     },
                     {
                         name: 'clear--background--hover',
                         type: '',
-                        value: 'color(\'light-30\')',
-                        description: 'The background of the input component clear button, for the light color variant'
+                        value: "color('light-30')",
+                        description:
+                            'The background of the input component clear button, for the light color variant'
                     },
                     {
                         name: 'clear--background--active',
                         type: '',
-                        value: 'color(\'light-40\')',
-                        description: 'The background of the input component clear button, for the light color variant'
+                        value: "color('light-40')",
+                        description:
+                            'The background of the input component clear button, for the light color variant'
                     },
                     {
                         name: 'clear--color',
                         type: '',
-                        value: 'color(\'light-70\')',
-                        description: 'The color of the input component clear button, for the light color variant'
+                        value: "color('light-70')",
+                        description:
+                            'The color of the input component clear button, for the light color variant'
                     },
                     {
                         name: 'placeholder--color',
                         type: '',
-                        value: 'color(\'light-60\')',
-                        description: 'The color of the input component placeholder, for the light color variant'
+                        value: "color('light-60')",
+                        description:
+                            'The color of the input component placeholder, for the light color variant'
                     },
                     {
                         name: 'prefix-suffix--color',
                         type: '',
-                        value: 'color(\'light-70\')',
-                        description: 'The color of the input component prefix and suffix, for the light color variant'
+                        value: "color('light-70')",
+                        description:
+                            'The color of the input component prefix and suffix, for the light color variant'
                     },
                     {
                         name: 'prepend-append--background',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The background of the input component prepend and append, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The background of the input component prepend and append, for the light color variant'
                     }
                 ]
             },
@@ -517,32 +498,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the input component, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the input component, for the dark color variant'
                     },
                     {
                         name: 'background--disabled',
                         type: '',
-                        value: 'color(\'dark-40\')',
-                        description: 'The background of the input component when disabled, for the dark color variant'
+                        value: "color('dark-40')",
+                        description:
+                            'The background of the input component when disabled, for the dark color variant'
                     },
                     {
                         name: 'border-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border color of the input component, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border color of the input component, for the dark color variant'
                     },
                     {
                         name: 'border-color--hover',
                         type: '',
-                        value: 'color(\'dark-40\')',
-                        description: 'The border color of the input component when hovered, for the dark color variant'
+                        value: "color('dark-40')",
+                        description:
+                            'The border color of the input component when hovered, for the dark color variant'
                     },
                     {
                         name: 'border-color--focus',
                         type: '',
-                        value: 'color(\'primary\')',
-                        description: 'The border color of the input component when focused, for the dark color variant'
+                        value: "color('primary')",
+                        description:
+                            'The border color of the input component when focused, for the dark color variant'
                     },
                     {
                         name: 'color',
@@ -553,50 +539,58 @@ export const manifest = {
                     {
                         name: 'color--disabled',
                         type: '',
-                        value: 'color(\'gray-35\')',
-                        description: 'The color of the input component when disabled, for the dark color variant'
+                        value: "color('gray-35')",
+                        description:
+                            'The color of the input component when disabled, for the dark color variant'
                     },
                     {
                         name: 'clear--background',
                         type: '',
                         value: 'transparent',
-                        description: 'The background of the input component clear button, for the dark color variant'
+                        description:
+                            'The background of the input component clear button, for the dark color variant'
                     },
                     {
                         name: 'clear--background--hover',
                         type: '',
-                        value: 'color(\'dark-35\')',
-                        description: 'The background of the input component clear button, for the dark color variant'
+                        value: "color('dark-35')",
+                        description:
+                            'The background of the input component clear button, for the dark color variant'
                     },
                     {
                         name: 'clear--background--active',
                         type: '',
-                        value: 'color(\'dark-30\')',
-                        description: 'The background of the input component clear button, for the dark color variant'
+                        value: "color('dark-30')",
+                        description:
+                            'The background of the input component clear button, for the dark color variant'
                     },
                     {
                         name: 'clear--color',
                         type: '',
-                        value: 'color(\'dark-30\')',
-                        description: 'The color of the input component clear button, for the dark color variant'
+                        value: "color('dark-30')",
+                        description:
+                            'The color of the input component clear button, for the dark color variant'
                     },
                     {
                         name: 'placeholder--color',
                         type: '',
-                        value: 'color(\'dark-25\')',
-                        description: 'The color of the input component placeholder, for the dark color variant'
+                        value: "color('dark-25')",
+                        description:
+                            'The color of the input component placeholder, for the dark color variant'
                     },
                     {
                         name: 'prefix-suffix--color',
                         type: '',
-                        value: 'color(\'dark-25\')',
-                        description: 'The color of the input component prefix and suffix, for the dark color variant'
+                        value: "color('dark-25')",
+                        description:
+                            'The color of the input component prefix and suffix, for the dark color variant'
                     },
                     {
                         name: 'prepend-append--background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the input component prepend and append, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the input component prepend and append, for the dark color variant'
                     }
                 ]
             },
@@ -608,56 +602,64 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top left radius of the input component, for the sm size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top left radius of the input component, for the sm size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top right radius of the input component, for the sm size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top right radius of the input component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom right radius of the input component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom right radius of the input component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom left radius of the input component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom left radius of the input component, for the sm size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'sm\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('sm')})",
                         description: 'The font size of the input component, for the sm size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding top of the input component, for the sm size variant'
+                        value: "calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding top of the input component, for the sm size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding right of the input component, for the sm size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding right of the input component, for the sm size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding bottom of the input component, for the sm size variant'
+                        value: "calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding bottom of the input component, for the sm size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'sm\')})',
-                        description: 'The padding left of the input component, for the sm size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('sm')})",
+                        description:
+                            'The padding left of the input component, for the sm size variant'
                     }
                 ]
             },
@@ -669,56 +671,64 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top left radius of the input component, for the md size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top left radius of the input component, for the md size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top right radius of the input component, for the md size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top right radius of the input component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom right radius of the input component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom right radius of the input component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom left radius of the input component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom left radius of the input component, for the md size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'md\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('md')})",
                         description: 'The font size of the input component, for the md size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding top of the input component, for the md size variant'
+                        value: "calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding top of the input component, for the md size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding right of the input component, for the md size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding right of the input component, for the md size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding bottom of the input component, for the md size variant'
+                        value: "calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding bottom of the input component, for the md size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'md\')})',
-                        description: 'The padding left of the input component, for the md size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('md')})",
+                        description:
+                            'The padding left of the input component, for the md size variant'
                     }
                 ]
             },
@@ -730,56 +740,64 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top left radius of the input component, for the lg size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top left radius of the input component, for the lg size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top right radius of the input component, for the lg size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top right radius of the input component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom right radius of the input component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom right radius of the input component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom left radius of the input component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom left radius of the input component, for the lg size variant'
                     },
                     {
                         name: 'font-size',
                         type: '',
-                        value: 'calc(#{font-size()} * #{size-multiplier(\'lg\')})',
+                        value: "calc(#{font-size()} * #{size-multiplier('lg')})",
                         description: 'The font size of the input component, for the lg size variant'
                     },
                     {
                         name: 'padding-top',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding top of the input component, for the lg size variant'
+                        value: "calc(#{calc(var(--padding-top) / 2)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding top of the input component, for the lg size variant'
                     },
                     {
                         name: 'padding-right',
                         type: '',
-                        value: 'calc(#{var(--padding-right)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding right of the input component, for the lg size variant'
+                        value: "calc(#{var(--padding-right)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding right of the input component, for the lg size variant'
                     },
                     {
                         name: 'padding-bottom',
                         type: '',
-                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding bottom of the input component, for the lg size variant'
+                        value: "calc(#{calc(var(--padding-bottom) / 2)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding bottom of the input component, for the lg size variant'
                     },
                     {
                         name: 'padding-left',
                         type: '',
-                        value: 'calc(#{var(--padding-left)} * #{size-multiplier(\'lg\')})',
-                        description: 'The padding left of the input component, for the lg size variant'
+                        value: "calc(#{var(--padding-left)} * #{size-multiplier('lg')})",
+                        description:
+                            'The padding left of the input component, for the lg size variant'
                     }
                 ]
             }

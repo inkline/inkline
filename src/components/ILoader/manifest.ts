@@ -9,22 +9,13 @@ export const manifest = {
     props: [
         {
             name: 'color',
-            type: [
-                'primary',
-                'light',
-                'dark'
-            ],
+            type: ['primary', 'light', 'dark'],
             default: 'light',
             description: 'The color variant of the loader'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg',
-                'auto'
-            ],
+            type: ['sm', 'md', 'lg', 'auto'],
             default: 'md',
             description: 'The size variant of the loader'
         }
@@ -51,7 +42,7 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'primary\')',
+                value: "color('primary')",
                 description: 'The background of the loader component'
             }
         ],
@@ -64,8 +55,9 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'primary\')',
-                        description: 'The background of the loader component, for the primary color variant'
+                        value: "color('primary')",
+                        description:
+                            'The background of the loader component, for the primary color variant'
                     }
                 ]
             },
@@ -77,8 +69,9 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The background of the loader component, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The background of the loader component, for the light color variant'
                     }
                 ]
             },
@@ -90,8 +83,9 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark\')',
-                        description: 'The background of the loader component, for the dark color variant'
+                        value: "color('dark')",
+                        description:
+                            'The background of the loader component, for the dark color variant'
                     }
                 ]
             },
@@ -103,7 +97,7 @@ export const manifest = {
                     {
                         name: 'size',
                         type: '',
-                        value: 'calc(#{64px} * #{size-multiplier(\'sm\')})',
+                        value: "calc(#{64px} * #{size-multiplier('sm')})",
                         description: 'The size of the loader component, for the sm size variant'
                     }
                 ]
@@ -116,7 +110,7 @@ export const manifest = {
                     {
                         name: 'size',
                         type: '',
-                        value: 'calc(#{64px} * #{size-multiplier(\'md\')})',
+                        value: "calc(#{64px} * #{size-multiplier('md')})",
                         description: 'The size of the loader component, for the md size variant'
                     }
                 ]
@@ -129,7 +123,7 @@ export const manifest = {
                     {
                         name: 'size',
                         type: '',
-                        value: 'calc(#{64px} * #{size-multiplier(\'lg\')})',
+                        value: "calc(#{64px} * #{size-multiplier('lg')})",
                         description: 'The size of the loader component, for the lg size variant'
                     }
                 ]

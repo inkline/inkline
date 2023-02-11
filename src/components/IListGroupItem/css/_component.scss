@@ -26,12 +26,12 @@
             border-bottom-color: var(--list-group--active--border-color);
         }
 
-        &:first-child {
+        &:first-of-type {
             border-top-left-radius: var(--list-group--border-top-left-radius);
             border-top-right-radius: var(--list-group--border-top-right-radius);
         }
 
-        &:last-child {
+        &:last-of-type {
             border-bottom-width: 0;
             border-bottom-left-radius: var(--list-group--border-bottom-left-radius);
             border-bottom-right-radius: var(--list-group--border-bottom-right-radius);
@@ -42,11 +42,11 @@
             text-decoration: none;
         }
 
-        > *:first-child {
+        > *:first-of-type {
             margin-top: 0;
         }
 
-        > *:last-child {
+        > *:last-of-type {
             margin-bottom: 0;
         }
 

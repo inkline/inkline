@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IAlert } from '@inkline/inkline/components';
-import { createInkline, Placeholder } from '@inkline/inkline/__mocks__';
+import { createInkline, Placeholder } from '@inkline/inkline/__tests__/utils';
 import { InklineKey } from '@inkline/inkline/plugin';
 
 describe('Components', () => {

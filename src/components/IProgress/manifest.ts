@@ -9,36 +9,25 @@ export const manifest = {
     props: [
         {
             name: 'color',
-            type: [
-                'light',
-                'dark'
-            ],
+            type: ['light', 'dark'],
             default: 'light',
             description: 'The color variant of the progress component'
         },
         {
             name: 'min',
-            type: [
-                'Number'
-            ],
+            type: ['Number'],
             default: '0',
             description: 'The value to consider as the 0% starting point'
         },
         {
             name: 'max',
-            type: [
-                'Number'
-            ],
+            type: ['Number'],
             default: '100',
             description: 'The value to consider as the 100% ending point'
         },
         {
             name: 'size',
-            type: [
-                'sm',
-                'md',
-                'lg'
-            ],
+            type: ['sm', 'md', 'lg'],
             default: 'md',
             description: 'The size variant of the progress component'
         }
@@ -53,31 +42,31 @@ export const manifest = {
             {
                 name: 'background',
                 type: 'color',
-                value: 'color(\'light\')',
+                value: "color('light')",
                 description: 'The background of the progress component'
             },
             {
                 name: 'border-top-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border top color of the progress component'
             },
             {
                 name: 'border-right-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border right color of the progress component'
             },
             {
                 name: 'border-bottom-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border bottom color of the progress component'
             },
             {
                 name: 'border-left-color',
                 type: 'color',
-                value: 'color(\'light-55\')',
+                value: "color('light-55')",
                 description: 'The border left color of the progress component'
             },
             {
@@ -191,7 +180,7 @@ export const manifest = {
             {
                 name: 'height',
                 type: 'size',
-                value: 'spacing(\'3/4\')',
+                value: "spacing('3/4')",
                 description: 'The height of the progress component'
             }
         ],
@@ -204,32 +193,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'light\')',
-                        description: 'The background of the progress component, for the light color variant'
+                        value: "color('light')",
+                        description:
+                            'The background of the progress component, for the light color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border top color of the progress component, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border top color of the progress component, for the light color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border right color of the progress component, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border right color of the progress component, for the light color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border bottom color of the progress component, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border bottom color of the progress component, for the light color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'light-55\')',
-                        description: 'The border left color of the progress component, for the light color variant'
+                        value: "color('light-55')",
+                        description:
+                            'The border left color of the progress component, for the light color variant'
                     }
                 ]
             },
@@ -241,32 +235,37 @@ export const manifest = {
                     {
                         name: 'background',
                         type: '',
-                        value: 'color(\'dark-60\')',
-                        description: 'The background of the progress component, for the dark color variant'
+                        value: "color('dark-60')",
+                        description:
+                            'The background of the progress component, for the dark color variant'
                     },
                     {
                         name: 'border-top-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border top color of the progress component, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border top color of the progress component, for the dark color variant'
                     },
                     {
                         name: 'border-right-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border right color of the progress component, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border right color of the progress component, for the dark color variant'
                     },
                     {
                         name: 'border-bottom-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border bottom color of the progress component, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border bottom color of the progress component, for the dark color variant'
                     },
                     {
                         name: 'border-left-color',
                         type: '',
-                        value: 'color(\'dark-45\')',
-                        description: 'The border left color of the progress component, for the dark color variant'
+                        value: "color('dark-45')",
+                        description:
+                            'The border left color of the progress component, for the dark color variant'
                     }
                 ]
             },
@@ -278,31 +277,35 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top left radius of the progress component, for the sm size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top left radius of the progress component, for the sm size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border top right radius of the progress component, for the sm size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border top right radius of the progress component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom right radius of the progress component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom right radius of the progress component, for the sm size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'sm\')})',
-                        description: 'The border bottom left radius of the progress component, for the sm size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('sm')})",
+                        description:
+                            'The border bottom left radius of the progress component, for the sm size variant'
                     },
                     {
                         name: 'height',
                         type: '',
-                        value: 'calc(#{spacing(\'3/4\')} * #{size-multiplier(\'sm\')})',
+                        value: "calc(#{spacing('3/4')} * #{size-multiplier('sm')})",
                         description: 'The height of the progress component, for the sm size variant'
                     }
                 ]
@@ -315,31 +318,35 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top left radius of the progress component, for the md size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top left radius of the progress component, for the md size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border top right radius of the progress component, for the md size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border top right radius of the progress component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom right radius of the progress component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom right radius of the progress component, for the md size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'md\')})',
-                        description: 'The border bottom left radius of the progress component, for the md size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('md')})",
+                        description:
+                            'The border bottom left radius of the progress component, for the md size variant'
                     },
                     {
                         name: 'height',
                         type: '',
-                        value: 'calc(#{spacing(\'3/4\')} * #{size-multiplier(\'md\')})',
+                        value: "calc(#{spacing('3/4')} * #{size-multiplier('md')})",
                         description: 'The height of the progress component, for the md size variant'
                     }
                 ]
@@ -352,31 +359,35 @@ export const manifest = {
                     {
                         name: 'border-top-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top left radius of the progress component, for the lg size variant'
+                        value: "calc(#{var(--border-top-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top left radius of the progress component, for the lg size variant'
                     },
                     {
                         name: 'border-top-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-top-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border top right radius of the progress component, for the lg size variant'
+                        value: "calc(#{var(--border-top-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border top right radius of the progress component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-right-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-right-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom right radius of the progress component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-right-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom right radius of the progress component, for the lg size variant'
                     },
                     {
                         name: 'border-bottom-left-radius',
                         type: '',
-                        value: 'calc(#{var(--border-bottom-left-radius)} * #{size-multiplier(\'lg\')})',
-                        description: 'The border bottom left radius of the progress component, for the lg size variant'
+                        value: "calc(#{var(--border-bottom-left-radius)} * #{size-multiplier('lg')})",
+                        description:
+                            'The border bottom left radius of the progress component, for the lg size variant'
                     },
                     {
                         name: 'height',
                         type: '',
-                        value: 'calc(#{spacing(\'3/4\')} * #{size-multiplier(\'lg\')})',
+                        value: "calc(#{spacing('3/4')} * #{size-multiplier('lg')})",
                         description: 'The height of the progress component, for the lg size variant'
                     }
                 ]

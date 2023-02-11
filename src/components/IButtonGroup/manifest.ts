@@ -9,25 +9,19 @@ export const manifest = {
     props: [
         {
             name: 'vertical',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the button group with vertical orientation'
         },
         {
             name: 'block',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'Display the button group as a block, spanning the full container width'
         },
         {
             name: 'disabled',
-            type: [
-                'Boolean'
-            ],
+            type: ['Boolean'],
             default: 'false',
             description: 'The disabled state of the button group'
         }

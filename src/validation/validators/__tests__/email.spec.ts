@@ -22,7 +22,7 @@ describe('Validators', () => {
             expect(email(['user1@example.com', 'user2@example.com'])).toEqual(true);
         });
 
-        it('should return false if array doesn\'t contain only valid emails', () => {
+        it("should return false if array doesn't contain only valid emails", () => {
             expect(email(['user1@example.com', 'user2@example'])).toEqual(false);
         });
 
