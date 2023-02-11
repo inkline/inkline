@@ -39,7 +39,7 @@ export interface InklineToastOptions {
 
 export interface ToastService {
     show: (options: Partial<ToastOptions>) => void;
-    hide: (id: string) => void;
+    hide: (options: { id: string }) => void;
     hideAll: () => void;
 }
 
@@ -49,8 +49,8 @@ export const createToastService = (): ToastService => ({
     show: (options) => {
         toastEventBus.emit('show', options);
     },
-    hide: (id) => {
-        toastEventBus.emit('hide', { id });
+    hide: (options) => {
+        toastEventBus.emit('hide', options);
     },
     hideAll: () => {
         toastEventBus.emit('hideAll', {});

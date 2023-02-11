@@ -1,12 +1,10 @@
 import {
     createInklineService,
-    onChangeColorMode,
     Inkline,
-    InklineIconsKey,
     InklineKey,
-    InklineOptions
+    InklineOptions,
+    InklinePluginOptions
 } from '@inkline/inkline/plugin';
-import * as inklineIcons from '@inkline/inkline/icons';
 import { IButton } from '@inkline/inkline/components';
 import { i18n } from '@inkline/inkline/i18n';
 
@@ -14,6 +12,8 @@ describe('Plugin', () => {
     describe('createInklineGlobals()', () => {
         it('should create a new prototype with given options', () => {
             const options: InklineOptions = {
+                colorModeStrategy: 'localStorage',
+                renderMode: 'universal',
                 colorMode: 'system',
                 locale: 'en',
                 validateOn: ['blur'],
@@ -22,7 +22,7 @@ describe('Plugin', () => {
                 routerComponent: 'router-link',
                 componentOptions: {}
             };
-            const prototype = createInklineService(options);
+            const prototype = createInklineService(options as InklinePluginOptions);
 
             expect(prototype).toHaveProperty('form');
             expect(prototype).toHaveProperty('setLocale');
@@ -42,21 +42,6 @@ describe('Plugin', () => {
                 config: {
                     globalProperties: {}
                 }
-            });
-
-            it('should register default inkline icons', () => {
-                const app = createApp();
-
-                Inkline.install!(app as any, {
-                    icons: {
-                        Icon: true
-                    }
-                });
-
-                expect(app.provide).toHaveBeenCalledWith(InklineIconsKey, {
-                    Icon: true,
-                    ...inklineIcons
-                });
             });
 
             it('should register options.components', () => {

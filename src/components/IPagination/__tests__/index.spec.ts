@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IPagination } from '@inkline/inkline/components';
 import { InklineKey } from '@inkline/inkline/plugin';
-import { createInkline } from '@inkline/inkline/__mocks__';
+import { createInkline } from '@inkline/inkline/__tests__/utils';
 
 describe('Components', () => {
     describe('IPagination', () => {

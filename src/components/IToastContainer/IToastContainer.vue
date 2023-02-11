@@ -86,7 +86,7 @@ export default defineComponent({
             });
         }
 
-        function hideToast(id: string) {
+        function hideToast({ id }: { id: string }) {
             toastPositionKeys.value.forEach((position) => {
                 if (!toastPositions.value[position].find((toast) => toast.id === id)) {
                     return;

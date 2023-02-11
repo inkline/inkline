@@ -2,7 +2,7 @@ import { render } from '@testing-library/vue';
 import { IButton } from '@inkline/inkline/components/IButton';
 import { ref } from 'vue';
 import { InklineKey } from '@inkline/inkline/plugin';
-import { createInkline } from '@inkline/inkline/__mocks__';
+import { createInkline } from '@inkline/inkline/__tests__/utils';
 import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
 import { ButtonGroupKey } from '@inkline/inkline/components/IButtonGroup/mixin';
 import { FormKey } from '@inkline/inkline/components/IForm/mixin';
