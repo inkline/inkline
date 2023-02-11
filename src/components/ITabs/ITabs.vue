@@ -143,9 +143,9 @@ export default defineComponent({
         <div class="tabs-header">
             <!-- @slot header Slot for tabs header -->
             <slot name="header">
-                <ITabTitle v-for="tab in tabs" :key="tab.name" :for="tab.name">{{
-                    tab.title
-                }}</ITabTitle>
+                <ITabTitle v-for="tab in tabs" :key="tab.name" :for="tab.name">
+                    {{ tab.title }}
+                </ITabTitle>
             </slot>
         </div>
 

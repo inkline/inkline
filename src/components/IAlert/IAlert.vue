@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ref, useSlots, computed, watch, defineComponent } from 'vue';
+import { ref, computed, watch, defineComponent } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'IAlert';

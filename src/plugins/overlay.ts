@@ -3,7 +3,7 @@ import { OverlayController } from '@inkline/inkline/controllers';
 import { Plugin } from 'vue';
 
 export const OverlayPlugin: Plugin = {
-    install: (app) => {
+    install: () => {
         if (typeof window !== 'undefined') {
             /**
              * Add global key bindings
