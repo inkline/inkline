@@ -190,6 +190,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "theruziev",
+      "name": "Bakhtiyor Ruziev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32102033?v=4",
+      "profile": "https://github.com/theruziev",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 10,
