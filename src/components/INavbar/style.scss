@@ -67,6 +67,7 @@
     border-style: var(----border-style);
     border-color: var(----border-color);
     border-radius: var(----border-radius);
+    z-index: 1;
 
     > .container > .row > .column {
         display: flex;
