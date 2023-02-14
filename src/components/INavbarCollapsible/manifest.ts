@@ -1,15 +1,16 @@
 export const manifest = {
-    slots: [
+    "name": "INavbarCollapsible",
+    "props": [],
+    "events": [],
+    "slots": [
         {
-            description: 'Slot for default navbar collapsible content',
-            name: 'default'
+            "name": "default",
+            "description": "Slot for default navbar collapsible content "
         }
     ],
-    events: [],
-    props: [],
-    css: {
-        variables: [],
-        variants: []
+    "css": {
+        "selector": "",
+        "variables": []
     }
 };
 

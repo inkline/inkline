@@ -1,46 +1,60 @@
 export const manifest = {
-    slots: [
+    "name": "ISelectOption",
+    "props": [
         {
-            description: 'Slot for default select option content',
-            name: 'default'
+            "name": "active",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false",
+            "description": "The active state of the select option"
+        },
+        {
+            "name": "disabled",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false",
+            "description": "The disabled state of the select option"
+        },
+        {
+            "name": "label",
+            "type": [
+                "String"
+            ],
+            "default": "''",
+            "description": "The label of the select option"
+        },
+        {
+            "name": "tabindex",
+            "type": [
+                "Number",
+                "String"
+            ],
+            "default": "0",
+            "description": "The tabindex of the list group item"
+        },
+        {
+            "name": "value",
+            "type": [
+                "Object",
+                "String",
+                "Number"
+            ],
+            "default": "",
+            "description": "The select option"
         }
     ],
-    props: [
+    "events": [],
+    "slots": [
         {
-            name: 'active',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The active state of the select option'
-        },
-        {
-            name: 'disabled',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The disabled state of the select option'
-        },
-        {
-            name: 'label',
-            type: ['String'],
-            default: "''",
-            description: 'The label of the select option'
-        },
-        {
-            name: 'tabindex',
-            type: ['Number', 'String'],
-            default: '1',
-            description: 'The tabindex of the list group item'
-        },
-        {
-            name: 'value',
-            type: ['Object', 'String', 'Number'],
-            default: '',
-            description: 'The select option value'
+            "name": "default",
+            "description": "Slot for select option label "
         }
     ],
-    events: [],
-    css: {
-        variables: [],
-        variants: []
+    "css": {
+        "selector": "",
+        "variables": []
     }
 };
 

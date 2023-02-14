@@ -1,15 +1,16 @@
 export const manifest = {
-    slots: [
+    "name": "ILayoutHeader",
+    "props": [],
+    "events": [],
+    "slots": [
         {
-            description: 'Slot for default layout header content',
-            name: 'default'
+            "name": "default",
+            "description": "Slot for default layout header content "
         }
     ],
-    events: [],
-    props: [],
-    css: {
-        variables: [],
-        variants: []
+    "css": {
+        "selector": "",
+        "variables": []
     }
 };
 

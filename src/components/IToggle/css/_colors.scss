@@ -22,7 +22,7 @@
             var(--color-light-shade-50)
         );
         --toggle--indicator--background: var(
-            --toggle--white--indicator--background,
+            --toggle--light--indicator--background,
             var(--color-white)
         );
         --toggle--label--color: var(
@@ -31,23 +31,23 @@
         );
 
         --toggle--checked--background: var(
-            --toggle--primary--checked--background,
+            --toggle--light--checked--background,
             var(--color-primary)
         );
         --toggle--checked--border-top-color: var(
-            --toggle--primary--checked--border-top-color,
+            --toggle--light--checked--border-top-color,
             var(--color-primary-shade-50)
         );
         --toggle--checked--border-right-color: var(
-            --toggle--primary--checked--border-right-color,
+            --toggle--light--checked--border-right-color,
             var(--color-primary-shade-50)
         );
         --toggle--checked--border-bottom-color: var(
-            --toggle--primary--checked--border-bottom-color,
+            --toggle--light--checked--border-bottom-color,
             var(--color-primary-shade-50)
         );
         --toggle--checked--border-left-color: var(
-            --toggle--primary--checked--border-left-color,
+            --toggle--light--checked--border-left-color,
             var(--color-primary-shade-50)
         );
 
@@ -72,7 +72,7 @@
             var(--color-light-shade-50)
         );
         --toggle--disabled--indicator--background: var(
-            --toggle--disabled--gray--indicator--background,
+            --toggle--disabled--light--indicator--background,
             var(--color-gray-50)
         );
         --toggle--disabled--label--color: var(
@@ -81,15 +81,15 @@
         );
 
         --toggle--checked--disabled--background: var(
-            --toggle--primary--checked--disabled--background,
+            --toggle--light--checked--disabled--background,
             var(--color-primary-200)
         );
         --toggle--checked--disabled--border-color: var(
-            --toggle--primary--checked--disabled--border-color,
+            --toggle--light--checked--disabled--border-color,
             var(--color-primary-300)
         );
         --toggle--checked--disabled--indicator--background: var(
-            --toggle--checked--gray--indicator--disabled--background,
+            --toggle--checked--light--indicator--disabled--background,
             var(--color-gray-50)
         );
     }
@@ -113,29 +113,29 @@
             var(--color-dark-tint-50)
         );
         --toggle--indicator--background: var(
-            --toggle--white--indicator--background,
+            --toggle--light--indicator--background,
             var(--color-white)
         );
         --toggle--label--color: var(--toggle--dark--label--color, var(--contrast-text--color-dark));
 
         --toggle--checked--background: var(
-            --toggle--primary--checked--background,
+            --toggle--dark--checked--background,
             var(--color-primary)
         );
         --toggle--checked--border-top-color: var(
-            --toggle--primary--checked--border-top-color,
+            --toggle--dark--checked--border-top-color,
             var(--color-primary-tint-50)
         );
         --toggle--checked--border-right-color: var(
-            --toggle--primary--checked--border-right-color,
+            --toggle--dark--checked--border-right-color,
             var(--color-primary-tint-50)
         );
         --toggle--checked--border-bottom-color: var(
-            --toggle--primary--checked--border-bottom-color,
+            --toggle--dark--checked--border-bottom-color,
             var(--color-primary-tint-50)
         );
         --toggle--checked--border-left-color: var(
-            --toggle--primary--checked--border-left-color,
+            --toggle--dark--checked--border-left-color,
             var(--color-primary-tint-50)
         );
 
@@ -157,11 +157,11 @@
         );
 
         --toggle--checked--disabled--background: var(
-            --toggle--primary--checked--disabled--background,
+            --toggle--dark--checked--disabled--background,
             var(--color-primary-800)
         );
         --toggle--checked--disabled--border-color: var(
-            --toggle--primary--checked--disabled--border-color,
+            --toggle--dark--checked--disabled--border-color,
             var(--color-primary-900)
         );
         --toggle--checked--disabled--indicator--background: var(

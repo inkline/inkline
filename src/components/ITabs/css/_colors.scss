@@ -4,7 +4,7 @@
 
 .tabs {
     &.-light {
-        --tabs--background: var(--tabs--white--background, var(--color-white));
+        --tabs--background: var(--tabs--light--background, var(--color-white));
         --tabs--border-top-color: var(--tabs--light--border-top-color, var(--color-light-shade-50));
         --tabs--border-right-color: var(
             --tabs--light--border-right-color,
@@ -18,14 +18,14 @@
             --tabs--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --tabs--color: var(--tabs--white--color, var(--contrast-text--color-white));
-        --tabs--title--background: var(--tabs--white--title--background, var(--color-white));
+        --tabs--color: var(--tabs--light--color, var(--contrast-text--color-white));
+        --tabs--title--background: var(--tabs--light--title--background, var(--color-white));
         --tabs--title--active--background: var(
             --tabs--light--title--active--background,
             var(--color-gray-50)
         );
         --tabs--title--hover--background: var(
-            --tabs--hover--gray--title--background,
+            --tabs--hover--light--title--background,
             var(--color-gray-50)
         );
     }

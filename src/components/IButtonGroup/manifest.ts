@@ -1,35 +1,57 @@
 export const manifest = {
-    name: 'button-group',
-    slots: [
+    "name": "IButtonGroup",
+    "props": [
         {
-            description: 'Slot for default button group content',
-            name: 'default'
-        }
-    ],
-    props: [
-        {
-            name: 'vertical',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Display the button group with vertical orientation'
+            "name": "vertical",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false",
+            "description": "Display the button group with vertical orientation"
         },
         {
-            name: 'block',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Display the button group as a block, spanning the full container width'
+            "name": "block",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false",
+            "description": "Display the button group as a block, spanning the full container width"
         },
         {
-            name: 'disabled',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The disabled state of the button group'
+            "name": "disabled",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false",
+            "description": "The disabled state of the button group"
+        },
+        {
+            "name": "size",
+            "type": [
+                "String"
+            ],
+            "default": "",
+            "description": "The size of the button group"
+        },
+        {
+            "name": "color",
+            "type": [
+                "String"
+            ],
+            "default": "",
+            "description": "The color of the button group"
         }
     ],
-    events: [],
-    css: {
-        variables: [],
-        variants: []
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for default button group content "
+        }
+    ],
+    "css": {
+        "selector": "",
+        "variables": []
     }
 };
 

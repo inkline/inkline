@@ -24,7 +24,7 @@
 
     &.-light {
         --progress-bar--color: var(--progress-bar--light--color, var(--contrast-text--color-light));
-        --progress-bar--background: var(--progress-bar--white--background, var(--color-white));
+        --progress-bar--background: var(--progress-bar--light--background, var(--color-white));
     }
 
     &.-dark {

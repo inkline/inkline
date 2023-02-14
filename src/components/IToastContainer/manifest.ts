@@ -1,5 +1,5 @@
 export const manifest = {
-    "name": "IDropdownDivider",
+    "name": "IToastContainer",
     "props": [],
     "events": [],
     "slots": [],

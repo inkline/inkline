@@ -23,7 +23,7 @@
         );
         --collapsible--color: var(--collapsible--light--color, var(--contrast-text--color-light));
         --collapsible--body--background: var(
-            --collapsible--white--body--background,
+            --collapsible--light--body--background,
             var(--color-white)
         );
     }

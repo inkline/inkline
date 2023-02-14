@@ -1,22 +1,41 @@
 export const manifest = {
-    slots: [
+    "name": "INavbarBrand",
+    "props": [
         {
-            description: 'Slot for default navbar brand content',
-            name: 'default'
+            "name": "to",
+            "type": [
+                "String"
+            ],
+            "default": "undefined",
+            "description": "Renders the component as an anchor link with a `href` attribute"
+        },
+        {
+            "name": "tag",
+            "type": [
+                "String"
+            ],
+            "default": "div",
+            "description": "Set the HTML tag to be used for rendering the nav item"
+        },
+        {
+            "name": "to",
+            "type": [
+                "String"
+            ],
+            "default": "undefined",
+            "description": "Renders the component as a Router Link component with a `to` attribute"
         }
     ],
-    props: [
+    "events": [],
+    "slots": [
         {
-            name: 'tag',
-            type: ['String'],
-            default: 'div',
-            description: 'Set the HTML tag to be used for rendering the nav item'
+            "name": "default",
+            "description": "Slot for default navbar brand content "
         }
     ],
-    events: [],
-    css: {
-        variables: [],
-        variants: []
+    "css": {
+        "selector": "",
+        "variables": []
     }
 };
 

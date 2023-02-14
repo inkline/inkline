@@ -1,68 +1,85 @@
 export const manifest = {
-    name: 'form-group',
-    slots: [
+    "name": "IFormGroup",
+    "props": [
         {
-            description: 'Slot for default form group content',
-            name: 'default'
+            "name": "color",
+            "type": [
+                "light",
+                "dark"
+            ],
+            "default": "",
+            "description": "The color variant of the form group"
+        },
+        {
+            "name": "disabled",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false",
+            "description": "The disabled state of the form group"
+        },
+        {
+            "name": "inline",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false",
+            "description": "Display the form group as inline"
+        },
+        {
+            "name": "name",
+            "type": [
+                "String"
+            ],
+            "default": "",
+            "description": "The identifier of the form group"
+        },
+        {
+            "name": "readonly",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false",
+            "description": "The readonly state of the form group"
+        },
+        {
+            "name": "required",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false",
+            "description": "The required state of the form group"
+        },
+        {
+            "name": "size",
+            "type": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "",
+            "description": "The size variant of the form group"
+        },
+        {
+            "name": "validate",
+            "type": [
+                "Boolean"
+            ],
+            "default": "true",
+            "description": "Enable form validation using schema"
         }
     ],
-    props: [
+    "events": [],
+    "slots": [
         {
-            name: 'color',
-            type: ['light', 'dark'],
-            default: 'light',
-            description: 'The color variant of the form group'
-        },
-        {
-            name: 'disabled',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The disabled state of the form group'
-        },
-        {
-            name: 'inline',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Display the form group as inline'
-        },
-        {
-            name: 'name',
-            type: ['String'],
-            default: '',
-            description: 'The identifier of the form group'
-        },
-        {
-            name: 'readonly',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The readonly state of the form group'
-        },
-        {
-            name: 'required',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The required state of the form group'
-        },
-        {
-            name: 'size',
-            type: ['sm', 'md', 'lg'],
-            default: 'md',
-            description: 'The size variant of the form group'
+            "name": "default",
+            "description": "Slot for default form group content "
         }
     ],
-    css: {
-        selector: '.form-group',
-        variables: [
-            {
-                name: 'margin-top',
-                type: '',
-                value: 'var(--margin-top)',
-                description: 'The margin top of the form error component'
-            }
-        ],
-        variants: []
-    },
-    events: []
+    "css": {
+        "selector": "",
+        "variables": []
+    }
 };
 
 export default manifest;

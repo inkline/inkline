@@ -30,7 +30,7 @@
             --radio--light--checked--disabled--border-color,
             var(--color-primary-300)
         );
-        --radio--color: var(--radio--white--color, var(--color-white));
+        --radio--color: var(--radio--light--color, var(--color-white));
         --radio--disabled--color: var(--radio--light--disabled--color, var(--color-light-200));
         --radio--label--color: var(--radio--light--label--color, var(--contrast-text--color-light));
         --radio--disabled--label--color: var(
@@ -63,7 +63,7 @@
             --radio--dark--checked--disabled--border-color,
             var(--color-primary-700)
         );
-        --radio--color: var(--radio--white--color, var(--color-white));
+        --radio--color: var(--radio--light--color, var(--color-white));
         --radio--disabled--color: var(--radio--dark--disabled--color, var(--color-dark-200));
         --radio--label--color: var(--radio--dark--label--color, var(--contrast-text--color-dark));
         --radio--disabled--label--color: var(

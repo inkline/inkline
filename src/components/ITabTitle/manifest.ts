@@ -1,22 +1,25 @@
 export const manifest = {
-    slots: [
+    "name": "ITabTitle",
+    "props": [
         {
-            description: 'Slot for default tab title content',
-            name: 'default'
+            "name": "for",
+            "type": [
+                "String"
+            ],
+            "default": "",
+            "description": "The name of the referenced tab"
         }
     ],
-    props: [
+    "events": [],
+    "slots": [
         {
-            name: 'for',
-            type: ['String'],
-            default: '',
-            description: 'The name of the referenced tab'
+            "name": "default",
+            "description": "Slot for tab title content "
         }
     ],
-    events: [],
-    css: {
-        variables: [],
-        variants: []
+    "css": {
+        "selector": "",
+        "variables": []
     }
 };
 

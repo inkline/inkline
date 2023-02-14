@@ -35,7 +35,7 @@
     }
 
     &.-light {
-        --table--background: var(--table--white--background, var(--color-white));
+        --table--background: var(--table--light--background, var(--color-white));
         --table--hover--background: var(--table--light--hover--background, var(--color-gray-100));
         --table--striped--background: var(
             --table--light--striped--background,
@@ -48,7 +48,7 @@
     &.-dark {
         --table--background: var(--table--dark--background, var(--color-dark));
         --table--hover--background: var(
-            --table--hover--gray--background,
+            --table--dark--hover--background,
             var(--color-dark-tint-100)
         );
         --table--striped--background: var(

@@ -191,7 +191,7 @@ export default defineComponent({
         </span>
         <div class="toast-content">
             <div v-if="title || $slots.title" class="toast-title">
-                <!-- @slot default Slot for toast title -->
+                <!-- @slot title Slot for toast title -->
                 <slot name="title">
                     <component :is="title" v-if="title && isVNode.title" />
                     <span v-else>{{ title }}</span>

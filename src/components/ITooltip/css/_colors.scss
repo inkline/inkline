@@ -4,7 +4,7 @@
 
 .tooltip-wrapper {
     &.-light {
-        --tooltip--background: var(--tooltip--white--background, var(--color-white));
+        --tooltip--background: var(--tooltip--light--background, var(--color-white));
         --tooltip--border-top-color: var(--tooltip--light--border-top-color, var(--color-light));
         --tooltip--border-right-color: var(
             --tooltip--light--border-right-color,
@@ -15,7 +15,7 @@
             var(--color-light)
         );
         --tooltip--border-left-color: var(--tooltip--light--border-left-color, var(--color-light));
-        --tooltip--color: var(--tooltip--white--color, var(--contrast-text--color-white));
+        --tooltip--color: var(--tooltip--light--color, var(--contrast-text--color-white));
     }
 
     &.-dark {

@@ -1,38 +1,9 @@
-@use '../../../css/mixins' as mixins;
-
-////
-/// The width of the container component on extrasmall screens
-/// @name container--width--xs
-////
-
-////
-/// The width of the container component on small screens
-/// @name container--width--sm
-////
-
-////
-/// The width of the container component on medium screens
-/// @name container--width--md
-////
-
-////
-/// The width of the container component on large screens
-/// @name container--width--lg
-////
-
-////
-/// The width of the container component on extralarge screens
-/// @name container--width--xl
-////
-
-////
-/// The width of the container component on extralarge screens
-/// @name container--width--xxl
-////
-
 /**
  * Container
  */
+
+@use '../../../css/mixins' as mixins;
+
 .container {
     margin-left: auto;
     margin-right: auto;

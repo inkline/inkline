@@ -1,3 +1,7 @@
+/**
+ * Column
+ */
+
 @use '../../../css/mixins';
 @use '../../../css/functions';
 @use 'sass:math';
@@ -31,9 +35,6 @@
     max-width: calc(#{$columns-count} * 100% / #{$columns});
 }
 
-/**
- * Column
- */
 .col,
 .column {
     @include column-flexible();

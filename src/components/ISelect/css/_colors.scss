@@ -4,7 +4,7 @@
 
 .select-wrapper {
     &.-light {
-        --select--background: var(--select--white--background, var(--color-white));
+        --select--background: var(--select--light--background, var(--color-white));
         --select--border-top-color: var(
             --select--light--border-top-color,
             var(--color-light-shade-50)
@@ -21,7 +21,7 @@
             --select--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --select--color: var(--select--white--color, var(--contrast-text--color-white));
+        --select--color: var(--select--light--color, var(--contrast-text--color-white));
         --select--option--hover--background: var(
             --select--light--option--hover--background,
             var(--color-gray-50)
@@ -34,8 +34,14 @@
             --select--light--option--disabled--color,
             var(--text--color-muted)
         );
-        --select--header--background: var(--select--gray--header--background, var(--color-gray-50));
-        --select--footer--background: var(--select--gray--footer--background, var(--color-gray-50));
+        --select--header--background: var(
+            --select--light--header--background,
+            var(--color-gray-50)
+        );
+        --select--footer--background: var(
+            --select--light--footer--background,
+            var(--color-gray-50)
+        );
     }
 
     &.-dark {

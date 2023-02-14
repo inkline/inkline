@@ -1,47 +1,7 @@
-////
-/// The background of the header component
-/// @name header--background
-/// @type color
-////
-
-////
-/// The color of the header component
-/// @name header--color
-/// @type color
-////
-
-////
-/// The padding top of the header component
-/// @name header--padding-top
-/// @type size
-////
-
-////
-/// The padding right of the header component
-/// @name header--padding-right
-/// @type size
-////
-
-////
-/// The padding bottom of the header component
-/// @name header--padding-bottom
-/// @type size
-////
-
-////
-/// The padding left of the header component
-/// @name header--padding-left
-/// @type size
-////
-
-////
-/// The padding of the header component
-/// @name header--padding
-////
-
 /**
  * Header
  */
+
 .header {
     display: flex;
     box-sizing: border-box;

@@ -62,7 +62,7 @@
     }
 
     &.-light {
-        --card--background: var(--card--white--background, var(--color-white));
+        --card--background: var(--card--light--background, var(--color-white));
         --card--border-top-color: var(--card--light--border-top-color, var(--color-light-shade-50));
         --card--border-right-color: var(
             --card--light--border-right-color,

@@ -1,29 +1,17 @@
 export const manifest = {
-    name: 'layout-aside',
-    slots: [
+    "name": "ILayoutAside",
+    "props": [],
+    "events": [],
+    "slots": [
         {
-            description: 'Slot for default layout aside content',
-            name: 'default'
+            "name": "default",
+            "description": "Slot for default layout aside content "
         }
     ],
-    css: {
-        selector: '.layout-aside',
-        defaults: {
-            size: 'md',
-            color: 'light'
-        },
-        variables: [
-            {
-                name: 'width',
-                type: '',
-                value: '320px',
-                description: 'The width of the layout aside component'
-            }
-        ],
-        variants: []
-    },
-    events: [],
-    props: []
+    "css": {
+        "selector": "",
+        "variables": []
+    }
 };
 
 export default manifest;

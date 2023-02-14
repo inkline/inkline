@@ -1,9 +1,10 @@
-@use '../../../css/mixins' as mixins;
-@use 'sass:list';
-
 /**
  * Row
  */
+
+@use '../../../css/mixins' as mixins;
+@use 'sass:list';
+
 .row {
     box-sizing: border-box;
     display: flex;

@@ -1,8 +1,15 @@
+/**
+ * Expand Transition
+ */
+
 .expand-enter-active,
 .expand-leave-active {
     transition-property: height;
-    transition-duration: var(--transition-duration);
-    transition-timing-function: var(--transition-timing-function);
+    transition-duration: var(--expand-transition--transition-duration, var(--transition-duration));
+    transition-timing-function: var(
+        --expand-transition--transition-timing-function,
+        var(--transition-timing-function)
+    );
     overflow: hidden;
 }
 

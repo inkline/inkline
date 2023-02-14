@@ -4,7 +4,7 @@
 
 .input-wrapper {
     &.-light {
-        --input--background: var(--input--white--background, var(--color-white));
+        --input--background: var(--input--light--background, var(--color-white));
         --input--color: var(--input--light--color, var(--contrast-text--color-white));
         --input--border-color: var(--input--light--border-color, var(--color-light-shade-50));
 

@@ -1,47 +1,67 @@
 export const manifest = {
-    name: 'breadcrumb-item',
-    slots: [
+    "name": "IBreadcrumbItem",
+    "props": [
         {
-            description: 'Slot for default breadcrumb item content',
-            name: 'default'
+            "name": "active",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false",
+            "description": "The active state of the breadcrumb item"
+        },
+        {
+            "name": "disabled",
+            "type": [
+                "Boolean"
+            ],
+            "default": "false",
+            "description": "The disabled state of the breadcrumb item"
+        },
+        {
+            "name": "to",
+            "type": [
+                "String"
+            ],
+            "default": "undefined",
+            "description": ""
+        },
+        {
+            "name": "tabindex",
+            "type": [
+                "Number",
+                "String"
+            ],
+            "default": "0",
+            "description": "The tabindex of the breadcrumb item"
+        },
+        {
+            "name": "tag",
+            "type": [
+                "String"
+            ],
+            "default": "a",
+            "description": "Set the HTML tag to be used for rendering the breadcrumb item"
+        },
+        {
+            "name": "to",
+            "type": [
+                "String"
+            ],
+            "default": "undefined",
+            "description": ""
         }
     ],
-    props: [
+    "events": [],
+    "slots": [
         {
-            name: 'tag',
-            type: ['String'],
-            default: 'a',
-            description: 'Set the HTML tag to be used for rendering the breadcrumb item'
-        },
-        {
-            name: 'active',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The active state of the breadcrumb item'
-        },
-        {
-            name: 'disabled',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The disabled state of the breadcrumb item'
-        },
-        {
-            name: 'tabindex',
-            type: ['Number', 'String'],
-            default: '1',
-            description: 'The tabindex of the breadcrumb item'
+            "name": "default",
+            "description": "Slot for default breadcrumb item content "
         }
     ],
-    css: {
-        selector: '.breadcrumb-item',
-        defaults: {
-            size: 'md',
-            color: 'info'
-        },
-        variables: [],
-        variants: []
-    },
-    events: []
+    "css": {
+        "selector": "",
+        "variables": []
+    }
 };
 
 export default manifest;

@@ -1,15 +1,16 @@
 export const manifest = {
-    slots: [
+    "name": "ILayoutContent",
+    "props": [],
+    "events": [],
+    "slots": [
         {
-            description: 'Slot for default layout content children',
-            name: 'default'
+            "name": "default",
+            "description": "Slot for default layout content children "
         }
     ],
-    events: [],
-    props: [],
-    css: {
-        variables: [],
-        variants: []
+    "css": {
+        "selector": "",
+        "variables": []
     }
 };
 

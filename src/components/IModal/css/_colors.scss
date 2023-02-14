@@ -62,7 +62,7 @@
     }
 
     &.-light {
-        --modal--background: var(--modal--white--background, var(--color-white));
+        --modal--background: var(--modal--light--background, var(--color-white));
         --modal--border-top-color: var(--modal--light--border-top-color, var(--color-light));
         --modal--border-right-color: var(--modal--light--border-right-color, var(--color-light));
         --modal--border-bottom-color: var(--modal--light--border-bottom-color, var(--color-light));

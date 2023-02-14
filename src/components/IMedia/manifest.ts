@@ -1,29 +1,21 @@
 export const manifest = {
-    name: 'media',
-    slots: [
+    "name": "IMedia",
+    "props": [],
+    "events": [],
+    "slots": [
         {
-            description: 'Slot for default media content',
-            name: 'default'
+            "name": "image",
+            "description": "Slot for media image "
+        },
+        {
+            "name": "default",
+            "description": "Slot for default media content "
         }
     ],
-    css: {
-        selector: '.media',
-        defaults: {
-            size: 'md',
-            color: 'light'
-        },
-        variables: [
-            {
-                name: 'image--margin-right',
-                type: '',
-                value: 'var(--margin-right)',
-                description: 'The margin right of the media component image'
-            }
-        ],
-        variants: []
-    },
-    events: [],
-    props: []
+    "css": {
+        "selector": "",
+        "variables": []
+    }
 };
 
 export default manifest;
