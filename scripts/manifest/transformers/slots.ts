@@ -1,14 +1,10 @@
-import { Block, Spec } from 'comment-parser';
 import { ManifestEntry } from '../types';
 
-export const mapBlocksToSlots = (blocks: Block[]): ManifestEntry[] =>
-    blocks
-        .filter(({ tags }) => tags.find(({ tag, name }) => tag === 'kind' && name === 'slot'))
-        .map(({ description, tags }) => {
-            const { name } = tags.find(({ tag }) => tag === 'name') as Spec;
+export function mapSourceToSlots(source: string): ManifestEntry[] {
+    const regex = /<!--\s*@slot\s+(\w+)\s+(.+)\s*-->/g;
 
-            return {
-                description,
-                name
-            };
-        });
+    return Array.from(source.matchAll(regex), ([_, name, description]) => ({
+        name,
+        description
+    }));
+}

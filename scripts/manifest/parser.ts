@@ -1,6 +1,5 @@
-import fs from 'fs';
 import { Block, parse } from 'comment-parser';
-import { ContextBlock } from './types';
+import { ContextBlock, ManifestCSSVariable } from './types';
 
 export const parseSassOptions = {
     markers: {
@@ -11,12 +10,11 @@ export const parseSassOptions = {
     }
 };
 
-export const parseBlocks = (filePath: string, options = {}): ContextBlock[] => {
-    const source = fs.existsSync(filePath) ? fs.readFileSync(filePath).toString() : '';
+export function parseBlocks(source: string, options = {}): ContextBlock[] {
     const lines: string[] = source.split('\n');
-    const blocks: Block[] = parse(source, options);
+    const parsedBlocks: Block[] = parse(source, options);
 
-    return blocks
+    return parsedBlocks
         .map((block) => {
             const lastSourceLineNumber = block.source[block.source.length - 1].number;
             const context = [];
@@ -50,4 +48,39 @@ export const parseBlocks = (filePath: string, options = {}): ContextBlock[] => {
             };
         })
         .filter((block) => block.tags.length > 0);
-};
+}
+
+function countOccurrences(source: string, word: string): number {
+    return source.split(word).length - 1;
+}
+
+function parseFallbackValue(source: string): ManifestCSSVariable[] {
+    if (!source.includes('var(')) {
+        return [
+            {
+                value: source
+            }
+        ];
+    }
+
+    const fallbackRegex = /var\(\s*(--[\w-]+)(,[^)]+)?\)/g;
+    return Array.from(source.matchAll(fallbackRegex), ([_, variableName, fallbackValue]) => ({
+        name: variableName,
+        ...(fallbackValue
+            ? {
+                  value: parseFallbackValue(
+                      fallbackValue.slice(1).trim() +
+                          ')'.repeat(countOccurrences(fallbackValue, '('))
+                  )
+              }
+            : {})
+    }));
+}
+
+export function parseCssVariables(source: string): ManifestCSSVariable[] {
+    const valueRegex = /\w:\s+var\(\s*(--[\w-]+)(,[^;]+)?\)/g;
+    return Array.from(source.matchAll(valueRegex), ([_, variableName, fallbackValue]) => ({
+        name: variableName,
+        ...(fallbackValue ? { value: parseFallbackValue(fallbackValue.slice(1).trim()) } : {})
+    }));
+}

@@ -14,26 +14,15 @@ export interface ManifestProp extends ManifestEntry {
     default: string;
 }
 
-export interface ManifestCSSVariable extends ManifestEntry {
-    type?: string;
-    value?: string | string[];
-}
-
-export interface ManifestCSSVariant extends ManifestEntry {
-    type?: string;
-    variables: ManifestCSSVariable[];
+export interface ManifestCSSVariable {
+    name?: string;
+    value?: ManifestCSSVariable[] | number | string;
+    variants?: ManifestCSSVariable[];
 }
 
 export interface ManifestCSS {
     selector: string;
-    type: string;
-    defaults: {
-        size: string;
-        color: string;
-        [key: string]: string;
-    };
     variables: ManifestCSSVariable[];
-    variants: ManifestCSSVariant[];
 }
 
 export interface Manifest {

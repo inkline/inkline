@@ -33,18 +33,35 @@ export const mapBlocksToVariants = (blocks: ContextBlock[]) =>
     }, []);
 
 export const mapBlocksToVariables = (blocks: ContextBlock[]): ManifestCSSVariable[] =>
-    blocks.map(({ description, tags, context }) => {
+    blocks.map(({ description, tags }) => {
         const { name } = tags.find(({ tag }) => tag === 'name') as Spec;
         const { name: type } = (tags.find(({ tag }) => tag === 'type') || { name: '' }) as Spec;
-        const value = context[0]
-            .replace(sassValueRegEx, '$1')
-            .trim()
-            .replace(sassInterpolationRegEx, '$1');
 
         return {
             name,
-            type,
-            value,
-            description
+            description,
+            type
         };
     });
+
+export function mapVariantsToVariables(
+    variables: ManifestCSSVariable[],
+    unmappedVariants: ManifestCSSVariable[][]
+): ManifestCSSVariable[] {
+    return variables.map((variable) => {
+        const variants = unmappedVariants.flat().filter(({ name }) => {
+            const variableNameBasedOnVariant = name
+                ?.split('--')
+                .filter((part, index) => index !== 2)
+                .join('--');
+
+            return variableNameBasedOnVariant === variable.name;
+        });
+
+        return {
+            name: variable.name,
+            value: mapVariantsToVariables(variants, unmappedVariants),
+            variants
+        };
+    });
+}
