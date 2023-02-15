@@ -55,7 +55,48 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--tabs--header--border-color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--header--border-style",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--header--border-width",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--header--font-size",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--header--border-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--header--margin-bottom",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--header--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--header--background",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

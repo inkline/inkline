@@ -14,7 +14,13 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--media--image--margin-right",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

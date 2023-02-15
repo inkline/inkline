@@ -60,8 +60,14 @@ export function mapVariantsToVariables(
 
         return {
             name: variable.name,
-            value: mapVariantsToVariables(variants, unmappedVariants),
-            variants
+            ...(variable.value
+                ? {
+                      value: Array.isArray(variable.value)
+                          ? mapVariantsToVariables(variable.value, unmappedVariants)
+                          : variable.value
+                  }
+                : {}),
+            ...(variants.length > 0 ? { variants } : {})
         };
     });
 }

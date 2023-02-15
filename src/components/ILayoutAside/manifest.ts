@@ -10,7 +10,13 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--layout-aside--width",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

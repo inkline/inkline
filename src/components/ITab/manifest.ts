@@ -27,7 +27,63 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--tabs--tab--transition-property",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--tab--transition-duration",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--tab--transition-timing-function",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--tab--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--tab--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--tab--border-color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--tab--border-style",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--tab--border-width",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--tab--border-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--tab--font-size",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tabs--tab--padding",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

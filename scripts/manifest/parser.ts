@@ -84,3 +84,10 @@ export function parseCssVariables(source: string): ManifestCSSVariable[] {
         ...(fallbackValue ? { value: parseFallbackValue(fallbackValue.slice(1).trim()) } : {})
     }));
 }
+
+export function parseCssSelector(source: string): string {
+    const selectorRegex = /^(\.[a-z-]+)/g;
+    const selectorMatch = source.split('\n').find((line) => selectorRegex.test(line));
+
+    return selectorMatch ? selectorMatch.match(selectorRegex)![0] : '';
+}

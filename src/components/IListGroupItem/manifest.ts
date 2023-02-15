@@ -60,7 +60,78 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--list-group--border-bottom-width",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--list-group--border-bottom-style",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--list-group--border-bottom-color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--transition-duration",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--transition-timing-function",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--list-group--padding",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--list-group--active--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--list-group--active--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--list-group--active--border-color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--list-group--border-top-left-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--list-group--border-top-right-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--list-group--border-bottom-left-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--list-group--border-bottom-right-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--list-group--disabled--color",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

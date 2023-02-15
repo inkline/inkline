@@ -68,7 +68,93 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--dropdown--item--margin",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--transition-property",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--transition-timing-function",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--transition-duration",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--border-style",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--border-width",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--border-color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--padding",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--hover--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--hover--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--disabled--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--disabled--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--active--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--active--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--item--active--font-weight",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

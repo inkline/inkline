@@ -68,7 +68,48 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--nav--transition-property",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--nav--transition-timing-function",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--nav--transition-duration",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--nav--padding",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--nav--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--nav--font-size",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--nav--disabled--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--nav--active--color",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

@@ -54,7 +54,73 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--select--option--border-color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--padding",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--transition-property",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--transition-timing-function",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--transition-duration",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--hover--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--hover--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--disabled--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--disabled--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--active--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--select--option--active--background",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

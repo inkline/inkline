@@ -5,7 +5,18 @@ export const manifest = {
     "slots": [],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--dropdown--divider--margin",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--dropdown--divider--background",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

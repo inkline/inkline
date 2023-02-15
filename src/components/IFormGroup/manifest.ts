@@ -78,7 +78,13 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--form-group--margin-top",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

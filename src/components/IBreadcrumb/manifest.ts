@@ -38,7 +38,68 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--breadcrumb--margin-bottom",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--breadcrumb--font-size",
+                "value": [
+                    {
+                        "name": "--breadcrumb--sm--font-size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--breadcrumb--md--font-size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--breadcrumb--lg--font-size",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--breadcrumb--sm--font-size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--breadcrumb--md--font-size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--breadcrumb--lg--font-size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 };
 

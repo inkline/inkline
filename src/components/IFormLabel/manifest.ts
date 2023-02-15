@@ -38,7 +38,103 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--form-label--transition-property",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--form-label--transition-duration",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--form-label--transition-timing-function",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--form-label--font-size",
+                "value": [
+                    {
+                        "name": "--form-label--sm--font-size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--form-label--md--font-size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--form-label--lg--font-size",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--form-label--sm--font-size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--form-label--md--font-size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--form-label--lg--font-size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--form-label--margin",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--form-label--required--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--form-label--error--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--form-label--inline--margin-right",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--form-label--inline--margin-left",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

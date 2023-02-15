@@ -32,7 +32,63 @@ export const manifest = {
     "slots": [],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--icon--size",
+                "value": [
+                    {
+                        "name": "--icon--sm--size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--icon--md--size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--icon--lg--size",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--icon--sm--size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--icon--md--size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--icon--lg--size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 };
 

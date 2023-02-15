@@ -32,7 +32,146 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--loader--size",
+                "value": [
+                    {
+                        "name": "--loader--sm--size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--loader--md--size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--loader--lg--size",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--loader--sm--size",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--loader--md--size",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--loader--lg--size",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--loader--size",
+                "value": [
+                    {
+                        "name": "--loader--sm--size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--loader--md--size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--loader--lg--size",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--loader--sm--size",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--loader--md--size",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--loader--lg--size",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--loader--background",
+                "value": [
+                    {
+                        "name": "--loader--primary--background",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--loader--light--background",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--loader--dark--background",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--loader--primary--background",
+                        "value": [
+                            {
+                                "name": "--color-primary"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--loader--light--background",
+                        "value": [
+                            {
+                                "name": "--color-dark"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--loader--dark--background",
+                        "value": [
+                            {
+                                "name": "--color-light"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 };
 

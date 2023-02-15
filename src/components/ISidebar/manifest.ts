@@ -95,7 +95,377 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--sidebar--z-index",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--sidebar--width",
+                "value": [
+                    {
+                        "name": "--sidebar--sm--width",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--md--width",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--lg--width",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--sidebar--sm--width",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--md--width",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--lg--width",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--sidebar--color",
+                "value": [
+                    {
+                        "name": "--sidebar--light--color",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--dark--color",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--sidebar--light--color",
+                        "value": [
+                            {
+                                "name": "--contrast-text--color-light"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--dark--color",
+                        "value": [
+                            {
+                                "name": "--contrast-text--color-dark"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--sidebar--background",
+                "value": [
+                    {
+                        "name": "--sidebar--light--background",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--dark--background",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--sidebar--light--background",
+                        "value": [
+                            {
+                                "name": "--color-light"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--dark--background",
+                        "value": [
+                            {
+                                "name": "--color-dark"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--sidebar--width",
+                "value": [
+                    {
+                        "name": "--sidebar--sm--width",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--md--width",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--lg--width",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--sidebar--sm--width",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--md--width",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--lg--width",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--sidebar--transition-property",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--sidebar--transition-duration",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--sidebar--transition-timing-function",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--sidebar--box-shadow",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--sidebar--border-width",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--sidebar--border-style",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--sidebar--border-color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--sidebar--border-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--sidebar--padding",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--sidebar--overlay--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--sidebar--border-top-left-radius",
+                "value": [
+                    {
+                        "name": "--sidebar--sm--border-top-left-radius",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--md--border-top-left-radius",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--lg--border-top-left-radius",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--sidebar--sm--border-top-left-radius",
+                        "value": [
+                            {
+                                "name": "--border-top-left-radius"
+                            },
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--md--border-top-left-radius",
+                        "value": [
+                            {
+                                "name": "--border-top-left-radius"
+                            },
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--lg--border-top-left-radius",
+                        "value": [
+                            {
+                                "name": "--border-top-left-radius"
+                            },
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--sidebar--border-bottom-left-radius",
+                "value": [
+                    {
+                        "name": "--sidebar--sm--border-bottom-left-radius",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--md--border-bottom-left-radius",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--lg--border-bottom-left-radius",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--sidebar--sm--border-bottom-left-radius",
+                        "value": [
+                            {
+                                "name": "--border-bottom-left-radius"
+                            },
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--md--border-bottom-left-radius",
+                        "value": [
+                            {
+                                "name": "--border-bottom-left-radius"
+                            },
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--lg--border-bottom-left-radius",
+                        "value": [
+                            {
+                                "name": "--border-bottom-left-radius"
+                            },
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--sidebar--width",
+                "value": [
+                    {
+                        "name": "--sidebar--sm--width",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--md--width",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--sidebar--lg--width",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--sidebar--sm--width",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--md--width",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--sidebar--lg--width",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 };
 

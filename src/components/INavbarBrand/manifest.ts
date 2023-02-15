@@ -35,7 +35,28 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--navbar--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--navbar--item--padding",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--navbar--brand--font-size",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--navbar--brand--margin-right",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

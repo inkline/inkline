@@ -23,7 +23,23 @@ export const manifest = {
     "slots": [],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--form-error--margin",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--form-error--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--form-error-font-size",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

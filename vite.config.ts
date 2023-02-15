@@ -1,6 +1,6 @@
-import { defineConfig } from "vite";
-import { resolve } from "pathe";
-import vue from "@vitejs/plugin-vue";
+import { defineConfig } from 'vite';
+import { resolve } from 'pathe';
+import vue from '@vitejs/plugin-vue';
 
 /**
  * Vite configuration for library build
@@ -10,48 +10,48 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
     plugins: [
         vue({
-            include: [/\.vue$/, /\.md$/],
+            include: [/\.vue$/, /\.md$/]
         })
     ],
     resolve: {
         alias: [
             {
                 find: /^@inkline\/inkline\//,
-                replacement: `${resolve(__dirname)}/src/`,
+                replacement: `${resolve(__dirname)}/src/`
             }
-        ],
+        ]
     },
     build: {
         lib: {
-            entry: resolve(__dirname, "src", "main.ts"),
-            name: "Inkline",
-            fileName: (format) => `inkline.${format}.js`,
+            entry: resolve(__dirname, 'src', 'main.ts'),
+            name: 'Inkline',
+            fileName: (format) => `inkline.${format}.js`
         },
         rollupOptions: {
             // make sure to externalize deps that shouldn't be bundled
             // into your library
-            external: ["vue"],
+            external: ['vue'],
             output: {
-                exports: "named",
+                exports: 'named',
                 // Provide global variables to use in the UMD build
                 // for externalized deps
                 globals: {
-                    vue: "Vue",
-                },
-            },
-        },
+                    vue: 'Vue'
+                }
+            }
+        }
     },
     test: {
         globals: true,
-        environment: "jsdom",
-        setupFiles: ["./vitest.setup.js"],
-        include: ["src/**/*.spec.ts"],
+        environment: 'jsdom',
+        setupFiles: ['./vitest.setup.js'],
+        include: ['src/**/*.spec.ts', 'scripts/**/*.spec.ts'],
         coverage: {
-            exclude: ["**/__mocks__/*"],
-            reporter: ["text", "json", "html", "lcov"],
-        },
+            exclude: ['**/__mocks__/*'],
+            reporter: ['text', 'json', 'html', 'lcov']
+        }
     },
     optimizeDeps: {
-        exclude: ["coverage", "dist", "lib", "package", "scripts"]
-    },
+        exclude: ['coverage', 'dist', 'lib', 'package', 'scripts']
+    }
 });

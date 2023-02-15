@@ -145,7 +145,164 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--tooltip--line-height",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tooltip--border-width",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tooltip--border-style",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tooltip--color",
+                "value": [
+                    {
+                        "name": "--tooltip--light--color",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--tooltip--dark--color",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--tooltip--light--color",
+                        "value": [
+                            {
+                                "name": "--contrast-text--color-white"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--tooltip--dark--color",
+                        "value": [
+                            {
+                                "name": "--contrast-text--color-dark"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--tooltip--background",
+                "value": [
+                    {
+                        "name": "--tooltip--light--background",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--tooltip--dark--background",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--tooltip--light--background",
+                        "value": [
+                            {
+                                "name": "--color-white"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--tooltip--dark--background",
+                        "value": [
+                            {
+                                "name": "--color-dark"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--tooltip--border-color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tooltip--border-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tooltip--font-size",
+                "value": [
+                    {
+                        "name": "--tooltip--sm--font-size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--tooltip--md--font-size",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--tooltip--lg--font-size",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--tooltip--sm--font-size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--tooltip--md--font-size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--tooltip--lg--font-size",
+                        "value": [
+                            {
+                                "name": "--font-size"
+                            },
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--tooltip--padding",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--tooltip--box-shadow",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

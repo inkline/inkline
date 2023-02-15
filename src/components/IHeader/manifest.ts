@@ -55,7 +55,120 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--header--transition-property",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--header--transition-duration",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--header--transition-timing-function",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--header--color",
+                "value": [
+                    {
+                        "name": "--header--primary--color",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--header--light--color",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--header--dark--color",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--header--primary--color",
+                        "value": [
+                            {
+                                "name": "--contrast-text--color-primary"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--header--light--color",
+                        "value": [
+                            {
+                                "name": "--contrast-text--color-light"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--header--dark--color",
+                        "value": [
+                            {
+                                "name": "--contrast-text--color-dark"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--header--background",
+                "value": [
+                    {
+                        "name": "--header--primary--background",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--header--light--background",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--header--dark--background",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--header--primary--background",
+                        "value": [
+                            {
+                                "name": "--color-primary"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--header--light--background",
+                        "value": [
+                            {
+                                "name": "--color-light"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--header--dark--background",
+                        "value": [
+                            {
+                                "name": "--color-dark"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--header--padding",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

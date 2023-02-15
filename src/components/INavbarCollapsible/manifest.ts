@@ -10,7 +10,23 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--navbar--transition-property",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--navbar--transition-timing-function",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--navbar--transition-duration",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

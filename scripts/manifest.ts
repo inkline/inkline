@@ -10,7 +10,8 @@ import {
     mapBlocksToVariables,
     mapSourceToSlots,
     parseCssVariables,
-    mapVariantsToVariables
+    mapVariantsToVariables,
+    parseCssSelector
 } from './manifest/index';
 
 const manifestFileName = 'manifest.ts';
@@ -24,7 +25,7 @@ function readSyncIfExists(filePath: string) {
 }
 
 glob(
-    path.resolve(__dirname, '..', 'src', 'components', '**', manifestFileName),
+    path.resolve(__dirname, '..', 'src', 'components', 'IAlert', manifestFileName),
     async (error, files) => {
         if (error) {
             console.error(error);
@@ -52,6 +53,7 @@ glob(
                 const events = mapBlocksToEvents(componentBlocks);
                 const slots = mapSourceToSlots(componentSource);
 
+                const cssSelector = parseCssSelector(componentCssSource);
                 const componentCssVariables = parseCssVariables(componentCssSource);
                 const colorsCssVariables = parseCssVariables(colorsCssSource);
                 const sizesCssVariables = parseCssVariables(sizesCssSource);
@@ -67,10 +69,8 @@ glob(
                     events,
                     slots,
                     css: {
-                        selector: '',
-                        variables: []
-                        // selector: cssSelector,
-                        // variables: cssVariables
+                        selector: cssSelector,
+                        variables: cssVariables
                     }
                 };
 

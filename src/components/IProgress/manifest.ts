@@ -46,7 +46,112 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--progress--background",
+                "value": [
+                    {
+                        "name": "--progress--light--background",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--progress--dark--background",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--progress--light--background",
+                        "value": [
+                            {
+                                "name": "--color-light"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--progress--dark--background",
+                        "value": [
+                            {
+                                "name": "--color-dark"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "--progress--border-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--progress--border-color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--progress--border-style",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--progress--border-width",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--progress--box-shadow",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--progress--height",
+                "value": [
+                    {
+                        "name": "--progress--sm--height",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--progress--md--height",
+                        "value": [],
+                        "variants": []
+                    },
+                    {
+                        "name": "--progress--lg--height",
+                        "value": [],
+                        "variants": []
+                    }
+                ],
+                "variants": [
+                    {
+                        "name": "--progress--sm--height",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-sm"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--progress--md--height",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-md"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "--progress--lg--height",
+                        "value": [
+                            {
+                                "name": "--size-multiplier-lg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 };
 

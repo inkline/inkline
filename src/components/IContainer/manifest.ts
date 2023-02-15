@@ -19,7 +19,13 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--grid--xs--width",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

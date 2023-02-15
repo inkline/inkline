@@ -60,7 +60,38 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--breadcrumb--padding-left",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--breadcrumb--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--breadcrumb--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--breadcrumb--link--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--breadcrumb--active--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--breadcrumb--padding-right",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

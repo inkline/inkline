@@ -31,7 +31,153 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--collapsible--box-shadow",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--header--border-style",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--header--border-width",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--header--border-color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--header--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--header--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--header--padding",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--transition-property",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--transition-duration",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--transition-timing-function",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--icon--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--icon--size",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--icon--size",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--icon--size",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--transition-property",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--transition-duration",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--transition-timing-function",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--body--border-style",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--body--border-width",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--body--border-color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--body--color",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--body--background",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--body--padding",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--header--border-top-left-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--header--border-top-right-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--header--border-bottom-left-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--header--border-bottom-right-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--body--border-bottom-left-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--collapsible--body--border-bottom-right-radius",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 

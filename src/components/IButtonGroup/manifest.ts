@@ -51,7 +51,68 @@ export const manifest = {
     ],
     "css": {
         "selector": "",
-        "variables": []
+        "variables": [
+            {
+                "name": "--button-group--font-size",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--button-group--padding",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--button--circle--size",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--button--circle--size",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--button-group--border-top-right-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--button-group--border-bottom-right-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--button-group--border-top-left-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--button-group--border-bottom-left-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--button-group--border-bottom-left-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--button-group--border-bottom-right-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--button-group--border-top-left-radius",
+                "value": [],
+                "variants": []
+            },
+            {
+                "name": "--button-group--border-top-right-radius",
+                "value": [],
+                "variants": []
+            }
+        ]
     }
 };
 
