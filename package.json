@@ -203,6 +203,21 @@
             "import": "./composables/validation.mjs",
             "types": "./composables/validation.d.ts"
         },
+        "./components": {
+            "require": "./components/index.js",
+            "import": "./components/index.mjs",
+            "types": "./components/index.d.ts"
+        },
+        "./controllers/OverlayController": {
+            "require": "./controllers/OverlayController.js",
+            "import": "./controllers/OverlayController.mjs",
+            "types": "./controllers/OverlayController.d.ts"
+        },
+        "./controllers": {
+            "require": "./controllers/index.js",
+            "import": "./controllers/index.mjs",
+            "types": "./controllers/index.d.ts"
+        },
         "./constants/breakpoints": {
             "require": "./constants/breakpoints.js",
             "import": "./constants/breakpoints.mjs",
@@ -227,21 +242,6 @@
             "require": "./constants/validation.js",
             "import": "./constants/validation.mjs",
             "types": "./constants/validation.d.ts"
-        },
-        "./controllers/OverlayController": {
-            "require": "./controllers/OverlayController.js",
-            "import": "./controllers/OverlayController.mjs",
-            "types": "./controllers/OverlayController.d.ts"
-        },
-        "./controllers": {
-            "require": "./controllers/index.js",
-            "import": "./controllers/index.mjs",
-            "types": "./controllers/index.d.ts"
-        },
-        "./components": {
-            "require": "./components/index.js",
-            "import": "./components/index.mjs",
-            "types": "./components/index.d.ts"
         },
         "./i18n": {
             "require": "./i18n/index.js",
@@ -688,11 +688,6 @@
             "import": "./components/ILoader/manifest.mjs",
             "types": "./components/ILoader/manifest.d.ts"
         },
-        "./components/IMark": {
-            "require": "./components/IMark/index.js",
-            "import": "./components/IMark/index.mjs",
-            "types": "./components/IMark/index.d.ts"
-        },
         "./components/IMedia": {
             "require": "./components/IMedia/index.js",
             "import": "./components/IMedia/index.mjs",
@@ -712,6 +707,11 @@
             "require": "./components/IModal/manifest.js",
             "import": "./components/IModal/manifest.mjs",
             "types": "./components/IModal/manifest.d.ts"
+        },
+        "./components/IMark": {
+            "require": "./components/IMark/index.js",
+            "import": "./components/IMark/index.mjs",
+            "types": "./components/IMark/index.d.ts"
         },
         "./components/INav": {
             "require": "./components/INav/index.js",
@@ -1198,15 +1198,15 @@
             "import": "./components/INav/examples/index.mjs",
             "types": "./components/INav/examples/index.d.ts"
         },
-        "./components/INavbar/examples": {
-            "require": "./components/INavbar/examples/index.js",
-            "import": "./components/INavbar/examples/index.mjs",
-            "types": "./components/INavbar/examples/index.d.ts"
-        },
         "./components/INumberInput/examples": {
             "require": "./components/INumberInput/examples/index.js",
             "import": "./components/INumberInput/examples/index.mjs",
             "types": "./components/INumberInput/examples/index.d.ts"
+        },
+        "./components/INavbar/examples": {
+            "require": "./components/INavbar/examples/index.js",
+            "import": "./components/INavbar/examples/index.mjs",
+            "types": "./components/INavbar/examples/index.d.ts"
         },
         "./components/IPagination/examples": {
             "require": "./components/IPagination/examples/index.js",
@@ -1243,20 +1243,15 @@
             "import": "./components/ISidebar/examples/index.mjs",
             "types": "./components/ISidebar/examples/index.d.ts"
         },
-        "./components/ITable/examples": {
-            "require": "./components/ITable/examples/index.js",
-            "import": "./components/ITable/examples/index.mjs",
-            "types": "./components/ITable/examples/index.d.ts"
-        },
         "./components/ITabs/examples": {
             "require": "./components/ITabs/examples/index.js",
             "import": "./components/ITabs/examples/index.mjs",
             "types": "./components/ITabs/examples/index.d.ts"
         },
-        "./components/ITextarea/examples": {
-            "require": "./components/ITextarea/examples/index.js",
-            "import": "./components/ITextarea/examples/index.mjs",
-            "types": "./components/ITextarea/examples/index.d.ts"
+        "./components/ITable/examples": {
+            "require": "./components/ITable/examples/index.js",
+            "import": "./components/ITable/examples/index.mjs",
+            "types": "./components/ITable/examples/index.d.ts"
         },
         "./components/IToast/examples": {
             "require": "./components/IToast/examples/index.js",
@@ -1277,6 +1272,11 @@
             "require": "./components/ITooltip/examples/index.js",
             "import": "./components/ITooltip/examples/index.mjs",
             "types": "./components/ITooltip/examples/index.d.ts"
+        },
+        "./components/ITextarea/examples": {
+            "require": "./components/ITextarea/examples/index.js",
+            "import": "./components/ITextarea/examples/index.mjs",
+            "types": "./components/ITextarea/examples/index.d.ts"
         }
     },
     "funding": {
