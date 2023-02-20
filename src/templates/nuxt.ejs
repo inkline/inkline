@@ -1,7 +1,8 @@
 import { defineNuxtPlugin } from '#app';
 import { NuxtLink } from '#components';
 import { markRaw } from 'vue';
-import { Inkline, InklineKey, colorModeLocalStorageKey } from '@inkline/inkline/plugin';
+import { Inkline, InklineKey } from '@inkline/inkline/plugin';
+import { colorModeLocalStorageKey } from '@inkline/inkline/plugins';
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(Inkline, {
