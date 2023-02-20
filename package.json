@@ -143,6 +143,31 @@
       "import": "./plugin.mjs",
       "types": "./plugin.d.ts"
     },
+    "./plugins": {
+      "require": "./plugins/index.js",
+      "import": "./plugins/index.mjs",
+      "types": "./plugins/index.d.ts"
+    },
+    "./plugins/color-mode": {
+      "require": "./plugins/color-mode.js",
+      "import": "./plugins/color-mode.mjs",
+      "types": "./plugins/color-mode.d.ts"
+    },
+    "./plugins/icons": {
+      "require": "./plugins/icons.js",
+      "import": "./plugins/icons.mjs",
+      "types": "./plugins/icons.d.ts"
+    },
+    "./plugins/overlay": {
+      "require": "./plugins/overlay.js",
+      "import": "./plugins/overlay.mjs",
+      "types": "./plugins/overlay.d.ts"
+    },
+    "./plugins/toast": {
+      "require": "./plugins/toast.js",
+      "import": "./plugins/toast.mjs",
+      "types": "./plugins/toast.d.ts"
+    },
     "./components": {
       "require": "./components/index.js",
       "import": "./components/index.mjs",
