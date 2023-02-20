@@ -119,209 +119,21 @@
             "import": "./inkline.mjs",
             "types": "./inkline.d.ts"
         },
-        "./types": {
-            "types": "./types/index.d.ts"
-        },
         "./*": "./*",
-        "./icons": {
-            "require": "./icons.js",
-            "import": "./icons.mjs",
-            "types": "./icons.d.ts"
-        },
-        "./inkline.config": {
-            "require": "./inkline.config.js",
-            "import": "./inkline.config.mjs",
-            "types": "./inkline.config.d.ts"
-        },
-        "./inkline": {
-            "require": "./inkline.js",
-            "import": "./inkline.mjs",
-            "types": "./inkline.d.ts"
-        },
-        "./plugin": {
-            "require": "./plugin.js",
-            "import": "./plugin.mjs",
-            "types": "./plugin.d.ts"
-        },
-        "./composables/click-outside": {
-            "require": "./composables/click-outside.js",
-            "import": "./composables/click-outside.mjs",
-            "types": "./composables/click-outside.d.ts"
-        },
-        "./composables/collapsible": {
-            "require": "./composables/collapsible.js",
-            "import": "./composables/collapsible.mjs",
-            "types": "./composables/collapsible.d.ts"
-        },
-        "./composables/componentColor": {
-            "require": "./composables/componentColor.js",
-            "import": "./composables/componentColor.mjs",
-            "types": "./composables/componentColor.d.ts"
-        },
-        "./composables/componentSize": {
-            "require": "./composables/componentSize.js",
-            "import": "./composables/componentSize.mjs",
-            "types": "./composables/componentSize.d.ts"
-        },
-        "./composables/form": {
-            "require": "./composables/form.js",
-            "import": "./composables/form.mjs",
-            "types": "./composables/form.d.ts"
-        },
-        "./composables": {
-            "require": "./composables/index.js",
-            "import": "./composables/index.mjs",
-            "types": "./composables/index.d.ts"
-        },
-        "./composables/inkline": {
-            "require": "./composables/inkline.js",
-            "import": "./composables/inkline.mjs",
-            "types": "./composables/inkline.d.ts"
-        },
-        "./composables/isServer": {
-            "require": "./composables/isServer.js",
-            "import": "./composables/isServer.mjs",
-            "types": "./composables/isServer.d.ts"
-        },
-        "./composables/linkable": {
-            "require": "./composables/linkable.js",
-            "import": "./composables/linkable.mjs",
-            "types": "./composables/linkable.d.ts"
-        },
-        "./composables/popup": {
-            "require": "./composables/popup.js",
-            "import": "./composables/popup.mjs",
-            "types": "./composables/popup.d.ts"
-        },
-        "./composables/toast": {
-            "require": "./composables/toast.js",
-            "import": "./composables/toast.mjs",
-            "types": "./composables/toast.d.ts"
-        },
-        "./composables/validation": {
-            "require": "./composables/validation.js",
-            "import": "./composables/validation.mjs",
-            "types": "./composables/validation.d.ts"
-        },
-        "./components": {
-            "require": "./components/index.js",
-            "import": "./components/index.mjs",
-            "types": "./components/index.d.ts"
-        },
-        "./controllers/OverlayController": {
-            "require": "./controllers/OverlayController.js",
-            "import": "./controllers/OverlayController.mjs",
-            "types": "./controllers/OverlayController.d.ts"
-        },
-        "./controllers": {
-            "require": "./controllers/index.js",
-            "import": "./controllers/index.mjs",
-            "types": "./controllers/index.d.ts"
-        },
-        "./constants/breakpoints": {
-            "require": "./constants/breakpoints.js",
-            "import": "./constants/breakpoints.mjs",
-            "types": "./constants/breakpoints.d.ts"
-        },
-        "./constants/eventValueMap": {
-            "require": "./constants/eventValueMap.js",
-            "import": "./constants/eventValueMap.mjs",
-            "types": "./constants/eventValueMap.d.ts"
-        },
-        "./constants": {
-            "require": "./constants/index.js",
-            "import": "./constants/index.mjs",
-            "types": "./constants/index.d.ts"
-        },
-        "./constants/keymap": {
-            "require": "./constants/keymap.js",
-            "import": "./constants/keymap.mjs",
-            "types": "./constants/keymap.d.ts"
-        },
-        "./constants/validation": {
-            "require": "./constants/validation.js",
-            "import": "./constants/validation.mjs",
-            "types": "./constants/validation.d.ts"
-        },
-        "./i18n": {
-            "require": "./i18n/index.js",
-            "import": "./i18n/index.mjs",
-            "types": "./i18n/index.d.ts"
-        },
-        "./i18n/translate": {
-            "require": "./i18n/translate.js",
-            "import": "./i18n/translate.mjs",
-            "types": "./i18n/translate.d.ts"
-        },
-        "./plugins/color-mode": {
-            "require": "./plugins/color-mode.js",
-            "import": "./plugins/color-mode.mjs",
-            "types": "./plugins/color-mode.d.ts"
-        },
-        "./plugins/icons": {
-            "require": "./plugins/icons.js",
-            "import": "./plugins/icons.mjs",
-            "types": "./plugins/icons.d.ts"
-        },
-        "./plugins": {
-            "require": "./plugins/index.js",
-            "import": "./plugins/index.mjs",
-            "types": "./plugins/index.d.ts"
-        },
-        "./plugins/overlay": {
-            "require": "./plugins/overlay.js",
-            "import": "./plugins/overlay.mjs",
-            "types": "./plugins/overlay.d.ts"
-        },
-        "./plugins/toast": {
-            "require": "./plugins/toast.js",
-            "import": "./plugins/toast.mjs",
-            "types": "./plugins/toast.d.ts"
-        },
-        "./utils/breakpointClassName": {
-            "require": "./utils/breakpointClassName.js",
-            "import": "./utils/breakpointClassName.mjs",
-            "types": "./utils/breakpointClassName.d.ts"
-        },
-        "./utils/extractRefHTMLElement": {
-            "require": "./utils/extractRefHTMLElement.js",
-            "import": "./utils/extractRefHTMLElement.mjs",
-            "types": "./utils/extractRefHTMLElement.d.ts"
-        },
-        "./utils": {
-            "require": "./utils/index.js",
-            "import": "./utils/index.mjs",
-            "types": "./utils/index.d.ts"
-        },
-        "./utils/renderSvg": {
-            "require": "./utils/renderSvg.js",
-            "import": "./utils/renderSvg.mjs",
-            "types": "./utils/renderSvg.d.ts"
-        },
-        "./validation": {
-            "require": "./validation/index.js",
-            "import": "./validation/index.mjs",
-            "types": "./validation/index.d.ts"
-        },
-        "./validation/initialize": {
-            "require": "./validation/initialize.js",
-            "import": "./validation/initialize.mjs",
-            "types": "./validation/initialize.d.ts"
-        },
-        "./validation/validate": {
-            "require": "./validation/validate.js",
-            "import": "./validation/validate.mjs",
-            "types": "./validation/validate.d.ts"
+        "./__tests__/utils": {
+            "require": "./__tests__/utils/index.js",
+            "import": "./__tests__/utils/index.mjs",
+            "types": "./__tests__/utils/index.d.ts"
         },
         "./__tests__/utils/createInkline": {
             "require": "./__tests__/utils/createInkline.js",
             "import": "./__tests__/utils/createInkline.mjs",
             "types": "./__tests__/utils/createInkline.d.ts"
         },
-        "./__tests__/utils": {
-            "require": "./__tests__/utils/index.js",
-            "import": "./__tests__/utils/index.mjs",
-            "types": "./__tests__/utils/index.d.ts"
+        "./__tests__/utils/placeholders": {
+            "require": "./__tests__/utils/placeholders/index.js",
+            "import": "./__tests__/utils/placeholders/index.mjs",
+            "types": "./__tests__/utils/placeholders/index.d.ts"
         },
         "./__tests__/utils/retry": {
             "require": "./__tests__/utils/retry.js",
@@ -333,10 +145,20 @@
             "import": "./__tests__/utils/useServer.mjs",
             "types": "./__tests__/utils/useServer.d.ts"
         },
+        "./components": {
+            "require": "./components/index.js",
+            "import": "./components/index.mjs",
+            "types": "./components/index.d.ts"
+        },
         "./components/IAlert": {
             "require": "./components/IAlert/index.js",
             "import": "./components/IAlert/index.mjs",
             "types": "./components/IAlert/index.d.ts"
+        },
+        "./components/IAlert/examples": {
+            "require": "./components/IAlert/examples/index.js",
+            "import": "./components/IAlert/examples/index.mjs",
+            "types": "./components/IAlert/examples/index.d.ts"
         },
         "./components/IAlert/manifest": {
             "require": "./components/IAlert/manifest.js",
@@ -348,6 +170,11 @@
             "import": "./components/IBadge/index.mjs",
             "types": "./components/IBadge/index.d.ts"
         },
+        "./components/IBadge/examples": {
+            "require": "./components/IBadge/examples/index.js",
+            "import": "./components/IBadge/examples/index.mjs",
+            "types": "./components/IBadge/examples/index.d.ts"
+        },
         "./components/IBadge/manifest": {
             "require": "./components/IBadge/manifest.js",
             "import": "./components/IBadge/manifest.mjs",
@@ -357,6 +184,11 @@
             "require": "./components/IBreadcrumb/index.js",
             "import": "./components/IBreadcrumb/index.mjs",
             "types": "./components/IBreadcrumb/index.d.ts"
+        },
+        "./components/IBreadcrumb/examples": {
+            "require": "./components/IBreadcrumb/examples/index.js",
+            "import": "./components/IBreadcrumb/examples/index.mjs",
+            "types": "./components/IBreadcrumb/examples/index.d.ts"
         },
         "./components/IBreadcrumb/manifest": {
             "require": "./components/IBreadcrumb/manifest.js",
@@ -378,6 +210,11 @@
             "import": "./components/IButton/index.mjs",
             "types": "./components/IButton/index.d.ts"
         },
+        "./components/IButton/examples": {
+            "require": "./components/IButton/examples/index.js",
+            "import": "./components/IButton/examples/index.mjs",
+            "types": "./components/IButton/examples/index.d.ts"
+        },
         "./components/IButton/manifest": {
             "require": "./components/IButton/manifest.js",
             "import": "./components/IButton/manifest.mjs",
@@ -387,6 +224,11 @@
             "require": "./components/IButtonGroup/index.js",
             "import": "./components/IButtonGroup/index.mjs",
             "types": "./components/IButtonGroup/index.d.ts"
+        },
+        "./components/IButtonGroup/examples": {
+            "require": "./components/IButtonGroup/examples/index.js",
+            "import": "./components/IButtonGroup/examples/index.mjs",
+            "types": "./components/IButtonGroup/examples/index.d.ts"
         },
         "./components/IButtonGroup/manifest": {
             "require": "./components/IButtonGroup/manifest.js",
@@ -403,6 +245,11 @@
             "import": "./components/ICard/index.mjs",
             "types": "./components/ICard/index.d.ts"
         },
+        "./components/ICard/examples": {
+            "require": "./components/ICard/examples/index.js",
+            "import": "./components/ICard/examples/index.mjs",
+            "types": "./components/ICard/examples/index.d.ts"
+        },
         "./components/ICard/manifest": {
             "require": "./components/ICard/manifest.js",
             "import": "./components/ICard/manifest.mjs",
@@ -412,6 +259,11 @@
             "require": "./components/ICheckbox/index.js",
             "import": "./components/ICheckbox/index.mjs",
             "types": "./components/ICheckbox/index.d.ts"
+        },
+        "./components/ICheckbox/examples": {
+            "require": "./components/ICheckbox/examples/index.js",
+            "import": "./components/ICheckbox/examples/index.mjs",
+            "types": "./components/ICheckbox/examples/index.d.ts"
         },
         "./components/ICheckbox/manifest": {
             "require": "./components/ICheckbox/manifest.js",
@@ -438,6 +290,11 @@
             "import": "./components/ICollapsible/index.mjs",
             "types": "./components/ICollapsible/index.d.ts"
         },
+        "./components/ICollapsible/examples": {
+            "require": "./components/ICollapsible/examples/index.js",
+            "import": "./components/ICollapsible/examples/index.mjs",
+            "types": "./components/ICollapsible/examples/index.d.ts"
+        },
         "./components/ICollapsible/manifest": {
             "require": "./components/ICollapsible/manifest.js",
             "import": "./components/ICollapsible/manifest.mjs",
@@ -463,6 +320,11 @@
             "import": "./components/IColumn/index.mjs",
             "types": "./components/IColumn/index.d.ts"
         },
+        "./components/IColumn/examples": {
+            "require": "./components/IColumn/examples/index.js",
+            "import": "./components/IColumn/examples/index.mjs",
+            "types": "./components/IColumn/examples/index.d.ts"
+        },
         "./components/IColumn/manifest": {
             "require": "./components/IColumn/manifest.js",
             "import": "./components/IColumn/manifest.mjs",
@@ -473,6 +335,11 @@
             "import": "./components/IContainer/index.mjs",
             "types": "./components/IContainer/index.d.ts"
         },
+        "./components/IContainer/examples": {
+            "require": "./components/IContainer/examples/index.js",
+            "import": "./components/IContainer/examples/index.mjs",
+            "types": "./components/IContainer/examples/index.d.ts"
+        },
         "./components/IContainer/manifest": {
             "require": "./components/IContainer/manifest.js",
             "import": "./components/IContainer/manifest.mjs",
@@ -482,6 +349,11 @@
             "require": "./components/IDropdown/index.js",
             "import": "./components/IDropdown/index.mjs",
             "types": "./components/IDropdown/index.d.ts"
+        },
+        "./components/IDropdown/examples": {
+            "require": "./components/IDropdown/examples/index.js",
+            "import": "./components/IDropdown/examples/index.mjs",
+            "types": "./components/IDropdown/examples/index.d.ts"
         },
         "./components/IDropdown/manifest": {
             "require": "./components/IDropdown/manifest.js",
@@ -523,6 +395,11 @@
             "import": "./components/IForm/index.mjs",
             "types": "./components/IForm/index.d.ts"
         },
+        "./components/IForm/examples": {
+            "require": "./components/IForm/examples/index.js",
+            "import": "./components/IForm/examples/index.mjs",
+            "types": "./components/IForm/examples/index.d.ts"
+        },
         "./components/IForm/manifest": {
             "require": "./components/IForm/manifest.js",
             "import": "./components/IForm/manifest.mjs",
@@ -548,6 +425,11 @@
             "import": "./components/IFormGroup/index.mjs",
             "types": "./components/IFormGroup/index.d.ts"
         },
+        "./components/IFormGroup/examples": {
+            "require": "./components/IFormGroup/examples/index.js",
+            "import": "./components/IFormGroup/examples/index.mjs",
+            "types": "./components/IFormGroup/examples/index.d.ts"
+        },
         "./components/IFormGroup/manifest": {
             "require": "./components/IFormGroup/manifest.js",
             "import": "./components/IFormGroup/manifest.mjs",
@@ -563,6 +445,11 @@
             "import": "./components/IFormLabel/index.mjs",
             "types": "./components/IFormLabel/index.d.ts"
         },
+        "./components/IFormLabel/examples": {
+            "require": "./components/IFormLabel/examples/index.js",
+            "import": "./components/IFormLabel/examples/index.mjs",
+            "types": "./components/IFormLabel/examples/index.d.ts"
+        },
         "./components/IFormLabel/manifest": {
             "require": "./components/IFormLabel/manifest.js",
             "import": "./components/IFormLabel/manifest.mjs",
@@ -572,6 +459,11 @@
             "require": "./components/IHamburgerMenu/index.js",
             "import": "./components/IHamburgerMenu/index.mjs",
             "types": "./components/IHamburgerMenu/index.d.ts"
+        },
+        "./components/IHamburgerMenu/examples": {
+            "require": "./components/IHamburgerMenu/examples/index.js",
+            "import": "./components/IHamburgerMenu/examples/index.mjs",
+            "types": "./components/IHamburgerMenu/examples/index.d.ts"
         },
         "./components/IHamburgerMenu/manifest": {
             "require": "./components/IHamburgerMenu/manifest.js",
@@ -583,6 +475,11 @@
             "import": "./components/IHeader/index.mjs",
             "types": "./components/IHeader/index.d.ts"
         },
+        "./components/IHeader/examples": {
+            "require": "./components/IHeader/examples/index.js",
+            "import": "./components/IHeader/examples/index.mjs",
+            "types": "./components/IHeader/examples/index.d.ts"
+        },
         "./components/IHeader/manifest": {
             "require": "./components/IHeader/manifest.js",
             "import": "./components/IHeader/manifest.mjs",
@@ -592,6 +489,11 @@
             "require": "./components/IIcon/index.js",
             "import": "./components/IIcon/index.mjs",
             "types": "./components/IIcon/index.d.ts"
+        },
+        "./components/IIcon/examples": {
+            "require": "./components/IIcon/examples/index.js",
+            "import": "./components/IIcon/examples/index.mjs",
+            "types": "./components/IIcon/examples/index.d.ts"
         },
         "./components/IIcon/manifest": {
             "require": "./components/IIcon/manifest.js",
@@ -603,6 +505,11 @@
             "import": "./components/IInput/index.mjs",
             "types": "./components/IInput/index.d.ts"
         },
+        "./components/IInput/examples": {
+            "require": "./components/IInput/examples/index.js",
+            "import": "./components/IInput/examples/index.mjs",
+            "types": "./components/IInput/examples/index.d.ts"
+        },
         "./components/IInput/manifest": {
             "require": "./components/IInput/manifest.js",
             "import": "./components/IInput/manifest.mjs",
@@ -612,6 +519,11 @@
             "require": "./components/ILayout/index.js",
             "import": "./components/ILayout/index.mjs",
             "types": "./components/ILayout/index.d.ts"
+        },
+        "./components/ILayout/examples": {
+            "require": "./components/ILayout/examples/index.js",
+            "import": "./components/ILayout/examples/index.mjs",
+            "types": "./components/ILayout/examples/index.d.ts"
         },
         "./components/ILayout/manifest": {
             "require": "./components/ILayout/manifest.js",
@@ -663,6 +575,11 @@
             "import": "./components/IListGroup/index.mjs",
             "types": "./components/IListGroup/index.d.ts"
         },
+        "./components/IListGroup/examples": {
+            "require": "./components/IListGroup/examples/index.js",
+            "import": "./components/IListGroup/examples/index.mjs",
+            "types": "./components/IListGroup/examples/index.d.ts"
+        },
         "./components/IListGroup/manifest": {
             "require": "./components/IListGroup/manifest.js",
             "import": "./components/IListGroup/manifest.mjs",
@@ -683,15 +600,30 @@
             "import": "./components/ILoader/index.mjs",
             "types": "./components/ILoader/index.d.ts"
         },
+        "./components/ILoader/examples": {
+            "require": "./components/ILoader/examples/index.js",
+            "import": "./components/ILoader/examples/index.mjs",
+            "types": "./components/ILoader/examples/index.d.ts"
+        },
         "./components/ILoader/manifest": {
             "require": "./components/ILoader/manifest.js",
             "import": "./components/ILoader/manifest.mjs",
             "types": "./components/ILoader/manifest.d.ts"
         },
+        "./components/IMark": {
+            "require": "./components/IMark/index.js",
+            "import": "./components/IMark/index.mjs",
+            "types": "./components/IMark/index.d.ts"
+        },
         "./components/IMedia": {
             "require": "./components/IMedia/index.js",
             "import": "./components/IMedia/index.mjs",
             "types": "./components/IMedia/index.d.ts"
+        },
+        "./components/IMedia/examples": {
+            "require": "./components/IMedia/examples/index.js",
+            "import": "./components/IMedia/examples/index.mjs",
+            "types": "./components/IMedia/examples/index.d.ts"
         },
         "./components/IMedia/manifest": {
             "require": "./components/IMedia/manifest.js",
@@ -703,20 +635,25 @@
             "import": "./components/IModal/index.mjs",
             "types": "./components/IModal/index.d.ts"
         },
+        "./components/IModal/examples": {
+            "require": "./components/IModal/examples/index.js",
+            "import": "./components/IModal/examples/index.mjs",
+            "types": "./components/IModal/examples/index.d.ts"
+        },
         "./components/IModal/manifest": {
             "require": "./components/IModal/manifest.js",
             "import": "./components/IModal/manifest.mjs",
             "types": "./components/IModal/manifest.d.ts"
         },
-        "./components/IMark": {
-            "require": "./components/IMark/index.js",
-            "import": "./components/IMark/index.mjs",
-            "types": "./components/IMark/index.d.ts"
-        },
         "./components/INav": {
             "require": "./components/INav/index.js",
             "import": "./components/INav/index.mjs",
             "types": "./components/INav/index.d.ts"
+        },
+        "./components/INav/examples": {
+            "require": "./components/INav/examples/index.js",
+            "import": "./components/INav/examples/index.mjs",
+            "types": "./components/INav/examples/index.d.ts"
         },
         "./components/INav/manifest": {
             "require": "./components/INav/manifest.js",
@@ -742,6 +679,11 @@
             "require": "./components/INavbar/index.js",
             "import": "./components/INavbar/index.mjs",
             "types": "./components/INavbar/index.d.ts"
+        },
+        "./components/INavbar/examples": {
+            "require": "./components/INavbar/examples/index.js",
+            "import": "./components/INavbar/examples/index.mjs",
+            "types": "./components/INavbar/examples/index.d.ts"
         },
         "./components/INavbar/manifest": {
             "require": "./components/INavbar/manifest.js",
@@ -778,6 +720,11 @@
             "import": "./components/INumberInput/index.mjs",
             "types": "./components/INumberInput/index.d.ts"
         },
+        "./components/INumberInput/examples": {
+            "require": "./components/INumberInput/examples/index.js",
+            "import": "./components/INumberInput/examples/index.mjs",
+            "types": "./components/INumberInput/examples/index.d.ts"
+        },
         "./components/INumberInput/manifest": {
             "require": "./components/INumberInput/manifest.js",
             "import": "./components/INumberInput/manifest.mjs",
@@ -787,6 +734,11 @@
             "require": "./components/IPagination/index.js",
             "import": "./components/IPagination/index.mjs",
             "types": "./components/IPagination/index.d.ts"
+        },
+        "./components/IPagination/examples": {
+            "require": "./components/IPagination/examples/index.js",
+            "import": "./components/IPagination/examples/index.mjs",
+            "types": "./components/IPagination/examples/index.d.ts"
         },
         "./components/IPagination/manifest": {
             "require": "./components/IPagination/manifest.js",
@@ -798,6 +750,11 @@
             "import": "./components/IPopover/index.mjs",
             "types": "./components/IPopover/index.d.ts"
         },
+        "./components/IPopover/examples": {
+            "require": "./components/IPopover/examples/index.js",
+            "import": "./components/IPopover/examples/index.mjs",
+            "types": "./components/IPopover/examples/index.d.ts"
+        },
         "./components/IPopover/manifest": {
             "require": "./components/IPopover/manifest.js",
             "import": "./components/IPopover/manifest.mjs",
@@ -807,6 +764,11 @@
             "require": "./components/IProgress/index.js",
             "import": "./components/IProgress/index.mjs",
             "types": "./components/IProgress/index.d.ts"
+        },
+        "./components/IProgress/examples": {
+            "require": "./components/IProgress/examples/index.js",
+            "import": "./components/IProgress/examples/index.mjs",
+            "types": "./components/IProgress/examples/index.d.ts"
         },
         "./components/IProgress/manifest": {
             "require": "./components/IProgress/manifest.js",
@@ -833,6 +795,11 @@
             "import": "./components/IRadio/index.mjs",
             "types": "./components/IRadio/index.d.ts"
         },
+        "./components/IRadio/examples": {
+            "require": "./components/IRadio/examples/index.js",
+            "import": "./components/IRadio/examples/index.mjs",
+            "types": "./components/IRadio/examples/index.d.ts"
+        },
         "./components/IRadio/manifest": {
             "require": "./components/IRadio/manifest.js",
             "import": "./components/IRadio/manifest.mjs",
@@ -858,6 +825,11 @@
             "import": "./components/IRow/index.mjs",
             "types": "./components/IRow/index.d.ts"
         },
+        "./components/IRow/examples": {
+            "require": "./components/IRow/examples/index.js",
+            "import": "./components/IRow/examples/index.mjs",
+            "types": "./components/IRow/examples/index.d.ts"
+        },
         "./components/IRow/manifest": {
             "require": "./components/IRow/manifest.js",
             "import": "./components/IRow/manifest.mjs",
@@ -867,6 +839,11 @@
             "require": "./components/ISelect/index.js",
             "import": "./components/ISelect/index.mjs",
             "types": "./components/ISelect/index.d.ts"
+        },
+        "./components/ISelect/examples": {
+            "require": "./components/ISelect/examples/index.js",
+            "import": "./components/ISelect/examples/index.mjs",
+            "types": "./components/ISelect/examples/index.d.ts"
         },
         "./components/ISelect/manifest": {
             "require": "./components/ISelect/manifest.js",
@@ -892,6 +869,11 @@
             "require": "./components/ISidebar/index.js",
             "import": "./components/ISidebar/index.mjs",
             "types": "./components/ISidebar/index.d.ts"
+        },
+        "./components/ISidebar/examples": {
+            "require": "./components/ISidebar/examples/index.js",
+            "import": "./components/ISidebar/examples/index.mjs",
+            "types": "./components/ISidebar/examples/index.d.ts"
         },
         "./components/ISidebar/manifest": {
             "require": "./components/ISidebar/manifest.js",
@@ -928,6 +910,11 @@
             "import": "./components/ITable/index.mjs",
             "types": "./components/ITable/index.d.ts"
         },
+        "./components/ITable/examples": {
+            "require": "./components/ITable/examples/index.js",
+            "import": "./components/ITable/examples/index.mjs",
+            "types": "./components/ITable/examples/index.d.ts"
+        },
         "./components/ITable/manifest": {
             "require": "./components/ITable/manifest.js",
             "import": "./components/ITable/manifest.mjs",
@@ -937,6 +924,11 @@
             "require": "./components/ITabs/index.js",
             "import": "./components/ITabs/index.mjs",
             "types": "./components/ITabs/index.d.ts"
+        },
+        "./components/ITabs/examples": {
+            "require": "./components/ITabs/examples/index.js",
+            "import": "./components/ITabs/examples/index.mjs",
+            "types": "./components/ITabs/examples/index.d.ts"
         },
         "./components/ITabs/manifest": {
             "require": "./components/ITabs/manifest.js",
@@ -953,6 +945,11 @@
             "import": "./components/ITextarea/index.mjs",
             "types": "./components/ITextarea/index.d.ts"
         },
+        "./components/ITextarea/examples": {
+            "require": "./components/ITextarea/examples/index.js",
+            "import": "./components/ITextarea/examples/index.mjs",
+            "types": "./components/ITextarea/examples/index.d.ts"
+        },
         "./components/ITextarea/manifest": {
             "require": "./components/ITextarea/manifest.js",
             "import": "./components/ITextarea/manifest.mjs",
@@ -962,6 +959,11 @@
             "require": "./components/IToast/index.js",
             "import": "./components/IToast/index.mjs",
             "types": "./components/IToast/index.d.ts"
+        },
+        "./components/IToast/examples": {
+            "require": "./components/IToast/examples/index.js",
+            "import": "./components/IToast/examples/index.mjs",
+            "types": "./components/IToast/examples/index.d.ts"
         },
         "./components/IToast/manifest": {
             "require": "./components/IToast/manifest.js",
@@ -973,6 +975,11 @@
             "import": "./components/IToastContainer/index.mjs",
             "types": "./components/IToastContainer/index.d.ts"
         },
+        "./components/IToastContainer/examples": {
+            "require": "./components/IToastContainer/examples/index.js",
+            "import": "./components/IToastContainer/examples/index.mjs",
+            "types": "./components/IToastContainer/examples/index.d.ts"
+        },
         "./components/IToastContainer/manifest": {
             "require": "./components/IToastContainer/manifest.js",
             "import": "./components/IToastContainer/manifest.mjs",
@@ -982,6 +989,11 @@
             "require": "./components/IToggle/index.js",
             "import": "./components/IToggle/index.mjs",
             "types": "./components/IToggle/index.d.ts"
+        },
+        "./components/IToggle/examples": {
+            "require": "./components/IToggle/examples/index.js",
+            "import": "./components/IToggle/examples/index.mjs",
+            "types": "./components/IToggle/examples/index.d.ts"
         },
         "./components/IToggle/manifest": {
             "require": "./components/IToggle/manifest.js",
@@ -993,20 +1005,218 @@
             "import": "./components/ITooltip/index.mjs",
             "types": "./components/ITooltip/index.d.ts"
         },
+        "./components/ITooltip/examples": {
+            "require": "./components/ITooltip/examples/index.js",
+            "import": "./components/ITooltip/examples/index.mjs",
+            "types": "./components/ITooltip/examples/index.d.ts"
+        },
         "./components/ITooltip/manifest": {
             "require": "./components/ITooltip/manifest.js",
             "import": "./components/ITooltip/manifest.mjs",
             "types": "./components/ITooltip/manifest.d.ts"
+        },
+        "./composables": {
+            "require": "./composables/index.js",
+            "import": "./composables/index.mjs",
+            "types": "./composables/index.d.ts"
+        },
+        "./composables/click-outside": {
+            "require": "./composables/click-outside.js",
+            "import": "./composables/click-outside.mjs",
+            "types": "./composables/click-outside.d.ts"
+        },
+        "./composables/collapsible": {
+            "require": "./composables/collapsible.js",
+            "import": "./composables/collapsible.mjs",
+            "types": "./composables/collapsible.d.ts"
+        },
+        "./composables/componentColor": {
+            "require": "./composables/componentColor.js",
+            "import": "./composables/componentColor.mjs",
+            "types": "./composables/componentColor.d.ts"
+        },
+        "./composables/componentSize": {
+            "require": "./composables/componentSize.js",
+            "import": "./composables/componentSize.mjs",
+            "types": "./composables/componentSize.d.ts"
+        },
+        "./composables/form": {
+            "require": "./composables/form.js",
+            "import": "./composables/form.mjs",
+            "types": "./composables/form.d.ts"
+        },
+        "./composables/inkline": {
+            "require": "./composables/inkline.js",
+            "import": "./composables/inkline.mjs",
+            "types": "./composables/inkline.d.ts"
+        },
+        "./composables/isServer": {
+            "require": "./composables/isServer.js",
+            "import": "./composables/isServer.mjs",
+            "types": "./composables/isServer.d.ts"
+        },
+        "./composables/linkable": {
+            "require": "./composables/linkable.js",
+            "import": "./composables/linkable.mjs",
+            "types": "./composables/linkable.d.ts"
+        },
+        "./composables/popup": {
+            "require": "./composables/popup.js",
+            "import": "./composables/popup.mjs",
+            "types": "./composables/popup.d.ts"
+        },
+        "./composables/toast": {
+            "require": "./composables/toast.js",
+            "import": "./composables/toast.mjs",
+            "types": "./composables/toast.d.ts"
+        },
+        "./composables/validation": {
+            "require": "./composables/validation.js",
+            "import": "./composables/validation.mjs",
+            "types": "./composables/validation.d.ts"
+        },
+        "./constants": {
+            "require": "./constants/index.js",
+            "import": "./constants/index.mjs",
+            "types": "./constants/index.d.ts"
+        },
+        "./constants/breakpoints": {
+            "require": "./constants/breakpoints.js",
+            "import": "./constants/breakpoints.mjs",
+            "types": "./constants/breakpoints.d.ts"
+        },
+        "./constants/eventValueMap": {
+            "require": "./constants/eventValueMap.js",
+            "import": "./constants/eventValueMap.mjs",
+            "types": "./constants/eventValueMap.d.ts"
+        },
+        "./constants/keymap": {
+            "require": "./constants/keymap.js",
+            "import": "./constants/keymap.mjs",
+            "types": "./constants/keymap.d.ts"
+        },
+        "./constants/validation": {
+            "require": "./constants/validation.js",
+            "import": "./constants/validation.mjs",
+            "types": "./constants/validation.d.ts"
+        },
+        "./controllers": {
+            "require": "./controllers/index.js",
+            "import": "./controllers/index.mjs",
+            "types": "./controllers/index.d.ts"
+        },
+        "./controllers/OverlayController": {
+            "require": "./controllers/OverlayController.js",
+            "import": "./controllers/OverlayController.mjs",
+            "types": "./controllers/OverlayController.d.ts"
+        },
+        "./i18n": {
+            "require": "./i18n/index.js",
+            "import": "./i18n/index.mjs",
+            "types": "./i18n/index.d.ts"
+        },
+        "./i18n/messages": {
+            "require": "./i18n/messages/index.js",
+            "import": "./i18n/messages/index.mjs",
+            "types": "./i18n/messages/index.d.ts"
         },
         "./i18n/messages/en": {
             "require": "./i18n/messages/en.js",
             "import": "./i18n/messages/en.mjs",
             "types": "./i18n/messages/en.d.ts"
         },
-        "./i18n/messages": {
-            "require": "./i18n/messages/index.js",
-            "import": "./i18n/messages/index.mjs",
-            "types": "./i18n/messages/index.d.ts"
+        "./i18n/translate": {
+            "require": "./i18n/translate.js",
+            "import": "./i18n/translate.mjs",
+            "types": "./i18n/translate.d.ts"
+        },
+        "./icons": {
+            "require": "./icons.js",
+            "import": "./icons.mjs",
+            "types": "./icons.d.ts"
+        },
+        "./inkline": {
+            "require": "./inkline.js",
+            "import": "./inkline.mjs",
+            "types": "./inkline.d.ts"
+        },
+        "./inkline.config": {
+            "require": "./inkline.config.js",
+            "import": "./inkline.config.mjs",
+            "types": "./inkline.config.d.ts"
+        },
+        "./plugin": {
+            "require": "./plugin.js",
+            "import": "./plugin.mjs",
+            "types": "./plugin.d.ts"
+        },
+        "./plugins": {
+            "require": "./plugins/index.js",
+            "import": "./plugins/index.mjs",
+            "types": "./plugins/index.d.ts"
+        },
+        "./plugins/color-mode": {
+            "require": "./plugins/color-mode.js",
+            "import": "./plugins/color-mode.mjs",
+            "types": "./plugins/color-mode.d.ts"
+        },
+        "./plugins/icons": {
+            "require": "./plugins/icons.js",
+            "import": "./plugins/icons.mjs",
+            "types": "./plugins/icons.d.ts"
+        },
+        "./plugins/overlay": {
+            "require": "./plugins/overlay.js",
+            "import": "./plugins/overlay.mjs",
+            "types": "./plugins/overlay.d.ts"
+        },
+        "./plugins/toast": {
+            "require": "./plugins/toast.js",
+            "import": "./plugins/toast.mjs",
+            "types": "./plugins/toast.d.ts"
+        },
+        "./types": {
+            "types": "./types/index.d.ts"
+        },
+        "./utils": {
+            "require": "./utils/index.js",
+            "import": "./utils/index.mjs",
+            "types": "./utils/index.d.ts"
+        },
+        "./utils/breakpointClassName": {
+            "require": "./utils/breakpointClassName.js",
+            "import": "./utils/breakpointClassName.mjs",
+            "types": "./utils/breakpointClassName.d.ts"
+        },
+        "./utils/extractRefHTMLElement": {
+            "require": "./utils/extractRefHTMLElement.js",
+            "import": "./utils/extractRefHTMLElement.mjs",
+            "types": "./utils/extractRefHTMLElement.d.ts"
+        },
+        "./utils/renderSvg": {
+            "require": "./utils/renderSvg.js",
+            "import": "./utils/renderSvg.mjs",
+            "types": "./utils/renderSvg.d.ts"
+        },
+        "./validation": {
+            "require": "./validation/index.js",
+            "import": "./validation/index.mjs",
+            "types": "./validation/index.d.ts"
+        },
+        "./validation/initialize": {
+            "require": "./validation/initialize.js",
+            "import": "./validation/initialize.mjs",
+            "types": "./validation/initialize.d.ts"
+        },
+        "./validation/validate": {
+            "require": "./validation/validate.js",
+            "import": "./validation/validate.mjs",
+            "types": "./validation/validate.d.ts"
+        },
+        "./validation/validators": {
+            "require": "./validation/validators/index.js",
+            "import": "./validation/validators/index.mjs",
+            "types": "./validation/validators/index.d.ts"
         },
         "./validation/validators/alpha": {
             "require": "./validation/validators/alpha.js",
@@ -1032,11 +1242,6 @@
             "require": "./validation/validators/email.js",
             "import": "./validation/validators/email.mjs",
             "types": "./validation/validators/email.d.ts"
-        },
-        "./validation/validators": {
-            "require": "./validation/validators/index.js",
-            "import": "./validation/validators/index.mjs",
-            "types": "./validation/validators/index.d.ts"
         },
         "./validation/validators/max": {
             "require": "./validation/validators/max.js",
@@ -1072,211 +1277,6 @@
             "require": "./validation/validators/sameAs.js",
             "import": "./validation/validators/sameAs.mjs",
             "types": "./validation/validators/sameAs.d.ts"
-        },
-        "./__tests__/utils/placeholders": {
-            "require": "./__tests__/utils/placeholders/index.js",
-            "import": "./__tests__/utils/placeholders/index.mjs",
-            "types": "./__tests__/utils/placeholders/index.d.ts"
-        },
-        "./components/IAlert/examples": {
-            "require": "./components/IAlert/examples/index.js",
-            "import": "./components/IAlert/examples/index.mjs",
-            "types": "./components/IAlert/examples/index.d.ts"
-        },
-        "./components/IBadge/examples": {
-            "require": "./components/IBadge/examples/index.js",
-            "import": "./components/IBadge/examples/index.mjs",
-            "types": "./components/IBadge/examples/index.d.ts"
-        },
-        "./components/IBreadcrumb/examples": {
-            "require": "./components/IBreadcrumb/examples/index.js",
-            "import": "./components/IBreadcrumb/examples/index.mjs",
-            "types": "./components/IBreadcrumb/examples/index.d.ts"
-        },
-        "./components/IButton/examples": {
-            "require": "./components/IButton/examples/index.js",
-            "import": "./components/IButton/examples/index.mjs",
-            "types": "./components/IButton/examples/index.d.ts"
-        },
-        "./components/IButtonGroup/examples": {
-            "require": "./components/IButtonGroup/examples/index.js",
-            "import": "./components/IButtonGroup/examples/index.mjs",
-            "types": "./components/IButtonGroup/examples/index.d.ts"
-        },
-        "./components/ICard/examples": {
-            "require": "./components/ICard/examples/index.js",
-            "import": "./components/ICard/examples/index.mjs",
-            "types": "./components/ICard/examples/index.d.ts"
-        },
-        "./components/ICheckbox/examples": {
-            "require": "./components/ICheckbox/examples/index.js",
-            "import": "./components/ICheckbox/examples/index.mjs",
-            "types": "./components/ICheckbox/examples/index.d.ts"
-        },
-        "./components/ICollapsible/examples": {
-            "require": "./components/ICollapsible/examples/index.js",
-            "import": "./components/ICollapsible/examples/index.mjs",
-            "types": "./components/ICollapsible/examples/index.d.ts"
-        },
-        "./components/IColumn/examples": {
-            "require": "./components/IColumn/examples/index.js",
-            "import": "./components/IColumn/examples/index.mjs",
-            "types": "./components/IColumn/examples/index.d.ts"
-        },
-        "./components/IContainer/examples": {
-            "require": "./components/IContainer/examples/index.js",
-            "import": "./components/IContainer/examples/index.mjs",
-            "types": "./components/IContainer/examples/index.d.ts"
-        },
-        "./components/IDropdown/examples": {
-            "require": "./components/IDropdown/examples/index.js",
-            "import": "./components/IDropdown/examples/index.mjs",
-            "types": "./components/IDropdown/examples/index.d.ts"
-        },
-        "./components/IForm/examples": {
-            "require": "./components/IForm/examples/index.js",
-            "import": "./components/IForm/examples/index.mjs",
-            "types": "./components/IForm/examples/index.d.ts"
-        },
-        "./components/IFormGroup/examples": {
-            "require": "./components/IFormGroup/examples/index.js",
-            "import": "./components/IFormGroup/examples/index.mjs",
-            "types": "./components/IFormGroup/examples/index.d.ts"
-        },
-        "./components/IFormLabel/examples": {
-            "require": "./components/IFormLabel/examples/index.js",
-            "import": "./components/IFormLabel/examples/index.mjs",
-            "types": "./components/IFormLabel/examples/index.d.ts"
-        },
-        "./components/IHamburgerMenu/examples": {
-            "require": "./components/IHamburgerMenu/examples/index.js",
-            "import": "./components/IHamburgerMenu/examples/index.mjs",
-            "types": "./components/IHamburgerMenu/examples/index.d.ts"
-        },
-        "./components/IHeader/examples": {
-            "require": "./components/IHeader/examples/index.js",
-            "import": "./components/IHeader/examples/index.mjs",
-            "types": "./components/IHeader/examples/index.d.ts"
-        },
-        "./components/IIcon/examples": {
-            "require": "./components/IIcon/examples/index.js",
-            "import": "./components/IIcon/examples/index.mjs",
-            "types": "./components/IIcon/examples/index.d.ts"
-        },
-        "./components/IInput/examples": {
-            "require": "./components/IInput/examples/index.js",
-            "import": "./components/IInput/examples/index.mjs",
-            "types": "./components/IInput/examples/index.d.ts"
-        },
-        "./components/ILayout/examples": {
-            "require": "./components/ILayout/examples/index.js",
-            "import": "./components/ILayout/examples/index.mjs",
-            "types": "./components/ILayout/examples/index.d.ts"
-        },
-        "./components/IListGroup/examples": {
-            "require": "./components/IListGroup/examples/index.js",
-            "import": "./components/IListGroup/examples/index.mjs",
-            "types": "./components/IListGroup/examples/index.d.ts"
-        },
-        "./components/ILoader/examples": {
-            "require": "./components/ILoader/examples/index.js",
-            "import": "./components/ILoader/examples/index.mjs",
-            "types": "./components/ILoader/examples/index.d.ts"
-        },
-        "./components/IMedia/examples": {
-            "require": "./components/IMedia/examples/index.js",
-            "import": "./components/IMedia/examples/index.mjs",
-            "types": "./components/IMedia/examples/index.d.ts"
-        },
-        "./components/IModal/examples": {
-            "require": "./components/IModal/examples/index.js",
-            "import": "./components/IModal/examples/index.mjs",
-            "types": "./components/IModal/examples/index.d.ts"
-        },
-        "./components/INav/examples": {
-            "require": "./components/INav/examples/index.js",
-            "import": "./components/INav/examples/index.mjs",
-            "types": "./components/INav/examples/index.d.ts"
-        },
-        "./components/INumberInput/examples": {
-            "require": "./components/INumberInput/examples/index.js",
-            "import": "./components/INumberInput/examples/index.mjs",
-            "types": "./components/INumberInput/examples/index.d.ts"
-        },
-        "./components/INavbar/examples": {
-            "require": "./components/INavbar/examples/index.js",
-            "import": "./components/INavbar/examples/index.mjs",
-            "types": "./components/INavbar/examples/index.d.ts"
-        },
-        "./components/IPagination/examples": {
-            "require": "./components/IPagination/examples/index.js",
-            "import": "./components/IPagination/examples/index.mjs",
-            "types": "./components/IPagination/examples/index.d.ts"
-        },
-        "./components/IPopover/examples": {
-            "require": "./components/IPopover/examples/index.js",
-            "import": "./components/IPopover/examples/index.mjs",
-            "types": "./components/IPopover/examples/index.d.ts"
-        },
-        "./components/IProgress/examples": {
-            "require": "./components/IProgress/examples/index.js",
-            "import": "./components/IProgress/examples/index.mjs",
-            "types": "./components/IProgress/examples/index.d.ts"
-        },
-        "./components/IRadio/examples": {
-            "require": "./components/IRadio/examples/index.js",
-            "import": "./components/IRadio/examples/index.mjs",
-            "types": "./components/IRadio/examples/index.d.ts"
-        },
-        "./components/IRow/examples": {
-            "require": "./components/IRow/examples/index.js",
-            "import": "./components/IRow/examples/index.mjs",
-            "types": "./components/IRow/examples/index.d.ts"
-        },
-        "./components/ISelect/examples": {
-            "require": "./components/ISelect/examples/index.js",
-            "import": "./components/ISelect/examples/index.mjs",
-            "types": "./components/ISelect/examples/index.d.ts"
-        },
-        "./components/ISidebar/examples": {
-            "require": "./components/ISidebar/examples/index.js",
-            "import": "./components/ISidebar/examples/index.mjs",
-            "types": "./components/ISidebar/examples/index.d.ts"
-        },
-        "./components/ITabs/examples": {
-            "require": "./components/ITabs/examples/index.js",
-            "import": "./components/ITabs/examples/index.mjs",
-            "types": "./components/ITabs/examples/index.d.ts"
-        },
-        "./components/ITable/examples": {
-            "require": "./components/ITable/examples/index.js",
-            "import": "./components/ITable/examples/index.mjs",
-            "types": "./components/ITable/examples/index.d.ts"
-        },
-        "./components/IToast/examples": {
-            "require": "./components/IToast/examples/index.js",
-            "import": "./components/IToast/examples/index.mjs",
-            "types": "./components/IToast/examples/index.d.ts"
-        },
-        "./components/IToastContainer/examples": {
-            "require": "./components/IToastContainer/examples/index.js",
-            "import": "./components/IToastContainer/examples/index.mjs",
-            "types": "./components/IToastContainer/examples/index.d.ts"
-        },
-        "./components/IToggle/examples": {
-            "require": "./components/IToggle/examples/index.js",
-            "import": "./components/IToggle/examples/index.mjs",
-            "types": "./components/IToggle/examples/index.d.ts"
-        },
-        "./components/ITooltip/examples": {
-            "require": "./components/ITooltip/examples/index.js",
-            "import": "./components/ITooltip/examples/index.mjs",
-            "types": "./components/ITooltip/examples/index.d.ts"
-        },
-        "./components/ITextarea/examples": {
-            "require": "./components/ITextarea/examples/index.js",
-            "import": "./components/ITextarea/examples/index.mjs",
-            "types": "./components/ITextarea/examples/index.d.ts"
         }
     },
     "funding": {
