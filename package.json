@@ -4,7 +4,8 @@
     "scripts": {
         "start": "npm run build && node lib/playground.mjs",
         "dev": "vite",
-        "build": "unbuild",
+        "build": "unbuild && npm run generate:defaults",
+        "generate:defaults": "ts-node scripts/generate-defaults.ts",
         "postbuild": "ts-node scripts/postbuild.ts",
         "lint": "eslint --ext .vue,.ts,.tsx,.js,.jsx src",
         "preview": "vite preview",
@@ -19,11 +20,13 @@
     "devDependencies": {
         "@grozav/eslint-config": "1.1.4",
         "@types/color": "3.0.3",
+        "@types/prettier": "^2.7.2",
         "@types/shelljs": "0.8.11",
         "eslint": "8.31",
         "jsdom": "^21.0.0",
         "np": "^7.6.3",
         "npm-run-all": "4.1.5",
+        "prettier": "^2.8.4",
         "shelljs": "0.8.5",
         "ts-node": "10.9.1",
         "type-fest": "3.5",
@@ -37,8 +40,8 @@
         "c12": "^1.1.0",
         "color": "4.2.3",
         "csstype": "3.1",
-        "pathe": "^1.0.0",
-        "micromustache": "8.0.3"
+        "micromustache": "8.0.3",
+        "pathe": "^1.0.0"
     },
     "main": "index.js",
     "module": "index.mjs",

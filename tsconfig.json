@@ -32,6 +32,7 @@
         }
     ],
     "ts-node": {
+        "experimentalResolver": true,
         "transpileOnly": true,
         "compilerOptions": {
             "module": "commonjs"
