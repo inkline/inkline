@@ -71,6 +71,6 @@ const defaultIgnore = [
                 }
             },
             4
-        )
+        ) + '\n'
     );
 })();
