@@ -1,2020 +1,2228 @@
 export const manifest = {
-    "name": "IButton",
-    "props": [
+    name: 'IButton',
+    props: [
         {
-            "name": "active",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The active state of the button"
+            name: 'active',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The active state of the button'
         },
         {
-            "name": "block",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Display the button as a block, spanning the full container width"
+            name: 'block',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Display the button as a block, spanning the full container width'
         },
         {
-            "name": "circle",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Display the button as a circle"
+            name: 'circle',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Display the button as a circle'
         },
         {
-            "name": "color",
-            "type": [
-                "primary",
-                "success",
-                "light",
-                "dark",
-                "info",
-                "success",
-                "warning",
-                "danger",
-                "facebook",
-                "google",
-                "twitter",
-                "github"
+            name: 'color',
+            type: [
+                'primary',
+                'success',
+                'light',
+                'dark',
+                'info',
+                'success',
+                'warning',
+                'danger',
+                'facebook',
+                'google',
+                'twitter',
+                'github'
             ],
-            "default": "",
-            "description": "The color variant of the button"
+            default: '',
+            description: 'The color variant of the button'
         },
         {
-            "name": "disabled",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The disabled state of the button"
+            name: 'disabled',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The disabled state of the button'
         },
         {
-            "name": "to",
-            "type": [
-                "String"
-            ],
-            "default": "undefined",
-            "description": "Renders the component as an anchor link with a `href` attribute"
+            name: 'to',
+            type: ['String'],
+            default: 'undefined',
+            description: 'Renders the component as an anchor link with a `href` attribute'
         },
         {
-            "name": "link",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Display the button as a link"
+            name: 'link',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Display the button as a link'
         },
         {
-            "name": "loading",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The loading state of the button"
+            name: 'loading',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The loading state of the button'
         },
         {
-            "name": "outline",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Display the button as an outline button"
+            name: 'outline',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Display the button as an outline button'
         },
         {
-            "name": "tag",
-            "type": [
-                "String"
-            ],
-            "default": "button",
-            "description": "Set the HTML tag to be used for rendering the button"
+            name: 'tag',
+            type: ['String'],
+            default: 'button',
+            description: 'Set the HTML tag to be used for rendering the button'
         },
         {
-            "name": "tabindex",
-            "type": [
-                "Number",
-                "String"
-            ],
-            "default": "0",
-            "description": "The tabindex of the button"
+            name: 'tabindex',
+            type: ['Number', 'String'],
+            default: '0',
+            description: 'The tabindex of the button'
         },
         {
-            "name": "to",
-            "type": [
-                "String"
-            ],
-            "default": "undefined",
-            "description": "Renders the component as a Router Link component with a `to` attribute"
+            name: 'to',
+            type: ['String'],
+            default: 'undefined',
+            description: 'Renders the component as a Router Link component with a `to` attribute'
         },
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the button"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the button'
         }
     ],
-    "events": [],
-    "slots": [
+    events: [],
+    slots: [
         {
-            "name": "loading",
-            "description": "Slot for button loading state "
+            name: 'loading',
+            description: 'Slot for button loading state '
         },
         {
-            "name": "default",
-            "description": "Slot for default button content "
+            name: 'default',
+            description: 'Slot for default button content '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": [
+    css: {
+        selector: '.button',
+        variables: [
             {
-                "name": "--button--font-weight",
-                "value": [],
-                "variants": []
+                name: '--button--font-weight',
+                value: [
+                    {
+                        name: '--font-weight-normal'
+                    }
+                ]
             },
             {
-                "name": "--button--font-size",
-                "value": [
+                name: '--button--font-size',
+                value: [
                     {
-                        "name": "--button--sm--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--md--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--lg--font-size",
-                        "value": [],
-                        "variants": []
+                        name: '--font-size'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--button--sm--font-size",
-                        "value": [
+                        name: '--button--sm--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--button--md--font-size",
-                        "value": [
+                        name: '--button--md--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--button--lg--font-size",
-                        "value": [
+                        name: '--button--lg--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--button--line-height",
-                "value": [],
-                "variants": []
+                name: '--button--line-height',
+                value: [
+                    {
+                        name: '--line-height'
+                    }
+                ]
             },
             {
-                "name": "--button--color",
-                "value": [
+                name: '--button--color',
+                variants: [
                     {
-                        "name": "--button--primary--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--color",
-                        "value": [
+                        name: '--button--primary--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-primary"
+                                name: '--contrast-text--color-primary'
                             }
                         ]
                     },
                     {
-                        "name": "--button--secondary--color",
-                        "value": [
+                        name: '--button--secondary--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-secondary"
+                                name: '--contrast-text--color-secondary'
                             }
                         ]
                     },
                     {
-                        "name": "--button--light--color",
-                        "value": [
+                        name: '--button--light--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-light"
+                                name: '--contrast-text--color-light'
                             }
                         ]
                     },
                     {
-                        "name": "--button--dark--color",
-                        "value": [
+                        name: '--button--dark--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-dark"
+                                name: '--contrast-text--color-dark'
                             }
                         ]
                     },
                     {
-                        "name": "--button--info--color",
-                        "value": [
+                        name: '--button--info--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-info"
+                                name: '--contrast-text--color-info'
                             }
                         ]
                     },
                     {
-                        "name": "--button--success--color",
-                        "value": [
+                        name: '--button--success--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-success"
+                                name: '--contrast-text--color-success'
                             }
                         ]
                     },
                     {
-                        "name": "--button--warning--color",
-                        "value": [
+                        name: '--button--warning--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-warning"
+                                name: '--contrast-text--color-warning'
                             }
                         ]
                     },
                     {
-                        "name": "--button--danger--color",
-                        "value": [
+                        name: '--button--danger--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-danger"
+                                name: '--contrast-text--color-danger'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--button--background",
-                "value": [
+                name: '--button--background',
+                variants: [
                     {
-                        "name": "--button--primary--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--background",
-                        "value": [
+                        name: '--button--primary--background',
+                        value: [
                             {
-                                "name": "--color-primary"
+                                name: '--color-primary'
                             }
                         ]
                     },
                     {
-                        "name": "--button--secondary--background",
-                        "value": [
+                        name: '--button--secondary--background',
+                        value: [
                             {
-                                "name": "--color-secondary"
+                                name: '--color-secondary'
                             }
                         ]
                     },
                     {
-                        "name": "--button--light--background",
-                        "value": [
+                        name: '--button--light--background',
+                        value: [
                             {
-                                "name": "--color-light"
+                                name: '--color-light'
                             }
                         ]
                     },
                     {
-                        "name": "--button--dark--background",
-                        "value": [
+                        name: '--button--dark--background',
+                        value: [
                             {
-                                "name": "--color-dark"
+                                name: '--color-dark'
                             }
                         ]
                     },
                     {
-                        "name": "--button--info--background",
-                        "value": [
+                        name: '--button--info--background',
+                        value: [
                             {
-                                "name": "--color-info"
+                                name: '--color-info'
                             }
                         ]
                     },
                     {
-                        "name": "--button--success--background",
-                        "value": [
+                        name: '--button--success--background',
+                        value: [
                             {
-                                "name": "--color-success"
+                                name: '--color-success'
                             }
                         ]
                     },
                     {
-                        "name": "--button--warning--background",
-                        "value": [
+                        name: '--button--warning--background',
+                        value: [
                             {
-                                "name": "--color-warning"
+                                name: '--color-warning'
                             }
                         ]
                     },
                     {
-                        "name": "--button--danger--background",
-                        "value": [
+                        name: '--button--danger--background',
+                        value: [
                             {
-                                "name": "--color-danger"
+                                name: '--color-danger'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--button--border-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--border-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--border-radius",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--box-shadow",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--hover--background",
-                "value": [
+                name: '--button--border-style',
+                value: [
                     {
-                        "name": "--button--primary--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--hover--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--hover--background",
-                        "value": [
+                        name: '--button--border-top-style',
+                        value: [
                             {
-                                "name": "--color-primary-shade-50"
+                                name: '--border-top-style'
                             }
                         ]
                     },
                     {
-                        "name": "--button--secondary--hover--background",
-                        "value": [
+                        name: '--button--border-right-style',
+                        value: [
                             {
-                                "name": "--color-secondary-shade-50"
+                                name: '--border-right-style'
                             }
                         ]
                     },
                     {
-                        "name": "--button--light--hover--background",
-                        "value": [
+                        name: '--button--border-bottom-style',
+                        value: [
                             {
-                                "name": "--color-light-shade-50"
+                                name: '--border-bottom-style'
                             }
                         ]
                     },
                     {
-                        "name": "--button--dark--hover--background",
-                        "value": [
+                        name: '--button--border-left-style',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--info--hover--background",
-                        "value": [
-                            {
-                                "name": "--color-info-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--success--hover--background",
-                        "value": [
-                            {
-                                "name": "--color-success-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--warning--hover--background",
-                        "value": [
-                            {
-                                "name": "--color-warning-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--danger--hover--background",
-                        "value": [
-                            {
-                                "name": "--color-danger-shade-50"
+                                name: '--border-left-style'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--button--hover--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--color",
-                "value": [
+                name: '--button--border-width',
+                value: [
                     {
-                        "name": "--button--primary--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--color",
-                        "value": [
+                        name: '--button--border-top-width',
+                        value: [
                             {
-                                "name": "--contrast-text--color-primary"
+                                name: '--border-top-width'
                             }
                         ]
                     },
                     {
-                        "name": "--button--secondary--color",
-                        "value": [
+                        name: '--button--border-right-width',
+                        value: [
                             {
-                                "name": "--contrast-text--color-secondary"
+                                name: '--border-right-width'
                             }
                         ]
                     },
                     {
-                        "name": "--button--light--color",
-                        "value": [
+                        name: '--button--border-bottom-width',
+                        value: [
                             {
-                                "name": "--contrast-text--color-light"
+                                name: '--border-bottom-width'
                             }
                         ]
                     },
                     {
-                        "name": "--button--dark--color",
-                        "value": [
+                        name: '--button--border-left-width',
+                        value: [
                             {
-                                "name": "--contrast-text--color-dark"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--info--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-info"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--success--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-success"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--warning--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-warning"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--danger--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-danger"
+                                name: '--border-left-width'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--button--active--background",
-                "value": [
+                name: '--button--border-color',
+                value: [
                     {
-                        "name": "--button--primary--active--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--active--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--active--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--active--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--active--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--active--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--active--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--active--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--active--background",
-                        "value": [
+                        name: '--button--border-top-color',
+                        value: [
                             {
-                                "name": "--color-primary-shade-100"
+                                name: '--border-top-color'
                             }
-                        ]
-                    },
-                    {
-                        "name": "--button--secondary--active--background",
-                        "value": [
+                        ],
+                        variants: [
                             {
-                                "name": "--color-secondary-shade-100"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--light--active--background",
-                        "value": [
-                            {
-                                "name": "--color-light-shade-100"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--dark--active--background",
-                        "value": [
-                            {
-                                "name": "--color-dark-tint-100"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--info--active--background",
-                        "value": [
-                            {
-                                "name": "--color-info-shade-100"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--success--active--background",
-                        "value": [
-                            {
-                                "name": "--color-success-shade-100"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--warning--active--background",
-                        "value": [
-                            {
-                                "name": "--color-warning-shade-100"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--danger--active--background",
-                        "value": [
-                            {
-                                "name": "--color-danger-shade-100"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--button--disabled--opacity",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--block--margin-top",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--link--color",
-                "value": [
-                    {
-                        "name": "--button--primary--link--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--link--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--link--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--link--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--link--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--link--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--link--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--link--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--link--color",
-                        "value": [
-                            {
-                                "name": "--color-primary"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--secondary--link--color",
-                        "value": [
-                            {
-                                "name": "--color-secondary"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--light--link--color",
-                        "value": [
-                            {
-                                "name": "--color-light"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--dark--link--color",
-                        "value": [
-                            {
-                                "name": "--color-dark"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--info--link--color",
-                        "value": [
-                            {
-                                "name": "--color-info"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--success--link--color",
-                        "value": [
-                            {
-                                "name": "--color-success"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--warning--link--color",
-                        "value": [
-                            {
-                                "name": "--color-warning"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--danger--link--color",
-                        "value": [
-                            {
-                                "name": "--color-danger"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--button--link--active--color",
-                "value": [
-                    {
-                        "name": "--button--primary--link--active--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--link--active--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--link--active--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--link--active--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--link--active--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--link--active--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--link--active--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--link--active--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--link--active--color",
-                        "value": [
-                            {
-                                "name": "--color-primary-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--secondary--link--active--color",
-                        "value": [
-                            {
-                                "name": "--color-secondary-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--light--link--active--color",
-                        "value": [
-                            {
-                                "name": "--color-light-shade-100"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--dark--link--active--color",
-                        "value": [
-                            {
-                                "name": "--color-dark-tint-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--info--link--active--color",
-                        "value": [
-                            {
-                                "name": "--color-info-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--success--link--active--color",
-                        "value": [
-                            {
-                                "name": "--color-success-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--warning--link--active--color",
-                        "value": [
-                            {
-                                "name": "--color-warning-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--danger--link--active--color",
-                        "value": [
-                            {
-                                "name": "--color-danger-shade-50"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--button--background",
-                "value": [
-                    {
-                        "name": "--button--primary--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--background",
-                        "value": [
-                            {
-                                "name": "--color-primary"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--secondary--background",
-                        "value": [
-                            {
-                                "name": "--color-secondary"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--light--background",
-                        "value": [
-                            {
-                                "name": "--color-light"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--dark--background",
-                        "value": [
-                            {
-                                "name": "--color-dark"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--info--background",
-                        "value": [
-                            {
-                                "name": "--color-info"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--success--background",
-                        "value": [
-                            {
-                                "name": "--color-success"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--warning--background",
-                        "value": [
-                            {
-                                "name": "--color-warning"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--danger--background",
-                        "value": [
-                            {
-                                "name": "--color-danger"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--button--background",
-                "value": [
-                    {
-                        "name": "--button--primary--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--background",
-                        "value": [
-                            {
-                                "name": "--color-primary"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--secondary--background",
-                        "value": [
-                            {
-                                "name": "--color-secondary"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--light--background",
-                        "value": [
-                            {
-                                "name": "--color-light"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--dark--background",
-                        "value": [
-                            {
-                                "name": "--color-dark"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--info--background",
-                        "value": [
-                            {
-                                "name": "--color-info"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--success--background",
-                        "value": [
-                            {
-                                "name": "--color-success"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--warning--background",
-                        "value": [
-                            {
-                                "name": "--color-warning"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--danger--background",
-                        "value": [
-                            {
-                                "name": "--color-danger"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--button--hover--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--button--background",
-                "value": [
-                    {
-                        "name": "--button--primary--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--background",
-                        "value": [
-                            {
-                                "name": "--color-primary"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--secondary--background",
-                        "value": [
-                            {
-                                "name": "--color-secondary"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--light--background",
-                        "value": [
-                            {
-                                "name": "--color-light"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--dark--background",
-                        "value": [
-                            {
-                                "name": "--color-dark"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--info--background",
-                        "value": [
-                            {
-                                "name": "--color-info"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--success--background",
-                        "value": [
-                            {
-                                "name": "--color-success"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--warning--background",
-                        "value": [
-                            {
-                                "name": "--color-warning"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--danger--background",
-                        "value": [
-                            {
-                                "name": "--color-danger"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--button--color",
-                "value": [
-                    {
-                        "name": "--button--primary--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-primary"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--secondary--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-secondary"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--light--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-light"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--dark--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-dark"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--info--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-info"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--success--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-success"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--warning--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-warning"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--danger--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-danger"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--button--circle--size",
-                "value": [
-                    {
-                        "name": "--button--sm--circle--size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--md--circle--size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--lg--circle--size",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--sm--circle--size",
-                        "value": [
-                            {
-                                "name": "--size-multiplier-sm"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--md--circle--size",
-                        "value": [
-                            {
-                                "name": "--size-multiplier-md"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--lg--circle--size",
-                        "value": [
-                            {
-                                "name": "--size-multiplier-lg"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--button--circle--size",
-                "value": [
-                    {
-                        "name": "--button--sm--circle--size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--md--circle--size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--lg--circle--size",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--sm--circle--size",
-                        "value": [
-                            {
-                                "name": "--size-multiplier-sm"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--md--circle--size",
-                        "value": [
-                            {
-                                "name": "--size-multiplier-md"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--lg--circle--size",
-                        "value": [
-                            {
-                                "name": "--size-multiplier-lg"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--button--font-size",
-                "value": [
-                    {
-                        "name": "--button--sm--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--md--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--lg--font-size",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--sm--font-size",
-                        "value": [
-                            {
-                                "name": "--font-size"
+                                name: '--button--primary--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-primary-shade-50'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--button--secondary--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-secondary-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--light--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--dark--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--info--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-info-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--success--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-success-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--warning--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-warning-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--danger--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-danger-shade-50'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--button--md--font-size",
-                        "value": [
+                        name: '--button--border-right-color',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--border-right-color'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--button--primary--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-primary-shade-50'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--button--secondary--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-secondary-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--light--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--dark--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--info--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-info-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--success--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-success-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--warning--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-warning-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--danger--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-danger-shade-50'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--button--lg--font-size",
-                        "value": [
+                        name: '--button--border-bottom-color',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--border-bottom-color'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--button--primary--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-primary-shade-50'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--button--secondary--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-secondary-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--light--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--dark--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--info--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-info-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--success--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-success-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--warning--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-warning-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--danger--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-danger-shade-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--border-left-color',
+                        value: [
+                            {
+                                name: '--border-left-color'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--button--primary--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-primary-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--secondary--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-secondary-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--light--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--dark--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--info--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-info-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--success--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-success-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--warning--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-warning-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--danger--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-danger-shade-50'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--button--font-size",
-                "value": [
+                name: '--button--border-radius',
+                value: [
                     {
-                        "name": "--button--sm--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--md--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--lg--font-size",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--sm--font-size",
-                        "value": [
+                        name: '--button--border-top-left-radius',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--border-top-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--button--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--button--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--button--md--font-size",
-                        "value": [
+                        name: '--button--border-top-right-radius',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--border-top-right-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--button--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--button--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--button--lg--font-size",
-                        "value": [
+                        name: '--button--border-bottom-right-radius',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--border-bottom-right-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--button--sm--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--button--md--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--lg--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--button--sm--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--md--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--lg--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--button--color",
-                "value": [
+                name: '--button--box-shadow',
+                value: [
                     {
-                        "name": "--button--primary--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--color",
-                        "value": [
+                        name: '--button--box-shadow-x-offset',
+                        value: [
                             {
-                                "name": "--contrast-text--color-primary"
+                                name: '--box-shadow-offset-x'
                             }
                         ]
                     },
                     {
-                        "name": "--button--secondary--color",
-                        "value": [
+                        name: '--button--box-shadow-y-offset',
+                        value: [
                             {
-                                "name": "--contrast-text--color-secondary"
+                                name: '--box-shadow-offset-y'
                             }
                         ]
                     },
                     {
-                        "name": "--button--light--color",
-                        "value": [
+                        name: '--button--box-shadow-blur-radius',
+                        value: [
                             {
-                                "name": "--contrast-text--color-light"
+                                name: '--box-shadow-blur-radius'
                             }
                         ]
                     },
                     {
-                        "name": "--button--dark--color",
-                        "value": [
+                        name: '--button--box-shadow-spread-radius',
+                        value: [
                             {
-                                "name": "--contrast-text--color-dark"
+                                name: '--box-shadow-spread-radius'
                             }
                         ]
                     },
                     {
-                        "name": "--button--info--color",
-                        "value": [
+                        name: '--button--box-shadow-color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-info"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--success--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-success"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--warning--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-warning"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--danger--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-danger"
+                                name: '--box-shadow-color'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--button--hover--background",
-                "value": [
+                name: '--button--padding',
+                value: [
                     {
-                        "name": "--button--primary--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--secondary--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--light--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--dark--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--info--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--success--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--warning--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--button--danger--hover--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--button--primary--hover--background",
-                        "value": [
+                        name: '--button--padding-top',
+                        value: [
                             {
-                                "name": "--color-primary-shade-50"
+                                name: '--padding-top'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--button--sm--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--md--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--lg--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--button--secondary--hover--background",
-                        "value": [
+                        name: '--button--padding-right',
+                        value: [
                             {
-                                "name": "--color-secondary-shade-50"
+                                name: '--padding-right'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--button--sm--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--md--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--lg--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--button--light--hover--background",
-                        "value": [
+                        name: '--button--padding-bottom',
+                        value: [
                             {
-                                "name": "--color-light-shade-50"
+                                name: '--padding-bottom'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--button--sm--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--md--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--lg--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--button--dark--hover--background",
-                        "value": [
+                        name: '--button--padding-left',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
+                                name: '--padding-left'
                             }
-                        ]
-                    },
-                    {
-                        "name": "--button--info--hover--background",
-                        "value": [
+                        ],
+                        variants: [
                             {
-                                "name": "--color-info-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--success--hover--background",
-                        "value": [
+                                name: '--button--sm--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
                             {
-                                "name": "--color-success-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--warning--hover--background",
-                        "value": [
+                                name: '--button--md--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
                             {
-                                "name": "--color-warning-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--button--danger--hover--background",
-                        "value": [
-                            {
-                                "name": "--color-danger-shade-50"
+                                name: '--button--lg--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--button--hover--background",
-                "value": [
+                name: '--button--transition-property',
+                value: [
                     {
-                        "name": "--button--primary--hover--background",
-                        "value": [],
-                        "variants": []
+                        value: '(background-color, color, border-color)'
+                    }
+                ]
+            },
+            {
+                name: '--button--transition-duration',
+                value: [
+                    {
+                        name: '--transition-duration'
+                    }
+                ]
+            },
+            {
+                name: '--button--transition-timing-function',
+                value: [
+                    {
+                        name: '--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--button--hover--background',
+                variants: [
+                    {
+                        name: '--button--primary--hover--background',
+                        value: [
+                            {
+                                name: '--color-primary-shade-50'
+                            }
+                        ]
                     },
                     {
-                        "name": "--button--secondary--hover--background",
-                        "value": [],
-                        "variants": []
+                        name: '--button--secondary--hover--background',
+                        value: [
+                            {
+                                name: '--color-secondary-shade-50'
+                            }
+                        ]
                     },
                     {
-                        "name": "--button--light--hover--background",
-                        "value": [],
-                        "variants": []
+                        name: '--button--light--hover--background',
+                        value: [
+                            {
+                                name: '--color-light-shade-50'
+                            }
+                        ]
                     },
                     {
-                        "name": "--button--dark--hover--background",
-                        "value": [],
-                        "variants": []
+                        name: '--button--dark--hover--background',
+                        value: [
+                            {
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
                     },
                     {
-                        "name": "--button--info--hover--background",
-                        "value": [],
-                        "variants": []
+                        name: '--button--info--hover--background',
+                        value: [
+                            {
+                                name: '--color-info-shade-50'
+                            }
+                        ]
                     },
                     {
-                        "name": "--button--success--hover--background",
-                        "value": [],
-                        "variants": []
+                        name: '--button--success--hover--background',
+                        value: [
+                            {
+                                name: '--color-success-shade-50'
+                            }
+                        ]
                     },
                     {
-                        "name": "--button--warning--hover--background",
-                        "value": [],
-                        "variants": []
+                        name: '--button--warning--hover--background',
+                        value: [
+                            {
+                                name: '--color-warning-shade-50'
+                            }
+                        ]
                     },
                     {
-                        "name": "--button--danger--hover--background",
-                        "value": [],
-                        "variants": []
+                        name: '--button--danger--hover--background',
+                        value: [
+                            {
+                                name: '--color-danger-shade-50'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--hover--border-color'
+            },
+            {
+                name: '--button--color',
+                variants: [
+                    {
+                        name: '--button--primary--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-primary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--secondary--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-secondary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--light--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-light'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--dark--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-dark'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--info--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-info'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--success--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-success'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--warning--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-warning'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--danger--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-danger'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--active--background',
+                variants: [
+                    {
+                        name: '--button--primary--active--background',
+                        value: [
+                            {
+                                name: '--color-primary-shade-100'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--secondary--active--background',
+                        value: [
+                            {
+                                name: '--color-secondary-shade-100'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--light--active--background',
+                        value: [
+                            {
+                                name: '--color-light-shade-100'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--dark--active--background',
+                        value: [
+                            {
+                                name: '--color-dark-tint-100'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--info--active--background',
+                        value: [
+                            {
+                                name: '--color-info-shade-100'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--success--active--background',
+                        value: [
+                            {
+                                name: '--color-success-shade-100'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--warning--active--background',
+                        value: [
+                            {
+                                name: '--color-warning-shade-100'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--danger--active--background',
+                        value: [
+                            {
+                                name: '--color-danger-shade-100'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--disabled--opacity',
+                value: [
+                    {
+                        value: '0.8'
+                    }
+                ]
+            },
+            {
+                name: '--button--block--margin-top',
+                value: [
+                    {
+                        name: '--margin-top'
+                    }
+                ]
+            },
+            {
+                name: '--button--link--color',
+                value: [
+                    {
+                        name: '--button--color',
+                        variants: [
+                            {
+                                name: '--button--primary--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-primary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--secondary--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-secondary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--light--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-light'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--dark--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-dark'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--info--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-info'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--success--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-success'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--warning--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-warning'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--danger--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-danger'
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--button--primary--hover--background",
-                        "value": [
+                        name: '--button--primary--link--color',
+                        value: [
                             {
-                                "name": "--color-primary-shade-50"
+                                name: '--color-primary'
                             }
                         ]
                     },
                     {
-                        "name": "--button--secondary--hover--background",
-                        "value": [
+                        name: '--button--secondary--link--color',
+                        value: [
                             {
-                                "name": "--color-secondary-shade-50"
+                                name: '--color-secondary'
                             }
                         ]
                     },
                     {
-                        "name": "--button--light--hover--background",
-                        "value": [
+                        name: '--button--light--link--color',
+                        value: [
                             {
-                                "name": "--color-light-shade-50"
+                                name: '--color-light'
                             }
                         ]
                     },
                     {
-                        "name": "--button--dark--hover--background",
-                        "value": [
+                        name: '--button--dark--link--color',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
+                                name: '--color-dark'
                             }
                         ]
                     },
                     {
-                        "name": "--button--info--hover--background",
-                        "value": [
+                        name: '--button--info--link--color',
+                        value: [
                             {
-                                "name": "--color-info-shade-50"
+                                name: '--color-info'
                             }
                         ]
                     },
                     {
-                        "name": "--button--success--hover--background",
-                        "value": [
+                        name: '--button--success--link--color',
+                        value: [
                             {
-                                "name": "--color-success-shade-50"
+                                name: '--color-success'
                             }
                         ]
                     },
                     {
-                        "name": "--button--warning--hover--background",
-                        "value": [
+                        name: '--button--warning--link--color',
+                        value: [
                             {
-                                "name": "--color-warning-shade-50"
+                                name: '--color-warning'
                             }
                         ]
                     },
                     {
-                        "name": "--button--danger--hover--background",
-                        "value": [
+                        name: '--button--danger--link--color',
+                        value: [
                             {
-                                "name": "--color-danger-shade-50"
+                                name: '--color-danger'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--link--active--color',
+                value: [
+                    {
+                        name: '--button--color',
+                        variants: [
+                            {
+                                name: '--button--primary--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-primary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--secondary--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-secondary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--light--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-light'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--dark--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-dark'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--info--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-info'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--success--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-success'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--warning--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-warning'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--button--danger--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-danger'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--button--primary--link--active--color',
+                        value: [
+                            {
+                                name: '--color-primary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--secondary--link--active--color',
+                        value: [
+                            {
+                                name: '--color-secondary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--light--link--active--color',
+                        value: [
+                            {
+                                name: '--color-light-shade-100'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--dark--link--active--color',
+                        value: [
+                            {
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--info--link--active--color',
+                        value: [
+                            {
+                                name: '--color-info-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--success--link--active--color',
+                        value: [
+                            {
+                                name: '--color-success-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--warning--link--active--color',
+                        value: [
+                            {
+                                name: '--color-warning-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--danger--link--active--color',
+                        value: [
+                            {
+                                name: '--color-danger-shade-50'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--background',
+                variants: [
+                    {
+                        name: '--button--primary--background',
+                        value: [
+                            {
+                                name: '--color-primary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--secondary--background',
+                        value: [
+                            {
+                                name: '--color-secondary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--light--background',
+                        value: [
+                            {
+                                name: '--color-light'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--dark--background',
+                        value: [
+                            {
+                                name: '--color-dark'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--info--background',
+                        value: [
+                            {
+                                name: '--color-info'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--success--background',
+                        value: [
+                            {
+                                name: '--color-success'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--warning--background',
+                        value: [
+                            {
+                                name: '--color-warning'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--danger--background',
+                        value: [
+                            {
+                                name: '--color-danger'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--background',
+                variants: [
+                    {
+                        name: '--button--primary--background',
+                        value: [
+                            {
+                                name: '--color-primary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--secondary--background',
+                        value: [
+                            {
+                                name: '--color-secondary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--light--background',
+                        value: [
+                            {
+                                name: '--color-light'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--dark--background',
+                        value: [
+                            {
+                                name: '--color-dark'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--info--background',
+                        value: [
+                            {
+                                name: '--color-info'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--success--background',
+                        value: [
+                            {
+                                name: '--color-success'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--warning--background',
+                        value: [
+                            {
+                                name: '--color-warning'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--danger--background',
+                        value: [
+                            {
+                                name: '--color-danger'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--hover--border-color'
+            },
+            {
+                name: '--button--background',
+                variants: [
+                    {
+                        name: '--button--primary--background',
+                        value: [
+                            {
+                                name: '--color-primary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--secondary--background',
+                        value: [
+                            {
+                                name: '--color-secondary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--light--background',
+                        value: [
+                            {
+                                name: '--color-light'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--dark--background',
+                        value: [
+                            {
+                                name: '--color-dark'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--info--background',
+                        value: [
+                            {
+                                name: '--color-info'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--success--background',
+                        value: [
+                            {
+                                name: '--color-success'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--warning--background',
+                        value: [
+                            {
+                                name: '--color-warning'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--danger--background',
+                        value: [
+                            {
+                                name: '--color-danger'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--color',
+                variants: [
+                    {
+                        name: '--button--primary--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-primary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--secondary--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-secondary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--light--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-light'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--dark--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-dark'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--info--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-info'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--success--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-success'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--warning--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-warning'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--danger--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-danger'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--circle--size',
+                variants: [
+                    {
+                        name: '--button--sm--circle--size',
+                        value: [
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--md--circle--size',
+                        value: [
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--lg--circle--size',
+                        value: [
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--circle--size',
+                variants: [
+                    {
+                        name: '--button--sm--circle--size',
+                        value: [
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--md--circle--size',
+                        value: [
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--lg--circle--size',
+                        value: [
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--font-size',
+                variants: [
+                    {
+                        name: '--button--sm--font-size',
+                        value: [
+                            {
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--md--font-size',
+                        value: [
+                            {
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--lg--font-size',
+                        value: [
+                            {
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--font-size',
+                variants: [
+                    {
+                        name: '--button--sm--font-size',
+                        value: [
+                            {
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--md--font-size',
+                        value: [
+                            {
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--lg--font-size',
+                        value: [
+                            {
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--color',
+                variants: [
+                    {
+                        name: '--button--primary--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-primary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--secondary--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-secondary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--light--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-light'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--dark--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-dark'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--info--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-info'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--success--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-success'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--warning--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-warning'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--danger--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-danger'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--hover--background',
+                variants: [
+                    {
+                        name: '--button--primary--hover--background',
+                        value: [
+                            {
+                                name: '--color-primary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--secondary--hover--background',
+                        value: [
+                            {
+                                name: '--color-secondary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--light--hover--background',
+                        value: [
+                            {
+                                name: '--color-light-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--dark--hover--background',
+                        value: [
+                            {
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--info--hover--background',
+                        value: [
+                            {
+                                name: '--color-info-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--success--hover--background',
+                        value: [
+                            {
+                                name: '--color-success-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--warning--hover--background',
+                        value: [
+                            {
+                                name: '--color-warning-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--danger--hover--background',
+                        value: [
+                            {
+                                name: '--color-danger-shade-50'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--hover--background',
+                variants: [
+                    {
+                        name: '--button--primary--hover--background',
+                        value: [
+                            {
+                                name: '--color-primary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--secondary--hover--background',
+                        value: [
+                            {
+                                name: '--color-secondary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--light--hover--background',
+                        value: [
+                            {
+                                name: '--color-light-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--dark--hover--background',
+                        value: [
+                            {
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--info--hover--background',
+                        value: [
+                            {
+                                name: '--color-info-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--success--hover--background',
+                        value: [
+                            {
+                                name: '--color-success-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--warning--hover--background',
+                        value: [
+                            {
+                                name: '--color-warning-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--danger--hover--background',
+                        value: [
+                            {
+                                name: '--color-danger-shade-50'
                             }
                         ]
                     }

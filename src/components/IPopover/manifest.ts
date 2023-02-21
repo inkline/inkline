@@ -1,613 +1,2010 @@
 export const manifest = {
-    "name": "IPopover",
-    "props": [
+    name: 'IPopover',
+    props: [
         {
-            "name": "color",
-            "type": [
-                "light",
-                "dark"
-            ],
-            "default": "",
-            "description": "The color variant of the popover"
+            name: 'color',
+            type: ['light', 'dark'],
+            default: '',
+            description: 'The color variant of the popover'
         },
         {
-            "name": "disabled",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The disabled state of the popover"
+            name: 'disabled',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The disabled state of the popover'
         },
         {
-            "name": "visible",
-            "type": [
-                "Boolean"
-            ],
-            "default": "undefined",
-            "description": "Used to manually control the visibility of the popover"
+            name: 'visible',
+            type: ['Boolean'],
+            default: 'undefined',
+            description: 'Used to manually control the visibility of the popover'
         },
         {
-            "name": "name",
-            "type": [
-                "String"
-            ],
-            "default": "uid()",
-            "description": "The identifier of the popover"
+            name: 'name',
+            type: ['String'],
+            default: 'uid()',
+            description: 'The identifier of the popover'
         },
         {
-            "name": "arrow",
-            "type": [
-                "Boolean"
-            ],
-            "default": "true",
-            "description": "Displays an arrow on the popover pointing to the trigger element"
+            name: 'arrow',
+            type: ['Boolean'],
+            default: 'true',
+            description: 'Displays an arrow on the popover pointing to the trigger element'
         },
         {
-            "name": "placement",
-            "type": [
-                "top",
-                "top-start",
-                "top-end",
-                "bottom",
-                "bottom-start",
-                "bottom-end",
-                "left",
-                "left-start",
-                "left-end",
-                "right",
-                "right-start",
-                "right-end"
+            name: 'placement',
+            type: [
+                'top',
+                'top-start',
+                'top-end',
+                'bottom',
+                'bottom-start',
+                'bottom-end',
+                'left',
+                'left-start',
+                'left-end',
+                'right',
+                'right-start',
+                'right-end'
             ],
-            "default": "false",
-            "description": "The placement of the popover"
+            default: 'false',
+            description: 'The placement of the popover'
         },
         {
-            "name": "events",
-            "type": [
-                "hover",
-                "focus",
-                "click",
-                "manual"
-            ],
-            "default": "hover, focus",
-            "description": "The events used to trigger the popover"
+            name: 'events',
+            type: ['hover', 'focus', 'click', 'manual'],
+            default: 'hover, focus',
+            description: 'The events used to trigger the popover'
         },
         {
-            "name": "offset",
-            "type": [
-                "Number"
-            ],
-            "default": "6",
-            "description": "The offset of the popover relative to the trigger element"
+            name: 'offset',
+            type: ['Number'],
+            default: '6',
+            description: 'The offset of the popover relative to the trigger element'
         },
         {
-            "name": "interactable",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Determines whether hover state should be transferred from trigger to popup"
+            name: 'interactable',
+            type: ['Boolean'],
+            default: 'false',
+            description:
+                'Determines whether hover state should be transferred from trigger to popup'
         },
         {
-            "name": "popupOptions",
-            "type": [
-                "Object"
-            ],
-            "default": "",
-            "description": "Used to override the floating-ui options used for creating the popover"
+            name: 'popupOptions',
+            type: ['Object'],
+            default: '',
+            description: 'Used to override the floating-ui options used for creating the popover'
         },
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the popover"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the popover'
         },
         {
-            "name": "hoverHideDelay",
-            "type": [
-                "Number"
-            ],
-            "default": "300",
-            "description": "Delay in milliseconds before the popover is hidden on hover"
+            name: 'hoverHideDelay',
+            type: ['Number'],
+            default: '300',
+            description: 'Delay in milliseconds before the popover is hidden on hover'
         },
         {
-            "name": "animationDuration",
-            "type": [
-                "Number"
-            ],
-            "default": "300",
-            "description": "Animation duration in milliseconds"
+            name: 'animationDuration',
+            type: ['Number'],
+            default: '300',
+            description: 'Animation duration in milliseconds'
         }
     ],
-    "events": [
+    events: [
         {
-            "description": "Event emitted for setting the visible",
-            "name": "update:visible"
+            description: 'Event emitted for setting the visible',
+            name: 'update:visible'
         },
         {
-            "description": "Event emitted when clicking outside the popover",
-            "name": "click:outside"
+            description: 'Event emitted when clicking outside the popover',
+            name: 'click:outside'
         }
     ],
-    "slots": [
+    slots: [
         {
-            "name": "default",
-            "description": "Slot for popover trigger "
+            name: 'default',
+            description: 'Slot for popover trigger '
         },
         {
-            "name": "header",
-            "description": "Slot for popover header content "
+            name: 'header',
+            description: 'Slot for popover header content '
         },
         {
-            "name": "body",
-            "description": "Slot for popover body content "
+            name: 'body',
+            description: 'Slot for popover body content '
         },
         {
-            "name": "footer",
-            "description": "Slot for popover footer content "
+            name: 'footer',
+            description: 'Slot for popover footer content '
         }
     ],
-    "css": {
-        "selector": "@use",
-        "variables": [
+    css: {
+        selector: '.popover-wrapper',
+        variables: [
             {
-                "name": "--popover--line-height",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--box-shadow",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--max-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--color",
-                "value": [
+                name: '--popover--line-height',
+                value: [
                     {
-                        "name": "--popover--light--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--dark--color",
-                        "value": [],
-                        "variants": []
+                        name: '--line-height'
                     }
-                ],
-                "variants": [
+                ]
+            },
+            {
+                name: '--popover--box-shadow',
+                value: [
                     {
-                        "name": "--popover--light--color",
-                        "value": [
+                        name: '--popover--box-shadow-x-offset',
+                        value: [
                             {
-                                "name": "--contrast-text--color-white"
+                                name: '--box-shadow-offset-x'
                             }
                         ]
                     },
                     {
-                        "name": "--popover--dark--color",
-                        "value": [
+                        name: '--popover--box-shadow-y-offset',
+                        value: [
                             {
-                                "name": "--contrast-text--color-dark"
+                                name: '--box-shadow-offset-y'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--box-shadow-blur-radius',
+                        value: [
+                            {
+                                name: '--box-shadow-blur-radius'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--box-shadow-spread-radius',
+                        value: [
+                            {
+                                name: '--box-shadow-spread-radius'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--box-shadow-color',
+                        value: [
+                            {
+                                name: '--box-shadow-color'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--popover--font-size",
-                "value": [
+                name: '--popover--width',
+                value: [
                     {
-                        "name": "--popover--sm--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--md--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--lg--font-size",
-                        "value": [],
-                        "variants": []
+                        value: '280px'
                     }
-                ],
-                "variants": [
+                ]
+            },
+            {
+                name: '--popover--max-width',
+                value: [
                     {
-                        "name": "--popover--sm--font-size",
-                        "value": [
+                        value: '90vw'
+                    }
+                ]
+            },
+            {
+                name: '--popover--color',
+                variants: [
+                    {
+                        name: '--popover--light--color',
+                        value: [
                             {
-                                "name": "--font-size"
-                            },
-                            {
-                                "name": "--size-multiplier-sm"
+                                name: '--contrast-text--color-white'
                             }
                         ]
                     },
                     {
-                        "name": "--popover--md--font-size",
-                        "value": [
+                        name: '--popover--dark--color',
+                        value: [
                             {
-                                "name": "--font-size"
-                            },
-                            {
-                                "name": "--size-multiplier-md"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--popover--lg--font-size",
-                        "value": [
-                            {
-                                "name": "--font-size"
-                            },
-                            {
-                                "name": "--size-multiplier-lg"
+                                name: '--contrast-text--color-dark'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--popover--header--border-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--header--border-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--header--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--header--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--header--background",
-                "value": [
+                name: '--popover--font-size',
+                value: [
                     {
-                        "name": "--popover--light--header--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--dark--header--background",
-                        "value": [],
-                        "variants": []
+                        name: '--font-size'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--popover--light--header--background",
-                        "value": [
+                        name: '--popover--sm--font-size',
+                        value: [
                             {
-                                "name": "--color-gray-50"
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--popover--dark--header--background",
-                        "value": [
+                        name: '--popover--md--font-size',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--lg--font-size',
+                        value: [
+                            {
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--popover--body--border-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--body--border-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--body--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--body--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--body--background",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--footer--border-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--footer--border-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--footer--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--footer--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--popover--footer--background",
-                "value": [
+                name: '--popover--header--border-style',
+                value: [
                     {
-                        "name": "--popover--light--footer--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--dark--footer--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--popover--light--footer--background",
-                        "value": [
+                        name: '--popover--header--border-top-style',
+                        value: [
                             {
-                                "name": "--color-gray-50"
+                                name: '--popover--border-top-style',
+                                value: [
+                                    {
+                                        name: '--border-top-style'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--popover--dark--footer--background",
-                        "value": [
+                        name: '--popover--header--border-right-style',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
+                                name: '--popover--border-right-style',
+                                value: [
+                                    {
+                                        name: '--border-right-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--header--border-bottom-style',
+                        value: [
+                            {
+                                name: '--popover--border-bottom-style',
+                                value: [
+                                    {
+                                        name: '--border-bottom-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--header--border-left-style',
+                        value: [
+                            {
+                                name: '--popover--border-left-style',
+                                value: [
+                                    {
+                                        name: '--border-left-style'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--popover--border-top-left-radius",
-                "value": [
+                name: '--popover--header--border-width',
+                value: [
                     {
-                        "name": "--popover--sm--border-top-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--md--border-top-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--lg--border-top-left-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--popover--sm--border-top-left-radius",
-                        "value": [
+                        name: '--popover--header--border-top-width',
+                        value: [
                             {
-                                "name": "--border-top-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-sm"
+                                name: '--popover--border-top-width',
+                                value: [
+                                    {
+                                        name: '--border-top-width'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--popover--md--border-top-left-radius",
-                        "value": [
+                        name: '--popover--header--border-right-width',
+                        value: [
                             {
-                                "name": "--border-top-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-md"
+                                name: '--popover--border-right-width',
+                                value: [
+                                    {
+                                        name: '--border-right-width'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--popover--lg--border-top-left-radius",
-                        "value": [
+                        name: '--popover--header--border-bottom-width',
+                        value: [
                             {
-                                "name": "--border-top-left-radius"
-                            },
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--header--border-left-width',
+                        value: [
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--popover--border-left-width',
+                                value: [
+                                    {
+                                        name: '--border-left-width'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--popover--border-top-right-radius",
-                "value": [
+                name: '--popover--header--border-color',
+                value: [
                     {
-                        "name": "--popover--sm--border-top-right-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--md--border-top-right-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--lg--border-top-right-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--popover--sm--border-top-right-radius",
-                        "value": [
+                        name: '--popover--header--border-top-color',
+                        value: [
                             {
-                                "name": "--border-top-right-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-sm"
+                                name: '--popover--border-top-color',
+                                value: [
+                                    {
+                                        name: '--border-top-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--popover--md--border-top-right-radius",
-                        "value": [
+                        name: '--popover--header--border-right-color',
+                        value: [
                             {
-                                "name": "--border-top-right-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-md"
+                                name: '--popover--border-right-color',
+                                value: [
+                                    {
+                                        name: '--border-right-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--popover--lg--border-top-right-radius",
-                        "value": [
+                        name: '--popover--header--border-bottom-color',
+                        value: [
                             {
-                                "name": "--border-top-right-radius"
-                            },
+                                name: '--popover--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--border-bottom-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--header--border-left-color',
+                        value: [
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--popover--border-left-color',
+                                value: [
+                                    {
+                                        name: '--border-left-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--popover--border-bottom-left-radius",
-                "value": [
+                name: '--popover--header--padding',
+                value: [
                     {
-                        "name": "--popover--sm--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--md--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--lg--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--popover--sm--border-bottom-left-radius",
-                        "value": [
+                        name: '--popover--header--padding-top',
+                        value: [
                             {
-                                "name": "--border-bottom-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-sm"
+                                name: '--popover--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--popover--md--border-bottom-left-radius",
-                        "value": [
+                        name: '--popover--header--padding-right',
+                        value: [
                             {
-                                "name": "--border-bottom-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-md"
+                                name: '--popover--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--popover--lg--border-bottom-left-radius",
-                        "value": [
+                        name: '--popover--header--padding-bottom',
+                        value: [
                             {
-                                "name": "--border-bottom-left-radius"
+                                name: '--popover--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--popover--sm--header--padding-bottom',
+                                value: [
+                                    {
+                                        name: '----padding-bottom-sm'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--popover--md--header--padding-bottom',
+                                value: [
+                                    {
+                                        name: '----padding-bottom-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--lg--header--padding-bottom',
+                                value: [
+                                    {
+                                        name: '----padding-bottom-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--header--padding-left',
+                        value: [
+                            {
+                                name: '--popover--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--popover--sm--header--padding-left',
+                                value: [
+                                    {
+                                        name: '----padding-left-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--md--header--padding-left',
+                                value: [
+                                    {
+                                        name: '----padding-left-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--lg--header--padding-left',
+                                value: [
+                                    {
+                                        name: '----padding-left-lg'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--popover--border-bottom-right-radius",
-                "value": [
+                name: '--popover--header--background',
+                value: [
                     {
-                        "name": "--popover--sm--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--md--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--popover--lg--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
+                        name: '--popover--background',
+                        variants: [
+                            {
+                                name: '--popover--light--background',
+                                value: [
+                                    {
+                                        name: '--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--dark--background',
+                                value: [
+                                    {
+                                        name: '--color-dark'
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--popover--sm--border-bottom-right-radius",
-                        "value": [
+                        name: '--popover--light--header--background',
+                        value: [
                             {
-                                "name": "--border-bottom-right-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-sm"
+                                name: '--color-gray-50'
                             }
                         ]
                     },
                     {
-                        "name": "--popover--md--border-bottom-right-radius",
-                        "value": [
+                        name: '--popover--dark--header--background',
+                        value: [
                             {
-                                "name": "--border-bottom-right-radius"
-                            },
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--body--border-style',
+                value: [
+                    {
+                        name: '--popover--body--border-top-style',
+                        value: [
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--popover--border-top-style',
+                                value: [
+                                    {
+                                        name: '--border-top-style'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--popover--lg--border-bottom-right-radius",
-                        "value": [
+                        name: '--popover--body--border-right-style',
+                        value: [
                             {
-                                "name": "--border-bottom-right-radius"
+                                name: '--popover--border-right-style',
+                                value: [
+                                    {
+                                        name: '--border-right-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--body--border-bottom-style',
+                        value: [
+                            {
+                                name: '--popover--border-bottom-style',
+                                value: [
+                                    {
+                                        name: '--border-bottom-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--body--border-left-style',
+                        value: [
+                            {
+                                name: '--popover--border-left-style',
+                                value: [
+                                    {
+                                        name: '--border-left-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--body--border-width',
+                value: [
+                    {
+                        name: '--popover--body--border-top-width',
+                        value: [
+                            {
+                                name: '--popover--border-top-width',
+                                value: [
+                                    {
+                                        name: '--border-top-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--body--border-right-width',
+                        value: [
+                            {
+                                name: '--popover--border-right-width',
+                                value: [
+                                    {
+                                        name: '--border-right-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--body--border-bottom-width',
+                        value: [
+                            {
+                                name: '--popover--border-bottom-width',
+                                value: [
+                                    {
+                                        name: '--border-bottom-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--body--border-left-width',
+                        value: [
+                            {
+                                name: '--popover--border-left-width',
+                                value: [
+                                    {
+                                        name: '--border-left-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--body--border-color',
+                value: [
+                    {
+                        name: '--popover--body--border-top-color',
+                        value: [
+                            {
+                                name: '--popover--border-top-color',
+                                value: [
+                                    {
+                                        name: '--border-top-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--body--border-right-color',
+                        value: [
+                            {
+                                name: '--popover--border-right-color',
+                                value: [
+                                    {
+                                        name: '--border-right-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--body--border-bottom-color',
+                        value: [
+                            {
+                                name: '--popover--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--border-bottom-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--body--border-left-color',
+                        value: [
+                            {
+                                name: '--popover--border-left-color',
+                                value: [
+                                    {
+                                        name: '--border-left-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--body--padding',
+                value: [
+                    {
+                        name: '--popover--body--padding-top',
+                        value: [
+                            {
+                                name: '--popover--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--body--padding-right',
+                        value: [
+                            {
+                                name: '--popover--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--body--padding-bottom',
+                        value: [
+                            {
+                                name: '--popover--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--popover--sm--body--padding-bottom',
+                                value: [
+                                    {
+                                        name: '----padding-bottom-sm'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--popover--md--body--padding-bottom',
+                                value: [
+                                    {
+                                        name: '----padding-bottom-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--lg--body--padding-bottom',
+                                value: [
+                                    {
+                                        name: '----padding-bottom-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--body--padding-left',
+                        value: [
+                            {
+                                name: '--popover--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--popover--sm--body--padding-left',
+                                value: [
+                                    {
+                                        name: '----padding-left-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--md--body--padding-left',
+                                value: [
+                                    {
+                                        name: '----padding-left-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--lg--body--padding-left',
+                                value: [
+                                    {
+                                        name: '----padding-left-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--body--background',
+                value: [
+                    {
+                        name: '--popover--background',
+                        variants: [
+                            {
+                                name: '--popover--light--background',
+                                value: [
+                                    {
+                                        name: '--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--dark--background',
+                                value: [
+                                    {
+                                        name: '--color-dark'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--footer--border-style',
+                value: [
+                    {
+                        name: '--popover--footer--border-top-style',
+                        value: [
+                            {
+                                name: '--popover--border-top-style',
+                                value: [
+                                    {
+                                        name: '--border-top-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--border-right-style',
+                        value: [
+                            {
+                                name: '--popover--border-right-style',
+                                value: [
+                                    {
+                                        name: '--border-right-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--border-bottom-style',
+                        value: [
+                            {
+                                name: '--popover--border-bottom-style',
+                                value: [
+                                    {
+                                        name: '--border-bottom-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--border-left-style',
+                        value: [
+                            {
+                                name: '--popover--border-left-style',
+                                value: [
+                                    {
+                                        name: '--border-left-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--footer--border-width',
+                value: [
+                    {
+                        name: '--popover--footer--border-top-width',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--border-right-width',
+                        value: [
+                            {
+                                name: '--popover--border-right-width',
+                                value: [
+                                    {
+                                        name: '--border-right-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--border-bottom-width',
+                        value: [
+                            {
+                                name: '--popover--border-bottom-width',
+                                value: [
+                                    {
+                                        name: '--border-bottom-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--border-left-width',
+                        value: [
+                            {
+                                name: '--popover--border-left-width',
+                                value: [
+                                    {
+                                        name: '--border-left-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--footer--border-color',
+                value: [
+                    {
+                        name: '--popover--footer--border-top-color',
+                        value: [
+                            {
+                                name: '--popover--border-top-color',
+                                value: [
+                                    {
+                                        name: '--border-top-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--border-right-color',
+                        value: [
+                            {
+                                name: '--popover--border-right-color',
+                                value: [
+                                    {
+                                        name: '--border-right-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--border-bottom-color',
+                        value: [
+                            {
+                                name: '--popover--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--border-bottom-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--border-left-color',
+                        value: [
+                            {
+                                name: '--popover--border-left-color',
+                                value: [
+                                    {
+                                        name: '--border-left-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--light--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--dark--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--footer--padding',
+                value: [
+                    {
+                        name: '--popover--footer--padding-top',
+                        value: [
+                            {
+                                name: '--popover--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--padding-right',
+                        value: [
+                            {
+                                name: '--popover--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--padding-bottom',
+                        value: [
+                            {
+                                name: '--popover--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--popover--sm--footer--padding-bottom',
+                                value: [
+                                    {
+                                        name: '----padding-bottom-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--md--footer--padding-bottom',
+                                value: [
+                                    {
+                                        name: '----padding-bottom-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--lg--footer--padding-bottom',
+                                value: [
+                                    {
+                                        name: '----padding-bottom-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--footer--padding-left',
+                        value: [
+                            {
+                                name: '--popover--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--popover--sm--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--md--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--popover--lg--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--popover--sm--footer--padding-left',
+                                value: [
+                                    {
+                                        name: '----padding-left-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--md--footer--padding-left',
+                                value: [
+                                    {
+                                        name: '----padding-left-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--lg--footer--padding-left',
+                                value: [
+                                    {
+                                        name: '----padding-left-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--footer--background',
+                value: [
+                    {
+                        name: '--popover--background',
+                        variants: [
+                            {
+                                name: '--popover--light--background',
+                                value: [
+                                    {
+                                        name: '--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--popover--dark--background',
+                                value: [
+                                    {
+                                        name: '--color-dark'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--popover--light--footer--background',
+                        value: [
+                            {
+                                name: '--color-gray-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--dark--footer--background',
+                        value: [
+                            {
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--border-top-left-radius',
+                value: [
+                    {
+                        name: '--border-top-left-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--popover--sm--border-top-left-radius',
+                        value: [
+                            {
+                                name: '--border-top-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--md--border-top-left-radius',
+                        value: [
+                            {
+                                name: '--border-top-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--lg--border-top-left-radius',
+                        value: [
+                            {
+                                name: '--border-top-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--border-top-right-radius',
+                value: [
+                    {
+                        name: '--border-top-right-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--popover--sm--border-top-right-radius',
+                        value: [
+                            {
+                                name: '--border-top-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--md--border-top-right-radius',
+                        value: [
+                            {
+                                name: '--border-top-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--lg--border-top-right-radius',
+                        value: [
+                            {
+                                name: '--border-top-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--border-bottom-left-radius',
+                value: [
+                    {
+                        name: '--border-bottom-left-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--popover--sm--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--md--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--lg--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--popover--border-bottom-right-radius',
+                value: [
+                    {
+                        name: '--border-bottom-right-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--popover--sm--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--md--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--popover--lg--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }

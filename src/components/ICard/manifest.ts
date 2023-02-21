@@ -1,645 +1,3953 @@
 export const manifest = {
-    "name": "ICard",
-    "props": [
+    name: 'ICard',
+    props: [
         {
-            "name": "color",
-            "type": [
-                "primary",
-                "success",
-                "light",
-                "dark",
-                "info",
-                "success",
-                "warning",
-                "danger"
-            ],
-            "default": "",
-            "description": "The color variant of the card"
+            name: 'color',
+            type: ['primary', 'success', 'light', 'dark', 'info', 'success', 'warning', 'danger'],
+            default: '',
+            description: 'The color variant of the card'
         },
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the card"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the card'
         }
     ],
-    "events": [],
-    "slots": [
+    events: [],
+    slots: [
         {
-            "name": "header",
-            "description": "Slot for card header content "
+            name: 'header',
+            description: 'Slot for card header content '
         },
         {
-            "name": "image",
-            "description": "Slot for card image "
+            name: 'image',
+            description: 'Slot for card image '
         },
         {
-            "name": "default",
-            "description": "Slot for card header content "
+            name: 'default',
+            description: 'Slot for card header content '
         },
         {
-            "name": "footer",
-            "description": "Slot for card footer content "
+            name: 'footer',
+            description: 'Slot for card footer content '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": [
+    css: {
+        selector: '.card',
+        variables: [
             {
-                "name": "--card--border-radius",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--font-size",
-                "value": [
+                name: '--card--border-radius',
+                value: [
                     {
-                        "name": "--card--sm--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--md--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--lg--font-size",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--card--sm--font-size",
-                        "value": [
+                        name: '--card--border-top-left-radius',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--border-top-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--card--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--card--md--font-size",
-                        "value": [
+                        name: '--card--border-top-right-radius',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--border-top-right-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--card--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--card--lg--font-size",
-                        "value": [
+                        name: '--card--border-bottom-right-radius',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--border-bottom-right-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--card--md--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--card--box-shadow",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--header--color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--header--background",
-                "value": [
+                name: '--card--font-size',
+                value: [
                     {
-                        "name": "--card--primary--header--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--secondary--header--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--light--header--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--dark--header--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--info--header--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--success--header--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--warning--header--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--danger--header--background",
-                        "value": [],
-                        "variants": []
+                        name: '--font-size'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--card--primary--header--background",
-                        "value": [
+                        name: '--card--sm--font-size',
+                        value: [
                             {
-                                "name": "--color-primary-shade-50"
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--card--secondary--header--background",
-                        "value": [
+                        name: '--card--md--font-size',
+                        value: [
                             {
-                                "name": "--color-secondary-shade-50"
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--card--light--header--background",
-                        "value": [
+                        name: '--card--lg--font-size',
+                        value: [
                             {
-                                "name": "--color-light-250"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--dark--header--background",
-                        "value": [
+                                name: '--font-size'
+                            },
                             {
-                                "name": "--color-dark-tint-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--info--header--background",
-                        "value": [
-                            {
-                                "name": "--color-info-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--success--header--background",
-                        "value": [
-                            {
-                                "name": "--color-success-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--warning--header--background",
-                        "value": [
-                            {
-                                "name": "--color-warning-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--danger--header--background",
-                        "value": [
-                            {
-                                "name": "--color-danger-shade-50"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--card--header--border-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--header--border-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--header--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--header--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--header--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--header--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--header--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--header--border-top-left-radius",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--header--border-top-right-radius",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--body--background",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--body--border-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--body--border-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--body--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--body--border-radius",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--body--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--body--color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--body--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--body--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--body--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--footer--background",
-                "value": [
+                name: '--card--box-shadow',
+                value: [
                     {
-                        "name": "--card--primary--footer--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--secondary--footer--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--light--footer--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--dark--footer--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--info--footer--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--success--footer--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--warning--footer--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--danger--footer--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--card--primary--footer--background",
-                        "value": [
+                        name: '--card--box-shadow-x-offset',
+                        value: [
                             {
-                                "name": "--color-primary-shade-50"
+                                name: '--box-shadow-offset-x'
                             }
                         ]
                     },
                     {
-                        "name": "--card--secondary--footer--background",
-                        "value": [
+                        name: '--card--box-shadow-y-offset',
+                        value: [
                             {
-                                "name": "--color-secondary-shade-50"
+                                name: '--box-shadow-offset-y'
                             }
                         ]
                     },
                     {
-                        "name": "--card--light--footer--background",
-                        "value": [
+                        name: '--card--box-shadow-blur-radius',
+                        value: [
                             {
-                                "name": "--color-light-250"
+                                name: '--box-shadow-blur-radius'
                             }
                         ]
                     },
                     {
-                        "name": "--card--dark--footer--background",
-                        "value": [
+                        name: '--card--box-shadow-spread-radius',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
+                                name: '--box-shadow-spread-radius'
                             }
                         ]
                     },
                     {
-                        "name": "--card--info--footer--background",
-                        "value": [
+                        name: '--card--box-shadow-color',
+                        value: [
                             {
-                                "name": "--color-info-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--success--footer--background",
-                        "value": [
-                            {
-                                "name": "--color-success-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--warning--footer--background",
-                        "value": [
-                            {
-                                "name": "--color-warning-shade-50"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--danger--footer--background",
-                        "value": [
-                            {
-                                "name": "--color-danger-shade-50"
+                                name: '--box-shadow-color'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--card--footer--border-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--footer--border-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--footer--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--footer--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--footer--color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--footer--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--footer--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--footer--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--footer--border-bottom-left-radius",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--footer--border-bottom-right-radius",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--img--border-top-left-radius",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--img--border-top-right-radius",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--card--border-bottom-left-radius",
-                "value": [
+                name: '--card--transition-property',
+                value: [
                     {
-                        "name": "--card--sm--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--md--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--lg--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--card--sm--border-bottom-left-radius",
-                        "value": [
+                        name: '--card--transition-property',
+                        value: [
                             {
-                                "name": "--border-bottom-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-sm"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--md--border-bottom-left-radius",
-                        "value": [
-                            {
-                                "name": "--border-bottom-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-md"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--lg--border-bottom-left-radius",
-                        "value": [
-                            {
-                                "name": "--border-bottom-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-lg"
+                                value: 'background-color'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--card--border-bottom-right-radius",
-                "value": [
+                name: '--card--transition-duration',
+                value: [
                     {
-                        "name": "--card--sm--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--md--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--card--lg--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--card--sm--border-bottom-right-radius",
-                        "value": [
+                        name: '--card--transition-duration',
+                        value: [
                             {
-                                "name": "--border-bottom-right-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-sm"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--md--border-bottom-right-radius",
-                        "value": [
-                            {
-                                "name": "--border-bottom-right-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-md"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--card--lg--border-bottom-right-radius",
-                        "value": [
-                            {
-                                "name": "--border-bottom-right-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-lg"
+                                name: '--transition-duration'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--card--list-group--border-top-left-radius",
-                "value": [],
-                "variants": []
+                name: '--card--transition-timing-function',
+                value: [
+                    {
+                        name: '--transition-timing-function'
+                    }
+                ]
             },
             {
-                "name": "--card--list-group--border-top-right-radius",
-                "value": [],
-                "variants": []
+                name: '--card--header--color',
+                value: [
+                    {
+                        name: '--card--color',
+                        variants: [
+                            {
+                                name: '--card--primary--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-primary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--secondary--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-secondary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--light--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-light'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--dark--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-dark'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--info--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-info'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--success--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-success'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--warning--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-warning'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--danger--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-danger'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
             {
-                "name": "--card--list-group--border-bottom-left-radius",
-                "value": [],
-                "variants": []
+                name: '--card--header--background',
+                value: [
+                    {
+                        name: '--card--background',
+                        variants: [
+                            {
+                                name: '--card--primary--background',
+                                value: [
+                                    {
+                                        name: '--color-primary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--secondary--background',
+                                value: [
+                                    {
+                                        name: '--color-secondary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--light--background',
+                                value: [
+                                    {
+                                        name: '--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--dark--background',
+                                value: [
+                                    {
+                                        name: '--color-dark'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--info--background',
+                                value: [
+                                    {
+                                        name: '--color-info'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--success--background',
+                                value: [
+                                    {
+                                        name: '--color-success'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--warning--background',
+                                value: [
+                                    {
+                                        name: '--color-warning'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--danger--background',
+                                value: [
+                                    {
+                                        name: '--color-danger'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--card--primary--header--background',
+                        value: [
+                            {
+                                name: '--color-primary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--secondary--header--background',
+                        value: [
+                            {
+                                name: '--color-secondary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--light--header--background',
+                        value: [
+                            {
+                                name: '--color-light-250'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--dark--header--background',
+                        value: [
+                            {
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--info--header--background',
+                        value: [
+                            {
+                                name: '--color-info-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--success--header--background',
+                        value: [
+                            {
+                                name: '--color-success-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--warning--header--background',
+                        value: [
+                            {
+                                name: '--color-warning-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--danger--header--background',
+                        value: [
+                            {
+                                name: '--color-danger-shade-50'
+                            }
+                        ]
+                    }
+                ]
             },
             {
-                "name": "--card--list-group--border-bottom-right-radius",
-                "value": [],
-                "variants": []
+                name: '--card--header--border-style',
+                value: [
+                    {
+                        name: '--card--header--border-top-style',
+                        value: [
+                            {
+                                name: '--card--border-top-style',
+                                value: [
+                                    {
+                                        name: '--border-top-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--border-right-style',
+                        value: [
+                            {
+                                name: '--card--border-right-style',
+                                value: [
+                                    {
+                                        name: '--border-right-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--border-bottom-style',
+                        value: [
+                            {
+                                name: '--card--border-bottom-style',
+                                value: [
+                                    {
+                                        name: '--border-bottom-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--border-left-style',
+                        value: [
+                            {
+                                name: '--card--border-left-style',
+                                value: [
+                                    {
+                                        name: '--border-left-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--header--border-width',
+                value: [
+                    {
+                        name: '--card--header--border-top-width',
+                        value: [
+                            {
+                                name: '--card--border-top-width',
+                                value: [
+                                    {
+                                        name: '--border-top-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--border-right-width',
+                        value: [
+                            {
+                                name: '--card--border-right-width',
+                                value: [
+                                    {
+                                        name: '--border-right-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--border-bottom-width',
+                        value: [
+                            {
+                                name: '--card--border-bottom-width',
+                                value: [
+                                    {
+                                        name: '--border-bottom-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--border-left-width',
+                        value: [
+                            {
+                                name: '--card--border-left-width',
+                                value: [
+                                    {
+                                        name: '--border-left-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--header--border-color',
+                value: [
+                    {
+                        name: '--card--header--border-top-color',
+                        value: [
+                            {
+                                name: '--card--border-top-color',
+                                value: [
+                                    {
+                                        name: '--border-top-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--border-right-color',
+                        value: [
+                            {
+                                name: '--card--border-right-color',
+                                value: [
+                                    {
+                                        name: '--border-right-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--border-bottom-color',
+                        value: [
+                            {
+                                name: '--card--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--border-bottom-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--border-left-color',
+                        value: [
+                            {
+                                name: '--card--border-left-color',
+                                value: [
+                                    {
+                                        name: '--border-left-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--header--padding',
+                value: [
+                    {
+                        name: '--card--header--padding-top',
+                        value: [
+                            {
+                                name: '--card--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--header--padding-top',
+                                value: [
+                                    {
+                                        name: '--card--padding-top'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--header--padding-top',
+                                value: [
+                                    {
+                                        name: '--card--padding-top'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--header--padding-top',
+                                value: [
+                                    {
+                                        name: '--card--padding-top'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--padding-right',
+                        value: [
+                            {
+                                name: '--card--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--header--padding-right',
+                                value: [
+                                    {
+                                        name: '--card--padding-right'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--header--padding-right',
+                                value: [
+                                    {
+                                        name: '--card--padding-right'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--header--padding-right',
+                                value: [
+                                    {
+                                        name: '--card--padding-right'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--padding-bottom',
+                        value: [
+                            {
+                                name: '--card--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--header--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--card--padding-bottom'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--header--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--card--padding-bottom'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--header--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--card--padding-bottom'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--header--padding-left',
+                        value: [
+                            {
+                                name: '--card--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--header--padding-left',
+                                value: [
+                                    {
+                                        name: '--card--padding-left'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--header--padding-left',
+                                value: [
+                                    {
+                                        name: '--card--padding-left'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--header--padding-left',
+                                value: [
+                                    {
+                                        name: '--card--padding-left'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--header--transition-property',
+                value: [
+                    {
+                        name: '--card--transition-property',
+                        value: [
+                            {
+                                value: '(border-color)'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--header--transition-duration',
+                value: [
+                    {
+                        name: '--card--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--header--transition-timing-function',
+                value: [
+                    {
+                        name: '--card--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--header--border-top-left-radius',
+                value: [
+                    {
+                        name: '--card--border-top-left-radius',
+                        variants: [
+                            {
+                                name: '--card--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--header--border-top-right-radius',
+                value: [
+                    {
+                        name: '--card--border-top-right-radius',
+                        variants: [
+                            {
+                                name: '--card--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--body--background',
+                value: [
+                    {
+                        name: '--card--background',
+                        variants: [
+                            {
+                                name: '--card--primary--background',
+                                value: [
+                                    {
+                                        name: '--color-primary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--secondary--background',
+                                value: [
+                                    {
+                                        name: '--color-secondary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--light--background',
+                                value: [
+                                    {
+                                        name: '--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--dark--background',
+                                value: [
+                                    {
+                                        name: '--color-dark'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--info--background',
+                                value: [
+                                    {
+                                        name: '--color-info'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--success--background',
+                                value: [
+                                    {
+                                        name: '--color-success'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--warning--background',
+                                value: [
+                                    {
+                                        name: '--color-warning'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--danger--background',
+                                value: [
+                                    {
+                                        name: '--color-danger'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--body--border-style',
+                value: [
+                    {
+                        name: '--card--body--border-top-style',
+                        value: [
+                            {
+                                name: '--card--border-top-style',
+                                value: [
+                                    {
+                                        name: '--border-top-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-right-style',
+                        value: [
+                            {
+                                name: '--card--border-right-style',
+                                value: [
+                                    {
+                                        name: '--border-right-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-bottom-style',
+                        value: [
+                            {
+                                name: '--card--border-bottom-style',
+                                value: [
+                                    {
+                                        name: '--border-bottom-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-left-style',
+                        value: [
+                            {
+                                name: '--card--border-left-style',
+                                value: [
+                                    {
+                                        name: '--border-left-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--body--border-width',
+                value: [
+                    {
+                        name: '--card--body--border-top-width',
+                        value: [
+                            {
+                                name: '--card--border-top-width',
+                                value: [
+                                    {
+                                        name: '--border-top-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-right-width',
+                        value: [
+                            {
+                                name: '--card--border-right-width',
+                                value: [
+                                    {
+                                        name: '--border-right-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-bottom-width',
+                        value: [
+                            {
+                                name: '--card--border-bottom-width',
+                                value: [
+                                    {
+                                        name: '--border-bottom-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-left-width',
+                        value: [
+                            {
+                                name: '--card--border-left-width',
+                                value: [
+                                    {
+                                        name: '--border-left-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--body--border-color',
+                value: [
+                    {
+                        name: '--card--body--border-top-color',
+                        value: [
+                            {
+                                name: '--card--border-top-color',
+                                value: [
+                                    {
+                                        name: '--border-top-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-right-color',
+                        value: [
+                            {
+                                name: '--card--border-right-color',
+                                value: [
+                                    {
+                                        name: '--border-right-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-bottom-color',
+                        value: [
+                            {
+                                name: '--card--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--border-bottom-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-left-color',
+                        value: [
+                            {
+                                name: '--card--border-left-color',
+                                value: [
+                                    {
+                                        name: '--border-left-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--body--border-radius',
+                value: [
+                    {
+                        name: '--card--body--border-top-left-radius',
+                        value: [
+                            {
+                                name: '--card--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--border-top-left-radius',
+                                        value: [
+                                            {
+                                                name: '--border-top-left-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--border-top-left-radius',
+                                        value: [
+                                            {
+                                                name: '--border-top-left-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--border-top-left-radius',
+                                        value: [
+                                            {
+                                                name: '--border-top-left-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-top-right-radius',
+                        value: [
+                            {
+                                name: '--card--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--border-top-right-radius',
+                                        value: [
+                                            {
+                                                name: '--border-top-right-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--border-top-right-radius',
+                                        value: [
+                                            {
+                                                name: '--border-top-right-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--border-top-right-radius',
+                                        value: [
+                                            {
+                                                name: '--border-top-right-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--card--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--border-bottom-right-radius',
+                                        value: [
+                                            {
+                                                name: '--border-bottom-right-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--border-bottom-right-radius',
+                                        value: [
+                                            {
+                                                name: '--border-bottom-right-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--border-bottom-right-radius',
+                                        value: [
+                                            {
+                                                name: '--border-bottom-right-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--card--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--border-bottom-left-radius',
+                                        value: [
+                                            {
+                                                name: '--border-bottom-left-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--border-bottom-left-radius',
+                                        value: [
+                                            {
+                                                name: '--border-bottom-left-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--border-bottom-left-radius',
+                                        value: [
+                                            {
+                                                name: '--border-bottom-left-radius'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--body--padding',
+                value: [
+                    {
+                        name: '--card--body--padding-top',
+                        value: [
+                            {
+                                name: '--card--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--body--padding-top',
+                                value: [
+                                    {
+                                        name: '--card--padding-top'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--body--padding-top',
+                                value: [
+                                    {
+                                        name: '--card--padding-top'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--body--padding-top',
+                                value: [
+                                    {
+                                        name: '--card--padding-top'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--padding-right',
+                        value: [
+                            {
+                                name: '--card--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--body--padding-right',
+                                value: [
+                                    {
+                                        name: '--card--padding-right'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--body--padding-right',
+                                value: [
+                                    {
+                                        name: '--card--padding-right'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--body--padding-right',
+                                value: [
+                                    {
+                                        name: '--card--padding-right'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--padding-bottom',
+                        value: [
+                            {
+                                name: '--card--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--body--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--card--padding-bottom'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--body--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--card--padding-bottom'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--body--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--card--padding-bottom'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--body--padding-left',
+                        value: [
+                            {
+                                name: '--card--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--body--padding-left',
+                                value: [
+                                    {
+                                        name: '--card--padding-left'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--body--padding-left',
+                                value: [
+                                    {
+                                        name: '--card--padding-left'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--body--padding-left',
+                                value: [
+                                    {
+                                        name: '--card--padding-left'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--body--color',
+                value: [
+                    {
+                        name: '--card--color',
+                        variants: [
+                            {
+                                name: '--card--primary--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-primary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--secondary--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-secondary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--light--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-light'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--dark--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-dark'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--info--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-info'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--success--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-success'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--warning--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-warning'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--danger--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-danger'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--body--transition-property',
+                value: [
+                    {
+                        name: '--card--transition-property',
+                        value: [
+                            {
+                                value: '(border-color)'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--body--transition-duration',
+                value: [
+                    {
+                        name: '--card--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--body--transition-timing-function',
+                value: [
+                    {
+                        name: '--card--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--footer--background',
+                value: [
+                    {
+                        name: '--card--background',
+                        variants: [
+                            {
+                                name: '--card--primary--background',
+                                value: [
+                                    {
+                                        name: '--color-primary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--secondary--background',
+                                value: [
+                                    {
+                                        name: '--color-secondary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--light--background',
+                                value: [
+                                    {
+                                        name: '--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--dark--background',
+                                value: [
+                                    {
+                                        name: '--color-dark'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--info--background',
+                                value: [
+                                    {
+                                        name: '--color-info'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--success--background',
+                                value: [
+                                    {
+                                        name: '--color-success'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--warning--background',
+                                value: [
+                                    {
+                                        name: '--color-warning'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--danger--background',
+                                value: [
+                                    {
+                                        name: '--color-danger'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--card--primary--footer--background',
+                        value: [
+                            {
+                                name: '--color-primary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--secondary--footer--background',
+                        value: [
+                            {
+                                name: '--color-secondary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--light--footer--background',
+                        value: [
+                            {
+                                name: '--color-light-250'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--dark--footer--background',
+                        value: [
+                            {
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--info--footer--background',
+                        value: [
+                            {
+                                name: '--color-info-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--success--footer--background',
+                        value: [
+                            {
+                                name: '--color-success-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--warning--footer--background',
+                        value: [
+                            {
+                                name: '--color-warning-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--danger--footer--background',
+                        value: [
+                            {
+                                name: '--color-danger-shade-50'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--footer--border-style',
+                value: [
+                    {
+                        name: '--card--footer--border-top-style',
+                        value: [
+                            {
+                                name: '--card--border-top-style',
+                                value: [
+                                    {
+                                        name: '--border-top-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--border-right-style',
+                        value: [
+                            {
+                                name: '--card--border-right-style',
+                                value: [
+                                    {
+                                        name: '--border-right-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--border-bottom-style',
+                        value: [
+                            {
+                                name: '--card--border-bottom-style',
+                                value: [
+                                    {
+                                        name: '--border-bottom-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--border-left-style',
+                        value: [
+                            {
+                                name: '--card--border-left-style',
+                                value: [
+                                    {
+                                        name: '--border-left-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--footer--border-width',
+                value: [
+                    {
+                        name: '--card--footer--border-top-width',
+                        value: [
+                            {
+                                name: '--card--border-top-width',
+                                value: [
+                                    {
+                                        name: '--border-top-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--border-right-width',
+                        value: [
+                            {
+                                name: '--card--border-right-width',
+                                value: [
+                                    {
+                                        name: '--border-right-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--border-bottom-width',
+                        value: [
+                            {
+                                name: '--card--border-bottom-width',
+                                value: [
+                                    {
+                                        name: '--border-bottom-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--border-left-width',
+                        value: [
+                            {
+                                name: '--card--border-left-width',
+                                value: [
+                                    {
+                                        name: '--border-left-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--footer--border-color',
+                value: [
+                    {
+                        name: '--card--footer--border-top-color',
+                        value: [
+                            {
+                                name: '--card--border-top-color',
+                                value: [
+                                    {
+                                        name: '--border-top-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--border-right-color',
+                        value: [
+                            {
+                                name: '--card--border-right-color',
+                                value: [
+                                    {
+                                        name: '--border-right-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--border-bottom-color',
+                        value: [
+                            {
+                                name: '--card--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--border-bottom-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--border-left-color',
+                        value: [
+                            {
+                                name: '--card--border-left-color',
+                                value: [
+                                    {
+                                        name: '--border-left-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--primary--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-primary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--secondary--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-secondary-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--light--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--dark--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--info--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-info-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--success--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-success-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--warning--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-warning-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--danger--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-danger-shade-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--footer--padding',
+                value: [
+                    {
+                        name: '--card--footer--padding-top',
+                        value: [
+                            {
+                                name: '--card--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--footer--padding-top',
+                                value: [
+                                    {
+                                        name: '--card--padding-top'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--footer--padding-top',
+                                value: [
+                                    {
+                                        name: '--card--padding-top'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--footer--padding-top',
+                                value: [
+                                    {
+                                        name: '--card--padding-top'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--padding-right',
+                        value: [
+                            {
+                                name: '--card--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--footer--padding-right',
+                                value: [
+                                    {
+                                        name: '--card--padding-right'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--footer--padding-right',
+                                value: [
+                                    {
+                                        name: '--card--padding-right'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--footer--padding-right',
+                                value: [
+                                    {
+                                        name: '--card--padding-right'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--padding-bottom',
+                        value: [
+                            {
+                                name: '--card--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--footer--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--card--padding-bottom'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--footer--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--card--padding-bottom'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--footer--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--card--padding-bottom'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--footer--padding-left',
+                        value: [
+                            {
+                                name: '--card--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--card--sm--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--md--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--card--lg--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--footer--padding-left',
+                                value: [
+                                    {
+                                        name: '--card--padding-left'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--footer--padding-left',
+                                value: [
+                                    {
+                                        name: '--card--padding-left'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--footer--padding-left',
+                                value: [
+                                    {
+                                        name: '--card--padding-left'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--footer--color',
+                value: [
+                    {
+                        name: '--card--color',
+                        variants: [
+                            {
+                                name: '--card--primary--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-primary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--secondary--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-secondary'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--light--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-light'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--dark--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-dark'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--info--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-info'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--success--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-success'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--warning--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-warning'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--danger--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-danger'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--footer--transition-property',
+                value: [
+                    {
+                        name: '--card--transition-property',
+                        value: [
+                            {
+                                value: 'border-color'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--footer--transition-duration',
+                value: [
+                    {
+                        name: '--card--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--footer--transition-timing-function',
+                value: [
+                    {
+                        name: '--card--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--footer--border-bottom-left-radius',
+                value: [
+                    {
+                        name: '--card--border-bottom-left-radius',
+                        variants: [
+                            {
+                                name: '--card--sm--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--footer--border-bottom-right-radius',
+                value: [
+                    {
+                        name: '--card--border-bottom-right-radius',
+                        variants: [
+                            {
+                                name: '--card--sm--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--img--border-top-left-radius',
+                value: [
+                    {
+                        name: '--card--border-top-left-radius',
+                        value: [
+                            {
+                                name: '--border-top-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--img--border-top-right-radius',
+                value: [
+                    {
+                        name: '--card--border-top-right-radius',
+                        value: [
+                            {
+                                name: '--border-top-right-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--card--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--border-bottom-left-radius',
+                variants: [
+                    {
+                        name: '--card--sm--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--md--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--lg--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--border-bottom-right-radius',
+                variants: [
+                    {
+                        name: '--card--sm--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--md--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--card--lg--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--list-group--border-top-left-radius',
+                value: [
+                    {
+                        name: '--card--border-top-left-radius',
+                        variants: [
+                            {
+                                name: '--card--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--list-group--border-top-right-radius',
+                value: [
+                    {
+                        name: '--card--border-top-right-radius',
+                        variants: [
+                            {
+                                name: '--card--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--list-group--border-bottom-left-radius',
+                value: [
+                    {
+                        name: '--card--border-bottom-left-radius',
+                        variants: [
+                            {
+                                name: '--card--sm--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--card--list-group--border-bottom-right-radius',
+                value: [
+                    {
+                        name: '--card--border-bottom-right-radius',
+                        variants: [
+                            {
+                                name: '--card--sm--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--md--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--card--lg--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }

@@ -1,496 +1,304 @@
 export const manifest = {
-    "name": "IAlert",
-    "props": [
+    name: 'IAlert',
+    props: [
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the alert"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the alert'
         },
         {
-            "name": "color",
-            "type": [
-                "info",
-                "success",
-                "warning",
-                "danger"
-            ],
-            "default": "info",
-            "description": "The color variant of the alert"
+            name: 'color',
+            type: ['info', 'success', 'warning', 'danger'],
+            default: 'info',
+            description: 'The color variant of the alert'
         },
         {
-            "name": "modelValue",
-            "type": [
-                "Boolean"
-            ],
-            "default": "true",
-            "description": "Used to show or hide a dismissible alert"
+            name: 'modelValue',
+            type: ['Boolean'],
+            default: 'true',
+            description: 'Used to show or hide a dismissible alert'
         },
         {
-            "name": "dismissible",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Shows a dismiss icon on the alert"
+            name: 'dismissible',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Shows a dismiss icon on the alert'
         },
         {
-            "name": "dismissAriaLabel",
-            "type": [
-                "String"
-            ],
-            "default": "Dismiss",
-            "description": "The aria-label to use for the dismiss button"
+            name: 'dismissAriaLabel',
+            type: ['String'],
+            default: 'Dismiss',
+            description: 'The aria-label to use for the dismiss button'
         }
     ],
-    "events": [
+    events: [
         {
-            "description": "Event emitted for setting the modelValue",
-            "name": "update:modelValue"
+            description: 'Event emitted for setting the modelValue',
+            name: 'update:modelValue'
         }
     ],
-    "slots": [
+    slots: [
         {
-            "name": "icon",
-            "description": "Slot for alert icon "
+            name: 'icon',
+            description: 'Slot for alert icon '
         },
         {
-            "name": "default",
-            "description": "Slot for toast title "
+            name: 'default',
+            description: 'Slot for toast title '
         },
         {
-            "name": "default",
-            "description": "Slot for default alert content "
+            name: 'default',
+            description: 'Slot for default alert content '
         },
         {
-            "name": "dismiss",
-            "description": "Slot for alert dismiss button "
+            name: 'dismiss',
+            description: 'Slot for alert dismiss button '
         }
     ],
-    "css": {
-        "selector": ".alert",
-        "variables": [
+    css: {
+        selector: '.alert',
+        variables: [
             {
-                "name": "--alert--border-style",
-                "value": [
+                name: '--alert--border-style',
+                value: [
                     {
-                        "name": "--alert--border-top-style",
-                        "value": [
+                        name: '--alert--border-top-style',
+                        value: [
                             {
-                                "name": "--border-top-style"
+                                name: '--border-top-style'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-right-style",
-                        "value": [
+                        name: '--alert--border-right-style',
+                        value: [
                             {
-                                "name": "--border-right-style"
+                                name: '--border-right-style'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-bottom-style",
-                        "value": [
+                        name: '--alert--border-bottom-style',
+                        value: [
                             {
-                                "name": "--border-bottom-style"
+                                name: '--border-bottom-style'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-left-style",
-                        "value": [
+                        name: '--alert--border-left-style',
+                        value: [
                             {
-                                "name": "--border-left-style"
+                                name: '--border-left-style'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--alert--border-width",
-                "value": [
+                name: '--alert--border-width',
+                value: [
                     {
-                        "name": "--alert--border-top-width",
-                        "value": [
+                        name: '--alert--border-top-width',
+                        value: [
                             {
-                                "name": "--border-top-width"
+                                name: '--border-top-width'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-right-width",
-                        "value": [
+                        name: '--alert--border-right-width',
+                        value: [
                             {
-                                "name": "--border-right-width"
+                                name: '--border-right-width'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-bottom-width",
-                        "value": [
+                        name: '--alert--border-bottom-width',
+                        value: [
                             {
-                                "name": "--border-bottom-width"
+                                name: '--border-bottom-width'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-left-width",
-                        "value": [
+                        name: '--alert--border-left-width',
+                        value: [
                             {
-                                "name": "--border-left-width"
+                                name: '--border-left-width'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--alert--border-color",
-                "value": [
+                name: '--alert--border-color',
+                value: [
                     {
-                        "name": "--alert--border-top-color",
-                        "value": [
+                        name: '--alert--border-top-color',
+                        value: [
                             {
-                                "name": "--border-top-color"
+                                name: '--border-top-color'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--info--border-top-color",
-                                "value": [
+                                name: '--alert--info--border-top-color',
+                                value: [
                                     {
-                                        "name": "--color-info-500"
+                                        name: '--color-info-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--success--border-top-color",
-                                "value": [
+                                name: '--alert--success--border-top-color',
+                                value: [
                                     {
-                                        "name": "--color-success-500"
+                                        name: '--color-success-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--warning--border-top-color",
-                                "value": [
+                                name: '--alert--warning--border-top-color',
+                                value: [
                                     {
-                                        "name": "--color-warning-500"
+                                        name: '--color-warning-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--danger--border-top-color",
-                                "value": [
+                                name: '--alert--danger--border-top-color',
+                                value: [
                                     {
-                                        "name": "--color-danger-500"
+                                        name: '--color-danger-500'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-right-color",
-                        "value": [
+                        name: '--alert--border-right-color',
+                        value: [
                             {
-                                "name": "--border-right-color"
+                                name: '--border-right-color'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--info--border-right-color",
-                                "value": [
+                                name: '--alert--info--border-right-color',
+                                value: [
                                     {
-                                        "name": "--color-info-500"
+                                        name: '--color-info-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--success--border-right-color",
-                                "value": [
+                                name: '--alert--success--border-right-color',
+                                value: [
                                     {
-                                        "name": "--color-success-500"
+                                        name: '--color-success-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--warning--border-right-color",
-                                "value": [
+                                name: '--alert--warning--border-right-color',
+                                value: [
                                     {
-                                        "name": "--color-warning-500"
+                                        name: '--color-warning-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--danger--border-right-color",
-                                "value": [
+                                name: '--alert--danger--border-right-color',
+                                value: [
                                     {
-                                        "name": "--color-danger-500"
+                                        name: '--color-danger-500'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-bottom-color",
-                        "value": [
+                        name: '--alert--border-bottom-color',
+                        value: [
                             {
-                                "name": "--border-bottom-color"
+                                name: '--border-bottom-color'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--info--border-bottom-color",
-                                "value": [
+                                name: '--alert--info--border-bottom-color',
+                                value: [
                                     {
-                                        "name": "--color-info-500"
+                                        name: '--color-info-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--success--border-bottom-color",
-                                "value": [
+                                name: '--alert--success--border-bottom-color',
+                                value: [
                                     {
-                                        "name": "--color-success-500"
+                                        name: '--color-success-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--warning--border-bottom-color",
-                                "value": [
+                                name: '--alert--warning--border-bottom-color',
+                                value: [
                                     {
-                                        "name": "--color-warning-500"
+                                        name: '--color-warning-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--danger--border-bottom-color",
-                                "value": [
+                                name: '--alert--danger--border-bottom-color',
+                                value: [
                                     {
-                                        "name": "--color-danger-500"
+                                        name: '--color-danger-500'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-left-color",
-                        "value": [
+                        name: '--alert--border-left-color',
+                        value: [
                             {
-                                "name": "--border-left-color"
+                                name: '--border-left-color'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--info--border-left-color",
-                                "value": [
+                                name: '--alert--info--border-left-color',
+                                value: [
                                     {
-                                        "name": "--color-info-500"
+                                        name: '--color-info-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--success--border-left-color",
-                                "value": [
+                                name: '--alert--success--border-left-color',
+                                value: [
                                     {
-                                        "name": "--color-success-500"
+                                        name: '--color-success-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--warning--border-left-color",
-                                "value": [
+                                name: '--alert--warning--border-left-color',
+                                value: [
                                     {
-                                        "name": "--color-warning-500"
+                                        name: '--color-warning-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--danger--border-left-color",
-                                "value": [
+                                name: '--alert--danger--border-left-color',
+                                value: [
                                     {
-                                        "name": "--color-danger-500"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--alert--border-radius",
-                "value": [
-                    {
-                        "name": "--alert--border-top-left-radius",
-                        "value": [
-                            {
-                                "name": "--border-top-left-radius"
-                            }
-                        ],
-                        "variants": [
-                            {
-                                "name": "--alert--sm--border-top-left-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-top-right-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-sm"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "--alert--md--border-top-left-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-top-right-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-md"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "--alert--lg--border-top-left-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-top-right-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-lg"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--alert--border-top-right-radius",
-                        "value": [
-                            {
-                                "name": "--border-top-right-radius"
-                            }
-                        ],
-                        "variants": [
-                            {
-                                "name": "--alert--sm--border-top-right-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-top-right-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-sm"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "--alert--md--border-top-right-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-top-right-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-md"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "--alert--lg--border-top-right-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-top-right-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-lg"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--alert--border-bottom-right-radius",
-                        "value": [
-                            {
-                                "name": "--border-bottom-right-radius"
-                            }
-                        ],
-                        "variants": [
-                            {
-                                "name": "--alert--sm--border-bottom-right-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-bottom-right-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-sm"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "--alert--md--border-bottom-right-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-bottom-right-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-md"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "--alert--lg--border-bottom-right-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-bottom-right-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-lg"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--alert--border-bottom-left-radius",
-                        "value": [
-                            {
-                                "name": "--border-bottom-left-radius"
-                            }
-                        ],
-                        "variants": [
-                            {
-                                "name": "--alert--sm--border-bottom-left-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-bottom-left-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-sm"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "--alert--md--border-bottom-left-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-bottom-left-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-md"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "--alert--lg--border-bottom-left-radius",
-                                "value": [
-                                    {
-                                        "name": "--border-bottom-left-radius"
-                                    },
-                                    {
-                                        "name": "--size-multiplier-lg"
+                                        name: '--color-danger-500'
                                     }
                                 ]
                             }
@@ -499,226 +307,403 @@ export const manifest = {
                 ]
             },
             {
-                "name": "--alert--font-size",
-                "value": [
+                name: '--alert--border-radius',
+                value: [
                     {
-                        "name": "--font-size"
+                        name: '--alert--border-top-left-radius',
+                        value: [
+                            {
+                                name: '--border-top-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--alert--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--alert--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--alert--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--alert--border-top-right-radius',
+                        value: [
+                            {
+                                name: '--border-top-right-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--alert--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--alert--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--alert--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--alert--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--alert--sm--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--alert--md--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--alert--lg--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--alert--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--alert--sm--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--alert--md--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--alert--lg--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--alert--font-size',
+                value: [
+                    {
+                        name: '--font-size'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--alert--sm--font-size",
-                        "value": [
+                        name: '--alert--sm--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--md--font-size",
-                        "value": [
+                        name: '--alert--md--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--lg--font-size",
-                        "value": [
+                        name: '--alert--lg--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--alert--box-shadow",
-                "value": [
+                name: '--alert--box-shadow',
+                value: [
                     {
-                        "name": "--alert--box-shadow-x-offset",
-                        "value": [
+                        name: '--alert--box-shadow-x-offset',
+                        value: [
                             {
-                                "name": "--box-shadow-offset-x"
+                                name: '--box-shadow-offset-x'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--box-shadow-y-offset",
-                        "value": [
+                        name: '--alert--box-shadow-y-offset',
+                        value: [
                             {
-                                "name": "--box-shadow-offset-y"
+                                name: '--box-shadow-offset-y'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--box-shadow-blur-radius",
-                        "value": [
+                        name: '--alert--box-shadow-blur-radius',
+                        value: [
                             {
-                                "name": "--box-shadow-blur-radius"
+                                name: '--box-shadow-blur-radius'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--box-shadow-spread-radius",
-                        "value": [
+                        name: '--alert--box-shadow-spread-radius',
+                        value: [
                             {
-                                "name": "--box-shadow-spread-radius"
+                                name: '--box-shadow-spread-radius'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--box-shadow-color",
-                        "value": [
+                        name: '--alert--box-shadow-color',
+                        value: [
                             {
-                                "name": "--box-shadow-color"
+                                name: '--box-shadow-color'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--alert--background",
-                "variants": [
+                name: '--alert--background',
+                variants: [
                     {
-                        "name": "--alert--info--background",
-                        "value": [
+                        name: '--alert--info--background',
+                        value: [
                             {
-                                "name": "--color-info-100"
+                                name: '--color-info-100'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--success--background",
-                        "value": [
+                        name: '--alert--success--background',
+                        value: [
                             {
-                                "name": "--color-success-100"
+                                name: '--color-success-100'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--warning--background",
-                        "value": [
+                        name: '--alert--warning--background',
+                        value: [
                             {
-                                "name": "--color-warning-100"
+                                name: '--color-warning-100'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--danger--background",
-                        "value": [
+                        name: '--alert--danger--background',
+                        value: [
                             {
-                                "name": "--color-danger-100"
+                                name: '--color-danger-100'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--alert--color",
-                "variants": [
+                name: '--alert--color',
+                variants: [
                     {
-                        "name": "--alert--info--color",
-                        "value": [
+                        name: '--alert--info--color',
+                        value: [
                             {
-                                "name": "--color-info-800"
+                                name: '--color-info-800'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--success--color",
-                        "value": [
+                        name: '--alert--success--color',
+                        value: [
                             {
-                                "name": "--color-success-800"
+                                name: '--color-success-800'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--warning--color",
-                        "value": [
+                        name: '--alert--warning--color',
+                        value: [
                             {
-                                "name": "--color-warning-800"
+                                name: '--color-warning-800'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--danger--color",
-                        "value": [
+                        name: '--alert--danger--color',
+                        value: [
                             {
-                                "name": "--color-danger-800"
+                                name: '--color-danger-800'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--alert--transition-property",
-                "value": [
+                name: '--alert--transition-property',
+                value: [
                     {
-                        "value": "(background-color, color, border-color)"
+                        value: '(background-color, color, border-color)'
                     }
                 ]
             },
             {
-                "name": "--alert--transition-duration",
-                "value": [
+                name: '--alert--transition-duration',
+                value: [
                     {
-                        "name": "--transition-duration"
+                        name: '--transition-duration'
                     }
                 ]
             },
             {
-                "name": "--alert--transition-timing-function",
-                "value": [
+                name: '--alert--transition-timing-function',
+                value: [
                     {
-                        "name": "--transition-timing-function"
+                        name: '--transition-timing-function'
                     }
                 ]
             },
             {
-                "name": "--alert--link--color",
-                "value": [
+                name: '--alert--link--color',
+                value: [
                     {
-                        "name": "--alert--color",
-                        "variants": [
+                        name: '--alert--color',
+                        variants: [
                             {
-                                "name": "--alert--info--color",
-                                "value": [
+                                name: '--alert--info--color',
+                                value: [
                                     {
-                                        "name": "--color-info-800"
+                                        name: '--color-info-800'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--success--color",
-                                "value": [
+                                name: '--alert--success--color',
+                                value: [
                                     {
-                                        "name": "--color-success-800"
+                                        name: '--color-success-800'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--warning--color",
-                                "value": [
+                                name: '--alert--warning--color',
+                                value: [
                                     {
-                                        "name": "--color-warning-800"
+                                        name: '--color-warning-800'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--danger--color",
-                                "value": [
+                                name: '--alert--danger--color',
+                                value: [
                                     {
-                                        "name": "--color-danger-800"
+                                        name: '--color-danger-800'
                                     }
                                 ]
                             }
@@ -727,213 +712,213 @@ export const manifest = {
                 ]
             },
             {
-                "name": "--alert--link--transition-property",
-                "value": [
+                name: '--alert--link--transition-property',
+                value: [
                     {
-                        "value": "color"
+                        value: 'color'
                     }
                 ]
             },
             {
-                "name": "--alert--transition-duration",
-                "value": [
+                name: '--alert--transition-duration',
+                value: [
                     {
-                        "name": "--transition-duration"
+                        name: '--transition-duration'
                     }
                 ]
             },
             {
-                "name": "--alert--transition-timing-function",
-                "value": [
+                name: '--alert--transition-timing-function',
+                value: [
                     {
-                        "name": "--transition-timing-function"
+                        name: '--transition-timing-function'
                     }
                 ]
             },
             {
-                "name": "--alert--link-color",
-                "value": [
+                name: '--alert--link-color',
+                value: [
                     {
-                        "name": "--color"
+                        name: '--color'
                     }
                 ]
             },
             {
-                "name": "--alert--code--background"
+                name: '--alert--code--background'
             },
             {
-                "name": "--alert--code--color"
+                name: '--alert--code--color'
             },
             {
-                "name": "--alert--padding",
-                "value": [
+                name: '--alert--padding',
+                value: [
                     {
-                        "name": "--alert--padding-top",
-                        "value": [
+                        name: '--alert--padding-top',
+                        value: [
                             {
-                                "name": "--padding-top"
+                                name: '--padding-top'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--sm--padding-top",
-                                "value": [
+                                name: '--alert--sm--padding-top',
+                                value: [
                                     {
-                                        "name": "--padding-top"
+                                        name: '--padding-top'
                                     },
                                     {
-                                        "name": "--size-multiplier-sm"
+                                        name: '--size-multiplier-sm'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--md--padding-top",
-                                "value": [
+                                name: '--alert--md--padding-top',
+                                value: [
                                     {
-                                        "name": "--padding-top"
+                                        name: '--padding-top'
                                     },
                                     {
-                                        "name": "--size-multiplier-md"
+                                        name: '--size-multiplier-md'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--lg--padding-top",
-                                "value": [
+                                name: '--alert--lg--padding-top',
+                                value: [
                                     {
-                                        "name": "--padding-top"
+                                        name: '--padding-top'
                                     },
                                     {
-                                        "name": "--size-multiplier-lg"
+                                        name: '--size-multiplier-lg'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        "name": "--alert--padding-right",
-                        "value": [
+                        name: '--alert--padding-right',
+                        value: [
                             {
-                                "name": "--padding-right"
+                                name: '--padding-right'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--sm--padding-right",
-                                "value": [
+                                name: '--alert--sm--padding-right',
+                                value: [
                                     {
-                                        "name": "--padding-right"
+                                        name: '--padding-right'
                                     },
                                     {
-                                        "name": "--size-multiplier-sm"
+                                        name: '--size-multiplier-sm'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--md--padding-right",
-                                "value": [
+                                name: '--alert--md--padding-right',
+                                value: [
                                     {
-                                        "name": "--padding-right"
+                                        name: '--padding-right'
                                     },
                                     {
-                                        "name": "--size-multiplier-md"
+                                        name: '--size-multiplier-md'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--lg--padding-right",
-                                "value": [
+                                name: '--alert--lg--padding-right',
+                                value: [
                                     {
-                                        "name": "--padding-right"
+                                        name: '--padding-right'
                                     },
                                     {
-                                        "name": "--size-multiplier-lg"
+                                        name: '--size-multiplier-lg'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        "name": "--alert--padding-bottom",
-                        "value": [
+                        name: '--alert--padding-bottom',
+                        value: [
                             {
-                                "name": "--padding-bottom"
+                                name: '--padding-bottom'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--sm--padding-bottom",
-                                "value": [
+                                name: '--alert--sm--padding-bottom',
+                                value: [
                                     {
-                                        "name": "--padding-bottom"
+                                        name: '--padding-bottom'
                                     },
                                     {
-                                        "name": "--size-multiplier-sm"
+                                        name: '--size-multiplier-sm'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--md--padding-bottom",
-                                "value": [
+                                name: '--alert--md--padding-bottom',
+                                value: [
                                     {
-                                        "name": "--padding-bottom"
+                                        name: '--padding-bottom'
                                     },
                                     {
-                                        "name": "--size-multiplier-md"
+                                        name: '--size-multiplier-md'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--lg--padding-bottom",
-                                "value": [
+                                name: '--alert--lg--padding-bottom',
+                                value: [
                                     {
-                                        "name": "--padding-bottom"
+                                        name: '--padding-bottom'
                                     },
                                     {
-                                        "name": "--size-multiplier-lg"
+                                        name: '--size-multiplier-lg'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        "name": "--alert--padding-left",
-                        "value": [
+                        name: '--alert--padding-left',
+                        value: [
                             {
-                                "name": "--padding-left"
+                                name: '--padding-left'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--sm--padding-left",
-                                "value": [
+                                name: '--alert--sm--padding-left',
+                                value: [
                                     {
-                                        "name": "--padding-left"
+                                        name: '--padding-left'
                                     },
                                     {
-                                        "name": "--size-multiplier-sm"
+                                        name: '--size-multiplier-sm'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--md--padding-left",
-                                "value": [
+                                name: '--alert--md--padding-left',
+                                value: [
                                     {
-                                        "name": "--padding-left"
+                                        name: '--padding-left'
                                     },
                                     {
-                                        "name": "--size-multiplier-md"
+                                        name: '--size-multiplier-md'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--lg--padding-left",
-                                "value": [
+                                name: '--alert--lg--padding-left',
+                                value: [
                                     {
-                                        "name": "--padding-left"
+                                        name: '--padding-left'
                                     },
                                     {
-                                        "name": "--size-multiplier-lg"
+                                        name: '--size-multiplier-lg'
                                     }
                                 ]
                             }
@@ -942,222 +927,222 @@ export const manifest = {
                 ]
             },
             {
-                "name": "--toast--title--font-weight",
-                "value": [
+                name: '--toast--title--font-weight',
+                value: [
                     {
-                        "name": "--font-weight-semibold"
+                        name: '--font-weight-semibold'
                     }
                 ]
             },
             {
-                "name": "--alert--padding-left",
-                "value": [
+                name: '--alert--padding-left',
+                value: [
                     {
-                        "name": "--padding-left"
+                        name: '--padding-left'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--alert--sm--padding-left",
-                        "value": [
+                        name: '--alert--sm--padding-left',
+                        value: [
                             {
-                                "name": "--padding-left"
+                                name: '--padding-left'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--md--padding-left",
-                        "value": [
+                        name: '--alert--md--padding-left',
+                        value: [
                             {
-                                "name": "--padding-left"
+                                name: '--padding-left'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--lg--padding-left",
-                        "value": [
+                        name: '--alert--lg--padding-left',
+                        value: [
                             {
-                                "name": "--padding-left"
+                                name: '--padding-left'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--alert--border-color",
-                "value": [
+                name: '--alert--border-color',
+                value: [
                     {
-                        "name": "--alert--border-top-color",
-                        "value": [
+                        name: '--alert--border-top-color',
+                        value: [
                             {
-                                "name": "--border-top-color"
+                                name: '--border-top-color'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--info--border-top-color",
-                                "value": [
+                                name: '--alert--info--border-top-color',
+                                value: [
                                     {
-                                        "name": "--color-info-500"
+                                        name: '--color-info-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--success--border-top-color",
-                                "value": [
+                                name: '--alert--success--border-top-color',
+                                value: [
                                     {
-                                        "name": "--color-success-500"
+                                        name: '--color-success-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--warning--border-top-color",
-                                "value": [
+                                name: '--alert--warning--border-top-color',
+                                value: [
                                     {
-                                        "name": "--color-warning-500"
+                                        name: '--color-warning-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--danger--border-top-color",
-                                "value": [
+                                name: '--alert--danger--border-top-color',
+                                value: [
                                     {
-                                        "name": "--color-danger-500"
+                                        name: '--color-danger-500'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-right-color",
-                        "value": [
+                        name: '--alert--border-right-color',
+                        value: [
                             {
-                                "name": "--border-right-color"
+                                name: '--border-right-color'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--info--border-right-color",
-                                "value": [
+                                name: '--alert--info--border-right-color',
+                                value: [
                                     {
-                                        "name": "--color-info-500"
+                                        name: '--color-info-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--success--border-right-color",
-                                "value": [
+                                name: '--alert--success--border-right-color',
+                                value: [
                                     {
-                                        "name": "--color-success-500"
+                                        name: '--color-success-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--warning--border-right-color",
-                                "value": [
+                                name: '--alert--warning--border-right-color',
+                                value: [
                                     {
-                                        "name": "--color-warning-500"
+                                        name: '--color-warning-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--danger--border-right-color",
-                                "value": [
+                                name: '--alert--danger--border-right-color',
+                                value: [
                                     {
-                                        "name": "--color-danger-500"
+                                        name: '--color-danger-500'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-bottom-color",
-                        "value": [
+                        name: '--alert--border-bottom-color',
+                        value: [
                             {
-                                "name": "--border-bottom-color"
+                                name: '--border-bottom-color'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--info--border-bottom-color",
-                                "value": [
+                                name: '--alert--info--border-bottom-color',
+                                value: [
                                     {
-                                        "name": "--color-info-500"
+                                        name: '--color-info-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--success--border-bottom-color",
-                                "value": [
+                                name: '--alert--success--border-bottom-color',
+                                value: [
                                     {
-                                        "name": "--color-success-500"
+                                        name: '--color-success-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--warning--border-bottom-color",
-                                "value": [
+                                name: '--alert--warning--border-bottom-color',
+                                value: [
                                     {
-                                        "name": "--color-warning-500"
+                                        name: '--color-warning-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--danger--border-bottom-color",
-                                "value": [
+                                name: '--alert--danger--border-bottom-color',
+                                value: [
                                     {
-                                        "name": "--color-danger-500"
+                                        name: '--color-danger-500'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        "name": "--alert--border-left-color",
-                        "value": [
+                        name: '--alert--border-left-color',
+                        value: [
                             {
-                                "name": "--border-left-color"
+                                name: '--border-left-color'
                             }
                         ],
-                        "variants": [
+                        variants: [
                             {
-                                "name": "--alert--info--border-left-color",
-                                "value": [
+                                name: '--alert--info--border-left-color',
+                                value: [
                                     {
-                                        "name": "--color-info-500"
+                                        name: '--color-info-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--success--border-left-color",
-                                "value": [
+                                name: '--alert--success--border-left-color',
+                                value: [
                                     {
-                                        "name": "--color-success-500"
+                                        name: '--color-success-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--warning--border-left-color",
-                                "value": [
+                                name: '--alert--warning--border-left-color',
+                                value: [
                                     {
-                                        "name": "--color-warning-500"
+                                        name: '--color-warning-500'
                                     }
                                 ]
                             },
                             {
-                                "name": "--alert--danger--border-left-color",
-                                "value": [
+                                name: '--alert--danger--border-left-color',
+                                value: [
                                     {
-                                        "name": "--color-danger-500"
+                                        name: '--color-danger-500'
                                     }
                                 ]
                             }
@@ -1166,43 +1151,43 @@ export const manifest = {
                 ]
             },
             {
-                "name": "--alert--padding-left",
-                "value": [
+                name: '--alert--padding-left',
+                value: [
                     {
-                        "name": "--padding-left"
+                        name: '--padding-left'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--alert--sm--padding-left",
-                        "value": [
+                        name: '--alert--sm--padding-left',
+                        value: [
                             {
-                                "name": "--padding-left"
+                                name: '--padding-left'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--md--padding-left",
-                        "value": [
+                        name: '--alert--md--padding-left',
+                        value: [
                             {
-                                "name": "--padding-left"
+                                name: '--padding-left'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--alert--lg--padding-left",
-                        "value": [
+                        name: '--alert--lg--padding-left',
+                        value: [
                             {
-                                "name": "--padding-left"
+                                name: '--padding-left'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }

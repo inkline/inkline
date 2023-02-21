@@ -1,16 +1,16 @@
 export const manifest = {
-    "name": "ILayoutFooter",
-    "props": [],
-    "events": [],
-    "slots": [
+    name: 'ILayoutFooter',
+    props: [],
+    events: [],
+    slots: [
         {
-            "name": "default",
-            "description": "Slot for default layout footer content "
+            name: 'default',
+            description: 'Slot for default layout footer content '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": []
+    css: {
+        selector: '.layout-footer',
+        variables: []
     }
 };
 

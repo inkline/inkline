@@ -1,124 +1,238 @@
 export const manifest = {
-    "name": "ISelectOption",
-    "props": [
+    name: 'ISelectOption',
+    props: [
         {
-            "name": "active",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The active state of the select option"
+            name: 'active',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The active state of the select option'
         },
         {
-            "name": "disabled",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The disabled state of the select option"
+            name: 'disabled',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The disabled state of the select option'
         },
         {
-            "name": "label",
-            "type": [
-                "String"
-            ],
-            "default": "''",
-            "description": "The label of the select option"
+            name: 'label',
+            type: ['String'],
+            default: "''",
+            description: 'The label of the select option'
         },
         {
-            "name": "tabindex",
-            "type": [
-                "Number",
-                "String"
-            ],
-            "default": "0",
-            "description": "The tabindex of the list group item"
+            name: 'tabindex',
+            type: ['Number', 'String'],
+            default: '0',
+            description: 'The tabindex of the list group item'
         },
         {
-            "name": "value",
-            "type": [
-                "Object",
-                "String",
-                "Number"
-            ],
-            "default": "",
-            "description": "The select option"
+            name: 'value',
+            type: ['Object', 'String', 'Number'],
+            default: '',
+            description: 'The select option'
         }
     ],
-    "events": [],
-    "slots": [
+    events: [],
+    slots: [
         {
-            "name": "default",
-            "description": "Slot for select option label "
+            name: 'default',
+            description: 'Slot for select option label '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": [
+    css: {
+        selector: '.select',
+        variables: [
             {
-                "name": "--select--option--border-color",
-                "value": [],
-                "variants": []
+                name: '--select--option--border-color',
+                value: [
+                    {
+                        name: '--select--option--border-top-color',
+                        value: [
+                            {
+                                name: '--select--border-top-color',
+                                value: [
+                                    {
+                                        name: '--border-top-color'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--select--option--border-right-color',
+                        value: [
+                            {
+                                name: '--select--border-right-color',
+                                value: [
+                                    {
+                                        name: '--border-right-color'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--select--option--border-bottom-color',
+                        value: [
+                            {
+                                name: '--select--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--border-bottom-color'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--select--option--border-left-color',
+                        value: [
+                            {
+                                name: '--select--border-left-color',
+                                value: [
+                                    {
+                                        name: '--border-left-color'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
             {
-                "name": "--select--option--padding",
-                "value": [],
-                "variants": []
+                name: '--select--option--padding',
+                value: [
+                    {
+                        name: '--select--option--padding-top',
+                        value: [
+                            {
+                                name: '--select--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--select--option--padding-right',
+                        value: [
+                            {
+                                name: '--select--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--select--option--padding-bottom',
+                        value: [
+                            {
+                                name: '--select--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--select--option--padding-left',
+                        value: [
+                            {
+                                name: '--select--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
             {
-                "name": "--select--option--color",
-                "value": [],
-                "variants": []
+                name: '--select--option--color',
+                value: [
+                    {
+                        name: '--select--color'
+                    }
+                ]
             },
             {
-                "name": "--select--option--background",
-                "value": [],
-                "variants": []
+                name: '--select--option--background',
+                value: [
+                    {
+                        name: '--select--background'
+                    }
+                ]
             },
             {
-                "name": "--select--option--transition-property",
-                "value": [],
-                "variants": []
+                name: '--select--option--transition-property',
+                value: [
+                    {
+                        value: 'background-color,\n        border-color,\n        color'
+                    }
+                ]
             },
             {
-                "name": "--select--option--transition-timing-function",
-                "value": [],
-                "variants": []
+                name: '--select--option--transition-timing-function',
+                value: [
+                    {
+                        name: '--transition-timing-function'
+                    }
+                ]
             },
             {
-                "name": "--select--option--transition-duration",
-                "value": [],
-                "variants": []
+                name: '--select--option--transition-duration',
+                value: [
+                    {
+                        name: '--transition-duration'
+                    }
+                ]
             },
             {
-                "name": "--select--option--hover--color",
-                "value": [],
-                "variants": []
+                name: '--select--option--hover--color'
             },
             {
-                "name": "--select--option--hover--background",
-                "value": [],
-                "variants": []
+                name: '--select--option--hover--background'
             },
             {
-                "name": "--select--option--disabled--color",
-                "value": [],
-                "variants": []
+                name: '--select--option--disabled--color',
+                value: [
+                    {
+                        name: '--select--color'
+                    }
+                ]
             },
             {
-                "name": "--select--option--disabled--background",
-                "value": [],
-                "variants": []
+                name: '--select--option--disabled--background',
+                value: [
+                    {
+                        name: '--select--background'
+                    }
+                ]
             },
             {
-                "name": "--select--option--active--color",
-                "value": [],
-                "variants": []
+                name: '--select--option--active--color',
+                value: [
+                    {
+                        name: '--select--color'
+                    }
+                ]
             },
             {
-                "name": "--select--option--active--background",
-                "value": [],
-                "variants": []
+                name: '--select--option--active--background',
+                value: [
+                    {
+                        name: '--select--background'
+                    }
+                ]
             }
         ]
     }

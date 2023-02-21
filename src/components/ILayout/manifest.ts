@@ -1,25 +1,23 @@
 export const manifest = {
-    "name": "ILayout",
-    "props": [
+    name: 'ILayout',
+    props: [
         {
-            "name": "vertical",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Display the layout on a vertical orientation"
+            name: 'vertical',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Display the layout on a vertical orientation'
         }
     ],
-    "events": [],
-    "slots": [
+    events: [],
+    slots: [
         {
-            "name": "default",
-            "description": "Slot for default layout content "
+            name: 'default',
+            description: 'Slot for default layout content '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": []
+    css: {
+        selector: '.layout',
+        variables: []
     }
 };
 

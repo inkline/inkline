@@ -1,44 +1,35 @@
 export const manifest = {
-    "name": "INav",
-    "props": [
+    name: 'INav',
+    props: [
         {
-            "name": "color",
-            "type": [
-                "light",
-                "dark"
-            ],
-            "default": "",
-            "description": "The color variant of the nav"
+            name: 'color',
+            type: ['light', 'dark'],
+            default: '',
+            description: 'The color variant of the nav'
         },
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the nav"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the nav'
         },
         {
-            "name": "vertical",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Display the nav with vertical orientation"
+            name: 'vertical',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Display the nav with vertical orientation'
         }
     ],
-    "events": [],
-    "slots": [
+    events: [],
+    slots: [
         {
-            "name": "default",
-            "description": "Slot for default nav content "
+            name: 'default',
+            description: 'Slot for default nav content '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": []
+    css: {
+        selector: '.nav',
+        variables: []
     }
 };
 

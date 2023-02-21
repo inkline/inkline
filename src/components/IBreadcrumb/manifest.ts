@@ -1,99 +1,81 @@
 export const manifest = {
-    "name": "IBreadcrumb",
-    "props": [
+    name: 'IBreadcrumb',
+    props: [
         {
-            "name": "ariaLabel",
-            "type": [
-                "String"
-            ],
-            "default": "Breadcrumbs",
-            "description": "The aria-label of the breadcrumbs"
+            name: 'ariaLabel',
+            type: ['String'],
+            default: 'Breadcrumbs',
+            description: 'The aria-label of the breadcrumbs'
         },
         {
-            "name": "color",
-            "type": [
-                "light",
-                "dark"
-            ],
-            "default": "",
-            "description": "The color variant of the breadcrumb"
+            name: 'color',
+            type: ['light', 'dark'],
+            default: '',
+            description: 'The color variant of the breadcrumb'
         },
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the breadcrumb"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the breadcrumb'
         }
     ],
-    "events": [],
-    "slots": [
+    events: [],
+    slots: [
         {
-            "name": "default",
-            "description": "Slot for default breadcrumb content "
+            name: 'default',
+            description: 'Slot for default breadcrumb content '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": [
+    css: {
+        selector: '.breadcrumb',
+        variables: [
             {
-                "name": "--breadcrumb--margin-bottom",
-                "value": [],
-                "variants": []
+                name: '--breadcrumb--margin-bottom',
+                value: [
+                    {
+                        name: '--margin-bottom'
+                    }
+                ]
             },
             {
-                "name": "--breadcrumb--font-size",
-                "value": [
+                name: '--breadcrumb--font-size',
+                value: [
                     {
-                        "name": "--breadcrumb--sm--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--breadcrumb--md--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--breadcrumb--lg--font-size",
-                        "value": [],
-                        "variants": []
+                        name: '--font-size'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--breadcrumb--sm--font-size",
-                        "value": [
+                        name: '--breadcrumb--sm--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--breadcrumb--md--font-size",
-                        "value": [
+                        name: '--breadcrumb--md--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--breadcrumb--lg--font-size",
-                        "value": [
+                        name: '--breadcrumb--lg--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }

@@ -1,674 +1,1993 @@
 export const manifest = {
-    "name": "IDropdown",
-    "props": [
+    name: 'IDropdown',
+    props: [
         {
-            "name": "animationDuration",
-            "type": [
-                "Number"
-            ],
-            "default": "300",
-            "description": "The duration of the hide and show animation"
+            name: 'animationDuration',
+            type: ['Number'],
+            default: '300',
+            description: 'The duration of the hide and show animation'
         },
         {
-            "name": "color",
-            "type": [
-                "light",
-                "dark"
-            ],
-            "default": "",
-            "description": "The color variant of the dropdown"
+            name: 'color',
+            type: ['light', 'dark'],
+            default: '',
+            description: 'The color variant of the dropdown'
         },
         {
-            "name": "disabled",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The disabled state of the dropdown"
+            name: 'disabled',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The disabled state of the dropdown'
         },
         {
-            "name": "hideOnItemClick",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Used to hide the dropdown when clicking or selecting a dropdown item"
+            name: 'hideOnItemClick',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Used to hide the dropdown when clicking or selecting a dropdown item'
         },
         {
-            "name": "triggerKeyBindings",
-            "type": [
-                "string[]"
-            ],
-            "default": "up, down, enter, space, tab, esc",
-            "description": "The keydown events bound to the trigger element"
+            name: 'triggerKeyBindings',
+            type: ['string[]'],
+            default: 'up, down, enter, space, tab, esc',
+            description: 'The keydown events bound to the trigger element'
         },
         {
-            "name": "itemKeyBindings",
-            "type": [
-                "string[]"
-            ],
-            "default": "up, down, enter, space, tab, esc",
-            "description": "The keydown events bound to the dropdown item elements"
+            name: 'itemKeyBindings',
+            type: ['string[]'],
+            default: 'up, down, enter, space, tab, esc',
+            description: 'The keydown events bound to the dropdown item elements'
         },
         {
-            "name": "visible",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Used to manually control the visibility of the dropdown"
+            name: 'visible',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Used to manually control the visibility of the dropdown'
         },
         {
-            "name": "arrow",
-            "type": [
-                "Boolean"
-            ],
-            "default": "true",
-            "description": "Displays an arrow on the dropdown pointing to the trigger element"
+            name: 'arrow',
+            type: ['Boolean'],
+            default: 'true',
+            description: 'Displays an arrow on the dropdown pointing to the trigger element'
         },
         {
-            "name": "placement",
-            "type": [
-                "top",
-                "top-start",
-                "top-end",
-                "bottom",
-                "bottom-start",
-                "bottom-end",
-                "left",
-                "left-start",
-                "left-end",
-                "right",
-                "right-start",
-                "right-end"
+            name: 'placement',
+            type: [
+                'top',
+                'top-start',
+                'top-end',
+                'bottom',
+                'bottom-start',
+                'bottom-end',
+                'left',
+                'left-start',
+                'left-end',
+                'right',
+                'right-start',
+                'right-end'
             ],
-            "default": "false",
-            "description": "The placement of the dropdown"
+            default: 'false',
+            description: 'The placement of the dropdown'
         },
         {
-            "name": "trigger",
-            "type": [
-                "hover",
-                "focus",
-                "click",
-                "manual"
-            ],
-            "default": "click",
-            "description": "The events used to trigger the dropdown"
+            name: 'trigger',
+            type: ['hover', 'focus', 'click', 'manual'],
+            default: 'click',
+            description: 'The events used to trigger the dropdown'
         },
         {
-            "name": "offset",
-            "type": [
-                "Number"
-            ],
-            "default": "6",
-            "description": "The offset of the dropdown relative to the trigger element"
+            name: 'offset',
+            type: ['Number'],
+            default: '6',
+            description: 'The offset of the dropdown relative to the trigger element'
         },
         {
-            "name": "interactable",
-            "type": [
-                "Boolean"
-            ],
-            "default": "true",
-            "description": "Determines whether hover state should be transferred from trigger to popup"
+            name: 'interactable',
+            type: ['Boolean'],
+            default: 'true',
+            description:
+                'Determines whether hover state should be transferred from trigger to popup'
         },
         {
-            "name": "popupOptions",
-            "type": [
-                "Object"
-            ],
-            "default": "",
-            "description": "Used to override the floating-ui options used for creating the dropdown"
+            name: 'popupOptions',
+            type: ['Object'],
+            default: '',
+            description: 'Used to override the floating-ui options used for creating the dropdown'
         },
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the dropdown"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the dropdown'
         },
         {
-            "name": "hoverHideDelay",
-            "type": [
-                "Number"
-            ],
-            "default": "300",
-            "description": "Delay in milliseconds before the popover is hidden on hover"
+            name: 'hoverHideDelay',
+            type: ['Number'],
+            default: '300',
+            description: 'Delay in milliseconds before the popover is hidden on hover'
         }
     ],
-    "events": [
+    events: [
         {
-            "description": "Event emitted when clicking outside the dropdown elements",
-            "name": "click:outside"
+            description: 'Event emitted when clicking outside the dropdown elements',
+            name: 'click:outside'
         },
         {
-            "description": "Event emitted for setting the visible",
-            "name": "update:visible"
+            description: 'Event emitted for setting the visible',
+            name: 'update:visible'
         }
     ],
-    "slots": [
+    slots: [
         {
-            "name": "default",
-            "description": "Slot for dropdown trigger "
+            name: 'default',
+            description: 'Slot for dropdown trigger '
         },
         {
-            "name": "header",
-            "description": "Slot for dropdown header content "
+            name: 'header',
+            description: 'Slot for dropdown header content '
         },
         {
-            "name": "body",
-            "description": "Slot for dropdown body content "
+            name: 'body',
+            description: 'Slot for dropdown body content '
         },
         {
-            "name": "footer",
-            "description": "Slot for dropdown footer content "
+            name: 'footer',
+            description: 'Slot for dropdown footer content '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": [
+    css: {
+        selector: '.dropdown-wrapper',
+        variables: [
             {
-                "name": "--dropdown--line-height",
-                "value": [],
-                "variants": []
+                name: '--dropdown--line-height',
+                value: [
+                    {
+                        name: '--line-height'
+                    }
+                ]
             },
             {
-                "name": "--dropdown--font-size",
-                "value": [
+                name: '--dropdown--font-size',
+                value: [
                     {
-                        "name": "--dropdown--sm--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--dropdown--md--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--dropdown--lg--font-size",
-                        "value": [],
-                        "variants": []
+                        name: '--font-size'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--dropdown--sm--font-size",
-                        "value": [
+                        name: '--dropdown--sm--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--md--font-size",
-                        "value": [
+                        name: '--dropdown--md--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--lg--font-size",
-                        "value": [
+                        name: '--dropdown--lg--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--dropdown--min-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--max-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--color",
-                "value": [
+                name: '--dropdown--min-width',
+                value: [
                     {
-                        "name": "--dropdown--light--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--dropdown--dark--color",
-                        "value": [],
-                        "variants": []
+                        value: '240px'
                     }
-                ],
-                "variants": [
+                ]
+            },
+            {
+                name: '--dropdown--max-width',
+                value: [
                     {
-                        "name": "--dropdown--light--color",
-                        "value": [
+                        value: '90vw'
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--color',
+                variants: [
+                    {
+                        name: '--dropdown--light--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-light"
+                                name: '--contrast-text--color-light'
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--dark--color",
-                        "value": [
+                        name: '--dropdown--dark--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-dark"
+                                name: '--contrast-text--color-dark'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--dropdown--box-shadow",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--header--border-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--header--border-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--header--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--header--background",
-                "value": [
+                name: '--dropdown--box-shadow',
+                value: [
                     {
-                        "name": "--dropdown--light--header--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--dropdown--dark--header--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--dropdown--light--header--background",
-                        "value": [
+                        name: '--dropdown--box-shadow-x-offset',
+                        value: [
                             {
-                                "name": "--color-gray-50"
+                                name: '--box-shadow-offset-x'
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--dark--header--background",
-                        "value": [
+                        name: '--dropdown--box-shadow-y-offset',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
+                                name: '--box-shadow-offset-y'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--box-shadow-blur-radius',
+                        value: [
+                            {
+                                name: '--box-shadow-blur-radius'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--box-shadow-spread-radius',
+                        value: [
+                            {
+                                name: '--box-shadow-spread-radius'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--box-shadow-color',
+                        value: [
+                            {
+                                name: '--box-shadow-color'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--dropdown--header--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--header--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--header--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--header--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--body--border-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--body--border-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--body--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--body--background",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--body--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--body--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--body--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--body--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--footer--border-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--footer--border-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--footer--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--footer--background",
-                "value": [
+                name: '--dropdown--header--border-style',
+                value: [
                     {
-                        "name": "--dropdown--light--footer--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--dropdown--dark--footer--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--dropdown--light--footer--background",
-                        "value": [
+                        name: '--dropdown--header--border-top-style',
+                        value: [
                             {
-                                "name": "--color-gray-50"
+                                name: '--dropdown--border-top-style',
+                                value: [
+                                    {
+                                        name: '--border-top-style'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--dark--footer--background",
-                        "value": [
+                        name: '--dropdown--header--border-right-style',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
+                                name: '--dropdown--border-right-style',
+                                value: [
+                                    {
+                                        name: '--border-right-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--header--border-bottom-style',
+                        value: [
+                            {
+                                name: '--dropdown--border-bottom-style',
+                                value: [
+                                    {
+                                        name: '--border-bottom-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--header--border-left-style',
+                        value: [
+                            {
+                                name: '--dropdown--border-left-style',
+                                value: [
+                                    {
+                                        name: '--border-left-style'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--dropdown--footer--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--footer--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--footer--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--footer--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--dropdown--border-top-left-radius",
-                "value": [
+                name: '--dropdown--header--border-width',
+                value: [
                     {
-                        "name": "--dropdown--sm--border-top-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--dropdown--md--border-top-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--dropdown--lg--border-top-left-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--dropdown--sm--border-top-left-radius",
-                        "value": [
+                        name: '--dropdown--header--border-top-width',
+                        value: [
                             {
-                                "name": "--border-top-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-sm"
+                                name: '--dropdown--border-top-width',
+                                value: [
+                                    {
+                                        name: '--border-top-width'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--md--border-top-left-radius",
-                        "value": [
+                        name: '--dropdown--header--border-right-width',
+                        value: [
                             {
-                                "name": "--border-top-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-md"
+                                name: '--dropdown--border-right-width',
+                                value: [
+                                    {
+                                        name: '--border-right-width'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--lg--border-top-left-radius",
-                        "value": [
+                        name: '--dropdown--header--border-bottom-width',
+                        value: [
                             {
-                                "name": "--border-top-left-radius"
-                            },
+                                name: '--dropdown--border-bottom-width',
+                                value: [
+                                    {
+                                        value: '0'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--header--border-left-width',
+                        value: [
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--dropdown--border-left-width',
+                                value: [
+                                    {
+                                        name: '--border-left-width'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--dropdown--border-top-right-radius",
-                "value": [
+                name: '--dropdown--header--border-color',
+                value: [
                     {
-                        "name": "--dropdown--sm--border-top-right-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--dropdown--md--border-top-right-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--dropdown--lg--border-top-right-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--dropdown--sm--border-top-right-radius",
-                        "value": [
+                        name: '--dropdown--header--border-top-color',
+                        value: [
                             {
-                                "name": "--border-top-right-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-sm"
+                                name: '--dropdown--border-top-color',
+                                value: [
+                                    {
+                                        name: '--border-top-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--md--border-top-right-radius",
-                        "value": [
+                        name: '--dropdown--header--border-right-color',
+                        value: [
                             {
-                                "name": "--border-top-right-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-md"
+                                name: '--dropdown--border-right-color',
+                                value: [
+                                    {
+                                        name: '--border-right-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--lg--border-top-right-radius",
-                        "value": [
+                        name: '--dropdown--header--border-bottom-color',
+                        value: [
                             {
-                                "name": "--border-top-right-radius"
-                            },
+                                name: '--dropdown--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--border-bottom-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--header--border-left-color',
+                        value: [
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--dropdown--border-left-color',
+                                value: [
+                                    {
+                                        name: '--border-left-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--dropdown--border-bottom-left-radius",
-                "value": [
+                name: '--dropdown--header--background',
+                value: [
                     {
-                        "name": "--dropdown--sm--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--dropdown--md--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--dropdown--lg--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
+                        name: '--dropdown--background',
+                        variants: [
+                            {
+                                name: '--dropdown--light--background',
+                                value: [
+                                    {
+                                        name: '--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown--dark--background',
+                                value: [
+                                    {
+                                        name: '--color-dark'
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--dropdown--sm--border-bottom-left-radius",
-                        "value": [
+                        name: '--dropdown--light--header--background',
+                        value: [
                             {
-                                "name": "--border-bottom-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-sm"
+                                name: '--color-gray-50'
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--md--border-bottom-left-radius",
-                        "value": [
+                        name: '--dropdown--dark--header--background',
+                        value: [
                             {
-                                "name": "--border-bottom-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-md"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--dropdown--lg--border-bottom-left-radius",
-                        "value": [
-                            {
-                                "name": "--border-bottom-left-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-lg"
+                                name: '--color-dark-tint-50'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--dropdown--border-bottom-right-radius",
-                "value": [
+                name: '--dropdown--header--padding',
+                value: [
                     {
-                        "name": "--dropdown--sm--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
+                        name: '--dropdown--header--padding-top',
+                        value: [
+                            {
+                                name: '--dropdown--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
                     },
                     {
-                        "name": "--dropdown--md--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
+                        name: '--dropdown--header--padding-right',
+                        value: [
+                            {
+                                name: '--dropdown--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
                     },
                     {
-                        "name": "--dropdown--lg--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
+                        name: '--dropdown--header--padding-bottom',
+                        value: [
+                            {
+                                name: '--dropdown--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--header--padding-left',
+                        value: [
+                            {
+                                name: '--dropdown--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--header--transition-property',
+                value: [
+                    {
+                        name: '--dropdown--transition-property',
+                        value: [
+                            {
+                                value: 'border-color'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--header--transition-duration',
+                value: [
+                    {
+                        name: '--dropdown--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--header--transition-timing-function',
+                value: [
+                    {
+                        name: '--dropdown--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--body--border-style',
+                value: [
+                    {
+                        name: '--dropdown--body--border-top-style',
+                        value: [
+                            {
+                                name: '--dropdown--border-top-style',
+                                value: [
+                                    {
+                                        name: '--border-top-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--border-right-style',
+                        value: [
+                            {
+                                name: '--dropdown--border-right-style',
+                                value: [
+                                    {
+                                        name: '--border-right-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--border-bottom-style',
+                        value: [
+                            {
+                                name: '--dropdown--border-bottom-style',
+                                value: [
+                                    {
+                                        name: '--border-bottom-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--border-left-style',
+                        value: [
+                            {
+                                name: '--dropdown--border-left-style',
+                                value: [
+                                    {
+                                        name: '--border-left-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--body--border-width',
+                value: [
+                    {
+                        name: '--dropdown--body--border-top-width',
+                        value: [
+                            {
+                                name: '--dropdown--border-top-width',
+                                value: [
+                                    {
+                                        name: '--border-top-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--border-right-width',
+                        value: [
+                            {
+                                name: '--dropdown--border-right-width',
+                                value: [
+                                    {
+                                        name: '--border-right-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--border-bottom-width',
+                        value: [
+                            {
+                                name: '--dropdown--border-bottom-width',
+                                value: [
+                                    {
+                                        name: '--border-bottom-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--border-left-width',
+                        value: [
+                            {
+                                name: '--dropdown--border-left-width',
+                                value: [
+                                    {
+                                        name: '--border-left-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--body--border-color',
+                value: [
+                    {
+                        name: '--dropdown--body--border-top-color',
+                        value: [
+                            {
+                                name: '--dropdown--border-top-color',
+                                value: [
+                                    {
+                                        name: '--border-top-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--border-right-color',
+                        value: [
+                            {
+                                name: '--dropdown--border-right-color',
+                                value: [
+                                    {
+                                        name: '--border-right-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--border-bottom-color',
+                        value: [
+                            {
+                                name: '--dropdown--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--border-bottom-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--border-left-color',
+                        value: [
+                            {
+                                name: '--dropdown--border-left-color',
+                                value: [
+                                    {
+                                        name: '--border-left-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--body--background',
+                value: [
+                    {
+                        name: '--dropdown--background',
+                        variants: [
+                            {
+                                name: '--dropdown--light--background',
+                                value: [
+                                    {
+                                        name: '--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown--dark--background',
+                                value: [
+                                    {
+                                        name: '--color-dark'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--body--padding',
+                value: [
+                    {
+                        name: '--dropdown--body--padding-top',
+                        value: [
+                            {
+                                name: '--dropdown--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--padding-right',
+                        value: [
+                            {
+                                name: '--dropdown--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--padding-bottom',
+                        value: [
+                            {
+                                name: '--dropdown--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--body--padding-left',
+                        value: [
+                            {
+                                name: '--dropdown--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--body--transition-property',
+                value: [
+                    {
+                        name: '--dropdown--transition-property',
+                        value: [
+                            {
+                                value: 'border-color'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--body--transition-duration',
+                value: [
+                    {
+                        name: '--dropdown--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--body--transition-timing-function',
+                value: [
+                    {
+                        name: '--dropdown--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--footer--border-style',
+                value: [
+                    {
+                        name: '--dropdown--footer--border-top-style',
+                        value: [
+                            {
+                                name: '--dropdown--border-top-style',
+                                value: [
+                                    {
+                                        name: '--border-top-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--footer--border-right-style',
+                        value: [
+                            {
+                                name: '--dropdown--border-right-style',
+                                value: [
+                                    {
+                                        name: '--border-right-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--footer--border-bottom-style',
+                        value: [
+                            {
+                                name: '--dropdown--border-bottom-style',
+                                value: [
+                                    {
+                                        name: '--border-bottom-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--footer--border-left-style',
+                        value: [
+                            {
+                                name: '--dropdown--border-left-style',
+                                value: [
+                                    {
+                                        name: '--border-left-style'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--footer--border-width',
+                value: [
+                    {
+                        name: '--dropdown--footer--border-top-width',
+                        value: [
+                            {
+                                name: '--dropdown--border-top-width',
+                                value: [
+                                    {
+                                        value: '0'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--footer--border-right-width',
+                        value: [
+                            {
+                                name: '--dropdown--border-right-width',
+                                value: [
+                                    {
+                                        name: '--border-right-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--footer--border-bottom-width',
+                        value: [
+                            {
+                                name: '--dropdown--border-bottom-width',
+                                value: [
+                                    {
+                                        name: '--border-bottom-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--footer--border-left-width',
+                        value: [
+                            {
+                                name: '--dropdown--border-left-width',
+                                value: [
+                                    {
+                                        name: '--border-left-width'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--footer--border-color',
+                value: [
+                    {
+                        name: '--dropdown--footer--border-top-color',
+                        value: [
+                            {
+                                name: '--dropdown--border-top-color',
+                                value: [
+                                    {
+                                        name: '--border-top-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-top-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--footer--border-right-color',
+                        value: [
+                            {
+                                name: '--dropdown--border-right-color',
+                                value: [
+                                    {
+                                        name: '--border-right-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-right-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--footer--border-bottom-color',
+                        value: [
+                            {
+                                name: '--dropdown--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--border-bottom-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-bottom-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--footer--border-left-color',
+                        value: [
+                            {
+                                name: '--dropdown--border-left-color',
+                                value: [
+                                    {
+                                        name: '--border-left-color'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--light--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-light-shade-50'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--dark--border-left-color',
+                                        value: [
+                                            {
+                                                name: '--color-dark-tint-50'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--footer--background',
+                value: [
+                    {
+                        name: '--dropdown--background',
+                        variants: [
+                            {
+                                name: '--dropdown--light--background',
+                                value: [
+                                    {
+                                        name: '--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown--dark--background',
+                                value: [
+                                    {
+                                        name: '--color-dark'
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--dropdown--sm--border-bottom-right-radius",
-                        "value": [
+                        name: '--dropdown--light--footer--background',
+                        value: [
                             {
-                                "name": "--border-bottom-right-radius"
-                            },
-                            {
-                                "name": "--size-multiplier-sm"
+                                name: '--color-gray-50'
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--md--border-bottom-right-radius",
-                        "value": [
+                        name: '--dropdown--dark--footer--background',
+                        value: [
                             {
-                                "name": "--border-bottom-right-radius"
-                            },
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--footer--padding',
+                value: [
+                    {
+                        name: '--dropdown--footer--padding-top',
+                        value: [
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--dropdown--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-top',
+                                        value: [
+                                            {
+                                                name: '--padding-top'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--dropdown--lg--border-bottom-right-radius",
-                        "value": [
+                        name: '--dropdown--footer--padding-right',
+                        value: [
                             {
-                                "name": "--border-bottom-right-radius"
+                                name: '--dropdown--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-right',
+                                        value: [
+                                            {
+                                                name: '--padding-right'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--footer--padding-bottom',
+                        value: [
+                            {
+                                name: '--dropdown--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-bottom',
+                                        value: [
+                                            {
+                                                name: '--padding-bottom'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--footer--padding-left',
+                        value: [
+                            {
+                                name: '--dropdown--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    }
+                                ],
+                                variants: [
+                                    {
+                                        name: '--dropdown--sm--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-sm'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--md--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-md'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '--dropdown--lg--padding-left',
+                                        value: [
+                                            {
+                                                name: '--padding-left'
+                                            },
+                                            {
+                                                name: '--size-multiplier-lg'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--footer--transition-property',
+                value: [
+                    {
+                        name: '--dropdown--transition-property',
+                        value: [
+                            {
+                                value: '(border-color)'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--footer--transition-duration',
+                value: [
+                    {
+                        name: '--dropdown--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--footer--transition-timing-function',
+                value: [
+                    {
+                        name: '--dropdown--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--border-top-left-radius',
+                value: [
+                    {
+                        name: '--border-top-left-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--dropdown--sm--border-top-left-radius',
+                        value: [
+                            {
+                                name: '--border-top-left-radius'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--md--border-top-left-radius',
+                        value: [
+                            {
+                                name: '--border-top-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--lg--border-top-left-radius',
+                        value: [
+                            {
+                                name: '--border-top-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--border-top-right-radius',
+                value: [
+                    {
+                        name: '--border-top-right-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--dropdown--sm--border-top-right-radius',
+                        value: [
+                            {
+                                name: '--border-top-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--md--border-top-right-radius',
+                        value: [
+                            {
+                                name: '--border-top-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--lg--border-top-right-radius',
+                        value: [
+                            {
+                                name: '--border-top-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--border-bottom-left-radius',
+                value: [
+                    {
+                        name: '--border-bottom-left-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--dropdown--sm--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--md--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--lg--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown--border-bottom-right-radius',
+                value: [
+                    {
+                        name: '--border-bottom-right-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--dropdown--sm--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--md--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown--lg--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }

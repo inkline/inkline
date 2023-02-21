@@ -1,88 +1,72 @@
 export const manifest = {
-    "name": "IFormGroup",
-    "props": [
+    name: 'IFormGroup',
+    props: [
         {
-            "name": "color",
-            "type": [
-                "light",
-                "dark"
-            ],
-            "default": "",
-            "description": "The color variant of the form group"
+            name: 'color',
+            type: ['light', 'dark'],
+            default: '',
+            description: 'The color variant of the form group'
         },
         {
-            "name": "disabled",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The disabled state of the form group"
+            name: 'disabled',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The disabled state of the form group'
         },
         {
-            "name": "inline",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Display the form group as inline"
+            name: 'inline',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Display the form group as inline'
         },
         {
-            "name": "name",
-            "type": [
-                "String"
-            ],
-            "default": "",
-            "description": "The identifier of the form group"
+            name: 'name',
+            type: ['String'],
+            default: '',
+            description: 'The identifier of the form group'
         },
         {
-            "name": "readonly",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The readonly state of the form group"
+            name: 'readonly',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The readonly state of the form group'
         },
         {
-            "name": "required",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The required state of the form group"
+            name: 'required',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The required state of the form group'
         },
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the form group"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the form group'
         },
         {
-            "name": "validate",
-            "type": [
-                "Boolean"
-            ],
-            "default": "true",
-            "description": "Enable form validation using schema"
+            name: 'validate',
+            type: ['Boolean'],
+            default: 'true',
+            description: 'Enable form validation using schema'
         }
     ],
-    "events": [],
-    "slots": [
+    events: [],
+    slots: [
         {
-            "name": "default",
-            "description": "Slot for default form group content "
+            name: 'default',
+            description: 'Slot for default form group content '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": [
+    css: {
+        selector: '.form-group',
+        variables: [
             {
-                "name": "--form-group--margin-top",
-                "value": [],
-                "variants": []
+                name: '--form-group--margin-top',
+                value: [
+                    {
+                        name: '--margin-top'
+                    }
+                ]
             }
         ]
     }

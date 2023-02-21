@@ -1,319 +1,283 @@
 export const manifest = {
-    "name": "IHamburgerMenu",
-    "props": [
+    name: 'IHamburgerMenu',
+    props: [
         {
-            "name": "animation",
-            "type": [
-                "close",
-                "arrow-up",
-                "arrow-down",
-                "arrow-left",
-                "arrow-right",
-                "plus",
-                "minus"
-            ],
-            "default": "close",
-            "description": "The animation of the hamburger menu"
+            name: 'animation',
+            type: ['close', 'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right', 'plus', 'minus'],
+            default: 'close',
+            description: 'The animation of the hamburger menu'
         },
         {
-            "name": "color",
-            "type": [
-                "light",
-                "dark"
-            ],
-            "default": "",
-            "description": "The color variant of the hamburger menu"
+            name: 'color',
+            type: ['light', 'dark'],
+            default: '',
+            description: 'The color variant of the hamburger menu'
         },
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the hamburger menu"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the hamburger menu'
         },
         {
-            "name": "modelValue",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Used to set the hamburger menu as opened or closed"
+            name: 'modelValue',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Used to set the hamburger menu as opened or closed'
         }
     ],
-    "events": [
+    events: [
         {
-            "description": "Event emitted for setting the modelValue",
-            "name": "update:modelValue"
+            description: 'Event emitted for setting the modelValue',
+            name: 'update:modelValue'
         }
     ],
-    "slots": [],
-    "css": {
-        "selector": "",
-        "variables": [
+    slots: [],
+    css: {
+        selector: '.hamburger-menu',
+        variables: [
             {
-                "name": "--hamburger-menu--opacity",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--hamburger-menu--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--hamburger-menu--bar--width",
-                "value": [
+                name: '--hamburger-menu--opacity',
+                value: [
                     {
-                        "name": "--hamburger-menu--sm--bar--width",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--hamburger-menu--md--bar--width",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--hamburger-menu--lg--bar--width",
-                        "value": [],
-                        "variants": []
+                        value: '0.75'
                     }
-                ],
-                "variants": [
+                ]
+            },
+            {
+                name: '--hamburger-menu--padding',
+                value: [
                     {
-                        "name": "--hamburger-menu--sm--bar--width",
-                        "value": [
+                        name: '--hamburger-menu--padding-top',
+                        value: [
                             {
-                                "name": "--size-multiplier-sm"
+                                value: '0'
                             }
                         ]
                     },
                     {
-                        "name": "--hamburger-menu--md--bar--width",
-                        "value": [
+                        name: '--hamburger-menu--padding-right',
+                        value: [
                             {
-                                "name": "--size-multiplier-md"
+                                value: '0'
                             }
                         ]
                     },
                     {
-                        "name": "--hamburger-menu--lg--bar--width",
-                        "value": [
+                        name: '--hamburger-menu--padding-bottom',
+                        value: [
                             {
-                                "name": "--size-multiplier-lg"
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--padding-left',
+                        value: [
+                            {
+                                value: '0'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--hamburger-menu--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--hamburger-menu--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--hamburger-menu--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--hamburger-menu--hover--opacity",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--hamburger-menu--bar--width",
-                "value": [
+                name: '--hamburger-menu--bar--width',
+                variants: [
                     {
-                        "name": "--hamburger-menu--sm--bar--width",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--hamburger-menu--md--bar--width",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--hamburger-menu--lg--bar--width",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--hamburger-menu--sm--bar--width",
-                        "value": [
+                        name: '--hamburger-menu--sm--bar--width',
+                        value: [
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--hamburger-menu--md--bar--width",
-                        "value": [
+                        name: '--hamburger-menu--md--bar--width',
+                        value: [
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--hamburger-menu--lg--bar--width",
-                        "value": [
+                        name: '--hamburger-menu--lg--bar--width',
+                        value: [
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--hamburger-menu--bar--height",
-                "value": [
+                name: '--hamburger-menu--transition-property',
+                value: [
                     {
-                        "name": "--hamburger-menu--sm--bar--height",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--hamburger-menu--md--bar--height",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--hamburger-menu--lg--bar--height",
-                        "value": [],
-                        "variants": []
+                        value: 'background-color,\n        color,\n        border-color'
                     }
-                ],
-                "variants": [
+                ]
+            },
+            {
+                name: '--hamburger-menu--transition-duration',
+                value: [
                     {
-                        "name": "--hamburger-menu--sm--bar--height",
-                        "value": [
+                        name: '--transition-duration'
+                    }
+                ]
+            },
+            {
+                name: '--hamburger-menu--transition-timing-function',
+                value: [
+                    {
+                        name: '--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--hamburger-menu--hover--opacity',
+                value: [
+                    {
+                        value: '1'
+                    }
+                ]
+            },
+            {
+                name: '--hamburger-menu--bar--width',
+                variants: [
+                    {
+                        name: '--hamburger-menu--sm--bar--width',
+                        value: [
                             {
-                                "value": "2px"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--hamburger-menu--md--bar--height",
-                        "value": [
+                        name: '--hamburger-menu--md--bar--width',
+                        value: [
                             {
-                                "value": "3px"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--hamburger-menu--lg--bar--height",
-                        "value": [
+                        name: '--hamburger-menu--lg--bar--width',
+                        value: [
                             {
-                                "value": "4px"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--hamburger-menu--bar--border-radius",
-                "value": [
+                name: '--hamburger-menu--bar--height',
+                variants: [
                     {
-                        "name": "--hamburger-menu--sm--bar--border-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--hamburger-menu--md--bar--border-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--hamburger-menu--lg--bar--border-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--hamburger-menu--sm--bar--border-radius",
-                        "value": [
+                        name: '--hamburger-menu--sm--bar--height',
+                        value: [
                             {
-                                "value": "1px"
+                                value: '2px'
                             }
                         ]
                     },
                     {
-                        "name": "--hamburger-menu--md--bar--border-radius",
-                        "value": [
+                        name: '--hamburger-menu--md--bar--height',
+                        value: [
                             {
-                                "value": "2px"
+                                value: '3px'
                             }
                         ]
                     },
                     {
-                        "name": "--hamburger-menu--lg--bar--border-radius",
-                        "value": [
+                        name: '--hamburger-menu--lg--bar--height',
+                        value: [
                             {
-                                "value": "3px"
+                                value: '4px'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--hamburger-menu--background",
-                "value": [
+                name: '--hamburger-menu--bar--border-radius',
+                value: [
                     {
-                        "name": "--hamburger-menu--light--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--hamburger-menu--dark--background",
-                        "value": [],
-                        "variants": []
+                        name: '--border-radius-sm'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--hamburger-menu--light--background",
-                        "value": [
+                        name: '--hamburger-menu--sm--bar--border-radius',
+                        value: [
                             {
-                                "name": "--color-dark"
+                                value: '1px'
                             }
                         ]
                     },
                     {
-                        "name": "--hamburger-menu--dark--background",
-                        "value": [
+                        name: '--hamburger-menu--md--bar--border-radius',
+                        value: [
                             {
-                                "name": "--color-light"
+                                value: '2px'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--lg--bar--border-radius',
+                        value: [
+                            {
+                                value: '3px'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--hamburger-menu--bar--transition-property",
-                "value": [],
-                "variants": []
+                name: '--hamburger-menu--background',
+                variants: [
+                    {
+                        name: '--hamburger-menu--light--background',
+                        value: [
+                            {
+                                name: '--color-dark'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--dark--background',
+                        value: [
+                            {
+                                name: '--color-light'
+                            }
+                        ]
+                    }
+                ]
             },
             {
-                "name": "--hamburger-menu--bar--transition-duration",
-                "value": [],
-                "variants": []
+                name: '--hamburger-menu--bar--transition-property',
+                value: [
+                    {
+                        value: 'background-color,\n                transform'
+                    }
+                ]
             },
             {
-                "name": "--hamburger-menu--bar--transition-timing-function",
-                "value": [],
-                "variants": []
+                name: '--hamburger-menu--bar--transition-duration',
+                value: [
+                    {
+                        value: '175ms'
+                    }
+                ]
+            },
+            {
+                name: '--hamburger-menu--bar--transition-timing-function',
+                value: [
+                    {
+                        name: '--transition-timing-function'
+                    }
+                ]
             }
         ]
     }

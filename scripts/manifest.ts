@@ -1,18 +1,21 @@
 import fs from 'fs';
 import path from 'path';
 import glob from 'glob';
+import prettier from 'prettier';
 import {
     parseBlocks,
-    parseSassOptions,
     Manifest,
     mapBlocksToEvents,
     mapBlocksToProps,
-    mapBlocksToVariables,
     mapSourceToSlots,
     parseCssVariables,
     mapVariantsToVariables,
     parseCssSelector
 } from './manifest/index';
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import prettierConfig from '../.prettierrc';
 
 const manifestFileName = 'manifest.ts';
 
@@ -25,7 +28,7 @@ function readSyncIfExists(filePath: string) {
 }
 
 glob(
-    path.resolve(__dirname, '..', 'src', 'components', 'IAlert', manifestFileName),
+    path.resolve(__dirname, '..', 'src', 'components', '**', manifestFileName),
     async (error, files) => {
         if (error) {
             console.error(error);
@@ -75,11 +78,12 @@ glob(
                 };
 
                 const objectString = stringifyObject(manifest);
-
-                fs.writeFileSync(
-                    manifestFilePath,
-                    `export const manifest = ${objectString};\n\nexport default manifest;\n`
+                const exportObjectString = prettier.format(
+                    `export const manifest = ${objectString};\n\nexport default manifest;\n`,
+                    { parser: 'typescript', ...prettierConfig }
                 );
+
+                fs.writeFileSync(manifestFilePath, exportObjectString);
             } catch (error) {
                 console.error(`Error occured for ${manifestFilePath}`);
                 console.error(error);

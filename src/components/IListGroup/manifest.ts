@@ -1,199 +1,503 @@
 export const manifest = {
-    "name": "IListGroup",
-    "props": [
+    name: 'IListGroup',
+    props: [
         {
-            "name": "border",
-            "type": [
-                "Boolean"
-            ],
-            "default": "true",
-            "description": "Display the list group border"
+            name: 'border',
+            type: ['Boolean'],
+            default: 'true',
+            description: 'Display the list group border'
         },
         {
-            "name": "color",
-            "type": [
-                "light",
-                "dark"
-            ],
-            "default": "",
-            "description": "The color variant of the list group"
+            name: 'color',
+            type: ['light', 'dark'],
+            default: '',
+            description: 'The color variant of the list group'
         },
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the list group"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the list group'
         }
     ],
-    "events": [],
-    "slots": [
+    events: [],
+    slots: [
         {
-            "name": "default",
-            "description": "Slot for list group items "
+            name: 'default',
+            description: 'Slot for list group items '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": [
+    css: {
+        selector: '.list-group',
+        variables: [
             {
-                "name": "--list-group--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--list-group--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--list-group--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--list-group--background",
-                "value": [
+                name: '--list-group--transition-property',
+                value: [
                     {
-                        "name": "--list-group--light--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--list-group--dark--background",
-                        "value": [],
-                        "variants": []
+                        value: '(background-color, border-color)'
                     }
-                ],
-                "variants": [
+                ]
+            },
+            {
+                name: '--list-group--transition-duration',
+                value: [
                     {
-                        "name": "--list-group--light--background",
-                        "value": [
+                        name: '--transition-duration'
+                    }
+                ]
+            },
+            {
+                name: '--list-group--transition-timing-function',
+                value: [
+                    {
+                        name: '--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--list-group--background',
+                variants: [
+                    {
+                        name: '--list-group--light--background',
+                        value: [
                             {
-                                "name": "--color-white"
+                                name: '--color-white'
                             }
                         ]
                     },
                     {
-                        "name": "--list-group--dark--background",
-                        "value": [
+                        name: '--list-group--dark--background',
+                        value: [
                             {
-                                "name": "--color-dark"
+                                name: '--color-dark'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--list-group--color",
-                "value": [
+                name: '--list-group--color',
+                variants: [
                     {
-                        "name": "--list-group--light--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--list-group--dark--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--list-group--light--color",
-                        "value": [
+                        name: '--list-group--light--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-white"
+                                name: '--contrast-text--color-white'
                             }
                         ]
                     },
                     {
-                        "name": "--list-group--dark--color",
-                        "value": [
+                        name: '--list-group--dark--color',
+                        value: [
                             {
-                                "name": "--contrast-text--color-dark"
+                                name: '--contrast-text--color-dark'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--list-group--font-size",
-                "value": [
+                name: '--list-group--font-size',
+                value: [
                     {
-                        "name": "--list-group--sm--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--list-group--md--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--list-group--lg--font-size",
-                        "value": [],
-                        "variants": []
+                        name: '--font-size'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--list-group--sm--font-size",
-                        "value": [
+                        name: '--list-group--sm--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--list-group--md--font-size",
-                        "value": [
+                        name: '--list-group--md--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--list-group--lg--font-size",
-                        "value": [
+                        name: '--list-group--lg--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--list-group--border-radius",
-                "value": [],
-                "variants": []
+                name: '--list-group--border-radius',
+                value: [
+                    {
+                        name: '--list-group--border-top-left-radius',
+                        value: [
+                            {
+                                name: '--border-top-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--list-group--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-top-right-radius',
+                        value: [
+                            {
+                                name: '--border-top-right-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--list-group--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--list-group--sm--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--md--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--lg--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-bottom-left-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--list-group--sm--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--md--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--lg--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
             {
-                "name": "--list-group--border-width",
-                "value": [],
-                "variants": []
+                name: '--list-group--border-width',
+                value: [
+                    {
+                        name: '--list-group--border-top-width',
+                        value: [
+                            {
+                                name: '--border-top-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-right-width',
+                        value: [
+                            {
+                                name: '--border-right-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-bottom-width',
+                        value: [
+                            {
+                                name: '--border-bottom-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-left-width',
+                        value: [
+                            {
+                                name: '--border-left-width'
+                            }
+                        ]
+                    }
+                ]
             },
             {
-                "name": "--list-group--border-style",
-                "value": [],
-                "variants": []
+                name: '--list-group--border-style',
+                value: [
+                    {
+                        name: '--list-group--border-top-style',
+                        value: [
+                            {
+                                name: '--border-top-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-right-style',
+                        value: [
+                            {
+                                name: '--border-right-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-bottom-style',
+                        value: [
+                            {
+                                name: '--border-bottom-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-left-style',
+                        value: [
+                            {
+                                name: '--border-left-style'
+                            }
+                        ]
+                    }
+                ]
             },
             {
-                "name": "--list-group--border-color",
-                "value": [],
-                "variants": []
+                name: '--list-group--border-color',
+                value: [
+                    {
+                        name: '--list-group--border-top-color',
+                        value: [
+                            {
+                                name: '--border-top-color'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--list-group--light--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--dark--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-right-color',
+                        value: [
+                            {
+                                name: '--border-right-color'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--list-group--light--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--dark--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-bottom-color',
+                        value: [
+                            {
+                                name: '--border-bottom-color'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--list-group--light--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--dark--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--list-group--border-left-color',
+                        value: [
+                            {
+                                name: '--border-left-color'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--list-group--light--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--list-group--dark--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }

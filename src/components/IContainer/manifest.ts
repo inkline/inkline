@@ -1,29 +1,25 @@
 export const manifest = {
-    "name": "IContainer",
-    "props": [
+    name: 'IContainer',
+    props: [
         {
-            "name": "fluid",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Display the container as fluid, always spanning 100% width"
+            name: 'fluid',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Display the container as fluid, always spanning 100% width'
         }
     ],
-    "events": [],
-    "slots": [
+    events: [],
+    slots: [
         {
-            "name": "default",
-            "description": "Slot for default container content "
+            name: 'default',
+            description: 'Slot for default container content '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": [
+    css: {
+        selector: '.container',
+        variables: [
             {
-                "name": "--grid--xs--width",
-                "value": [],
-                "variants": []
+                name: '--grid--xs--width'
             }
         ]
     }

@@ -1,1285 +1,1895 @@
 export const manifest = {
-    "name": "IInput",
-    "props": [
+    name: 'IInput',
+    props: [
         {
-            "name": "color",
-            "type": [
-                "light",
-                "dark"
-            ],
-            "default": "",
-            "description": "The color variant of the input"
+            name: 'color',
+            type: ['light', 'dark'],
+            default: '',
+            description: 'The color variant of the input'
         },
         {
-            "name": "clearable",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Display the input as clearable"
+            name: 'clearable',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Display the input as clearable'
         },
         {
-            "name": "disabled",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The disabled state of the input"
+            name: 'disabled',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The disabled state of the input'
         },
         {
-            "name": "error",
-            "type": [
-                "Boolean",
-                "Array"
-            ],
-            "default": "'touched', 'dirty', 'invalid'",
-            "description": "The error state of the input, computed based on schema by default."
+            name: 'error',
+            type: ['Boolean', 'Array'],
+            default: "'touched', 'dirty', 'invalid'",
+            description: 'The error state of the input, computed based on schema by default.'
         },
         {
-            "name": "id",
-            "type": [
-                "String"
-            ],
-            "default": "",
-            "description": "The id of the internal input element"
+            name: 'id',
+            type: ['String'],
+            default: '',
+            description: 'The id of the internal input element'
         },
         {
-            "name": "wrapperId",
-            "type": [
-                "String"
-            ],
-            "default": "",
-            "description": "The id of the input wrapper element"
+            name: 'wrapperId',
+            type: ['String'],
+            default: '',
+            description: 'The id of the input wrapper element'
         },
         {
-            "name": "modelValue",
-            "type": [
-                "String",
-                "Number"
-            ],
-            "default": "''",
-            "description": "Used to set the field value"
+            name: 'modelValue',
+            type: ['String', 'Number'],
+            default: "''",
+            description: 'Used to set the field value'
         },
         {
-            "name": "name",
-            "type": [
-                "String"
-            ],
-            "default": "uid()",
-            "description": "The unique identifier of the input"
+            name: 'name',
+            type: ['String'],
+            default: 'uid()',
+            description: 'The unique identifier of the input'
         },
         {
-            "name": "plaintext",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Display the input as plaintext, disabling interaction"
+            name: 'plaintext',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Display the input as plaintext, disabling interaction'
         },
         {
-            "name": "readonly",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "The readonly state of the input"
+            name: 'readonly',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'The readonly state of the input'
         },
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the input"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the input'
         },
         {
-            "name": "tabindex",
-            "type": [
-                "Number",
-                "String"
-            ],
-            "default": "0",
-            "description": "The tabindex of the input"
+            name: 'tabindex',
+            type: ['Number', 'String'],
+            default: '0',
+            description: 'The tabindex of the input'
         },
         {
-            "name": "type",
-            "type": [
-                "String"
-            ],
-            "default": "text",
-            "description": "The type of the input"
+            name: 'type',
+            type: ['String'],
+            default: 'text',
+            description: 'The type of the input'
         },
         {
-            "name": "clearAriaLabel",
-            "type": [
-                "String"
-            ],
-            "default": "Clear",
-            "description": "The aria-label of the clear button"
+            name: 'clearAriaLabel',
+            type: ['String'],
+            default: 'Clear',
+            description: 'The aria-label of the clear button'
         },
         {
-            "name": "validate",
-            "type": [
-                "Boolean"
-            ],
-            "default": "true",
-            "description": "Enable input validation using schema"
+            name: 'validate',
+            type: ['Boolean'],
+            default: 'true',
+            description: 'Enable input validation using schema'
         }
     ],
-    "events": [
+    events: [
         {
-            "description": "Event emitted for setting the modelValue",
-            "name": "update:modelValue"
+            description: 'Event emitted for setting the modelValue',
+            name: 'update:modelValue'
         },
         {
-            "description": "Event emitted when clearing the input element",
-            "name": "clear"
+            description: 'Event emitted when clearing the input element',
+            name: 'clear'
         }
     ],
-    "slots": [
+    slots: [
         {
-            "name": "prepend",
-            "description": "Slot for the input prepend content "
+            name: 'prepend',
+            description: 'Slot for the input prepend content '
         },
         {
-            "name": "prefix",
-            "description": "Slot for the input prefix content "
+            name: 'prefix',
+            description: 'Slot for the input prefix content '
         },
         {
-            "name": "clearable",
-            "description": "Slot for the clearable button "
+            name: 'clearable',
+            description: 'Slot for the clearable button '
         },
         {
-            "name": "suffix",
-            "description": "Slot for the input suffix content "
+            name: 'suffix',
+            description: 'Slot for the input suffix content '
         },
         {
-            "name": "append",
-            "description": "Slot for the input append content "
+            name: 'append',
+            description: 'Slot for the input append content '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": [
+    css: {
+        selector: '.input-wrapper',
+        variables: [
             {
-                "name": "--input-line-height",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--prepend-append--background",
-                "value": [
+                name: '--input-line-height',
+                value: [
                     {
-                        "name": "--input--light--prepend-append--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--prepend-append--background",
-                        "value": [],
-                        "variants": []
+                        name: '--line-height'
                     }
-                ],
-                "variants": [
+                ]
+            },
+            {
+                name: '--input--transition-property',
+                value: [
                     {
-                        "name": "--input--light--prepend-append--background",
-                        "value": [
+                        value: '(background-color)'
+                    }
+                ]
+            },
+            {
+                name: '--input--transition-duration',
+                value: [
+                    {
+                        name: '--transition-duration'
+                    }
+                ]
+            },
+            {
+                name: '--input--transition-timing-function',
+                value: [
+                    {
+                        name: '--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--input--prepend-append--background',
+                variants: [
+                    {
+                        name: '--input--light--prepend-append--background',
+                        value: [
                             {
-                                "name": "--color-light"
+                                name: '--color-light'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--prepend-append--background",
-                        "value": [
+                        name: '--input--dark--prepend-append--background',
+                        value: [
                             {
-                                "name": "--color-dark"
+                                name: '--color-dark'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--input--font-size",
-                "value": [
+                name: '--input--font-size',
+                value: [
                     {
-                        "name": "--input--sm--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--md--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--lg--font-size",
-                        "value": [],
-                        "variants": []
+                        name: '--font-size'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--input--sm--font-size",
-                        "value": [
+                        name: '--input--sm--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--input--md--font-size",
-                        "value": [
+                        name: '--input--md--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--input--lg--font-size",
-                        "value": [
+                        name: '--input--lg--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--input--prepend-append--padding-left",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--prepend-append--padding-right",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--border-top-left-radius",
-                "value": [
+                name: '--input--prepend-append--padding-left',
+                value: [
                     {
-                        "name": "--input--sm--border-top-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--md--border-top-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--lg--border-top-left-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--sm--border-top-left-radius",
-                        "value": [
+                        name: '--input--padding-left',
+                        value: [
                             {
-                                "name": "--border-top-left-radius"
+                                name: '--padding-left'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-sm"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--input--md--border-top-left-radius",
-                        "value": [
-                            {
-                                "name": "--border-top-left-radius"
+                                name: '--input--md--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--input--lg--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
-                    },
+                    }
+                ]
+            },
+            {
+                name: '--input--prepend-append--padding-right',
+                value: [
                     {
-                        "name": "--input--lg--border-top-left-radius",
-                        "value": [
+                        name: '--input--padding-right',
+                        value: [
                             {
-                                "name": "--border-top-left-radius"
+                                name: '--padding-right'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-lg"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--border-bottom-left-radius",
-                "value": [
-                    {
-                        "name": "--input--sm--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--md--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--lg--border-bottom-left-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--sm--border-bottom-left-radius",
-                        "value": [
-                            {
-                                "name": "--border-bottom-left-radius"
+                                name: '--input--md--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--input--lg--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
-                    },
+                    }
+                ]
+            },
+            {
+                name: '--input--border-top-left-radius',
+                value: [
                     {
-                        "name": "--input--md--border-bottom-left-radius",
-                        "value": [
+                        name: '--border-top-left-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--sm--border-top-left-radius',
+                        value: [
                             {
-                                "name": "--border-bottom-left-radius"
+                                name: '--border-top-left-radius'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--input--lg--border-bottom-left-radius",
-                        "value": [
+                        name: '--input--md--border-top-left-radius',
+                        value: [
                             {
-                                "name": "--border-bottom-left-radius"
+                                name: '--border-top-left-radius'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-md'
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--border-top-right-radius",
-                "value": [
-                    {
-                        "name": "--input--sm--border-top-right-radius",
-                        "value": [],
-                        "variants": []
                     },
                     {
-                        "name": "--input--md--border-top-right-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--lg--border-top-right-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--sm--border-top-right-radius",
-                        "value": [
+                        name: '--input--lg--border-top-left-radius',
+                        value: [
                             {
-                                "name": "--border-top-right-radius"
+                                name: '--border-top-left-radius'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-lg'
                             }
                         ]
-                    },
+                    }
+                ]
+            },
+            {
+                name: '--input--border-bottom-left-radius',
+                value: [
                     {
-                        "name": "--input--md--border-top-right-radius",
-                        "value": [
+                        name: '--border-bottom-left-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--sm--border-bottom-left-radius',
+                        value: [
                             {
-                                "name": "--border-top-right-radius"
+                                name: '--border-bottom-left-radius'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--input--lg--border-top-right-radius",
-                        "value": [
+                        name: '--input--md--border-bottom-left-radius',
+                        value: [
                             {
-                                "name": "--border-top-right-radius"
+                                name: '--border-bottom-left-radius'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-md'
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--border-bottom-right-radius",
-                "value": [
-                    {
-                        "name": "--input--sm--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
                     },
                     {
-                        "name": "--input--md--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--lg--border-bottom-right-radius",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--sm--border-bottom-right-radius",
-                        "value": [
+                        name: '--input--lg--border-bottom-left-radius',
+                        value: [
                             {
-                                "name": "--border-bottom-right-radius"
+                                name: '--border-bottom-left-radius'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-lg'
                             }
                         ]
-                    },
+                    }
+                ]
+            },
+            {
+                name: '--input--border-top-right-radius',
+                value: [
                     {
-                        "name": "--input--md--border-bottom-right-radius",
-                        "value": [
+                        name: '--border-top-right-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--sm--border-top-right-radius',
+                        value: [
                             {
-                                "name": "--border-bottom-right-radius"
+                                name: '--border-top-right-radius'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--input--lg--border-bottom-right-radius",
-                        "value": [
+                        name: '--input--md--border-top-right-radius',
+                        value: [
                             {
-                                "name": "--border-bottom-right-radius"
+                                name: '--border-top-right-radius'
                             },
                             {
-                                "name": "--size-multiplier-lg"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--border-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--border-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--border-color",
-                "value": [
-                    {
-                        "name": "--input--light--border-color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--border-color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--border-color",
-                        "value": [
-                            {
-                                "name": "--color-light-shade-50"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--border-color",
-                        "value": [
+                        name: '--input--lg--border-top-right-radius',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--border-radius",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--box-shadow",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--color",
-                "value": [
-                    {
-                        "name": "--input--light--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-white"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--input--dark--color",
-                        "value": [
-                            {
-                                "name": "--contrast-text--color-dark"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--background",
-                "value": [
-                    {
-                        "name": "--input--light--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--background",
-                        "value": [
-                            {
-                                "name": "--color-white"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--input--dark--background",
-                        "value": [
-                            {
-                                "name": "--color-dark"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--font-size",
-                "value": [
-                    {
-                        "name": "--input--sm--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--md--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--lg--font-size",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--sm--font-size",
-                        "value": [
-                            {
-                                "name": "--font-size"
+                                name: '--border-top-right-radius'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-lg'
                             }
                         ]
-                    },
+                    }
+                ]
+            },
+            {
+                name: '--input--border-bottom-right-radius',
+                value: [
                     {
-                        "name": "--input--md--font-size",
-                        "value": [
+                        name: '--border-bottom-right-radius'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--sm--border-bottom-right-radius',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--border-bottom-right-radius'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--input--lg--font-size",
-                        "value": [
+                        name: '--input--md--border-bottom-right-radius',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--border-bottom-right-radius'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--lg--border-bottom-right-radius',
+                        value: [
+                            {
+                                name: '--border-bottom-right-radius'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--input--hover--border-color",
-                "value": [
+                name: '--input--border-width',
+                value: [
                     {
-                        "name": "--input--light--hover--border-color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--hover--border-color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--hover--border-color",
-                        "value": [
+                        name: '--input--border-top-width',
+                        value: [
                             {
-                                "name": "--color-light-shade-100"
+                                name: '--border-top-width'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--hover--border-color",
-                        "value": [
+                        name: '--input--border-right-width',
+                        value: [
                             {
-                                "name": "--color-dark-tint-100"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--box-shadow",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--focus--border-color",
-                "value": [
-                    {
-                        "name": "--input--light--focus--border-color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--focus--border-color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--focus--border-color",
-                        "value": [
-                            {
-                                "name": "--color-primary"
+                                name: '--border-right-width'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--focus--border-color",
-                        "value": [
+                        name: '--input--border-bottom-width',
+                        value: [
                             {
-                                "name": "--color-primary"
+                                name: '--border-bottom-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--border-left-width',
+                        value: [
+                            {
+                                name: '--border-left-width'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--input--line-height",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--color",
-                "value": [
+                name: '--input--border-style',
+                value: [
                     {
-                        "name": "--input--light--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--color",
-                        "value": [
+                        name: '--input--border-top-style',
+                        value: [
                             {
-                                "name": "--contrast-text--color-white"
+                                name: '--border-top-style'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--color",
-                        "value": [
+                        name: '--input--border-right-style',
+                        value: [
                             {
-                                "name": "--contrast-text--color-dark"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--padding",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--placeholder--color",
-                "value": [
-                    {
-                        "name": "--input--light--placeholder--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--placeholder--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--placeholder--color",
-                        "value": [
-                            {
-                                "name": "--color-gray-300"
+                                name: '--border-right-style'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--placeholder--color",
-                        "value": [
+                        name: '--input--border-bottom-style',
+                        value: [
                             {
-                                "name": "--color-gray-600"
+                                name: '--border-bottom-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--border-left-style',
+                        value: [
+                            {
+                                name: '--border-left-style'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--input--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--border-color",
-                "value": [
+                name: '--input--border-color',
+                value: [
                     {
-                        "name": "--input--light--border-color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--border-color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--border-color",
-                        "value": [
+                        name: '--input--border-top-color',
+                        value: [
                             {
-                                "name": "--color-light-shade-50"
+                                name: '--border-top-color'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--border-color",
-                        "value": [
+                        name: '--input--border-right-color',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
+                                name: '--border-right-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--border-bottom-color',
+                        value: [
+                            {
+                                name: '--border-bottom-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--border-left-color',
+                        value: [
+                            {
+                                name: '--border-left-color'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--light--border-color',
+                        value: [
+                            {
+                                name: '--color-light-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--border-color',
+                        value: [
+                            {
+                                name: '--color-dark-tint-50'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--input--prefix-suffix--color",
-                "value": [
+                name: '--input--border-radius',
+                value: [
                     {
-                        "name": "--input--light--prefix-suffix--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--prefix-suffix--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--prefix-suffix--color",
-                        "value": [
+                        name: '--input--border-top-left-radius',
+                        value: [
                             {
-                                "name": "--color-gray-700"
+                                name: '--border-top-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--prefix-suffix--color",
-                        "value": [
+                        name: '--input--border-top-right-radius',
+                        value: [
                             {
-                                "name": "--color-dark-250"
+                                name: '--border-top-right-radius'
                             }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--prefix-suffix--padding-right",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--prefix-suffix--padding-left",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--prefix--border-right-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--prefix--border-right-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--suffix--border-left-width",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--prefix--border-left-style",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--transition-property",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--transition-duration",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--transition-timing-function",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--clear--size",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--clear--size",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--clear--background",
-                "value": [
-                    {
-                        "name": "--input--light--clear--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--clear--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--clear--background",
-                        "value": [
+                        ],
+                        variants: [
                             {
-                                "value": "transparent"
+                                name: '--input--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--clear--background",
-                        "value": [
+                        name: '--input--border-bottom-right-radius',
+                        value: [
                             {
-                                "value": "#{transparent}"
+                                name: '--border-bottom-right-radius'
                             }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--clear--color",
-                "value": [
-                    {
-                        "name": "--input--light--clear--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--clear--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--clear--color",
-                        "value": [
+                        ],
+                        variants: [
                             {
-                                "name": "--contrast-text--color-white"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "--input--dark--clear--color",
-                        "value": [
+                                name: '--input--sm--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
                             {
-                                "name": "--contrast-text--color-dark"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--clear--hover--color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--clear--hover--background",
-                "value": [
-                    {
-                        "name": "--input--light--clear--hover--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--clear--hover--background",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--clear--hover--background",
-                        "value": [
+                                name: '--input--md--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
                             {
-                                "name": "--color-light"
+                                name: '--input--lg--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-right-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--clear--hover--background",
-                        "value": [
+                        name: '--input--border-bottom-left-radius',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
+                                name: '--border-bottom-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--input--clear--active--background",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--clear--color",
-                "value": [
+                name: '--input--box-shadow',
+                value: [
                     {
-                        "name": "--input--light--clear--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--clear--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--clear--color",
-                        "value": [
+                        name: '--input--box-shadow-x-offset',
+                        value: [
                             {
-                                "name": "--contrast-text--color-white"
+                                name: '--box-shadow-offset-x'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--clear--color",
-                        "value": [
+                        name: '--input--box-shadow-y-offset',
+                        value: [
                             {
-                                "name": "--contrast-text--color-dark"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "--input--error--border-color",
-                "value": [],
-                "variants": []
-            },
-            {
-                "name": "--input--disabled--color",
-                "value": [
-                    {
-                        "name": "--input--light--disabled--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--disabled--color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--disabled--color",
-                        "value": [
-                            {
-                                "name": "--text--color-muted"
+                                name: '--box-shadow-offset-y'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--disabled--color",
-                        "value": [
+                        name: '--input--box-shadow-blur-radius',
+                        value: [
                             {
-                                "name": "--text--color-muted"
+                                name: '--box-shadow-blur-radius'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--box-shadow-spread-radius',
+                        value: [
+                            {
+                                name: '--box-shadow-spread-radius'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--box-shadow-color',
+                        value: [
+                            {
+                                name: '--box-shadow-color'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--input--disabled--background",
-                "value": [
+                name: '--input--transition-property',
+                value: [
                     {
-                        "name": "--input--light--disabled--background",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--disabled--background",
-                        "value": [],
-                        "variants": []
+                        value: 'background-color,\n            color,\n            border-color,\n            box-shadow'
                     }
-                ],
-                "variants": [
+                ]
+            },
+            {
+                name: '--input--transition-duration',
+                value: [
                     {
-                        "name": "--input--light--disabled--background",
-                        "value": [
+                        name: '--transition-duration'
+                    }
+                ]
+            },
+            {
+                name: '--input--transition-timing-function',
+                value: [
+                    {
+                        name: '--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--input--color',
+                variants: [
+                    {
+                        name: '--input--light--color',
+                        value: [
                             {
-                                "name": "--color-light"
+                                name: '--contrast-text--color-white'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--disabled--background",
-                        "value": [
+                        name: '--input--dark--color',
+                        value: [
                             {
-                                "name": "--color-dark-300"
+                                name: '--contrast-text--color-dark'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--input--border-color",
-                "value": [
+                name: '--input--background',
+                variants: [
                     {
-                        "name": "--input--light--border-color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--border-color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--border-color",
-                        "value": [
+                        name: '--input--light--background',
+                        value: [
                             {
-                                "name": "--color-light-shade-50"
+                                name: '--color-white'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--border-color",
-                        "value": [
+                        name: '--input--dark--background',
+                        value: [
                             {
-                                "name": "--color-dark-tint-50"
+                                name: '--color-dark'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--input--disabled--color",
-                "value": [
+                name: '--input--font-size',
+                value: [
                     {
-                        "name": "--input--light--disabled--color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--disabled--color",
-                        "value": [],
-                        "variants": []
+                        name: '--font-size'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--input--light--disabled--color",
-                        "value": [
+                        name: '--input--sm--font-size',
+                        value: [
                             {
-                                "name": "--text--color-muted"
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--disabled--color",
-                        "value": [
+                        name: '--input--md--font-size',
+                        value: [
                             {
-                                "name": "--text--color-muted"
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--lg--font-size',
+                        value: [
+                            {
+                                name: '--font-size'
+                            },
+                            {
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                "name": "--input--focus--border-color",
-                "value": [
+                name: '--input--hover--border-color',
+                variants: [
                     {
-                        "name": "--input--light--focus--border-color",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--input--dark--focus--border-color",
-                        "value": [],
-                        "variants": []
-                    }
-                ],
-                "variants": [
-                    {
-                        "name": "--input--light--focus--border-color",
-                        "value": [
+                        name: '--input--light--hover--border-color',
+                        value: [
                             {
-                                "name": "--color-primary"
+                                name: '--color-light-shade-100'
                             }
                         ]
                     },
                     {
-                        "name": "--input--dark--focus--border-color",
-                        "value": [
+                        name: '--input--dark--hover--border-color',
+                        value: [
                             {
-                                "name": "--color-primary"
+                                name: '--color-dark-tint-100'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--box-shadow',
+                value: [
+                    {
+                        name: '--input--box-shadow-x-offset',
+                        value: [
+                            {
+                                name: '--box-shadow-offset-x'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--box-shadow-y-offset',
+                        value: [
+                            {
+                                name: '--box-shadow-offset-y'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--box-shadow-blur-radius',
+                        value: [
+                            {
+                                name: '--box-shadow-blur-radius'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--box-shadow-spread-radius',
+                        value: [
+                            {
+                                name: '--box-shadow-spread-radius'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--box-shadow-color',
+                        value: [
+                            {
+                                name: '--box-shadow-color'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--focus--border-color',
+                variants: [
+                    {
+                        name: '--input--light--focus--border-color',
+                        value: [
+                            {
+                                name: '--color-primary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--focus--border-color',
+                        value: [
+                            {
+                                name: '--color-primary'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--line-height',
+                value: [
+                    {
+                        name: '--line-height'
+                    }
+                ]
+            },
+            {
+                name: '--input--color',
+                variants: [
+                    {
+                        name: '--input--light--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-white'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-dark'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--padding',
+                value: [
+                    {
+                        name: '--input--padding-top',
+                        value: [
+                            {
+                                name: '--padding-top'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--padding-right',
+                        value: [
+                            {
+                                name: '--padding-right'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--padding-bottom',
+                        value: [
+                            {
+                                name: '--padding-bottom'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--padding-left',
+                        value: [
+                            {
+                                name: '--padding-left'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--placeholder--color',
+                variants: [
+                    {
+                        name: '--input--light--placeholder--color',
+                        value: [
+                            {
+                                name: '--color-gray-300'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--placeholder--color',
+                        value: [
+                            {
+                                name: '--color-gray-600'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--transition-property',
+                value: [
+                    {
+                        value: '(border-color)'
+                    }
+                ]
+            },
+            {
+                name: '--input--transition-duration',
+                value: [
+                    {
+                        name: '--transition-duration'
+                    }
+                ]
+            },
+            {
+                name: '--input--transition-timing-function',
+                value: [
+                    {
+                        name: '--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--input--border-color',
+                value: [
+                    {
+                        name: '--input--border-top-color',
+                        value: [
+                            {
+                                name: '--border-top-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--border-right-color',
+                        value: [
+                            {
+                                name: '--border-right-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--border-bottom-color',
+                        value: [
+                            {
+                                name: '--border-bottom-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--border-left-color',
+                        value: [
+                            {
+                                name: '--border-left-color'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--light--border-color',
+                        value: [
+                            {
+                                name: '--color-light-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--border-color',
+                        value: [
+                            {
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--prefix-suffix--color',
+                variants: [
+                    {
+                        name: '--input--light--prefix-suffix--color',
+                        value: [
+                            {
+                                name: '--color-gray-700'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--prefix-suffix--color',
+                        value: [
+                            {
+                                name: '--color-dark-250'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--prefix-suffix--padding-right',
+                value: [
+                    {
+                        name: '--input--padding-right',
+                        value: [
+                            {
+                                name: '--padding-right'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--prefix-suffix--padding-left',
+                value: [
+                    {
+                        name: '--input--padding-left',
+                        value: [
+                            {
+                                name: '--padding-left'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left'
+                                    },
+                                    {
+                                        name: '--size-multiplier-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--prefix--border-right-width',
+                value: [
+                    {
+                        name: '--input--border-right-width',
+                        value: [
+                            {
+                                name: '--border-right-width'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--prefix--border-right-style',
+                value: [
+                    {
+                        name: '--input--border-right-style',
+                        value: [
+                            {
+                                name: '--border-right-style'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--suffix--border-left-width',
+                value: [
+                    {
+                        name: '--input--border-left-width',
+                        value: [
+                            {
+                                name: '--border-left-width'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--prefix--border-left-style',
+                value: [
+                    {
+                        name: '--input--border-left-style',
+                        value: [
+                            {
+                                name: '--border-left-style'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--transition-property',
+                value: [
+                    {
+                        value: 'background-color'
+                    }
+                ]
+            },
+            {
+                name: '--input--transition-duration',
+                value: [
+                    {
+                        name: '--transition-duration'
+                    }
+                ]
+            },
+            {
+                name: '--input--transition-timing-function',
+                value: [
+                    {
+                        name: '--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--input--clear--size'
+            },
+            {
+                name: '--input--clear--size'
+            },
+            {
+                name: '--input--clear--background',
+                variants: [
+                    {
+                        name: '--input--light--clear--background',
+                        value: [
+                            {
+                                value: 'transparent'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--clear--background',
+                        value: [
+                            {
+                                value: '#{transparent}'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--clear--color',
+                variants: [
+                    {
+                        name: '--input--light--clear--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-white'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--clear--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-dark'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--clear--hover--color',
+                value: [
+                    {
+                        name: '--input--clear--color',
+                        variants: [
+                            {
+                                name: '--input--light--clear--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--clear--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-dark'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--clear--hover--background',
+                value: [
+                    {
+                        name: '--input--clear--background',
+                        variants: [
+                            {
+                                name: '--input--light--clear--background',
+                                value: [
+                                    {
+                                        value: 'transparent'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--clear--background',
+                                value: [
+                                    {
+                                        value: '#{transparent}'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--light--clear--hover--background',
+                        value: [
+                            {
+                                name: '--color-light'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--clear--hover--background',
+                        value: [
+                            {
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--clear--active--background',
+                value: [
+                    {
+                        name: '--input--clear--background',
+                        variants: [
+                            {
+                                name: '--input--light--clear--background',
+                                value: [
+                                    {
+                                        value: 'transparent'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--clear--background',
+                                value: [
+                                    {
+                                        value: '#{transparent}'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--clear--color',
+                variants: [
+                    {
+                        name: '--input--light--clear--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-white'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--clear--color',
+                        value: [
+                            {
+                                name: '--contrast-text--color-dark'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--error--border-color',
+                value: [
+                    {
+                        name: '--color-danger'
+                    }
+                ]
+            },
+            {
+                name: '--input--disabled--color',
+                value: [
+                    {
+                        name: '--input--color',
+                        variants: [
+                            {
+                                name: '--input--light--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--color',
+                                value: [
+                                    {
+                                        name: '--contrast-text--color-dark'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--light--disabled--color',
+                        value: [
+                            {
+                                name: '--text--color-muted'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--disabled--color',
+                        value: [
+                            {
+                                name: '--text--color-muted'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--disabled--background',
+                value: [
+                    {
+                        name: '--input--background',
+                        variants: [
+                            {
+                                name: '--input--light--background',
+                                value: [
+                                    {
+                                        name: '--color-white'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--background',
+                                value: [
+                                    {
+                                        name: '--color-dark'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--light--disabled--background',
+                        value: [
+                            {
+                                name: '--color-light'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--disabled--background',
+                        value: [
+                            {
+                                name: '--color-dark-300'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--border-color',
+                value: [
+                    {
+                        name: '--input--border-top-color',
+                        value: [
+                            {
+                                name: '--border-top-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--border-right-color',
+                        value: [
+                            {
+                                name: '--border-right-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--border-bottom-color',
+                        value: [
+                            {
+                                name: '--border-bottom-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--border-left-color',
+                        value: [
+                            {
+                                name: '--border-left-color'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--light--border-color',
+                        value: [
+                            {
+                                name: '--color-light-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--border-color',
+                        value: [
+                            {
+                                name: '--color-dark-tint-50'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--disabled--color',
+                variants: [
+                    {
+                        name: '--input--light--disabled--color',
+                        value: [
+                            {
+                                name: '--text--color-muted'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--disabled--color',
+                        value: [
+                            {
+                                name: '--text--color-muted'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--focus--border-color',
+                variants: [
+                    {
+                        name: '--input--light--focus--border-color',
+                        value: [
+                            {
+                                name: '--color-primary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--focus--border-color',
+                        value: [
+                            {
+                                name: '--color-primary'
                             }
                         ]
                     }

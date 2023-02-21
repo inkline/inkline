@@ -1,108 +1,85 @@
 export const manifest = {
-    "name": "ICollapsible",
-    "props": [
+    name: 'ICollapsible',
+    props: [
         {
-            "name": "accordion",
-            "type": [
-                "Boolean"
-            ],
-            "default": "false",
-            "description": "Display the collapsible as an accordion, keeping a maximum of one open collapsible item"
+            name: 'accordion',
+            type: ['Boolean'],
+            default: 'false',
+            description:
+                'Display the collapsible as an accordion, keeping a maximum of one open collapsible item'
         },
         {
-            "name": "color",
-            "type": [
-                "light",
-                "dark",
-                "transparent"
-            ],
-            "default": "",
-            "description": "The color variant of the collapsible"
+            name: 'color',
+            type: ['light', 'dark', 'transparent'],
+            default: '',
+            description: 'The color variant of the collapsible'
         },
         {
-            "name": "size",
-            "type": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "",
-            "description": "The size variant of the collapsible"
+            name: 'size',
+            type: ['sm', 'md', 'lg'],
+            default: '',
+            description: 'The size variant of the collapsible'
         },
         {
-            "name": "modelValue",
-            "type": [
-                "String[]"
-            ],
-            "default": "",
-            "description": "Used to determine which collapsible item is open"
+            name: 'modelValue',
+            type: ['String[]'],
+            default: '',
+            description: 'Used to determine which collapsible item is open'
         }
     ],
-    "events": [
+    events: [
         {
-            "description": "Event emitted for setting the modelValue",
-            "name": "update:modelValue"
+            description: 'Event emitted for setting the modelValue',
+            name: 'update:modelValue'
         }
     ],
-    "slots": [
+    slots: [
         {
-            "name": "Default",
-            "description": "slot for collapsible items "
+            name: 'Default',
+            description: 'slot for collapsible items '
         }
     ],
-    "css": {
-        "selector": "",
-        "variables": [
+    css: {
+        selector: '.collapsible',
+        variables: [
             {
-                "name": "--collapsible--font-size",
-                "value": [
+                name: '--collapsible--font-size',
+                value: [
                     {
-                        "name": "--collapsible--sm--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--collapsible--md--font-size",
-                        "value": [],
-                        "variants": []
-                    },
-                    {
-                        "name": "--collapsible--lg--font-size",
-                        "value": [],
-                        "variants": []
+                        name: '--font-size'
                     }
                 ],
-                "variants": [
+                variants: [
                     {
-                        "name": "--collapsible--sm--font-size",
-                        "value": [
+                        name: '--collapsible--sm--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-sm"
+                                name: '--size-multiplier-sm'
                             }
                         ]
                     },
                     {
-                        "name": "--collapsible--md--font-size",
-                        "value": [
+                        name: '--collapsible--md--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-md"
+                                name: '--size-multiplier-md'
                             }
                         ]
                     },
                     {
-                        "name": "--collapsible--lg--font-size",
-                        "value": [
+                        name: '--collapsible--lg--font-size',
+                        value: [
                             {
-                                "name": "--font-size"
+                                name: '--font-size'
                             },
                             {
-                                "name": "--size-multiplier-lg"
+                                name: '--size-multiplier-lg'
                             }
                         ]
                     }
