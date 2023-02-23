@@ -190,7 +190,7 @@ export default defineNuxtConfig({
             colorMode: 'system',            // Default color mode: 'system' | 'light' | 'dark' | string
             locale: 'en',                   // Default translation
             validateOn: ['input', 'blur'],  // Default validation events
-            color: ''                       // Default color variant
+            color: '',                       // Default color variant
             size: '',                       // Default size variant
             componentOptions: {}            // Component specific global overrides
         } 
