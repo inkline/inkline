@@ -140,7 +140,7 @@ export default defineComponent({
                     :icon="toast.icon"
                     :title="toast.title"
                     :message="toast.message"
-                    @update:modelValue="hideToast(toast.id)"
+                    @update:modelValue="hideToast(toast)"
                 />
             </TransitionGroup>
         </div>
