@@ -1,6 +1,6 @@
 import { Generator } from '../types';
 import { codegenSetCSSVariable } from '../helpers';
-import { toDashCase } from '@grozav/utils';
+import { toKebabCase } from '@grozav/utils';
 
 const cssProperties = [
     'border',
@@ -45,7 +45,7 @@ export const genericGenerator: Generator<string> = {
     test: /(.+)$/,
     apply: ({ value, path }) => {
         const [, ...variablePath] = path;
-        const mappedPath = variablePath.map((part) => toDashCase(part));
+        const mappedPath = variablePath.map((part) => toKebabCase(part));
 
         let cssVariableName = mappedPath[0];
         let isCssPropertyPart = false;
@@ -57,12 +57,8 @@ export const genericGenerator: Generator<string> = {
             }
         }
 
-        return [
-            codegenSetCSSVariable(cssVariableName, value)
-        ];
+        return [codegenSetCSSVariable(cssVariableName, value)];
     }
 };
 
-export const genericGenerators = [
-    genericGenerator
-];
+export const genericGenerators = [genericGenerator];

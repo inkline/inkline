@@ -1,6 +1,6 @@
 import { Generator, GeneratorPriority, ResolvedTheme } from '../types';
 import { codegenSetCSSVariable } from '../helpers';
-import { toDashCase } from '@grozav/utils';
+import { toKebabCase } from '@grozav/utils';
 import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
 
 export const scaleRatioGenerator: Generator<ResolvedTheme['scaleRatio']> = {
@@ -14,7 +14,7 @@ export const scaleRatioGenerator: Generator<ResolvedTheme['scaleRatio']> = {
             Object.keys(value)
                 .filter((ratioName) => ratioName !== 'primary')
                 .map((ratioName) =>
-                    codegenSetCSSVariable(`scale-ratio-${toDashCase(ratioName)}`, value[ratioName])
+                    codegenSetCSSVariable(`scale-ratio-${toKebabCase(ratioName)}`, value[ratioName])
                 ),
             [
                 codegenSetCSSVariable('scale-ratio', value.primary),

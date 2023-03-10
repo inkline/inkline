@@ -5,7 +5,7 @@ import {
     codegenGetCSSVariable,
     codegenSetCSSVariable
 } from '../helpers';
-import { toDashCase } from '@grozav/utils';
+import { toKebabCase } from '@grozav/utils';
 
 export const borderRadiusGenerator: Generator<ResolvedTheme['borderRadius']> = {
     name: 'border-radius',
@@ -16,7 +16,7 @@ export const borderRadiusGenerator: Generator<ResolvedTheme['borderRadius']> = {
         ['/**', ' * Border radius variables', ' */']
             .concat(
                 cornersPropertyKeys.map((corner) =>
-                    codegenSetCSSVariable(`border-${toDashCase(corner)}-radius`, value[corner])
+                    codegenSetCSSVariable(`border-${toKebabCase(corner)}-radius`, value[corner])
                 )
             )
             .concat([
@@ -24,7 +24,7 @@ export const borderRadiusGenerator: Generator<ResolvedTheme['borderRadius']> = {
                     'border-radius',
                     cornersPropertyKeys
                         .map((corner) =>
-                            codegenGetCSSVariable(`border-${toDashCase(corner)}-radius`)
+                            codegenGetCSSVariable(`border-${toKebabCase(corner)}-radius`)
                         )
                         .join(' ')
                 )

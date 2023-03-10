@@ -13,7 +13,7 @@ import {
     codegenNumberVariant,
     codegenSetCSSVariable
 } from '../helpers';
-import { toDashCase } from '@grozav/utils';
+import { toKebabCase } from '@grozav/utils';
 import * as CSS from 'csstype';
 import color from 'color';
 import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
@@ -32,7 +32,7 @@ export const typographyFontFamilyGenerator: Generator<ResolvedTheme['typography'
                 .map((groupName) =>
                     Object.keys(groups[groupName]).map((type) =>
                         codegenSetCSSVariable(
-                            `font-family-${toDashCase(groupName)}-${toDashCase(type)}`,
+                            `font-family-${toKebabCase(groupName)}-${toKebabCase(type)}`,
                             groups[groupName][type]
                         )
                     )
@@ -53,7 +53,7 @@ export const typographyFontWeightGenerator: Generator<ResolvedTheme['typography'
         return ['/**', ' * Typography - Font weight variables', ' */'].concat(
             Object.keys(fontWeights).map((fontWeightName) =>
                 codegenSetCSSVariable(
-                    `font-weight-${toDashCase(fontWeightName)}`,
+                    `font-weight-${toKebabCase(fontWeightName)}`,
                     fontWeights[fontWeightName]
                 )
             )
@@ -69,7 +69,7 @@ export const typographyFieldGenerator: Generator<
     test: /(.*)typography\.(lineHeight|letterSpacing|fontSize)$/,
     skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
     apply: ({ value, path }) => {
-        const name = toDashCase(path[path.length - 1]);
+        const name = toKebabCase(path[path.length - 1]);
 
         return ['/**', ` * Typography ${name} variable`, ' */'].concat(
             codegenSetCSSVariable(name, value)
@@ -122,7 +122,7 @@ export const typographyColorGenerator: Generator<ResolvedTheme['color'][string]>
             .map((colorName) => {
                 if (theme.typography.contrastColor?.[colorName]) {
                     return codegenSetCSSVariable(
-                        `contrast-text--color-${toDashCase(colorName)}`,
+                        `contrast-text--color-${toKebabCase(colorName)}`,
                         theme.typography.contrastColor[colorName]
                     );
                 }
@@ -156,7 +156,7 @@ export const typographyColorGenerator: Generator<ResolvedTheme['color'][string]>
                         : codegenGetCSSVariable('contrast-text--color-light');
 
                 return codegenSetCSSVariable(
-                    `contrast-text--color-${toDashCase(colorName)}`,
+                    `contrast-text--color-${toKebabCase(colorName)}`,
                     contrastColor
                 );
             });

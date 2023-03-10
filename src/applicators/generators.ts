@@ -7,7 +7,7 @@ import {
     ResolvedTheme
 } from '../types';
 import { genericGenerator } from '../generators';
-import { capitalizeFirst, toDashCase } from '@grozav/utils';
+import { capitalizeFirst, toKebabCase } from '@grozav/utils';
 
 /**
  * Recursively apply generators to each key value pair in the source object, setting the value in the target object
@@ -79,7 +79,7 @@ export function applyGenerators(
                 if (existingGroup) {
                     existingGroup.lines.push(...genericGenerator.apply(context));
                 } else {
-                    const subgroupName = capitalizeFirst(toDashCase(path[1]).replace(/-/g, ' '));
+                    const subgroupName = capitalizeFirst(toKebabCase(path[1]).replace(/-/g, ' '));
 
                     target.push({
                         name: groupName,

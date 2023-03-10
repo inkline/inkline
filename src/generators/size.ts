@@ -6,7 +6,7 @@ import {
     ThemeVariants
 } from '../types';
 import { codegenNumberVariant, codegenSetCSSVariable } from '../helpers';
-import { toDashCase } from '@grozav/utils';
+import { toKebabCase } from '@grozav/utils';
 import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
 
 export const sizeMultiplierGenerator: Generator<ResolvedTheme['size']['multiplier']> = {
@@ -48,7 +48,7 @@ export const sizePercentagesGenerator: Generator<ResolvedTheme['size']['percenta
     apply: ({ value }) => {
         return ['/**', ' * Size percentage variables', ' */'].concat(
             Object.keys(value).map((sizeName) =>
-                codegenSetCSSVariable(`size-percentages-${toDashCase(sizeName)}`, value[sizeName])
+                codegenSetCSSVariable(`size-percentages-${toKebabCase(sizeName)}`, value[sizeName])
             )
         );
     }

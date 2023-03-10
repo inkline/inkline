@@ -1,7 +1,7 @@
 import { Generator, ResolvedTheme } from '../types';
 import { animationProperties, MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
 import { codegenSetCSSVariable } from '../helpers';
-import { toDashCase } from '@grozav/utils';
+import { toKebabCase } from '@grozav/utils';
 
 export const animationGenerator: Generator<ResolvedTheme['animation']> = {
     name: 'animation',
@@ -11,7 +11,7 @@ export const animationGenerator: Generator<ResolvedTheme['animation']> = {
     apply: ({ value }) => {
         return ['/**', ' * Animation variables', ' */'].concat(
             animationProperties.map((property) =>
-                codegenSetCSSVariable(`transition-${toDashCase(property)}`, value[property])
+                codegenSetCSSVariable(`transition-${toKebabCase(property)}`, value[property])
             )
         );
     }

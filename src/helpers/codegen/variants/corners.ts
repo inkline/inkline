@@ -2,7 +2,7 @@ import { CornersProperty, CornersPropertyVariant, ResolvedConfiguration } from '
 import { codegenGetCSSVariable, codegenSetCSSVariable } from '../variable';
 import { cornersModifierAliases, cornersModifiers } from '../../../generators/modifiers/corners';
 import { cornersPropertyKeys } from '../../../constants';
-import { toDashCase } from '@grozav/utils';
+import { toKebabCase } from '@grozav/utils';
 
 /**
  * Generate the code for a specific border radius variant
@@ -37,7 +37,7 @@ export const codegenCornersPropertyVariant = (
     return cornersPropertyKeys
         .map((side) =>
             codegenSetCSSVariable(
-                `${prefix}-${toDashCase(side)}-${suffix}-${variantName}`,
+                `${prefix}-${toKebabCase(side)}-${suffix}-${variantName}`,
                 variantValue[side]
             )
         )
@@ -47,7 +47,7 @@ export const codegenCornersPropertyVariant = (
                 cornersPropertyKeys
                     .map((side) =>
                         codegenGetCSSVariable(
-                            `${prefix}-${toDashCase(side)}-${suffix}-${variantName}`
+                            `${prefix}-${toKebabCase(side)}-${suffix}-${variantName}`
                         )
                     )
                     .join(' ')
