@@ -1,4 +1,6 @@
-export const manifest = {
+import { ComponentManifest } from '@inkline/inkline/types';
+
+export const manifest: ComponentManifest = {
     name: 'IToast',
     props: [
         {

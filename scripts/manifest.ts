@@ -79,7 +79,7 @@ glob(
 
                 const objectString = stringifyObject(manifest);
                 const exportObjectString = prettier.format(
-                    `export const manifest = ${objectString};\n\nexport default manifest;\n`,
+                    `import { ComponentManifest } from '@inkline/inkline/types';\n\nexport const manifest: ComponentManifest = ${objectString};\n\nexport default manifest;\n`,
                     { parser: 'typescript', ...prettierConfig }
                 );
 
