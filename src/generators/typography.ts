@@ -112,7 +112,7 @@ export const typographyColorGenerator: Generator<ResolvedTheme['color'][string]>
                     (value as Record<string, ResolvedColorProperty>)[
                         colorName
                     ] as ResolvedTheme['typography']['color'][string],
-                    'text--color'
+                    'text-color'
                 );
             })
             .flat();
@@ -122,7 +122,7 @@ export const typographyColorGenerator: Generator<ResolvedTheme['color'][string]>
             .map((colorName) => {
                 if (theme.typography.contrastColor?.[colorName]) {
                     return codegenSetCSSVariable(
-                        `contrast-text--color-${toKebabCase(colorName)}`,
+                        `contrast-text-color-${toKebabCase(colorName)}`,
                         theme.typography.contrastColor[colorName]
                     );
                 }
@@ -152,11 +152,11 @@ export const typographyColorGenerator: Generator<ResolvedTheme['color'][string]>
 
                 const contrastColor =
                     brightness < 128
-                        ? codegenGetCSSVariable('contrast-text--color-dark')
-                        : codegenGetCSSVariable('contrast-text--color-light');
+                        ? codegenGetCSSVariable('contrast-text-color-dark')
+                        : codegenGetCSSVariable('contrast-text-color-light');
 
                 return codegenSetCSSVariable(
-                    `contrast-text--color-${toKebabCase(colorName)}`,
+                    `contrast-text-color-${toKebabCase(colorName)}`,
                     contrastColor
                 );
             });
