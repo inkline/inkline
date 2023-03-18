@@ -22,8 +22,8 @@
   },
   "devDependencies": {
     "@grozav/eslint-config": "latest",
-    "@inkline/config": "^1.7.9",
-    "@inkline/inkline": "^4.0.0-rc.12",
+    "@inkline/config": "^1.8.0",
+    "@inkline/inkline": "^4.0.0-rc.16",
     "@nuxt/module-builder": "^0.2.0",
     "@nuxt/schema": "^3.0.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
