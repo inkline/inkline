@@ -49,7 +49,7 @@
         "@grozav/stylelint-config": "^1.0.0",
         "@grozav/utils": "^1.3.1",
         "@inkline/cli": "^1.2.1",
-        "@inkline/config": "^1.7.10",
+        "@inkline/config": "^1.8.0",
         "@storybook/addon-a11y": "^7.0.0-beta.40",
         "@storybook/addon-actions": "^7.0.0-beta.40",
         "@storybook/addon-essentials": "^7.0.0-beta.40",

@@ -30,8 +30,8 @@ pre {
 
 code {
     font-size: var(--code--font-size, var(--font-size-sm));
-    color: var(--code--color, var(--color-pink));
-    background: var(--code--background, var(--color-light));
+    color: var(--code--color);
+    background: var(--code--background);
     padding: var(
         --code--padding,
         (

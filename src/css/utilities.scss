@@ -7742,23 +7742,23 @@
 }
 ._text\:muted,
 ._text\:weak {
-    color: var(--text--color-weak);
+    color: var(--text-color-weak);
 }
 ._text\:muted\!,
 ._text\:weak\! {
-    color: var(--text--color-weak) !important;
+    color: var(--text-color-weak) !important;
 }
 ._text\:weaker {
-    color: var(--text--color-weaker);
+    color: var(--text-color-weaker);
 }
 ._text\:weaker\! {
-    color: var(--text--color-weaker) !important;
+    color: var(--text-color-weaker) !important;
 }
 ._text\:weakest {
-    color: var(--text--color-weakest);
+    color: var(--text-color-weakest);
 }
 ._text\:weakest\! {
-    color: var(--text--color-weakest) !important;
+    color: var(--text-color-weakest) !important;
 }
 ._text\:reset {
     color: inherit;

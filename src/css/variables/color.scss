@@ -1289,52 +1289,52 @@
     /**
      * Text color variables
      */
-    --text--color-dark-h: var(--color-dark-h);
-    --text--color-dark-s: var(--color-dark-s);
-    --text--color-dark-l: var(--color-dark-l);
-    --text--color-dark-a: var(--color-dark-a);
-    --text--color-dark: hsla(var(--text--color-dark-h), var(--text--color-dark-s), var(--text--color-dark-l), var(--text--color-dark-a));
-    --text--color-weak-h: var(--color-gray-700-h);
-    --text--color-weak-s: var(--color-gray-700-s);
-    --text--color-weak-l: var(--color-gray-700-l);
-    --text--color-weak-a: var(--color-gray-700-a);
-    --text--color-weak: hsla(var(--text--color-weak-h), var(--text--color-weak-s), var(--text--color-weak-l), var(--text--color-weak-a));
-    --text--color-weaker-h: var(--color-gray-500-h);
-    --text--color-weaker-s: var(--color-gray-500-s);
-    --text--color-weaker-l: var(--color-gray-500-l);
-    --text--color-weaker-a: var(--color-gray-500-a);
-    --text--color-weaker: hsla(var(--text--color-weaker-h), var(--text--color-weaker-s), var(--text--color-weaker-l), var(--text--color-weaker-a));
-    --text--color-weakest-h: var(--color-gray-300-h);
-    --text--color-weakest-s: var(--color-gray-300-s);
-    --text--color-weakest-l: var(--color-gray-300-l);
-    --text--color-weakest-a: var(--color-gray-300-a);
-    --text--color-weakest: hsla(var(--text--color-weakest-h), var(--text--color-weakest-s), var(--text--color-weakest-l), var(--text--color-weakest-a));
-    --text--color-light-h: var(--color-light-h);
-    --text--color-light-s: var(--color-light-s);
-    --text--color-light-l: var(--color-light-l);
-    --text--color-light-a: var(--color-light-a);
-    --text--color-light: hsla(var(--text--color-light-h), var(--text--color-light-s), var(--text--color-light-l), var(--text--color-light-a));
+    --text-color-dark-h: var(--color-dark-h);
+    --text-color-dark-s: var(--color-dark-s);
+    --text-color-dark-l: var(--color-dark-l);
+    --text-color-dark-a: var(--color-dark-a);
+    --text-color-dark: hsla(var(--text-color-dark-h), var(--text-color-dark-s), var(--text-color-dark-l), var(--text-color-dark-a));
+    --text-color-weak-h: var(--color-gray-700-h);
+    --text-color-weak-s: var(--color-gray-700-s);
+    --text-color-weak-l: var(--color-gray-700-l);
+    --text-color-weak-a: var(--color-gray-700-a);
+    --text-color-weak: hsla(var(--text-color-weak-h), var(--text-color-weak-s), var(--text-color-weak-l), var(--text-color-weak-a));
+    --text-color-weaker-h: var(--color-gray-500-h);
+    --text-color-weaker-s: var(--color-gray-500-s);
+    --text-color-weaker-l: var(--color-gray-500-l);
+    --text-color-weaker-a: var(--color-gray-500-a);
+    --text-color-weaker: hsla(var(--text-color-weaker-h), var(--text-color-weaker-s), var(--text-color-weaker-l), var(--text-color-weaker-a));
+    --text-color-weakest-h: var(--color-gray-300-h);
+    --text-color-weakest-s: var(--color-gray-300-s);
+    --text-color-weakest-l: var(--color-gray-300-l);
+    --text-color-weakest-a: var(--color-gray-300-a);
+    --text-color-weakest: hsla(var(--text-color-weakest-h), var(--text-color-weakest-s), var(--text-color-weakest-l), var(--text-color-weakest-a));
+    --text-color-light-h: var(--color-light-h);
+    --text-color-light-s: var(--color-light-s);
+    --text-color-light-l: var(--color-light-l);
+    --text-color-light-a: var(--color-light-a);
+    --text-color-light: hsla(var(--text-color-light-h), var(--text-color-light-s), var(--text-color-light-l), var(--text-color-light-a));
     
     /**
      * Contrast text color variables
      */
-    --contrast-text--color-dark: var(--color-white);
-    --contrast-text--color-light: var(--color-gray-900);
-    --contrast-text--color-red: var(--contrast-text--color-light);
-    --contrast-text--color-orange: var(--contrast-text--color-light);
-    --contrast-text--color-yellow: var(--contrast-text--color-light);
-    --contrast-text--color-green: var(--contrast-text--color-light);
-    --contrast-text--color-teal: var(--contrast-text--color-light);
-    --contrast-text--color-blue: var(--contrast-text--color-dark);
-    --contrast-text--color-purple: var(--contrast-text--color-dark);
-    --contrast-text--color-pink: var(--contrast-text--color-light);
-    --contrast-text--color-white: var(--contrast-text--color-light);
-    --contrast-text--color-gray: var(--contrast-text--color-light);
-    --contrast-text--color-black: var(--contrast-text--color-dark);
-    --contrast-text--color-primary: var(--contrast-text--color-dark);
-    --contrast-text--color-secondary: var(--contrast-text--color-dark);
-    --contrast-text--color-info: var(--contrast-text--color-light);
-    --contrast-text--color-success: var(--contrast-text--color-light);
-    --contrast-text--color-warning: var(--contrast-text--color-light);
-    --contrast-text--color-danger: var(--contrast-text--color-light);
+    --contrast-text-color-dark: var(--color-white);
+    --contrast-text-color-light: var(--color-gray-900);
+    --contrast-text-color-red: var(--contrast-text-color-light);
+    --contrast-text-color-orange: var(--contrast-text-color-light);
+    --contrast-text-color-yellow: var(--contrast-text-color-light);
+    --contrast-text-color-green: var(--contrast-text-color-light);
+    --contrast-text-color-teal: var(--contrast-text-color-light);
+    --contrast-text-color-blue: var(--contrast-text-color-dark);
+    --contrast-text-color-purple: var(--contrast-text-color-dark);
+    --contrast-text-color-pink: var(--contrast-text-color-light);
+    --contrast-text-color-white: var(--contrast-text-color-light);
+    --contrast-text-color-gray: var(--contrast-text-color-light);
+    --contrast-text-color-black: var(--contrast-text-color-dark);
+    --contrast-text-color-primary: var(--contrast-text-color-dark);
+    --contrast-text-color-secondary: var(--contrast-text-color-dark);
+    --contrast-text-color-info: var(--contrast-text-color-light);
+    --contrast-text-color-success: var(--contrast-text-color-light);
+    --contrast-text-color-warning: var(--contrast-text-color-light);
+    --contrast-text-color-danger: var(--contrast-text-color-light);
 }
