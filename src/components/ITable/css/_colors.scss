@@ -14,7 +14,7 @@
             var(--color-primary-shade-50)
         );
         --table--border-color: var(--table--primary--border-color, var(--color-primary-shade-50));
-        --table--color: var(--table--primary--color, var(--contrast-text--color-primary));
+        --table--color: var(--table--primary--color, var(--contrast-text-color-primary));
     }
 
     &.-secondary {
@@ -31,7 +31,7 @@
             --table--secondary--border-color,
             var(--color-secondary-shade-50)
         );
-        --table--color: var(--table--secondary--color, var(--contrast-text--color-secondary));
+        --table--color: var(--table--secondary--color, var(--contrast-text-color-secondary));
     }
 
     &.-light {
@@ -42,7 +42,7 @@
             var(--color-gray-50)
         );
         --table--border-color: var(--table--light--border-color, var(--color-gray-50));
-        --table--color: var(--table--light--color, var(--contrast-text--color-light));
+        --table--color: var(--table--light--color, var(--contrast-text-color-light));
     }
 
     &.-dark {
@@ -56,7 +56,7 @@
             var(--color-dark-tint-50)
         );
         --table--border-color: var(--table--dark--border-color, var(--color-dark-tint-50));
-        --table--color: var(--table--dark--color, var(--contrast-text--color-dark));
+        --table--color: var(--table--dark--color, var(--contrast-text-color-dark));
     }
 
     &.-info {
@@ -70,7 +70,7 @@
             var(--color-info-shade-50)
         );
         --table--border-color: var(--table--info--border-color, var(--color-info-shade-50));
-        --table--color: var(--table--info--color, var(--contrast-text--color-info));
+        --table--color: var(--table--info--color, var(--contrast-text-color-info));
     }
 
     &.-success {
@@ -84,7 +84,7 @@
             var(--color-success-shade-50)
         );
         --table--border-color: var(--table--success--border-color, var(--color-success-shade-50));
-        --table--color: var(--table--success--color, var(--contrast-text--color-success));
+        --table--color: var(--table--success--color, var(--contrast-text-color-success));
     }
 
     &.-warning {
@@ -98,7 +98,7 @@
             var(--color-warning-shade-50)
         );
         --table--border-color: var(--table--warning--border-color, var(--color-warning-shade-50));
-        --table--color: var(--table--warning--color, var(--contrast-text--color-warning));
+        --table--color: var(--table--warning--color, var(--contrast-text-color-warning));
     }
 
     &.-danger {
@@ -112,6 +112,6 @@
             var(--color-danger-shade-50)
         );
         --table--border-color: var(--table--danger--border-color, var(--color-danger-shade-50));
-        --table--color: var(--table--danger--color, var(--contrast-text--color-danger));
+        --table--color: var(--table--danger--color, var(--contrast-text-color-danger));
     }
 }

@@ -45,7 +45,7 @@ blockquote {
     > .footer {
         display: block;
         font-size: 80%;
-        color: var(--blockquote--footer--color, var(--text--color-muted));
+        color: var(--blockquote--footer--color, var(--text-color-weak));
 
         &::before {
             content: '\2014 \00A0'; // em dash, nbsp

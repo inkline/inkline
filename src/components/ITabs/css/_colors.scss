@@ -18,7 +18,7 @@
             --tabs--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --tabs--color: var(--tabs--light--color, var(--contrast-text--color-white));
+        --tabs--color: var(--tabs--light--color, var(--contrast-text-color-white));
         --tabs--title--background: var(--tabs--light--title--background, var(--color-white));
         --tabs--title--active--background: var(
             --tabs--light--title--active--background,
@@ -42,7 +42,7 @@
             var(--color-dark-tint-50)
         );
         --tabs--border-left-color: var(--tabs--dark--border-left-color, var(--color-dark-tint-50));
-        --tabs--color: var(--tabs--dark--color, var(--contrast-text--color-dark));
+        --tabs--color: var(--tabs--dark--color, var(--contrast-text-color-dark));
         --tabs--title--background: var(--tabs--dark--title--background, var(--color-dark));
         --tabs--title--active--background: var(
             --tabs--dark--title--active--background,

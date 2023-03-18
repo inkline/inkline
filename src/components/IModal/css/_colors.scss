@@ -21,7 +21,7 @@
             --modal--primary--border-left-color,
             var(--color-primary-shade-50)
         );
-        --modal--color: var(--modal--primary--color, var(--contrast-text--color-primary));
+        --modal--color: var(--modal--primary--color, var(--contrast-text-color-primary));
         --modal--header--background: var(
             --modal--primary--header--background,
             var(--color-primary-shade-50)
@@ -50,7 +50,7 @@
             --modal--secondary--border-left-color,
             var(--color-secondary-shade-50)
         );
-        --modal--color: var(--modal--secondary--color, var(--contrast-text--color-secondary));
+        --modal--color: var(--modal--secondary--color, var(--contrast-text-color-secondary));
         --modal--header--background: var(
             --modal--secondary--header--background,
             var(--color-secondary-shade-50)
@@ -67,7 +67,7 @@
         --modal--border-right-color: var(--modal--light--border-right-color, var(--color-light));
         --modal--border-bottom-color: var(--modal--light--border-bottom-color, var(--color-light));
         --modal--border-left-color: var(--modal--light--border-left-color, var(--color-light));
-        --modal--color: var(--modal--light--color, var(--contrast-text--color-white));
+        --modal--color: var(--modal--light--color, var(--contrast-text-color-white));
         --modal--header--background: var(--modal--light--header--background, var(--color-gray-50));
         --modal--footer--background: var(--modal--light--footer--background, var(--color-gray-50));
     }
@@ -87,7 +87,7 @@
             --modal--dark--border-left-color,
             var(--color-dark-tint-50)
         );
-        --modal--color: var(--modal--dark--color, var(--contrast-text--color-dark));
+        --modal--color: var(--modal--dark--color, var(--contrast-text-color-dark));
         --modal--header--background: var(
             --modal--dark--header--background,
             var(--color-dark-tint-50)
@@ -113,7 +113,7 @@
             --modal--info--border-left-color,
             var(--color-info-shade-50)
         );
-        --modal--color: var(--modal--info--color, var(--contrast-text--color-info));
+        --modal--color: var(--modal--info--color, var(--contrast-text-color-info));
         --modal--header--background: var(
             --modal--info--header--background,
             var(--color-info-shade-50)
@@ -142,7 +142,7 @@
             --modal--success--border-left-color,
             var(--color-success-shade-50)
         );
-        --modal--color: var(--modal--success--color, var(--contrast-text--color-success));
+        --modal--color: var(--modal--success--color, var(--contrast-text-color-success));
         --modal--header--background: var(
             --modal--success--header--background,
             var(--color-success-shade-50)
@@ -171,7 +171,7 @@
             --modal--warning--border-left-color,
             var(--color-warning-shade-50)
         );
-        --modal--color: var(--modal--warning--color, var(--contrast-text--color-warning));
+        --modal--color: var(--modal--warning--color, var(--contrast-text-color-warning));
         --modal--header--background: var(
             --modal--warning--header--background,
             var(--color-warning-shade-50)
@@ -200,7 +200,7 @@
             --modal--danger--border-left-color,
             var(--color-danger-shade-50)
         );
-        --modal--color: var(--modal--danger--color, var(--contrast-text--color-danger));
+        --modal--color: var(--modal--danger--color, var(--contrast-text-color-danger));
         --modal--header--background: var(
             --modal--danger--header--background,
             var(--color-danger-shade-50)

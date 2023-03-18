@@ -21,7 +21,7 @@
             --select--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --select--color: var(--select--light--color, var(--contrast-text--color-white));
+        --select--color: var(--select--light--color, var(--contrast-text-color-white));
         --select--option--hover--background: var(
             --select--light--option--hover--background,
             var(--color-gray-50)
@@ -32,7 +32,7 @@
         );
         --select--option--disabled--color: var(
             --select--light--option--disabled--color,
-            var(--text--color-muted)
+            var(--text-color-weak)
         );
         --select--header--background: var(
             --select--light--header--background,
@@ -62,7 +62,7 @@
             --select--dark--border-left-color,
             var(--color-dark-tint-50)
         );
-        --select--color: var(--select--dark--color, var(--contrast-text--color-dark));
+        --select--color: var(--select--dark--color, var(--contrast-text-color-dark));
         --select--option--hover--background: var(
             --select--dark--option--hover--background,
             var(--color-dark-tint-50)
@@ -73,7 +73,7 @@
         );
         --select--option--disabled--color: var(
             --select--dark--option--disabled--color,
-            var(--text--color-muted)
+            var(--text-color-weak)
         );
         --select--header--background: var(
             --select--dark--header--background,

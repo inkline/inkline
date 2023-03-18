@@ -21,7 +21,7 @@
             --pagination--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --pagination--color: var(--pagination--light--color, var(--contrast-text--color-light));
+        --pagination--color: var(--pagination--light--color, var(--contrast-text-color-light));
 
         --pagination--hover--background: var(
             --pagination--light--hover--background,
@@ -50,12 +50,12 @@
         );
         --pagination--active--color: var(
             --pagination--light--active--color,
-            var(--contrast-text--color-primary)
+            var(--contrast-text-color-primary)
         );
 
         --pagination--disabled--color: var(
             --pagination--light--disabled--color,
-            var(--text--color-muted)
+            var(--text-color-weak)
         );
     }
 
@@ -77,7 +77,7 @@
             --pagination--dark--border-left-color,
             var(--color-dark-tint-50)
         );
-        --pagination--color: var(--pagination--dark--color, var(--contrast-text--color-dark));
+        --pagination--color: var(--pagination--dark--color, var(--contrast-text-color-dark));
 
         --pagination--hover--background: var(
             --pagination--dark--hover--background,
@@ -106,12 +106,12 @@
         );
         --pagination--active--color: var(
             --pagination--dark--active--color,
-            var(--contrast-text--color-primary)
+            var(--contrast-text-color-primary)
         );
 
         --pagination--disabled--color: var(
             --pagination--dark--disabled--color,
-            var(--text--color-muted)
+            var(--text-color-weak)
         );
     }
 }

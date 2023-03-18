@@ -25,7 +25,7 @@
 ////
 
 body {
-    color: var(--body--color, var(--text--color-dark));
+    color: var(--body--color, var(--color-dark));
     background-color: var(--body--background, var(--color-white));
     font-family: var(--body--font-family, var(--font-family-primary-base));
     font-size: var(--body--font-size, var(--font-size));

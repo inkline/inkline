@@ -1239,7 +1239,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--primary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-primary'
+                                        name: '--contrast-text-color-primary'
                                     }
                                 ]
                             },
@@ -1247,7 +1247,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--secondary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-secondary'
+                                        name: '--contrast-text-color-secondary'
                                     }
                                 ]
                             },
@@ -1255,7 +1255,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-white'
+                                        name: '--contrast-text-color-white'
                                     }
                                 ]
                             },
@@ -1263,7 +1263,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             },
@@ -1271,7 +1271,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--info--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-info'
+                                        name: '--contrast-text-color-info'
                                     }
                                 ]
                             },
@@ -1279,7 +1279,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--success--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-success'
+                                        name: '--contrast-text-color-success'
                                     }
                                 ]
                             },
@@ -1287,7 +1287,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--warning--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-warning'
+                                        name: '--contrast-text-color-warning'
                                     }
                                 ]
                             },
@@ -1295,7 +1295,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--danger--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-danger'
+                                        name: '--contrast-text-color-danger'
                                     }
                                 ]
                             }
@@ -1490,7 +1490,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--primary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-primary'
+                                        name: '--contrast-text-color-primary'
                                     }
                                 ]
                             },
@@ -1498,7 +1498,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--secondary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-secondary'
+                                        name: '--contrast-text-color-secondary'
                                     }
                                 ]
                             },
@@ -1506,7 +1506,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-white'
+                                        name: '--contrast-text-color-white'
                                     }
                                 ]
                             },
@@ -1514,7 +1514,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             },
@@ -1522,7 +1522,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--info--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-info'
+                                        name: '--contrast-text-color-info'
                                     }
                                 ]
                             },
@@ -1530,7 +1530,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--success--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-success'
+                                        name: '--contrast-text-color-success'
                                     }
                                 ]
                             },
@@ -1538,7 +1538,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--warning--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-warning'
+                                        name: '--contrast-text-color-warning'
                                     }
                                 ]
                             },
@@ -1546,7 +1546,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--danger--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-danger'
+                                        name: '--contrast-text-color-danger'
                                     }
                                 ]
                             }
@@ -1724,7 +1724,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--primary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-primary'
+                                        name: '--contrast-text-color-primary'
                                     }
                                 ]
                             },
@@ -1732,7 +1732,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--secondary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-secondary'
+                                        name: '--contrast-text-color-secondary'
                                     }
                                 ]
                             },
@@ -1740,7 +1740,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-white'
+                                        name: '--contrast-text-color-white'
                                     }
                                 ]
                             },
@@ -1748,7 +1748,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             },
@@ -1756,7 +1756,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--info--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-info'
+                                        name: '--contrast-text-color-info'
                                     }
                                 ]
                             },
@@ -1764,7 +1764,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--success--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-success'
+                                        name: '--contrast-text-color-success'
                                     }
                                 ]
                             },
@@ -1772,7 +1772,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--warning--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-warning'
+                                        name: '--contrast-text-color-warning'
                                     }
                                 ]
                             },
@@ -1780,7 +1780,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--danger--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-danger'
+                                        name: '--contrast-text-color-danger'
                                     }
                                 ]
                             }
@@ -2656,7 +2656,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--primary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-primary'
+                                        name: '--contrast-text-color-primary'
                                     }
                                 ]
                             },
@@ -2664,7 +2664,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--secondary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-secondary'
+                                        name: '--contrast-text-color-secondary'
                                     }
                                 ]
                             },
@@ -2672,7 +2672,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-white'
+                                        name: '--contrast-text-color-white'
                                     }
                                 ]
                             },
@@ -2680,7 +2680,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             },
@@ -2688,7 +2688,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--info--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-info'
+                                        name: '--contrast-text-color-info'
                                     }
                                 ]
                             },
@@ -2696,7 +2696,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--success--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-success'
+                                        name: '--contrast-text-color-success'
                                     }
                                 ]
                             },
@@ -2704,7 +2704,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--warning--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-warning'
+                                        name: '--contrast-text-color-warning'
                                     }
                                 ]
                             },
@@ -2712,7 +2712,7 @@ export const manifest: ComponentManifest = {
                                 name: '--modal--danger--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-danger'
+                                        name: '--contrast-text-color-danger'
                                     }
                                 ]
                             }

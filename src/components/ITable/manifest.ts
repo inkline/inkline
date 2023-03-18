@@ -175,7 +175,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--primary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-primary'
+                                name: '--contrast-text-color-primary'
                             }
                         ]
                     },
@@ -183,7 +183,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--secondary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-secondary'
+                                name: '--contrast-text-color-secondary'
                             }
                         ]
                     },
@@ -191,7 +191,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -199,7 +199,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     },
@@ -207,7 +207,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--info--color',
                         value: [
                             {
-                                name: '--contrast-text--color-info'
+                                name: '--contrast-text-color-info'
                             }
                         ]
                     },
@@ -215,7 +215,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--success--color',
                         value: [
                             {
-                                name: '--contrast-text--color-success'
+                                name: '--contrast-text-color-success'
                             }
                         ]
                     },
@@ -223,7 +223,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--warning--color',
                         value: [
                             {
-                                name: '--contrast-text--color-warning'
+                                name: '--contrast-text-color-warning'
                             }
                         ]
                     },
@@ -231,7 +231,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--danger--color',
                         value: [
                             {
-                                name: '--contrast-text--color-danger'
+                                name: '--contrast-text-color-danger'
                             }
                         ]
                     }

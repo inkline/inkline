@@ -208,7 +208,7 @@ export const manifest: ComponentManifest = {
                         name: '--tooltip--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-white'
+                                name: '--contrast-text-color-white'
                             }
                         ]
                     },
@@ -216,7 +216,7 @@ export const manifest: ComponentManifest = {
                         name: '--tooltip--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }

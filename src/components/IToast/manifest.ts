@@ -728,7 +728,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -736,7 +736,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     },
@@ -808,7 +808,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-light'
+                                        name: '--contrast-text-color-light'
                                     }
                                 ]
                             },
@@ -816,7 +816,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             },

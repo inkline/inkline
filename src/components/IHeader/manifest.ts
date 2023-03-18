@@ -78,7 +78,7 @@ export const manifest: ComponentManifest = {
                         name: '--header--primary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-primary'
+                                name: '--contrast-text-color-primary'
                             }
                         ]
                     },
@@ -86,7 +86,7 @@ export const manifest: ComponentManifest = {
                         name: '--header--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -94,7 +94,7 @@ export const manifest: ComponentManifest = {
                         name: '--header--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }

@@ -15,7 +15,7 @@
             var(--color-light)
         );
         --tooltip--border-left-color: var(--tooltip--light--border-left-color, var(--color-light));
-        --tooltip--color: var(--tooltip--light--color, var(--contrast-text--color-white));
+        --tooltip--color: var(--tooltip--light--color, var(--contrast-text-color-white));
     }
 
     &.-dark {
@@ -33,6 +33,6 @@
             --tooltip--dark--border-left-color,
             var(--color-dark-600)
         );
-        --tooltip--color: var(--tooltip--dark--color, var(--contrast-text--color-dark));
+        --tooltip--color: var(--tooltip--dark--color, var(--contrast-text-color-dark));
     }
 }

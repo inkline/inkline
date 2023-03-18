@@ -21,7 +21,7 @@
             --card--primary--border-left-color,
             var(--color-primary-shade-50)
         );
-        --card--color: var(--card--primary--color, var(--contrast-text--color-primary));
+        --card--color: var(--card--primary--color, var(--contrast-text-color-primary));
         --card--header--background: var(
             --card--primary--header--background,
             var(--color-primary-shade-50)
@@ -50,7 +50,7 @@
             --card--secondary--border-left-color,
             var(--color-secondary-shade-50)
         );
-        --card--color: var(--card--secondary--color, var(--contrast-text--color-secondary));
+        --card--color: var(--card--secondary--color, var(--contrast-text-color-secondary));
         --card--header--background: var(
             --card--secondary--header--background,
             var(--color-secondary-shade-50)
@@ -76,7 +76,7 @@
             --card--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --card--color: var(--card--light--color, var(--contrast-text--color-light));
+        --card--color: var(--card--light--color, var(--contrast-text-color-light));
         --card--header--background: var(--card--light--header--background, var(--color-light-250));
         --card--footer--background: var(--card--light--footer--background, var(--color-light-250));
     }
@@ -93,7 +93,7 @@
             var(--color-dark-tint-50)
         );
         --card--border-left-color: var(--card--dark--border-left-color, var(--color-dark-tint-50));
-        --card--color: var(--card--dark--color, var(--contrast-text--color-dark));
+        --card--color: var(--card--dark--color, var(--contrast-text-color-dark));
         --card--header--background: var(
             --card--dark--header--background,
             var(--color-dark-tint-50)
@@ -116,7 +116,7 @@
             var(--color-info-shade-50)
         );
         --card--border-left-color: var(--card--info--border-left-color, var(--color-info-shade-50));
-        --card--color: var(--card--info--color, var(--contrast-text--color-info));
+        --card--color: var(--card--info--color, var(--contrast-text-color-info));
         --card--header--background: var(
             --card--info--header--background,
             var(--color-info-shade-50)
@@ -145,7 +145,7 @@
             --card--success--border-left-color,
             var(--color-success-shade-50)
         );
-        --card--color: var(--card--success--color, var(--contrast-text--color-success));
+        --card--color: var(--card--success--color, var(--contrast-text-color-success));
         --card--header--background: var(
             --card--success--header--background,
             var(--color-success-shade-50)
@@ -174,7 +174,7 @@
             --card--warning--border-left-color,
             var(--color-warning-shade-50)
         );
-        --card--color: var(--card--warning--color, var(--contrast-text--color-warning));
+        --card--color: var(--card--warning--color, var(--contrast-text-color-warning));
         --card--header--background: var(
             --card--warning--header--background,
             var(--color-warning-shade-50)
@@ -203,7 +203,7 @@
             --card--danger--border-left-color,
             var(--color-danger-shade-50)
         );
-        --card--color: var(--card--danger--color, var(--contrast-text--color-danger));
+        --card--color: var(--card--danger--color, var(--contrast-text-color-danger));
         --card--header--background: var(
             --card--danger--header--background,
             var(--color-danger-shade-50)

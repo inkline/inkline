@@ -118,7 +118,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--light--label--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -126,7 +126,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--dark--label--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }
@@ -632,7 +632,7 @@ export const manifest: ComponentManifest = {
                                 name: '--radio--light--label--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-light'
+                                        name: '--contrast-text-color-light'
                                     }
                                 ]
                             },
@@ -640,7 +640,7 @@ export const manifest: ComponentManifest = {
                                 name: '--radio--dark--label--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             }

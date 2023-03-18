@@ -203,7 +203,7 @@ export const manifest: ComponentManifest = {
                         name: '--popover--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-white'
+                                name: '--contrast-text-color-white'
                             }
                         ]
                     },
@@ -211,7 +211,7 @@ export const manifest: ComponentManifest = {
                         name: '--popover--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }

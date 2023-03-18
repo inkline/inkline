@@ -33,7 +33,7 @@ export const manifest: ComponentManifest = {
                         name: '--badge--primary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-primary'
+                                name: '--contrast-text-color-primary'
                             }
                         ]
                     },
@@ -41,7 +41,7 @@ export const manifest: ComponentManifest = {
                         name: '--badge--secondary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-secondary'
+                                name: '--contrast-text-color-secondary'
                             }
                         ]
                     },
@@ -49,7 +49,7 @@ export const manifest: ComponentManifest = {
                         name: '--badge--info--color',
                         value: [
                             {
-                                name: '--contrast-text--color-info'
+                                name: '--contrast-text-color-info'
                             }
                         ]
                     },
@@ -57,7 +57,7 @@ export const manifest: ComponentManifest = {
                         name: '--badge--success--color',
                         value: [
                             {
-                                name: '--contrast-text--color-success'
+                                name: '--contrast-text-color-success'
                             }
                         ]
                     },
@@ -65,7 +65,7 @@ export const manifest: ComponentManifest = {
                         name: '--badge--warning--color',
                         value: [
                             {
-                                name: '--contrast-text--color-warning'
+                                name: '--contrast-text-color-warning'
                             }
                         ]
                     },
@@ -73,7 +73,7 @@ export const manifest: ComponentManifest = {
                         name: '--badge--danger--color',
                         value: [
                             {
-                                name: '--contrast-text--color-danger'
+                                name: '--contrast-text-color-danger'
                             }
                         ]
                     },
@@ -81,7 +81,7 @@ export const manifest: ComponentManifest = {
                         name: '--badge--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -89,7 +89,7 @@ export const manifest: ComponentManifest = {
                         name: '--badge--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }

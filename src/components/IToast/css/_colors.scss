@@ -21,7 +21,7 @@
             --toast--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --toast--color: var(--toast--light--color, var(--contrast-text--color-light));
+        --toast--color: var(--toast--light--color, var(--contrast-text-color-light));
         --toast--progress--background: var(
             --toast--light--progress--background,
             rgba(0, 0, 0, 0.05)
@@ -47,7 +47,7 @@
             --toast--dark--border-left-color,
             var(--color-dark-tint-50)
         );
-        --toast--color: var(--toast--dark--color, var(--contrast-text--color-dark));
+        --toast--color: var(--toast--dark--color, var(--contrast-text-color-dark));
         --toast--progress--background: var(
             --toast--dark--progress--background,
             rgba(255, 255, 255, 0.05)

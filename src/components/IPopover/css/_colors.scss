@@ -21,7 +21,7 @@
             --popover--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --popover--color: var(--popover--light--color, var(--contrast-text--color-white));
+        --popover--color: var(--popover--light--color, var(--contrast-text-color-white));
         --popover--header--background: var(
             --popover--light--header--background,
             var(--color-gray-50)
@@ -50,7 +50,7 @@
             --popover--dark--border-left-color,
             var(--color-dark-tint-50)
         );
-        --popover--color: var(--popover--dark--color, var(--contrast-text--color-dark));
+        --popover--color: var(--popover--dark--color, var(--contrast-text-color-dark));
         --popover--header--background: var(
             --popover--dark--header--background,
             var(--color-dark-tint-50)

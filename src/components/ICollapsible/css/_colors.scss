@@ -21,7 +21,7 @@
             --collapsible--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --collapsible--color: var(--collapsible--light--color, var(--contrast-text--color-light));
+        --collapsible--color: var(--collapsible--light--color, var(--contrast-text-color-light));
         --collapsible--body--background: var(
             --collapsible--light--body--background,
             var(--color-white)
@@ -46,7 +46,7 @@
             --collapsible--dark--border-left-color,
             var(--color-dark-tint-50)
         );
-        --collapsible--color: var(--collapsible--dark--color, var(--contrast-text--color-dark));
+        --collapsible--color: var(--collapsible--dark--color, var(--contrast-text-color-dark));
         --collapsible--body--background: var(
             --collapsible--dark--body--background,
             var(--color-dark-tint-50)

@@ -130,7 +130,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--light--label--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -138,7 +138,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--dark--label--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }
@@ -881,7 +881,7 @@ export const manifest: ComponentManifest = {
                                 name: '--checkbox--light--label--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-light'
+                                        name: '--contrast-text-color-light'
                                     }
                                 ]
                             },
@@ -889,7 +889,7 @@ export const manifest: ComponentManifest = {
                                 name: '--checkbox--dark--label--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             }
@@ -901,7 +901,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--light--disabled--label--color',
                         value: [
                             {
-                                name: '--text--color-muted'
+                                name: '--text-color-weak'
                             }
                         ]
                     },
@@ -909,7 +909,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--dark--disabled--label--color',
                         value: [
                             {
-                                name: '--text--color-muted'
+                                name: '--text-color-weak'
                             }
                         ]
                     }

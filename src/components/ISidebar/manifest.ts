@@ -124,7 +124,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -132,7 +132,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }

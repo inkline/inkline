@@ -875,7 +875,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-white'
+                                name: '--contrast-text-color-white'
                             }
                         ]
                     },
@@ -883,7 +883,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }
@@ -1055,7 +1055,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-white'
+                                name: '--contrast-text-color-white'
                             }
                         ]
                     },
@@ -1063,7 +1063,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }
@@ -1573,7 +1573,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--light--clear--color',
                         value: [
                             {
-                                name: '--contrast-text--color-white'
+                                name: '--contrast-text-color-white'
                             }
                         ]
                     },
@@ -1581,7 +1581,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--dark--clear--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }
@@ -1597,7 +1597,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--light--clear--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-white'
+                                        name: '--contrast-text-color-white'
                                     }
                                 ]
                             },
@@ -1605,7 +1605,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--dark--clear--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             }
@@ -1690,7 +1690,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--light--clear--color',
                         value: [
                             {
-                                name: '--contrast-text--color-white'
+                                name: '--contrast-text-color-white'
                             }
                         ]
                     },
@@ -1698,7 +1698,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--dark--clear--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }
@@ -1722,7 +1722,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-white'
+                                        name: '--contrast-text-color-white'
                                     }
                                 ]
                             },
@@ -1730,7 +1730,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             }
@@ -1742,7 +1742,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--light--disabled--color',
                         value: [
                             {
-                                name: '--text--color-muted'
+                                name: '--text-color-weak'
                             }
                         ]
                     },
@@ -1750,7 +1750,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--dark--disabled--color',
                         value: [
                             {
-                                name: '--text--color-muted'
+                                name: '--text-color-weak'
                             }
                         ]
                     }
@@ -1862,7 +1862,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--light--disabled--color',
                         value: [
                             {
-                                name: '--text--color-muted'
+                                name: '--text-color-weak'
                             }
                         ]
                     },
@@ -1870,7 +1870,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--dark--disabled--color',
                         value: [
                             {
-                                name: '--text--color-muted'
+                                name: '--text-color-weak'
                             }
                         ]
                     }

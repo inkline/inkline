@@ -29,7 +29,7 @@
             --button--primary--border-left-color,
             var(--color-primary-shade-50)
         );
-        --button--color: var(--button--primary--color, var(--contrast-text--color-primary));
+        --button--color: var(--button--primary--color, var(--contrast-text-color-primary));
         --button--link--color: var(--button--primary--link--color, var(--color-primary));
         --button--link--active--color: var(
             --button--primary--link--active--color,
@@ -63,7 +63,7 @@
             --button--secondary--border-left-color,
             var(--color-secondary-shade-50)
         );
-        --button--color: var(--button--secondary--color, var(--contrast-text--color-secondary));
+        --button--color: var(--button--secondary--color, var(--contrast-text-color-secondary));
         --button--link--color: var(--button--secondary--link--color, var(--color-secondary));
         --button--link--active--color: var(
             --button--secondary--link--active--color,
@@ -97,7 +97,7 @@
             --button--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --button--color: var(--button--light--color, var(--contrast-text--color-light));
+        --button--color: var(--button--light--color, var(--contrast-text-color-light));
         --button--link--color: var(--button--light--link--color, var(--color-light));
         --button--link--active--color: var(
             --button--light--link--active--color,
@@ -131,7 +131,7 @@
             --button--dark--border-left-color,
             var(--color-dark-tint-50)
         );
-        --button--color: var(--button--dark--color, var(--contrast-text--color-dark));
+        --button--color: var(--button--dark--color, var(--contrast-text-color-dark));
         --button--link--color: var(--button--dark--link--color, var(--color-dark));
         --button--link--active--color: var(
             --button--dark--link--active--color,
@@ -165,7 +165,7 @@
             --button--info--border-left-color,
             var(--color-info-shade-50)
         );
-        --button--color: var(--button--info--color, var(--contrast-text--color-info));
+        --button--color: var(--button--info--color, var(--contrast-text-color-info));
         --button--link--color: var(--button--info--link--color, var(--color-info));
         --button--link--active--color: var(
             --button--info--link--active--color,
@@ -199,7 +199,7 @@
             --button--success--border-left-color,
             var(--color-success-shade-50)
         );
-        --button--color: var(--button--success--color, var(--contrast-text--color-success));
+        --button--color: var(--button--success--color, var(--contrast-text-color-success));
         --button--link--color: var(--button--success--link--color, var(--color-success));
         --button--link--active--color: var(
             --button--success--link--active--color,
@@ -233,7 +233,7 @@
             --button--warning--border-left-color,
             var(--color-warning-shade-50)
         );
-        --button--color: var(--button--warning--color, var(--contrast-text--color-warning));
+        --button--color: var(--button--warning--color, var(--contrast-text-color-warning));
         --button--link--color: var(--button--warning--link--color, var(--color-warning));
         --button--link--active--color: var(
             --button--warning--link--active--color,
@@ -267,7 +267,7 @@
             --button--danger--border-left-color,
             var(--color-danger-shade-50)
         );
-        --button--color: var(--button--danger--color, var(--contrast-text--color-danger));
+        --button--color: var(--button--danger--color, var(--contrast-text-color-danger));
         --button--link--color: var(--button--danger--link--color, var(--color-danger));
         --button--link--active--color: var(
             --button--danger--link--active--color,

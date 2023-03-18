@@ -732,7 +732,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -740,7 +740,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }
@@ -1102,7 +1102,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-light'
+                                        name: '--contrast-text-color-light'
                                     }
                                 ]
                             },
@@ -1110,7 +1110,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             }
@@ -1122,7 +1122,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--light--active--color',
                         value: [
                             {
-                                name: '--contrast-text--color-primary'
+                                name: '--contrast-text-color-primary'
                             }
                         ]
                     },
@@ -1130,7 +1130,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--dark--active--color',
                         value: [
                             {
-                                name: '--contrast-text--color-primary'
+                                name: '--contrast-text-color-primary'
                             }
                         ]
                     }
@@ -1190,7 +1190,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-light'
+                                        name: '--contrast-text-color-light'
                                     }
                                 ]
                             },
@@ -1198,7 +1198,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             }
@@ -1210,7 +1210,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--light--disabled--color',
                         value: [
                             {
-                                name: '--text--color-muted'
+                                name: '--text-color-weak'
                             }
                         ]
                     },
@@ -1218,7 +1218,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--dark--disabled--color',
                         value: [
                             {
-                                name: '--text--color-muted'
+                                name: '--text-color-weak'
                             }
                         ]
                     }
@@ -1242,7 +1242,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--light--disabled--color',
                                 value: [
                                     {
-                                        name: '--text--color-muted'
+                                        name: '--text-color-weak'
                                     }
                                 ]
                             },
@@ -1250,7 +1250,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--dark--disabled--color',
                                 value: [
                                     {
-                                        name: '--text--color-muted'
+                                        name: '--text-color-weak'
                                     }
                                 ]
                             }

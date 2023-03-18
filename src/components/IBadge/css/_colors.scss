@@ -21,7 +21,7 @@
             --badge--primary--border-left-color,
             var(--color-primary-shade-50)
         );
-        --badge--color: var(--badge--primary--color, var(--contrast-text--color-primary));
+        --badge--color: var(--badge--primary--color, var(--contrast-text-color-primary));
     }
 
     &.-secondary {
@@ -42,7 +42,7 @@
             --badge--secondary--border-left-color,
             var(--color-secondary-shade-50)
         );
-        --badge--color: var(--badge--secondary--color, var(--contrast-text--color-secondary));
+        --badge--color: var(--badge--secondary--color, var(--contrast-text-color-secondary));
     }
 
     &.-info {
@@ -60,7 +60,7 @@
             --badge--info--border-left-color,
             var(--color-info-shade-50)
         );
-        --badge--color: var(--badge--info--color, var(--contrast-text--color-info));
+        --badge--color: var(--badge--info--color, var(--contrast-text-color-info));
     }
 
     &.-success {
@@ -81,7 +81,7 @@
             --badge--success--border-left-color,
             var(--color-success-shade-50)
         );
-        --badge--color: var(--badge--success--color, var(--contrast-text--color-success));
+        --badge--color: var(--badge--success--color, var(--contrast-text-color-success));
     }
 
     &.-warning {
@@ -102,7 +102,7 @@
             --badge--warning--border-left-color,
             var(--color-warning-shade-50)
         );
-        --badge--color: var(--badge--warning--color, var(--contrast-text--color-warning));
+        --badge--color: var(--badge--warning--color, var(--contrast-text-color-warning));
     }
 
     &.-danger {
@@ -123,7 +123,7 @@
             --badge--danger--border-left-color,
             var(--color-danger-shade-50)
         );
-        --badge--color: var(--badge--danger--color, var(--contrast-text--color-danger));
+        --badge--color: var(--badge--danger--color, var(--contrast-text-color-danger));
     }
 
     &.-light {
@@ -144,7 +144,7 @@
             --badge--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --badge--color: var(--badge--light--color, var(--contrast-text--color-light));
+        --badge--color: var(--badge--light--color, var(--contrast-text-color-light));
     }
 
     &.-dark {
@@ -162,6 +162,6 @@
             --badge--dark--border-left-color,
             var(--color-dark-tint-50)
         );
-        --badge--color: var(--badge--dark--color, var(--contrast-text--color-dark));
+        --badge--color: var(--badge--dark--color, var(--contrast-text-color-dark));
     }
 }

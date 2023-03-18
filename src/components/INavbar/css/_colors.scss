@@ -21,7 +21,7 @@
             --navbar--light--border-left-color,
             var(--color-light-shade-50)
         );
-        --navbar--color: var(--navbar--light--color, var(--contrast-text--color-light));
+        --navbar--color: var(--navbar--light--color, var(--contrast-text-color-light));
         --navbar--item--background: var(--navbar--light--item--background, var(--color-light));
         --navbar--item--hover--background: var(
             --navbar--light--item--hover--background,
@@ -51,7 +51,7 @@
             --navbar--dark--border-left-color,
             var(--color-dark-tint-50)
         );
-        --navbar--color: var(--navbar--dark--color, var(--contrast-text--color-dark));
+        --navbar--color: var(--navbar--dark--color, var(--contrast-text-color-dark));
         --navbar--item--background: var(--navbar--dark--item--background, var(--color-dark));
         --navbar--item--hover--background: var(
             --navbar--dark--item--hover--background,

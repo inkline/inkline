@@ -175,7 +175,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--primary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-primary'
+                                name: '--contrast-text-color-primary'
                             }
                         ]
                     },
@@ -183,7 +183,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--secondary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-secondary'
+                                name: '--contrast-text-color-secondary'
                             }
                         ]
                     },
@@ -191,7 +191,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -199,7 +199,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     },
@@ -207,7 +207,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--info--color',
                         value: [
                             {
-                                name: '--contrast-text--color-info'
+                                name: '--contrast-text-color-info'
                             }
                         ]
                     },
@@ -215,7 +215,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--success--color',
                         value: [
                             {
-                                name: '--contrast-text--color-success'
+                                name: '--contrast-text-color-success'
                             }
                         ]
                     },
@@ -223,7 +223,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--warning--color',
                         value: [
                             {
-                                name: '--contrast-text--color-warning'
+                                name: '--contrast-text-color-warning'
                             }
                         ]
                     },
@@ -231,7 +231,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--danger--color',
                         value: [
                             {
-                                name: '--contrast-text--color-danger'
+                                name: '--contrast-text-color-danger'
                             }
                         ]
                     }
@@ -1183,7 +1183,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--primary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-primary'
+                                name: '--contrast-text-color-primary'
                             }
                         ]
                     },
@@ -1191,7 +1191,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--secondary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-secondary'
+                                name: '--contrast-text-color-secondary'
                             }
                         ]
                     },
@@ -1199,7 +1199,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -1207,7 +1207,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     },
@@ -1215,7 +1215,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--info--color',
                         value: [
                             {
-                                name: '--contrast-text--color-info'
+                                name: '--contrast-text-color-info'
                             }
                         ]
                     },
@@ -1223,7 +1223,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--success--color',
                         value: [
                             {
-                                name: '--contrast-text--color-success'
+                                name: '--contrast-text-color-success'
                             }
                         ]
                     },
@@ -1231,7 +1231,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--warning--color',
                         value: [
                             {
-                                name: '--contrast-text--color-warning'
+                                name: '--contrast-text-color-warning'
                             }
                         ]
                     },
@@ -1239,7 +1239,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--danger--color',
                         value: [
                             {
-                                name: '--contrast-text--color-danger'
+                                name: '--contrast-text-color-danger'
                             }
                         ]
                     }
@@ -1340,7 +1340,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--primary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-primary'
+                                        name: '--contrast-text-color-primary'
                                     }
                                 ]
                             },
@@ -1348,7 +1348,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--secondary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-secondary'
+                                        name: '--contrast-text-color-secondary'
                                     }
                                 ]
                             },
@@ -1356,7 +1356,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-light'
+                                        name: '--contrast-text-color-light'
                                     }
                                 ]
                             },
@@ -1364,7 +1364,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             },
@@ -1372,7 +1372,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--info--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-info'
+                                        name: '--contrast-text-color-info'
                                     }
                                 ]
                             },
@@ -1380,7 +1380,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--success--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-success'
+                                        name: '--contrast-text-color-success'
                                     }
                                 ]
                             },
@@ -1388,7 +1388,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--warning--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-warning'
+                                        name: '--contrast-text-color-warning'
                                     }
                                 ]
                             },
@@ -1396,7 +1396,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--danger--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-danger'
+                                        name: '--contrast-text-color-danger'
                                     }
                                 ]
                             }
@@ -1480,7 +1480,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--primary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-primary'
+                                        name: '--contrast-text-color-primary'
                                     }
                                 ]
                             },
@@ -1488,7 +1488,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--secondary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-secondary'
+                                        name: '--contrast-text-color-secondary'
                                     }
                                 ]
                             },
@@ -1496,7 +1496,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-light'
+                                        name: '--contrast-text-color-light'
                                     }
                                 ]
                             },
@@ -1504,7 +1504,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             },
@@ -1512,7 +1512,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--info--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-info'
+                                        name: '--contrast-text-color-info'
                                     }
                                 ]
                             },
@@ -1520,7 +1520,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--success--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-success'
+                                        name: '--contrast-text-color-success'
                                     }
                                 ]
                             },
@@ -1528,7 +1528,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--warning--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-warning'
+                                        name: '--contrast-text-color-warning'
                                     }
                                 ]
                             },
@@ -1536,7 +1536,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--danger--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-danger'
+                                        name: '--contrast-text-color-danger'
                                     }
                                 ]
                             }
@@ -1827,7 +1827,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--primary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-primary'
+                                name: '--contrast-text-color-primary'
                             }
                         ]
                     },
@@ -1835,7 +1835,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--secondary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-secondary'
+                                name: '--contrast-text-color-secondary'
                             }
                         ]
                     },
@@ -1843,7 +1843,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -1851,7 +1851,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     },
@@ -1859,7 +1859,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--info--color',
                         value: [
                             {
-                                name: '--contrast-text--color-info'
+                                name: '--contrast-text-color-info'
                             }
                         ]
                     },
@@ -1867,7 +1867,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--success--color',
                         value: [
                             {
-                                name: '--contrast-text--color-success'
+                                name: '--contrast-text-color-success'
                             }
                         ]
                     },
@@ -1875,7 +1875,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--warning--color',
                         value: [
                             {
-                                name: '--contrast-text--color-warning'
+                                name: '--contrast-text-color-warning'
                             }
                         ]
                     },
@@ -1883,7 +1883,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--danger--color',
                         value: [
                             {
-                                name: '--contrast-text--color-danger'
+                                name: '--contrast-text-color-danger'
                             }
                         ]
                     }
@@ -2030,7 +2030,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--primary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-primary'
+                                name: '--contrast-text-color-primary'
                             }
                         ]
                     },
@@ -2038,7 +2038,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--secondary--color',
                         value: [
                             {
-                                name: '--contrast-text--color-secondary'
+                                name: '--contrast-text-color-secondary'
                             }
                         ]
                     },
@@ -2046,7 +2046,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--light--color',
                         value: [
                             {
-                                name: '--contrast-text--color-light'
+                                name: '--contrast-text-color-light'
                             }
                         ]
                     },
@@ -2054,7 +2054,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--dark--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     },
@@ -2062,7 +2062,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--info--color',
                         value: [
                             {
-                                name: '--contrast-text--color-info'
+                                name: '--contrast-text-color-info'
                             }
                         ]
                     },
@@ -2070,7 +2070,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--success--color',
                         value: [
                             {
-                                name: '--contrast-text--color-success'
+                                name: '--contrast-text-color-success'
                             }
                         ]
                     },
@@ -2078,7 +2078,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--warning--color',
                         value: [
                             {
-                                name: '--contrast-text--color-warning'
+                                name: '--contrast-text-color-warning'
                             }
                         ]
                     },
@@ -2086,7 +2086,7 @@ export const manifest: ComponentManifest = {
                         name: '--button--danger--color',
                         value: [
                             {
-                                name: '--contrast-text--color-danger'
+                                name: '--contrast-text-color-danger'
                             }
                         ]
                     }

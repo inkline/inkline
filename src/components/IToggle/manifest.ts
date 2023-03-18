@@ -241,7 +241,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--light--disabled--label--color',
                         value: [
                             {
-                                name: '--text--color-muted'
+                                name: '--text-color-weak'
                             }
                         ]
                     },
@@ -249,7 +249,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--dark--disabled--label--color',
                         value: [
                             {
-                                name: '--text--color-muted'
+                                name: '--text-color-weak'
                             }
                         ]
                     }
@@ -569,7 +569,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--light--label--color',
                         value: [
                             {
-                                name: '--contrast-text--color-white'
+                                name: '--contrast-text-color-white'
                             }
                         ]
                     },
@@ -577,7 +577,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--dark--label--color',
                         value: [
                             {
-                                name: '--contrast-text--color-dark'
+                                name: '--contrast-text-color-dark'
                             }
                         ]
                     }

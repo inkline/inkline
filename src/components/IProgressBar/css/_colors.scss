@@ -6,7 +6,7 @@
     &.-primary {
         --progress-bar--color: var(
             --progress-bar--primary--color,
-            var(--contrast-text--color-primary)
+            var(--contrast-text-color-primary)
         );
         --progress-bar--background: var(--progress-bar--primary--background, var(--color-primary));
     }
@@ -14,7 +14,7 @@
     &.-secondary {
         --progress-bar--color: var(
             --progress-bar--secondary--color,
-            var(--contrast-text--color-secondary)
+            var(--contrast-text-color-secondary)
         );
         --progress-bar--background: var(
             --progress-bar--secondary--background,
@@ -23,24 +23,24 @@
     }
 
     &.-light {
-        --progress-bar--color: var(--progress-bar--light--color, var(--contrast-text--color-light));
+        --progress-bar--color: var(--progress-bar--light--color, var(--contrast-text-color-light));
         --progress-bar--background: var(--progress-bar--light--background, var(--color-white));
     }
 
     &.-dark {
-        --progress-bar--color: var(--progress-bar--dark--color, var(--contrast-text--color-dark));
+        --progress-bar--color: var(--progress-bar--dark--color, var(--contrast-text-color-dark));
         --progress-bar--background: var(--progress-bar--dark--background, var(--color-dark));
     }
 
     &.-info {
-        --progress-bar--color: var(--progress-bar--info--color, var(--contrast-text--color-info));
+        --progress-bar--color: var(--progress-bar--info--color, var(--contrast-text-color-info));
         --progress-bar--background: var(--progress-bar--info--background, var(--color-info));
     }
 
     &.-success {
         --progress-bar--color: var(
             --progress-bar--success--color,
-            var(--contrast-text--color-success)
+            var(--contrast-text-color-success)
         );
         --progress-bar--background: var(--progress-bar--success--background, var(--color-success));
     }
@@ -48,7 +48,7 @@
     &.-warning {
         --progress-bar--color: var(
             --progress-bar--warning--color,
-            var(--contrast-text--color-warning)
+            var(--contrast-text-color-warning)
         );
         --progress-bar--background: var(--progress-bar--warning--background, var(--color-warning));
     }
@@ -56,7 +56,7 @@
     &.-danger {
         --progress-bar--color: var(
             --progress-bar--danger--color,
-            var(--contrast-text--color-danger)
+            var(--contrast-text-color-danger)
         );
         --progress-bar--background: var(--progress-bar--danger--background, var(--color-danger));
     }

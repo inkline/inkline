@@ -27,7 +27,7 @@
         );
         --toggle--label--color: var(
             --toggle--light--label--color,
-            var(--contrast-text--color-white)
+            var(--contrast-text-color-white)
         );
 
         --toggle--checked--background: var(
@@ -77,7 +77,7 @@
         );
         --toggle--disabled--label--color: var(
             --toggle--light--disabled--label--color,
-            var(--text--color-muted)
+            var(--text-color-weak)
         );
 
         --toggle--checked--disabled--background: var(
@@ -116,7 +116,7 @@
             --toggle--light--indicator--background,
             var(--color-white)
         );
-        --toggle--label--color: var(--toggle--dark--label--color, var(--contrast-text--color-dark));
+        --toggle--label--color: var(--toggle--dark--label--color, var(--contrast-text-color-dark));
 
         --toggle--checked--background: var(
             --toggle--dark--checked--background,
@@ -153,7 +153,7 @@
         );
         --toggle--disabled--label--color: var(
             --toggle--dark--disabled--label--color,
-            var(--text--color-muted)
+            var(--text-color-weak)
         );
 
         --toggle--checked--disabled--background: var(

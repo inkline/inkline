@@ -347,7 +347,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--primary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-primary'
+                                        name: '--contrast-text-color-primary'
                                     }
                                 ]
                             },
@@ -355,7 +355,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--secondary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-secondary'
+                                        name: '--contrast-text-color-secondary'
                                     }
                                 ]
                             },
@@ -363,7 +363,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-light'
+                                        name: '--contrast-text-color-light'
                                     }
                                 ]
                             },
@@ -371,7 +371,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             },
@@ -379,7 +379,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--info--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-info'
+                                        name: '--contrast-text-color-info'
                                     }
                                 ]
                             },
@@ -387,7 +387,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--success--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-success'
+                                        name: '--contrast-text-color-success'
                                     }
                                 ]
                             },
@@ -395,7 +395,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--warning--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-warning'
+                                        name: '--contrast-text-color-warning'
                                     }
                                 ]
                             },
@@ -403,7 +403,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--danger--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-danger'
+                                        name: '--contrast-text-color-danger'
                                     }
                                 ]
                             }
@@ -2429,7 +2429,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--primary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-primary'
+                                        name: '--contrast-text-color-primary'
                                     }
                                 ]
                             },
@@ -2437,7 +2437,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--secondary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-secondary'
+                                        name: '--contrast-text-color-secondary'
                                     }
                                 ]
                             },
@@ -2445,7 +2445,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-light'
+                                        name: '--contrast-text-color-light'
                                     }
                                 ]
                             },
@@ -2453,7 +2453,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             },
@@ -2461,7 +2461,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--info--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-info'
+                                        name: '--contrast-text-color-info'
                                     }
                                 ]
                             },
@@ -2469,7 +2469,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--success--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-success'
+                                        name: '--contrast-text-color-success'
                                     }
                                 ]
                             },
@@ -2477,7 +2477,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--warning--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-warning'
+                                        name: '--contrast-text-color-warning'
                                     }
                                 ]
                             },
@@ -2485,7 +2485,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--danger--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-danger'
+                                        name: '--contrast-text-color-danger'
                                     }
                                 ]
                             }
@@ -3418,7 +3418,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--primary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-primary'
+                                        name: '--contrast-text-color-primary'
                                     }
                                 ]
                             },
@@ -3426,7 +3426,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--secondary--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-secondary'
+                                        name: '--contrast-text-color-secondary'
                                     }
                                 ]
                             },
@@ -3434,7 +3434,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--light--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-light'
+                                        name: '--contrast-text-color-light'
                                     }
                                 ]
                             },
@@ -3442,7 +3442,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--dark--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-dark'
+                                        name: '--contrast-text-color-dark'
                                     }
                                 ]
                             },
@@ -3450,7 +3450,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--info--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-info'
+                                        name: '--contrast-text-color-info'
                                     }
                                 ]
                             },
@@ -3458,7 +3458,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--success--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-success'
+                                        name: '--contrast-text-color-success'
                                     }
                                 ]
                             },
@@ -3466,7 +3466,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--warning--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-warning'
+                                        name: '--contrast-text-color-warning'
                                     }
                                 ]
                             },
@@ -3474,7 +3474,7 @@ export const manifest: ComponentManifest = {
                                 name: '--card--danger--color',
                                 value: [
                                     {
-                                        name: '--contrast-text--color-danger'
+                                        name: '--contrast-text-color-danger'
                                     }
                                 ]
                             }
