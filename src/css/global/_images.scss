@@ -10,3 +10,82 @@ svg {
 figure {
     margin: 0 0 var(--figure--margin-bottom, var(--margin-bottom));
 }
+
+// Fluid images
+//
+.image.-fluid,
+._image\:fluid {
+    // Override the height to auto, otherwise images will be stretched
+    // when setting a width and height attribute on the img element.
+    height: auto;
+    // Set the width to always be container width
+    width: 100%;
+}
+
+// Responsive images
+//
+// Ensure images don't scale beyond their parents. This is purposefully opt-in
+// via an explicit class rather than being the default for all `<img>` because
+// it can break third-party widgets (including Google Maps) which weren't
+// expecting the images within themselves to be involuntarily resized.
+//
+.image.-responsive,
+._image\:responsive,
+.image.-thumbnail,
+._image\:thumbnail,
+.image.-polaroid,
+._image\:polaroid {
+    // Override the height to auto, otherwise images will be stretched
+    // when setting a width and height attribute on the img element.
+    height: auto;
+    max-width: 100%;
+}
+
+// Image thumbnails
+//
+.image.-thumbnail,
+._image\:thumbnail,
+.image.-polaroid,
+._image\:polaroid {
+    padding: var(--thumbnail--padding, var(--padding));
+    background-color: var(--thumbnail--background, var(--color--white));
+    border-width: var(--thumbnail--border-width, var(--border-width));
+    border-style: var(--thumbnail--border-style, var(--border-style));
+    border-color: var(--thumbnail--border-color, var(--border-color));
+    border-radius: var(--thumbnail--border-radius, var(--border-radius));
+    transition: var(
+        --thumbnail--transition,
+        (var(--transition-duration) all var(--transition-timing-function))
+    );
+    box-shadow: var(--thumbnail--box-shadow, var(--box-shadow));
+}
+
+// Image Polaroid
+//
+.image.-polaroid,
+._image\:polaroid {
+    padding-bottom: var(--polaroid--padding, var(--padding));
+}
+
+// In Internet Explorer 10, SVG images with .-responsive are
+// disproportionately sized. This fix improperly sizes other image formats,
+// so Inkline will only apply it to svg extensions
+//
+.image[src$='.svg'] {
+    width: 100% \9;
+}
+
+.figure {
+    display: inline-block; // Ensures the caption's text aligns with the image.
+
+    > .image,
+    > img {
+        margin-bottom: var(--figure--image--margin-bottom, var(--margin-bottom));
+        line-height: 1;
+    }
+
+    > .caption {
+        font-size: var(--figure--caption--font-size, var(--font-size-sm));
+        color: var(--figure--caption--color, var(--body--color));
+    }
+}
