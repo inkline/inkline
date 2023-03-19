@@ -37,7 +37,7 @@
     <a href="https://github.com/inkline/inkline/actions">
         <img src="https://github.com/inkline/inkline/workflows/Build/badge.svg" alt="Build">
     </a>
-    <a href='https://coveralls.io/github/inkline/inkline?branch=master'><img src='https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=master' alt='Coverage Status' /></a>
+    <a href='https://coveralls.io/github/inkline/inkline?branch=main'><img src='https://coveralls.io/repos/github/inkline/inkline/badge.svg?branch=main' alt='Coverage Status' /></a>
     <a href="https://www.npmjs.com/package/@inkline/inkline">
         <img src="https://img.shields.io/npm/dm/@inkline/inkline.svg" alt="Downloads">
     </a>
@@ -172,4 +172,4 @@ Thanks goes to these wonderful people:
 
 Code copyright 2017-2022 [Inkline Authors](https://github.com/inkline/inkline/graphs/contributors).
 Code released under the
-[MIT License](https://github.com/inkline/inkline/blob/master/packages/inkline/LICENSE).
+[MIT License](https://github.com/inkline/inkline/blob/main/packages/inkline/LICENSE).
