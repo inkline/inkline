@@ -38,31 +38,33 @@ dd {
 ul,
 ol,
 dl,
-.list {
+.list,
+._list\:unstyled,
+._list\:inline {
     > .item,
     > li {
         margin-bottom: var(--list--item--margin-bottom, var(--margin-bottom-1-2));
     }
+}
 
-    &.-unstyled,
-    &._list\:unstyled {
-        padding-left: 0;
-        list-style: none;
-    }
+.list.-unstyled,
+._list\:unstyled {
+    padding-left: 0;
+    list-style: none;
+}
 
-    &.-inline,
-    &._list\:inline {
-        padding-left: 0;
-        list-style: none;
+.list.-inline,
+._list\:inline {
+    padding-left: 0;
+    list-style: none;
 
-        > .item,
-        > li {
-            display: inline-flex;
-            margin-bottom: 0;
+    > .item,
+    > li {
+        display: inline-flex;
+        margin-bottom: 0;
 
-            &:not(:last-child) {
-                margin-right: var(--list--inline--item--margin-right, var(--margin-right));
-            }
+        &:not(:last-child) {
+            margin-right: var(--list--inline--item--margin-right, var(--margin-right));
         }
     }
 }
