@@ -7634,12 +7634,10 @@
 ._text\:italic\! {
     font-style: italic !important;
 }
-._font-style\:normal,
-._text\:normal {
+._font-style\:normal {
     font-style: normal;
 }
-._font-style\:normal\!,
-._text\:normal\! {
+._font-style\:normal\! {
     font-style: normal !important;
 }
 ._font-style\:oblique,
@@ -7710,35 +7708,33 @@
 ._text\:secondary-print\! {
     font-family: var(--font-family-secondary-print) !important;
 }
-._white-space\:normal {
-    white-space: normal;
+._text\:normal,
+._text\:nowrap,
+._text\:pre,
+._text\:pre-line,
+._text\:pre-wrap {
+    white-space: text;
 }
-._white-space\:normal\! {
-    white-space: normal !important;
+._text\:normal\!,
+._text\:nowrap\!,
+._text\:pre-line\!,
+._text\:pre-wrap\!,
+._text\:pre\! {
+    white-space: text !important;
 }
-._white-space\:nowrap {
-    white-space: nowrap;
-}
-._white-space\:nowrap\! {
-    white-space: nowrap !important;
-}
-._white-space\:pre {
-    white-space: pre;
-}
-._white-space\:pre-line {
-    white-space: pre-line;
-}
-._white-space\:pre-line\! {
-    white-space: pre-line !important;
-}
+._white-space\:normal,
+._white-space\:nowrap,
+._white-space\:pre,
+._white-space\:pre-line,
 ._white-space\:pre-wrap {
-    white-space: pre-wrap;
+    white-space: white-space;
 }
-._white-space\:pre-wrap\! {
-    white-space: pre-wrap !important;
-}
+._white-space\:normal\!,
+._white-space\:nowrap\!,
+._white-space\:pre-line\!,
+._white-space\:pre-wrap\!,
 ._white-space\:pre\! {
-    white-space: pre !important;
+    white-space: white-space !important;
 }
 ._text\:muted,
 ._text\:weak {
