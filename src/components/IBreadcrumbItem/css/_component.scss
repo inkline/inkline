@@ -4,7 +4,7 @@
 
 .breadcrumb-item {
     margin-bottom: 0;
-    padding-left: var(--breadcrumb--padding-left);
+    padding-left: var(--breadcrumb--padding-left, var(--padding-left));
     color: var(--breadcrumb--color);
 
     a {
@@ -12,12 +12,12 @@
 
         &[href],
         &[to] {
-            --breadcrumb--color: var(--breadcrumb--link--color);
+            color: var(--breadcrumb--link--color, var(--breadcrumb--color));
         }
     }
 
     &.-active {
-        --breadcrumb--color: var(--breadcrumb--active--color);
+        color: var(--breadcrumb--active--color, var(--breadcrumb--color));
     }
 
     > span {
@@ -31,7 +31,7 @@
     // The separator between breadcrumbs (by default, a forward-slash: "/")
     + .breadcrumb-item {
         &::before {
-            padding-right: var(--breadcrumb--padding-right);
+            padding-right: var(--breadcrumb--padding-right, var(--padding-right));
             display: inline-block; // } Suppress underlining of the separator in modern browsers
             content: var(--breadcrumb--separator, '/');
         }
