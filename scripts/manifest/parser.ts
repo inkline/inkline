@@ -55,7 +55,7 @@ function countOccurrences(source: string, word: string): number {
 }
 
 function parseFallbackValue(source: string): ManifestCSSVariable[] {
-    if (!source.includes('var(')) {
+    if (!source.startsWith('var(')) {
         return [
             {
                 value: source

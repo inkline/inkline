@@ -139,10 +139,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--sm--label--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -150,10 +147,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--md--label--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -161,10 +155,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--lg--label--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -177,7 +168,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--sm--size',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(#{1rem} * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -185,7 +176,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--md--size',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(#{1rem} * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -193,7 +184,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--lg--size',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(#{1rem} * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -206,7 +197,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--sm--size',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(#{1rem} * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -214,7 +205,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--md--size',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(#{1rem} * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -222,7 +213,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--lg--size',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(#{1rem} * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -232,36 +223,7 @@ export const manifest: ComponentManifest = {
                 name: '--radio--border-color',
                 value: [
                     {
-                        name: '--radio--border-top-color',
-                        value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--border-right-color',
-                        value: [
-                            {
-                                name: '--border-right-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ]
+                        value: '(\n                    var(--radio--border-top-color, var(--border-top-color))\n                        var(--radio--border-right-color, var(--border-right-color))\n                        var(--radio--border-bottom-color, var(--border-bottom-color))\n                        var(--radio--border-left-color, var(--border-left-color))\n                )'
                     }
                 ],
                 variants: [
@@ -287,36 +249,7 @@ export const manifest: ComponentManifest = {
                 name: '--radio--border-style',
                 value: [
                     {
-                        name: '--radio--border-top-style',
-                        value: [
-                            {
-                                name: '--border-top-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--border-right-style',
-                        value: [
-                            {
-                                name: '--border-right-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--border-bottom-style',
-                        value: [
-                            {
-                                name: '--border-bottom-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--border-left-style',
-                        value: [
-                            {
-                                name: '--border-left-style'
-                            }
-                        ]
+                        value: '(\n                    var(--radio--border-top-style, var(--border-top-style))\n                        var(--radio--border-right-style, var(--border-right-style))\n                        var(--radio--border-bottom-style, var(--border-bottom-style))\n                        var(--radio--border-left-style, var(--border-left-style))\n                )'
                     }
                 ]
             },
@@ -324,36 +257,7 @@ export const manifest: ComponentManifest = {
                 name: '--radio--border-width',
                 value: [
                     {
-                        name: '--radio--border-top-width',
-                        value: [
-                            {
-                                name: '--border-top-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--border-right-width',
-                        value: [
-                            {
-                                name: '--border-right-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--border-bottom-width',
-                        value: [
-                            {
-                                name: '--border-bottom-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--border-left-width',
-                        value: [
-                            {
-                                name: '--border-left-width'
-                            }
-                        ]
+                        value: '(\n                    var(--radio--border-top-width, var(--border-top-width))\n                        var(--radio--border-right-width, var(--border-right-width))\n                        var(--radio--border-bottom-width, var(--border-bottom-width))\n                        var(--radio--border-left-width, var(--border-left-width))\n                )'
                     }
                 ]
             },
@@ -483,7 +387,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--sm--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(#{8px} * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -491,7 +395,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--md--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(#{8px} * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -499,7 +403,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--lg--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(#{8px} * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -512,7 +416,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--sm--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(#{8px} * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -520,7 +424,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--md--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(#{8px} * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -528,7 +432,7 @@ export const manifest: ComponentManifest = {
                         name: '--radio--lg--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(#{8px} * var(--size-multiplier-lg))'
                             }
                         ]
                     }

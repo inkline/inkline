@@ -194,10 +194,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--sm--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -205,10 +202,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--md--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -216,10 +210,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--lg--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -240,10 +231,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -251,10 +239,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -262,10 +247,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -288,10 +270,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -299,10 +278,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -310,10 +286,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -333,10 +306,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--sm--border-top-left-radius',
                         value: [
                             {
-                                name: '--border-top-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -344,10 +314,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--md--border-top-left-radius',
                         value: [
                             {
-                                name: '--border-top-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -355,10 +322,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--lg--border-top-left-radius',
                         value: [
                             {
-                                name: '--border-top-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -376,10 +340,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--sm--border-bottom-left-radius',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -387,10 +348,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--md--border-bottom-left-radius',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -398,10 +356,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--lg--border-bottom-left-radius',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -419,10 +374,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--sm--border-top-right-radius',
                         value: [
                             {
-                                name: '--border-top-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -430,10 +382,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--md--border-top-right-radius',
                         value: [
                             {
-                                name: '--border-top-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -441,10 +390,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--lg--border-top-right-radius',
                         value: [
                             {
-                                name: '--border-top-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -462,10 +408,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--sm--border-bottom-right-radius',
                         value: [
                             {
-                                name: '--border-bottom-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -473,10 +416,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--md--border-bottom-right-radius',
                         value: [
                             {
-                                name: '--border-bottom-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -484,10 +424,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--lg--border-bottom-right-radius',
                         value: [
                             {
-                                name: '--border-bottom-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -637,10 +574,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -648,10 +582,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -659,10 +590,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -680,10 +608,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -691,10 +616,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -702,10 +624,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -723,10 +642,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -734,10 +650,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -745,10 +658,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -766,10 +676,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -777,10 +684,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -788,10 +692,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -922,10 +823,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--sm--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -933,10 +831,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--md--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -944,10 +839,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--lg--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -1084,10 +976,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-top) * 0.5 * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1095,10 +984,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-top) * 0.5 * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1106,10 +992,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-top) * 0.5 * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1127,10 +1010,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1138,10 +1018,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1149,10 +1026,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1170,10 +1044,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--padding-bottom',
                                 value: [
                                     {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-bottom) * 0.5 * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1181,10 +1052,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--padding-bottom',
                                 value: [
                                     {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-bottom) * 0.5 * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1192,10 +1060,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--padding-bottom',
                                 value: [
                                     {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-bottom) * 0.5 * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1213,10 +1078,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1224,10 +1086,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1235,10 +1094,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1382,10 +1238,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1393,10 +1246,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1404,10 +1254,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1430,10 +1277,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--sm--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1441,10 +1285,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1452,10 +1293,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1804,36 +1642,7 @@ export const manifest: ComponentManifest = {
                 name: '--input--border-color',
                 value: [
                     {
-                        name: '--input--border-top-color',
-                        value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-right-color',
-                        value: [
-                            {
-                                name: '--border-right-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ]
+                        value: '(\n                        var(--input--border-top-color, var(--border-top-color))\n                            var(--input--border-right-color, var(--border-right-color))\n                            var(--input--border-bottom-color, var(--border-bottom-color))\n                            var(--input--border-left-color, var(--border-left-color))\n                    )'
                     }
                 ],
                 variants: [

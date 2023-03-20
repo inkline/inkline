@@ -418,10 +418,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--sm--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -429,10 +426,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--md--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -440,10 +434,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--lg--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -461,10 +452,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--sm--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -472,10 +460,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--md--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -483,10 +468,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--lg--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -504,10 +486,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--sm--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -515,10 +494,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--md--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -526,10 +502,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--lg--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -547,10 +520,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--sm--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -558,10 +528,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--md--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -569,10 +536,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--lg--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -592,10 +556,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--sm--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -603,10 +564,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--md--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -614,10 +572,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--lg--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -909,10 +864,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--sm--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-top) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -920,10 +872,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--md--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-top) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -931,10 +880,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--lg--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-top) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -952,10 +898,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--sm--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -963,10 +906,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--md--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -974,10 +914,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--lg--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -995,10 +932,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--sm--padding-bottom',
                                 value: [
                                     {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1006,10 +940,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--md--padding-bottom',
                                 value: [
                                     {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-bottom) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1017,10 +948,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--lg--padding-bottom',
                                 value: [
                                     {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-bottom) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1038,10 +966,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--sm--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1049,10 +974,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--md--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1060,10 +982,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--lg--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1091,10 +1010,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--sm--padding-left',
                         value: [
                             {
-                                name: '--padding-left'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -1102,10 +1018,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--md--padding-left',
                         value: [
                             {
-                                name: '--padding-left'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -1113,10 +1026,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--lg--padding-left',
                         value: [
                             {
-                                name: '--padding-left'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -1371,10 +1281,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--sm--padding-left',
                         value: [
                             {
-                                name: '--padding-left'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -1382,10 +1289,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--md--padding-left',
                         value: [
                             {
-                                name: '--padding-left'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -1393,10 +1297,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--lg--padding-left',
                         value: [
                             {
-                                name: '--padding-left'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
                             }
                         ]
                     }

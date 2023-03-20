@@ -325,10 +325,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--sm--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -336,10 +333,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--md--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -347,10 +341,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--lg--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -706,10 +697,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-top',
                                         value: [
                                             {
-                                                name: '--padding-top'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-top) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -717,10 +705,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-top',
                                         value: [
                                             {
-                                                name: '--padding-top'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-top) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -728,10 +713,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-top',
                                         value: [
                                             {
-                                                name: '--padding-top'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-top) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -743,10 +725,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--sm--header--padding-top',
                                 value: [
                                     {
-                                        name: '--select--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -754,10 +733,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--md--header--padding-top',
                                 value: [
                                     {
-                                        name: '--select--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -765,10 +741,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--lg--header--padding-top',
                                 value: [
                                     {
-                                        name: '--select--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -789,10 +762,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-right',
                                         value: [
                                             {
-                                                name: '--padding-right'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -800,10 +770,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-right',
                                         value: [
                                             {
-                                                name: '--padding-right'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -811,10 +778,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-right',
                                         value: [
                                             {
-                                                name: '--padding-right'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -837,10 +801,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-bottom',
                                         value: [
                                             {
-                                                name: '--padding-bottom'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -848,10 +809,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-bottom',
                                         value: [
                                             {
-                                                name: '--padding-bottom'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -859,10 +817,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-bottom',
                                         value: [
                                             {
-                                                name: '--padding-bottom'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -874,10 +829,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--sm--header--padding-bottom',
                                 value: [
                                     {
-                                        name: '--select--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -885,10 +837,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--md--header--padding-bottom',
                                 value: [
                                     {
-                                        name: '--select--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -896,10 +845,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--lg--header--padding-bottom',
                                 value: [
                                     {
-                                        name: '--select--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -920,10 +866,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-left',
                                         value: [
                                             {
-                                                name: '--padding-left'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -931,10 +874,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-left',
                                         value: [
                                             {
-                                                name: '--padding-left'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -942,10 +882,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-left',
                                         value: [
                                             {
-                                                name: '--padding-left'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -1242,10 +1179,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-top',
                                         value: [
                                             {
-                                                name: '--padding-top'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-top) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -1253,10 +1187,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-top',
                                         value: [
                                             {
-                                                name: '--padding-top'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-top) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -1264,10 +1195,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-top',
                                         value: [
                                             {
-                                                name: '--padding-top'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-top) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -1290,10 +1218,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-right',
                                         value: [
                                             {
-                                                name: '--padding-right'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -1301,10 +1226,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-right',
                                         value: [
                                             {
-                                                name: '--padding-right'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -1312,10 +1234,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-right',
                                         value: [
                                             {
-                                                name: '--padding-right'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -1364,10 +1283,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-bottom',
                                         value: [
                                             {
-                                                name: '--padding-bottom'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -1375,10 +1291,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-bottom',
                                         value: [
                                             {
-                                                name: '--padding-bottom'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -1386,10 +1299,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-bottom',
                                         value: [
                                             {
-                                                name: '--padding-bottom'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -1412,10 +1322,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-left',
                                         value: [
                                             {
-                                                name: '--padding-left'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -1423,10 +1330,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-left',
                                         value: [
                                             {
-                                                name: '--padding-left'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -1434,10 +1338,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-left',
                                         value: [
                                             {
-                                                name: '--padding-left'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -1799,10 +1700,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-top',
                                         value: [
                                             {
-                                                name: '--padding-top'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-top) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -1810,10 +1708,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-top',
                                         value: [
                                             {
-                                                name: '--padding-top'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-top) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -1821,10 +1716,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-top',
                                         value: [
                                             {
-                                                name: '--padding-top'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-top) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -1836,10 +1728,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--sm--footer--padding-top',
                                 value: [
                                     {
-                                        name: '--select--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1847,10 +1736,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--md--footer--padding-top',
                                 value: [
                                     {
-                                        name: '--select--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1858,10 +1744,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--lg--footer--padding-top',
                                 value: [
                                     {
-                                        name: '--select--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--select--padding-top) * 3 / 4) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1882,10 +1765,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-right',
                                         value: [
                                             {
-                                                name: '--padding-right'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -1893,10 +1773,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-right',
                                         value: [
                                             {
-                                                name: '--padding-right'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -1904,10 +1781,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-right',
                                         value: [
                                             {
-                                                name: '--padding-right'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -1930,10 +1804,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-bottom',
                                         value: [
                                             {
-                                                name: '--padding-bottom'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -1941,10 +1812,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-bottom',
                                         value: [
                                             {
-                                                name: '--padding-bottom'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -1952,10 +1820,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-bottom',
                                         value: [
                                             {
-                                                name: '--padding-bottom'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -1967,10 +1832,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--sm--footer--padding-bottom',
                                 value: [
                                     {
-                                        name: '--select--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1978,10 +1840,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--md--footer--padding-bottom',
                                 value: [
                                     {
-                                        name: '--select--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1989,10 +1848,7 @@ export const manifest: ComponentManifest = {
                                 name: '--select--lg--footer--padding-bottom',
                                 value: [
                                     {
-                                        name: '--select--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--select--padding-bottom) * 3 / 4) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -2013,10 +1869,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--sm--padding-left',
                                         value: [
                                             {
-                                                name: '--padding-left'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -2024,10 +1877,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--md--padding-left',
                                         value: [
                                             {
-                                                name: '--padding-left'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -2035,10 +1885,7 @@ export const manifest: ComponentManifest = {
                                         name: '--select--lg--padding-left',
                                         value: [
                                             {
-                                                name: '--padding-left'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -2060,10 +1907,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--sm--border-top-left-radius',
                         value: [
                             {
-                                name: '--border-top-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -2071,10 +1915,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--md--border-top-left-radius',
                         value: [
                             {
-                                name: '--border-top-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -2082,10 +1923,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--lg--border-top-left-radius',
                         value: [
                             {
-                                name: '--border-top-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -2103,10 +1941,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--sm--border-top-right-radius',
                         value: [
                             {
-                                name: '--border-top-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -2114,10 +1949,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--md--border-top-right-radius',
                         value: [
                             {
-                                name: '--border-top-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -2125,10 +1957,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--lg--border-top-right-radius',
                         value: [
                             {
-                                name: '--border-top-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -2146,10 +1975,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--sm--border-bottom-left-radius',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -2157,10 +1983,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--md--border-bottom-left-radius',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -2168,10 +1991,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--lg--border-bottom-left-radius',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -2189,10 +2009,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--sm--border-bottom-right-radius',
                         value: [
                             {
-                                name: '--border-bottom-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -2200,10 +2017,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--md--border-bottom-right-radius',
                         value: [
                             {
-                                name: '--border-bottom-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -2211,10 +2025,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--lg--border-bottom-right-radius',
                         value: [
                             {
-                                name: '--border-bottom-right-radius'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -2264,10 +2075,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--sm--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -2275,10 +2083,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--md--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -2286,10 +2091,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--lg--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -2307,10 +2109,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--sm--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -2318,10 +2117,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--md--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -2329,10 +2125,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--lg--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -2350,10 +2143,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--sm--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -2361,10 +2151,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--md--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -2372,10 +2159,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--lg--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }

@@ -33,7 +33,7 @@ export const manifest: ComponentManifest = {
                         name: '--loader--sm--size',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(64px * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -41,7 +41,7 @@ export const manifest: ComponentManifest = {
                         name: '--loader--md--size',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(64px * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -49,7 +49,7 @@ export const manifest: ComponentManifest = {
                         name: '--loader--lg--size',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(64px * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -62,7 +62,7 @@ export const manifest: ComponentManifest = {
                         name: '--loader--sm--size',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(64px * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -70,7 +70,7 @@ export const manifest: ComponentManifest = {
                         name: '--loader--md--size',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(64px * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -78,7 +78,7 @@ export const manifest: ComponentManifest = {
                         name: '--loader--lg--size',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(64px * var(--size-multiplier-lg))'
                             }
                         ]
                     }

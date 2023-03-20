@@ -34,10 +34,7 @@ export const manifest: ComponentManifest = {
                         name: '--icon--sm--size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -45,10 +42,7 @@ export const manifest: ComponentManifest = {
                         name: '--icon--md--size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -56,10 +50,7 @@ export const manifest: ComponentManifest = {
                         name: '--icon--lg--size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }

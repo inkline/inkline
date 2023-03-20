@@ -600,10 +600,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--sm--label--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -611,10 +608,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--md--label--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -622,10 +616,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--lg--label--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -659,36 +650,7 @@ export const manifest: ComponentManifest = {
                 name: '--toggle--border-width',
                 value: [
                     {
-                        name: '--toggle--border-top-width',
-                        value: [
-                            {
-                                name: '--border-top-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-right-width',
-                        value: [
-                            {
-                                name: '--border-right-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-bottom-width',
-                        value: [
-                            {
-                                name: '--border-bottom-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-left-width',
-                        value: [
-                            {
-                                name: '--border-left-width'
-                            }
-                        ]
+                        value: '(\n                    var(--toggle--border-top-width, var(--border-top-width))\n                        var(--toggle--border-right-width, var(--border-right-width))\n                        var(--toggle--border-bottom-width, var(--border-bottom-width))\n                        var(--toggle--border-left-width, var(--border-left-width))\n                )'
                     }
                 ]
             },
@@ -696,36 +658,7 @@ export const manifest: ComponentManifest = {
                 name: '--toggle--border-style',
                 value: [
                     {
-                        name: '--toggle--border-top-style',
-                        value: [
-                            {
-                                name: '--border-top-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-right-style',
-                        value: [
-                            {
-                                name: '--border-right-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-bottom-style',
-                        value: [
-                            {
-                                name: '--border-bottom-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-left-style',
-                        value: [
-                            {
-                                name: '--border-left-style'
-                            }
-                        ]
+                        value: '(\n                    var(--toggle--border-top-style, var(--border-top-style))\n                        var(--toggle--border-right-style, var(--border-right-style))\n                        var(--toggle--border-bottom-style, var(--border-bottom-style))\n                        var(--toggle--border-left-style, var(--border-left-style))\n                )'
                     }
                 ]
             },
@@ -733,108 +666,7 @@ export const manifest: ComponentManifest = {
                 name: '--toggle--border-color',
                 value: [
                     {
-                        name: '--toggle--border-top-color',
-                        value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--light--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-right-color',
-                        value: [
-                            {
-                                name: '--border-right-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--light--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--light--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--light--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
+                        value: '(\n                    var(--toggle--border-top-color, var(--border-top-color))\n                        var(--toggle--border-right-color, var(--border-right-color))\n                        var(--toggle--border-bottom-color, var(--border-bottom-color))\n                        var(--toggle--border-left-color, var(--border-left-color))\n                )'
                     }
                 ]
             },
@@ -879,7 +711,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--sm--width',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(40px * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -887,7 +719,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--md--width',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(40px * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -895,7 +727,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--lg--width',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(40px * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -913,7 +745,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--sm--height',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(20px * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -921,7 +753,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--md--height',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(20px * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -929,7 +761,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--lg--height',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(20px * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -950,10 +782,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--sm--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -961,10 +790,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--md--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -972,10 +798,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--lg--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -993,10 +816,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--sm--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1004,10 +824,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--md--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1015,10 +832,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--lg--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1036,10 +850,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--sm--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1047,10 +858,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--md--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1058,10 +866,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--lg--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1079,10 +884,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--sm--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -1090,10 +892,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--md--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -1101,10 +900,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toggle--lg--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -1169,7 +965,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--sm--indicator--width',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(16px * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -1177,7 +973,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--md--indicator--width',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(16px * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -1185,7 +981,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--lg--indicator--width',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(16px * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -1203,7 +999,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--sm--indicator--height',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(16px * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -1211,7 +1007,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--md--indicator--height',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(16px * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -1219,7 +1015,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--lg--indicator--height',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(16px * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -1229,196 +1025,7 @@ export const manifest: ComponentManifest = {
                 name: '--toggle--indicator--border-radius',
                 value: [
                     {
-                        name: '--toggle--indicator--border-top-left-radius',
-                        value: [
-                            {
-                                name: '--toggle--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--toggle--sm--border-top-left-radius',
-                                        value: [
-                                            {
-                                                name: '--border-top-left-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--md--border-top-left-radius',
-                                        value: [
-                                            {
-                                                name: '--border-top-left-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--lg--border-top-left-radius',
-                                        value: [
-                                            {
-                                                name: '--border-top-left-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--indicator--border-top-right-radius',
-                        value: [
-                            {
-                                name: '--toggle--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--toggle--sm--border-top-right-radius',
-                                        value: [
-                                            {
-                                                name: '--border-top-right-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--md--border-top-right-radius',
-                                        value: [
-                                            {
-                                                name: '--border-top-right-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--lg--border-top-right-radius',
-                                        value: [
-                                            {
-                                                name: '--border-top-right-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--indicator--border-bottom-right-radius',
-                        value: [
-                            {
-                                name: '--toggle--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-right-radius'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--toggle--sm--border-bottom-right-radius',
-                                        value: [
-                                            {
-                                                name: '--border-bottom-right-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--md--border-bottom-right-radius',
-                                        value: [
-                                            {
-                                                name: '--border-bottom-right-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--lg--border-bottom-right-radius',
-                                        value: [
-                                            {
-                                                name: '--border-bottom-right-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--indicator--border-bottom-left-radius',
-                        value: [
-                            {
-                                name: '--toggle--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-left-radius'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--toggle--sm--border-bottom-left-radius',
-                                        value: [
-                                            {
-                                                name: '--border-bottom-left-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-sm'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--md--border-bottom-left-radius',
-                                        value: [
-                                            {
-                                                name: '--border-bottom-left-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-md'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--lg--border-bottom-left-radius',
-                                        value: [
-                                            {
-                                                name: '--border-bottom-left-radius'
-                                            },
-                                            {
-                                                name: '--size-multiplier-lg'
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
+                        value: '(\n                    var(\n                            --toggle--indicator--border-top-left-radius,\n                            var(--toggle--border-top-left-radius, var(--border-top-left-radius))\n                        )\n                        var(\n                            --toggle--indicator--border-top-right-radius,\n                            var(--toggle--border-top-right-radius, var(--border-top-right-radius))\n                        )\n                        var(\n                            --toggle--indicator--border-bottom-right-radius,\n                            var(\n                                --toggle--border-bottom-right-radius,\n                                var(--border-bottom-right-radius)\n                            )\n                        )\n                        var(\n                            --toggle--indicator--border-bottom-left-radius,\n                            var(\n                                --toggle--border-bottom-left-radius,\n                                var(--border-bottom-left-radius)\n                            )\n                        )\n                )'
                     }
                 ]
             },
@@ -1435,7 +1042,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--sm--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(20px * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -1443,7 +1050,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--md--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(20px * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -1451,7 +1058,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--lg--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(20px * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -1469,7 +1076,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--sm--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(20px * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -1477,7 +1084,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--md--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(20px * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -1485,7 +1092,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--lg--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(20px * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -1503,7 +1110,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--sm--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(20px * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -1511,7 +1118,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--md--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(20px * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -1519,7 +1126,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--lg--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(20px * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }
@@ -1537,7 +1144,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--sm--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-sm'
+                                                value: 'calc(20px * var(--size-multiplier-sm))'
                                             }
                                         ]
                                     },
@@ -1545,7 +1152,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--md--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-md'
+                                                value: 'calc(20px * var(--size-multiplier-md))'
                                             }
                                         ]
                                     },
@@ -1553,7 +1160,7 @@ export const manifest: ComponentManifest = {
                                         name: '--toggle--lg--height',
                                         value: [
                                             {
-                                                name: '--size-multiplier-lg'
+                                                value: 'calc(20px * var(--size-multiplier-lg))'
                                             }
                                         ]
                                     }

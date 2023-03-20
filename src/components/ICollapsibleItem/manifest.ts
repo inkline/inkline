@@ -35,44 +35,7 @@ export const manifest: ComponentManifest = {
                 name: '--collapsible--box-shadow',
                 value: [
                     {
-                        name: '--collapsible--box-shadow-x-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-x'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--collapsible--box-shadow-y-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-y'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--collapsible--box-shadow-blur-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-blur-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--collapsible--box-shadow-spread-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-spread-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--collapsible--box-shadow-color',
-                        value: [
-                            {
-                                name: '--box-shadow-color'
-                            }
-                        ]
+                        value: '(\n                var(--collapsible--box-shadow-x-offset, var(--box-shadow-offset-x))\n                    var(--collapsible--box-shadow-y-offset, var(--box-shadow-offset-y))\n                    var(--collapsible--box-shadow-blur-radius, var(--box-shadow-blur-radius))\n                    var(--collapsible--box-shadow-spread-radius, var(--box-shadow-spread-radius))\n                    var(--collapsible--box-shadow-color, var(--box-shadow-color))\n            )'
                     }
                 ]
             },
@@ -83,17 +46,7 @@ export const manifest: ComponentManifest = {
                         name: '--collapsible--border-style',
                         value: [
                             {
-                                name: '--collapsible--header--border-top-style',
-                                value: [
-                                    {
-                                        name: '--collapsible--border-top-style',
-                                        value: [
-                                            {
-                                                name: '--border-top-style'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                value: '(\n                        var(\n                                --collapsible--header--border-top-style,\n                                var(--collapsible--border-top-style, var(--border-top-style))))'
                             }
                         ]
                     },
@@ -145,17 +98,7 @@ export const manifest: ComponentManifest = {
                         name: '--collapsible--border-width',
                         value: [
                             {
-                                name: '--collapsible--header--border-top-width',
-                                value: [
-                                    {
-                                        name: '--collapsible--border-top-width',
-                                        value: [
-                                            {
-                                                name: '--border-top-width'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                value: '(\n                        var(\n                                --collapsible--header--border-top-width,\n                                var(--collapsible--border-top-width, var(--border-top-width))))'
                             }
                         ]
                     },
@@ -207,17 +150,7 @@ export const manifest: ComponentManifest = {
                         name: '--collapsible--border-color',
                         value: [
                             {
-                                name: '--collapsible--header--border-top-color',
-                                value: [
-                                    {
-                                        name: '--collapsible--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--border-top-color'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                value: '(\n                        var(\n                                --collapsible--header--border-top-color,\n                                var(--collapsible--border-top-color, var(--border-top-color))))'
                             }
                         ]
                     },
@@ -285,17 +218,7 @@ export const manifest: ComponentManifest = {
                         name: '--collapsible--padding',
                         value: [
                             {
-                                name: '--collapsible--header--padding-top',
-                                value: [
-                                    {
-                                        name: '--collapsible--padding-top',
-                                        value: [
-                                            {
-                                                name: '--padding-top'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                value: '(\n                        var(\n                                --collapsible--header--padding-top,\n                                var(--collapsible--padding-top, var(--padding-top))))'
                             }
                         ]
                     },
@@ -344,12 +267,7 @@ export const manifest: ComponentManifest = {
                 name: '--collapsible--transition-property',
                 value: [
                     {
-                        name: '--collapsible--transition-property',
-                        value: [
-                            {
-                                value: '(background-color, border-radius)'
-                            }
-                        ]
+                        value: '(var(--collapsible--transition-property, (background-color, border-radius)))'
                     }
                 ]
             },
@@ -405,18 +323,17 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--collapsible--icon--size',
-                value: []
+                value: [
+                    {
+                        value: '12px) var(--collapsible--icon--size, 12px'
+                    }
+                ]
             },
             {
                 name: '--collapsible--transition-property',
                 value: [
                     {
-                        name: '--collapsible--transition-property',
-                        value: [
-                            {
-                                value: '(background-color, transform)'
-                            }
-                        ]
+                        value: '(var(--collapsible--transition-property, (background-color, transform)))'
                     }
                 ]
             },
@@ -448,17 +365,7 @@ export const manifest: ComponentManifest = {
                         name: '--collapsible--border-style',
                         value: [
                             {
-                                name: '--collapsible--body--border-top-style',
-                                value: [
-                                    {
-                                        name: '--collapsible--border-top-style',
-                                        value: [
-                                            {
-                                                name: '--border-top-style'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                value: '(\n                        var(\n                                --collapsible--body--border-top-style,\n                                var(--collapsible--border-top-style, var(--border-top-style))))'
                             }
                         ]
                     },
@@ -510,17 +417,7 @@ export const manifest: ComponentManifest = {
                         name: '--collapsible--border-width',
                         value: [
                             {
-                                name: '--collapsible--body--border-top-width',
-                                value: [
-                                    {
-                                        name: '--collapsible--border-top-width',
-                                        value: [
-                                            {
-                                                name: '--border-top-width'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                value: '(\n                        var(\n                                --collapsible--body--border-top-width,\n                                var(--collapsible--border-top-width, var(--border-top-width))))'
                             }
                         ]
                     },
@@ -572,17 +469,7 @@ export const manifest: ComponentManifest = {
                         name: '--collapsible--border-color',
                         value: [
                             {
-                                name: '--collapsible--body--border-top-color',
-                                value: [
-                                    {
-                                        name: '--collapsible--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--border-top-color'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                value: '(\n                        var(\n                                --collapsible--body--border-top-color,\n                                var(--collapsible--border-top-color, var(--border-top-color))))'
                             }
                         ]
                     },
@@ -650,17 +537,7 @@ export const manifest: ComponentManifest = {
                         name: '--collapsible--padding',
                         value: [
                             {
-                                name: '--collapsible--body--padding-top',
-                                value: [
-                                    {
-                                        name: '--collapsible--padding-top',
-                                        value: [
-                                            {
-                                                name: '--padding-top'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                value: '(\n                            var(\n                                    --collapsible--body--padding-top,\n                                    var(--collapsible--padding-top, var(--padding-top))))'
                             }
                         ]
                     },

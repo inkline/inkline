@@ -151,10 +151,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--sm--label--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -162,10 +159,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--md--label--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -173,10 +167,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--lg--label--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -189,7 +180,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--sm--size',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(#{1rem} * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -197,7 +188,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--md--size',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(#{1rem} * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -205,7 +196,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--lg--size',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(#{1rem} * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -218,7 +209,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--sm--size',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(#{1rem} * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -226,7 +217,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--md--size',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(#{1rem} * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -234,7 +225,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--lg--size',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(#{1rem} * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -244,36 +235,7 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--border-width',
                 value: [
                     {
-                        name: '--checkbox--border-top-width',
-                        value: [
-                            {
-                                name: '--border-top-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-right-width',
-                        value: [
-                            {
-                                name: '--border-right-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-bottom-width',
-                        value: [
-                            {
-                                name: '--border-bottom-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-left-width',
-                        value: [
-                            {
-                                name: '--border-left-width'
-                            }
-                        ]
+                        value: '(\n                    var(--checkbox--border-top-width, var(--border-top-width))\n                        var(--checkbox--border-right-width, var(--border-right-width))\n                        var(--checkbox--border-bottom-width, var(--border-bottom-width))\n                        var(--checkbox--border-left-width, var(--border-left-width))\n                )'
                     }
                 ]
             },
@@ -281,36 +243,7 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--border-style',
                 value: [
                     {
-                        name: '--checkbox--border-top-style',
-                        value: [
-                            {
-                                name: '--border-top-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-right-style',
-                        value: [
-                            {
-                                name: '--border-right-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-bottom-style',
-                        value: [
-                            {
-                                name: '--border-bottom-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-left-style',
-                        value: [
-                            {
-                                name: '--border-left-style'
-                            }
-                        ]
+                        value: '(\n                    var(--checkbox--border-top-style, var(--border-top-style))\n                        var(--checkbox--border-right-style, var(--border-right-style))\n                        var(--checkbox--border-bottom-style, var(--border-bottom-style))\n                        var(--checkbox--border-left-style, var(--border-left-style))\n                )'
                     }
                 ]
             },
@@ -318,108 +251,7 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--border-color',
                 value: [
                     {
-                        name: '--checkbox--border-top-color',
-                        value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkbox--light--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--dark--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-right-color',
-                        value: [
-                            {
-                                name: '--border-right-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkbox--light--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--dark--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkbox--light--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--dark--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkbox--light--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--dark--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
+                        value: '(\n                    var(--checkbox--border-top-color, var(--border-top-color))\n                        var(--checkbox--border-right-color, var(--border-right-color))\n                        var(--checkbox--border-bottom-color, var(--border-bottom-color))\n                        var(--checkbox--border-left-color, var(--border-left-color))\n                )'
                     }
                 ]
             },
@@ -427,176 +259,7 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--border-radius',
                 value: [
                     {
-                        name: '--checkbox--border-top-left-radius',
-                        value: [
-                            {
-                                name: '--border-top-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkbox--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-top-right-radius',
-                        value: [
-                            {
-                                name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkbox--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-bottom-right-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkbox--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--border-bottom-left-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkbox--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
+                        value: '(\n                    var(--checkbox--border-top-left-radius, var(--border-top-left-radius))\n                        var(--checkbox--border-top-right-radius, var(--border-top-right-radius))\n                        var(\n                            --checkbox--border-bottom-right-radius,\n                            var(--border-bottom-right-radius)\n                        )\n                        var(--checkbox--border-bottom-left-radius, var(--border-bottom-left-radius))\n                )'
                     }
                 ]
             },
@@ -705,7 +368,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--sm--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(#{8px} * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -713,7 +376,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--md--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(#{8px} * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -721,7 +384,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--lg--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(#{8px} * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -734,7 +397,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--sm--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(#{8px} * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -742,7 +405,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--md--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(#{8px} * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -750,7 +413,7 @@ export const manifest: ComponentManifest = {
                         name: '--checkbox--lg--checkmark--size',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(#{8px} * var(--size-multiplier-lg))'
                             }
                         ]
                     }

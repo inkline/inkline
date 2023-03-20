@@ -89,10 +89,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--sm--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -100,10 +97,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--md--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -111,10 +105,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--lg--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -318,10 +309,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -329,10 +317,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -340,10 +325,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -361,10 +343,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -372,10 +351,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -383,10 +359,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -404,10 +377,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -415,10 +385,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -426,10 +393,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -447,10 +411,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -458,10 +419,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -469,10 +427,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -540,10 +495,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--padding-top) / 2) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -551,10 +503,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--padding-top) / 2) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -562,10 +511,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--padding-top) / 2) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -583,10 +529,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--padding-right) / 2) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -594,10 +537,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--padding-right) / 2) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -605,10 +545,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--padding-right) / 2) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -626,10 +563,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--padding-bottom',
                                 value: [
                                     {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--padding-bottom) / 2) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -637,10 +571,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--padding-bottom',
                                 value: [
                                     {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--padding-bottom) / 2) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -658,10 +589,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--padding-left) / 2) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -669,10 +597,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--padding-left) / 2) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -680,10 +605,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--padding-left) / 2) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -703,7 +625,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--sm--min-width',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(40px * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -711,7 +633,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--md--min-width',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(40px * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -719,7 +641,7 @@ export const manifest: ComponentManifest = {
                         name: '--pagination--lg--min-width',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(40px * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -790,10 +712,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--margin-right',
                                 value: [
                                     {
-                                        name: '--margin-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--margin-right) / 4) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -801,10 +720,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--margin-right',
                                 value: [
                                     {
-                                        name: '--margin-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--margin-right) / 4) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -812,10 +728,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--margin-right',
                                 value: [
                                     {
-                                        name: '--margin-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--margin-right) / 4) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -841,10 +754,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--margin-left',
                                 value: [
                                     {
-                                        name: '--margin-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--margin-left) / 4) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -852,10 +762,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--margin-left',
                                 value: [
                                     {
-                                        name: '--margin-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--margin-left) / 4) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -863,10 +770,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--margin-left',
                                 value: [
                                     {
-                                        name: '--margin-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--margin-left) / 4) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }

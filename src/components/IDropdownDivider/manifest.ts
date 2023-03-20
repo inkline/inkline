@@ -12,46 +12,7 @@ export const manifest: ComponentManifest = {
                 name: '--dropdown--divider--margin',
                 value: [
                     {
-                        name: '--dropdown--margin--margin-top',
-                        value: [
-                            {
-                                name: '--margin-top'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--margin--margin-right',
-                        value: [
-                            {
-                                name: '--dropdown--body--padding-right',
-                                value: [
-                                    {
-                                        name: '--dropdown--padding-right'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--margin--margin-bottom',
-                        value: [
-                            {
-                                name: '--margin-top'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--margin--margin-left',
-                        value: [
-                            {
-                                name: '--dropdown--body--padding-left',
-                                value: [
-                                    {
-                                        name: '--dropdown--padding-left'
-                                    }
-                                ]
-                            }
-                        ]
+                        value: '(\n            var(--dropdown--margin--margin-top, calc(var(--margin-top) * 0.5))\n                var(\n                    --dropdown--margin--margin-right,\n                    var(--dropdown--body--padding-right, calc(var(--dropdown--padding-right) * -1))\n                )\n                var(--dropdown--margin--margin-bottom, calc(var(--margin-top) * 0.5))\n                var(\n                    --dropdown--margin--margin-left,\n                    var(--dropdown--body--padding-left, calc(var(--dropdown--padding-left) * -1))\n                )\n        )'
                     }
                 ]
             },

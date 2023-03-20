@@ -90,7 +90,7 @@ export const manifest: ComponentManifest = {
                         name: '--hamburger-menu--sm--bar--width',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(30px * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -98,7 +98,7 @@ export const manifest: ComponentManifest = {
                         name: '--hamburger-menu--md--bar--width',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(30px * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -106,7 +106,7 @@ export const manifest: ComponentManifest = {
                         name: '--hamburger-menu--lg--bar--width',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(30px * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -151,7 +151,7 @@ export const manifest: ComponentManifest = {
                         name: '--hamburger-menu--sm--bar--width',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(30px * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -159,7 +159,7 @@ export const manifest: ComponentManifest = {
                         name: '--hamburger-menu--md--bar--width',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(30px * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -167,7 +167,7 @@ export const manifest: ComponentManifest = {
                         name: '--hamburger-menu--lg--bar--width',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(30px * var(--size-multiplier-lg))'
                             }
                         ]
                     }

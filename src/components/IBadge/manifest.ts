@@ -554,10 +554,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--sm--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -565,10 +562,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--md--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -576,10 +570,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--lg--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -597,10 +588,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--sm--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -608,10 +596,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--md--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -619,10 +604,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--lg--border-top-right-radius',
                                 value: [
                                     {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -640,10 +622,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--sm--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -651,10 +630,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--md--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -662,10 +638,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--lg--border-bottom-right-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -683,10 +656,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--sm--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -694,10 +664,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--md--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -705,10 +672,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--lg--border-bottom-left-radius',
                                 value: [
                                     {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -728,10 +692,7 @@ export const manifest: ComponentManifest = {
                         name: '--badge--sm--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(calc(var(--font-size) * var(--size-multiplier-sm)) * 0.8)'
                             }
                         ]
                     },
@@ -739,10 +700,7 @@ export const manifest: ComponentManifest = {
                         name: '--badge--md--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(calc(var(--font-size) * var(--size-multiplier-md)) * 0.8)'
                             }
                         ]
                     },
@@ -750,10 +708,7 @@ export const manifest: ComponentManifest = {
                         name: '--badge--lg--font-size',
                         value: [
                             {
-                                name: '--font-size'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(calc(var(--font-size) * var(--size-multiplier-lg)) * 0.8)'
                             }
                         ]
                     }
@@ -819,10 +774,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--sm--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-sm)) * 0.25)'
                                     }
                                 ]
                             },
@@ -830,10 +782,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--md--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-md)) * 0.25)'
                                     }
                                 ]
                             },
@@ -841,10 +790,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--lg--padding-top',
                                 value: [
                                     {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-lg)) * 0.25)'
                                     }
                                 ]
                             }
@@ -862,10 +808,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--sm--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--padding-right) * var(--size-multiplier-sm)) * 0.5)'
                                     }
                                 ]
                             },
@@ -873,10 +816,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--md--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--padding-right) * var(--size-multiplier-md)) * 0.5)'
                                     }
                                 ]
                             },
@@ -884,10 +824,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--lg--padding-right',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--padding-right) * var(--size-multiplier-lg)) * 0.5)'
                                     }
                                 ]
                             }
@@ -905,10 +842,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--sm--padding-bottom',
                                 value: [
                                     {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-sm)) * 0.25)'
                                     }
                                 ]
                             },
@@ -916,10 +850,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--md--padding-bottom',
                                 value: [
                                     {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-md)) * 0.25)'
                                     }
                                 ]
                             },
@@ -927,10 +858,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--lg--padding-bottom',
                                 value: [
                                     {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-lg)) * 0.25)'
                                     }
                                 ]
                             }
@@ -948,10 +876,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--sm--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
+                                        value: 'calc(calc(var(--padding-left) * var(--size-multiplier-sm)) * 0.5)'
                                     }
                                 ]
                             },
@@ -959,10 +884,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--md--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
+                                        value: 'calc(calc(var(--padding-left) * var(--size-multiplier-md)) * 0.5)'
                                     }
                                 ]
                             },
@@ -970,10 +892,7 @@ export const manifest: ComponentManifest = {
                                 name: '--badge--lg--padding-left',
                                 value: [
                                     {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
+                                        value: 'calc(calc(var(--padding-left) * var(--size-multiplier-lg)) * 0.5)'
                                     }
                                 ]
                             }

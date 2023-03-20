@@ -95,7 +95,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--sm--width',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(#{14rem} * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -103,7 +103,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--md--width',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(#{14rem} * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -111,7 +111,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--lg--width',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(#{14rem} * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -171,7 +171,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--sm--width',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(#{14rem} * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -179,7 +179,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--md--width',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(#{14rem} * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -187,7 +187,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--lg--width',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(#{14rem} * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -221,44 +221,7 @@ export const manifest: ComponentManifest = {
                 name: '--sidebar--box-shadow',
                 value: [
                     {
-                        name: '--sidebar--box-shadow-x-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-x'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--box-shadow-y-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-y'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--box-shadow-blur-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-blur-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--box-shadow-spread-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-spread-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--box-shadow-color',
-                        value: [
-                            {
-                                name: '--box-shadow-color'
-                            }
-                        ]
+                        value: '(\n                var(--sidebar--box-shadow-x-offset, var(--box-shadow-offset-x))\n                    var(--sidebar--box-shadow-y-offset, var(--box-shadow-offset-y))\n                    var(--sidebar--box-shadow-blur-radius, var(--box-shadow-blur-radius))\n                    var(--sidebar--box-shadow-spread-radius, var(--box-shadow-spread-radius))\n                    var(--sidebar--box-shadow-color, var(--box-shadow-color))\n            )'
                     }
                 ]
             },
@@ -266,36 +229,7 @@ export const manifest: ComponentManifest = {
                 name: '--sidebar--border-width',
                 value: [
                     {
-                        name: '--sidebar--border-top-width',
-                        value: [
-                            {
-                                name: '--border-top-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-right-width',
-                        value: [
-                            {
-                                name: '--border-right-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-bottom-width',
-                        value: [
-                            {
-                                name: '--border-bottom-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-left-width',
-                        value: [
-                            {
-                                name: '--border-left-width'
-                            }
-                        ]
+                        value: '(\n                var(--sidebar--border-top-width, var(--border-top-width))\n                    var(--sidebar--border-right-width, var(--border-right-width))\n                    var(--sidebar--border-bottom-width, var(--border-bottom-width))\n                    var(--sidebar--border-left-width, var(--border-left-width))\n            )'
                     }
                 ]
             },
@@ -303,36 +237,7 @@ export const manifest: ComponentManifest = {
                 name: '--sidebar--border-style',
                 value: [
                     {
-                        name: '--sidebar--border-top-style',
-                        value: [
-                            {
-                                name: '--border-top-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-right-style',
-                        value: [
-                            {
-                                name: '--border-right-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-bottom-style',
-                        value: [
-                            {
-                                name: '--border-bottom-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-left-style',
-                        value: [
-                            {
-                                name: '--border-left-style'
-                            }
-                        ]
+                        value: '(\n                var(--sidebar--border-top-style, var(--border-top-style))\n                    var(--sidebar--border-right-style, var(--border-right-style))\n                    var(--sidebar--border-bottom-style, var(--border-bottom-style))\n                    var(--sidebar--border-left-style, var(--border-left-style))\n            )'
                     }
                 ]
             },
@@ -340,108 +245,7 @@ export const manifest: ComponentManifest = {
                 name: '--sidebar--border-color',
                 value: [
                     {
-                        name: '--sidebar--border-top-color',
-                        value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--light--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--dark--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-right-color',
-                        value: [
-                            {
-                                name: '--border-right-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--light--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--dark--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--light--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--dark--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--light--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--dark--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
+                        value: '(\n                var(--sidebar--border-top-color, var(--border-top-color))\n                    var(--sidebar--border-right-color, var(--border-right-color))\n                    var(--sidebar--border-bottom-color, var(--border-bottom-color))\n                    var(--sidebar--border-left-color, var(--border-left-color))\n            )'
                     }
                 ]
             },
@@ -449,176 +253,7 @@ export const manifest: ComponentManifest = {
                 name: '--sidebar--border-radius',
                 value: [
                     {
-                        name: '--sidebar--border-top-left-radius',
-                        value: [
-                            {
-                                name: '--border-top-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-top-right-radius',
-                        value: [
-                            {
-                                name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-bottom-right-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-right-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--border-bottom-left-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-left-radius'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
+                        value: '(\n                var(--sidebar--border-top-left-radius, var(--border-top-left-radius))\n                    var(--sidebar--border-top-right-radius, var(--border-top-right-radius))\n                    var(--sidebar--border-bottom-right-radius, var(--border-bottom-right-radius))\n                    var(--sidebar--border-bottom-left-radius, var(--border-bottom-left-radius))\n            )'
                     }
                 ]
             },
@@ -626,176 +261,7 @@ export const manifest: ComponentManifest = {
                 name: '--sidebar--padding',
                 value: [
                     {
-                        name: '--sidebar--padding-top',
-                        value: [
-                            {
-                                name: '--padding-top'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--sm--padding-top',
-                                value: [
-                                    {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--md--padding-top',
-                                value: [
-                                    {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--lg--padding-top',
-                                value: [
-                                    {
-                                        name: '--padding-top'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--padding-right',
-                        value: [
-                            {
-                                name: '--padding-right'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--sm--padding-right',
-                                value: [
-                                    {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--md--padding-right',
-                                value: [
-                                    {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--lg--padding-right',
-                                value: [
-                                    {
-                                        name: '--padding-right'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--padding-bottom',
-                        value: [
-                            {
-                                name: '--padding-bottom'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--sm--padding-bottom',
-                                value: [
-                                    {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--md--padding-bottom',
-                                value: [
-                                    {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--lg--padding-bottom',
-                                value: [
-                                    {
-                                        name: '--padding-bottom'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--sidebar--sm--padding-left',
-                                value: [
-                                    {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--md--padding-left',
-                                value: [
-                                    {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--sidebar--lg--padding-left',
-                                value: [
-                                    {
-                                        name: '--padding-left'
-                                    },
-                                    {
-                                        name: '--size-multiplier-lg'
-                                    }
-                                ]
-                            }
-                        ]
+                        value: '(\n                var(--sidebar--padding-top, var(--padding-top))\n                    var(--sidebar--padding-right, var(--padding-right))\n                    var(--sidebar--padding-bottom, var(--padding-bottom))\n                    var(--sidebar--padding-left, var(--padding-left))\n            )'
                     }
                 ]
             },
@@ -819,10 +285,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--sm--border-top-left-radius',
                         value: [
                             {
-                                name: '--border-top-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -830,10 +293,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--md--border-top-left-radius',
                         value: [
                             {
-                                name: '--border-top-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -841,10 +301,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--lg--border-top-left-radius',
                         value: [
                             {
-                                name: '--border-top-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -862,10 +319,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--sm--border-bottom-left-radius',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -873,10 +327,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--md--border-bottom-left-radius',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-md'
+                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -884,10 +335,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--lg--border-bottom-left-radius',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
-                            },
-                            {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -900,7 +348,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--sm--width',
                         value: [
                             {
-                                name: '--size-multiplier-sm'
+                                value: 'calc(#{14rem} * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -908,7 +356,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--md--width',
                         value: [
                             {
-                                name: '--size-multiplier-md'
+                                value: 'calc(#{14rem} * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -916,7 +364,7 @@ export const manifest: ComponentManifest = {
                         name: '--sidebar--lg--width',
                         value: [
                             {
-                                name: '--size-multiplier-lg'
+                                value: 'calc(#{14rem} * var(--size-multiplier-lg))'
                             }
                         ]
                     }

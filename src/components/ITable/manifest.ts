@@ -696,12 +696,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--condensed--padding-top',
                         value: [
                             {
-                                name: '--table--padding-top',
-                                value: [
-                                    {
-                                        name: '--padding-top'
-                                    }
-                                ]
+                                value: 'calc(var(--table--padding-top, var(--padding-top)))'
                             }
                         ]
                     },
@@ -709,12 +704,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--condensed--padding-right',
                         value: [
                             {
-                                name: '--table--padding-right',
-                                value: [
-                                    {
-                                        name: '--padding-right'
-                                    }
-                                ]
+                                value: 'calc(var(--table--padding-right, var(--padding-right)))'
                             }
                         ]
                     },
@@ -722,12 +712,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--condensed--padding-bottom',
                         value: [
                             {
-                                name: '--table--padding-bottom',
-                                value: [
-                                    {
-                                        name: '--padding-bottom'
-                                    }
-                                ]
+                                value: 'calc(var(--table--padding-bottom, var(--padding-bottom)))'
                             }
                         ]
                     },
@@ -735,12 +720,7 @@ export const manifest: ComponentManifest = {
                         name: '--table--condensed--padding-left',
                         value: [
                             {
-                                name: '--table--padding-left',
-                                value: [
-                                    {
-                                        name: '--padding-left'
-                                    }
-                                ]
+                                value: 'calc(var(--table--padding-left, var(--padding-left)))'
                             }
                         ]
                     }
@@ -750,36 +730,7 @@ export const manifest: ComponentManifest = {
                 name: '--table--border-style',
                 value: [
                     {
-                        name: '--table--border-top-style',
-                        value: [
-                            {
-                                name: '--border-top-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--table--border-right-style',
-                        value: [
-                            {
-                                name: '--border-right-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--table--border-bottom-style',
-                        value: [
-                            {
-                                name: '--border-bottom-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--table--border-left-style',
-                        value: [
-                            {
-                                name: '--border-left-style'
-                            }
-                        ]
+                        value: '(\n                var(--table--border-top-style, var(--border-top-style))\n                    var(--table--border-right-style, var(--border-right-style))\n                    var(--table--border-bottom-style, var(--border-bottom-style))\n                    var(--table--border-left-style, var(--border-left-style))\n            )'
                     }
                 ]
             },
@@ -787,36 +738,7 @@ export const manifest: ComponentManifest = {
                 name: '--table--border-color',
                 value: [
                     {
-                        name: '--table--border-top-color',
-                        value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--table--border-right-color',
-                        value: [
-                            {
-                                name: '--border-right-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--table--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--table--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ]
+                        value: '(\n                var(--table--border-top-color, var(--border-top-color))\n                    var(--table--border-right-color, var(--border-right-color))\n                    var(--table--border-bottom-color, var(--border-bottom-color))\n                    var(--table--border-left-color, var(--border-left-color))\n            )'
                     }
                 ],
                 variants: [
@@ -890,36 +812,7 @@ export const manifest: ComponentManifest = {
                 name: '--table--border-width',
                 value: [
                     {
-                        name: '--table--border-top-width',
-                        value: [
-                            {
-                                name: '--border-top-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--table--border-right-width',
-                        value: [
-                            {
-                                name: '--border-right-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--table--border-bottom-width',
-                        value: [
-                            {
-                                name: '--border-bottom-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--table--border-left-width',
-                        value: [
-                            {
-                                name: '--border-left-width'
-                            }
-                        ]
+                        value: '(\n                var(--table--border-top-width, var(--border-top-width))\n                    var(--table--border-right-width, var(--border-right-width))\n                    var(--table--border-bottom-width, var(--border-bottom-width))\n                    var(--table--border-left-width, var(--border-left-width))\n            )'
                     }
                 ]
             },

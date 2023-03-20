@@ -60,46 +60,7 @@ export const manifest: ComponentManifest = {
                 name: '--dropdown--item--margin',
                 value: [
                     {
-                        name: '--dropdown--item--margin-top',
-                        value: [
-                            {
-                                value: '0'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--item--margin-right',
-                        value: [
-                            {
-                                name: '--dropdown--body--padding-right',
-                                value: [
-                                    {
-                                        name: '--dropdown--padding-right'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--item--margin-bottom',
-                        value: [
-                            {
-                                value: '0'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--item--margin-left',
-                        value: [
-                            {
-                                name: '--dropdown--body--padding-left',
-                                value: [
-                                    {
-                                        name: '--dropdown--padding-left'
-                                    }
-                                ]
-                            }
-                        ]
+                        value: '(\n            var(--dropdown--item--margin-top, 0)\n                var(\n                    --dropdown--item--margin-right,\n                    var(--dropdown--body--padding-right, calc(var(--dropdown--padding-right) * -1))\n                )\n                var(--dropdown--item--margin-bottom, 0)\n                var(\n                    --dropdown--item--margin-left,\n                    var(--dropdown--body--padding-left, calc(var(--dropdown--padding-left) * -1))\n                )\n        )'
                     }
                 ]
             },
@@ -142,17 +103,7 @@ export const manifest: ComponentManifest = {
                         name: '--dropdown--border-style',
                         value: [
                             {
-                                name: '--dropdown--item--border-top-style',
-                                value: [
-                                    {
-                                        name: '--dropdown--border-top-style',
-                                        value: [
-                                            {
-                                                name: '--border-top-style'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                value: '(\n                var(\n                        --dropdown--item--border-top-style,\n                        var(--dropdown--border-top-style, var(--border-top-style))))'
                             }
                         ]
                     },
@@ -201,36 +152,7 @@ export const manifest: ComponentManifest = {
                 name: '--dropdown--item--border-width',
                 value: [
                     {
-                        name: '--dropdown--item--border-top-width',
-                        value: [
-                            {
-                                value: '0'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--item--border-right-width',
-                        value: [
-                            {
-                                value: '0'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--item--border-bottom-width',
-                        value: [
-                            {
-                                value: '0'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--item--border-left-width',
-                        value: [
-                            {
-                                value: '0'
-                            }
-                        ]
+                        value: '(\n            var(--dropdown--item--border-top-width, 0) var(--dropdown--item--border-right-width, 0)\n                var(--dropdown--item--border-bottom-width, 0)\n                var(--dropdown--item--border-left-width, 0)\n        )'
                     }
                 ]
             },
@@ -241,17 +163,7 @@ export const manifest: ComponentManifest = {
                         name: '--dropdown--border-color',
                         value: [
                             {
-                                name: '--dropdown--item--border-top-color',
-                                value: [
-                                    {
-                                        name: '--dropdown--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--border-top-color'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                value: '(\n                var(\n                        --dropdown--item--border-top-color,\n                        var(--dropdown--border-top-color, var(--border-top-color))))'
                             }
                         ]
                     },
@@ -303,17 +215,7 @@ export const manifest: ComponentManifest = {
                         name: '--dropdown--padding',
                         value: [
                             {
-                                name: '--dropdown--item--padding-top',
-                                value: [
-                                    {
-                                        name: '--dropdown--padding-top',
-                                        value: [
-                                            {
-                                                name: '--padding-top'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                value: '(\n                var(\n                        --dropdown--item--padding-top,\n                        calc(var(--dropdown--padding-top, var(--padding-top)))))'
                             }
                         ]
                     },
@@ -334,12 +236,7 @@ export const manifest: ComponentManifest = {
                         name: '--dropdown--item--padding-bottom',
                         value: [
                             {
-                                name: '--dropdown--padding-bottom',
-                                value: [
-                                    {
-                                        name: '--padding-bottom'
-                                    }
-                                ]
+                                value: 'calc(var(--dropdown--padding-bottom, var(--padding-bottom)))'
                             }
                         ]
                     },
