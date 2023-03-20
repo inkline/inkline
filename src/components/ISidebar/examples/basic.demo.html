@@ -2,7 +2,7 @@
     <i-layout>
         <i-layout-header>
             <i-navbar fluid :collapse="false">
-                <i-navbar-brand :to="{ name: 'docs-components-sidebar' }">
+                <i-navbar-brand :to="{ path: '/docs/components/sidebar' }">
                     Dashboard
                 </i-navbar-brand>
                 <i-hamburger-menu v-model="open" animation="arrow-left" class="_lg:hidden" />
@@ -11,21 +11,21 @@
         <i-layout vertical class="_padding-top:1/2">
             <i-sidebar v-model="open" v-bind="$attrs">
                 <i-nav vertical>
-                    <i-nav-item :to="{ name: 'docs-components-sidebar' }"> Home </i-nav-item>
+                    <i-nav-item :to="{ path: '/docs/components/sidebar' }"> Home </i-nav-item>
                     <i-collapsible>
                         <i-collapsible-item title="Menu">
-                            <i-nav-item :to="{ name: 'docs-components-sidebar' }">
+                            <i-nav-item :to="{ path: '/docs/components/sidebar' }">
                                 Item 1
                             </i-nav-item>
-                            <i-nav-item :to="{ name: 'docs-components-sidebar' }">
+                            <i-nav-item :to="{ path: '/docs/components/sidebar' }">
                                 Item 2
                             </i-nav-item>
-                            <i-nav-item :to="{ name: 'docs-components-sidebar' }">
+                            <i-nav-item :to="{ path: '/docs/components/sidebar' }">
                                 Item 3
                             </i-nav-item>
                         </i-collapsible-item>
                     </i-collapsible>
-                    <i-nav-item :to="{ name: 'docs-components-sidebar' }"> Contact </i-nav-item>
+                    <i-nav-item :to="{ path: '/docs/components/sidebar' }"> Contact </i-nav-item>
                 </i-nav>
             </i-sidebar>
             <i-layout-content>

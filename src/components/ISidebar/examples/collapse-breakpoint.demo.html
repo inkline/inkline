@@ -2,7 +2,7 @@
     <i-layout>
         <i-layout-header>
             <i-navbar fluid :collapse="false">
-                <i-navbar-brand :to="{ name: 'docs-components-sidebar' }">
+                <i-navbar-brand :to="{ path: '/docs/components/sidebar' }">
                     Dashboard
                 </i-navbar-brand>
                 <i-hamburger-menu v-model="open" animation="arrow-left" class="_xl:hidden" />
@@ -11,9 +11,9 @@
         <i-layout vertical class="_padding-top:1/2">
             <i-sidebar v-model="open" collapse="lg">
                 <i-nav vertical>
-                    <i-nav-item :to="{ name: 'docs-components-sidebar' }"> Home </i-nav-item>
-                    <i-nav-item :to="{ name: 'docs-components-sidebar' }"> About </i-nav-item>
-                    <i-nav-item :to="{ name: 'docs-components-sidebar' }"> Contact </i-nav-item>
+                    <i-nav-item :to="{ path: '/docs/components/sidebar' }"> Home </i-nav-item>
+                    <i-nav-item :to="{ path: '/docs/components/sidebar' }"> About </i-nav-item>
+                    <i-nav-item :to="{ path: '/docs/components/sidebar' }"> Contact </i-nav-item>
                 </i-nav>
             </i-sidebar>
             <i-layout-content>

@@ -82,7 +82,9 @@ export function parseCssVariables(source: string): ManifestCSSVariable[] {
     return Array.from(source.matchAll(valueRegex), ([_, variableName, fallbackValue]) => ({
         name: variableName,
         ...(fallbackValue ? { value: parseFallbackValue(fallbackValue.slice(1).trim()) } : {})
-    }));
+    })).filter(
+        (variable, index, array) => array.findIndex((v) => v.name === variable.name) === index
+    );
 }
 
 export function parseCssSelector(source: string): string {

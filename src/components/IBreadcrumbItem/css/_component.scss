@@ -33,7 +33,7 @@
         &::before {
             padding-right: var(--breadcrumb--padding-right);
             display: inline-block; // } Suppress underlining of the separator in modern browsers
-            content: '/';
+            content: var(--breadcrumb--separator, '/');
         }
     }
 

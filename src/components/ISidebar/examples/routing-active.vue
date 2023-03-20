@@ -19,7 +19,7 @@ export default {
             <ISidebar v-model="open">
                 <INav vertical>
                     <INavItem
-                        :to="{ name: 'docs-components-sidebar' }"
+                        :to="{ path: '/docs/components/sidebar' }"
                         exact-active-class="-active"
                     >
                         Active Router Link
