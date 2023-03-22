@@ -204,6 +204,7 @@ describe('Components', () => {
                     }
                 });
                 expect(wrapper.container.firstChild).toHaveAttribute('type', 'button');
+                expect(wrapper.container.firstChild).not.toHaveAttribute('role', 'button');
             });
 
             it('should provide type="submit" for semantic submit elements', () => {
@@ -219,6 +220,7 @@ describe('Components', () => {
                     }
                 });
                 expect(wrapper.container.firstChild).toHaveAttribute('type', 'submit');
+                expect(wrapper.container.firstChild).not.toHaveAttribute('role', 'button');
             });
 
             it('should provide type="reset" for semantic reset elements', () => {
@@ -234,12 +236,15 @@ describe('Components', () => {
                     }
                 });
                 expect(wrapper.container.firstChild).toHaveAttribute('type', 'reset');
+                expect(wrapper.container.firstChild).not.toHaveAttribute('role', 'button');
             });
 
             it('should not provide type="button" for non-button and input tags', () => {
                 const wrapper = render(IButton, {
                     props: {
-                        tag: 'a'
+                        tag: 'a',
+                        type: 'button'
+
                     },
                     global: {
                         provide: {
@@ -248,6 +253,7 @@ describe('Components', () => {
                     }
                 });
                 expect(wrapper.container.firstChild).not.toHaveAttribute('type', 'button');
+                expect(wrapper.container.firstChild).toHaveAttribute('role', 'button');
             });
         });
     });

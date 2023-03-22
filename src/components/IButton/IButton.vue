@@ -137,13 +137,13 @@ export default defineComponent({
         },
         /**
          * The type of the button
-         * @type button | submit | reset | undefined
-         * @default undefined
+         * @type button | submit | reset | null
+         * @default button
          * @name type
          */
         type: {
             type: String,
-            default: undefined
+            default: 'button'
         },
         /**
          * The size variant of the button
@@ -212,11 +212,13 @@ export default defineComponent({
                 '-loading': props.loading
             };
         });
-        const currentType = toRef(props, 'type');
-        const isType = computed(() => (currentType.value !== undefined ? currentType.value : undefined));
 
         const role = computed(() => (props.to || props.href ? null : props.tag === 'button' ? null : 'button'));
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
+
+        const currentType = toRef(props, 'type');
+        const isType = computed(() => (props.tag === 'button' ? currentType.value : null));
+
 
         return {
             ariaBusy,
@@ -242,7 +244,7 @@ export default defineComponent({
         :href="href"
         :tag="tag"
         :role="role"
-        :type="type"
+        :type="isType"
         :tabindex="tabIndex"
         :class="classes"
         :disabled="disabled"

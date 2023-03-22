@@ -3,7 +3,7 @@
 exports[`Components > IDropdown > should render correctly 1`] = `
 "<div class=\\"dropdown-wrapper\\" aria-haspopup=\\"true\\">
   <div class=\\"dropdown-trigger\\">
-    <!-- @slot default Slot for dropdown trigger --><button class=\\"button -light -md\\" tag=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\">
+    <!-- @slot default Slot for dropdown trigger --><button class=\\"button -light -md\\" tag=\\"button\\" type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\">
       <!-- @slot loading Slot for button loading state -->
       <!--v-if-->
       <!-- @slot default Slot for default button content -->
