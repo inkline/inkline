@@ -137,8 +137,8 @@ export default defineComponent({
         },
         /**
          * The type of the button
-         * @type button | submit | reset | null
-         * @default button
+         * @type button | submit | reset | undefined
+         * @default
          * @name type
          */
         type: {
@@ -213,12 +213,9 @@ export default defineComponent({
             };
         });
 
-        const role = computed(() => (props.to || props.href ? null : props.tag === 'button' ? null : 'button'));
+        const role = computed(() => (props.to || props.href ? null : props.tag === 'button' ? null : props.tag === 'input' ? null : 'button'));
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
-
-        const currentType = toRef(props, 'type');
-        const isType = computed(() => (props.tag === 'button' ? currentType.value : null));
-
+        const isType = computed(() => (props.tag === 'button' ? props.type : props.tag === 'input' ? props.type : null));
 
         return {
             ariaBusy,
