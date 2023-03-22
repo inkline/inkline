@@ -136,6 +136,16 @@ export default defineComponent({
             default: undefined
         },
         /**
+         * The type of the button
+         * @type button | submit | reset | undefined
+         * @default undefined
+         * @name type
+         */
+        type: {
+            type: String,
+            default: undefined
+        },
+        /**
          * The size variant of the button
          * @type sm | md | lg
          * @default
@@ -202,6 +212,8 @@ export default defineComponent({
                 '-loading': props.loading
             };
         });
+        const currentType = toRef(props, 'type');
+        const isType = computed(() => (currentType.value !== undefined ? currentType.value : undefined));
 
         const role = computed(() => (props.to || props.href ? null : props.tag === 'button' ? null : 'button'));
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
@@ -212,6 +224,7 @@ export default defineComponent({
             ariaPressed,
             disabled,
             isTag,
+            isType,
             role,
             tabIndex,
             classes
@@ -229,6 +242,7 @@ export default defineComponent({
         :href="href"
         :tag="tag"
         :role="role"
+        :type="type"
         :tabindex="tabIndex"
         :class="classes"
         :disabled="disabled"

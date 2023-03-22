@@ -189,5 +189,66 @@ describe('Components', () => {
                 expect(wrapper.container.firstChild).toHaveAttribute('role', 'button');
             });
         });
+
+        describe('type', () => {
+            it('should provide type="button" for semantic button elements', () => {
+                const wrapper = render(IButton, {
+                    props: {
+                        tag: 'button',
+                        type: 'button'
+                    },
+                    global: {
+                        provide: {
+                            [InklineKey as symbol]: createInkline()
+                        }
+                    }
+                });
+                expect(wrapper.container.firstChild).toHaveAttribute('type', 'button');
+            });
+
+            it('should provide type="submit" for semantic submit elements', () => {
+                const wrapper = render(IButton, {
+                    props: {
+                        tag: 'button',
+                        type: 'submit'
+                    },
+                    global: {
+                        provide: {
+                            [InklineKey as symbol]: createInkline()
+                        }
+                    }
+                });
+                expect(wrapper.container.firstChild).toHaveAttribute('type', 'submit');
+            });
+
+            it('should provide type="reset" for semantic reset elements', () => {
+                const wrapper = render(IButton, {
+                    props: {
+                        tag: 'button',
+                        type: 'reset'
+                    },
+                    global: {
+                        provide: {
+                            [InklineKey as symbol]: createInkline()
+                        }
+                    }
+                });
+                expect(wrapper.container.firstChild).toHaveAttribute('type', 'reset');
+            });
+
+            it('should not provide type="button" for non-button and input tags', () => {
+                const wrapper = render(IButton, {
+                    props: {
+                        tag: 'a'
+                    },
+                    global: {
+                        provide: {
+                            [InklineKey as symbol]: createInkline()
+                        }
+                    }
+                });
+                expect(wrapper.container.firstChild).not.toHaveAttribute('type', 'button');
+            });
+        });
     });
 });
