@@ -159,5 +159,35 @@ describe('Components', () => {
                 });
             });
         });
+
+        describe('role', () => {
+            it('should provide no role for button elements', () => {
+                const wrapper = render(IButton, {
+                    props: {
+                        tag: 'button'
+                    },
+                    global: {
+                        provide: {
+                            [InklineKey as symbol]: createInkline()
+                        }
+                    }
+                });
+                expect(wrapper.container.firstChild).not.toHaveAttribute('role', 'button');
+            });
+
+            it('should provide role="button" for non-button and input tags', () => {
+                const wrapper = render(IButton, {
+                    props: {
+                        tag: 'a'
+                    },
+                    global: {
+                        provide: {
+                            [InklineKey as symbol]: createInkline()
+                        }
+                    }
+                });
+                expect(wrapper.container.firstChild).toHaveAttribute('role', 'button');
+            });
+        });
     });
 });
