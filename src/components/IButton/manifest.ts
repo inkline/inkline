@@ -76,6 +76,12 @@ export const manifest: ComponentManifest = {
             description: 'Renders the component as a Router Link component with a `to` attribute'
         },
         {
+            name: 'type',
+            type: ['button', 'submit', 'reset', 'undefined'],
+            default: '',
+            description: 'The type of the button'
+        },
+        {
             name: 'size',
             type: ['sm', 'md', 'lg'],
             default: '',

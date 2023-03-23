@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, toRef } from 'vue';
+import { computed, defineComponent, inject, PropType, toRef } from 'vue';
 import { useComponentColor, useComponentSize, useLinkable } from '@inkline/inkline/composables';
 import { ILoader } from '@inkline/inkline/components/ILoader';
 import { ButtonGroupKey } from '@inkline/inkline/components/IButtonGroup/mixin';
@@ -149,7 +149,7 @@ export default defineComponent({
          * @name type
          */
         type: {
-            type: String,
+            type: String as PropType<'button' | 'submit' | 'reset' | string>,
             default: 'button'
         },
         /**
