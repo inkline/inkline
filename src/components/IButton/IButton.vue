@@ -220,9 +220,18 @@ export default defineComponent({
             };
         });
 
-        const role = computed(() => (props.to || props.href ? null : props.tag === 'button' ? null : props.tag === 'input' ? null : 'button'));
+        const role = computed(() =>
+            props.to || props.href
+                ? null
+                : props.tag === 'button' || props.tag === 'input'
+                ? null
+                : 'button'
+        );
+        const isType = computed(() =>
+            props.tag === 'button' || props.tag === 'input' ? props.type : null
+        );
+
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
-        const isType = computed(() => (props.tag === 'button' ? props.type : props.tag === 'input' ? props.type : null));
 
         return {
             ariaBusy,
