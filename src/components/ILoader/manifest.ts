@@ -56,35 +56,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--loader--size',
-                variants: [
-                    {
-                        name: '--loader--sm--size',
-                        value: [
-                            {
-                                value: 'calc(64px * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--loader--md--size',
-                        value: [
-                            {
-                                value: 'calc(64px * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--loader--lg--size',
-                        value: [
-                            {
-                                value: 'calc(64px * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 name: '--loader--background',
                 variants: [
                     {

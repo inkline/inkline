@@ -203,35 +203,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--checkbox--size',
-                variants: [
-                    {
-                        name: '--checkbox--sm--size',
-                        value: [
-                            {
-                                value: 'calc(#{1rem} * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--md--size',
-                        value: [
-                            {
-                                value: 'calc(#{1rem} * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--lg--size',
-                        value: [
-                            {
-                                value: 'calc(#{1rem} * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 name: '--checkbox--border-width',
                 value: [
                     {
@@ -309,38 +280,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--checkbox--margin-right',
-                value: [
-                    {
-                        name: '--margin-right-1-2'
-                    }
-                ]
-            },
-            {
-                name: '--checkbox--transition-property',
-                value: [
-                    {
-                        value: 'background-color,\n                border-color'
-                    }
-                ]
-            },
-            {
-                name: '--checkbox--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--checkbox--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
                 name: '--checkbox--background',
                 variants: [
                     {
@@ -387,59 +326,6 @@ export const manifest: ComponentManifest = {
                                 value: 'calc(#{8px} * var(--size-multiplier-lg))'
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: '--checkbox--checkmark--size',
-                variants: [
-                    {
-                        name: '--checkbox--sm--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--md--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--lg--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--checkbox--transition-property',
-                value: [
-                    {
-                        value: '(transform)'
-                    }
-                ]
-            },
-            {
-                name: '--checkbox--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--checkbox--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
                     }
                 ]
             },
@@ -494,25 +380,7 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--checked--background',
                 value: [
                     {
-                        name: '--checkbox--background',
-                        variants: [
-                            {
-                                name: '--checkbox--light--background',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--checkbox--background'
                     }
                 ],
                 variants: [
@@ -538,25 +406,7 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--disabled--label--color',
                 value: [
                     {
-                        name: '--checkbox--label--color',
-                        variants: [
-                            {
-                                name: '--checkbox--light--label--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--dark--label--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--checkbox--label--color'
                     }
                 ],
                 variants: [
@@ -608,25 +458,7 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--disabled--background',
                 value: [
                     {
-                        name: '--checkbox--background',
-                        variants: [
-                            {
-                                name: '--checkbox--light--background',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--checkbox--background'
                     }
                 ],
                 variants: [
@@ -678,25 +510,7 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--checked--disabled--background',
                 value: [
                     {
-                        name: '--checkbox--background',
-                        variants: [
-                            {
-                                name: '--checkbox--light--background',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--checkbox--background'
                     }
                 ],
                 variants: [
@@ -722,25 +536,7 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--disabled--color',
                 value: [
                     {
-                        name: '--checkbox--color',
-                        variants: [
-                            {
-                                name: '--checkbox--light--color',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkbox--dark--color',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--checkbox--color'
                     }
                 ],
                 variants: [
@@ -759,14 +555,6 @@ export const manifest: ComponentManifest = {
                                 name: '--color-white'
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: '--checkbox--margin-right',
-                value: [
-                    {
-                        name: '--margin-right-1-2'
                     }
                 ]
             }

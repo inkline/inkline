@@ -93,9 +93,6 @@ export const manifest: ComponentManifest = {
                 name: '--button--circle--size'
             },
             {
-                name: '--button--circle--size'
-            },
-            {
                 name: '--button-group--border-top-right-radius',
                 value: [
                     {
@@ -124,38 +121,6 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         name: '--button--border-bottom-left-radius'
-                    }
-                ]
-            },
-            {
-                name: '--button-group--border-bottom-left-radius',
-                value: [
-                    {
-                        name: '--button--border-bottom-left-radius'
-                    }
-                ]
-            },
-            {
-                name: '--button-group--border-bottom-right-radius',
-                value: [
-                    {
-                        name: '--button--border-bottom-right-radius'
-                    }
-                ]
-            },
-            {
-                name: '--button-group--border-top-left-radius',
-                value: [
-                    {
-                        name: '--button--border-top-left-radius'
-                    }
-                ]
-            },
-            {
-                name: '--button-group--border-top-right-radius',
-                value: [
-                    {
-                        name: '--button--border-top-right-radius'
                     }
                 ]
             }

@@ -38,19 +38,19 @@
         );
         --pagination--padding-top: var(
             --pagination--sm--padding-top,
-            calc(calc(var(--padding-top) / 2) * var(--size-multiplier-sm))
+            calc(var(--padding-top) / 2 * var(--size-multiplier-sm))
         );
         --pagination--padding-right: var(
             --pagination--sm--padding-right,
-            calc(calc(var(--padding-right) / 2) * var(--size-multiplier-sm))
+            calc(var(--padding-right) / 2 * var(--size-multiplier-sm))
         );
-        --pagination--padding-bototm: var(
-            --pagination--sm--padding-bototm,
-            calc(calc(var(--padding-bototm) / 2) * var(--size-multiplier-sm))
+        --pagination--padding-bottom: var(
+            --pagination--sm--padding-bottom,
+            calc(var(--padding-bottom) / 2 * var(--size-multiplier-sm))
         );
         --pagination--padding-left: var(
             --pagination--sm--padding-left,
-            calc(calc(var(--padding-left) / 2) * var(--size-multiplier-sm))
+            calc(var(--padding-left) / 2 * var(--size-multiplier-sm))
         );
     }
 
@@ -77,11 +77,11 @@
         );
         --pagination--margin-right: var(
             --pagination--md--margin-right,
-            calc(calc(var(--margin-right) / 4) * var(--size-multiplier-md))
+            calc(var(--margin-right) / 4 * var(--size-multiplier-md))
         );
         --pagination--margin-left: var(
             --pagination--md--margin-left,
-            calc(calc(var(--margin-left) / 4) * var(--size-multiplier-md))
+            calc(var(--margin-left) / 4 * var(--size-multiplier-md))
         );
         --pagination--min-width: var(
             --pagination--md--min-width,
@@ -89,19 +89,19 @@
         );
         --pagination--padding-top: var(
             --pagination--md--padding-top,
-            calc(calc(var(--padding-top) / 2) * var(--size-multiplier-md))
+            calc(var(--padding-top) / 2 * var(--size-multiplier-md))
         );
         --pagination--padding-right: var(
             --pagination--md--padding-right,
-            calc(calc(var(--padding-right) / 2) * var(--size-multiplier-md))
+            calc(var(--padding-right) / 2 * var(--size-multiplier-md))
         );
         --pagination--padding-bottom: var(
             --pagination--md--padding-bottom,
-            calc(calc(var(--padding-bottom) / 2) * var(--size-multiplier-md))
+            calc(var(--padding-bottom) / 2 * var(--size-multiplier-md))
         );
         --pagination--padding-left: var(
             --pagination--md--padding-left,
-            calc(calc(var(--padding-left) / 2) * var(--size-multiplier-md))
+            calc(var(--padding-left) / 2 * var(--size-multiplier-md))
         );
     }
 
@@ -128,11 +128,11 @@
         );
         --pagination--margin-right: var(
             --pagination--lg--margin-right,
-            calc(calc(var(--margin-right) / 4) * var(--size-multiplier-lg))
+            calc(var(--margin-right) / 4 * var(--size-multiplier-lg))
         );
         --pagination--margin-left: var(
             --pagination--lg--margin-left,
-            calc(calc(var(--margin-left) / 4) * var(--size-multiplier-lg))
+            calc(var(--margin-left) / 4 * var(--size-multiplier-lg))
         );
         --pagination--min-width: var(
             --pagination--lg--min-width,
@@ -144,15 +144,15 @@
         );
         --pagination--padding-right: var(
             --pagination--lg--padding-right,
-            calc(calc(var(--padding-right) / 2) * var(--size-multiplier-lg))
+            calc(var(--padding-right) / 2 * var(--size-multiplier-lg))
         );
         --pagination--padding-bottom: var(
             --pagination--lg--padding-bottom,
-            calc(calc(var(--padding-bottom) / 2) * var(--size-multiplier-lg))
+            calc(var(--padding-bottom) / 2 * var(--size-multiplier-lg))
         );
         --pagination--padding-left: var(
             --pagination--lg--padding-left,
-            calc(calc(var(--padding-left) / 2) * var(--size-multiplier-lg))
+            calc(var(--padding-left) / 2 * var(--size-multiplier-lg))
         );
     }
 }

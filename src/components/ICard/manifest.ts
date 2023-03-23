@@ -1249,33 +1249,7 @@ export const manifest: ComponentManifest = {
                 name: '--card--header--border-top-left-radius',
                 value: [
                     {
-                        name: '--card--border-top-left-radius',
-                        variants: [
-                            {
-                                name: '--card--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--border-top-left-radius'
                     }
                 ]
             },
@@ -1283,33 +1257,7 @@ export const manifest: ComponentManifest = {
                 name: '--card--header--border-top-right-radius',
                 value: [
                     {
-                        name: '--card--border-top-right-radius',
-                        variants: [
-                            {
-                                name: '--card--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--border-top-right-radius'
                     }
                 ]
             },
@@ -1317,73 +1265,7 @@ export const manifest: ComponentManifest = {
                 name: '--card--body--background',
                 value: [
                     {
-                        name: '--card--background',
-                        variants: [
-                            {
-                                name: '--card--primary--background',
-                                value: [
-                                    {
-                                        name: '--color-primary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--secondary--background',
-                                value: [
-                                    {
-                                        name: '--color-secondary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--light--background',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--info--background',
-                                value: [
-                                    {
-                                        name: '--color-info'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--success--background',
-                                value: [
-                                    {
-                                        name: '--color-success'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--warning--background',
-                                value: [
-                                    {
-                                        name: '--color-warning'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--danger--background',
-                                value: [
-                                    {
-                                        name: '--color-danger'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--background'
                     }
                 ]
             },
@@ -1513,72 +1395,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-top-color'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--primary--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--secondary--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--light--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--dark--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--info--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--success--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--warning--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--danger--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -1591,72 +1407,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-right-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--primary--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--secondary--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--light--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--dark--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--info--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--success--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--warning--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--danger--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -1671,72 +1421,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-bottom-color'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--primary--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--secondary--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--light--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--dark--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--info--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--success--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--warning--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--danger--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -1749,72 +1433,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-left-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--primary--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--secondary--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--light--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--dark--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--info--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--success--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--warning--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--danger--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -1834,32 +1452,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-top-left-radius'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--border-top-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--border-top-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--border-top-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -1872,32 +1464,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-top-right-radius'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--border-top-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--border-top-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--border-top-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -1912,32 +1478,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-bottom-right-radius'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--border-bottom-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--border-bottom-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--border-bottom-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -1950,32 +1490,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-bottom-left-radius'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--border-bottom-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--border-bottom-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--border-bottom-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -1994,32 +1508,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--padding-top'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -2060,32 +1548,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--padding-right'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ],
@@ -2124,32 +1586,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--padding-bottom'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -2190,32 +1626,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--padding-left'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ],
@@ -2252,73 +1662,7 @@ export const manifest: ComponentManifest = {
                 name: '--card--body--color',
                 value: [
                     {
-                        name: '--card--color',
-                        variants: [
-                            {
-                                name: '--card--primary--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-primary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--secondary--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-secondary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--light--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--dark--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--info--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-info'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--success--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-success'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--warning--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-warning'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--danger--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-danger'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--color'
                     }
                 ]
             },
@@ -2365,73 +1709,7 @@ export const manifest: ComponentManifest = {
                 name: '--card--footer--background',
                 value: [
                     {
-                        name: '--card--background',
-                        variants: [
-                            {
-                                name: '--card--primary--background',
-                                value: [
-                                    {
-                                        name: '--color-primary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--secondary--background',
-                                value: [
-                                    {
-                                        name: '--color-secondary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--light--background',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--info--background',
-                                value: [
-                                    {
-                                        name: '--color-info'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--success--background',
-                                value: [
-                                    {
-                                        name: '--color-success'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--warning--background',
-                                value: [
-                                    {
-                                        name: '--color-warning'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--danger--background',
-                                value: [
-                                    {
-                                        name: '--color-danger'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--background'
                     }
                 ],
                 variants: [
@@ -2627,72 +1905,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-top-color'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--primary--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--secondary--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--light--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--dark--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--info--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--success--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--warning--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--danger--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -2705,72 +1917,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-right-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--primary--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--secondary--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--light--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--dark--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--info--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--success--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--warning--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--danger--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -2785,72 +1931,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-bottom-color'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--primary--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--secondary--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--light--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--dark--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--info--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--success--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--warning--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--danger--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -2863,72 +1943,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-left-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--primary--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--secondary--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--light--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--dark--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--info--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--success--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--warning--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--danger--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -2947,32 +1961,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--padding-top'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -3013,32 +2001,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--padding-right'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ],
@@ -3077,32 +2039,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--padding-bottom'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -3143,32 +2079,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--padding-left'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--card--sm--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--md--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--card--lg--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ],
@@ -3205,73 +2115,7 @@ export const manifest: ComponentManifest = {
                 name: '--card--footer--color',
                 value: [
                     {
-                        name: '--card--color',
-                        variants: [
-                            {
-                                name: '--card--primary--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-primary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--secondary--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-secondary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--light--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--dark--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--info--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-info'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--success--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-success'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--warning--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-warning'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--danger--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-danger'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--color'
                     }
                 ]
             },
@@ -3318,33 +2162,7 @@ export const manifest: ComponentManifest = {
                 name: '--card--footer--border-bottom-left-radius',
                 value: [
                     {
-                        name: '--card--border-bottom-left-radius',
-                        variants: [
-                            {
-                                name: '--card--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--border-bottom-left-radius'
                     }
                 ]
             },
@@ -3352,33 +2170,7 @@ export const manifest: ComponentManifest = {
                 name: '--card--footer--border-bottom-right-radius',
                 value: [
                     {
-                        name: '--card--border-bottom-right-radius',
-                        variants: [
-                            {
-                                name: '--card--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--border-bottom-right-radius'
                     }
                 ]
             },
@@ -3390,32 +2182,6 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--border-top-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--card--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -3430,125 +2196,21 @@ export const manifest: ComponentManifest = {
                             {
                                 name: '--border-top-right-radius'
                             }
-                        ],
-                        variants: [
-                            {
-                                name: '--card--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
                         ]
                     }
                 ]
             },
             {
-                name: '--card--border-bottom-left-radius',
-                variants: [
-                    {
-                        name: '--card--sm--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--card--md--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--card--lg--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
+                name: '--card--border-bottom-left-radius'
             },
             {
-                name: '--card--border-bottom-right-radius',
-                variants: [
-                    {
-                        name: '--card--sm--border-bottom-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--card--md--border-bottom-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--card--lg--border-bottom-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
+                name: '--card--border-bottom-right-radius'
             },
             {
                 name: '--card--list-group--border-top-left-radius',
                 value: [
                     {
-                        name: '--card--border-top-left-radius',
-                        variants: [
-                            {
-                                name: '--card--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--border-top-left-radius'
                     }
                 ]
             },
@@ -3556,33 +2218,7 @@ export const manifest: ComponentManifest = {
                 name: '--card--list-group--border-top-right-radius',
                 value: [
                     {
-                        name: '--card--border-top-right-radius',
-                        variants: [
-                            {
-                                name: '--card--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--border-top-right-radius'
                     }
                 ]
             },
@@ -3590,33 +2226,7 @@ export const manifest: ComponentManifest = {
                 name: '--card--list-group--border-bottom-left-radius',
                 value: [
                     {
-                        name: '--card--border-bottom-left-radius',
-                        variants: [
-                            {
-                                name: '--card--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--border-bottom-left-radius'
                     }
                 ]
             },
@@ -3624,33 +2234,7 @@ export const manifest: ComponentManifest = {
                 name: '--card--list-group--border-bottom-right-radius',
                 value: [
                     {
-                        name: '--card--border-bottom-right-radius',
-                        variants: [
-                            {
-                                name: '--card--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--card--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--card--border-bottom-right-radius'
                     }
                 ]
             }

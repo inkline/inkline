@@ -635,171 +635,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--navbar--border-radius',
-                value: [
-                    {
-                        name: '--navbar--border-top-left-radius',
-                        value: [
-                            {
-                                name: '--border-top-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--border-top-right-radius',
-                        value: [
-                            {
-                                name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--border-bottom-right-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--border-bottom-left-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--navbar--transition-property',
-                value: [
-                    {
-                        value: '(background-color, border-color)'
-                    }
-                ]
-            },
-            {
-                name: '--navbar--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
-                name: '--navbar--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
                 name: '--navbar--item--color'
             },
             {
@@ -813,32 +648,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--padding-top'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--navbar--sm--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--md--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--lg--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -917,32 +726,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--padding-bottom'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--navbar--sm--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--md--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--lg--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -1024,32 +807,6 @@ export const manifest: ComponentManifest = {
                             {
                                 name: '--font-size'
                             }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--font-size',
-                                value: [
-                                    {
-                                        value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--md--font-size',
-                                value: [
-                                    {
-                                        value: 'calc(var(--font-size) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--lg--font-size',
-                                value: [
-                                    {
-                                        value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
                         ]
                     }
                 ]
@@ -1066,32 +823,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-top-left-radius'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--navbar--sm--border-top-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--md--border-top-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--lg--border-top-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -1104,32 +835,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-top-right-radius'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--navbar--sm--border-top-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--md--border-top-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--lg--border-top-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -1144,32 +849,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-bottom-right-radius'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--navbar--sm--border-bottom-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--md--border-bottom-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--lg--border-bottom-right-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -1183,54 +862,7 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-bottom-left-radius'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--navbar--sm--border-bottom-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--md--border-bottom-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--navbar--lg--border-bottom-left-radius',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--navbar--background',
-                variants: [
-                    {
-                        name: '--navbar--light--background',
-                        value: [
-                            {
-                                name: '--color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--dark--background',
-                        value: [
-                            {
-                                name: '--color-dark'
                             }
                         ]
                     }
@@ -1313,25 +945,7 @@ export const manifest: ComponentManifest = {
                 name: '--navbar--collapsed--item--background',
                 value: [
                     {
-                        name: '--navbar--item--background',
-                        variants: [
-                            {
-                                name: '--navbar--light--item--background',
-                                value: [
-                                    {
-                                        name: '--color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--dark--item--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--navbar--item--background'
                     }
                 ]
             },
@@ -1355,25 +969,7 @@ export const manifest: ComponentManifest = {
                 name: '--navbar--collapsed--item--hover--background',
                 value: [
                     {
-                        name: '--navbar--item--hover--background',
-                        variants: [
-                            {
-                                name: '--navbar--light--item--hover--background',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--dark--item--hover--background',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--navbar--item--hover--background'
                     }
                 ]
             }

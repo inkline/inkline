@@ -909,40 +909,8 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--toggle--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--toggle--transition-property',
-                value: [
-                    {
-                        value: 'background-color,\n                border-color,\n                transform'
-                    }
-                ]
-            },
-            {
-                name: '--toggle--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
                 name: '--toggle--indicator--background',
                 variants: [
-                    {
-                        name: '--toggle--light--indicator--background',
-                        value: [
-                            {
-                                name: '--color-white'
-                            }
-                        ]
-                    },
                     {
                         name: '--toggle--light--indicator--background',
                         value: [
@@ -1036,33 +1004,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--rounded--border-top-left-radius',
                         value: [
                             {
-                                name: '--toggle--height',
-                                variants: [
-                                    {
-                                        name: '--toggle--sm--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--md--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--lg--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                name: '--toggle--height'
                             }
                         ]
                     },
@@ -1070,33 +1012,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--rounded--border-top-right-radius',
                         value: [
                             {
-                                name: '--toggle--height',
-                                variants: [
-                                    {
-                                        name: '--toggle--sm--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--md--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--lg--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                name: '--toggle--height'
                             }
                         ]
                     },
@@ -1104,33 +1020,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--rounded--border-bottom-right-radius',
                         value: [
                             {
-                                name: '--toggle--height',
-                                variants: [
-                                    {
-                                        name: '--toggle--sm--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--md--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--lg--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                name: '--toggle--height'
                             }
                         ]
                     },
@@ -1138,33 +1028,7 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--rounded--border-bottom-left-radius',
                         value: [
                             {
-                                name: '--toggle--height',
-                                variants: [
-                                    {
-                                        name: '--toggle--sm--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--md--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--lg--height',
-                                        value: [
-                                            {
-                                                value: 'calc(20px * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
-                                ]
+                                name: '--toggle--height'
                             }
                         ]
                     }

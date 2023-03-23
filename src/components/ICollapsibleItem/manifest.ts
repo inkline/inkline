@@ -314,51 +314,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--collapsible--icon--size',
-                value: [
-                    {
-                        value: '12px'
-                    }
-                ]
-            },
-            {
-                name: '--collapsible--icon--size',
-                value: [
-                    {
-                        value: '12px) var(--collapsible--icon--size, 12px'
-                    }
-                ]
-            },
-            {
-                name: '--collapsible--transition-property',
-                value: [
-                    {
-                        value: '(var(--collapsible--transition-property, (background-color, transform)))'
-                    }
-                ]
-            },
-            {
-                name: '--collapsible--transition-duration',
-                value: [
-                    {
-                        name: '--collapsible--transition-duration',
-                        value: [
-                            {
-                                name: '--transition-duration'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--collapsible--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
                 name: '--collapsible--body--border-style',
                 value: [
                     {

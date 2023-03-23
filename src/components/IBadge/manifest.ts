@@ -936,73 +936,7 @@ export const manifest: ComponentManifest = {
                 name: '--badge--link--hover--background',
                 value: [
                     {
-                        name: '--badge--background',
-                        variants: [
-                            {
-                                name: '--badge--primary--background',
-                                value: [
-                                    {
-                                        name: '--color-primary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--badge--secondary--background',
-                                value: [
-                                    {
-                                        name: '--color-secondary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--badge--info--background',
-                                value: [
-                                    {
-                                        name: '--color-info'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--badge--success--background',
-                                value: [
-                                    {
-                                        name: '--color-success'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--badge--warning--background',
-                                value: [
-                                    {
-                                        name: '--color-warning'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--badge--danger--background',
-                                value: [
-                                    {
-                                        name: '--color-danger'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--badge--light--background',
-                                value: [
-                                    {
-                                        name: '--color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--badge--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--badge--background'
                     }
                 ]
             }

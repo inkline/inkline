@@ -191,35 +191,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--radio--size',
-                variants: [
-                    {
-                        name: '--radio--sm--size',
-                        value: [
-                            {
-                                value: 'calc(#{1rem} * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--md--size',
-                        value: [
-                            {
-                                value: 'calc(#{1rem} * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--lg--size',
-                        value: [
-                            {
-                                value: 'calc(#{1rem} * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 name: '--radio--border-color',
                 value: [
                     {
@@ -307,38 +278,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--radio--margin-right',
-                value: [
-                    {
-                        name: '--margin-right-1-2'
-                    }
-                ]
-            },
-            {
-                name: '--radio--transition-property',
-                value: [
-                    {
-                        value: 'background-color, border-color'
-                    }
-                ]
-            },
-            {
-                name: '--radio--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--radio--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
                 name: '--radio--background',
                 variants: [
                     {
@@ -367,43 +306,6 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--color-white'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--light--color',
-                        value: [
-                            {
-                                name: '--color-white'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--radio--checkmark--size',
-                variants: [
-                    {
-                        name: '--radio--sm--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--md--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--lg--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -442,25 +344,7 @@ export const manifest: ComponentManifest = {
                 name: '--radio--checked--border-color',
                 value: [
                     {
-                        name: '--radio--border-color',
-                        variants: [
-                            {
-                                name: '--radio--light--border-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--radio--dark--border-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--radio--border-color'
                     }
                 ],
                 variants: [
@@ -486,25 +370,7 @@ export const manifest: ComponentManifest = {
                 name: '--radio--checked--background',
                 value: [
                     {
-                        name: '--radio--background',
-                        variants: [
-                            {
-                                name: '--radio--light--background',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--radio--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--radio--background'
                     }
                 ],
                 variants: [
@@ -530,25 +396,7 @@ export const manifest: ComponentManifest = {
                 name: '--radio--disabled--label--color',
                 value: [
                     {
-                        name: '--radio--label--color',
-                        variants: [
-                            {
-                                name: '--radio--light--label--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--radio--dark--label--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--radio--label--color'
                     }
                 ],
                 variants: [
@@ -574,25 +422,7 @@ export const manifest: ComponentManifest = {
                 name: '--radio--checked--disabled--border-color',
                 value: [
                     {
-                        name: '--radio--border-color',
-                        variants: [
-                            {
-                                name: '--radio--light--border-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--radio--dark--border-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--radio--border-color'
                     }
                 ],
                 variants: [
@@ -618,25 +448,7 @@ export const manifest: ComponentManifest = {
                 name: '--radio--checked--disabled--background',
                 value: [
                     {
-                        name: '--radio--background',
-                        variants: [
-                            {
-                                name: '--radio--light--background',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--radio--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--radio--background'
                     }
                 ],
                 variants: [
@@ -662,25 +474,7 @@ export const manifest: ComponentManifest = {
                 name: '--radio--disabled--color',
                 value: [
                     {
-                        name: '--radio--color',
-                        variants: [
-                            {
-                                name: '--radio--light--color',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--radio--light--color',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--radio--color'
                     }
                 ],
                 variants: [
@@ -699,14 +493,6 @@ export const manifest: ComponentManifest = {
                                 name: '--color-dark-200'
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: '--radio--margin-right',
-                value: [
-                    {
-                        name: '--margin-right-1-2'
                     }
                 ]
             }

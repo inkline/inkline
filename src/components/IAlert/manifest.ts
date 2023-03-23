@@ -46,8 +46,8 @@ export const manifest: ComponentManifest = {
             description: 'Slot for alert icon '
         },
         {
-            name: 'default',
-            description: 'Slot for toast title '
+            name: 'title',
+            description: 'Slot for alert title '
         },
         {
             name: 'default',
@@ -630,41 +630,7 @@ export const manifest: ComponentManifest = {
                 name: '--alert--link--color',
                 value: [
                     {
-                        name: '--alert--color',
-                        variants: [
-                            {
-                                name: '--alert--info--color',
-                                value: [
-                                    {
-                                        name: '--color-info-800'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--success--color',
-                                value: [
-                                    {
-                                        name: '--color-success-800'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--warning--color',
-                                value: [
-                                    {
-                                        name: '--color-warning-800'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--danger--color',
-                                value: [
-                                    {
-                                        name: '--color-danger-800'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--alert--color'
                     }
                 ]
             },
@@ -673,22 +639,6 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         value: 'color'
-                    }
-                ]
-            },
-            {
-                name: '--alert--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--alert--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
                     }
                 ]
             },
@@ -848,7 +798,7 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--toast--title--font-weight',
+                name: '--alert--title--font-weight',
                 value: [
                     {
                         name: '--font-weight-semibold'
@@ -856,241 +806,26 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--alert--padding-left',
+                name: '--alert--icon--margin-left',
                 value: [
                     {
-                        name: '--padding-left'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--alert--sm--padding-left',
+                        name: '--alert--padding-left',
                         value: [
                             {
-                                value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--alert--md--padding-left',
-                        value: [
-                            {
-                                value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--alert--lg--padding-left',
-                        value: [
-                            {
-                                value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
+                                name: '--padding-left'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--alert--border-color',
+                name: '--alert--dismiss--margin-right',
                 value: [
                     {
-                        name: '--alert--border-top-color',
+                        name: '--alert--padding-right',
                         value: [
                             {
-                                name: '--border-top-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--alert--info--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-info-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--success--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-success-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--warning--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-warning-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--danger--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-danger-500'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--alert--border-right-color',
-                        value: [
-                            {
-                                name: '--border-right-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--alert--info--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-info-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--success--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-success-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--warning--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-warning-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--danger--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-danger-500'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--alert--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--alert--info--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-info-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--success--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-success-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--warning--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-warning-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--danger--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-danger-500'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--alert--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--alert--info--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-info-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--success--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-success-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--warning--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-warning-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--alert--danger--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-danger-500'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--alert--padding-left',
-                value: [
-                    {
-                        name: '--padding-left'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--alert--sm--padding-left',
-                        value: [
-                            {
-                                value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--alert--md--padding-left',
-                        value: [
-                            {
-                                value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--alert--lg--padding-left',
-                        value: [
-                            {
-                                value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
+                                name: '--padding-right'
                             }
                         ]
                     }

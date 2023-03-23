@@ -495,7 +495,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--padding-top',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-top) / 2) * var(--size-multiplier-sm))'
+                                        value: 'calc(var(--padding-top) / 2 * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -503,7 +503,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--padding-top',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-top) / 2) * var(--size-multiplier-md))'
+                                        value: 'calc(var(--padding-top) / 2 * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -529,7 +529,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--padding-right',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-right) / 2) * var(--size-multiplier-sm))'
+                                        value: 'calc(var(--padding-right) / 2 * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -537,7 +537,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--padding-right',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-right) / 2) * var(--size-multiplier-md))'
+                                        value: 'calc(var(--padding-right) / 2 * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -545,7 +545,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--padding-right',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-right) / 2) * var(--size-multiplier-lg))'
+                                        value: 'calc(var(--padding-right) / 2 * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -560,10 +560,18 @@ export const manifest: ComponentManifest = {
                         ],
                         variants: [
                             {
+                                name: '--pagination--sm--padding-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-bottom) / 2 * var(--size-multiplier-sm))'
+                                    }
+                                ]
+                            },
+                            {
                                 name: '--pagination--md--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-bottom) / 2) * var(--size-multiplier-md))'
+                                        value: 'calc(var(--padding-bottom) / 2 * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -571,7 +579,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-bottom) / 2) * var(--size-multiplier-lg))'
+                                        value: 'calc(var(--padding-bottom) / 2 * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -589,7 +597,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--sm--padding-left',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-left) / 2) * var(--size-multiplier-sm))'
+                                        value: 'calc(var(--padding-left) / 2 * var(--size-multiplier-sm))'
                                     }
                                 ]
                             },
@@ -597,7 +605,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--padding-left',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-left) / 2) * var(--size-multiplier-md))'
+                                        value: 'calc(var(--padding-left) / 2 * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -605,7 +613,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--padding-left',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-left) / 2) * var(--size-multiplier-lg))'
+                                        value: 'calc(var(--padding-left) / 2 * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -720,7 +728,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--margin-right',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--margin-right) / 4) * var(--size-multiplier-md))'
+                                        value: 'calc(var(--margin-right) / 4 * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -728,7 +736,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--margin-right',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--margin-right) / 4) * var(--size-multiplier-lg))'
+                                        value: 'calc(var(--margin-right) / 4 * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -762,7 +770,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--md--margin-left',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--margin-left) / 4) * var(--size-multiplier-md))'
+                                        value: 'calc(var(--margin-left) / 4 * var(--size-multiplier-md))'
                                     }
                                 ]
                             },
@@ -770,7 +778,7 @@ export const manifest: ComponentManifest = {
                                 name: '--pagination--lg--margin-left',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--margin-left) / 4) * var(--size-multiplier-lg))'
+                                        value: 'calc(var(--margin-left) / 4 * var(--size-multiplier-lg))'
                                     }
                                 ]
                             }
@@ -827,25 +835,7 @@ export const manifest: ComponentManifest = {
                 name: '--pagination--active--background',
                 value: [
                     {
-                        name: '--pagination--background',
-                        variants: [
-                            {
-                                name: '--pagination--light--background',
-                                value: [
-                                    {
-                                        name: '--color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--pagination--background'
                     }
                 ],
                 variants: [
@@ -879,24 +869,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-top-color'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--pagination--light--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--pagination--dark--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -909,24 +881,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-right-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--pagination--light--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--pagination--dark--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -941,24 +895,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-bottom-color'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--pagination--light--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--pagination--dark--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -972,24 +908,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-left-color'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--pagination--light--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--pagination--dark--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -1000,25 +918,7 @@ export const manifest: ComponentManifest = {
                 name: '--pagination--active--color',
                 value: [
                     {
-                        name: '--pagination--color',
-                        variants: [
-                            {
-                                name: '--pagination--light--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--dark--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--pagination--color'
                     }
                 ],
                 variants: [
@@ -1041,72 +941,10 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--pagination--active--background',
-                value: [
-                    {
-                        name: '--pagination--background',
-                        variants: [
-                            {
-                                name: '--pagination--light--background',
-                                value: [
-                                    {
-                                        name: '--color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--pagination--light--active--background',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--dark--active--background',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 name: '--pagination--disabled--color',
                 value: [
                     {
-                        name: '--pagination--color',
-                        variants: [
-                            {
-                                name: '--pagination--light--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--dark--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--pagination--color'
                     }
                 ],
                 variants: [
@@ -1140,51 +978,7 @@ export const manifest: ComponentManifest = {
                 name: '--pagination--quick--disabled--border-color',
                 value: [
                     {
-                        name: '--pagination--disabled--color',
-                        variants: [
-                            {
-                                name: '--pagination--light--disabled--color',
-                                value: [
-                                    {
-                                        name: '--text-color-weak'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--dark--disabled--color',
-                                value: [
-                                    {
-                                        name: '--text-color-weak'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--pagination--quick--disabled--border-color',
-                value: [
-                    {
-                        name: '--pagination--background',
-                        variants: [
-                            {
-                                name: '--pagination--light--background',
-                                value: [
-                                    {
-                                        name: '--color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--pagination--disabled--color'
                     }
                 ]
             },

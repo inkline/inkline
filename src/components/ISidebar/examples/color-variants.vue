@@ -22,7 +22,7 @@ export default {
         </ILayoutHeader>
         <ILayout vertical class="_padding-top:1/2">
             <ISidebar v-model="open" color="light">
-                <INav vertical>
+                <INav vertical color="light">
                     <INavItem to="/"> Home </INavItem>
                     <ICollapsible color="transparent">
                         <ICollapsibleItem title="Menu">
@@ -64,7 +64,7 @@ export default {
         </ILayoutHeader>
         <ILayout vertical class="_padding-top:1/2">
             <ISidebar v-model="open" color="dark">
-                <INav vertical>
+                <INav vertical color="dark">
                     <INavItem to="/"> Home </INavItem>
                     <ICollapsible color="transparent">
                         <ICollapsibleItem title="Menu">

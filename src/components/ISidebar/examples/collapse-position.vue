@@ -2,21 +2,24 @@
 export default {
     data() {
         return {
-            open: false
+            openRelative: false,
+            openAbsolute: false,
+            openFixed: false
         };
     }
 };
 </script>
+
 <template>
     <ILayout>
         <ILayoutHeader>
             <INavbar fluid :collapse="false">
                 <INavbarBrand to="/"> Dashboard </INavbarBrand>
-                <IHamburgerMenu v-model="open" animation="arrow-left" />
+                <IHamburgerMenu v-model="openRelative" animation="arrow-left" />
             </INavbar>
         </ILayoutHeader>
         <ILayout vertical class="_padding-top:1/2">
-            <ISidebar v-model="open" :collapse="true" collapse-position="relative">
+            <ISidebar v-model="openRelative" :collapse="true" collapse-position="relative">
                 <INav vertical>
                     <INavItem to="/"> Home </INavItem>
                     <INavItem to="/about"> Contact </INavItem>
@@ -44,11 +47,11 @@ export default {
         <ILayoutHeader>
             <INavbar fluid :collapse="false">
                 <INavbarBrand to="/"> Dashboard </INavbarBrand>
-                <IHamburgerMenu v-model="open" animation="arrow-left" />
+                <IHamburgerMenu v-model="openAbsolute" animation="arrow-left" />
             </INavbar>
         </ILayoutHeader>
         <ILayout vertical class="_padding-top:1/2">
-            <ISidebar v-model="open" :collapse="true" collapse-position="absolute">
+            <ISidebar v-model="openAbsolute" :collapse="true" collapse-position="absolute">
                 <INav vertical>
                     <INavItem to="/"> Home </INavItem>
                     <INavItem to="/about"> Contact </INavItem>
@@ -76,11 +79,11 @@ export default {
         <ILayoutHeader>
             <INavbar fluid :collapse="false">
                 <INavbarBrand to="/"> Dashboard </INavbarBrand>
-                <IHamburgerMenu v-model="open" animation="arrow-left" />
+                <IHamburgerMenu v-model="openFixed" animation="arrow-left" />
             </INavbar>
         </ILayoutHeader>
         <ILayout vertical class="_padding-top:1/2">
-            <ISidebar v-model="open" :collapse="true" collapse-position="fixed">
+            <ISidebar v-model="openFixed" :collapse="true" collapse-position="fixed">
                 <INav vertical>
                     <INavItem to="/"> Home </INavItem>
                     <INavItem to="/about"> Contact </INavItem>

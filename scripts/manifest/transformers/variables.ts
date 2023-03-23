@@ -46,28 +46,41 @@ export const mapBlocksToVariables = (blocks: ContextBlock[]): ManifestCSSVariabl
 
 export function mapVariantsToVariables(
     variables: ManifestCSSVariable[],
-    unmappedVariants: ManifestCSSVariable[][]
+    unmappedVariants: ManifestCSSVariable[][],
+    seenVariants: string[] = []
 ): ManifestCSSVariable[] {
-    return variables.map((variable) => {
+    return variables.reduce<ManifestCSSVariable[]>((acc, variable) => {
         const variants = unmappedVariants.flat().filter(({ name }) => {
             const variableNameBasedOnVariant = name
                 ?.split('--')
                 .filter((part, index) => index !== 2)
                 .join('--');
 
-            return variableNameBasedOnVariant === variable.name;
+            return variableNameBasedOnVariant === variable.name && !seenVariants.includes(name!);
         });
 
-        return {
-            name: variable.name,
-            ...(variable.value
-                ? {
-                      value: Array.isArray(variable.value)
-                          ? mapVariantsToVariables(variable.value, unmappedVariants)
-                          : variable.value
-                  }
-                : {}),
-            ...(variants.length > 0 ? { variants } : {})
-        };
-    });
+        if (variants.length > 0) {
+            seenVariants.push(...variants.map(({ name }) => name!));
+        }
+
+        if (!acc.find(({ name }) => name === variable.name)) {
+            acc.push({
+                name: variable.name,
+                ...(variable.value
+                    ? {
+                          value: Array.isArray(variable.value)
+                              ? mapVariantsToVariables(
+                                    variable.value,
+                                    unmappedVariants,
+                                    seenVariants
+                                )
+                              : variable.value
+                      }
+                    : {}),
+                ...(variants.length > 0 ? { variants } : {})
+            });
+        }
+
+        return acc;
+    }, []);
 }

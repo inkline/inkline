@@ -145,35 +145,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--hamburger-menu--bar--width',
-                variants: [
-                    {
-                        name: '--hamburger-menu--sm--bar--width',
-                        value: [
-                            {
-                                value: 'calc(30px * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--hamburger-menu--md--bar--width',
-                        value: [
-                            {
-                                value: 'calc(30px * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--hamburger-menu--lg--bar--width',
-                        value: [
-                            {
-                                value: 'calc(30px * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 name: '--hamburger-menu--bar--height',
                 variants: [
                     {

@@ -28,7 +28,7 @@ function readSyncIfExists(filePath: string) {
 }
 
 glob(
-    path.resolve(__dirname, '..', 'src', 'components', '**', manifestFileName),
+    path.resolve(__dirname, '..', 'src', 'components', '*', manifestFileName),
     async (error, files) => {
         if (error) {
             console.error(error);

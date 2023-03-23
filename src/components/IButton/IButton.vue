@@ -13,6 +13,13 @@ export default defineComponent({
     components: {
         ILoader
     },
+    events: [
+        /**
+         * Emitted when the button is clicked
+         * @event click
+         */
+        'click'
+    ],
     inheritAttrs: false,
     props: {
         /**
@@ -47,7 +54,7 @@ export default defineComponent({
         },
         /**
          * The color variant of the button
-         * @type primary | success | light | dark | info | success | warning | danger | facebook | google | twitter | github
+         * @type primary | success | light | dark | info | success | warning | danger
          * @default
          * @name color
          */

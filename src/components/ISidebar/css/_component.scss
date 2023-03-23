@@ -43,7 +43,8 @@
             --sidebar--transition-property,
             background-color,
             color,
-            border-color
+            border-color,
+            transform
         );
         transition-duration: var(--sidebar--transition-duration, var(--transition-duration));
         transition-timing-function: var(
@@ -216,8 +217,6 @@
 //
 .sidebar-transition-enter-active,
 .sidebar-transition-leave-active {
-    transition: transform var(--sidebar--transition-duration, var(--transition-duration))
-        var(--sidebar--transition-timing-function, var(--transition-timing-function));
     transform-origin: left;
 }
 

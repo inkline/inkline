@@ -568,32 +568,6 @@ export const manifest: ComponentManifest = {
                             {
                                 name: '--border-top-left-radius'
                             }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
                         ]
                     },
                     {
@@ -601,32 +575,6 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
                             }
                         ]
                     },
@@ -636,32 +584,6 @@ export const manifest: ComponentManifest = {
                             {
                                 name: '--border-bottom-right-radius'
                             }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
                         ]
                     },
                     {
@@ -669,32 +591,6 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--border-bottom-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -742,30 +638,6 @@ export const manifest: ComponentManifest = {
                                 name: '--box-shadow-color'
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-property',
-                value: [
-                    {
-                        value: 'background-color,\n            color,\n            border-color,\n            box-shadow'
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
                     }
                 ]
             },
@@ -812,40 +684,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--input--font-size',
-                value: [
-                    {
-                        name: '--font-size'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--sm--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--md--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--lg--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 name: '--input--hover--border-color',
                 variants: [
                     {
@@ -861,51 +699,6 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--color-dark-tint-100'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--box-shadow',
-                value: [
-                    {
-                        name: '--input--box-shadow-x-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-x'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--box-shadow-y-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-y'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--box-shadow-blur-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-blur-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--box-shadow-spread-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-spread-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--box-shadow-color',
-                        value: [
-                            {
-                                name: '--box-shadow-color'
                             }
                         ]
                     }
@@ -937,27 +730,6 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         name: '--line-height'
-                    }
-                ]
-            },
-            {
-                name: '--input--color',
-                variants: [
-                    {
-                        name: '--input--light--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-white'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
                     }
                 ]
             },
@@ -1004,32 +776,6 @@ export const manifest: ComponentManifest = {
                             {
                                 name: '--padding-right'
                             }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
                         ]
                     },
                     {
@@ -1072,32 +818,6 @@ export const manifest: ComponentManifest = {
                             {
                                 name: '--padding-left'
                             }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
                         ]
                     }
                 ]
@@ -1118,85 +838,6 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--color-gray-600'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-property',
-                value: [
-                    {
-                        value: '(border-color)'
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
-                name: '--input--border-color',
-                value: [
-                    {
-                        name: '--input--border-top-color',
-                        value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-right-color',
-                        value: [
-                            {
-                                name: '--border-right-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ]
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--light--border-color',
-                        value: [
-                            {
-                                name: '--color-light-shade-50'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--border-color',
-                        value: [
-                            {
-                                name: '--color-dark-tint-50'
                             }
                         ]
                     }
@@ -1232,32 +873,6 @@ export const manifest: ComponentManifest = {
                             {
                                 name: '--padding-right'
                             }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
                         ]
                     }
                 ]
@@ -1270,32 +885,6 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--padding-left'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -1354,33 +943,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--input--transition-property',
-                value: [
-                    {
-                        value: 'background-color'
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
-                name: '--input--clear--size'
-            },
-            {
                 name: '--input--clear--size'
             },
             {
@@ -1429,25 +991,7 @@ export const manifest: ComponentManifest = {
                 name: '--input--clear--hover--color',
                 value: [
                     {
-                        name: '--input--clear--color',
-                        variants: [
-                            {
-                                name: '--input--light--clear--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--clear--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--input--clear--color'
                     }
                 ]
             },
@@ -1455,25 +999,7 @@ export const manifest: ComponentManifest = {
                 name: '--input--clear--hover--background',
                 value: [
                     {
-                        name: '--input--clear--background',
-                        variants: [
-                            {
-                                name: '--input--light--clear--background',
-                                value: [
-                                    {
-                                        value: 'transparent'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--clear--background',
-                                value: [
-                                    {
-                                        value: '#{transparent}'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--input--clear--background'
                     }
                 ],
                 variants: [
@@ -1499,46 +1025,7 @@ export const manifest: ComponentManifest = {
                 name: '--input--clear--active--background',
                 value: [
                     {
-                        name: '--input--clear--background',
-                        variants: [
-                            {
-                                name: '--input--light--clear--background',
-                                value: [
-                                    {
-                                        value: 'transparent'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--clear--background',
-                                value: [
-                                    {
-                                        value: '#{transparent}'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--clear--color',
-                variants: [
-                    {
-                        name: '--input--light--clear--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-white'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--clear--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
+                        name: '--input--clear--background'
                     }
                 ]
             },
@@ -1554,25 +1041,7 @@ export const manifest: ComponentManifest = {
                 name: '--input--disabled--color',
                 value: [
                     {
-                        name: '--input--color',
-                        variants: [
-                            {
-                                name: '--input--light--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--input--color'
                     }
                 ],
                 variants: [
@@ -1598,25 +1067,7 @@ export const manifest: ComponentManifest = {
                 name: '--input--disabled--background',
                 value: [
                     {
-                        name: '--input--background',
-                        variants: [
-                            {
-                                name: '--input--light--background',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--input--background'
                     }
                 ],
                 variants: [
@@ -1633,74 +1084,6 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--color-dark-300'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--border-color',
-                value: [
-                    {
-                        value: '(\n                        var(--input--border-top-color, var(--border-top-color))\n                            var(--input--border-right-color, var(--border-right-color))\n                            var(--input--border-bottom-color, var(--border-bottom-color))\n                            var(--input--border-left-color, var(--border-left-color))\n                    )'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--light--border-color',
-                        value: [
-                            {
-                                name: '--color-light-shade-50'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--border-color',
-                        value: [
-                            {
-                                name: '--color-dark-tint-50'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--disabled--color',
-                variants: [
-                    {
-                        name: '--input--light--disabled--color',
-                        value: [
-                            {
-                                name: '--text-color-weak'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--disabled--color',
-                        value: [
-                            {
-                                name: '--text-color-weak'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--focus--border-color',
-                variants: [
-                    {
-                        name: '--input--light--focus--border-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--focus--border-color',
-                        value: [
-                            {
-                                name: '--color-primary'
                             }
                         ]
                     }

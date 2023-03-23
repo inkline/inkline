@@ -1077,32 +1077,6 @@ export const manifest: ComponentManifest = {
                     {
                         name: '--border-top-left-radius'
                     }
-                ],
-                variants: [
-                    {
-                        name: '--modal--sm--border-top-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--md--border-top-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--lg--border-top-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
                 ]
             },
             {
@@ -1111,32 +1085,6 @@ export const manifest: ComponentManifest = {
                     {
                         name: '--border-top-right-radius'
                     }
-                ],
-                variants: [
-                    {
-                        name: '--modal--sm--border-top-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--md--border-top-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--lg--border-top-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
                 ]
             },
             {
@@ -1208,255 +1156,6 @@ export const manifest: ComponentManifest = {
                                         name: '--contrast-text-color-danger'
                                     }
                                 ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--modal--border-radius',
-                value: [
-                    {
-                        name: '--modal--border-top-left-radius',
-                        value: [
-                            {
-                                name: '--border-top-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--modal--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--border-top-right-radius',
-                        value: [
-                            {
-                                name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--modal--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--border-bottom-right-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--modal--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--border-bottom-left-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--modal--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--modal--header--color',
-                value: [
-                    {
-                        name: '--modal--color',
-                        variants: [
-                            {
-                                name: '--modal--primary--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-primary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--secondary--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-secondary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--light--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--dark--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--info--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-info'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--success--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-success'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--warning--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-warning'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--danger--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-danger'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--modal--font-size',
-                value: [
-                    {
-                        name: '--font-size'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--modal--sm--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--md--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--lg--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -1500,73 +1199,7 @@ export const manifest: ComponentManifest = {
                 name: '--modal--body--background',
                 value: [
                     {
-                        name: '--modal--background',
-                        variants: [
-                            {
-                                name: '--modal--primary--background',
-                                value: [
-                                    {
-                                        name: '--color-primary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--secondary--background',
-                                value: [
-                                    {
-                                        name: '--color-secondary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--light--background',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--info--background',
-                                value: [
-                                    {
-                                        name: '--color-info'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--success--background',
-                                value: [
-                                    {
-                                        name: '--color-success'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--warning--background',
-                                value: [
-                                    {
-                                        name: '--color-warning'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--danger--background',
-                                value: [
-                                    {
-                                        name: '--color-danger'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--modal--background'
                     }
                 ]
             },
@@ -1574,73 +1207,7 @@ export const manifest: ComponentManifest = {
                 name: '--modal--body--color',
                 value: [
                     {
-                        name: '--modal--color',
-                        variants: [
-                            {
-                                name: '--modal--primary--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-primary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--secondary--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-secondary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--light--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--dark--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--info--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-info'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--success--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-success'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--warning--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-warning'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--danger--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-danger'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--modal--color'
                     }
                 ]
             },
@@ -1770,72 +1337,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-top-color'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--primary--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--secondary--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--light--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-light'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--dark--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--info--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--success--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--warning--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--danger--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -1848,72 +1349,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-right-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--primary--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--secondary--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--light--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-light'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--dark--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--info--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--success--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--warning--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--danger--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -1928,72 +1363,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-bottom-color'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--primary--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--secondary--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--light--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-light'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--dark--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--info--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--success--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--warning--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--danger--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -2006,72 +1375,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-left-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--primary--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--secondary--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--light--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-light'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--dark--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--info--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--success--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--warning--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--danger--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -2091,32 +1394,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--padding-top'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--sm--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--md--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--lg--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -2129,32 +1406,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--padding-right'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--sm--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--md--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--lg--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -2169,32 +1420,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--padding-bottom'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--sm--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--md--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--lg--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -2208,32 +1433,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--padding-left'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--sm--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--md--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--lg--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -2244,73 +1443,7 @@ export const manifest: ComponentManifest = {
                 name: '--modal--footer--background',
                 value: [
                     {
-                        name: '--modal--background',
-                        variants: [
-                            {
-                                name: '--modal--primary--background',
-                                value: [
-                                    {
-                                        name: '--color-primary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--secondary--background',
-                                value: [
-                                    {
-                                        name: '--color-secondary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--light--background',
-                                value: [
-                                    {
-                                        name: '--color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--dark--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--info--background',
-                                value: [
-                                    {
-                                        name: '--color-info'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--success--background',
-                                value: [
-                                    {
-                                        name: '--color-success'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--warning--background',
-                                value: [
-                                    {
-                                        name: '--color-warning'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--danger--background',
-                                value: [
-                                    {
-                                        name: '--color-danger'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--modal--background'
                     }
                 ],
                 variants: [
@@ -2386,32 +1519,6 @@ export const manifest: ComponentManifest = {
                     {
                         name: '--border-bottom-left-radius'
                     }
-                ],
-                variants: [
-                    {
-                        name: '--modal--sm--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--md--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--lg--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
                 ]
             },
             {
@@ -2420,105 +1527,13 @@ export const manifest: ComponentManifest = {
                     {
                         name: '--border-bottom-right-radius'
                     }
-                ],
-                variants: [
-                    {
-                        name: '--modal--sm--border-bottom-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--md--border-bottom-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--modal--lg--border-bottom-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
                 ]
             },
             {
                 name: '--modal--footer--color',
                 value: [
                     {
-                        name: '--modal--color',
-                        variants: [
-                            {
-                                name: '--modal--primary--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-primary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--secondary--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-secondary'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--light--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-white'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--dark--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--info--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-info'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--success--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-success'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--warning--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-warning'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--modal--danger--color',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-danger'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--modal--color'
                     }
                 ]
             },
@@ -2648,72 +1663,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-top-color'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--primary--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--secondary--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--light--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-light'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--dark--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--info--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--success--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--warning--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--danger--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -2726,72 +1675,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-right-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--primary--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--secondary--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--light--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-light'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--dark--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--info--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--success--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--warning--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--danger--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -2806,72 +1689,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--border-bottom-color'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--primary--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--secondary--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--light--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-light'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--dark--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--info--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--success--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--warning--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--danger--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -2884,72 +1701,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--border-left-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--primary--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-primary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--secondary--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-secondary-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--light--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-light'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--dark--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--info--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-info-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--success--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-success-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--warning--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-warning-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--danger--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-danger-shade-50'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -2969,32 +1720,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--padding-top'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--sm--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--md--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--lg--padding-top',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-top) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -3007,32 +1732,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--padding-right'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--sm--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--md--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--lg--padding-right',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }
@@ -3047,32 +1746,6 @@ export const manifest: ComponentManifest = {
                                     {
                                         name: '--padding-bottom'
                                     }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--sm--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--md--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--lg--padding-bottom',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-bottom) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
-                                    }
                                 ]
                             }
                         ]
@@ -3085,32 +1758,6 @@ export const manifest: ComponentManifest = {
                                 value: [
                                     {
                                         name: '--padding-left'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--modal--sm--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--md--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--modal--lg--padding-left',
-                                        value: [
-                                            {
-                                                value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
-                                            }
-                                        ]
                                     }
                                 ]
                             }

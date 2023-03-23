@@ -160,44 +160,10 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--sidebar--width',
-                value: [
-                    {
-                        value: '14rem'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--sidebar--sm--width',
-                        value: [
-                            {
-                                value: 'calc(#{14rem} * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--md--width',
-                        value: [
-                            {
-                                value: 'calc(#{14rem} * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--lg--width',
-                        value: [
-                            {
-                                value: 'calc(#{14rem} * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 name: '--sidebar--transition-property',
                 value: [
                     {
-                        value: 'background-color,\n            color,\n            border-color'
+                        value: 'background-color,\n            color,\n            border-color,\n            transform'
                     }
                 ]
             },
@@ -336,35 +302,6 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--sidebar--width',
-                variants: [
-                    {
-                        name: '--sidebar--sm--width',
-                        value: [
-                            {
-                                value: 'calc(#{14rem} * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--md--width',
-                        value: [
-                            {
-                                value: 'calc(#{14rem} * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--lg--width',
-                        value: [
-                            {
-                                value: 'calc(#{14rem} * var(--size-multiplier-lg))'
                             }
                         ]
                     }
