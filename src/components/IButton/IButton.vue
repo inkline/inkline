@@ -136,6 +136,16 @@ export default defineComponent({
             default: undefined
         },
         /**
+         * The type of the button
+         * @type button | submit | reset | undefined
+         * @default
+         * @name type
+         */
+        type: {
+            type: String,
+            default: 'button'
+        },
+        /**
          * The size variant of the button
          * @type sm | md | lg
          * @default
@@ -203,8 +213,9 @@ export default defineComponent({
             };
         });
 
-        const role = computed(() => (props.to || props.href ? null : 'button'));
+        const role = computed(() => (props.to || props.href ? null : props.tag === 'button' ? null : props.tag === 'input' ? null : 'button'));
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
+        const isType = computed(() => (props.tag === 'button' ? props.type : props.tag === 'input' ? props.type : null));
 
         return {
             ariaBusy,
@@ -212,6 +223,7 @@ export default defineComponent({
             ariaPressed,
             disabled,
             isTag,
+            isType,
             role,
             tabIndex,
             classes
@@ -229,6 +241,7 @@ export default defineComponent({
         :href="href"
         :tag="tag"
         :role="role"
+        :type="isType"
         :tabindex="tabIndex"
         :class="classes"
         :disabled="disabled"
