@@ -159,6 +159,7 @@ Thanks goes to these wonderful people:
       <td align="center" valign="top" width="10%"><a href="https://github.com/simondib"><img class="avatar" src="https://avatars.githubusercontent.com/u/7483506?v=4" width="50px;" alt="Simon"/></a></td>
       <td align="center" valign="top" width="10%"><a href="https://github.com/thunfisch987"><img class="avatar" src="https://avatars.githubusercontent.com/u/43795814?v=4" width="50px;" alt="thunfisch987"/></a></td>
       <td align="center" valign="top" width="10%"><a href="https://github.com/theruziev"><img class="avatar" src="https://avatars.githubusercontent.com/u/32102033?v=4" width="50px;" alt="Bakhtiyor Ruziev"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://pkej.github.io/"><img class="avatar" src="https://avatars.githubusercontent.com/u/7883794?v=4" width="50px;" alt="Paul Kenneth Egell-Johnsen"/></a></td>
     </tr>
   </tbody>
 </table>
