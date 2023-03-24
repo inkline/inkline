@@ -1,8 +1,4 @@
 <script lang="ts">
-/**
- * The only true alert.
- * @displayName IAlertdasdas
- */
 import { ref, computed, watch, defineComponent } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
