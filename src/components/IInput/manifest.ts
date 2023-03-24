@@ -130,307 +130,6 @@ export const manifest: ComponentManifest = {
         selector: '.input-wrapper',
         variables: [
             {
-                name: '--input-line-height',
-                value: [
-                    {
-                        name: '--line-height'
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-property',
-                value: [
-                    {
-                        value: '(background-color)'
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
-                name: '--input--prepend-append--background',
-                variants: [
-                    {
-                        name: '--input--light--prepend-append--background',
-                        value: [
-                            {
-                                name: '--color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--prepend-append--background',
-                        value: [
-                            {
-                                name: '--color-dark'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--font-size',
-                value: [
-                    {
-                        name: '--font-size'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--sm--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--md--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--lg--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--prepend-append--padding-left',
-                value: [
-                    {
-                        name: '--input--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--prepend-append--padding-right',
-                value: [
-                    {
-                        name: '--input--padding-right',
-                        value: [
-                            {
-                                name: '--padding-right'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--border-top-left-radius',
-                value: [
-                    {
-                        name: '--border-top-left-radius'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--sm--border-top-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--md--border-top-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--lg--border-top-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--border-bottom-left-radius',
-                value: [
-                    {
-                        name: '--border-bottom-left-radius'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--sm--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--md--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--lg--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--border-top-right-radius',
-                value: [
-                    {
-                        name: '--border-top-right-radius'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--sm--border-top-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--md--border-top-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--lg--border-top-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--border-bottom-right-radius',
-                value: [
-                    {
-                        name: '--border-bottom-right-radius'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--sm--border-bottom-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--md--border-bottom-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--lg--border-bottom-right-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 name: '--input--border-width',
                 value: [
                     {
@@ -568,6 +267,32 @@ export const manifest: ComponentManifest = {
                             {
                                 name: '--border-top-left-radius'
                             }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
+                                    }
+                                ]
+                            }
                         ]
                     },
                     {
@@ -575,6 +300,32 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--border-top-right-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -584,6 +335,32 @@ export const manifest: ComponentManifest = {
                             {
                                 name: '--border-bottom-right-radius'
                             }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--border-bottom-right-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
+                                    }
+                                ]
+                            }
                         ]
                     },
                     {
@@ -591,6 +368,32 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--border-bottom-left-radius'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -642,6 +445,30 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
+                name: '--input--transition-property',
+                value: [
+                    {
+                        value: 'background-color,\n            color,\n            border-color,\n            box-shadow'
+                    }
+                ]
+            },
+            {
+                name: '--input--transition-duration',
+                value: [
+                    {
+                        name: '--transition-duration'
+                    }
+                ]
+            },
+            {
+                name: '--input--transition-timing-function',
+                value: [
+                    {
+                        name: '--transition-timing-function'
+                    }
+                ]
+            },
+            {
                 name: '--input--color',
                 variants: [
                     {
@@ -678,6 +505,40 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--color-dark'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--font-size',
+                value: [
+                    {
+                        name: '--font-size'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--sm--font-size',
+                        value: [
+                            {
+                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--md--font-size',
+                        value: [
+                            {
+                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--lg--font-size',
+                        value: [
+                            {
+                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -776,6 +637,32 @@ export const manifest: ComponentManifest = {
                             {
                                 name: '--padding-right'
                             }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--padding-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--padding-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--padding-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
+                                    }
+                                ]
+                            }
                         ]
                     },
                     {
@@ -817,6 +704,32 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--padding-left'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--input--sm--padding-left',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--padding-left',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--padding-left',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -1026,6 +939,61 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         name: '--input--clear--background'
+                    }
+                ]
+            },
+            {
+                name: '--input-line-height',
+                value: [
+                    {
+                        name: '--line-height'
+                    }
+                ]
+            },
+            {
+                name: '--input--prepend-append--background',
+                variants: [
+                    {
+                        name: '--input--light--prepend-append--background',
+                        value: [
+                            {
+                                name: '--color-light'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--prepend-append--background',
+                        value: [
+                            {
+                                name: '--color-dark'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--prepend-append--padding-left',
+                value: [
+                    {
+                        name: '--input--padding-left',
+                        value: [
+                            {
+                                name: '--padding-left'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--prepend-append--padding-right',
+                value: [
+                    {
+                        name: '--input--padding-right',
+                        value: [
+                            {
+                                name: '--padding-right'
+                            }
+                        ]
                     }
                 ]
             },

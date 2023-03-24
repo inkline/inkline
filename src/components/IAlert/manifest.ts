@@ -606,7 +606,7 @@ export const manifest: ComponentManifest = {
                 name: '--alert--transition-property',
                 value: [
                     {
-                        value: '(background-color, color, border-color)'
+                        value: 'background-color, color, border-color'
                     }
                 ]
             },

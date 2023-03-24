@@ -1072,22 +1072,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--modal--border-top-left-radius',
-                value: [
-                    {
-                        name: '--border-top-left-radius'
-                    }
-                ]
-            },
-            {
-                name: '--modal--border-top-right-radius',
-                value: [
-                    {
-                        name: '--border-top-right-radius'
-                    }
-                ]
-            },
-            {
                 name: '--modal--header--color',
                 value: [
                     {
@@ -1510,22 +1494,6 @@ export const manifest: ComponentManifest = {
                                 name: '--color-danger-shade-50'
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: '--modal--border-bottom-left-radius',
-                value: [
-                    {
-                        name: '--border-bottom-left-radius'
-                    }
-                ]
-            },
-            {
-                name: '--modal--border-bottom-right-radius',
-                value: [
-                    {
-                        name: '--border-bottom-right-radius'
                     }
                 ]
             },

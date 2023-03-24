@@ -933,14 +933,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--toast--padding-left',
-                value: [
-                    {
-                        name: '--padding-left'
-                    }
-                ]
-            },
-            {
                 name: '--toast--progress--height',
                 value: [
                     {

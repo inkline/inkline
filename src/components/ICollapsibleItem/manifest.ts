@@ -272,19 +272,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--collapsible--transition-duration',
-                value: [
-                    {
-                        name: '--collapsible--transition-duration',
-                        value: [
-                            {
-                                name: '--transition-duration'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 name: '--collapsible--transition-timing-function',
                 value: [
                     {

@@ -47,6 +47,7 @@ export const mapBlocksToVariables = (blocks: ContextBlock[]): ManifestCSSVariabl
 export function mapVariantsToVariables(
     variables: ManifestCSSVariable[],
     unmappedVariants: ManifestCSSVariable[][],
+    depth = 0,
     seenVariants: string[] = []
 ): ManifestCSSVariable[] {
     return variables.reduce<ManifestCSSVariable[]>((acc, variable) => {
@@ -63,7 +64,17 @@ export function mapVariantsToVariables(
             seenVariants.push(...variants.map(({ name }) => name!));
         }
 
-        if (!acc.find(({ name }) => name === variable.name)) {
+        const isDuplicate = acc.find(({ name }) => name === variable.name);
+        const isFoundAsChild =
+            depth === 0 &&
+            variables.find(
+                ({ value, name }) =>
+                    Array.isArray(value) &&
+                    name?.split('--').length === 3 &&
+                    value.find((child) => child.name === variable.name)
+            );
+
+        if (!isDuplicate && !isFoundAsChild) {
             acc.push({
                 name: variable.name,
                 ...(variable.value
@@ -72,6 +83,7 @@ export function mapVariantsToVariables(
                               ? mapVariantsToVariables(
                                     variable.value,
                                     unmappedVariants,
+                                    depth + 1,
                                     seenVariants
                                 )
                               : variable.value

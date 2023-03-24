@@ -259,32 +259,6 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--card--transition-property',
-                value: [
-                    {
-                        name: '--card--transition-property',
-                        value: [
-                            {
-                                value: 'background-color'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--card--transition-duration',
-                value: [
-                    {
-                        name: '--card--transition-duration',
-                        value: [
-                            {
-                                name: '--transition-duration'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 name: '--card--transition-timing-function',
                 value: [
                     {
@@ -2199,12 +2173,6 @@ export const manifest: ComponentManifest = {
                         ]
                     }
                 ]
-            },
-            {
-                name: '--card--border-bottom-left-radius'
-            },
-            {
-                name: '--card--border-bottom-right-radius'
             },
             {
                 name: '--card--list-group--border-top-left-radius',
