@@ -57,5 +57,5 @@ function replaceField() {
         </IFormGroup>
     </IForm>
 
-    <pre>{{ prettySchema }}</pre>
+    <pre class="_margin-top:1">{{ prettySchema }}</pre>
 </template>

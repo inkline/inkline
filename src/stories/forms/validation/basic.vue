@@ -119,6 +119,6 @@ function onSubmit() {
             <IButton type="button" :loading="loading" @click="onSubmit">Submit</IButton>
         </IFormGroup>
 
-        <pre class="_margin-top:1">{{ prettySchema }}</pre>
+        <pre class="_margin-top:2 _text:muted">{{ prettySchema }}</pre>
     </IForm>
 </template>

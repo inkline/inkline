@@ -33,7 +33,7 @@ const groupValidationStatus = computed(() => {
             <IInput name="group.input2" placeholder="Type something.." />
             <IFormError for="group.input2" />
         </IFormGroup>
-        <p>
+        <p class="_margin-top:2">
             Validation status for <code>group</code> (requires both inputs to be filled):
             <strong>{{ groupValidationStatus }}</strong>
         </p>

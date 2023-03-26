@@ -18,7 +18,5 @@ const form = useForm({
         </IFormGroup>
     </IForm>
 
-    <pre class="_margin-top:2 _text:muted">
-    {{ form }}
-    </pre>
+    <pre class="_margin-top:2 _text:muted">{{ form }}</pre>
 </template>

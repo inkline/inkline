@@ -32,7 +32,7 @@ const groupValidationStatus = computed(() => {
                 <IFormError :for="`group.${index}`" />
             </IFormGroup>
         </IFormGroup>
-        <p>
+        <p class="_margin-top:2">
             Validation status for <code>group</code> (requires both inputs to be filled):
             <strong>{{ groupValidationStatus }}</strong>
         </p>
