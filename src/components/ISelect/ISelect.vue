@@ -24,7 +24,7 @@ import {
     PopupEvent,
     usePopupControl
 } from '@inkline/inkline/composables';
-import { Placement } from '@floating-ui/dom';
+import { Placement, Strategy } from '@floating-ui/dom';
 import { SelectKey, SelectOption } from '@inkline/inkline/components/ISelect/mixin';
 import { ISelectOption } from '@inkline/inkline/components/ISelectOption';
 import { extractRefHTMLElement } from '@inkline/inkline/utils';
@@ -167,7 +167,7 @@ export default defineComponent({
          * @name label
          */
         label: {
-            type: [String, Function],
+            type: [String, Function] as PropType<string | ((option: SelectOption) => string)>,
             default: 'label'
         },
         /**
@@ -263,12 +263,14 @@ export default defineComponent({
         /**
          * Used to override the floating-ui options used for creating the dropdown
          * @type Object
-         * @default {}
+         * @default { strategy: 'absolute' }
          * @name popupOptions
          */
         popupOptions: {
-            type: Object,
-            default: (): any => ({})
+            type: Object as PropType<{ strategy?: Strategy }>,
+            default: () => ({
+                strategy: 'absolute'
+            })
         },
         /**
          * The readonly state of the select
@@ -279,16 +281,6 @@ export default defineComponent({
         readonly: {
             type: Boolean,
             default: false
-        },
-        /**
-         * The number of pixels until scroll end before loading the next page
-         * @type Number
-         * @default 160
-         * @name scrollTolerance
-         */
-        scrollTolerance: {
-            type: Number,
-            default: 160
         },
         /**
          * Selects the first option when pressing enter
@@ -329,16 +321,6 @@ export default defineComponent({
         type: {
             type: String,
             default: 'text'
-        },
-        /**
-         * The total number of options, used for infinite scrolling
-         * @type Number
-         * @default
-         * @name total
-         */
-        total: {
-            type: Number,
-            default: undefined
         },
         /**
          * Delay in milliseconds before the popover is hidden on hover
@@ -461,7 +443,8 @@ export default defineComponent({
             visible: props.visible,
             animationDuration: props.animationDuration,
             hoverHideDelay: props.hoverHideDelay,
-            offset: props.offset
+            offset: props.offset,
+            popupOptions: props.popupOptions
         }));
         const { visible, hide, show, createPopup, onClickOutside } = usePopupControl({
             triggerRef,
@@ -546,38 +529,6 @@ export default defineComponent({
             event.preventDefault();
             event.stopPropagation();
         }
-
-        /**
-         * Infinite scrolling
-         *
-         * Compute scroll offset, viewport height and total height and determine if next set of items needs to be loaded
-         */
-
-        // function onScroll() {
-        //     if (typeof props.total !== 'undefined' || !bodyRef.value || !optionsRef.value) {
-        //         return;
-        //     }
-        //
-        //     const scrollTop = bodyRef.value.scrollTop;
-        //     const viewportHeight = parseInt(getComputedStyle(bodyRef.value).height, 10);
-        //     const totalHeight = parseInt(getComputedStyle(optionsRef.value).height, 10);
-        //
-        //     const shouldLoadNextPage =
-        //         scrollTop + viewportHeight > totalHeight - props.scrollTolerance;
-        //     const endReached = props.options.length >= props.total;
-        //
-        //     if (shouldLoadNextPage && !endReached && props.options.length > 0 && !props.loading) {
-        //         emit('pagination');
-        //     }
-        // }
-
-        // function onWindowResize() {
-        //     onScroll();
-        //
-        //     if (visible.value) {
-        //         nextTick().then(() => createPopup());
-        //     }
-        // }
 
         /**
          * Accessibility
@@ -721,22 +672,6 @@ export default defineComponent({
 
             return focusableItems;
         }
-
-        // function inputMatchesLabel(value: string): boolean {
-        //     return !!(value && value === getLabel(value));
-        // }
-        //
-        // function inputMatchesLength(value: string): boolean {
-        //     return props.minLength === 0 || ((value as any) && value.length >= props.minLength);
-        // }
-        //
-        // function inputShouldShowSelect(value: string): boolean {
-        //     if (!props.autocomplete) {
-        //         return true;
-        //     }
-        //
-        //     return inputMatchesLength(value) && !inputMatchesLabel(value);
-        // }
 
         function getLabel(option: SelectOption | string | number): string {
             if (typeof option !== 'object') {

@@ -10,7 +10,7 @@
     position: relative;
 
     .select {
-        @include mixins.popup(var(--select--z-index, 2000));
+        @include mixins.popup(var(--select--z-index, 2000), var(--select--strategy, absolute));
         @include mixins.popup-arrow();
         @include mixins.popup-arrow-size-variant(var(--select--arrow--size, 6px));
 

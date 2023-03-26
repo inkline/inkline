@@ -287,10 +287,12 @@ export default defineComponent({
 <template>
     <div v-bind="wrapperAttrs" :id="id && `${id}-wrapper`" class="input-wrapper" :class="classes">
         <div v-if="$slots.prepend" class="input-prepend">
+            <!-- @slot prepend Slot for the textarea prepend content -->
             <slot name="prepend" />
         </div>
         <div class="input">
             <span v-if="$slots.prefix" class="input-prefix">
+                <!-- @slot prefix Slot for the textarea prefix content -->
                 <slot name="prefix" />
             </span>
             <textarea
@@ -310,6 +312,7 @@ export default defineComponent({
                 @blur="onBlur"
             />
             <span v-if="$slots.suffix || clearable" class="input-suffix">
+                <!-- @slot clearable Slot for the clearable button -->
                 <slot name="clearable" :clear="onClear">
                     <i
                         v-if="clearable"
@@ -320,10 +323,12 @@ export default defineComponent({
                         @click="onClear"
                     />
                 </slot>
+                <!-- @slot suffix Slot for the textarea suffix content -->
                 <slot name="suffix" />
             </span>
         </div>
         <div v-if="$slots.append" class="input-append">
+            <!-- @slot append Slot for the textarea append content -->
             <slot name="append" />
         </div>
     </div>

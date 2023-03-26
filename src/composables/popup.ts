@@ -7,7 +7,8 @@ import {
     flip,
     offset,
     shift,
-    Placement
+    Placement,
+    Strategy
 } from '@floating-ui/dom';
 import { extractRefHTMLElement } from '@inkline/inkline/utils';
 
@@ -27,6 +28,9 @@ export function usePopupControl(props: {
         animationDuration: number;
         hoverHideDelay: number;
         offset: number;
+        popupOptions: {
+            strategy?: Strategy;
+        };
     }>;
     emit: (event: any, ...args: any[]) => void;
 }) {
@@ -226,12 +230,12 @@ export function usePopupControl(props: {
         instance.value = autoUpdate(triggerRef, popupRef, () => {
             computePosition(triggerRef, popupRef, {
                 placement: props.componentProps.value.placement,
-                strategy: 'fixed',
                 middleware: [
                     offset(props.componentProps.value.offset),
                     flip(),
                     shift({ padding: 6 })
-                ].concat(arrowRef ? [arrow({ element: arrowRef })] : [])
+                ].concat(arrowRef ? [arrow({ element: arrowRef })] : []),
+                ...props.componentProps.value.popupOptions
             }).then(({ x, y, placement, middlewareData }) => {
                 Object.assign(popupRef.style, {
                     left: `${x}px`,

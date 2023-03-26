@@ -384,6 +384,7 @@ export default defineComponent({
         :class="classes"
     >
         <div class="input-prepend">
+            <!-- @slot prepend Slot for the input prepend content -->
             <slot name="prepend" />
             <IButton
                 type="button"
@@ -398,6 +399,7 @@ export default defineComponent({
         </div>
         <div class="input">
             <span v-if="$slots.prefix" class="input-prefix">
+                <!-- @slot prefix Slot for the input prefix content -->
                 <slot name="prefix" />
             </span>
             <input
@@ -416,6 +418,7 @@ export default defineComponent({
                 @blur="onBlur"
             />
             <span v-if="$slots.suffix || clearable" class="input-suffix">
+                <!-- @slot clearable Slot for the clearable button -->
                 <slot name="clearable" :clear="onClear">
                     <i
                         v-if="clearable"
@@ -427,6 +430,7 @@ export default defineComponent({
                         @click="onClear"
                     />
                 </slot>
+                <!-- @slot suffix Slot for the input suffix content -->
                 <slot name="suffix" />
             </span>
         </div>
@@ -441,6 +445,7 @@ export default defineComponent({
             >
                 +
             </IButton>
+            <!-- @slot append Slot for the input append content -->
             <slot name="append" />
         </div>
     </div>
