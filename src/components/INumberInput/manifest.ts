@@ -116,7 +116,28 @@ export const manifest: ComponentManifest = {
             name: 'clear'
         }
     ],
-    slots: [],
+    slots: [
+        {
+            name: 'prepend',
+            description: 'Slot for the input prepend content '
+        },
+        {
+            name: 'prefix',
+            description: 'Slot for the input prefix content '
+        },
+        {
+            name: 'clearable',
+            description: 'Slot for the clearable button '
+        },
+        {
+            name: 'suffix',
+            description: 'Slot for the input suffix content '
+        },
+        {
+            name: 'append',
+            description: 'Slot for the input append content '
+        }
+    ],
     css: {
         selector: '',
         variables: []

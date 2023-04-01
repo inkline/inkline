@@ -1,5 +1,5 @@
 <template>
-    <table class="table!" style="height: 100px">
+    <table class="table" style="height: 100px">
         <tbody>
             <tr>
                 <td class="_vertical-align:baseline!">baseline</td>

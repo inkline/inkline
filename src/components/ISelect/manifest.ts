@@ -162,12 +162,6 @@ export const manifest: ComponentManifest = {
             description: 'The readonly state of the select'
         },
         {
-            name: 'scrollTolerance',
-            type: ['Number'],
-            default: '160',
-            description: 'The number of pixels until scroll end before loading the next page'
-        },
-        {
             name: 'selectFirstOptionOnEnter',
             type: ['Boolean'],
             default: 'true',
@@ -190,12 +184,6 @@ export const manifest: ComponentManifest = {
             type: ['String'],
             default: 'text',
             description: 'The type of the select'
-        },
-        {
-            name: 'total',
-            type: ['Number'],
-            default: '',
-            description: 'The total number of options, used for infinite scrolling'
         },
         {
             name: 'hoverHideDelay',

@@ -3713,7 +3713,11 @@
 ._display\:block {
     display: block;
 }
-._display\:block\! {
+._display\:block\!,
+._visible,
+._visible\:block,
+._visible\:block\!,
+._visible\! {
     display: block !important;
 }
 ._display\:contents {
@@ -3727,7 +3731,9 @@
     display: flex;
 }
 ._display\:flex\!,
-._flex\! {
+._flex\!,
+._visible\:flex,
+._visible\:flex\! {
     display: flex !important;
 }
 ._display\:flow-root {
@@ -3739,7 +3745,9 @@
 ._display\:grid {
     display: grid;
 }
-._display\:grid\! {
+._display\:grid\!,
+._visible\:grid,
+._visible\:grid\! {
     display: grid !important;
 }
 ._display\:inherit {
@@ -3760,7 +3768,9 @@
 ._display\:inline-block {
     display: inline-block;
 }
-._display\:inline-block\! {
+._display\:inline-block\!,
+._visible\:inline-block,
+._visible\:inline-block\! {
     display: inline-block !important;
 }
 ._display\:inline-flex,
@@ -3770,16 +3780,22 @@
 }
 ._display\:inline-flex\!,
 ._flex\:inline\!,
-._inline-flex\! {
+._inline-flex\!,
+._visible\:inline-flex,
+._visible\:inline-flex\! {
     display: inline-flex !important;
 }
 ._display\:inline-grid {
     display: inline-grid;
 }
-._display\:inline-grid\! {
+._display\:inline-grid\!,
+._visible\:inline-grid,
+._visible\:inline-grid\! {
     display: inline-grid !important;
 }
-._display\:inline\! {
+._display\:inline\!,
+._visible\:inline,
+._visible\:inline\! {
     display: inline !important;
 }
 ._display\:list-item {
@@ -3791,7 +3807,9 @@
 ._display\:none {
     display: none;
 }
-._display\:none\! {
+._display\:none\!,
+._hidden,
+._hidden\! {
     display: none !important;
 }
 ._display\:revert {
@@ -4362,6 +4380,24 @@
 ._order\:1\! {
     order: 1 !important;
 }
+._order\:10 {
+    order: 10;
+}
+._order\:10\! {
+    order: 10 !important;
+}
+._order\:11 {
+    order: 11;
+}
+._order\:11\! {
+    order: 11 !important;
+}
+._order\:12 {
+    order: 12;
+}
+._order\:12\! {
+    order: 12 !important;
+}
 ._order\:2 {
     order: 2;
 }
@@ -4385,6 +4421,30 @@
 }
 ._order\:5\! {
     order: 5 !important;
+}
+._order\:6 {
+    order: 6;
+}
+._order\:6\! {
+    order: 6 !important;
+}
+._order\:7 {
+    order: 7;
+}
+._order\:7\! {
+    order: 7 !important;
+}
+._order\:8 {
+    order: 8;
+}
+._order\:8\! {
+    order: 8 !important;
+}
+._order\:9 {
+    order: 9;
+}
+._order\:9\! {
+    order: 9 !important;
 }
 ._order\:first {
     order: -1;
@@ -7709,32 +7769,44 @@
     font-family: var(--font-family-secondary-print) !important;
 }
 ._text\:normal,
-._text\:nowrap,
-._text\:pre,
-._text\:pre-line,
-._text\:pre-wrap {
-    white-space: text;
+._white-space\:normal {
+    white-space: normal;
 }
 ._text\:normal\!,
+._white-space\:normal\! {
+    white-space: normal !important;
+}
+._text\:nowrap,
+._white-space\:nowrap {
+    white-space: nowrap;
+}
 ._text\:nowrap\!,
+._white-space\:nowrap\! {
+    white-space: nowrap !important;
+}
+._text\:pre,
+._white-space\:pre {
+    white-space: pre;
+}
+._text\:pre-line,
+._white-space\:pre-line {
+    white-space: pre-line;
+}
 ._text\:pre-line\!,
-._text\:pre-wrap\!,
-._text\:pre\! {
-    white-space: text !important;
+._white-space\:pre-line\! {
+    white-space: pre-line !important;
 }
-._white-space\:normal,
-._white-space\:nowrap,
-._white-space\:pre,
-._white-space\:pre-line,
+._text\:pre-wrap,
 ._white-space\:pre-wrap {
-    white-space: white-space;
+    white-space: pre-wrap;
 }
-._white-space\:normal\!,
-._white-space\:nowrap\!,
-._white-space\:pre-line\!,
-._white-space\:pre-wrap\!,
+._text\:pre-wrap\!,
+._white-space\:pre-wrap\! {
+    white-space: pre-wrap !important;
+}
+._text\:pre\!,
 ._white-space\:pre\! {
-    white-space: white-space !important;
+    white-space: pre !important;
 }
 ._text\:muted,
 ._text\:weak {
@@ -7815,6 +7887,110 @@
 }
 ._text-decoration\:underline\! {
     text-decoration: underline !important;
+}
+@media print {
+    ._print\:display\:block {
+        display: block;
+    }
+    ._print\:display\:block\! {
+        display: block !important;
+    }
+    ._print\:display\:contents {
+        display: contents;
+    }
+    ._print\:display\:contents\! {
+        display: contents !important;
+    }
+    ._print\:display\:flex {
+        display: flex;
+    }
+    ._print\:display\:flex\! {
+        display: flex !important;
+    }
+    ._print\:display\:flow-root {
+        display: flow-root;
+    }
+    ._print\:display\:flow-root\! {
+        display: flow-root !important;
+    }
+    ._print\:display\:grid {
+        display: grid;
+    }
+    ._print\:display\:grid\! {
+        display: grid !important;
+    }
+    ._print\:display\:inherit {
+        display: inherit;
+    }
+    ._print\:display\:inherit\! {
+        display: inherit !important;
+    }
+    ._print\:display\:initial {
+        display: initial;
+    }
+    ._print\:display\:initial\! {
+        display: initial !important;
+    }
+    ._print\:display\:inline {
+        display: inline;
+    }
+    ._print\:display\:inline-block {
+        display: inline-block;
+    }
+    ._print\:display\:inline-block\! {
+        display: inline-block !important;
+    }
+    ._print\:display\:inline-flex {
+        display: inline-flex;
+    }
+    ._print\:display\:inline-flex\! {
+        display: inline-flex !important;
+    }
+    ._print\:display\:inline-grid {
+        display: inline-grid;
+    }
+    ._print\:display\:inline-grid\! {
+        display: inline-grid !important;
+    }
+    ._print\:display\:inline\! {
+        display: inline !important;
+    }
+    ._print\:display\:list-item {
+        display: list-item;
+    }
+    ._print\:display\:list-item\! {
+        display: list-item !important;
+    }
+    ._print\:display\:none {
+        display: none;
+    }
+    ._print\:display\:none\! {
+        display: none !important;
+    }
+    ._print\:display\:revert {
+        display: revert;
+    }
+    ._print\:display\:revert\! {
+        display: revert !important;
+    }
+    ._print\:display\:table {
+        display: table;
+    }
+    ._print\:display\:table-row {
+        display: table-row;
+    }
+    ._print\:display\:table-row\! {
+        display: table-row !important;
+    }
+    ._print\:display\:table\! {
+        display: table !important;
+    }
+    ._print\:display\:unset {
+        display: unset;
+    }
+    ._print\:display\:unset\! {
+        display: unset !important;
+    }
 }
 @media (min-width: 0px) {
     ._xs\:text-align\:center,

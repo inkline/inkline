@@ -104,7 +104,28 @@ export const manifest: ComponentManifest = {
             name: 'clear'
         }
     ],
-    slots: [],
+    slots: [
+        {
+            name: 'prepend',
+            description: 'Slot for the textarea prepend content '
+        },
+        {
+            name: 'prefix',
+            description: 'Slot for the textarea prefix content '
+        },
+        {
+            name: 'clearable',
+            description: 'Slot for the clearable button '
+        },
+        {
+            name: 'suffix',
+            description: 'Slot for the textarea suffix content '
+        },
+        {
+            name: 'append',
+            description: 'Slot for the textarea append content '
+        }
+    ],
     css: {
         selector: '',
         variables: []
