@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, h, onMounted, PropType, VNode } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
-import { IIcon } from '@inkline/inkline/components';
+import { IIcon } from '@inkline/inkline/components/IIcon';
 
 const componentName = 'IToast';
 

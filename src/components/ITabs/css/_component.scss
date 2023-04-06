@@ -99,4 +99,12 @@
         color: var(--tabs--header--color, var(--tabs--color));
         background: var(--tabs--header--background, var(--tabs--background));
     }
+
+    &.-stretch {
+        .tabs-header {
+            .tab-title {
+                flex-grow: 1;
+            }
+        }
+    }
 }
