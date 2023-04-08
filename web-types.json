@@ -1,0 +1,5472 @@
+{
+  "framework": "vue",
+  "name": "@inkline/inkline",
+  "version": "4.0.0-rc.19",
+  "contributions": {
+    "html": {
+      "description-markup": "markdown",
+      "types-syntax": "typescript",
+      "tags": [
+        {
+          "name": "IAlert",
+          "description": "",
+          "attributes": [
+            {
+              "name": "size",
+              "description": "The size variant of the alert",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the alert",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'info'"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to show or hide a dismissible alert",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "dismissible",
+              "description": "Shows a dismiss icon on the alert",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "dismissAriaLabel",
+              "description": "The aria-label to use for the dismiss button",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'Dismiss'"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "icon",
+              "description": "icon Slot for alert icon"
+            },
+            {
+              "name": "title",
+              "description": "title Slot for alert title"
+            },
+            {
+              "name": "default",
+              "description": "default Slot for default alert content"
+            },
+            {
+              "name": "dismiss",
+              "description": "dismiss Slot for alert dismiss button"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IAlert/IAlert.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IBadge",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the badge",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the badge",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default badge content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IBadge/IBadge.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IBreadcrumb",
+          "description": "",
+          "attributes": [
+            {
+              "name": "ariaLabel",
+              "description": "The aria-label of the breadcrumbs",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'Breadcrumbs'"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the breadcrumb",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the breadcrumb",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default breadcrumb content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IBreadcrumb/IBreadcrumb.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IBreadcrumbItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "active",
+              "description": "The active state of the breadcrumb item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the breadcrumb item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "href",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the breadcrumb item",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "tag",
+              "description": "Set the HTML tag to be used for rendering the breadcrumb item",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'a'"
+            },
+            {
+              "name": "to",
+              "value": {
+                "kind": "expression",
+                "type": "string|object"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default breadcrumb item content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IBreadcrumbItem/IBreadcrumbItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IButton",
+          "description": "",
+          "attributes": [
+            {
+              "name": "active",
+              "description": "The active state of the button",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "block",
+              "description": "Display the button as a block, spanning the full container width",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "circle",
+              "description": "Display the button as a circle",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the button",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the button",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "href",
+              "description": "Renders the component as an anchor link with a `href` attribute",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "link",
+              "description": "Display the button as a link",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "loading",
+              "description": "The loading state of the button",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "outline",
+              "description": "Display the button as an outline button",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "tag",
+              "description": "Set the HTML tag to be used for rendering the button",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'button'"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the button",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "to",
+              "description": "Renders the component as a Router Link component with a `to` attribute",
+              "value": {
+                "kind": "expression",
+                "type": "string|object"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "type",
+              "description": "The type of the button",
+              "value": {
+                "kind": "expression",
+                "type": "'button' | 'submit' | 'reset' | string"
+              },
+              "default": "'button'"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the button",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "loading",
+              "description": "loading Slot for button loading state"
+            },
+            {
+              "name": "default",
+              "description": "default Slot for default button content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IButton/IButton.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IButtonGroup",
+          "description": "",
+          "attributes": [
+            {
+              "name": "vertical",
+              "description": "Display the button group with vertical orientation",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "block",
+              "description": "Display the button group as a block, spanning the full container width",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the button group",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size of the button group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "color",
+              "description": "The color of the button group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default button group content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IButtonGroup/IButtonGroup.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ICard",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the card",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the card",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "header",
+              "description": "header Slot for card header content"
+            },
+            {
+              "name": "image",
+              "description": "image Slot for card image"
+            },
+            {
+              "name": "default",
+              "description": "default Slot for card header content"
+            },
+            {
+              "name": "footer",
+              "description": "footer Slot for card footer content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ICard/ICard.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ICheckbox",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "error",
+              "description": "The error state of the checkbox, computed based on schema by default.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean | string[]"
+              },
+              "default": "() => ['touched', 'dirty', 'invalid']"
+            },
+            {
+              "name": "indeterminate",
+              "description": "The indeterminate state of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "value",
+              "description": "Used to set the checkbox value when used inside a checkbox group",
+              "value": {
+                "kind": "expression",
+                "type": "undefined"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the checkbox value when used by itself",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "name",
+              "description": "The unique identifier of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('checkbox');\n}"
+            },
+            {
+              "name": "native",
+              "description": "Displays the native browser checkbox input indicator",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "readonly",
+              "description": "The readonly state of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "validate",
+              "description": "Enable checkbox validation using schema",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default checkbox label"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ICheckbox/ICheckbox.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ICheckboxGroup",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the checkbox group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the checkbox group",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "error",
+              "description": "The error state of the checkbox, computed based on schema by default.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean | string[]"
+              },
+              "default": "() => ['touched', 'dirty', 'invalid']"
+            },
+            {
+              "name": "inline",
+              "description": "Display the checkbox group as inline",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "indeterminate",
+              "description": "The indeterminate state of the checkbox group",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the checkbox group value",
+              "value": {
+                "kind": "expression",
+                "type": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "name": "name",
+              "description": "The unique identifier of the checkbox group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('checkbox-group');\n}"
+            },
+            {
+              "name": "readonly",
+              "description": "The readonly state of the checkbox group",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the checkbox group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "validate",
+              "description": "Enable checkbox group validation using schema",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default checkbox group options"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ICheckboxGroup/ICheckboxGroup.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ICollapsible",
+          "description": "",
+          "attributes": [
+            {
+              "name": "accordion",
+              "description": "Display the collapsible as an accordion, keeping a maximum of one open collapsible item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the collapsible",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the collapsible",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to determine which collapsible item is open",
+              "value": {
+                "kind": "expression",
+                "type": "string[]"
+              },
+              "default": "(): string[] => []"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "Default slot for collapsible items"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ICollapsible/ICollapsible.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ICollapsibleItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "name",
+              "description": "The unique identifier of the collapsible item, used for determining if the item is open or not",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('collapsible-item');\n}"
+            },
+            {
+              "name": "title",
+              "description": "The title of the collapsible item",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            }
+          ],
+          "slots": [
+            {
+              "name": "header",
+              "description": "header Slot for collapsible item header content"
+            },
+            {
+              "name": "default",
+              "description": "default Slot for default collapsible item content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ICollapsibleItem/ICollapsibleItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IColumn",
+          "description": "",
+          "attributes": [
+            {
+              "name": "xs",
+              "description": "The number of columns to span for extra-small screen sizes. Setting the prop to true will set the width automatically",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "sm",
+              "description": "The number of columns to span for small screen sizes. Setting the prop to true will set the width automatically",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "md",
+              "description": "The number of columns to span for medium screen sizes. Setting the prop to true will set the width automatically",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "lg",
+              "description": "The number of columns to span for large screen sizes. Setting the prop to true will set the width automatically",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "xl",
+              "description": "The number of columns to span for extra-large screen sizes. Setting the prop to true will set the width automatically",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "xxl",
+              "description": "The number of columns to span for extra-extra-large screen sizes. Setting the prop to true will set the width automatically",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "false"
+            },
+            {
+              "name": "first",
+              "description": "Display the column as the first column",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "firstXs",
+              "description": "Display the column as the first column on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "firstSm",
+              "description": "Display the column as the first column on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "firstMd",
+              "description": "Display the column as the first column on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "firstLg",
+              "description": "Display the column as the first column on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "firstXl",
+              "description": "Display the column as the first column on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "first2xl",
+              "description": "Display the column as the first column on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "last",
+              "description": "Display the column as the last column",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "lastXs",
+              "description": "Display the column as the last column on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "lastSm",
+              "description": "Display the column as the last column on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "lastMd",
+              "description": "Display the column as the last column on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "lastLg",
+              "description": "Display the column as the last column on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "lastXl",
+              "description": "Display the column as the last column on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "last2xl",
+              "description": "Display the column as the last column on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "offset",
+              "description": "The number of columns to offset the column by",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "offsetXs",
+              "description": "The number of columns to offset the column by on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "offsetSm",
+              "description": "The number of columns to offset the column by on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "offsetMd",
+              "description": "The number of columns to offset the column by on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "offsetLg",
+              "description": "The number of columns to offset the column by on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "offsetXl",
+              "description": "The number of columns to offset the column by on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "offset2xl",
+              "description": "The number of columns to offset the column by on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "push",
+              "description": "The number of columns to push the column by",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pushXs",
+              "description": "The number of columns to push the column by on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pushSm",
+              "description": "The number of columns to push the column by on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pushMd",
+              "description": "The number of columns to push the column by on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pushLg",
+              "description": "The number of columns to push the column by on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pushXl",
+              "description": "The number of columns to push the column by on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "push2xl",
+              "description": "The number of columns to push the column by on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pull",
+              "description": "The number of columns to pull the column by",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pullXs",
+              "description": "The number of columns to pull the column by on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pullSm",
+              "description": "The number of columns to pull the column by on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pullMd",
+              "description": "The number of columns to pull the column by on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pullLg",
+              "description": "The number of columns to pull the column by on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pullXl",
+              "description": "The number of columns to pull the column by on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "pull2xl",
+              "description": "The number of columns to pull the column by on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default column content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IColumn/IColumn.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IContainer",
+          "description": "",
+          "attributes": [
+            {
+              "name": "fluid",
+              "description": "Display the container as fluid, always spanning 100% width",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default container content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IContainer/IContainer.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IDropdown",
+          "description": "",
+          "attributes": [
+            {
+              "name": "animationDuration",
+              "description": "The duration of the hide and show animation",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "300"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the dropdown",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the dropdown",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "hideOnItemClick",
+              "description": "Used to hide the dropdown when clicking or selecting a dropdown item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "triggerKeyBindings",
+              "description": "The keydown events bound to the trigger element",
+              "value": {
+                "kind": "expression",
+                "type": "array"
+              },
+              "default": "['up', 'down', 'enter', 'space', 'tab', 'esc']"
+            },
+            {
+              "name": "itemKeyBindings",
+              "description": "The keydown events bound to the dropdown item elements",
+              "value": {
+                "kind": "expression",
+                "type": "array"
+              },
+              "default": "['up', 'down', 'enter', 'space', 'tab', 'esc']"
+            },
+            {
+              "name": "visible",
+              "description": "Used to manually control the visibility of the dropdown",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "arrow",
+              "description": "Displays an arrow on the dropdown pointing to the trigger element",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "placement",
+              "description": "The placement of the dropdown",
+              "value": {
+                "kind": "expression",
+                "type": "Placement"
+              },
+              "default": "'bottom'"
+            },
+            {
+              "name": "events",
+              "description": "The events used to trigger the dropdown",
+              "value": {
+                "kind": "expression",
+                "type": "PopupEvent | PopupEvent[]"
+              },
+              "default": "(): string[] => ['click']"
+            },
+            {
+              "name": "offset",
+              "description": "The offset of the dropdown relative to the trigger element",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "6"
+            },
+            {
+              "name": "interactable",
+              "description": "Determines whether hover state should be transferred from trigger to popup",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "popupOptions",
+              "description": "Used to override the floating-ui options used for creating the dropdown",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the dropdown",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "hoverHideDelay",
+              "description": "Delay in milliseconds before the popover is hidden on hover",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "300"
+            }
+          ],
+          "events": [
+            {
+              "name": "click:outside",
+              "description": "Event emitted when clicking outside the dropdown elements"
+            },
+            {
+              "name": "update:visible",
+              "description": "Event emitted for setting the visible"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for dropdown trigger"
+            },
+            {
+              "name": "header",
+              "description": "header Slot for dropdown header content"
+            },
+            {
+              "name": "body",
+              "description": "body Slot for dropdown body content"
+            },
+            {
+              "name": "footer",
+              "description": "footer Slot for dropdown footer content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IDropdown/IDropdown.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IDropdownDivider",
+          "description": "",
+          "source": {
+            "module": "./src/components/IDropdownDivider/IDropdownDivider.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IDropdownItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "active",
+              "description": "The active state of the dropdown item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the dropdown item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "href",
+              "description": "Renders the component as an anchor link with a `href` attribute",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "plaintext",
+              "description": "Display the dropdown item as plaintext",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "tag",
+              "description": "Set the HTML tag to be used for rendering the dropdown item",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'div'"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the list group item",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "to",
+              "description": "Renders the component as a Router Link component with a `to` attribute",
+              "value": {
+                "kind": "expression",
+                "type": "string|object"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default dropdown item content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IDropdownItem/IDropdownItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IExpandTransition",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IExpandTransition/IExpandTransition.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IForm",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the form",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the form",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "inline",
+              "description": "Display the form as inline",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "loading",
+              "description": "The loading state of the form",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "name",
+              "description": "The unique identifier of the form",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "uid('form')"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the form schema",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "readonly",
+              "description": "The readonly state of the form",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the form",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "validate",
+              "description": "Enable form validation using schema",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue schema"
+            },
+            {
+              "name": "submit",
+              "description": "Event emitted for submitting the form"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for form content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IForm/IForm.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IFormError",
+          "description": "",
+          "attributes": [
+            {
+              "name": "for",
+              "description": "The schema path of the target input to show the errors for.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "visible",
+              "description": "Set the validation statuses for which the form error should be visible.",
+              "value": {
+                "kind": "expression",
+                "type": "array|string"
+              },
+              "default": "(): string[] => ['touched', 'dirty', 'invalid']"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IFormError/IFormError.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IFormGroup",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the form group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the form group",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "inline",
+              "description": "Display the form group as inline",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "name",
+              "description": "The identifier of the form group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "readonly",
+              "description": "The readonly state of the form group",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "required",
+              "description": "The required state of the form group",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the form group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "validate",
+              "description": "Enable form validation using schema",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default form group content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IFormGroup/IFormGroup.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IFormLabel",
+          "description": "",
+          "attributes": [
+            {
+              "name": "for",
+              "description": "The id of the target input to be focused by the form label. If left empty, clicking the form label will focus the next sibling input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "placement",
+              "description": "The placement of the form label",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the form label",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'md'"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default form label content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IFormLabel/IFormLabel.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IHamburgerMenu",
+          "description": "",
+          "attributes": [
+            {
+              "name": "animation",
+              "description": "The animation of the hamburger menu",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'close'"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the hamburger menu",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the hamburger menu",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the hamburger menu as opened or closed",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IHamburgerMenu/IHamburgerMenu.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IHeader",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the header",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "cover",
+              "description": "Display the header background as cover, always covering the whole header width or height",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "fluid",
+              "description": "Display the inner content container as fluid, covering 100% of the header width",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "fullscreen",
+              "description": "Display the header as fullscreen, covering 100% screen height and 100% screen width",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the header",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default header content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IHeader/IHeader.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IIcon",
+          "description": "",
+          "attributes": [
+            {
+              "name": "name",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the icon",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IIcon/IIcon.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IInput",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "clearable",
+              "description": "Display the input as clearable",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the input",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "error",
+              "description": "The error state of the input, computed based on schema by default.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean | string[]"
+              },
+              "default": "() => ['touched', 'dirty', 'invalid']"
+            },
+            {
+              "name": "id",
+              "description": "The id of the internal input element",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "wrapperId",
+              "description": "The id of the input wrapper element",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the field value",
+              "value": {
+                "kind": "expression",
+                "type": "string|number"
+              },
+              "default": "''"
+            },
+            {
+              "name": "name",
+              "description": "The unique identifier of the input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('input');\n}"
+            },
+            {
+              "name": "plaintext",
+              "description": "Display the input as plaintext, disabling interaction",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "readonly",
+              "description": "The readonly state of the input",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the input",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "type",
+              "description": "The type of the input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'text'"
+            },
+            {
+              "name": "clearAriaLabel",
+              "description": "The aria-label of the clear button",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'Clear'"
+            },
+            {
+              "name": "validate",
+              "description": "Enable input validation using schema",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            },
+            {
+              "name": "clear",
+              "description": "Event emitted when clearing the input element"
+            }
+          ],
+          "slots": [
+            {
+              "name": "prepend",
+              "description": "prepend Slot for the input prepend content"
+            },
+            {
+              "name": "prefix",
+              "description": "prefix Slot for the input prefix content"
+            },
+            {
+              "name": "clearable",
+              "description": "clearable Slot for the clearable button"
+            },
+            {
+              "name": "suffix",
+              "description": "suffix Slot for the input suffix content"
+            },
+            {
+              "name": "append",
+              "description": "append Slot for the input append content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IInput/IInput.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ILayout",
+          "description": "",
+          "attributes": [
+            {
+              "name": "vertical",
+              "description": "Display the layout on a vertical orientation",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default layout content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ILayout/ILayout.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ILayoutAside",
+          "description": "",
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default layout aside content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ILayoutAside/ILayoutAside.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ILayoutContent",
+          "description": "",
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default layout content children"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ILayoutContent/ILayoutContent.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ILayoutFooter",
+          "description": "",
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default layout footer content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ILayoutFooter/ILayoutFooter.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ILayoutHeader",
+          "description": "",
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default layout header content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ILayoutHeader/ILayoutHeader.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IListGroup",
+          "description": "",
+          "attributes": [
+            {
+              "name": "border",
+              "description": "Display the list group border",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the list group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the list group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for list group items"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IListGroup/IListGroup.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IListGroupItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "active",
+              "description": "The active state of the list group item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the list group item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "href",
+              "description": "Renders the component as an anchor link with a `href` attribute",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "tag",
+              "description": "Set the HTML tag to be used for rendering the nav item",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'div'"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the list group item",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "to",
+              "description": "Renders the component as a Router Link component with a `to` attribute",
+              "value": {
+                "kind": "expression",
+                "type": "string|object"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for list group item content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IListGroupItem/IListGroupItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ILoader",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the loader",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the loader",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default loader content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ILoader/ILoader.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IMark",
+          "description": "",
+          "attributes": [
+            {
+              "name": "text",
+              "description": "String to be marked",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "query",
+              "description": "Search string to use for marking",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IMark/IMark.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IMedia",
+          "description": "",
+          "slots": [
+            {
+              "name": "image",
+              "description": "image Slot for media image"
+            },
+            {
+              "name": "default",
+              "description": "default Slot for default media content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IMedia/IMedia.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IModal",
+          "description": "",
+          "attributes": [
+            {
+              "name": "closeOnPressEscape",
+              "description": "Determines if the modal should close when pressing escape",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "closeAriaLabel",
+              "description": "The aria-label attribute of the close button",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'Close'"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the modal",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the modal",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "hideOnClickOutside",
+              "description": "Determines if the modal should close when clicking the overlay",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "name",
+              "description": "The identifier of the modal",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('modal');\n}"
+            },
+            {
+              "name": "showClose",
+              "description": "Determines if the close icon should be visible in the modal header",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the modal",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to determine if modal is visible or not",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "transition",
+              "description": "The modal opening and closing animation",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'zoom-in-center-transition'"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "header",
+              "description": "footer Slot for modal header content"
+            },
+            {
+              "name": "close",
+              "description": "close Close icon slot"
+            },
+            {
+              "name": "default",
+              "description": "default Slot for modal body content"
+            },
+            {
+              "name": "footer",
+              "description": "footer Slot for modal footer content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IModal/IModal.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "INav",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the nav",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the nav",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "vertical",
+              "description": "Display the nav with vertical orientation",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default nav content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/INav/INav.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "INavItem",
+          "description": "",
+          "attributes": [
+            {
+              "name": "active",
+              "description": "The active state of the nav item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the nav item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "href",
+              "description": "Renders the component as an anchor link with a `href` attribute",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "stopPropagation",
+              "description": "Used to close the nearest navbar or sidebar by propagating the onClick event",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "tag",
+              "description": "Set the HTML tag to be used for rendering the nav item",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'div'"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the list group item",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "to",
+              "description": "Renders the component as a Router Link component with a `to` attribute",
+              "value": {
+                "kind": "expression",
+                "type": "string|object"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default nav item content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/INavItem/INavItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "INavbar",
+          "description": "",
+          "attributes": [
+            {
+              "name": "collapseOnItemClick",
+              "description": "Determines if the navbar should close when clicking a navbar item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "collapseOnClickOutside",
+              "description": "Determines if the navbar should close when clicking outside",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "collapse",
+              "description": "Breakpoint to collapse the navbar at. If boolean value, sets to always or never collapse",
+              "value": {
+                "kind": "expression",
+                "type": "string|boolean"
+              },
+              "default": "'md'"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the navbar",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "fluid",
+              "description": "Display the inner container as fluid, spanning 100% width",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the navbar",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "menuAnimation",
+              "description": "The animation of the hamburger menu component used for collapsing",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'close'"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to manually control the collapsed state of the navbar",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default navbar content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/INavbar/INavbar.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "INavbarBrand",
+          "description": "",
+          "attributes": [
+            {
+              "name": "href",
+              "description": "Renders the component as an anchor link with a `href` attribute",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "tag",
+              "description": "Set the HTML tag to be used for rendering the nav item",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'div'"
+            },
+            {
+              "name": "to",
+              "description": "Renders the component as a Router Link component with a `to` attribute",
+              "value": {
+                "kind": "expression",
+                "type": "string|object"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default navbar brand content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/INavbarBrand/INavbarBrand.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "INavbarCollapsible",
+          "description": "",
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default navbar collapsible content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/INavbarCollapsible/INavbarCollapsible.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "INumberInput",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "clearable",
+              "description": "Display the input as clearable",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the input",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "error",
+              "description": "The error state of the checkbox, computed based on schema by default.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean | string[]"
+              },
+              "default": "() => ['touched', 'dirty', 'invalid']"
+            },
+            {
+              "name": "id",
+              "description": "The id of the internal input element",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the field value",
+              "value": {
+                "kind": "expression",
+                "type": "string|number"
+              },
+              "default": "''"
+            },
+            {
+              "name": "name",
+              "description": "The unique identifier of the input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('input');\n}"
+            },
+            {
+              "name": "plaintext",
+              "description": "Display the input as plaintext, disabling interaction",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "readonly",
+              "description": "The readonly state of the input",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the input",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "min",
+              "description": "The minimum allowed input value",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "-Infinity"
+            },
+            {
+              "name": "max",
+              "description": "The maximum allowed input value",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "Infinity"
+            },
+            {
+              "name": "precision",
+              "description": "The precision of the input value, for floating point numbers",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "0"
+            },
+            {
+              "name": "step",
+              "description": "The increment step to increase or decrease the value by",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "1"
+            },
+            {
+              "name": "clearAriaLabel",
+              "description": "The aria-label of the clear button",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'Clear'"
+            },
+            {
+              "name": "validate",
+              "description": "Enable number input validation using schema",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            },
+            {
+              "name": "clear",
+              "description": "Event emitted when clearing the input element"
+            }
+          ],
+          "slots": [
+            {
+              "name": "prepend"
+            },
+            {
+              "name": "prefix"
+            },
+            {
+              "name": "clearable"
+            },
+            {
+              "name": "suffix"
+            },
+            {
+              "name": "append"
+            }
+          ],
+          "source": {
+            "module": "./src/components/INumberInput/INumberInput.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IPagination",
+          "description": "",
+          "attributes": [
+            {
+              "name": "ariaLabel",
+              "description": "The aria-label of the pagination",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'Pagination'"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the pagination",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "itemsPerPage",
+              "description": "The number of items per page to be displayed",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "20"
+            },
+            {
+              "name": "itemsTotal",
+              "description": "The total number of items",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "0"
+            },
+            {
+              "name": "limit",
+              "description": "The maximum number of pagination buttons to show on each breakpoint",
+              "value": {
+                "kind": "expression",
+                "type": "number|object"
+              },
+              "default": "function() {\n    return {\n        xs: 3,\n        sm: 5\n    };\n}"
+            },
+            {
+              "name": "quickLink",
+              "description": "Display the quick link buttons",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to determine the current page",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "1"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the pagination",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "showNavigationWhenDisabled",
+              "description": "Show or hide navigation buttons for first or last page",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "previous",
+              "description": "previous Slot for previous button content"
+            },
+            {
+              "name": "next",
+              "description": "next Slot for next button content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IPagination/IPagination.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IPopover",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the popover",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the popover",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "visible",
+              "description": "Used to manually control the visibility of the popover",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "name",
+              "description": "The identifier of the popover",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('popover');\n}"
+            },
+            {
+              "name": "arrow",
+              "description": "Displays an arrow on the popover pointing to the trigger element",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "placement",
+              "description": "The placement of the popover",
+              "value": {
+                "kind": "expression",
+                "type": "Placement"
+              },
+              "default": "'top'"
+            },
+            {
+              "name": "events",
+              "description": "The events used to trigger the popover",
+              "value": {
+                "kind": "expression",
+                "type": "PopupEvent | PopupEvent[]"
+              },
+              "default": "(): string[] => ['click']"
+            },
+            {
+              "name": "offset",
+              "description": "The offset of the popover relative to the trigger element",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "6"
+            },
+            {
+              "name": "interactable",
+              "description": "Determines whether hover state should be transferred from trigger to popup",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "popupOptions",
+              "description": "Used to override the floating-ui options used for creating the popover",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the popover",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "hoverHideDelay",
+              "description": "Delay in milliseconds before the popover is hidden on hover",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "300"
+            },
+            {
+              "name": "animationDuration",
+              "description": "Animation duration in milliseconds",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "300"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:visible",
+              "description": "Event emitted for setting the visible"
+            },
+            {
+              "name": "click:outside",
+              "description": "Event emitted when clicking outside the popover"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for popover trigger"
+            },
+            {
+              "name": "header",
+              "description": "header Slot for popover header content"
+            },
+            {
+              "name": "body",
+              "description": "body Slot for popover body content"
+            },
+            {
+              "name": "footer",
+              "description": "footer Slot for popover footer content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IPopover/IPopover.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IProgress",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the progress component",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "min",
+              "description": "The value to consider as the 0% starting point",
+              "value": {
+                "kind": "expression",
+                "type": "string|number"
+              },
+              "default": "0"
+            },
+            {
+              "name": "max",
+              "description": "The value to consider as the 100% ending point",
+              "value": {
+                "kind": "expression",
+                "type": "string|number"
+              },
+              "default": "100"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the progress component",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for progress bars"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IProgress/IProgress.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IProgressBar",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the progress bar",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'primary'"
+            },
+            {
+              "name": "value",
+              "description": "The value of the progress bar",
+              "value": {
+                "kind": "expression",
+                "type": "string|number"
+              },
+              "default": "0"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default progress bar content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IProgressBar/IProgressBar.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IRadio",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the radio",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the radio",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "error",
+              "description": "The error state of the radio, computed based on schema by default.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean | string[]"
+              },
+              "default": "() => ['touched', 'dirty', 'invalid']"
+            },
+            {
+              "name": "value",
+              "description": "Used to set the radio value when used inside a radio group",
+              "value": {
+                "kind": "expression",
+                "type": "undefined"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the radio value when used by itself",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "name",
+              "description": "The unique identifier of the radio",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('radio');\n}"
+            },
+            {
+              "name": "native",
+              "description": "Displays the native browser radio input indicator",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "readonly",
+              "description": "The readonly state of the radio",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the radio",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the radio",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default radio label"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IRadio/IRadio.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IRadioGroup",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the radio group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the radio group",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "error",
+              "description": "The error state of the radio, computed based on schema by default.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean | string[]"
+              },
+              "default": "() => ['touched', 'dirty', 'invalid']"
+            },
+            {
+              "name": "inline",
+              "description": "Display the radio group as inline",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "indeterminate",
+              "description": "The indeterminate state of the radio group",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the radio group value",
+              "value": {
+                "kind": "expression",
+                "type": "undefined"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "name",
+              "description": "The unique identifier of the radio group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('radio-group');\n}"
+            },
+            {
+              "name": "readonly",
+              "description": "The readonly state of the radio group",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the radio group",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "validate",
+              "description": "Enable radio group validation using schema",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default radio group options"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IRadioGroup/IRadioGroup.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IRow",
+          "description": "",
+          "attributes": [
+            {
+              "name": "start",
+              "description": "Justify the content to the start of the row",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "startXs",
+              "description": "Justify the content to the start of the row on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "startSm",
+              "description": "Justify the content to the start of the row on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "startMd",
+              "description": "Justify the content to the start of the row on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "startLg",
+              "description": "Justify the content to the start of the row on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "startXl",
+              "description": "Justify the content to the start of the row on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "start2xl",
+              "description": "Justify the content to the start of the row on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "center",
+              "description": "Justify the content to the center of the row",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "centerXs",
+              "description": "Justify the content to the center of the row on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "centerSm",
+              "description": "Justify the content to the center of the row on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "centerMd",
+              "description": "Justify the content to the center of the row on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "centerLg",
+              "description": "Justify the content to the center of the row on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "centerXl",
+              "description": "Justify the content to the center of the row on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "center2xl",
+              "description": "Justify the content to the center of the row on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "end",
+              "description": "Justify the content to the end of the row",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "endXs",
+              "description": "Justify the content to the end of the row on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "endSm",
+              "description": "Justify the content to the end of the row on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "endMd",
+              "description": "Justify the content to the end of the row on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "endLg",
+              "description": "Justify the content to the end of the row on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "endXl",
+              "description": "Justify the content to the end of the row on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "end2xl",
+              "description": "Justify the content to the end of the row on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "top",
+              "description": "Align the content to the top of the row",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "topXs",
+              "description": "Align the content to the top of the row on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "topSm",
+              "description": "Align the content to the top of the row on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "topMd",
+              "description": "Align the content to the top of the row on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "topLg",
+              "description": "Align the content to the top of the row on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "topXl",
+              "description": "Align the content to the top of the row on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "top2xl",
+              "description": "Align the content to the top of the row on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "middle",
+              "description": "Align the content to the middle of the row",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "middleXs",
+              "description": "Align the content to the middle of the row on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "middleSm",
+              "description": "Align the content to the middle of the row on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "middleMd",
+              "description": "Align the content to the middle of the row on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "middleLg",
+              "description": "Align the content to the middle of the row on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "middleXl",
+              "description": "Align the content to the middle of the row on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "middle2xl",
+              "description": "Align the content to the middle of the row on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "bottom",
+              "description": "Align the content to the bottom of the row",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "bottomXs",
+              "description": "Align the content to the bottom of the row on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "bottomSm",
+              "description": "Align the content to the bottom of the row on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "bottomMd",
+              "description": "Align the content to the bottom of the row on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "bottomLg",
+              "description": "Align the content to the bottom of the row on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "bottomXl",
+              "description": "Align the content to the bottom of the row on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "bottom2xl",
+              "description": "Align the content to the bottom of the row on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "around",
+              "description": "Justify the content to have space around each item inside the row",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "aroundXs",
+              "description": "Justify the content to have space around each item inside the row on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "aroundSm",
+              "description": "Justify the content to have space around each item inside the row on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "aroundMd",
+              "description": "Justify the content to have space around each item inside the row on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "aroundLg",
+              "description": "Justify the content to have space around each item inside the row on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "aroundXl",
+              "description": "Justify the content to have space around each item inside the row on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "around2xl",
+              "description": "Justify the content to have space around each item inside the row on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "between",
+              "description": "Justify the content to have space between each item inside the row",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "betweenXs",
+              "description": "Justify the content to have space between each item inside the row on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "betweenSm",
+              "description": "Justify the content to have space between each item inside the row on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "betweenMd",
+              "description": "Justify the content to have space between each item inside the row on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "betweenLg",
+              "description": "Justify the content to have space between each item inside the row on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "betweenXl",
+              "description": "Justify the content to have space between each item inside the row on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "between2xl",
+              "description": "Justify the content to have space between each item inside the row on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "reverse",
+              "description": "Order the content in reverse order inside the row",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "reverseXs",
+              "description": "Order the content in reverse order inside the row on extra-small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "reverseSm",
+              "description": "Order the content in reverse order inside the row on small screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "reverseMd",
+              "description": "Order the content in reverse order inside the row on medium screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "reverseLg",
+              "description": "Order the content in reverse order inside the row on large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "reverseXl",
+              "description": "Order the content in reverse order inside the row on extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "reverse2xl",
+              "description": "Order the content in reverse order inside the row on extra-extra-large screens",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "noGutter",
+              "description": "Remove gutter between columns",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "noCollapse",
+              "description": "Disable wrapping of columns",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default row content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IRow/IRow.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ISelect",
+          "description": "",
+          "attributes": [
+            {
+              "name": "animationDuration",
+              "description": "The duration of the hide and show animation",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "300"
+            },
+            {
+              "name": "autocomplete",
+              "description": "Enable autocomplete functionality",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "arrow",
+              "description": "Displays an arrow on the dropdown pointing to the trigger element",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the select",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "clearable",
+              "description": "Display the select as clearable",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the select",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "error",
+              "description": "The error state of the checkbox, computed based on schema by default.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean | string[]"
+              },
+              "default": "() => ['touched', 'dirty', 'invalid']"
+            },
+            {
+              "name": "events",
+              "description": "The events used to trigger the dropdown",
+              "value": {
+                "kind": "expression",
+                "type": "PopupEvent | PopupEvent[]"
+              },
+              "default": "(): string[] => ['click']"
+            },
+            {
+              "name": "idField",
+              "description": "The field to be used for identifying the options",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'id'"
+            },
+            {
+              "name": "triggerKeyBindings",
+              "description": "The keydown events bound to the trigger element",
+              "value": {
+                "kind": "expression",
+                "type": "array"
+              },
+              "default": "['up', 'down', 'enter', 'space', 'tab', 'esc']"
+            },
+            {
+              "name": "itemKeyBindings",
+              "description": "The keydown events bound to the select option elements",
+              "value": {
+                "kind": "expression",
+                "type": "array"
+              },
+              "default": "['up', 'down', 'enter', 'space', 'tab', 'esc']"
+            },
+            {
+              "name": "interactable",
+              "description": "Determines whether hover state should be transferred from trigger to popup",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "label",
+              "description": "Used to extract the label from the select option and select value",
+              "value": {
+                "kind": "expression",
+                "type": "string|func"
+              },
+              "default": "'label'"
+            },
+            {
+              "name": "loading",
+              "description": "The loading state of the select",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the field value",
+              "value": {
+                "kind": "expression",
+                "type": "string|number|boolean"
+              },
+              "default": "null"
+            },
+            {
+              "name": "visible",
+              "description": "Used to manually control the visibility of the select dropdown",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "minLength",
+              "description": "The minimum input length to open the select dropdown at",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "0"
+            },
+            {
+              "name": "name",
+              "description": "The unique identifier of the select",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "(): string => uid('select')"
+            },
+            {
+              "name": "options",
+              "description": "The options to be displayed in the select component",
+              "value": {
+                "kind": "expression",
+                "type": "SelectOption[]"
+              },
+              "default": "() => []"
+            },
+            {
+              "name": "placeholder",
+              "description": "The placeholder of the select input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "offset",
+              "description": "The offset of the dropdown relative to the trigger element",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "6"
+            },
+            {
+              "name": "placement",
+              "description": "The placement of the select dropdown",
+              "value": {
+                "kind": "expression",
+                "type": "Placement"
+              },
+              "default": "'bottom'"
+            },
+            {
+              "name": "popupOptions",
+              "description": "Used to override the floating-ui options used for creating the dropdown",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "name": "readonly",
+              "description": "The readonly state of the select",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "scrollTolerance",
+              "description": "The number of pixels until scroll end before loading the next page",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "160"
+            },
+            {
+              "name": "selectFirstOptionOnEnter",
+              "description": "Selects the first option when pressing enter",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the select",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the select",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "type",
+              "description": "The type of the select",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'text'"
+            },
+            {
+              "name": "total",
+              "description": "The total number of options, used for infinite scrolling",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "hoverHideDelay",
+              "description": "Delay in milliseconds before the popover is hidden on hover",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "300"
+            },
+            {
+              "name": "validate",
+              "description": "Enable select validation using schema",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            },
+            {
+              "name": "update:visible",
+              "description": "Event emitted for setting the visible"
+            },
+            {
+              "name": "click:outside",
+              "description": "Event emitted when clicking outside the select component"
+            },
+            {
+              "name": "search",
+              "description": "Event emitted when input value changes"
+            },
+            {
+              "name": "pagination",
+              "description": "Event emitted when the next page needs to be loaded"
+            },
+            {
+              "name": "clear",
+              "description": "Event emitted when clearing the select element"
+            }
+          ],
+          "slots": [
+            {
+              "name": "prepend",
+              "description": "prepend Slot for the select prepend content"
+            },
+            {
+              "name": "prefix",
+              "description": "prefix Slot for the select prefix content"
+            },
+            {
+              "name": "suffix",
+              "description": "suffix Slot for the select suffix content"
+            },
+            {
+              "name": "append",
+              "description": "append Slot for the select append content"
+            },
+            {
+              "name": "clearable",
+              "description": "clearable Slot for the select clearable button"
+            },
+            {
+              "name": "header",
+              "description": "header Slot for the select header content"
+            },
+            {
+              "name": "no-results",
+              "description": "no-results Slot for showing no options message"
+            },
+            {
+              "name": "default"
+            },
+            {
+              "name": "option",
+              "description": "option Slot for the select option content"
+            },
+            {
+              "name": "footer",
+              "description": "footer Slot for the select footer content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ISelect/ISelect.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ISelectOption",
+          "description": "",
+          "attributes": [
+            {
+              "name": "active",
+              "description": "The active state of the select option",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the select option",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "label",
+              "description": "The label of the select option",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the list group item",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "value",
+              "description": "The select option",
+              "value": {
+                "kind": "expression",
+                "type": "SelectOption"
+              },
+              "default": "(): SelectOption => ({\n    label: '',\n    value: ''\n})"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for select option label"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ISelectOption/ISelectOption.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ISidebar",
+          "description": "",
+          "attributes": [
+            {
+              "name": "ariaLabel",
+              "description": "The aria-label of the sidebar",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'Sidebar'"
+            },
+            {
+              "name": "collapse",
+              "description": "Breakpoint to collapse the sidebar at. If boolean value, sets to always or never collapse",
+              "value": {
+                "kind": "expression",
+                "type": "string|boolean"
+              },
+              "default": "'md'"
+            },
+            {
+              "name": "collapseOnItemClick",
+              "description": "Determines if the sidebar should close when clicking a sidebar item",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "collapseOnClickOutside",
+              "description": "Determines if the sidebar should close when clicking outside, on the overlay",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "collapsePosition",
+              "description": "The collapse position of the sidebar",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'absolute'"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the sidebar",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "placement",
+              "description": "The placement of the sidebar",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'left'"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the navbar",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to manually control the collapsed state of the sidebar",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for sidebar content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ISidebar/ISidebar.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ITab",
+          "description": "",
+          "attributes": [
+            {
+              "name": "title",
+              "description": "The title of the tab",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "name",
+              "description": "The name of the tab, used as an identifier",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('tab');\n}"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for tab content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ITab/ITab.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ITabTitle",
+          "description": "",
+          "attributes": [
+            {
+              "name": "for",
+              "description": "The name of the referenced tab",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('tab');\n}"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for tab title content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ITabTitle/ITabTitle.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ITable",
+          "description": "",
+          "attributes": [
+            {
+              "name": "border",
+              "description": "Display the table with borders",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "condensed",
+              "description": "Display the table rows as condensed",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "striped",
+              "description": "Display the table rows as alternating stripes",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "hover",
+              "description": "Set the table rows as hoverable",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "responsive",
+              "description": "Set the table to be responsive, enabling horizontal scroll when overflowing the parent container",
+              "value": {
+                "kind": "expression",
+                "type": "boolean|string"
+              },
+              "default": "true"
+            },
+            {
+              "name": "nowrap",
+              "description": "Display the table rows without wrapping white-space",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the table",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for table rows and data"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ITable/ITable.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ITabs",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the tabs",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the currently active tab",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the tabs",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "stretch",
+              "description": "Display the tabs header as full width",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "header",
+              "description": "header Slot for tabs header"
+            },
+            {
+              "name": "default",
+              "description": "default Slot for tab components"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ITabs/ITabs.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ITextarea",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "clearable",
+              "description": "Display the input as clearable",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the input",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "error",
+              "description": "The error state of the input, computed based on schema by default.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean | string[]"
+              },
+              "default": "() => ['touched', 'dirty', 'invalid']"
+            },
+            {
+              "name": "id",
+              "description": "The id of the internal input element",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "wrapperId",
+              "description": "The id of the input wrapper element",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the field value",
+              "value": {
+                "kind": "expression",
+                "type": "string|number"
+              },
+              "default": "''"
+            },
+            {
+              "name": "name",
+              "description": "The unique identifier of the input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('textarea');\n}"
+            },
+            {
+              "name": "plaintext",
+              "description": "Display the input as plaintext, disabling interaction",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "readonly",
+              "description": "The readonly state of the input",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the input",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "type",
+              "description": "The type of the input",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'text'"
+            },
+            {
+              "name": "clearAriaLabel",
+              "description": "The aria-label of the clear button",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'Clear'"
+            },
+            {
+              "name": "validate",
+              "description": "Enable textarea validation using schema",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            },
+            {
+              "name": "clear",
+              "description": "Event emitted when clearing the input element"
+            }
+          ],
+          "slots": [
+            {
+              "name": "prepend"
+            },
+            {
+              "name": "prefix"
+            },
+            {
+              "name": "clearable"
+            },
+            {
+              "name": "suffix"
+            },
+            {
+              "name": "append"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ITextarea/ITextarea.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IToast",
+          "description": "",
+          "attributes": [
+            {
+              "name": "size",
+              "description": "The size variant of the toast",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "color",
+              "description": "The color variant of the toast",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "duration",
+              "description": "The duration of the toast, in milliseconds. A duration of 0 will show the toast indefinitely.",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "0"
+            },
+            {
+              "name": "showProgress",
+              "description": "Show progress bar for the duration of the toast",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "icon",
+              "description": "The icon to be rendered in the toast",
+              "value": {
+                "kind": "expression",
+                "type": "string | VNode | VNode[]"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "title",
+              "description": "The title to be rendered in the toast",
+              "value": {
+                "kind": "expression",
+                "type": "string | VNode | VNode[]"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "message",
+              "description": "The message to be rendered in the toast",
+              "value": {
+                "kind": "expression",
+                "type": "string | VNode | VNode[]"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to show or hide a dismissible toast",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "dismissible",
+              "description": "Shows a dismiss icon on the toast",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "dismissAriaLabel",
+              "description": "The aria-label to use for the dismiss button",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'Dismiss'"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted when the toast is dismissed"
+            }
+          ],
+          "slots": [
+            {
+              "name": "icon",
+              "description": "icon Slot for toast icon"
+            },
+            {
+              "name": "title",
+              "description": "title Slot for toast title"
+            },
+            {
+              "name": "default",
+              "description": "default Slot for default toast content"
+            },
+            {
+              "name": "dismiss",
+              "description": "dismiss Slot for toast dismiss button"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IToast/IToast.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IToastContainer",
+          "description": "",
+          "attributes": [
+            {
+              "name": "eventBus",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              },
+              "default": "() => toastEventBus"
+            },
+            {
+              "name": "duration",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "dismissible",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "showProgress",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "undefined"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IToastContainer/IToastContainer.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "IToggle",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "error",
+              "description": "The error state of the checkbox, computed based on schema by default.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean | string[]"
+              },
+              "default": "() => ['touched', 'dirty', 'invalid']"
+            },
+            {
+              "name": "indeterminate",
+              "description": "The indeterminate state of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "value",
+              "description": "Used to set the checkbox value when used inside a checkbox group",
+              "value": {
+                "kind": "expression",
+                "type": "undefined"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "modelValue",
+              "description": "Used to set the checkbox value when used by itself",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "name",
+              "description": "The unique identifier of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('toggle');\n}"
+            },
+            {
+              "name": "native",
+              "description": "Displays the native browser checkbox input indicator",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "readonly",
+              "description": "The readonly state of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "tabindex",
+              "description": "The tabindex of the checkbox",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              },
+              "default": "0"
+            },
+            {
+              "name": "validate",
+              "description": "Enable toggle validation using schema",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:modelValue",
+              "description": "Event emitted for setting the modelValue"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for default toggle label"
+            }
+          ],
+          "source": {
+            "module": "./src/components/IToggle/IToggle.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "ITooltip",
+          "description": "",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "The color variant of the tooltip",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "disabled",
+              "description": "The disabled state of the tooltip",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "visible",
+              "description": "Used to manually control the visibility of the tooltip",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "name",
+              "description": "The identifier of the tooltip",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "function() {\n    return uid('tooltip');\n}"
+            },
+            {
+              "name": "arrow",
+              "description": "Displays an arrow on the tooltip pointing to the trigger element",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "placement",
+              "description": "The placement of the tooltip",
+              "value": {
+                "kind": "expression",
+                "type": "Placement"
+              },
+              "default": "'top'"
+            },
+            {
+              "name": "events",
+              "description": "The events used to trigger the tooltip",
+              "value": {
+                "kind": "expression",
+                "type": "PopupEvent | PopupEvent[]"
+              },
+              "default": "(): string[] => ['hover', 'focus']"
+            },
+            {
+              "name": "offset",
+              "description": "The offset of the tooltip relative to the trigger element",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "6"
+            },
+            {
+              "name": "interactable",
+              "description": "Determines whether hover state should be transferred from trigger to popup",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "popupOptions",
+              "description": "Used to override the floating-ui options used for creating the tooltip",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "name": "size",
+              "description": "The size variant of the tooltip",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "undefined"
+            },
+            {
+              "name": "hoverHideDelay",
+              "description": "Delay in milliseconds before the tooltip is hidden on hover",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "300"
+            },
+            {
+              "name": "animationDuration",
+              "description": "Animation duration in milliseconds",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "300"
+            }
+          ],
+          "events": [
+            {
+              "name": "update:visible",
+              "description": "Event emitted for setting the visible"
+            },
+            {
+              "name": "click:outside",
+              "description": "Event emitted when clicking outside the tooltip"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "default Slot for tooltip trigger"
+            },
+            {
+              "name": "body",
+              "description": "body Slot for tooltip body content"
+            }
+          ],
+          "source": {
+            "module": "./src/components/ITooltip/ITooltip.vue",
+            "symbol": "default"
+          }
+        }
+      ]
+    }
+  }
+}

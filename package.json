@@ -30,7 +30,8 @@
         "generate:manifest": "ts-node ./scripts/manifest.ts",
         "storybook": "storybook dev -p 6006",
         "storybook:build": "storybook build",
-        "stylelint-check": "stylelint-config-prettier-check"
+        "stylelint-check": "stylelint-config-prettier-check",
+        "update-web-types": "vue-docgen-web-types --configFile ./styleguide.config.ts"
     },
     "main": "inkline.js",
     "module": "inkline.mjs",
@@ -40,7 +41,8 @@
     "dependencies": {
         "@floating-ui/dom": "^1.0.4",
         "@popperjs/core": "2.11.6",
-        "normalize.css": "^8.0.1"
+        "normalize.css": "^8.0.1",
+        "vue-docgen-web-types": "^0.1.8"
     },
     "devDependencies": {
         "@babel/core": "^7.19.3",
@@ -1315,5 +1317,6 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/inkline/inkline.git"
-    }
+    },
+    "web-types": "./web-types.json"
 }
