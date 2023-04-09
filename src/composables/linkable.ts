@@ -8,6 +8,10 @@ export function useLinkable(props: {
 }) {
     const inkline = useInkline();
 
+    const isLink = computed(() => {
+        return props.to.value || props.href.value;
+    });
+
     const tag = computed<string | any>(() => {
         const routerComponent = inkline?.options?.routerComponent;
 
@@ -15,14 +19,12 @@ export function useLinkable(props: {
             return typeof routerComponent === 'string'
                 ? resolveComponent(routerComponent)
                 : routerComponent;
+        } else if (props.href.value) {
+            return 'a';
         } else {
-            if (props.href.value) {
-                return 'a';
-            } else {
-                return props.tag.value;
-            }
+            return props.tag.value;
         }
     });
 
-    return { tag };
+    return { tag, isLink };
 }

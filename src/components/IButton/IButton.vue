@@ -176,7 +176,7 @@ export default defineComponent({
         const to = toRef(props, 'to');
         const href = toRef(props, 'href');
         const currentTag = toRef(props, 'tag');
-        const { tag: isTag } = useLinkable({ to, href, tag: currentTag });
+        const { tag, isLink } = useLinkable({ to, href, tag: currentTag });
 
         const disabled = computed(() => {
             return (
@@ -220,15 +220,16 @@ export default defineComponent({
             };
         });
 
-        const role = computed(() =>
-            props.to || props.href
-                ? null
-                : props.tag === 'button' || props.tag === 'input'
-                ? null
-                : 'button'
-        );
-        const isType = computed(() =>
-            props.tag === 'button' || props.tag === 'input' ? props.type : null
+        const role = computed(() => {
+            if (props.tag === 'button' || props.tag === 'input') {
+                return null;
+            }
+
+            return 'button';
+        });
+
+        const type = computed(() =>
+            !isLink.value && (props.tag === 'button' || props.tag === 'input') ? props.type : null
         );
 
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
@@ -238,8 +239,8 @@ export default defineComponent({
             ariaDisabled,
             ariaPressed,
             disabled,
-            isTag,
-            isType,
+            tag,
+            type,
             role,
             tabIndex,
             classes
@@ -251,13 +252,13 @@ export default defineComponent({
 <template>
     <component
         v-bind="$attrs"
-        :is="isTag"
+        :is="tag"
         class="button"
         :to="to"
         :href="href"
         :tag="tag"
         :role="role"
-        :type="isType"
+        :type="type"
         :tabindex="tabIndex"
         :class="classes"
         :disabled="disabled"
