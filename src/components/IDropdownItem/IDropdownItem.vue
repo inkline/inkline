@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, toRef, useAttrs } from 'vue';
+import { computed, defineComponent, inject, toRef } from 'vue';
 import { useLinkable } from '@inkline/inkline/composables';
 import { DropdownKey } from '@inkline/inkline/components/IDropdown/mixin';
 

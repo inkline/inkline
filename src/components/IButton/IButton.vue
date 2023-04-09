@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, toRef, useAttrs } from 'vue';
+import { computed, defineComponent, inject, PropType, toRef } from 'vue';
 import { useComponentColor, useComponentSize, useLinkable } from '@inkline/inkline/composables';
 import { ILoader } from '@inkline/inkline/components/ILoader';
 import { ButtonGroupKey } from '@inkline/inkline/components/IButtonGroup/mixin';
