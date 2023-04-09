@@ -2,7 +2,6 @@ import { UserOptions } from "./types";
 import * as chokidar from "chokidar";
 import { build } from "./build";
 import { getResolvedOptions } from "@inkline/config";
-import { existsSync } from "fs";
 
 /**
  * Watch config file for changes and rebuild
