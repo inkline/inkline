@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Components > IBreadcrumbItem > should render correctly 1`] = `
-"<li class=\\"breadcrumb-item\\"><a tag=\\"a\\" tabindex=\\"0\\">
+"<li class=\\"breadcrumb-item\\" role=\\"menuitem\\"><a tabindex=\\"0\\" tag=\\"a\\">
     <!-- @slot default Slot for default breadcrumb item content -->
   </a></li>"
 `;

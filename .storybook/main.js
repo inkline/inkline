@@ -6,14 +6,15 @@ module.exports = {
     stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
     addons: [
         {
-            name: '@storybook/addon-postcss',
+            name: '@storybook/addon-styling',
             options: {
-                postcssLoaderOptions: {
+                postCss: {
                     ...postcssConfig,
                     implementation: require('postcss')
                 }
             }
         },
+        '@storybook/addon-styling',
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         // Disabled until this is actually used rather otherwise its a blank tab
@@ -41,7 +42,7 @@ module.exports = {
                     }
                 ]
             },
-            define: { 'process.env': {} },
+            define: { 'process.env': {} }
         });
     },
     docs: {

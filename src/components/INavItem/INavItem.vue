@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, toRef } from 'vue';
+import { computed, defineComponent, inject, toRef, useAttrs } from 'vue';
 import { useLinkable } from '@inkline/inkline/composables';
 import { NavKey } from '@inkline/inkline/components/INav/mixin';
 
@@ -105,6 +105,15 @@ export default defineComponent({
         const role = computed(() => (props.to || props.href ? null : 'menuitem'));
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
+        const bindings = computed(() => ({
+            ...attrs,
+            ...(to.value ? { to: to.value } : href.value ? { href: href.value } : {}),
+            ...(disabled.value ? { disabled: disabled.value } : {}),
+            role: role.value,
+            tabindex: tabIndex.value,
+            'aria-disabled': ariaDisabled.value
+        }));
+
         function onClick(event: Event) {
             if (props.stopPropagation || !nav) {
                 return;
@@ -114,14 +123,11 @@ export default defineComponent({
         }
 
         return {
+            bindings,
             classes,
+            tag,
             currentTag,
-            disabled,
-            ariaDisabled,
-            role,
-            tabIndex,
-            onClick,
-            tag
+            onClick
         };
     }
 });
@@ -129,17 +135,11 @@ export default defineComponent({
 
 <template>
     <component
-        v-bind="$attrs"
+        v-bind="bindings"
         :is="tag"
-        :to="to"
-        :href="href"
-        class="nav-item"
-        :role="role"
         :tag="currentTag"
-        :tabindex="tabIndex"
+        class="nav-item"
         :class="classes"
-        :disabled="disabled"
-        :aria-disabled="ariaDisabled"
         @click="onClick"
     >
         <!-- @slot default Slot for default nav item content -->

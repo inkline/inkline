@@ -28,7 +28,7 @@ export function usePopupControl(props: {
         animationDuration: number;
         hoverHideDelay: number;
         offset: number;
-        popupOptions: {
+        popupOptions?: {
             strategy?: Strategy;
         };
     }>;

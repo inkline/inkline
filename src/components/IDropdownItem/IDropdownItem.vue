@@ -80,9 +80,8 @@ export default defineComponent({
             default: undefined
         }
     },
-    setup(props) {
+    setup(props, { attrs }) {
         const dropdown = inject(DropdownKey, null);
-        const attrs = useAttrs();
 
         const to = toRef(props, 'to');
         const href = toRef(props, 'href');
@@ -107,18 +106,24 @@ export default defineComponent({
         const role = computed(() => (props.to || props.href ? null : 'menuitem'));
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
+        const bindings = computed(() => ({
+            ...attrs,
+            ...(to.value ? { to: to.value } : href.value ? { href: href.value } : {}),
+            ...(disabled.value ? { disabled: disabled.value } : {}),
+            role: role.value,
+            tabindex: tabIndex.value,
+            'aria-disabled': ariaDisabled.value
+        }));
+
         function onClick(event: Event) {
             dropdown?.onItemClick(event);
         }
 
         return {
+            bindings,
             classes,
-            disabled,
-            ariaDisabled,
-            role,
-            tabIndex,
-            tag,
             currentTag,
+            tag,
             onClick
         };
     }
@@ -127,16 +132,11 @@ export default defineComponent({
 
 <template>
     <component
-        v-bind="$attrs"
+        v-bind="bindings"
         :is="tag"
+        :tag="currentTag"
         class="dropdown-item"
         :class="classes"
-        :role="role"
-        :tag="currentTag"
-        :tabindex="tabIndex"
-        :disabled="disabled"
-        :aria-disabled="ariaDisabled"
-        :aria-pressed="active"
         @click="onClick"
     >
         <!-- @slot default Slot for default dropdown item content -->

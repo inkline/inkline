@@ -70,10 +70,10 @@ export default defineComponent({
         }
     },
     setup(props) {
-        const currentHref = toRef(props, 'href');
+        const to = toRef(props, 'to');
+        const href = toRef(props, 'href');
         const currentTag = toRef(props, 'tag');
-        const currentTo = toRef(props, 'to');
-        const { tag } = useLinkable({ to: currentTo, href: currentHref, tag: currentTag });
+        const { tag } = useLinkable({ to, href, tag: currentTag });
 
         const classes = computed(() => ({
             '-active': props.active,
@@ -82,26 +82,26 @@ export default defineComponent({
 
         const tabIndex = computed(() => (props.disabled || props.active ? -1 : props.tabindex));
 
+        const bindings = computed(() => ({
+            ...(to.value ? { to: to.value } : href.value ? { href: href.value } : {}),
+            tabindex: tabIndex.value,
+            'aria-disabled': props.disabled ? 'true' : null,
+            'aria-current': props.active ? 'location' : undefined
+        }));
+
         return {
-            tag,
-            currentTag,
+            bindings,
             classes,
-            tabIndex
+            currentTag,
+            tag
         };
     }
 });
 </script>
 
 <template>
-    <li v-bind="$attrs" class="breadcrumb-item" :class="classes">
-        <component
-            :is="tag"
-            :tag="currentTag"
-            :to="to"
-            :href="href"
-            :tabindex="tabIndex"
-            :aria-current="active ? 'location' : undefined"
-        >
+    <li v-bind="$attrs" class="breadcrumb-item" :class="classes" role="menuitem">
+        <component v-bind="bindings" :is="tag" :tag="currentTag">
             <!-- @slot default Slot for default breadcrumb item content -->
             <slot />
         </component>

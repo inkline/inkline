@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, toRef } from 'vue';
+import { computed, defineComponent, toRef } from 'vue';
 import { useLinkable } from '@inkline/inkline/composables';
 
 const componentName = 'INavbarBrand';
@@ -39,30 +39,28 @@ export default defineComponent({
             default: undefined
         }
     },
-    setup(props) {
+    setup(props, { attrs }) {
         const to = toRef(props, 'to');
         const href = toRef(props, 'href');
         const currentTag = toRef(props, 'tag');
         const { tag } = useLinkable({ to, href, tag: currentTag });
 
+        const bindings = computed(() => ({
+            ...attrs,
+            ...(to.value ? { to: to.value } : href.value ? { href: href.value } : {})
+        }));
+
         return {
-            tag,
-            currentTag
+            bindings,
+            currentTag,
+            tag
         };
     }
 });
 </script>
 
 <template>
-    <component
-        v-bind="$attrs"
-        :is="tag"
-        class="navbar-brand"
-        :to="to"
-        :href="href"
-        :tag="currentTag"
-        translate="no"
-    >
+    <component v-bind="bindings" :is="tag" :tag="currentTag" class="navbar-brand" translate="no">
         <!-- @slot default Slot for default navbar brand content -->
         <slot />
     </component>

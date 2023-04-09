@@ -5,7 +5,7 @@ exports[`Components > INavbar > should render correctly 1`] = `
   <div class=\\"container\\">
     <!-- @slot default Slot for default container content -->
     <div class=\\"collapse-toggle hamburger-menu -light -md -close\\"><span class=\\"hamburger-menu-bars\\"></span></div><!-- @slot default Slot for default navbar content -->
-    <div class=\\"navbar-brand\\" tag=\\"div\\" translate=\\"no\\">
+    <div tag=\\"div\\" class=\\"navbar-brand\\" translate=\\"no\\">
       <!-- @slot default Slot for default navbar brand content -->
     </div>
     <transition-stub name=\\"expand\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
@@ -13,13 +13,13 @@ exports[`Components > INavbar > should render correctly 1`] = `
         <!-- @slot default Slot for default navbar collapsible content -->
         <nav class=\\"nav -light -md\\" role=\\"menubar\\">
           <!-- @slot default Slot for default nav content -->
-          <div class=\\"nav-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\">
+          <div role=\\"menuitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"nav-item\\">
             <!-- @slot default Slot for default nav item content -->Item 1
           </div>
-          <div class=\\"nav-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\">
+          <div role=\\"menuitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"nav-item\\">
             <!-- @slot default Slot for default nav item content -->Item 2
           </div>
-          <div class=\\"nav-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\">
+          <div role=\\"menuitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"nav-item\\">
             <!-- @slot default Slot for default nav item content -->Item 3
           </div>
         </nav>

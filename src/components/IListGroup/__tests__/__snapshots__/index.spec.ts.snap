@@ -3,13 +3,13 @@
 exports[`Components > IListGroup > should render correctly 1`] = `
 "<div class=\\"list-group -light -md -border\\" role=\\"list\\">
   <!-- @slot default Slot for list group items -->
-  <div class=\\"list-group-item\\" tag=\\"div\\" role=\\"listitem\\" tabindex=\\"0\\" disabled=\\"false\\">
+  <div role=\\"listitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"list-group-item\\">
     <!-- @slot default Slot for list group item content -->Item 1
   </div>
-  <div class=\\"list-group-item\\" tag=\\"div\\" role=\\"listitem\\" tabindex=\\"0\\" disabled=\\"false\\">
+  <div role=\\"listitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"list-group-item\\">
     <!-- @slot default Slot for list group item content -->Item 2
   </div>
-  <div class=\\"list-group-item\\" tag=\\"div\\" role=\\"listitem\\" tabindex=\\"0\\" disabled=\\"false\\">
+  <div role=\\"listitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"list-group-item\\">
     <!-- @slot default Slot for list group item content -->Item 3
   </div>
 </div>"

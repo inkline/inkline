@@ -3,7 +3,7 @@
 exports[`Components > IDropdown > should render correctly 1`] = `
 "<div class=\\"dropdown-wrapper\\" aria-haspopup=\\"true\\">
   <div class=\\"dropdown-trigger\\">
-    <!-- @slot default Slot for dropdown trigger --><button class=\\"button -light -md\\" tag=\\"button\\" type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\">
+    <!-- @slot default Slot for dropdown trigger --><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
       <!-- @slot loading Slot for button loading state -->
       <!--v-if-->
       <!-- @slot default Slot for default button content -->
@@ -14,14 +14,14 @@ exports[`Components > IDropdown > should render correctly 1`] = `
       <!--v-if-->
       <div class=\\"dropdown-body\\">
         <!-- @slot body Slot for dropdown body content -->
-        <div class=\\"dropdown-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-pressed=\\"false\\">
+        <div role=\\"menuitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"dropdown-item\\">
           <!-- @slot default Slot for default dropdown item content -->
         </div>
-        <div class=\\"dropdown-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-pressed=\\"false\\">
+        <div role=\\"menuitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"dropdown-item\\">
           <!-- @slot default Slot for default dropdown item content -->
         </div>
         <div class=\\"dropdown-divider\\" role=\\"separator\\"></div>
-        <div class=\\"dropdown-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\" aria-pressed=\\"false\\">
+        <div role=\\"menuitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"dropdown-item\\">
           <!-- @slot default Slot for default dropdown item content -->
         </div>
       </div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, toRef } from 'vue';
+import { computed, defineComponent, inject, PropType, toRef, useAttrs } from 'vue';
 import { useComponentColor, useComponentSize, useLinkable } from '@inkline/inkline/composables';
 import { ILoader } from '@inkline/inkline/components/ILoader';
 import { ButtonGroupKey } from '@inkline/inkline/components/IButtonGroup/mixin';
@@ -163,7 +163,7 @@ export default defineComponent({
             default: undefined
         }
     },
-    setup(props) {
+    setup(props, { attrs }) {
         const buttonGroup = inject(ButtonGroupKey, null);
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
@@ -234,39 +234,31 @@ export default defineComponent({
 
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
+        const bindings = computed(() => ({
+            ...attrs,
+            ...(to.value ? { to: to.value } : href.value ? { href: href.value } : {}),
+            role: role.value,
+            type: type.value,
+            tabindex: tabIndex.value,
+            disabled: disabled.value,
+            'aria-disabled': ariaDisabled.value,
+            'aria-pressed': ariaPressed.value,
+            'aria-busy': ariaBusy.value,
+            'aria-live': 'polite'
+        }));
+
         return {
-            ariaBusy,
-            ariaDisabled,
-            ariaPressed,
-            disabled,
-            tag,
-            type,
-            role,
-            tabIndex,
-            classes
+            bindings,
+            classes,
+            currentTag,
+            tag
         };
     }
 });
 </script>
 
 <template>
-    <component
-        v-bind="$attrs"
-        :is="tag"
-        class="button"
-        :to="to"
-        :href="href"
-        :tag="tag"
-        :role="role"
-        :type="type"
-        :tabindex="tabIndex"
-        :class="classes"
-        :disabled="disabled"
-        :aria-disabled="ariaDisabled"
-        :aria-pressed="ariaPressed"
-        :aria-busy="ariaBusy"
-        aria-live="polite"
-    >
+    <component v-bind="bindings" :is="tag" :tag="currentTag" class="button" :class="classes">
         <!-- @slot loading Slot for button loading state -->
         <slot v-if="loading" name="loading">
             <ILoader />

@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Components > INavItem > should render correctly 1`] = `
-"<div class=\\"nav-item\\" role=\\"menuitem\\" tag=\\"div\\" tabindex=\\"0\\" disabled=\\"false\\">
+"<div role=\\"menuitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"nav-item\\">
   <!-- @slot default Slot for default nav item content -->
 </div>"
 `;

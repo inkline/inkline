@@ -14,18 +14,18 @@ describe('Components', () => {
         };
 
         const stubs = {
-            'i-button': IButton,
-            'i-dropdown-item': IDropdownItem,
-            'i-dropdown-divider': IDropdownDivider
+            IButton,
+            IDropdownItem,
+            IDropdownDivider
         };
 
         const slots = {
-            default: ['<i-button color="light" size="md" />'],
+            default: ['<IButton color="light" size="md" />'],
             body: [
-                '<i-dropdown-item />',
-                '<i-dropdown-item />',
-                '<i-dropdown-divider />',
-                '<i-dropdown-item />'
+                '<IDropdownItem />',
+                '<IDropdownItem />',
+                '<IDropdownDivider />',
+                '<IDropdownItem />'
             ]
         };
 

@@ -92,11 +92,18 @@ export default defineComponent({
             '-disabled': disabled.value
         }));
 
+        const bindings = computed(() => ({
+            ...attrs,
+            ...(to.value ? { to: to.value } : href.value ? { href: href.value } : {}),
+            ...(disabled.value ? { disabled: disabled.value } : {}),
+            role: role.value,
+            tabindex: tabIndex.value,
+            'aria-disabled': ariaDisabled.value
+        }));
+
         return {
+            bindings,
             classes,
-            role,
-            tabIndex,
-            ariaDisabled,
             currentTag,
             tag
         };
@@ -106,15 +113,11 @@ export default defineComponent({
 
 <template>
     <component
-        v-bind="$attrs"
+        v-bind="bindings"
         :is="tag"
-        class="list-group-item"
         :tag="currentTag"
-        :role="role"
-        :tabindex="tabIndex"
+        class="list-group-item"
         :class="classes"
-        :disabled="disabled"
-        :aria-disabled="ariaDisabled"
     >
         <!-- @slot default Slot for list group item content -->
         <slot />
