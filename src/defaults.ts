@@ -239,6 +239,47 @@ export const defaultConfig: Configuration = {
                         gutter: 'calc(var(--grid--gutter) * var(--size-multiplier-2xl))',
                         width: 'calc(var(--breakpoint-2xl) - var(--grid--2xl--gutter))'
                     }
+                },
+                d1: {
+                    fontSize:
+                        'calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-5))'
+                },
+                d2: {
+                    fontSize:
+                        'calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-4))'
+                },
+                d3: {
+                    fontSize:
+                        'calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-3))'
+                },
+                d4: {
+                    fontSize:
+                        'calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-2))'
+                },
+                d5: {
+                    fontSize:
+                        'calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-1))'
+                },
+                d6: {
+                    fontSize: 'calc(var(--font-size) * var(--scale-ratio-pow-5))'
+                },
+                h1: {
+                    fontSize: 'calc(var(--font-size) * var(--scale-ratio-pow-5))'
+                },
+                h2: {
+                    fontSize: 'calc(var(--font-size) * var(--scale-ratio-pow-4))'
+                },
+                h3: {
+                    fontSize: 'calc(var(--font-size) * var(--scale-ratio-pow-3))'
+                },
+                h4: {
+                    fontSize: 'calc(var(--font-size) * var(--scale-ratio-pow-2))'
+                },
+                h5: {
+                    fontSize: 'calc(var(--font-size) * var(--scale-ratio-pow-1))'
+                },
+                h6: {
+                    fontSize: 'var(--font-size)'
                 }
             },
             variants: {
@@ -310,7 +351,7 @@ export const defaultConfig: Configuration = {
                     background: 'var(--color-gray-900)'
                 },
                 body: {
-                    background: 'var(--color-gray-800)',
+                    background: 'var(--color-dark-shade-50)',
                     color: 'var(--color-gray-100)'
                 }
             }
