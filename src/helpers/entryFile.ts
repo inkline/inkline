@@ -43,7 +43,7 @@ export async function addPluginToEntryFile(entryFile: string, env: InitEnv): Pro
             '',
             `import { Inkline, components } from '@inkline/inkline';`,
             `import './css/variables/index.scss';`,
-            `import '@inkline/inkline/css/base.scss';`,
+            `import '@inkline/inkline/css/index.scss';`,
             `import '@inkline/inkline/css/utilities.scss';`
         ]);
 
