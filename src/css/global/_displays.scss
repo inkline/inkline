@@ -1,11 +1,13 @@
 /**
- * Headings
+ * Displays
  */
 
 @for $i from 1 through 6 {
-    h#{$i},
-    .h#{$i} {
-        margin-top: 0;
+    .d#{$i} {
+        margin-top: var(
+            --d#{$i}--margin-top,
+            var(--display--margin-top, var(--heading--margin-top, 0))
+        );
         margin-bottom: var(
             --d#{$i}--margin-bottom,
             var(--display--margin-bottom, var(--heading--margin-bottom, var(--margin-bottom-sm)))

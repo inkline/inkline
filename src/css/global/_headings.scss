@@ -5,7 +5,7 @@
 @for $i from 1 through 6 {
     h#{$i},
     .h#{$i} {
-        margin-top: 0;
+        margin-top: var(--h#{$i}--margin-top, var(--heading--margin-top, 0));
         margin-bottom: var(
             --h#{$i}--margin-bottom,
             var(--heading--margin-bottom, var(--margin-bottom-sm))
