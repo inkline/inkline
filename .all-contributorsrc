@@ -199,6 +199,17 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "pkej",
+      "name": "Paul Kenneth Egell-Johnsen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7883794?v=4",
+      "profile": "https://pkej.github.io/",
+      "contributions": [
+        "code",
+        "test",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 10,
