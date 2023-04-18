@@ -61,16 +61,26 @@ export default defineComponent({
 
         function showToast(toast: ToastOptions) {
             const id = toast.id || uid('toast');
+
+            const toastAlreadyVisible = toastPositionKeys.value.find((position) =>
+                toastPositions.value[position].find((toast) => toast.id === id)
+            );
+            if (toastAlreadyVisible) {
+                console.log(`Toast with id "${id}" is already visible.`);
+                return;
+            }
+
             const color = toast?.color || inkline.options.toast?.color || 'light';
+            const size = toast?.size || inkline.options.toast?.size || 'md';
             const duration =
                 [toast?.duration, props.duration, inkline.options.toast?.duration].find(
                     (duration) => typeof duration !== 'undefined'
                 ) || 0;
             const dismissible = [toast?.dismissible, props.dismissible].find(
-                (duration) => typeof duration !== 'undefined'
+                (dismissible) => dismissible === true
             );
             const showProgress = [toast?.showProgress, props.showProgress].find(
-                (duration) => typeof duration !== 'undefined'
+                (showProgress) => showProgress === true
             );
             const position: ToastPosition =
                 toast?.position || inkline.options.toast?.position || 'top-right';
@@ -79,6 +89,7 @@ export default defineComponent({
                 ...toast,
                 id,
                 color,
+                size,
                 duration,
                 position,
                 dismissible,
@@ -132,14 +143,7 @@ export default defineComponent({
                 <IToast
                     v-for="toast in toastPositions[position]"
                     :key="toast.id"
-                    :color="toast.color"
-                    :duration="toast.duration"
-                    :position="toast.position"
-                    :dismissible="dismissible"
-                    :show-progress="showProgress"
-                    :icon="toast.icon"
-                    :title="toast.title"
-                    :message="toast.message"
+                    v-bind="toast"
                     @update:modelValue="hideToast(toast)"
                 />
             </TransitionGroup>
