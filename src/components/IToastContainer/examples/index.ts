@@ -1,2 +1,10 @@
 export { default as IToastContainerBasicExample } from '@inkline/inkline/components/IToastContainer/examples/basic.vue';
+export { default as IToastContainerColorVariantsExample } from '@inkline/inkline/components/IToastContainer/examples/color-variants.vue';
+export { default as IToastContainerSizeVariantsExample } from '@inkline/inkline/components/IToastContainer/examples/size-variants.vue';
+export { default as IToastContainerCustomExample } from '@inkline/inkline/components/IToastContainer/examples/custom.vue';
+export { default as IToastContainerDismissibleExample } from '@inkline/inkline/components/IToastContainer/examples/dismissible.vue';
+export { default as IToastContainerDurationExample } from '@inkline/inkline/components/IToastContainer/examples/duration.vue';
+export { default as IToastContainerDurationPersistentExample } from '@inkline/inkline/components/IToastContainer/examples/duration-persistent.vue';
+export { default as IToastContainerHideExample } from '@inkline/inkline/components/IToastContainer/examples/hide.vue';
+export { default as IToastContainerHideAllExample } from '@inkline/inkline/components/IToastContainer/examples/hide-all.vue';
 export { default as IToastContainerVNodeExample } from '@inkline/inkline/components/IToastContainer/examples/vnode.vue';

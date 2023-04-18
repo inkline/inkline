@@ -22,5 +22,5 @@ export default defineComponent({
 </script>
 <template>
     <IToastContainer />
-    <IButton class="_margin-top:1" @click="onClickShowToast">Show toast</IButton>
+    <IButton @click="onClickShowToast">Show toast</IButton>
 </template>

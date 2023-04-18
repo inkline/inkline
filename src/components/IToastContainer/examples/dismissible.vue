@@ -8,8 +8,9 @@ export default defineComponent({
 
         function showToast() {
             toast.show({
-                title: 'Toast title',
-                message: 'Toast message'
+                title: 'Dismissible Toast',
+                message: 'This toast can be dismissed by clicking the close button',
+                dismissible: true
             });
         }
 

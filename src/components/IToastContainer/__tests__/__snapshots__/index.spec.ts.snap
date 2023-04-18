@@ -4,7 +4,7 @@ exports[`Components > IToastContainer > methods > showToast() > should show a to
 "<div class=\\"toast-container\\">
   <div class=\\"toast-position -top-left\\">
     <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div position=\\"top-left\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
+      <div id=\\"top-left\\" position=\\"top-left\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
         <div class=\\"toast-content\\">
           <!--v-if-->
           <!-- @slot default Slot for default toast content --><span></span>
@@ -18,7 +18,7 @@ exports[`Components > IToastContainer > methods > showToast() > should show a to
   </div>
   <div class=\\"toast-position -top\\">
     <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div position=\\"top\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
+      <div id=\\"top\\" position=\\"top\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
         <div class=\\"toast-content\\">
           <!--v-if-->
           <!-- @slot default Slot for default toast content --><span></span>
@@ -32,7 +32,7 @@ exports[`Components > IToastContainer > methods > showToast() > should show a to
   </div>
   <div class=\\"toast-position -top-right\\">
     <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div position=\\"top-right\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
+      <div id=\\"top-right\\" position=\\"top-right\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
         <div class=\\"toast-content\\">
           <!--v-if-->
           <!-- @slot default Slot for default toast content --><span></span>
@@ -46,7 +46,7 @@ exports[`Components > IToastContainer > methods > showToast() > should show a to
   </div>
   <div class=\\"toast-position -right\\">
     <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div position=\\"right\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
+      <div id=\\"right\\" position=\\"right\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
         <div class=\\"toast-content\\">
           <!--v-if-->
           <!-- @slot default Slot for default toast content --><span></span>
@@ -60,7 +60,7 @@ exports[`Components > IToastContainer > methods > showToast() > should show a to
   </div>
   <div class=\\"toast-position -bottom-right\\">
     <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div position=\\"bottom-right\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
+      <div id=\\"bottom-right\\" position=\\"bottom-right\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
         <div class=\\"toast-content\\">
           <!--v-if-->
           <!-- @slot default Slot for default toast content --><span></span>
@@ -74,7 +74,7 @@ exports[`Components > IToastContainer > methods > showToast() > should show a to
   </div>
   <div class=\\"toast-position -bottom\\">
     <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div position=\\"bottom\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
+      <div id=\\"bottom\\" position=\\"bottom\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
         <div class=\\"toast-content\\">
           <!--v-if-->
           <!-- @slot default Slot for default toast content --><span></span>
@@ -88,7 +88,7 @@ exports[`Components > IToastContainer > methods > showToast() > should show a to
   </div>
   <div class=\\"toast-position -bottom-left\\">
     <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div position=\\"bottom-left\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
+      <div id=\\"bottom-left\\" position=\\"bottom-left\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
         <div class=\\"toast-content\\">
           <!--v-if-->
           <!-- @slot default Slot for default toast content --><span></span>
@@ -102,7 +102,7 @@ exports[`Components > IToastContainer > methods > showToast() > should show a to
   </div>
   <div class=\\"toast-position -left\\">
     <transition-group-stub name=\\"toast-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div position=\\"left\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
+      <div id=\\"left\\" position=\\"left\\" class=\\"toast -light -md\\" style=\\"--toast--duration: 3500ms;\\"><span class=\\"toast-icon\\" role=\\"img\\" aria-hidden=\\"true\\"><!-- @slot icon Slot for toast icon --><svg class=\\"inkline-icon -md\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"28\\" viewBox=\\"0 0 24 28\\" fill=\\"currentColor\\"><title>circle</title><path d=\\"M24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z\\"></path></svg></span>
         <div class=\\"toast-content\\">
           <!--v-if-->
           <!-- @slot default Slot for default toast content --><span></span>

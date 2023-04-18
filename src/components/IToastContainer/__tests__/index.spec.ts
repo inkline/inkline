@@ -44,14 +44,14 @@ describe('Components', () => {
                         }
                     });
 
-                    eventBus.emit('show', { position: 'top-left' });
-                    eventBus.emit('show', { position: 'top' });
-                    eventBus.emit('show', { position: 'top-right' });
-                    eventBus.emit('show', { position: 'right' });
-                    eventBus.emit('show', { position: 'bottom-right' });
-                    eventBus.emit('show', { position: 'bottom' });
-                    eventBus.emit('show', { position: 'bottom-left' });
-                    eventBus.emit('show', { position: 'left' });
+                    eventBus.emit('show', { id: 'top-left', position: 'top-left' });
+                    eventBus.emit('show', { id: 'top', position: 'top' });
+                    eventBus.emit('show', { id: 'top-right', position: 'top-right' });
+                    eventBus.emit('show', { id: 'right', position: 'right' });
+                    eventBus.emit('show', { id: 'bottom-right', position: 'bottom-right' });
+                    eventBus.emit('show', { id: 'bottom', position: 'bottom' });
+                    eventBus.emit('show', { id: 'bottom-left', position: 'bottom-left' });
+                    eventBus.emit('show', { id: 'left', position: 'left' });
 
                     await retry(() => {
                         expect(wrapper.container.querySelectorAll('.toast').length).toEqual(8);
@@ -106,14 +106,14 @@ describe('Components', () => {
                         }
                     });
 
-                    eventBus.emit('show', { position: 'top-left' });
-                    eventBus.emit('show', { position: 'top' });
-                    eventBus.emit('show', { position: 'top-right' });
-                    eventBus.emit('show', { position: 'right' });
-                    eventBus.emit('show', { position: 'bottom-right' });
-                    eventBus.emit('show', { position: 'bottom' });
-                    eventBus.emit('show', { position: 'bottom-left' });
-                    eventBus.emit('show', { position: 'left' });
+                    eventBus.emit('show', { id: 'top-left', position: 'top-left' });
+                    eventBus.emit('show', { id: 'top', position: 'top' });
+                    eventBus.emit('show', { id: 'top-right', position: 'top-right' });
+                    eventBus.emit('show', { id: 'right', position: 'right' });
+                    eventBus.emit('show', { id: 'bottom-right', position: 'bottom-right' });
+                    eventBus.emit('show', { id: 'bottom', position: 'bottom' });
+                    eventBus.emit('show', { id: 'bottom-left', position: 'bottom-left' });
+                    eventBus.emit('show', { id: 'left', position: 'left' });
 
                     await retry(() => {
                         expect(wrapper.container.querySelectorAll('.toast').length).toEqual(8);

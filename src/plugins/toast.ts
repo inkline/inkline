@@ -31,6 +31,8 @@ export interface ToastOptions {
         | 'warning'
         | 'danger'
         | string;
+
+    size: 'sm' | 'md' | 'lg';
 }
 
 export interface InklineToastOptions {
