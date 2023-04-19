@@ -2,7 +2,35 @@ import { ComponentManifest } from '@inkline/inkline/types';
 
 export const manifest: ComponentManifest = {
     name: 'IToastContainer',
-    props: [],
+    props: [
+        {
+            name: 'eventBus',
+            type: ['EventBus'],
+            default: 'toastEventBus',
+            description: 'The event bus to use for showing/hiding toasts'
+        },
+        {
+            name: 'duration',
+            type: ['number'],
+            default: 'undefined',
+            description:
+                'The default duration for toasts in milliseconds, if not specified in the plugin or toast display options'
+        },
+        {
+            name: 'dismissible',
+            type: ['Boolean'],
+            default: 'undefined',
+            description:
+                'The default dismissible state for toasts, if not specified in the plugin or toast display options'
+        },
+        {
+            name: 'showProgress',
+            type: ['Boolean'],
+            default: 'undefined',
+            description:
+                'The default option for showing the progress bar for toasts, if not specified in the plugin or toast display options'
+        }
+    ],
     events: [],
     slots: [],
     css: {

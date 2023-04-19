@@ -23,7 +23,7 @@ export const manifest: ComponentManifest = {
                 'The duration of the toast, in milliseconds. A duration of 0 will show the toast indefinitely.'
         },
         {
-            name: 'duration',
+            name: 'showProgress',
             type: ['Boolean'],
             default: 'true',
             description: 'Show progress bar for the duration of the toast'
