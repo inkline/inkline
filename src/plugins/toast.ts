@@ -1,5 +1,6 @@
-import { InjectionKey, Plugin, VNode } from 'vue';
 import { createEventBus } from '@grozav/utils';
+import type { InjectionKey, Plugin, VNode } from 'vue';
+import type { EventBus } from '@grozav/utils';
 
 export type ToastPosition =
     | 'top-left'
@@ -45,7 +46,7 @@ export interface ToastService {
     hideAll: () => void;
 }
 
-export const toastEventBus = createEventBus();
+export const toastEventBus: EventBus = createEventBus();
 
 export const createToastService = (): ToastService => ({
     show: (options) => {

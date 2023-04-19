@@ -52,7 +52,7 @@ export default defineComponent({
          * Show progress bar for the duration of the toast
          * @type Boolean
          * @default true
-         * @name duration
+         * @name showProgress
          */
         showProgress: {
             type: Boolean,

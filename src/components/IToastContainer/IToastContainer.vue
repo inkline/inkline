@@ -1,8 +1,9 @@
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref, TransitionGroup } from 'vue';
+import { computed, defineComponent, onMounted, PropType, ref, TransitionGroup } from 'vue';
 import { useInkline } from '@inkline/inkline/composables';
 import { toastEventBus, ToastOptions, ToastPosition } from '@inkline/inkline/plugins';
 import { uid } from '@grozav/utils';
+import type { EventBus } from '@grozav/utils';
 import { IToast } from '@inkline/inkline/components/IToast';
 
 const componentName = 'IToastContainer';
@@ -15,18 +16,42 @@ export default defineComponent({
     },
     inheritAttrs: false,
     props: {
+        /**
+         * The event bus to use for showing/hiding toasts
+         * @type EventBus
+         * @default toastEventBus
+         * @name eventBus
+         */
         eventBus: {
-            type: Object,
+            type: Object as PropType<EventBus>,
             default: () => toastEventBus
         },
+        /**
+         * The default duration for toasts in milliseconds, if not specified in the plugin or toast display options
+         * @type number
+         * @default undefined
+         * @name duration
+         */
         duration: {
             type: Number,
             default: undefined
         },
+        /**
+         * The default dismissible state for toasts, if not specified in the plugin or toast display options
+         * @type Boolean
+         * @default undefined
+         * @name dismissible
+         */
         dismissible: {
             type: Boolean,
             default: undefined
         },
+        /**
+         * The default option for showing the progress bar for toasts, if not specified in the plugin or toast display options
+         * @type Boolean
+         * @default undefined
+         * @name showProgress
+         */
         showProgress: {
             type: Boolean,
             default: undefined
