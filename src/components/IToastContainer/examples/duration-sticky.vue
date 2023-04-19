@@ -8,7 +8,7 @@ export default defineComponent({
 
         function showToast() {
             toast.show({
-                title: 'Persistent Toast',
+                title: 'Sticky Toast',
                 message: 'This toast will be visible until it is dismissed',
                 duration: 0,
                 dismissible: true

@@ -8,7 +8,7 @@ export default defineComponent({
 
         function showToast() {
             toast.show({
-                title: 'Custom Duration Toast',
+                title: 'Timed Toast',
                 message: 'This toast will be visible for 5 seconds',
                 duration: 5000
             });

@@ -34,6 +34,13 @@ import path from 'path';
         shell.cp(file, destFile);
     });
 
+    const exampleFiles = await glob(path.resolve(srcDir, '**/examples/*.vue'));
+    exampleFiles.forEach((file) => {
+        const destFile = file.replace('src', 'lib').replace('.vue', '.raw.vue');
+
+        shell.cp(file, destFile);
+    });
+
     /**
      * Resolve sourcemaps
      */

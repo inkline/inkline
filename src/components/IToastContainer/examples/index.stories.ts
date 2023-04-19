@@ -6,8 +6,8 @@ import {
     IToastContainerColorVariantsExample,
     IToastContainerSizeVariantsExample,
     IToastContainerDismissibleExample,
-    IToastContainerDurationExample,
-    IToastContainerDurationPersistentExample,
+    IToastContainerDurationTimedExample,
+    IToastContainerDurationStickyExample,
     IToastContainerHideExample,
     IToastContainerHideAllExample,
     IToastContainerVNodeExample
@@ -23,8 +23,8 @@ export const Basic = createStory(IToastContainerBasicExample);
 export const ColorVariants = createStory(IToastContainerColorVariantsExample);
 export const SizeVariants = createStory(IToastContainerSizeVariantsExample);
 export const Dismissible = createStory(IToastContainerDismissibleExample);
-export const Duration = createStory(IToastContainerDurationExample);
-export const DurationPersistent = createStory(IToastContainerDurationPersistentExample);
+export const DurationTimed = createStory(IToastContainerDurationTimedExample);
+export const DurationSticky = createStory(IToastContainerDurationStickyExample);
 export const Hide = createStory(IToastContainerHideExample);
 export const HideAll = createStory(IToastContainerHideAllExample);
 export const Vnode = createStory(IToastContainerVNodeExample);
