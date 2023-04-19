@@ -1,6 +1,6 @@
 <script lang="ts">
 import { useToast } from '@inkline/inkline/composables';
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
     setup() {
