@@ -35,7 +35,8 @@ import path from 'path';
     });
 
     const exampleFiles = await glob(path.resolve(srcDir, '**/examples/*.vue'));
-    exampleFiles.forEach((file) => {
+    const storiesFiles = await glob(path.resolve(srcDir, 'stories/**/*.vue'));
+    [...storiesFiles, ...exampleFiles].forEach((file) => {
         const destFile = file.replace('src', 'lib').replace('.vue', '.raw.vue');
 
         shell.cp(file, destFile);
