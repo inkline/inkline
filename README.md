@@ -4,8 +4,7 @@
     </a>
 </p>
 
-<h1 align="center">Inkline</h1>
-<h3 align="center">@inkline/cli</h3>
+<h1 align="center">Inkline CLI</h1>
 
 <p align="center">
     CLI for Inkline, the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.<br/><br/> Inkline CLI is written and maintained by <a href="https://github.com/alexgrozav">@alexgrozav</a>.
@@ -29,7 +28,7 @@ Inkline's CLI, used for generating code that improves your Developer Experience.
 ## Installation
 
 ~~~bash
-npm i -S @inkline/cli
+npm i -g inkline
 ~~~
 
 ## Usage
