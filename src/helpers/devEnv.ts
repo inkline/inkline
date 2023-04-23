@@ -185,7 +185,7 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
         );
     } else if (devEnv.type === 'vite') {
         configFileLines = addAfterImports(configFileLines, [
-            `import { inkline } from '@inkline/plugin/vite';`,
+            `import inkline from '@inkline/plugin/vite';`,
             ...getPluginPreamble(configFileLines, devEnv, env)
         ]);
 
@@ -197,7 +197,7 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
     } else if (devEnv.type === 'webpack') {
         if (env.isTypescript && devEnv.configFile.endsWith('.ts')) {
             configFileLines = addAfterImports(configFileLines, [
-                `import { inkline } from '@inkline/plugin/webpack';`,
+                `import inkline from '@inkline/plugin/webpack';`,
                 ...getPluginPreamble(configFileLines, devEnv, env)
             ]);
 
