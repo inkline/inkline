@@ -71,4 +71,10 @@ export interface InitEnv {
     cwd: string;
 }
 
+export interface ImportFileMeta {
+    name: string | string[];
+    from: string;
+    type?: boolean;
+}
+
 export type PackageJsonSchema = JSONSchemaForNPMPackageJsonFiles;

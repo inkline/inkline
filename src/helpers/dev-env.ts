@@ -1,9 +1,7 @@
 import { DevEnv, DevEnvType, DevLibraryType, InitEnv, PackageJsonSchema } from '../types';
-import { addAfter, addAfterImports, addAfterRequires } from './addAfter';
 import { getPluginCjsPreamble, getPluginPreamble } from './preamble';
 import { resolve } from 'pathe';
 import { existsSync } from 'fs';
-import { capitalizeFirst } from '@grozav/utils';
 import { readFile, writeFile } from 'fs/promises';
 import {
     defaultNuxtDevEnvConfigFileContents,
@@ -11,11 +9,12 @@ import {
     defaultViteDevEnvConfigFileContents,
     defaultWebpackJsDevEnvConfigFileContents,
     defaultWebpackTsDevEnvConfigFileContents,
-    manualInstallationUrl,
     unknownDevEnvironment
 } from '../constants';
 import { Logger } from '@grozav/logger';
 import prettier from 'prettier';
+import { addAfterImports, addAfterRequires } from './insert';
+import { addFieldToDefaultExport, addImport } from './import';
 
 export async function initDevEnvConfigFile(
     devEnv: DevEnv,
@@ -134,93 +133,39 @@ export async function detectDevEnv(
     return inferredDevEnvironment || unknownDevEnvironment;
 }
 
-export function insertOrUpdateConfigReference(
-    lines: string[],
-    configProperty: string,
-    code: string
-): string[] {
-    const pluginsRegEx = new RegExp(`${configProperty}:\\s*\\[\\s*`);
-    const exportLineIndex = lines.findIndex(
-        (line) => line.includes('export default') || line.includes('module.exports')
-    );
-
-    const pluginsLineIndex = lines.findIndex((line) => pluginsRegEx.test(line));
-    if (pluginsLineIndex !== -1) {
-        const pluginsLine = lines[pluginsLineIndex];
-        lines[pluginsLineIndex] = pluginsLine.replace(
-            pluginsRegEx,
-            `${configProperty}: [
-        ${code},`
-        );
-    } else {
-        const exportDefaultSplitRegEx = /.+\{/;
-        if (exportDefaultSplitRegEx.test(lines[exportLineIndex])) {
-            lines[exportLineIndex] = lines[exportLineIndex].replace(
-                exportDefaultSplitRegEx,
-                (match) => `${match}\n ${configProperty}: [\n${code}\n],`
-            );
-        } else {
-            Logger.warning(
-                `Could not automatically add "${configProperty}" property into config file`
-            );
-        }
-    }
-
-    return lines;
-}
-
 export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) {
     if (!devEnv.configFile) {
         return;
     }
 
-    const configFile = await readFile(devEnv.configFile, 'utf-8');
-    let configFileLines = configFile.split('\n');
-
+    let configFile = await readFile(devEnv.configFile, 'utf-8');
     if (devEnv.type === 'nuxt') {
-        configFileLines = insertOrUpdateConfigReference(
-            configFileLines,
-            'plugins',
-            `'@inkline/plugin/nuxt'`
-        );
+        configFile = addFieldToDefaultExport(configFile, 'plugins', ['@inkline/plugin/nuxt']);
     } else if (devEnv.type === 'vite') {
-        configFileLines = addAfterImports(configFileLines, [
-            `import inkline from '@inkline/plugin/vite';`,
-            ...getPluginPreamble(configFileLines, devEnv, env)
-        ]);
-
-        configFileLines = insertOrUpdateConfigReference(
-            configFileLines,
-            'plugins',
-            'inkline(inklineConfig)'
-        );
+        configFile = addImport(configFile, {
+            name: 'inkline',
+            from: '@inkline/plugin/vite'
+        });
+        configFile = addAfterImports(configFile, getPluginPreamble(configFile, devEnv, env));
+        configFile = addFieldToDefaultExport(configFile, 'plugins', ['inkline(inklineConfig)']);
     } else if (devEnv.type === 'webpack') {
         if (env.isTypescript && devEnv.configFile.endsWith('.ts')) {
-            configFileLines = addAfterImports(configFileLines, [
-                `import inkline from '@inkline/plugin/webpack';`,
-                ...getPluginPreamble(configFileLines, devEnv, env)
-            ]);
-
-            configFileLines = insertOrUpdateConfigReference(
-                configFileLines,
-                'plugins',
-                'inkline(inklineConfig)'
-            );
+            configFile = addImport(configFile, {
+                name: 'inkline',
+                from: '@inkline/plugin/webpack'
+            });
+            configFile = addAfterImports(configFile, getPluginPreamble(configFile, devEnv, env));
         } else {
-            configFileLines = addAfterRequires(configFileLines, [
-                `const inkline = require('@inkline/plugin/webpack');`,
-                ...getPluginCjsPreamble(configFileLines, devEnv, env)
-            ]);
-
-            configFileLines = insertOrUpdateConfigReference(
-                configFileLines,
-                'plugins',
-                'inkline(inklineConfig)'
+            configFile = addAfterRequires(
+                configFile,
+                `const inkline = require('@inkline/plugin/webpack');`
             );
+            configFile = getPluginCjsPreamble(configFile, devEnv, env);
         }
+        configFile = addFieldToDefaultExport(configFile, 'plugins', ['inkline(inklineConfig)']);
     }
 
-    const formattedCode = prettier.format(configFileLines.join('\n'), defaultPrettierConfig);
+    const formattedCode = prettier.format(configFile, defaultPrettierConfig);
 
     await writeFile(devEnv.configFile, formattedCode, 'utf-8');
 
