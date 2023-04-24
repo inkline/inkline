@@ -1,6 +1,6 @@
 export const packageJsonExtension = {
     dependencies: {
-        '@inkline/inkline': 'next'
+        '@inkline/inkline': '^4.0.0'
     },
     devDependencies: {
         '@inkline/plugin': '^1.0.0',

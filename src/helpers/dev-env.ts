@@ -140,7 +140,7 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
 
     let configFile = await readFile(devEnv.configFile, 'utf-8');
     if (devEnv.type === 'nuxt') {
-        configFile = addFieldToDefaultExport(configFile, 'plugins', ['@inkline/plugin/nuxt']);
+        configFile = addFieldToDefaultExport(configFile, 'modules', ["'@inkline/plugin/nuxt'"]);
     } else if (devEnv.type === 'vite') {
         configFile = addImport(configFile, {
             name: 'inkline',

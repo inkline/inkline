@@ -9,7 +9,7 @@
     "postbuild": "ts-node scripts/postbuild.ts",
     "lint": "eslint --ext .vue,.ts,.tsx,.js,.jsx src",
     "preview": "vite preview",
-    "test": "vitest run --passWithNoTests",
+    "test": "vitest run",
     "test:ci": "vitest run --coverage",
     "test:dev": "vitest",
     "prerelease": "npm-run-all test build",

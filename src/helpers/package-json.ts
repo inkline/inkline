@@ -1,5 +1,4 @@
 import { PackageJsonSchema } from '../types';
-import { Logger } from '@grozav/logger';
 import { readFile, writeFile } from 'fs/promises';
 
 export async function extendPackageJson(
