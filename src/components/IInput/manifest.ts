@@ -873,7 +873,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--dark--clear--background',
                         value: [
                             {
-                                value: '#{transparent}'
+                                value: 'transparent'
                             }
                         ]
                     }
@@ -1051,7 +1051,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--dark--disabled--background',
                         value: [
                             {
-                                name: '--color-dark-300'
+                                name: '--color-dark-tint-50'
                             }
                         ]
                     }
