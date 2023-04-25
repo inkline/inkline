@@ -1,7 +1,7 @@
 @use 'sass:map';
 
-@mixin popup($z-index: 2000, $position: fixed) {
-    position: $position;
+@mixin popup($z-index: 2000) {
+    position: absolute;
     z-index: $z-index;
     word-wrap: break-word;
     width: max-content;

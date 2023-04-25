@@ -2,7 +2,7 @@
  * Dropdown
  */
 
-@import '../../../css/mixins';
+@use '../../../css/mixins';
 
 .dropdown-wrapper {
     display: inline-block;
@@ -13,9 +13,9 @@
     }
 
     .dropdown {
-        @include popup(var(--dropdown--z-index, 2000));
-        @include popup-arrow();
-        @include popup-arrow-size-variant(var(--dropdown--arrow--size, 6px));
+        @include mixins.popup(var(--dropdown--z-index, 2000));
+        @include mixins.popup-arrow();
+        @include mixins.popup-arrow-size-variant(var(--dropdown--arrow--size, 6px));
 
         text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
         list-style: none;
@@ -334,25 +334,25 @@
             );
         }
 
-        @include popup-arrow-color-variant-for-side(
+        @include mixins.popup-arrow-color-variant-for-side(
             'top',
             var(--dropdown--background),
             var(--dropdown--border-bottom-color, var(--border-bottom-color))
         );
 
-        @include popup-arrow-color-variant-for-side(
+        @include mixins.popup-arrow-color-variant-for-side(
             'right',
             var(--dropdown--background),
             var(--dropdown--border-left-color, var(--border-left-color))
         );
 
-        @include popup-arrow-color-variant-for-side(
+        @include mixins.popup-arrow-color-variant-for-side(
             'bottom',
             var(--dropdown--background),
             var(--dropdown--border-top-color, var(--border-top-color))
         );
 
-        @include popup-arrow-color-variant-for-side(
+        @include mixins.popup-arrow-color-variant-for-side(
             'left',
             var(--dropdown--background),
             var(--dropdown--border-right-color, var(--border-right-color))

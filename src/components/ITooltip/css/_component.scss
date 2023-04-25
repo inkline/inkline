@@ -2,16 +2,16 @@
  * Tooltip
  */
 
-@import '../../../css/mixins';
+@use '../../../css/mixins';
 
 .tooltip-wrapper {
     display: inline-block;
     position: relative;
 
     .tooltip {
-        @include popup(var(--tooltip--z-index, 2000));
-        @include popup-arrow();
-        @include popup-arrow-size-variant(var(--tooltip--arrow--size, 6px));
+        @include mixins.popup(var(--tooltip--z-index, 2000));
+        @include mixins.popup-arrow();
+        @include mixins.popup-arrow-size-variant(var(--tooltip--arrow--size, 6px));
         text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
         list-style: none;
         background-clip: padding-box;
@@ -75,7 +75,7 @@
                 var(--tooltip--box-shadow-color, var(--box-shadow-color))
         );
 
-        @include popup-arrow-color-variant(
+        @include mixins.popup-arrow-color-variant(
             (
                 'background': var(--tooltip--background),
                 'border-color': (

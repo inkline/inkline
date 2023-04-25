@@ -28,6 +28,7 @@ import { Placement, Strategy } from '@floating-ui/dom';
 import { SelectKey, SelectOption } from '@inkline/inkline/components/ISelect/mixin';
 import { ISelectOption } from '@inkline/inkline/components/ISelectOption';
 import { extractRefHTMLElement } from '@inkline/inkline/utils';
+import { ComputePositionConfig } from '@floating-ui/core/src/types';
 
 const componentName = 'ISelect';
 
@@ -267,10 +268,8 @@ export default defineComponent({
          * @name popupOptions
          */
         popupOptions: {
-            type: Object as PropType<{ strategy?: Strategy }>,
-            default: () => ({
-                strategy: 'absolute'
-            })
+            type: Object as PropType<Partial<ComputePositionConfig>>,
+            default: () => ({})
         },
         /**
          * The readonly state of the select

@@ -9,6 +9,7 @@ import {
     useComponentSize
 } from '@inkline/inkline/composables';
 import { Placement } from '@floating-ui/dom';
+import { ComputePositionConfig } from '@floating-ui/core/src/types';
 
 const componentName = 'ITooltip';
 
@@ -115,8 +116,8 @@ export default defineComponent({
          * @default {}
          */
         popupOptions: {
-            type: Object,
-            default: (): any => ({})
+            type: Object as PropType<Partial<ComputePositionConfig>>,
+            default: () => ({})
         },
         /**
          * The size variant of the tooltip

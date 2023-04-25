@@ -52,7 +52,7 @@
 
         --input--disabled--background: var(
             --input--dark--disabled--background,
-            var(--color-dark-300)
+            var(--color-dark-tint-50)
         );
         --input--disabled--color: var(--input--dark--disabled--color, var(--text-color-weak));
 
@@ -62,7 +62,7 @@
         );
         --input--focus--border-color: var(--input--dark--focus--border-color, var(--color-primary));
 
-        --input--clear--background: var(--input--dark--clear--background, #{transparent});
+        --input--clear--background: var(--input--dark--clear--background, transparent);
         --input--clear--hover--background: var(
             --input--dark--clear--hover--background,
             var(--color-dark-tint-50)

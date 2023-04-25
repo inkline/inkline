@@ -229,6 +229,7 @@ export function usePopupControl(props: {
 
         instance.value = autoUpdate(triggerRef, popupRef, () => {
             computePosition(triggerRef, popupRef, {
+                strategy: 'absolute',
                 placement: props.componentProps.value.placement,
                 middleware: [
                     offset(props.componentProps.value.offset),

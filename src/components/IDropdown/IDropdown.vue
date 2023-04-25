@@ -9,7 +9,8 @@ import {
     onMounted,
     onBeforeUnmount,
     PropType,
-    defineComponent
+    defineComponent,
+    Prop
 } from 'vue';
 import { on, off, isFocusable, isKey } from '@grozav/utils';
 import { DropdownKey } from '@inkline/inkline/components/IDropdown/mixin';
@@ -23,6 +24,7 @@ import {
     usePopupControl
 } from '@inkline/inkline/composables';
 import { Placement } from '@floating-ui/dom';
+import { ComputePositionConfig } from '@floating-ui/core/src/types';
 
 const componentName = 'IDropdown';
 
@@ -157,8 +159,8 @@ export default defineComponent({
          * @name popupOptions
          */
         popupOptions: {
-            type: Object,
-            default: (): any => ({})
+            type: Object as PropType<Partial<ComputePositionConfig>>,
+            default: () => ({})
         },
         /**
          * The size variant of the dropdown
