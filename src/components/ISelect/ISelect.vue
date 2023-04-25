@@ -24,7 +24,7 @@ import {
     PopupEvent,
     usePopupControl
 } from '@inkline/inkline/composables';
-import { Placement, Strategy } from '@floating-ui/dom';
+import { Placement } from '@floating-ui/dom';
 import { SelectKey, SelectOption } from '@inkline/inkline/components/ISelect/mixin';
 import { ISelectOption } from '@inkline/inkline/components/ISelectOption';
 import { extractRefHTMLElement } from '@inkline/inkline/utils';

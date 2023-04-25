@@ -9,8 +9,7 @@ import {
     onMounted,
     onBeforeUnmount,
     PropType,
-    defineComponent,
-    Prop
+    defineComponent
 } from 'vue';
 import { on, off, isFocusable, isKey } from '@grozav/utils';
 import { DropdownKey } from '@inkline/inkline/components/IDropdown/mixin';
