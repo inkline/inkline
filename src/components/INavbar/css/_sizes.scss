@@ -28,9 +28,17 @@
             --navbar--sm--padding-top,
             calc(var(--padding-top) * var(--size-multiplier-sm))
         );
+        --navbar--padding-right: var(
+            --navbar--sm--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-sm))
+        );
         --navbar--padding-bottom: var(
             --navbar--sm--padding-bottom,
             calc(var(--padding-bottom) * var(--size-multiplier-sm))
+        );
+        --navbar--padding-left: var(
+            --navbar--sm--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-sm))
         );
         --navbar--item--padding-top: var(
             --navbar--sm--item--padding-top,
@@ -75,9 +83,17 @@
             --navbar--md--padding-top,
             calc(var(--padding-top) * var(--size-multiplier-md))
         );
+        --navbar--padding-right: var(
+            --navbar--md--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-md))
+        );
         --navbar--padding-bottom: var(
             --navbar--md--padding-bottom,
             calc(var(--padding-bottom) * var(--size-multiplier-md))
+        );
+        --navbar--padding-left: var(
+            --navbar--md--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-md))
         );
         --navbar--item--padding-top: var(
             --navbar--md--item--padding-top,
@@ -122,9 +138,17 @@
             --navbar--lg--padding-top,
             calc(var(--padding-top) * var(--size-multiplier-lg))
         );
+        --navbar--padding-right: var(
+            --navbar--lg--padding-right,
+            calc(var(--padding-right) * var(--size-multiplier-lg))
+        );
         --navbar--padding-bottom: var(
             --navbar--lg--padding-bottom,
             calc(var(--padding-bottom) * var(--size-multiplier-lg))
+        );
+        --navbar--padding-left: var(
+            --navbar--lg--padding-left,
+            calc(var(--padding-left) * var(--size-multiplier-lg))
         );
         --navbar--item--padding-top: var(
             --navbar--lg--item--padding-top,

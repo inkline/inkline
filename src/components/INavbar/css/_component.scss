@@ -127,7 +127,10 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        padding: 0;
+
+        &.-fluid {
+            padding: 0;
+        }
     }
 
     .navbar-collapsible {
