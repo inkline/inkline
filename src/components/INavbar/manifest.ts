@@ -326,6 +326,32 @@ export const manifest: ComponentManifest = {
                             {
                                 name: '--padding-right'
                             }
+                        ],
+                        variants: [
+                            {
+                                name: '--navbar--sm--padding-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--md--padding-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--padding-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
+                                    }
+                                ]
+                            }
                         ]
                     },
                     {
@@ -367,6 +393,32 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 name: '--padding-left'
+                            }
+                        ],
+                        variants: [
+                            {
+                                name: '--navbar--sm--padding-left',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--md--padding-left',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--padding-left',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
+                                    }
+                                ]
                             }
                         ]
                     }
