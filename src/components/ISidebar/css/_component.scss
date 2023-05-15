@@ -184,7 +184,7 @@
 
     &.sidebar-wrapper-transition-enter-to,
     &.sidebar-wrapper-transition-leave {
-        width: var(--sidebar--width);
+        width: var(--sidebar--width, 14rem);
     }
 }
 
