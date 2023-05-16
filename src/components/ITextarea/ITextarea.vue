@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ref, computed, inject, PropType, defineComponent, toRef } from 'vue';
+import { ref, computed, inject, PropType, defineComponent, toRef, onBeforeUpdate } from 'vue';
 import { filterKeys, uid } from '@grozav/utils';
 
 import {
@@ -238,17 +238,28 @@ export default defineComponent({
             return props.clearable && !disabled.value && !readonly.value && value.value !== '';
         });
 
+        const slotsClasses = ref(getSlotsClasses());
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
             '-disabled': disabled.value,
             '-error': hasError.value,
             '-readonly': readonly.value,
-            '-prefixed': Boolean(slots.prefix),
-            '-suffixed': Boolean(slots.suffix),
-            '-prepended': Boolean(slots.prepend),
-            '-appended': Boolean(slots.append)
+            ...slotsClasses.value
         }));
+
+        onBeforeUpdate(() => {
+            slotsClasses.value = getSlotsClasses();
+        });
+
+        function getSlotsClasses() {
+            return {
+                '-prefixed': Boolean(slots.prefix),
+                '-suffixed': Boolean(slots.suffix),
+                '-prepended': Boolean(slots.prepend),
+                '-appended': Boolean(slots.append)
+            };
+        }
 
         function onBlur(event: Event) {
             schemaOnBlur(props.name, event);

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ref, computed, watch, defineComponent } from 'vue';
+import { ref, computed, watch, defineComponent, onBeforeUpdate } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'IAlert';
@@ -74,12 +74,17 @@ export default defineComponent({
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
 
+        const slotsClasses = ref(getSlotsClasses());
         const classes = computed(() => ({
             [`-${color.value}`]: Boolean(color.value),
             [`-${size.value}`]: Boolean(size.value),
             '-dismissible': props.dismissible,
-            '-with-icon': Boolean(slots.icon)
+            ...slotsClasses.value
         }));
+
+        onBeforeUpdate(() => {
+            slotsClasses.value = getSlotsClasses();
+        });
 
         watch(
             () => props.modelValue,
@@ -87,6 +92,12 @@ export default defineComponent({
                 dismissed.value = !value;
             }
         );
+
+        function getSlotsClasses() {
+            return {
+                '-with-icon': Boolean(slots.icon)
+            };
+        }
 
         function dismiss() {
             dismissed.value = true;

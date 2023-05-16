@@ -47,7 +47,7 @@ export default defineConfig({
         setupFiles: ['./vitest.setup.js'],
         include: ['src/**/*.spec.ts', 'scripts/**/*.spec.ts'],
         coverage: {
-            exclude: ['**/__mocks__/*'],
+            exclude: ['**/__mocks__/*', '**/__tests__/*', 'scripts/**'],
             reporter: ['text', 'json', 'html', 'lcov']
         }
     },

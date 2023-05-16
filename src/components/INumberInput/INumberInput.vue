@@ -1,5 +1,14 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, ref, toRef, watch } from 'vue';
+import {
+    computed,
+    defineComponent,
+    inject,
+    onBeforeUpdate,
+    PropType,
+    ref,
+    toRef,
+    watch
+} from 'vue';
 import { IButton } from '@inkline/inkline/components/IButton';
 import { filterKeys, uid } from '@grozav/utils';
 import { InputElementEvent } from '@inkline/inkline/types';
@@ -260,17 +269,19 @@ export default defineComponent({
             return props.clearable && !disabled.value && !readonly.value && value.value !== '';
         });
 
+        const slotsClasses = ref(getSlotsClasses());
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
             '-disabled': disabled.value,
             '-error': hasError.value,
             '-readonly': readonly.value,
-            '-prefixed': Boolean(slots.prefix),
-            '-suffixed': Boolean(slots.suffix),
-            '-prepended': Boolean(slots.prepend),
-            '-appended': Boolean(slots.append)
+            ...slotsClasses.value
         }));
+
+        onBeforeUpdate(() => {
+            slotsClasses.value = getSlotsClasses();
+        });
 
         watch(
             () => value.value,
@@ -299,6 +310,15 @@ export default defineComponent({
                 emit('update:modelValue', newValue);
             }
         );
+
+        function getSlotsClasses() {
+            return {
+                '-prefixed': Boolean(slots.prefix),
+                '-suffixed': Boolean(slots.suffix),
+                '-prepended': Boolean(slots.prepend),
+                '-appended': Boolean(slots.append)
+            };
+        }
 
         function onBlur(event: Event) {
             schemaOnBlur(props.name, event);

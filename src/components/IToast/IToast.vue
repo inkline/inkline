@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, h, onMounted, PropType, VNode } from 'vue';
+import { computed, defineComponent, h, onBeforeUpdate, onMounted, PropType, ref, VNode } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 import { IIcon } from '@inkline/inkline/components/IIcon';
 
@@ -132,11 +132,12 @@ export default defineComponent({
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
 
+        const slotsClasses = ref(getSlotsClasses());
         const classes = computed(() => ({
             [`-${color.value}`]: Boolean(color.value),
             [`-${size.value}`]: Boolean(size.value),
             '-dismissible': props.dismissible,
-            '-with-icon': Boolean(slots.icon)
+            ...slotsClasses.value
         }));
 
         const styles = computed(() => ({
@@ -164,6 +165,16 @@ export default defineComponent({
                 }, props.duration);
             }
         });
+
+        onBeforeUpdate(() => {
+            slotsClasses.value = getSlotsClasses();
+        });
+
+        function getSlotsClasses() {
+            return {
+                '-with-icon': Boolean(slots.icon)
+            };
+        }
 
         function dismiss() {
             emit('update:modelValue', false);

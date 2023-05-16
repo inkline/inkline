@@ -14,7 +14,6 @@ module.exports = {
                 }
             }
         },
-        '@storybook/addon-styling',
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         // Disabled until this is actually used rather otherwise its a blank tab
