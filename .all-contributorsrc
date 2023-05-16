@@ -210,6 +210,15 @@
         "test",
         "bug"
       ]
+    },
+    {
+      "login": "intjelic",
+      "name": "Jonathan De Wachter",
+      "avatar_url": "https://avatars.githubusercontent.com/u/778121?v=4",
+      "profile": "https://www.intjelic.me",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 10,
