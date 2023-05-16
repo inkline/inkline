@@ -1,17 +1,22 @@
-import { createUnplugin } from 'unplugin';
-import { UserOptions } from './types';
-import { watch } from './watch';
-import { build } from './build';
+import { createUnplugin } from "unplugin";
+import { UserOptions } from "./types";
+import { watch } from "./watch";
+import { build } from "./build";
 
-export const plugin = createUnplugin((options: UserOptions = {}, { watchMode }) => {
-    if (watchMode) {
+export const plugin = createUnplugin((options: UserOptions = {}, meta) => {
+    let isDevMode = options.watch || false;
+    if (!isDevMode && meta.framework === "vite") {
+        isDevMode = !process.argv.includes("build");
+    }
+
+    if (isDevMode) {
         watch(options);
     } else {
         build(options);
     }
 
     return {
-        name: 'inkline'
+        name: "inkline",
     };
 });
 
