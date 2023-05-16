@@ -8,4 +8,5 @@ export interface BuildOptions {
 
 export interface ResolvedBuildOptions extends Required<BuildOptions> {
     configDir: string;
+    configExtName: `.${'js' | 'ts'}`;
 }

@@ -16,9 +16,8 @@ export async function build(options: BuildOptions = {}): Promise<ResolvedBuildOp
 
     const config = await loadConfigFromFile({
         cwd: resolvedOptions.configDir,
-        configFile: resolvedOptions.configFile
+        configFile: `${resolvedOptions.configFile}${resolvedOptions.configExtName}`
     });
-
     config.buildOptions = options as BuildOptions;
 
     const cssConfig = generate(config);
