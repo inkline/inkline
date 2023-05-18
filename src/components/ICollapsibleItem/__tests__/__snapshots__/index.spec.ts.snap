@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > ICollapsibleItem > computed > active > should add -active class when item is active 1`] = `
 "<div class=\\"collapsible-item -active\\" name=\\"collapsible-item\\"><a id=\\"collapsible-item-header-collapsible-item\\" class=\\"collapsible-header\\" role=\\"tab\\" aria-expanded=\\"true\\" aria-controls=\\"collapsible-item-content-collapsible-item\\" aria-describedby=\\"collapsible-item-content-collapsible-item\\" tabindex=\\"0\\">

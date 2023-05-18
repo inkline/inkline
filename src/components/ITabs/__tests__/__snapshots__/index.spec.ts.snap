@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > ITabs > should render correctly with header 1`] = `
 "<div class=\\"tabs -light -md\\" role=\\"tablist\\" aria-multiselectable=\\"true\\">

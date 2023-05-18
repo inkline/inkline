@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > ITabTitle > should render correctly 1`] = `
 "<div class=\\"tab-title\\" role=\\"tab\\" for=\\"tab\\" active=\\"false\\" aria-expanded=\\"false\\" aria-controls=\\"tab-content-tab\\" aria-describedby=\\"tab-content-tab\\" tabindex=\\"0\\">
