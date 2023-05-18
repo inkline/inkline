@@ -19,11 +19,12 @@ jobs:
             -   name: Install npm dependencies
                 if: steps.npm-cache.outputs.cache-hit != 'true'
                 run: npm install
-            -   name: Run build
+            -   name: Run release build
                 run: npm run build
             -   name: Create package
                 run: |
                     cp package.json lib
+                    cd lib
                     npm pack
             -   name: Create nuxt app
                 run: npx nuxi init inkline-nuxt
@@ -31,11 +32,8 @@ jobs:
                 run: |
                     cd inkline-nuxt
                     npx inkline@latest init
-            -   name: Install package
-                run: |
-                    cd inkline-nuxt
-                    npm install ../inkline-*.tgz
-            -   name: Build app
+                    npm install -S ../lib/inkline-*.tgz
+            -   name: Build Nuxt app
                 run: |
                     cd inkline-nuxt
                     npm run build
