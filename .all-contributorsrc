@@ -210,6 +210,15 @@
         "test",
         "bug"
       ]
+    },
+    {
+      "login": "zozulinskyi",
+      "name": "IHOR",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11585924?v=4",
+      "profile": "https://github.com/zozulinskyi",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 10,
