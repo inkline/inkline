@@ -1,5 +1,5 @@
 name: Integration
-on: [ 'pull_request' ]
+on: [ 'push' ]
 jobs:
     nuxt:
         name: Nuxt

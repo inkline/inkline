@@ -1,4 +1,4 @@
-name: Build, Lint, and Test
+name: Checks
 on: [ 'push' ]
 jobs:
     build:
