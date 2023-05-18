@@ -23,7 +23,7 @@ import {
     usePopupControl
 } from '@inkline/inkline/composables';
 import { Placement } from '@floating-ui/dom';
-import { ComputePositionConfig } from '@floating-ui/core/src/types';
+import { ComputePositionConfig } from '@floating-ui/core';
 
 const componentName = 'IDropdown';
 

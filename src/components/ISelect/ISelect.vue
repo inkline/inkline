@@ -28,7 +28,7 @@ import { Placement } from '@floating-ui/dom';
 import { SelectKey, SelectOption } from '@inkline/inkline/components/ISelect/mixin';
 import { ISelectOption } from '@inkline/inkline/components/ISelectOption';
 import { extractRefHTMLElement } from '@inkline/inkline/utils';
-import { ComputePositionConfig } from '@floating-ui/core/src/types';
+import { ComputePositionConfig } from '@floating-ui/core';
 
 const componentName = 'ISelect';
 
