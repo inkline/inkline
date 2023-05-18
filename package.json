@@ -60,8 +60,8 @@
     "@nuxt/kit": "^3.0.0"
   },
   "peerDependencies": {
-    "@inkline/config": "*",
-    "@inkline/inkline": "*"
+    "@inkline/config": "^1.0.0",
+    "@inkline/inkline": "^4.0.0"
   },
   "main": "index.js",
   "module": "index.mjs",
