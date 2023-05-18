@@ -1,0 +1,79 @@
+name: Integration
+on: [ 'push' ]
+jobs:
+    nuxt:
+        name: Nuxt
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Set up repository
+                uses: actions/checkout@v3
+            -   name: Set up node
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 16
+            -   name: Cache node_modules
+                uses: actions/cache@v2
+                with:
+                    path: '**/node_modules'
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            -   name: Install npm dependencies
+                if: steps.npm-cache.outputs.cache-hit != 'true'
+                run: npm install
+            -   name: Run release build
+                run: npm run build
+            -   name: Create package
+                run: |
+                    cp package.json lib
+                    cd lib
+                    npm pack
+            -   name: Create Nuxt app
+                run: npx nuxi init inkline-nuxt
+            -   name: Initialize inkline
+                run: |
+                    cd inkline-nuxt
+                    npx inkline@latest init
+                    npm install -S ../lib/inkline-*.tgz
+            -   name: Build Nuxt app
+                run: |
+                    cd inkline-nuxt
+                    npm run build
+
+    vite:
+        name: Vite.js
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Set up repository
+                uses: actions/checkout@v3
+            -   name: Set up node
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 16
+            -   name: Cache node_modules
+                uses: actions/cache@v2
+                with:
+                    path: '**/node_modules'
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            -   name: Install npm dependencies
+                if: steps.npm-cache.outputs.cache-hit != 'true'
+                run: npm install
+            -   name: Run release build
+                run: npm run build
+            -   name: Create package
+                run: |
+                    cp package.json lib
+                    cd lib
+                    npm pack
+            -   name: Create Vite.js app
+                run: npm create vite@latest inkline-vite -- --template vue-ts
+            -   name: Initialize inkline
+                run: |
+                    cd inkline-vite
+                    npx inkline@latest init
+                    npm install -S ../lib/inkline-*.tgz
+            -   name: Build Nuxt app
+                run: |
+                    cd inkline-vite
+                    npm run build
+
+
+
