@@ -22,23 +22,23 @@ jobs:
             -   name: Run build
                 run: npm run build
             -   name: Create package
-                run:
+                run: |
                     cp package.json lib
                     npm pack
             -   name: Create nuxt app
                 run: npx nuxi init inkline-nuxt
             -   name: Initialize inkline
-                run: npx inkline@latest init
-                with:
-                    cwd: inkline-nuxt
+                run: |
+                    cd inkline-nuxt
+                    npx inkline@latest init
             -   name: Install package
-                run: npm install ../inkline-*.tgz
-                with:
-                    cwd: inkline-nuxt
+                run: |
+                    cd inkline-nuxt
+                    npm install ../inkline-*.tgz
             -   name: Build app
-                run: npm run build
-                with:
-                    cwd: inkline-nuxt
+                run: |
+                    cd inkline-nuxt
+                    npm run build
 
 
 
