@@ -56,7 +56,7 @@
         "@storybook/addon-interactions": "^7.0.0-beta.40",
         "@storybook/addon-links": "^7.0.0-beta.40",
         "@storybook/addon-postcss": "^2.0.0",
-        "@storybook/addon-styling": "^0.3.2",
+        "@storybook/addon-styling": "^1.0.8",
         "@storybook/manager-api": "^7.0.0-rc.2",
         "@storybook/testing-library": "^0.0.14-next.1",
         "@storybook/theming": "^7.0.0-rc.2",
