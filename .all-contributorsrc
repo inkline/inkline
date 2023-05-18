@@ -215,7 +215,16 @@
       "login": "intjelic",
       "name": "Jonathan De Wachter",
       "avatar_url": "https://avatars.githubusercontent.com/u/778121?v=4",
-      "profile": "https://www.intjelic.me",
+      "profile": "https://github.com/intjelic",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+    "login": "zozulinskyi",
+      "name": "IHOR",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11585924?v=4",
+      "profile": "https://github.com/zozulinskyi",
       "contributions": [
         "bug"
       ]
