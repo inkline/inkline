@@ -1,23 +1,69 @@
-name: Build
+name: Build, Lint, and Test
 on: [ 'push' ]
 jobs:
     build:
+        name: Build
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node: [ '16' ]
-        name: Node ${{ matrix.node }}
         steps:
             -   name: Set up repository
-                uses: actions/checkout@v2
+                uses: actions/checkout@v3
             -   name: Set up node
                 uses: actions/setup-node@v1
                 with:
-                    node-version: ${{ matrix.node }}
-            -   run: npm install --force # --force is required until Storybook dependencies upgrade to vite@4
-            -   run: npm run lint
-            -   run: npm run test
-            -   run: npm run build
+                    node-version: 16
+            -   name: Cache node_modules
+                uses: actions/cache@v2
+                with:
+                    path: '**/node_modules'
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            -   name: Install npm dependencies
+                if: steps.npm-cache.outputs.cache-hit != 'true'
+                run: npm install
+            -   name: Run build
+                run: npm run build
+
+    linting:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Set up repository
+                uses: actions/checkout@v3
+            -   name: Set up node
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 16
+            -   name: Cache node_modules
+                uses: actions/cache@v2
+                with:
+                    path: '**/node_modules'
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            -   name: Install npm dependencies
+                if: steps.npm-cache.outputs.cache-hit != 'true'
+                run: npm install
+            -   name: Run linting
+                run: npm run
+
+
+    testing:
+        name: Test
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Set up repository
+                uses: actions/checkout@v3
+            -   name: Set up node
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 16
+            -   name: Cache node_modules
+                uses: actions/cache@v2
+                with:
+                    path: '**/node_modules'
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            -   name: Install npm
+                if: steps.npm-cache.outputs.cache-hit != 'true'
+                run: npm install
+            -   name: Run testing
+                run: npm run test
             -   name: Coveralls
                 uses: coverallsapp/github-action@master
                 with:

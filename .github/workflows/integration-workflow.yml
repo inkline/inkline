@@ -1,0 +1,44 @@
+name: Integration
+on: [ 'pull_request' ]
+jobs:
+    nuxt:
+        name: Nuxt
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Set up repository
+                uses: actions/checkout@v3
+            -   name: Set up node
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 16
+            -   name: Cache node_modules
+                uses: actions/cache@v2
+                with:
+                    path: '**/node_modules'
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            -   name: Install npm dependencies
+                if: steps.npm-cache.outputs.cache-hit != 'true'
+                run: npm install
+            -   name: Run build
+                run: npm run build
+            -   name: Create package
+                run:
+                    cp package.json lib
+                    npm pack
+            -   name: Create nuxt app
+                run: npx nuxi init inkline-nuxt
+            -   name: Initialize inkline
+                run: npx inkline@latest init
+                with:
+                    cwd: inkline-nuxt
+            -   name: Install package
+                run: npm install ../inkline-*.tgz
+                with:
+                    cwd: inkline-nuxt
+            -   name: Build app
+                run: npm run build
+                with:
+                    cwd: inkline-nuxt
+
+
+
