@@ -66,23 +66,23 @@ Read the [Getting Started guide](https://inkline.io/docs/introduction) or choose
 below. Inkline offers official integrations for Vite.js (recommended), Vue.js CLI and Nuxt.js, but
 can be easily installed for a custom Vue.js configuration as well.
 
-<a href="https://inkline.io/docs/introduction/installation/vite">
+<a href="https://inkline.io/docs/installation/vite">
     <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/installation-vitejs.png" width="526" alt="Nuxt.js Installation - Inkline" />
 </a>
 
-<a href="https://inkline.io/docs/introduction/installation/vue-cli">
-    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/installation-vuejs.png" width="526" alt="Vue CLI Installation - Inkline" />
-</a>
-
-<a href="https://inkline.io/docs/introduction/installation/nuxt">
+<a href="https://inkline.io/docs/installation/nuxt">
     <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/installation-nuxtjs.png" width="526" alt="Nuxt.js Installation - Inkline" />
 </a>
 
-<a href="https://inkline.io/docs/introduction/installation/generic">
+<a href="https://inkline.io/docs/installation/webpack">
+    <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/installation-vuejs.png" width="526" alt="Vue CLI Installation - Inkline" />
+</a>
+
+<a href="https://inkline.io/docs/installation/manual">
     <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/installation-generic.png" width="526" alt="Custom Installation - Inkline" />
 </a>
 
-<a href="https://inkline.io/docs/introduction/installation/cdn">
+<a href="https://inkline.io/docs/installation/cdn">
     <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/github/installation-cdn.png" width="526" alt="CDN Installation - Inkline" />
 </a>
 
