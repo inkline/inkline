@@ -11,11 +11,11 @@
     <br/>
     <br/>
     <br/>
-    <a href="https://next.inkline.io">Homepage (WIP)</a>
+    <a href="https://www.inkline.io">Homepage</a>
     ·
-    <a href="https://next.inkline.io/docs/introduction">Documentation (WIP)</a>
+    <a href="https://www.inkline.io/docs/introduction">Documentation</a>
     ·
-    <a href="https://storybook.next.inkline.io/">Storybook</a>
+    <a href="https://storybook.inkline.io/">Storybook</a>
     ·
     <a href="https://github.com/inkline/inkline/issues">Issue Tracker</a>
 </p>
