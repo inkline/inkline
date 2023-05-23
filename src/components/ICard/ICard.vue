@@ -43,10 +43,6 @@ export default defineComponent({
         const currentSize = computed(() => props.size);
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
-        const tagName = computed(() => {
-            return props.tag !== "div" ? props.tag : "article";
-        });
-
         const classes = computed(() => ({ [`-${color.value}`]: true, [`-${size.value}`]: true }));
 
         return {
