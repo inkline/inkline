@@ -42,7 +42,10 @@ export const borderDefaultResolver: Resolver<string, ResolvedTheme['border']> = 
     }
 };
 
-export const borderFieldResolver: Resolver<Border[string], ResolvedTheme['border'][string][string]> = {
+export const borderFieldResolver: Resolver<
+    Border[string],
+    ResolvedTheme['border'][string][string]
+> = {
     name: 'border',
     test: /(.*)border\.(width|style|color)$/,
     skip: /^variants/,
@@ -52,7 +55,7 @@ export const borderFieldResolver: Resolver<Border[string], ResolvedTheme['border
 
 export const borderSideResolver: Resolver<string, ResolvedTheme['border'][string]> = {
     name: 'border',
-    test: /(.*)border\.([\w-]+)$/,
+    test: /(.*)border\.(top|right|bottom|left)$/,
     skip: /^variants/,
     set: '$1border.$2',
     guard: (context) => typeof context.value === 'string',
