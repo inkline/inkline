@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { InjectionKey, Plugin, reactive, watch } from 'vue';
-import { addClass, removeClass } from '@grozav/utils';
+import { addClass } from '@grozav/utils';
 import { initialize as initializeForm } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
 import {
     ColorModePlugin,
     InklineColorModeOptions,
-    InklineColorModePluginOptions,
+    ToastPlugin,
     InklineToastOptions,
-    OverlayPlugin,
-    ToastPlugin
+    IconsPlugin,
+    InklineIconsPluginOptions,
+    OverlayPlugin
 } from '@inkline/inkline/plugins';
-import { IconsPlugin, InklineIconsPluginOptions } from '@inkline/inkline/plugins/icons';
 
 export interface InklineOptions extends InklineColorModeOptions, InklineToastOptions {
     locale: string;
@@ -34,6 +34,8 @@ export interface InklineService {
     setLocale: (language: string) => any;
     options: InklineOptions;
 }
+
+export const InklineKey = Symbol('inkline') as InjectionKey<InklineService>;
 
 /**
  * Create inkline prototype
@@ -74,8 +76,6 @@ export const defaultOptions: InklinePluginOptions = {
         duration: 3500
     }
 };
-
-export const InklineKey = Symbol('inkline') as InjectionKey<InklineService>;
 
 /**
  * Inkline Vue.js plugin

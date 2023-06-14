@@ -42,14 +42,13 @@ import path from 'path';
         shell.cp(file, destFile);
     });
 
-    /**
-     * Resolve sourcemaps
-     */
-
-    shell.cp('-R', './src', './lib/src');
-    shell.exec(
-        `bash -c 'find lib -type f -name *.mjs.map -exec perl -i -pe"s/..\\/src/src/g" {} +'`
-    );
+    // /**
+    //  * Resolve sourcemaps
+    //  */
+    // shell.cp('-R', './src', './lib/src');
+    // shell.exec(
+    //     `bash -c 'find lib -type f -name *.mjs.map -exec perl -i -pe"s/..\\/src/src/g" {} +'`
+    // );
 
     /**
      * Remove unnecessary files

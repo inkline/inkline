@@ -116,7 +116,7 @@ describe('ColorModePlugin', () => {
         });
 
         describe('onDarkModeMediaQueryChange()', () => {
-            it('should call onChangeColorMode() =', () => {
+            it('should call onChangeColorMode()', () => {
                 const matchMediaSpy = vi.spyOn(global.window, 'matchMedia');
                 const addEventListener = vi.fn();
                 matchMediaSpy.mockImplementation(

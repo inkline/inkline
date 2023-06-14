@@ -1707,16 +1707,10 @@
     border-bottom-left-radius: var(--border-bottom-left-radius) !important;
 }
 ._border-radius\:100\% {
-    border-top-left-radius: 100%;
-    border-top-right-radius: 100%;
-    border-bottom-right-radius: 100%;
-    border-bottom-left-radius: 100%;
+    border-radius: 100%;
 }
 ._border-radius\:100\%\! {
-    border-top-left-radius: 100% !important;
-    border-top-right-radius: 100% !important;
-    border-bottom-right-radius: 100% !important;
-    border-bottom-left-radius: 100% !important;
+    border-radius: 100% !important;
 }
 ._border-radius\:2 {
     border-top-left-radius: calc(var(--border-top-left-radius) * 2);
@@ -1755,16 +1749,10 @@
     border-bottom-left-radius: calc(var(--border-bottom-left-radius) * 4) !important;
 }
 ._border-radius\:50\% {
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
+    border-radius: 50%;
 }
 ._border-radius\:50\%\! {
-    border-top-left-radius: 50% !important;
-    border-top-right-radius: 50% !important;
-    border-bottom-right-radius: 50% !important;
-    border-bottom-left-radius: 50% !important;
+    border-radius: 50% !important;
 }
 ._border-bottom-left-radius,
 ._border-bottom-left-radius\:1 {
@@ -3855,7 +3843,7 @@
     height: 100%;
     border: none;
 }
-._embed\:1\:1::before {
+._embed\:1\:1:before {
     display: block;
     content: '';
     padding-top: 100%;
@@ -3879,7 +3867,7 @@
     height: 100%;
     border: none;
 }
-._embed\:1\:1\!::before {
+._embed\:1\:1\!:before {
     display: block;
     content: '';
     padding-top: 100%;
@@ -3903,7 +3891,7 @@
     height: 100%;
     border: none;
 }
-._embed\:16\:9::before {
+._embed\:16\:9:before {
     display: block;
     content: '';
     padding-top: 56.25%;
@@ -3927,7 +3915,7 @@
     height: 100%;
     border: none;
 }
-._embed\:16\:9\!::before {
+._embed\:16\:9\!:before {
     display: block;
     content: '';
     padding-top: 56.25%;
@@ -3951,7 +3939,7 @@
     height: 100%;
     border: none;
 }
-._embed\:21\:9::before {
+._embed\:21\:9:before {
     display: block;
     content: '';
     padding-top: 42.857142857142854%;
@@ -3975,7 +3963,7 @@
     height: 100%;
     border: none;
 }
-._embed\:21\:9\!::before {
+._embed\:21\:9\!:before {
     display: block;
     content: '';
     padding-top: 42.857142857142854%;
@@ -3999,7 +3987,7 @@
     height: 100%;
     border: none;
 }
-._embed\:4\:3::before {
+._embed\:4\:3:before {
     display: block;
     content: '';
     padding-top: 75%;
@@ -4023,7 +4011,7 @@
     height: 100%;
     border: none;
 }
-._embed\:4\:3\!::before {
+._embed\:4\:3\!:before {
     display: block;
     content: '';
     padding-top: 75%;
@@ -4476,12 +4464,12 @@
 ._float\:right\! {
     float: right !important;
 }
-._clearfix::after {
+._clearfix:after {
     content: '';
     display: table;
     clear: both;
 }
-._clearfix\!::after {
+._clearfix\!:after {
     content: '';
     display: table;
     clear: both;
@@ -4632,7 +4620,7 @@
     left: 0;
     z-index: 1 !important;
 }
-._overlay-link::after {
+._overlay-link:after {
     content: '';
     position: absolute;
     top: 0;
@@ -4642,7 +4630,7 @@
     z-index: 1;
     pointer-events: auto;
 }
-._overlay-link\!::after {
+._overlay-link\!:after {
     content: '';
     position: absolute;
     top: 0;
@@ -4720,14 +4708,7 @@
     top: 0;
     z-index: var(--z-index-sticky) !important;
 }
-._visually-hidden {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    top: 1px;
-    left: 1px;
-    overflow: hidden;
-}
+._visually-hidden,
 ._visually-hidden\! {
     position: absolute !important;
     width: 1px !important;
@@ -4921,16 +4902,10 @@
     margin-left: calc(var(--margin-left) * 8) !important;
 }
 ._margin\:auto {
-    margin-top: auto;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-left: auto;
+    margin: auto;
 }
 ._margin\:auto\! {
-    margin-top: auto !important;
-    margin-right: auto !important;
-    margin-bottom: auto !important;
-    margin-left: auto !important;
+    margin: auto !important;
 }
 ._margin-bottom\:0 {
     margin-bottom: calc(var(--margin-bottom) * 0);
