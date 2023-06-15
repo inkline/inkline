@@ -27,6 +27,15 @@ export default defineComponent({
         size: {
             type: String,
             default: undefined
+        },
+        /**
+         * The HTML tag to use for the card root element
+         * @default div
+         * @name tag
+         */
+        tag: {
+            type: String,
+            default: 'div'
         }
     },
     setup(props) {
@@ -34,7 +43,6 @@ export default defineComponent({
         const currentSize = computed(() => props.size);
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
-
         const classes = computed(() => ({ [`-${color.value}`]: true, [`-${size.value}`]: true }));
 
         return {
@@ -45,7 +53,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div v-bind="$attrs" class="card" :class="classes">
+    <component :is="tag" v-bind="$attrs" class="card" :class="classes">
         <header v-if="!!$slots.header" class="card-header">
             <!-- @slot header Slot for card header content -->
             <slot name="header" />
@@ -63,5 +71,5 @@ export default defineComponent({
             <!-- @slot footer Slot for card footer content -->
             <slot name="footer" />
         </footer>
-    </div>
+    </component>
 </template>
