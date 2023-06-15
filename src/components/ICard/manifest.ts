@@ -14,6 +14,12 @@ export const manifest: ComponentManifest = {
             type: ['sm', 'md', 'lg'],
             default: '',
             description: 'The size variant of the card'
+        },
+        {
+            name: 'tag',
+            type: [],
+            default: 'div',
+            description: 'The HTML tag to use for the card root element'
         }
     ],
     events: [],
