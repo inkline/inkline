@@ -1,7 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IDropdownDivider } from '@inkline/inkline/components';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { InklineKey } from '@inkline/inkline/plugin';
+import { InklineKey } from '@inkline/inkline/constants';
 
 describe('Components', () => {
     describe('IDropdownDivider', () => {

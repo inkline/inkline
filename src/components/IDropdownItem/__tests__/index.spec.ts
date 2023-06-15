@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IDropdownItem } from '@inkline/inkline/components';
-import { InklineKey } from '@inkline/inkline/plugin';
+import { InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 import { DropdownKey } from '@inkline/inkline/components/IDropdown/mixin';
 import { ref } from 'vue';

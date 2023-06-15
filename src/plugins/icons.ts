@@ -1,8 +1,7 @@
-import { InjectionKey, Plugin } from 'vue';
+import type { Plugin } from 'vue';
+import type { SvgNode } from '@inkline/inkline/types';
 import * as inklineIcons from '@inkline/inkline/icons';
-import { SvgNode } from '@inkline/inkline/types';
-
-export const InklineIconsKey = Symbol('inklineIcons') as InjectionKey<Record<string, SvgNode>>;
+import { InklineIconsKey } from '@inkline/inkline';
 
 export interface InklineIconsPluginOptions {
     icons: Record<string, SvgNode>;

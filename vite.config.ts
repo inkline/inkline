@@ -16,6 +16,10 @@ export default defineConfig({
     resolve: {
         alias: [
             {
+                find: /^@inkline\/inkline$/,
+                replacement: `${resolve(__dirname)}/src/inkline.ts`
+            },
+            {
                 find: /^@inkline\/inkline\//,
                 replacement: `${resolve(__dirname)}/src/`
             }

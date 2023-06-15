@@ -1,6 +1,6 @@
 import { render } from '@testing-library/vue';
 import { INavbarCollapsible } from '@inkline/inkline/components';
-import { InklineKey } from '@inkline/inkline/plugin';
+import { InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 import { NavbarKey } from '@inkline/inkline/components/INavbar/mixin';
 import { ref } from 'vue';

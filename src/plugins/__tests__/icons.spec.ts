@@ -1,4 +1,5 @@
-import { IconsPlugin, InklineIconsKey } from '@inkline/inkline/plugins';
+import { IconsPlugin } from '@inkline/inkline/plugins';
+import { InklineIconsKey } from '@inkline/inkline/constants';
 import * as inklineIcons from '@inkline/inkline/icons';
 
 describe('IconsPlugin', () => {

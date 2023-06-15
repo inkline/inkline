@@ -3,7 +3,7 @@ import { h, computed, defineComponent, onMounted, inject } from 'vue';
 import { toCamelCase } from '@grozav/utils';
 import { renderSvg } from '@inkline/inkline/utils';
 import { useComponentSize } from '@inkline/inkline/composables';
-import { InklineIconsKey } from '@inkline/inkline/plugins';
+import { InklineIconsKey } from '@inkline/inkline';
 
 /**
  * The icon to be displayed

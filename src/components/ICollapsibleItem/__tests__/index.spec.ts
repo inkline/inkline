@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ICollapsibleItem } from '@inkline/inkline/components';
-import { InklineKey } from '@inkline/inkline/plugin';
+import { InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 import { CollapsibleKey } from '@inkline/inkline/components/ICollapsible/mixin';
 import { ref } from 'vue';

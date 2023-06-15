@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { IInput } from '@inkline/inkline/components';
 import { createInkline, Placeholder } from '@inkline/inkline/__tests__/utils';
-import { InklineKey } from '@inkline/inkline/plugin';
+import { InklineKey } from '@inkline/inkline/constants';
 import { FormKey } from '@inkline/inkline/components/IForm/mixin';
 import { ref } from 'vue';
 

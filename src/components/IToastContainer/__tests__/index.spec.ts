@@ -1,9 +1,8 @@
 import { render } from '@testing-library/vue';
 import { IToastContainer } from '@inkline/inkline/components';
 import { createInkline, retry } from '@inkline/inkline/__tests__/utils';
-import { InklineKey } from '@inkline/inkline/plugin';
+import { InklineKey, InklineIconsKey } from '@inkline/inkline/constants';
 import { createEventBus } from '@grozav/utils';
-import { InklineIconsKey } from '@inkline/inkline/plugins';
 import * as inklineIcons from '@inkline/inkline/icons';
 
 describe('Components', () => {
