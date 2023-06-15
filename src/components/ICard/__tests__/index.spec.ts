@@ -45,5 +45,23 @@ describe('Components', () => {
                 });
             });
         });
+
+        describe('tag', () => {
+            it('should render card using article tag', () => {
+                const wrapper = render(ICard, {
+                    props: {
+                        ...props,
+                        tag: 'article'
+                    },
+                    global: {
+                        provide: {
+                            [InklineKey as symbol]: createInkline()
+                        }
+                    }
+                });
+
+                expect(wrapper.container.firstChild!.nodeName).toBe('ARTICLE');
+            });
+        });
     });
 });

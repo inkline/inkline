@@ -29,7 +29,7 @@ export default defineComponent({
             default: undefined
         },
         /**
-         * The HTML tag to render card as
+         * The HTML tag to use for the card root element
          * @default div
          * @name tag
          */
@@ -53,7 +53,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <component :is="tagName" v-bind="$attrs" class="card" :class="classes">
+    <component :is="tag" v-bind="$attrs" class="card" :class="classes">
         <header v-if="!!$slots.header" class="card-header">
             <!-- @slot header Slot for card header content -->
             <slot name="header" />
