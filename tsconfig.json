@@ -15,6 +15,7 @@
         "rootDir": "src",
         "outDir": "lib",
         "paths": {
+            "@inkline/inkline": ["./src/inkline.ts"],
             "@inkline/inkline/*": ["./src/*"]
         },
         "lib": ["esnext", "dom", "dom.iterable", "scripthost"],

@@ -1,6 +1,7 @@
 import { createEventBus } from '@grozav/utils';
-import type { InjectionKey, Plugin, VNode } from 'vue';
+import type { Plugin, VNode } from 'vue';
 import type { EventBus } from '@grozav/utils';
+import { InklineToastKey } from '@inkline/inkline';
 
 export type ToastPosition =
     | 'top-left'
@@ -60,13 +61,11 @@ export const createToastService = (): ToastService => ({
     }
 });
 
-export const ToastKey = Symbol('toast') as InjectionKey<ToastService>;
-
 export const ToastPlugin: Plugin = {
     install: (app) => {
         const toastService = createToastService();
 
         app.config.globalProperties.$toast = toastService;
-        app.provide(ToastKey, toastService);
+        app.provide(InklineToastKey, toastService);
     }
 };

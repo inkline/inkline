@@ -1,7 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IButton } from '@inkline/inkline/components/IButton';
 import { ref } from 'vue';
-import { InklineKey } from '@inkline/inkline/plugin';
+import { InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
 import { ButtonGroupKey } from '@inkline/inkline/components/IButtonGroup/mixin';
@@ -189,7 +189,6 @@ describe('Components', () => {
                 expect(wrapper.container.firstChild).not.toHaveAttribute('role', 'button');
             });
 
-
             it('should provide role="button" for non-button tags', () => {
                 const wrapper = render(IButton, {
                     props: {
@@ -315,7 +314,6 @@ describe('Components', () => {
                     props: {
                         tag: 'a',
                         type: 'button'
-
                     },
                     global: {
                         provide: {

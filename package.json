@@ -1095,6 +1095,11 @@
             "import": "./constants/eventValueMap.mjs",
             "types": "./constants/eventValueMap.d.ts"
         },
+        "./constants/injectKeys": {
+            "require": "./constants/injectKeys.js",
+            "import": "./constants/injectKeys.mjs",
+            "types": "./constants/injectKeys.d.ts"
+        },
         "./constants/keymap": {
             "require": "./constants/keymap.js",
             "import": "./constants/keymap.mjs",

@@ -1,8 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ITooltip } from '@inkline/inkline/components';
-import { keymap } from '@inkline/inkline/constants';
+import { keymap, InklineKey } from '@inkline/inkline/constants';
 import { createInkline, Placeholder, PlaceholderButton } from '@inkline/inkline/__tests__/utils';
-import { InklineKey } from '@inkline/inkline/plugin';
 
 describe('Components', () => {
     describe('ITooltip', () => {

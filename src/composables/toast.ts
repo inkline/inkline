@@ -1,6 +1,7 @@
 import { inject } from 'vue';
-import { ToastKey, ToastService } from '@inkline/inkline/plugins';
+import { InklineToastKey } from '@inkline/inkline';
+import type { ToastService } from '@inkline/inkline/plugins';
 
 export function useToast() {
-    return inject(ToastKey) as ToastService;
+    return inject(InklineToastKey) as ToastService;
 }

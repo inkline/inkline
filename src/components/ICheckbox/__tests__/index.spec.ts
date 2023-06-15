@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { ICheckbox } from '@inkline/inkline/components';
-import { InklineKey } from '@inkline/inkline/plugin';
+import { InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
 import { FormKey } from '@inkline/inkline/components/IForm/mixin';
