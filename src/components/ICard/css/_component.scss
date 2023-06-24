@@ -392,11 +392,6 @@
         margin-left: 0;
     }
 
-    &:last-of-type {
-        border-bottom-left-radius: var(--card--border-bottom-left-radius);
-        border-bottom-right-radius: var(--card--border-bottom-right-radius);
-    }
-
     > .list-group:first-of-type,
     .list-group-item:first-of-type {
         border-top-left-radius: var(

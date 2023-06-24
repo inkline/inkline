@@ -5,5 +5,5 @@ const visible = ref(true);
 </script>
 
 <template>
-    <IAlert v-model="visible" dismissible> <p>Whoa! Nicely done.</p> </IAlert>
+    <IAlert v-model="visible" dismissible> Whoa! Nicely done. </IAlert>
 </template>
