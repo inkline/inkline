@@ -470,12 +470,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--header--border-bottom-width',
                         value: [
                             {
-                                name: '--select--border-bottom-width',
-                                value: [
-                                    {
-                                        name: '--border-bottom-width'
-                                    }
-                                ]
+                                value: '0'
                             }
                         ]
                     },
@@ -1253,12 +1248,7 @@ export const manifest: ComponentManifest = {
                         name: '--select--footer--border-top-width',
                         value: [
                             {
-                                name: '--select--border-top-width',
-                                value: [
-                                    {
-                                        name: '--border-top-width'
-                                    }
-                                ]
+                                value: '0'
                             }
                         ]
                     },
