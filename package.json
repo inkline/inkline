@@ -275,6 +275,26 @@
             "import": "./components/ICheckbox/manifest.mjs",
             "types": "./components/ICheckbox/manifest.d.ts"
         },
+        "./components/ICheckboxButtons": {
+            "require": "./components/ICheckboxButtons/index.js",
+            "import": "./components/ICheckboxButtons/index.mjs",
+            "types": "./components/ICheckboxButtons/index.d.ts"
+        },
+        "./components/ICheckboxButtons/examples": {
+            "require": "./components/ICheckboxButtons/examples/index.js",
+            "import": "./components/ICheckboxButtons/examples/index.mjs",
+            "types": "./components/ICheckboxButtons/examples/index.d.ts"
+        },
+        "./components/ICheckboxButtons/manifest": {
+            "require": "./components/ICheckboxButtons/manifest.js",
+            "import": "./components/ICheckboxButtons/manifest.mjs",
+            "types": "./components/ICheckboxButtons/manifest.d.ts"
+        },
+        "./components/ICheckboxButtons/mixins": {
+            "require": "./components/ICheckboxButtons/mixins.js",
+            "import": "./components/ICheckboxButtons/mixins.mjs",
+            "types": "./components/ICheckboxButtons/mixins.d.ts"
+        },
         "./components/ICheckboxGroup": {
             "require": "./components/ICheckboxGroup/index.js",
             "import": "./components/ICheckboxGroup/index.mjs",
@@ -810,6 +830,26 @@
             "import": "./components/IRadio/manifest.mjs",
             "types": "./components/IRadio/manifest.d.ts"
         },
+        "./components/IRadioButtons": {
+            "require": "./components/IRadioButtons/index.js",
+            "import": "./components/IRadioButtons/index.mjs",
+            "types": "./components/IRadioButtons/index.d.ts"
+        },
+        "./components/IRadioButtons/examples": {
+            "require": "./components/IRadioButtons/examples/index.js",
+            "import": "./components/IRadioButtons/examples/index.mjs",
+            "types": "./components/IRadioButtons/examples/index.d.ts"
+        },
+        "./components/IRadioButtons/manifest": {
+            "require": "./components/IRadioButtons/manifest.js",
+            "import": "./components/IRadioButtons/manifest.mjs",
+            "types": "./components/IRadioButtons/manifest.d.ts"
+        },
+        "./components/IRadioButtons/mixins": {
+            "require": "./components/IRadioButtons/mixins.js",
+            "import": "./components/IRadioButtons/mixins.mjs",
+            "types": "./components/IRadioButtons/mixins.d.ts"
+        },
         "./components/IRadioGroup": {
             "require": "./components/IRadioGroup/index.js",
             "import": "./components/IRadioGroup/index.mjs",
@@ -1019,6 +1059,31 @@
             "require": "./components/ITooltip/manifest.js",
             "import": "./components/ITooltip/manifest.mjs",
             "types": "./components/ITooltip/manifest.d.ts"
+        },
+        "./components/utils": {
+            "require": "./components/utils/index.js",
+            "import": "./components/utils/index.mjs",
+            "types": "./components/utils/index.d.ts"
+        },
+        "./components/utils/ICheckableButtonGroup": {
+            "require": "./components/utils/ICheckableButtonGroup/index.js",
+            "import": "./components/utils/ICheckableButtonGroup/index.mjs",
+            "types": "./components/utils/ICheckableButtonGroup/index.d.ts"
+        },
+        "./components/utils/ICheckableButtonGroup/mixins": {
+            "require": "./components/utils/ICheckableButtonGroup/mixins.js",
+            "import": "./components/utils/ICheckableButtonGroup/mixins.mjs",
+            "types": "./components/utils/ICheckableButtonGroup/mixins.d.ts"
+        },
+        "./components/utils/IRenderResolver": {
+            "require": "./components/utils/IRenderResolver/index.js",
+            "import": "./components/utils/IRenderResolver/index.mjs",
+            "types": "./components/utils/IRenderResolver/index.d.ts"
+        },
+        "./components/utils/IRenderResolver/IRenderResolver": {
+            "require": "./components/utils/IRenderResolver/IRenderResolver.js",
+            "import": "./components/utils/IRenderResolver/IRenderResolver.mjs",
+            "types": "./components/utils/IRenderResolver/IRenderResolver.d.ts"
         },
         "./composables": {
             "require": "./composables/index.js",

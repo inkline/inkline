@@ -1023,6 +1023,11 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--button--hover--background',
+                value: [
+                    {
+                        name: '--button--background'
+                    }
+                ],
                 variants: [
                     {
                         name: '--button--primary--hover--background',
@@ -1091,10 +1096,49 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--button--hover--border-color'
+                name: '--button--hover--border-color',
+                value: [
+                    {
+                        name: '--button--hover--border-top-color',
+                        value: [
+                            {
+                                name: '--button--border-top-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--hover--border-right-color',
+                        value: [
+                            {
+                                name: '--button--border-right-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--hover--border-bottom-color',
+                        value: [
+                            {
+                                name: '--button--border-bottom-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--button--hover--border-left-color',
+                        value: [
+                            {
+                                name: '--button--border-left-color'
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 name: '--button--active--background',
+                value: [
+                    {
+                        name: '--button--background'
+                    }
+                ],
                 variants: [
                     {
                         name: '--button--primary--active--background',

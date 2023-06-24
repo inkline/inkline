@@ -1,19 +1,19 @@
 import { ComponentManifest } from '@inkline/inkline/types';
 
 export const manifest: ComponentManifest = {
-    name: 'ICheckboxGroup',
+    name: 'IRadioButtons',
     props: [
         {
             name: 'color',
             type: ['light', 'dark'],
             default: '',
-            description: 'The color variant of the checkbox group'
+            description: 'The color variant of the radio buttons'
         },
         {
             name: 'disabled',
             type: ['Boolean'],
             default: 'false',
-            description: 'The disabled state of the checkbox group'
+            description: 'The disabled state of the radio buttons'
         },
         {
             name: 'error',
@@ -22,46 +22,40 @@ export const manifest: ComponentManifest = {
             description: 'The error state of the checkbox, computed based on schema by default.'
         },
         {
-            name: 'inline',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Display the checkbox group as inline'
-        },
-        {
-            name: 'indeterminate',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The indeterminate state of the checkbox group'
-        },
-        {
             name: 'modelValue',
             type: [],
             default: '',
-            description: 'Used to set the checkbox group value'
+            description: 'Used to set the radio buttons value'
         },
         {
             name: 'name',
             type: ['String'],
             default: 'uid()',
-            description: 'The unique identifier of the checkbox group'
+            description: 'The unique identifier of the radio buttons'
         },
         {
             name: 'readonly',
             type: ['Boolean'],
             default: 'false',
-            description: 'The readonly state of the checkbox group'
+            description: 'The readonly state of the radio buttons'
         },
         {
             name: 'size',
             type: ['sm', 'md', 'lg'],
             default: '',
-            description: 'The size variant of the checkbox group'
+            description: 'The size variant of the radio buttons'
         },
         {
             name: 'validate',
             type: ['Boolean'],
             default: 'true',
-            description: 'Enable checkbox group validation using schema'
+            description: 'Enable radio buttons validation using schema'
+        },
+        {
+            name: 'variant',
+            type: ['default', 'button-group'],
+            default: 'default',
+            description: 'The style variant of the radio buttons'
         }
     ],
     events: [
@@ -73,11 +67,11 @@ export const manifest: ComponentManifest = {
     slots: [
         {
             name: 'default',
-            description: 'Slot for default checkbox group options '
+            description: 'Slot for rendering radio buttons options '
         }
     ],
     css: {
-        selector: '.checkbox-group',
+        selector: '.radio-buttons',
         variables: []
     }
 };
