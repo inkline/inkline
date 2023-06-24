@@ -1,6 +1,7 @@
 import IRadioButtons from '@inkline/inkline/components/IRadioButtons/IRadioButtons.vue';
 import {
     IRadioButtonsBasicExample,
+    IRadioButtonsButtonPropsExample,
     IRadioButtonsColorVariantsExample,
     IRadioButtonsDisabledExample,
     IRadioButtonsDisabledOptionExample,
@@ -35,3 +36,4 @@ export const ReadonlyOption = createExampleStory(IRadioButtonsReadonlyOptionExam
 export const RenderFunction = createExampleStory(IRadioButtonsRenderFunctionExample);
 export const SizeVariants = createExampleStory(IRadioButtonsSizeVariantsExample);
 export const StyleVariants = createExampleStory(IRadioButtonsStyleVariantsExample);
+export const ButtonProps = createExampleStory(IRadioButtonsButtonPropsExample);

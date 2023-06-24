@@ -89,6 +89,7 @@
             }
 
             &:not(.-active) {
+                color: inherit;
                 background: var(
                     --checkable-button-group--button--background,
                     transparent

@@ -1,6 +1,7 @@
 import ICheckboxButtons from '@inkline/inkline/components/ICheckboxButtons/ICheckboxButtons.vue';
 import {
     ICheckboxButtonsBasicExample,
+    ICheckboxButtonsButtonPropsExample,
     ICheckboxButtonsColorVariantsExample,
     ICheckboxButtonsDisabledExample,
     ICheckboxButtonsDisabledOptionExample,
@@ -35,3 +36,4 @@ export const ReadonlyOption = createExampleStory(ICheckboxButtonsReadonlyOptionE
 export const RenderFunction = createExampleStory(ICheckboxButtonsRenderFunctionExample);
 export const SizeVariants = createExampleStory(ICheckboxButtonsSizeVariantsExample);
 export const StyleVariants = createExampleStory(ICheckboxButtonsStyleVariantsExample);
+export const ButtonProps = createExampleStory(ICheckboxButtonsButtonPropsExample);

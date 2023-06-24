@@ -1,4 +1,5 @@
 export { default as IRadioButtonsBasicExample } from '@inkline/inkline/components/IRadioButtons/examples/basic.vue';
+export { default as IRadioButtonsButtonPropsExample } from '@inkline/inkline/components/IRadioButtons/examples/button-props.vue';
 export { default as IRadioButtonsColorVariantsExample } from '@inkline/inkline/components/IRadioButtons/examples/color-variants.vue';
 export { default as IRadioButtonsDisabledExample } from '@inkline/inkline/components/IRadioButtons/examples/disabled.vue';
 export { default as IRadioButtonsDisabledOptionExample } from '@inkline/inkline/components/IRadioButtons/examples/disabled-option.vue';

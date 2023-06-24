@@ -1,4 +1,5 @@
 export { default as ICheckboxButtonsBasicExample } from '@inkline/inkline/components/ICheckboxButtons/examples/basic.vue';
+export { default as ICheckboxButtonsButtonPropsExample } from '@inkline/inkline/components/ICheckboxButtons/examples/button-props.vue';
 export { default as ICheckboxButtonsColorVariantsExample } from '@inkline/inkline/components/ICheckboxButtons/examples/color-variants.vue';
 export { default as ICheckboxButtonsDisabledExample } from '@inkline/inkline/components/ICheckboxButtons/examples/disabled.vue';
 export { default as ICheckboxButtonsDisabledOptionExample } from '@inkline/inkline/components/ICheckboxButtons/examples/disabled-option.vue';
