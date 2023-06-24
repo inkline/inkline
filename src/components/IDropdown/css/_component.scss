@@ -312,7 +312,7 @@
             );
         }
 
-        > *:nth-child(2) {
+        > div:first-of-type {
             border-top-left-radius: var(
                 --dropdown--border-top-left-radius,
                 var(--border-top-left-radius)
@@ -323,7 +323,7 @@
             );
         }
 
-        > *:last-of-type {
+        > div:last-of-type {
             border-bottom-left-radius: var(
                 --dropdown--border-bottom-left-radius,
                 var(--border-bottom-left-radius)
