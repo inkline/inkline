@@ -41,7 +41,7 @@ jobs:
                 if: steps.npm-cache.outputs.cache-hit != 'true'
                 run: npm install
             -   name: Run linting
-                run: npm run
+                run: npm run lint
 
 
     testing:
