@@ -34,6 +34,12 @@ export const manifest: ComponentManifest = {
             description: 'The unique identifier of the radio buttons'
         },
         {
+            name: 'options',
+            type: ['Array'],
+            default: '',
+            description: 'The options to be rendered as radio buttons'
+        },
+        {
             name: 'readonly',
             type: ['Boolean'],
             default: 'false',

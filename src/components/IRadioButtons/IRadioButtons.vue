@@ -65,8 +65,7 @@ export default defineComponent({
          * @name modelValue
          */
         modelValue: {
-            type: Array,
-            default: () => []
+            default: undefined
         },
         /**
          * The unique identifier of the radio buttons
@@ -82,6 +81,9 @@ export default defineComponent({
         },
         /**
          * The options to be rendered as radio buttons
+         * @type Array
+         * @default []
+         * @name options
          */
         options: {
             type: Array as PropType<CheckableButtonGroupOption[]>,

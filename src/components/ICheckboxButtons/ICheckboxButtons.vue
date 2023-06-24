@@ -80,8 +80,12 @@ export default defineComponent({
                 return uid('checkbox-buttons');
             }
         },
+
         /**
          * The options to be rendered as checkbox buttons
+         * @type Array
+         * @default []
+         * @name options
          */
         options: {
             type: Array as PropType<CheckableButtonGroupOption[]>,
