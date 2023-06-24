@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > ICheckboxButtons > should render correctly 1`] = `
+"<div class=\\"checkable-button-group -light -md -checkbox -default -light -md checkbox-buttons\\" name=\\"checkbox-buttons\\" role=\\"checkboxgroup\\">
+  <!-- @slot default Slot for default content --><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
+    <!-- @slot loading Slot for button loading state -->
+    <!--v-if-->
+    <!-- @slot default Slot for default button content -->
+    <!-- @slot default Slot for rendering checkbox buttons options -->
+    <div>Option 1</div>
+  </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
+    <!-- @slot loading Slot for button loading state -->
+    <!--v-if-->
+    <!-- @slot default Slot for default button content -->
+    <!-- @slot default Slot for rendering checkbox buttons options -->
+    <div>Option 2</div>
+  </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
+    <!-- @slot loading Slot for button loading state -->
+    <!--v-if-->
+    <!-- @slot default Slot for default button content -->
+    <!-- @slot default Slot for rendering checkbox buttons options -->
+    <div>Option 3</div>
+  </button>
+</div>"
+`;
+
+exports[`Components > ICheckboxButtons > should render group variant correctly 1`] = `
+"<div class=\\"checkable-button-group -light -md -checkbox -group -light -md checkbox-buttons button-group -md -light\\" name=\\"checkbox-buttons\\" role=\\"group\\">
+  <!-- @slot default Slot for default button group content --><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
+    <!-- @slot loading Slot for button loading state -->
+    <!--v-if-->
+    <!-- @slot default Slot for default button content -->
+    <!-- @slot default Slot for rendering checkbox buttons options -->
+    <div>Option 1</div>
+  </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
+    <!-- @slot loading Slot for button loading state -->
+    <!--v-if-->
+    <!-- @slot default Slot for default button content -->
+    <!-- @slot default Slot for rendering checkbox buttons options -->
+    <div>Option 2</div>
+  </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
+    <!-- @slot loading Slot for button loading state -->
+    <!--v-if-->
+    <!-- @slot default Slot for default button content -->
+    <!-- @slot default Slot for rendering checkbox buttons options -->
+    <div>Option 3</div>
+  </button>
+</div>"
+`;

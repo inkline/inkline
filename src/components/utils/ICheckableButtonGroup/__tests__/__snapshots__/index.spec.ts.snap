@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > ICheckableButtonGroup > should render correctly 1`] = `
+"<div class=\\"checkable-button-group -light -md -undefined -default\\">
+  <!-- @slot default Slot for default content -->
+  <i-button>Apple</i-button>
+  <i-button>Watermelon</i-button>
+  <i-button>Peach</i-button>
+  <i-button>Mango</i-button>
+</div>"
+`;
