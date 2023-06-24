@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > IRenderResolver > should render component render function 1`] = `"<div>example</div>"`;
+
+exports[`Components > IRenderResolver > should render string 1`] = `"<div>example</div>"`;
+
+exports[`Components > IRenderResolver > should render string using specified tag 1`] = `"<strong>example</strong>"`;

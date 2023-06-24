@@ -24,6 +24,7 @@
 @import '../src/components/ITabs/css/preview';
 @import '../src/components/IToast/css/preview';
 @import '../src/components/ITooltip/css/preview';
+@import '../src/components/utils/ICheckableButtonGroup/css/preview';
 @import '../src/css/preview';
 
 #storybook-root {
@@ -52,6 +53,7 @@
     @extend %button-preview;
     @extend %button-group-preview;
     @extend %card-preview;
+    @extend %checkable-button-group-preview;
     @extend %collapsible-preview;
     @extend %dropdown-preview;
     @extend %hamburger-menu-preview;

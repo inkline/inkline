@@ -1,24 +1,35 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, provide, toRef } from 'vue';
-import { uid } from '@grozav/utils';
-import { FormKey } from '@inkline/inkline/components/IForm/mixin';
-import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
+import { computed, defineComponent, inject, PropType, toRef } from 'vue';
 import {
     useComponentColor,
     useComponentSize,
-    useFormValidationError,
-    useValidation
+    useValidation,
+    useFormValidationError
 } from '@inkline/inkline/composables';
-import { RadioGroupKey } from '@inkline/inkline/components/IRadioGroup';
+import { FormKey } from '@inkline/inkline/components/IForm/mixin';
+import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
+import { IButton } from '@inkline/inkline/components/IButton';
+import { uid } from '@grozav/utils';
+import {
+    IRenderResolver,
+    ICheckableButtonGroup,
+    CheckableButtonGroupOption,
+    CheckableButtonGroupVariant
+} from '@inkline/inkline/components/utils';
 
-const componentName = 'IRadioGroup';
+const componentName = 'IRadioButtons';
 
 export default defineComponent({
     name: componentName,
+    components: {
+        IRenderResolver,
+        IButton,
+        ICheckableButtonGroup
+    },
     inheritAttrs: false,
     props: {
         /**
-         * The color variant of the radio group
+         * The color variant of the radio buttons
          * @type light | dark
          * @default
          * @name color
@@ -28,7 +39,7 @@ export default defineComponent({
             default: undefined
         },
         /**
-         * The disabled state of the radio group
+         * The disabled state of the radio buttons
          * @type Boolean
          * @default false
          * @name disabled
@@ -38,7 +49,7 @@ export default defineComponent({
             default: false
         },
         /**
-         * The error state of the radio, computed based on schema by default.
+         * The error state of the checkbox, computed based on schema by default.
          * @type Boolean | Array
          * @default ['touched', 'dirty', 'invalid']
          * @TODO use propDefaultValue to set default value
@@ -49,35 +60,16 @@ export default defineComponent({
             default: () => ['touched', 'dirty', 'invalid']
         },
         /**
-         * Display the radio group as inline
-         * @type Boolean
-         * @default false
-         * @name inline
-         */
-        inline: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * The indeterminate state of the radio group
-         * @type Boolean
-         * @default false
-         * @name indeterminate
-         */
-        indeterminate: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * Used to set the radio group value
-         * @default
+         * Used to set the radio buttons value
+         * @default []
          * @name modelValue
          */
         modelValue: {
-            default: undefined
+            type: Array,
+            default: () => []
         },
         /**
-         * The unique identifier of the radio group
+         * The unique identifier of the radio buttons
          * @type String
          * @default uid()
          * @name name
@@ -85,11 +77,18 @@ export default defineComponent({
         name: {
             type: String,
             default() {
-                return uid('radio-group');
+                return uid('radio-buttons');
             }
         },
         /**
-         * The readonly state of the radio group
+         * The options to be rendered as radio buttons
+         */
+        options: {
+            type: Array as PropType<CheckableButtonGroupOption[]>,
+            default: () => []
+        },
+        /**
+         * The readonly state of the radio buttons
          * @type Boolean
          * @default false
          * @name readonly
@@ -99,7 +98,7 @@ export default defineComponent({
             default: false
         },
         /**
-         * The size variant of the radio group
+         * The size variant of the radio buttons
          * @type sm | md | lg
          * @default
          * @name size
@@ -109,7 +108,7 @@ export default defineComponent({
             default: undefined
         },
         /**
-         * Enable radio group validation using schema
+         * Enable radio buttons validation using schema
          * @type Boolean
          * @default true
          * @name validate
@@ -117,6 +116,16 @@ export default defineComponent({
         validate: {
             type: Boolean,
             default: true
+        },
+        /**
+         * The style variant of the radio buttons
+         * @type default | button-group
+         * @default default
+         * @name variant
+         */
+        variant: {
+            type: String as PropType<CheckableButtonGroupVariant>,
+            default: 'default'
         }
     },
     emits: [
@@ -134,7 +143,6 @@ export default defineComponent({
             () => props.color || formGroup?.color.value || form?.color.value
         );
         const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
-
         const { color } = useComponentColor({ componentName, currentColor });
         const { size } = useComponentSize({ componentName, currentSize });
 
@@ -160,6 +168,14 @@ export default defineComponent({
             error: props.error
         });
 
+        const classes = computed(() => ({
+            [`-${color.value}`]: true,
+            [`-${size.value}`]: true,
+            '-disabled': disabled.value,
+            '-readonly': readonly.value,
+            '-error': hasError.value
+        }));
+
         const value = computed(() => {
             if (schema.value && validate.value) {
                 return schema.value.value;
@@ -167,15 +183,6 @@ export default defineComponent({
 
             return props.modelValue;
         });
-
-        const classes = computed(() => ({
-            [`-${color.value}`]: true,
-            [`-${size.value}`]: true,
-            '-disabled': disabled.value,
-            '-readonly': readonly.value,
-            '-inline': props.inline,
-            '-error': hasError.value
-        }));
 
         function onChange(value: string) {
             schemaOnInput(props.name, value);
@@ -186,33 +193,42 @@ export default defineComponent({
             schemaOnBlur(props.name, event);
         }
 
-        provide(RadioGroupKey, {
-            name,
+        return {
+            classes,
             value,
-            disabled,
-            readonly,
-            color,
-            size,
             onChange,
             onBlur
-        });
-
-        return {
-            classes
         };
     }
 });
 </script>
 
 <template>
-    <div
+    <ICheckableButtonGroup
         v-bind="$attrs"
-        class="form-group radio-group"
         :class="classes"
         :name="name"
+        :variant="variant"
+        class="radio-buttons"
+        type="radio"
         role="radiogroup"
     >
-        <!-- @slot default Slot for default radio group options -->
-        <slot />
-    </div>
+        <IButton
+            v-for="option in options"
+            :key="`${name}/${option.id}`"
+            :disabled="option.disabled || option.readonly || readonly || disabled"
+            :active="value === option.value"
+            :color="color"
+            :size="size"
+            role="radio"
+            v-bind="option.buttonProps"
+            @click="onChange(option.value)"
+            @blur="onBlur"
+        >
+            <!-- @slot default Slot for rendering radio buttons options -->
+            <slot :option="option">
+                <IRenderResolver :data="option.label" />
+            </slot>
+        </IButton>
+    </ICheckableButtonGroup>
 </template>

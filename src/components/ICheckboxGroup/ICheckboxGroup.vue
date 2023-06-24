@@ -163,8 +163,8 @@ export default defineComponent({
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            '-disabled': disabled,
-            '-readonly': readonly,
+            '-disabled': disabled.value,
+            '-readonly': readonly.value,
             '-inline': props.inline,
             '-error': hasError.value
         }));
