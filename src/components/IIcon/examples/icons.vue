@@ -26,4 +26,10 @@
     <IIcon name="ink-sort-desc" />
 
     <IIcon name="ink-search" />
+
+    <IIcon name="ink-clear" />
+
+    <IIcon name="ink-eye" />
+
+    <IIcon name="ink-eye-off" />
 </template>
