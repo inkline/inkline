@@ -9,13 +9,12 @@ export default defineComponent({
     components: {
         IInput
     },
-    inheritAttrs: true,
     emits: IInput.emits
 });
 </script>
 
 <template>
-    <IInput type="textarea">
+    <IInput v-bind="{ ...$attrs, ...$props }" type="textarea">
         <template v-if="$slots.prepend" #prepend>
             <slot name="prepend" />
         </template>
