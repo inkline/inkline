@@ -326,8 +326,8 @@
     }
 
     .input-wrapper {
-        * + .select-caret {
-            margin-left: var(--margin-left);
+        .input-icon {
+            margin-right: var(--margin-left);
         }
 
         .input-suffix > .select-caret {

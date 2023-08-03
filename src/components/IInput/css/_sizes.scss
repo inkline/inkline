@@ -40,7 +40,7 @@
             --input--sm--padding-left,
             calc(var(--padding-left) * var(--size-multiplier-sm))
         );
-        --input--clear--size: calc(1.2rem * var(--size-multiplier-sm));
+        --input--icon--size: calc(1rem * var(--size-multiplier-sm));
     }
 
     &.-md {
@@ -80,7 +80,7 @@
             --input--md--padding-left,
             calc(var(--padding-left) * var(--size-multiplier-md))
         );
-        --input--clear--size: calc(1.2rem * var(--size-multiplier-md));
+        --input--icon--size: calc(1rem * var(--size-multiplier-md));
     }
 
     &.-lg {
@@ -120,6 +120,6 @@
             --input--lg--padding-left,
             calc(var(--padding-left) * var(--size-multiplier-lg))
         );
-        --input--clear--size: calc(1.2rem * var(--size-multiplier-lg));
+        --input--icon--size: calc(1rem * var(--size-multiplier-lg));
     }
 }

@@ -15,6 +15,7 @@ module.exports = {
         'vue/no-dupe-keys': 'off',
         'vue/v-on-event-hyphenation': 'off',
         'vue/singleline-html-element-content-newline': 'off',
-        'vue/html-self-closing': 'off'
+        'vue/html-self-closing': 'off',
+        'vue/attribute-hyphenation': 'off'
     }
 };
