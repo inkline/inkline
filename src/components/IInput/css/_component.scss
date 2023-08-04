@@ -198,49 +198,21 @@
             );
         }
 
-        .input-clear {
-            transition-property: var(--input--transition-property, background-color);
+        .input-icon {
+            transition-property: var(--input--transition-property, color);
             transition-duration: var(--input--transition-duration, var(--transition-duration));
             transition-timing-function: var(
                 --input--transition-timing-function,
                 var(--transition-timing-function)
             );
-            display: flex;
-            justify-content: center;
-            align-items: center;
             cursor: pointer;
-            width: var(--input--clear--size);
-            height: var(--input--clear--size);
-            border-radius: 100%;
-            background-color: var(--input--clear--background);
-            color: var(--input--clear--color);
+            width: auto;
+            height: var(--input--icon--size);
+            color: var(--input--icon--color);
 
             &:hover,
             &:focus {
-                color: var(--input--clear--hover--color, var(--input--clear--color));
-                background: var(--input--clear--hover--background, var(--input--clear--background));
-            }
-
-            &:active {
-                background: var(
-                    --input--clear--active--background,
-                    var(--input--clear--background)
-                );
-            }
-
-            &::before {
-                background-color: var(--input--clear--color);
-                content: '';
-                mask-image: url('#{icons.$ink-times}');
-                -webkit-mask-image: url('#{icons.$ink-times}');
-                mask-position: center center;
-                -webkit-mask-position: center center;
-                mask-repeat: no-repeat;
-                -webkit-mask-repeat: no-repeat;
-                mask-size: 8px 8px;
-                -webkit-mask-size: 8px 8px;
-                height: 8px;
-                width: 8px;
+                color: var(--input--icon--hover--color, var(--input--icon--color));
             }
         }
     }

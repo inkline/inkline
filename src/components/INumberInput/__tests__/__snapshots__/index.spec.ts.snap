@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > INumberInput > should render correctly 1`] = `
-"<div id=\\"\\" class=\\"input-wrapper -prepended -appended -light -md\\">
+"<div class=\\"input-wrapper -light -md -prepended -appended\\">
   <div class=\\"input-prepend\\">
     <!-- @slot prepend Slot for the input prepend content --><button class=\\"input-button-decrease button -light -md\\" type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\">
       <!-- @slot loading Slot for button loading state -->
@@ -10,14 +10,15 @@ exports[`Components > INumberInput > should render correctly 1`] = `
     </button>
   </div>
   <div class=\\"input\\">
-    <!--v-if--><input id=\\"\\" name=\\"number-input\\" type=\\"text\\" tabindex=\\"0\\" aria-disabled=\\"false\\" aria-readonly=\\"false\\">
+    <!--v-if--><input min=\\"-Infinity\\" max=\\"Infinity\\" precision=\\"0\\" step=\\"1\\" name=\\"number-input\\" type=\\"text\\" tabindex=\\"0\\" aria-disabled=\\"false\\" aria-readonly=\\"false\\">
     <!--v-if-->
   </div>
-  <div class=\\"input-append\\"><button class=\\"input-button-increase button -light -md\\" type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\">
+  <div class=\\"input-append\\">
+    <!-- @slot append Slot for the input append content --><button class=\\"input-button-increase button -light -md\\" type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\">
       <!-- @slot loading Slot for button loading state -->
       <!--v-if-->
       <!-- @slot default Slot for default button content --> +
-    </button><!-- @slot append Slot for the input append content -->
+    </button>
   </div>
 </div>"
 `;

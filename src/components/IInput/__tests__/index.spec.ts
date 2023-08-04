@@ -13,6 +13,8 @@ describe('Components', () => {
             name: 'input'
         };
 
+        const stubs = ['i-icon'];
+
         it('should be named correctly', () => {
             expect(IInput.name).toEqual('IInput');
         });
@@ -46,6 +48,53 @@ describe('Components', () => {
                     const inputElement = wrapper.container.querySelector('input')!;
 
                     expect(inputElement).toHaveAttribute('name', expect.stringContaining('input'));
+                });
+            });
+
+            describe('type', () => {
+                it('should render textarea element if type is "textarea"', () => {
+                    const wrapper = render(IInput, {
+                        props: {
+                            type: 'textarea',
+                            ...props
+                        },
+                        global: {
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
+                    const textareaElement = wrapper.container.querySelector('textarea');
+
+                    expect(textareaElement).toBeVisible();
+                });
+
+                it('should render show password toggle if type is "password" and "showPasswordToggle"', async () => {
+                    const wrapper = render(IInput, {
+                        props: {
+                            modelValue: 'password',
+                            type: 'password',
+                            showPasswordToggle: true,
+                            ...props
+                        },
+                        global: {
+                            stubs,
+                            provide: {
+                                [InklineKey as symbol]: createInkline()
+                            }
+                        }
+                    });
+
+                    const inputElement = wrapper.container.querySelector('input')!;
+                    const toggleElement =
+                        wrapper.container.querySelector('.input-password-toggle')!;
+
+                    expect(inputElement).toHaveAttribute('type', 'password');
+                    expect(toggleElement).toBeVisible();
+
+                    await fireEvent.click(toggleElement);
+
+                    expect(inputElement).toHaveAttribute('type', 'text');
                 });
             });
         });
@@ -192,6 +241,7 @@ describe('Components', () => {
                             ...props
                         },
                         global: {
+                            stubs,
                             provide: {
                                 [InklineKey as symbol]: createInkline()
                             }
@@ -316,6 +366,7 @@ describe('Components', () => {
                             ...props
                         },
                         global: {
+                            stubs,
                             provide: {
                                 [InklineKey as symbol]: createInkline()
                             }

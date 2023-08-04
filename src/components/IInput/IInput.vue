@@ -10,11 +10,15 @@ import {
 } from '@inkline/inkline/composables';
 import { FormKey } from '@inkline/inkline/components/IForm/mixin';
 import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
+import { IIcon } from '@inkline/inkline/components/IIcon';
 
 const componentName = 'IInput';
 
 export default defineComponent({
     name: componentName,
+    components: {
+        IIcon
+    },
     inheritAttrs: false,
     props: {
         /**
@@ -161,6 +165,26 @@ export default defineComponent({
             default: 'Clear'
         },
         /**
+         * The aria-label of the show password toggle button
+         * @type String
+         * @default Toggle password visibility
+         * @name showPasswordToggleAriaLabel
+         */
+        showPasswordToggleAriaLabel: {
+            type: String,
+            default: 'Toggle password visibility'
+        },
+        /**
+         * Display the password toggle button
+         * @type Boolean
+         * @default true
+         * @name showPasswordToggle
+         */
+        showPasswordToggle: {
+            type: Boolean,
+            default: true
+        },
+        /**
          * Enable input validation using schema
          * @type Boolean
          * @default true
@@ -181,7 +205,12 @@ export default defineComponent({
          * Event emitted when clearing the input element
          * @event clear
          */
-        'clear'
+        'clear',
+        /**
+         * Event emitted when toggling the password visibility
+         * @event togglePassword
+         */
+        'togglePassword'
     ],
     setup(props, { attrs, emit, slots }) {
         const form = inject(FormKey, null);
@@ -224,6 +253,25 @@ export default defineComponent({
             error: props.error
         });
 
+        const showPassword = ref(false);
+        const isPasswordToggleable = computed(() => {
+            return (
+                props.showPasswordToggle &&
+                props.type === 'password' &&
+                !disabled.value &&
+                !readonly.value &&
+                value.value !== ''
+            );
+        });
+
+        const inputType = computed(() => {
+            if (props.type === 'password' && showPassword.value) {
+                return 'text';
+            }
+
+            return props.type;
+        });
+
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
         const value = computed(() => {
@@ -234,7 +282,7 @@ export default defineComponent({
             return props.modelValue;
         });
 
-        const clearable = computed(() => {
+        const isClearable = computed(() => {
             return props.clearable && !disabled.value && !readonly.value && value.value !== '';
         });
 
@@ -280,17 +328,28 @@ export default defineComponent({
             emit('update:modelValue', '');
         }
 
+        function onTogglePassword(event: Event) {
+            event.stopPropagation();
+            emit('togglePassword', event);
+
+            showPassword.value = !showPassword.value;
+        }
+
         return {
             input,
             wrapperAttrs,
             inputAttrs,
             tabIndex,
             value,
-            clearable,
+            inputType,
+            isClearable,
+            isPasswordToggleable,
+            showPassword,
             classes,
             onBlur,
             onInput,
-            onClear
+            onClear,
+            onTogglePassword
         };
     }
 });
@@ -308,12 +367,13 @@ export default defineComponent({
                 <slot name="prefix" />
             </span>
             <input
+                v-if="type !== 'textarea'"
                 v-bind="inputAttrs"
                 :id="id"
                 ref="input"
                 :value="value"
                 :name="name"
-                :type="type"
+                :type="inputType"
                 :tabindex="tabIndex"
                 :disabled="disabled"
                 :aria-disabled="disabled ? 'true' : false"
@@ -322,19 +382,54 @@ export default defineComponent({
                 @input="onInput"
                 @blur="onBlur"
             />
-            <span v-if="$slots.suffix || clearable" class="input-suffix">
+            <textarea
+                v-else
+                v-bind="inputAttrs"
+                :id="id"
+                ref="input"
+                :value="value"
+                role="textbox"
+                :name="name"
+                :tabindex="tabIndex"
+                :disabled="disabled"
+                :aria-disabled="disabled ? 'true' : false"
+                :readonly="readonly || plaintext"
+                :aria-readonly="readonly || plaintext ? 'true' : false"
+                aria-multiline="true"
+                @input="onInput"
+                @blur="onBlur"
+            />
+            <span v-if="$slots.suffix || isClearable || isPasswordToggleable" class="input-suffix">
+                <!-- @slot password-toggle Slot for the password toggle button -->
+                <slot
+                    v-if="showPasswordToggle && type === 'password'"
+                    name="password-toggle"
+                    :onTogglePassword="onTogglePassword"
+                >
+                    <IIcon
+                        v-show="isPasswordToggleable"
+                        :name="showPassword ? 'ink-eye' : 'ink-eye-off'"
+                        class="input-icon input-password-toggle"
+                        role="button"
+                        :aria-label="showPasswordToggleAriaLabel"
+                        :aria-hidden="isPasswordToggleable ? 'false' : 'true'"
+                        @click="onTogglePassword"
+                    />
+                </slot>
+
                 <!-- @slot clearable Slot for the clearable button -->
-                <slot name="clearable" :clear="onClear">
-                    <i
-                        v-if="clearable"
-                        v-show="clearable"
-                        class="input-clear"
+                <slot v-if="clearable" name="clearable" :onClear="onClear">
+                    <IIcon
+                        v-show="isClearable"
+                        name="ink-clear"
+                        class="input-icon input-clear"
                         role="button"
                         :aria-label="clearAriaLabel"
-                        :aria-hidden="clearable ? 'false' : 'true'"
+                        :aria-hidden="isClearable ? 'false' : 'true'"
                         @click="onClear"
                     />
                 </slot>
+
                 <!-- @slot suffix Slot for the input suffix content -->
                 <slot name="suffix" />
             </span>

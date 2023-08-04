@@ -21,6 +21,8 @@ describe('Components', () => {
             modelValue: options[0].id
         };
 
+        const stubs = ['i-icon'];
+
         it('should be named correctly', () => {
             expect(ISelect.name).toEqual('ISelect');
         });
@@ -142,6 +144,7 @@ describe('Components', () => {
                             ...props
                         },
                         global: {
+                            stubs,
                             provide: {
                                 [InklineKey as symbol]: createInkline()
                             }
@@ -232,6 +235,7 @@ describe('Components', () => {
                             clearable: true
                         },
                         global: {
+                            stubs,
                             provide: {
                                 [InklineKey as symbol]: createInkline()
                             }

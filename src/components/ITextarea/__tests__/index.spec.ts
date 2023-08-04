@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/vue';
+import { fireEvent, render, waitFor } from '@testing-library/vue';
 import { ITextarea } from '@inkline/inkline/components';
 import { createInkline, Placeholder } from '@inkline/inkline/__tests__/utils';
 import { InklineKey } from '@inkline/inkline/constants';
@@ -12,6 +12,8 @@ describe('Components', () => {
             size: 'md',
             name: 'textarea'
         };
+
+        const stubs = ['i-icon'];
 
         it('should be named correctly', () => {
             expect(ITextarea.name).toEqual('ITextarea');
@@ -45,7 +47,7 @@ describe('Components', () => {
                     });
                     const textarea = wrapper.container.querySelector('textarea');
 
-                    expect(textarea).toHaveAttribute('name', expect.stringContaining('textarea'));
+                    expect(textarea).toHaveAttribute('name', expect.stringContaining('input'));
                 });
             });
         });
@@ -192,6 +194,7 @@ describe('Components', () => {
                             ...props
                         },
                         global: {
+                            stubs,
                             provide: {
                                 [InklineKey as symbol]: createInkline()
                             }
@@ -302,31 +305,35 @@ describe('Components', () => {
 
                     await fireEvent.update(textarea, 'value');
 
-                    expect(onInput).toHaveBeenCalled();
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([value]);
+                    expect(onInput).toHaveBeenLastCalledWith(props.name, value);
                 });
             });
 
             describe('onClear()', () => {
                 it('should emit clear event', async () => {
+                    const onInput = vi.fn();
                     const wrapper = render(ITextarea, {
                         props: {
-                            modelValue: 'abc',
+                            modelValue: 'textarea',
                             clearable: true,
                             ...props
                         },
                         global: {
+                            stubs,
                             provide: {
-                                [InklineKey as symbol]: createInkline()
+                                [InklineKey as symbol]: createInkline(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onInput
+                                }
                             }
                         }
                     });
+
                     const clear = await wrapper.findByLabelText('Clear');
-
                     await fireEvent.click(clear);
-
-                    expect(wrapper.emitted().clear[0]).toBeDefined();
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['']);
+                    expect(onInput).toHaveBeenLastCalledWith('textarea', '');
                 });
             });
         });

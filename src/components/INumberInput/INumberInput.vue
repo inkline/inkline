@@ -1,86 +1,24 @@
 <script lang="ts">
-import {
-    computed,
-    defineComponent,
-    inject,
-    onBeforeUpdate,
-    PropType,
-    ref,
-    toRef,
-    watch
-} from 'vue';
+import { computed, defineComponent, inject, toRef, watch } from 'vue';
 import { IButton } from '@inkline/inkline/components/IButton';
-import { filterKeys, uid } from '@grozav/utils';
+import { uid } from '@grozav/utils';
 import { InputElementEvent } from '@inkline/inkline/types';
-import {
-    useComponentColor,
-    useComponentSize,
-    useFormValidationError,
-    useValidation
-} from '@inkline/inkline/composables';
+import { useComponentColor, useComponentSize, useValidation } from '@inkline/inkline/composables';
 import { FormKey } from '@inkline/inkline/components/IForm/mixin';
 import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
+import { IInput } from '@inkline/inkline/components';
 
 const componentName = 'INumberInput';
 
 export default defineComponent({
     name: componentName,
     components: {
-        IButton
+        IButton,
+        IInput
     },
     inheritAttrs: false,
     props: {
-        /**
-         * The color variant of the input
-         * @type light | dark
-         * @default
-         * @name color
-         */
-        color: {
-            type: String,
-            default: undefined
-        },
-        /**
-         * Display the input as clearable
-         * @type Boolean
-         * @default false
-         * @name clearable
-         */
-        clearable: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * The disabled state of the input
-         * @type Boolean
-         * @default false
-         * @name disabled
-         */
-        disabled: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * The error state of the checkbox, computed based on schema by default.
-         * @type Boolean | Array
-         * @default ['touched', 'dirty', 'invalid']
-         * @TODO use propDefaultValue to set default value
-         * @name error
-         */
-        error: {
-            type: [Array, Boolean] as PropType<boolean | string[]>,
-            default: () => ['touched', 'dirty', 'invalid']
-        },
-        /**
-         * The id of the internal input element
-         * @type String
-         * @default
-         * @name id
-         */
-        id: {
-            type: String,
-            default: ''
-        },
+        ...IInput.props,
         /**
          * Used to set the field value
          * @type String | Number
@@ -100,48 +38,8 @@ export default defineComponent({
         name: {
             type: String,
             default(): string {
-                return uid('input');
+                return uid('number-input');
             }
-        },
-        /**
-         * Display the input as plaintext, disabling interaction
-         * @type Boolean
-         * @default false
-         * @name plaintext
-         */
-        plaintext: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * The readonly state of the input
-         * @type Boolean
-         * @default false
-         * @name readonly
-         */
-        readonly: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * The size variant of the input
-         * @type sm | md | lg
-         * @default
-         * @name size
-         */
-        size: {
-            type: String,
-            default: undefined
-        },
-        /**
-         * The tabindex of the input
-         * @type Number | String
-         * @default 0
-         * @name tabindex
-         */
-        tabindex: {
-            type: [Number, String],
-            default: 0
         },
         /**
          * The minimum allowed input value
@@ -182,41 +80,10 @@ export default defineComponent({
         step: {
             type: Number,
             default: 1
-        },
-        /**
-         * The aria-label of the clear button
-         * @type String
-         * @default Clear
-         * @name clearAriaLabel
-         */
-        clearAriaLabel: {
-            type: String,
-            default: 'Clear'
-        },
-        /**
-         * Enable number input validation using schema
-         * @type Boolean
-         * @default true
-         * @name validate
-         */
-        validate: {
-            type: Boolean,
-            default: true
         }
     },
-    emits: [
-        /**
-         * Event emitted for setting the modelValue
-         * @event update:modelValue
-         */
-        'update:modelValue',
-        /**
-         * Event emitted when clearing the input element
-         * @event clear
-         */
-        'clear'
-    ],
-    setup(props, { attrs, emit, slots }) {
+    emits: IInput.emits,
+    setup(props, { emit }) {
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
 
@@ -232,14 +99,6 @@ export default defineComponent({
             () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
 
-        const input = ref<HTMLInputElement | null>(null);
-
-        const wrapperAttrsAllowlist = ['class', 'className', /^data-/];
-        const wrapperAttrs = computed(() =>
-            filterKeys(attrs, { allowlist: wrapperAttrsAllowlist })
-        );
-        const inputAttrs = computed(() => filterKeys(attrs, { denylist: wrapperAttrsAllowlist }));
-
         const name = toRef(props, 'name');
         const validate = toRef(props, 'validate');
         const {
@@ -250,12 +109,6 @@ export default defineComponent({
             name,
             validate
         });
-        const { hasError } = useFormValidationError({
-            schema,
-            error: props.error
-        });
-
-        const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
         const value = computed(() => {
             if (schema.value && validate.value) {
@@ -263,24 +116,6 @@ export default defineComponent({
             }
 
             return props.modelValue;
-        });
-
-        const clearable = computed(() => {
-            return props.clearable && !disabled.value && !readonly.value && value.value !== '';
-        });
-
-        const slotsClasses = ref(getSlotsClasses());
-        const classes = computed(() => ({
-            [`-${color.value}`]: true,
-            [`-${size.value}`]: true,
-            '-disabled': disabled.value,
-            '-error': hasError.value,
-            '-readonly': readonly.value,
-            ...slotsClasses.value
-        }));
-
-        onBeforeUpdate(() => {
-            slotsClasses.value = getSlotsClasses();
         });
 
         watch(
@@ -311,34 +146,13 @@ export default defineComponent({
             }
         );
 
-        function getSlotsClasses() {
-            return {
-                '-prefixed': Boolean(slots.prefix),
-                '-suffixed': Boolean(slots.suffix),
-                '-prepended': Boolean(slots.prepend),
-                '-appended': Boolean(slots.append)
-            };
-        }
-
         function onBlur(event: Event) {
             schemaOnBlur(props.name, event);
         }
 
-        function updateModelValue(value: string) {
+        function onUpdateModelValue(value: string) {
             schemaOnInput(props.name, value);
             emit('update:modelValue', value);
-        }
-
-        function onInput(event: Event) {
-            const target = event.target as HTMLInputElement;
-
-            updateModelValue(target.value);
-        }
-
-        function onClear(event: Event) {
-            emit('clear', event);
-
-            updateModelValue('');
         }
 
         function decrease() {
@@ -346,7 +160,7 @@ export default defineComponent({
                 return;
             }
 
-            updateModelValue(formatPrecision((Number(value.value) - props.step).toString()));
+            onUpdateModelValue(formatPrecision((Number(value.value) - props.step).toString()));
         }
 
         function increase() {
@@ -354,7 +168,7 @@ export default defineComponent({
                 return;
             }
 
-            updateModelValue(formatPrecision((Number(value.value) + props.step).toString()));
+            onUpdateModelValue(formatPrecision((Number(value.value) + props.step).toString()));
         }
 
         function formatPrecision(value: string) {
@@ -373,21 +187,17 @@ export default defineComponent({
                 return;
             }
 
-            updateModelValue(formatPrecision(Number(value.value).toString()));
+            onUpdateModelValue(formatPrecision(Number(value.value).toString()));
             onBlur(event);
         }
 
         return {
-            input,
-            wrapperAttrs,
-            inputAttrs,
-            tabIndex,
+            color,
+            size,
+            disabled,
             value,
-            clearable,
-            classes,
             onBlur,
-            onInput,
-            onClear,
+            onUpdateModelValue,
             decrease,
             increase,
             onBlurFormatPrecision
@@ -397,15 +207,13 @@ export default defineComponent({
 </script>
 
 <template>
-    <div
-        v-bind="wrapperAttrs"
-        :id="id && `${id}-wrapper`"
-        class="input-wrapper -prepended -appended"
-        :class="classes"
+    <IInput
+        v-bind="{ ...$attrs, ...$props }"
+        :modelValue="value"
+        type="text"
+        @update:modelValue="onUpdateModelValue"
     >
-        <div class="input-prepend">
-            <!-- @slot prepend Slot for the input prepend content -->
-            <slot name="prepend" />
+        <template #prepend>
             <IButton
                 type="button"
                 :color="color"
@@ -416,45 +224,18 @@ export default defineComponent({
             >
                 -
             </IButton>
-        </div>
-        <div class="input">
-            <span v-if="$slots.prefix" class="input-prefix">
-                <!-- @slot prefix Slot for the input prefix content -->
-                <slot name="prefix" />
-            </span>
-            <input
-                v-bind="inputAttrs"
-                :id="id"
-                ref="input"
-                :value="value"
-                :name="name"
-                type="text"
-                :tabindex="tabIndex"
-                :disabled="disabled"
-                :aria-disabled="disabled ? 'true' : false"
-                :readonly="readonly || plaintext"
-                :aria-readonly="readonly || plaintext ? 'true' : false"
-                @input="onInput"
-                @blur="onBlur"
-            />
-            <span v-if="$slots.suffix || clearable" class="input-suffix">
-                <!-- @slot clearable Slot for the clearable button -->
-                <slot name="clearable" :clear="onClear">
-                    <i
-                        v-if="clearable"
-                        v-show="clearable"
-                        class="input-clear"
-                        role="button"
-                        :aria-label="clearAriaLabel"
-                        :aria-hidden="clearable ? 'false' : 'true'"
-                        @click="onClear"
-                    />
-                </slot>
-                <!-- @slot suffix Slot for the input suffix content -->
-                <slot name="suffix" />
-            </span>
-        </div>
-        <div class="input-append">
+            <slot name="prepend" />
+        </template>
+        <template v-if="$slots.prefix" #prefix>
+            <slot name="prefix" />
+        </template>
+        <template v-if="$slots.clearable" #clearable>
+            <slot name="clearable" />
+        </template>
+        <template v-if="$slots.suffix" #suffix>
+            <slot name="suffix" />
+        </template>
+        <template #append>
             <IButton
                 type="button"
                 :color="color"
@@ -465,8 +246,7 @@ export default defineComponent({
             >
                 +
             </IButton>
-            <!-- @slot append Slot for the input append content -->
             <slot name="append" />
-        </div>
-    </div>
+        </template>
+    </IInput>
 </template>
