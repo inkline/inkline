@@ -155,7 +155,7 @@ export default defineComponent({
             () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
 
-        const name = toRef(props, 'name');
+        const name = toRef<string>(props, 'name');
         const validate = toRef(props, 'validate');
         const {
             schema,
@@ -165,9 +165,10 @@ export default defineComponent({
             name,
             validate
         });
+        const error = toRef(props, 'error');
         const { hasError } = useFormValidationError({
             schema,
-            error: props.error
+            error
         });
 
         const classes = computed(() => ({
@@ -187,12 +188,12 @@ export default defineComponent({
         });
 
         function onChange(value: string) {
-            schemaOnInput(props.name, value);
+            schemaOnInput(name, value);
             emit('update:modelValue', value);
         }
 
         function onBlur(event: FocusEvent) {
-            schemaOnBlur(props.name, event);
+            schemaOnBlur(name, event);
         }
 
         return {

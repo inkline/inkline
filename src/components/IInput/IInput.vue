@@ -238,7 +238,7 @@ export default defineComponent({
         );
         const inputAttrs = computed(() => filterKeys(attrs, { denylist: wrapperAttrsAllowlist }));
 
-        const name = toRef(props, 'name');
+        const name = toRef<string>(props, 'name');
         const validate = toRef(props, 'validate');
         const {
             schema,
@@ -248,9 +248,10 @@ export default defineComponent({
             name,
             validate
         });
+        const error = toRef(props, 'error');
         const { hasError } = useFormValidationError({
             schema,
-            error: props.error
+            error
         });
 
         const showPassword = ref(false);
@@ -310,13 +311,13 @@ export default defineComponent({
         }
 
         function onBlur(event: Event) {
-            schemaOnBlur(props.name, event);
+            schemaOnBlur(name, event);
         }
 
         function onInput(event: Event) {
             const target = event.target as HTMLInputElement;
 
-            schemaOnInput(props.name, target.value);
+            schemaOnInput(name, target.value);
             emit('update:modelValue', target.value);
         }
 
@@ -324,7 +325,7 @@ export default defineComponent({
             event.stopPropagation();
             emit('clear', event);
 
-            schemaOnInput(props.name, '');
+            schemaOnInput(name, '');
             emit('update:modelValue', '');
         }
 

@@ -1,5 +1,5 @@
 import { clone, getValueByPath, setValueByPath, setValuesAlongPath } from '@grozav/utils';
-import { computed, inject, Ref, ref, watch } from 'vue';
+import { computed, inject, Ref, ref, unref, watch } from 'vue';
 import { FormKey } from '@inkline/inkline/components/IForm';
 import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
 import { validate } from '@inkline/inkline/validation';
@@ -151,10 +151,12 @@ export function useValidation(options: {
      * Recursively preform onInput callback for form group or form that the element
      * belongs to, up until the root form is reached.
      *
-     * @param name
+     * @param nameRef
      * @param value
      */
-    function onInput(name: string, value: any) {
+    function onInput(nameRef: Ref<string>, value: any) {
+        const name = unref(nameRef);
+
         if (!options.validate?.value) {
             return;
         }
@@ -172,10 +174,12 @@ export function useValidation(options: {
      * Recursively preform onBlur callback for form group or form that the element
      * belongs to, up until the root form is reached.
      *
-     * @param name
+     * @param nameRef
      * @param event
      */
-    function onBlur(name: string, event: any) {
+    function onBlur(nameRef: Ref<string>, event: any) {
+        const name = unref(nameRef);
+
         if (!options.validate?.value) {
             return;
         }
@@ -192,14 +196,14 @@ export function useValidation(options: {
     return { schema, onSubmit, onInput, onBlur };
 }
 
-export function useFormValidationError(options: { schema: Ref; error: boolean | string[] }) {
+export function useFormValidationError(options: { schema: Ref; error: Ref<boolean | string[]> }) {
     const hasError = computed(() => {
-        if (typeof options.error === 'boolean') {
-            return options.error;
-        } else if (options.schema.value && options.error) {
+        if (typeof options.error.value === 'boolean') {
+            return options.error.value;
+        } else if (options.schema.value && options.error.value) {
             let visible = true;
 
-            ([] as string[]).concat(options.error as string[]).forEach((status) => {
+            ([] as string[]).concat(options.error.value as string[]).forEach((status) => {
                 visible = visible && options.schema.value[status];
             });
 

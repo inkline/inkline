@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, inject, provide, toRef } from 'vue';
+import { computed, defineComponent, inject, provide, ref, toRef } from 'vue';
 import {
     useComponentColor,
     useComponentSize,
@@ -100,12 +100,13 @@ export default defineComponent({
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
 
-        const name = toRef(props, 'name');
+        const name = toRef<string>(props, 'name');
         const validate = toRef(props, 'validate');
         const { schema, onBlur, onInput } = useValidation({ name, validate });
+        const error = ref(['invalid']);
         const { hasError } = useFormValidationError({
             schema,
-            error: ['invalid']
+            error
         });
 
         const currentColor = computed(

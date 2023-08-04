@@ -7,6 +7,7 @@
         "dev": "npm run storybook",
         "prebuild": "ts-node ./scripts/prebuild.ts",
         "build": "run-p build:*",
+        "build:tsc": "vue-tsc --allowJs --noEmit",
         "build:unbuild": "unbuild",
         "build:vite": "vite build",
         "postbuild": "ts-node ./scripts/postbuild.ts",
@@ -110,7 +111,7 @@
         "vue": "^3.3.4",
         "vue-loader": "^17.0.0",
         "vue-router": "^4.1.6",
-        "vue-tsc": "^1.0.24"
+        "vue-tsc": "^1.8.8"
     },
     "peerDependencies": {
         "@inkline/config": ">=1",

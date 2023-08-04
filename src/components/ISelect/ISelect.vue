@@ -385,7 +385,7 @@ export default defineComponent({
         const arrowRef = ref<HTMLElement | null>(null);
         const optionsRef = ref<HTMLElement | null>(null);
 
-        const name = toRef(props, 'name');
+        const name = toRef<string>(props, 'name');
         const validate = toRef(props, 'validate');
         const {
             schema,
@@ -395,9 +395,10 @@ export default defineComponent({
             name,
             validate
         });
+        const error = toRef(props, 'error');
         const { hasError } = useFormValidationError({
             schema,
-            error: props.error
+            error
         });
 
         const value = computed(() => {
@@ -504,18 +505,19 @@ export default defineComponent({
 
             inputValue.value = getLabel(option);
 
-            schemaOnInput(props.name, option[props.idField]);
+            schemaOnInput(name, option[props.idField]);
             emit('update:modelValue', option[props.idField]);
 
             hide();
         }
 
         function onClear() {
+            schemaOnInput(name, null);
             emit('update:modelValue', null);
         }
 
         function onBlur(event: MouseEvent) {
-            schemaOnBlur(props.name, event);
+            schemaOnBlur(name, event);
         }
 
         function onClickCaret(event: MouseEvent) {

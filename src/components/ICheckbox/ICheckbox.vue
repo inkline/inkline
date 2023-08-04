@@ -181,7 +181,7 @@ export default defineComponent({
                 form?.readonly.value
         );
 
-        const name = toRef(props, 'name');
+        const name = toRef<string>(props, 'name');
         const validate = toRef(props, 'validate');
         const {
             schema,
@@ -191,9 +191,10 @@ export default defineComponent({
             name,
             validate
         });
+        const error = toRef(props, 'error');
         const { hasError } = useFormValidationError({
             schema,
-            error: props.error
+            error
         });
 
         const classes = computed(() => ({
@@ -225,7 +226,7 @@ export default defineComponent({
             if (checkboxGroup) {
                 checkboxGroup.onChange(props.value);
             } else {
-                schemaOnInput(props.name, target.checked);
+                schemaOnInput(name, target.checked);
             }
 
             emit('update:modelValue', target.checked);
@@ -235,7 +236,7 @@ export default defineComponent({
             if (checkboxGroup) {
                 checkboxGroup.onBlur(event);
             } else {
-                schemaOnBlur(props.name, event);
+                schemaOnBlur(name, event);
             }
         }
 

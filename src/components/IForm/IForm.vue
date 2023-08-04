@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, provide, toRef } from 'vue';
+import { computed, defineComponent, provide, ref, toRef } from 'vue';
 import {
     useComponentColor,
     useComponentSize,
@@ -144,9 +144,10 @@ export default defineComponent({
                 emit('submit', event);
             }
         });
+        const error = ref(['invalid']);
         const { hasError } = useFormValidationError({
             schema,
-            error: ['invalid']
+            error
         });
 
         const classes = computed(() => ({

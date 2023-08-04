@@ -37,6 +37,7 @@ const defaultIgnore = [
 (async () => {
     const packageJSON = JSON.parse(await readFile(packageJSONPath, 'utf-8'));
     const tsFiles = await glob(resolve(srcDir, '**', '*.ts'), {
+        cwd: __dirname,
         ignore: [
             ...defaultIgnore,
             resolve(srcDir, '**', '*.{d,spec,stories}.ts'),

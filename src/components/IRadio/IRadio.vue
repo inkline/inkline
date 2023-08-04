@@ -160,7 +160,7 @@ export default defineComponent({
                 form?.readonly.value
         );
 
-        const name = toRef(props, 'name');
+        const name = toRef<string>(props, 'name');
         const {
             schema,
             onInput: schemaOnInput,
@@ -168,9 +168,10 @@ export default defineComponent({
         } = useValidation({
             name
         });
+        const error = toRef(props, 'error');
         const { hasError } = useFormValidationError({
             schema,
-            error: props.error
+            error
         });
 
         const classes = computed(() => ({
@@ -200,7 +201,7 @@ export default defineComponent({
             if (radioGroup) {
                 radioGroup.onChange(props.value);
             } else {
-                schemaOnInput(props.name, target.checked);
+                schemaOnInput(name, target.checked);
             }
 
             emit('update:modelValue', target.checked);
@@ -210,7 +211,7 @@ export default defineComponent({
             if (radioGroup) {
                 radioGroup.onBlur(event);
             } else {
-                schemaOnBlur(props.name, event);
+                schemaOnBlur(name, event);
             }
         }
 

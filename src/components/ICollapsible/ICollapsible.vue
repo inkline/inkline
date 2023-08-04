@@ -68,7 +68,7 @@ export default defineComponent({
             [`-${size.value}`]: Boolean(size.value)
         }));
 
-        const activeItems = ref(([] as string[]).concat(props.modelValue));
+        const activeItems = ref(([] as string[]).concat(props.modelValue)); // eslint-disable-line vue/no-setup-props-destructure
 
         watch(
             () => props.modelValue,

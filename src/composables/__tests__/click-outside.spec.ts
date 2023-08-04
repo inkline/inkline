@@ -16,10 +16,11 @@ const TestComponent = defineComponent({
     },
     setup(props) {
         const elementRef = toRef(props, 'element');
+        const fn = toRef(props, 'fn');
 
         useClickOutside({
             elementRef,
-            fn: props.fn
+            fn
         });
 
         return {};

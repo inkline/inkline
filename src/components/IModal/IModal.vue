@@ -121,7 +121,7 @@ export default defineComponent({
         'update:modelValue'
     ],
     setup(props, { emit }) {
-        const visible = ref(props.modelValue);
+        const visible = ref(props.modelValue); // eslint-disable-line vue/no-setup-props-destructure
 
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
@@ -136,7 +136,7 @@ export default defineComponent({
 
         const wrapperRef = ref<HTMLElement | null>(null);
         const modalRef = ref<HTMLElement | null>(null);
-        const name = toRef(props, 'name');
+        const name = toRef<string>(props, 'name');
         const closeOnPressEscape = toRef(props, 'closeOnPressEscape');
 
         watch(

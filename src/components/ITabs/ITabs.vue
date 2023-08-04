@@ -67,7 +67,7 @@ export default defineComponent({
     setup(props, { emit, slots }) {
         const tabsRef = ref<HTMLElement | null>(null);
         const tabs = ref<Array<Tab>>([]);
-        const active = ref(props.modelValue);
+        const active = ref(props.modelValue); // eslint-disable-line vue/no-setup-props-destructure
 
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);

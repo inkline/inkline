@@ -1,4 +1,4 @@
-<script setup></script>
+<script lang="ts" setup></script>
 
 <template>
     <button>Button</button>

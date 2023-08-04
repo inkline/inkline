@@ -99,7 +99,7 @@ export default defineComponent({
             () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
 
-        const name = toRef(props, 'name');
+        const name = toRef<string>(props, 'name');
         const validate = toRef(props, 'validate');
         const {
             schema,
@@ -141,17 +141,17 @@ export default defineComponent({
                 if (parseFloat(newValue) <= parseFloat(props.min as string))
                     newValue = props.min.toString();
 
-                schemaOnInput(props.name, newValue);
+                schemaOnInput(name, newValue);
                 emit('update:modelValue', newValue);
             }
         );
 
         function onBlur(event: Event) {
-            schemaOnBlur(props.name, event);
+            schemaOnBlur(name, event);
         }
 
         function onUpdateModelValue(value: string) {
-            schemaOnInput(props.name, value);
+            schemaOnInput(name, value);
             emit('update:modelValue', value);
         }
 

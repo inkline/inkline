@@ -1,11 +1,15 @@
-import { onMounted, onUnmounted, Ref } from 'vue';
+import { onMounted, onUnmounted, Ref, unref } from 'vue';
 import { isVisible, off, on } from '@grozav/utils';
+
+type UseClickOutsideCallbackFn = ((event: Event) => void) | (() => void);
 
 export function useClickOutside(props: {
     elementRef: Ref<HTMLElement | null>;
-    fn: (event: Event) => void;
+    fn: UseClickOutsideCallbackFn | Ref<UseClickOutsideCallbackFn>;
 }) {
     const binding = (event: Event) => {
+        const fn = unref(props.fn);
+
         if (!props.elementRef.value) {
             return;
         }
@@ -20,7 +24,7 @@ export function useClickOutside(props: {
             return;
         }
 
-        props.fn(event);
+        fn(event);
     };
 
     onMounted(() => {
