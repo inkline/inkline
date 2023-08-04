@@ -1,0 +1,12 @@
+{
+    "component": "IInput",
+    "props": {
+        "exclude": ["showPasswordToggleAriaLabel", "showPasswordToggle"]
+    },
+    "events": {
+        "exclude": ["togglePassword"]
+    },
+    "slots": {
+        "exclude": ["password-toggle"]
+    }
+}

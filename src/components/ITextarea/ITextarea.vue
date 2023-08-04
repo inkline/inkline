@@ -14,7 +14,7 @@ export default defineComponent({
     props: {
         ...IInput.props,
         /**
-         * The unique identifier of the input
+         * The unique identifier of the textarea
          * @type String
          * @default uid()
          * @name name

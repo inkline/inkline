@@ -250,6 +250,10 @@ export const manifest: ComponentManifest = {
             description: 'Slot for the select header content '
         },
         {
+            name: 'no-results',
+            description: 'Slot for showing no options message '
+        },
+        {
             name: 'option',
             description: 'Slot for the select option content '
         },

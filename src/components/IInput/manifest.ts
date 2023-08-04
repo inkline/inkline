@@ -88,6 +88,18 @@ export const manifest: ComponentManifest = {
             description: 'The aria-label of the clear button'
         },
         {
+            name: 'showPasswordToggleAriaLabel',
+            type: ['String'],
+            default: 'Toggle',
+            description: 'The aria-label of the show password toggle button'
+        },
+        {
+            name: 'showPasswordToggle',
+            type: ['Boolean'],
+            default: 'true',
+            description: 'Display the password toggle button'
+        },
+        {
             name: 'validate',
             type: ['Boolean'],
             default: 'true',
@@ -102,6 +114,10 @@ export const manifest: ComponentManifest = {
         {
             description: 'Event emitted when clearing the input element',
             name: 'clear'
+        },
+        {
+            description: 'Event emitted when toggling the password visibility',
+            name: 'togglePassword'
         }
     ],
     slots: [
@@ -112,6 +128,10 @@ export const manifest: ComponentManifest = {
         {
             name: 'prefix',
             description: 'Slot for the input prefix content '
+        },
+        {
+            name: 'password-toggle',
+            description: 'Slot for the password toggle button '
         },
         {
             name: 'clearable',
@@ -856,89 +876,34 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--input--clear--size'
+                name: '--input--icon--size'
             },
             {
-                name: '--input--clear--background',
+                name: '--input--icon--color',
                 variants: [
                     {
-                        name: '--input--light--clear--background',
+                        name: '--input--light--icon--color',
                         value: [
                             {
-                                value: 'transparent'
+                                name: '--text-color-weak'
                             }
                         ]
                     },
                     {
-                        name: '--input--dark--clear--background',
+                        name: '--input--dark--icon--color',
                         value: [
                             {
-                                value: 'transparent'
+                                name: '--text-color-weak'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--input--clear--color',
-                variants: [
-                    {
-                        name: '--input--light--clear--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-white'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--clear--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--clear--hover--color',
+                name: '--input--icon--hover--color',
                 value: [
                     {
-                        name: '--input--clear--color'
-                    }
-                ]
-            },
-            {
-                name: '--input--clear--hover--background',
-                value: [
-                    {
-                        name: '--input--clear--background'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--light--clear--hover--background',
-                        value: [
-                            {
-                                name: '--color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--clear--hover--background',
-                        value: [
-                            {
-                                name: '--color-dark-tint-50'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--clear--active--background',
-                value: [
-                    {
-                        name: '--input--clear--background'
+                        name: '--input--icon--color'
                     }
                 ]
             },
