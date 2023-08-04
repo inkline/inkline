@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/vue';
+import { fireEvent, render } from '@testing-library/vue';
 import { ITextarea } from '@inkline/inkline/components';
 import { createInkline, Placeholder } from '@inkline/inkline/__tests__/utils';
 import { InklineKey } from '@inkline/inkline/constants';
