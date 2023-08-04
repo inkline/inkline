@@ -160,7 +160,7 @@ export default defineComponent({
                 form?.readonly.value
         );
 
-        const name = toRef<string>(props, 'name');
+        const name = toRef(props, 'name');
         const {
             schema,
             onInput: schemaOnInput,
@@ -224,6 +224,10 @@ export default defineComponent({
             labelOnBlur(event);
         }
 
+        function labelOnKeydown(event: KeyboardEvent) {
+            labelOnClick(event as unknown as MouseEvent);
+        }
+
         return {
             classes,
             checked,
@@ -233,7 +237,8 @@ export default defineComponent({
             inputRef,
             onChange,
             labelOnBlur,
-            labelOnClick
+            labelOnClick,
+            labelOnKeydown
         };
     }
 });
@@ -246,8 +251,8 @@ export default defineComponent({
         :class="classes"
         role="radio"
         :aria-checked="checked ? 'true' : 'false'"
-        :aria-disabled="disabled ? 'true' : null"
-        :aria-readonly="readonly ? 'true' : null"
+        :aria-disabled="disabled ? 'true' : undefined"
+        :aria-readonly="readonly ? 'true' : undefined"
     >
         <input
             ref="inputRef"
@@ -264,7 +269,7 @@ export default defineComponent({
             :tabindex="tabindex"
             @blur="labelOnBlur"
             @click="labelOnClick"
-            @keydown.space.stop.prevent="labelOnClick"
+            @keydown.space.stop.prevent="labelOnKeydown"
         >
             <!-- @slot default Slot for default radio label -->
             <slot />

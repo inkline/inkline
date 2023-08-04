@@ -136,7 +136,7 @@ export default defineComponent({
 
         const wrapperRef = ref<HTMLElement | null>(null);
         const modalRef = ref<HTMLElement | null>(null);
-        const name = toRef<string>(props, 'name');
+        const name = toRef(props, 'name');
         const closeOnPressEscape = toRef(props, 'closeOnPressEscape');
 
         watch(

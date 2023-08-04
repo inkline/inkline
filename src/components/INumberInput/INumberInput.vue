@@ -99,7 +99,7 @@ export default defineComponent({
             () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
 
-        const name = toRef<string>(props, 'name');
+        const name = toRef(props, 'name');
         const validate = toRef(props, 'validate');
         const {
             schema,

@@ -100,7 +100,7 @@ export default defineComponent({
         role="group"
         class="button-group"
         :class="classes"
-        :aria-disabled="disabled ? 'true' : null"
+        :aria-disabled="disabled ? 'true' : undefined"
     >
         <!-- @slot default Slot for default button group content -->
         <slot />

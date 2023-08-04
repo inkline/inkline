@@ -238,7 +238,7 @@ export default defineComponent({
         );
         const inputAttrs = computed(() => filterKeys(attrs, { denylist: wrapperAttrsAllowlist }));
 
-        const name = toRef<string>(props, 'name');
+        const name = toRef(props, 'name');
         const validate = toRef(props, 'validate');
         const {
             schema,

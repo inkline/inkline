@@ -100,7 +100,7 @@ export default defineComponent({
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
 
-        const name = toRef<string>(props, 'name');
+        const name = toRef(props, 'name');
         const validate = toRef(props, 'validate');
         const { schema, onBlur, onInput } = useValidation({ name, validate });
         const error = ref(['invalid']);

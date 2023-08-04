@@ -226,7 +226,7 @@ export default defineComponent({
             ref="triggerRef"
             class="tooltip-trigger"
             :aria-describedby="`${name}-popup`"
-            :aria-disabled="disabled ? 'true' : null"
+            :aria-disabled="disabled"
             :aria-expanded="visible ? 'true' : 'false'"
         >
             <!-- @slot default Slot for tooltip trigger -->

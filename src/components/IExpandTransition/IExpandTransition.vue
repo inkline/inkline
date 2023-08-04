@@ -5,7 +5,8 @@ import { getStyleProperty } from '@grozav/utils';
 export default defineComponent({
     name: 'IExpandTransition',
     setup() {
-        function onEnter(element: HTMLElement) {
+        function onEnter(componentElement: Element) {
+            const element = componentElement as HTMLElement;
             const width = getStyleProperty(element, 'width');
 
             element.style.width = width;
@@ -25,11 +26,13 @@ export default defineComponent({
             });
         }
 
-        function onAfterEnter(element: HTMLElement) {
+        function onAfterEnter(componentElement: Element) {
+            const element = componentElement as HTMLElement;
             element.style.height = 'auto';
         }
 
-        function onLeave(element: HTMLElement) {
+        function onLeave(componentElement: Element) {
+            const element = componentElement as HTMLElement;
             const height = element.offsetHeight;
 
             element.style.height = `${height}px`;

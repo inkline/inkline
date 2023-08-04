@@ -65,8 +65,8 @@ export default defineComponent({
     setup(props) {
         const select = inject(SelectKey, null);
 
-        const ariaDisabled = computed(() => (props.disabled ? 'true' : null));
-        const ariaSelected = computed(() => (props.disabled ? 'true' : null));
+        const ariaDisabled = computed(() => (props.disabled ? true : undefined));
+        const ariaSelected = computed(() => (props.disabled ? true : undefined));
 
         const isActive = computed(() => {
             const idField = select?.idField.value;

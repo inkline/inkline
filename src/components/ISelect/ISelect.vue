@@ -385,7 +385,7 @@ export default defineComponent({
         const arrowRef = ref<HTMLElement | null>(null);
         const optionsRef = ref<HTMLElement | null>(null);
 
-        const name = toRef<string>(props, 'name');
+        const name = toRef(props, 'name');
         const validate = toRef(props, 'validate');
         const {
             schema,
@@ -680,7 +680,11 @@ export default defineComponent({
             }
 
             return isFunction(props.label)
-                ? (props.label as (option: Record<string, any> | string | number) => void)(option)
+                ? (
+                      props.label as unknown as (
+                          option: Record<string, any> | string | number
+                      ) => void
+                  )(option)
                 : getValueByPath(option, props.label as string);
         }
 

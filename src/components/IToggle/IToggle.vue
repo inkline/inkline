@@ -164,7 +164,7 @@ export default defineComponent({
             () => props.readonly || formGroup?.readonly.value || form?.readonly.value
         );
 
-        const name = toRef<string>(props, 'name');
+        const name = toRef(props, 'name');
         const validate = toRef(props, 'validate');
         const {
             schema,
@@ -221,6 +221,10 @@ export default defineComponent({
             labelOnBlur(event);
         }
 
+        function labelOnKeydown(event: KeyboardEvent) {
+            labelOnClick(event as unknown as MouseEvent);
+        }
+
         return {
             inputRef,
             classes,
@@ -230,7 +234,8 @@ export default defineComponent({
             tabindex,
             onChange,
             labelOnBlur,
-            labelOnClick
+            labelOnClick,
+            labelOnKeydown
         };
     }
 });
@@ -263,7 +268,7 @@ export default defineComponent({
             :tabindex="tabindex"
             @click="labelOnClick"
             @blur="labelOnBlur"
-            @keydown.space.stop.prevent="labelOnClick"
+            @keydown.space.stop.prevent="labelOnKeydown"
         >
             <!-- @slot default Slot for default toggle label -->
             <slot />
