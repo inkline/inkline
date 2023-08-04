@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IInput } from '@inkline/inkline/components/IInput';
+import { uid } from '@grozav/utils';
 
 const componentName = 'ITextarea';
 
@@ -9,12 +10,41 @@ export default defineComponent({
     components: {
         IInput
     },
-    emits: IInput.emits
+    inheritAttrs: true,
+    props: {
+        ...IInput.props,
+        /**
+         * The unique identifier of the input
+         * @type String
+         * @default uid()
+         * @name name
+         */
+        name: {
+            type: String,
+            default(): string {
+                return uid('textarea');
+            }
+        }
+    },
+    emits: IInput.emits,
+    setup(props, { emit }) {
+        function onUpdateModelValue(value: string) {
+            emit('update:modelValue', value);
+        }
+
+        return {
+            onUpdateModelValue
+        };
+    }
 });
 </script>
 
 <template>
-    <IInput v-bind="{ ...$attrs, ...$props }" type="textarea">
+    <IInput
+        v-bind="{ ...$attrs, ...$props }"
+        type="textarea"
+        @update:modelValue="onUpdateModelValue"
+    >
         <template v-if="$slots.prepend" #prepend>
             <slot name="prepend" />
         </template>

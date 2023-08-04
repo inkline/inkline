@@ -47,7 +47,7 @@ describe('Components', () => {
                     });
                     const textarea = wrapper.container.querySelector('textarea');
 
-                    expect(textarea).toHaveAttribute('name', expect.stringContaining('input'));
+                    expect(textarea).toHaveAttribute('name', expect.stringContaining('textarea'));
                 });
             });
         });
