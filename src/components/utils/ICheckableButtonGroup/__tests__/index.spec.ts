@@ -1,5 +1,6 @@
 import { render } from '@testing-library/vue';
 import { ICheckableButtonGroup } from '@inkline/inkline/components/utils';
+import { IButton } from '@inkline/inkline/components/IButton';
 import { InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 
@@ -19,6 +20,10 @@ describe('Components', () => {
             ]
         };
 
+        const stubs = {
+            IButton
+        };
+
         it('should be named correctly', () => {
             expect(ICheckableButtonGroup.name).toEqual('ICheckableButtonGroup');
         });
@@ -26,6 +31,7 @@ describe('Components', () => {
         it('should render correctly', () => {
             const wrapper = render(ICheckableButtonGroup, {
                 global: {
+                    stubs,
                     provide: {
                         [InklineKey as symbol]: createInkline()
                     }
