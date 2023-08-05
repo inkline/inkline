@@ -1092,60 +1092,60 @@
             "import": "./composables/index.mjs",
             "types": "./composables/index.d.ts"
         },
-        "./composables/click-outside": {
-            "require": "./composables/click-outside.js",
-            "import": "./composables/click-outside.mjs",
-            "types": "./composables/click-outside.d.ts"
+        "./composables/useClickOutside": {
+            "require": "./composables/useClickOutside.js",
+            "import": "./composables/useClickOutside.mjs",
+            "types": "./composables/useClickOutside.d.ts"
         },
-        "./composables/collapsible": {
-            "require": "./composables/collapsible.js",
-            "import": "./composables/collapsible.mjs",
-            "types": "./composables/collapsible.d.ts"
+        "./composables/useCollapsible": {
+            "require": "./composables/useCollapsible.js",
+            "import": "./composables/useCollapsible.mjs",
+            "types": "./composables/useCollapsible.d.ts"
         },
-        "./composables/componentColor": {
-            "require": "./composables/componentColor.js",
-            "import": "./composables/componentColor.mjs",
-            "types": "./composables/componentColor.d.ts"
+        "./composables/useComponentColor": {
+            "require": "./composables/useComponentColor.js",
+            "import": "./composables/useComponentColor.mjs",
+            "types": "./composables/useComponentColor.d.ts"
         },
-        "./composables/componentSize": {
-            "require": "./composables/componentSize.js",
-            "import": "./composables/componentSize.mjs",
-            "types": "./composables/componentSize.d.ts"
+        "./composables/useComponentSize": {
+            "require": "./composables/useComponentSize.js",
+            "import": "./composables/useComponentSize.mjs",
+            "types": "./composables/useComponentSize.d.ts"
         },
-        "./composables/form": {
-            "require": "./composables/form.js",
-            "import": "./composables/form.mjs",
-            "types": "./composables/form.d.ts"
+        "./composables/useForm": {
+            "require": "./composables/useForm.js",
+            "import": "./composables/useForm.mjs",
+            "types": "./composables/useForm.d.ts"
         },
-        "./composables/inkline": {
-            "require": "./composables/inkline.js",
-            "import": "./composables/inkline.mjs",
-            "types": "./composables/inkline.d.ts"
+        "./composables/useInkline": {
+            "require": "./composables/useInkline.js",
+            "import": "./composables/useInkline.mjs",
+            "types": "./composables/useInkline.d.ts"
         },
-        "./composables/isServer": {
-            "require": "./composables/isServer.js",
-            "import": "./composables/isServer.mjs",
-            "types": "./composables/isServer.d.ts"
+        "./composables/useIsServer": {
+            "require": "./composables/useIsServer.js",
+            "import": "./composables/useIsServer.mjs",
+            "types": "./composables/useIsServer.d.ts"
         },
-        "./composables/linkable": {
-            "require": "./composables/linkable.js",
-            "import": "./composables/linkable.mjs",
-            "types": "./composables/linkable.d.ts"
+        "./composables/useLinkable": {
+            "require": "./composables/useLinkable.js",
+            "import": "./composables/useLinkable.mjs",
+            "types": "./composables/useLinkable.d.ts"
         },
-        "./composables/popup": {
-            "require": "./composables/popup.js",
-            "import": "./composables/popup.mjs",
-            "types": "./composables/popup.d.ts"
+        "./composables/usePopupControl": {
+            "require": "./composables/usePopupControl.js",
+            "import": "./composables/usePopupControl.mjs",
+            "types": "./composables/usePopupControl.d.ts"
         },
-        "./composables/toast": {
-            "require": "./composables/toast.js",
-            "import": "./composables/toast.mjs",
-            "types": "./composables/toast.d.ts"
+        "./composables/useToast": {
+            "require": "./composables/useToast.js",
+            "import": "./composables/useToast.mjs",
+            "types": "./composables/useToast.d.ts"
         },
-        "./composables/validation": {
-            "require": "./composables/validation.js",
-            "import": "./composables/validation.mjs",
-            "types": "./composables/validation.d.ts"
+        "./composables/useValidation": {
+            "require": "./composables/useValidation.js",
+            "import": "./composables/useValidation.mjs",
+            "types": "./composables/useValidation.d.ts"
         },
         "./constants": {
             "require": "./constants/index.js",
