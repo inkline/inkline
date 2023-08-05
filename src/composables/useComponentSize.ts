@@ -1,5 +1,5 @@
 import { computed, Ref } from 'vue';
-import { useInkline } from '@inkline/inkline/composables';
+import { useInkline } from '@inkline/inkline/composables/useInkline';
 
 export interface ComponentSizeProps {
     componentName: string;

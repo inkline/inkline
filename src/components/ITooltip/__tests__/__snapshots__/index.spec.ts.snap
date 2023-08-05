@@ -2,7 +2,7 @@
 
 exports[`Components > ITooltip > should render correctly 1`] = `
 "<div id=\\"tooltip\\" class=\\"tooltip-wrapper -primary -md\\">
-  <div class=\\"tooltip-trigger\\" aria-describedby=\\"tooltip-popup\\" aria-expanded=\\"false\\">
+  <div class=\\"tooltip-trigger\\" aria-describedby=\\"tooltip-popup\\" aria-disabled=\\"false\\" aria-expanded=\\"false\\">
     <!-- @slot default Slot for tooltip trigger --><button>Button</button>
   </div>
   <transition-stub name=\\"zoom-in-top-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">

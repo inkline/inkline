@@ -1,5 +1,5 @@
 import { computed, resolveComponent, Ref } from 'vue';
-import { useInkline } from '@inkline/inkline/composables';
+import { useInkline } from '@inkline/inkline/composables/useInkline';
 
 export function useLinkable(props: {
     to: Ref<string | Record<string, unknown> | undefined>;
