@@ -3,7 +3,7 @@ import { computed, inject, Ref, ref, unref, watch } from 'vue';
 import { FormKey } from '@inkline/inkline/components/IForm';
 import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
 import { validate } from '@inkline/inkline/validation';
-import { useInkline } from '@inkline/inkline/composables';
+import { useInkline } from '@inkline/inkline/composables/useInkline';
 
 export function useValidation(options: {
     name?: Ref<string>;
