@@ -2,6 +2,7 @@ import { existsSync } from 'fs';
 import { writeFile } from 'fs/promises';
 import { resolve } from 'pathe';
 import { Logger } from '@grozav/logger';
+import chalk from 'chalk';
 import {
     defaultConfigFileContents,
     defaultPrettierConfig,
@@ -93,12 +94,6 @@ export async function init(options: Commands.Init.Options) {
 
         await createConfigFile(initEnv);
 
-        if (packageJsonFound) {
-            Logger.default('Installing dependencies...');
-
-            await execShellCommand('npm install');
-        }
-
         if (initSuccessful) {
             Logger.success(Commands.Init.messages.success);
         } else {
@@ -106,6 +101,12 @@ export async function init(options: Commands.Init.Options) {
                 `Inkline partially initialized. Please see manual setup steps: ${manualInstallationUrl}`
             );
         }
+
+        Logger.default(
+            `Install dependencies using ${chalk.blue('npm install')} or ${chalk.blue(
+                'yarn install'
+            )} or ${chalk.blue('pnpm install')}`
+        );
     } catch (error) {
         Logger.error(Commands.Init.messages.error);
         Logger.log(error);
