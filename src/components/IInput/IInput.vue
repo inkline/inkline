@@ -256,13 +256,7 @@ export default defineComponent({
 
         const showPassword = ref(false);
         const isPasswordToggleable = computed(() => {
-            return (
-                props.showPasswordToggle &&
-                props.type === 'password' &&
-                !disabled.value &&
-                !readonly.value &&
-                value.value !== ''
-            );
+            return props.showPasswordToggle && props.type === 'password' && value.value !== '';
         });
 
         const inputType = computed(() => {
