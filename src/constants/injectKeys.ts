@@ -1,4 +1,4 @@
-import { InjectionKey } from 'vue/dist/vue';
+import type { InjectionKey } from 'vue';
 import type { InklineService } from '@inkline/inkline/plugin';
 import type { ToastService } from '@inkline/inkline/plugins';
 import type { SvgNode } from '@inkline/inkline/types';
