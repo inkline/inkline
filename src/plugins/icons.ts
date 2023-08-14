@@ -8,7 +8,7 @@ export interface InklineIconsPluginOptions {
 }
 
 export const IconsPlugin: Plugin = {
-    install: (app, { icons }: InklineIconsPluginOptions) => {
+    install: (app, { icons }: InklineIconsPluginOptions = { icons: {} }) => {
         /**
          * Add $inklineIcons global provide
          */

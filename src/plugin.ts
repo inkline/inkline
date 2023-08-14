@@ -115,7 +115,7 @@ export const Inkline: Plugin = {
         app.use(ColorModePlugin, { inkline: inklineService, renderMode });
         app.use(IconsPlugin, { icons });
         app.use(OverlayPlugin);
-        app.use(ToastPlugin);
+        app.use(ToastPlugin, { inkline: inklineService });
     }
 };
 

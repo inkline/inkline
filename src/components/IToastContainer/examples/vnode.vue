@@ -21,6 +21,5 @@ export default defineComponent({
 });
 </script>
 <template>
-    <IToastContainer />
     <IButton @click="onClickShowToast">Show toast</IButton>
 </template>
