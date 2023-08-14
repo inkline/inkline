@@ -66,7 +66,6 @@ export default defineComponent({
 });
 </script>
 <template>
-    <IToastContainer />
     <IButton color="light" @click="showLightToast">Show light toast</IButton>
     <IButton color="dark" @click="showDarkToast">Show dark toast</IButton>
     <IButton color="info" @click="showInfoToast">Show info toast</IButton>

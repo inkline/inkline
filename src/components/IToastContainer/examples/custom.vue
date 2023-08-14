@@ -56,7 +56,6 @@ export default defineComponent({
 });
 </script>
 <template>
-    <IToastContainer />
     <IForm>
         <IFormGroup>
             <ISelect

@@ -10,6 +10,7 @@ import {
     IToastContainerDurationStickyExample,
     IToastContainerHideExample,
     IToastContainerHideAllExample,
+    IToastContainerPositionExample,
     IToastContainerVNodeExample
 } from '@inkline/inkline/components/IToastContainer/examples/index';
 import { createStory } from '@inkline/inkline/__storybook__';
@@ -22,6 +23,7 @@ export default {
 export const Basic = createStory(IToastContainerBasicExample);
 export const ColorVariants = createStory(IToastContainerColorVariantsExample);
 export const SizeVariants = createStory(IToastContainerSizeVariantsExample);
+export const Position = createStory(IToastContainerPositionExample);
 export const Dismissible = createStory(IToastContainerDismissibleExample);
 export const DurationTimed = createStory(IToastContainerDurationTimedExample);
 export const DurationSticky = createStory(IToastContainerDurationStickyExample);

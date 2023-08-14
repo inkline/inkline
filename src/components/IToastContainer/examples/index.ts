@@ -8,3 +8,4 @@ export { default as IToastContainerDurationStickyExample } from '@inkline/inklin
 export { default as IToastContainerHideExample } from '@inkline/inkline/components/IToastContainer/examples/hide.vue';
 export { default as IToastContainerHideAllExample } from '@inkline/inkline/components/IToastContainer/examples/hide-all.vue';
 export { default as IToastContainerVNodeExample } from '@inkline/inkline/components/IToastContainer/examples/vnode.vue';
+export { default as IToastContainerPositionExample } from '@inkline/inkline/components/IToastContainer/examples/position.vue';

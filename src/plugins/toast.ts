@@ -1,7 +1,14 @@
-import { createEventBus } from '@grozav/utils';
+import { createApp } from 'vue';
 import type { Plugin, VNode } from 'vue';
+import { createEventBus } from '@grozav/utils';
 import type { EventBus } from '@grozav/utils';
-import { InklineToastKey } from '@inkline/inkline';
+import {
+    InklineKey,
+    InklineToastKey,
+    IToastContainer,
+    InklineService,
+    IconsPlugin
+} from '@inkline/inkline';
 
 export type ToastPosition =
     | 'top-left'
@@ -47,6 +54,10 @@ export interface ToastService {
     hideAll: () => void;
 }
 
+export interface InklineToastPluginOptions {
+    inkline: InklineService;
+}
+
 export const toastEventBus: EventBus = createEventBus();
 
 export const createToastService = (): ToastService => ({
@@ -62,8 +73,24 @@ export const createToastService = (): ToastService => ({
 });
 
 export const ToastPlugin: Plugin = {
-    install: (app) => {
+    install: (app, { inkline }: InklineToastPluginOptions) => {
         const toastService = createToastService();
+        const toastApp = createApp(IToastContainer);
+
+        toastApp.provide(InklineKey, inkline);
+        toastApp.use(IconsPlugin);
+
+        if (typeof window !== 'undefined') {
+            const containerId = 'inkline-toast-container';
+            let container = document.querySelector(`#${containerId}`);
+            if (!container) {
+                container = document.createElement('div');
+                container.id = containerId;
+                document.body.appendChild(container);
+            }
+
+            toastApp.mount(container);
+        }
 
         app.config.globalProperties.$toast = toastService;
         app.provide(InklineToastKey, toastService);

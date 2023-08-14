@@ -39,7 +39,6 @@ export default defineComponent({
 });
 </script>
 <template>
-    <IToastContainer />
     <IButton size="sm" @click="showSmallToast">Show small toast</IButton>
     <IButton size="md" @click="showMediumToast">Show medium toast</IButton>
     <IButton size="lg" @click="showLargeToast">Show large toast</IButton>
