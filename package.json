@@ -672,6 +672,21 @@
             "import": "./components/IModal/manifest.mjs",
             "types": "./components/IModal/manifest.d.ts"
         },
+        "./components/IModalContainer": {
+            "require": "./components/IModalContainer/index.js",
+            "import": "./components/IModalContainer/index.mjs",
+            "types": "./components/IModalContainer/index.d.ts"
+        },
+        "./components/IModalContainer/examples": {
+            "require": "./components/IModalContainer/examples/index.js",
+            "import": "./components/IModalContainer/examples/index.mjs",
+            "types": "./components/IModalContainer/examples/index.d.ts"
+        },
+        "./components/IModalContainer/manifest": {
+            "require": "./components/IModalContainer/manifest.js",
+            "import": "./components/IModalContainer/manifest.mjs",
+            "types": "./components/IModalContainer/manifest.d.ts"
+        },
         "./components/INav": {
             "require": "./components/INav/index.js",
             "import": "./components/INav/index.mjs",
@@ -1092,6 +1107,31 @@
             "import": "./composables/index.mjs",
             "types": "./composables/index.d.ts"
         },
+        "./composables/modals": {
+            "require": "./composables/modals/index.js",
+            "import": "./composables/modals/index.mjs",
+            "types": "./composables/modals/index.d.ts"
+        },
+        "./composables/modals/alert": {
+            "require": "./composables/modals/alert.js",
+            "import": "./composables/modals/alert.mjs",
+            "types": "./composables/modals/alert.d.ts"
+        },
+        "./composables/modals/builder": {
+            "require": "./composables/modals/builder.js",
+            "import": "./composables/modals/builder.mjs",
+            "types": "./composables/modals/builder.d.ts"
+        },
+        "./composables/modals/confirm": {
+            "require": "./composables/modals/confirm.js",
+            "import": "./composables/modals/confirm.mjs",
+            "types": "./composables/modals/confirm.d.ts"
+        },
+        "./composables/modals/prompt": {
+            "require": "./composables/modals/prompt.js",
+            "import": "./composables/modals/prompt.mjs",
+            "types": "./composables/modals/prompt.d.ts"
+        },
         "./composables/useClickOutside": {
             "require": "./composables/useClickOutside.js",
             "import": "./composables/useClickOutside.mjs",
@@ -1131,6 +1171,11 @@
             "require": "./composables/useLinkable.js",
             "import": "./composables/useLinkable.mjs",
             "types": "./composables/useLinkable.d.ts"
+        },
+        "./composables/useModal": {
+            "require": "./composables/useModal.js",
+            "import": "./composables/useModal.mjs",
+            "types": "./composables/useModal.d.ts"
         },
         "./composables/usePopupControl": {
             "require": "./composables/usePopupControl.js",
@@ -1242,6 +1287,11 @@
             "import": "./plugins/icons.mjs",
             "types": "./plugins/icons.d.ts"
         },
+        "./plugins/modal": {
+            "require": "./plugins/modal.js",
+            "import": "./plugins/modal.mjs",
+            "types": "./plugins/modal.d.ts"
+        },
         "./plugins/overlay": {
             "require": "./plugins/overlay.js",
             "import": "./plugins/overlay.mjs",
@@ -1253,7 +1303,29 @@
             "types": "./plugins/toast.d.ts"
         },
         "./types": {
+            "require": "./types/index.js",
+            "import": "./types/index.mjs",
             "types": "./types/index.d.ts"
+        },
+        "./types/computed": {
+            "require": "./types/computed.js",
+            "import": "./types/computed.mjs",
+            "types": "./types/computed.d.ts"
+        },
+        "./types/events": {
+            "require": "./types/events.js",
+            "import": "./types/events.mjs",
+            "types": "./types/events.d.ts"
+        },
+        "./types/manifest": {
+            "require": "./types/manifest.js",
+            "import": "./types/manifest.mjs",
+            "types": "./types/manifest.d.ts"
+        },
+        "./types/render": {
+            "require": "./types/render.js",
+            "import": "./types/render.mjs",
+            "types": "./types/render.d.ts"
         },
         "./utils": {
             "require": "./utils/index.js",

@@ -17,7 +17,7 @@ export const manifest: ComponentManifest = {
         },
         {
             name: 'size',
-            type: ['sm', 'md', 'lg'],
+            type: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'],
             default: '',
             description: 'The size variant of the icon'
         }
@@ -30,6 +30,14 @@ export const manifest: ComponentManifest = {
             {
                 name: '--icon--size',
                 variants: [
+                    {
+                        name: '--icon--xs--size',
+                        value: [
+                            {
+                                value: 'calc(var(--font-size) * var(--size-multiplier-xs))'
+                            }
+                        ]
+                    },
                     {
                         name: '--icon--sm--size',
                         value: [
@@ -51,6 +59,22 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--icon--xl--size',
+                        value: [
+                            {
+                                value: 'calc(var(--font-size) * var(--size-multiplier-xl))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--icon--2xl--size',
+                        value: [
+                            {
+                                value: 'calc(var(--font-size) * var(--size-multiplier-2xl))'
                             }
                         ]
                     }
