@@ -29,7 +29,7 @@ export default defineComponent({
     setup(props) {
         const inkline = useInkline();
 
-        const modals = ref<Array<Partial<ModalOptions>>>([]);
+        const modals = ref<Array<Partial<ModalOptions> & { id: ModalOptions['id'] }>>([]);
         const modalsVisible = ref<Record<string, boolean>>({});
         const classes = computed(() => ({}));
 
@@ -66,7 +66,7 @@ export default defineComponent({
             });
         }
 
-        function hideModal({ id }: Partial<ModalOptions>) {
+        function hideModal({ id }: { id: ModalOptions['id'] }) {
             modalsVisible.value[id] = false;
 
             setTimeout(() => {
@@ -79,7 +79,7 @@ export default defineComponent({
             modalsVisible.value = {};
         }
 
-        function removeModal({ id }: Partial<ModalOptions>) {
+        function removeModal({ id }: { id: ModalOptions['id'] }) {
             modals.value = modals.value.filter((modal) => modal.id !== id);
         }
 

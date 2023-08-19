@@ -13,6 +13,7 @@ import {
 import { addClass, removeClass, uid } from '@grozav/utils';
 import { OverlayController } from '@inkline/inkline/controllers';
 import { useComponentColor, useComponentSize, useClickOutside } from '@inkline/inkline/composables';
+import { StringOrRenderableType } from '@inkline/inkline/types';
 
 const componentName = 'IModal';
 
@@ -139,7 +140,7 @@ export default defineComponent({
          * @name header
          */
         header: {
-            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            type: [String, Object] as PropType<StringOrRenderableType>,
             default: undefined
         },
         /**
@@ -149,7 +150,7 @@ export default defineComponent({
          * @name icon
          */
         icon: {
-            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            type: [String, Object] as PropType<StringOrRenderableType>,
             default: undefined
         },
         /**
@@ -159,7 +160,7 @@ export default defineComponent({
          * @name body
          */
         body: {
-            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            type: [String, Object] as PropType<StringOrRenderableType>,
             default: undefined
         },
         /**
@@ -169,7 +170,7 @@ export default defineComponent({
          * @name footer
          */
         footer: {
-            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            type: [String, Object] as PropType<StringOrRenderableType>,
             default: undefined
         }
     },

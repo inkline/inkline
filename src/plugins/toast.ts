@@ -23,8 +23,8 @@ export interface ToastOptions {
     icon: StringOrRenderableType;
     position: ToastPosition;
     duration: number;
-    dismissible?: boolean;
-    showProgress?: boolean;
+    dismissible: boolean;
+    showProgress: boolean;
     color:
         | 'light'
         | 'dark'

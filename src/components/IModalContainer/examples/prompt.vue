@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useModal, useToast } from '@inkline/inkline';
+import { FormField, useModal, useToast } from '@inkline/inkline';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
@@ -21,7 +21,7 @@ export default defineComponent({
 
                 toast.show({
                     title: 'Prompt result',
-                    message: schema.input.value,
+                    message: (schema.input as FormField).value,
                     color: 'info'
                 });
             } catch (error) {

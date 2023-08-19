@@ -60,7 +60,9 @@ export default defineComponent({
     setup(props) {
         const inkline = useInkline();
 
-        const toastPositions = ref<Record<ToastPosition, ToastOptions[]>>({
+        const toastPositions = ref<
+            Record<ToastPosition, Array<Partial<ToastOptions> & { id: ToastOptions['id'] }>>
+        >({
             'top-left': [],
             top: [],
             'top-right': [],
@@ -84,7 +86,7 @@ export default defineComponent({
             props.eventBus.on('hideAll', hideAllToasts);
         }
 
-        function showToast(toast: ToastOptions) {
+        function showToast(toast: Partial<ToastOptions>) {
             const id = toast.id || uid('toast');
 
             const toastAlreadyVisible = toastPositionKeys.value.find((position) =>
@@ -122,7 +124,7 @@ export default defineComponent({
             });
         }
 
-        function hideToast({ id }: { id: string }) {
+        function hideToast({ id }: { id: ToastOptions['id'] }) {
             toastPositionKeys.value.forEach((position) => {
                 if (!toastPositions.value[position].find((toast) => toast.id === id)) {
                     return;
