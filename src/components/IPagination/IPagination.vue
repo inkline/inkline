@@ -58,7 +58,7 @@ export default defineComponent({
          */
         limit: {
             type: [Number, Object],
-            default(): { [key: string]: number } {
+            default: (): { [key: string]: number } => {
                 return {
                     xs: 3,
                     sm: 5

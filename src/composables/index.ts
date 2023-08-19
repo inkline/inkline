@@ -6,6 +6,7 @@ export * from '@inkline/inkline/composables/useForm';
 export * from '@inkline/inkline/composables/useInkline';
 export * from '@inkline/inkline/composables/useIsServer';
 export * from '@inkline/inkline/composables/useLinkable';
+export * from '@inkline/inkline/composables/useModal';
 export * from '@inkline/inkline/composables/usePopupControl';
 export * from '@inkline/inkline/composables/useToast';
 export * from '@inkline/inkline/composables/useValidation';

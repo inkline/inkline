@@ -75,7 +75,7 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default() {
+            default: () => {
                 return uid('radio-buttons');
             }
         },

@@ -29,7 +29,7 @@ export default defineComponent({
         },
         /**
          * The size variant of the icon
-         * @type sm | md | lg
+         * @type xs | sm | md | lg | xl | xxl
          * @default
          * @name size
          */

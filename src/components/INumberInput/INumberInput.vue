@@ -37,7 +37,7 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default(): string {
+            default: () => {
                 return uid('number-input');
             }
         },

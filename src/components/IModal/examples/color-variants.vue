@@ -19,10 +19,10 @@ export default {
 
     <IModal v-model="primary" color="primary">
         <template #header> Primary Modal </template>
-        <div class="_display:flex _align-items:center">
-            <IIcon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
-            This is the modal body. Useful information goes here.
-        </div>
+        <template #icon>
+            <IIcon name="ink-check" size="lg" />
+        </template>
+        This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
     </IModal>
 
@@ -30,10 +30,10 @@ export default {
 
     <IModal v-model="secondary" color="secondary">
         <template #header> Secondary Modal </template>
-        <div class="_display:flex _align-items:center">
-            <IIcon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
-            This is the modal body. Useful information goes here.
-        </div>
+        <template #icon>
+            <IIcon name="ink-check" size="lg" />
+        </template>
+        This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
     </IModal>
 
@@ -41,10 +41,10 @@ export default {
 
     <IModal v-model="light" color="light">
         <template #header> Light Modal </template>
-        <div class="_display:flex _align-items:center">
-            <IIcon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
-            This is the modal body. Useful information goes here.
-        </div>
+        <template #icon>
+            <IIcon name="ink-check" size="lg" />
+        </template>
+        This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
     </IModal>
 
@@ -52,10 +52,10 @@ export default {
 
     <IModal v-model="dark" color="dark">
         <template #header> Dark Modal </template>
-        <div class="_display:flex _align-items:center">
-            <IIcon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
-            This is the modal body. Useful information goes here.
-        </div>
+        <template #icon>
+            <IIcon name="ink-check" size="lg" />
+        </template>
+        This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
     </IModal>
 
@@ -63,10 +63,10 @@ export default {
 
     <IModal v-model="info" color="info">
         <template #header> Info Modal </template>
-        <div class="_display:flex _align-items:center">
-            <IIcon name="ink-info" class="font-size:lg _margin-y:0 _margin-right:1" />
-            This is the modal body. Useful information goes here.
-        </div>
+        <template #icon>
+            <IIcon name="ink-info" size="lg" />
+        </template>
+        This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
     </IModal>
 
@@ -74,10 +74,10 @@ export default {
 
     <IModal v-model="success" color="success">
         <template #header> Success Modal </template>
-        <div class="_display:flex _align-items:center">
-            <IIcon name="ink-check" class="font-size:lg _margin-y:0 _margin-right:1" />
-            This is the modal body. Useful information goes here.
-        </div>
+        <template #icon>
+            <IIcon name="ink-check" size="lg" />
+        </template>
+        This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
     </IModal>
 
@@ -85,10 +85,10 @@ export default {
 
     <IModal v-model="warning" color="warning">
         <template #header> Warning Modal </template>
-        <div class="_display:flex _align-items:center">
-            <IIcon name="ink-warning" class="font-size:lg _margin-y:0 _margin-right:1" />
-            This is the modal body. Useful information goes here.
-        </div>
+        <template #icon>
+            <IIcon name="ink-warning" size="lg" />
+        </template>
+        This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
     </IModal>
 
@@ -96,10 +96,10 @@ export default {
 
     <IModal v-model="danger" color="danger">
         <template #header> Danger Modal </template>
-        <div class="_display:flex _align-items:center">
-            <IIcon name="ink-danger" class="font-size:lg _margin-y:0 _margin-right:1" />
-            This is the modal body. Useful information goes here.
-        </div>
+        <template #icon>
+            <IIcon name="ink-danger" size="lg" />
+        </template>
+        This is the modal body. Useful information goes here.
         <template #footer> Modal Footer </template>
     </IModal>
 </template>

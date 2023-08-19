@@ -9,7 +9,7 @@ const iconByType: Record<string, VNode> = {
     light: h(IIcon, { name: 'ink-circle' }),
     dark: h(IIcon, { name: 'ink-circle' }),
     info: h(IIcon, { name: 'ink-info' }),
-    success: h(IIcon, { name: 'ink-danger' }),
+    success: h(IIcon, { name: 'ink-check' }),
     warning: h(IIcon, { name: 'ink-warning' }),
     danger: h(IIcon, { name: 'ink-danger' })
 };

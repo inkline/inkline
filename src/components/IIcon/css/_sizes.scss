@@ -3,6 +3,10 @@
  */
 
 .inkline-icon {
+    &.-xs {
+        --icon--size: var(--icon--xs--size, calc(var(--font-size) * var(--size-multiplier-xs)));
+    }
+
     &.-sm {
         --icon--size: var(--icon--sm--size, calc(var(--font-size) * var(--size-multiplier-sm)));
     }
@@ -13,5 +17,13 @@
 
     &.-lg {
         --icon--size: var(--icon--lg--size, calc(var(--font-size) * var(--size-multiplier-lg)));
+    }
+
+    &.-xl {
+        --icon--size: var(--icon--xl--size, calc(var(--font-size) * var(--size-multiplier-xl)));
+    }
+
+    &.-xxl {
+        --icon--size: var(--icon--2xl--size, calc(var(--font-size) * var(--size-multiplier-2xl)));
     }
 }

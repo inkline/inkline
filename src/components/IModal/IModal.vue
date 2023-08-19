@@ -1,5 +1,15 @@
 <script lang="ts">
-import { defineComponent, ref, toRef, computed, watch, onMounted, onBeforeUnmount } from 'vue';
+import {
+    defineComponent,
+    ref,
+    toRef,
+    computed,
+    watch,
+    onMounted,
+    onBeforeUnmount,
+    PropType,
+    VNode
+} from 'vue';
 import { addClass, removeClass, uid } from '@grozav/utils';
 import { OverlayController } from '@inkline/inkline/controllers';
 import { useComponentColor, useComponentSize, useClickOutside } from '@inkline/inkline/composables';
@@ -51,6 +61,16 @@ export default defineComponent({
             default: false
         },
         /**
+         * Make the modal cover the entire screen
+         * @type Boolean
+         * @default false
+         * @name fullscreen
+         */
+        fullscreen: {
+            type: Boolean,
+            default: false
+        },
+        /**
          * Determines if the modal should close when clicking the overlay
          * @type Boolean
          * @default true
@@ -68,7 +88,7 @@ export default defineComponent({
          */
         name: {
             type: String,
-            default(): string {
+            default: (): string => {
                 return uid('modal');
             }
         },
@@ -76,9 +96,9 @@ export default defineComponent({
          * Determines if the close icon should be visible in the modal header
          * @type Boolean
          * @default false
-         * @name showClose
+         * @name dismissible
          */
-        showClose: {
+        dismissible: {
             type: Boolean,
             default: true
         },
@@ -111,6 +131,46 @@ export default defineComponent({
         transition: {
             type: String,
             default: 'zoom-in-center-transition'
+        },
+        /**
+         * The header of the modal
+         * @type string | VNode | VNode[]
+         * @default undefined
+         * @name header
+         */
+        header: {
+            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            default: undefined
+        },
+        /**
+         * The icon of the modal
+         * @type string | VNode | VNode[]
+         * @default undefined
+         * @name icon
+         */
+        icon: {
+            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            default: undefined
+        },
+        /**
+         * The body of the modal
+         * @type string | VNode | VNode[]
+         * @default undefined
+         * @name body
+         */
+        body: {
+            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            default: undefined
+        },
+        /**
+         * The footer of the modal
+         * @type string | VNode | VNode[]
+         * @default undefined
+         * @name footer
+         */
+        footer: {
+            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            default: undefined
         }
     },
     emits: [
@@ -118,7 +178,27 @@ export default defineComponent({
          * Event emitted for setting the modelValue
          * @event update:modelValue
          */
-        'update:modelValue'
+        'update:modelValue',
+        /**
+         * Event emitted when the modal is open
+         * @event open
+         */
+        'open',
+        /**
+         * Event emitted when the modal is opened and animation is finished
+         * @event opened
+         */
+        'opened',
+        /**
+         * Event emitted when the modal is closed
+         * @event close
+         */
+        'close',
+        /**
+         * Event emitted when the modal is closed and animation is finished
+         * @event close
+         */
+        'closed'
     ],
     setup(props, { emit }) {
         const visible = ref(props.modelValue); // eslint-disable-line vue/no-setup-props-destructure
@@ -131,13 +211,21 @@ export default defineComponent({
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            '-disabled': props.disabled
+            '-disabled': props.disabled,
+            '-fullscreen': props.fullscreen
         }));
 
         const wrapperRef = ref<HTMLElement | null>(null);
         const modalRef = ref<HTMLElement | null>(null);
         const name = toRef(props, 'name');
         const closeOnPressEscape = toRef(props, 'closeOnPressEscape');
+
+        const isVNode = computed(() => ({
+            header: typeof props.header === 'object',
+            icon: typeof props.icon === 'object',
+            body: typeof props.body === 'object',
+            footer: typeof props.footer === 'object'
+        }));
 
         watch(
             () => props.modelValue,
@@ -180,6 +268,7 @@ export default defineComponent({
 
             visible.value = true;
             emit('update:modelValue', true);
+            emit('open');
 
             OverlayController.open(props.name);
 
@@ -189,12 +278,13 @@ export default defineComponent({
         }
 
         function hide(): void {
-            if (props.disabled) {
+            if (props.disabled || !visible.value) {
                 return;
             }
 
             visible.value = false;
             emit('update:modelValue', false);
+            emit('close');
 
             OverlayController.close(props.name);
 
@@ -211,12 +301,23 @@ export default defineComponent({
             hide();
         }
 
+        function onAfterEnter(): void {
+            emit('opened');
+        }
+
+        function onAfterLeave(): void {
+            emit('closed');
+        }
+
         return {
             classes,
             modalRef,
             wrapperRef,
             visible,
-            hide
+            isVNode,
+            hide,
+            onAfterEnter,
+            onAfterLeave
         };
     }
 });
@@ -237,13 +338,16 @@ export default defineComponent({
             :name="name"
             :aria-labelledby="`${name}-header`"
         >
-            <transition :name="transition">
+            <transition :name="transition" @afterEnter="onAfterEnter" @afterLeave="onAfterLeave">
                 <div v-show="visible" ref="modalRef" class="modal">
-                    <div v-if="$slots.header" :id="`${name}-header`" class="modal-header">
+                    <div v-if="header || $slots.header" :id="`${name}-header`" class="modal-header">
                         <!-- @slot footer Slot for modal header content -->
-                        <slot name="header" />
+                        <slot name="header">
+                            <component :is="header" v-if="header && isVNode.header" />
+                            <div v-else>{{ header }}</div>
+                        </slot>
                         <button
-                            v-if="showClose"
+                            v-if="dismissible"
                             class="close"
                             aria-hidden="true"
                             :aria-label="closeAriaLabel"
@@ -255,13 +359,27 @@ export default defineComponent({
                             </slot>
                         </button>
                     </div>
-                    <div v-if="$slots.default" class="modal-body">
-                        <!-- @slot default Slot for modal body content -->
-                        <slot />
+                    <div v-if="body || $slots.default" class="modal-body">
+                        <div v-if="icon || $slots.icon" class="modal-icon">
+                            <slot name="icon">
+                                <component :is="icon" v-if="icon && isVNode.icon" />
+                                <div v-else>{{ icon }}</div>
+                            </slot>
+                        </div>
+                        <div class="modal-content">
+                            <!-- @slot default Slot for modal body content -->
+                            <slot>
+                                <component :is="body" v-if="body && isVNode.body" />
+                                <div v-else>{{ body }}</div>
+                            </slot>
+                        </div>
                     </div>
-                    <div v-if="$slots.footer" class="modal-footer">
+                    <div v-if="footer || $slots.footer" class="modal-footer">
                         <!-- @slot footer Slot for modal footer content -->
-                        <slot name="footer" />
+                        <slot name="footer">
+                            <component :is="footer" v-if="footer && isVNode.footer" />
+                            <div v-else>{{ footer }}</div>
+                        </slot>
                     </div>
                 </div>
             </transition>
