@@ -67,5 +67,9 @@ export const en: InternationalizationMessages = {
         required: 'Please enter a value for this field.',
         sameAs: 'Please make sure that the two values match.',
         custom: 'Please enter a correct value for this field.'
+    },
+    modals: {
+        confirm: 'Confirm',
+        cancel: 'Cancel'
     }
 };

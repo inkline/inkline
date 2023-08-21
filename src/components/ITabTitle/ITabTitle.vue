@@ -17,7 +17,7 @@ export default defineComponent({
          */
         for: {
             type: String,
-            default(): string {
+            default: () => {
                 return uid('tab');
             }
         }

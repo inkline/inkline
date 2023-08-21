@@ -1,14 +1,9 @@
 import { createApp } from 'vue';
-import type { Plugin, VNode } from 'vue';
+import type { Plugin } from 'vue';
 import { createEventBus } from '@grozav/utils';
 import type { EventBus } from '@grozav/utils';
-import {
-    InklineKey,
-    InklineToastKey,
-    IToastContainer,
-    InklineService,
-    IconsPlugin
-} from '@inkline/inkline';
+import { InklineKey, InklineToastKey, IToastContainer, IconsPlugin } from '@inkline/inkline';
+import type { InklineService, StringOrRenderableType } from '@inkline/inkline';
 
 export type ToastPosition =
     | 'top-left'
@@ -23,13 +18,13 @@ export type ToastPosition =
 
 export interface ToastOptions {
     id: string;
-    title: string | VNode | VNode[];
-    message: string | VNode | VNode[];
-    icon: string | VNode | VNode[];
+    title: StringOrRenderableType;
+    message: StringOrRenderableType;
+    icon: StringOrRenderableType;
     position: ToastPosition;
     duration: number;
-    dismissible?: boolean;
-    showProgress?: boolean;
+    dismissible: boolean;
+    showProgress: boolean;
     color:
         | 'light'
         | 'dark'

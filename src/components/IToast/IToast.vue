@@ -2,6 +2,7 @@
 import { computed, defineComponent, h, onBeforeUpdate, onMounted, PropType, ref, VNode } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 import { IIcon } from '@inkline/inkline/components/IIcon';
+import { StringOrRenderableType } from '@inkline/inkline/types';
 
 const componentName = 'IToast';
 
@@ -9,7 +10,7 @@ const iconByType: Record<string, VNode> = {
     light: h(IIcon, { name: 'ink-circle' }),
     dark: h(IIcon, { name: 'ink-circle' }),
     info: h(IIcon, { name: 'ink-info' }),
-    success: h(IIcon, { name: 'ink-danger' }),
+    success: h(IIcon, { name: 'ink-check' }),
     warning: h(IIcon, { name: 'ink-warning' }),
     danger: h(IIcon, { name: 'ink-danger' })
 };
@@ -65,7 +66,7 @@ export default defineComponent({
          * @name icon
          */
         icon: {
-            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            type: [String, Object] as PropType<StringOrRenderableType>,
             default: undefined
         },
         /**
@@ -75,7 +76,7 @@ export default defineComponent({
          * @name title
          */
         title: {
-            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            type: [String, Object] as PropType<StringOrRenderableType>,
             default: undefined
         },
         /**
@@ -85,7 +86,7 @@ export default defineComponent({
          * @name message
          */
         message: {
-            type: [String, Object] as PropType<string | VNode | VNode[]>,
+            type: [String, Object] as PropType<StringOrRenderableType>,
             default: undefined
         },
         /**

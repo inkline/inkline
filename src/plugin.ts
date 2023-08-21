@@ -2,15 +2,25 @@ import { Plugin, reactive } from 'vue';
 import { addClass } from '@grozav/utils';
 import { initialize as initializeForm } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
-import { ColorModePlugin, ToastPlugin, IconsPlugin, OverlayPlugin } from '@inkline/inkline/plugins';
+import {
+    ColorModePlugin,
+    IconsPlugin,
+    ModalPlugin,
+    OverlayPlugin,
+    ToastPlugin
+} from '@inkline/inkline/plugins';
 import type {
     InklineColorModeOptions,
+    InklineModalOptions,
     InklineToastOptions,
     InklineIconsPluginOptions
 } from '@inkline/inkline/plugins';
 import { InklineKey } from '@inkline/inkline';
 
-export interface InklineOptions extends InklineColorModeOptions, InklineToastOptions {
+export interface InklineOptions
+    extends InklineColorModeOptions,
+        InklineToastOptions,
+        InklineModalOptions {
     locale: string;
     validateOn: string[];
     routerComponent: any;
@@ -69,7 +79,8 @@ export const defaultOptions: InklinePluginOptions = {
     toast: {
         position: 'bottom-right',
         duration: 3500
-    }
+    },
+    modal: {}
 };
 
 /**
@@ -114,6 +125,7 @@ export const Inkline: Plugin = {
 
         app.use(ColorModePlugin, { inkline: inklineService, renderMode });
         app.use(IconsPlugin, { icons });
+        app.use(ModalPlugin, { inkline: inklineService });
         app.use(OverlayPlugin);
         app.use(ToastPlugin, { inkline: inklineService });
     }

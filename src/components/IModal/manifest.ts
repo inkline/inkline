@@ -28,6 +28,12 @@ export const manifest: ComponentManifest = {
             description: 'The disabled state of the modal'
         },
         {
+            name: 'fullscreen',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Make the modal cover the entire screen'
+        },
+        {
             name: 'hideOnClickOutside',
             type: ['Boolean'],
             default: 'true',
@@ -40,7 +46,7 @@ export const manifest: ComponentManifest = {
             description: 'The identifier of the modal'
         },
         {
-            name: 'showClose',
+            name: 'dismissible',
             type: ['Boolean'],
             default: 'false',
             description: 'Determines if the close icon should be visible in the modal header'
@@ -70,12 +76,52 @@ export const manifest: ComponentManifest = {
             ],
             default: 'zoom-in-center-transition',
             description: 'The modal opening and closing animation'
+        },
+        {
+            name: 'header',
+            type: ['string', 'VNode', 'VNode[]'],
+            default: 'undefined',
+            description: 'The header of the modal'
+        },
+        {
+            name: 'icon',
+            type: ['string', 'VNode', 'VNode[]'],
+            default: 'undefined',
+            description: 'The icon of the modal'
+        },
+        {
+            name: 'body',
+            type: ['string', 'VNode', 'VNode[]'],
+            default: 'undefined',
+            description: 'The body of the modal'
+        },
+        {
+            name: 'footer',
+            type: ['string', 'VNode', 'VNode[]'],
+            default: 'undefined',
+            description: 'The footer of the modal'
         }
     ],
     events: [
         {
             description: 'Event emitted for setting the modelValue',
             name: 'update:modelValue'
+        },
+        {
+            description: 'Event emitted when the modal is open',
+            name: 'open'
+        },
+        {
+            description: 'Event emitted when the modal is opened and animation is finished',
+            name: 'opened'
+        },
+        {
+            description: 'Event emitted when the modal is closed',
+            name: 'close'
+        },
+        {
+            description: 'Event emitted when the modal is closed and animation is finished',
+            name: 'close'
         }
     ],
     slots: [
@@ -1424,6 +1470,19 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
+                name: '--modal--icon--margin-right',
+                value: [
+                    {
+                        name: '--modal--body--padding-right',
+                        value: [
+                            {
+                                name: '--padding-right'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 name: '--modal--footer--background',
                 value: [
                     {
@@ -1730,6 +1789,38 @@ export const manifest: ComponentManifest = {
                                 ]
                             }
                         ]
+                    }
+                ]
+            },
+            {
+                name: '--modal--fullscreen--header--border-radius',
+                value: [
+                    {
+                        value: '0'
+                    }
+                ]
+            },
+            {
+                name: '--modal--fullscreen--body--border-radius',
+                value: [
+                    {
+                        value: '0'
+                    }
+                ]
+            },
+            {
+                name: '--modal--fullscreen--footer--border-radius',
+                value: [
+                    {
+                        value: '0'
+                    }
+                ]
+            },
+            {
+                name: '--modal--footer--button--margin-left',
+                value: [
+                    {
+                        name: '--margin-left-1-2'
                     }
                 ]
             }

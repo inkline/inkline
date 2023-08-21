@@ -37,6 +37,7 @@ export { ILoader } from '@inkline/inkline/components/ILoader';
 export { IMark } from '@inkline/inkline/components/IMark';
 export { IMedia } from '@inkline/inkline/components/IMedia';
 export { IModal } from '@inkline/inkline/components/IModal';
+export { IModalContainer } from '@inkline/inkline/components/IModalContainer';
 export { INav } from '@inkline/inkline/components/INav';
 export { INavItem } from '@inkline/inkline/components/INavItem';
 export { INavbar } from '@inkline/inkline/components/INavbar';

@@ -11,7 +11,10 @@ exports[`Components > IModal > should render correctly 1`] = `
           </button>
         </div>
         <div class=\\"modal-body\\">
-          <!-- @slot default Slot for modal body content -->Body
+          <!--v-if-->
+          <div class=\\"modal-content\\">
+            <!-- @slot default Slot for modal body content -->Body
+          </div>
         </div>
         <div class=\\"modal-footer\\">
           <!-- @slot footer Slot for modal footer content -->Footer
