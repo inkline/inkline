@@ -28,9 +28,7 @@ jobs:
                     cd inkline-nuxt
                     npm run build
             -   name: Run Playwright tests
-                run: npx playwright test
-                env:
-                    INTEGRATION: nuxt
+                run: npm run e2e:nuxt
             -   uses: actions/upload-artifact@v3
                 if: always()
                 with:
@@ -65,9 +63,7 @@ jobs:
                     cd inkline-vite
                     npm run build
             -   name: Run Playwright tests
-                run: npx playwright test
-                env:
-                    INTEGRATION: vite
+                run: npm run e2e:vite
             -   uses: actions/upload-artifact@v3
                 if: always()
                 with:
