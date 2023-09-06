@@ -1,4 +1,5 @@
 export { default as ISelectBasicExample } from '@inkline/inkline/components/ISelect/examples/basic.vue';
+export { default as ISelectPreselectedExample } from '@inkline/inkline/components/ISelect/examples/preselected.vue';
 export { default as ISelectColorVariantsExample } from '@inkline/inkline/components/ISelect/examples/color-variants.vue';
 export { default as ISelectClearableExample } from '@inkline/inkline/components/ISelect/examples/clearable.vue';
 export { default as ISelectDisabledExample } from '@inkline/inkline/components/ISelect/examples/disabled.vue';

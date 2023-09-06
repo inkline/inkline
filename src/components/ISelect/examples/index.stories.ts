@@ -1,6 +1,7 @@
 import { ISelect } from '@inkline/inkline/components/ISelect/index';
 import {
     ISelectBasicExample,
+    ISelectPreselectedExample,
     ISelectColorVariantsExample,
     ISelectClearableExample,
     ISelectDisabledExample,
@@ -30,6 +31,7 @@ export default {
 };
 
 export const Basic = createStory(ISelectBasicExample);
+export const Preselected = createStory(ISelectPreselectedExample);
 export const ColorVariants = () => ISelectColorVariantsExample;
 export const Clearable = () => ISelectClearableExample;
 export const Disabled = () => ISelectDisabledExample;

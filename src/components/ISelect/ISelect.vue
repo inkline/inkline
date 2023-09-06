@@ -51,16 +51,6 @@ export default defineComponent({
             default: 300
         },
         /**
-         * Enable autocomplete functionality
-         * @type Boolean
-         * @default false
-         * @name autocomplete
-         */
-        autocomplete: {
-            type: Boolean,
-            default: false
-        },
-        /**
          * Displays an arrow on the dropdown pointing to the trigger element
          * @type Boolean
          * @default true
@@ -734,14 +724,14 @@ export default defineComponent({
         <IInput
             ref="triggerRef"
             v-model="inputValue"
+            plaintext
             autocomplete="off"
-            aria-autocomplete="both"
+            aria-autocomplete="none"
             :aria-controls="`${name}-options`"
             :placeholder="inputPlaceholder"
             :disabled="disabled"
             :readonly="readonly"
             :tabindex="tabindex"
-            :plaintext="!autocomplete"
             :clearable="clearable"
             :color="color"
             :size="size"
