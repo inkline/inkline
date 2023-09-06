@@ -25,6 +25,9 @@
         "test": "vitest run --coverage",
         "test:dev": "vitest",
         "test:dev:ui": "vitest --ui",
+        "e2e": "playwright test",
+        "e2e:dev": "DEV=true playwright test --ui",
+        "e2e:ui": "playwright test --ui",
         "coveralls": "cat coverage/lcov.info | coveralls",
         "generate": "run-p generate:*",
         "generate:config": "inkline generate scss --outputDir ./src/css/variables",
@@ -33,7 +36,16 @@
         "generate:manifest": "ts-node ./scripts/generate/manifest.ts",
         "storybook": "storybook dev -p 6006",
         "storybook:build": "storybook build",
-        "stylelint-check": "stylelint-config-prettier-check"
+        "stylelint-check": "stylelint-config-prettier-check",
+        "integration:pack": "ts-node ./scripts/pack.ts",
+        "integration:nuxt:create": "bash ./e2e/integration/nuxt/create.sh",
+        "integration:nuxt:start": "cd ./inkline-nuxt && npm run preview",
+        "integration:nuxt:dev": "cd ./inkline-nuxt && npm run dev",
+        "integration:nuxt:build": "cd ./inkline-nuxt && npm run build",
+        "integration:vite:create": "bash ./e2e/integration/vite/create.sh",
+        "integration:vite:start": "cd ./inkline-vite && npm run preview",
+        "integration:vite:dev": "cd ./inkline-vite && npm run dev",
+        "integration:vite:build": "cd ./inkline-vite && npm run build"
     },
     "main": "inkline.js",
     "module": "inkline.mjs",
@@ -53,6 +65,7 @@
         "@grozav/utils": "^1.3.1",
         "@inkline/cli": "^1.2.1",
         "@inkline/config": "^1.8.0",
+        "@playwright/test": "^1.37.1",
         "@storybook/addon-a11y": "^7.2.1",
         "@storybook/addon-actions": "^7.2.1",
         "@storybook/addon-essentials": "^7.2.1",
@@ -1301,6 +1314,111 @@
             "require": "./plugins/toast.js",
             "import": "./plugins/toast.mjs",
             "types": "./plugins/toast.d.ts"
+        },
+        "./stories/core/code": {
+            "require": "./stories/core/code/index.js",
+            "import": "./stories/core/code/index.mjs",
+            "types": "./stories/core/code/index.d.ts"
+        },
+        "./stories/core/images": {
+            "require": "./stories/core/images/index.js",
+            "import": "./stories/core/images/index.mjs",
+            "types": "./stories/core/images/index.d.ts"
+        },
+        "./stories/core/typography": {
+            "require": "./stories/core/typography/index.js",
+            "import": "./stories/core/typography/index.mjs",
+            "types": "./stories/core/typography/index.d.ts"
+        },
+        "./stories/forms/validation": {
+            "require": "./stories/forms/validation/index.js",
+            "import": "./stories/forms/validation/index.mjs",
+            "types": "./stories/forms/validation/index.d.ts"
+        },
+        "./stories/forms/validation/methods": {
+            "require": "./stories/forms/validation/methods/index.js",
+            "import": "./stories/forms/validation/methods/index.mjs",
+            "types": "./stories/forms/validation/methods/index.d.ts"
+        },
+        "./stories/forms/validation/schema": {
+            "require": "./stories/forms/validation/schema/index.js",
+            "import": "./stories/forms/validation/schema/index.mjs",
+            "types": "./stories/forms/validation/schema/index.d.ts"
+        },
+        "./stories/forms/validation/validators": {
+            "require": "./stories/forms/validation/validators/index.js",
+            "import": "./stories/forms/validation/validators/index.mjs",
+            "types": "./stories/forms/validation/validators/index.d.ts"
+        },
+        "./stories/utilities/border": {
+            "require": "./stories/utilities/border/index.js",
+            "import": "./stories/utilities/border/index.mjs",
+            "types": "./stories/utilities/border/index.d.ts"
+        },
+        "./stories/utilities/clearfix": {
+            "require": "./stories/utilities/clearfix/index.js",
+            "import": "./stories/utilities/clearfix/index.mjs",
+            "types": "./stories/utilities/clearfix/index.d.ts"
+        },
+        "./stories/utilities/color": {
+            "require": "./stories/utilities/color/index.js",
+            "import": "./stories/utilities/color/index.mjs",
+            "types": "./stories/utilities/color/index.d.ts"
+        },
+        "./stories/utilities/display": {
+            "require": "./stories/utilities/display/index.js",
+            "import": "./stories/utilities/display/index.mjs",
+            "types": "./stories/utilities/display/index.d.ts"
+        },
+        "./stories/utilities/embed": {
+            "require": "./stories/utilities/embed/index.js",
+            "import": "./stories/utilities/embed/index.mjs",
+            "types": "./stories/utilities/embed/index.d.ts"
+        },
+        "./stories/utilities/flex": {
+            "require": "./stories/utilities/flex/index.js",
+            "import": "./stories/utilities/flex/index.mjs",
+            "types": "./stories/utilities/flex/index.d.ts"
+        },
+        "./stories/utilities/float": {
+            "require": "./stories/utilities/float/index.js",
+            "import": "./stories/utilities/float/index.mjs",
+            "types": "./stories/utilities/float/index.d.ts"
+        },
+        "./stories/utilities/overflow": {
+            "require": "./stories/utilities/overflow/index.js",
+            "import": "./stories/utilities/overflow/index.mjs",
+            "types": "./stories/utilities/overflow/index.d.ts"
+        },
+        "./stories/utilities/overlay": {
+            "require": "./stories/utilities/overlay/index.js",
+            "import": "./stories/utilities/overlay/index.mjs",
+            "types": "./stories/utilities/overlay/index.d.ts"
+        },
+        "./stories/utilities/sizing": {
+            "require": "./stories/utilities/sizing/index.js",
+            "import": "./stories/utilities/sizing/index.mjs",
+            "types": "./stories/utilities/sizing/index.d.ts"
+        },
+        "./stories/utilities/spacing": {
+            "require": "./stories/utilities/spacing/index.js",
+            "import": "./stories/utilities/spacing/index.mjs",
+            "types": "./stories/utilities/spacing/index.d.ts"
+        },
+        "./stories/utilities/text": {
+            "require": "./stories/utilities/text/index.js",
+            "import": "./stories/utilities/text/index.mjs",
+            "types": "./stories/utilities/text/index.d.ts"
+        },
+        "./stories/utilities/vertical-align": {
+            "require": "./stories/utilities/vertical-align/index.js",
+            "import": "./stories/utilities/vertical-align/index.mjs",
+            "types": "./stories/utilities/vertical-align/index.d.ts"
+        },
+        "./stories/utilities/visibility": {
+            "require": "./stories/utilities/visibility/index.js",
+            "import": "./stories/utilities/visibility/index.mjs",
+            "types": "./stories/utilities/visibility/index.d.ts"
         },
         "./types": {
             "require": "./types/index.js",

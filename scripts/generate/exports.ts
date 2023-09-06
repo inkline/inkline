@@ -30,8 +30,7 @@ const packageExports = new Map<
 const defaultIgnore = [
     resolve(srcDir, '__storybook__', '**'),
     resolve(srcDir, '__mocks__', '**'),
-    resolve(srcDir, 'playground', '**'),
-    resolve(srcDir, 'stories', '**')
+    resolve(srcDir, 'playground', '**')
 ];
 
 (async () => {
