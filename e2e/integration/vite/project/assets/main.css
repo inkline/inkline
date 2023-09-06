@@ -1,0 +1,14 @@
+html,
+body,
+#app {
+    height: 100%;
+}
+
+#app > .container {
+    padding-top: var(--padding-top-2);
+    padding-bottom: var(--padding-bottom-2);
+}
+
+#app > .container > .row {
+    margin-bottom: var(--margin-bottom-2);
+}

@@ -19,20 +19,8 @@ jobs:
             -   name: Install npm dependencies
                 if: steps.npm-cache.outputs.cache-hit != 'true'
                 run: npm install
-            -   name: Run release build
-                run: npm run build
-            -   name: Create package
-                run: |
-                    cp package.json lib
-                    cd lib
-                    npm pack
-            -   name: Create Nuxt app
-                run: npx nuxi init inkline-nuxt
-            -   name: Initialize inkline
-                run: |
-                    cd inkline-nuxt
-                    npx inkline@latest init
-                    npm install -S ../lib/inkline-*.tgz
+            -   name: Create Inkline + Nuxt app
+                run: npm run integration:nuxt:create
             -   name: Build Nuxt app
                 run: |
                     cd inkline-nuxt
@@ -56,20 +44,8 @@ jobs:
             -   name: Install npm dependencies
                 if: steps.npm-cache.outputs.cache-hit != 'true'
                 run: npm install
-            -   name: Run release build
-                run: npm run build
-            -   name: Create package
-                run: |
-                    cp package.json lib
-                    cd lib
-                    npm pack
-            -   name: Create Vite.js app
-                run: npm create vite@latest inkline-vite -- --template vue-ts
-            -   name: Initialize inkline
-                run: |
-                    cd inkline-vite
-                    npx inkline@latest init
-                    npm install -S ../lib/inkline-*.tgz
+            -   name: Create Inkline + Vite.js app
+                run: npm run integration:vite:create
             -   name: Build Nuxt app
                 run: |
                     cd inkline-vite
