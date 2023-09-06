@@ -13,3 +13,7 @@ npx inkline@latest init
 # Install dependencies
 npm install -S ../lib/inkline-*.tgz
 npm install
+
+# Copy project files
+cp -r ../e2e/integration/common/project/* .
+cp -r ../e2e/integration/nuxt/project/* .

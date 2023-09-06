@@ -39,7 +39,7 @@
         "stylelint-check": "stylelint-config-prettier-check",
         "integration:pack": "ts-node ./scripts/pack.ts",
         "integration:nuxt:create": "bash ./e2e/integration/nuxt/create.sh",
-        "integration:nuxt:start": "cd ./inkline-nuxt && npm run start",
+        "integration:nuxt:start": "cd ./inkline-nuxt && npm run preview",
         "integration:nuxt:dev": "cd ./inkline-nuxt && npm run dev",
         "integration:nuxt:build": "cd ./inkline-nuxt && npm run build",
         "integration:vite:create": "bash ./e2e/integration/vite/create.sh",
