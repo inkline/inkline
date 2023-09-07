@@ -1,3 +1,4 @@
+/* eslint-disable vue/one-component-per-file */
 import { defineComponent, h } from 'vue';
 import { fireEvent, render } from '@testing-library/vue';
 import { useModalBuilder } from '@inkline/inkline/composables/modals';

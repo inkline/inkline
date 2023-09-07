@@ -7,8 +7,7 @@ import {
     watch,
     onMounted,
     onBeforeUnmount,
-    PropType,
-    VNode
+    PropType
 } from 'vue';
 import { addClass, removeClass, uid } from '@grozav/utils';
 import { OverlayController } from '@inkline/inkline/controllers';

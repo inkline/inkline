@@ -2,7 +2,6 @@ import { defineComponent, h } from 'vue';
 import { fireEvent, render } from '@testing-library/vue';
 import { useAlert } from '@inkline/inkline/composables/modals';
 import { Inkline } from '@inkline/inkline/plugin';
-import { IModalContainer } from '@inkline/inkline/components/IModalContainer';
 
 const TestComponent = defineComponent({
     setup() {
@@ -42,4 +41,3 @@ describe('Composables', () => {
         });
     });
 });
-

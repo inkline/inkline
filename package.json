@@ -40,6 +40,7 @@
         "storybook:build": "storybook build",
         "stylelint-check": "stylelint-config-prettier-check",
         "integration:pack": "ts-node ./scripts/pack.ts",
+        "integration:create": "npm run integration:vite:create && npm run integration:nuxt:create",
         "integration:nuxt:create": "bash ./e2e/integration/nuxt/create.sh",
         "integration:nuxt:start": "cd ./inkline-nuxt && npm run preview",
         "integration:nuxt:dev": "cd ./inkline-nuxt && npm run dev",
