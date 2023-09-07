@@ -10,12 +10,6 @@ export const manifest: ComponentManifest = {
             description: 'The duration of the hide and show animation'
         },
         {
-            name: 'autocomplete',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Enable autocomplete functionality'
-        },
-        {
             name: 'arrow',
             type: ['Boolean'],
             default: 'true',
