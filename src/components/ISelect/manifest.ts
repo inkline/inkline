@@ -206,10 +206,6 @@ export const manifest: ComponentManifest = {
             name: 'click:outside'
         },
         {
-            description: 'Event emitted when input value changes',
-            name: 'search'
-        },
-        {
             description: 'Event emitted when the next page needs to be loaded',
             name: 'pagination'
         },

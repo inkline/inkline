@@ -349,11 +349,6 @@ export default defineComponent({
          */
         'click:outside',
         /**
-         * Event emitted when input value changes
-         * @event search
-         */
-        'search',
-        /**
          * Event emitted when the next page needs to be loaded
          * @event pagination
          */
