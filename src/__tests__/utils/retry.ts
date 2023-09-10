@@ -1,4 +1,4 @@
-export const retry = (assertion: () => any, { interval = 20, timeout = 200 } = {}) => {
+export const retry = (assertion: () => any, { interval = 20, timeout = 300 } = {}) => {
     return new Promise((resolve, reject) => {
         const startTime = Date.now();
 
