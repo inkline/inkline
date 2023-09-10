@@ -1,7 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Components > IModalContainer > methods > showModal() > should hide a modal 1`] = `"<div class=\\"modal-container\\"></div>"`;
-
 exports[`Components > IModalContainer > methods > showModal() > should hide a modal by id 1`] = `"<div class=\\"modal-container\\"></div>"`;
 
 exports[`Components > IModalContainer > methods > showModal() > should show a modal 1`] = `
