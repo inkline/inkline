@@ -53,6 +53,21 @@ export const manifest: ComponentManifest = {
             description: 'Used to show or hide a dismissible toast'
         },
         {
+            name: 'position',
+            type: [
+                'top-left',
+                'top',
+                'top-right',
+                'right',
+                'bottom-right',
+                'bottom',
+                'bottom-left',
+                'left'
+            ],
+            default: 'top-right',
+            description: 'Used to set the position of the toast'
+        },
+        {
             name: 'dismissible',
             type: ['Boolean'],
             default: 'false',

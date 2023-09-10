@@ -100,6 +100,16 @@ export default defineComponent({
             default: true
         },
         /**
+         * Used to set the position of the toast
+         * @type top-left | top | top-right | right | bottom-right | bottom | bottom-left | left
+         * @default top-right
+         * @name position
+         */
+        position: {
+            type: String,
+            default: 'top-right'
+        },
+        /**
          * Shows a dismiss icon on the toast
          * @type Boolean
          * @default false
