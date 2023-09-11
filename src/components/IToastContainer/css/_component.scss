@@ -21,46 +21,46 @@
         overflow: visible;
 
         &.-top-left {
-            top: 0;
-            left: 0;
+            top: var(--toast-container--top, 0);
+            left: var(--toast-container--left, 0);
         }
 
         &.-top {
-            top: 0;
+            top: var(--toast-container--top, 0);
             left: 50%;
             transform: translateX(-50%);
         }
 
         &.-top-right {
-            top: 0;
-            right: 0;
+            top: var(--toast-container--top, 0);
+            right: var(--toast-container--right, 0);
         }
 
         &.-right {
             top: 50%;
-            right: 0;
+            right: var(--toast-container--right, 0);
             transform: translateY(-50%);
         }
 
         &.-bottom-right {
-            bottom: 0;
-            right: 0;
+            bottom: var(--toast-container--bottom, 0);
+            right: var(--toast-container--right, 0);
         }
 
         &.-bottom {
-            bottom: 0;
+            bottom: var(--toast-container--bottom, 0);
             left: 50%;
             transform: translateX(-50%);
         }
 
         &.-bottom-left {
-            bottom: 0;
-            left: 0;
+            bottom: var(--toast-container--bottom, 0);
+            left: var(--toast-container--left, 0);
         }
 
         &.-left {
             top: 50%;
-            left: 0;
+            left: var(--toast-container--left, 0);
             transform: translateY(-50%);
         }
 

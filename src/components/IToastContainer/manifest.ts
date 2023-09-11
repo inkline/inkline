@@ -82,6 +82,38 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
+                name: '--toast-container--top',
+                value: [
+                    {
+                        value: '0'
+                    }
+                ]
+            },
+            {
+                name: '--toast-container--left',
+                value: [
+                    {
+                        value: '0'
+                    }
+                ]
+            },
+            {
+                name: '--toast-container--right',
+                value: [
+                    {
+                        value: '0'
+                    }
+                ]
+            },
+            {
+                name: '--toast-container--bottom',
+                value: [
+                    {
+                        value: '0'
+                    }
+                ]
+            },
+            {
                 name: '--toast-container--toast--margin-bottom',
                 value: [
                     {
