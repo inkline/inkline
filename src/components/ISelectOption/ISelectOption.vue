@@ -1,6 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject, PropType } from 'vue';
-import { SelectKey, SelectOption } from '@inkline/inkline/components/ISelect/mixin';
+import { SelectKey } from '@inkline/inkline';
+import { SelectOption } from '@inkline/inkline/components/ISelect/mixin';
 
 const componentName = 'ISelectOption';
 

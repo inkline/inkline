@@ -7,7 +7,7 @@ import {
     useFormValidationError
 } from '@inkline/inkline/composables';
 import { uid } from '@grozav/utils';
-import { FormKey } from '@inkline/inkline/components/IForm/mixin';
+import { FormKey } from '@inkline/inkline';
 
 const componentName = 'IForm';
 

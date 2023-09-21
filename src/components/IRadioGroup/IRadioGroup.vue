@@ -1,8 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject, PropType, provide, toRef } from 'vue';
 import { uid } from '@grozav/utils';
-import { FormKey } from '@inkline/inkline/components/IForm/mixin';
-import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
+import { FormKey, FormGroupKey } from '@inkline/inkline';
 import {
     useComponentColor,
     useComponentSize,

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject, onBeforeUnmount, onMounted } from 'vue';
 import { uid } from '@grozav/utils';
-import { TabsKey } from '@inkline/inkline/components/ITabs/mixin';
+import { TabsKey } from '@inkline/inkline';
 
 const componentName = 'ITab';
 

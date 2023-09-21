@@ -6,8 +6,7 @@ import {
     useValidation,
     useFormValidationError
 } from '@inkline/inkline/composables';
-import { FormKey } from '@inkline/inkline/components/IForm/mixin';
-import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
+import { FormKey, FormGroupKey } from '@inkline/inkline';
 import { IButton } from '@inkline/inkline/components/IButton';
 import { uid } from '@grozav/utils';
 import {

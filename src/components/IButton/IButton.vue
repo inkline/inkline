@@ -2,9 +2,7 @@
 import { computed, defineComponent, inject, PropType, toRef } from 'vue';
 import { useComponentColor, useComponentSize, useLinkable } from '@inkline/inkline/composables';
 import { ILoader } from '@inkline/inkline/components/ILoader';
-import { ButtonGroupKey } from '@inkline/inkline/components/IButtonGroup/mixin';
-import { FormKey } from '@inkline/inkline/components/IForm/mixin';
-import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
+import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/inkline';
 
 const componentName = 'IButton';
 

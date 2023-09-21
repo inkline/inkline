@@ -2,7 +2,7 @@
 import { computed, defineComponent, provide, ref, toRef } from 'vue';
 import { IContainer } from '@inkline/inkline/components/IContainer';
 import { IHamburgerMenu } from '@inkline/inkline/components/IHamburgerMenu';
-import { NavbarKey } from '@inkline/inkline/components/INavbar/mixin';
+import { NavbarKey } from '@inkline/inkline';
 import {
     useClickOutside,
     useCollapsible,

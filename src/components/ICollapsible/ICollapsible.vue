@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref, provide, computed, PropType, watch } from 'vue';
-import { CollapsibleKey } from '@inkline/inkline/components/ICollapsible/mixin';
+import { CollapsibleKey } from '@inkline/inkline';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'ICollapsible';

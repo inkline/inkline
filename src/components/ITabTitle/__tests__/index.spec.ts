@@ -3,7 +3,7 @@ import { ITabTitle } from '@inkline/inkline/components';
 import { InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 import { ref } from 'vue';
-import { TabsKey } from '@inkline/inkline/components/ITabs/mixin';
+import { TabsKey } from '@inkline/inkline';
 
 describe('Components', () => {
     describe('ITabTitle', () => {
