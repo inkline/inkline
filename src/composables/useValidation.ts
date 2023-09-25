@@ -2,7 +2,7 @@ import { clone, getValueByPath, setValueByPath, setValuesAlongPath } from '@groz
 import { computed, inject, Ref, ref, unref, watch } from 'vue';
 import { FormKey } from '@inkline/inkline/components/IForm';
 import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
-import { validate } from '@inkline/inkline/validation';
+import { validate, update } from '@inkline/inkline/validation';
 import { useInkline } from '@inkline/inkline/composables/useInkline';
 
 export function useValidation(options: {
@@ -134,7 +134,7 @@ export function useValidation(options: {
         }
 
         let clonedSchema = clone(schema.value);
-        clonedSchema = setValuesAlongPath(validate(clonedSchema), '', {
+        clonedSchema = update(validate(clonedSchema), {
             untouched: false,
             touched: true
         });
