@@ -87,7 +87,8 @@ export function usePrompt() {
                                                 onClick: () => {
                                                     modalService.hide({ id });
                                                     reject(new Error('Prompt cancelled'));
-                                                }
+                                                },
+                                                ...options.cancelButtonProps
                                             },
                                             () =>
                                                 options.cancelButtonText ??
@@ -105,7 +106,8 @@ export function usePrompt() {
                                                     }
                                                 },
                                                 disabled: disabled.value,
-                                                color: 'primary'
+                                                color: 'primary',
+                                                ...options.confirmButtonProps
                                             },
                                             () =>
                                                 options.confirmButtonText ??
