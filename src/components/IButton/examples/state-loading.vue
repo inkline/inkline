@@ -1,11 +1,17 @@
 <template>
-    <IButton :loading="true"> Disabled Default Button </IButton>
+    <IButton :loading="true"> Default Button </IButton>
 
     <IButton :loading="true">
-        Button
+        Default Button
+        <template #loading> Loading... </template>
+    </IButton>
+
+    <IButton :loading="true" :show-loading-icon="false">
+        Default Button
         <template #loading>
-            <ILoader color="dark" class="_margin-right:1/2" />
-            Loading
+            <ILoader color="primary" class="_margin-right:1/2" />
+            Loading with Custom Icon...
         </template>
     </IButton>
 </template>
+<script setup></script>

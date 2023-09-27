@@ -26,7 +26,7 @@
         );
         --button--padding-top: var(
             --button--sm--padding-top,
-            calc(calc(var(--padding-top) * var(--size-multiplier-sm)) * 0.5)
+            calc(calc(var(--padding-top) * var(--size-multiplier-sm)) * 3 / 4)
         );
         --button--padding-right: var(
             --button--sm--padding-right,
@@ -34,7 +34,7 @@
         );
         --button--padding-bottom: var(
             --button--sm--padding-bottom,
-            calc(calc(var(--padding-bottom) * var(--size-multiplier-sm)) * 0.5)
+            calc(calc(var(--padding-bottom) * var(--size-multiplier-sm)) * 3 / 4)
         );
         --button--padding-left: var(
             --button--sm--padding-left,
@@ -69,7 +69,7 @@
         );
         --button--padding-top: var(
             --button--md--padding-top,
-            calc(calc(var(--padding-top) * var(--size-multiplier-md)) * 0.5)
+            calc(calc(var(--padding-top) * var(--size-multiplier-md)) * 3 / 4)
         );
         --button--padding-right: var(
             --button--md--padding-right,
@@ -77,7 +77,7 @@
         );
         --button--padding-bottom: var(
             --button--md--padding-bottom,
-            calc(calc(var(--padding-bottom) * var(--size-multiplier-md)) * 0.5)
+            calc(calc(var(--padding-bottom) * var(--size-multiplier-md)) * 3 / 4)
         );
         --button--padding-left: var(
             --button--md--padding-left,
@@ -112,7 +112,7 @@
         );
         --button--padding-top: var(
             --button--lg--padding-top,
-            calc(calc(var(--padding-top) * var(--size-multiplier-lg)) * 0.5)
+            calc(calc(var(--padding-top) * var(--size-multiplier-lg)) * 3 / 4)
         );
         --button--padding-right: var(
             --button--lg--padding-right,
@@ -120,7 +120,7 @@
         );
         --button--padding-bottom: var(
             --button--lg--padding-bottom,
-            calc(calc(var(--padding-bottom) * var(--size-multiplier-lg)) * 0.5)
+            calc(calc(var(--padding-bottom) * var(--size-multiplier-lg)) * 3 / 4)
         );
         --button--padding-left: var(
             --button--lg--padding-left,

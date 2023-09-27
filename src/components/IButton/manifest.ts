@@ -52,6 +52,12 @@ export const manifest: ComponentManifest = {
             description: 'The loading state of the button'
         },
         {
+            name: 'showLoadingIcon',
+            type: ['Boolean'],
+            default: 'true',
+            description: 'Display the button loading icon when loading state is active'
+        },
+        {
             name: 'outline',
             type: ['Boolean'],
             default: 'false',
@@ -97,7 +103,11 @@ export const manifest: ComponentManifest = {
     slots: [
         {
             name: 'loading',
-            description: 'Slot for button loading state '
+            description: 'Slot for button loading text '
+        },
+        {
+            name: 'icon',
+            description: 'Slot for button icon '
         },
         {
             name: 'default',
@@ -146,14 +156,6 @@ export const manifest: ComponentManifest = {
                                 value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: '--button--line-height',
-                value: [
-                    {
-                        name: '--line-height'
                     }
                 ]
             },
@@ -871,7 +873,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--sm--padding-top',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-sm)) * 0.5)'
+                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-sm)) * 3 / 4)'
                                     }
                                 ]
                             },
@@ -879,7 +881,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--md--padding-top',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-md)) * 0.5)'
+                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-md)) * 3 / 4)'
                                     }
                                 ]
                             },
@@ -887,7 +889,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--lg--padding-top',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-lg)) * 0.5)'
+                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-lg)) * 3 / 4)'
                                     }
                                 ]
                             }
@@ -939,7 +941,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--sm--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-sm)) * 0.5)'
+                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-sm)) * 3 / 4)'
                                     }
                                 ]
                             },
@@ -947,7 +949,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--md--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-md)) * 0.5)'
+                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-md)) * 3 / 4)'
                                     }
                                 ]
                             },
@@ -955,7 +957,7 @@ export const manifest: ComponentManifest = {
                                 name: '--button--lg--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-lg)) * 0.5)'
+                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-lg)) * 3 / 4)'
                                     }
                                 ]
                             }
@@ -1396,6 +1398,14 @@ export const manifest: ComponentManifest = {
                                 value: 'calc(49px * var(--size-multiplier-lg))'
                             }
                         ]
+                    }
+                ]
+            },
+            {
+                name: '--button--icon--margin-right',
+                value: [
+                    {
+                        name: '--margin-right-1-2'
                     }
                 ]
             }
