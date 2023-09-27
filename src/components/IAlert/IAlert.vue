@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ref, computed, watch, defineComponent, onBeforeUpdate } from 'vue';
+import { ref, toRefs, computed, watch, defineComponent, onBeforeUpdate } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'IAlert';
@@ -29,14 +29,14 @@ export default defineComponent({
             default: 'info'
         },
         /**
-         * Used to show or hide a dismissible alert
+         * Used to show or hide the alert
          * @type Boolean
-         * @default true
+         * @default undefined
          * @name modelValue
          */
         modelValue: {
             type: Boolean,
-            default: true
+            default: undefined
         },
         /**
          * Shows a dismiss icon on the alert
@@ -67,7 +67,8 @@ export default defineComponent({
         'update:modelValue'
     ],
     setup(props, { emit, slots }) {
-        const dismissed = ref(false);
+        const { modelValue } = toRefs(props);
+        const visible = ref(typeof modelValue.value !== 'undefined' ? modelValue.value : true);
 
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
@@ -89,7 +90,7 @@ export default defineComponent({
         watch(
             () => props.modelValue,
             (value) => {
-                dismissed.value = !value;
+                visible.value = value;
             }
         );
 
@@ -100,13 +101,13 @@ export default defineComponent({
         }
 
         function dismiss() {
-            dismissed.value = true;
+            visible.value = false;
             emit('update:modelValue', false);
         }
 
         return {
             classes,
-            dismissed,
+            visible,
             dismiss
         };
     }
@@ -114,7 +115,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div v-show="!dismissed" v-bind="$attrs" class="alert" role="alert" :class="classes">
+    <div v-show="visible" v-bind="$attrs" class="alert" role="alert" :class="classes">
         <span v-if="$slots.icon" class="icon" role="img" aria-hidden="true">
             <!-- @slot icon Slot for alert icon -->
             <slot name="icon" />
