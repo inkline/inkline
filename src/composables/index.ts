@@ -1,3 +1,4 @@
+export * from '@inkline/inkline/composables/modals';
 export * from '@inkline/inkline/composables/useClickOutside';
 export * from '@inkline/inkline/composables/useCollapsible';
 export * from '@inkline/inkline/composables/useComponentColor';
