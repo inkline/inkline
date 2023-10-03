@@ -109,7 +109,7 @@
     // Block buttons
     // Make buttons span the whole parent width
     &.-block {
-        display: block;
+        display: flex;
         width: 100%;
 
         + .button.-block {
