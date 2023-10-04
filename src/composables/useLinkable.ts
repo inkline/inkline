@@ -2,7 +2,7 @@ import { computed, resolveComponent, Ref } from 'vue';
 import { useInkline } from '@inkline/inkline/composables/useInkline';
 
 export function useLinkable(props: {
-    to: Ref<string | Record<string, unknown> | undefined>;
+    to: Ref<string | object | undefined>;
     href: Ref<string | undefined>;
     tag: Ref<string>;
 }) {

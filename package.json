@@ -30,6 +30,7 @@
         "e2e": "npm run e2e:vite && npm run e2e:nuxt",
         "e2e:dev": "DEV=true playwright test --ui",
         "e2e:ui": "playwright test --ui",
+        "e2e:setup": "npm run integration:create",
         "coveralls": "cat coverage/lcov.info | coveralls",
         "generate": "run-p generate:*",
         "generate:config": "inkline generate scss --outputDir ./src/css/variables",

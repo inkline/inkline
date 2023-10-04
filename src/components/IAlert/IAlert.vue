@@ -68,7 +68,9 @@ export default defineComponent({
     ],
     setup(props, { emit, slots }) {
         const { modelValue } = toRefs(props);
-        const visible = ref(typeof modelValue.value !== 'undefined' ? modelValue.value : true);
+        const visible = ref<boolean | undefined>(
+            typeof modelValue.value !== 'undefined' ? modelValue.value : true
+        );
 
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);

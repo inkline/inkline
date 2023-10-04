@@ -1,9 +1,3 @@
-import { RenderFunction } from 'vue';
+import type { CheckableButtonGroupOption } from '@inkline/inkline/components/utils/ICheckableButtonGroup/mixin';
 
-export interface CheckboxButtonOption {
-    id: string | number;
-    label: string | number | RenderFunction;
-    value: string;
-    disabled?: boolean;
-    buttonProps?: Record<string, unknown>;
-}
+export type RadioButtonOption = CheckableButtonGroupOption;
