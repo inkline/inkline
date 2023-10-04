@@ -221,15 +221,27 @@
       ]
     },
     {
-    "login": "zozulinskyi",
+      "login": "zozulinskyi",
       "name": "IHOR",
       "avatar_url": "https://avatars.githubusercontent.com/u/11585924?v=4",
       "profile": "https://github.com/zozulinskyi",
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "Timbological",
+      "name": "Timbological",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31364357?v=4",
+      "profile": "https://github.com/Timbological",
+      "contributions": [
+        "code",
+        "bug",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 10,
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs"
 }
