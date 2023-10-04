@@ -18,8 +18,8 @@ export const manifest: ComponentManifest = {
         {
             name: 'modelValue',
             type: ['Boolean'],
-            default: 'true',
-            description: 'Used to show or hide a dismissible alert'
+            default: 'undefined',
+            description: 'Used to show or hide the alert'
         },
         {
             name: 'dismissible',

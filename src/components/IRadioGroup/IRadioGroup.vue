@@ -1,15 +1,13 @@
 <script lang="ts">
 import { computed, defineComponent, inject, PropType, provide, toRef } from 'vue';
 import { uid } from '@grozav/utils';
-import { FormKey } from '@inkline/inkline/components/IForm/mixin';
-import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
 import {
     useComponentColor,
     useComponentSize,
     useFormValidationError,
     useValidation
 } from '@inkline/inkline/composables';
-import { RadioGroupKey } from '@inkline/inkline/components/IRadioGroup';
+import { FormKey, FormGroupKey, RadioGroupKey } from '@inkline/inkline/constants';
 
 const componentName = 'IRadioGroup';
 

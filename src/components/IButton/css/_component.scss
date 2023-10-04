@@ -6,7 +6,7 @@
     display: inline-flex;
     font-weight: var(--button--font-weight, var(--font-weight-normal));
     font-size: var(--button--font-size, var(--font-size));
-    line-height: var(--button--line-height, var(--line-height));
+    line-height: 1;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
@@ -109,7 +109,7 @@
     // Block buttons
     // Make buttons span the whole parent width
     &.-block {
-        display: block;
+        display: flex;
         width: 100%;
 
         + .button.-block {
@@ -183,13 +183,24 @@
     }
 
     .loader {
-        margin-top: calc(var(--button--padding-top) * 0.5);
-        margin-bottom: calc(var(--button--padding-bottom) * 0.5);
         width: var(--button--font-size);
         height: var(--button--font-size);
 
         > svg > circle {
             stroke: var(--button--color) !important;
+        }
+    }
+
+    .button-icon,
+    .button-content {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button-icon {
+        + .button-content {
+            margin-left: var(--button--icon--margin-right, var(--margin-right-1-2));
         }
     }
 

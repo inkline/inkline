@@ -1,7 +1,7 @@
 import type { Plugin } from 'vue';
 import type { SvgNode } from '@inkline/inkline/types';
 import * as inklineIcons from '@inkline/inkline/icons';
-import { InklineIconsKey } from '@inkline/inkline';
+import { InklineIconsKey } from '@inkline/inkline/constants';
 
 export interface InklineIconsPluginOptions {
     icons: Record<string, SvgNode>;

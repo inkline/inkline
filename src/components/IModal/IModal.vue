@@ -12,7 +12,7 @@ import {
 import { addClass, removeClass, uid } from '@grozav/utils';
 import { OverlayController } from '@inkline/inkline/controllers';
 import { useComponentColor, useComponentSize, useClickOutside } from '@inkline/inkline/composables';
-import { StringOrRenderableType } from '@inkline/inkline/types';
+import type { StringOrRenderableType } from '@inkline/inkline/types';
 
 const componentName = 'IModal';
 

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IModalContainer } from '@inkline/inkline/components';
 import { createInkline, retry } from '@inkline/inkline/__tests__/utils';
-import { InklineKey, InklineIconsKey } from '@inkline/inkline/constants';
+import { InklineKey, InklineIconsKey } from '@inkline/inkline';
 import { createEventBus } from '@grozav/utils';
 import * as inklineIcons from '@inkline/inkline/icons';
 

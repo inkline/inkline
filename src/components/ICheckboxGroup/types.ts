@@ -1,4 +1,4 @@
-import type { ComputedRef, InjectionKey, Ref } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 
 export interface CheckboxGroupInjection {
     name: Ref<string>;
@@ -10,5 +10,3 @@ export interface CheckboxGroupInjection {
     onChange: (value: any) => void;
     onBlur: (event: FocusEvent) => void;
 }
-
-export const CheckboxGroupKey = Symbol('CheckboxGroup') as InjectionKey<CheckboxGroupInjection>;

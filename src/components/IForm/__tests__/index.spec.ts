@@ -1,6 +1,5 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { IForm, IInput } from '@inkline/inkline/components';
-import { InklineKey } from '@inkline/inkline/constants';
+import { IForm, IInput, InklineKey } from '@inkline/inkline';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 
 describe('Components', () => {

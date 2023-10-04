@@ -1,8 +1,7 @@
 import { clone, getValueByPath, setValueByPath, setValuesAlongPath } from '@grozav/utils';
 import { computed, inject, Ref, ref, unref, watch } from 'vue';
-import { FormKey } from '@inkline/inkline/components/IForm';
-import { FormGroupKey } from '@inkline/inkline/components/IFormGroup';
-import { validate, update } from '@inkline/inkline/validation';
+import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
+import { validate } from '@inkline/inkline/validation';
 import { useInkline } from '@inkline/inkline/composables/useInkline';
 
 export function useValidation(options: {

@@ -6,16 +6,15 @@ import {
     useValidation,
     useFormValidationError
 } from '@inkline/inkline/composables';
-import { FormKey } from '@inkline/inkline/components/IForm/mixin';
-import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
+import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import { IButton } from '@inkline/inkline/components/IButton';
 import { uid } from '@grozav/utils';
 import {
     IRenderResolver,
     ICheckableButtonGroup,
-    CheckableButtonGroupOption,
     CheckableButtonGroupVariant
 } from '@inkline/inkline/components/utils';
+import type { CheckboxButtonOption } from '@inkline/inkline/components/ICheckboxButtons/types';
 
 const componentName = 'ICheckboxButtons';
 
@@ -88,7 +87,7 @@ export default defineComponent({
          * @name options
          */
         options: {
-            type: Array as PropType<CheckableButtonGroupOption[]>,
+            type: Array as PropType<CheckboxButtonOption[]>,
             default: () => []
         },
         /**

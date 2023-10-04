@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed, defineComponent, provide, ref, toRef } from 'vue';
-import { SidebarKey } from '@inkline/inkline/components/ISidebar/mixin';
+import { SidebarKey } from '@inkline/inkline/constants';
 import { useCollapsible, useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'ISidebar';

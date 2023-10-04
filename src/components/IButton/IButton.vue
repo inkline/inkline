@@ -2,9 +2,7 @@
 import { computed, defineComponent, inject, PropType, toRef } from 'vue';
 import { useComponentColor, useComponentSize, useLinkable } from '@inkline/inkline/composables';
 import { ILoader } from '@inkline/inkline/components/ILoader';
-import { ButtonGroupKey } from '@inkline/inkline/components/IButtonGroup/mixin';
-import { FormKey } from '@inkline/inkline/components/IForm/mixin';
-import { FormGroupKey } from '@inkline/inkline/components/IFormGroup/mixin';
+import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/constants';
 
 const componentName = 'IButton';
 
@@ -103,6 +101,16 @@ export default defineComponent({
             default: false
         },
         /**
+         * Display the button loading icon when loading state is active
+         * @type Boolean
+         * @default true
+         * @name showLoadingIcon
+         */
+        showLoadingIcon: {
+            type: Boolean,
+            default: true
+        },
+        /**
          * Display the button as an outline button
          * @type Boolean
          * @default false
@@ -129,7 +137,7 @@ export default defineComponent({
          * @name tabindex
          */
         tabindex: {
-            type: [Number, String],
+            type: [Number, String] as PropType<number | string>,
             default: 0
         },
         /**
@@ -139,7 +147,7 @@ export default defineComponent({
          * @name to
          */
         to: {
-            type: [String, Object],
+            type: [String, Object] as PropType<string | object>,
             default: undefined
         },
         /**
@@ -259,11 +267,22 @@ export default defineComponent({
 
 <template>
     <component v-bind="bindings" :is="tag" :tag="currentTag" class="button" :class="classes">
-        <!-- @slot loading Slot for button loading state -->
-        <slot v-if="loading" name="loading">
-            <ILoader />
-        </slot>
-        <!-- @slot default Slot for default button content -->
-        <slot v-if="!loading" />
+        <template v-if="loading">
+            <ILoader v-if="showLoadingIcon" class="button-icon" />
+            <span v-if="$slots.loading" class="button-content">
+                <!-- @slot loading Slot for button loading text -->
+                <slot name="loading" />
+            </span>
+        </template>
+        <template v-else>
+            <span v-if="$slots.icon" class="button-icon">
+                <!-- @slot icon Slot for button icon -->
+                <slot name="icon" />
+            </span>
+            <span v-if="$slots.default" class="button-content">
+                <!-- @slot default Slot for default button content -->
+                <slot />
+            </span>
+        </template>
     </component>
 </template>

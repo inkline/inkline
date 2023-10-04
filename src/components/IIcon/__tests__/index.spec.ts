@@ -1,6 +1,6 @@
 import { render } from '@testing-library/vue';
 import { IIcon } from '@inkline/inkline/components';
-import { InklineKey, InklineIconsKey } from '@inkline/inkline/constants';
+import { InklineKey, InklineIconsKey } from '@inkline/inkline';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 
 describe('Components', () => {

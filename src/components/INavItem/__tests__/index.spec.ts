@@ -1,8 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { INavItem } from '@inkline/inkline/components';
-import { InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { NavKey } from '@inkline/inkline/components/INav/mixin';
+import { InklineKey, NavKey } from '@inkline/inkline';
 
 describe('Components', () => {
     describe('INavItem', () => {
