@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject, PropType, ref, toRef } from 'vue';
 import { uid } from '@grozav/utils';
-import { FormKey, FormGroupKey, RadioGroupKey } from '@inkline/inkline';
+import { FormKey, FormGroupKey, RadioGroupKey } from '@inkline/inkline/constants';
 import {
     useComponentColor,
     useComponentSize,

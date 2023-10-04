@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, provide, ref, watch } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
-import { TabsKey } from '@inkline/inkline';
+import { TabsKey } from '@inkline/inkline/constants';
 import { ITabTitle } from '@inkline/inkline/components/ITabTitle';
 
 interface Tab {

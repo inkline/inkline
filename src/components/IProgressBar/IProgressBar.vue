@@ -1,6 +1,6 @@
 <script lang="ts">
 import { inject, computed, defineComponent } from 'vue';
-import { ProgressKey } from '@inkline/inkline';
+import { ProgressKey } from '@inkline/inkline/constants';
 
 const componentName = 'IProgressBar';
 

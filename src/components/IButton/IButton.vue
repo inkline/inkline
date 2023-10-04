@@ -2,7 +2,7 @@
 import { computed, defineComponent, inject, PropType, toRef } from 'vue';
 import { useComponentColor, useComponentSize, useLinkable } from '@inkline/inkline/composables';
 import { ILoader } from '@inkline/inkline/components/ILoader';
-import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/inkline';
+import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/constants';
 
 const componentName = 'IButton';
 

@@ -6,7 +6,7 @@ import {
     useValidation,
     useFormValidationError
 } from '@inkline/inkline/composables';
-import { FormKey, FormGroupKey } from '@inkline/inkline';
+import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import { IButton } from '@inkline/inkline/components/IButton';
 import { uid } from '@grozav/utils';
 import {
@@ -14,7 +14,7 @@ import {
     ICheckableButtonGroup,
     CheckableButtonGroupVariant
 } from '@inkline/inkline/components/utils';
-import type { RadioButtonOption } from '@inkline/inkline/components/IRadioButtons/mixin';
+import type { RadioButtonOption } from '@inkline/inkline/components/IRadioButtons/types';
 
 const componentName = 'IRadioButtons';
 

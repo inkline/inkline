@@ -1,4 +1,4 @@
-import type { InjectionKey, Ref } from 'vue';
+import type { Ref } from 'vue';
 
 export interface RadioGroupInjection {
     name: Ref<string>;
@@ -10,5 +10,3 @@ export interface RadioGroupInjection {
     onChange: (value: any) => void;
     onBlur: (event: FocusEvent) => void;
 }
-
-export const RadioGroupKey = Symbol('RadioGroup') as InjectionKey<RadioGroupInjection>;

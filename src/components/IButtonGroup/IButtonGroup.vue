@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject, provide } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
-import { ButtonGroupKey } from '@inkline/inkline';
+import { ButtonGroupKey } from '@inkline/inkline/constants';
 
 const componentName = 'IButtonGroup';
 

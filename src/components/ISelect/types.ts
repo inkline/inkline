@@ -1,4 +1,4 @@
-import { InjectionKey, Ref } from 'vue';
+import { Ref } from 'vue';
 
 export interface SelectOption {
     active?: boolean;
@@ -14,5 +14,3 @@ export interface SelectInjection {
     idField: Ref<string>;
     onInput: (option: SelectOption) => void;
 }
-
-export const SelectKey = Symbol('Select') as InjectionKey<SelectInjection>;

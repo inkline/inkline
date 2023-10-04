@@ -13,7 +13,7 @@ import {
 import { isFocusable, isKey, uid, getValueByPath, isFunction } from '@grozav/utils';
 
 import { IInput } from '@inkline/inkline/components';
-import { FormKey, FormGroupKey, SelectKey } from '@inkline/inkline';
+import { FormKey, FormGroupKey, SelectKey } from '@inkline/inkline/constants';
 import {
     useClickOutside,
     useComponentColor,
@@ -24,7 +24,7 @@ import {
     usePopupControl
 } from '@inkline/inkline/composables';
 import { Placement } from '@floating-ui/dom';
-import { SelectOption } from '@inkline/inkline/components/ISelect/mixin';
+import { SelectOption } from '@inkline/inkline/components/ISelect/types';
 import { ISelectOption } from '@inkline/inkline/components/ISelectOption';
 import { extractRefHTMLElement } from '@inkline/inkline/utils';
 import { ComputePositionConfig } from '@floating-ui/core';

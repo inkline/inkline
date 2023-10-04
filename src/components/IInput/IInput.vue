@@ -8,7 +8,7 @@ import {
     useFormValidationError,
     useValidation
 } from '@inkline/inkline/composables';
-import { FormKey, FormGroupKey } from '@inkline/inkline';
+import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import { IIcon } from '@inkline/inkline/components/IIcon';
 
 const componentName = 'IInput';

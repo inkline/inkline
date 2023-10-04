@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject, toRef } from 'vue';
 import { uid } from '@grozav/utils';
-import { TabsKey } from '@inkline/inkline';
+import { TabsKey } from '@inkline/inkline/constants';
 
 const componentName = 'ITabTitle';
 

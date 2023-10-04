@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject, toRef } from 'vue';
 import { useLinkable } from '@inkline/inkline/composables';
-import { DropdownKey } from '@inkline/inkline';
+import { DropdownKey } from '@inkline/inkline/constants';
 
 const componentName = 'IDropdownItem';
 

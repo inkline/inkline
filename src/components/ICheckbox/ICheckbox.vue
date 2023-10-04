@@ -7,7 +7,7 @@ import {
     useValidation,
     useFormValidationError
 } from '@inkline/inkline/composables';
-import { CheckboxGroupKey, FormKey, FormGroupKey } from '@inkline/inkline';
+import { CheckboxGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/constants';
 
 const componentName = 'ICheckbox';
 

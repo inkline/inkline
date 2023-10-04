@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject, ref, toRef } from 'vue';
 import { useComponentSize } from '@inkline/inkline/composables';
-import { FormKey, FormGroupKey } from '@inkline/inkline';
+import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
 
 const componentName = 'IFormLabel';
 

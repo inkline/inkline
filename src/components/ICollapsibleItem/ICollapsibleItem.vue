@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, computed, inject } from 'vue';
 import { uid } from '@grozav/utils';
-import { CollapsibleKey } from '@inkline/inkline';
+import { CollapsibleKey } from '@inkline/inkline/constants';
 import { IExpandTransition } from '@inkline/inkline/components/IExpandTransition';
 
 const componentName = 'ICollapsibleItem';

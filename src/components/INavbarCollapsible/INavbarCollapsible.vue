@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject } from 'vue';
 import { IExpandTransition } from '@inkline/inkline/components/IExpandTransition';
-import { NavbarKey } from '@inkline/inkline';
+import { NavbarKey } from '@inkline/inkline/constants';
 import { useIsServer } from '@inkline/inkline/composables';
 
 const componentName = 'INavbarCollapsible';

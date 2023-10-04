@@ -6,7 +6,7 @@ import {
     useFormValidationError,
     useValidation
 } from '@inkline/inkline/composables';
-import { FormKey, FormGroupKey } from '@inkline/inkline';
+import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
 
 const componentName = 'IFormGroup';
 

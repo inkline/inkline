@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed, defineComponent, inject, provide } from 'vue';
-import { NavKey, NavbarKey, SidebarKey } from '@inkline/inkline';
+import { NavKey, NavbarKey, SidebarKey } from '@inkline/inkline/constants';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 
 const componentName = 'INav';

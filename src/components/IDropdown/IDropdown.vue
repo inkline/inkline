@@ -12,7 +12,7 @@ import {
     defineComponent
 } from 'vue';
 import { on, off, isFocusable, isKey } from '@grozav/utils';
-import { DropdownKey, NavbarKey, SidebarKey } from '@inkline/inkline';
+import { DropdownKey, NavbarKey, SidebarKey } from '@inkline/inkline/constants';
 import {
     useClickOutside,
     useComponentColor,
