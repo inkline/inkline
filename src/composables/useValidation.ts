@@ -133,7 +133,7 @@ export function useValidation(options: {
         }
 
         let clonedSchema = clone(schema.value);
-        clonedSchema = setValuesAlongPath(validate(clonedSchema), '', {
+        clonedSchema = update(validate(clonedSchema), {
             untouched: false,
             touched: true
         });
