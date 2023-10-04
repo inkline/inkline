@@ -2,8 +2,11 @@ import { createApp } from 'vue';
 import type { Plugin } from 'vue';
 import { createEventBus } from '@grozav/utils';
 import type { EventBus } from '@grozav/utils';
-import { InklineKey, InklineModalKey, IModalContainer, IconsPlugin } from '@inkline/inkline';
-import type { InklineService, StringOrRenderableType } from '@inkline/inkline';
+import { InklineKey, InklineModalKey } from '@inkline/inkline/constants';
+import { IModalContainer } from '@inkline/inkline/components/IModalContainer';
+import { IconsPlugin } from '@inkline/inkline/plugins/icons';
+import type { InklineService } from '@inkline/inkline/plugin';
+import type { StringOrRenderableType } from '@inkline/inkline/types';
 
 export interface ModalOptions {
     id: string;

@@ -1,8 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IProgressBar } from '@inkline/inkline/components';
-import { InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { ProgressKey } from '@inkline/inkline/components/IProgressBar/mixin';
+import { InklineKey, ProgressKey } from '@inkline/inkline';
 import { ref } from 'vue';
 
 describe('Components', () => {

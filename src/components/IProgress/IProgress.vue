@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, provide, toRef } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
-import { ProgressKey } from '@inkline/inkline/components/IProgressBar/mixin';
+import { ProgressKey } from '@inkline/inkline/constants';
 
 const componentName = 'IProgress';
 

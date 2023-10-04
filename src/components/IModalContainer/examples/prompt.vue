@@ -1,5 +1,5 @@
 <script lang="ts">
-import { FormField, useModal, useToast } from '@inkline/inkline';
+import { useModal, useToast } from '@inkline/inkline';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
@@ -9,7 +9,7 @@ export default defineComponent({
 
         async function showPrompt() {
             try {
-                const schema = await prompt({
+                const schema = (await prompt({
                     title: 'Prompt Title',
                     message: 'This prompt requires you to enter something:',
                     inputProps: {
@@ -17,11 +17,11 @@ export default defineComponent({
                     },
                     confirmButtonText: 'Submit',
                     cancelButtonText: 'Cancel'
-                });
+                })) as Record<string, Record<string, string>>;
 
                 toast.show({
                     title: 'Prompt result',
-                    message: (schema.input as FormField).value,
+                    message: schema.input.value,
                     color: 'info'
                 });
             } catch (error) {

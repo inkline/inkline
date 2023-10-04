@@ -15,7 +15,7 @@ import type {
     InklineToastOptions,
     InklineIconsPluginOptions
 } from '@inkline/inkline/plugins';
-import { InklineKey } from '@inkline/inkline';
+import { InklineKey } from '@inkline/inkline/constants';
 
 export interface InklineOptions
     extends InklineColorModeOptions,

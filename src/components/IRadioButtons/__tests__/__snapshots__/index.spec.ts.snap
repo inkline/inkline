@@ -3,23 +3,11 @@
 exports[`Components > IRadioButtons > should render correctly 1`] = `
 "<div class=\\"checkable-button-group -light -md -radio -default -light -md radio-buttons\\" name=\\"radio-buttons\\" role=\\"radiogroup\\">
   <!-- @slot default Slot for default content --><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!-- @slot loading Slot for button loading state -->
-    <!--v-if-->
-    <!-- @slot default Slot for default button content -->
-    <!-- @slot default Slot for rendering radio buttons options -->
-    <div>Option 1</div>
+    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot default Slot for rendering radio buttons options --><div>Option 1</div></span>
   </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!-- @slot loading Slot for button loading state -->
-    <!--v-if-->
-    <!-- @slot default Slot for default button content -->
-    <!-- @slot default Slot for rendering radio buttons options -->
-    <div>Option 2</div>
+    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot default Slot for rendering radio buttons options --><div>Option 2</div></span>
   </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!-- @slot loading Slot for button loading state -->
-    <!--v-if-->
-    <!-- @slot default Slot for default button content -->
-    <!-- @slot default Slot for rendering radio buttons options -->
-    <div>Option 3</div>
+    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot default Slot for rendering radio buttons options --><div>Option 3</div></span>
   </button>
 </div>"
 `;
@@ -27,23 +15,11 @@ exports[`Components > IRadioButtons > should render correctly 1`] = `
 exports[`Components > IRadioButtons > should render group variant correctly 1`] = `
 "<div class=\\"checkable-button-group -light -md -radio -group -light -md radio-buttons button-group -md -light\\" name=\\"radio-buttons\\" role=\\"group\\">
   <!-- @slot default Slot for default button group content --><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!-- @slot loading Slot for button loading state -->
-    <!--v-if-->
-    <!-- @slot default Slot for default button content -->
-    <!-- @slot default Slot for rendering radio buttons options -->
-    <div>Option 1</div>
+    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot default Slot for rendering radio buttons options --><div>Option 1</div></span>
   </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!-- @slot loading Slot for button loading state -->
-    <!--v-if-->
-    <!-- @slot default Slot for default button content -->
-    <!-- @slot default Slot for rendering radio buttons options -->
-    <div>Option 2</div>
+    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot default Slot for rendering radio buttons options --><div>Option 2</div></span>
   </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!-- @slot loading Slot for button loading state -->
-    <!--v-if-->
-    <!-- @slot default Slot for default button content -->
-    <!-- @slot default Slot for rendering radio buttons options -->
-    <div>Option 3</div>
+    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot default Slot for rendering radio buttons options --><div>Option 3</div></span>
   </button>
 </div>"
 `;

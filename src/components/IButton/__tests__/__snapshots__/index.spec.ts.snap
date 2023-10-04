@@ -2,8 +2,7 @@
 
 exports[`Components > IButton > should render correctly 1`] = `
 "<button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-  <!-- @slot loading Slot for button loading state -->
   <!--v-if-->
-  <!-- @slot default Slot for default button content -->
+  <!--v-if-->
 </button>"
 `;

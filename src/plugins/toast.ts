@@ -2,8 +2,11 @@ import { createApp } from 'vue';
 import type { Plugin } from 'vue';
 import { createEventBus } from '@grozav/utils';
 import type { EventBus } from '@grozav/utils';
-import { InklineKey, InklineToastKey, IToastContainer, IconsPlugin } from '@inkline/inkline';
-import type { InklineService, StringOrRenderableType } from '@inkline/inkline';
+import { InklineKey, InklineToastKey } from '@inkline/inkline/constants';
+import { IToastContainer } from '@inkline/inkline/components/IToastContainer';
+import { IconsPlugin } from '@inkline/inkline/plugins';
+import type { InklineService } from '@inkline/inkline/plugin';
+import type { StringOrRenderableType } from '@inkline/inkline/types';
 
 export type ToastPosition =
     | 'top-left'

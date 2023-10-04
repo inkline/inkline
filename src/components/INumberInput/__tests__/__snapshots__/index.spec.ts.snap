@@ -4,9 +4,7 @@ exports[`Components > INumberInput > should render correctly 1`] = `
 "<div class=\\"input-wrapper -light -md -prepended -appended\\">
   <div class=\\"input-prepend\\">
     <!-- @slot prepend Slot for the input prepend content --><button class=\\"input-button-decrease button -light -md\\" type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\">
-      <!-- @slot loading Slot for button loading state -->
-      <!--v-if-->
-      <!-- @slot default Slot for default button content --> -
+      <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --> - </span>
     </button>
   </div>
   <div class=\\"input\\">
@@ -15,9 +13,7 @@ exports[`Components > INumberInput > should render correctly 1`] = `
   </div>
   <div class=\\"input-append\\">
     <!-- @slot append Slot for the input append content --><button class=\\"input-button-increase button -light -md\\" type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\">
-      <!-- @slot loading Slot for button loading state -->
-      <!--v-if-->
-      <!-- @slot default Slot for default button content --> +
+      <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --> + </span>
     </button>
   </div>
 </div>"
