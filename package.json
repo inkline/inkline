@@ -308,10 +308,10 @@
             "import": "./components/ICheckboxButtons/manifest.mjs",
             "types": "./components/ICheckboxButtons/manifest.d.ts"
         },
-        "./components/ICheckboxButtons/mixins": {
-            "require": "./components/ICheckboxButtons/mixins.js",
-            "import": "./components/ICheckboxButtons/mixins.mjs",
-            "types": "./components/ICheckboxButtons/mixins.d.ts"
+        "./components/ICheckboxButtons/mixin": {
+            "require": "./components/ICheckboxButtons/mixin.js",
+            "import": "./components/ICheckboxButtons/mixin.mjs",
+            "types": "./components/ICheckboxButtons/mixin.d.ts"
         },
         "./components/ICheckboxGroup": {
             "require": "./components/ICheckboxGroup/index.js",
@@ -878,10 +878,10 @@
             "import": "./components/IRadioButtons/manifest.mjs",
             "types": "./components/IRadioButtons/manifest.d.ts"
         },
-        "./components/IRadioButtons/mixins": {
-            "require": "./components/IRadioButtons/mixins.js",
-            "import": "./components/IRadioButtons/mixins.mjs",
-            "types": "./components/IRadioButtons/mixins.d.ts"
+        "./components/IRadioButtons/mixin": {
+            "require": "./components/IRadioButtons/mixin.js",
+            "import": "./components/IRadioButtons/mixin.mjs",
+            "types": "./components/IRadioButtons/mixin.d.ts"
         },
         "./components/IRadioGroup": {
             "require": "./components/IRadioGroup/index.js",
@@ -1103,10 +1103,10 @@
             "import": "./components/utils/ICheckableButtonGroup/index.mjs",
             "types": "./components/utils/ICheckableButtonGroup/index.d.ts"
         },
-        "./components/utils/ICheckableButtonGroup/mixins": {
-            "require": "./components/utils/ICheckableButtonGroup/mixins.js",
-            "import": "./components/utils/ICheckableButtonGroup/mixins.mjs",
-            "types": "./components/utils/ICheckableButtonGroup/mixins.d.ts"
+        "./components/utils/ICheckableButtonGroup/mixin": {
+            "require": "./components/utils/ICheckableButtonGroup/mixin.js",
+            "import": "./components/utils/ICheckableButtonGroup/mixin.mjs",
+            "types": "./components/utils/ICheckableButtonGroup/mixin.d.ts"
         },
         "./components/utils/IRenderResolver": {
             "require": "./components/utils/IRenderResolver/index.js",
