@@ -4,9 +4,8 @@ exports[`Components > IDropdown > should render correctly 1`] = `
 "<div class=\\"dropdown-wrapper\\" aria-haspopup=\\"true\\">
   <div class=\\"dropdown-trigger\\">
     <!-- @slot default Slot for dropdown trigger --><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-      <!-- @slot loading Slot for button loading state -->
       <!--v-if-->
-      <!-- @slot default Slot for default button content -->
+      <!--v-if-->
     </button>
   </div>
   <transition-stub name=\\"zoom-in-top-transition\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">

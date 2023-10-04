@@ -1,9 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { ISelect } from '@inkline/inkline/components';
-import { keymap } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 import { ref } from 'vue';
-import { InklineKey, FormKey } from '@inkline/inkline';
+import { ISelect, InklineKey, FormKey, keymap } from '@inkline/inkline';
 
 describe('Components', () => {
     describe('ISelect', () => {

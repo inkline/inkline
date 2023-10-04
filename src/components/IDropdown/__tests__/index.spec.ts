@@ -1,8 +1,15 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { IButton, IDropdown, IDropdownDivider, IDropdownItem } from '@inkline/inkline/components';
-import { keymap, InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { NavbarKey, SidebarKey } from '@inkline/inkline';
+import {
+    IButton,
+    IDropdown,
+    IDropdownDivider,
+    IDropdownItem,
+    NavbarKey,
+    SidebarKey,
+    InklineKey,
+    keymap
+} from '@inkline/inkline';
 
 describe('Components', () => {
     describe('IDropdown', () => {

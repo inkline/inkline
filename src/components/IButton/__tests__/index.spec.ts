@@ -1,9 +1,7 @@
 import { render } from '@testing-library/vue';
-import { IButton } from '@inkline/inkline/components/IButton';
 import { ref } from 'vue';
-import { InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { ButtonGroupKey, FormGroupKey, FormKey } from '@inkline/inkline';
+import { IButton, InklineKey, ButtonGroupKey, FormGroupKey, FormKey } from '@inkline/inkline';
 
 describe('Components', () => {
     describe('IButton', () => {

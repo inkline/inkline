@@ -1,10 +1,14 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { IButton, IButtonGroup, ICheckboxButtons } from '@inkline/inkline/components';
-import { InklineKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { FormKey } from '@inkline/inkline';
+import {
+    IButton,
+    IButtonGroup,
+    ICheckboxButtons,
+    InklineKey,
+    FormKey,
+    IRenderResolver
+} from '@inkline/inkline';
 import { ref } from 'vue';
-import { IRenderResolver } from '@inkline/inkline/components/utils';
 
 describe('Components', () => {
     describe('ICheckboxButtons', () => {

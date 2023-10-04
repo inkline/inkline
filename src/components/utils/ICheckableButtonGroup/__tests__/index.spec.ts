@@ -1,7 +1,5 @@
 import { render } from '@testing-library/vue';
-import { ICheckableButtonGroup } from '@inkline/inkline/components/utils';
-import { IButton } from '@inkline/inkline/components/IButton';
-import { InklineKey } from '@inkline/inkline/constants';
+import { ICheckableButtonGroup, IButton, InklineKey } from '@inkline/inkline';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 
 describe('Components', () => {

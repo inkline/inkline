@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { INav, INavItem } from '@inkline/inkline/components';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { InklineKey, NavbarKey, SidebarKey } from '@inkline/inkline';
+import { INav, INavItem, InklineKey, NavbarKey, SidebarKey } from '@inkline/inkline';
 
 describe('Components', () => {
     describe('INav', () => {

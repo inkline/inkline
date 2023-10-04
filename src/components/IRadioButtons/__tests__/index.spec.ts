@@ -1,9 +1,14 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { IButton, IButtonGroup, IRadioButtons } from '@inkline/inkline/components';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { InklineKey, FormKey } from '@inkline/inkline';
+import {
+    IButton,
+    IButtonGroup,
+    IRadioButtons,
+    IRenderResolver,
+    InklineKey,
+    FormKey
+} from '@inkline/inkline';
 import { ref } from 'vue';
-import { IRenderResolver } from '@inkline/inkline/components/utils';
 
 describe('Components', () => {
     describe('IRadioButtons', () => {

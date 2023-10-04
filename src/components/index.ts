@@ -62,3 +62,4 @@ export * from '@inkline/inkline/components/IToast';
 export * from '@inkline/inkline/components/IToastContainer';
 export * from '@inkline/inkline/components/IToggle';
 export * from '@inkline/inkline/components/ITooltip';
+export * from '@inkline/inkline/components/utils';

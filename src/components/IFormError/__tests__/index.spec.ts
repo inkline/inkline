@@ -1,7 +1,6 @@
 import { render } from '@testing-library/vue';
-import { IFormError } from '@inkline/inkline/components';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { InklineKey, FormKey } from '@inkline/inkline';
+import { IFormError, InklineKey, FormKey } from '@inkline/inkline';
 import { ref } from 'vue';
 
 describe('Components', () => {

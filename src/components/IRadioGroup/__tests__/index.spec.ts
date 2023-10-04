@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { IRadio, IRadioGroup } from '@inkline/inkline/components';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { InklineKey, FormKey } from '@inkline/inkline';
+import { IRadio, IRadioGroup, InklineKey, FormKey } from '@inkline/inkline';
 import { ref } from 'vue';
 
 describe('Components', () => {

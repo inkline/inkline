@@ -1,8 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { IToggle } from '@inkline/inkline/components';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 import { ref } from 'vue';
-import { InklineKey, FormKey } from '@inkline/inkline';
+import { IToggle, InklineKey, FormKey } from '@inkline/inkline';
 
 describe('Components', () => {
     describe('IToggle', () => {
