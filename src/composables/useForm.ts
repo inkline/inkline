@@ -25,6 +25,11 @@ export interface FormGroup extends FormState {
     [key: string]: FormField | FormField[] | FormGroup | boolean;
 }
 
-export function useForm<T>(schema: T) {
-    return ref(initialize(schema));
+export function useForm<T>(schemaDefinition: T) {
+    const initializedSchema = initialize(schemaDefinition);
+    const schema = ref(initializedSchema);
+
+    return {
+        schema
+    };
 }
