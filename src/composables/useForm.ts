@@ -1,35 +1,16 @@
-import { ref } from 'vue';
-import { initialize } from '@inkline/inkline/validation';
+import { computed, ref } from 'vue';
+import { initializeSchema, serializeSchema, validateSchema } from '@inkline/inkline/validation';
 
-export interface FormFieldValidator {
-    name: string;
-    [key: string]: any;
-}
+export function useForm<T>(formDefinition: T) {
+    const schema = ref(initializeSchema(formDefinition));
+    const form = computed(() => serializeSchema(schema.value));
 
-export interface FormState {
-    valid: boolean;
-    invalid: boolean;
-    untouched: boolean;
-    touched: boolean;
-    pristine: boolean;
-    dirty: boolean;
-}
-
-export interface FormField extends FormState {
-    value: any;
-    errors: any;
-    validators: Array<string | FormFieldValidator>;
-}
-
-export interface FormGroup extends FormState {
-    [key: string]: FormField | FormField[] | FormGroup | boolean;
-}
-
-export function useForm<T>(schemaDefinition: T) {
-    const initializedSchema = initialize(schemaDefinition);
-    const schema = ref(initializedSchema);
+    function validate() {
+        schema.value = validateSchema(schema.value);
+    }
 
     return {
-        schema
+        schema,
+        validate
     };
 }

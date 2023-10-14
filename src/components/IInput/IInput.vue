@@ -187,7 +187,7 @@ export default defineComponent({
          * Enable input validation using schema
          * @type Boolean
          * @default true
-         * @name validate
+         * @name validateSchema
          */
         validate: {
             type: Boolean,

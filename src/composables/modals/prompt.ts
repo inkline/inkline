@@ -7,7 +7,7 @@ import { uid } from '@grozav/utils';
 import { computed, defineComponent, h, markRaw, ref, VNode } from 'vue';
 import { useModalBuilder } from '@inkline/inkline/composables/modals/builder';
 import { useForm } from '@inkline/inkline/composables';
-import { validate } from '@inkline/inkline/validation';
+import { validateSchema } from '@inkline/inkline/validation';
 import { IForm } from '@inkline/inkline/components/IForm';
 import { IFormGroup } from '@inkline/inkline/components/IFormGroup';
 import { IFormError } from '@inkline/inkline/components/IFormError';
@@ -98,7 +98,7 @@ export function usePrompt() {
                                             IButton,
                                             {
                                                 onClick: () => {
-                                                    schema.value = validate(schema.value);
+                                                    schema.value = validateSchema(schema.value);
 
                                                     if (schema.value.valid) {
                                                         modalService.hide({ id });

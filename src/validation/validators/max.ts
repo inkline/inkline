@@ -1,9 +1,11 @@
-export function max(value: any, options: any = { value: 0 }): boolean {
+import { FormValue } from '@inkline/inkline/types';
+
+export function max(value: FormValue, options: any = { value: 0 }): boolean {
     if (value === undefined || value === null) {
         return false;
     }
 
-    const process = (v: any) => Number(v);
+    const process = (v: FormValue) => Number(v);
 
     if (Array.isArray(value)) {
         return value.every((v) => process(v) <= options.value);

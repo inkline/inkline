@@ -1,6 +1,6 @@
 import { Plugin, reactive } from 'vue';
 import { addClass } from '@grozav/utils';
-import { initialize as initializeForm } from '@inkline/inkline/validation';
+import { initializeSchema as initializeForm } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
 import {
     ColorModePlugin,

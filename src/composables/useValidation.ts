@@ -1,7 +1,7 @@
 import { clone, getValueByPath, setValueByPath, setValuesAlongPath } from '@grozav/utils';
 import { computed, inject, Ref, ref, unref, watch } from 'vue';
 import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
-import { validate } from '@inkline/inkline/validation';
+import { setSchemaStateRecursively, validateSchema } from '@inkline/inkline/validation';
 import { useInkline } from '@inkline/inkline/composables/useInkline';
 
 export function useValidation(options: {
@@ -80,7 +80,7 @@ export function useValidation(options: {
         });
 
         if (shouldValidate(targetSchema, 'input')) {
-            clonedSchema = validate(clonedSchema);
+            clonedSchema = validateSchema(clonedSchema);
         }
 
         schema.value = clonedSchema;
@@ -114,7 +114,7 @@ export function useValidation(options: {
         });
 
         if (shouldValidate(targetSchema, event.type)) {
-            clonedSchema = validate(clonedSchema);
+            clonedSchema = validateSchema(clonedSchema);
         }
 
         schema.value = clonedSchema;
@@ -133,7 +133,8 @@ export function useValidation(options: {
         }
 
         let clonedSchema = clone(schema.value);
-        clonedSchema = update(validate(clonedSchema), {
+        clonedSchema = validateSchema(clonedSchema);
+        clonedSchema = setSchemaStateRecursively(clonedSchema, {
             untouched: false,
             touched: true
         });
