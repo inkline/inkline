@@ -97,8 +97,10 @@ export function usePrompt() {
                                         h(
                                             IButton,
                                             {
-                                                onClick: () => {
-                                                    schema.value = validateSchema(schema.value);
+                                                onClick: async () => {
+                                                    schema.value = await validateSchema(
+                                                        schema.value
+                                                    );
 
                                                     if (schema.value.valid) {
                                                         modalService.hide({ id });

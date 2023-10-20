@@ -301,6 +301,7 @@ describe('Components', () => {
                         {
                             input: {
                                 value: '',
+                                errors: [],
                                 invalid: false,
                                 valid: true,
                                 touched: true,

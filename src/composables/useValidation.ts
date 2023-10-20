@@ -59,32 +59,32 @@ export function useValidation(options: {
      * @param name
      * @param value
      */
-    function setValue(name: string, value: any) {
+    async function setValue(name: string, value: any) {
         if (!options.validate?.value) {
             return;
         }
 
-        let clonedSchema = clone(schema.value);
+        let resolvedSchema = clone(schema.value);
 
-        const targetSchema = getValueByPath(clonedSchema, name);
+        const targetSchema = getValueByPath(resolvedSchema, name);
         if (!targetSchema) {
             throw new Error(
                 'Schema to be validated not found. Did you forget to match the schema key to the input "name" prop?'
             );
         }
 
-        clonedSchema = setValueByPath(clonedSchema, `${name}.value`, value);
-        clonedSchema = setValuesAlongPath(clonedSchema, name, {
+        resolvedSchema = setValueByPath(resolvedSchema, `${name}.value`, value);
+        resolvedSchema = setValuesAlongPath(resolvedSchema, name, {
             pristine: false,
             dirty: true
         });
 
         if (shouldValidate(targetSchema, 'input')) {
-            clonedSchema = validateSchema(clonedSchema);
+            resolvedSchema = await validateSchema(resolvedSchema);
         }
 
-        schema.value = clonedSchema;
-        options.onUpdate?.(clonedSchema);
+        schema.value = resolvedSchema;
+        options.onUpdate?.(resolvedSchema);
     }
 
     /**
@@ -94,31 +94,31 @@ export function useValidation(options: {
      * @param name
      * @param event
      */
-    function setTouched(name: string, event: Event) {
+    async function setTouched(name: string, event: Event) {
         if (!options.validate?.value) {
             return;
         }
 
-        let clonedSchema = clone(schema.value);
+        let resolvedSchema = clone(schema.value);
 
-        const targetSchema = getValueByPath(clonedSchema, name);
+        const targetSchema = getValueByPath(resolvedSchema, name);
         if (!targetSchema) {
             throw new Error(
                 'Schema to be validated not found. Did you forget to match the schema key to the input "name" prop?'
             );
         }
 
-        clonedSchema = setValuesAlongPath(clonedSchema, name, {
+        resolvedSchema = setValuesAlongPath(resolvedSchema, name, {
             untouched: false,
             touched: true
         });
 
         if (shouldValidate(targetSchema, event.type)) {
-            clonedSchema = validateSchema(clonedSchema);
+            resolvedSchema = await validateSchema(resolvedSchema);
         }
 
-        schema.value = clonedSchema;
-        options.onUpdate?.(clonedSchema);
+        schema.value = resolvedSchema;
+        options.onUpdate?.(resolvedSchema);
     }
 
     /**
@@ -127,24 +127,24 @@ export function useValidation(options: {
      *
      * @param event
      */
-    function onSubmit(event: SubmitEvent) {
+    async function onSubmit(event: SubmitEvent) {
         if (!options.validate?.value) {
             return;
         }
 
-        let clonedSchema = clone(schema.value);
-        clonedSchema = validateSchema(clonedSchema);
-        clonedSchema = setSchemaStateRecursively(clonedSchema, {
+        let resolvedSchema = await validateSchema(schema.value);
+
+        resolvedSchema = setSchemaStateRecursively(resolvedSchema, {
             untouched: false,
             touched: true
         });
 
-        if (clonedSchema.valid) {
+        if (resolvedSchema.valid) {
             options.onSubmit?.(event);
         }
 
-        schema.value = clonedSchema;
-        options.onUpdate?.(clonedSchema);
+        schema.value = resolvedSchema;
+        options.onUpdate?.(resolvedSchema);
     }
 
     /**
@@ -154,7 +154,7 @@ export function useValidation(options: {
      * @param nameRef
      * @param value
      */
-    function onInput(nameRef: Ref<string>, value: any) {
+    async function onInput(nameRef: Ref<string>, value: any) {
         const name = unref(nameRef);
 
         if (!options.validate?.value) {
@@ -166,7 +166,7 @@ export function useValidation(options: {
         } else if (form) {
             form.onInput(name, value);
         } else if (options.schema?.value) {
-            setValue(name, value);
+            await setValue(name, value);
         }
     }
 

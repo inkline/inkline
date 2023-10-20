@@ -159,9 +159,9 @@ export default defineComponent({
             '-error': hasError.value
         }));
 
-        function onSubmit(event: SubmitEvent) {
+        async function onSubmit(event: SubmitEvent) {
             if (props.modelValue) {
-                schemaOnSubmit(event);
+                await schemaOnSubmit(event);
             } else {
                 emit('submit', event);
             }

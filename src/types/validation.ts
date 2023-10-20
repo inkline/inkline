@@ -22,17 +22,19 @@ export interface FormValidator {
 
 export type FormField<V> = {
     value?: V;
-    validators?: FormValidator[];
+    validators?: Array<FormValidator | string>;
 };
 
-export type Form = Record<string, FormValue>;
+export type Form = Record<string, any>;
 
-export type FormSchema<T = Form> = {
+export type FormSchema<T extends Form> = {
     [K in keyof T]: T[K] extends infer U
         ? U extends Array<infer V>
-            ? V extends object
-                ? FormSchema<U[number]>[]
-                : FormField<U[number]>[]
+            ? U extends FormField<V[]>
+                ? FormField<V[]>
+                : V extends object
+                ? FormSchema<V>[]
+                : FormField<U[number]>[] | FormField<U>
             : U extends object
             ? FormSchema<U>
             : FormField<U>
@@ -59,16 +61,18 @@ export interface FormState {
     errors: FormError[];
 }
 
-export type ResolvedFormField<V> = FormField<V> & FormState;
+// export type ResolvedFormField<V> = FormField<V> & FormState;
+export type ResolvedFormField<V> = {
+    value: V;
+    validators: Array<FormValidator | string>;
+} & FormState;
 
-export type ResolvedFormSchema<T> = {
-    [K in keyof T]: T[K] extends infer U
-        ? U extends Array<infer V>
-            ? V extends object
-                ? ResolvedFormSchema<U[number]>[]
-                : ResolvedFormField<U[number]>[]
-            : U extends object
-            ? ResolvedFormSchema<U>
-            : ResolvedFormField<U>
-        : never;
+export type ResolvedFormSchema<T extends Form> = {
+    [K in keyof T]: T[K] extends Array<infer V>
+        ? V extends object
+            ? ResolvedFormSchema<V>[]
+            : ResolvedFormField<T[K][number]>[]
+        : T[K] extends object
+        ? ResolvedFormSchema<T[K]>
+        : ResolvedFormField<T[K]>;
 } & FormState;

@@ -1,6 +1,6 @@
-import { FormField, ReservedFormKeys, ResolvedFormSchemaState } from '@inkline/inkline/types';
+import { FormField, ReservedFormKeys, FormState } from '@inkline/inkline/types';
 
-export const defaultValidationStateValues: ResolvedFormSchemaState = {
+export const defaultValidationStateValues: FormState = {
     pristine: true,
     dirty: false,
     untouched: true,
@@ -11,7 +11,7 @@ export const defaultValidationStateValues: ResolvedFormSchemaState = {
 };
 
 export const defaultValidationFieldValues: FormField<string> = {
-    value: '',
+    value: undefined,
     validators: []
 };
 
