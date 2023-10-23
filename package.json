@@ -7,7 +7,7 @@
         "dev": "npm run storybook",
         "prebuild": "ts-node ./scripts/prebuild.ts",
         "build": "run-p build:*",
-        "build:tsc": "vue-tsc --allowJs --noEmit",
+        "build:tsc": "NODE_OPTIONS='--max-old-space-size=8192' vue-tsc --allowJs --noEmit",
         "build:unbuild": "unbuild",
         "build:vite": "vite build",
         "postbuild": "ts-node ./scripts/postbuild.ts",

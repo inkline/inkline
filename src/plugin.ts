@@ -16,7 +16,7 @@ import type {
     InklineIconsPluginOptions
 } from '@inkline/inkline/plugins';
 import { InklineKey } from '@inkline/inkline/constants';
-import { Form } from '@inkline/inkline/types';
+import { Form, FormSchema } from '@inkline/inkline/types';
 
 export interface InklineOptions
     extends InklineColorModeOptions,
@@ -52,7 +52,7 @@ export function createInklineService({
     ...options
 }: InklinePluginOptions): InklineService {
     return {
-        form<T extends Form>(schema) {
+        form<T extends Form = Form>(schema: FormSchema<T>) {
             return createSchema<T>(schema);
         },
         setLocale(locale) {

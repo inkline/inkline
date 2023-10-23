@@ -11,7 +11,7 @@ import {
     required,
     sameAs
 } from '@inkline/inkline/validation/validators';
-import { FormValue } from '@inkline/inkline';
+import { FormValidatorFn, FormValue } from '@inkline/inkline';
 
 export const validators: {
     [key: string]: (value: FormValue, options: any) => boolean;
@@ -29,10 +29,7 @@ export const validators: {
     sameAs
 };
 
-export function registerValidator(
-    name: string,
-    validator: (value: FormValue, options: any) => boolean
-): void {
+export function registerValidator(name: string, validator: FormValidatorFn): void {
     validators[name] = validator;
 }
 

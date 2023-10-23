@@ -4,34 +4,40 @@ import { translate } from '@inkline/inkline/i18n';
 import {
     FormValidator,
     ResolvedFormSchema,
-    ResolvedFormSchemaField,
+    ResolvedFormField,
     FormError,
     Form,
     isFormFieldArray,
     isFormGroupArray,
     isFormField,
-    isFormGroup
+    isFormGroup,
+    FormValue,
+    FormSchema,
+    FormField
 } from '@inkline/inkline/types';
 
 /**
  * Apply validators to the form input schema and set the value for the valid and invalid fields
  *
- * @param schema { ResolvedFormSchemaField<T> }
+ * @param schema { FormField<T> }
  * @param path { string }
- * @returns { ResolvedFormSchemaField<T> }
+ * @returns { FormField<T> }
  */
-export function validateFormField<T>(schema: ResolvedFormSchemaField<T>, path = '') {
+export function validateFormField<T = FormValue>(schema: FormField<T>, path = '') {
     const errors: FormError[] = [];
     const resolvedSchema = {
         ...schema
-    };
+    } as ResolvedFormField<T>;
 
     const valid = (schema.validators || []).reduce(
         (acc: boolean, rawValidator: FormValidator | string) => {
             const validator =
                 typeof rawValidator === 'string' ? { name: rawValidator } : rawValidator;
 
-            const validationResult = validators[validator.name](schema.value, validator);
+            const validationResult = validators[validator.name](
+                schema.value as FormValue,
+                validator
+            );
 
             if (!validationResult) {
                 const { name, message, ...params } = validator;
@@ -63,19 +69,22 @@ export function validateFormField<T>(schema: ResolvedFormSchemaField<T>, path = 
 /**
  * Recursively validate form fields and compute valid and invalid status using depth first traversal
  *
- * @param schema { ResolvedFormSchema<T> }
+ * @param schema { FormSchema<T> }
  * @param name { string }
- * @returns { ResolvedFormSchema<T> }
+ * @returns { FormSchema<T> }
  */
-export function validateForm<T extends Form>(schema: ResolvedFormSchema<T>, name = '') {
+export function validateForm<T extends Form = Form>(
+    schema: FormSchema<T> | ResolvedFormSchema<T>,
+    name = ''
+) {
     const resolvedSchema = {
         ...schema
-    };
+    } as ResolvedFormSchema<T>;
 
-    const valid = Object.keys(resolvedSchema)
+    const valid = Object.keys(schema)
         .filter((key) => !reservedValidationFields.includes(key))
-        .reduce((acc, key: keyof typeof resolvedSchema) => {
-            const field = resolvedSchema[key];
+        .reduce((acc, key: keyof T) => {
+            const field = resolvedSchema[key] as ResolvedFormSchema<T[keyof T]>;
 
             if (isFormFieldArray(field)) {
                 resolvedSchema[key] = field.map((item, index) => {
@@ -83,27 +92,27 @@ export function validateForm<T extends Form>(schema: ResolvedFormSchema<T>, name
                         item,
                         name ? `${name}.${index}.${key as string}` : `${index}.${key as string}`
                     );
-                });
+                }) as unknown as ResolvedFormSchema<T>[keyof T];
             } else if (isFormGroupArray(field)) {
                 resolvedSchema[key] = field.map((item, index) => {
                     return validateForm<T[keyof T]>(
                         item,
                         name ? `${name}.${index}.${key as string}` : `${index}.${key as string}`
                     );
-                });
+                }) as ResolvedFormSchema<T>[keyof T];
             } else if (isFormField(field)) {
                 resolvedSchema[key] = validateFormField<T[keyof T]>(
                     field,
                     name ? `${name}.${key as string}` : (key as string)
-                );
+                ) as ResolvedFormSchema<T>[keyof T];
             } else if (isFormGroup(field)) {
                 resolvedSchema[key] = validateForm<T[keyof T]>(
-                    field,
+                    field as FormSchema<T[keyof T]>,
                     name ? `${name}.${key as string}` : (key as string)
-                );
+                ) as ResolvedFormSchema<T>[keyof T];
             }
 
-            return acc && resolvedSchema[key].valid;
+            return acc && (field as ResolvedFormField<T[keyof T]>).valid;
         }, true);
 
     resolvedSchema.valid = valid;
@@ -115,9 +124,11 @@ export function validateForm<T extends Form>(schema: ResolvedFormSchema<T>, name
 /**
  * Alias for validateFormGroup
  *
- * @param schema { ResolvedFormSchema }
- * @returns { ResolvedFormSchema }
+ * @param schema { FormSchema }
+ * @returns { FormSchema }
  */
-export async function validateSchema<T extends Form>(schema: ResolvedFormSchema<T>) {
+export async function validateSchema<T extends Form = Form>(
+    schema: FormSchema<T> | ResolvedFormSchema<T>
+) {
     return validateForm<T>(schema);
 }

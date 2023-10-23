@@ -1,8 +1,11 @@
 <script lang="ts" setup>
 import { useForm } from '@inkline/inkline/composables';
 import { computed } from 'vue';
+import { createFormFieldSchema } from '@inkline/inkline';
 
-const schema = useForm({
+const { schema } = useForm<{
+    group: string[];
+}>({
     group: [
         {
             validators: [{ name: 'required' }]
@@ -18,7 +21,7 @@ const prettySchema = computed(() => {
 });
 
 function addField() {
-    const { value: newField } = useForm({
+    const newField = createFormFieldSchema({
         value: 'Added Field',
         validators: [{ name: 'required' }]
     });
@@ -31,7 +34,7 @@ function removeField() {
 }
 
 function replaceField() {
-    const { value: newField } = useForm({
+    const newField = createFormFieldSchema({
         value: 'Spliced Field',
         validators: [{ name: 'required' }]
     });

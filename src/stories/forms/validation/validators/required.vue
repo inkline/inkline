@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { useForm } from '@inkline/inkline/composables';
 
-const form = useForm({
+const { schema } = useForm({
     input: {
         validators: [{ name: 'required' }]
     }
 });
 </script>
 <template>
-    <IForm v-model="form">
+    <IForm v-model="schema">
         <IFormGroup>
             <IInput name="input" placeholder="This field is required" />
             <IFormError for="input" />

@@ -13,7 +13,11 @@ export type ReservedFormFieldKeys = 'value' | 'validators';
 export type ReservedFormKeys = ReservedFormFieldKeys | ReservedFormStateKeys | 'errors';
 export type AllowedFormKeys = Exclude<string, ReservedFormKeys>;
 
+export type ValidateOnEvent = 'blur' | 'change' | 'input' | 'submit';
+
 export type FormValue = FormValue[] | object | string | number | boolean | null | undefined;
+
+export type FormValidatorFn = (value: FormValue, options?: Record<string, any>) => boolean;
 
 export interface FormValidator {
     name: string;
@@ -22,6 +26,7 @@ export interface FormValidator {
 
 export type FormField<V> = {
     value?: V;
+    validateOn?: ValidateOnEvent;
     validators?: Array<FormValidator | string>;
 };
 
@@ -61,7 +66,6 @@ export interface FormState {
     errors: FormError[];
 }
 
-// export type ResolvedFormField<V> = FormField<V> & FormState;
 export type ResolvedFormField<V> = {
     value: V;
     validators: Array<FormValidator | string>;

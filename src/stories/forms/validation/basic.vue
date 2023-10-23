@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 import { useForm } from '@inkline/inkline/composables';
-import { validateSchema } from '@inkline/inkline/validation';
 
-const schema = useForm<{
+const { schema, validate } = useForm<{
     input: string;
     numberInput: number;
     textarea: string;
@@ -58,7 +57,7 @@ const prettySchema = computed(() => {
 async function onSubmit() {
     loading.value = true;
 
-    schema.value = await validateSchema(schema.value);
+    await validate();
 
     setTimeout(() => {
         loading.value = false;

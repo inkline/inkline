@@ -1,13 +1,16 @@
 <script lang="ts" setup>
 import { useForm } from '@inkline/inkline/composables';
 
-const form = useForm({
+const { schema } = useForm<{
+    username: string;
+    password: string;
+}>({
     username: {},
     password: {}
 });
 </script>
 <template>
-    <IForm v-model="form">
+    <IForm v-model="schema">
         <IFormGroup>
             <IFormLabel>Username</IFormLabel>
             <IInput name="username" placeholder="Enter a username.." />
@@ -18,5 +21,5 @@ const form = useForm({
         </IFormGroup>
     </IForm>
 
-    <pre class="_margin-top:2 _text:muted">{{ form }}</pre>
+    <pre class="_margin-top:2 _text:muted">{{ schema }}</pre>
 </template>

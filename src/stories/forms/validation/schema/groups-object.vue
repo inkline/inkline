@@ -2,7 +2,12 @@
 import { useForm } from '@inkline/inkline/composables';
 import { computed } from 'vue';
 
-const schema = useForm({
+const { schema } = useForm<{
+    group: {
+        input1: string;
+        input2: string;
+    };
+}>({
     group: {
         input1: {
             validators: [{ name: 'required' }]

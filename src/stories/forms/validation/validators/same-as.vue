@@ -1,17 +1,17 @@
 <script lang="ts" setup>
 import { useForm } from '@inkline/inkline/composables';
 
-const form = useForm({
+const { schema } = useForm({
     password: {
         validators: [{ name: 'required' }]
     },
     passwordConfirmation: {
-        validators: [{ name: 'sameAs', target: 'password', schema: () => form.value }]
+        validators: [{ name: 'sameAs', target: 'password', schema: () => schema.value }]
     }
 });
 </script>
 <template>
-    <IForm v-model="form">
+    <IForm v-model="schema">
         <IFormGroup>
             <IInput type="password" name="password" placeholder="Enter your password" />
             <IFormError for="password" />
