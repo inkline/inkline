@@ -29,13 +29,13 @@ export function validateFormField<T = FormValue>(schema: FormField<T>, path = ''
         ...schema
     } as ResolvedFormField<T>;
 
-    const valid = (schema.validators || []).reduce(
+    const valid = (resolvedSchema.validators || []).reduce(
         (acc: boolean, rawValidator: FormValidator | string) => {
             const validator =
                 typeof rawValidator === 'string' ? { name: rawValidator } : rawValidator;
 
             const validationResult = validators[validator.name](
-                schema.value as FormValue,
+                resolvedSchema.value as FormValue,
                 validator
             );
 
@@ -81,7 +81,7 @@ export function validateForm<T extends Form = Form>(
         ...schema
     } as ResolvedFormSchema<T>;
 
-    const valid = Object.keys(schema)
+    const valid = Object.keys(resolvedSchema)
         .filter((key) => !reservedValidationFields.includes(key))
         .reduce((acc, key: keyof T) => {
             const field = resolvedSchema[key] as ResolvedFormSchema<T[keyof T]>;
@@ -112,7 +112,7 @@ export function validateForm<T extends Form = Form>(
                 ) as ResolvedFormSchema<T>[keyof T];
             }
 
-            return acc && (field as ResolvedFormField<T[keyof T]>).valid;
+            return acc && (resolvedSchema[key] as ResolvedFormField<T[keyof T]>).valid;
         }, true);
 
     resolvedSchema.valid = valid;
