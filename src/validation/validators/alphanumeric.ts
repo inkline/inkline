@@ -1,8 +1,9 @@
 import { alphanumeric as validators } from '@inkline/inkline/validation/validators/constants';
+import { FormValue } from '@inkline/inkline/types';
 
-export function alphanumeric(rawValue: any, options: any = {}): boolean {
+export function alphanumeric(rawValue: FormValue, options: any = {}): boolean {
     const locale = options.locale || 'en-US';
-    const process = (v: any) => {
+    const process = (v: FormValue) => {
         let value = String(v);
 
         if (options.allowDashes) {
@@ -15,7 +16,7 @@ export function alphanumeric(rawValue: any, options: any = {}): boolean {
         return value;
     };
 
-    if (rawValue.constructor === Array) {
+    if (rawValue?.constructor === Array) {
         return rawValue.every((v) => validators[locale].test(process(v)));
     }
 

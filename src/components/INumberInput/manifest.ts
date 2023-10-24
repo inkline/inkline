@@ -112,7 +112,7 @@ export const manifest: ComponentManifest = {
             description: 'The aria-label of the clear button'
         },
         {
-            name: 'validate',
+            name: 'validateSchema',
             type: ['Boolean'],
             default: 'true',
             description: 'Enable input validation using schema'

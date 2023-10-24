@@ -1,4 +1,6 @@
-export function minLength(value: any, options: any = { value: 0 }): boolean {
+import { FormValue } from '@inkline/inkline/types';
+
+export function minLength(value: FormValue, options: any = { value: 0 }): boolean {
     if (value === undefined || value === null) {
         return false;
     }

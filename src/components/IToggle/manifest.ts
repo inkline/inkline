@@ -70,7 +70,7 @@ export const manifest: ComponentManifest = {
             description: 'The tabindex of the checkbox'
         },
         {
-            name: 'validate',
+            name: 'validateSchema',
             type: ['Boolean'],
             default: 'true',
             description: 'Enable toggle validation using schema'

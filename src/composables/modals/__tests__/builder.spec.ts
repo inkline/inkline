@@ -3,6 +3,7 @@ import { defineComponent, h } from 'vue';
 import { fireEvent, render } from '@testing-library/vue';
 import { useModalBuilder } from '@inkline/inkline/composables/modals';
 import { Inkline } from '@inkline/inkline/plugin';
+import { cleanupInkline } from '@inkline/inkline/__tests__/utils/cleanupInkline';
 
 const TestComponent = defineComponent({
     setup() {
@@ -48,6 +49,10 @@ const TestComponentWithVNodes = defineComponent({
 describe('Composables', () => {
     describe('Modals', () => {
         describe('useModalBuilder', () => {
+            afterEach(() => {
+                cleanupInkline();
+            });
+
             it('should show modal', async () => {
                 const wrapper = render(TestComponent, {
                     global: {

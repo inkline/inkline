@@ -7,15 +7,15 @@ import { uid } from '@grozav/utils';
 import { computed, defineComponent, h, markRaw, ref, VNode } from 'vue';
 import { useModalBuilder } from '@inkline/inkline/composables/modals/builder';
 import { useForm } from '@inkline/inkline/composables';
-import { validate } from '@inkline/inkline/validation';
 import { IForm } from '@inkline/inkline/components/IForm';
 import { IFormGroup } from '@inkline/inkline/components/IFormGroup';
 import { IFormError } from '@inkline/inkline/components/IFormError';
+import { Form, FormSchema, ResolvedFormSchema } from '@inkline/inkline/types';
 
-export function usePrompt() {
+export function usePrompt<S extends Form = Form>() {
     const modalService = useModalBuilder();
 
-    return (
+    return <T extends Form = S>(
         options: {
             title?: string;
             message?: string;
@@ -25,19 +25,18 @@ export function usePrompt() {
             cancelButtonProps?: Record<string, unknown>;
             inputs?: VNode[];
             inputProps?: Record<string, unknown>;
-            schema?: Record<string, unknown>;
+            schema?: FormSchema<T>;
         } & Partial<ModalOptions>
     ) =>
-        new Promise<Record<string, unknown>>((resolve, reject) => {
+        new Promise<T>((resolve, reject) => {
             const id = uid('prompt');
-            const schema = ref(
-                useForm(
-                    options.schema || {
+            const { schema, form, validate } = useForm<T>(
+                options.schema ||
+                    ({
                         input: {
                             validators: ['required']
                         }
-                    }
-                )
+                    } as FormSchema<T>)
             );
             const disabled = computed(() => schema.value.invalid || schema.value.pristine);
 
@@ -54,7 +53,7 @@ export function usePrompt() {
                             IForm,
                             {
                                 modelValue: schema,
-                                'onUpdate:modelValue'(value: Record<string, unknown>) {
+                                'onUpdate:modelValue'(value: ResolvedFormSchema<T>) {
                                     schema.value = value;
                                 }
                             },
@@ -97,12 +96,12 @@ export function usePrompt() {
                                         h(
                                             IButton,
                                             {
-                                                onClick: () => {
-                                                    schema.value = validate(schema.value);
+                                                onClick: async () => {
+                                                    await validate();
 
                                                     if (schema.value.valid) {
                                                         modalService.hide({ id });
-                                                        resolve(schema.value);
+                                                        resolve(form.value);
                                                     }
                                                 },
                                                 disabled: disabled.value,

@@ -52,7 +52,7 @@ export const manifest: ComponentManifest = {
             description: 'The size variant of the form'
         },
         {
-            name: 'validate',
+            name: 'validateSchema',
             type: ['Boolean'],
             default: 'true',
             description: 'Enable form validation using schema'

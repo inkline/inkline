@@ -1,9 +1,17 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 import { useForm } from '@inkline/inkline/composables';
-import { validate } from '@inkline/inkline/validation';
 
-const schema = useForm({
+const { schema, validate } = useForm<{
+    input: string;
+    numberInput: number;
+    textarea: string;
+    checkbox: boolean;
+    checkboxGroup: string[];
+    radioGroup: string;
+    toggle: boolean;
+    select: string;
+}>({
     input: {
         validators: ['required']
     },
@@ -17,6 +25,7 @@ const schema = useForm({
         validators: [{ name: 'required', invalidateFalse: true }]
     },
     checkboxGroup: {
+        value: ['test'],
         validators: ['required']
     },
     radioGroup: {
@@ -45,10 +54,10 @@ const prettySchema = computed(() => {
     return JSON.stringify(schema.value, null, 4);
 });
 
-function onSubmit() {
+async function onSubmit() {
     loading.value = true;
 
-    validate(schema.value);
+    await validate();
 
     setTimeout(() => {
         loading.value = false;

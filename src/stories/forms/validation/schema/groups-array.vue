@@ -2,7 +2,9 @@
 import { computed } from 'vue';
 import { useForm } from '@inkline/inkline/composables';
 
-const schema = useForm({
+const { schema } = useForm<{
+    group: string[];
+}>({
     group: [
         {
             validators: [{ name: 'required' }]
@@ -14,8 +16,8 @@ const schema = useForm({
 });
 
 const groupValidationStatus = computed(() => {
-    return schema.value.group.dirty
-        ? schema.value.group.invalid
+    return schema.value.group.every((field) => field.dirty)
+        ? schema.value.group.every((field) => field.invalid)
             ? 'Invalid'
             : 'Valid'
         : 'Pending';

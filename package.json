@@ -7,7 +7,7 @@
         "dev": "npm run storybook",
         "prebuild": "ts-node ./scripts/prebuild.ts",
         "build": "run-p build:*",
-        "build:tsc": "vue-tsc --allowJs --noEmit",
+        "build:tsc": "NODE_OPTIONS='--max-old-space-size=8192' vue-tsc --allowJs --noEmit",
         "build:unbuild": "unbuild",
         "build:vite": "vite build",
         "postbuild": "ts-node ./scripts/postbuild.ts",
@@ -149,6 +149,11 @@
             "import": "./__tests__/utils/index.mjs",
             "types": "./__tests__/utils/index.d.ts"
         },
+        "./__tests__/utils/cleanupInkline": {
+            "require": "./__tests__/utils/cleanupInkline.js",
+            "import": "./__tests__/utils/cleanupInkline.mjs",
+            "types": "./__tests__/utils/cleanupInkline.d.ts"
+        },
         "./__tests__/utils/createInkline": {
             "require": "./__tests__/utils/createInkline.js",
             "import": "./__tests__/utils/createInkline.mjs",
@@ -259,10 +264,10 @@
             "import": "./components/IButtonGroup/manifest.mjs",
             "types": "./components/IButtonGroup/manifest.d.ts"
         },
-        "./components/IButtonGroup/mixin": {
-            "require": "./components/IButtonGroup/mixin.js",
-            "import": "./components/IButtonGroup/mixin.mjs",
-            "types": "./components/IButtonGroup/mixin.d.ts"
+        "./components/IButtonGroup/types": {
+            "require": "./components/IButtonGroup/types.js",
+            "import": "./components/IButtonGroup/types.mjs",
+            "types": "./components/IButtonGroup/types.d.ts"
         },
         "./components/ICard": {
             "require": "./components/ICard/index.js",
@@ -309,10 +314,10 @@
             "import": "./components/ICheckboxButtons/manifest.mjs",
             "types": "./components/ICheckboxButtons/manifest.d.ts"
         },
-        "./components/ICheckboxButtons/mixin": {
-            "require": "./components/ICheckboxButtons/mixin.js",
-            "import": "./components/ICheckboxButtons/mixin.mjs",
-            "types": "./components/ICheckboxButtons/mixin.d.ts"
+        "./components/ICheckboxButtons/types": {
+            "require": "./components/ICheckboxButtons/types.js",
+            "import": "./components/ICheckboxButtons/types.mjs",
+            "types": "./components/ICheckboxButtons/types.d.ts"
         },
         "./components/ICheckboxGroup": {
             "require": "./components/ICheckboxGroup/index.js",
@@ -324,10 +329,10 @@
             "import": "./components/ICheckboxGroup/manifest.mjs",
             "types": "./components/ICheckboxGroup/manifest.d.ts"
         },
-        "./components/ICheckboxGroup/mixin": {
-            "require": "./components/ICheckboxGroup/mixin.js",
-            "import": "./components/ICheckboxGroup/mixin.mjs",
-            "types": "./components/ICheckboxGroup/mixin.d.ts"
+        "./components/ICheckboxGroup/types": {
+            "require": "./components/ICheckboxGroup/types.js",
+            "import": "./components/ICheckboxGroup/types.mjs",
+            "types": "./components/ICheckboxGroup/types.d.ts"
         },
         "./components/ICollapsible": {
             "require": "./components/ICollapsible/index.js",
@@ -344,10 +349,10 @@
             "import": "./components/ICollapsible/manifest.mjs",
             "types": "./components/ICollapsible/manifest.d.ts"
         },
-        "./components/ICollapsible/mixin": {
-            "require": "./components/ICollapsible/mixin.js",
-            "import": "./components/ICollapsible/mixin.mjs",
-            "types": "./components/ICollapsible/mixin.d.ts"
+        "./components/ICollapsible/types": {
+            "require": "./components/ICollapsible/types.js",
+            "import": "./components/ICollapsible/types.mjs",
+            "types": "./components/ICollapsible/types.d.ts"
         },
         "./components/ICollapsibleItem": {
             "require": "./components/ICollapsibleItem/index.js",
@@ -404,10 +409,10 @@
             "import": "./components/IDropdown/manifest.mjs",
             "types": "./components/IDropdown/manifest.d.ts"
         },
-        "./components/IDropdown/mixin": {
-            "require": "./components/IDropdown/mixin.js",
-            "import": "./components/IDropdown/mixin.mjs",
-            "types": "./components/IDropdown/mixin.d.ts"
+        "./components/IDropdown/types": {
+            "require": "./components/IDropdown/types.js",
+            "import": "./components/IDropdown/types.mjs",
+            "types": "./components/IDropdown/types.d.ts"
         },
         "./components/IDropdownDivider": {
             "require": "./components/IDropdownDivider/index.js",
@@ -449,10 +454,10 @@
             "import": "./components/IForm/manifest.mjs",
             "types": "./components/IForm/manifest.d.ts"
         },
-        "./components/IForm/mixin": {
-            "require": "./components/IForm/mixin.js",
-            "import": "./components/IForm/mixin.mjs",
-            "types": "./components/IForm/mixin.d.ts"
+        "./components/IForm/types": {
+            "require": "./components/IForm/types.js",
+            "import": "./components/IForm/types.mjs",
+            "types": "./components/IForm/types.d.ts"
         },
         "./components/IFormError": {
             "require": "./components/IFormError/index.js",
@@ -479,10 +484,10 @@
             "import": "./components/IFormGroup/manifest.mjs",
             "types": "./components/IFormGroup/manifest.d.ts"
         },
-        "./components/IFormGroup/mixin": {
-            "require": "./components/IFormGroup/mixin.js",
-            "import": "./components/IFormGroup/mixin.mjs",
-            "types": "./components/IFormGroup/mixin.d.ts"
+        "./components/IFormGroup/types": {
+            "require": "./components/IFormGroup/types.js",
+            "import": "./components/IFormGroup/types.mjs",
+            "types": "./components/IFormGroup/types.d.ts"
         },
         "./components/IFormLabel": {
             "require": "./components/IFormLabel/index.js",
@@ -719,10 +724,10 @@
             "import": "./components/INav/manifest.mjs",
             "types": "./components/INav/manifest.d.ts"
         },
-        "./components/INav/mixin": {
-            "require": "./components/INav/mixin.js",
-            "import": "./components/INav/mixin.mjs",
-            "types": "./components/INav/mixin.d.ts"
+        "./components/INav/types": {
+            "require": "./components/INav/types.js",
+            "import": "./components/INav/types.mjs",
+            "types": "./components/INav/types.d.ts"
         },
         "./components/INavItem": {
             "require": "./components/INavItem/index.js",
@@ -749,10 +754,10 @@
             "import": "./components/INavbar/manifest.mjs",
             "types": "./components/INavbar/manifest.d.ts"
         },
-        "./components/INavbar/mixin": {
-            "require": "./components/INavbar/mixin.js",
-            "import": "./components/INavbar/mixin.mjs",
-            "types": "./components/INavbar/mixin.d.ts"
+        "./components/INavbar/types": {
+            "require": "./components/INavbar/types.js",
+            "import": "./components/INavbar/types.mjs",
+            "types": "./components/INavbar/types.d.ts"
         },
         "./components/INavbarBrand": {
             "require": "./components/INavbarBrand/index.js",
@@ -834,6 +839,11 @@
             "import": "./components/IProgress/manifest.mjs",
             "types": "./components/IProgress/manifest.d.ts"
         },
+        "./components/IProgress/types": {
+            "require": "./components/IProgress/types.js",
+            "import": "./components/IProgress/types.mjs",
+            "types": "./components/IProgress/types.d.ts"
+        },
         "./components/IProgressBar": {
             "require": "./components/IProgressBar/index.js",
             "import": "./components/IProgressBar/index.mjs",
@@ -843,11 +853,6 @@
             "require": "./components/IProgressBar/manifest.js",
             "import": "./components/IProgressBar/manifest.mjs",
             "types": "./components/IProgressBar/manifest.d.ts"
-        },
-        "./components/IProgressBar/mixin": {
-            "require": "./components/IProgressBar/mixin.js",
-            "import": "./components/IProgressBar/mixin.mjs",
-            "types": "./components/IProgressBar/mixin.d.ts"
         },
         "./components/IRadio": {
             "require": "./components/IRadio/index.js",
@@ -879,10 +884,10 @@
             "import": "./components/IRadioButtons/manifest.mjs",
             "types": "./components/IRadioButtons/manifest.d.ts"
         },
-        "./components/IRadioButtons/mixin": {
-            "require": "./components/IRadioButtons/mixin.js",
-            "import": "./components/IRadioButtons/mixin.mjs",
-            "types": "./components/IRadioButtons/mixin.d.ts"
+        "./components/IRadioButtons/types": {
+            "require": "./components/IRadioButtons/types.js",
+            "import": "./components/IRadioButtons/types.mjs",
+            "types": "./components/IRadioButtons/types.d.ts"
         },
         "./components/IRadioGroup": {
             "require": "./components/IRadioGroup/index.js",
@@ -894,10 +899,10 @@
             "import": "./components/IRadioGroup/manifest.mjs",
             "types": "./components/IRadioGroup/manifest.d.ts"
         },
-        "./components/IRadioGroup/mixin": {
-            "require": "./components/IRadioGroup/mixin.js",
-            "import": "./components/IRadioGroup/mixin.mjs",
-            "types": "./components/IRadioGroup/mixin.d.ts"
+        "./components/IRadioGroup/types": {
+            "require": "./components/IRadioGroup/types.js",
+            "import": "./components/IRadioGroup/types.mjs",
+            "types": "./components/IRadioGroup/types.d.ts"
         },
         "./components/IRow": {
             "require": "./components/IRow/index.js",
@@ -929,10 +934,10 @@
             "import": "./components/ISelect/manifest.mjs",
             "types": "./components/ISelect/manifest.d.ts"
         },
-        "./components/ISelect/mixin": {
-            "require": "./components/ISelect/mixin.js",
-            "import": "./components/ISelect/mixin.mjs",
-            "types": "./components/ISelect/mixin.d.ts"
+        "./components/ISelect/types": {
+            "require": "./components/ISelect/types.js",
+            "import": "./components/ISelect/types.mjs",
+            "types": "./components/ISelect/types.d.ts"
         },
         "./components/ISelectOption": {
             "require": "./components/ISelectOption/index.js",
@@ -959,10 +964,10 @@
             "import": "./components/ISidebar/manifest.mjs",
             "types": "./components/ISidebar/manifest.d.ts"
         },
-        "./components/ISidebar/mixin": {
-            "require": "./components/ISidebar/mixin.js",
-            "import": "./components/ISidebar/mixin.mjs",
-            "types": "./components/ISidebar/mixin.d.ts"
+        "./components/ISidebar/types": {
+            "require": "./components/ISidebar/types.js",
+            "import": "./components/ISidebar/types.mjs",
+            "types": "./components/ISidebar/types.d.ts"
         },
         "./components/ITab": {
             "require": "./components/ITab/index.js",
@@ -1014,10 +1019,10 @@
             "import": "./components/ITabs/manifest.mjs",
             "types": "./components/ITabs/manifest.d.ts"
         },
-        "./components/ITabs/mixin": {
-            "require": "./components/ITabs/mixin.js",
-            "import": "./components/ITabs/mixin.mjs",
-            "types": "./components/ITabs/mixin.d.ts"
+        "./components/ITabs/types": {
+            "require": "./components/ITabs/types.js",
+            "import": "./components/ITabs/types.mjs",
+            "types": "./components/ITabs/types.d.ts"
         },
         "./components/ITextarea": {
             "require": "./components/ITextarea/index.js",
@@ -1104,10 +1109,10 @@
             "import": "./components/utils/ICheckableButtonGroup/index.mjs",
             "types": "./components/utils/ICheckableButtonGroup/index.d.ts"
         },
-        "./components/utils/ICheckableButtonGroup/mixin": {
-            "require": "./components/utils/ICheckableButtonGroup/mixin.js",
-            "import": "./components/utils/ICheckableButtonGroup/mixin.mjs",
-            "types": "./components/utils/ICheckableButtonGroup/mixin.d.ts"
+        "./components/utils/ICheckableButtonGroup/types": {
+            "require": "./components/utils/ICheckableButtonGroup/types.js",
+            "import": "./components/utils/ICheckableButtonGroup/types.mjs",
+            "types": "./components/utils/ICheckableButtonGroup/types.d.ts"
         },
         "./components/utils/IRenderResolver": {
             "require": "./components/utils/IRenderResolver/index.js",
@@ -1224,6 +1229,11 @@
             "import": "./constants/eventValueMap.mjs",
             "types": "./constants/eventValueMap.d.ts"
         },
+        "./constants/ids": {
+            "require": "./constants/ids.js",
+            "import": "./constants/ids.mjs",
+            "types": "./constants/ids.d.ts"
+        },
         "./constants/injectKeys": {
             "require": "./constants/injectKeys.js",
             "import": "./constants/injectKeys.mjs",
@@ -1294,10 +1304,10 @@
             "import": "./plugins/index.mjs",
             "types": "./plugins/index.d.ts"
         },
-        "./plugins/color-mode": {
-            "require": "./plugins/color-mode.js",
-            "import": "./plugins/color-mode.mjs",
-            "types": "./plugins/color-mode.d.ts"
+        "./plugins/colorMode": {
+            "require": "./plugins/colorMode.js",
+            "import": "./plugins/colorMode.mjs",
+            "types": "./plugins/colorMode.d.ts"
         },
         "./plugins/icons": {
             "require": "./plugins/icons.js",
@@ -1439,6 +1449,16 @@
             "import": "./types/events.mjs",
             "types": "./types/events.d.ts"
         },
+        "./types/guards": {
+            "require": "./types/guards/index.js",
+            "import": "./types/guards/index.mjs",
+            "types": "./types/guards/index.d.ts"
+        },
+        "./types/guards/validation": {
+            "require": "./types/guards/validation.js",
+            "import": "./types/guards/validation.mjs",
+            "types": "./types/guards/validation.d.ts"
+        },
         "./types/manifest": {
             "require": "./types/manifest.js",
             "import": "./types/manifest.mjs",
@@ -1448,6 +1468,11 @@
             "require": "./types/render.js",
             "import": "./types/render.mjs",
             "types": "./types/render.d.ts"
+        },
+        "./types/validation": {
+            "require": "./types/validation.js",
+            "import": "./types/validation.mjs",
+            "types": "./types/validation.d.ts"
         },
         "./utils": {
             "require": "./utils/index.js",
@@ -1474,15 +1499,40 @@
             "import": "./validation/index.mjs",
             "types": "./validation/index.d.ts"
         },
-        "./validation/initialize": {
-            "require": "./validation/initialize.js",
-            "import": "./validation/initialize.mjs",
-            "types": "./validation/initialize.d.ts"
+        "./validation/register": {
+            "require": "./validation/register.js",
+            "import": "./validation/register.mjs",
+            "types": "./validation/register.d.ts"
         },
-        "./validation/validate": {
-            "require": "./validation/validate.js",
-            "import": "./validation/validate.mjs",
-            "types": "./validation/validate.d.ts"
+        "./validation/schema": {
+            "require": "./validation/schema/index.js",
+            "import": "./validation/schema/index.mjs",
+            "types": "./validation/schema/index.d.ts"
+        },
+        "./validation/schema/createSchema": {
+            "require": "./validation/schema/createSchema.js",
+            "import": "./validation/schema/createSchema.mjs",
+            "types": "./validation/schema/createSchema.d.ts"
+        },
+        "./validation/schema/createSchemaFromDefaults": {
+            "require": "./validation/schema/createSchemaFromDefaults.js",
+            "import": "./validation/schema/createSchemaFromDefaults.mjs",
+            "types": "./validation/schema/createSchemaFromDefaults.d.ts"
+        },
+        "./validation/schema/serializeSchema": {
+            "require": "./validation/schema/serializeSchema.js",
+            "import": "./validation/schema/serializeSchema.mjs",
+            "types": "./validation/schema/serializeSchema.d.ts"
+        },
+        "./validation/schema/setSchemaStateRecursively": {
+            "require": "./validation/schema/setSchemaStateRecursively.js",
+            "import": "./validation/schema/setSchemaStateRecursively.mjs",
+            "types": "./validation/schema/setSchemaStateRecursively.d.ts"
+        },
+        "./validation/schema/validateSchema": {
+            "require": "./validation/schema/validateSchema.js",
+            "import": "./validation/schema/validateSchema.mjs",
+            "types": "./validation/schema/validateSchema.d.ts"
         },
         "./validation/validators": {
             "require": "./validation/validators/index.js",

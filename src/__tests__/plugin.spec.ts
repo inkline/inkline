@@ -94,9 +94,7 @@ describe('Plugin', () => {
                             pristine: true,
                             touched: false,
                             untouched: true,
-                            valid: true,
-                            validators: [],
-                            value: ''
+                            valid: true
                         });
                     });
                 });

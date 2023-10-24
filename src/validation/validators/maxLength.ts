@@ -1,4 +1,6 @@
-export function maxLength(value: any, options: any = { value: 0 }): boolean {
+import { FormValue } from '@inkline/inkline/types';
+
+export function maxLength(value: FormValue, options: any = { value: 0 }): boolean {
     if (value === undefined || value === null) {
         return false;
     }

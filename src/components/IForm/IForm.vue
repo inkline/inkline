@@ -99,7 +99,7 @@ export default defineComponent({
          * Enable form validation using schema
          * @type Boolean
          * @default true
-         * @name validate
+         * @name validateSchema
          */
         validate: {
             type: Boolean,
@@ -159,9 +159,9 @@ export default defineComponent({
             '-error': hasError.value
         }));
 
-        function onSubmit(event: SubmitEvent) {
+        async function onSubmit(event: SubmitEvent) {
             if (props.modelValue) {
-                schemaOnSubmit(event);
+                await schemaOnSubmit(event);
             } else {
                 emit('submit', event);
             }

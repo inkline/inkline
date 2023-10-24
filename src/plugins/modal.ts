@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import type { Plugin } from 'vue';
 import { createEventBus } from '@grozav/utils';
 import type { EventBus } from '@grozav/utils';
-import { InklineKey, InklineModalKey } from '@inkline/inkline/constants';
+import { InklineKey, InklineModalKey, defaultModalContainerId } from '@inkline/inkline/constants';
 import { IModalContainer } from '@inkline/inkline/components/IModalContainer';
 import { IconsPlugin } from '@inkline/inkline/plugins/icons';
 import type { InklineService } from '@inkline/inkline/plugin';
@@ -74,7 +74,7 @@ export const ModalPlugin: Plugin = {
         modalApp.use(IconsPlugin);
 
         if (typeof window !== 'undefined') {
-            const containerId = 'inkline-modal-container';
+            const containerId = defaultModalContainerId;
             let container = document.querySelector(`#${containerId}`);
             if (!container) {
                 container = document.createElement('div');

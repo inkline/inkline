@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useForm } from '@inkline/inkline/composables';
 
-const schema = useForm({
+const { schema } = useForm({
     input: {
         value: 'Default value'
     }

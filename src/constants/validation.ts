@@ -1,4 +1,6 @@
-export const defaultValidationValues: { [key: string]: any } = {
+import { FormField, ReservedFormKeys, FormState } from '@inkline/inkline/types';
+
+export const defaultValidationStateValues: FormState = {
     pristine: true,
     dirty: false,
     untouched: true,
@@ -8,12 +10,12 @@ export const defaultValidationValues: { [key: string]: any } = {
     errors: []
 };
 
-export const defaultFieldValidationValues: { [key: string]: any } = {
-    value: '',
+export const defaultValidationFieldValues: FormField<string> = {
+    value: undefined,
     validators: []
 };
 
-export const reservedValidationFields: string[] = [
+export const reservedValidationFields: Array<string | ReservedFormKeys> = [
     'value',
     'validators',
     'pristine',

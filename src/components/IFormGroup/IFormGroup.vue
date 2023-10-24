@@ -88,7 +88,7 @@ export default defineComponent({
          * Enable form validation using schema
          * @type Boolean
          * @default true
-         * @name validate
+         * @name validateSchema
          */
         validate: {
             type: Boolean,

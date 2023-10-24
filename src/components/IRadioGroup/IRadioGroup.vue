@@ -110,7 +110,7 @@ export default defineComponent({
          * Enable radio group validation using schema
          * @type Boolean
          * @default true
-         * @name validate
+         * @name validateSchema
          */
         validate: {
             type: Boolean,

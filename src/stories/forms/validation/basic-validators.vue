@@ -1,7 +1,7 @@
 <script setup>
 import { useForm } from '@inkline/inkline/composables';
 
-const form = useForm({
+const { schema } = useForm({
     username: {
         validators: [
             {
@@ -43,7 +43,7 @@ const form = useForm({
 });
 </script>
 <template>
-    <IForm v-model="form">
+    <IForm v-model="schema">
         <IFormGroup>
             <IFormLabel>Username</IFormLabel>
             <IInput name="username" placeholder="Enter a username.." />

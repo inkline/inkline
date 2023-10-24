@@ -26,7 +26,7 @@ describe('Components', () => {
             expect(ICheckableButtonGroup.name).toEqual('ICheckableButtonGroup');
         });
 
-        it('should render correctly', () => {
+        it('should render correctly as checkbox', () => {
             const wrapper = render(ICheckableButtonGroup, {
                 global: {
                     stubs,
@@ -34,7 +34,27 @@ describe('Components', () => {
                         [InklineKey as symbol]: createInkline()
                     }
                 },
-                props,
+                props: {
+                    ...props,
+                    type: 'checkbox'
+                },
+                slots
+            });
+            expect(wrapper.html()).toMatchSnapshot();
+        });
+
+        it('should render correctly as radio', () => {
+            const wrapper = render(ICheckableButtonGroup, {
+                global: {
+                    stubs,
+                    provide: {
+                        [InklineKey as symbol]: createInkline()
+                    }
+                },
+                props: {
+                    ...props,
+                    type: 'radio'
+                },
                 slots
             });
             expect(wrapper.html()).toMatchSnapshot();

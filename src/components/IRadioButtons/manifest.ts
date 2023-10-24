@@ -52,7 +52,7 @@ export const manifest: ComponentManifest = {
             description: 'The size variant of the radio buttons'
         },
         {
-            name: 'validate',
+            name: 'validateSchema',
             type: ['Boolean'],
             default: 'true',
             description: 'Enable radio buttons validation using schema'

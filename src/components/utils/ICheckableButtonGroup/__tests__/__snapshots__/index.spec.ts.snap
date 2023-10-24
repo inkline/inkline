@@ -1,7 +1,21 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Components > ICheckableButtonGroup > should render correctly 1`] = `
-"<div class=\\"checkable-button-group -light -md -undefined -default\\">
+exports[`Components > ICheckableButtonGroup > should render correctly as checkbox 1`] = `
+"<div class=\\"checkable-button-group -light -md -checkbox -default\\">
+  <!-- @slot default Slot for default content --><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
+    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content -->Apple</span>
+  </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
+    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content -->Watermelon</span>
+  </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
+    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content -->Peach</span>
+  </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
+    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content -->Mango</span>
+  </button>
+</div>"
+`;
+
+exports[`Components > ICheckableButtonGroup > should render correctly as radio 1`] = `
+"<div class=\\"checkable-button-group -light -md -radio -default\\">
   <!-- @slot default Slot for default content --><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
     <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content -->Apple</span>
   </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">

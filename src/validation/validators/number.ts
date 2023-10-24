@@ -1,5 +1,7 @@
+import { FormValue } from '@inkline/inkline/types';
+
 export function number(
-    value: any,
+    value: FormValue,
     options: any = { allowNegative: false, allowDecimal: false }
 ): boolean {
     let regExpString = '\\d+';
@@ -14,9 +16,9 @@ export function number(
 
     const regExp = new RegExp(`^${regExpString}$`);
 
-    if (value.constructor === Array) {
+    if (value?.constructor === Array) {
         return value.every((v: any) => regExp.test(v));
     }
 
-    return regExp.test(value);
+    return regExp.test(String(value));
 }

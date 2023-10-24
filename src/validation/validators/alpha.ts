@@ -1,8 +1,9 @@
 import { alpha as validators } from '@inkline/inkline/validation/validators/constants';
+import type { FormValue } from '@inkline/inkline/types';
 
-export function alpha(rawValue: any, options: any = {}): boolean {
+export function alpha(rawValue: FormValue, options: any = {}): boolean {
     const locale = options.locale || 'en-US';
-    const process = (v: any) => {
+    const process = (v: FormValue) => {
         let value = String(v);
 
         if (options.allowDashes) {
@@ -15,7 +16,7 @@ export function alpha(rawValue: any, options: any = {}): boolean {
         return value;
     };
 
-    if (rawValue.constructor === Array) {
+    if (rawValue?.constructor === Array) {
         return rawValue.every((v) => validators[locale].test(process(v)));
     }
 

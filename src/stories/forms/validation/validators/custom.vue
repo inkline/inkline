@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useForm } from '@inkline/inkline/composables';
 
-const form = useForm({
+const { schema } = useForm({
     input: {
         validators: [
             {
@@ -14,7 +14,7 @@ const form = useForm({
 });
 </script>
 <template>
-    <IForm v-model="form">
+    <IForm v-model="schema">
         <IFormGroup>
             <IInput
                 name="input"

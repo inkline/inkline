@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import type { Plugin } from 'vue';
 import { createEventBus } from '@grozav/utils';
 import type { EventBus } from '@grozav/utils';
-import { InklineKey, InklineToastKey } from '@inkline/inkline/constants';
+import { defaultToastContainerId, InklineKey, InklineToastKey } from '@inkline/inkline/constants';
 import { IToastContainer } from '@inkline/inkline/components/IToastContainer';
 import { IconsPlugin } from '@inkline/inkline/plugins';
 import type { InklineService } from '@inkline/inkline/plugin';
@@ -79,7 +79,7 @@ export const ToastPlugin: Plugin = {
         toastApp.use(IconsPlugin);
 
         if (typeof window !== 'undefined') {
-            const containerId = 'inkline-toast-container';
+            const containerId = defaultToastContainerId;
             let container = document.querySelector(`#${containerId}`);
             if (!container) {
                 container = document.createElement('div');

@@ -9,7 +9,9 @@ export default defineComponent({
 
         async function showPrompt() {
             try {
-                const schema = (await prompt({
+                const form = await prompt<{
+                    input: string;
+                }>({
                     title: 'Prompt Title',
                     message: 'This prompt requires you to enter something:',
                     inputProps: {
@@ -17,11 +19,11 @@ export default defineComponent({
                     },
                     confirmButtonText: 'Submit',
                     cancelButtonText: 'Cancel'
-                })) as Record<string, Record<string, string>>;
+                });
 
                 toast.show({
                     title: 'Prompt result',
-                    message: schema.input.value,
+                    message: form.input,
                     color: 'info'
                 });
             } catch (error) {

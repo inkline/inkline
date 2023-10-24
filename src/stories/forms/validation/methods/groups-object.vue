@@ -1,8 +1,15 @@
 <script lang="ts" setup>
-import { useForm } from '@inkline/inkline/composables';
 import { computed } from 'vue';
+import { createFormFieldSchema, useForm } from '@inkline/inkline';
 
-const schema = useForm({
+const { schema } = useForm<{
+    group: {
+        firstName: string;
+        lastName: string;
+        email?: string;
+        address?: string;
+    };
+}>({
     group: {
         firstName: {
             validators: [{ name: 'required' }]
@@ -18,19 +25,15 @@ const prettySchema = computed(() => {
 });
 
 function setEmail() {
-    const { value: emailField } = useForm({
+    schema.value.group.email = createFormFieldSchema({
         validators: [{ name: 'email' }]
     });
-
-    schema.value.group.email = emailField;
 }
 
 function setAddress() {
-    const { value: addressField } = useForm({
+    schema.value.group.address = createFormFieldSchema({
         value: '32 Inkline St.'
     });
-
-    schema.value.group.address = addressField;
 }
 </script>
 <template>
