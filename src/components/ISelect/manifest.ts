@@ -186,7 +186,7 @@ export const manifest: ComponentManifest = {
             description: 'Delay in milliseconds before the popover is hidden on hover'
         },
         {
-            name: 'validate',
+            name: 'validateSchema',
             type: ['Boolean'],
             default: 'true',
             description: 'Enable select validation using schema'

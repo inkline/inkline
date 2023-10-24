@@ -100,7 +100,7 @@ export const manifest: ComponentManifest = {
             description: 'Display the password toggle button'
         },
         {
-            name: 'validate',
+            name: 'validateSchema',
             type: ['Boolean'],
             default: 'true',
             description: 'Enable input validation using schema'

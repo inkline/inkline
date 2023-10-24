@@ -58,7 +58,7 @@ export const manifest: ComponentManifest = {
             description: 'The size variant of the checkbox group'
         },
         {
-            name: 'validate',
+            name: 'validateSchema',
             type: ['Boolean'],
             default: 'true',
             description: 'Enable checkbox group validation using schema'
