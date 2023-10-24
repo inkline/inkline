@@ -4,7 +4,7 @@ import { IInput } from '@inkline/inkline/components/IInput';
 import { translate } from '@inkline/inkline/i18n';
 import type { ModalOptions } from '@inkline/inkline/plugins/modal';
 import { uid } from '@grozav/utils';
-import { computed, defineComponent, h, markRaw, ref, VNode } from 'vue';
+import { computed, defineComponent, h, markRaw, VNode } from 'vue';
 import { useModalBuilder } from '@inkline/inkline/composables/modals/builder';
 import { useForm } from '@inkline/inkline/composables';
 import { IForm } from '@inkline/inkline/components/IForm';
