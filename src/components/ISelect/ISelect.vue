@@ -369,8 +369,8 @@ export default defineComponent({
         const arrowRef = ref<HTMLElement | null>(null);
         const optionsRef = ref<HTMLElement | null>(null);
 
-        const name = toRef<string>(props, 'name');
-        const validate = toRef<boolean>(props, 'validate');
+        const name = toRef(props, 'name');
+        const validate = toRef(props, 'validate');
         const {
             schema,
             onInput: schemaOnInput,

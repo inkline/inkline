@@ -24,22 +24,22 @@ const { schema } = useForm<{
             {
                 name: 'custom', // lowercase
                 message: 'Please enter at least one lowercase character.',
-                validator: (v) => /[a-z]/.test(v)
+                validator: (v: string) => /[a-z]/.test(v)
             },
             {
                 name: 'custom', // uppercase
                 message: 'Please enter at least one uppercase character.',
-                validator: (v) => /[A-Z]/.test(v)
+                validator: (v: string) => /[A-Z]/.test(v)
             },
             {
                 name: 'custom', // numeric
                 message: 'Please enter at least one numeric character.',
-                validator: (v) => /[0-9]/.test(v)
+                validator: (v: string) => /[0-9]/.test(v)
             },
             {
                 name: 'custom', // symbol
                 message: 'Please enter at least one symbol.',
-                validator: (v) => /[^a-zA-Z0-9]/.test(v)
+                validator: (v: string) => /[^a-zA-Z0-9]/.test(v)
             }
         ]
     }
