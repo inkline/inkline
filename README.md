@@ -165,6 +165,7 @@ Thanks goes to these wonderful people:
       <td align="center" valign="top" width="10%"><a href="https://github.com/intjelic"><img class="avatar" src="https://avatars.githubusercontent.com/u/778121?v=4" width="50px;" alt="Jonathan De Wachter"/></a></td>
       <td align="center" valign="top" width="10%"><a href="https://github.com/zozulinskyi"><img class="avatar" src="https://avatars.githubusercontent.com/u/11585924?v=4" width="50px;" alt="IHOR"/></a></td>
       <td align="center" valign="top" width="10%"><a href="https://github.com/Timbological"><img class="avatar" src="https://avatars.githubusercontent.com/u/31364357?v=4" width="50px;" alt="Timbological"/></a></td>
+      <td align="center" valign="top" width="10%"><a href="https://aileenrae.co.uk"><img class="avatar" src="https://avatars.githubusercontent.com/u/38075097?v=4" width="50px;" alt="Aileen Rae"/></a></td>
     </tr>
   </tbody>
 </table>
