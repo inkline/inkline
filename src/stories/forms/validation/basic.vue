@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { useForm } from '@inkline/inkline/composables';
+import { useForm } from '@inkline/inkline';
+import type { SelectOption } from '@inkline/inkline';
 
 const { schema, validate } = useForm<{
     input: string;
@@ -39,7 +40,7 @@ const { schema, validate } = useForm<{
     }
 });
 
-const options = ref([
+const options = ref<SelectOption[]>([
     { id: 1, label: 'Richard Hendricks' },
     { id: 2, label: 'Bertram Gilfoyle' },
     { id: 3, label: 'Dinesh Chugtai' },

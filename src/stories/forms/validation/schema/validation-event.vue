@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { useForm } from '@inkline/inkline/composables';
 
-const { schema } = useForm({
+const { schema } = useForm<{
+    input: string;
+}>({
     input: {
         validateOn: 'input',
         validators: [{ name: 'minLength', value: 5 }]

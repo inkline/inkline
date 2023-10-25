@@ -1,7 +1,10 @@
 <script lang="ts" setup>
 import { useForm } from '@inkline/inkline/composables';
 
-const { schema } = useForm({
+const { schema } = useForm<{
+    password: string;
+    passwordConfirmation: string;
+}>({
     password: {
         validators: [{ name: 'required' }]
     },

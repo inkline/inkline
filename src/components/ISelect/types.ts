@@ -1,11 +1,10 @@
 import { Ref } from 'vue';
 
 export interface SelectOption {
+    id?: string | number;
+    label: string;
     active?: boolean;
     disabled?: boolean;
-    label: string;
-    value: any;
-
     [key: string]: any;
 }
 

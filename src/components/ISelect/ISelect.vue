@@ -12,7 +12,7 @@ import {
 } from 'vue';
 import { isFocusable, isKey, uid, getValueByPath, isFunction } from '@grozav/utils';
 
-import { IInput } from '@inkline/inkline/components';
+import { IInput, SelectInjection } from '@inkline/inkline/components';
 import { FormKey, FormGroupKey, SelectKey } from '@inkline/inkline/constants';
 import {
     useClickOutside,
@@ -369,8 +369,8 @@ export default defineComponent({
         const arrowRef = ref<HTMLElement | null>(null);
         const optionsRef = ref<HTMLElement | null>(null);
 
-        const name = toRef(props, 'name');
-        const validate = toRef(props, 'validate');
+        const name = toRef<string>(props, 'name');
+        const validate = toRef<boolean>(props, 'validate');
         const {
             schema,
             onInput: schemaOnInput,
@@ -473,7 +473,7 @@ export default defineComponent({
             value,
             idField,
             onInput
-        });
+        } as SelectInjection);
 
         /**
          * Event bindings
@@ -658,7 +658,7 @@ export default defineComponent({
             return focusableItems;
         }
 
-        function getLabel(option: SelectOption | string | number): string {
+        function getLabel(option: SelectOption | string | number | undefined): string {
             if (typeof option !== 'object') {
                 return inputValue.value;
             }

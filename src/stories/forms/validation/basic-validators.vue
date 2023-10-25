@@ -1,7 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import { useForm } from '@inkline/inkline/composables';
 
-const { schema } = useForm({
+const { schema } = useForm<{
+    username: string;
+    password: string;
+}>({
     username: {
         validators: [
             {
@@ -56,5 +59,5 @@ const { schema } = useForm({
         </IFormGroup>
     </IForm>
 
-    <pre class="_margin-top:2 _text:muted">{{ form }}</pre>
+    <pre class="_margin-top:2 _text:muted">{{ schema }}</pre>
 </template>

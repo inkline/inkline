@@ -196,7 +196,10 @@ export function useValidation(options: {
     return { schema, onSubmit, onInput, onBlur };
 }
 
-export function useFormValidationError(options: { schema: Ref; error: Ref<boolean | string[]> }) {
+export function useFormValidationError(options: {
+    schema: Ref;
+    error: Ref<boolean | string[] | undefined>;
+}) {
     const hasError = computed(() => {
         if (typeof options.error.value === 'boolean') {
             return options.error.value;

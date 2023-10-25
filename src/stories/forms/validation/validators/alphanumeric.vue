@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import { useForm } from '@inkline/inkline/composables';
 
-const { schema } = useForm({
+const { schema } = useForm<{
+    input: string;
+    inputSpaces: string;
+    inputDashes: string;
+}>({
     input: {
         validators: [{ name: 'alphanumeric' }]
     },
