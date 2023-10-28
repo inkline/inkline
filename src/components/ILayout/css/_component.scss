@@ -9,7 +9,11 @@
     position: relative;
 
     &,
-    * {
+    .layout,
+    .layout-aside,
+    .layout-header,
+    .layout-content,
+    .layout-footer {
         box-sizing: border-box;
     }
 
