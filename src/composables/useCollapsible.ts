@@ -8,15 +8,10 @@ export function useCollapsible(props: {
     emit: (event: 'update:modelValue', ...args: any[]) => void;
 }) {
     const open = ref(props.modelValue.value);
+    const collapsible = ref(
+        typeof props.collapse.value === 'boolean' ? props.collapse.value : false
+    );
     const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 0);
-
-    const collapsible = computed(() => {
-        if (props.collapse.value === true || props.collapse.value === false) {
-            return props.collapse.value;
-        }
-
-        return windowWidth.value <= breakpoints[props.collapse.value][1];
-    });
 
     const classes = computed(() => ({
         '-open': open.value,
@@ -45,6 +40,14 @@ export function useCollapsible(props: {
         }
     });
 
+    function setCollapsible() {
+        if (props.collapse.value === true || props.collapse.value === false) {
+            collapsible.value = props.collapse.value;
+        } else {
+            collapsible.value = windowWidth.value <= breakpoints[props.collapse.value][1];
+        }
+    }
+
     function setOpen(value: boolean) {
         open.value = value;
         props.emit('update:modelValue', open.value);
@@ -56,24 +59,24 @@ export function useCollapsible(props: {
     }
 
     function onWindowResize() {
-        if (
-            props.collapse.value === true ||
-            props.collapse.value === false ||
-            typeof window === 'undefined'
-        ) {
+        if (typeof window === 'undefined') {
             return;
         }
 
-        const currentWindowWidth = window.innerWidth;
+        if (typeof props.collapse.value !== 'boolean') {
+            const currentWindowWidth = window.innerWidth;
 
-        if (
-            windowWidth.value <= breakpoints[props.collapse.value][1] &&
-            currentWindowWidth > breakpoints[props.collapse.value][1]
-        ) {
-            setOpen(false);
+            if (
+                windowWidth.value <= breakpoints[props.collapse.value][1] &&
+                currentWindowWidth > breakpoints[props.collapse.value][1]
+            ) {
+                setOpen(false);
+            }
+
+            windowWidth.value = window.innerWidth;
         }
 
-        windowWidth.value = window.innerWidth;
+        setCollapsible();
     }
 
     return { open, collapsible, classes, setOpen, toggleOpen };

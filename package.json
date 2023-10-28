@@ -1329,6 +1329,21 @@
             "import": "./plugins/toast.mjs",
             "types": "./plugins/toast.d.ts"
         },
+        "./services": {
+            "require": "./services/index.js",
+            "import": "./services/index.mjs",
+            "types": "./services/index.d.ts"
+        },
+        "./services/modal": {
+            "require": "./services/modal.js",
+            "import": "./services/modal.mjs",
+            "types": "./services/modal.d.ts"
+        },
+        "./services/toast": {
+            "require": "./services/toast.js",
+            "import": "./services/toast.mjs",
+            "types": "./services/toast.d.ts"
+        },
         "./stories/core/code": {
             "require": "./stories/core/code/index.js",
             "import": "./stories/core/code/index.mjs",
@@ -1464,10 +1479,20 @@
             "import": "./types/manifest.mjs",
             "types": "./types/manifest.d.ts"
         },
+        "./types/modal": {
+            "require": "./types/modal.js",
+            "import": "./types/modal.mjs",
+            "types": "./types/modal.d.ts"
+        },
         "./types/render": {
             "require": "./types/render.js",
             "import": "./types/render.mjs",
             "types": "./types/render.d.ts"
+        },
+        "./types/toast": {
+            "require": "./types/toast.js",
+            "import": "./types/toast.mjs",
+            "types": "./types/toast.d.ts"
         },
         "./types/validation": {
             "require": "./types/validation.js",

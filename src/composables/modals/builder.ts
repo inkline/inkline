@@ -1,7 +1,6 @@
-import { inject } from 'vue';
-import { InklineModalKey } from '@inkline/inkline/constants';
-import type { ModalService } from '@inkline/inkline/plugins';
+import type { ModalService } from '@inkline/inkline/types';
+import { modalService } from '@inkline/inkline/services';
 
-export function useModalBuilder() {
-    return inject(InklineModalKey) as ModalService;
+export function useModalBuilder(): ModalService {
+    return modalService;
 }
