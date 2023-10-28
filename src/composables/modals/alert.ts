@@ -1,6 +1,6 @@
 import { IButton } from '@inkline/inkline/components/IButton';
 import { translate } from '@inkline/inkline/i18n';
-import type { ModalOptions } from '@inkline/inkline/plugins';
+import type { ModalOptions } from '@inkline/inkline/types';
 import { uid } from '@grozav/utils';
 import { h } from 'vue';
 import { useModalBuilder } from '@inkline/inkline/composables/modals/builder';

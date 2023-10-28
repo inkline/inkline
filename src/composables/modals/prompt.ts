@@ -2,7 +2,7 @@
 import { IButton } from '@inkline/inkline/components/IButton';
 import { IInput } from '@inkline/inkline/components/IInput';
 import { translate } from '@inkline/inkline/i18n';
-import type { ModalOptions } from '@inkline/inkline/plugins/modal';
+import type { ModalOptions } from '@inkline/inkline/types';
 import { uid } from '@grozav/utils';
 import { computed, defineComponent, h, markRaw, VNode } from 'vue';
 import { useModalBuilder } from '@inkline/inkline/composables/modals/builder';

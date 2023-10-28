@@ -1,7 +1,7 @@
-import { ToastPlugin } from '@inkline/inkline/plugins';
+import { ModalPlugin } from '@inkline/inkline/plugins';
 import { createInklineService, defaultOptions } from '@inkline/inkline/plugin';
 
-describe('ToastPlugin', () => {
+describe('ModalPlugin', () => {
     describe('install()', () => {
         const createApp = () => ({
             add: vi.fn(),
@@ -14,32 +14,32 @@ describe('ToastPlugin', () => {
         });
 
         afterEach(() => {
-            const container = document.querySelector('#inkline-toast-container');
+            const container = document.querySelector('#inkline-modal-container');
             if (container) {
                 container.remove();
             }
         });
 
-        it('should add toast container', () => {
+        it('should add modal container', () => {
             const app = createApp();
             const inkline = createInklineService({ ...defaultOptions, colorMode: 'dark' });
-            ToastPlugin.install!(app as any, { inkline });
+            ModalPlugin.install!(app as any, { inkline });
 
-            const toastContainer = document.body.querySelector('#inkline-toast-container');
-            expect(toastContainer).toBeVisible();
-            expect(toastContainer).toHaveAttribute('data-inkline-toast-container');
+            const modalContainer = document.body.querySelector('#inkline-modal-container');
+            expect(modalContainer).toBeVisible();
+            expect(modalContainer).toHaveAttribute('data-inkline-modal-container');
         });
 
-        it('should not add toast container if existing', () => {
+        it('should not add modal container if existing', () => {
             const container = document.createElement('div');
-            container.id = 'inkline-toast-container';
+            container.id = 'inkline-modal-container';
             document.body.appendChild(container);
 
             const app = createApp();
             const inkline = createInklineService({ ...defaultOptions, colorMode: 'dark' });
-            ToastPlugin.install!(app as any, { inkline });
+            ModalPlugin.install!(app as any, { inkline });
 
-            expect(document.body.querySelectorAll('#inkline-toast-container')).toHaveLength(1);
+            expect(document.body.querySelectorAll('#inkline-modal-container')).toHaveLength(1);
         });
     });
 });

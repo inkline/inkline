@@ -4,7 +4,7 @@ import {
     useModalBuilder,
     usePrompt
 } from '@inkline/inkline/composables/modals';
-import { ModalService } from '@inkline/inkline/plugins';
+import type { ModalService } from '@inkline/inkline/types';
 
 export function useModal(): ModalService & {
     alert: ReturnType<typeof useAlert>;

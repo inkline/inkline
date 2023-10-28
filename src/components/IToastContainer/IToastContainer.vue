@@ -1,10 +1,11 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, PropType, ref, TransitionGroup } from 'vue';
 import { useInkline } from '@inkline/inkline/composables';
-import { toastEventBus, ToastOptions, ToastPosition } from '@inkline/inkline/plugins';
+import type { ToastOptions, ToastPosition } from '@inkline/inkline/types';
 import { uid } from '@grozav/utils';
 import type { EventBus } from '@grozav/utils';
 import { IToast } from '@inkline/inkline/components/IToast';
+import { toastEventBus } from '@inkline/inkline/services';
 
 const componentName = 'IToastContainer';
 
