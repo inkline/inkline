@@ -9,6 +9,7 @@
         align-items: center;
         justify-content: flex-start;
         background: var(--checkable-button-group--background);
+        color: var(--checkable-button-group--color);
         border-style: var(
             --checkable-button-group--border-style,
             var(--checkable-button-group--border-top-style, var(--border-top-style))

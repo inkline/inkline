@@ -8,11 +8,14 @@ import {
 } from '@inkline/inkline/composables';
 import { CheckboxGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import { uid } from '@grozav/utils';
+import type { CheckboxGroupOption } from '@inkline/inkline/components';
+import { ICheckbox } from '@inkline/inkline/components/ICheckbox';
 
 const componentName = 'ICheckboxGroup';
 
 export default defineComponent({
     name: componentName,
+    components: { ICheckbox },
     inheritAttrs: false,
     props: {
         /**
@@ -116,6 +119,16 @@ export default defineComponent({
         validate: {
             type: Boolean,
             default: true
+        },
+        /**
+         * The options of the checkbox group
+         * @type Array
+         * @default []
+         * @name options
+         */
+        options: {
+            type: Array as PropType<CheckboxGroupOption[]>,
+            default: () => []
         }
     },
     emits: [
@@ -227,6 +240,12 @@ export default defineComponent({
         :name="name"
         role="checkboxgroup"
     >
+        <ICheckbox
+            v-for="option in options"
+            :key="option.id"
+            :value="option.id"
+            :label="option.label"
+        />
         <!-- @slot default Slot for default checkbox group options -->
         <slot />
     </div>

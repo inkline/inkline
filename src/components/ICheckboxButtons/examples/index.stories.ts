@@ -20,7 +20,7 @@ import {
 
 export default {
     component: ICheckboxButtons,
-    title: 'Forms/Checkbox Buttons',
+    title: 'Forms/CheckboxButtons',
     argTypes: {
         ...colorArgType(['light', 'dark']),
         ...sizeArgType()

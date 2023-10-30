@@ -28,6 +28,16 @@ export default defineComponent({
     inheritAttrs: false,
     props: {
         /**
+         * The default button props of the checkbox buttons
+         * @type Object
+         * @default {}
+         * @name buttonProps
+         */
+        buttonProps: {
+            type: Object as PropType<CheckboxButtonOption['buttonProps']>,
+            default: () => ({})
+        },
+        /**
          * The color variant of the checkbox buttons
          * @type light | dark
          * @default
@@ -188,8 +198,8 @@ export default defineComponent({
             return props.modelValue;
         });
 
-        function onChange(value: string) {
-            let modelValue: any[] = [];
+        function onChange(value: CheckboxButtonOption['id']) {
+            let modelValue: Array<CheckboxButtonOption['id']> = [];
 
             if (schema.value) {
                 modelValue = [...schema.value.value];
@@ -237,12 +247,12 @@ export default defineComponent({
             v-for="option in options"
             :key="`${name}/${option.id}`"
             :disabled="option.disabled || option.readonly || readonly || disabled"
-            :active="value.includes(option.value)"
+            :active="value.includes(option.id)"
             :color="color"
             :size="size"
             role="checkbox"
-            v-bind="option.buttonProps"
-            @click="onChange(option.value)"
+            v-bind="{ ...buttonProps, ...option.buttonProps }"
+            @click="onChange(option.id)"
             @blur="onBlur"
         >
             <!-- @slot default Slot for rendering checkbox buttons options -->

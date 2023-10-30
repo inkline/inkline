@@ -1,4 +1,5 @@
 import type { Ref } from 'vue';
+import { FormOption } from '@inkline/inkline/types';
 
 export interface RadioGroupInjection {
     name: Ref<string>;
@@ -10,3 +11,5 @@ export interface RadioGroupInjection {
     onChange: (value: any) => void;
     onBlur: (event: FocusEvent) => void;
 }
+
+export type RadioGroupOption = FormOption;

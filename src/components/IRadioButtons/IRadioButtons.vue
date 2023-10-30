@@ -15,6 +15,7 @@ import {
     CheckableButtonGroupVariant
 } from '@inkline/inkline/components/utils';
 import type { RadioButtonOption } from '@inkline/inkline/components/IRadioButtons/types';
+import { FormValue } from '@inkline/inkline/types';
 
 const componentName = 'IRadioButtons';
 
@@ -27,6 +28,16 @@ export default defineComponent({
     },
     inheritAttrs: false,
     props: {
+        /**
+         * The default button props of the radio buttons
+         * @type Object
+         * @default {}
+         * @name buttonProps
+         */
+        buttonProps: {
+            type: Object as PropType<RadioButtonOption['buttonProps']>,
+            default: () => ({})
+        },
         /**
          * The color variant of the radio buttons
          * @type light | dark
@@ -186,7 +197,7 @@ export default defineComponent({
             return props.modelValue;
         });
 
-        function onChange(value: string) {
+        function onChange(value: RadioButtonOption['id']) {
             schemaOnInput(name, value);
             emit('update:modelValue', value);
         }
@@ -219,12 +230,12 @@ export default defineComponent({
             v-for="option in options"
             :key="`${name}/${option.id}`"
             :disabled="option.disabled || option.readonly || readonly || disabled"
-            :active="value === option.value"
+            :active="value === option.id"
             :color="color"
             :size="size"
             role="radio"
-            v-bind="option.buttonProps"
-            @click="onChange(option.value)"
+            v-bind="{ ...buttonProps, ...option.buttonProps }"
+            @click="onChange(option.id)"
             @blur="onBlur"
         >
             <!-- @slot default Slot for rendering radio buttons options -->

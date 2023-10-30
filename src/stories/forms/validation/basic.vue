@@ -9,6 +9,7 @@ const { schema, validate } = useForm<{
     textarea: string;
     checkbox: boolean;
     checkboxGroup: string[];
+    checkboxButtons: string[];
     radioGroup: string;
     toggle: boolean;
     select: string;
@@ -27,6 +28,10 @@ const { schema, validate } = useForm<{
     },
     checkboxGroup: {
         value: ['test'],
+        validators: ['required']
+    },
+    checkboxButtons: {
+        value: [],
         validators: ['required']
     },
     radioGroup: {

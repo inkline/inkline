@@ -20,7 +20,7 @@ import {
 
 export default {
     component: IRadioButtons,
-    title: 'Forms/Radio Buttons',
+    title: 'Forms/RadioButtons',
     argTypes: {
         ...colorArgType(['light', 'dark']),
         ...sizeArgType()

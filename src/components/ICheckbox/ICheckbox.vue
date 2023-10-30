@@ -134,6 +134,16 @@ export default defineComponent({
         validate: {
             type: Boolean,
             default: true
+        },
+        /**
+         * The label to be displayed alongside the checkbox
+         * @type String
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: String,
+            default: undefined
         }
     },
     emits: [
@@ -299,7 +309,9 @@ export default defineComponent({
             @keydown.space.stop.prevent="labelOnKeydown"
         >
             <!-- @slot default Slot for default checkbox label -->
-            <slot />
+            <slot>
+                {{ label }}
+            </slot>
         </label>
     </div>
 </template>

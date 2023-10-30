@@ -114,6 +114,16 @@ export default defineComponent({
         tabindex: {
             type: [Number, String],
             default: 0
+        },
+        /**
+         * The label to be displayed alongside the radio
+         * @type String
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: String,
+            default: undefined
         }
     },
     emits: [
@@ -270,7 +280,9 @@ export default defineComponent({
             @keydown.space.stop.prevent="labelOnKeydown"
         >
             <!-- @slot default Slot for default radio label -->
-            <slot />
+            <slot>
+                {{ label }}
+            </slot>
         </label>
     </div>
 </template>

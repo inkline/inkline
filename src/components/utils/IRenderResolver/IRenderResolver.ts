@@ -1,4 +1,5 @@
 import { defineComponent, h, PropType, RenderFunction } from 'vue';
+import { isFunction } from '@grozav/utils';
 
 export default defineComponent({
     props: {
@@ -26,6 +27,7 @@ export default defineComponent({
         }
     },
     setup(props) {
-        return () => (typeof props.data === 'function' ? props.data() : h(props.tag, props.data));
+        return () =>
+            isFunction(props.data) ? (props.data as RenderFunction)() : h(props.tag, props.data);
     }
 });

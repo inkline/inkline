@@ -1,13 +1,11 @@
-import ICheckbox from '@inkline/inkline/components/ICheckbox/ICheckbox.vue';
+import ICheckboxGroup from '@inkline/inkline/components/ICheckboxGroup/ICheckboxGroup.vue';
 import {
     ICheckboxBasicExample,
     ICheckboxColorVariantsExample,
     ICheckboxDisabledExample,
-    ICheckboxIndeterminateExample,
-    ICheckboxNativeExample,
-    ICheckboxReadonlyExample,
+    ICheckboxOptionsExample,
     ICheckboxSizeVariantsExample
-} from '@inkline/inkline/components/ICheckbox/examples/index';
+} from '@inkline/inkline/components/ICheckboxGroup/examples/index';
 import {
     colorArgType,
     createStory,
@@ -16,8 +14,8 @@ import {
 } from '@inkline/inkline/__storybook__';
 
 export default {
-    component: ICheckbox,
-    title: 'Forms/Checkbox',
+    component: ICheckboxGroup,
+    title: 'Forms/CheckboxGroup',
     argTypes: {
         ...colorArgType(['light', 'dark']),
         ...sizeArgType()
@@ -25,9 +23,7 @@ export default {
 };
 
 export const Basic = createStory(ICheckboxBasicExample);
+export const Options = createExampleStory(ICheckboxOptionsExample);
 export const ColorVariants = createExampleStory(ICheckboxColorVariantsExample);
 export const Disabled = createExampleStory(ICheckboxDisabledExample);
-export const Indeterminate = createExampleStory(ICheckboxIndeterminateExample);
-export const Native = createExampleStory(ICheckboxNativeExample);
-export const Readonly = createExampleStory(ICheckboxReadonlyExample);
 export const SizeVariants = createExampleStory(ICheckboxSizeVariantsExample);

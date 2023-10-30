@@ -393,11 +393,11 @@ export default defineComponent({
             return props.modelValue;
         });
 
-        const valueOption = computed<SelectOption | undefined>(() => {
+        const selectedOption = computed<SelectOption | undefined>(() => {
             return props.options.find((option) => option[props.idField] === value.value);
         });
 
-        const inputValue = ref(valueOption.value ? getLabel(valueOption.value) : '');
+        const inputValue = ref(selectedOption.value ? getLabel(selectedOption.value) : '');
 
         const disabled = computed(
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
@@ -447,13 +447,13 @@ export default defineComponent({
         }));
 
         const inputPlaceholder = computed(() => {
-            return valueOption.value ? getLabel(valueOption.value) : props.placeholder;
+            return selectedOption.value ? getLabel(selectedOption.value) : props.placeholder;
         });
 
         watch(
             () => value.value,
             () => {
-                inputValue.value = valueOption.value ? getLabel(valueOption.value) : '';
+                inputValue.value = selectedOption.value ? getLabel(selectedOption.value) : '';
             }
         );
 
@@ -527,7 +527,9 @@ export default defineComponent({
             }
 
             const focusableItems = getFocusableItems();
-            const activeIndex = focusableItems.findIndex((item: any) => item.active);
+            const activeIndex = focusableItems.findIndex((item) =>
+                item.classList.contains('-active')
+            );
             const initialIndex = activeIndex > -1 ? activeIndex : 0;
             const focusTarget = focusableItems[initialIndex];
 

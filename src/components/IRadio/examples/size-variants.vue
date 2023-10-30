@@ -1,11 +1,7 @@
-<script>
-export default {
-    data() {
-        return {
-            checked: ''
-        };
-    }
-};
+<script lang="ts" setup>
+import { ref } from 'vue';
+
+const checked = ref('apple');
 </script>
 <template>
     <IRadioGroup v-model="checked">
