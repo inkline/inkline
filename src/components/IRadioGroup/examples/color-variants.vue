@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import type { RadioGroupOption } from '@inkline/inkline';
+import { RadioGroupOption } from '@inkline/inkline';
 
-const checked = ref(['apple']);
+const checked = ref('apple');
 const options = ref<RadioGroupOption[]>([
     { id: 'apple', label: 'Apple' },
     { id: 'banana', label: 'Banana' },
@@ -11,5 +11,7 @@ const options = ref<RadioGroupOption[]>([
 ]);
 </script>
 <template>
-    <IRadioGroup v-model="checked" :options="options" />
+    <IRadioGroup v-model="checked" :options="options" color="light" />
+
+    <IRadioGroup v-model="checked" :options="options" color="dark" />
 </template>

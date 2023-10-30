@@ -15,7 +15,6 @@ import {
     CheckableButtonGroupVariant
 } from '@inkline/inkline/components/utils';
 import type { RadioButtonOption } from '@inkline/inkline/components/IRadioButtons/types';
-import { FormValue } from '@inkline/inkline/types';
 
 const componentName = 'IRadioButtons';
 
@@ -37,6 +36,18 @@ export default defineComponent({
         buttonProps: {
             type: Object as PropType<RadioButtonOption['buttonProps']>,
             default: () => ({})
+        },
+        /**
+         * The fallback label of the radio buttons. Can be a string, number, render function, or component
+         * @type String | Number | Boolean | Function | Object
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: [String, Number, Boolean, Function, Object] as PropType<
+                RadioButtonOption['label']
+            >,
+            default: undefined
         },
         /**
          * The color variant of the radio buttons
@@ -226,6 +237,8 @@ export default defineComponent({
         type="radio"
         role="radiogroup"
     >
+        <!-- @slot prepend Slot for rendering additional content before buttons -->
+        <slot name="prepend" />
         <IButton
             v-for="option in options"
             :key="`${name}/${option.id}`"
@@ -238,10 +251,12 @@ export default defineComponent({
             @click="onChange(option.id)"
             @blur="onBlur"
         >
-            <!-- @slot default Slot for rendering radio buttons options -->
-            <slot :option="option">
-                <IRenderResolver :data="option.label" />
+            <!-- @slot option Slot for rendering radio buttons options content -->
+            <slot name="option" :option="option">
+                <IRenderResolver :render="option.label ?? label" :ctx="option" />
             </slot>
         </IButton>
+        <!-- @slot append Slot for rendering additional content after buttons -->
+        <slot name="append" />
     </ICheckableButtonGroup>
 </template>

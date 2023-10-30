@@ -12,19 +12,19 @@ const options = ref<SelectOption[]>([
 ]);
 </script>
 <template>
-    <ISelect v-model="selected" placeholder="Type something.." :options="options">
+    <ISelect v-model="selected" :options="options" placeholder="Choose something..">
         <template #prepend>
             <IButton>Button</IButton>
         </template>
     </ISelect>
 
-    <ISelect v-model="selected" placeholder="Type something.." :options="options">
+    <ISelect v-model="selected" :options="options" placeholder="Choose something..">
         <template #append>
             <IButton>Button</IButton>
         </template>
     </ISelect>
 
-    <ISelect v-model="selected" placeholder="Type something.." :options="options">
+    <ISelect v-model="selected" :options="options" placeholder="Choose something..">
         <template #prepend>
             <IButton>Button</IButton>
         </template>

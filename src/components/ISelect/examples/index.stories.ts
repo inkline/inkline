@@ -12,9 +12,10 @@ import {
     ISelectPrependAppendButtonExample,
     ISelectPrefixSuffixExample,
     ISelectReadonlyExample,
-    ISelectRenderingRenderFunctionExample,
-    ISelectRenderingValueByPathExample,
-    ISelectRenderingScopedSlotExample
+    ISelectRenderExpressionExample,
+    ISelectRenderFunctionExample,
+    ISelectRenderSlotExample,
+    ISelectRenderFunctionPerOptionExample
 } from '@inkline/inkline/components/ISelect/examples/index';
 import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
 import { useServer } from '@inkline/inkline/__tests__/utils/useServer';
@@ -42,6 +43,7 @@ export const PrependAppendText = () => ISelectPrependAppendTextExample;
 export const PrependAppendButton = () => ISelectPrependAppendButtonExample;
 export const PrefixSuffix = () => ISelectPrefixSuffixExample;
 export const Readonly = () => ISelectReadonlyExample;
-export const RenderingRenderFunction = () => ISelectRenderingRenderFunctionExample;
-export const RenderingValueByPath = () => ISelectRenderingValueByPathExample;
-export const RenderingScopedSlot = () => ISelectRenderingScopedSlotExample;
+export const RenderExpression = () => ISelectRenderExpressionExample;
+export const RenderFunction = () => ISelectRenderFunctionExample;
+export const RenderFunctionPerOption = () => ISelectRenderFunctionPerOptionExample;
+export const RenderSlot = () => ISelectRenderSlotExample;

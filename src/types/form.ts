@@ -1,9 +1,9 @@
-import type { RenderFunction } from 'vue';
 import type { FormValue } from '@inkline/inkline/types/validation';
+import { Renderable } from '@inkline/inkline/types/render';
 
 export interface FormOption {
     id: string | number;
-    label: string | number | RenderFunction;
+    label?: Renderable;
     value?: FormValue;
     disabled?: boolean;
     readonly?: boolean;

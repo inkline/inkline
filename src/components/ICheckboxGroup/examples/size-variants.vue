@@ -1,30 +1,20 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
+import type { CheckboxGroupOption } from '@inkline/inkline';
 
-const sm = ref(['apple']);
-const md = ref(['apple']);
-const lg = ref(['apple']);
+const checked = ref(['apple']);
+const options = ref<CheckboxGroupOption[]>([
+    { id: 'apple', label: 'Apple' },
+    { id: 'banana', label: 'Banana' },
+    { id: 'strawberry', label: 'Strawberry' },
+    { id: 'mango', label: 'Mango' }
+]);
 </script>
 
 <template>
-    <ICheckboxGroup v-model="sm" size="sm">
-        <ICheckbox value="apple">Apple</ICheckbox>
-        <ICheckbox value="banana">Banana</ICheckbox>
-        <ICheckbox value="strawberry">Strawberry</ICheckbox>
-        <ICheckbox value="mango">Mango</ICheckbox>
-    </ICheckboxGroup>
+    <ICheckboxGroup v-model="checked" :options="options" size="sm" />
 
-    <ICheckboxGroup v-model="md" size="md">
-        <ICheckbox value="apple">Apple</ICheckbox>
-        <ICheckbox value="banana">Banana</ICheckbox>
-        <ICheckbox value="strawberry">Strawberry</ICheckbox>
-        <ICheckbox value="mango">Mango</ICheckbox>
-    </ICheckboxGroup>
+    <ICheckboxGroup v-model="checked" :options="options" size="md" />
 
-    <ICheckboxGroup v-model="lg" size="lg">
-        <ICheckbox value="apple">Apple</ICheckbox>
-        <ICheckbox value="banana">Banana</ICheckbox>
-        <ICheckbox value="strawberry">Strawberry</ICheckbox>
-        <ICheckbox value="mango">Mango</ICheckbox>
-    </ICheckboxGroup>
+    <ICheckboxGroup v-model="checked" :options="options" size="lg" />
 </template>

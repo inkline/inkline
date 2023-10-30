@@ -1,15 +1,20 @@
 <script lang="ts" setup>
 import { h, ref } from 'vue';
+import type { LabelRenderFunction, RadioButtonOption } from '@inkline/inkline';
 
 const checked = ref('apple');
-const options = ref([
-    { id: 1, label: () => h('strong', 'Apple'), value: 'apple' },
-    { id: 2, label: () => h('strong', 'Banana'), value: 'banana' },
-    { id: 3, label: () => h('strong', 'Strawberry'), value: 'strawberry' },
-    { id: 4, label: () => h('strong', 'Mango'), value: 'mango' }
+
+const options = ref<RadioButtonOption[]>([
+    { id: 'apple' },
+    { id: 'banana' },
+    { id: 'strawberry' },
+    { id: 'mango' }
 ]);
+
+const labelRenderFunction: LabelRenderFunction<RadioButtonOption> = (option) =>
+    h('strong', option.id);
 </script>
 
 <template>
-    <IRadioButtons v-model="checked" :options="options" />
+    <IRadioButtons v-model="checked" :options="options" :label="labelRenderFunction" />
 </template>

@@ -6,7 +6,8 @@ export interface SelectOption extends FormOption {
 }
 
 export interface SelectInjection {
-    value: Ref;
+    value: Ref<SelectOption['id']>;
+    disabled: Ref<boolean>;
     idField: Ref<string>;
     onInput: (option: SelectOption) => void;
 }

@@ -260,6 +260,23 @@
         }
     }
 
+    .input-value-overlay {
+        position: absolute;
+        padding-left: var(
+            --input--value-overlay--padding-left,
+            var(--input--padding-left, var(--padding-left))
+        );
+        padding-right: var(
+            --input--value-overlay--padding-right,
+            var(--input--padding-left, var(--padding-left))
+        );
+
+        &,
+        > * {
+            cursor: default;
+        }
+    }
+
     .input-prepend,
     .input-prepend > *:first-child {
         border-top-left-radius: var(--input--border-top-left-radius, var(--border-top-left-radius));

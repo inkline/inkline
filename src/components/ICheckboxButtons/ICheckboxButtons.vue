@@ -38,6 +38,18 @@ export default defineComponent({
             default: () => ({})
         },
         /**
+         * The fallback label of the checkbox buttons. Can be a string, number, render function, or component
+         * @type String | Number | Boolean | Function | Object
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: [String, Number, Boolean, Function, Object] as PropType<
+                CheckboxButtonOption['label']
+            >,
+            default: undefined
+        },
+        /**
          * The color variant of the checkbox buttons
          * @type light | dark
          * @default
@@ -243,6 +255,8 @@ export default defineComponent({
         type="checkbox"
         role="checkboxgroup"
     >
+        <!-- @slot prepend Slot for rendering additional content before buttons -->
+        <slot name="prepend" />
         <IButton
             v-for="option in options"
             :key="`${name}/${option.id}`"
@@ -255,10 +269,12 @@ export default defineComponent({
             @click="onChange(option.id)"
             @blur="onBlur"
         >
-            <!-- @slot default Slot for rendering checkbox buttons options -->
-            <slot :option="option">
-                <IRenderResolver :data="option.label" />
+            <!-- @slot option Slot for rendering checkbox buttons options content -->
+            <slot name="option" :option="option">
+                <IRenderResolver :render="option.label ?? label" :ctx="option" />
             </slot>
         </IButton>
+        <!-- @slot append Slot for rendering additional content after buttons -->
+        <slot name="append" />
     </ICheckableButtonGroup>
 </template>

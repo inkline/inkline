@@ -360,6 +360,9 @@ export default defineComponent({
                 <!-- @slot prefix Slot for the input prefix content -->
                 <slot name="prefix" />
             </span>
+            <div v-if="$slots.value" class="input-value-overlay">
+                <slot name="value" />
+            </div>
             <input
                 v-if="type !== 'textarea'"
                 v-bind="inputAttrs"

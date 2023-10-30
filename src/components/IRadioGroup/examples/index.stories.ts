@@ -1,13 +1,21 @@
 import { IRadioGroup } from '@inkline/inkline/components/IRadioGroup';
 import {
-    IRadioBasicExample,
-    IRadioColorVariantsExample,
-    IRadioDisabledExample,
-    IRadioReadonlyExample,
-    IRadioOptionsExample,
-    IRadioSizeVariantsExample
+    IRadioGroupBasicExample,
+    IRadioGroupColorVariantsExample,
+    IRadioGroupDisabledExample,
+    IRadioGroupReadonlyExample,
+    IRadioGroupSizeVariantsExample,
+    IRadioGroupRenderComponentExample,
+    IRadioGroupRenderExpressionExample,
+    IRadioGroupRenderFunctionExample,
+    IRadioGroupRenderFunctionPerOptionExample
 } from '@inkline/inkline/components/IRadioGroup/examples/index';
-import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
+import {
+    colorArgType,
+    createExampleStory,
+    createStory,
+    sizeArgType
+} from '@inkline/inkline/__storybook__';
 
 export default {
     component: IRadioGroup,
@@ -18,9 +26,14 @@ export default {
     }
 };
 
-export const Basic = createStory(IRadioBasicExample);
-export const Options = () => IRadioOptionsExample;
-export const ColorVariants = () => IRadioColorVariantsExample;
-export const Disabled = () => IRadioDisabledExample;
-export const Readonly = () => IRadioReadonlyExample;
-export const SizeVariants = () => IRadioSizeVariantsExample;
+export const Basic = createStory(IRadioGroupBasicExample);
+export const ColorVariants = () => IRadioGroupColorVariantsExample;
+export const Disabled = () => IRadioGroupDisabledExample;
+export const Readonly = () => IRadioGroupReadonlyExample;
+export const SizeVariants = () => IRadioGroupSizeVariantsExample;
+export const RenderComponent = createExampleStory(IRadioGroupRenderComponentExample);
+export const RenderExpression = createExampleStory(IRadioGroupRenderExpressionExample);
+export const RenderFunction = createExampleStory(IRadioGroupRenderFunctionExample);
+export const RenderFunctionPerOption = createExampleStory(
+    IRadioGroupRenderFunctionPerOptionExample
+);

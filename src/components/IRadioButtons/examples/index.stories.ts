@@ -7,7 +7,11 @@ import {
     IRadioButtonsDisabledOptionExample,
     IRadioButtonsReadonlyExample,
     IRadioButtonsReadonlyOptionExample,
+    IRadioButtonsRenderComponentExample,
+    IRadioButtonsRenderExpressionExample,
     IRadioButtonsRenderFunctionExample,
+    IRadioButtonsRenderFunctionPerOptionExample,
+    IRadioButtonsRenderSlotExample,
     IRadioButtonsSizeVariantsExample,
     IRadioButtonsStyleVariantsExample
 } from '@inkline/inkline/components/IRadioButtons/examples/index';
@@ -33,7 +37,13 @@ export const Disabled = createExampleStory(IRadioButtonsDisabledExample);
 export const DisabledOption = createExampleStory(IRadioButtonsDisabledOptionExample);
 export const Readonly = createExampleStory(IRadioButtonsReadonlyExample);
 export const ReadonlyOption = createExampleStory(IRadioButtonsReadonlyOptionExample);
-export const RenderFunction = createExampleStory(IRadioButtonsRenderFunctionExample);
 export const SizeVariants = createExampleStory(IRadioButtonsSizeVariantsExample);
 export const StyleVariants = createExampleStory(IRadioButtonsStyleVariantsExample);
 export const ButtonProps = createExampleStory(IRadioButtonsButtonPropsExample);
+export const RenderComponent = createExampleStory(IRadioButtonsRenderComponentExample);
+export const RenderExpression = createExampleStory(IRadioButtonsRenderExpressionExample);
+export const RenderFunction = createExampleStory(IRadioButtonsRenderFunctionExample);
+export const RenderFunctionPerOption = createExampleStory(
+    IRadioButtonsRenderFunctionPerOptionExample
+);
+export const RenderSlot = createExampleStory(IRadioButtonsRenderSlotExample);

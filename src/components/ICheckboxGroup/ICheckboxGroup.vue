@@ -10,6 +10,7 @@ import { CheckboxGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/consta
 import { uid } from '@grozav/utils';
 import type { CheckboxGroupOption } from '@inkline/inkline/components';
 import { ICheckbox } from '@inkline/inkline/components/ICheckbox';
+import { CheckboxButtonOption } from '@inkline/inkline/components';
 
 const componentName = 'ICheckboxGroup';
 
@@ -129,6 +130,18 @@ export default defineComponent({
         options: {
             type: Array as PropType<CheckboxGroupOption[]>,
             default: () => []
+        },
+        /**
+         * The fallback label of the checkbox group. Can be a string, number, render function, or component
+         * @type String | Number | Boolean | Function | Object
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: [String, Number, Boolean, Function, Object] as PropType<
+                CheckboxButtonOption['label']
+            >,
+            default: undefined
         }
     },
     emits: [
@@ -243,9 +256,13 @@ export default defineComponent({
         <ICheckbox
             v-for="option in options"
             :key="option.id"
-            :value="option.id"
-            :label="option.label"
-        />
+            :option="option"
+            :label="option.label || label"
+        >
+            <template v-if="$slots.option">
+                <slot name="option" :option="option" />
+            </template>
+        </ICheckbox>
         <!-- @slot default Slot for default checkbox group options -->
         <slot />
     </div>

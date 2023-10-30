@@ -3,7 +3,11 @@ import {
     ICheckboxBasicExample,
     ICheckboxColorVariantsExample,
     ICheckboxDisabledExample,
-    ICheckboxOptionsExample,
+    ICheckboxGroupRenderComponentExample,
+    ICheckboxGroupRenderExpressionExample,
+    ICheckboxGroupRenderFunctionExample,
+    ICheckboxGroupRenderFunctionPerOptionExample,
+    ICheckboxGroupRenderSlotExample,
     ICheckboxSizeVariantsExample
 } from '@inkline/inkline/components/ICheckboxGroup/examples/index';
 import {
@@ -23,7 +27,13 @@ export default {
 };
 
 export const Basic = createStory(ICheckboxBasicExample);
-export const Options = createExampleStory(ICheckboxOptionsExample);
 export const ColorVariants = createExampleStory(ICheckboxColorVariantsExample);
 export const Disabled = createExampleStory(ICheckboxDisabledExample);
 export const SizeVariants = createExampleStory(ICheckboxSizeVariantsExample);
+export const RenderComponent = createExampleStory(ICheckboxGroupRenderComponentExample);
+export const RenderExpression = createExampleStory(ICheckboxGroupRenderExpressionExample);
+export const RenderFunction = createExampleStory(ICheckboxGroupRenderFunctionExample);
+export const RenderFunctionPerOption = createExampleStory(
+    ICheckboxGroupRenderFunctionPerOptionExample
+);
+export const RenderSlot = createExampleStory(ICheckboxGroupRenderSlotExample);

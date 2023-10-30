@@ -342,6 +342,7 @@
             height: var(--select--font-size, var(--font-size));
             width: var(--select--font-size, var(--font-size));
             mask-size: var(--select--font-size, var(--font-size)) var(--font-size);
+            margin-left: var(--select--caret--margin-left, var(--select--margin-left));
         }
     }
 }

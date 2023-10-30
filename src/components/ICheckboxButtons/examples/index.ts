@@ -6,5 +6,9 @@ export { default as ICheckboxButtonsDisabledOptionExample } from '@inkline/inkli
 export { default as ICheckboxButtonsReadonlyExample } from '@inkline/inkline/components/ICheckboxButtons/examples/readonly.vue';
 export { default as ICheckboxButtonsReadonlyOptionExample } from '@inkline/inkline/components/ICheckboxButtons/examples/readonly-option.vue';
 export { default as ICheckboxButtonsSizeVariantsExample } from '@inkline/inkline/components/ICheckboxButtons/examples/size-variants.vue';
+export { default as ICheckboxButtonsRenderComponentExample } from '@inkline/inkline/components/ICheckboxButtons/examples/render-component.vue';
+export { default as ICheckboxButtonsRenderExpressionExample } from '@inkline/inkline/components/ICheckboxButtons/examples/render-expression.vue';
 export { default as ICheckboxButtonsRenderFunctionExample } from '@inkline/inkline/components/ICheckboxButtons/examples/render-function.vue';
+export { default as ICheckboxButtonsRenderFunctionPerOptionExample } from '@inkline/inkline/components/ICheckboxButtons/examples/render-function-per-option.vue';
+export { default as ICheckboxButtonsRenderSlotExample } from '@inkline/inkline/components/ICheckboxButtons/examples/render-slot.vue';
 export { default as ICheckboxButtonsStyleVariantsExample } from '@inkline/inkline/components/ICheckboxButtons/examples/style-variants.vue';

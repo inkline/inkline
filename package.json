@@ -59,6 +59,7 @@
     "dependencies": {
         "@floating-ui/dom": "^1.0.4",
         "@popperjs/core": "2.11.6",
+        "micromustache": "^8.0.3",
         "normalize.css": "^8.0.1"
     },
     "devDependencies": {

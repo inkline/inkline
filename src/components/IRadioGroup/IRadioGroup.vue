@@ -70,6 +70,18 @@ export default defineComponent({
             default: false
         },
         /**
+         * The fallback label of the radio group. Can be a string, number, render function, or component
+         * @type String | Number | Boolean | Function | Object
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: [String, Number, Boolean, Function, Object] as PropType<
+                RadioGroupOption['label']
+            >,
+            default: undefined
+        },
+        /**
          * Used to set the radio group value
          * @default
          * @name modelValue
@@ -227,8 +239,8 @@ export default defineComponent({
         <IRadio
             v-for="option in options"
             :key="option.id"
-            :value="option.id"
-            :label="option.label"
+            :option="option"
+            :label="option.label ?? label"
         />
         <!-- @slot default Slot for default radio group options -->
         <slot />
