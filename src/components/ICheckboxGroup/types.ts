@@ -1,4 +1,5 @@
 import type { ComputedRef, Ref } from 'vue';
+import { FormOption } from '@inkline/inkline/types';
 
 export interface CheckboxGroupInjection {
     name: Ref<string>;
@@ -10,3 +11,5 @@ export interface CheckboxGroupInjection {
     onChange: (value: any) => void;
     onBlur: (event: FocusEvent) => void;
 }
+
+export type CheckboxGroupOption = FormOption;

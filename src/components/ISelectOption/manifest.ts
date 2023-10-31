@@ -4,22 +4,11 @@ export const manifest: ComponentManifest = {
     name: 'ISelectOption',
     props: [
         {
-            name: 'active',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The active state of the select option'
-        },
-        {
-            name: 'disabled',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The disabled state of the select option'
-        },
-        {
             name: 'label',
-            type: ['String'],
-            default: "''",
-            description: 'The label of the select option'
+            type: ['String', 'Number', 'Boolean', 'Function', 'Object'],
+            default: 'undefined',
+            description:
+                'The label of the select option. Can be a string, number, render function, or component'
         },
         {
             name: 'tabindex',
@@ -28,8 +17,8 @@ export const manifest: ComponentManifest = {
             description: 'The tabindex of the list group item'
         },
         {
-            name: 'value',
-            type: ['Object', 'String', 'Number'],
+            name: 'option',
+            type: ['Object'],
             default: '',
             description: 'The select option'
         }
@@ -205,12 +194,7 @@ export const manifest: ComponentManifest = {
                 name: '--select--option--hover--background'
             },
             {
-                name: '--select--option--disabled--color',
-                value: [
-                    {
-                        name: '--select--color'
-                    }
-                ]
+                name: '--select--option--disabled--color'
             },
             {
                 name: '--select--option--disabled--background',

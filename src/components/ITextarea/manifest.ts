@@ -943,6 +943,32 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
+                name: '--input--value-overlay--padding-left',
+                value: [
+                    {
+                        name: '--input--padding-left',
+                        value: [
+                            {
+                                name: '--padding-left'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--input--value-overlay--padding-right',
+                value: [
+                    {
+                        name: '--input--padding-left',
+                        value: [
+                            {
+                                name: '--padding-left'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 name: '--input--error--border-color',
                 value: [
                     {

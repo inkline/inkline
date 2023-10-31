@@ -1,15 +1,13 @@
 import { Ref } from 'vue';
+import { FormOption } from '@inkline/inkline/types';
 
-export interface SelectOption {
-    id?: string | number;
-    label: string;
+export interface SelectOption extends FormOption {
     active?: boolean;
-    disabled?: boolean;
-    [key: string]: any;
 }
 
 export interface SelectInjection {
-    value: Ref;
+    value: Ref<SelectOption['id']>;
+    disabled: Ref<boolean>;
     idField: Ref<string>;
     onInput: (option: SelectOption) => void;
 }

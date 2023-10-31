@@ -10,6 +10,7 @@ export { default as ISelectPrependAppendTextExample } from '@inkline/inkline/com
 export { default as ISelectPrependAppendButtonExample } from '@inkline/inkline/components/ISelect/examples/prepend-append-button.vue';
 export { default as ISelectPrefixSuffixExample } from '@inkline/inkline/components/ISelect/examples/prefix-suffix.vue';
 export { default as ISelectReadonlyExample } from '@inkline/inkline/components/ISelect/examples/readonly.vue';
-export { default as ISelectRenderingRenderFunctionExample } from '@inkline/inkline/components/ISelect/examples/rendering-render-function.vue';
-export { default as ISelectRenderingValueByPathExample } from '@inkline/inkline/components/ISelect/examples/rendering-value-by-path.vue';
-export { default as ISelectRenderingScopedSlotExample } from '@inkline/inkline/components/ISelect/examples/rendering-scoped-slot.vue';
+export { default as ISelectRenderFunctionExample } from '@inkline/inkline/components/ISelect/examples/render-function.vue';
+export { default as ISelectRenderFunctionPerOptionExample } from '@inkline/inkline/components/ISelect/examples/render-function-per-option.vue';
+export { default as ISelectRenderExpressionExample } from '@inkline/inkline/components/ISelect/examples/render-expression.vue';
+export { default as ISelectRenderSlotExample } from '@inkline/inkline/components/ISelect/examples/render-slot.vue';

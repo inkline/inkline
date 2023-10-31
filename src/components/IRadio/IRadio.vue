@@ -8,11 +8,14 @@ import {
     useFormValidationError,
     useValidation
 } from '@inkline/inkline/composables';
+import type { RadioGroupOption } from '@inkline/inkline/components';
+import { IRenderResolver } from '@inkline/inkline/components/utils/IRenderResolver';
 
 const componentName = 'IRadio';
 
 export default defineComponent({
     name: componentName,
+    components: { IRenderResolver },
     inheritAttrs: false,
     props: {
         /**
@@ -47,9 +50,10 @@ export default defineComponent({
             default: () => ['touched', 'dirty', 'invalid']
         },
         /**
-         * Used to set the radio value when used inside a radio group
+         * [Deprecated] Used to set the radio value when used inside a radio group
          * @default false
          * @name value
+         * @deprecated
          */
         value: {
             default: undefined
@@ -114,6 +118,28 @@ export default defineComponent({
         tabindex: {
             type: [Number, String],
             default: 0
+        },
+        /**
+         * The label to be displayed alongside the radio. Can be a string, number, render function, or component
+         * @type String | Number | Boolean | Function | Object
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: [String, Number, Boolean, Function, Object] as PropType<
+                RadioGroupOption['label']
+            >,
+            default: undefined
+        },
+        /**
+         * The option object of the radio when used inside a radio group
+         * @type Object
+         * @default undefined
+         * @name option
+         */
+        option: {
+            type: Object as PropType<RadioGroupOption>,
+            default: undefined
         }
     },
     emits: [
@@ -181,23 +207,24 @@ export default defineComponent({
             '-error': hasError.value
         }));
 
+        const tabindex = computed(() => {
+            return disabled.value ? -1 : props.tabindex;
+        });
+
+        const value = computed(() => props.option?.id ?? props.value);
         const checked = computed(() => {
             if (radioGroup?.value) {
-                return radioGroup.value.value === props.value;
+                return radioGroup.value.value === value.value;
             }
 
             return props.modelValue;
-        });
-
-        const tabindex = computed(() => {
-            return disabled.value ? -1 : props.tabindex;
         });
 
         function onChange(event: Event) {
             const target = event.target as HTMLInputElement;
 
             if (radioGroup) {
-                radioGroup.onChange(props.value);
+                radioGroup.onChange(value.value);
             } else {
                 schemaOnInput(name, target.checked);
             }
@@ -270,7 +297,9 @@ export default defineComponent({
             @keydown.space.stop.prevent="labelOnKeydown"
         >
             <!-- @slot default Slot for default radio label -->
-            <slot />
+            <slot>
+                <IRenderResolver :render="label" :ctx="option" />
+            </slot>
         </label>
     </div>
 </template>

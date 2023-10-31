@@ -3,10 +3,6 @@ import {
     ICheckboxBasicExample,
     ICheckboxColorVariantsExample,
     ICheckboxDisabledExample,
-    ICheckboxGroupExample,
-    ICheckboxGroupDisabledExample,
-    ICheckboxGroupSizeVariantsExample,
-    ICheckboxGroupColorVariantsExample,
     ICheckboxIndeterminateExample,
     ICheckboxNativeExample,
     ICheckboxReadonlyExample,
@@ -31,10 +27,6 @@ export default {
 export const Basic = createStory(ICheckboxBasicExample);
 export const ColorVariants = createExampleStory(ICheckboxColorVariantsExample);
 export const Disabled = createExampleStory(ICheckboxDisabledExample);
-export const Group = createExampleStory(ICheckboxGroupExample);
-export const GroupDisabled = createExampleStory(ICheckboxGroupDisabledExample);
-export const GroupSizeVariants = createExampleStory(ICheckboxGroupSizeVariantsExample);
-export const GroupColorVariants = createExampleStory(ICheckboxGroupColorVariantsExample);
 export const Indeterminate = createExampleStory(ICheckboxIndeterminateExample);
 export const Native = createExampleStory(ICheckboxNativeExample);
 export const Readonly = createExampleStory(ICheckboxReadonlyExample);

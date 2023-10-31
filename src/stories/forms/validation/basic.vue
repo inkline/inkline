@@ -1,15 +1,17 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { useForm } from '@inkline/inkline';
+import { FormOption, useForm } from '@inkline/inkline';
 import type { SelectOption } from '@inkline/inkline';
 
-const { schema, validate } = useForm<{
+const { form, schema, validate } = useForm<{
     input: string;
     numberInput: number;
     textarea: string;
     checkbox: boolean;
     checkboxGroup: string[];
+    checkboxButtons: string[];
     radioGroup: string;
+    radioButtons: string;
     toggle: boolean;
     select: string;
 }>({
@@ -26,10 +28,15 @@ const { schema, validate } = useForm<{
         validators: [{ name: 'required', invalidateFalse: true }]
     },
     checkboxGroup: {
-        value: ['test'],
-        validators: ['required']
+        validators: [{ name: 'minLength', value: 1 }]
+    },
+    checkboxButtons: {
+        validators: [{ name: 'minLength', value: 1 }]
     },
     radioGroup: {
+        validators: ['required']
+    },
+    radioButtons: {
         validators: ['required']
     },
     toggle: {
@@ -40,7 +47,7 @@ const { schema, validate } = useForm<{
     }
 });
 
-const options = ref<SelectOption[]>([
+const selectOptions = ref<SelectOption[]>([
     { id: 1, label: 'Richard Hendricks' },
     { id: 2, label: 'Bertram Gilfoyle' },
     { id: 3, label: 'Dinesh Chugtai' },
@@ -49,11 +56,14 @@ const options = ref<SelectOption[]>([
     { id: '', label: 'Unknown' }
 ]);
 
-const loading = ref(false);
+const checkableOptions = ref<FormOption[]>([
+    { id: 'apple', label: 'Apple' },
+    { id: 'banana', label: 'Banana' },
+    { id: 'strawberry', label: 'Strawberry' },
+    { id: 'mango', label: 'Mango' }
+]);
 
-const prettySchema = computed(() => {
-    return JSON.stringify(schema.value, null, 4);
-});
+const loading = ref(false);
 
 async function onSubmit() {
     loading.value = true;
@@ -64,6 +74,14 @@ async function onSubmit() {
         loading.value = false;
     }, 2000);
 }
+
+const prettySchema = computed(() => {
+    return JSON.stringify(schema.value, null, 4);
+});
+
+const prettyFormValues = computed(() => {
+    return JSON.stringify(form.value, null, 4);
+});
 </script>
 <template>
     <IForm v-model="schema">
@@ -87,7 +105,7 @@ async function onSubmit() {
 
         <IFormGroup>
             <IFormLabel>Select</IFormLabel>
-            <ISelect name="select" :options="options" placeholder="Choose an option" />
+            <ISelect name="select" :options="selectOptions" placeholder="Choose an option" />
             <IFormError for="select" />
         </IFormGroup>
 
@@ -99,24 +117,26 @@ async function onSubmit() {
 
         <IFormGroup>
             <IFormLabel>Checkbox Group</IFormLabel>
-            <ICheckboxGroup name="checkboxGroup">
-                <ICheckbox value="apple">Apple</ICheckbox>
-                <ICheckbox value="banana">Banana</ICheckbox>
-                <ICheckbox value="strawberry">Strawberry</ICheckbox>
-                <ICheckbox value="mango">Mango</ICheckbox>
-            </ICheckboxGroup>
+            <ICheckboxGroup :options="checkableOptions" name="checkboxGroup" />
             <IFormError for="checkboxGroup" />
         </IFormGroup>
 
         <IFormGroup>
+            <IFormLabel>Checkbox Buttons</IFormLabel><br />
+            <ICheckboxButtons :options="checkableOptions" name="checkboxButtons" />
+            <IFormError for="checkboxButtons" />
+        </IFormGroup>
+
+        <IFormGroup>
             <IFormLabel>Radio Group</IFormLabel>
-            <IRadioGroup name="radioGroup">
-                <IRadio value="coconut">Coconut</IRadio>
-                <IRadio value="passionfruit">Passion fruit</IRadio>
-                <IRadio value="apricot">Apricot</IRadio>
-                <IRadio value="">None</IRadio>
-            </IRadioGroup>
+            <IRadioGroup :options="checkableOptions" name="radioGroup" />
             <IFormError for="radioGroup" />
+        </IFormGroup>
+
+        <IFormGroup>
+            <IFormLabel>Radio Buttons</IFormLabel><br />
+            <IRadioButtons :options="checkableOptions" name="radioButtons" />
+            <IFormError for="radioButtons" />
         </IFormGroup>
 
         <IFormGroup>
@@ -129,6 +149,7 @@ async function onSubmit() {
             <IButton type="button" :loading="loading" @click="onSubmit">Submit</IButton>
         </IFormGroup>
 
+        <pre class="_margin-top:2 _text:muted">{{ prettyFormValues }}</pre>
         <pre class="_margin-top:2 _text:muted">{{ prettySchema }}</pre>
     </IForm>
 </template>

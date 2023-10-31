@@ -10,9 +10,10 @@ import {
     toRef,
     watch
 } from 'vue';
-import { isFocusable, isKey, uid, getValueByPath, isFunction } from '@grozav/utils';
+import { isFocusable, isKey, uid, isFunction } from '@grozav/utils';
 
-import { IInput, SelectInjection } from '@inkline/inkline/components';
+import { IInput } from '@inkline/inkline/components/IInput';
+import { SelectInjection, SelectOption } from '@inkline/inkline/components/ISelect/types';
 import { FormKey, FormGroupKey, SelectKey } from '@inkline/inkline/constants';
 import {
     useClickOutside,
@@ -24,16 +25,18 @@ import {
     usePopupControl
 } from '@inkline/inkline/composables';
 import { Placement } from '@floating-ui/dom';
-import { SelectOption } from '@inkline/inkline/components/ISelect/types';
 import { ISelectOption } from '@inkline/inkline/components/ISelectOption';
-import { extractRefHTMLElement } from '@inkline/inkline/utils';
+import { extractRefHTMLElement, interpolate } from '@inkline/inkline/utils';
 import { ComputePositionConfig } from '@floating-ui/core';
+import { IRenderResolver } from '@inkline/inkline/components/utils/IRenderResolver';
+import { LabelRenderFunction } from '@inkline/inkline/types';
 
 const componentName = 'ISelect';
 
 export default defineComponent({
     name: componentName,
     components: {
+        IRenderResolver,
         IInput,
         ISelectOption
     },
@@ -151,14 +154,14 @@ export default defineComponent({
             default: true
         },
         /**
-         * Used to extract the label from the select option and select value
-         * @type String | Function
-         * @default label
+         * The label of the select. Can be a string, number, render function, or component
+         * @type String | Number | Boolean | Function | Object
+         * @default undefined
          * @name label
          */
         label: {
-            type: [String, Function] as PropType<string | ((option: SelectOption) => string)>,
-            default: 'label'
+            type: [String, Number, Boolean, Function, Object] as PropType<SelectOption['label']>,
+            default: undefined
         },
         /**
          * The loading state of the select
@@ -393,11 +396,9 @@ export default defineComponent({
             return props.modelValue;
         });
 
-        const valueOption = computed<SelectOption | undefined>(() => {
+        const selectedOption = computed<SelectOption | undefined>(() => {
             return props.options.find((option) => option[props.idField] === value.value);
         });
-
-        const inputValue = ref(valueOption.value ? getLabel(valueOption.value) : '');
 
         const disabled = computed(
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
@@ -446,16 +447,28 @@ export default defineComponent({
             '-error': hasError.value
         }));
 
-        const inputPlaceholder = computed(() => {
-            return valueOption.value ? getLabel(valueOption.value) : props.placeholder;
+        const inputLabel = computed(() => {
+            if (selectedOption.value) {
+                const label = props.label || selectedOption.value.label;
+
+                if (isFunction(label)) {
+                    const labelFnResult = (label as LabelRenderFunction)(selectedOption.value);
+                    if (typeof labelFnResult === 'string') {
+                        return labelFnResult;
+                    }
+                } else if (typeof label === 'string') {
+                    return interpolate(label, selectedOption.value);
+                } else if (typeof label === 'number' || typeof label === 'boolean') {
+                    return `${label}`;
+                }
+            }
+
+            return '';
         });
 
-        watch(
-            () => value.value,
-            () => {
-                inputValue.value = valueOption.value ? getLabel(valueOption.value) : '';
-            }
-        );
+        const inputPlaceholder = computed(() => {
+            return selectedOption.value ? inputLabel.value : props.placeholder;
+        });
 
         watch(
             () => props.options,
@@ -472,6 +485,7 @@ export default defineComponent({
         provide(SelectKey, {
             value,
             idField,
+            disabled,
             onInput
         } as SelectInjection);
 
@@ -486,8 +500,6 @@ export default defineComponent({
             if (disabled.value || option.disabled) {
                 return;
             }
-
-            inputValue.value = getLabel(option);
 
             schemaOnInput(name, option[props.idField]);
             emit('update:modelValue', option[props.idField]);
@@ -527,7 +539,9 @@ export default defineComponent({
             }
 
             const focusableItems = getFocusableItems();
-            const activeIndex = focusableItems.findIndex((item: any) => item.active);
+            const activeIndex = focusableItems.findIndex((item) =>
+                item.classList.contains('-active')
+            );
             const initialIndex = activeIndex > -1 ? activeIndex : 0;
             const focusTarget = focusableItems[initialIndex];
 
@@ -658,20 +672,6 @@ export default defineComponent({
             return focusableItems;
         }
 
-        function getLabel(option: SelectOption | string | number | undefined): string {
-            if (typeof option !== 'object') {
-                return inputValue.value;
-            }
-
-            return isFunction(props.label)
-                ? (
-                      props.label as unknown as (
-                          option: Record<string, any> | string | number
-                      ) => void
-                  )(option)
-                : getValueByPath(option, props.label as string);
-        }
-
         return {
             value,
             disabled,
@@ -679,7 +679,7 @@ export default defineComponent({
             clearable,
             tabindex,
             wrapperClasses,
-            inputValue,
+            inputLabel,
             arrowRef,
             wrapperRef,
             triggerRef,
@@ -688,14 +688,15 @@ export default defineComponent({
             popupRef,
             visible,
             inputPlaceholder,
+            selectedOption,
+            focusInput,
             onClickCaret,
             onTriggerKeyDown,
             onItemKeyDown,
             onBlur,
             onInput,
             onClear,
-            onEscape,
-            getLabel
+            onEscape
         };
     }
 });
@@ -717,7 +718,7 @@ export default defineComponent({
     >
         <IInput
             ref="triggerRef"
-            v-model="inputValue"
+            :modelValue="inputLabel"
             plaintext
             autocomplete="off"
             aria-autocomplete="none"
@@ -743,6 +744,18 @@ export default defineComponent({
                 <!-- @slot prefix Slot for the select prefix content -->
                 <slot name="prefix" />
             </template>
+
+            <template v-if="selectedOption && (!inputLabel || $slots.option)" #value>
+                <div v-if="$slots.option" @click="focusInput">
+                    <slot name="option" :option="selectedOption" />
+                </div>
+                <IRenderResolver
+                    v-else-if="!inputLabel"
+                    :render="selectedOption.label ?? label"
+                    :ctx="selectedOption"
+                />
+            </template>
+
             <template #suffix>
                 <!-- @slot suffix Slot for the select suffix content -->
                 <slot name="suffix" />
@@ -788,14 +801,14 @@ export default defineComponent({
                             v-for="option in options"
                             :key="option[idField]"
                             :active="value === option[idField]"
-                            :disabled="option.disabled"
-                            :value="option"
+                            :option="option"
+                            :label="option.label ?? label"
                             @keydown="onItemKeyDown"
                         >
-                            <!-- @slot option Slot for the select option content -->
-                            <slot name="option" :option="option">
-                                {{ getLabel(option) }}
-                            </slot>
+                            <template v-if="$slots.option">
+                                <!-- @slot option Slot for the select option content -->
+                                <slot name="option" :option="option" />
+                            </template>
                         </ISelectOption>
                     </div>
                 </div>

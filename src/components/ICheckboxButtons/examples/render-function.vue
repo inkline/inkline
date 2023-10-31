@@ -1,15 +1,20 @@
 <script lang="ts" setup>
 import { h, ref } from 'vue';
+import type { LabelRenderFunction, CheckboxButtonOption } from '@inkline/inkline';
 
 const checked = ref(['apple']);
-const options = ref([
-    { id: 1, label: () => h('strong', 'Apple'), value: 'apple' },
-    { id: 2, label: () => h('strong', 'Banana'), value: 'banana' },
-    { id: 3, label: () => h('strong', 'Strawberry'), value: 'strawberry' },
-    { id: 4, label: () => h('strong', 'Mango'), value: 'mango' }
+
+const options = ref<CheckboxButtonOption[]>([
+    { id: 'apple' },
+    { id: 'banana' },
+    { id: 'strawberry' },
+    { id: 'mango' }
 ]);
+
+const labelRenderFunction: LabelRenderFunction<CheckboxButtonOption> = (option) =>
+    h('strong', option.id);
 </script>
 
 <template>
-    <ICheckboxButtons v-model="checked" :options="options" />
+    <ICheckboxButtons v-model="checked" :options="options" :label="labelRenderFunction" />
 </template>

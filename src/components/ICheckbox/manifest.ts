@@ -31,7 +31,8 @@ export const manifest: ComponentManifest = {
             name: 'value',
             type: [],
             default: 'false',
-            description: 'Used to set the checkbox value when used inside a checkbox group'
+            description:
+                '[Deprecated] Used to set the checkbox value when used inside a checkbox group'
         },
         {
             name: 'modelValue',
@@ -74,6 +75,19 @@ export const manifest: ComponentManifest = {
             type: ['Boolean'],
             default: 'true',
             description: 'Enable checkbox validation using schema'
+        },
+        {
+            name: 'label',
+            type: ['String', 'Number', 'Boolean', 'Function', 'Object'],
+            default: 'undefined',
+            description:
+                'The label to be displayed alongside the checkbox. Can be a string, number, render function, or component'
+        },
+        {
+            name: 'option',
+            type: ['Object'],
+            default: 'undefined',
+            description: 'The option object of the checkbox when used inside a checkbox group'
         }
     ],
     events: [

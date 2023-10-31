@@ -69,8 +69,8 @@
 
     &.-disabled {
         pointer-events: none;
-        cursor: default;
-        color: var(--select--option--disabled--color, var(--select--color));
+        cursor: not-allowed;
+        color: var(--select--option--disabled--color);
         background: var(--select--option--disabled--background, var(--select--background));
     }
 

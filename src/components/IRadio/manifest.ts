@@ -25,7 +25,7 @@ export const manifest: ComponentManifest = {
             name: 'value',
             type: [],
             default: 'false',
-            description: 'Used to set the radio value when used inside a radio group'
+            description: '[Deprecated] Used to set the radio value when used inside a radio group'
         },
         {
             name: 'modelValue',
@@ -62,6 +62,19 @@ export const manifest: ComponentManifest = {
             type: ['Number', 'String'],
             default: '0',
             description: 'The tabindex of the radio'
+        },
+        {
+            name: 'label',
+            type: ['String', 'Number', 'Boolean', 'Function', 'Object'],
+            default: 'undefined',
+            description:
+                'The label to be displayed alongside the radio. Can be a string, number, render function, or component'
+        },
+        {
+            name: 'option',
+            type: ['Object'],
+            default: 'undefined',
+            description: 'The option object of the radio when used inside a radio group'
         }
     ],
     events: [

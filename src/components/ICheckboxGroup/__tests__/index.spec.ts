@@ -8,19 +8,16 @@ describe('Components', () => {
         const props = {
             name: 'checkbox-group',
             color: 'light',
-            size: 'md'
+            size: 'md',
+            options: [
+                { id: 1, label: 'Option 1' },
+                { id: 2, label: 'Option 2' },
+                { id: 3, label: 'Option 3' }
+            ]
         };
 
         const stubs = {
             'i-checkbox': ICheckbox
-        };
-
-        const slots = {
-            default: [
-                '<i-checkbox color="light" name="checkbox-1" value="1" />',
-                '<i-checkbox color="light" name="checkbox-2" value="2" />',
-                '<i-checkbox color="light" name="checkbox-3" value="3" />'
-            ]
         };
 
         it('should be named correctly', () => {
@@ -35,8 +32,7 @@ describe('Components', () => {
                         [InklineKey as symbol]: createInkline()
                     }
                 },
-                props,
-                slots
+                props
             });
             expect(wrapper.html()).toMatchSnapshot();
         });
@@ -54,8 +50,7 @@ describe('Components', () => {
                         props: {
                             color: props.color,
                             size: props.size
-                        },
-                        slots
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveAttribute(
@@ -81,8 +76,7 @@ describe('Components', () => {
                             readonly: true,
                             inline: true,
                             ...props
-                        },
-                        slots
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
@@ -97,7 +91,7 @@ describe('Components', () => {
 
             describe('checked', () => {
                 it('should be equal to schema.value if schema', async () => {
-                    const value = ['1'];
+                    const value = [1];
                     const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(ICheckboxGroup, {
@@ -121,8 +115,7 @@ describe('Components', () => {
                         props: {
                             value,
                             ...props
-                        },
-                        slots
+                        }
                     });
                     const checkboxes = await wrapper.getAllByRole('checkbox');
 
@@ -130,7 +123,7 @@ describe('Components', () => {
                 });
 
                 it('should be equal to modelValue', async () => {
-                    const modelValue = ['1', '2', '3'];
+                    const modelValue = [1, 2, 3];
                     const wrapper = render(ICheckboxGroup, {
                         global: {
                             stubs,
@@ -141,8 +134,7 @@ describe('Components', () => {
                         props: {
                             modelValue,
                             ...props
-                        },
-                        slots
+                        }
                     });
 
                     const checkboxes = wrapper.container.querySelectorAll('input');
@@ -167,14 +159,13 @@ describe('Components', () => {
                         props: {
                             modelValue: [],
                             ...props
-                        },
-                        slots
+                        }
                     });
                     const checkboxes = wrapper.container.querySelectorAll('label');
 
                     await fireEvent.click(checkboxes[0]);
 
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([['1']]);
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([[1]]);
                 });
 
                 it('should update modelValue when unchecking checkbox', async () => {
@@ -186,10 +177,9 @@ describe('Components', () => {
                             }
                         },
                         props: {
-                            modelValue: ['1'],
+                            modelValue: [1],
                             ...props
-                        },
-                        slots
+                        }
                     });
                     const checkboxes = wrapper.container.querySelectorAll('label');
 
@@ -217,8 +207,7 @@ describe('Components', () => {
                         props: {
                             modelValue: [],
                             ...props
-                        },
-                        slots
+                        }
                     });
                     const checkboxes = wrapper.container.querySelectorAll('label');
 

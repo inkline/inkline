@@ -34,17 +34,17 @@ export function validateFormField<T = FormValue>(schema: FormField<T>, path = ''
             const validator =
                 typeof rawValidator === 'string' ? { name: rawValidator } : rawValidator;
 
-            const validationResult = validators[validator.name](
+            const valueIsValid = validators[validator.name](
                 resolvedSchema.value as FormValue,
                 validator
             );
 
-            if (!validationResult) {
+            if (!valueIsValid) {
                 const { name, message, ...params } = validator;
                 const i18nParams = {
                     name: path.split('.').pop(),
                     value: schema.value,
-                    ...params
+                    params
                 };
 
                 const errorMessage =
@@ -54,7 +54,7 @@ export function validateFormField<T = FormValue>(schema: FormField<T>, path = ''
                 errors.push({ name, message: errorMessage, path });
             }
 
-            return acc && validationResult;
+            return acc && valueIsValid;
         },
         true
     );

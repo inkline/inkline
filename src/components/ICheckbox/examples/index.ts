@@ -1,10 +1,6 @@
 export { default as ICheckboxBasicExample } from '@inkline/inkline/components/ICheckbox/examples/basic.vue';
 export { default as ICheckboxColorVariantsExample } from '@inkline/inkline/components/ICheckbox/examples/color-variants.vue';
 export { default as ICheckboxDisabledExample } from '@inkline/inkline/components/ICheckbox/examples/disabled.vue';
-export { default as ICheckboxGroupExample } from '@inkline/inkline/components/ICheckbox/examples/group.vue';
-export { default as ICheckboxGroupDisabledExample } from '@inkline/inkline/components/ICheckbox/examples/group-disabled.vue';
-export { default as ICheckboxGroupSizeVariantsExample } from '@inkline/inkline/components/ICheckbox/examples/group-size-variants.vue';
-export { default as ICheckboxGroupColorVariantsExample } from '@inkline/inkline/components/ICheckbox/examples/group-color-variants.vue';
 export { default as ICheckboxIndeterminateExample } from '@inkline/inkline/components/ICheckbox/examples/indeterminate.vue';
 export { default as ICheckboxNativeExample } from '@inkline/inkline/components/ICheckbox/examples/native.vue';
 export { default as ICheckboxReadonlyExample } from '@inkline/inkline/components/ICheckbox/examples/readonly.vue';

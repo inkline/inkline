@@ -8,11 +8,14 @@ import {
 } from '@inkline/inkline/composables';
 import { CheckboxGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import { uid } from '@grozav/utils';
+import type { CheckboxGroupOption } from '@inkline/inkline/components';
+import { ICheckbox } from '@inkline/inkline/components/ICheckbox';
 
 const componentName = 'ICheckboxGroup';
 
 export default defineComponent({
     name: componentName,
+    components: { ICheckbox },
     inheritAttrs: false,
     props: {
         /**
@@ -116,6 +119,28 @@ export default defineComponent({
         validate: {
             type: Boolean,
             default: true
+        },
+        /**
+         * The options of the checkbox group
+         * @type Array
+         * @default []
+         * @name options
+         */
+        options: {
+            type: Array as PropType<CheckboxGroupOption[]>,
+            default: () => []
+        },
+        /**
+         * The fallback label of the checkbox group. Can be a string, number, render function, or component
+         * @type String | Number | Boolean | Function | Object
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: [String, Number, Boolean, Function, Object] as PropType<
+                CheckboxGroupOption['label']
+            >,
+            default: undefined
         }
     },
     emits: [
@@ -180,7 +205,7 @@ export default defineComponent({
             let modelValue: any[] = [];
 
             if (schema.value) {
-                modelValue = [...schema.value.value];
+                modelValue = schema.value.value ? [...schema.value.value] : [];
             } else if (props.modelValue) {
                 modelValue = [...props.modelValue];
             }
@@ -227,6 +252,17 @@ export default defineComponent({
         :name="name"
         role="checkboxgroup"
     >
+        <ICheckbox
+            v-for="option in options"
+            :key="option.id"
+            :name="`${name}-${option.id}`"
+            :option="option"
+            :label="option.label || label"
+        >
+            <template v-if="$slots.option">
+                <slot name="option" :option="option" />
+            </template>
+        </ICheckbox>
         <!-- @slot default Slot for default checkbox group options -->
         <slot />
     </div>

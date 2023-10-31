@@ -22,12 +22,13 @@
         .checkbox-label {
             &::before,
             &::after {
-                cursor: default;
+                cursor: not-allowed;
             }
         }
     }
 
     .checkbox-label {
+        cursor: pointer;
         margin-bottom: 0;
         display: inline-flex;
         align-items: center;

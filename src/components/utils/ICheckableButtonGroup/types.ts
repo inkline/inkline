@@ -1,12 +1,7 @@
-import { RenderFunction } from 'vue';
+import { FormOption } from '@inkline/inkline/types';
 
 export type CheckableButtonGroupVariant = 'default' | 'group';
 
-export interface CheckableButtonGroupOption {
-    id: string | number;
-    label: string | number | RenderFunction;
-    value: any;
-    disabled?: boolean;
-    readonly?: boolean;
+export interface CheckableButtonGroupOption extends FormOption {
     buttonProps?: Record<string, unknown>;
 }

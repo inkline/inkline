@@ -8,6 +8,10 @@
             --checkable-button-group--light--background,
             var(--color-light-tint-100)
         );
+        --checkable-button-group--color: var(
+            --checkable-button-group--light--color,
+            var(--contrast-text-color-light)
+        );
         --checkable-button-group--border-top-color: var(
             --checkable-button-group--light--border-top-color,
             var(--color-light-shade-50)
@@ -30,6 +34,10 @@
         --checkable-button-group--background: var(
             --checkable-button-group--dark--background,
             var(--color-dark-shade-100)
+        );
+        --checkable-button-group--color: var(
+            --checkable-button-group--dark--color,
+            var(--contrast-text-color-dark)
         );
         --checkable-button-group--border-top-color: var(
             --checkable-button-group--dark--border-top-color,

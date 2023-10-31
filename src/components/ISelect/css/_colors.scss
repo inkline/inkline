@@ -32,7 +32,7 @@
         );
         --select--option--disabled--color: var(
             --select--light--option--disabled--color,
-            var(--text-color-weak)
+            var(--text-color-weaker)
         );
         --select--header--background: var(
             --select--light--header--background,
@@ -73,7 +73,7 @@
         );
         --select--option--disabled--color: var(
             --select--dark--option--disabled--color,
-            var(--text-color-weak)
+            var(--text-color-weaker)
         );
         --select--header--background: var(
             --select--dark--header--background,

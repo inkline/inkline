@@ -8,11 +8,14 @@ import {
     useFormValidationError
 } from '@inkline/inkline/composables';
 import { CheckboxGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/constants';
+import type { CheckboxGroupOption } from '@inkline/inkline/components';
+import { IRenderResolver } from '@inkline/inkline/components/utils/IRenderResolver';
 
 const componentName = 'ICheckbox';
 
 export default defineComponent({
     name: componentName,
+    components: { IRenderResolver },
     inheritAttrs: false,
     props: {
         /**
@@ -57,9 +60,10 @@ export default defineComponent({
             default: false
         },
         /**
-         * Used to set the checkbox value when used inside a checkbox group
+         * [Deprecated] Used to set the checkbox value when used inside a checkbox group
          * @default false
          * @name value
+         * @deprecated
          */
         value: {
             default: undefined
@@ -134,6 +138,28 @@ export default defineComponent({
         validate: {
             type: Boolean,
             default: true
+        },
+        /**
+         * The label to be displayed alongside the checkbox. Can be a string, number, render function, or component
+         * @type String | Number | Boolean | Function | Object
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: [String, Number, Boolean, Function, Object] as PropType<
+                CheckboxGroupOption['label']
+            >,
+            default: undefined
+        },
+        /**
+         * The option object of the checkbox when used inside a checkbox group
+         * @type Object
+         * @default undefined
+         * @name option
+         */
+        option: {
+            type: Object as PropType<CheckboxGroupOption>,
+            default: undefined
         }
     },
     emits: [
@@ -204,11 +230,12 @@ export default defineComponent({
             '-error': hasError.value
         }));
 
+        const value = computed(() => props.option?.id ?? props.value);
         const checked = computed(() => {
             if (schema.value && validate.value) {
                 return Boolean(schema.value.value);
             } else if (checkboxGroup?.value) {
-                return checkboxGroup.value.value.includes(props.value);
+                return checkboxGroup.value.value?.includes(value.value);
             }
 
             return props.modelValue;
@@ -222,7 +249,7 @@ export default defineComponent({
             const target = event.target as HTMLInputElement;
 
             if (checkboxGroup) {
-                checkboxGroup.onChange(props.value);
+                checkboxGroup.onChange(value.value);
             } else {
                 schemaOnInput(name, target.checked);
             }
@@ -299,7 +326,9 @@ export default defineComponent({
             @keydown.space.stop.prevent="labelOnKeydown"
         >
             <!-- @slot default Slot for default checkbox label -->
-            <slot />
+            <slot>
+                <IRenderResolver :render="label" :ctx="option" />
+            </slot>
         </label>
     </div>
 </template>

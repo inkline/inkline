@@ -10,7 +10,6 @@
     align-items: center;
     white-space: nowrap;
     outline: none;
-    cursor: pointer;
     margin-right: var(--radio--margin-right, var(--margin-right));
 
     &:last-of-type {
@@ -23,12 +22,13 @@
         .radio-label {
             &::before,
             &::after {
-                cursor: default;
+                cursor: not-allowed;
             }
         }
     }
 
     .radio-label {
+        cursor: pointer;
         margin-bottom: 0;
         display: inline-flex;
         align-items: center;

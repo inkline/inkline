@@ -154,10 +154,10 @@ export function useValidation(options: {
      * @param nameRef
      * @param value
      */
-    async function onInput(nameRef: Ref<string>, value: any) {
+    async function onInput(nameRef: Ref<string | undefined>, value: any) {
         const name = unref(nameRef);
 
-        if (!options.validate?.value) {
+        if (!options.validate?.value || !name) {
             return;
         }
 
@@ -177,10 +177,10 @@ export function useValidation(options: {
      * @param nameRef
      * @param event
      */
-    function onBlur(nameRef: Ref<string>, event: any) {
+    function onBlur(nameRef: Ref<string | undefined>, event: any) {
         const name = unref(nameRef);
 
-        if (!options.validate?.value) {
+        if (!options.validate?.value || !name) {
             return;
         }
 

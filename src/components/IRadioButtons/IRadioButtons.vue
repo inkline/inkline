@@ -28,6 +28,28 @@ export default defineComponent({
     inheritAttrs: false,
     props: {
         /**
+         * The default button props of the radio buttons
+         * @type Object
+         * @default {}
+         * @name buttonProps
+         */
+        buttonProps: {
+            type: Object as PropType<RadioButtonOption['buttonProps']>,
+            default: () => ({})
+        },
+        /**
+         * The fallback label of the radio buttons. Can be a string, number, render function, or component
+         * @type String | Number | Boolean | Function | Object
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: [String, Number, Boolean, Function, Object] as PropType<
+                RadioButtonOption['label']
+            >,
+            default: undefined
+        },
+        /**
          * The color variant of the radio buttons
          * @type light | dark
          * @default
@@ -186,7 +208,7 @@ export default defineComponent({
             return props.modelValue;
         });
 
-        function onChange(value: string) {
+        function onChange(value: RadioButtonOption['id']) {
             schemaOnInput(name, value);
             emit('update:modelValue', value);
         }
@@ -215,22 +237,26 @@ export default defineComponent({
         type="radio"
         role="radiogroup"
     >
+        <!-- @slot prepend Slot for rendering additional content before buttons -->
+        <slot name="prepend" />
         <IButton
             v-for="option in options"
             :key="`${name}/${option.id}`"
             :disabled="option.disabled || option.readonly || readonly || disabled"
-            :active="value === option.value"
+            :active="value === option.id"
             :color="color"
             :size="size"
             role="radio"
-            v-bind="option.buttonProps"
-            @click="onChange(option.value)"
+            v-bind="{ ...buttonProps, ...option.buttonProps }"
+            @click="onChange(option.id)"
             @blur="onBlur"
         >
-            <!-- @slot default Slot for rendering radio buttons options -->
-            <slot :option="option">
-                <IRenderResolver :data="option.label" />
+            <!-- @slot option Slot for rendering radio buttons options content -->
+            <slot name="option" :option="option">
+                <IRenderResolver :render="option.label ?? label" :ctx="option" />
             </slot>
         </IButton>
+        <!-- @slot append Slot for rendering additional content after buttons -->
+        <slot name="append" />
     </ICheckableButtonGroup>
 </template>

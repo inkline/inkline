@@ -8,19 +8,16 @@ describe('Components', () => {
         const props = {
             name: 'radio-group',
             color: 'light',
-            size: 'md'
+            size: 'md',
+            options: [
+                { id: 1, label: 'Option 1' },
+                { id: 2, label: 'Option 2' },
+                { id: 3, label: 'Option 3' }
+            ]
         };
 
         const stubs = {
             'i-radio': IRadio
-        };
-
-        const slots = {
-            default: [
-                '<i-radio color="light" name="radio-1" value="1" />',
-                '<i-radio color="light" name="radio-2" value="2" />',
-                '<i-radio color="light" name="radio-3" value="3" />'
-            ]
         };
 
         it('should be named correctly', () => {
@@ -35,8 +32,7 @@ describe('Components', () => {
                         [InklineKey as symbol]: createInkline()
                     }
                 },
-                props,
-                slots
+                props
             });
             expect(wrapper.html()).toMatchSnapshot();
         });
@@ -54,8 +50,7 @@ describe('Components', () => {
                         props: {
                             color: props.color,
                             size: props.size
-                        },
-                        slots
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveAttribute(
@@ -81,8 +76,7 @@ describe('Components', () => {
                             readonly: true,
                             inline: true,
                             ...props
-                        },
-                        slots
+                        }
                     });
 
                     expect(wrapper.container.firstChild).toHaveClass(
@@ -99,7 +93,7 @@ describe('Components', () => {
                 it('should be equal to schema.value if schema', async () => {
                     const onBlur = vi.fn();
                     const onInput = vi.fn();
-                    const value = '1';
+                    const value = 1;
                     const wrapper = render(IRadioGroup, {
                         global: {
                             stubs,
@@ -121,8 +115,7 @@ describe('Components', () => {
                         props: {
                             value,
                             ...props
-                        },
-                        slots
+                        }
                     });
                     const radios = await wrapper.getAllByRole('radio');
 
@@ -130,7 +123,7 @@ describe('Components', () => {
                 });
 
                 it('should be equal to modelValue otherwise', () => {
-                    const modelValue = '2';
+                    const modelValue = 2;
                     const wrapper = render(IRadioGroup, {
                         global: {
                             stubs,
@@ -141,8 +134,7 @@ describe('Components', () => {
                         props: {
                             modelValue,
                             ...props
-                        },
-                        slots
+                        }
                     });
                     const radios = wrapper.container.querySelectorAll('input');
 
@@ -164,14 +156,13 @@ describe('Components', () => {
                         props: {
                             modelValue: [],
                             ...props
-                        },
-                        slots
+                        }
                     });
                     const radios = wrapper.container.querySelectorAll('label');
 
                     await fireEvent.click(radios[0]);
 
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['1']);
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([1]);
                 });
 
                 it('should update modelValue when checking another radio', async () => {
@@ -183,16 +174,15 @@ describe('Components', () => {
                             }
                         },
                         props: {
-                            modelValue: '1',
+                            modelValue: 1,
                             ...props
-                        },
-                        slots
+                        }
                     });
                     const radios = wrapper.container.querySelectorAll('label');
 
                     await fireEvent.click(radios[1]);
 
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['2']);
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([2]);
                 });
 
                 it('should call parent form onInput when checking radio', async () => {
@@ -214,8 +204,7 @@ describe('Components', () => {
                         props: {
                             modelValue: [],
                             ...props
-                        },
-                        slots
+                        }
                     });
                     const radios = wrapper.container.querySelectorAll('label');
 

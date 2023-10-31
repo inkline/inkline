@@ -17,9 +17,9 @@ describe('Components', () => {
             color: 'light',
             size: 'md',
             options: [
-                { id: 1, label: 'Option 1', value: '1' },
-                { id: 2, label: 'Option 2', value: '2' },
-                { id: 3, label: 'Option 3', value: '3' }
+                { id: 1, label: 'Option 1' },
+                { id: 2, label: 'Option 2' },
+                { id: 3, label: 'Option 3' }
             ]
         };
 
@@ -91,7 +91,7 @@ describe('Components', () => {
                 it('should be equal to schema.value if schema', async () => {
                     const onBlur = vi.fn();
                     const onInput = vi.fn();
-                    const value = '1';
+                    const value = 1;
                     const wrapper = render(IRadioButtons, {
                         global: {
                             stubs,
@@ -121,7 +121,7 @@ describe('Components', () => {
                 });
 
                 it('should be equal to modelValue otherwise', () => {
-                    const modelValue = '2';
+                    const modelValue = 2;
                     const wrapper = render(IRadioButtons, {
                         global: {
                             stubs,
@@ -152,7 +152,7 @@ describe('Components', () => {
                             }
                         },
                         props: {
-                            modelValue: '',
+                            modelValue: undefined,
                             ...props
                         }
                     });
@@ -160,7 +160,7 @@ describe('Components', () => {
 
                     await fireEvent.click(radios[0]);
 
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['1']);
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([1]);
                 });
 
                 it('should update modelValue when checking another radio', async () => {
@@ -172,7 +172,7 @@ describe('Components', () => {
                             }
                         },
                         props: {
-                            modelValue: '1',
+                            modelValue: 1,
                             ...props
                         }
                     });
@@ -180,7 +180,7 @@ describe('Components', () => {
 
                     await fireEvent.click(radios[1]);
 
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual(['2']);
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([2]);
                 });
 
                 it('should call parent form onInput when checking radio', async () => {
@@ -200,7 +200,7 @@ describe('Components', () => {
                             }
                         },
                         props: {
-                            modelValue: '',
+                            modelValue: undefined,
                             ...props
                         }
                     });

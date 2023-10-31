@@ -17,6 +17,12 @@ describe('Components', () => {
                 props,
                 global: {
                     provide: {
+                        [SelectKey as symbol]: {
+                            idField: ref('id'),
+                            value: ref('0'),
+                            disabled: ref(false),
+                            onInput: vi.fn()
+                        },
                         [InklineKey as symbol]: createInkline()
                     }
                 }
@@ -30,11 +36,19 @@ describe('Components', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(ISelectOption, {
                         props: {
-                            active: true,
-                            disabled: true
+                            option: {
+                                active: true,
+                                disabled: true
+                            }
                         },
                         global: {
                             provide: {
+                                [SelectKey as symbol]: {
+                                    idField: ref('id'),
+                                    value: ref('0'),
+                                    disabled: ref(false),
+                                    onInput: vi.fn()
+                                },
                                 [InklineKey as symbol]: createInkline()
                             }
                         }
@@ -48,11 +62,17 @@ describe('Components', () => {
                 it('should be -1 if disabled', () => {
                     const wrapper = render(ISelectOption, {
                         props: {
-                            disabled: true,
-                            ...props
+                            ...props,
+                            option: { disabled: true }
                         },
                         global: {
                             provide: {
+                                [SelectKey as symbol]: {
+                                    idField: ref('id'),
+                                    value: ref('0'),
+                                    disabled: ref(false),
+                                    onInput: vi.fn()
+                                },
                                 [InklineKey as symbol]: createInkline()
                             }
                         }
@@ -66,6 +86,12 @@ describe('Components', () => {
                         props,
                         global: {
                             provide: {
+                                [SelectKey as symbol]: {
+                                    idField: ref('id'),
+                                    value: ref('0'),
+                                    disabled: ref(false),
+                                    onInput: vi.fn()
+                                },
                                 [InklineKey as symbol]: createInkline()
                             }
                         }
@@ -86,6 +112,7 @@ describe('Components', () => {
                                 [SelectKey as symbol]: {
                                     idField: ref('id'),
                                     value: ref('0'),
+                                    disabled: ref(false),
                                     onInput
                                 },
                                 [InklineKey as symbol]: createInkline()
@@ -107,13 +134,14 @@ describe('Components', () => {
                                 [SelectKey as symbol]: {
                                     idField: ref('id'),
                                     value: ref('0'),
+                                    disabled: ref(false),
                                     onInput
                                 }
                             }
                         },
                         props: {
                             ...props,
-                            disabled: true
+                            option: { disabled: true }
                         }
                     });
                     const item = await wrapper.getByRole('option');

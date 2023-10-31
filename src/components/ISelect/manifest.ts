@@ -72,9 +72,10 @@ export const manifest: ComponentManifest = {
         },
         {
             name: 'label',
-            type: ['String', 'Function'],
-            default: 'label',
-            description: 'Used to extract the label from the select option and select value'
+            type: ['String', 'Number', 'Boolean', 'Function', 'Object'],
+            default: 'undefined',
+            description:
+                'The label of the select. Can be a string, number, render function, or component'
         },
         {
             name: 'loading',
@@ -1625,6 +1626,40 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--margin-left'
+            },
+            {
+                name: '--select--caret--margin-left',
+                value: [
+                    {
+                        name: '--select--margin-left',
+                        variants: [
+                            {
+                                name: '--select--sm--margin-left',
+                                value: [
+                                    {
+                                        value: 'calc(calc(var(--margin-left) / 2) * var(--size-multiplier-sm))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--select--md--margin-left',
+                                value: [
+                                    {
+                                        value: 'calc(calc(var(--margin-left) / 2) * var(--size-multiplier-md))'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--select--lg--margin-left',
+                                value: [
+                                    {
+                                        value: 'calc(calc(var(--margin-left) / 2) * var(--size-multiplier-lg))'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }

@@ -28,6 +28,28 @@ export default defineComponent({
     inheritAttrs: false,
     props: {
         /**
+         * The default button props of the checkbox buttons
+         * @type Object
+         * @default {}
+         * @name buttonProps
+         */
+        buttonProps: {
+            type: Object as PropType<CheckboxButtonOption['buttonProps']>,
+            default: () => ({})
+        },
+        /**
+         * The fallback label of the checkbox buttons. Can be a string, number, render function, or component
+         * @type String | Number | Boolean | Function | Object
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: [String, Number, Boolean, Function, Object] as PropType<
+                CheckboxButtonOption['label']
+            >,
+            default: undefined
+        },
+        /**
          * The color variant of the checkbox buttons
          * @type light | dark
          * @default
@@ -64,7 +86,7 @@ export default defineComponent({
          * @name modelValue
          */
         modelValue: {
-            type: Array,
+            type: Array as PropType<Array<CheckboxButtonOption['id']>>,
             default: () => []
         },
         /**
@@ -188,11 +210,11 @@ export default defineComponent({
             return props.modelValue;
         });
 
-        function onChange(value: string) {
-            let modelValue: any[] = [];
+        function onChange(value: CheckboxButtonOption['id']) {
+            let modelValue: Array<CheckboxButtonOption['id']> = [];
 
             if (schema.value) {
-                modelValue = [...schema.value.value];
+                modelValue = schema.value.value ? [...schema.value.value] : [];
             } else if (props.modelValue) {
                 modelValue = [...props.modelValue];
             }
@@ -233,22 +255,26 @@ export default defineComponent({
         type="checkbox"
         role="checkboxgroup"
     >
+        <!-- @slot prepend Slot for rendering additional content before buttons -->
+        <slot name="prepend" />
         <IButton
             v-for="option in options"
             :key="`${name}/${option.id}`"
             :disabled="option.disabled || option.readonly || readonly || disabled"
-            :active="value.includes(option.value)"
+            :active="value?.includes(option.id)"
             :color="color"
             :size="size"
             role="checkbox"
-            v-bind="option.buttonProps"
-            @click="onChange(option.value)"
+            v-bind="{ ...buttonProps, ...option.buttonProps }"
+            @click="onChange(option.id)"
             @blur="onBlur"
         >
-            <!-- @slot default Slot for rendering checkbox buttons options -->
-            <slot :option="option">
-                <IRenderResolver :data="option.label" />
+            <!-- @slot option Slot for rendering checkbox buttons options content -->
+            <slot name="option" :option="option">
+                <IRenderResolver :render="option.label ?? label" :ctx="option" />
             </slot>
         </IButton>
+        <!-- @slot append Slot for rendering additional content after buttons -->
+        <slot name="append" />
     </ICheckableButtonGroup>
 </template>

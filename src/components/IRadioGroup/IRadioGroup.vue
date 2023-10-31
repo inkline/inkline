@@ -8,11 +8,14 @@ import {
     useValidation
 } from '@inkline/inkline/composables';
 import { FormKey, FormGroupKey, RadioGroupKey } from '@inkline/inkline/constants';
+import type { RadioGroupOption } from '@inkline/inkline/components';
+import { IRadio } from '@inkline/inkline/components/IRadio';
 
 const componentName = 'IRadioGroup';
 
 export default defineComponent({
     name: componentName,
+    components: { IRadio },
     inheritAttrs: false,
     props: {
         /**
@@ -67,6 +70,18 @@ export default defineComponent({
             default: false
         },
         /**
+         * The fallback label of the radio group. Can be a string, number, render function, or component
+         * @type String | Number | Boolean | Function | Object
+         * @default undefined
+         * @name label
+         */
+        label: {
+            type: [String, Number, Boolean, Function, Object] as PropType<
+                RadioGroupOption['label']
+            >,
+            default: undefined
+        },
+        /**
          * Used to set the radio group value
          * @default
          * @name modelValue
@@ -115,6 +130,16 @@ export default defineComponent({
         validate: {
             type: Boolean,
             default: true
+        },
+        /**
+         * The options of the checkbox group
+         * @type Array
+         * @default []
+         * @name options
+         */
+        options: {
+            type: Array as PropType<RadioGroupOption[]>,
+            default: () => []
         }
     },
     emits: [
@@ -211,6 +236,13 @@ export default defineComponent({
         :name="name"
         role="radiogroup"
     >
+        <IRadio
+            v-for="option in options"
+            :key="option.id"
+            :name="`${name}-${option.id}`"
+            :option="option"
+            :label="option.label ?? label"
+        />
         <!-- @slot default Slot for default radio group options -->
         <slot />
     </div>
