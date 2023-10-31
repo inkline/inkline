@@ -9,11 +9,13 @@ import {
     useValidation
 } from '@inkline/inkline/composables';
 import type { RadioGroupOption } from '@inkline/inkline/components';
+import { IRenderResolver } from '@inkline/inkline/components/utils/IRenderResolver';
 
 const componentName = 'IRadio';
 
 export default defineComponent({
     name: componentName,
+    components: { IRenderResolver },
     inheritAttrs: false,
     props: {
         /**

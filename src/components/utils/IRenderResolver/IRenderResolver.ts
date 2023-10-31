@@ -1,21 +1,21 @@
 import type { Raw, Component, PropType } from 'vue';
-import { defineComponent, h } from 'vue';
-import { render } from 'micromustache';
+import { defineComponent, h, Text } from 'vue';
 import type { LabelRenderFunction } from '@inkline/inkline/types';
+import { interpolate } from '@inkline/inkline/utils';
 
 export default defineComponent({
     props: {
         /**
          * The primitive or render function to render.
          * @type String | Number | Boolean | RenderFunction
-         * @default
+         * @default '
          * @name data
          */
         render: {
             type: [String, Number, Boolean, Function, Object] as PropType<
                 number | boolean | string | LabelRenderFunction | Raw<Component>
             >,
-            required: true
+            default: ''
         },
         /**
          * The context to pass to the render function
@@ -35,7 +35,7 @@ export default defineComponent({
          */
         tag: {
             type: String,
-            default: 'span'
+            default: undefined
         }
     },
     setup(props) {
@@ -45,9 +45,9 @@ export default defineComponent({
             case typeof props.render === 'object':
                 return () => h(props.render as Component, { ctx: props.ctx });
             case typeof props.render === 'string':
-                return () => h(props.tag, render(props.render as string, props.ctx));
+                return () => h(props.tag ?? Text, interpolate(props.render as string, props.ctx));
             default:
-                return () => h(props.tag, props.render as number | boolean);
+                return () => h(props.tag ?? Text, props.render as number | boolean);
         }
     }
 });

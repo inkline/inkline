@@ -214,7 +214,7 @@ export default defineComponent({
             let modelValue: Array<CheckboxButtonOption['id']> = [];
 
             if (schema.value) {
-                modelValue = [...schema.value.value];
+                modelValue = schema.value.value ? [...schema.value.value] : [];
             } else if (props.modelValue) {
                 modelValue = [...props.modelValue];
             }
@@ -261,7 +261,7 @@ export default defineComponent({
             v-for="option in options"
             :key="`${name}/${option.id}`"
             :disabled="option.disabled || option.readonly || readonly || disabled"
-            :active="value.includes(option.id)"
+            :active="value?.includes(option.id)"
             :color="color"
             :size="size"
             role="checkbox"

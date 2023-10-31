@@ -26,9 +26,8 @@ import {
 } from '@inkline/inkline/composables';
 import { Placement } from '@floating-ui/dom';
 import { ISelectOption } from '@inkline/inkline/components/ISelectOption';
-import { extractRefHTMLElement } from '@inkline/inkline/utils';
+import { extractRefHTMLElement, interpolate } from '@inkline/inkline/utils';
 import { ComputePositionConfig } from '@floating-ui/core';
-import { render } from 'micromustache';
 import { IRenderResolver } from '@inkline/inkline/components/utils/IRenderResolver';
 
 const componentName = 'ISelect';
@@ -457,7 +456,7 @@ export default defineComponent({
                         return labelFnResult;
                     }
                 } else if (typeof label === 'string') {
-                    return render(label, selectedOption.value);
+                    return interpolate(label, selectedOption.value);
                 } else if (typeof label === 'number' || typeof label === 'boolean') {
                     return `${label}`;
                 }

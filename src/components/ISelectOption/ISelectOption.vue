@@ -2,7 +2,7 @@
 import { computed, defineComponent, inject, PropType } from 'vue';
 import { SelectKey } from '@inkline/inkline/constants';
 import { SelectOption } from '@inkline/inkline/components/ISelect/types';
-import IRenderResolver from '@inkline/inkline/components/utils/IRenderResolver/IRenderResolver';
+import { IRenderResolver } from '@inkline/inkline/components/utils/IRenderResolver';
 
 const componentName = 'ISelectOption';
 

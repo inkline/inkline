@@ -5,6 +5,7 @@ exports[`Components > ISelect > props > options > should render correctly withou
   <div class=\\"input-wrapper -primary -md -suffixed\\">
     <!--v-if-->
     <div class=\\"input\\">
+      <!--v-if-->
       <!--v-if--><input autocomplete=\\"off\\" aria-autocomplete=\\"none\\" aria-controls=\\"select-options\\" placeholder=\\"\\" name=\\"select-input\\" type=\\"text\\" tabindex=\\"0\\" aria-disabled=\\"false\\" readonly=\\"\\" aria-readonly=\\"true\\"><span class=\\"input-suffix\\"><!-- @slot password-toggle Slot for the password toggle button --><!--v-if--><!-- @slot clearable Slot for the clearable button --><!--v-if--><!-- @slot suffix Slot for the input suffix content --><!-- @slot suffix Slot for the select suffix content --><button class=\\"select-caret\\" aria-hidden=\\"true\\" role=\\"button\\"></button></span>
     </div>
     <!--v-if-->
@@ -29,6 +30,7 @@ exports[`Components > ISelect > should render correctly 1`] = `
   <div class=\\"input-wrapper -primary -md -suffixed\\">
     <!--v-if-->
     <div class=\\"input\\">
+      <!--v-if-->
       <!--v-if--><input autocomplete=\\"off\\" aria-autocomplete=\\"none\\" aria-controls=\\"select-options\\" placeholder=\\"Option 1\\" name=\\"select-input\\" type=\\"text\\" tabindex=\\"0\\" aria-disabled=\\"false\\" readonly=\\"\\" aria-readonly=\\"true\\"><span class=\\"input-suffix\\"><!-- @slot password-toggle Slot for the password toggle button --><!--v-if--><!-- @slot clearable Slot for the clearable button --><!--v-if--><!-- @slot suffix Slot for the input suffix content --><!-- @slot suffix Slot for the select suffix content --><button class=\\"select-caret\\" aria-hidden=\\"true\\" role=\\"button\\"></button></span>
     </div>
     <!--v-if-->
@@ -39,17 +41,14 @@ exports[`Components > ISelect > should render correctly 1`] = `
       <div class=\\"select-body\\">
         <!--v-if-->
         <div class=\\"select-options\\">
-          <div class=\\"select-option -active\\" role=\\"option\\" tabindex=\\"0\\">
-            <!-- @slot default Slot for select option label -->
-            <!-- @slot option Slot for the select option content -->Option 1
+          <div active=\\"true\\" class=\\"select-option -active\\" role=\\"option\\" tabindex=\\"0\\" aria-selected=\\"true\\">
+            <!-- @slot default Slot for select option label -->Option 1
           </div>
-          <div class=\\"select-option\\" role=\\"option\\" tabindex=\\"0\\">
-            <!-- @slot default Slot for select option label -->
-            <!-- @slot option Slot for the select option content -->Option 2
+          <div active=\\"false\\" class=\\"select-option\\" role=\\"option\\" tabindex=\\"0\\">
+            <!-- @slot default Slot for select option label -->Option 2
           </div>
-          <div class=\\"select-option\\" role=\\"option\\" tabindex=\\"0\\">
-            <!-- @slot default Slot for select option label -->
-            <!-- @slot option Slot for the select option content -->Option 3
+          <div active=\\"false\\" class=\\"select-option\\" role=\\"option\\" tabindex=\\"0\\">
+            <!-- @slot default Slot for select option label -->Option 3
           </div>
         </div>
       </div>

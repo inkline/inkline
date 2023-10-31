@@ -10,13 +10,13 @@ import { CheckboxGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/consta
 import { uid } from '@grozav/utils';
 import type { CheckboxGroupOption } from '@inkline/inkline/components';
 import { ICheckbox } from '@inkline/inkline/components/ICheckbox';
-import { CheckboxButtonOption } from '@inkline/inkline/components';
+import { CheckboxButtonOption, IRadio } from '@inkline/inkline/components';
 
 const componentName = 'ICheckboxGroup';
 
 export default defineComponent({
     name: componentName,
-    components: { ICheckbox },
+    components: { IRadio, ICheckbox },
     inheritAttrs: false,
     props: {
         /**
@@ -206,7 +206,7 @@ export default defineComponent({
             let modelValue: any[] = [];
 
             if (schema.value) {
-                modelValue = [...schema.value.value];
+                modelValue = schema.value.value ? [...schema.value.value] : [];
             } else if (props.modelValue) {
                 modelValue = [...props.modelValue];
             }
@@ -256,6 +256,7 @@ export default defineComponent({
         <ICheckbox
             v-for="option in options"
             :key="option.id"
+            :name="`${name}-${option.id}`"
             :option="option"
             :label="option.label || label"
         >

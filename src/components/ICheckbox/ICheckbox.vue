@@ -9,11 +9,13 @@ import {
 } from '@inkline/inkline/composables';
 import { CheckboxGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import type { CheckboxGroupOption } from '@inkline/inkline/components';
+import { IRenderResolver } from '@inkline/inkline/components/utils/IRenderResolver';
 
 const componentName = 'ICheckbox';
 
 export default defineComponent({
     name: componentName,
+    components: { IRenderResolver },
     inheritAttrs: false,
     props: {
         /**
@@ -233,7 +235,7 @@ export default defineComponent({
             if (schema.value && validate.value) {
                 return Boolean(schema.value.value);
             } else if (checkboxGroup?.value) {
-                return checkboxGroup.value.value.includes(value.value);
+                return checkboxGroup.value.value?.includes(value.value);
             }
 
             return props.modelValue;

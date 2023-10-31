@@ -239,6 +239,7 @@ export default defineComponent({
         <IRadio
             v-for="option in options"
             :key="option.id"
+            :name="`${name}-${option.id}`"
             :option="option"
             :label="option.label ?? label"
         />

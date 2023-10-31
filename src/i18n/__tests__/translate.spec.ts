@@ -28,12 +28,12 @@ describe('i18n', () => {
         });
 
         it('should interpolate given params', () => {
-            const value = 'This is an {param}';
+            const value = 'This is an {{param}}';
             const params = { param: 'example' };
 
             i18n.messages.en.interpolated = value;
             expect(translate('interpolated', params)).toEqual(
-                value.replace('{param}', params.param)
+                value.replace('{{param}}', params.param)
             );
         });
 

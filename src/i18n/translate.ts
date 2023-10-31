@@ -1,17 +1,16 @@
 import { getValueByPath, isFunction } from '@grozav/utils';
 import { i18n } from '@inkline/inkline/i18n';
+import { interpolate } from '@inkline/inkline/utils';
 
 /**
- * Translate a string given its path and translation params
+ * Translate a string given its path and translation scope
  *
  * @param path
- * @param params
+ * @param scope
  */
-export function translate(path: string, params: { [key: string]: any } = {}): string {
-    const valueByPath = getValueByPath(i18n.messages[i18n.locale], path);
-    const string = (isFunction(valueByPath) ? valueByPath(params) : valueByPath) || path;
+export function translate(path: string, scope: Record<string, any> = {}): string {
+    const template = getValueByPath(i18n.messages[i18n.locale], path);
+    const string = (isFunction(template) ? template(scope) : template) || path;
 
-    return Object.keys(params).reduce((acc, key) => {
-        return acc.replace(new RegExp(`{${key}}`, 'g'), `${params[key]}`);
-    }, string);
+    return interpolate(string, scope);
 }

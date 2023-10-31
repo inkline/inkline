@@ -8,6 +8,7 @@ exports[`Components > INumberInput > should render correctly 1`] = `
     </button>
   </div>
   <div class=\\"input\\">
+    <!--v-if-->
     <!--v-if--><input min=\\"-Infinity\\" max=\\"Infinity\\" precision=\\"0\\" step=\\"1\\" name=\\"number-input\\" type=\\"text\\" tabindex=\\"0\\" aria-disabled=\\"false\\" aria-readonly=\\"false\\">
     <!--v-if-->
   </div>

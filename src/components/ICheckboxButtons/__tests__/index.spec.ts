@@ -17,9 +17,9 @@ describe('Components', () => {
             color: 'light',
             size: 'md',
             options: [
-                { id: 1, label: 'Option 1', value: '1' },
-                { id: 2, label: 'Option 2', value: '2' },
-                { id: 3, label: 'Option 3', value: '3' }
+                { id: 1, label: 'Option 1' },
+                { id: 2, label: 'Option 2' },
+                { id: 3, label: 'Option 3' }
             ]
         };
 
@@ -90,7 +90,7 @@ describe('Components', () => {
         describe('computed', () => {
             describe('checked', () => {
                 it('should be equal to schema.value if schema', async () => {
-                    const value = ['1'];
+                    const value = [1];
                     const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(ICheckboxButtons, {
@@ -122,7 +122,7 @@ describe('Components', () => {
                 });
 
                 it('should be equal to modelValue', async () => {
-                    const modelValue = ['1', '2', '3'];
+                    const modelValue = [1, 2, 3];
                     const wrapper = render(ICheckboxButtons, {
                         global: {
                             stubs,
@@ -164,7 +164,7 @@ describe('Components', () => {
 
                     await fireEvent.click(checkboxes[0]);
 
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([['1']]);
+                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([[1]]);
                 });
 
                 it('should update modelValue when unchecking checkbox', async () => {
@@ -176,7 +176,7 @@ describe('Components', () => {
                             }
                         },
                         props: {
-                            modelValue: ['1'],
+                            modelValue: [1],
                             ...props
                         }
                     });
