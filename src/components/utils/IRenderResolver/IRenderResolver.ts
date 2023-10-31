@@ -1,5 +1,5 @@
 import type { Raw, Component, PropType } from 'vue';
-import { computed, defineComponent, h, Text } from 'vue';
+import { defineComponent, h, Text } from 'vue';
 import type { LabelRenderFunction } from '@inkline/inkline/types';
 import { interpolate } from '@inkline/inkline/utils';
 
