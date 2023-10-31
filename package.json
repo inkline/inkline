@@ -325,6 +325,11 @@
             "import": "./components/ICheckboxGroup/index.mjs",
             "types": "./components/ICheckboxGroup/index.d.ts"
         },
+        "./components/ICheckboxGroup/examples": {
+            "require": "./components/ICheckboxGroup/examples/index.js",
+            "import": "./components/ICheckboxGroup/examples/index.mjs",
+            "types": "./components/ICheckboxGroup/examples/index.d.ts"
+        },
         "./components/ICheckboxGroup/manifest": {
             "require": "./components/ICheckboxGroup/manifest.js",
             "import": "./components/ICheckboxGroup/manifest.mjs",
@@ -894,6 +899,11 @@
             "require": "./components/IRadioGroup/index.js",
             "import": "./components/IRadioGroup/index.mjs",
             "types": "./components/IRadioGroup/index.d.ts"
+        },
+        "./components/IRadioGroup/examples": {
+            "require": "./components/IRadioGroup/examples/index.js",
+            "import": "./components/IRadioGroup/examples/index.mjs",
+            "types": "./components/IRadioGroup/examples/index.d.ts"
         },
         "./components/IRadioGroup/manifest": {
             "require": "./components/IRadioGroup/manifest.js",
@@ -1465,6 +1475,11 @@
             "import": "./types/events.mjs",
             "types": "./types/events.d.ts"
         },
+        "./types/form": {
+            "require": "./types/form.js",
+            "import": "./types/form.mjs",
+            "types": "./types/form.d.ts"
+        },
         "./types/guards": {
             "require": "./types/guards/index.js",
             "import": "./types/guards/index.mjs",
@@ -1514,6 +1529,11 @@
             "require": "./utils/extractRefHTMLElement.js",
             "import": "./utils/extractRefHTMLElement.mjs",
             "types": "./utils/extractRefHTMLElement.d.ts"
+        },
+        "./utils/interpolate": {
+            "require": "./utils/interpolate.js",
+            "import": "./utils/interpolate.mjs",
+            "types": "./utils/interpolate.d.ts"
         },
         "./utils/renderSvg": {
             "require": "./utils/renderSvg.js",

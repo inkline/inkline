@@ -34,6 +34,13 @@ export const manifest: ComponentManifest = {
             description: 'The indeterminate state of the radio group'
         },
         {
+            name: 'label',
+            type: ['String', 'Number', 'Boolean', 'Function', 'Object'],
+            default: 'undefined',
+            description:
+                'The fallback label of the radio group. Can be a string, number, render function, or component'
+        },
+        {
             name: 'modelValue',
             type: [],
             default: '',
@@ -62,6 +69,12 @@ export const manifest: ComponentManifest = {
             type: ['Boolean'],
             default: 'true',
             description: 'Enable radio group validation using schema'
+        },
+        {
+            name: 'options',
+            type: ['Array'],
+            default: '',
+            description: 'The options of the checkbox group'
         }
     ],
     events: [

@@ -4,6 +4,19 @@ export const manifest: ComponentManifest = {
     name: 'IRadioButtons',
     props: [
         {
+            name: 'buttonProps',
+            type: ['Object'],
+            default: '',
+            description: 'The default button props of the radio buttons'
+        },
+        {
+            name: 'label',
+            type: ['String', 'Number', 'Boolean', 'Function', 'Object'],
+            default: 'undefined',
+            description:
+                'The fallback label of the radio buttons. Can be a string, number, render function, or component'
+        },
+        {
             name: 'color',
             type: ['light', 'dark'],
             default: '',
@@ -72,8 +85,16 @@ export const manifest: ComponentManifest = {
     ],
     slots: [
         {
-            name: 'default',
-            description: 'Slot for rendering radio buttons options '
+            name: 'prepend',
+            description: 'Slot for rendering additional content before buttons '
+        },
+        {
+            name: 'option',
+            description: 'Slot for rendering radio buttons options content '
+        },
+        {
+            name: 'append',
+            description: 'Slot for rendering additional content after buttons '
         }
     ],
     css: {
