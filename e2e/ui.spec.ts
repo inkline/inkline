@@ -24,5 +24,5 @@ test('should update form validation', async ({ page }) => {
 
     const pre = await page.$('.form pre');
     const preTextContent = await pre.textContent();
-    await expect(preTextContent).toContain('"value": "abc"');
+    await expect(preTextContent).toContain('"input": "abc"');
 });
