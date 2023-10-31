@@ -22,7 +22,12 @@ test('should update form validation', async ({ page }) => {
     const inputValue = await input.inputValue();
     await expect(inputValue).toEqual(value);
 
-    const pre = await page.$('.form pre');
-    const preTextContent = await pre.textContent();
-    await expect(preTextContent).toContain('"input": "abc"');
+    const preNodes = await page.$$('.form pre');
+    const formPreNode = preNodes[0];
+    const formPreTextContent = await formPreNode.textContent();
+    await expect(formPreTextContent).toContain('"input": "abc"');
+
+    const schemaPreNode = preNodes[1];
+    const schemaPreTextContent = await schemaPreNode.textContent();
+    await expect(schemaPreTextContent).toContain('"value": "abc"');
 });
