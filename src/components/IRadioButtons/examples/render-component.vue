@@ -6,7 +6,8 @@ const LabelRenderComponent = markRaw(
     defineComponent({
         props: {
             ctx: {
-                type: Object
+                type: Object,
+                default: () => ({})
             }
         },
         setup(props) {

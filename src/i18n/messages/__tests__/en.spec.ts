@@ -1,5 +1,4 @@
 import { translate } from '@inkline/inkline/i18n';
-import { en } from '@inkline/inkline/i18n/messages';
 
 describe('i18n', () => {
     describe('messages', () => {

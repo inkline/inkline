@@ -50,7 +50,7 @@ export default defineComponent({
         const isDisabled = computed(() => props.option.disabled || select?.disabled.value);
 
         const isActive = computed(() => {
-            const idField = select?.idField.value;
+            const idField = select?.idField.value as string;
             return props.option.active || props.option[idField] === select?.value.value;
         });
 

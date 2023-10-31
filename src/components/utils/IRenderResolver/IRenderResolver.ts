@@ -1,5 +1,5 @@
 import type { Raw, Component, PropType } from 'vue';
-import { defineComponent, h, Text } from 'vue';
+import { computed, defineComponent, h, Text } from 'vue';
 import type { LabelRenderFunction } from '@inkline/inkline/types';
 import { interpolate } from '@inkline/inkline/utils';
 
@@ -39,15 +39,20 @@ export default defineComponent({
         }
     },
     setup(props) {
-        switch (true) {
-            case typeof props.render === 'function':
-                return () => (props.render as LabelRenderFunction)(props.ctx);
-            case typeof props.render === 'object':
-                return () => h(props.render as Component, { ctx: props.ctx });
-            case typeof props.render === 'string':
-                return () => h(props.tag ?? Text, interpolate(props.render as string, props.ctx));
-            default:
-                return () => h(props.tag ?? Text, props.render as number | boolean);
-        }
+        return () => {
+            switch (true) {
+                case typeof props.render === 'function':
+                    return (props.render as LabelRenderFunction)(props.ctx);
+                case typeof props.render === 'object':
+                    return h(props.render as Component, { ctx: props.ctx });
+                case typeof props.render === 'string':
+                    const children = interpolate(props.render as string, props.ctx);
+                    return props.tag ? h(props.tag, children) : h(Text, children);
+                default:
+                    return props.tag
+                        ? h(props.tag, props.render as number | boolean)
+                        : h(Text, props.render as number | boolean);
+            }
+        };
     }
 });

@@ -29,6 +29,7 @@ import { ISelectOption } from '@inkline/inkline/components/ISelectOption';
 import { extractRefHTMLElement, interpolate } from '@inkline/inkline/utils';
 import { ComputePositionConfig } from '@floating-ui/core';
 import { IRenderResolver } from '@inkline/inkline/components/utils/IRenderResolver';
+import { LabelRenderFunction } from '@inkline/inkline/types';
 
 const componentName = 'ISelect';
 
@@ -451,7 +452,7 @@ export default defineComponent({
                 const label = props.label || selectedOption.value.label;
 
                 if (isFunction(label)) {
-                    const labelFnResult = label(selectedOption.value);
+                    const labelFnResult = (label as LabelRenderFunction)(selectedOption.value);
                     if (typeof labelFnResult === 'string') {
                         return labelFnResult;
                     }

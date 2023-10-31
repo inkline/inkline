@@ -86,7 +86,7 @@ export default defineComponent({
          * @name modelValue
          */
         modelValue: {
-            type: Array,
+            type: Array as PropType<Array<CheckboxButtonOption['id']>>,
             default: () => []
         },
         /**

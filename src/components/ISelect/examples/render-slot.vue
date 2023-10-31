@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { LabelRenderFunction, SelectOption } from '@inkline/inkline';
 
 const selected = ref(null);
 const options = ref([

@@ -10,13 +10,12 @@ import { CheckboxGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/consta
 import { uid } from '@grozav/utils';
 import type { CheckboxGroupOption } from '@inkline/inkline/components';
 import { ICheckbox } from '@inkline/inkline/components/ICheckbox';
-import { CheckboxButtonOption, IRadio } from '@inkline/inkline/components';
 
 const componentName = 'ICheckboxGroup';
 
 export default defineComponent({
     name: componentName,
-    components: { IRadio, ICheckbox },
+    components: { ICheckbox },
     inheritAttrs: false,
     props: {
         /**
@@ -139,7 +138,7 @@ export default defineComponent({
          */
         label: {
             type: [String, Number, Boolean, Function, Object] as PropType<
-                CheckboxButtonOption['label']
+                CheckboxGroupOption['label']
             >,
             default: undefined
         }
