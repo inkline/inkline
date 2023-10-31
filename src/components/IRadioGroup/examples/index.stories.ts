@@ -8,7 +8,8 @@ import {
     IRadioGroupRenderComponentExample,
     IRadioGroupRenderExpressionExample,
     IRadioGroupRenderFunctionExample,
-    IRadioGroupRenderFunctionPerOptionExample
+    IRadioGroupRenderFunctionPerOptionExample,
+    IRadioGroupRenderSlotExample
 } from '@inkline/inkline/components/IRadioGroup/examples/index';
 import {
     colorArgType,
@@ -37,3 +38,4 @@ export const RenderFunction = createExampleStory(IRadioGroupRenderFunctionExampl
 export const RenderFunctionPerOption = createExampleStory(
     IRadioGroupRenderFunctionPerOptionExample
 );
+export const RenderSlot = createExampleStory(IRadioGroupRenderSlotExample);

@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import type { RadioGroupOption } from '@inkline/inkline';
 
-const checked = ref(['apple']);
+const checked = ref('apple');
 const options = ref<RadioGroupOption[]>([
     { id: 'apple', label: 'Apple' },
     { id: 'banana', label: 'Banana' },

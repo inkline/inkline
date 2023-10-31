@@ -12,4 +12,6 @@ export interface CheckboxGroupInjection {
     onBlur: (event: FocusEvent) => void;
 }
 
-export type CheckboxGroupOption = FormOption;
+export interface CheckboxGroupOption extends FormOption {
+    indeterminate?: boolean;
+}

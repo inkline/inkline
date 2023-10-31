@@ -53,6 +53,12 @@ export const manifest: ComponentManifest = {
             description: 'The unique identifier of the radio group'
         },
         {
+            name: 'native',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Displays the native browser radio input indicator'
+        },
+        {
             name: 'readonly',
             type: ['Boolean'],
             default: 'false',

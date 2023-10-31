@@ -91,6 +91,16 @@ export default defineComponent({
             }
         },
         /**
+         * Displays the native browser checkbox input indicator
+         * @type Boolean
+         * @default false
+         * @name native
+         */
+        native: {
+            type: Boolean,
+            default: false
+        },
+        /**
          * The readonly state of the checkbox group
          * @type Boolean
          * @default false
@@ -257,6 +267,8 @@ export default defineComponent({
             :key="option.id"
             :name="`${name}-${option.id}`"
             :option="option"
+            :native="native"
+            :indeterminate="option.indeterminate"
             :label="option.label || label"
         >
             <template v-if="$slots.option">

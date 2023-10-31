@@ -102,6 +102,16 @@ export default defineComponent({
             }
         },
         /**
+         * Displays the native browser radio input indicator
+         * @type Boolean
+         * @default false
+         * @name native
+         */
+        native: {
+            type: Boolean,
+            default: false
+        },
+        /**
          * The readonly state of the radio group
          * @type Boolean
          * @default false
@@ -240,9 +250,14 @@ export default defineComponent({
             v-for="option in options"
             :key="option.id"
             :name="`${name}-${option.id}`"
+            :native="native"
             :option="option"
-            :label="option.label ?? label"
-        />
+            :label="option.label || label"
+        >
+            <template v-if="$slots.option">
+                <slot name="option" :option="option" />
+            </template>
+        </IRadio>
         <!-- @slot default Slot for default radio group options -->
         <slot />
     </div>

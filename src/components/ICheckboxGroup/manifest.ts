@@ -46,6 +46,12 @@ export const manifest: ComponentManifest = {
             description: 'The unique identifier of the checkbox group'
         },
         {
+            name: 'native',
+            type: ['Boolean'],
+            default: 'false',
+            description: 'Displays the native browser checkbox input indicator'
+        },
+        {
             name: 'readonly',
             type: ['Boolean'],
             default: 'false',
