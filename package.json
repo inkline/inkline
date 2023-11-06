@@ -1686,6 +1686,10 @@
         "front end",
         "validation"
     ],
+    "engines": {
+        "node": "*",
+        "npm": "*"
+    },
     "license": "MIT",
     "repository": {
         "type": "git",
