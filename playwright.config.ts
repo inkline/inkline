@@ -9,7 +9,7 @@ import { defineConfig, devices } from '@playwright/test';
 const DEV = process.env.DEV === 'true';
 const DEFAULT_PORT = {
     vite: DEV ? 5173 : 4173,
-    nuxt: 3000
+    nuxt: 3030
 };
 
 const INTEGRATION: 'vite' | 'nuxt' | string = process.env.INTEGRATION || 'vite';
