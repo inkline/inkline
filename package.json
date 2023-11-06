@@ -1120,6 +1120,11 @@
             "import": "./components/utils/ICheckableButtonGroup/index.mjs",
             "types": "./components/utils/ICheckableButtonGroup/index.d.ts"
         },
+        "./components/utils/ICheckableButtonGroup/manifest": {
+            "require": "./components/utils/ICheckableButtonGroup/manifest.js",
+            "import": "./components/utils/ICheckableButtonGroup/manifest.mjs",
+            "types": "./components/utils/ICheckableButtonGroup/manifest.d.ts"
+        },
         "./components/utils/ICheckableButtonGroup/types": {
             "require": "./components/utils/ICheckableButtonGroup/types.js",
             "import": "./components/utils/ICheckableButtonGroup/types.mjs",
@@ -1134,6 +1139,11 @@
             "require": "./components/utils/IRenderResolver/IRenderResolver.js",
             "import": "./components/utils/IRenderResolver/IRenderResolver.mjs",
             "types": "./components/utils/IRenderResolver/IRenderResolver.d.ts"
+        },
+        "./components/utils/IRenderResolver/manifest": {
+            "require": "./components/utils/IRenderResolver/manifest.js",
+            "import": "./components/utils/IRenderResolver/manifest.mjs",
+            "types": "./components/utils/IRenderResolver/manifest.d.ts"
         },
         "./composables": {
             "require": "./composables/index.js",
