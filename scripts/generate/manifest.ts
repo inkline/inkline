@@ -142,10 +142,10 @@ import prettierConfig from '../../.prettierrc';
             ];
         });
 
-    manifestEntries.forEach(({ manifestFilePath, manifest }) => {
+    for (const { manifestFilePath, manifest } of manifestEntries) {
         try {
             const objectString = stringifyObject(manifest);
-            const exportObjectString = prettier.format(
+            const exportObjectString = await prettier.format(
                 `import { ComponentManifest } from '@inkline/inkline/types';\n\nexport const manifest: ComponentManifest = ${objectString};\n\nexport default manifest;\n`,
                 { parser: 'typescript', ...prettierConfig }
             );
@@ -155,5 +155,5 @@ import prettierConfig from '../../.prettierrc';
             console.error(`Write error occured for ${manifestFilePath}`);
             console.error(error);
         }
-    });
+    }
 })();

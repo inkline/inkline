@@ -19,7 +19,7 @@ const prettierConfigFile = path.resolve(baseDir, '.prettierrc');
     const prettierConfig = await import(prettierConfigFile);
 
     const code = css.replace(/^[^_]*\._/, '._');
-    const result = prettier.format(code, { parser: 'scss', ...prettierConfig });
+    const result = await prettier.format(code, { parser: 'scss', ...prettierConfig });
 
     await writeFile(outputFile, result);
 })();
