@@ -4,9 +4,9 @@ import { computed } from 'vue';
 import { createFormFieldSchema } from '@inkline/inkline';
 
 const { schema } = useForm<{
-    group: string[];
+    items: string[];
 }>({
-    group: [
+    items: [
         {
             validators: [{ name: 'required' }]
         },
@@ -26,11 +26,11 @@ function addField() {
         validators: [{ name: 'required' }]
     });
 
-    schema.value.group.push(newField);
+    schema.value.items.push(newField);
 }
 
 function removeField() {
-    schema.value.group.splice(0, 1);
+    schema.value.items.splice(0, 1);
 }
 
 function replaceField() {
@@ -39,18 +39,18 @@ function replaceField() {
         validators: [{ name: 'required' }]
     });
 
-    schema.value.group.splice(0, 1, newField);
+    schema.value.items.splice(0, 1, newField);
 }
 </script>
 <template>
     <IForm v-model="schema">
-        <IFormGroup name="group">
-            <IFormGroup v-for="(_, index) in schema.group" :key="index">
+        <IFormGroup>
+            <IFormGroup v-for="(item, index) in schema.items" :key="index">
                 <IFormLabel>
-                    Input for <code>group.{{ index }}</code>
+                    Input for <code>items.{{ index }}</code>
                 </IFormLabel>
-                <IInput :name="`group.${index}`" placeholder="Type something.." />
-                <IFormError :for="`group.${index}`" />
+                <IInput :name="`items.${index}`" placeholder="Type something.." />
+                <IFormError :for="`items.${index}`" />
             </IFormGroup>
         </IFormGroup>
         <IFormGroup>

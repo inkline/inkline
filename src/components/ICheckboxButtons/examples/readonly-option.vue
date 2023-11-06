@@ -3,10 +3,10 @@ import { ref } from 'vue';
 
 const checked = ref(['strawberry']);
 const options = ref([
-    { id: 1, label: 'Apple', value: 'apple' },
-    { id: 2, label: 'Banana', value: 'banana' },
-    { id: 3, label: 'Strawberry', value: 'strawberry', readonly: true },
-    { id: 4, label: 'Mango', value: 'mango' }
+    { id: 'apple', label: 'Apple' },
+    { id: 'banana', label: 'Banana' },
+    { id: 'strawberry', label: 'Strawberry', readonly: true },
+    { id: 'mango', label: 'Mango' }
 ]);
 </script>
 

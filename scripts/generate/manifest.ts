@@ -24,8 +24,16 @@ import prettierConfig from '../../.prettierrc';
         return JSON.stringify(obj, null, 4);
     }
 
-    function readSyncIfExists(filePath: string) {
-        return fs.existsSync(filePath) ? fs.readFileSync(filePath).toString() : '';
+    function readSyncIfExists(filePaths: string | string[]) {
+        const firstExistingFilePath = (Array.isArray(filePaths) ? filePaths : [filePaths]).find(
+            (filePath) => fs.existsSync(filePath)
+        );
+
+        if (!firstExistingFilePath) {
+            return '';
+        }
+
+        return fs.readFileSync(firstExistingFilePath).toString();
     }
 
     const files = await glob(
@@ -48,8 +56,11 @@ import prettierConfig from '../../.prettierrc';
         try {
             const componentDirPath = path.dirname(manifestFilePath);
             const componentName = path.basename(componentDirPath);
-            const componentFilePath = path.resolve(componentDirPath, `${componentName}.vue`);
-            const componentSource = readSyncIfExists(componentFilePath);
+            const componentFilePaths = [
+                path.resolve(componentDirPath, `${componentName}.vue`),
+                path.resolve(componentDirPath, `${componentName}.ts`)
+            ];
+            const componentSource = readSyncIfExists(componentFilePaths);
             const cssDirPath = path.resolve(componentDirPath, 'css');
             const componentCssFilePath = path.resolve(cssDirPath, '_component.scss');
             const componentCssSource = readSyncIfExists(componentCssFilePath);
