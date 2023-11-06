@@ -37,7 +37,7 @@ import prettierConfig from '../../.prettierrc';
     }
 
     const files = await glob(
-        path.resolve(__dirname, '..', '..', 'src', 'components', '*', manifestFileName)
+        path.resolve(__dirname, '..', '..', 'src', 'components', '**', manifestFileName)
     );
 
     const manifestEntries: Array<{

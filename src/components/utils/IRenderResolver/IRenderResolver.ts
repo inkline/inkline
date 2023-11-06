@@ -6,7 +6,7 @@ import { interpolate } from '@inkline/inkline/utils';
 export default defineComponent({
     props: {
         /**
-         * The primitive or render function to render.
+         * The primitive or render function to render. It can accept either primitive types (String, Number, Boolean), a render function, or a Vue component.
          * @type String | Number | Boolean | RenderFunction
          * @default '
          * @name data
@@ -18,7 +18,7 @@ export default defineComponent({
             default: ''
         },
         /**
-         * The context to pass to the render function
+         * The context object that is passed to the component props, render function, or used for string interpolation.
          * @type Object
          * @default {}
          * @name ctx
@@ -28,9 +28,9 @@ export default defineComponent({
             default: () => ({})
         },
         /**
-         * The tag to use for rendering primitives
+         * The HTML tag to use for rendering primitives. If not specified, no tag will be rendered.
          * @type String
-         * @default span
+         * @default
          * @name tag
          */
         tag: {
