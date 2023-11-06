@@ -8,8 +8,8 @@ export default defineComponent({
         /**
          * The primitive or render function to render. It can accept either primitive types (String, Number, Boolean), a render function, or a Vue component.
          * @type String | Number | Boolean | RenderFunction
-         * @default '
-         * @name data
+         * @default ''
+         * @name render
          */
         render: {
             type: [String, Number, Boolean, Function, Object] as PropType<
