@@ -11,7 +11,6 @@ const LabelRenderComponent = markRaw(
             }
         },
         setup(props) {
-            console.log(props);
             return () => h('strong', props.ctx.id);
         }
     })
