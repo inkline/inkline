@@ -5,7 +5,7 @@ export const manifest: ComponentManifest = {
     props: [
         {
             name: 'render',
-            type: ['String', 'Number', 'Boolean', 'RenderFunction'],
+            type: ['String', 'Number', 'Boolean', 'LabelRenderFunction', 'Raw<Component>'],
             default: "''",
             description:
                 'The primitive or render function to render. It can accept either primitive types (String, Number, Boolean), a render function, or a Vue component.'
