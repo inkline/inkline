@@ -26,7 +26,7 @@
         "test:dev": "vitest",
         "test:dev:ui": "vitest --ui",
         "e2e:vite": "INTEGRATION=vite playwright test",
-        "e2e:nuxt": "INTEGRATION=nuxt playwright test",
+        "e2e:nuxt": "INTEGRATION=nuxt NITRO_PORT=3030 playwright test",
         "e2e": "npm run e2e:vite && npm run e2e:nuxt",
         "e2e:dev": "DEV=true playwright test --ui",
         "e2e:ui": "playwright test --ui",
