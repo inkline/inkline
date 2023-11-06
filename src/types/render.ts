@@ -1,5 +1,4 @@
-import { DefineComponent, Raw, VNode } from 'vue';
-import { Component, VNodeChild } from 'vue/dist/vue';
+import type { DefineComponent, Component, VNodeChild, Raw, VNode } from 'vue';
 
 export type PrimitiveOrRenderable<T> =
     | T

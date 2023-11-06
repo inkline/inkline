@@ -14,6 +14,7 @@ import {
     ISelectReadonlyExample,
     ISelectRenderExpressionExample,
     ISelectRenderFunctionExample,
+    ISelectRenderComponentExample,
     ISelectRenderSlotExample,
     ISelectRenderFunctionPerOptionExample
 } from '@inkline/inkline/components/ISelect/examples/index';
@@ -46,4 +47,5 @@ export const Readonly = () => ISelectReadonlyExample;
 export const RenderExpression = () => ISelectRenderExpressionExample;
 export const RenderFunction = () => ISelectRenderFunctionExample;
 export const RenderFunctionPerOption = () => ISelectRenderFunctionPerOptionExample;
+export const RenderComponent = () => ISelectRenderComponentExample;
 export const RenderSlot = () => ISelectRenderSlotExample;

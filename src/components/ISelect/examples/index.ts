@@ -13,4 +13,5 @@ export { default as ISelectReadonlyExample } from '@inkline/inkline/components/I
 export { default as ISelectRenderFunctionExample } from '@inkline/inkline/components/ISelect/examples/render-function.vue';
 export { default as ISelectRenderFunctionPerOptionExample } from '@inkline/inkline/components/ISelect/examples/render-function-per-option.vue';
 export { default as ISelectRenderExpressionExample } from '@inkline/inkline/components/ISelect/examples/render-expression.vue';
+export { default as ISelectRenderComponentExample } from '@inkline/inkline/components/ISelect/examples/render-component.vue';
 export { default as ISelectRenderSlotExample } from '@inkline/inkline/components/ISelect/examples/render-slot.vue';
