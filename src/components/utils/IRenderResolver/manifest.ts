@@ -4,9 +4,9 @@ export const manifest: ComponentManifest = {
     name: 'IRenderResolver',
     props: [
         {
-            name: 'data',
+            name: 'render',
             type: ['String', 'Number', 'Boolean', 'RenderFunction'],
-            default: "'",
+            default: "''",
             description:
                 'The primitive or render function to render. It can accept either primitive types (String, Number, Boolean), a render function, or a Vue component.'
         },
