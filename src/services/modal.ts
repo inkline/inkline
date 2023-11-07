@@ -1,10 +1,7 @@
 import type { EventBus } from '@grozav/utils';
-import { createEventBus } from '@grozav/utils';
 import type { ModalService } from '@inkline/inkline';
 
-export const modalEventBus: EventBus = createEventBus();
-
-export function createModalService(eventBus: EventBus = modalEventBus): ModalService {
+export function createModalService(eventBus: EventBus): ModalService {
     return {
         show: (options) => {
             eventBus.emit('show', options);
@@ -17,5 +14,3 @@ export function createModalService(eventBus: EventBus = modalEventBus): ModalSer
         }
     };
 }
-
-export const modalService = createModalService();

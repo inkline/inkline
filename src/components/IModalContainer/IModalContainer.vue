@@ -3,7 +3,7 @@ import type { PropType } from 'vue';
 import { computed, defineComponent, nextTick, onMounted, ref } from 'vue';
 import { useInkline } from '@inkline/inkline/composables';
 import type { ModalOptions } from '@inkline/inkline/types';
-import { modalEventBus } from '@inkline/inkline/services';
+import { modalEventBus } from '@inkline/inkline/constants';
 import { uid } from '@grozav/utils';
 import type { EventBus } from '@grozav/utils';
 import { IModal } from '@inkline/inkline/components/IModal';
