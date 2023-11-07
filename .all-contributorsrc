@@ -257,6 +257,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "Curetix",
+      "name": "Curetix",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15160542?v=4",
+      "profile": "https://github.com/Curetix",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 10,
