@@ -1,4 +1,6 @@
 <script lang="ts">
+import type {
+    PropType} from 'vue';
 import {
     toRef,
     provide,
@@ -8,20 +10,20 @@ import {
     useSlots,
     onMounted,
     onBeforeUnmount,
-    PropType,
     defineComponent
 } from 'vue';
 import { on, off, isFocusable, isKey } from '@grozav/utils';
 import { DropdownKey, NavbarKey, SidebarKey } from '@inkline/inkline/constants';
+import type {
+    PopupEvent} from '@inkline/inkline/composables';
 import {
     useClickOutside,
     useComponentColor,
     useComponentSize,
-    PopupEvent,
     usePopupControl
 } from '@inkline/inkline/composables';
-import { Placement } from '@floating-ui/dom';
-import { ComputePositionConfig } from '@floating-ui/core';
+import type { Placement } from '@floating-ui/dom';
+import type { ComputePositionConfig } from '@floating-ui/core';
 
 const componentName = 'IDropdown';
 

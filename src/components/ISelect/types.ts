@@ -1,5 +1,5 @@
-import { Ref } from 'vue';
-import { FormOption } from '@inkline/inkline/types';
+import type { Ref } from 'vue';
+import type { FormOption } from '@inkline/inkline/types';
 
 export interface SelectOption extends FormOption {
     active?: boolean;

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/vue3';
+import type { Meta } from '@storybook/vue3';
 import IToastContainer from '@inkline/inkline/components/IToastContainer/IToastContainer.vue';
 import {
     IToastContainerBasicExample,

@@ -1,4 +1,4 @@
-import { ComputedRef, Ref } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 
 export interface ButtonGroupInjection {
     disabled: ComputedRef<boolean>;

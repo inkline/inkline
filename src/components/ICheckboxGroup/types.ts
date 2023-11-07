@@ -1,5 +1,5 @@
 import type { ComputedRef, Ref } from 'vue';
-import { FormOption } from '@inkline/inkline/types';
+import type { FormOption } from '@inkline/inkline/types';
 
 export interface CheckboxGroupInjection {
     name: Ref<string>;

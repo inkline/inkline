@@ -1,6 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
-import { memoize, markSearchString, MarkSearchStringPart } from '@grozav/utils';
+import type { MarkSearchStringPart } from '@grozav/utils';
+import { memoize, markSearchString } from '@grozav/utils';
 
 const componentName = 'IMark';
 

@@ -1,4 +1,4 @@
-import { Form, FormField, FormSchema } from '@inkline/inkline';
+import type { Form, FormField, FormSchema } from '@inkline/inkline';
 
 export function isFormField<T extends Form>(
     schema: FormSchema<T[keyof T]> | FormField<T[keyof T]>

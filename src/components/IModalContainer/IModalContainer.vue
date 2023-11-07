@@ -1,7 +1,8 @@
 <script lang="ts">
-import { computed, defineComponent, nextTick, onMounted, PropType, ref } from 'vue';
+import type { PropType} from 'vue';
+import { computed, defineComponent, nextTick, onMounted, ref } from 'vue';
 import { useInkline } from '@inkline/inkline/composables';
-import { ModalOptions } from '@inkline/inkline/types';
+import type { ModalOptions } from '@inkline/inkline/types';
 import { modalEventBus } from '@inkline/inkline/services';
 import { uid } from '@grozav/utils';
 import type { EventBus } from '@grozav/utils';

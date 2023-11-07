@@ -1,5 +1,5 @@
 import type { FormValue } from '@inkline/inkline/types/validation';
-import { Renderable } from '@inkline/inkline/types/render';
+import type { Renderable } from '@inkline/inkline/types/render';
 
 export interface FormOption {
     id: string | number;

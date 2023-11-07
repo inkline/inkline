@@ -1,4 +1,5 @@
-import { Ref, unref } from 'vue';
+import type { Ref} from 'vue';
+import { unref } from 'vue';
 
 interface ModalInstance {
     name: Ref<string>;

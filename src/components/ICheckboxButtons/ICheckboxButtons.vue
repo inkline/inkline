@@ -1,5 +1,6 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, toRef } from 'vue';
+import type { PropType} from 'vue';
+import { computed, defineComponent, inject, toRef } from 'vue';
 import {
     useComponentColor,
     useComponentSize,
@@ -9,10 +10,12 @@ import {
 import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import { IButton } from '@inkline/inkline/components/IButton';
 import { uid } from '@grozav/utils';
+import type {
+    CheckableButtonGroupVariant
+} from '@inkline/inkline/components/utils';
 import {
     IRenderResolver,
-    ICheckableButtonGroup,
-    CheckableButtonGroupVariant
+    ICheckableButtonGroup
 } from '@inkline/inkline/components/utils';
 import type { CheckboxButtonOption } from '@inkline/inkline/components/ICheckboxButtons/types';
 

@@ -1,4 +1,4 @@
-import { FormValue } from '@inkline/inkline/types';
+import type { FormValue } from '@inkline/inkline/types';
 
 export function number(
     value: FormValue,

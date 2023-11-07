@@ -1,14 +1,17 @@
-import { ComponentPublicInstance, onMounted, onUnmounted, ref, Ref, watch } from 'vue';
+import type { ComponentPublicInstance, Ref} from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
 import { focusFirstDescendant, off, on } from '@grozav/utils';
+import type {
+    Placement,
+    Strategy
+} from '@floating-ui/dom';
 import {
     arrow,
     autoUpdate,
     computePosition,
     flip,
     offset,
-    shift,
-    Placement,
-    Strategy
+    shift
 } from '@floating-ui/dom';
 import { extractRefHTMLElement } from '@inkline/inkline/utils';
 

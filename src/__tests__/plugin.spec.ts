@@ -1,8 +1,10 @@
-import {
-    createInklineService,
-    Inkline,
+import type {
     InklineOptions,
     InklinePluginOptions
+} from '@inkline/inkline/plugin';
+import {
+    createInklineService,
+    Inkline
 } from '@inkline/inkline/plugin';
 import { InklineKey } from '@inkline/inkline/constants';
 import { IButton } from '@inkline/inkline/components';

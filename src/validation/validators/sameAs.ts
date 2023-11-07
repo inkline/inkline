@@ -1,5 +1,5 @@
 import { getValueByPath } from '@grozav/utils';
-import { FormValue } from '@inkline/inkline/types';
+import type { FormValue } from '@inkline/inkline/types';
 
 export function sameAs(value: FormValue, options: any = {}) {
     if (!options.target) {

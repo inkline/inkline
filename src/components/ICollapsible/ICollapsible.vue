@@ -1,5 +1,6 @@
 <script lang="ts">
-import { defineComponent, ref, provide, computed, PropType, watch } from 'vue';
+import type { PropType} from 'vue';
+import { defineComponent, ref, provide, computed, watch } from 'vue';
 import { CollapsibleKey } from '@inkline/inkline/constants';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 

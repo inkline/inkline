@@ -1,4 +1,4 @@
-import { Component } from 'vue';
+import type { Component } from 'vue';
 
 export const createExampleStory = (component: Component): (() => Component) => {
     const story = () => component;

@@ -1,8 +1,9 @@
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+import type { PropType } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 import IButtonGroup from '@inkline/inkline/components/IButtonGroup/IButtonGroup.vue';
-import { CheckableButtonGroupVariant } from '@inkline/inkline/components/utils';
+import type { CheckableButtonGroupVariant } from '@inkline/inkline/components/utils';
 
 const componentName = 'ICheckableButtonGroup';
 

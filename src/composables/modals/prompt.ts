@@ -2,15 +2,15 @@
 import { IButton } from '@inkline/inkline/components/IButton';
 import { IInput } from '@inkline/inkline/components/IInput';
 import { translate } from '@inkline/inkline/i18n';
-import type { ModalOptions } from '@inkline/inkline/types';
+import type { ModalOptions , Form, FormSchema, ResolvedFormSchema } from '@inkline/inkline/types';
 import { uid } from '@grozav/utils';
-import { computed, defineComponent, h, markRaw, VNode } from 'vue';
+import type { VNode } from 'vue';
+import { computed, defineComponent, h, markRaw } from 'vue';
 import { useModalBuilder } from '@inkline/inkline/composables/modals/builder';
 import { useForm } from '@inkline/inkline/composables';
 import { IForm } from '@inkline/inkline/components/IForm';
 import { IFormGroup } from '@inkline/inkline/components/IFormGroup';
 import { IFormError } from '@inkline/inkline/components/IFormError';
-import { Form, FormSchema, ResolvedFormSchema } from '@inkline/inkline/types';
 
 export function usePrompt<S extends Form = Form>() {
     const modalService = useModalBuilder();

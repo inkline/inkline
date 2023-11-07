@@ -1,5 +1,6 @@
-import { createEventBus, EventBus } from '@grozav/utils';
-import { ModalService } from '@inkline/inkline';
+import type { EventBus } from '@grozav/utils';
+import { createEventBus } from '@grozav/utils';
+import type { ModalService } from '@inkline/inkline';
 
 export const modalEventBus: EventBus = createEventBus();
 

@@ -1,9 +1,11 @@
 import { createSchema, validateForm, validateFormField } from '@inkline/inkline/validation';
-import {
-    defaultValidationFieldValues,
-    defaultValidationStateValues,
+import type {
     FormValidator,
     ResolvedFormField
+} from '@inkline/inkline';
+import {
+    defaultValidationFieldValues,
+    defaultValidationStateValues
 } from '@inkline/inkline';
 
 describe('validation', () => {

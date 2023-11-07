@@ -1,4 +1,4 @@
-import { FormValue } from '@inkline/inkline/types';
+import type { FormValue } from '@inkline/inkline/types';
 
 export function custom(value: FormValue, options: any = { validator: () => true }): boolean {
     if (value?.constructor === Array) {

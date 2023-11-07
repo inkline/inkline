@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/vue3';
+import type { Meta } from '@storybook/vue3';
 import IModalContainer from '@inkline/inkline/components/IModalContainer/IModalContainer.vue';
 import {
     IModalContainerBasicExample,

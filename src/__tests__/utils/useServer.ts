@@ -1,6 +1,6 @@
 import { createServer, Model } from 'miragejs';
 import data from '@inkline/inkline/__mocks__/data.json';
-import { Server } from 'miragejs/server';
+import type { Server } from 'miragejs/server';
 
 export const usePagination = (schema: any, req: any, model: any) => {
     const { models: items } = schema[model].all();

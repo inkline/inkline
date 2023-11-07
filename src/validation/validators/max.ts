@@ -1,4 +1,4 @@
-import { FormValue } from '@inkline/inkline/types';
+import type { FormValue } from '@inkline/inkline/types';
 
 export function max(value: FormValue, options: any = { value: 0 }): boolean {
     if (value === undefined || value === null) {

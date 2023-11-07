@@ -1,5 +1,6 @@
 <script lang="ts">
-import { computed, defineComponent, h, onBeforeUpdate, onMounted, PropType, ref, VNode } from 'vue';
+import type { PropType, VNode } from 'vue';
+import { computed, defineComponent, h, onBeforeUpdate, onMounted, ref } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/inkline/composables';
 import { IIcon } from '@inkline/inkline/components/IIcon';
 import type { StringOrRenderableType } from '@inkline/inkline/types';

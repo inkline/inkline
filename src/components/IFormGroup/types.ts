@@ -1,4 +1,4 @@
-import { Ref } from 'vue';
+import type { Ref } from 'vue';
 
 export interface FormGroupInjection {
     size: Ref<string>;

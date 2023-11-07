@@ -1,4 +1,4 @@
-import { FormOption } from '@inkline/inkline/types';
+import type { FormOption } from '@inkline/inkline/types';
 
 export type CheckableButtonGroupVariant = 'default' | 'group';
 

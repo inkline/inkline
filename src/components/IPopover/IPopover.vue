@@ -1,15 +1,17 @@
 <script lang="ts">
-import { PropType, ref, computed, defineComponent } from 'vue';
+import type { PropType} from 'vue';
+import { ref, computed, defineComponent } from 'vue';
 import { uid } from '@grozav/utils';
+import type {
+    PopupEvent} from '@inkline/inkline/composables';
 import {
-    PopupEvent,
     usePopupControl,
     useClickOutside,
     useComponentColor,
     useComponentSize
 } from '@inkline/inkline/composables';
-import { Placement } from '@floating-ui/dom';
-import { ComputePositionConfig } from '@floating-ui/core';
+import type { Placement } from '@floating-ui/dom';
+import type { ComputePositionConfig } from '@floating-ui/core';
 
 const componentName = 'IPopover';
 

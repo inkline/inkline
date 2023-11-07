@@ -1,4 +1,4 @@
-import { ComponentManifest } from '@inkline/inkline/types';
+import type { ComponentManifest } from '@inkline/inkline/types';
 
 export const manifest: ComponentManifest = {
     name: 'ICheckboxGroup',

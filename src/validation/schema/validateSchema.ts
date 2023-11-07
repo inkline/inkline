@@ -1,19 +1,21 @@
 import { validators } from '@inkline/inkline/validation/register';
 import { reservedValidationFields } from '@inkline/inkline/constants';
 import { translate } from '@inkline/inkline/i18n';
-import {
+import type {
     FormValidator,
     ResolvedFormSchema,
     ResolvedFormField,
     FormError,
     Form,
-    isFormFieldArray,
-    isFormGroupArray,
-    isFormField,
-    isFormGroup,
     FormValue,
     FormSchema,
     FormField
+} from '@inkline/inkline/types';
+import {
+    isFormFieldArray,
+    isFormGroupArray,
+    isFormField,
+    isFormGroup
 } from '@inkline/inkline/types';
 
 /**

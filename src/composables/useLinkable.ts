@@ -1,4 +1,5 @@
-import { computed, resolveComponent, Ref } from 'vue';
+import type { Ref } from 'vue';
+import { computed, resolveComponent } from 'vue';
 import { useInkline } from '@inkline/inkline/composables/useInkline';
 
 export function useLinkable(props: {

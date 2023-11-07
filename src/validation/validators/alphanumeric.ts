@@ -1,5 +1,5 @@
 import { alphanumeric as validators } from '@inkline/inkline/validation/validators/constants';
-import { FormValue } from '@inkline/inkline/types';
+import type { FormValue } from '@inkline/inkline/types';
 
 export function alphanumeric(rawValue: FormValue, options: any = {}): boolean {
     const locale = options.locale || 'en-US';

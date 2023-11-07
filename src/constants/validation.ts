@@ -1,4 +1,4 @@
-import { FormField, ReservedFormKeys, FormState } from '@inkline/inkline/types';
+import type { FormField, ReservedFormKeys, FormState } from '@inkline/inkline/types';
 
 export const defaultValidationStateValues: FormState = {
     pristine: true,

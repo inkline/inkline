@@ -1,4 +1,7 @@
 <script lang="ts">
+import type {
+    PropType
+} from 'vue';
 import {
     defineComponent,
     ref,
@@ -6,8 +9,7 @@ import {
     computed,
     watch,
     onMounted,
-    onBeforeUnmount,
-    PropType
+    onBeforeUnmount
 } from 'vue';
 import { addClass, removeClass, uid } from '@grozav/utils';
 import { OverlayController } from '@inkline/inkline/controllers';
