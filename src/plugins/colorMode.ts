@@ -24,8 +24,8 @@ export const onChangeColorMode = (colorMode: 'system' | 'light' | 'dark' | strin
         color = colorMode;
     }
 
-    removeClass(document.body, 'light-theme dark-theme');
-    addClass(document.body, `${color}-theme`);
+    removeClass(document.documentElement, 'light-theme dark-theme');
+    addClass(document.documentElement, `${color}-theme`);
 };
 
 /**
