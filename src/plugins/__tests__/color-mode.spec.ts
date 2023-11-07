@@ -16,7 +16,7 @@ describe('ColorModePlugin', () => {
                     ({
                         matches: false,
                         addEventListener: vi.fn()
-                    } as any)
+                    }) as any
             );
 
             onChangeColorMode('system');
@@ -33,7 +33,7 @@ describe('ColorModePlugin', () => {
                     ({
                         matches: true,
                         addEventListener: vi.fn()
-                    } as any)
+                    }) as any
             );
 
             onChangeColorMode('system');
@@ -82,7 +82,7 @@ describe('ColorModePlugin', () => {
                 () =>
                     ({
                         addEventListener
-                    } as any)
+                    }) as any
             );
 
             const app = createApp();
@@ -102,7 +102,7 @@ describe('ColorModePlugin', () => {
                 () =>
                     ({
                         addListener
-                    } as any)
+                    }) as any
             );
 
             const app = createApp();
@@ -124,7 +124,7 @@ describe('ColorModePlugin', () => {
                         ({
                             matches: true,
                             addEventListener
-                        } as any)
+                        }) as any
                 );
 
                 const app = createApp();
@@ -151,7 +151,7 @@ describe('ColorModePlugin', () => {
                         ({
                             matches: false,
                             addEventListener
-                        } as any)
+                        }) as any
                 );
 
                 const app = createApp();

@@ -1,9 +1,8 @@
 <script lang="ts">
-import type { PropType} from 'vue';
+import type { PropType } from 'vue';
 import { ref, computed, defineComponent } from 'vue';
 import { uid } from '@grozav/utils';
-import type {
-    PopupEvent} from '@inkline/inkline/composables';
+import type { PopupEvent } from '@inkline/inkline/composables';
 import {
     usePopupControl,
     useClickOutside,

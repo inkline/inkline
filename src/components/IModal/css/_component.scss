@@ -22,8 +22,10 @@
         line-height: var(--modal--line-height, var(--line-height));
         display: block;
         width: calc(
-            100% - var(--modal--margin-left, var(--margin-left)) -
-                var(--modal--margin-right, var(--margin-right))
+            100% - var(--modal--margin-left, var(--margin-left)) - var(
+                    --modal--margin-right,
+                    var(--margin-right)
+                )
         );
         max-width: var(--modal--width, 480px);
         border-radius: var(

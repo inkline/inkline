@@ -1,4 +1,4 @@
-import type { Ref} from 'vue';
+import type { Ref } from 'vue';
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { on, off } from '@grozav/utils';
 import { breakpoints } from '@inkline/inkline/constants';

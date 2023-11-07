@@ -1,4 +1,4 @@
-import type { Plugin} from 'vue';
+import type { Plugin } from 'vue';
 import { reactive } from 'vue';
 import { addClass } from '@grozav/utils';
 import { createSchema } from '@inkline/inkline/validation';

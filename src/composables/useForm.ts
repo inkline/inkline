@@ -1,4 +1,4 @@
-import type { Ref} from 'vue';
+import type { Ref } from 'vue';
 import { computed, ref } from 'vue';
 import { createSchema, serializeSchema, validateSchema } from '@inkline/inkline/validation';
 import type { Form, FormSchema, ResolvedFormSchema } from '@inkline/inkline/types';

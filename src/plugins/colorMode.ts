@@ -1,4 +1,4 @@
-import type { Plugin} from 'vue';
+import type { Plugin } from 'vue';
 import { watch } from 'vue';
 import { addClass, removeClass } from '@grozav/utils';
 import type { InklineService } from '@inkline/inkline/plugin';

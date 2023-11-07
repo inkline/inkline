@@ -7,9 +7,9 @@ export interface Classes {
 export type Styles = CSSProperties;
 
 export interface SvgNode {
-    name: string,
-    type: string,
-    value: string,
-    attributes: Record<string, string>,
-    children: SvgNode[]
+    name: string;
+    type: string;
+    value: string;
+    attributes: Record<string, string>;
+    children: SvgNode[];
 }

@@ -1,6 +1,5 @@
 <script lang="ts">
-import type {
-    PropType} from 'vue';
+import type { PropType } from 'vue';
 import {
     toRef,
     provide,
@@ -14,8 +13,7 @@ import {
 } from 'vue';
 import { on, off, isFocusable, isKey } from '@grozav/utils';
 import { DropdownKey, NavbarKey, SidebarKey } from '@inkline/inkline/constants';
-import type {
-    PopupEvent} from '@inkline/inkline/composables';
+import type { PopupEvent } from '@inkline/inkline/composables';
 import {
     useClickOutside,
     useComponentColor,

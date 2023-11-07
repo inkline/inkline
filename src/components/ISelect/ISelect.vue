@@ -1,23 +1,12 @@
 <script lang="ts">
-import type {
-    ComponentPublicInstance,
-    PropType} from 'vue';
-import {
-    computed,
-    defineComponent,
-    inject,
-    provide,
-    ref,
-    toRef,
-    watch
-} from 'vue';
+import type { ComponentPublicInstance, PropType } from 'vue';
+import { computed, defineComponent, inject, provide, ref, toRef, watch } from 'vue';
 import { isFocusable, isKey, uid, isFunction } from '@grozav/utils';
 
 import { IInput } from '@inkline/inkline/components/IInput';
 import type { SelectInjection, SelectOption } from '@inkline/inkline/components/ISelect/types';
 import { FormKey, FormGroupKey, SelectKey } from '@inkline/inkline/constants';
-import type {
-    PopupEvent} from '@inkline/inkline/composables';
+import type { PopupEvent } from '@inkline/inkline/composables';
 import {
     useClickOutside,
     useComponentColor,

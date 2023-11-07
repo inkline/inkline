@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { PropType} from 'vue';
+import type { PropType } from 'vue';
 import { computed, defineComponent, inject, toRef } from 'vue';
 import { useComponentColor, useComponentSize, useLinkable } from '@inkline/inkline/composables';
 import { ILoader } from '@inkline/inkline/components/ILoader';

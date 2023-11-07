@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { PropType} from 'vue';
+import type { PropType } from 'vue';
 import { computed, defineComponent, inject, ref, toRef } from 'vue';
 import { uid } from '@grozav/utils';
 import { FormKey, FormGroupKey } from '@inkline/inkline/constants';

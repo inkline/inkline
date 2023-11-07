@@ -2,7 +2,7 @@
 import { IButton } from '@inkline/inkline/components/IButton';
 import { IInput } from '@inkline/inkline/components/IInput';
 import { translate } from '@inkline/inkline/i18n';
-import type { ModalOptions , Form, FormSchema, ResolvedFormSchema } from '@inkline/inkline/types';
+import type { ModalOptions, Form, FormSchema, ResolvedFormSchema } from '@inkline/inkline/types';
 import { uid } from '@grozav/utils';
 import type { VNode } from 'vue';
 import { computed, defineComponent, h, markRaw } from 'vue';

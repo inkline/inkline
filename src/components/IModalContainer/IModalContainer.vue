@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { PropType} from 'vue';
+import type { PropType } from 'vue';
 import { computed, defineComponent, nextTick, onMounted, ref } from 'vue';
 import { useInkline } from '@inkline/inkline/composables';
 import type { ModalOptions } from '@inkline/inkline/types';
