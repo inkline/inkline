@@ -6,7 +6,7 @@ import type { ToastOptions, ToastPosition } from '@inkline/inkline/types';
 import { uid } from '@grozav/utils';
 import type { EventBus } from '@grozav/utils';
 import { IToast } from '@inkline/inkline/components/IToast';
-import { toastEventBus } from '@inkline/inkline/services';
+import { toastEventBus } from '@inkline/inkline/constants';
 
 const componentName = 'IToastContainer';
 

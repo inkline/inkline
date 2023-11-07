@@ -1,10 +1,7 @@
 import type { EventBus } from '@grozav/utils';
-import { createEventBus } from '@grozav/utils';
 import type { ToastService } from '@inkline/inkline/types';
 
-export const toastEventBus: EventBus = createEventBus();
-
-export function createToastService(eventBus: EventBus = toastEventBus): ToastService {
+export function createToastService(eventBus: EventBus): ToastService {
     return {
         show: (options) => {
             eventBus.emit('show', options);
@@ -17,5 +14,3 @@ export function createToastService(eventBus: EventBus = toastEventBus): ToastSer
         }
     };
 }
-
-export const toastService = createToastService();

@@ -1,2 +1,2 @@
-export * from './modal';
-export * from './toast';
+export * from '@inkline/inkline/services/modal';
+export * from '@inkline/inkline/services/toast';
