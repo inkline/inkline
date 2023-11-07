@@ -1260,6 +1260,11 @@
             "import": "./constants/injectKeys.mjs",
             "types": "./constants/injectKeys.d.ts"
         },
+        "./constants/instances": {
+            "require": "./constants/instances.js",
+            "import": "./constants/instances.mjs",
+            "types": "./constants/instances.d.ts"
+        },
         "./constants/keymap": {
             "require": "./constants/keymap.js",
             "import": "./constants/keymap.mjs",
