@@ -7,5 +7,6 @@
     --box-shadow-blur-radius: 1rem;
     --box-shadow-spread-radius: -0.75rem;
     --box-shadow-color: rgba(0, 0, 0, 0.15);
-    --box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y) var(--box-shadow-blur-radius) var(--box-shadow-spread-radius) var(--box-shadow-color);
+    --box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+        var(--box-shadow-blur-radius) var(--box-shadow-spread-radius) var(--box-shadow-color);
 }

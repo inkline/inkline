@@ -1,5 +1,6 @@
 import { useClickOutside } from '@inkline/inkline/composables';
-import { defineComponent, PropType, toRef } from 'vue';
+import type { PropType } from 'vue';
+import { defineComponent, toRef } from 'vue';
 import { mount } from '@vue/test-utils';
 import { fireEvent } from '@testing-library/vue';
 

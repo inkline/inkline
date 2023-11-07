@@ -1,5 +1,6 @@
 <script lang="ts">
-import { computed, defineComponent, onMounted, PropType, ref, TransitionGroup } from 'vue';
+import type { PropType } from 'vue';
+import { computed, defineComponent, onMounted, ref, TransitionGroup } from 'vue';
 import { useInkline } from '@inkline/inkline/composables';
 import type { ToastOptions, ToastPosition } from '@inkline/inkline/types';
 import { uid } from '@grozav/utils';

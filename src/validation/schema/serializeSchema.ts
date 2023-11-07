@@ -1,11 +1,5 @@
-import {
-    Form,
-    FormField,
-    FormSchema,
-    isFormField,
-    isFormGroup,
-    ResolvedFormSchema
-} from '@inkline/inkline/types';
+import type { Form, FormField, FormSchema, ResolvedFormSchema } from '@inkline/inkline/types';
+import { isFormField, isFormGroup } from '@inkline/inkline/types';
 import { reservedValidationFields } from '@inkline/inkline/constants';
 
 export function serializeSchema<T extends Form>(schema: FormSchema<T> | ResolvedFormSchema<T>): T {

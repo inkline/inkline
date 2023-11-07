@@ -2,16 +2,15 @@ import fs from 'fs';
 import path from 'path';
 import glob from 'fast-glob';
 import prettier from 'prettier';
+import type { Manifest, ManifestEntry } from './manifest/index';
 import {
     parseBlocks,
-    Manifest,
     mapBlocksToEvents,
     mapBlocksToProps,
     mapSourceToSlots,
     parseCssVariables,
     mapVariantsToVariables,
-    parseCssSelector,
-    ManifestEntry
+    parseCssSelector
 } from './manifest/index';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -146,7 +145,7 @@ import prettierConfig from '../../.prettierrc';
         try {
             const objectString = stringifyObject(manifest);
             const exportObjectString = await prettier.format(
-                `import { ComponentManifest } from '@inkline/inkline/types';\n\nexport const manifest: ComponentManifest = ${objectString};\n\nexport default manifest;\n`,
+                `import type { ComponentManifest } from '@inkline/inkline/types';\n\nexport const manifest: ComponentManifest = ${objectString};\n\nexport default manifest;\n`,
                 { parser: 'typescript', ...prettierConfig }
             );
 

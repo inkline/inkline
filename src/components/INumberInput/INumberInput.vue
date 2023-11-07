@@ -2,7 +2,7 @@
 import { computed, defineComponent, inject, toRef, watch } from 'vue';
 import { IButton } from '@inkline/inkline/components/IButton';
 import { uid } from '@grozav/utils';
-import { InputElementEvent } from '@inkline/inkline/types';
+import type { InputElementEvent } from '@inkline/inkline/types';
 import { useComponentColor, useComponentSize, useValidation } from '@inkline/inkline/composables';
 import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import { IInput } from '@inkline/inkline/components';

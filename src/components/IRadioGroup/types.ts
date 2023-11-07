@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import { FormOption } from '@inkline/inkline/types';
+import type { FormOption } from '@inkline/inkline/types';
 
 export interface RadioGroupInjection {
     name: Ref<string>;

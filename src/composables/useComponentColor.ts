@@ -1,4 +1,5 @@
-import { computed, Ref } from 'vue';
+import type { Ref } from 'vue';
+import { computed } from 'vue';
 import { useInkline } from '@inkline/inkline/composables/useInkline';
 
 export interface ComponentColorProps {

@@ -6,7 +6,7 @@
  * @generated
  */
 
-import { SvgNode } from '@inkline/inkline/types';
+import type { SvgNode } from '@inkline/inkline/types';
 
 export const inkCaretDown: SvgNode = {
     name: 'svg',

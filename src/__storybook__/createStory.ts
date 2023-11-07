@@ -1,4 +1,5 @@
-import { Component, h } from 'vue';
+import type { Component } from 'vue';
+import { h } from 'vue';
 
 export const createStory =
     (component: Component, storyArgs: { classes?: string } = {}) =>

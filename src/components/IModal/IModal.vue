@@ -1,14 +1,6 @@
 <script lang="ts">
-import {
-    defineComponent,
-    ref,
-    toRef,
-    computed,
-    watch,
-    onMounted,
-    onBeforeUnmount,
-    PropType
-} from 'vue';
+import type { PropType } from 'vue';
+import { defineComponent, ref, toRef, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { addClass, removeClass, uid } from '@grozav/utils';
 import { OverlayController } from '@inkline/inkline/controllers';
 import { useComponentColor, useComponentSize, useClickOutside } from '@inkline/inkline/composables';

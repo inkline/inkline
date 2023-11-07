@@ -1,5 +1,5 @@
 import { reservedValidationFields } from '@inkline/inkline/constants';
-import { Form, FormState, ResolvedFormSchema } from '@inkline/inkline/types';
+import type { Form, FormState, ResolvedFormSchema } from '@inkline/inkline/types';
 
 /**
  * Update schema recursively with given values

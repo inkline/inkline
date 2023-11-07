@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { RadioGroupOption } from '@inkline/inkline';
+import type { RadioGroupOption } from '@inkline/inkline';
 
 const checked = ref('apple');
 const options = ref<RadioGroupOption[]>([

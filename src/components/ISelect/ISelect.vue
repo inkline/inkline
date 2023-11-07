@@ -1,35 +1,26 @@
 <script lang="ts">
-import {
-    ComponentPublicInstance,
-    computed,
-    defineComponent,
-    inject,
-    PropType,
-    provide,
-    ref,
-    toRef,
-    watch
-} from 'vue';
+import type { ComponentPublicInstance, PropType } from 'vue';
+import { computed, defineComponent, inject, provide, ref, toRef, watch } from 'vue';
 import { isFocusable, isKey, uid, isFunction } from '@grozav/utils';
 
 import { IInput } from '@inkline/inkline/components/IInput';
-import { SelectInjection, SelectOption } from '@inkline/inkline/components/ISelect/types';
+import type { SelectInjection, SelectOption } from '@inkline/inkline/components/ISelect/types';
 import { FormKey, FormGroupKey, SelectKey } from '@inkline/inkline/constants';
+import type { PopupEvent } from '@inkline/inkline/composables';
 import {
     useClickOutside,
     useComponentColor,
     useComponentSize,
     useFormValidationError,
     useValidation,
-    PopupEvent,
     usePopupControl
 } from '@inkline/inkline/composables';
-import { Placement } from '@floating-ui/dom';
+import type { Placement } from '@floating-ui/dom';
 import { ISelectOption } from '@inkline/inkline/components/ISelectOption';
 import { extractRefHTMLElement, interpolate } from '@inkline/inkline/utils';
-import { ComputePositionConfig } from '@floating-ui/core';
+import type { ComputePositionConfig } from '@floating-ui/core';
 import { IRenderResolver } from '@inkline/inkline/components/utils/IRenderResolver';
-import { LabelRenderFunction } from '@inkline/inkline/types';
+import type { LabelRenderFunction } from '@inkline/inkline/types';
 
 const componentName = 'ISelect';
 

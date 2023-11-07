@@ -1,4 +1,5 @@
-import { onMounted, onUnmounted, Ref, unref } from 'vue';
+import type { Ref } from 'vue';
+import { onMounted, onUnmounted, unref } from 'vue';
 import { isVisible, off, on } from '@grozav/utils';
 
 type UseClickOutsideCallbackFn = ((event: Event) => void) | (() => void);

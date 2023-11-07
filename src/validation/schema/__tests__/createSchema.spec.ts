@@ -7,7 +7,7 @@ import {
     defaultValidationFieldValues,
     defaultValidationStateValues
 } from '@inkline/inkline/constants';
-import { FormSchema, ResolvedFormSchema } from '@inkline/inkline';
+import type { FormSchema, ResolvedFormSchema } from '@inkline/inkline';
 
 type FormType = { field: string };
 

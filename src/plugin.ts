@@ -1,4 +1,5 @@
-import { Plugin, reactive } from 'vue';
+import type { Plugin } from 'vue';
+import { reactive } from 'vue';
 import { addClass } from '@grozav/utils';
 import { createSchema } from '@inkline/inkline/validation';
 import { setLocale } from '@inkline/inkline/i18n';
@@ -16,7 +17,7 @@ import type {
     InklineIconsPluginOptions
 } from '@inkline/inkline/plugins';
 import { InklineKey } from '@inkline/inkline/constants';
-import { Form, FormSchema } from '@inkline/inkline/types';
+import type { Form, FormSchema } from '@inkline/inkline/types';
 
 export interface InklineOptions
     extends InklineColorModeOptions,

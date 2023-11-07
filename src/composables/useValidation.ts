@@ -1,5 +1,6 @@
 import { clone, getValueByPath, setValueByPath, setValuesAlongPath } from '@grozav/utils';
-import { computed, inject, Ref, ref, unref, watch } from 'vue';
+import type { Ref } from 'vue';
+import { computed, inject, ref, unref, watch } from 'vue';
 import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import { setSchemaStateRecursively, validateSchema } from '@inkline/inkline/validation';
 import { useInkline } from '@inkline/inkline/composables/useInkline';

@@ -11,7 +11,7 @@ import {
     required,
     sameAs
 } from '@inkline/inkline/validation/validators';
-import { FormValidatorFn, FormValue } from '@inkline/inkline';
+import type { FormValidatorFn, FormValue } from '@inkline/inkline';
 
 export const validators: {
     [key: string]: (value: FormValue, options: any) => boolean;

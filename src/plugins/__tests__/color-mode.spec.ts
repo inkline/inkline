@@ -6,7 +6,7 @@ describe('ColorModePlugin', () => {
         it('should set given colorMode if not system color mode', () => {
             onChangeColorMode('color');
 
-            expect(document.body).toHaveClass('color-theme');
+            expect(document.documentElement).toHaveClass('color-theme');
         });
 
         it('should set given light mode if system color mode', () => {
@@ -16,12 +16,12 @@ describe('ColorModePlugin', () => {
                     ({
                         matches: false,
                         addEventListener: vi.fn()
-                    } as any)
+                    }) as any
             );
 
             onChangeColorMode('system');
 
-            expect(document.body).toHaveClass('light-theme');
+            expect(document.documentElement).toHaveClass('light-theme');
 
             vi.clearAllMocks();
         });
@@ -33,12 +33,12 @@ describe('ColorModePlugin', () => {
                     ({
                         matches: true,
                         addEventListener: vi.fn()
-                    } as any)
+                    }) as any
             );
 
             onChangeColorMode('system');
 
-            expect(document.body).toHaveClass('dark-theme');
+            expect(document.documentElement).toHaveClass('dark-theme');
 
             vi.clearAllMocks();
         });
@@ -60,7 +60,7 @@ describe('ColorModePlugin', () => {
             const inkline = createInklineService({ ...defaultOptions, colorMode: 'dark' });
             ColorModePlugin.install!(app as any, { inkline });
 
-            expect(document.body).toHaveClass('dark-theme');
+            expect(document.documentElement).toHaveClass('dark-theme');
         });
 
         it('should add color mode matchMedia event listener', async () => {
@@ -72,7 +72,7 @@ describe('ColorModePlugin', () => {
 
             await new Promise((resolve) => setTimeout(resolve, 1));
 
-            expect(document.body).toHaveClass('other-theme');
+            expect(document.documentElement).toHaveClass('other-theme');
         });
 
         it('should add color mode matchMedia event listener using addEventListener', () => {
@@ -82,7 +82,7 @@ describe('ColorModePlugin', () => {
                 () =>
                     ({
                         addEventListener
-                    } as any)
+                    }) as any
             );
 
             const app = createApp();
@@ -102,7 +102,7 @@ describe('ColorModePlugin', () => {
                 () =>
                     ({
                         addListener
-                    } as any)
+                    }) as any
             );
 
             const app = createApp();
@@ -124,7 +124,7 @@ describe('ColorModePlugin', () => {
                         ({
                             matches: true,
                             addEventListener
-                        } as any)
+                        }) as any
                 );
 
                 const app = createApp();
@@ -138,7 +138,7 @@ describe('ColorModePlugin', () => {
                 const onDarkModeMediaQueryChange = addEventListener.mock.calls[0][1];
                 onDarkModeMediaQueryChange({ matches: true });
 
-                expect(document.body).toHaveClass('dark-theme');
+                expect(document.documentElement).toHaveClass('dark-theme');
 
                 vi.clearAllMocks();
             });
@@ -151,7 +151,7 @@ describe('ColorModePlugin', () => {
                         ({
                             matches: false,
                             addEventListener
-                        } as any)
+                        }) as any
                 );
 
                 const app = createApp();
@@ -162,7 +162,7 @@ describe('ColorModePlugin', () => {
                 const onDarkModeMediaQueryChange = addEventListener.mock.calls[0][1];
                 onDarkModeMediaQueryChange({ matches: true });
 
-                expect(document.body).toHaveClass('light-theme');
+                expect(document.documentElement).toHaveClass('light-theme');
 
                 vi.clearAllMocks();
             });

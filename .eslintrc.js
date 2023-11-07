@@ -2,6 +2,7 @@ module.exports = {
     extends: ['@grozav', '@vue/typescript/recommended', 'plugin:vue/vue3-recommended'],
     plugins: ['vue'],
     rules: {
+        '@typescript-eslint/consistent-type-imports': 'warn',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-empty-function': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',

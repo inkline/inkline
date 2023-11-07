@@ -1,5 +1,6 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, toRef } from 'vue';
+import type { PropType } from 'vue';
+import { computed, defineComponent, inject, toRef } from 'vue';
 import { useComponentColor, useComponentSize, useLinkable } from '@inkline/inkline/composables';
 import { ILoader } from '@inkline/inkline/components/ILoader';
 import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/constants';

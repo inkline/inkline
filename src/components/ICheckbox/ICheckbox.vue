@@ -1,5 +1,6 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType, ref, toRef } from 'vue';
+import type { PropType } from 'vue';
+import { computed, defineComponent, inject, ref, toRef } from 'vue';
 import { uid } from '@grozav/utils';
 import {
     useComponentColor,

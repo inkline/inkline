@@ -1,5 +1,5 @@
 import { createFormFieldSchema } from '@inkline/inkline/validation';
-import { Form, ResolvedFormSchema } from '@inkline/inkline/types';
+import type { Form, ResolvedFormSchema } from '@inkline/inkline/types';
 import { defaultValidationStateValues } from '@inkline/inkline/constants';
 
 export function createSchemaFromDefaults<T extends Form>(defaultValues: T): ResolvedFormSchema<T> {

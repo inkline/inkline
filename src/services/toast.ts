@@ -1,4 +1,5 @@
-import { createEventBus, EventBus } from '@grozav/utils';
+import type { EventBus } from '@grozav/utils';
+import { createEventBus } from '@grozav/utils';
 import type { ToastService } from '@inkline/inkline/types';
 
 export const toastEventBus: EventBus = createEventBus();

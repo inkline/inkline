@@ -1,5 +1,6 @@
 <script lang="ts">
-import { ref, computed, inject, PropType, defineComponent, toRef, onBeforeUpdate } from 'vue';
+import type { PropType } from 'vue';
+import { ref, computed, inject, defineComponent, toRef, onBeforeUpdate } from 'vue';
 import { filterKeys, uid } from '@grozav/utils';
 
 import {

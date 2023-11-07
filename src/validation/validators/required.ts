@@ -1,4 +1,4 @@
-import { FormValue } from '@inkline/inkline/types';
+import type { FormValue } from '@inkline/inkline/types';
 
 export function required(value: FormValue, options: any = { invalidateFalse: false }): boolean {
     if (value === undefined || value === null) {

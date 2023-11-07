@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/vue3';
+import type { Meta } from '@storybook/vue3';
 import IToast from '@inkline/inkline/components/IToast/IToast.vue';
 import {
     IToastBasicExample,

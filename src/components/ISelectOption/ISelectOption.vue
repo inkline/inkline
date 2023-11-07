@@ -1,7 +1,8 @@
 <script lang="ts">
-import { computed, defineComponent, inject, PropType } from 'vue';
+import type { PropType } from 'vue';
+import { computed, defineComponent, inject } from 'vue';
 import { SelectKey } from '@inkline/inkline/constants';
-import { SelectOption } from '@inkline/inkline/components/ISelect/types';
+import type { SelectOption } from '@inkline/inkline/components/ISelect/types';
 import { IRenderResolver } from '@inkline/inkline/components/utils/IRenderResolver';
 
 const componentName = 'ISelectOption';
