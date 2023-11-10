@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/vue';
+import { fireEvent, render, waitFor } from '@testing-library/vue';
 import { IForm, IInput, InklineKey } from '@inkline/inkline';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
 
@@ -139,20 +139,22 @@ describe('Components', () => {
 
                     await fireEvent.blur(input);
 
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([
-                        {
-                            input: {
+                    await waitFor(() =>
+                        expect(wrapper.emitted()['update:modelValue'][0]).toEqual([
+                            {
+                                input: {
+                                    untouched: false,
+                                    touched: true,
+                                    invalid: false,
+                                    valid: true
+                                },
                                 untouched: false,
                                 touched: true,
                                 invalid: false,
                                 valid: true
-                            },
-                            untouched: false,
-                            touched: true,
-                            invalid: false,
-                            valid: true
-                        }
-                    ]);
+                            }
+                        ])
+                    );
                 });
 
                 it('should not validate if validate on blur not set', async () => {
@@ -215,22 +217,24 @@ describe('Components', () => {
 
                     await fireEvent.update(input, value);
 
-                    expect(wrapper.emitted()['update:modelValue'][0]).toEqual([
-                        {
-                            input: {
-                                value,
-                                errors: [],
+                    await waitFor(() =>
+                        expect(wrapper.emitted()['update:modelValue'][0]).toEqual([
+                            {
+                                input: {
+                                    value,
+                                    errors: [],
+                                    pristine: false,
+                                    dirty: true,
+                                    invalid: false,
+                                    valid: true
+                                },
                                 pristine: false,
                                 dirty: true,
                                 invalid: false,
                                 valid: true
-                            },
-                            pristine: false,
-                            dirty: true,
-                            invalid: false,
-                            valid: true
-                        }
-                    ]);
+                            }
+                        ])
+                    );
                 });
 
                 it('should not validate if validate on blur not set', async () => {
@@ -296,7 +300,9 @@ describe('Components', () => {
 
                     await fireEvent.submit(form);
 
-                    expect(wrapper.emitted().submit[0]).toContainEqual(expect.any(Event));
+                    await waitFor(() =>
+                        expect(wrapper.emitted().submit[0]).toContainEqual(expect.any(Event))
+                    );
                     expect(wrapper.emitted()['update:modelValue'][0]).toEqual([
                         {
                             input: {

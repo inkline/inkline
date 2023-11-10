@@ -1,9 +1,16 @@
 import type { FormValue } from '@inkline/inkline/types';
 
-export function custom(value: FormValue, options: any = { validator: () => true }): boolean {
+export async function custom(
+    value: FormValue,
+    options: any = { validator: () => true }
+): Promise<boolean> {
     if (value?.constructor === Array) {
-        return value.every((v) => options.validator(v));
+        let valid = true;
+        for (const v of value) {
+            valid = valid && (await options.validator(v, options));
+        }
+        return valid;
     }
 
-    return options.validator(value);
+    return options.validator(value, options);
 }
