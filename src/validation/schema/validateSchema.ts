@@ -2,7 +2,6 @@ import { validators } from '@inkline/inkline/validation/register';
 import { reservedValidationFields } from '@inkline/inkline/constants';
 import { translate } from '@inkline/inkline/i18n';
 import type {
-    FormValidator,
     ResolvedFormSchema,
     ResolvedFormField,
     FormError,
