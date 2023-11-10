@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://inkline.io/">
-        <img src="https://raw.githubusercontent.com/inkline/inkline.io/main/assets/images/logo/logo-black.svg" alt="Inkline" width=72 height=72>
+        <img src="https://www.inkline.io/assets/images/logo/logo-black.svg" alt="Inkline" width=72 height=72>
     </a>
 </p>
 
