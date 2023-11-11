@@ -1,15 +1,20 @@
-import type { FormValue } from '@inkline/inkline/types';
+import type { FormValue, FormValidatorFn } from '@inkline/inkline/types';
 
-export function min(value: FormValue, options: any = { value: 0 }): boolean {
-    if (value === undefined || value === null) {
+export const min: FormValidatorFn<{ value?: number }> = (value: FormValue, options) => {
+    if (typeof options.value === 'undefined') {
+        console.error('The "value" option must be specified for "min" validator.');
+        return true;
+    }
+
+    if (typeof value === 'undefined' || value === null) {
         return false;
     }
 
     const process = (v: FormValue) => Number(v);
 
     if (Array.isArray(value)) {
-        return value.every((v) => process(v) >= options.value);
+        return value.every((v) => process(v) >= (options.value as number));
     }
 
     return process(value) >= options.value;
-}
+};

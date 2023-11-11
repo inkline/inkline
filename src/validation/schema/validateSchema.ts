@@ -8,7 +8,8 @@ import type {
     Form,
     FormValue,
     FormSchema,
-    FormField
+    FormField,
+    FormValidator
 } from '@inkline/inkline/types';
 import {
     isFormFieldArray,
@@ -22,11 +23,13 @@ import {
  *
  * @param schema { FormField<T> | ResolvedFormField<T> }
  * @param path { string }
+ * @param rootSchema { FormSchema<R> | ResolvedFormSchema<R> }
  * @returns { ResolvedFormField<T> }
  */
-export async function validateFormField<T = FormValue>(
+export async function validateFormField<T = FormValue, R extends Form = Form>(
     schema: FormField<T> | ResolvedFormField<T>,
-    path = ''
+    path = '',
+    rootSchema?: FormSchema<R> | ResolvedFormSchema<R>
 ) {
     const errors: FormError[] = [];
     const resolvedSchema = {
@@ -35,7 +38,14 @@ export async function validateFormField<T = FormValue>(
 
     let valid = true;
     for (const rawValidator of resolvedSchema.validators || []) {
-        const validator = typeof rawValidator === 'string' ? { name: rawValidator } : rawValidator;
+        const validator: FormValidator & {
+            schema?: FormSchema<R> | ResolvedFormSchema<R>;
+            path: string;
+        } = {
+            ...(typeof rawValidator === 'string' ? { name: rawValidator } : rawValidator),
+            schema: rootSchema,
+            path
+        };
 
         const valueIsValid = await validators[validator.name](
             resolvedSchema.value as FormValue,
@@ -72,15 +82,17 @@ export async function validateFormField<T = FormValue>(
  *
  * @param schema { FormField<T>[] | ResolvedFormField<T>[] }
  * @param path { string }
+ * @param rootSchema { FormSchema<R> | ResolvedFormSchema<R> }
  * @returns { ResolvedFormField<T>[] }
  */
-export async function validateFormFieldArray<T = FormValue>(
+export async function validateFormFieldArray<T = FormValue, R extends Form = Form>(
     schema: FormField<T>[] | ResolvedFormField<T>[],
-    path = ''
+    path = '',
+    rootSchema?: FormSchema<R> | ResolvedFormSchema<R>
 ) {
     return Promise.all(
         schema.map((item, index) => {
-            return validateFormField<T>(item, path ? `${path}.${index}` : `${index}`);
+            return validateFormField<T>(item, path ? `${path}.${index}` : `${index}`, rootSchema);
         })
     );
 }
@@ -90,15 +102,17 @@ export async function validateFormFieldArray<T = FormValue>(
  *
  * @param schema { FormSchema<T>[] | ResolvedFormSchema<T>[] }
  * @param path { string }
+ * @param rootSchema { FormSchema<R> | ResolvedFormSchema<R> }
  * @returns { Promise<ResolvedFormSchema<T>[]> }
  */
-export async function validateFormArray<T extends Form = Form>(
+export async function validateFormArray<T extends Form = Form, R extends Form = Form>(
     schema: FormSchema<T>[] | ResolvedFormSchema<T>[],
-    path = ''
+    path = '',
+    rootSchema?: FormSchema<R> | ResolvedFormSchema<R>
 ) {
     return Promise.all(
         schema.map((item, index) => {
-            return validateForm<T>(item, path ? `${path}.${index}` : `${index}`);
+            return validateForm<T>(item, path ? `${path}.${index}` : `${index}`, rootSchema);
         })
     );
 }
@@ -108,11 +122,13 @@ export async function validateFormArray<T extends Form = Form>(
  *
  * @param schema { FormSchema<T> | ResolvedFormSchema<T> }
  * @param name { string }
+ * @param rootSchema { FormSchema<R> | ResolvedFormSchema<R> }
  * @returns { Promise<ResolvedFormSchema<T>> }
  */
-export async function validateForm<T extends Form = Form>(
+export async function validateForm<T extends Form = Form, R extends Form = Form>(
     schema: FormSchema<T> | ResolvedFormSchema<T>,
-    name = ''
+    name = '',
+    rootSchema?: FormSchema<R> | ResolvedFormSchema<R>
 ) {
     const resolvedSchema = {
         ...schema
@@ -129,22 +145,26 @@ export async function validateForm<T extends Form = Form>(
         if (isFormFieldArray(field)) {
             resolvedSchema[key] = (await validateFormFieldArray(
                 field,
-                name ? `${name}.${key as string}` : `${key as string}`
+                name ? `${name}.${key as string}` : `${key as string}`,
+                rootSchema
             )) as ResolvedFormSchema<T>[keyof T];
         } else if (isFormGroupArray(field)) {
             resolvedSchema[key] = (await validateFormArray(
                 field,
-                name ? `${name}.${key as string}` : `${key as string}`
+                name ? `${name}.${key as string}` : `${key as string}`,
+                rootSchema
             )) as unknown as ResolvedFormSchema<T>[keyof T];
         } else if (isFormField(field)) {
             resolvedSchema[key] = (await validateFormField<T[keyof T]>(
                 field,
-                name ? `${name}.${key as string}` : (key as string)
+                name ? `${name}.${key as string}` : (key as string),
+                rootSchema
             )) as ResolvedFormSchema<T>[keyof T];
         } else if (isFormGroup(field)) {
             resolvedSchema[key] = (await validateForm<T[keyof T]>(
                 field as FormSchema<T[keyof T]>,
-                name ? `${name}.${key as string}` : (key as string)
+                name ? `${name}.${key as string}` : (key as string),
+                rootSchema
             )) as ResolvedFormSchema<T>[keyof T];
         }
 
@@ -174,5 +194,5 @@ export async function validateForm<T extends Form = Form>(
 export async function validateSchema<T extends Form = Form>(
     schema: FormSchema<T> | ResolvedFormSchema<T>
 ) {
-    return validateForm<T>(schema);
+    return validateForm<T>(schema, '', schema);
 }

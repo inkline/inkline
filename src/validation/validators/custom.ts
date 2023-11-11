@@ -1,9 +1,13 @@
-import type { FormValue } from '@inkline/inkline/types';
+import type { FormValidatorFn, FormValue } from '@inkline/inkline/types';
 
-export async function custom(
-    value: FormValue,
-    options: any = { validator: () => true }
-): Promise<boolean> {
+export const custom: FormValidatorFn<{
+    validator?: FormValidatorFn;
+}> = async (value: FormValue, options) => {
+    if (!options.validator) {
+        console.error('No `validator` function provided for custom validator.');
+        return true;
+    }
+
     if (value?.constructor === Array) {
         let valid = true;
         for (const v of value) {
@@ -13,4 +17,4 @@ export async function custom(
     }
 
     return options.validator(value, options);
-}
+};

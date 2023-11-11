@@ -17,9 +17,12 @@ export type ValidateOnEvent = 'blur' | 'change' | 'input' | 'submit';
 
 export type FormValue = FormValue[] | object | string | number | boolean | null | undefined;
 
-export type FormValidatorFn = (
+export type FormValidatorFn<T = Record<string, any>, S extends Form = Form> = (
     value: FormValue,
-    options?: Record<string, any>
+    options: T & {
+        schema?: ResolvedFormSchema<S> | FormSchema<S>;
+        path: string;
+    }
 ) => boolean | Promise<boolean>;
 
 export interface FormValidator {

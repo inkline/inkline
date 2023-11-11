@@ -1,11 +1,11 @@
 import { registerValidator, unregisterValidator, validators } from '@inkline/inkline/validation';
-import type { FormValue } from '@inkline/inkline';
+import type { FormValidatorFn } from '@inkline/inkline';
 
 describe('Validators', () => {
     describe('registerValidator()', () => {
         it('should register a new validator', () => {
             const name = 'newValidator';
-            const validator = (value: FormValue) => value === 'inkline';
+            const validator: FormValidatorFn = (value) => value === 'inkline';
 
             registerValidator(name, validator);
 
@@ -16,7 +16,7 @@ describe('Validators', () => {
     describe('unregisterValidator()', () => {
         it('should unregister a validator', () => {
             const name = 'newValidator';
-            const validator = (value: FormValue) => value === 'inkline';
+            const validator: FormValidatorFn = (value) => value === 'inkline';
 
             registerValidator(name, validator);
             unregisterValidator(name);

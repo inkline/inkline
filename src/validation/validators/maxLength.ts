@@ -1,7 +1,12 @@
-import type { FormValue } from '@inkline/inkline/types';
+import type { FormValidatorFn, FormValue } from '@inkline/inkline/types';
 
-export function maxLength(value: FormValue, options: any = { value: 0 }): boolean {
-    if (value === undefined || value === null) {
+export const maxLength: FormValidatorFn<{ value?: number }> = (value: FormValue, options) => {
+    if (typeof options.value === 'undefined') {
+        console.error('The "value" option must be specified for "maxLength" validator.');
+        return true;
+    }
+
+    if (typeof value === 'undefined' || value === null) {
         return false;
     }
 
@@ -14,4 +19,4 @@ export function maxLength(value: FormValue, options: any = { value: 0 }): boolea
     }
 
     return String(value).length <= options.value;
-}
+};

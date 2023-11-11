@@ -1,6 +1,9 @@
-import type { FormValue } from '@inkline/inkline/types';
+import type { FormValidatorFn, FormValue } from '@inkline/inkline/types';
 
-export function required(value: FormValue, options: any = { invalidateFalse: false }): boolean {
+export const required: FormValidatorFn<{ invalidateFalse?: boolean }> = (
+    value: FormValue,
+    options
+) => {
     if (value === undefined || value === null) {
         return false;
     }
@@ -10,9 +13,9 @@ export function required(value: FormValue, options: any = { invalidateFalse: fal
     }
 
     // For checkboxes, false value means unchecked
-    if (typeof value === typeof true) {
+    if (typeof value === 'boolean') {
         return options.invalidateFalse ? !!value : true;
     }
 
     return !!String(value).trim().length;
-}
+};
