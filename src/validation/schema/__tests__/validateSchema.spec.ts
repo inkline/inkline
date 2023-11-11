@@ -1,5 +1,13 @@
-import { createSchema, validateForm, validateFormField } from '@inkline/inkline/validation';
-import type { FormValidator, ResolvedFormField } from '@inkline/inkline';
+import {
+    createFormArraySchema,
+    createFormFieldSchema,
+    createSchema,
+    validateForm,
+    validateFormArray,
+    validateFormField,
+    validateFormFieldArray
+} from '@inkline/inkline/validation';
+import type { FormValidator, ResolvedFormField, ResolvedFormSchema } from '@inkline/inkline';
 import { defaultValidationFieldValues, defaultValidationStateValues } from '@inkline/inkline';
 
 describe('validation', () => {
@@ -131,6 +139,70 @@ describe('validation', () => {
         });
     });
 
+    describe('validateFormFieldArray()', () => {
+        it('should call validateFormField for each form field', async () => {
+            const schema = createFormArraySchema<string>([
+                {
+                    value: '',
+                    validators: ['required']
+                },
+                {
+                    value: 'value',
+                    validators: ['required']
+                }
+            ]);
+
+            const resolvedSchema = await validateFormFieldArray(schema);
+
+            expect(resolvedSchema).toHaveLength(2);
+            expect(resolvedSchema[0].valid).toEqual(false);
+            expect(resolvedSchema[0].invalid).toEqual(true);
+            expect(resolvedSchema[0].errors).toEqual([
+                {
+                    name: resolvedSchema[0].validators[0],
+                    message: expect.any(String),
+                    path: '0'
+                }
+            ]);
+            expect(resolvedSchema[1].valid).toEqual(true);
+            expect(resolvedSchema[1].invalid).toEqual(false);
+        });
+    });
+
+    describe('validateFormArray()', () => {
+        it('should call validateForm for each form field', async () => {
+            const schema = createFormArraySchema<{ field: string }>([
+                {
+                    field: {
+                        value: '',
+                        validators: ['required']
+                    }
+                },
+                {
+                    field: {
+                        value: 'value',
+                        validators: ['required']
+                    }
+                }
+            ]) as ResolvedFormSchema<{ field: string }>[];
+
+            const resolvedSchema = await validateFormArray(schema);
+
+            expect(resolvedSchema).toHaveLength(2);
+            expect(resolvedSchema[0].valid).toEqual(false);
+            expect(resolvedSchema[0].invalid).toEqual(true);
+            expect(resolvedSchema[0].field.errors).toEqual([
+                {
+                    name: resolvedSchema[0].field.validators[0],
+                    message: expect.any(String),
+                    path: '0.field'
+                }
+            ]);
+            expect(resolvedSchema[1].valid).toEqual(true);
+            expect(resolvedSchema[1].invalid).toEqual(false);
+        });
+    });
+
     describe('validateForm()', () => {
         it('should validate schema if all fields are valid', async () => {
             const schema = createSchema<{
@@ -243,6 +315,87 @@ describe('validation', () => {
 
             expect(resolvedSchema.group.nested.field.valid).toEqual(false);
             expect(resolvedSchema.group.nested.field.errors[0].path).toEqual('group.nested.field');
+        });
+
+        it('should validate nested form groups recursively', async () => {
+            const schema = createSchema<{
+                group: {
+                    nested: {
+                        field: string;
+                    };
+                };
+            }>({
+                group: {
+                    nested: {
+                        field: {
+                            value: 'value',
+                            validators: ['required']
+                        }
+                    }
+                }
+            });
+            const resolvedSchema = await validateForm(schema);
+
+            expect(resolvedSchema.valid).toEqual(true);
+            expect(resolvedSchema.invalid).toEqual(false);
+            expect(resolvedSchema.group.valid).toEqual(true);
+            expect(resolvedSchema.group.invalid).toEqual(false);
+            expect(resolvedSchema.group.nested.valid).toEqual(true);
+            expect(resolvedSchema.group.nested.invalid).toEqual(false);
+        });
+
+        it('should validate form field arrays items', async () => {
+            const schema = createSchema<{
+                array: string[];
+            }>({
+                array: [
+                    {
+                        value: 'value',
+                        validators: ['required']
+                    },
+                    {
+                        value: '',
+                        validators: ['required']
+                    }
+                ]
+            });
+            const resolvedSchema = await validateForm(schema);
+
+            expect(resolvedSchema.valid).toEqual(false);
+            expect(resolvedSchema.invalid).toEqual(true);
+            expect(resolvedSchema.array[0].valid).toEqual(true);
+            expect(resolvedSchema.array[1].valid).toEqual(false);
+        });
+
+        it('should validate form group arrays items', async () => {
+            const schema = createSchema<{
+                array: Array<{
+                    field: string;
+                }>;
+            }>({
+                array: [
+                    {
+                        field: {
+                            value: 'value',
+                            validators: ['required']
+                        }
+                    },
+                    {
+                        field: {
+                            value: '',
+                            validators: ['required']
+                        }
+                    }
+                ]
+            });
+            const resolvedSchema = await validateForm(schema);
+
+            expect(resolvedSchema.valid).toEqual(false);
+            expect(resolvedSchema.invalid).toEqual(true);
+            expect(resolvedSchema.array[0].valid).toEqual(true);
+            expect(resolvedSchema.array[0].field.valid).toEqual(true);
+            expect(resolvedSchema.array[1].valid).toEqual(false);
+            expect(resolvedSchema.array[1].field.valid).toEqual(false);
         });
     });
 });
