@@ -11,10 +11,10 @@ import {
     required,
     sameAs
 } from '@inkline/inkline/validation/validators';
-import type { FormValidatorFn, FormValue } from '@inkline/inkline';
+import type { FormValidatorFn } from '@inkline/inkline';
 
 export const validators: {
-    [key: string]: (value: FormValue, options: any) => boolean;
+    [key: string]: FormValidatorFn;
 } = {
     alpha,
     alphanumeric,

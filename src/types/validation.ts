@@ -17,7 +17,10 @@ export type ValidateOnEvent = 'blur' | 'change' | 'input' | 'submit';
 
 export type FormValue = FormValue[] | object | string | number | boolean | null | undefined;
 
-export type FormValidatorFn = (value: FormValue, options?: Record<string, any>) => boolean;
+export type FormValidatorFn = (
+    value: FormValue,
+    options?: Record<string, any>
+) => boolean | Promise<boolean>;
 
 export interface FormValidator {
     name: string;

@@ -11,6 +11,12 @@ import {
 } from '@inkline/inkline/constants';
 import { isFormField, isFormGroup } from '@inkline/inkline/types';
 
+/**
+ * Create form field schema
+ *
+ * @param field { FormField<T> }
+ * @return { ResolvedFormField<T> }
+ */
 export function createFormFieldSchema<T>(field: FormField<T>): ResolvedFormField<T> {
     return {
         ...defaultValidationStateValues,
@@ -19,6 +25,12 @@ export function createFormFieldSchema<T>(field: FormField<T>): ResolvedFormField
     } as ResolvedFormField<T>;
 }
 
+/**
+ * Create form array schema
+ *
+ * @param items { (FormSchema<T> | FormField<T>)[] }
+ * @return { (ResolvedFormSchema<T> | ResolvedFormField<T>)[] }
+ */
 export function createFormArraySchema<T>(
     items: (FormSchema<T extends Form ? T : never> | FormField<T>)[]
 ): (ResolvedFormSchema<T extends Form ? T : never> | ResolvedFormField<T>)[] {
@@ -31,7 +43,13 @@ export function createFormArraySchema<T>(
     });
 }
 
-export function createSchema<T extends Form>(schema: FormSchema<T>): ResolvedFormSchema<T> {
+/**
+ * Recursively create form schema
+ *
+ * @param schema { FormSchema<T> }
+ * @return { ResolvedFormSchema<T> }
+ */
+export function createFormSchema<T extends Form>(schema: FormSchema<T>): ResolvedFormSchema<T> {
     const resolved = {
         ...defaultValidationStateValues
     } as ResolvedFormSchema<T>;
@@ -53,4 +71,14 @@ export function createSchema<T extends Form>(schema: FormSchema<T>): ResolvedFor
     }
 
     return resolved;
+}
+
+/**
+ * Alias for createFormSchema
+ *
+ * @param schema { FormSchema<T> }
+ * @return { ResolvedFormSchema<T> }
+ */
+export function createSchema<T extends Form>(schema: FormSchema<T>): ResolvedFormSchema<T> {
+    return createFormSchema(schema);
 }
