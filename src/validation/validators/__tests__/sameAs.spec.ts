@@ -2,10 +2,13 @@ import { sameAs } from '@inkline/inkline/validation/validators';
 
 describe('Validators', () => {
     describe('sameAs()', () => {
+        const options = { path: '' };
+
         it('should return false if target is not defined', () => {
             expect(
                 sameAs('', {
-                    schema: () => ({})
+                    schema: {},
+                    ...options
                 })
             ).toEqual(false);
         });
@@ -14,7 +17,8 @@ describe('Validators', () => {
             expect(() =>
                 sameAs('', {
                     target: 'target',
-                    schema: () => ({})
+                    schema: {},
+                    ...options
                 })
             ).toThrow();
         });
@@ -23,9 +27,10 @@ describe('Validators', () => {
             expect(
                 sameAs('', {
                     target: 'target',
-                    schema: () => ({
+                    schema: {
                         target: { value: 'abc' }
-                    })
+                    },
+                    ...options
                 })
             ).toEqual(false);
         });
@@ -34,9 +39,10 @@ describe('Validators', () => {
             expect(
                 sameAs('abc', {
                     target: 'target',
-                    schema: () => ({
+                    schema: {
                         target: { value: 'abc' }
-                    })
+                    },
+                    ...options
                 })
             ).toEqual(true);
         });
@@ -45,13 +51,14 @@ describe('Validators', () => {
             expect(
                 sameAs('', {
                     target: 'nested.target',
-                    schema: () => ({
+                    schema: {
                         nested: {
                             target: {
                                 value: 'abc'
                             }
                         }
-                    })
+                    },
+                    ...options
                 })
             ).toEqual(false);
         });
@@ -60,19 +67,25 @@ describe('Validators', () => {
             expect(
                 sameAs('abc', {
                     target: 'nested.target',
-                    schema: () => ({
+                    schema: {
                         nested: {
                             target: {
                                 value: 'abc'
                             }
                         }
-                    })
+                    },
+                    ...options
                 })
             ).toEqual(true);
         });
 
         it('should return false if target not provided', () => {
-            expect(sameAs('abc')).toEqual(false);
+            expect(
+                sameAs('abc', {
+                    schema: undefined,
+                    ...options
+                })
+            ).toEqual(false);
         });
     });
 });

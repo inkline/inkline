@@ -1,9 +1,9 @@
-import type { FormValue } from '@inkline/inkline/types';
+import type { FormValidatorFn, FormValue } from '@inkline/inkline/types';
 
-export function number(
+export const number: FormValidatorFn<{ allowNegative?: boolean; allowDecimal?: boolean }> = (
     value: FormValue,
-    options: any = { allowNegative: false, allowDecimal: false }
-): boolean {
+    options
+) => {
     let regExpString = '\\d+';
 
     if (options.allowNegative) {
@@ -21,4 +21,4 @@ export function number(
     }
 
     return regExp.test(String(value));
-}
+};

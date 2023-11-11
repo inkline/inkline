@@ -1,13 +1,15 @@
 import { getValueByPath } from '@grozav/utils';
-import type { FormValue } from '@inkline/inkline/types';
+import type { FormValidatorFn, FormValue } from '@inkline/inkline/types';
 
-export function sameAs(value: FormValue, options: any = {}) {
+export const sameAs: FormValidatorFn<{
+    target?: string;
+}> = (value: FormValue, options) => {
     if (!options.target) {
+        console.error('The "target" option must be specified for "sameAs" validator.');
         return false;
     }
 
-    const targetSchema = getValueByPath(options.schema(), options.target);
-
+    const targetSchema = getValueByPath(options.schema, options.target);
     if (!targetSchema) {
         throw new Error(
             `Could not find target with name '${options.target}' in 'sameAs' validator.`
@@ -15,4 +17,4 @@ export function sameAs(value: FormValue, options: any = {}) {
     }
 
     return value === targetSchema.value;
-}
+};

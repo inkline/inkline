@@ -4,7 +4,8 @@ import {
     validateForm,
     validateFormArray,
     validateFormField,
-    validateFormFieldArray
+    validateFormFieldArray,
+    validators
 } from '@inkline/inkline/validation';
 import type { FormValidator, ResolvedFormField, ResolvedFormSchema } from '@inkline/inkline';
 import { defaultValidationFieldValues, defaultValidationStateValues } from '@inkline/inkline';
@@ -31,7 +32,7 @@ describe('validation', () => {
                 ...defaultValidationFieldValues,
                 ...defaultValidationStateValues,
                 value: 'value',
-                validators: [{ name: 'required' }]
+                validators: ['required']
             };
 
             const resolvedSchema = await validateFormField(schema);
@@ -136,6 +137,32 @@ describe('validation', () => {
                 }
             ]);
         });
+
+        describe('rootSchema', () => {
+            it('should should provide rootSchema to validator', async () => {
+                const schema: ResolvedFormField<string> = {
+                    ...defaultValidationFieldValues,
+                    ...defaultValidationStateValues,
+                    value: '',
+                    validators: ['required']
+                };
+                const rootSchema: ResolvedFormSchema<{ field: string }> = {
+                    ...defaultValidationFieldValues,
+                    ...defaultValidationStateValues,
+                    field: schema
+                };
+                const path = 'field';
+
+                const requiredValidatorSpy = vi.spyOn(validators, 'required');
+                await validateFormField(schema, path, rootSchema);
+
+                expect(requiredValidatorSpy).toHaveBeenCalledWith(schema.value, {
+                    name: schema.validators[0],
+                    path,
+                    schema: rootSchema
+                });
+            });
+        });
     });
 
     describe('validateFormFieldArray()', () => {
@@ -165,6 +192,41 @@ describe('validation', () => {
             ]);
             expect(resolvedSchema[1].valid).toEqual(true);
             expect(resolvedSchema[1].invalid).toEqual(false);
+        });
+
+        describe('rootSchema', () => {
+            it('should should pass rootSchema to validateFormFieldSchema', async () => {
+                const schema = createFormArraySchema<string>([
+                    {
+                        value: '',
+                        validators: ['required']
+                    },
+                    {
+                        value: 'value',
+                        validators: ['required']
+                    }
+                ]);
+                const rootSchema: ResolvedFormSchema<{ array: string[] }> = {
+                    ...defaultValidationFieldValues,
+                    ...defaultValidationStateValues,
+                    array: schema
+                };
+                const path = 'array';
+
+                const requiredValidatorSpy = vi.spyOn(validators, 'required');
+                await validateFormFieldArray(schema, path, rootSchema);
+
+                expect(requiredValidatorSpy).toHaveBeenCalledWith(schema[0].value, {
+                    name: schema[0].validators[0],
+                    path: `${path}.0`,
+                    schema: rootSchema
+                });
+                expect(requiredValidatorSpy).toHaveBeenCalledWith(schema[1].value, {
+                    name: schema[1].validators[0],
+                    path: `${path}.1`,
+                    schema: rootSchema
+                });
+            });
         });
     });
 
@@ -199,6 +261,46 @@ describe('validation', () => {
             ]);
             expect(resolvedSchema[1].valid).toEqual(true);
             expect(resolvedSchema[1].invalid).toEqual(false);
+        });
+
+        describe('rootSchema', () => {
+            it('should should pass rootSchema to validateFormSchema', async () => {
+                const schema = createFormArraySchema<{ field: string }>([
+                    {
+                        field: {
+                            value: '',
+                            validators: ['required']
+                        }
+                    },
+                    {
+                        field: {
+                            value: 'value',
+                            validators: ['required']
+                        }
+                    }
+                ]) as ResolvedFormSchema<{ field: string }>[];
+
+                const rootSchema: ResolvedFormSchema<{ array: Array<{ field: string }> }> = {
+                    ...defaultValidationFieldValues,
+                    ...defaultValidationStateValues,
+                    array: schema
+                };
+                const path = 'field';
+
+                const requiredValidatorSpy = vi.spyOn(validators, 'required');
+                await validateFormArray(schema, path, rootSchema);
+
+                expect(requiredValidatorSpy).toHaveBeenCalledWith(schema[0].field.value, {
+                    name: schema[0].field.validators[0],
+                    path: `${path}.0.field`,
+                    schema: rootSchema
+                });
+                expect(requiredValidatorSpy).toHaveBeenCalledWith(schema[1].field.value, {
+                    name: schema[1].field.validators[0],
+                    path: `${path}.1.field`,
+                    schema: rootSchema
+                });
+            });
         });
     });
 
@@ -395,6 +497,164 @@ describe('validation', () => {
             expect(resolvedSchema.array[0].field.valid).toEqual(true);
             expect(resolvedSchema.array[1].valid).toEqual(false);
             expect(resolvedSchema.array[1].field.valid).toEqual(false);
+        });
+
+        describe('rootSchema', () => {
+            it('should pass root schema to validateFormField', async () => {
+                const schema = createSchema<{
+                    field: string;
+                }>({
+                    field: {
+                        value: 'value',
+                        validators: ['required']
+                    }
+                });
+                const rootSchema: ResolvedFormSchema<{
+                    group: {
+                        field: string;
+                    };
+                }> = {
+                    ...defaultValidationStateValues,
+                    group: schema
+                };
+
+                const path = 'group';
+
+                const requiredValidatorSpy = vi.spyOn(validators, 'required');
+                await validateForm(schema, path, rootSchema);
+
+                expect(requiredValidatorSpy).toHaveBeenCalledWith(schema.field.value, {
+                    name: schema.field.validators[0],
+                    path: `${path}.field`,
+                    schema: rootSchema
+                });
+            });
+
+            it('should pass root schema to validateForm', async () => {
+                const schema = createSchema<{
+                    nested: {
+                        field: string;
+                    };
+                }>({
+                    nested: {
+                        field: {
+                            value: 'value',
+                            validators: ['required']
+                        }
+                    }
+                });
+                const rootSchema: ResolvedFormSchema<{
+                    group: {
+                        nested: {
+                            field: string;
+                        };
+                    };
+                }> = {
+                    ...defaultValidationStateValues,
+                    group: schema
+                };
+
+                const path = 'group';
+
+                const requiredValidatorSpy = vi.spyOn(validators, 'required');
+                await validateForm(schema, path, rootSchema);
+
+                expect(requiredValidatorSpy).toHaveBeenCalledWith(schema.nested.field.value, {
+                    name: schema.nested.field.validators[0],
+                    path: `${path}.nested.field`,
+                    schema: rootSchema
+                });
+            });
+
+            it('should pass root schema to validateFormFieldArray', async () => {
+                const schema = createSchema<{
+                    array: string[];
+                }>({
+                    array: [
+                        {
+                            value: 'value',
+                            validators: ['required']
+                        },
+                        {
+                            value: '',
+                            validators: ['required']
+                        }
+                    ]
+                });
+                const rootSchema: ResolvedFormSchema<{
+                    group: {
+                        array: string[];
+                    };
+                }> = {
+                    ...defaultValidationStateValues,
+                    group: schema
+                };
+
+                const path = 'group';
+
+                const requiredValidatorSpy = vi.spyOn(validators, 'required');
+                await validateForm(schema, path, rootSchema);
+
+                expect(requiredValidatorSpy).toHaveBeenCalledWith(schema.array[0].value, {
+                    name: schema.array[0].validators[0],
+                    path: `${path}.array.0`,
+                    schema: rootSchema
+                });
+                expect(requiredValidatorSpy).toHaveBeenCalledWith(schema.array[1].value, {
+                    name: schema.array[1].validators[0],
+                    path: `${path}.array.1`,
+                    schema: rootSchema
+                });
+            });
+
+            it('should pass root schema to validateFormArray', async () => {
+                const schema = createSchema<{
+                    array: Array<{
+                        field: string;
+                    }>;
+                }>({
+                    array: [
+                        {
+                            field: {
+                                value: 'value',
+                                validators: ['required']
+                            }
+                        },
+                        {
+                            field: {
+                                value: '',
+                                validators: ['required']
+                            }
+                        }
+                    ]
+                });
+                const rootSchema: ResolvedFormSchema<{
+                    group: {
+                        array: Array<{
+                            field: string;
+                        }>;
+                    };
+                }> = {
+                    ...defaultValidationStateValues,
+                    group: schema
+                };
+
+                const path = 'group';
+
+                const requiredValidatorSpy = vi.spyOn(validators, 'required');
+                await validateForm(schema, path, rootSchema);
+
+                expect(requiredValidatorSpy).toHaveBeenCalledWith(schema.array[0].field.value, {
+                    name: schema.array[0].field.validators[0],
+                    path: `${path}.array.0.field`,
+                    schema: rootSchema
+                });
+                expect(requiredValidatorSpy).toHaveBeenCalledWith(schema.array[1].field.value, {
+                    name: schema.array[1].field.validators[0],
+                    path: `${path}.array.1.field`,
+                    schema: rootSchema
+                });
+            });
         });
     });
 });
