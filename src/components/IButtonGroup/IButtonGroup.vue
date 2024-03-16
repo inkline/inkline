@@ -69,7 +69,7 @@ export default defineComponent({
         const { size } = useComponentSize({ componentName, currentSize });
 
         const disabled = computed((): boolean => {
-            return !!(props.disabled || disabled.value || buttonGroup?.disabled.value);
+            return !!(props.disabled || buttonGroup?.disabled.value);
         });
 
         const classes = computed(() => ({

@@ -1,3 +1,3 @@
 <template>
-    <IIcon />
+    <IIcon name="ink-check" />
 </template>
