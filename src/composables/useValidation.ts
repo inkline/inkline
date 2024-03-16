@@ -1,6 +1,6 @@
 import { clone, getValueByPath, setValueByPath, setValuesAlongPath } from '@grozav/utils';
 import type { Ref } from 'vue';
-import { computed, inject, ref, unref, watch } from 'vue';
+import { computed, inject, ref, isRef, unref, watch } from 'vue';
 import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import { setSchemaStateRecursively, validateSchema } from '@inkline/inkline/validation';
 import { useInkline } from '@inkline/inkline/composables/useInkline';
@@ -17,7 +17,7 @@ export function useValidation(options: {
     const form = inject(FormKey, null);
     const formGroup = inject(FormGroupKey, null);
 
-    const schema = form
+    const schema: Ref = form
         ? computed(
               () =>
                   form.schema &&
@@ -26,14 +26,14 @@ export function useValidation(options: {
           )
         : ref<any | null>(options.schema?.value || null);
 
-    if (!form && options.schema?.value) {
-        watch(
-            () => options.schema?.value,
-            (value) => {
+    watch(
+        () => options.schema?.value,
+        (value) => {
+            if (!form && options.schema?.value) {
                 schema.value = value;
             }
-        );
-    }
+        }
+    );
 
     /**
      * Determine if form event should trigger validation

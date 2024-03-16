@@ -14,7 +14,7 @@ export function serializeSchema<T extends Form>(schema: FormSchema<T> | Resolved
         if (Array.isArray(schemaField)) {
             serializedSchema[key] = schemaField.map(
                 (
-                    item: FormField<T[keyof T][number]> | FormSchema<T[keyof T][number]>
+                    item: FormSchema<T[keyof T][number]> | FormField<T[keyof T][number]>
                 ): T[keyof T][number] => {
                     if (isFormGroup(item)) {
                         return serializeSchema(item);
@@ -23,11 +23,11 @@ export function serializeSchema<T extends Form>(schema: FormSchema<T> | Resolved
                     return item.value;
                 }
             ) as T[keyof T];
-        } else if (isFormGroup(schemaField)) {
+        } else if (isFormGroup(schemaField as FormSchema<T[keyof T]> | FormField<T[keyof T]>)) {
             serializedSchema[key] = serializeSchema(
                 schemaField as FormSchema<T[keyof T]>
             ) as T[keyof T];
-        } else if (isFormField(schemaField)) {
+        } else if (isFormField(schemaField as FormSchema<T[keyof T]> | FormField<T[keyof T]>)) {
             serializedSchema[key] = schemaField.value as T[keyof T];
         }
     });

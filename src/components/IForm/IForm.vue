@@ -159,9 +159,11 @@ export default defineComponent({
             '-error': hasError.value
         }));
 
-        async function onSubmit(event: SubmitEvent) {
+        function onSubmit(e: Event) {
+            const event = e as SubmitEvent;
+
             if (props.modelValue) {
-                await schemaOnSubmit(event);
+                void schemaOnSubmit(event);
             } else {
                 emit('submit', event);
             }
