@@ -8,7 +8,8 @@ export function useForm<T extends Form = Form>(formSchema: FormSchema<T>) {
     const form = computed(() => serializeSchema<T>(schema.value));
 
     async function validate() {
-        schema.value = await validateSchema(schema.value);
+        schema.value = await validateSchema<T>(schema.value);
+        return schema.value;
     }
 
     return {
