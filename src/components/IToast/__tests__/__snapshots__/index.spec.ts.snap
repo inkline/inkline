@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > IToast > should render correctly 1`] = `
-"<div class=\\"toast -primary -md\\" style=\\"--toast--duration: 0ms;\\">
+"<div class="toast -primary -md" style="--toast--duration: 0ms;">
   <!--v-if-->
-  <div class=\\"toast-content\\">
+  <div class="toast-content">
     <!--v-if-->
     <!-- @slot default Slot for default toast content --><span></span>
   </div>

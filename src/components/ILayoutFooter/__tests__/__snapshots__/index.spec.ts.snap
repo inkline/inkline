@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > ILayoutFooter > should render correctly 1`] = `
-"<footer class=\\"layout-footer\\">
+"<footer class="layout-footer">
   <!-- @slot default Slot for default layout footer content -->
 </footer>"
 `;

@@ -1,15 +1,15 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > INav > should render correctly 1`] = `
-"<nav class=\\"nav -light -md\\" role=\\"menubar\\">
+"<nav class="nav -light -md" role="menubar">
   <!-- @slot default Slot for default nav content -->
-  <div role=\\"menuitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"nav-item\\">
+  <div role="menuitem" tabindex="0" tag="div" class="nav-item">
     <!-- @slot default Slot for default nav item content -->Item 1
   </div>
-  <div role=\\"menuitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"nav-item\\">
+  <div role="menuitem" tabindex="0" tag="div" class="nav-item">
     <!-- @slot default Slot for default nav item content -->Item 2
   </div>
-  <div role=\\"menuitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"nav-item\\">
+  <div role="menuitem" tabindex="0" tag="div" class="nav-item">
     <!-- @slot default Slot for default nav item content -->Item 3
   </div>
 </nav>"

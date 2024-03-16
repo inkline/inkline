@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > ILoader > should render correctly 1`] = `
-"<div class=\\"loader -light -md\\" role=\\"img\\" aria-hidden=\\"true\\">
-  <!--v-if--><svg viewBox=\\"25 25 50 50\\">
-    <circle cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\" stroke-width=\\"4\\" stroke-miterlimit=\\"10\\"></circle>
+"<div class="loader -light -md" role="img" aria-hidden="true">
+  <!--v-if--><svg viewBox="25 25 50 50">
+    <circle cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
   </svg>
 </div>"
 `;

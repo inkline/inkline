@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > ICard > should render correctly 1`] = `
-"<div class=\\"card -light -md\\">
+"<div class="card -light -md">
   <!--v-if-->
   <!-- @slot image Slot for card image -->
   <!--v-if-->

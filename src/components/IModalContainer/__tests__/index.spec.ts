@@ -84,8 +84,8 @@ describe('Components', () => {
 
                     await retry(() => {
                         expect(wrapper.container.querySelectorAll('.modal').length).toEqual(0);
-                        expect(wrapper.html()).toMatchSnapshot();
                     });
+                    expect(wrapper.html()).toMatchSnapshot();
                 });
             });
         });
