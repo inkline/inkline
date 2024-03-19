@@ -51,7 +51,16 @@ export default defineConfig({
         setupFiles: ['./vitest.setup.js'],
         include: ['src/**/*.spec.ts', 'scripts/**/*.spec.ts'],
         coverage: {
-            exclude: ['**/__mocks__/*', '**/__tests__/*', 'scripts/**'],
+            provider: 'v8',
+            include: ['src/**/*.ts', 'src/**/*.vue'],
+            exclude: [
+                '**/__mocks__/*',
+                '**/__tests__/*',
+                '**/stories/*',
+                '**/examples/*',
+                '**/manifest.ts',
+                '**/__storybook__'
+            ],
             reporter: ['text', 'json', 'html', 'lcov']
         }
     },
