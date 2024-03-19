@@ -169,7 +169,7 @@
                 var(--input--padding-left, var(--padding-left))
             );
 
-            > button:not(.button):not(.select-caret) {
+            > button:not(.button, .select-caret) {
                 background: transparent;
                 border: 0;
                 color: inherit;
@@ -328,6 +328,15 @@
         }
     }
 
+    &.-readonly {
+        > .input {
+            &:focus-within {
+                outline: 0;
+                border-color: var(--input--focus--border-color);
+            }
+        }
+    }
+
     &.-disabled,
     &.-readonly {
         > .input {
@@ -353,15 +362,6 @@
                 &[readonly] {
                     color: var(--input--disabled--color);
                 }
-            }
-        }
-    }
-
-    &.-readonly {
-        > .input {
-            &:focus-within {
-                outline: 0;
-                border-color: var(--input--focus--border-color);
             }
         }
     }

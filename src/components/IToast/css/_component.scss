@@ -61,6 +61,19 @@
     // as much space as possible, ensuring footers are aligned to the bottom.
     align-items: center;
 
+    > hr {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    > *:last-of-type {
+        margin-bottom: 0;
+    }
+
+    > *:first-of-type {
+        margin-top: 0;
+    }
+
     a {
         color: var(--toast--link--color, var(--toast--color));
         font-weight: 600;
@@ -83,6 +96,7 @@
     }
 
     > .toast-content {
+        flex: 0 1 100%;
         padding: var(
             --toast--padding,
             var(--toast--padding-top, var(--padding-top))
@@ -93,6 +107,19 @@
 
         > .toast-title {
             font-weight: var(--toast--title--font-weight, var(--font-weight-semibold));
+        }
+
+        > hr {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        > *:last-of-type {
+            margin-bottom: 0;
+        }
+
+        > *:first-of-type {
+            margin-top: 0;
         }
     }
 
@@ -134,24 +161,6 @@
             width: 100%;
             height: 100%;
             background: var(--toast--progress-bar--background);
-        }
-    }
-
-    &,
-    > .toast-content {
-        flex: 0 1 100%;
-
-        > hr {
-            margin-right: 0;
-            margin-left: 0;
-        }
-
-        > *:first-of-type {
-            margin-top: 0;
-        }
-
-        > *:last-of-type {
-            margin-bottom: 0;
         }
     }
 }

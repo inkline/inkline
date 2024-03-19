@@ -16,17 +16,6 @@
         margin-right: 0;
     }
 
-    &.-disabled {
-        cursor: default;
-
-        .checkbox-label {
-            &::before,
-            &::after {
-                cursor: not-allowed;
-            }
-        }
-    }
-
     .checkbox-label {
         cursor: pointer;
         margin-bottom: 0;
@@ -207,6 +196,17 @@
         &:indeterminate ~ .checkbox-label::after {
             mask-image: url($ink-minus);
             -webkit-mask-image: url($ink-minus);
+        }
+    }
+
+    &.-disabled {
+        cursor: default;
+
+        .checkbox-label {
+            &::before,
+            &::after {
+                cursor: not-allowed;
+            }
         }
     }
 

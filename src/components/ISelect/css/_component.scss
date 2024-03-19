@@ -11,13 +11,12 @@
 
     .select {
         @include mixins.popup(var(--select--z-index, 2000));
-        @include mixins.popup-arrow();
+        @include mixins.popup-arrow;
         @include mixins.popup-arrow-size-variant(var(--select--arrow--size, 6px));
 
         text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
         list-style: none;
         line-height: var(--select-line-height);
-        //background-clip: padding-box;
         display: block;
         white-space: normal;
         width: 100%;

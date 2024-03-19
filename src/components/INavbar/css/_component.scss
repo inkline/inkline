@@ -114,7 +114,6 @@
             var(--navbar--border-bottom-right-radius, var(--border-bottom-right-radius))
             var(--navbar--border-bottom-left-radius, var(--border-bottom-left-radius))
     );
-
     transition-property: var(--navbar--transition-property, (background-color, border-color));
     transition-timing-function: var(
         --navbar--transition-timing-function,
@@ -220,12 +219,12 @@
     @each $breakpoint in $breakpoint-keys {
         &.-collapse-#{$breakpoint} {
             @include breakpoint-down($breakpoint) {
-                @include navbar-collapse();
+                @include navbar-collapse;
             }
         }
     }
 
     &.-collapse-true {
-        @include navbar-collapse();
+        @include navbar-collapse;
     }
 }

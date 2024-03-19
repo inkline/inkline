@@ -5,9 +5,7 @@
 .list-group .list-group-item {
     display: block;
     margin-bottom: 0;
-    border-bottom-width: var(--list-group--border-bottom-width, var(--border-bottom-width));
-    border-bottom-style: var(--list-group--border-bottom-style, var(--border-bottom-style));
-    border-bottom-color: var(--list-group--border-bottom-color, var(--border-bottom-color));
+    border-bottom: var(--list-group--border-bottom-width, var(--border-bottom-width)) var(--list-group--border-bottom-style, var(--border-bottom-style)) var(--list-group--border-bottom-color, var(--border-bottom-color));
     transition-property: color, border-color;
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--transition-timing-function);

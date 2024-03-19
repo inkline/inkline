@@ -9,8 +9,7 @@
     box-sizing: border-box;
     display: flex;
     flex: 0 1 auto;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
 
     @each $breakpoint-key in mixins.$breakpoint-keys {
         @include mixins.breakpoint-up($breakpoint-key) {

@@ -7,89 +7,6 @@
     margin-bottom: 0;
     display: flex;
 
-    > input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-        cursor: pointer;
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        &:checked + .toggle-label {
-            &::before {
-                background: var(--toggle--checked--background, var(--color-primary));
-                border-color: var(
-                    --toggle--checked--border-color,
-                    var(--toggle--checked--border-top-color, var(--color-primary))
-                        var(--toggle--checked--border-right-color, var(--color-primary))
-                        var(--toggle--checked--border-bottom-color, var(--color-primary))
-                        var(--toggle--checked--border-left-color, var(--color-primary))
-                );
-            }
-
-            &::after {
-                background: var(--toggle--checked--indicator--background, var(--color-white));
-                transform: translate(calc(var(--toggle--width, 40px) * 0.5), 0);
-            }
-        }
-
-        &:focus + .toggle-label::before {
-            box-shadow: 0 0 1px var(--toggle--checked--background);
-        }
-
-        &:disabled + .toggle-label,
-        &[readonly] + .toggle-label {
-            cursor: default;
-            color: var(--toggle--disabled--label--color);
-
-            &::before {
-                background: var(--toggle--disabled--background);
-                border-color: var(
-                    --toggle--disabled--border-color,
-                    var(
-                            --toggle--disabled--border-top-color,
-                            var(--toggle--border-top-color, var(--border-top-color))
-                        )
-                        var(
-                            --toggle--disabled--border-right-color,
-                            var(--toggle--border-right-color, var(--border-right-color))
-                        )
-                        var(
-                            --toggle--disabled--border-bottom-color,
-                            var(--toggle--border-bottom-color, var(--border-bottom-color))
-                        )
-                        var(
-                            --toggle--disabled--border-left-color,
-                            var(--toggle--border-left-color, var(--border-left-color))
-                        )
-                );
-            }
-
-            &::after {
-                background: var(--toggle--disabled--indicator--background);
-            }
-        }
-
-        &:disabled:checked + .toggle-label,
-        &[readonly]:checked + .toggle-label {
-            &::before {
-                background: var(--toggle--checked--disabled--background);
-                border-color: var(
-                    --toggle--checked--disabled--border-color,
-                    var(--toggle--checked--disabled--border-top-color, var(--color-primary))
-                        var(--toggle--checked--disabled--border-right-color, var(--color-primary))
-                        var(--toggle--checked--disabled--border-bottom-color, var(--color-primary))
-                        var(--toggle--checked--disabled--border-left-color, var(--color-primary))
-                );
-            }
-
-            &::after {
-                background: var(--toggle--checked--disabled--indicator--background);
-            }
-        }
-    }
-
     .toggle-label {
         display: flex;
         align-items: center;
@@ -232,6 +149,89 @@
                         var(--toggle--rounded--indicator--border-bottom-right-radius, 50%)
                         var(--toggle--rounded--indicator--border-bottom-left-radius, 50%)
                 );
+            }
+        }
+    }
+
+    > input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &:checked + .toggle-label {
+            &::before {
+                background: var(--toggle--checked--background, var(--color-primary));
+                border-color: var(
+                    --toggle--checked--border-color,
+                    var(--toggle--checked--border-top-color, var(--color-primary))
+                        var(--toggle--checked--border-right-color, var(--color-primary))
+                        var(--toggle--checked--border-bottom-color, var(--color-primary))
+                        var(--toggle--checked--border-left-color, var(--color-primary))
+                );
+            }
+
+            &::after {
+                background: var(--toggle--checked--indicator--background, var(--color-white));
+                transform: translate(calc(var(--toggle--width, 40px) * 0.5), 0);
+            }
+        }
+
+        &:focus + .toggle-label::before {
+            box-shadow: 0 0 1px var(--toggle--checked--background);
+        }
+
+        &:disabled + .toggle-label,
+        &[readonly] + .toggle-label {
+            cursor: default;
+            color: var(--toggle--disabled--label--color);
+
+            &::before {
+                background: var(--toggle--disabled--background);
+                border-color: var(
+                    --toggle--disabled--border-color,
+                    var(
+                            --toggle--disabled--border-top-color,
+                            var(--toggle--border-top-color, var(--border-top-color))
+                        )
+                        var(
+                            --toggle--disabled--border-right-color,
+                            var(--toggle--border-right-color, var(--border-right-color))
+                        )
+                        var(
+                            --toggle--disabled--border-bottom-color,
+                            var(--toggle--border-bottom-color, var(--border-bottom-color))
+                        )
+                        var(
+                            --toggle--disabled--border-left-color,
+                            var(--toggle--border-left-color, var(--border-left-color))
+                        )
+                );
+            }
+
+            &::after {
+                background: var(--toggle--disabled--indicator--background);
+            }
+        }
+
+        &:disabled:checked + .toggle-label,
+        &[readonly]:checked + .toggle-label {
+            &::before {
+                background: var(--toggle--checked--disabled--background);
+                border-color: var(
+                    --toggle--checked--disabled--border-color,
+                    var(--toggle--checked--disabled--border-top-color, var(--color-primary))
+                        var(--toggle--checked--disabled--border-right-color, var(--color-primary))
+                        var(--toggle--checked--disabled--border-bottom-color, var(--color-primary))
+                        var(--toggle--checked--disabled--border-left-color, var(--color-primary))
+                );
+            }
+
+            &::after {
+                background: var(--toggle--checked--disabled--indicator--background);
             }
         }
     }

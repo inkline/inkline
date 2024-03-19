@@ -68,35 +68,6 @@
         var(--transition-timing-function)
     );
 
-    // Target non disabled buttons
-    &:not(:disabled, .-disabled) {
-        // Add "hand" cursor to non-disabled .button elements
-        cursor: pointer;
-
-        // Focus and hover state
-        &:hover,
-        &:focus,
-        &.-hovered,
-        &.-focused {
-            background: var(--button--hover--background, var(--button--background));
-            border-color: var(
-                --button--hover--border-color,
-                var(--button--hover--border-top-color, var(--button--border-top-color))
-                    var(--button--hover--border-right-color, var(--button--border-right-color))
-                    var(--button--hover--border-bottom-color, var(--button--border-bottom-color))
-                    var(--button--hover--border-left-color, var(--button--border-left-color))
-            );
-            text-decoration: none;
-            color: var(--button--color);
-            outline: 0;
-        }
-
-        &:active,
-        &.-active {
-            background: var(--button--active--background, var(--button--background));
-        }
-    }
-
     // Disabled state
     // Disabled state comes first so active can properly restyle
     &.-disabled,
@@ -144,6 +115,35 @@
         &:disabled,
         &.-disabled {
             pointer-events: none;
+        }
+    }
+
+    // Target non disabled buttons
+    &:not(:disabled, .-disabled) {
+        // Add "hand" cursor to non-disabled .button elements
+        cursor: pointer;
+
+        // Focus and hover state
+        &:hover,
+        &:focus,
+        &.-hovered,
+        &.-focused {
+            background: var(--button--hover--background, var(--button--background));
+            border-color: var(
+                --button--hover--border-color,
+                var(--button--hover--border-top-color, var(--button--border-top-color))
+                    var(--button--hover--border-right-color, var(--button--border-right-color))
+                    var(--button--hover--border-bottom-color, var(--button--border-bottom-color))
+                    var(--button--hover--border-left-color, var(--button--border-left-color))
+            );
+            text-decoration: none;
+            color: var(--button--color);
+            outline: 0;
+        }
+
+        &:active,
+        &.-active {
+            background: var(--button--active--background, var(--button--background));
         }
     }
 

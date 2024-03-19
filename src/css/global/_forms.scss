@@ -12,14 +12,6 @@ button {
     border-radius: 0;
 }
 
-// Explicitly remove focus outline in Chromium when it shouldn't be
-// visible (e.g. as result of mouse click or touch tap). It already
-// should be doing this automatically, but seems to currently be
-// confused and applies its very visible two-tone outline anyway.
-button:focus:not(:focus-visible) {
-    outline: 0;
-}
-
 input,
 button,
 select,
@@ -27,6 +19,29 @@ optgroup,
 textarea {
     font-size: inherit;
     line-height: inherit;
+}
+
+// Prevent a WebKit bug where webkit-appearance destroys native `audio` and `video` controls in Android 4.
+// Correct the inability to style clickable types in iOS and Safari.
+// Opinionated: add "hand" cursor to non-disabled button elements.
+// @credit https://github.com/twbs/bootstrap
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    -webkit-appearance: button;
+
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
+// Explicitly remove focus outline in Chromium when it shouldn't be
+// visible (e.g. as result of mouse click or touch tap). It already
+// should be doing this automatically, but seems to currently be
+// confused and applies its very visible two-tone outline anyway.
+button:focus:not(:focus-visible) {
+    outline: 0;
 }
 
 // Set the cursor for non-`<button>` buttons
@@ -54,21 +69,6 @@ select {
         [type='time']
     )::-webkit-calendar-picker-indicator {
     display: none !important;
-}
-
-// Prevent a WebKit bug where webkit-appearance destroys native `audio` and `video` controls in Android 4.
-// Correct the inability to style clickable types in iOS and Safari.
-// Opinionated: add "hand" cursor to non-disabled button elements.
-// @credit https://github.com/twbs/bootstrap
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-    -webkit-appearance: button;
-
-    &:not(:disabled) {
-        cursor: pointer;
-    }
 }
 
 // Textareas should really only resize vertically so they don't break their (horizontal) containers.

@@ -10,8 +10,9 @@
 
     .tooltip {
         @include mixins.popup(var(--tooltip--z-index, 2000));
-        @include mixins.popup-arrow();
+        @include mixins.popup-arrow;
         @include mixins.popup-arrow-size-variant(var(--tooltip--arrow--size, 6px));
+
         text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
         list-style: none;
         background-clip: padding-box;

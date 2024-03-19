@@ -17,6 +17,10 @@
         box-sizing: border-box;
     }
 
+    > .container {
+        flex: auto;
+    }
+
     &.-vertical {
         flex-direction: row;
         height: 100%;
@@ -25,9 +29,5 @@
         > .container {
             overflow-x: hidden;
         }
-    }
-
-    > .container {
-        flex: auto;
     }
 }

@@ -114,14 +114,6 @@
     );
     background: var(--dropdown--item--background, var(--dropdown--background, transparent));
 
-    &:not(.-disabled, .-plaintext) {
-        &:hover,
-        &:focus {
-            color: var(--dropdown--item--hover--color, var(--dropdown--item--color));
-            background: var(--dropdown--item--hover--background, var(--dropdown--item--background));
-        }
-    }
-
     &.-disabled {
         color: var(--dropdown--item--disabled--color, var(--dropdown--item--color));
         background: var(--dropdown--item--disabled--background, var(--dropdown--item--background));
@@ -139,6 +131,14 @@
     &:focus {
         outline: 0;
         text-decoration: none;
+    }
+
+    &:not(.-disabled, .-plaintext) {
+        &:hover,
+        &:focus {
+            color: var(--dropdown--item--hover--color, var(--dropdown--item--color));
+            background: var(--dropdown--item--hover--background, var(--dropdown--item--background));
+        }
     }
 
     &.-plaintext {

@@ -37,7 +37,7 @@
 
 .col,
 .column {
-    @include column-flexible();
+    @include column-flexible;
 
     box-sizing: border-box;
     min-height: 1px;
@@ -58,14 +58,14 @@
         @if $breakpoint-key != '' {
             &.#{$breakpoint},
             &.#{$breakpoint}-auto {
-                @include column-full-width();
+                @include column-full-width;
             }
         }
 
         @include mixins.breakpoint-up($breakpoint-key) {
             @if $breakpoint-key != '' {
                 &.#{$breakpoint} {
-                    @include column-flexible();
+                    @include column-flexible;
                 }
 
                 &.#{$breakpoint}-auto {
@@ -86,7 +86,7 @@
         @for $column-count from 1 through mixins.$columns {
             @if $breakpoint-key != '' {
                 &.#{$breakpoint}-#{$column-count} {
-                    @include column-full-width();
+                    @include column-full-width;
                 }
             }
 
