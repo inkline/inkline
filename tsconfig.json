@@ -33,7 +33,7 @@
         "src/**/*.d.ts",
         "src/**/*.tsx"
     ],
-    "exclude": ["dist", "lib", "package", "node_modules", "src/__tests__", "src/**/*.test.ts", "src/**/*.spec.ts"],
+    "exclude": ["dist", "lib", "package", "node_modules", "src/__tests__/**/*", "src/__mocks__/**/*", "src/**/*.test.ts", "src/**/*.spec.ts"],
     "references": [
         {
             "path": "./tsconfig.vite.json"
