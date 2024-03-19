@@ -1,5 +1,8 @@
 {
     "compilerOptions": {
+        "composite": true,
+        "module": "esnext",
+        "moduleResolution": "node",
         "types": ["vitest/globals"]
     },
     "include": ["src/__tests__", "src/**/*.test.ts", "src/**/*.spec.ts"]
