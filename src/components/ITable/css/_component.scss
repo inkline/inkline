@@ -89,21 +89,13 @@
             transition-property: var(--table--transition-property, color, background-color, border);
         }
 
-        thead th {
-            vertical-align: bottom;
-            border-bottom-width: var(
-                --table--thead--th--border-bottom-width,
-                var(--table--border-bottom-width, var(--border-bottom-width))
-            );
-        }
-
         tbody + tbody {
-            border-top-style: var(--table--tbody--adjacent--border-top-style, solid);
-            border-top-width: var(
-                --table--tbody--adjacent--border-top-width,
-                var(--table--border-top-width, var(--border-top-width))
-            );
-            border-top-color: var(--table--tbody--adjacent--border-top-color, transparent);
+            border-top: var(
+                    --table--tbody--adjacent--border-top-width,
+                    var(--table--border-top-width, var(--border-top-width))
+                )
+                var(--table--tbody--adjacent--border-top-style, solid)
+                var(--table--tbody--adjacent--border-top-color, transparent);
         }
 
         th,
@@ -115,6 +107,14 @@
                     var(--table--border-right-color, var(--border-right-color))
                     var(--table--border-bottom-color, var(--border-bottom-color))
                     var(--table--border-left-color, var(--border-left-color))
+            );
+        }
+
+        thead th {
+            vertical-align: bottom;
+            border-bottom-width: var(
+                --table--thead--th--border-bottom-width,
+                var(--table--border-bottom-width, var(--border-bottom-width))
             );
         }
     }

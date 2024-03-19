@@ -10,7 +10,7 @@
 
     .popover {
         @include mixins.popup(var(--popover--z-index, 2000));
-        @include mixins.popup-arrow();
+        @include mixins.popup-arrow;
         @include mixins.popup-arrow-size-variant(var(--popover--arrow--size, 6px));
 
         text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)

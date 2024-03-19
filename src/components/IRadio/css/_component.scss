@@ -16,17 +16,6 @@
         margin-right: 0;
     }
 
-    &.-disabled {
-        cursor: default;
-
-        .radio-label {
-            &::before,
-            &::after {
-                cursor: not-allowed;
-            }
-        }
-    }
-
     .radio-label {
         cursor: pointer;
         margin-bottom: 0;
@@ -169,6 +158,17 @@
                         background: var(--radio--disabled--color, var(--radio--color));
                     }
                 }
+            }
+        }
+    }
+
+    &.-disabled {
+        cursor: default;
+
+        .radio-label {
+            &::before,
+            &::after {
+                cursor: not-allowed;
             }
         }
     }

@@ -18,8 +18,7 @@ import {
     ISelectRenderSlotExample,
     ISelectRenderFunctionPerOptionExample
 } from '@inkline/inkline/components/ISelect/examples/index';
-import { colorArgType, createStory, sizeArgType } from '@inkline/inkline/__storybook__';
-import { useServer } from '@inkline/inkline/__tests__/utils/useServer';
+import { colorArgType, createStory, sizeArgType, useServer } from '@inkline/inkline/__storybook__';
 
 useServer();
 

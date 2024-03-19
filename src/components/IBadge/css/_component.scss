@@ -62,15 +62,15 @@
         var(--transition-timing-function)
     );
 
+    .button & {
+        position: relative;
+        top: -1px;
+    }
+
     a:hover &,
     a:focus & {
         text-decoration: none;
         background: var(--badge--link--hover--background, var(--badge--background));
-    }
-
-    .button & {
-        position: relative;
-        top: -1px;
     }
 
     &.-pill {

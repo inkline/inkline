@@ -27,6 +27,19 @@
             "@types/shelljs"
         ]
     },
-    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-    "exclude": ["dist", "lib", "package", "node_modules"]
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.vue",
+        "src/**/*.d.ts",
+        "src/**/*.tsx"
+    ],
+    "exclude": ["dist", "lib", "package", "node_modules", "src/__tests__/**/*", "src/__mocks__/**/*", "src/**/*.test.ts", "src/**/*.spec.ts"],
+    "references": [
+        {
+            "path": "./tsconfig.vite.json"
+        },
+        {
+            "path": "./tsconfig.vitest.json"
+        }
+    ]
 }

@@ -4,8 +4,7 @@
 
 .list-group {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    flex-flow: column wrap;
     transition-property: var(--list-group--transition-property, (background-color, border-color));
     transition-duration: var(--list-group--transition-duration, var(--transition-duration));
     transition-timing-function: var(

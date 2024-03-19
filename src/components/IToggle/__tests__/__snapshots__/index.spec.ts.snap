@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > IToggle > should render correctly 1`] = `
-"<div class=\\"toggle -light -md\\" aria-checked=\\"false\\" role=\\"checkbox\\"><input type=\\"checkbox\\" aria-checked=\\"false\\" name=\\"toggle\\"><label class=\\"toggle-label\\" tabindex=\\"0\\">
+"<div class="toggle -light -md" aria-checked="false" role="checkbox"><input type="checkbox" aria-checked="false" name="toggle"><label class="toggle-label" tabindex="0">
     <!-- @slot default Slot for default toggle label -->
   </label></div>"
 `;

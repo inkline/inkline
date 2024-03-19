@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > IBreadcrumb > should render correctly 1`] = `
-"<nav class=\\"breadcrumb -light -md\\" aria-label=\\"Breadcrumbs\\">
+"<nav class="breadcrumb -light -md" aria-label="Breadcrumbs">
   <ol>
     <!-- @slot default Slot for default breadcrumb content -->
   </ol>

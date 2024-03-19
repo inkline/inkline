@@ -364,7 +364,6 @@
             --card--footer--transition-timing-function,
             var(--card--transition-timing-function, var(--transition-timing-function))
         );
-
         border-bottom-left-radius: var(
             --card--footer--border-bottom-left-radius,
             var(--card--border-bottom-left-radius)

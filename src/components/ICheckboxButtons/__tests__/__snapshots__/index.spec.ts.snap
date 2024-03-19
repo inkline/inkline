@@ -1,27 +1,27 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > ICheckboxButtons > should render correctly 1`] = `
-"<div class=\\"checkable-button-group -light -md -checkbox -default -light -md checkbox-buttons\\" name=\\"checkbox-buttons\\" role=\\"checkboxgroup\\">
+"<div class="checkable-button-group -light -md -checkbox -default -light -md checkbox-buttons" name="checkbox-buttons" role="checkboxgroup">
   <!-- @slot default Slot for default content -->
-  <!-- @slot prepend Slot for rendering additional content before buttons --><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 1</span>
-  </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 2</span>
-  </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 3</span>
+  <!-- @slot prepend Slot for rendering additional content before buttons --><button type="button" tabindex="0" aria-live="polite" tag="button" class="button -light -md">
+    <!--v-if--><span class="button-content"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 1</span>
+  </button><button type="button" tabindex="0" aria-live="polite" tag="button" class="button -light -md">
+    <!--v-if--><span class="button-content"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 2</span>
+  </button><button type="button" tabindex="0" aria-live="polite" tag="button" class="button -light -md">
+    <!--v-if--><span class="button-content"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 3</span>
   </button><!-- @slot append Slot for rendering additional content after buttons -->
 </div>"
 `;
 
 exports[`Components > ICheckboxButtons > should render group variant correctly 1`] = `
-"<div class=\\"checkable-button-group -light -md -checkbox -group -light -md checkbox-buttons button-group -md -light\\" name=\\"checkbox-buttons\\" role=\\"group\\">
+"<div class="checkable-button-group -light -md -checkbox -group -light -md checkbox-buttons button-group -md -light" name="checkbox-buttons" role="group">
   <!-- @slot default Slot for default button group content -->
-  <!-- @slot prepend Slot for rendering additional content before buttons --><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 1</span>
-  </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 2</span>
-  </button><button type=\\"button\\" tabindex=\\"0\\" aria-live=\\"polite\\" tag=\\"button\\" class=\\"button -light -md\\">
-    <!--v-if--><span class=\\"button-content\\"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 3</span>
+  <!-- @slot prepend Slot for rendering additional content before buttons --><button type="button" tabindex="0" aria-live="polite" tag="button" class="button -light -md">
+    <!--v-if--><span class="button-content"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 1</span>
+  </button><button type="button" tabindex="0" aria-live="polite" tag="button" class="button -light -md">
+    <!--v-if--><span class="button-content"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 2</span>
+  </button><button type="button" tabindex="0" aria-live="polite" tag="button" class="button -light -md">
+    <!--v-if--><span class="button-content"><!-- @slot default Slot for default button content --><!-- @slot option Slot for rendering checkbox buttons options content -->Option 3</span>
   </button><!-- @slot append Slot for rendering additional content after buttons -->
 </div>"
 `;

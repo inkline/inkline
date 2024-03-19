@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > IListGroupItem > should render correctly 1`] = `
-"<div role=\\"listitem\\" tabindex=\\"0\\" tag=\\"div\\" class=\\"list-group-item\\">
+"<div role="listitem" tabindex="0" tag="div" class="list-group-item">
   <!-- @slot default Slot for list group item content -->
 </div>"
 `;

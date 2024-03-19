@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > IFormLabel > should render correctly 1`] = `
-"<label class=\\"form-label -md\\" for=\\"\\">
+"<label class="form-label -md" for="">
   <!-- @slot default Slot for default form label content  -->
 </label>"
 `;

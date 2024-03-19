@@ -10,24 +10,6 @@ samp {
     font-size: var(--font-size);
 }
 
-pre {
-    display: block;
-    margin-top: 0;
-    margin-bottom: var(--pre--margin-bottom, var(--margin-bottom));
-    font-size: var(--pre--font-size, var(--code--font-size, var(--font-size-sm)));
-    overflow: auto;
-
-    // Account for some code outputs that place code tags in pre tags
-    // @credit https://github.com/twbs/bootstrap
-    code {
-        font-size: inherit;
-        color: inherit;
-        word-break: normal;
-        background: transparent;
-        padding: 0;
-    }
-}
-
 code {
     font-size: var(--code--font-size, var(--font-size-sm));
     color: var(--code--color);
@@ -53,6 +35,24 @@ code {
     // Streamline the style when inside anchors to avoid broken underline and more
     a > & {
         color: inherit;
+    }
+}
+
+pre {
+    display: block;
+    margin-top: 0;
+    margin-bottom: var(--pre--margin-bottom, var(--margin-bottom));
+    font-size: var(--pre--font-size, var(--code--font-size, var(--font-size-sm)));
+    overflow: auto;
+
+    // Account for some code outputs that place code tags in pre tags
+    // @credit https://github.com/twbs/bootstrap
+    code {
+        font-size: inherit;
+        color: inherit;
+        word-break: normal;
+        background: transparent;
+        padding: 0;
     }
 }
 

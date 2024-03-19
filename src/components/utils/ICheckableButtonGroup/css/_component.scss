@@ -65,7 +65,6 @@
                 var(--checkable-button-group--padding-bottom, var(--padding-bottom-1-2))
                 var(--checkable-button-group--padding-left, var(--padding-left-1-2))
         );
-
         transition-property: var(
             --checkable-button-group--transition-property,
             (background-color, border-color)
@@ -82,7 +81,11 @@
         > .button {
             margin-right: var(--checkable-button-group--gap, var(--margin-right-1-2));
 
-            &:not(:disabled):not(:hover):not(:focus):not(.-disabled).-active {
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:not(:disabled, :hover, :focus, .-disabled).-active {
                 background: var(
                     --checkable-button-group--button--active--background,
                     var(--button--background)
@@ -101,16 +104,11 @@
                 &:not(.-disabled) {
                     &:hover,
                     &:focus {
-                        border-top-color: var(--button--border-top-color);
-                        border-right-color: var(--button--border-top-color);
-                        border-bottom-color: var(--button--border-top-color);
-                        border-left-color: var(--button--border-top-color);
+                        border-color: var(--button--border-top-color)
+                            var(--button--border-top-color) var(--button--border-top-color)
+                            var(--button--border-top-color);
                     }
                 }
-            }
-
-            &:last-child {
-                margin-right: 0;
             }
         }
     }

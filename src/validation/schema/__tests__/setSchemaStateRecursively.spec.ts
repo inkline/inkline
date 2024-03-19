@@ -29,14 +29,14 @@ describe('validation', () => {
 
             resolvedSchema = setSchemaStateRecursively(resolvedSchema, values);
 
-            expect(resolvedSchema).toContain(values);
-            expect(resolvedSchema.field1).toContain(values);
-            expect(resolvedSchema.field2).toContain(values);
-            expect(resolvedSchema.group).toContain(values);
-            expect(resolvedSchema.group.nested1).toContain(values);
-            expect(resolvedSchema.group.nested2).toContain(values);
-            expect(resolvedSchema.array[0]).toContain(values);
-            expect(resolvedSchema.array[1]).toContain(values);
+            expect(resolvedSchema).toMatchObject(values);
+            expect(resolvedSchema.field1).toMatchObject(values);
+            expect(resolvedSchema.field2).toMatchObject(values);
+            expect(resolvedSchema.group).toMatchObject(values);
+            expect(resolvedSchema.group.nested1).toMatchObject(values);
+            expect(resolvedSchema.group.nested2).toMatchObject(values);
+            expect(resolvedSchema.array[0]).toMatchObject(values);
+            expect(resolvedSchema.array[1]).toMatchObject(values);
         });
     });
 });
