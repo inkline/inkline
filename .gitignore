@@ -11,6 +11,7 @@ coverage
 .DS_Store
 dist-ssr
 *.local
+build-storybook.log
 
 # CI
 /inkline-vite
