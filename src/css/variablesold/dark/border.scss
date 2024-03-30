@@ -1,0 +1,10 @@
+.dark-theme {
+    /**
+     * Border variables
+     */
+    --border-top-color: var(--color-gray-700);
+    --border-right-color: var(--color-gray-700);
+    --border-bottom-color: var(--color-gray-700);
+    --border-left-color: var(--color-gray-700);
+    --border-color: var(--border-top-color) var(--border-right-color) var(--border-bottom-color) var(--border-left-color);
+}

@@ -1,0 +1,5 @@
+:root {
+  --d1--font-size: calc(
+    var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-5)
+  );
+}

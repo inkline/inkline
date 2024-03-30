@@ -1,0 +1,124 @@
+@use '../functions/properties';
+
+@mixin background($component, $elementOrState: null, $fallback: false, $property: 'background') {
+    background: properties.background($component, $elementOrState, $fallback);
+}
+
+@mixin border-width($component, $elementOrState: null, $fallback: false) {
+    border-width: properties.border-width($component, $elementOrState, $fallback);
+}
+
+@mixin border-style($component, $elementOrState: null, $fallback: false) {
+    border-style: properties.border-style($component, $elementOrState, $fallback);
+}
+
+@mixin border-color($component, $elementOrState: null, $fallback: false) {
+    border-color: properties.border-color($component, $elementOrState, $fallback);
+}
+
+@mixin border-top-color($component, $elementOrState: null, $fallback: false) {
+    border-top-color: properties.border-top-color($component, $elementOrState, $fallback);
+}
+
+@mixin border-right-color($component, $elementOrState: null, $fallback: false) {
+    border-right-color: properties.border-right-color($component, $elementOrState, $fallback);
+}
+
+@mixin border-bottom-color($component, $elementOrState: null, $fallback: false) {
+    border-bottom-color: properties.border-bottom-color($component, $elementOrState, $fallback);
+}
+
+@mixin border-left-color($component, $elementOrState: null, $fallback: false) {
+    border-left-color: properties.border-left-color($component, $elementOrState, $fallback);
+}
+
+@mixin border-radius($component, $elementOrState: null, $fallback: false) {
+    border-radius: properties.border-radius($component, $elementOrState, $fallback);
+}
+
+@mixin box-shadow($component, $elementOrState: null, $fallback: false) {
+    box-shadow: properties.box-shadow($component, $elementOrState, $fallback);
+}
+
+@mixin color($component, $elementOrState: null, $fallback: false) {
+    color: properties.color($component, $elementOrState, $fallback);
+}
+
+@mixin font-family($component, $elementOrState: null, $fallback: false) {
+    font-family: properties.font-family($component, $elementOrState, $fallback);
+}
+
+@mixin font-size($component, $elementOrState: null, $fallback: false) {
+    font-size: properties.font-size($component, $elementOrState, $fallback);
+}
+
+@mixin font-weight($component, $elementOrState: null, $fallback: false) {
+    font-weight: properties.font-weight($component, $elementOrState, $fallback);
+}
+
+@mixin line-height($component, $elementOrState: null, $fallback: false) {
+    line-height: properties.line-height($component, $elementOrState, $fallback);
+}
+
+@mixin margin($component, $elementOrState: null, $fallback: false) {
+    margin: properties.margin($component, $elementOrState, $fallback);
+}
+
+@mixin margin-top($component, $elementOrState: null, $fallback: false) {
+    margin-top: properties.margin-top($component, $elementOrState, $fallback);
+}
+
+@mixin margin-right($component, $elementOrState: null, $fallback: false) {
+    margin-right: properties.margin-right($component, $elementOrState, $fallback);
+}
+
+@mixin margin-bottom($component, $elementOrState: null, $fallback: false) {
+    margin-bottom: properties.margin-bottom($component, $elementOrState, $fallback);
+}
+
+@mixin margin-left($component, $elementOrState: null, $fallback: false) {
+    margin-left: properties.margin-left($component, $elementOrState, $fallback);
+}
+
+@mixin opacity($component, $elementOrState: null, $fallback: false) {
+    opacity: properties.opacity($component, $elementOrState, $fallback);
+}
+
+@mixin padding($component, $elementOrState: null, $fallback: false) {
+    padding: properties.padding($component, $elementOrState, $fallback);
+}
+
+@mixin padding-top($component, $elementOrState: null, $fallback: false) {
+    padding-top: properties.padding-top($component, $elementOrState, $fallback);
+}
+
+@mixin padding-right($component, $elementOrState: null, $fallback: false) {
+    padding-right: properties.padding-right($component, $elementOrState, $fallback);
+}
+
+@mixin padding-bottom($component, $elementOrState: null, $fallback: false) {
+    padding-bottom: properties.padding-bottom($component, $elementOrState, $fallback);
+}
+
+@mixin padding-left($component, $elementOrState: null, $fallback: false) {
+    padding-left: properties.padding-left($component, $elementOrState, $fallback);
+}
+
+@mixin size($component, $elementOrState: null, $fallback: false) {
+    width: properties.width($component, $elementOrState, $fallback);
+    height: properties.height($component, $elementOrState, $fallback);
+}
+
+@mixin transition($component, $elementOrState: null, $fallback: false) {
+    transition-property: properties.transition-property($component, $elementOrState, $fallback);
+    transition-duration: properties.transition-duration($component, $elementOrState, $fallback);
+    transition-timing-function: properties.transition-timing-function(
+        $component,
+        $elementOrState,
+        $fallback
+    );
+}
+
+@mixin text-align($component, $elementOrState: null, $fallback: false) {
+    text-align: properties.text-align($component, $elementOrState, $fallback);
+}

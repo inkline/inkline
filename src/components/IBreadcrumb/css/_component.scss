@@ -1,11 +1,15 @@
+@use '../../../css/mixins/components';
+
 /**
  * Breadcrumb
  */
 
 .breadcrumb {
+    @include components.font-size('breadcrumb');
+    @include components.margin('breadcrumb');
+    @include components.padding('breadcrumb');
+
     display: flex;
-    margin-bottom: var(--breadcrumb--margin-bottom, var(--margin-bottom));
-    font-size: var(--breadcrumb--font-size, var(--font-size));
 
     ol {
         display: flex;

@@ -27,6 +27,16 @@ export default defineComponent({
         size: {
             type: String,
             default: undefined
+        },
+        /**
+         * Display the badge as a pill
+         * @type Boolean
+         * @default false
+         * @name pill
+         */
+        pill: {
+            type: Boolean,
+            default: false
         }
     },
     setup(props) {
@@ -37,7 +47,8 @@ export default defineComponent({
 
         const classes = computed(() => ({
             [`-${color.value}`]: Boolean(color.value),
-            [`-${size.value}`]: Boolean(size.value)
+            [`-${size.value}`]: Boolean(size.value),
+            '-pill': props.pill
         }));
 
         return {

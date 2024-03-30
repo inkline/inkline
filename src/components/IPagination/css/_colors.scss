@@ -22,12 +22,10 @@
             var(--color-light-shade-50)
         );
         --pagination--color: var(--pagination--light--color, var(--contrast-text-color-light));
-
         --pagination--hover--background: var(
             --pagination--light--hover--background,
             var(--color-light-shade-50)
         );
-
         --pagination--active--background: var(
             --pagination--light--active--background,
             var(--color-primary)
@@ -52,7 +50,6 @@
             --pagination--light--active--color,
             var(--contrast-text-color-primary)
         );
-
         --pagination--disabled--color: var(
             --pagination--light--disabled--color,
             var(--text-color-weak)
@@ -78,12 +75,10 @@
             var(--color-dark-tint-50)
         );
         --pagination--color: var(--pagination--dark--color, var(--contrast-text-color-dark));
-
         --pagination--hover--background: var(
             --pagination--dark--hover--background,
             var(--color-dark-tint-50)
         );
-
         --pagination--active--background: var(
             --pagination--dark--active--background,
             var(--color-primary)
@@ -108,7 +103,6 @@
             --pagination--dark--active--color,
             var(--contrast-text-color-primary)
         );
-
         --pagination--disabled--color: var(
             --pagination--dark--disabled--color,
             var(--text-color-weak)

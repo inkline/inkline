@@ -1,3 +1,5 @@
+@use '../../css/mixins/components';
+
 /**
  * Body
  *
@@ -25,18 +27,13 @@
 ////
 
 body {
-    color: var(--body--color, var(--color-dark));
-    background-color: var(--body--background, var(--color-white));
-    font-family: var(--body--font-family, var(--font-family-primary-base));
-    font-size: var(--body--font-size, var(--font-size));
-    line-height: var(--body--line-height, var(--line-height));
-    text-align: var(--body--text-align, left);
-    transition-property: var(--body--transition-property, (background-color, color));
-    transition-duration: var(--body--transition-duration, var(--transition-duration));
-    transition-timing-function: var(
-        --body--transition-timing-function,
-        var(--transition-timing-function)
-    );
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: var(--body--tap-highlight-color, rgba(0, 0, 0, 0));
+    @include components.color('body');
+    @include components.background('body');
+    @include components.font-size('body');
+    @include components.font-family('body');
+    @include components.line-height('body');
+    @include components.text-align('body');
+    @include components.transition('body');
+
+    text-size-adjust: 100%;
 }

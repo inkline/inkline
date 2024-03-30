@@ -26,7 +26,6 @@
             --checkbox--light--label--color,
             var(--contrast-text-color-light)
         );
-
         --checkbox--disabled--background: var(
             --checkbox--light--disabled--background,
             var(--color-gray-50)
@@ -40,7 +39,6 @@
             --checkbox--light--disabled--label--color,
             var(--text-color-weak)
         );
-
         --checkbox--checked--background: var(
             --checkbox--light--checked--background,
             var(--color-primary)
@@ -49,7 +47,6 @@
             --checkbox--light--checked--border-color,
             var(--color-primary-shade-50)
         );
-
         --checkbox--checked--disabled--background: var(
             --checkbox--light--checked--disabled--background,
             var(--color-primary-300)
@@ -83,7 +80,6 @@
             --checkbox--dark--label--color,
             var(--contrast-text-color-dark)
         );
-
         --checkbox--disabled--background: var(
             --checkbox--dark--disabled--background,
             var(--color-dark-tint-100)
@@ -97,7 +93,6 @@
             --checkbox--dark--disabled--label--color,
             var(--text-color-weak)
         );
-
         --checkbox--checked--background: var(
             --checkbox--dark--checked--background,
             var(--color-primary)
@@ -106,7 +101,6 @@
             --checkbox--dark--checked--border-color,
             var(--color-primary-tint-50)
         );
-
         --checkbox--checked--disabled--background: var(
             --checkbox--dark--checked--disabled--background,
             var(--color-primary-800)

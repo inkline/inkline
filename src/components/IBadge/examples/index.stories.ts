@@ -3,6 +3,7 @@ import {
     IBadgeBasicExample,
     IBadgeColorVariantsExample,
     IBadgeHeadingExample,
+    IBadgePillExample,
     IBadgeSizeVariantsExample
 } from '@inkline/inkline/components/IBadge/examples/index';
 import {
@@ -25,3 +26,4 @@ export const Basic = createStory(IBadgeBasicExample);
 export const ColorVariants = createExampleStory(IBadgeColorVariantsExample);
 export const Heading = createExampleStory(IBadgeHeadingExample);
 export const SizeVariants = createExampleStory(IBadgeSizeVariantsExample);
+export const Pill = createExampleStory(IBadgePillExample);

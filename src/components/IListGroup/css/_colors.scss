@@ -22,7 +22,6 @@
             --list-group--light--border-left-color,
             var(--color-light-shade-50)
         );
-
         --list-group--active--background: var(
             --list-group--light--active--background,
             var(--color-primary)
@@ -47,7 +46,6 @@
             --list-group--light--active--border-left-color,
             var(--color-primary-shade-50)
         );
-
         --list-group--disabled--color: var(
             --list-group--light--disabled--color,
             var(--text-color-weak)
@@ -73,7 +71,6 @@
             --list-group--dark--border-left-color,
             var(--color-dark-tint-50)
         );
-
         --list-group--active--background: var(
             --list-group--dark--active--background,
             var(--color-primary)
@@ -98,7 +95,6 @@
             --list-group--dark--active--border-left-color,
             var(--color-primary-shade-50)
         );
-
         --list-group--disabled--color: var(
             --list-group--dark--disabled--color,
             var(--text-color-weak)

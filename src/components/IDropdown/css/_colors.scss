@@ -22,7 +22,6 @@
             --dropdown--light--border-left-color,
             var(--color-light-shade-50)
         );
-
         --dropdown--item--hover--background: var(
             --dropdown--light--item--hover--background,
             var(--color-gray-50)
@@ -31,7 +30,6 @@
             --dropdown--light--item--hover--color,
             var(--dropdown--color)
         );
-
         --dropdown--item--active--background: var(
             --dropdown--light--item--active--background,
             var(--color-gray-50)
@@ -40,7 +38,6 @@
             --dropdown--light--item--active--color,
             var(--dropdown--color)
         );
-
         --dropdown--item--disabled--background: var(
             --dropdown--light--item--disabled--background,
             transparent
@@ -49,7 +46,6 @@
             --dropdown--light--item--disabled--color,
             var(--text-color-weak)
         );
-
         --dropdown--header--background: var(
             --dropdown--light--header--background,
             var(--color-gray-50)
@@ -79,7 +75,6 @@
             --dropdown--dark--border-left-color,
             var(--color-dark-tint-50)
         );
-
         --dropdown--item--hover--background: var(
             --dropdown--dark--item--hover--background,
             var(--color-dark-tint-50)
@@ -88,7 +83,6 @@
             --dropdown--dark--item--hover--color,
             var(--dropdown--color)
         );
-
         --dropdown--item--active--background: var(
             --dropdown--dark--item--active--background,
             var(--color-dark-tint-50)
@@ -97,7 +91,6 @@
             --dropdown--dark--item--active--color,
             var(--dropdown--color)
         );
-
         --dropdown--item--disabled--background: var(
             --dropdown--dark--item--disabled--background,
             transparent
@@ -106,7 +99,6 @@
             --dropdown--dark--item--disabled--color,
             var(--text-color-weak)
         );
-
         --dropdown--header--background: var(
             --dropdown--dark--header--background,
             var(--color-dark-tint-50)

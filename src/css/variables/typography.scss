@@ -1,53 +1,86 @@
 :root {
-    /**
-     * Typography - Font family variables
-     */
-    --font-family-primary-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-    --font-family-primary-monospace: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-    --font-family-primary-print: 'Georgia', 'Times New Roman', 'Times', serif;
-    --font-family-secondary-base: var(--font-family-primary-base);
-    --font-family-secondary-monospace: var(--font-family-primary-monospace);
-    --font-family-secondary-print: var(--font-family-primary-print);
-
-    /**
-     * Typography - Font weight variables
-     */
-    --font-weight-extralight: 200;
-    --font-weight-light: 300;
-    --font-weight-normal: normal;
-    --font-weight-semibold: 600;
-    --font-weight-bold: bold;
-    --font-weight-black: 900;
-    --font-weight-lighter: lighter;
-    --font-weight-bolder: bolder;
-
-    /**
-     * Typography font-size variable
-     */
-    --font-size: 1rem;
-
-    /**
-     * Typography line-height variable
-     */
-    --line-height: 1.5;
-
-    /**
-     * Typography letter-spacing variable
-     */
-    --letter-spacing: 0;
-
-    /**
-     * Contrast color variables
-     */
-    --contrast-color--light: var(--color-gray-900);
-    --contrast-color--dark: var(--color-white);
-
-    /**
-     * Typography font size variants variables
-     */
-    --font-size-xs: calc(var(--font-size) * var(--size-multiplier-xs));
-    --font-size-sm: calc(var(--font-size) * var(--size-multiplier-sm));
-    --font-size-md: calc(var(--font-size) * var(--size-multiplier-md));
-    --font-size-lg: calc(var(--font-size) * var(--size-multiplier-lg));
-    --font-size-xl: calc(var(--font-size) * var(--size-multiplier-xl));
+  --text-color-dark--h: var(--color-dark--h);
+  --text-color-dark--s: var(--color-dark--s);
+  --text-color-dark--l: var(--color-dark--l);
+  --text-color-dark--a: var(--color-dark--a);
+  --text-color-dark: hsla(
+    var(--text-color-dark--h) var(--text-color-dark--s)
+      var(--text-color-dark--l) / var(--text-color-dark--a)
+  );
+  --text-color-weak--h: var(--color-gray-700--h);
+  --text-color-weak--s: var(--color-gray-700--s);
+  --text-color-weak--l: var(--color-gray-700--l);
+  --text-color-weak--a: var(--color-gray-700--a);
+  --text-color-weak: hsla(
+    var(--text-color-weak--h) var(--text-color-weak--s)
+      var(--text-color-weak--l) / var(--text-color-weak--a)
+  );
+  --text-color-weaker--h: var(--color-gray-500--h);
+  --text-color-weaker--s: var(--color-gray-500--s);
+  --text-color-weaker--l: var(--color-gray-500--l);
+  --text-color-weaker--a: var(--color-gray-500--a);
+  --text-color-weaker: hsla(
+    var(--text-color-weaker--h) var(--text-color-weaker--s)
+      var(--text-color-weaker--l) / var(--text-color-weaker--a)
+  );
+  --text-color-weakest--h: var(--color-gray-300--h);
+  --text-color-weakest--s: var(--color-gray-300--s);
+  --text-color-weakest--l: var(--color-gray-300--l);
+  --text-color-weakest--a: var(--color-gray-300--a);
+  --text-color-weakest: hsla(
+    var(--text-color-weakest--h) var(--text-color-weakest--s)
+      var(--text-color-weakest--l) / var(--text-color-weakest--a)
+  );
+  --text-color-light--h: var(--color-light--h);
+  --text-color-light--s: var(--color-light--s);
+  --text-color-light--l: var(--color-light--l);
+  --text-color-light--a: var(--color-light--a);
+  --text-color-light: hsla(
+    var(--text-color-light--h) var(--text-color-light--s)
+      var(--text-color-light--l) / var(--text-color-light--a)
+  );
+  --contrast-text-color-light--h: var(--color-gray-900--h);
+  --contrast-text-color-light--s: var(--color-gray-900--s);
+  --contrast-text-color-light--l: var(--color-gray-900--l);
+  --contrast-text-color-light--a: var(--color-gray-900--a);
+  --contrast-text-color-light: hsla(
+    var(--contrast-text-color-light--h) var(--contrast-text-color-light--s)
+      var(--contrast-text-color-light--l) / var(--contrast-text-color-light--a)
+  );
+  --contrast-text-color-dark--h: var(--color-white--h);
+  --contrast-text-color-dark--s: var(--color-white--s);
+  --contrast-text-color-dark--l: var(--color-white--l);
+  --contrast-text-color-dark--a: var(--color-white--a);
+  --contrast-text-color-dark: hsla(
+    var(--contrast-text-color-dark--h) var(--contrast-text-color-dark--s)
+      var(--contrast-text-color-dark--l) / var(--contrast-text-color-dark--a)
+  );
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --font-family-print: "Georgia", "Times New Roman", "Times", serif;
+  --font-family: var(--font-family-base);
+  --font-family-base-secondary: var(--font-family-base);
+  --font-family-monospace-secondary: var(--font-family-monospace);
+  --font-family-print-secondary: var(--font-family-print);
+  --font-family-secondary: var(--font-family-base-secondary);
+  --font-size: 1rem;
+  --font-size-xs: calc(var(--font-size) * var(--size-multiplier-xs));
+  --font-size-sm: calc(var(--font-size) * var(--size-multiplier-sm));
+  --font-size-md: calc(var(--font-size) * var(--size-multiplier-md));
+  --font-size-lg: calc(var(--font-size) * var(--size-multiplier-lg));
+  --font-size-xl: calc(var(--font-size) * var(--size-multiplier-xl));
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: normal;
+  --font-weight-semibold: 600;
+  --font-weight-bold: bold;
+  --font-weight-black: 900;
+  --font-weight-lighter: lighter;
+  --font-weight-bolder: bolder;
+  --font-weight: var(--font-weight-normal);
+  --line-height: 1.5;
+  --letter-spacing: 0;
+  --text-align: left;
 }

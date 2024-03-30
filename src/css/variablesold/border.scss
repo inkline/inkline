@@ -1,0 +1,20 @@
+:root {
+    /**
+     * Border variables
+     */
+    --border-top-width: 1px;
+    --border-right-width: 1px;
+    --border-bottom-width: 1px;
+    --border-left-width: 1px;
+    --border-width: var(--border-top-width) var(--border-right-width) var(--border-bottom-width) var(--border-left-width);
+    --border-top-style: solid;
+    --border-right-style: solid;
+    --border-bottom-style: solid;
+    --border-left-style: solid;
+    --border-style: var(--border-top-style) var(--border-right-style) var(--border-bottom-style) var(--border-left-style);
+    --border-top-color: var(--color-gray-200);
+    --border-right-color: var(--color-gray-200);
+    --border-bottom-color: var(--color-gray-200);
+    --border-left-color: var(--color-gray-200);
+    --border-color: var(--border-top-color) var(--border-right-color) var(--border-bottom-color) var(--border-left-color);
+}

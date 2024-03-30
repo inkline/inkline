@@ -7,13 +7,11 @@
         --input--background: var(--input--light--background, var(--color-white));
         --input--color: var(--input--light--color, var(--contrast-text-color-white));
         --input--border-color: var(--input--light--border-color, var(--color-light-shade-50));
-
         --input--disabled--background: var(
             --input--light--disabled--background,
             var(--color-light)
         );
         --input--disabled--color: var(--input--light--disabled--color, var(--text-color-weak));
-
         --input--hover--border-color: var(
             --input--light--hover--border-color,
             var(--color-light-shade-100)
@@ -22,13 +20,11 @@
             --input--light--focus--border-color,
             var(--color-primary)
         );
-
         --input--icon--color: var(--input--light--icon--color, var(--text-color-weak));
         --input--icon--hover--color: var(
             --input--light--icon--color,
             var(--contrast-text-color-light)
         );
-
         --input--placeholder--color: var(--input--light--placeholder--color, var(--color-gray-300));
         --input--prefix-suffix--color: var(
             --input--light--prefix-suffix--color,
@@ -44,25 +40,21 @@
         --input--background: var(--input--dark--background, var(--color-dark));
         --input--color: var(--input--dark--color, var(--contrast-text-color-dark));
         --input--border-color: var(--input--dark--border-color, var(--color-dark-tint-50));
-
         --input--disabled--background: var(
             --input--dark--disabled--background,
             var(--color-dark-tint-50)
         );
         --input--disabled--color: var(--input--dark--disabled--color, var(--text-color-weak));
-
         --input--hover--border-color: var(
             --input--dark--hover--border-color,
             var(--color-dark-tint-100)
         );
         --input--focus--border-color: var(--input--dark--focus--border-color, var(--color-primary));
-
         --input--icon--color: var(--input--dark--icon--color, var(--text-color-weak));
         --input--icon--hover--color: var(
             --input--dark--icon--color,
             var(--contrast-text-color-dark)
         );
-
         --input--placeholder--color: var(--input--dark--placeholder--color, var(--color-gray-600));
         --input--prefix-suffix--color: var(
             --input--dark--prefix-suffix--color,

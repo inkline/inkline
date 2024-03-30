@@ -339,19 +339,16 @@
             var(--dropdown--background),
             var(--dropdown--border-bottom-color, var(--border-bottom-color))
         );
-
         @include mixins.popup-arrow-color-variant-for-side(
             'right',
             var(--dropdown--background),
             var(--dropdown--border-left-color, var(--border-left-color))
         );
-
         @include mixins.popup-arrow-color-variant-for-side(
             'bottom',
             var(--dropdown--background),
             var(--dropdown--border-top-color, var(--border-top-color))
         );
-
         @include mixins.popup-arrow-color-variant-for-side(
             'left',
             var(--dropdown--background),

@@ -29,7 +29,7 @@ button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
-    -webkit-appearance: button;
+    appearance: button;
 
     &:not(:disabled) {
         cursor: pointer;
@@ -126,12 +126,12 @@ legend {
 // Add rounded corners on search inputs in iOS
 [type='search'] {
     outline-offset: -2px;
-    -webkit-appearance: textfield;
+    appearance: textfield;
 }
 
 // Remove the inner padding in Chrome and Safari on macOS.
 ::-webkit-search-decoration {
-    -webkit-appearance: none;
+    appearance: none;
 }
 
 // Remove padding around color pickers in webkit browsers
@@ -143,5 +143,5 @@ legend {
 // Correct the inability to style clickable types in iOS and Safari.
 ::file-selector-button {
     font: inherit;
-    -webkit-appearance: button;
+    appearance: button;
 }

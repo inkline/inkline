@@ -284,19 +284,16 @@
             var(--popover--background),
             var(--popover--border-bottom-color, var(--border-bottom-color))
         );
-
         @include mixins.popup-arrow-color-variant-for-side(
             'right',
             var(--popover--background),
             var(--popover--border-left-color, var(--border-left-color))
         );
-
         @include mixins.popup-arrow-color-variant-for-side(
             'bottom',
             var(--popover--background),
             var(--popover--border-top-color, var(--border-top-color))
         );
-
         @include mixins.popup-arrow-color-variant-for-side(
             'left',
             var(--popover--background),

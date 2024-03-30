@@ -163,11 +163,11 @@
                     var(--transition-timing-function)
                 );
                 mask-image: url($ink-chevron-down);
-                -webkit-mask-image: url($ink-chevron-down);
+                mask-image: url($ink-chevron-down);
                 mask-position: center center;
-                -webkit-mask-position: center center;
+                mask-position: center center;
                 mask-repeat: no-repeat;
-                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
             }
         }
 

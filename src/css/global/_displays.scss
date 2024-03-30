@@ -16,7 +16,7 @@
             --d#{$i}--font-family,
             var(
                 --display--font-family,
-                var(--heading--font-family, var(--font-family-secondary-base))
+                var(--heading--font-family, var(--font-family-base-secondary))
             )
         );
         font-style: var(

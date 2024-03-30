@@ -173,8 +173,8 @@
             );
             background: var(--navbar--background);
 
-            &.-focused,
-            &.-hovered,
+            &.-focus,
+            &.-hover,
             &:focus,
             &:hover {
                 color: var(--navbar--item--hover--color, var(--navbar--item--color));

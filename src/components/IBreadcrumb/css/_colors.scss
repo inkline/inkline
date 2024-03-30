@@ -1,17 +1,13 @@
+@use '../../../css/mixins/variants';
+
 /**
  * Color variants
  */
 
 .breadcrumb {
-    &.-light {
-        --breadcrumb--color: var(--breadcrumb--light--color, var(--color-dark));
-        --breadcrumb--link--color: var(--breadcrumb--light--link--color, var(--color-primary));
-        --breadcrumb--active--color: var(--breadcrumb--light--active--color, var(--color-gray-500));
-    }
-
-    &.-dark {
-        --breadcrumb--color: var(--breadcrumb--dark--color, var(--color-light));
-        --breadcrumb--link--color: var(--breadcrumb--dark--link--color, var(--color-primary));
-        --breadcrumb--active--color: var(--breadcrumb--dark--active--color, var(--color-gray-500));
+    @each $variant in light, dark {
+        @include variants.selector($variant) {
+            @include variants.color('breadcrumb', $variant);
+        }
     }
 }

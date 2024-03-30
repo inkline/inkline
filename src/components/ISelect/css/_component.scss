@@ -298,19 +298,16 @@
             var(--select--background),
             var(--select--border-bottom-color, var(--border-bottom-color))
         );
-
         @include mixins.popup-arrow-color-variant-for-side(
             'right',
             var(--select--background),
             var(--select--border-left-color, var(--border-left-color))
         );
-
         @include mixins.popup-arrow-color-variant-for-side(
             'bottom',
             var(--select--background),
             var(--select--border-top-color, var(--border-top-color))
         );
-
         @include mixins.popup-arrow-color-variant-for-side(
             'left',
             var(--select--background),
@@ -332,11 +329,11 @@
         .input-suffix > .select-caret {
             cursor: pointer;
             mask-image: url('#{icons.$ink-caret-down}');
-            -webkit-mask-image: url('#{icons.$ink-caret-down}');
+            mask-image: url('#{icons.$ink-caret-down}');
             mask-position: center center;
-            -webkit-mask-position: center center;
+            mask-position: center center;
             mask-repeat: no-repeat;
-            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
             background-color: var(--select--color);
             height: var(--select--font-size, var(--font-size));
             width: var(--select--font-size, var(--font-size));

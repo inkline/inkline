@@ -12,7 +12,7 @@
         );
         font-family: var(
             --h#{$i}--font-family,
-            var(--heading--font-family, var(--font-family-secondary-base))
+            var(--heading--font-family, var(--font-family-base-secondary))
         );
         font-style: var(--h#{$i}--font-style, var(--heading--font-style, normal));
         font-weight: var(

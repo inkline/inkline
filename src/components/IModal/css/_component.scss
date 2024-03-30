@@ -5,7 +5,7 @@
 @use '../../../css/icons';
 
 .modal-wrapper {
-    background: var(--modal--wrapper--background, rgba(0, 0, 0, 0.75));
+    background: var(--modal--wrapper--background, rgb(0 0 0 / 75%));
     position: fixed;
     top: 0;
     left: 0;
@@ -146,13 +146,13 @@
 
                 > .icon {
                     mask-image: url('#{icons.$ink-times}');
-                    -webkit-mask-image: url('#{icons.$ink-times}');
+                    mask-image: url('#{icons.$ink-times}');
                     mask-position: center center;
-                    -webkit-mask-position: center center;
+                    mask-position: center center;
                     mask-repeat: no-repeat;
-                    -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
                     mask-size: calc(var(--modal--font-size, var(--font-size)) / 2);
-                    -webkit-mask-size: calc(var(--modal--font-size, var(--font-size)) / 2);
+                    mask-size: calc(var(--modal--font-size, var(--font-size)) / 2);
                     background-color: var(--modal--header--color, var(--modal--color));
                     width: var(--modal--font-size, var(--font-size));
                     height: var(--modal--font-size, var(--font-size));
@@ -161,11 +161,11 @@
                 &:hover,
                 &:focus {
                     outline: none;
-                    background-color: rgba(0, 0, 0, 0.1);
+                    background-color: rgb(0 0 0 / 10%);
                 }
 
                 &:active {
-                    background-color: rgba(0, 0, 0, 0.15);
+                    background-color: rgb(0 0 0 / 15%);
                 }
             }
         }

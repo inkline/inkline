@@ -7771,61 +7771,61 @@
 ._font-family\:primary-base,
 ._text\:base,
 ._text\:primary-base {
-    font-family: var(--font-family-primary-base);
+    font-family: var(--font-family-base);
 }
 ._font-family\:base\!,
 ._font-family\:primary-base\!,
 ._text\:base\!,
 ._text\:primary-base\! {
-    font-family: var(--font-family-primary-base) !important;
+    font-family: var(--font-family-base) !important;
 }
 ._font-family\:monospace,
 ._font-family\:primary-monospace,
 ._text\:monospace,
 ._text\:primary-monospace {
-    font-family: var(--font-family-primary-monospace);
+    font-family: var(--font-family-monospace);
 }
 ._font-family\:monospace\!,
 ._font-family\:primary-monospace\!,
 ._text\:monospace\!,
 ._text\:primary-monospace\! {
-    font-family: var(--font-family-primary-monospace) !important;
+    font-family: var(--font-family-monospace) !important;
 }
 ._font-family\:primary-print,
 ._font-family\:print,
 ._text\:primary-print,
 ._text\:print {
-    font-family: var(--font-family-primary-print);
+    font-family: var(--font-family-print);
 }
 ._font-family\:primary-print\!,
 ._font-family\:print\!,
 ._text\:primary-print\!,
 ._text\:print\! {
-    font-family: var(--font-family-primary-print) !important;
+    font-family: var(--font-family-print) !important;
 }
 ._font-family\:secondary-base,
 ._text\:secondary-base {
-    font-family: var(--font-family-secondary-base);
+    font-family: var(--font-family-base-secondary);
 }
 ._font-family\:secondary-base\!,
 ._text\:secondary-base\! {
-    font-family: var(--font-family-secondary-base) !important;
+    font-family: var(--font-family-base-secondary) !important;
 }
 ._font-family\:secondary-monospace,
 ._text\:secondary-monospace {
-    font-family: var(--font-family-secondary-monospace);
+    font-family: var(--font-family-monospace-secondary);
 }
 ._font-family\:secondary-monospace\!,
 ._text\:secondary-monospace\! {
-    font-family: var(--font-family-secondary-monospace) !important;
+    font-family: var(--font-family-monospace-secondary) !important;
 }
 ._font-family\:secondary-print,
 ._text\:secondary-print {
-    font-family: var(--font-family-secondary-print);
+    font-family: var(--font-family-print-secondary);
 }
 ._font-family\:secondary-print\!,
 ._text\:secondary-print\! {
-    font-family: var(--font-family-secondary-print) !important;
+    font-family: var(--font-family-print-secondary) !important;
 }
 ._text\:normal,
 ._white-space\:normal {

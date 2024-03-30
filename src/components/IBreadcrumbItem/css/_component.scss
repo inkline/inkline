@@ -1,39 +1,39 @@
+@use '../../../css/mixins/components';
+@use '../../../css/functions/properties';
+
 /**
  * Breadcrumb Item
  */
 
 .breadcrumb-item {
+    @include components.padding-left('breadcrumb');
+    @include components.color('breadcrumb');
+
     margin-bottom: 0;
-    padding-left: var(--breadcrumb--padding-left, var(--padding-left));
-    color: var(--breadcrumb--color);
+
+    &:first-of-type {
+        padding-left: 0;
+    }
 
     a {
-        color: var(--breadcrumb--color);
-
-        &[href],
-        &[to] {
-            color: var(--breadcrumb--link--color, var(--breadcrumb--color));
-        }
+        @include components.color('breadcrumb');
     }
 
     &.-active {
-        color: var(--breadcrumb--active--color, var(--breadcrumb--color));
+        @include components.color('breadcrumb', 'active');
     }
 
     > span {
         display: inline-block;
     }
 
-    &:first-of-type {
-        padding-left: 0;
-    }
-
     // The separator between breadcrumbs (by default, a forward-slash: "/")
     + .breadcrumb-item {
         &::before {
-            padding-right: var(--breadcrumb--padding-right, var(--padding-right));
+            @include components.padding-right('breadcrumb');
+
             display: inline-block; // } Suppress underlining of the separator in modern browsers
-            content: var(--breadcrumb--separator, '/');
+            content: properties.generic('breadcrumb', 'separator');
         }
     }
 
@@ -60,6 +60,8 @@
 
     [href],
     [to] {
+        @include components.color('breadcrumb', 'link');
+
         cursor: pointer;
     }
 }

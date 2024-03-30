@@ -99,9 +99,9 @@
             background-color: var(--radio--color);
             margin-top: calc(var(--radio--size) / -2);
             mask-image: url('#{icons.$ink-circle}');
-            -webkit-mask-image: url('#{icons.$ink-circle}');
+            mask-image: url('#{icons.$ink-circle}');
             mask-size: var(--radio--checkmark--size) var(--radio--checkmark--size);
-            -webkit-mask-size: var(--radio--checkmark--size) var(--radio--checkmark--size);
+            mask-size: var(--radio--checkmark--size) var(--radio--checkmark--size);
         }
     }
 
@@ -128,9 +128,9 @@
             &::after {
                 content: '';
                 mask-position: center center;
-                -webkit-mask-position: center center;
+                mask-position: center center;
                 mask-repeat: no-repeat;
-                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
             }
         }
 

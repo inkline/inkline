@@ -107,9 +107,9 @@
 
         &::after {
             mask-image: url($ink-check);
-            -webkit-mask-image: url($ink-check);
+            mask-image: url($ink-check);
             mask-size: var(--checkbox--checkmark--size) var(--checkbox--checkmark--size);
-            -webkit-mask-size: var(--checkbox--checkmark--size) var(--checkbox--checkmark--size);
+            mask-size: var(--checkbox--checkmark--size) var(--checkbox--checkmark--size);
             position: absolute;
             top: 50%;
             left: 0;
@@ -152,9 +152,9 @@
             &::after {
                 content: '';
                 mask-position: center center;
-                -webkit-mask-position: center center;
+                mask-position: center center;
                 mask-repeat: no-repeat;
-                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
                 transform: scale(1);
             }
         }
@@ -195,7 +195,7 @@
 
         &:indeterminate ~ .checkbox-label::after {
             mask-image: url($ink-minus);
-            -webkit-mask-image: url($ink-minus);
+            mask-image: url($ink-minus);
         }
     }
 

@@ -1,78 +1,39 @@
+@use '../../../css/mixins/components';
+@use '../../../css/mixins/variants';
+@use '../../../css/functions/properties';
+
 /**
  * Button
  */
 
 .button {
+    @include components.background('button');
+    @include components.color('button');
+    @include components.border-width('button');
+    @include components.border-style('button');
+    @include components.border-color('button');
+    @include components.border-radius('button');
+    @include components.box-shadow('button');
+    @include components.font-size('button');
+    @include components.font-weight('button');
+    @include components.line-height('button');
+    @include components.padding('button');
+    @include components.transition('button');
+
     display: inline-flex;
-    font-weight: var(--button--font-weight, var(--font-weight-normal));
-    font-size: var(--button--font-size, var(--font-size));
-    line-height: 1;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
     user-select: none;
-    color: var(--button--color);
-    background: var(--button--background);
-    border-style: var(
-        --button--border-style,
-        var(--button--border-top-style, var(--border-top-style))
-            var(--button--border-right-style, var(--border-right-style))
-            var(--button--border-bottom-style, var(--border-bottom-style))
-            var(--button--border-left-style, var(--border-left-style))
-    );
-    border-width: var(
-        --button--border-width,
-        var(--button--border-top-width, var(--border-top-width))
-            var(--button--border-right-width, var(--border-right-width))
-            var(--button--border-bottom-width, var(--border-bottom-width))
-            var(--button--border-left-width, var(--border-left-width))
-    );
-    border-color: var(
-        --button--border-color,
-        var(--button--border-top-color, var(--border-top-color))
-            var(--button--border-right-color, var(--border-right-color))
-            var(--button--border-bottom-color, var(--border-bottom-color))
-            var(--button--border-left-color, var(--border-left-color))
-    );
-    border-radius: var(
-        --button--border-radius,
-        var(--button--border-top-left-radius, var(--border-top-left-radius))
-            var(--button--border-top-right-radius, var(--border-top-right-radius))
-            var(--button--border-bottom-right-radius, var(--border-bottom-right-radius))
-            var(--button--border-bottom-left-radius, var(--border-bottom-left-radius))
-    );
-    box-shadow: var(
-        --button--box-shadow,
-        var(--button--box-shadow-x-offset, var(--box-shadow-offset-x))
-            var(--button--box-shadow-y-offset, var(--box-shadow-offset-y))
-            var(--button--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-            var(--button--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-            var(--button--box-shadow-color, var(--box-shadow-color))
-    );
-    padding: var(
-        --button--padding,
-        var(--button--padding-top, var(--padding-top))
-            var(--button--padding-right, var(--padding-right))
-            var(--button--padding-bottom, var(--padding-bottom))
-            var(--button--padding-left, var(--padding-left))
-    );
     justify-content: center;
     align-items: center;
-    transition-property: var(
-        --button--transition-property,
-        (background-color, color, border-color)
-    );
-    transition-duration: var(--button--transition-duration, var(--transition-duration));
-    transition-timing-function: var(
-        --button--transition-timing-function,
-        var(--transition-timing-function)
-    );
 
     // Disabled state
     // Disabled state comes first so active can properly restyle
     &.-disabled,
     &:disabled {
-        opacity: var(--button--disabled--opacity, 0.8);
+        @include components.opacity('button', 'disabled');
+
         box-shadow: none;
         cursor: not-allowed;
     }
@@ -84,15 +45,15 @@
         width: 100%;
 
         + .button.-block {
-            margin-left: 0;
-            margin-top: var(--button--block--margin-top, var(--margin-top));
+            @include components.margin('button', 'block');
         }
     }
 
     // Link buttons
     // Make a button look and behave like a link
     &.-link {
-        color: var(--button--link--color, var(--button--color));
+        @include components.color('button', 'link');
+
         box-shadow: none;
         background-color: transparent;
         border-color: transparent;
@@ -100,15 +61,25 @@
         &:not(:disabled, .-disabled) {
             &:hover,
             &:focus,
+            &.-hover,
+            &.-focus,
             &:active,
-            &.-hovered,
-            &.-focused,
             &.-active {
-                color: var(--button--link--active--color, var(--button--color));
                 background-color: transparent;
                 border-color: transparent;
                 box-shadow: none;
                 text-decoration: underline;
+            }
+
+            &:hover,
+            &:focus,
+            &.-hover,
+            &.-focus {
+                @include components.color('button', 'link' 'hover');
+            }
+            &:active,
+            &.-active {
+                @include components.color('button', 'link' 'active');
             }
         }
 
@@ -126,54 +97,38 @@
         // Focus and hover state
         &:hover,
         &:focus,
-        &.-hovered,
-        &.-focused {
-            background: var(--button--hover--background, var(--button--background));
-            border-color: var(
-                --button--hover--border-color,
-                var(--button--hover--border-top-color, var(--button--border-top-color))
-                    var(--button--hover--border-right-color, var(--button--border-right-color))
-                    var(--button--hover--border-bottom-color, var(--button--border-bottom-color))
-                    var(--button--hover--border-left-color, var(--button--border-left-color))
-            );
+        &.-hover,
+        &.-focus {
+            @include components.background('button', 'hover', true);
+            @include components.border-color('button', 'hover', true);
+            @include components.color('button', 'hover', true);
+
             text-decoration: none;
-            color: var(--button--color);
             outline: 0;
         }
 
         &:active,
         &.-active {
-            background: var(--button--active--background, var(--button--background));
+            @include components.background('button', 'active', true);
+            @include components.border-color('button', 'active', true);
+            @include components.color('button', 'active', true);
         }
     }
 
     // Outline buttons
     // Remove button background and add a beautiful transition on hover
     &.-outline {
-        background: transparent;
-        color: var(--button--background);
-        border-color: var(--button--background);
-        box-shadow: none;
-
-        &:not(:disabled, .-disabled) {
-            &:hover,
-            &:focus,
-            &:active,
-            &.-hovered,
-            &.-focused,
-            &.-active {
-                border-color: var(--button--background);
-                background: var(--button--background);
-                color: var(--button--color);
-            }
+        &:not(:hover, &.-hover, :focus, &.-focus) {
+            background: transparent;
+            color: properties.background('button');
         }
     }
 
     // Circle button
     &.-circle {
+        @include components.size('button', 'circle');
+
         border-radius: 50%;
-        width: var(--button--circle--size);
-        height: var(--button--circle--size);
         padding: 0;
     }
 
@@ -183,11 +138,10 @@
     }
 
     .loader {
-        width: var(--button--font-size);
-        height: var(--button--font-size);
+        @include components.size('button', 'loader');
 
         > svg > circle {
-            stroke: var(--button--color) !important;
+            stroke: properties.color('button') !important;
         }
     }
 
@@ -200,7 +154,7 @@
 
     .button-icon {
         + .button-content {
-            margin-left: var(--button--icon--margin-right, var(--margin-right-1-2));
+            @include components.margin('button', 'icon');
         }
     }
 
@@ -209,11 +163,11 @@
     //
 
     .button-group:not(.-vertical) > &:not(:first-of-type) {
-        border-left-color: var(--button--border-left-color);
+        @include components.border-left-color('button');
     }
 
     .button-group.-vertical > &:not(:first-of-type) {
-        border-top-color: var(--button--border-top-color);
+        @include components.border-top-color('button');
     }
 }
 
