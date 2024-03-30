@@ -1,115 +1,251 @@
-import { ResolvedTheme, Resolver, Theme, ThemeVariants } from '../types';
-import { parseColor, parseRecursive, parseValue } from '../helpers';
+import {
+    codegenCssVariables,
+    defineResolver,
+    defineResolverValueFn,
+    defineResolverVariantFn,
+    createFieldWithOptionalVariantsResolveFn,
+    createFieldWithoutVariantsResolveFn,
+    createMultipleFieldsWithOptionalVariantsResolveFn
+} from '../utils';
+import {
+    RawTheme,
+    RawThemeTypographyColor,
+    RawThemeTypographyContrastColor,
+    RawThemeTypographyFontFamily,
+    RawThemeTypographyFontSize,
+    RawThemeTypographyFontSizeVariant,
+    RawThemeTypographyFontWeight,
+    RawThemeTypographyLetterSpacing,
+    RawThemeTypographyLineHeight,
+    RawThemeTypographyTextAlignment,
+    ResolvedTheme,
+    ResolvedThemeTypographyColor,
+    ResolvedThemeTypographyContrastColor,
+    ResolvedThemeTypographyFontFamily,
+    ResolvedThemeTypographyFontSize,
+    ResolvedThemeTypographyFontWeight,
+    ResolvedThemeTypographyLetterSpacing,
+    ResolvedThemeTypographyLineHeight,
+    ResolvedThemeTypographyTextAlignment
+} from '../types';
+import { fontSizeModifiers } from './modifiers';
+import { resolveColor, resolveColorVariant } from './colors';
 
-export const typographyLineHeightResolver: Resolver<
-    Theme['typography']['lineHeight'],
-    ResolvedTheme['typography']['lineHeight']
-> = {
-    name: 'typography',
-    test: /(.*)typography\.lineHeight$/,
-    skip: /^variants/,
-    set: '$1typography.lineHeight',
-    apply: (context) => parseValue(context)
-};
+/**
+ * Color
+ */
 
-export const typographyLetterSpacingResolver: Resolver<
-    Theme['typography']['letterSpacing'],
-    ResolvedTheme['typography']['letterSpacing']
-> = {
-    name: 'typography',
-    test: /(.*)typography\.letterSpacing$/,
-    skip: /^variants/,
-    set: '$1typography.letterSpacing',
-    apply: (context) => parseValue(context)
-};
+export const resolveTypographyColor = defineResolverValueFn<
+    RawThemeTypographyColor,
+    ResolvedThemeTypographyColor
+>(resolveColor);
 
-export const typographyFontSizeResolver: Resolver<
-    Theme['typography']['fontSize'],
+export const resolveTypographyColorVariant = defineResolverVariantFn<
+    RawThemeTypographyColor,
+    ResolvedThemeTypographyColor
+>(resolveColorVariant);
+
+export const typographyColorResolver = defineResolver<
+    RawTheme['typography']['color'],
+    ResolvedTheme['typography']['color']
+>({
+    key: 'typography.color',
+    resolve: createMultipleFieldsWithOptionalVariantsResolveFn(
+        resolveTypographyColor,
+        resolveTypographyColorVariant
+    )
+});
+
+/**
+ * Contrast color
+ */
+
+export const resolveTypographyContrastColor = defineResolverValueFn<
+    RawThemeTypographyContrastColor,
+    ResolvedThemeTypographyContrastColor
+>(resolveColor);
+
+export const resolveTypographyContrastColorVariant = defineResolverVariantFn<
+    RawThemeTypographyContrastColor,
+    ResolvedThemeTypographyContrastColor
+>(resolveColorVariant);
+
+export const typographyContrastColorResolver = defineResolver<
+    RawTheme['typography']['contrastColor'],
+    ResolvedTheme['typography']['contrastColor']
+>({
+    key: 'typography.contrastColor',
+    resolve: createMultipleFieldsWithOptionalVariantsResolveFn(
+        resolveTypographyContrastColor,
+        resolveTypographyContrastColorVariant
+    )
+});
+
+/**
+ * Font family
+ */
+
+export const resolveTypographyFontFamily = defineResolverValueFn<
+    RawThemeTypographyFontFamily,
+    ResolvedThemeTypographyFontFamily
+>((fontFamily, meta) => {
+    return fontFamily;
+});
+
+export const resolveTypographyFontFamilyVariant = defineResolverVariantFn<
+    RawThemeTypographyFontFamily,
+    ResolvedThemeTypographyFontFamily
+>(resolveTypographyFontFamily);
+
+export const typographyFontFamilyResolver = defineResolver<
+    RawTheme['typography']['fontFamily'],
+    ResolvedTheme['typography']['fontFamily']
+>({
+    key: 'typography.fontFamily',
+    resolve: createFieldWithOptionalVariantsResolveFn(
+        resolveTypographyFontFamily,
+        resolveTypographyFontFamilyVariant
+    )
+});
+
+/**
+ * Font size
+ */
+
+export const resolveTypographyFontSize = defineResolverValueFn<
+    RawThemeTypographyFontSize,
+    ResolvedThemeTypographyFontSize
+>((fontSize, meta) => {
+    return fontSize;
+});
+
+export const resolveTypographyFontSizeVariant = defineResolverVariantFn<
+    RawThemeTypographyFontSizeVariant | RawThemeTypographyFontSize,
+    ResolvedThemeTypographyFontSize
+>((variant, meta) => {
+    if (typeof variant === 'string') {
+        return resolveTypographyFontSize(variant, meta);
+    }
+
+    return Object.keys(variant).reduce<ResolvedThemeTypographyFontSize>((acc, modifierName) => {
+        if (modifierName in fontSizeModifiers) {
+            return fontSizeModifiers[modifierName as keyof typeof fontSizeModifiers](
+                acc,
+                variant[modifierName]
+            );
+        }
+
+        return acc;
+    }, codegenCssVariables.get('font-size'));
+});
+
+export const typographyFontSizeResolver = defineResolver<
+    RawTheme['typography']['fontSize'],
     ResolvedTheme['typography']['fontSize']
-> = {
-    name: 'typography',
-    test: /(.*)typography\.fontSize$/,
-    skip: /^variants/,
-    set: '$1typography.fontSize',
-    apply: (context) => parseValue(context)
-};
+>({
+    key: 'typography.fontSize',
+    resolve: createFieldWithOptionalVariantsResolveFn(
+        resolveTypographyFontSize,
+        resolveTypographyFontSizeVariant
+    )
+});
 
-export const typographyFontSizeVariantResolver: Resolver<
-    ThemeVariants['typography']['fontSize'][string],
-    ThemeVariants['typography']['fontSize'][string]
-> = {
-    name: 'typography',
-    test: /(.*)variants\.typography\.fontSize$/,
-    set: '$1variants.typography.fontSize',
-    apply: (context) =>
-        typeof context.value === 'object' ? parseRecursive(context) : parseValue(context)
-};
+/**
+ * Font weight
+ */
 
-export const typographyFontWeightResolver: Resolver<
-    Theme['typography']['fontWeight'][string],
-    ResolvedTheme['typography']['fontWeight'][string]
-> = {
-    name: 'typography',
-    test: /(.*)typography.fontWeight\.([\w-]+)$/,
-    skip: /^variants/,
-    set: '$1typography.fontWeight.$2',
-    apply: (context) => parseValue(context)
-};
+export const resolveTypographyFontWeight = defineResolverValueFn<
+    RawThemeTypographyFontWeight,
+    ResolvedThemeTypographyFontWeight
+>((fontWeight, meta) => {
+    return fontWeight;
+});
 
-export const typographyFontFamilyResolver: Resolver<
-    Theme['typography']['fontFamily'][string][string],
-    ResolvedTheme['typography']['fontFamily'][string][string]
-> = {
-    name: 'typography',
-    test: /(.*)typography.fontFamily$/,
-    skip: /^variants/,
-    set: ['$1typography.fontFamily.primary.base', '$1typography.fontFamily.secondary.base'],
-    guard: (context) => typeof context.value === 'string',
-    apply: (context) => parseValue(context)
-};
+export const resolveTypographyFontWeightVariant = defineResolverVariantFn<
+    RawThemeTypographyFontWeight,
+    ResolvedThemeTypographyFontWeight
+>(resolveTypographyFontWeight);
 
-export const typographyFontFamilyGroupResolver: Resolver<
-    Theme['typography']['fontFamily'][string][string],
-    ResolvedTheme['typography']['fontFamily'][string][string]
-> = {
-    name: 'typography',
-    test: /(.*)typography.fontFamily\.(primary|secondary)$/,
-    skip: /^variants/,
-    set: '$1typography.fontFamily.$2.base',
-    guard: (context) => typeof context.value === 'string',
-    apply: (context) => parseValue(context)
-};
+export const typographyFontWeightResolver = defineResolver<
+    RawTheme['typography']['fontWeight'],
+    ResolvedTheme['typography']['fontWeight']
+>({
+    key: 'typography.fontWeight',
+    resolve: createFieldWithOptionalVariantsResolveFn(
+        resolveTypographyFontWeight,
+        resolveTypographyFontWeightVariant
+    )
+});
 
-export const typographyFontFamilyTypeResolver: Resolver<
-    Theme['typography']['fontFamily'][string][string],
-    ResolvedTheme['typography']['fontFamily'][string][string]
-> = {
-    name: 'typography',
-    test: /(.*)typography.fontFamily\.(primary|secondary)\.([\w-]+)$/,
-    skip: /^variants/,
-    set: '$1typography.fontFamily.$2.$3',
-    apply: (context) => parseValue(context)
-};
+/**
+ * Letter spacing
+ */
 
-export const typographyContrastColorResolver: Resolver<
-    Theme['color'][string],
-    ResolvedTheme['color'][string]
-> = {
-    name: 'color',
-    test: /(.*)contrastColor\.([\w-]+)$/,
-    skip: /^variants/,
-    set: '$1contrastColor.$2',
-    apply: (context) => parseColor(context)
-};
+export const resolveTypographyLetterSpacing = defineResolverValueFn<
+    RawThemeTypographyLetterSpacing,
+    ResolvedThemeTypographyLetterSpacing
+>((letterSpacing, meta) => {
+    return letterSpacing;
+});
 
-export const typographyResolvers = [
-    typographyLineHeightResolver,
-    typographyLetterSpacingResolver,
-    typographyFontSizeResolver,
-    typographyFontSizeVariantResolver,
-    typographyFontWeightResolver,
-    typographyFontFamilyResolver,
-    typographyFontFamilyGroupResolver,
-    typographyFontFamilyTypeResolver,
-    typographyContrastColorResolver
-];
+export const resolveTypographyLetterSpacingVariant = defineResolverVariantFn<
+    RawThemeTypographyLetterSpacing,
+    ResolvedThemeTypographyLetterSpacing
+>(resolveTypographyLetterSpacing);
+
+export const typographyLetterSpacingResolver = defineResolver<
+    RawTheme['typography']['letterSpacing'],
+    ResolvedTheme['typography']['letterSpacing']
+>({
+    key: 'typography.letterSpacing',
+    resolve: createFieldWithOptionalVariantsResolveFn(
+        resolveTypographyLetterSpacing,
+        resolveTypographyLetterSpacingVariant
+    )
+});
+
+/**
+ * Line height
+ */
+
+export const resolveTypographyLineHeight = defineResolverValueFn<
+    RawThemeTypographyLineHeight,
+    ResolvedThemeTypographyLineHeight
+>((lineHeight, meta) => {
+    return lineHeight;
+});
+
+export const resolveTypographyLineHeightVariant = defineResolverVariantFn<
+    RawThemeTypographyLineHeight,
+    ResolvedThemeTypographyLineHeight
+>(resolveTypographyLineHeight);
+
+export const typographyLineHeightResolver = defineResolver<
+    RawTheme['typography']['lineHeight'],
+    ResolvedTheme['typography']['lineHeight']
+>({
+    key: 'typography.lineHeight',
+    resolve: createFieldWithOptionalVariantsResolveFn(
+        resolveTypographyLineHeight,
+        resolveTypographyLineHeightVariant
+    )
+});
+
+/**
+ * Text alignment
+ */
+
+export const resolveTypographyTextAlignment = defineResolverValueFn<
+    RawThemeTypographyTextAlignment,
+    ResolvedThemeTypographyTextAlignment
+>((lineHeight, meta) => {
+    return lineHeight;
+});
+
+export const typographyTextAlignmentResolver = defineResolver<
+    RawTheme['typography']['textAlign'],
+    ResolvedTheme['typography']['textAlign']
+>({
+    key: 'typography.textAlign',
+    resolve: createFieldWithoutVariantsResolveFn(resolveTypographyTextAlignment)
+});

@@ -8,23 +8,10 @@ import {
     colorResolvers,
     marginResolvers,
     paddingResolvers,
-    scaleRatioResolvers,
+    scaleRatiosResolver,
     sizeResolvers,
     typographyResolvers
 } from './resolvers';
-import {
-    animationGenerators,
-    borderGenerators,
-    borderRadiusGenerators,
-    boxShadowGenerators,
-    breakpointsGenerators,
-    colorGenerators,
-    marginGenerators,
-    paddingGenerators,
-    scaleRatioGenerators,
-    sizeGenerators,
-    typographyGenerators
-} from './generators';
 
 const colorShadeAndTintVariants: Record<string, ColorPropertyVariant> = {
     'shade-150': { darken: 15 },
@@ -80,22 +67,9 @@ export const defaultConfig: Configuration = {
         ...colorResolvers,
         ...marginResolvers,
         ...paddingResolvers,
-        ...scaleRatioResolvers,
+        ...scaleRatiosResolver,
         ...sizeResolvers,
         ...typographyResolvers
-    ],
-    generators: [
-        ...animationGenerators,
-        ...borderGenerators,
-        ...borderRadiusGenerators,
-        ...boxShadowGenerators,
-        ...breakpointsGenerators,
-        ...colorGenerators,
-        ...marginGenerators,
-        ...paddingGenerators,
-        ...scaleRatioGenerators,
-        ...sizeGenerators,
-        ...typographyGenerators
     ],
     theme: {
         default: {

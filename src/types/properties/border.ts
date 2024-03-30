@@ -1,13 +1,11 @@
-import * as CSS from 'csstype';
-import { SidesProperty } from './sides';
+export type Border = {
+    width: string;
+    style: string;
+    color: string;
+};
 
-export interface Border {
-    width: CSS.Property.BorderWidth;
-    style: CSS.Property.BorderStyle;
-    color: CSS.Property.BorderColor;
-    [key: string]: CSS.Property.BorderWidth | CSS.Property.BorderStyle | CSS.Property.BorderColor;
-}
+export type BorderSide = 'top' | 'right' | 'bottom' | 'left';
 
-export type BorderProperty = CSS.Property.Border | Border | Partial<SidesProperty<Border>>;
+export type RawThemeBorder = string | Border | Record<BorderSide, string | Border>;
 
-export type ResolvedBorderProperty = SidesProperty<Border>;
+export type ResolvedThemeBorder = Record<BorderSide, Border>;

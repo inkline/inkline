@@ -1,79 +1,42 @@
-import { Border, ResolvedTheme, Resolver } from '../types';
-import { parseGenericComposedValue, parseValue } from '../helpers';
+import {
+    defineResolver,
+    defineResolverValueFn,
+    defineResolverVariantFn,
+    createFieldWithOptionalVariantsResolveFn
+} from '../utils';
+import { Border, RawTheme, RawThemeBorder, ResolvedTheme, ResolvedThemeBorder } from '../types';
 
-export const setBorderFieldsFn = (target: Border, [width, style, color]: string[]) => {
-    target.width = width;
-    target.style = style;
-    target.color = color;
-};
+export function assignBorder(borderString: string): Border {
+    const [width, style, color] = borderString.split(/\s+/);
+    return { width, style, color };
+}
 
-export const borderResolver: Resolver<string, ResolvedTheme['border']> = {
-    name: 'border',
-    test: /(.*)border$/,
-    skip: /^variants/,
-    set: '$1border',
-    guard: (context) => typeof context.value === 'string',
-    apply: (context) => {
-        const border = parseGenericComposedValue(context, setBorderFieldsFn);
+export const resolveBorder = defineResolverValueFn<RawThemeBorder, ResolvedThemeBorder>(
+    (border) => {
+        let top: Border, right: Border, bottom: Border, left: Border;
 
-        return {
-            top: border,
-            right: border,
-            bottom: border,
-            left: border
-        };
+        if (typeof border === 'string') {
+            const parsedBorder = assignBorder(border);
+            [top, right, bottom, left] = [parsedBorder, parsedBorder, parsedBorder, parsedBorder];
+        } else if ('width' in border || 'style' in border || 'color' in border) {
+            [top, right, bottom, left] = [border, border, border, border] as Border[];
+        } else {
+            top = typeof border.top === 'string' ? assignBorder(border.top) : border.top;
+            right = typeof border.right === 'string' ? assignBorder(border.right) : border.right;
+            bottom =
+                typeof border.bottom === 'string' ? assignBorder(border.bottom) : border.bottom;
+            left = typeof border.left === 'string' ? assignBorder(border.left) : border.left;
+        }
+
+        return { top, right, bottom, left };
     }
-};
+);
 
-export const borderDefaultResolver: Resolver<string, ResolvedTheme['border']> = {
-    name: 'border',
-    test: /(.*)border\.default$/,
-    skip: /^variants/,
-    set: '$1border',
-    apply: (context) => {
-        const border = parseGenericComposedValue(context, setBorderFieldsFn);
+export const resolveBorderVariant = defineResolverVariantFn<RawThemeBorder, ResolvedThemeBorder>(
+    resolveBorder
+);
 
-        return {
-            top: border,
-            right: border,
-            bottom: border,
-            left: border
-        };
-    }
-};
-
-export const borderFieldResolver: Resolver<
-    Border[string],
-    ResolvedTheme['border'][string][string]
-> = {
-    name: 'border',
-    test: /(.*)border\.(width|style|color)$/,
-    skip: /^variants/,
-    set: ['$1border.top.$2', '$1border.right.$2', '$1border.bottom.$2', '$1border.left.$2'],
-    apply: (context) => parseValue(context)
-};
-
-export const borderSideResolver: Resolver<string, ResolvedTheme['border'][string]> = {
-    name: 'border',
-    test: /(.*)border\.(top|right|bottom|left)$/,
-    skip: /^variants/,
-    set: '$1border.$2',
-    guard: (context) => typeof context.value === 'string',
-    apply: (context) => parseGenericComposedValue(context, setBorderFieldsFn)
-};
-
-export const borderSideFieldResolver: Resolver<string, ResolvedTheme['border'][string][string]> = {
-    name: 'border',
-    test: /(.*)border\.([\w-]+)\.([\w-]+)$/,
-    skip: /^variants/,
-    set: '$1border.$2.$3',
-    apply: (context) => parseValue(context)
-};
-
-export const borderResolvers = [
-    borderResolver,
-    borderDefaultResolver,
-    borderFieldResolver,
-    borderSideResolver,
-    borderSideFieldResolver
-];
+export const borderResolver = defineResolver<RawTheme['border'], ResolvedTheme['border']>({
+    key: 'border',
+    resolve: createFieldWithOptionalVariantsResolveFn(resolveBorder, resolveBorderVariant)
+});

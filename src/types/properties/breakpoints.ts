@@ -1,3 +1,3 @@
-export type BreakpointsProperty = Record<string, number | string>;
+export type RawThemeBreakpoint = string | number;
 
-export type ResolvedBreakpointsProperty = Record<string, string>;
+export type ResolvedThemeBreakpoint = string | number;

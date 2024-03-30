@@ -1,44 +1,41 @@
-import { ResolvedTheme } from './theme';
-import { Plugin } from './plugin';
+import type { ResolvedTheme } from './theme';
 
-export type GeneratorLocation = 'default' | 'root' | string;
+export enum GeneratorType {
+    CssVariables = 'css-variables',
+    Mixins = 'mixins',
+    Default = 'default'
+}
 
 export enum GeneratorPriority {
-    High = 0,
-    Medium = 1,
-    Low = 2
+    Highest = 0,
+    High = 1,
+    Medium = 2,
+    Low = 3,
+    Lowest = 4
 }
 
-export interface CodegenGroup {
-    name: string;
-    lines: string[];
-    location: GeneratorLocation;
-    priority: GeneratorPriority;
-    subgroup?: string;
+export interface GeneratorMeta {
+    path: string[];
+    theme: ResolvedTheme;
+    themeName: 'default' | string;
+    generators: Generator<any>[];
 }
 
-export interface IntermediaryCodegenFile {
-    name: string;
-    locations: Record<GeneratorLocation, CodegenGroup[]>;
-}
-
-export interface CodegenFile {
-    name: string;
-    contents: string;
-}
-
-export interface Generator<ValueType = any> extends Plugin<ResolvedTheme, ValueType, string[]> {
-    /**
-     * The priority of the generated code. High priority means that other generators depend on this one.
-     *
-     * @example GeneratorPriority.High
-     */
+export interface Generator<Resolved> {
+    key: string;
+    type: GeneratorType;
     priority?: GeneratorPriority;
+    generate: (value: Resolved, meta: GeneratorMeta) => string[];
+}
 
-    /**
-     * The location of the generated code. Root means that the generated code is placed inside the :root selector.
-     *
-     * @example GeneratorLocation.Root
-     */
-    location?: GeneratorLocation;
+export type GenerateValueFn<ResolvedValue> = (
+    value: ResolvedValue,
+    meta: GeneratorMeta
+) => string[];
+
+export interface GeneratorChunk {
+    path: string[];
+    type: GeneratorType;
+    priority: GeneratorPriority;
+    content: string[];
 }

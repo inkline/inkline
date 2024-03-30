@@ -12,4 +12,4 @@ export const scaleRatioResolver: Resolver<
     apply: (context) => parseValue(context)
 };
 
-export const scaleRatioResolvers = [scaleRatioResolver];
+export const scaleRatiosResolver = [scaleRatioResolver];
