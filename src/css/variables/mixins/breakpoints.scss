@@ -71,21 +71,20 @@
     @content;
   }
 }
-@mixin breakpoint-2xl-down {
+@mixin breakpoint-xxl-down {
   @content;
 }
-@mixin breakpoint-2xl-up {
+@mixin breakpoint-xxl-up {
   @media screen and (min-width: 1400px) {
     @content;
   }
 }
-@mixin breakpoint-2xl {
+@mixin breakpoint-xxl {
   @media screen and (min-width: 1400px) {
     @content;
   }
 }
-$columns: 12 !default;
-$breakpoint-keys: ("xs", "sm", "md", "lg", "xl", "2xl") !default;
+$breakpoint-keys: ("xs", "sm", "md", "lg", "xl", "xxl") !default;
 @mixin breakpoint-down($key) {
   @if $key == "xs" {
     @include breakpoint-xs-down {
@@ -107,11 +106,11 @@ $breakpoint-keys: ("xs", "sm", "md", "lg", "xl", "2xl") !default;
     @include breakpoint-xl-down {
       @content;
     }
-  } @else if $key == "2xl" {
-    @include breakpoint-2xl-down {
+  } @else if $key == "xxl" {
+    @include breakpoint-xxl-down {
       @content;
     }
-  } @else  {
+  } @else {
     @content;
   }
 }
@@ -136,11 +135,11 @@ $breakpoint-keys: ("xs", "sm", "md", "lg", "xl", "2xl") !default;
     @include breakpoint-xl-up {
       @content;
     }
-  } @else if $key == "2xl" {
-    @include breakpoint-2xl-up {
+  } @else if $key == "xxl" {
+    @include breakpoint-xxl-up {
       @content;
     }
-  } @else  {
+  } @else {
     @content;
   }
 }
@@ -165,11 +164,11 @@ $breakpoint-keys: ("xs", "sm", "md", "lg", "xl", "2xl") !default;
     @include breakpoint-xl {
       @content;
     }
-  } @else if $key == "2xl" {
-    @include breakpoint-2xl {
+  } @else if $key == "xxl" {
+    @include breakpoint-xxl {
       @content;
     }
-  } @else  {
+  } @else {
     @content;
   }
 }

@@ -1,8 +1,19 @@
+@use '../../../css/mixins/components';
+
 /**
  * Toast
  */
 
 .toast {
+    @include components.background('toast');
+    @include components.border-radius('toast');
+    @include components.border-width('toast');
+    @include components.border-style('toast');
+    @include components.border-color('toast');
+    @include components.box-shadow('toast');
+    @include components.color('toast');
+    @include components.font-size('toast');
+
     position: relative;
     display: flex;
     flex-direction: row;
@@ -10,52 +21,7 @@
     min-width: 0;
     word-wrap: break-word;
     overflow: hidden;
-    border-style: var(
-        --toast--border-style,
-        var(--toast--border-top-style, var(--border-top-style))
-            var(--toast--border-right-style, var(--border-right-style))
-            var(--toast--border-bottom-style, var(--border-bottom-style))
-            var(--toast--border-left-style, var(--border-left-style))
-    );
-    border-width: var(
-        --toast--border-width,
-        var(--toast--border-top-width, var(--border-top-width))
-            var(--toast--border-right-width, var(--border-right-width))
-            var(--toast--border-bottom-width, var(--border-bottom-width))
-            var(--toast--border-left-width, var(--border-left-width))
-    );
-    border-color: var(
-        --toast--border-color,
-        var(--toast--border-top-color, var(--border-top-color))
-            var(--toast--border-right-color, var(--border-right-color))
-            var(--toast--border-bottom-color, var(--border-bottom-color))
-            var(--toast--border-left-color, var(--border-left-color))
-    );
-    border-radius: var(
-        --toast--border-radius,
-        var(--toast--border-top-left-radius, var(--border-top-left-radius))
-            var(--toast--border-top-right-radius, var(--border-top-right-radius))
-            var(--toast--border-bottom-right-radius, var(--border-bottom-right-radius))
-            var(--toast--border-bottom-left-radius, var(--border-bottom-left-radius))
-    );
-    font-size: var(--toast--font-size, var(--font-size));
-    box-shadow: var(
-        --toast--box-shadow,
-        var(--toast--box-shadow-x-offset, var(--box-shadow-offset-x))
-            var(--toast--box-shadow-y-offset, var(--box-shadow-offset-y))
-            var(--toast--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-            var(--toast--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-            var(--toast--box-shadow-color, var(--box-shadow-color))
-    );
-    background: var(--toast--background);
-    color: var(--toast--color);
     background-clip: border-box;
-    transition-property: var(--toast--transition-property, (background-color, color, border-color));
-    transition-duration: var(--toast--transition-duration, var(--transition-duration));
-    transition-timing-function: var(
-        --toast--transition-timing-function,
-        var(--transition-timing-function)
-    );
 
     // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom.
@@ -75,38 +41,29 @@
     }
 
     a {
-        color: var(--toast--link--color, var(--toast--color));
-        font-weight: 600;
-        transition-property: var(--toast--link--transition-property, color);
-        transition-duration: var(--toast--transition-duration, var(--transition-duration));
-        transition-timing-function: var(
-            --toast--transition-timing-function,
-            var(--transition-timing-function)
-        );
+        @include components.color('toast', 'link', true);
+        @include components.font-weight('toast', 'link', true);
+        @include components.transition('toast', 'link', true);
 
         &:hover,
         &:focus {
-            color: var(--toast--link-color, var(--color));
+            @include components.color('toast', 'link' 'hover', true);
         }
     }
 
     code {
-        background: var(--toast--code--background);
-        color: var(--toast--code--color);
+        @include components.background('toast', 'code', true);
+        @include components.color('toast', 'code', true);
     }
 
     > .toast-content {
+        @include components.padding('toast');
+
         flex: 0 1 100%;
-        padding: var(
-            --toast--padding,
-            var(--toast--padding-top, var(--padding-top))
-                var(--toast--padding-right, var(--padding-right))
-                var(--toast--padding-bottom, var(--padding-bottom))
-                var(--toast--padding-left, var(--padding-left))
-        );
 
         > .toast-title {
-            font-weight: var(--toast--title--font-weight, var(--font-weight-semibold));
+            @include components.font-weight('toast', 'title', true);
+            @include components.font-size('toast', 'title', true);
         }
 
         > hr {
@@ -124,14 +81,8 @@
     }
 
     > .toast-icon {
-        padding-left: var(--toast--padding-left, var(--padding-left));
-        border-color: var(
-            --toast--border-color,
-            var(--toast--border-top-color, var(--border-top-color))
-                var(--toast--border-right-color, var(--border-right-color))
-                var(--toast--border-bottom-color, var(--border-bottom-color))
-                var(--toast--border-left-color, var(--border-left-color))
-        );
+        @include components.margin('toast', 'icon', true);
+
         flex: 1;
         display: inline-flex;
         align-items: center;
@@ -139,28 +90,31 @@
     }
 
     > .toast-dismiss {
+        @include components.margin('toast', 'dismiss', true);
+
         flex: 0 0 auto;
         cursor: pointer;
         display: inline-block;
         text-align: center;
-        margin-right: var(--toast--padding-left, var(--padding-left));
     }
 
     > .toast-progress {
+        @include components.background('toast', 'progress');
+        @include components.height('toast', 'progress');
+
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
-        height: var(--toast--progress--height, 0.25rem);
-        background: var(--toast--progress--background);
         z-index: 1;
 
         .toast-progress-bar {
+            @include components.background('toast', 'progress-bar');
+
             animation: toast-duration var(--toast--duration) forwards;
             transform-origin: left center;
             width: 100%;
             height: 100%;
-            background: var(--toast--progress-bar--background);
         }
     }
 }

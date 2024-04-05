@@ -1,11 +1,22 @@
+@use '../../../css/mixins/components';
+
 /**
  * Pagination
  */
 
 .pagination {
+    @include components.background('pagination');
+    @include components.border-width('pagination');
+    @include components.border-style('pagination');
+    @include components.border-color('pagination');
+    @include components.border-radius('pagination');
+    @include components.box-shadow('pagination');
+    @include components.color('pagination');
+    @include components.font-size('pagination');
+    @include components.padding('pagination');
+
     display: flex;
     max-width: 100%;
-    font-size: var(--pagination--font-size, var(--font-size));
 
     .pagination-items {
         list-style: none;
@@ -16,127 +27,63 @@
     }
 
     .pagination-item {
+        @include components.background('pagination', 'item', true);
+        @include components.border-width('pagination', 'item', true);
+        @include components.border-style('pagination', 'item', true);
+        @include components.border-color('pagination', 'item', true);
+        @include components.border-radius('pagination', 'item', true);
+        @include components.box-shadow('pagination', 'item', true);
+        @include components.color('pagination', 'item', true);
+        @include components.min-width('pagination', 'item', true);
+        @include components.margin('pagination', 'item', true);
+        @include components.padding('pagination', 'item', true);
+        @include components.transition('pagination', 'item', true);
+
         display: inline-flex;
-        border-color: var(
-            --pagination--border-color,
-            var(--pagination--border-top-color, var(--border-top-color))
-                var(--pagination--border-right-color, var(--border-right-color))
-                var(--pagination--border-bottom-color, var(--border-bottom-color))
-                var(--pagination--border-left-color, var(--border-left-color))
-        );
-        border-width: var(
-            --pagination--border-width,
-            var(--pagination--border-top-width, var(--border-top-width))
-                var(--pagination--border-right-width, var(--border-right-width))
-                var(--pagination--border-bottom-width, var(--border-bottom-width))
-                var(--pagination--border-left-width, var(--border-left-width))
-        );
-        border-style: var(
-            --pagination--border-style,
-            var(--pagination--border-top-style, var(--border-top-style))
-                var(--pagination--border-right-style, var(--border-right-style))
-                var(--pagination--border-bottom-style, var(--border-bottom-style))
-                var(--pagination--border-left-style, var(--border-left-style))
-        );
-        border-radius: var(
-            --pagination--border-radius,
-            var(--pagination--border-top-left-radius, var(--border-top-left-radius))
-                var(--pagination--border-top-right-radius, var(--border-top-right-radius))
-                var(--pagination--border-bottom-right-radius, var(--border-bottom-right-radius))
-                var(--pagination--border-bottom-left-radius, var(--border-bottom-left-radius))
-        );
-        box-shadow: var(
-            --pagination--box-shadow,
-            var(--pagination--box-shadow-x-offset, var(--box-shadow-offset-x))
-                var(--pagination--box-shadow-y-offset, var(--box-shadow-offset-y))
-                var(--pagination--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                var(--pagination--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                var(--pagination--box-shadow-color, var(--box-shadow-color))
-        );
-        padding: var(
-            --pagination--padding,
-            var(--pagination--padding-top, var(--padding-top))
-                var(--pagination--padding-right, var(--padding-right))
-                var(--pagination--padding-bottom, var(--padding-bottom))
-                var(--pagination--padding-left, var(--padding-left))
-        );
-        min-width: var(--pagination--min-width, 40px);
-        color: var(--pagination--color);
-        background-color: var(--pagination--background);
-        margin: var(
-            --pagination--margin,
-            var(--pagination--margin-top, var(--margin-top))
-                var(--pagination--margin-right, var(--margin-right))
-                var(--pagination--margin-bottom, var(--margin-bottom))
-                var(--pagination--margin-left, var(--margin-left))
-        );
         text-align: center;
         justify-content: center;
         cursor: pointer;
-        transition-property: var(--pagination--transition-property, (background, color, border));
-        transition-timing-function: var(
-            --pagination--transition-timing-function,
-            var(--transition-timing-function)
-        );
-        transition-duration: var(--pagination--transition-duration, var(--transition-duration));
 
         &:hover:not(.-disabled),
         &:focus:not(.-disabled) {
-            background: var(--pagination--hover--background);
+            @include components.background('pagination' 'item', 'hover', true);
         }
 
         &.-active {
-            background: var(--pagination--active--background, var(--pagination--background));
-            border-color: var(
-                --pagination--active--border-color,
-                var(
-                        --pagination--active--border-top-color,
-                        var(--pagination--border-top-color, var(--border-top-color))
-                    )
-                    var(
-                        --pagination--active--border-right-color,
-                        var(--pagination--border-right-color, var(--border-right-color))
-                    )
-                    var(
-                        --pagination--active--border-bottom-color,
-                        var(--pagination--border-bottom-color, var(--border-bottom-color))
-                    )
-                    var(
-                        --pagination--active--border-left-color,
-                        var(--pagination--border-left-color, var(--border-left-color))
-                    )
-            );
-            color: var(--pagination--active--color, var(--pagination--color));
-            font-weight: bold;
+            @include components.background('pagination' 'item', 'active', true);
+            @include components.border-color('pagination' 'item', 'active', true);
+            @include components.color('pagination' 'item', 'active', true);
+            @include components.font-weight('pagination', 'item' 'active', true);
 
             &:hover,
             &:focus {
-                background: var(--pagination--active--background, var(--pagination--background));
+                @include components.background('pagination' 'item', 'active' 'hover', true);
             }
         }
 
         &.-disabled {
+            @include components.color('pagination' 'item', 'disabled', true);
+            @include components.opacity('pagination', 'item' 'disabled', true);
+
             cursor: default;
-            color: var(--pagination--disabled--color, var(--pagination--color));
-            opacity: var(--pagination--disabled--opacity, 0.75);
         }
 
-        &.-quick-next,
-        &.-quick-previous {
-            &.-disabled {
-                color: var(
-                    --pagination--quick--disabled--border-color,
-                    var(--pagination--disabled--color)
-                );
-                border-color: var(
-                    --pagination--quick--disabled--border-color,
-                    var(--pagination--background)
-                );
-                opacity: var(
-                    --pagination--quick--disabled--opacity,
-                    var(--pagination--disabled--opacity, 0.75)
-                );
-            }
-        }
+        //&.-quick-next,
+        //&.-quick-previous {
+        //    &.-disabled {
+        //        color: var(
+        //            --pagination--quick--disabled--border-color,
+        //            var(--pagination--disabled--color)
+        //        );
+        //        border-color: var(
+        //            --pagination--quick--disabled--border-color,
+        //            var(--pagination--background)
+        //        );
+        //        opacity: var(
+        //            --pagination--quick--disabled--opacity,
+        //            var(--pagination--disabled--opacity, 0.75)
+        //        );
+        //    }
+        //}
     }
 }

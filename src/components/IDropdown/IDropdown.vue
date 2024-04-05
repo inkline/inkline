@@ -239,7 +239,9 @@ export default defineComponent({
 
         const disabled = toRef(props, 'disabled');
         provide(DropdownKey, {
+            color,
             disabled,
+            size,
             onItemClick
         });
 

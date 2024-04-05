@@ -1,3 +1,5 @@
+@use '../../../css/mixins/components';
+
 /**
  * Media
  */
@@ -14,9 +16,10 @@
     > img,
     > .img,
     > .image {
+        @include components.margin('media', 'image', true);
+
         align-self: flex-start;
         height: auto;
         flex: 0 0 auto;
-        margin-right: var(--media--image--margin-right, var(--margin-right));
     }
 }

@@ -1,37 +1,36 @@
+@use '../../../css/mixins/components';
+
 /**
  * List Group Item
  */
 
-.list-group .list-group-item {
+.list-group-item {
+    @include components.border-bottom-width('list-group', 'item', true);
+    @include components.border-bottom-style('list-group', 'item', true);
+    @include components.border-bottom-color('list-group', 'item', true);
+    @include components.padding('list-group', 'item', true);
+    @include components.transition('list-group', 'item', true);
+
     display: block;
     margin-bottom: 0;
-    border-bottom: var(--list-group--border-bottom-width, var(--border-bottom-width)) var(--list-group--border-bottom-style, var(--border-bottom-style)) var(--list-group--border-bottom-color, var(--border-bottom-color));
-    transition-property: color, border-color;
-    transition-duration: var(--transition-duration);
-    transition-timing-function: var(--transition-timing-function);
-    padding: var(
-        --list-group--padding,
-        var(--list-group--padding-top, var(--padding-top))
-            var(--list-group--padding-right, var(--padding-right))
-            var(--list-group--padding-bottom, var(--padding-bottom))
-            var(--list-group--padding-left, var(--padding-left))
-    );
 
     &.-active {
-        color: var(--list-group--active--color);
-        background: var(--list-group--active--background);
-        border-bottom-color: var(--list-group--active--border-color);
+        @include components.border-radius('list-group', 'item', true);
+        @include components.background('list-group', 'item' 'active', true);
+        @include components.border-bottom-color('list-group', 'item' 'active', true);
+        @include components.color('list-group', 'item' 'active', true);
     }
 
     &:first-child {
-        border-top-left-radius: var(--list-group--border-top-left-radius);
-        border-top-right-radius: var(--list-group--border-top-right-radius);
+        @include components.border-top-left-radius('list-group', 'item', true);
+        @include components.border-top-right-radius('list-group', 'item', true);
     }
 
     &:last-child {
+        @include components.border-bottom-left-radius('list-group', 'item', true);
+        @include components.border-bottom-right-radius('list-group', 'item', true);
+
         border-bottom-width: 0;
-        border-bottom-left-radius: var(--list-group--border-bottom-left-radius);
-        border-bottom-right-radius: var(--list-group--border-bottom-right-radius);
     }
 
     &:hover,
@@ -40,7 +39,8 @@
     }
 
     &.-disabled {
-        color: var(--list-group--disabled--color);
+        @include components.color('list-group', 'item' 'disabled', true);
+
         pointer-events: none;
         cursor: default;
     }

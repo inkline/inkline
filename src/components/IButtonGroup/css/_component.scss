@@ -1,3 +1,5 @@
+@use '../../../css/mixins/components';
+
 /**
  * Button Group
  */
@@ -19,14 +21,6 @@
         flex: 0 1 auto;
         z-index: 0;
         margin-right: 0;
-        font-size: var(--button-group--font-size, var(--button--font-size));
-        padding: var(
-            --button-group--padding,
-            var(--button-group--padding-top, var(--button--padding-top))
-                var(--button-group--padding-right, var(--button--padding-right))
-                var(--button-group--padding-bottom, var(--button--padding-bottom))
-                var(--button-group--padding-left, var(--button--padding-left))
-        );
 
         &:hover,
         &:focus,
@@ -37,8 +31,6 @@
 
         &.-circle {
             border-radius: 100%;
-            width: var(--button--circle--size);
-            height: var(--button--circle--size);
             padding: 0;
         }
     }
@@ -69,26 +61,14 @@
 
         > .button:last-child,
         > [class$='-wrapper']:last-child > * > .button:last-child {
-            border-bottom-left-radius: var(
-                --button-group--border-bottom-left-radius,
-                var(--button--border-bottom-left-radius)
-            );
-            border-bottom-right-radius: var(
-                --button-group--border-bottom-right-radius,
-                var(--button--border-bottom-right-radius)
-            );
+            @include components.border-bottom-left-radius('button-group');
+            @include components.border-bottom-right-radius('button-group');
         }
 
         > .button:first-child,
         > [class$='-wrapper']:first-child > * > .button:first-child {
-            border-top-left-radius: var(
-                --button-group--border-top-left-radius,
-                var(--button--border-top-left-radius)
-            );
-            border-top-right-radius: var(
-                --button-group--border-top-right-radius,
-                var(--button--border-top-right-radius)
-            );
+            @include components.border-top-left-radius('button-group');
+            @include components.border-top-right-radius('button-group');
         }
 
         > .button:not(:last-child),
@@ -113,26 +93,14 @@
     &:not(.-vertical) {
         > .button:last-child,
         > [class$='-wrapper']:last-child > * > .button:last-child {
-            border-top-right-radius: var(
-                --button-group--border-top-right-radius,
-                var(--button--border-top-right-radius)
-            );
-            border-bottom-right-radius: var(
-                --button-group--border-bottom-right-radius,
-                var(--button--border-bottom-right-radius)
-            );
+            @include components.border-top-right-radius('button-group');
+            @include components.border-bottom-right-radius('button-group');
         }
 
         > .button:first-child,
         > [class$='-wrapper']:first-child > * > .button:first-child {
-            border-top-left-radius: var(
-                --button-group--border-top-left-radius,
-                var(--button--border-top-left-radius)
-            );
-            border-bottom-left-radius: var(
-                --button-group--border-bottom-left-radius,
-                var(--button--border-bottom-left-radius)
-            );
+            @include components.border-top-left-radius('button-group');
+            @include components.border-bottom-left-radius('button-group');
         }
 
         > .button:not(:last-child),

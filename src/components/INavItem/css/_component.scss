@@ -1,24 +1,17 @@
+@use '../../../css/mixins/components';
+
 /**
  * Nav Item
  */
 
 .nav .nav-item {
+    @include components.color('nav', 'item', true);
+    @include components.font-size('nav', 'item', true);
+    @include components.transition('nav', 'item', true);
+    @include components.padding('nav', 'item', true);
+
     display: block;
     margin-bottom: 0;
-    transition-property: var(--nav--transition-property, background-color, border-color, color);
-    transition-timing-function: var(
-        --nav--transition-timing-function,
-        var(--transition-timing-function)
-    );
-    transition-duration: var(--nav--transition-duration, var(--transition-duration));
-    padding: var(
-        --nav--padding,
-        var(--nav--padding-top, var(--padding-top)) var(--nav--padding-right, var(--padding-right))
-            var(--nav--padding-bottom, var(--padding-bottom))
-            var(--nav--padding-left, var(--padding-left))
-    );
-    color: var(--nav--color);
-    font-size: var(--nav--font-size, var(--font-size));
 
     &:hover,
     &:focus {
@@ -27,14 +20,15 @@
     }
 
     &.-disabled {
+        @include components.color('nav', 'item' 'disabled', true);
+
         pointer-events: none;
         cursor: default;
-        color: var(--nav--disabled--color);
     }
 
     &.-active {
-        color: var(--nav--active--color);
-        font-weight: bold;
+        @include components.color('nav', 'item' 'active', true);
+        @include components.font-weight('nav', 'item' 'active', true);
     }
 
     &[to],

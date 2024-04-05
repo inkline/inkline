@@ -1,12 +1,16 @@
+@use '../../../css/mixins/components';
+@use '../../../css/functions/properties';
+
 /**
  * Loader
  */
 
 .loader {
+    @include components.width('loader');
+    @include components.height('loader');
+
     display: inline-block;
     position: relative;
-    width: var(--loader--size);
-    height: var(--loader--size);
 
     &::before {
         content: '';
@@ -30,14 +34,14 @@
     }
 
     > svg {
-        animation: loader-rotate var(--loader--animation-duration, 1.2s) linear infinite;
+        animation: loader-rotate #{properties.animation-duration('loader')} linear infinite;
         transform-origin: center center;
 
         > circle {
-            stroke: var(--loader--background);
+            stroke: properties.background('loader');
             stroke-dasharray: 89, 200;
             stroke-dashoffset: -35px;
-            animation: loader-dash var(--loader--animation-duration, 1.2s) ease-in-out infinite;
+            animation: loader-dash #{properties.animation-duration('loader')} ease-in-out infinite;
             stroke-linecap: round;
         }
     }

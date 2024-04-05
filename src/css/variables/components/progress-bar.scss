@@ -1,0 +1,157 @@
+@use "../mixins/variants";
+.progress-bar {
+  @include variants.selector("primary") {
+    @include variants.background-h("progress-bar", "primary");
+    @include variants.background-s("progress-bar", "primary");
+    @include variants.background-l("progress-bar", "primary");
+    @include variants.background-a("progress-bar", "primary");
+    @include variants.color-h("progress-bar", "primary");
+    @include variants.color-s("progress-bar", "primary");
+    @include variants.color-l("progress-bar", "primary");
+    @include variants.color-a("progress-bar", "primary");
+  }
+  @include variants.selector("secondary") {
+    @include variants.background-h("progress-bar", "secondary");
+    @include variants.background-s("progress-bar", "secondary");
+    @include variants.background-l("progress-bar", "secondary");
+    @include variants.background-a("progress-bar", "secondary");
+    @include variants.color-h("progress-bar", "secondary");
+    @include variants.color-s("progress-bar", "secondary");
+    @include variants.color-l("progress-bar", "secondary");
+    @include variants.color-a("progress-bar", "secondary");
+  }
+  @include variants.selector("info") {
+    @include variants.background-h("progress-bar", "info");
+    @include variants.background-s("progress-bar", "info");
+    @include variants.background-l("progress-bar", "info");
+    @include variants.background-a("progress-bar", "info");
+    @include variants.color-h("progress-bar", "info");
+    @include variants.color-s("progress-bar", "info");
+    @include variants.color-l("progress-bar", "info");
+    @include variants.color-a("progress-bar", "info");
+  }
+  @include variants.selector("success") {
+    @include variants.background-h("progress-bar", "success");
+    @include variants.background-s("progress-bar", "success");
+    @include variants.background-l("progress-bar", "success");
+    @include variants.background-a("progress-bar", "success");
+    @include variants.color-h("progress-bar", "success");
+    @include variants.color-s("progress-bar", "success");
+    @include variants.color-l("progress-bar", "success");
+    @include variants.color-a("progress-bar", "success");
+  }
+  @include variants.selector("warning") {
+    @include variants.background-h("progress-bar", "warning");
+    @include variants.background-s("progress-bar", "warning");
+    @include variants.background-l("progress-bar", "warning");
+    @include variants.background-a("progress-bar", "warning");
+    @include variants.color-h("progress-bar", "warning");
+    @include variants.color-s("progress-bar", "warning");
+    @include variants.color-l("progress-bar", "warning");
+    @include variants.color-a("progress-bar", "warning");
+  }
+  @include variants.selector("danger") {
+    @include variants.background-h("progress-bar", "danger");
+    @include variants.background-s("progress-bar", "danger");
+    @include variants.background-l("progress-bar", "danger");
+    @include variants.background-a("progress-bar", "danger");
+    @include variants.color-h("progress-bar", "danger");
+    @include variants.color-s("progress-bar", "danger");
+    @include variants.color-l("progress-bar", "danger");
+    @include variants.color-a("progress-bar", "danger");
+  }
+  @include variants.selector("light") {
+    @include variants.background-h("progress-bar", "light");
+    @include variants.background-s("progress-bar", "light");
+    @include variants.background-l("progress-bar", "light");
+    @include variants.background-a("progress-bar", "light");
+    @include variants.color-h("progress-bar", "light");
+    @include variants.color-s("progress-bar", "light");
+    @include variants.color-l("progress-bar", "light");
+    @include variants.color-a("progress-bar", "light");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("progress-bar", "dark");
+    @include variants.background-s("progress-bar", "dark");
+    @include variants.background-l("progress-bar", "dark");
+    @include variants.background-a("progress-bar", "dark");
+    @include variants.color-h("progress-bar", "dark");
+    @include variants.color-s("progress-bar", "dark");
+    @include variants.color-l("progress-bar", "dark");
+    @include variants.color-a("progress-bar", "dark");
+  }
+}
+:root {
+  --progress-bar--background--h: var(--color-primary--h);
+  --progress-bar--background--s: var(--color-primary--s);
+  --progress-bar--background--l: var(--color-primary--l);
+  --progress-bar--background--a: var(--color-primary--a);
+  --progress-bar--color--h: var(--contrast-text-color-dark--h);
+  --progress-bar--color--s: var(--contrast-text-color-dark--s);
+  --progress-bar--color--l: var(--contrast-text-color-dark--l);
+  --progress-bar--color--a: var(--contrast-text-color-dark--a);
+  --progress-bar--primary--background--h: var(--color-primary--h);
+  --progress-bar--primary--background--s: var(--color-primary--s);
+  --progress-bar--primary--background--l: var(--color-primary--l);
+  --progress-bar--primary--background--a: var(--color-primary--a);
+  --progress-bar--primary--color--h: var(--contrast-text-color-dark--h);
+  --progress-bar--primary--color--s: var(--contrast-text-color-dark--s);
+  --progress-bar--primary--color--l: var(--contrast-text-color-dark--l);
+  --progress-bar--primary--color--a: var(--contrast-text-color-dark--a);
+  --progress-bar--secondary--background--h: var(--color-secondary--h);
+  --progress-bar--secondary--background--s: var(--color-secondary--s);
+  --progress-bar--secondary--background--l: var(--color-secondary--l);
+  --progress-bar--secondary--background--a: var(--color-secondary--a);
+  --progress-bar--secondary--color--h: var(--contrast-text-color-dark--h);
+  --progress-bar--secondary--color--s: var(--contrast-text-color-dark--s);
+  --progress-bar--secondary--color--l: var(--contrast-text-color-dark--l);
+  --progress-bar--secondary--color--a: var(--contrast-text-color-dark--a);
+  --progress-bar--info--background--h: var(--color-info--h);
+  --progress-bar--info--background--s: var(--color-info--s);
+  --progress-bar--info--background--l: var(--color-info--l);
+  --progress-bar--info--background--a: var(--color-info--a);
+  --progress-bar--info--color--h: var(--contrast-text-color-light--h);
+  --progress-bar--info--color--s: var(--contrast-text-color-light--s);
+  --progress-bar--info--color--l: var(--contrast-text-color-light--l);
+  --progress-bar--info--color--a: var(--contrast-text-color-light--a);
+  --progress-bar--success--background--h: var(--color-success--h);
+  --progress-bar--success--background--s: var(--color-success--s);
+  --progress-bar--success--background--l: var(--color-success--l);
+  --progress-bar--success--background--a: var(--color-success--a);
+  --progress-bar--success--color--h: var(--contrast-text-color-light--h);
+  --progress-bar--success--color--s: var(--contrast-text-color-light--s);
+  --progress-bar--success--color--l: var(--contrast-text-color-light--l);
+  --progress-bar--success--color--a: var(--contrast-text-color-light--a);
+  --progress-bar--warning--background--h: var(--color-warning--h);
+  --progress-bar--warning--background--s: var(--color-warning--s);
+  --progress-bar--warning--background--l: var(--color-warning--l);
+  --progress-bar--warning--background--a: var(--color-warning--a);
+  --progress-bar--warning--color--h: var(--contrast-text-color-light--h);
+  --progress-bar--warning--color--s: var(--contrast-text-color-light--s);
+  --progress-bar--warning--color--l: var(--contrast-text-color-light--l);
+  --progress-bar--warning--color--a: var(--contrast-text-color-light--a);
+  --progress-bar--danger--background--h: var(--color-danger--h);
+  --progress-bar--danger--background--s: var(--color-danger--s);
+  --progress-bar--danger--background--l: var(--color-danger--l);
+  --progress-bar--danger--background--a: var(--color-danger--a);
+  --progress-bar--danger--color--h: var(--contrast-text-color-light--h);
+  --progress-bar--danger--color--s: var(--contrast-text-color-light--s);
+  --progress-bar--danger--color--l: var(--contrast-text-color-light--l);
+  --progress-bar--danger--color--a: var(--contrast-text-color-light--a);
+  --progress-bar--light--background--h: var(--color-white--h);
+  --progress-bar--light--background--s: var(--color-white--s);
+  --progress-bar--light--background--l: var(--color-white--l);
+  --progress-bar--light--background--a: var(--color-white--a);
+  --progress-bar--light--color--h: var(--contrast-text-color-light--h);
+  --progress-bar--light--color--s: var(--contrast-text-color-light--s);
+  --progress-bar--light--color--l: var(--contrast-text-color-light--l);
+  --progress-bar--light--color--a: var(--contrast-text-color-light--a);
+  --progress-bar--dark--background--h: var(--color-dark--h);
+  --progress-bar--dark--background--s: var(--color-dark--s);
+  --progress-bar--dark--background--l: var(--color-dark--l);
+  --progress-bar--dark--background--a: var(--color-dark--a);
+  --progress-bar--dark--color--h: var(--contrast-text-color-dark--h);
+  --progress-bar--dark--color--s: var(--contrast-text-color-dark--s);
+  --progress-bar--dark--color--l: var(--contrast-text-color-dark--l);
+  --progress-bar--dark--color--a: var(--contrast-text-color-dark--a);
+}

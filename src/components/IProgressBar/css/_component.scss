@@ -1,14 +1,17 @@
+@use '../../../css/mixins/components';
+
 /**
  * Progress bar
  */
 
 .progress-bar {
+    @include components.background('progress-bar');
+    @include components.color('progress-bar');
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     white-space: nowrap;
     height: 100%;
-    color: var(--progress-bar--color);
-    background: var(--progress-bar--background);
 }

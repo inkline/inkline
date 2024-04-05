@@ -2,6 +2,7 @@
  * Table
  */
 
+@use '../../../css/mixins/components';
 @use '../../../css/mixins';
 @use '../../../css/functions';
 
@@ -10,7 +11,7 @@
 // Generate series of `.table-responsive-*` classes for configuring the screen
 // size of where your table will overflow.
 //
-.table-wrapper {
+.table {
     display: block;
     position: relative;
 
@@ -25,124 +26,50 @@
                     overflow-x: auto;
                     -webkit-overflow-scrolling: touch;
                     -ms-overflow-style: -ms-autohiding-scrollbar;
-
-                    // Prevent double border on horizontal scroll due to use of `display: block`
-                    .table {
-                        &.-border {
-                            border: none;
-                        }
-                    }
                 }
             }
         }
     }
 
-    .table {
+    table {
+        @include components.border-top-color('table');
+        @include components.color('table');
+        @include components.margin('table');
+
         width: 100%;
         max-width: 100%;
-        margin-bottom: var(--table--margin-bottom, var(--margin-bottom));
-        border-top-color: var(
-            --table--border-color,
-            var(--table--border-top-color, var(--border-top-color))
-                var(--table--border-right-color, var(--border-right-color))
-                var(--table--border-bottom-color, var(--border-bottom-color))
-                var(--table--border-left-color, var(--border-left-color))
-        );
-        color: var(--table--color);
 
         th,
         td {
-            padding: var(
-                --table--padding,
-                var(--table--padding-top, var(--padding-top))
-                    var(--table--padding-right, var(--padding-right))
-                    var(--table--padding-bottom, var(--padding-bottom))
-                    var(--table--padding-left, var(--padding-left))
-            );
+            @include components.background('table');
+            @include components.border-width('table');
+            @include components.border-style('table');
+            @include components.border-color('table');
+            @include components.padding('table');
+            @include components.transition('table');
+
             vertical-align: top;
-            border-style: var(
-                --table--border-style,
-                var(--table--border-top-style, var(--border-top-style))
-                    var(--table--border-right-style, var(--border-right-style))
-                    var(--table--border-bottom-style, var(--border-bottom-style))
-                    var(--table--border-left-style, var(--border-left-style))
-            );
-            border-color: var(
-                --table--border-color,
-                var(--table--border-top-color, var(--border-top-color))
-                    var(--table--border-right-color, var(--border-right-color))
-                    var(--table--border-bottom-color, var(--border-bottom-color))
-                    var(--table--border-left-color, var(--border-left-color))
-            );
-            border-width: var(
-                --table--border-width,
-                var(--table--border-top-width, 0) var(--table--border-right-width, 0)
-                    var(--table--border-bottom-width, var(--border-bottom-width))
-                    var(--table--border-left-width, 0)
-            );
-            background-color: var(--table--background);
-            transition-duration: var(--table--transition-duration, var(--transition-duration));
-            transition-timing-function: var(
-                --table--transition-timing-function,
-                var(--transition-timing-function)
-            );
-            transition-property: var(--table--transition-property, color, background-color, border);
         }
 
         tbody + tbody {
-            border-top: var(
-                    --table--tbody--adjacent--border-top-width,
-                    var(--table--border-top-width, var(--border-top-width))
-                )
-                var(--table--tbody--adjacent--border-top-style, solid)
-                var(--table--tbody--adjacent--border-top-color, transparent);
-        }
-
-        th,
-        td,
-        tbody + tbody {
-            border-color: var(
-                --table--border-color,
-                var(--table--border-top-color, var(--border-top-color))
-                    var(--table--border-right-color, var(--border-right-color))
-                    var(--table--border-bottom-color, var(--border-bottom-color))
-                    var(--table--border-left-color, var(--border-left-color))
-            );
+            @include components.border-top-width('table', 'adjacent', true);
+            @include components.border-top-style('table', 'adjacent', true);
+            @include components.border-top-color('table', 'adjacent', true);
         }
 
         thead th {
+            @include components.border-bottom-width('table', 'thead' 'th', true);
+
             vertical-align: bottom;
-            border-bottom-width: var(
-                --table--thead--th--border-bottom-width,
-                var(--table--border-bottom-width, var(--border-bottom-width))
-            );
         }
     }
 
     // Condensed table w/ half padding
     //
-    &.-condensed .table {
+    &.-condensed {
         th,
         td {
-            padding: var(
-                --table--condensed--padding,
-                var(
-                        --table--condensed--padding-top,
-                        calc(var(--table--padding-top, var(--padding-top)) * 0.5)
-                    )
-                    var(
-                        --table--condensed--padding-right,
-                        calc(var(--table--padding-right, var(--padding-right)) * 0.5)
-                    )
-                    var(
-                        --table--condensed--padding-bottom,
-                        calc(var(--table--padding-bottom, var(--padding-bottom)) * 0.5)
-                    )
-                    var(
-                        --table--condensed--padding-left,
-                        calc(var(--table--padding-left, var(--padding-left)) * 0.5)
-                    )
-            );
+            @include components.padding('table', 'condensed', true);
         }
     }
 
@@ -150,58 +77,13 @@
     //
     // Add borders all around the table and between all the columns.
     //
-    &.-border .table {
-        border-style: var(
-            --table--border-style,
-            (
-                var(--table--border-top-style, var(--border-top-style))
-                    var(--table--border-right-style, var(--border-right-style))
-                    var(--table--border-bottom-style, var(--border-bottom-style))
-                    var(--table--border-left-style, var(--border-left-style))
-            )
-        );
-        border-color: var(
-            --table--border-color,
-            (
-                var(--table--border-top-color, var(--border-top-color))
-                    var(--table--border-right-color, var(--border-right-color))
-                    var(--table--border-bottom-color, var(--border-bottom-color))
-                    var(--table--border-left-color, var(--border-left-color))
-            )
-        );
-        border-width: var(
-            --table--border-width,
-            (
-                var(--table--border-top-width, var(--border-top-width))
-                    var(--table--border-right-width, var(--border-right-width))
-                    var(--table--border-bottom-width, var(--border-bottom-width))
-                    var(--table--border-left-width, var(--border-left-width))
-            )
-        );
-
-        th,
-        td {
-            border-style: var(
-                --table--border-style,
-                var(--table--border-top-style, var(--border-top-style))
-                    var(--table--border-right-style, var(--border-right-style))
-                    var(--table--border-bottom-style, var(--border-bottom-style))
-                    var(--table--border-left-style, var(--border-left-style))
-            );
-            border-color: var(
-                --table--border-color,
-                var(--table--border-top-color, var(--border-top-color))
-                    var(--table--border-right-color, var(--border-right-color))
-                    var(--table--border-bottom-color, var(--border-bottom-color))
-                    var(--table--border-left-color, var(--border-left-color))
-            );
-            border-width: var(
-                --table--border-width,
-                var(--table--border-top-width, var(--border-top-width))
-                    var(--table--border-right-width, var(--border-right-width))
-                    var(--table--border-bottom-width, var(--border-bottom-width))
-                    var(--table--border-left-width, var(--border-left-width))
-            );
+    &.-border {
+        table,
+        table th,
+        table td {
+            @include components.border-color('table');
+            @include components.border-style('table');
+            @include components.border-width('table');
         }
     }
 
@@ -209,7 +91,7 @@
     //
     // Set table cell white-space to nowrap
     //
-    &.-nowrap .table {
+    &.-nowrap {
         th,
         td {
             white-space: nowrap;
@@ -220,12 +102,12 @@
     //
     // Default zebra-stripe styles (alternating gray and transparent backgrounds)
     //
-    &.-striped .table {
-        > tr:nth-of-type(odd),
-        tbody > tr:nth-of-type(odd) {
+    &.-striped {
+        table > tr:nth-of-type(odd),
+        table tbody > tr:nth-of-type(odd) {
             th,
             td {
-                background: var(--table--striped--background);
+                @include components.background('table', 'striped', true);
             }
         }
     }
@@ -234,27 +116,12 @@
     //
     // Placed here since it has to come after the potential zebra striping
     //
-    &.-hover .table {
+    &.-hover {
         tbody tr {
-            th,
-            td {
-                transition-property: var(
-                    --table--transition-property,
-                    color,
-                    background-color,
-                    border
-                );
-                transition-duration: var(--table--transition-duration, var(--transition-duration));
-                transition-timing-function: var(
-                    --table--transition-timing-function,
-                    var(--transition-timing-function)
-                );
-            }
-
             &:hover {
                 th,
                 td {
-                    background: var(--table--hover--background);
+                    @include components.background('table', 'hover', true);
                 }
             }
         }

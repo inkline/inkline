@@ -215,10 +215,10 @@
     var(--color-gray-tint-150--h) var(--color-gray-tint-150--s)
       var(--color-gray-tint-150--l) / var(--color-gray-tint-150--a)
   );
-  --color-light--h: var(--color-gray-100--h);
-  --color-light--s: var(--color-gray-100--s);
-  --color-light--l: var(--color-gray-100--l);
-  --color-light--a: var(--color-gray-100--a);
+  --color-light--h: var(--color-gray-50--h);
+  --color-light--s: var(--color-gray-50--s);
+  --color-light--l: var(--color-gray-50--l);
+  --color-light--a: var(--color-gray-50--a);
   --color-light: hsla(
     var(--color-light--h) var(--color-light--s) var(--color-light--l) /
       var(--color-light--a)
@@ -246,30 +246,6 @@
   --color-light-shade-50: hsla(
     var(--color-light-shade-50--h) var(--color-light-shade-50--s)
       var(--color-light-shade-50--l) / var(--color-light-shade-50--a)
-  );
-  --color-light-tint-50--h: var(--color-light--h);
-  --color-light-tint-50--s: var(--color-light--s);
-  --color-light-tint-50--l: calc(var(--color-light--l) + 5%);
-  --color-light-tint-50--a: var(--color-light--a);
-  --color-light-tint-50: hsla(
-    var(--color-light-tint-50--h) var(--color-light-tint-50--s)
-      var(--color-light-tint-50--l) / var(--color-light-tint-50--a)
-  );
-  --color-light-tint-100--h: var(--color-light--h);
-  --color-light-tint-100--s: var(--color-light--s);
-  --color-light-tint-100--l: calc(var(--color-light--l) + 10%);
-  --color-light-tint-100--a: var(--color-light--a);
-  --color-light-tint-100: hsla(
-    var(--color-light-tint-100--h) var(--color-light-tint-100--s)
-      var(--color-light-tint-100--l) / var(--color-light-tint-100--a)
-  );
-  --color-light-tint-150--h: var(--color-light--h);
-  --color-light-tint-150--s: var(--color-light--s);
-  --color-light-tint-150--l: calc(var(--color-light--l) + 15%);
-  --color-light-tint-150--a: var(--color-light--a);
-  --color-light-tint-150: hsla(
-    var(--color-light-tint-150--h) var(--color-light-tint-150--s)
-      var(--color-light-tint-150--l) / var(--color-light-tint-150--a)
   );
   --color-dark--h: var(--color-gray-800--h);
   --color-dark--s: var(--color-gray-800--s);

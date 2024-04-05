@@ -102,8 +102,8 @@ export default defineComponent({
 </script>
 
 <template>
-    <div v-bind="$attrs" class="table-wrapper" :class="classes">
-        <table class="table">
+    <div v-bind="$attrs" class="table" :class="classes">
+        <table>
             <!-- @slot default Slot for table rows and data -->
             <slot />
         </table>

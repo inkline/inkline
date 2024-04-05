@@ -1,0 +1,207 @@
+@use "../mixins/variants";
+.dropdown {
+  @include variants.selector("light") {
+    @include variants.background-h("dropdown", "light");
+    @include variants.background-s("dropdown", "light");
+    @include variants.background-l("dropdown", "light");
+    @include variants.background-a("dropdown", "light");
+    @include variants.border-top-color("dropdown", "light");
+    @include variants.border-right-color("dropdown", "light");
+    @include variants.border-bottom-color("dropdown", "light");
+    @include variants.border-left-color("dropdown", "light");
+    @include variants.color-h("dropdown", "light");
+    @include variants.color-s("dropdown", "light");
+    @include variants.color-l("dropdown", "light");
+    @include variants.color-a("dropdown", "light");
+    @include variants.background-h("dropdown", "light", "header");
+    @include variants.background-s("dropdown", "light", "header");
+    @include variants.background-l("dropdown", "light", "header");
+    @include variants.background-a("dropdown", "light", "header");
+    @include variants.background-h("dropdown", "light", "footer");
+    @include variants.background-s("dropdown", "light", "footer");
+    @include variants.background-l("dropdown", "light", "footer");
+    @include variants.background-a("dropdown", "light", "footer");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("dropdown", "dark");
+    @include variants.background-s("dropdown", "dark");
+    @include variants.background-l("dropdown", "dark");
+    @include variants.background-a("dropdown", "dark");
+    @include variants.border-top-color("dropdown", "dark");
+    @include variants.border-right-color("dropdown", "dark");
+    @include variants.border-bottom-color("dropdown", "dark");
+    @include variants.border-left-color("dropdown", "dark");
+    @include variants.color-h("dropdown", "dark");
+    @include variants.color-s("dropdown", "dark");
+    @include variants.color-l("dropdown", "dark");
+    @include variants.color-a("dropdown", "dark");
+    @include variants.background-h("dropdown", "dark", "header");
+    @include variants.background-s("dropdown", "dark", "header");
+    @include variants.background-l("dropdown", "dark", "header");
+    @include variants.background-a("dropdown", "dark", "header");
+    @include variants.background-h("dropdown", "dark", "footer");
+    @include variants.background-s("dropdown", "dark", "footer");
+    @include variants.background-l("dropdown", "dark", "footer");
+    @include variants.background-a("dropdown", "dark", "footer");
+  }
+  @include variants.selector("sm") {
+    @include variants.border-top-left-radius("dropdown", "sm");
+    @include variants.border-top-right-radius("dropdown", "sm");
+    @include variants.border-bottom-right-radius("dropdown", "sm");
+    @include variants.border-bottom-left-radius("dropdown", "sm");
+    @include variants.font-size("dropdown", "sm");
+    @include variants.padding-top("dropdown", "sm");
+    @include variants.padding-right("dropdown", "sm");
+    @include variants.padding-bottom("dropdown", "sm");
+    @include variants.padding-left("dropdown", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.border-top-left-radius("dropdown", "md");
+    @include variants.border-top-right-radius("dropdown", "md");
+    @include variants.border-bottom-right-radius("dropdown", "md");
+    @include variants.border-bottom-left-radius("dropdown", "md");
+    @include variants.font-size("dropdown", "md");
+    @include variants.padding-top("dropdown", "md");
+    @include variants.padding-right("dropdown", "md");
+    @include variants.padding-bottom("dropdown", "md");
+    @include variants.padding-left("dropdown", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.border-top-left-radius("dropdown", "lg");
+    @include variants.border-top-right-radius("dropdown", "lg");
+    @include variants.border-bottom-right-radius("dropdown", "lg");
+    @include variants.border-bottom-left-radius("dropdown", "lg");
+    @include variants.font-size("dropdown", "lg");
+    @include variants.padding-top("dropdown", "lg");
+    @include variants.padding-right("dropdown", "lg");
+    @include variants.padding-bottom("dropdown", "lg");
+    @include variants.padding-left("dropdown", "lg");
+  }
+}
+:root {
+  --dropdown--background--h: var(--color-white--h);
+  --dropdown--background--s: var(--color-white--s);
+  --dropdown--background--l: var(--color-white--l);
+  --dropdown--background--a: var(--color-white--a);
+  --dropdown--box-shadow-offset-x: var(--box-shadow-offset-x);
+  --dropdown--box-shadow-offset-y: var(--box-shadow-offset-y);
+  --dropdown--box-shadow-blur-radius: var(--box-shadow-blur-radius);
+  --dropdown--box-shadow-spread-radius: var(--box-shadow-spread-radius);
+  --dropdown--box-shadow-color: var(--box-shadow-color);
+  --dropdown--border-top-width: var(--border-top-width);
+  --dropdown--border-top-style: var(--border-top-style);
+  --dropdown--border-top-color: var(--border-top-color);
+  --dropdown--border-right-width: var(--border-right-width);
+  --dropdown--border-right-style: var(--border-right-style);
+  --dropdown--border-right-color: var(--border-right-color);
+  --dropdown--border-bottom-width: var(--border-bottom-width);
+  --dropdown--border-bottom-style: var(--border-bottom-style);
+  --dropdown--border-bottom-color: var(--border-bottom-color);
+  --dropdown--border-left-width: var(--border-left-width);
+  --dropdown--border-left-style: var(--border-left-style);
+  --dropdown--border-left-color: var(--border-left-color);
+  --dropdown--border-top-left-radius: var(--border-top-left-radius);
+  --dropdown--border-top-right-radius: var(--border-top-right-radius);
+  --dropdown--border-bottom-right-radius: var(--border-bottom-right-radius);
+  --dropdown--border-bottom-left-radius: var(--border-bottom-left-radius);
+  --dropdown--color--h: var(--contrast-text-color-light--h);
+  --dropdown--color--s: var(--contrast-text-color-light--s);
+  --dropdown--color--l: var(--contrast-text-color-light--l);
+  --dropdown--color--a: var(--contrast-text-color-light--a);
+  --dropdown--padding-top: var(--padding-top);
+  --dropdown--padding-right: var(--padding-right);
+  --dropdown--padding-bottom: var(--padding-bottom);
+  --dropdown--padding-left: var(--padding-left);
+  --dropdown--transition-property: background-color, color, border-color;
+  --dropdown--transition-duration: var(--transition-duration);
+  --dropdown--transition-timing-function: var(--transition-timing-function);
+  --dropdown--min-width: 240px;
+  --dropdown--max-width: 90vw;
+  --dropdown--header--color--h: var(--dropdown--color--h);
+  --dropdown--header--color--s: var(--dropdown--color--s);
+  --dropdown--header--color--l: var(--dropdown--color--l);
+  --dropdown--header--color--a: var(--dropdown--color--a);
+  --dropdown--footer--color--h: var(--dropdown--color--h);
+  --dropdown--footer--color--s: var(--dropdown--color--s);
+  --dropdown--footer--color--l: var(--dropdown--color--l);
+  --dropdown--footer--color--a: var(--dropdown--color--a);
+  --dropdown--light--background--h: var(--color-white--h);
+  --dropdown--light--background--s: var(--color-white--s);
+  --dropdown--light--background--l: var(--color-white--l);
+  --dropdown--light--background--a: var(--color-white--a);
+  --dropdown--light--border-top-color: var(--color-light-shade-50);
+  --dropdown--light--border-right-color: var(--color-light-shade-50);
+  --dropdown--light--border-bottom-color: var(--color-light-shade-50);
+  --dropdown--light--border-left-color: var(--color-light-shade-50);
+  --dropdown--light--color--h: var(--contrast-text-color-light--h);
+  --dropdown--light--color--s: var(--contrast-text-color-light--s);
+  --dropdown--light--color--l: var(--contrast-text-color-light--l);
+  --dropdown--light--color--a: var(--contrast-text-color-light--a);
+  --dropdown--light--header--background--h: var(--color-light--h);
+  --dropdown--light--header--background--s: var(--color-light--s);
+  --dropdown--light--header--background--l: var(--color-light--l);
+  --dropdown--light--header--background--a: var(--color-light--a);
+  --dropdown--light--footer--background--h: var(--color-light--h);
+  --dropdown--light--footer--background--s: var(--color-light--s);
+  --dropdown--light--footer--background--l: var(--color-light--l);
+  --dropdown--light--footer--background--a: var(--color-light--a);
+  --dropdown--dark--background--h: var(--color-dark--h);
+  --dropdown--dark--background--s: var(--color-dark--s);
+  --dropdown--dark--background--l: var(--color-dark--l);
+  --dropdown--dark--background--a: var(--color-dark--a);
+  --dropdown--dark--border-top-color: var(--color-dark-shade-50);
+  --dropdown--dark--border-right-color: var(--color-dark-shade-50);
+  --dropdown--dark--border-bottom-color: var(--color-dark-shade-50);
+  --dropdown--dark--border-left-color: var(--color-dark-shade-50);
+  --dropdown--dark--color--h: var(--contrast-text-color-dark--h);
+  --dropdown--dark--color--s: var(--contrast-text-color-dark--s);
+  --dropdown--dark--color--l: var(--contrast-text-color-dark--l);
+  --dropdown--dark--color--a: var(--contrast-text-color-dark--a);
+  --dropdown--dark--header--background--h: var(--color-dark-shade-50--h);
+  --dropdown--dark--header--background--s: var(--color-dark-shade-50--s);
+  --dropdown--dark--header--background--l: var(--color-dark-shade-50--l);
+  --dropdown--dark--header--background--a: var(--color-dark-shade-50--a);
+  --dropdown--dark--footer--background--h: var(--color-dark-shade-50--h);
+  --dropdown--dark--footer--background--s: var(--color-dark-shade-50--s);
+  --dropdown--dark--footer--background--l: var(--color-dark-shade-50--l);
+  --dropdown--dark--footer--background--a: var(--color-dark-shade-50--a);
+  --dropdown--sm--border-top-left-radius: var(--border-top-left-radius-sm);
+  --dropdown--sm--border-top-right-radius: var(--border-top-right-radius-sm);
+  --dropdown--sm--border-bottom-right-radius: var(
+    --border-bottom-right-radius-sm
+  );
+  --dropdown--sm--border-bottom-left-radius: var(
+    --border-bottom-left-radius-sm
+  );
+  --dropdown--sm--font-size: var(--font-size-sm);
+  --dropdown--sm--padding-top: var(--padding-top-sm);
+  --dropdown--sm--padding-right: var(--padding-right-sm);
+  --dropdown--sm--padding-bottom: var(--padding-bottom-sm);
+  --dropdown--sm--padding-left: var(--padding-left-sm);
+  --dropdown--md--border-top-left-radius: var(--border-top-left-radius-md);
+  --dropdown--md--border-top-right-radius: var(--border-top-right-radius-md);
+  --dropdown--md--border-bottom-right-radius: var(
+    --border-bottom-right-radius-md
+  );
+  --dropdown--md--border-bottom-left-radius: var(
+    --border-bottom-left-radius-md
+  );
+  --dropdown--md--font-size: var(--font-size-md);
+  --dropdown--md--padding-top: var(--padding-top-md);
+  --dropdown--md--padding-right: var(--padding-right-md);
+  --dropdown--md--padding-bottom: var(--padding-bottom-md);
+  --dropdown--md--padding-left: var(--padding-left-md);
+  --dropdown--lg--border-top-left-radius: var(--border-top-left-radius-lg);
+  --dropdown--lg--border-top-right-radius: var(--border-top-right-radius-lg);
+  --dropdown--lg--border-bottom-right-radius: var(
+    --border-bottom-right-radius-lg
+  );
+  --dropdown--lg--border-bottom-left-radius: var(
+    --border-bottom-left-radius-lg
+  );
+  --dropdown--lg--font-size: var(--font-size-lg);
+  --dropdown--lg--padding-top: var(--padding-top-lg);
+  --dropdown--lg--padding-right: var(--padding-right-lg);
+  --dropdown--lg--padding-bottom: var(--padding-bottom-lg);
+  --dropdown--lg--padding-left: var(--padding-left-lg);
+}

@@ -20,26 +20,41 @@
     $elementOrState: null,
     $fallback: false
 ) {
+    $componentChain: create-css-variables-chain($component);
     $elementOrStateChain: create-css-variables-chain($elementOrState);
     $fallbackSuffix: '';
     @if $fallback {
-        $fallbackSuffix: ', var(--#{$component}--border-#{$side}-#{$property})';
+        $fallbackSuffix: ', var(#{$componentChain}--border-#{$side}-#{$property})';
     }
 
     @return var(
-        --#{$component}#{$elementOrStateChain}--border-#{$side}-#{$property}#{$fallbackSuffix}
+        #{$componentChain}#{$elementOrStateChain}--border-#{$side}-#{$property}#{$fallbackSuffix}
     );
 }
 
 @function _border-property($component, $property, $elementOrState: null, $fallback: false) {
+    $componentChain: create-css-variables-chain($component);
     $elementOrStateChain: create-css-variables-chain($elementOrState);
 
     @return var(
-        --#{$component}#{$elementOrStateChain}--border-#{$property},
+        #{$componentChain}#{$elementOrStateChain}--border-#{$property},
         _border-property-side($component, 'top', $property, $elementOrState, $fallback)
             _border-property-side($component, 'right', $property, $elementOrState, $fallback)
             _border-property-side($component, 'bottom', $property, $elementOrState, $fallback)
             _border-property-side($component, 'left', $property, $elementOrState, $fallback)
+    );
+}
+
+@function _border-radius-part($component, $part, $elementOrState: null, $fallback: false) {
+    $componentChain: create-css-variables-chain($component);
+    $elementOrStateChain: create-css-variables-chain($elementOrState);
+    $fallbackSuffix: '';
+    @if $fallback {
+        $fallbackSuffix: ', var(#{$componentChain}--border-#{$part}-radius)';
+    }
+
+    @return var(
+        #{$componentChain}#{$elementOrStateChain}--border-#{$part}-radius#{$fallbackSuffix}
     );
 }
 
@@ -50,20 +65,24 @@
     $elementOrState: null,
     $fallback: false
 ) {
+    $componentChain: create-css-variables-chain($component);
     $elementOrStateChain: create-css-variables-chain($elementOrState);
     $fallbackSuffix: '';
     @if $fallback {
-        $fallbackSuffix: ', var(--#{$component}--#{$property}--#{$part})';
+        $fallbackSuffix: ', var(#{$componentChain}--#{$property}--#{$part})';
     }
 
-    @return var(--#{$component}#{$elementOrStateChain}--#{$property}--#{$part}#{$fallbackSuffix});
+    @return var(
+        #{$componentChain}#{$elementOrStateChain}--#{$property}--#{$part}#{$fallbackSuffix}
+    );
 }
 
 @function _color-property($component, $property, $elementOrState: null, $fallback: false) {
+    $componentChain: create-css-variables-chain($component);
     $elementOrStateChain: create-css-variables-chain($elementOrState);
 
     @return var(
-        --#{$component}#{$elementOrStateChain}--#{$property},
+        #{$componentChain}#{$elementOrStateChain}--#{$property},
         hsla(
             _color-property-part($component, $property, 'h', $elementOrState, $fallback)
                 _color-property-part($component, $property, 's', $elementOrState, $fallback)
@@ -80,20 +99,22 @@
     $elementOrState: null,
     $fallback: false
 ) {
+    $componentChain: create-css-variables-chain($component);
     $elementOrStateChain: create-css-variables-chain($elementOrState);
     $fallbackSuffix: '';
     @if $fallback {
-        $fallbackSuffix: ', var(--#{$component}--#{$property}-#{$side})';
+        $fallbackSuffix: ', var(#{$componentChain}--#{$property}-#{$side})';
     }
 
-    @return var(--#{$component}#{$elementOrStateChain}--#{$property}-#{$side}#{$fallbackSuffix});
+    @return var(#{$componentChain}#{$elementOrStateChain}--#{$property}-#{$side}#{$fallbackSuffix});
 }
 
 @function _spacing-property($component, $property, $elementOrState: null, $fallback: false) {
+    $componentChain: create-css-variables-chain($component);
     $elementOrStateChain: create-css-variables-chain($elementOrState);
 
     @return var(
-        --#{$component}#{$elementOrStateChain}--#{$property},
+        #{$componentChain}#{$elementOrStateChain}--#{$property},
         _spacing-property-side($component, $property, 'top', $elementOrState, $fallback)
             _spacing-property-side($component, $property, 'right', $elementOrState, $fallback)
             _spacing-property-side($component, $property, 'bottom', $elementOrState, $fallback)
@@ -102,21 +123,66 @@
 }
 
 @function _generic-property($component, $property, $elementOrState: null, $fallback: false) {
+    $componentChain: create-css-variables-chain($component);
     $elementOrStateChain: create-css-variables-chain($elementOrState);
     $fallbackSuffix: '';
     @if $fallback {
-        $fallbackSuffix: ', var(--#{$component}--#{$property})';
+        $fallbackSuffix: ', var(#{$componentChain}--#{$property})';
     }
 
-    @return var(--#{$component}#{$elementOrStateChain}--#{$property}#{$fallbackSuffix});
+    @return var(#{$componentChain}#{$elementOrStateChain}--#{$property}#{$fallbackSuffix});
+}
+
+@function animation-property($component, $elementOrState: null, $fallback: false) {
+    @return _generic-property($component, 'animation', $elementOrState, $fallback);
+}
+
+@function animation-duration($component, $elementOrState: null, $fallback: false) {
+    @return _generic-property($component, 'animation-duration', $elementOrState, $fallback);
+}
+
+@function animation-timing-function($component, $elementOrState: null, $fallback: false) {
+    @return _generic-property($component, 'animation-timing-function', $elementOrState, $fallback);
 }
 
 @function border-width($component, $elementOrState: null, $fallback: false) {
     @return _border-property($component, 'width', $elementOrState, $fallback);
 }
 
+@function border-top-width($component, $elementOrState: null, $fallback: false) {
+    @return _border-property-side($component, 'top', 'width', $elementOrState, $fallback);
+}
+
+@function border-right-width($component, $elementOrState: null, $fallback: false) {
+    @return _border-property-side($component, 'right', 'width', $elementOrState, $fallback);
+}
+
+@function border-bottom-width($component, $elementOrState: null, $fallback: false) {
+    @return _border-property-side($component, 'bottom', 'width', $elementOrState, $fallback);
+}
+
+@function border-left-width($component, $elementOrState: null, $fallback: false) {
+    @return _border-property-side($component, 'left', 'width', $elementOrState, $fallback);
+}
+
 @function border-style($component, $elementOrState: null, $fallback: false) {
     @return _border-property($component, 'style', $elementOrState, $fallback);
+}
+
+@function border-top-style($component, $elementOrState: null, $fallback: false) {
+    @return _border-property-side($component, 'top', 'style', $elementOrState, $fallback);
+}
+
+@function border-right-style($component, $elementOrState: null, $fallback: false) {
+    @return _border-property-side($component, 'right', 'style', $elementOrState, $fallback);
+}
+
+@function border-bottom-style($component, $elementOrState: null, $fallback: false) {
+    @return _border-property-side($component, 'bottom', 'style', $elementOrState, $fallback);
+}
+
+@function border-left-style($component, $elementOrState: null, $fallback: false) {
+    @return _border-property-side($component, 'left', 'style', $elementOrState, $fallback);
 }
 
 @function border-color($component, $elementOrState: null, $fallback: false) {
@@ -139,21 +205,12 @@
     @return _border-property-side($component, 'left', 'color', $elementOrState, $fallback);
 }
 
-@function _border-radius-part($component, $part, $elementOrState: null, $fallback: false) {
-    $elementOrStateChain: create-css-variables-chain($elementOrState);
-    $fallbackSuffix: '';
-    @if $fallback {
-        $fallbackSuffix: ', var(--#{$component}--border-#{$part}-radius)';
-    }
-
-    @return var(--#{$component}#{$elementOrStateChain}--border-#{$part}-radius#{$fallbackSuffix});
-}
-
 @function border-radius($component, $elementOrState: null, $fallback: false) {
+    $componentChain: create-css-variables-chain($component);
     $elementOrStateChain: create-css-variables-chain($elementOrState);
 
     @return var(
-        --#{$component}#{$elementOrStateChain}--border-radius,
+        #{$componentChain}#{$elementOrStateChain}--border-radius,
         _border-radius-part($component, 'top-left', $elementOrState, $fallback)
             _border-radius-part($component, 'top-right', $elementOrState, $fallback)
             _border-radius-part($component, 'bottom-right', $elementOrState, $fallback)
@@ -161,21 +218,39 @@
     );
 }
 
+@function border-top-left-radius($component, $elementOrState: null, $fallback: false) {
+    @return _border-radius-part($component, 'top-left', $elementOrState, $fallback);
+}
+
+@function border-top-right-radius($component, $elementOrState: null, $fallback: false) {
+    @return _border-radius-part($component, 'top-right', $elementOrState, $fallback);
+}
+
+@function border-bottom-right-radius($component, $elementOrState: null, $fallback: false) {
+    @return _border-radius-part($component, 'bottom-right', $elementOrState, $fallback);
+}
+
+@function border-bottom-left-radius($component, $elementOrState: null, $fallback: false) {
+    @return _border-radius-part($component, 'bottom-left', $elementOrState, $fallback);
+}
+
 @function _box-shadow-part($component, $part, $elementOrState: null, $fallback: false) {
+    $componentChain: create-css-variables-chain($component);
     $elementOrStateChain: create-css-variables-chain($elementOrState);
     $fallbackSuffix: '';
     @if $fallback {
-        $fallbackSuffix: ', var(--#{$component}--box-shadow-#{$part})';
+        $fallbackSuffix: ', var(#{$componentChain}--box-shadow-#{$part})';
     }
 
-    @return var(--#{$component}#{$elementOrStateChain}--box-shadow-#{$part}#{$fallbackSuffix});
+    @return var(#{$componentChain}#{$elementOrStateChain}--box-shadow-#{$part}#{$fallbackSuffix});
 }
 
 @function box-shadow($component, $elementOrState: null, $fallback: false) {
+    $componentChain: create-css-variables-chain($component);
     $elementOrStateChain: create-css-variables-chain($elementOrState);
 
     @return var(
-        --#{$component}#{$elementOrStateChain}--box-shadow,
+        #{$componentChain}#{$elementOrStateChain}--box-shadow,
         _box-shadow-part($component, 'x', $elementOrState, $fallback)
             _box-shadow-part($component, 'y', $elementOrState, $fallback)
             _box-shadow-part($component, 'blur', $elementOrState, $fallback)
@@ -252,12 +327,36 @@
     @return _generic-property($component, 'padding-left', $elementOrState, $fallback);
 }
 
+@function spacing($component, $elementOrState: null, $fallback: false) {
+    @return _generic-property($component, 'spacing', $elementOrState, $fallback);
+}
+
 @function width($component, $elementOrState: null, $fallback: false) {
     @return _generic-property($component, 'width', $elementOrState, $fallback);
 }
 
+@function min-width($component, $elementOrState: null, $fallback: false) {
+    @return _generic-property($component, 'min-width', $elementOrState, $fallback);
+}
+
+@function max-width($component, $elementOrState: null, $fallback: false) {
+    @return _generic-property($component, 'max-width', $elementOrState, $fallback);
+}
+
 @function height($component, $elementOrState: null, $fallback: false) {
     @return _generic-property($component, 'height', $elementOrState, $fallback);
+}
+
+@function min-height($component, $elementOrState: null, $fallback: false) {
+    @return _generic-property($component, 'min-height', $elementOrState, $fallback);
+}
+
+@function max-height($component, $elementOrState: null, $fallback: false) {
+    @return _generic-property($component, 'max-height', $elementOrState, $fallback);
+}
+
+@function size($component, $elementOrState: null, $fallback: false) {
+    @return _generic-property($component, 'size', $elementOrState, $fallback);
 }
 
 @function transition-property($component, $elementOrState: null, $fallback: false) {
@@ -274,6 +373,10 @@
 
 @function text-align($component, $elementOrState: null, $fallback: false) {
     @return _generic-property($component, 'text-align', $elementOrState, $fallback);
+}
+
+@function z-index($component, $elementOrState: null, $fallback: false) {
+    @return _generic-property($component, 'z-index', $elementOrState, $fallback);
 }
 
 @function generic($component, $property, $elementOrState: null, $fallback: false) {

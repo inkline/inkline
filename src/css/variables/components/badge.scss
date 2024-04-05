@@ -1,3 +1,148 @@
+@use "../mixins/variants";
+.badge {
+  @include variants.selector("primary") {
+    @include variants.background-h("badge", "primary");
+    @include variants.background-s("badge", "primary");
+    @include variants.background-l("badge", "primary");
+    @include variants.background-a("badge", "primary");
+    @include variants.border-top-color("badge", "primary");
+    @include variants.border-right-color("badge", "primary");
+    @include variants.border-bottom-color("badge", "primary");
+    @include variants.border-left-color("badge", "primary");
+    @include variants.color-h("badge", "primary");
+    @include variants.color-s("badge", "primary");
+    @include variants.color-l("badge", "primary");
+    @include variants.color-a("badge", "primary");
+  }
+  @include variants.selector("secondary") {
+    @include variants.background-h("badge", "secondary");
+    @include variants.background-s("badge", "secondary");
+    @include variants.background-l("badge", "secondary");
+    @include variants.background-a("badge", "secondary");
+    @include variants.border-top-color("badge", "secondary");
+    @include variants.border-right-color("badge", "secondary");
+    @include variants.border-bottom-color("badge", "secondary");
+    @include variants.border-left-color("badge", "secondary");
+    @include variants.color-h("badge", "secondary");
+    @include variants.color-s("badge", "secondary");
+    @include variants.color-l("badge", "secondary");
+    @include variants.color-a("badge", "secondary");
+  }
+  @include variants.selector("info") {
+    @include variants.background-h("badge", "info");
+    @include variants.background-s("badge", "info");
+    @include variants.background-l("badge", "info");
+    @include variants.background-a("badge", "info");
+    @include variants.border-top-color("badge", "info");
+    @include variants.border-right-color("badge", "info");
+    @include variants.border-bottom-color("badge", "info");
+    @include variants.border-left-color("badge", "info");
+    @include variants.color-h("badge", "info");
+    @include variants.color-s("badge", "info");
+    @include variants.color-l("badge", "info");
+    @include variants.color-a("badge", "info");
+  }
+  @include variants.selector("success") {
+    @include variants.background-h("badge", "success");
+    @include variants.background-s("badge", "success");
+    @include variants.background-l("badge", "success");
+    @include variants.background-a("badge", "success");
+    @include variants.border-top-color("badge", "success");
+    @include variants.border-right-color("badge", "success");
+    @include variants.border-bottom-color("badge", "success");
+    @include variants.border-left-color("badge", "success");
+    @include variants.color-h("badge", "success");
+    @include variants.color-s("badge", "success");
+    @include variants.color-l("badge", "success");
+    @include variants.color-a("badge", "success");
+  }
+  @include variants.selector("warning") {
+    @include variants.background-h("badge", "warning");
+    @include variants.background-s("badge", "warning");
+    @include variants.background-l("badge", "warning");
+    @include variants.background-a("badge", "warning");
+    @include variants.border-top-color("badge", "warning");
+    @include variants.border-right-color("badge", "warning");
+    @include variants.border-bottom-color("badge", "warning");
+    @include variants.border-left-color("badge", "warning");
+    @include variants.color-h("badge", "warning");
+    @include variants.color-s("badge", "warning");
+    @include variants.color-l("badge", "warning");
+    @include variants.color-a("badge", "warning");
+  }
+  @include variants.selector("danger") {
+    @include variants.background-h("badge", "danger");
+    @include variants.background-s("badge", "danger");
+    @include variants.background-l("badge", "danger");
+    @include variants.background-a("badge", "danger");
+    @include variants.border-top-color("badge", "danger");
+    @include variants.border-right-color("badge", "danger");
+    @include variants.border-bottom-color("badge", "danger");
+    @include variants.border-left-color("badge", "danger");
+    @include variants.color-h("badge", "danger");
+    @include variants.color-s("badge", "danger");
+    @include variants.color-l("badge", "danger");
+    @include variants.color-a("badge", "danger");
+  }
+  @include variants.selector("light") {
+    @include variants.background-h("badge", "light");
+    @include variants.background-s("badge", "light");
+    @include variants.background-l("badge", "light");
+    @include variants.background-a("badge", "light");
+    @include variants.border-top-color("badge", "light");
+    @include variants.border-right-color("badge", "light");
+    @include variants.border-bottom-color("badge", "light");
+    @include variants.border-left-color("badge", "light");
+    @include variants.color-h("badge", "light");
+    @include variants.color-s("badge", "light");
+    @include variants.color-l("badge", "light");
+    @include variants.color-a("badge", "light");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("badge", "dark");
+    @include variants.background-s("badge", "dark");
+    @include variants.background-l("badge", "dark");
+    @include variants.background-a("badge", "dark");
+    @include variants.border-top-color("badge", "dark");
+    @include variants.border-right-color("badge", "dark");
+    @include variants.border-bottom-color("badge", "dark");
+    @include variants.border-left-color("badge", "dark");
+    @include variants.color-h("badge", "dark");
+    @include variants.color-s("badge", "dark");
+    @include variants.color-l("badge", "dark");
+    @include variants.color-a("badge", "dark");
+  }
+  @include variants.selector("sm") {
+    @include variants.padding-top("badge", "sm");
+    @include variants.padding-right("badge", "sm");
+    @include variants.padding-bottom("badge", "sm");
+    @include variants.padding-left("badge", "sm");
+    @include variants.border-top-left-radius("badge", "sm");
+    @include variants.border-top-right-radius("badge", "sm");
+    @include variants.border-bottom-right-radius("badge", "sm");
+    @include variants.border-bottom-left-radius("badge", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.padding-top("badge", "md");
+    @include variants.padding-right("badge", "md");
+    @include variants.padding-bottom("badge", "md");
+    @include variants.padding-left("badge", "md");
+    @include variants.border-top-left-radius("badge", "md");
+    @include variants.border-top-right-radius("badge", "md");
+    @include variants.border-bottom-right-radius("badge", "md");
+    @include variants.border-bottom-left-radius("badge", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.padding-top("badge", "lg");
+    @include variants.padding-right("badge", "lg");
+    @include variants.padding-bottom("badge", "lg");
+    @include variants.padding-left("badge", "lg");
+    @include variants.border-top-left-radius("badge", "lg");
+    @include variants.border-top-right-radius("badge", "lg");
+    @include variants.border-bottom-right-radius("badge", "lg");
+    @include variants.border-bottom-left-radius("badge", "lg");
+  }
+}
 :root {
   --badge--background--h: var(--color-light--h);
   --badge--background--s: var(--color-light--s);

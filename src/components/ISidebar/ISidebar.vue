@@ -129,12 +129,14 @@ export default defineComponent({
             emit
         });
 
-        const classes = computed(() => ({
+        const wrapperClasses = computed(() => ({
             ...collapsibleClasses.value,
-            [`-${color.value}`]: true,
-            [`-${size.value}`]: true,
             [`-collapse-${props.collapsePosition}`]: true,
             [`-placement-${props.placement}`]: true
+        }));
+        const sidebarClasses = computed(() => ({
+            [`-${color.value}`]: true,
+            [`-${size.value}`]: true
         }));
 
         const sidebarWrapperTransition = computed(() => {
@@ -167,7 +169,8 @@ export default defineComponent({
 
         return {
             wrapperRef,
-            classes,
+            wrapperClasses,
+            sidebarClasses,
             sidebarWrapperTransition,
             sidebarTransition,
             collapsible,
@@ -187,13 +190,14 @@ export default defineComponent({
             ref="wrapperRef"
             role="complementary"
             class="sidebar-wrapper"
-            :class="classes"
+            :class="wrapperClasses"
             :aria-label="ariaLabel"
         >
             <transition :name="sidebarTransition">
                 <div
                     v-show="collapsePosition === 'relative' || open || !collapsible"
                     class="sidebar"
+                    :class="sidebarClasses"
                 >
                     <div class="sidebar-content">
                         <!-- @slot default Slot for sidebar content -->

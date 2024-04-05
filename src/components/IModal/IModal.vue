@@ -326,12 +326,11 @@ export default defineComponent({
             role="dialog"
             aria-modal="true"
             :aria-hidden="visible ? 'false' : 'true'"
-            :class="classes"
             :name="name"
             :aria-labelledby="`${name}-header`"
         >
             <transition :name="transition" @afterEnter="onAfterEnter" @afterLeave="onAfterLeave">
-                <div v-show="visible" ref="modalRef" class="modal">
+                <div v-show="visible" ref="modalRef" class="modal" :class="classes">
                     <div v-if="header || $slots.header" :id="`${name}-header`" class="modal-header">
                         <!-- @slot footer Slot for modal header content -->
                         <slot name="header">

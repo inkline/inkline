@@ -112,6 +112,10 @@
     @include _generic-property($component, $variant, 'font-size', $elementOrState);
 }
 
+@mixin font-weight($component, $variant, $elementOrState: null) {
+    @include _generic-property($component, $variant, 'font-weight', $elementOrState);
+}
+
 @mixin margin($component, $variant, $elementOrState: null) {
     @include _spacing-property($component, $variant, 'margin', $elementOrState);
 }

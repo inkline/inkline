@@ -91,7 +91,9 @@ export default defineComponent({
         const classes = computed(() => ({
             '-active': props.active,
             '-disabled': props.disabled,
-            '-plaintext': props.plaintext
+            '-plaintext': props.plaintext,
+            [`-${dropdown?.color.value}`]: dropdown?.color.value,
+            [`-${dropdown?.size.value}`]: dropdown?.size.value
         }));
 
         const disabled = computed(() => props.disabled || dropdown?.disabled.value);

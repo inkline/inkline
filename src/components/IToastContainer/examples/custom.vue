@@ -60,7 +60,7 @@ export default defineComponent({
         <IFormGroup>
             <ISelect
                 v-model="toastPosition"
-                label="id"
+                label="{{id}}"
                 :options="toastPositionOptions"
                 placeholder="Toast position"
             />
@@ -68,7 +68,7 @@ export default defineComponent({
         <IFormGroup>
             <ISelect
                 v-model="toastColor"
-                label="id"
+                label="{{id}}"
                 :options="toastColorOptions"
                 placeholder="Toast color"
             />

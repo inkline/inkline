@@ -96,7 +96,6 @@
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/test-utils": "^2.1.0",
     "@vue/tsconfig": "^0.5.1",
-    "autoprefixer": "^10.4.19",
     "babel-loader": "^9.1.2",
     "c8": "^9.1.0",
     "chromatic": "^11.1.0",
