@@ -20,7 +20,9 @@ import { colorModifiers } from './modifiers';
 export const resolveColor = defineResolverValueFn<RawThemeColor, ResolvedThemeColor>((color) => {
     let h: HSLAColor['h'], s: HSLAColor['s'], l: HSLAColor['l'], a: HSLAColor['a'];
     if (typeof color === 'string') {
-        if (color.includes('var')) {
+        if (['transparent', 'inherit'].includes(color)) {
+            return color;
+        } else if (color.includes('var')) {
             const colorName = color.slice(6, -1); // remove 'var(--' and ')'
             h = codegenCssVariables.get(`${colorName}--h`);
             s = codegenCssVariables.get(`${colorName}--s`);

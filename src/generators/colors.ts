@@ -17,16 +17,20 @@ export const generateColor = defineGeneratorValueFn<ResolvedThemeColor>((color, 
     const variantName = toKebabCase(path[path.length - 1]);
     const colorName = toKebabCase(path[path.length - 2]);
 
+    const resolvedVariantName = variantName === 'default' ? '' : `-${variantName}`;
+    const cssVariableNameBase = `${variableNamePreamble}${colorName}${resolvedVariantName}`;
+
+    if (typeof color === 'string') {
+        return [codegenCssVariables.set(cssVariableNameBase, color)];
+    }
+
     const tokens = [];
     const { h, s, l, a } = color;
 
-    const resolvedVariantName = variantName === 'default' ? '' : `-${variantName}`;
     const resolvedH = typeof h === 'string' ? h : h.toString();
     const resolvedS = typeof s === 'string' ? s : `${s}%`;
     const resolvedL = typeof l === 'string' ? l : `${l}%`;
     const resolvedA = typeof a === 'string' ? a : a.toString();
-
-    const cssVariableNameBase = `${variableNamePreamble}${colorName}${resolvedVariantName}`;
 
     tokens.push(codegenCssVariables.set(`${cssVariableNameBase}--h`, resolvedH));
     tokens.push(codegenCssVariables.set(`${cssVariableNameBase}--s`, resolvedS));

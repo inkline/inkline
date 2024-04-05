@@ -7,7 +7,7 @@ import type { ResolvedTheme } from '../types';
 import { GeneratorType } from '../types';
 
 export const generateTransition = createGenericDesignTokenVariantGenerateFn({
-    key: 'animation',
+    key: 'transition',
     aggregate: ['property', 'duration', 'timingFunction']
 });
 

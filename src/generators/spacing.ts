@@ -23,18 +23,18 @@ import {
  * Spacing with Sides
  */
 
-const generateSpacingWithSides = (property: string, fromReference?: boolean) =>
+const generateSpacingWithSides = (property: string) =>
     defineGeneratorValueFn<ResolvedThemeSpacingWithSides>((spacing, meta) => {
         const path = getResolvedPath(meta);
         const tokens: string[] = [];
-        const preamble = path.length > 2 ? path.slice(0, -2).join('--') + '--' : '';
+        const variableNamePreamble = getCssVariableNamePreamble(path);
         const variantName = path[path.length - 1];
         const resolvedVariantName = variantName === 'default' ? '' : `-${variantName}`;
         const sides: SpacingSide[] = ['top', 'right', 'bottom', 'left'];
 
         sides.forEach((side) => {
             const variableValue = toUnitValue(spacing[side]);
-            const variableName = `${preamble}${property}-${side}${resolvedVariantName}`;
+            const variableName = `${variableNamePreamble}${property}-${side}${resolvedVariantName}`;
 
             if (typeof spacing[side] !== 'undefined') {
                 tokens.push(codegenCssVariables.set(variableName, variableValue));
@@ -44,11 +44,11 @@ const generateSpacingWithSides = (property: string, fromReference?: boolean) =>
         if (shouldGenerateAggregateValue(meta)) {
             tokens.push(
                 codegenCssVariables.set(
-                    `${preamble}${property}${resolvedVariantName}`,
+                    `${variableNamePreamble}${property}${resolvedVariantName}`,
                     sides
                         .map((side) =>
                             codegenCssVariables.get(
-                                `${preamble}${property}-${side}${resolvedVariantName}`
+                                `${variableNamePreamble}${property}-${side}${resolvedVariantName}`
                             )
                         )
                         .join(' ')

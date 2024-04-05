@@ -8,7 +8,7 @@ import {
 } from '../utils';
 import { GeneratorType } from '../types';
 
-export const generateGeneric = defineGeneratorValueFn<string>((value, meta) => {
+export const generateGeneric = defineGeneratorValueFn<string | number>((value, meta) => {
     const path = getResolvedPath(meta);
 
     return [
@@ -17,13 +17,19 @@ export const generateGeneric = defineGeneratorValueFn<string>((value, meta) => {
                 .filter((part) => part !== 'default')
                 .map((part) => toKebabCase(part))
                 .join('--'),
-            value
+            `${value}`
         )
     ];
 });
 
-export const genericGenerator = defineGenerator<any>({
+export const genericFieldWithVariantsGenerator = defineGenerator<any>({
     key: '**',
     type: GeneratorType.CssVariables,
     generate: createFieldWithVariantsGenerateFn(generateGeneric)
+});
+
+export const genericFieldGenerator = defineGenerator<any>({
+    key: '**',
+    type: GeneratorType.CssVariables,
+    generate: generateGeneric
 });

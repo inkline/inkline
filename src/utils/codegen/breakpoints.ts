@@ -12,8 +12,7 @@ export const codegenBreakpoints = {
     match: (key: string, unitValue: string, nextUnitValue: string) => [
         `@mixin breakpoint-${key} { @media screen and (min-width: ${unitValue})${nextUnitValue ? ` and (max-width: ${nextUnitValue})` : ''} { @content; }}`
     ],
-    list: (breakpoints: string[], columns: number) => [
-        `$columns: ${columns} !default;`,
+    list: (breakpoints: string[]) => [
         `$breakpoint-keys: (${breakpoints.map((breakpoint) => `'${breakpoint}'`).join(', ')}) !default;`
     ],
     aggregate: (type: string, breakpoints: string[]) => {

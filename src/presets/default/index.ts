@@ -1,8 +1,9 @@
 import { defineConfig } from '../../utils';
 import { defaultThemes } from './themes';
-import { defaultResolvers } from './resolvers';
-import { defaultGenerators } from './generators';
 import { defaultAggregators } from './aggregators';
+import { defaultDependencies } from './dependencies';
+import { defaultGenerators } from './generators';
+import { defaultResolvers } from './resolvers';
 
 export * from './resolvers';
 export * from './generators';
@@ -10,8 +11,9 @@ export * from './aggregators';
 export * from './themes';
 
 export const defaultConfig = defineConfig({
-    resolvers: defaultResolvers,
-    generators: defaultGenerators,
     aggregators: defaultAggregators,
+    dependencies: defaultDependencies,
+    generators: defaultGenerators,
+    resolvers: defaultResolvers,
     themes: defaultThemes
 });

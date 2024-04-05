@@ -32,7 +32,6 @@ export const generateBreakpointMixins = defineGeneratorValueFn<ResolvedTheme['br
         const lines = [];
         const { default: _, ...breakpoints } = rawBreakpoints;
 
-        const columns = meta.theme.grid.columns;
         const breakpointKeys = Object.keys(breakpoints);
         const breakpointPairs = Object.entries(breakpoints).sort((a, b) => {
             return parseInt(a[1] as string, 10) - parseInt(b[1] as string, 10);
@@ -72,7 +71,7 @@ export const generateBreakpointMixins = defineGeneratorValueFn<ResolvedTheme['br
         );
 
         lines.push(
-            ...codegenBreakpoints.list(breakpointKeys, columns),
+            ...codegenBreakpoints.list(breakpointKeys),
             ...codegenBreakpoints.aggregate('down', breakpointKeys),
             ...codegenBreakpoints.aggregate('up', breakpointKeys),
             ...codegenBreakpoints.aggregate('', breakpointKeys)

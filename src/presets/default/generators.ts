@@ -1,6 +1,6 @@
 import type { Generator } from '../../types';
 import {
-    transitionGenerator,
+    animationGenerator,
     borderGenerator,
     borderRadiusGenerator,
     boxShadowGenerator,
@@ -8,11 +8,18 @@ import {
     breakpointsMixinsGenerator,
     colorsGenerator,
     componentsGenerator,
+    componentVariantsGenerator,
     elementsGenerator,
+    gridColumnsMixinsGenerator,
+    gridGutterGenerator,
+    gridContainerGenerator,
+    gridColumnsGenerator,
     scaleRatiosGenerator,
     sizeMultiplierGenerator,
     sizePercentagesGenerator,
     spacingGenerator,
+    paddingGenerator,
+    marginGenerator,
     typographyColorGenerator,
     typographyContrastColorGenerator,
     typographyFontFamilyGenerator,
@@ -20,13 +27,12 @@ import {
     typographyFontWeightGenerator,
     typographyLetterSpacingGenerator,
     typographyLineHeightGenerator,
-    paddingGenerator,
-    marginGenerator,
-    typographyTextAlignmentGenerator
+    typographyTextAlignmentGenerator,
+    transitionGenerator
 } from '../../generators';
 
 export const defaultGenerators: Generator<any>[] = [
-    transitionGenerator,
+    animationGenerator,
     borderGenerator,
     borderRadiusGenerator,
     breakpointsGenerator,
@@ -34,7 +40,12 @@ export const defaultGenerators: Generator<any>[] = [
     boxShadowGenerator,
     colorsGenerator,
     componentsGenerator,
+    componentVariantsGenerator,
     elementsGenerator,
+    gridColumnsMixinsGenerator,
+    gridColumnsGenerator,
+    gridContainerGenerator,
+    gridGutterGenerator,
     scaleRatiosGenerator,
     sizePercentagesGenerator,
     sizeMultiplierGenerator,
@@ -48,5 +59,6 @@ export const defaultGenerators: Generator<any>[] = [
     typographyFontWeightGenerator,
     typographyLineHeightGenerator,
     typographyLetterSpacingGenerator,
-    typographyTextAlignmentGenerator
+    typographyTextAlignmentGenerator,
+    transitionGenerator
 ];

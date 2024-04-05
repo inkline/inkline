@@ -1,6 +1,7 @@
 import { loadConfigurationFromFile } from './load';
 import { applyAggregators, applyChunkGenerators } from './apply';
 import {
+    AggregatorFile,
     AggregatorMeta,
     BuildOptions,
     GeneratorMeta,
@@ -78,6 +79,20 @@ export async function build(options: BuildOptions = {}): Promise<{
         const files = applyAggregators(chunks, aggregatorMeta);
         files.sort((a, b) => a.priority - b.priority);
 
+        const resolvedFiles = files.reduce<AggregatorFile[]>(
+            (acc, file) => {
+                const existingFile = acc.find((f) => f.path.join('.') === file.path.join('.'));
+                if (existingFile) {
+                    existingFile.content.push(...file.content);
+                } else {
+                    acc.push(file);
+                }
+
+                return acc;
+            },
+            [...(resolvedConfig.dependencies as AggregatorFile[])]
+        );
+
         if (!isDefaultTheme) {
             const themeIndexFile = `index${resolvedOptions.extName}`;
             indexFiles[themeIndexFile] = [
@@ -89,7 +104,7 @@ export async function build(options: BuildOptions = {}): Promise<{
             ];
         }
 
-        for (const file of files) {
+        for (const file of resolvedFiles) {
             const filePathParts = file.path.map((part) => toKebabCase(part));
             const filePath = `${resolve(themeOutputDir, ...filePathParts)}${resolvedOptions.extName}`;
             const fileDir = dirname(filePath);
@@ -101,7 +116,7 @@ export async function build(options: BuildOptions = {}): Promise<{
             filePaths.push(filePath);
             formatFileContentsPromises.push(
                 prettier.format(file.content.join('\n'), {
-                    parser: 'css'
+                    parser: 'scss'
                 })
             );
 

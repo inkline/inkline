@@ -13,5 +13,6 @@ import { rm, cp } from 'node:fs/promises';
         outputDir
     });
 
+    await rm(variablesDir, { recursive: true, force: true });
     await cp(outputDir, variablesDir, { recursive: true });
 })();

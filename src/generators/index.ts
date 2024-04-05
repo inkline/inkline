@@ -1,3 +1,4 @@
+export * from './animation';
 export * from './border';
 export * from './borderRadius';
 export * from './boxShadow';
@@ -6,6 +7,7 @@ export * from './colors';
 export * from './components';
 export * from './elements';
 export * from './generic';
+export * from './grid';
 export * from './scaleRatios';
 export * from './size';
 export * from './spacing';

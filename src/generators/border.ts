@@ -18,6 +18,10 @@ export const generateBorder = defineGeneratorValueFn<ResolvedThemeBorder>((borde
 
     const tokens: string[] = [];
     sides.forEach((side) => {
+        if (!border[side]) {
+            return;
+        }
+
         const { width, style, color } = border[side];
 
         const widthCssVariableName = `${variableNamePreamble}border-${side}-width${resolvedVariantName}`;

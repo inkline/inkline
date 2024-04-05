@@ -1,3 +1,4 @@
+export * from './animation';
 export * from './border';
 export * from './borderRadius';
 export * from './boxShadow';

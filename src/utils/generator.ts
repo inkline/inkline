@@ -87,13 +87,13 @@ export const createGenericDesignTokenVariantGenerateFn =
             path = options.replacePath(path);
         }
 
-        const variableNamePreamble = getCssVariableNamePreamble(path);
-        const cssVariableNameParts = path.map((part) => toKebabCase(part));
+        let cssVariableNameParts = path.map((part) => toKebabCase(part));
         const keyIndex = cssVariableNameParts.indexOf(options?.key ?? '');
         if (keyIndex !== -1 && path.length > 2) {
-            cssVariableNameParts.splice(keyIndex, 1);
+            cssVariableNameParts = cssVariableNameParts.slice(keyIndex);
         }
 
+        const variableNamePreamble = getCssVariableNamePreamble(path);
         const variantName = cssVariableNameParts.pop() || '';
         const propertyName = cssVariableNameParts.pop() || '';
         const rootCssVariableName = `${variableNamePreamble}${propertyName}${variantName === 'default' ? '' : `${propertyName ? '-' : ''}${variantName}`}`;

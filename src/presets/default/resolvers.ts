@@ -1,6 +1,6 @@
 import type { Resolver } from '../../types';
 import {
-    transitionResolver,
+    animationResolver,
     borderRadiusResolver,
     borderResolver,
     boxShadowResolver,
@@ -24,11 +24,12 @@ import {
     typographyFontWeightResolver,
     typographyLetterSpacingResolver,
     typographyLineHeightResolver,
-    typographyTextAlignmentResolver
+    typographyTextAlignmentResolver,
+    transitionResolver
 } from '../../resolvers';
 
 export const defaultResolvers: Resolver<any, any>[] = [
-    transitionResolver,
+    animationResolver,
     borderResolver,
     borderRadiusResolver,
     breakpointsResolver,
@@ -52,5 +53,6 @@ export const defaultResolvers: Resolver<any, any>[] = [
     typographyFontWeightResolver,
     typographyLineHeightResolver,
     typographyLetterSpacingResolver,
-    typographyTextAlignmentResolver
+    typographyTextAlignmentResolver,
+    transitionResolver
 ];

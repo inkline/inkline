@@ -9,6 +9,7 @@ import {
     ResolverMeta
 } from './types';
 import { matchKey } from './utils';
+import { genericFieldGenerator, genericFieldWithVariantsGenerator } from './generators';
 
 type ApplyOptions = {
     multiple: boolean;
@@ -84,6 +85,13 @@ export function applyGenerators<ResolvedValue extends Record<string, any> = Reso
                     options
                 )
             );
+        } else {
+            lines.push(
+                ...genericFieldGenerator.generate(value, {
+                    ...meta,
+                    path: currentPath
+                })
+            );
         }
     });
 
@@ -126,6 +134,16 @@ export function applyChunkGenerators<ResolvedValue extends Record<string, any> =
                     options
                 )
             );
+        } else {
+            chunks.push({
+                path: ['generic'],
+                type: genericFieldGenerator.type,
+                priority: genericFieldGenerator.priority ?? GeneratorPriority.Low,
+                content: genericFieldGenerator.generate(value, {
+                    ...meta,
+                    path: currentPath
+                })
+            });
         }
     });
 
@@ -140,7 +158,7 @@ export function applyAggregators(chunks: GeneratorChunk[], meta: AggregatorMeta)
 
         const resolvedFilePath = aggregator?.aggregate.path(chunk.path, meta) || chunk.path;
         const existingFile = files.find(
-            (file) => file.path.join('/') === resolvedFilePath.join('/')
+            (file) => file.path.join('/') === resolvedFilePath.join('/') && file.type === chunk.type
         );
 
         if (existingFile) {
