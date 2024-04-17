@@ -2,229 +2,171 @@
  * Checkbox
  */
 
+@use '../../../css/functions/properties';
+@use '../../../css/mixins/components';
 @import '../../../css/icons';
 
-.checkbox {
-    position: relative;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    outline: none;
-    margin-right: var(--checkbox--margin-right, var(--margin-right));
+@layer components {
+    .checkbox {
+        @include components.margin('checkbox');
 
-    &:last-of-type {
-        margin-right: 0;
-    }
-
-    .checkbox-label {
-        cursor: pointer;
-        margin-bottom: 0;
-        display: inline-flex;
-        align-items: center;
         position: relative;
-        transition-property: var(--checkbox--transition-property, color);
-        transition-duration: var(--checkbox--transition-duration, var(--transition-duration));
-        transition-timing-function: var(
-            --checkbox--transition-timing-function,
-            var(--transition-timing-function)
-        );
-        color: var(--checkbox--label--color);
-        font-size: var(--checkbox--label--font-size);
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        outline: none;
 
-        &::before,
-        &::after {
-            width: var(--checkbox--size);
-            height: var(--checkbox--size);
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
+        &:last-of-type {
+            margin-right: 0;
+        }
+
+        .checkbox-label {
+            @include components.transition('checkbox', 'label', true);
+            @include components.color('checkbox', 'label', true);
+            @include components.font-size('checkbox', 'label', true);
+
             cursor: pointer;
-        }
+            margin-bottom: 0;
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            padding-left: calc(
+                #{properties.width('checkbox')} + #{properties.margin-right('checkbox')}
+            );
 
-        &::before {
-            content: '';
-            user-select: none;
-            border-width: var(
-                --checkbox--border-width,
-                (
-                    var(--checkbox--border-top-width, var(--border-top-width))
-                        var(--checkbox--border-right-width, var(--border-right-width))
-                        var(--checkbox--border-bottom-width, var(--border-bottom-width))
-                        var(--checkbox--border-left-width, var(--border-left-width))
-                )
-            );
-            border-style: var(
-                --checkbox--border-style,
-                (
-                    var(--checkbox--border-top-style, var(--border-top-style))
-                        var(--checkbox--border-right-style, var(--border-right-style))
-                        var(--checkbox--border-bottom-style, var(--border-bottom-style))
-                        var(--checkbox--border-left-style, var(--border-left-style))
-                )
-            );
-            border-color: var(
-                --checkbox--border-color,
-                (
-                    var(--checkbox--border-top-color, var(--border-top-color))
-                        var(--checkbox--border-right-color, var(--border-right-color))
-                        var(--checkbox--border-bottom-color, var(--border-bottom-color))
-                        var(--checkbox--border-left-color, var(--border-left-color))
-                )
-            );
-            border-radius: var(
-                --checkbox--border-radius,
-                (
-                    var(--checkbox--border-top-left-radius, var(--border-top-left-radius))
-                        var(--checkbox--border-top-right-radius, var(--border-top-right-radius))
-                        var(
-                            --checkbox--border-bottom-right-radius,
-                            var(--border-bottom-right-radius)
-                        )
-                        var(--checkbox--border-bottom-left-radius, var(--border-bottom-left-radius))
-                )
-            );
-            box-shadow: var(
-                --checkbox--box-shadow,
-                var(--checkbox--box-shadow-x-offset, var(--box-shadow-offset-x))
-                    var(--checkbox--box-shadow-y-offset, var(--box-shadow-offset-y))
-                    var(--checkbox--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                    var(--checkbox--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                    var(--checkbox--box-shadow-color, var(--box-shadow-color))
-            );
-            margin-right: var(--checkbox--margin-right, var(--margin-right-1-2));
-            transition-property: var(
-                --checkbox--transition-property,
-                background-color,
-                border-color
-            );
-            transition-duration: var(--checkbox--transition-duration, var(--transition-duration));
-            transition-timing-function: var(
-                --checkbox--transition-timing-function,
-                var(--transition-timing-function)
-            );
-            background-color: var(--checkbox--background);
-        }
+            &::before,
+            &::after {
+                @include components.width('checkbox');
+                @include components.height('checkbox');
 
-        &::after {
-            mask-image: url($ink-check);
-            mask-image: url($ink-check);
-            mask-size: var(--checkbox--checkmark--size) var(--checkbox--checkmark--size);
-            mask-size: var(--checkbox--checkmark--size) var(--checkbox--checkmark--size);
-            position: absolute;
-            top: 50%;
-            left: 0;
-            z-index: 1;
-            text-align: center;
-            transition-property: var(--checkbox--transition-property, (transform));
-            transition-duration: var(--checkbox--transition-duration, var(--transition-duration));
-            transition-timing-function: var(
-                --checkbox--transition-timing-function,
-                var(--transition-timing-function)
-            );
-            transform: scale(0);
-            background-color: var(--checkbox--color);
-            margin-top: calc(var(--checkbox--size) / -2);
-        }
-    }
+                display: inline-flex;
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                left: 0;
+            }
 
-    input {
-        top: 0;
-        left: 0;
-        position: absolute;
-        z-index: 0; // Put the input behind the label so it doesn't overlay text
-        opacity: 0;
-        height: 0;
-        width: 0;
-        outline: 0;
-
-        &:focus,
-        &:active {
-            outline: none;
-        }
-
-        &:checked ~ .checkbox-label,
-        &[type='checkbox']:indeterminate ~ .checkbox-label {
             &::before {
-                border-color: var(--checkbox--checked--border-color, var(--checkbox--border-color));
-                background: var(--checkbox--checked--background, var(--checkbox--background));
+                @include components.background('checkbox');
+                @include components.border-width('checkbox');
+                @include components.border-style('checkbox');
+                @include components.border-color('checkbox');
+                @include components.border-radius('checkbox');
+                @include components.box-shadow('checkbox');
+                @include components.transition('checkbox');
+                @include components.margin('checkbox');
+
+                content: '';
+                user-select: none;
+                transform: translate(0, -50%);
             }
 
             &::after {
-                content: '';
-                mask-position: center center;
-                mask-position: center center;
-                mask-repeat: no-repeat;
-                mask-repeat: no-repeat;
-                transform: scale(1);
+                @include components.transition('checkbox', 'checkmark', true);
+
+                background: properties.color('checkbox', 'checkmark');
+                mask-image: url($ink-check);
+                mask-size: #{properties.width('checkbox', 'checkmark')} #{properties.height(
+                        'checkbox',
+                        'checkmark'
+                    )};
+                z-index: 1;
+                text-align: center;
+                transform: scale(0) translate(0, -50%);
             }
         }
 
-        &:disabled,
-        &[readonly] {
-            ~ .checkbox-label {
-                color: var(--checkbox--disabled--label--color, var(--checkbox--label--color));
+        input {
+            top: 0;
+            left: 0;
+            position: absolute;
+            z-index: 0; // Put the input behind the label so it doesn't overlay text
+            opacity: 0;
+            height: 0;
+            width: 0;
+            outline: 0;
 
-                &::before {
-                    cursor: not-allowed;
-                    border-color: var(
-                        --checkbox--disabled--border-color,
-                        var(--checkbox--border-color)
-                    );
-                    background: var(--checkbox--disabled--background, var(--checkbox--background));
-                }
+            &:focus,
+            &:active {
+                outline: none;
             }
 
-            &:checked ~ .checkbox-label {
+            &:checked ~ .checkbox-label,
+            &[type='checkbox']:indeterminate ~ .checkbox-label {
                 &::before {
-                    border-color: var(
-                        --checkbox--checked--disabled--border-color,
-                        var(--checkbox--border-color)
-                    );
-                    background: var(
-                        --checkbox--checked--disabled--background,
-                        var(--checkbox--background)
-                    );
+                    @include components.border-color('checkbox', 'checked', true);
+                    @include components.background('checkbox', 'checked', true);
                 }
 
                 &::after {
+                    content: '';
+                    mask-position: center center;
+                    mask-repeat: no-repeat;
+                    transform: scale(1) translate(0, -50%);
+                }
+            }
+
+            &:disabled,
+            &[readonly] {
+                ~ .checkbox-label {
+                    @include components.color('checkbox' 'label', 'disabled', true);
+
+                    cursor: default;
+
+                    &::before {
+                        @include components.border-color('checkbox', 'disabled', true);
+                        @include components.background('checkbox', 'disabled', true);
+
+                        cursor: not-allowed;
+                    }
+                }
+
+                &:checked ~ .checkbox-label {
+                    &::before {
+                        @include components.border-color('checkbox' 'checked', 'disabled', true);
+                        @include components.background('checkbox' 'checked', 'disabled', true);
+                    }
+
+                    &::after {
+                        background: properties.color('checkbox' 'checkmark', 'disabled', true);
+                        cursor: not-allowed;
+                    }
+                }
+            }
+
+            &:indeterminate ~ .checkbox-label::after {
+                mask-image: url($ink-minus);
+            }
+        }
+
+        &.-disabled {
+            cursor: default;
+
+            .checkbox-label {
+                &::before,
+                &::after {
                     cursor: not-allowed;
-                    background: var(--checkbox--disabled--color, var(--checkbox--color));
                 }
             }
         }
 
-        &:indeterminate ~ .checkbox-label::after {
-            mask-image: url($ink-minus);
-            mask-image: url($ink-minus);
-        }
-    }
-
-    &.-disabled {
-        cursor: default;
-
-        .checkbox-label {
-            &::before,
-            &::after {
-                cursor: not-allowed;
+        &.-native {
+            input {
+                top: auto;
+                left: auto;
+                position: relative;
+                opacity: 1;
+                height: auto;
+                width: auto;
             }
-        }
-    }
 
-    &.-native {
-        input {
-            top: auto;
-            left: auto;
-            position: relative;
-            opacity: 1;
-            height: auto;
-            width: auto;
-            margin-right: var(--checkbox--margin-right, var(--margin-right-1-2));
-        }
+            .checkbox-label {
+                padding-left: #{properties.margin-right('radio')};
 
-        .checkbox-label {
-            &::after,
-            &::before {
-                display: none;
+                &::after,
+                &::before {
+                    display: none;
+                }
             }
         }
     }

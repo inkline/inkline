@@ -4,6 +4,8 @@
  * Icon
  */
 
-.icon {
-    height: properties.font-size('icon');
+@layer components {
+    .icon {
+        height: properties.font-size('icon');
+    }
 }

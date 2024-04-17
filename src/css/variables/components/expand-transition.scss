@@ -1,0 +1,14 @@
+@use "../mixins/variants";
+@layer components {
+  .expand-transition {
+  }
+}
+@layer base {
+  :root {
+    --expand-transition--transition-property: height;
+    --expand-transition--transition-duration: var(--transition-duration);
+    --expand-transition--transition-timing-function: var(
+      --transition-timing-function
+    );
+  }
+}

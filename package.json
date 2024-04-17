@@ -1664,11 +1664,6 @@
     "type": "github",
     "url": "https://github.com/sponsors/alexgrozav"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
   "bugs": {
     "url": "https://github.com/inkline/inkline/issues"
   },

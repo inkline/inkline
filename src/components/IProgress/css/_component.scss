@@ -4,18 +4,20 @@
  * Progress
  */
 
-.progress {
-    @include components.background('progress');
-    @include components.border-radius('progress');
-    @include components.border-width('progress');
-    @include components.border-style('progress');
-    @include components.border-color('progress');
-    @include components.box-shadow('progress');
-    @include components.height('progress');
-    @include components.transition('progress');
+@layer components {
+    .progress {
+        @include components.background('progress');
+        @include components.border-radius('progress');
+        @include components.border-width('progress');
+        @include components.border-style('progress');
+        @include components.border-color('progress');
+        @include components.box-shadow('progress');
+        @include components.height('progress');
+        @include components.transition('progress');
 
-    display: flex;
-    flex-basis: 100%;
-    position: relative;
-    overflow: hidden;
+        display: flex;
+        flex-basis: 100%;
+        position: relative;
+        overflow: hidden;
+    }
 }

@@ -351,12 +351,12 @@ export default defineComponent({
 </script>
 
 <template>
-    <div :id="id && `${id}-wrapper`" class="input-wrapper" :class="classes" v-bind="wrapperAttrs">
+    <div :id="id" class="input" :class="classes" v-bind="wrapperAttrs">
         <div v-if="$slots.prepend" class="input-prepend">
             <!-- @slot prepend Slot for the input prepend content -->
             <slot name="prepend" />
         </div>
-        <div class="input">
+        <div class="input-field">
             <span v-if="$slots.prefix" class="input-prefix">
                 <!-- @slot prefix Slot for the input prefix content -->
                 <slot name="prefix" />

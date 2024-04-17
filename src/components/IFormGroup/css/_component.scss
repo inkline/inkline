@@ -2,30 +2,35 @@
  * Input Group
  */
 
-.form-group {
-    display: block;
-    vertical-align: middle;
-    position: relative;
+@use '../../../css/mixins/components';
 
-    + .form-group {
-        margin-top: var(--form-group--margin-top, var(--margin-top));
-    }
+@layer components {
+    .form-group {
+        display: block;
+        vertical-align: middle;
+        position: relative;
+        padding: 0;
 
-    &.-inline {
-        display: flex;
-
-        > .form-input-group {
-            flex-basis: 100%;
+        + .form-group {
+            @include components.margin('form-group', 'adjacent');
         }
 
-        > .form-label {
+        &.-inline {
             display: flex;
-            flex: 0 0 auto;
-            align-self: center;
-            margin-bottom: 0;
 
-            &.-right {
-                margin-right: 0;
+            > .form-input-group {
+                flex-basis: 100%;
+            }
+
+            > .form-label {
+                display: flex;
+                flex: 0 0 auto;
+                align-self: center;
+                margin-bottom: 0;
+
+                &.-right {
+                    margin-right: 0;
+                }
             }
         }
     }

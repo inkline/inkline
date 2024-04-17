@@ -1,5 +1,7 @@
-:root {
-  --d2--font-size: calc(
-    var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-4)
-  );
+@layer base {
+  :root {
+    --d2--font-size: calc(
+      var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-4)
+    );
+  }
 }

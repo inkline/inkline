@@ -4,13 +4,15 @@
  * Navbar Collapsible
  */
 
-.navbar-collapsible {
-    @include components.transition('navbar', 'collapsible', true);
+@layer components {
+    .navbar-collapsible {
+        @include components.transition('navbar', 'collapsible', true);
 
-    display: flex;
-    flex-wrap: nowrap;
-    flex-grow: 1;
-    flex-shrink: 1;
-    justify-content: space-between;
-    align-items: center;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+        flex-shrink: 1;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

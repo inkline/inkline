@@ -118,12 +118,12 @@ export default defineComponent({
 
 <template>
     <div v-show="visible" v-bind="$attrs" class="alert" role="alert" :class="classes">
-        <span v-if="$slots.icon" class="icon" role="img" aria-hidden="true">
+        <span v-if="$slots.icon" class="alert-icon" role="img" aria-hidden="true">
             <!-- @slot icon Slot for alert icon -->
             <slot name="icon" />
         </span>
-        <div class="content">
-            <div v-if="$slots.title" class="title">
+        <div class="alert-content">
+            <div v-if="$slots.title" class="alert-title">
                 <!-- @slot title Slot for alert title -->
                 <slot name="title" />
             </div>
@@ -132,7 +132,7 @@ export default defineComponent({
         </div>
         <span
             v-if="dismissible"
-            class="dismiss"
+            class="alert-dismiss"
             role="button"
             :aria-label="dismissAriaLabel"
             @click="dismiss"

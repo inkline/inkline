@@ -1,3 +1,5 @@
-:root {
-  --samp--font-family: var(--font-family-monospace);
+@layer base {
+  :root {
+    --samp--font-family: var(--font-family-monospace);
+  }
 }

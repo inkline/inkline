@@ -2,6 +2,8 @@
  * Form
  */
 
-.form {
-    position: relative;
+@layer components {
+    .form {
+        position: relative;
+    }
 }

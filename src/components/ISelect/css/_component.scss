@@ -2,194 +2,84 @@
  * Select
  */
 
-@use '../../../css/mixins';
+@use '../../../css/mixins/components';
+@use '../../../css/mixins/popup';
+@use '../../../css/functions/properties';
 @use '../../../css/icons';
 
-.select-wrapper {
-    display: block;
-    position: relative;
-
+@layer components {
     .select {
-        @include mixins.popup(var(--select--z-index, 2000));
-        @include mixins.popup-arrow;
-        @include mixins.popup-arrow-size-variant(var(--select--arrow--size, 6px));
+        display: block;
+        position: relative;
+
+        &.-error {
+            > .input .input-field {
+                @include components.border-color('select', 'error', true);
+            }
+        }
+
+        .input {
+            .input-suffix {
+                > *:not(.select-caret) {
+                    margin-right: properties.spacing('select', 'caret');
+                }
+
+                > .select-caret {
+                    @include components.width('select', 'caret');
+                    @include components.height('select', 'caret');
+
+                    cursor: pointer;
+                    mask-image: url('#{icons.$ink-caret-down}');
+                    mask-position: center center;
+                    mask-repeat: no-repeat;
+                    background-color: properties.color('select', 'caret', true);
+                    mask-size: #{properties.width('select', 'caret')} #{properties.height(
+                            'select',
+                            'caret'
+                        )};
+                }
+            }
+        }
+    }
+
+    .select-popup {
+        @include components.box-shadow('select');
+        @include components.color('select');
+        @include components.font-size('select');
+        @include components.line-height('select');
+        @include components.min-width('select');
+        @include components.max-width('select');
+
+        @include popup.popup(properties.z-index('select'));
+        @include popup.popup-arrow;
+        @include popup.popup-arrow-size-variant(properties.size('select', 'arrow'));
 
         text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
         list-style: none;
-        line-height: var(--select-line-height);
         display: block;
         white-space: normal;
         width: 100%;
-        min-width: var(--select--min-width, 240px);
-        max-width: var(--select--max-width, 90vw);
-        color: var(--select--color);
-        font-size: var(--select--font-size, var(--font-size));
-        box-shadow: var(
-            --select--box-shadow,
-            var(--select--box-shadow-x-offset, var(--box-shadow-offset-x))
-                var(--select--box-shadow-y-offset, var(--box-shadow-offset-y))
-                var(--select--box-shadow-blur-radius, var(--box-shadow-blur-radius))
-                var(--select--box-shadow-spread-radius, var(--box-shadow-spread-radius))
-                var(--select--box-shadow-color, var(--box-shadow-color))
-        );
 
         > .select-header {
-            border-style: var(
-                --select--header--border-style,
-                var(
-                        --select--header--border-top-style,
-                        var(--select--border-top-style, var(--border-top-style))
-                    )
-                    var(
-                        --select--header--border-right-style,
-                        var(--select--border-right-style, var(--border-right-style))
-                    )
-                    var(
-                        --select--header--border-bottom-style,
-                        var(--select--border-bottom-style, var(--border-bottom-style))
-                    )
-                    var(
-                        --select--header--border-left-style,
-                        var(--select--border-left-style, var(--border-left-style))
-                    )
-            );
-            border-width: var(
-                --select--header--border-width,
-                var(
-                        --select--header--border-top-width,
-                        var(--select--border-top-width, var(--border-top-width))
-                    )
-                    var(
-                        --select--header--border-right-width,
-                        var(--select--border-right-width, var(--border-right-width))
-                    )
-                    var(--select--header--border-bottom-width, 0)
-                    var(
-                        --select--header--border-left-width,
-                        var(--select--border-left-width, var(--border-left-width))
-                    )
-            );
-            border-color: var(
-                --select--header--border-color,
-                var(
-                        --select--header--border-top-color,
-                        var(--select--border-top-color, var(--border-top-color))
-                    )
-                    var(
-                        --select--header--border-right-color,
-                        var(--select--border-right-color, var(--border-right-color))
-                    )
-                    var(
-                        --select--header--border-bottom-color,
-                        var(--select--border-bottom-color, var(--border-bottom-color))
-                    )
-                    var(
-                        --select--header--border-left-color,
-                        var(--select--border-left-color, var(--border-left-color))
-                    )
-            );
-            background-color: var(--select--header--background, var(--select--background));
-            padding: var(
-                --select--header--padding,
-                var(--select--header--padding-top, var(--select--padding-top, var(--padding-top)))
-                    var(
-                        --select--header--padding-right,
-                        var(--select--padding-right, var(--padding-right))
-                    )
-                    var(
-                        --select--header--padding-bottom,
-                        var(--select--padding-bottom, var(--padding-bottom))
-                    )
-                    var(
-                        --select--header--padding-left,
-                        var(--select--padding-left, var(--padding-left))
-                    )
-            );
+            @include components.border-width('select', 'header', true);
+            @include components.border-style('select', 'header', true);
+            @include components.border-color('select', 'header', true);
+            @include components.background('select', 'header', true);
+            @include components.padding('select', 'header', true);
         }
 
         > .select-body {
+            @include components.border-width('select', 'body', true);
+            @include components.border-style('select', 'body', true);
+            @include components.border-color('select', 'body', true);
+            @include components.background('select', 'body', true);
+            @include components.padding('select', 'body', true);
+            @include components.max-height('select');
+
             overflow: auto;
-            border-style: var(
-                --select--body--border-style,
-                var(
-                        --select--body--border-top-style,
-                        var(--select--border-top-style, var(--border-top-style))
-                    )
-                    var(
-                        --select--body--border-right-style,
-                        var(--select--border-right-style, var(--border-right-style))
-                    )
-                    var(
-                        --select--body--border-bottom-style,
-                        var(--select--border-bottom-style, var(--border-bottom-style))
-                    )
-                    var(
-                        --select--body--border-left-style,
-                        var(--select--border-left-style, var(--border-left-style))
-                    )
-            );
-            border-width: var(
-                --select--body--border-width,
-                var(
-                        --select--body--border-top-width,
-                        var(--select--border-top-width, var(--border-top-width))
-                    )
-                    var(
-                        --select--body--border-right-width,
-                        var(--select--border-right-width, var(--border-right-width))
-                    )
-                    var(
-                        --select--body--border-bottom-width,
-                        var(--select--border-bottom-width, var(--border-bottom-width))
-                    )
-                    var(
-                        --select--body--border-left-width,
-                        var(--select--border-left-width, var(--border-left-width))
-                    )
-            );
-            border-color: var(
-                --select--body--border-color,
-                var(
-                        --select--body--border-top-color,
-                        var(--select--border-top-color, var(--border-top-color))
-                    )
-                    var(
-                        --select--body--border-right-color,
-                        var(--select--border-right-color, var(--border-right-color))
-                    )
-                    var(
-                        --select--body--border-bottom-color,
-                        var(--select--border-bottom-color, var(--border-bottom-color))
-                    )
-                    var(
-                        --select--body--border-left-color,
-                        var(--select--border-left-color, var(--border-left-color))
-                    )
-            );
-            background-color: var(--select--body--background, var(--select--background));
-            padding: var(
-                --select--body--padding,
-                var(--select--body--padding-top, var(--select--padding-top, var(--padding-top)))
-                    var(
-                        --select--body--padding-right,
-                        var(--select--padding-right, var(--padding-right))
-                    )
-                    var(
-                        --select--body--padding-bottom,
-                        var(--select--padding-bottom, var(--padding-bottom))
-                    )
-                    var(
-                        --select--body--padding-left,
-                        var(--select--padding-left, var(--padding-left))
-                    )
-            );
-            max-height: var(--select--max-height, 300px);
 
             .select-divider {
-                background-color: var(
-                    --select--divider--border-color,
-                    var(--select--border-top, var(--border-top-color))
-                );
+                @include components.background('select', 'divider');
             }
 
             .select-no-results {
@@ -198,147 +88,42 @@
         }
 
         > .select-footer {
-            border-style: var(
-                --select--footer--border-style,
-                var(
-                        --select--footer--border-top-style,
-                        var(--select--border-top-style, var(--border-top-style))
-                    )
-                    var(
-                        --select--footer--border-right-style,
-                        var(--select--border-right-style, var(--border-right-style))
-                    )
-                    var(
-                        --select--footer--border-bottom-style,
-                        var(--select--border-bottom-style, var(--border-bottom-style))
-                    )
-                    var(
-                        --select--footer--border-left-style,
-                        var(--select--border-left-style, var(--border-left-style))
-                    )
-            );
-            border-width: var(
-                --select--footer--border-width,
-                var(--select--footer--border-top-width, 0)
-                    var(
-                        --select--footer--border-right-width,
-                        var(--select--border-right-width, var(--border-right-width))
-                    )
-                    var(
-                        --select--footer--border-bottom-width,
-                        var(--select--border-bottom-width, var(--border-bottom-width))
-                    )
-                    var(
-                        --select--footer--border-left-width,
-                        var(--select--border-left-width, var(--border-left-width))
-                    )
-            );
-            border-color: var(
-                --select--footer--border-color,
-                var(
-                        --select--footer--border-top-color,
-                        var(--select--border-top-color, var(--border-top-color))
-                    )
-                    var(
-                        --select--footer--border-right-color,
-                        var(--select--border-right-color, var(--border-right-color))
-                    )
-                    var(
-                        --select--footer--border-bottom-color,
-                        var(--select--border-bottom-color, var(--border-bottom-color))
-                    )
-                    var(
-                        --select--footer--border-left-color,
-                        var(--select--border-left-color, var(--border-left-color))
-                    )
-            );
-            background-color: var(--select--footer--background, var(--select--background));
-            padding: var(
-                --select--footer--padding,
-                var(--select--footer--padding-top, var(--select--padding-top, var(--padding-top)))
-                    var(
-                        --select--footer--padding-right,
-                        var(--select--padding-right, var(--padding-right))
-                    )
-                    var(
-                        --select--footer--padding-bottom,
-                        var(--select--padding-bottom, var(--padding-bottom))
-                    )
-                    var(
-                        --select--footer--padding-left,
-                        var(--select--padding-left, var(--padding-left))
-                    )
-            );
+            @include components.border-width('select', 'footer', true);
+            @include components.border-style('select', 'footer', true);
+            @include components.border-color('select', 'footer', true);
+            @include components.background('select', 'footer', true);
+            @include components.padding('select', 'footer', true);
         }
 
         > div:first-of-type {
-            border-top-left-radius: var(
-                --select--border-top-left-radius,
-                var(--border-top-left-radius)
-            );
-            border-top-right-radius: var(
-                --select--border-top-right-radius,
-                var(--border-top-right-radius)
-            );
+            @include components.border-top-left-radius('select');
+            @include components.border-top-right-radius('select');
         }
 
         > div:last-of-type {
-            border-bottom-left-radius: var(
-                --select--border-bottom-left-radius,
-                var(--border-bottom-left-radius)
-            );
-            border-bottom-right-radius: var(
-                --select--border-bottom-right-radius,
-                var(--border-bottom-right-radius)
-            );
+            @include components.border-bottom-left-radius('select');
+            @include components.border-bottom-right-radius('select');
         }
 
-        @include mixins.popup-arrow-color-variant-for-side(
+        @include popup.popup-arrow-color-variant-for-side(
             'top',
-            var(--select--background),
-            var(--select--border-bottom-color, var(--border-bottom-color))
+            properties.background('select'),
+            properties.border-bottom-color('select')
         );
-        @include mixins.popup-arrow-color-variant-for-side(
+        @include popup.popup-arrow-color-variant-for-side(
             'right',
-            var(--select--background),
-            var(--select--border-left-color, var(--border-left-color))
+            properties.background('select'),
+            properties.border-left-color('select')
         );
-        @include mixins.popup-arrow-color-variant-for-side(
+        @include popup.popup-arrow-color-variant-for-side(
             'bottom',
-            var(--select--background),
-            var(--select--border-top-color, var(--border-top-color))
+            properties.background('select'),
+            properties.border-top-color('select')
         );
-        @include mixins.popup-arrow-color-variant-for-side(
+        @include popup.popup-arrow-color-variant-for-side(
             'left',
-            var(--select--background),
-            var(--select--border-right-color, var(--border-right-color))
+            properties.background('select'),
+            properties.border-right-color('select')
         );
-    }
-
-    &.-error {
-        > .input-wrapper .input {
-            border-color: var(--input--error--border-color, var(--color-danger));
-        }
-    }
-
-    .input-wrapper {
-        .input-icon {
-            margin-right: var(--margin-left);
-        }
-
-        .input-suffix > .select-caret {
-            cursor: pointer;
-            mask-image: url('#{icons.$ink-caret-down}');
-            mask-image: url('#{icons.$ink-caret-down}');
-            mask-position: center center;
-            mask-position: center center;
-            mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
-            background-color: var(--select--color);
-            height: var(--select--font-size, var(--font-size));
-            width: var(--select--font-size, var(--font-size));
-            mask-size: var(--select--font-size, var(--font-size)) var(--font-size);
-            margin-left: var(--select--caret--margin-left, var(--select--margin-left));
-        }
     }
 }

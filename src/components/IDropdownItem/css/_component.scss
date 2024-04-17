@@ -1,54 +1,63 @@
 @use '../../../css/mixins/components';
-@use '../../../css/mixins/variants';
 
 /**
  * Dropdown Item
  */
 
-.dropdown-item {
-    @include components.background('dropdown-item');
-    @include components.border-width('dropdown-item');
-    @include components.border-style('dropdown-item');
-    @include components.border-color('dropdown-item');
-    @include components.color('dropdown-item');
-    @include components.margin('dropdown-item');
-    @include components.padding('dropdown-item');
-    @include components.transition('dropdown-item');
+@layer components {
+    .dropdown-item {
+        @include components.background('dropdown-item');
+        @include components.border-width('dropdown-item');
+        @include components.border-style('dropdown-item');
+        @include components.border-color('dropdown-item');
+        @include components.color('dropdown-item');
+        @include components.margin('dropdown-item');
+        @include components.padding('dropdown-item');
+        @include components.transition('dropdown-item');
 
-    display: flex;
-    text-align: inherit; // For `<button>`s
-    white-space: nowrap; // prevent links from randomly breaking onto new lines
-    cursor: pointer;
+        display: flex;
+        text-align: inherit; // For `<button>`s
+        white-space: nowrap; // prevent links from randomly breaking onto new lines
+        cursor: pointer;
 
-    &.-disabled {
-        @include components.background('dropdown-item', 'disabled', true);
-        @include components.color('dropdown-item', 'disabled', true);
+        &.-disabled {
+            @include components.background('dropdown-item', 'disabled', true);
+            @include components.color('dropdown-item', 'disabled', true);
 
-        pointer-events: none;
-        cursor: default;
-    }
-
-    &.-active {
-        @include components.background('dropdown-item', 'active', true);
-        @include components.color('dropdown-item', 'active', true);
-        @include components.font-weight('dropdown-item', 'active', true);
-    }
-
-    &:hover,
-    &:focus {
-        outline: 0;
-        text-decoration: none;
-    }
-
-    &:not(.-disabled, .-plaintext) {
-        &:hover,
-        &:focus {
-            @include components.background('dropdown-item', 'hover', true);
-            @include components.color('dropdown-item', 'hover', true);
+            pointer-events: none;
+            cursor: default;
         }
-    }
 
-    &.-plaintext {
-        cursor: default;
+        &.-active {
+            @include components.background('dropdown-item', 'active', true);
+            @include components.color('dropdown-item', 'active', true);
+            @include components.font-weight('dropdown-item', 'active', true);
+        }
+
+        &:not(.-disabled, .-plaintext, .-active) {
+            &:hover,
+            &.-hover,
+            &:focus,
+            &.-focus {
+                outline: 0;
+                text-decoration: none;
+            }
+
+            &:hover,
+            &.-hover {
+                @include components.background('dropdown-item', 'hover', true);
+                @include components.color('dropdown-item', 'hover', true);
+            }
+
+            &:focus,
+            &.-focus {
+                @include components.background('dropdown-item', 'focus', true);
+                @include components.color('dropdown-item', 'focus', true);
+            }
+        }
+
+        &.-plaintext {
+            cursor: default;
+        }
     }
 }

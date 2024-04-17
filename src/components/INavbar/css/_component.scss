@@ -2,8 +2,8 @@
  * Navbar
  */
 
+@use '../../../css/mixins/config';
 @use '../../../css/mixins/components';
-@import '../../../css/mixins';
 
 @mixin navbar-collapse {
     .navbar-collapsible {
@@ -54,91 +54,98 @@
     }
 }
 
-.navbar {
-    @include components.background('navbar');
-    @include components.border-width('navbar');
-    @include components.border-style('navbar');
-    @include components.border-color('navbar');
-    @include components.border-radius('navbar');
-    @include components.box-shadow('navbar');
-    @include components.color('navbar');
-    @include components.font-size('navbar');
-    @include components.padding('navbar');
-    @include components.transition('navbar');
+@layer components {
+    .navbar {
+        @include components.background('navbar');
+        @include components.border-width('navbar');
+        @include components.border-style('navbar');
+        @include components.border-color('navbar');
+        @include components.border-radius('navbar');
+        @include components.box-shadow('navbar');
+        @include components.color('navbar');
+        @include components.font-size('navbar');
+        @include components.padding('navbar');
+        @include components.transition('navbar');
 
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-
-    > .container {
+        position: relative;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
 
-        &.-fluid {
-            padding: 0;
-        }
-    }
+        > .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
 
-    .navbar-collapsible {
-        .nav-item {
-            @include components.background('navbar', 'item', true);
-            @include components.border-radius('navbar', 'item', true);
-            @include components.color('navbar', 'item', true);
-            @include components.font-size('navbar', 'item', true);
-            @include components.padding('navbar', 'item', true);
-            @include components.transition('navbar', 'item', true);
-
-            &.-focus,
-            &.-hover,
-            &:focus,
-            &:hover {
-                @include components.background('navbar', 'item' 'hover', true);
-                @include components.color('navbar', 'item' 'hover', true);
-            }
-
-            &.-active {
-                @include components.background('navbar', 'item' 'active', true);
-                @include components.color('navbar', 'item' 'active', true);
-                @include components.font-weight('navbar', 'item' 'active', true);
-
-                cursor: pointer;
+            &.-fluid {
+                padding: 0;
             }
         }
-    }
 
-    &.-collapsible {
         .navbar-collapsible {
-            @include components.background('navbar', 'collapsed');
-
             .nav-item {
-                @include components.background('navbar', 'collapsed' 'item', true);
-                @include components.color('navbar', 'collapsed' 'item', true);
+                @include components.background('navbar', 'item', true);
+                @include components.border-radius('navbar', 'item', true);
+                @include components.color('navbar', 'item', true);
+                @include components.font-size('navbar', 'item', true);
+                @include components.padding('navbar', 'item', true);
+                @include components.transition('navbar', 'item', true);
 
+                &.-hover,
                 &:hover {
-                    @include components.background('navbar', 'collapsed' 'item' 'hover', true);
-                    @include components.color('navbar', 'collapsed' 'item' 'hover', true);
+                    @include components.background('navbar', 'item' 'hover', true);
+                    @include components.color('navbar', 'item' 'hover', true);
+                }
+
+                &.-focus,
+                &:focus {
+                    @include components.background('navbar', 'item' 'focus', true);
+                    @include components.color('navbar', 'item' 'focus', true);
+                }
+
+                &.-active,
+                &:active {
+                    @include components.background('navbar', 'item' 'active', true);
+                    @include components.color('navbar', 'item' 'active', true);
+                    @include components.font-weight('navbar', 'item' 'active', true);
+
+                    cursor: pointer;
                 }
             }
         }
-    }
 
-    .collapse-toggle {
-        display: none;
-    }
+        &.-collapsible {
+            .navbar-collapsible {
+                @include components.background('navbar', 'collapsed');
 
-    @each $breakpoint in $breakpoint-keys {
-        &.-collapse-#{$breakpoint} {
-            @include breakpoint-down($breakpoint) {
-                @include navbar-collapse;
+                .nav-item {
+                    @include components.background('navbar', 'collapsed' 'item', true);
+                    @include components.color('navbar', 'collapsed' 'item', true);
+
+                    &:hover {
+                        @include components.background('navbar', 'collapsed' 'item' 'hover', true);
+                        @include components.color('navbar', 'collapsed' 'item' 'hover', true);
+                    }
+                }
             }
         }
-    }
 
-    &.-collapse-true {
-        @include navbar-collapse;
+        .collapse-toggle {
+            display: none;
+        }
+
+        @each $breakpoint in config.$breakpoint-keys {
+            &.-collapse-#{$breakpoint} {
+                @include config.breakpoint-down($breakpoint) {
+                    @include navbar-collapse;
+                }
+            }
+        }
+
+        &.-collapse-true {
+            @include navbar-collapse;
+        }
     }
 }

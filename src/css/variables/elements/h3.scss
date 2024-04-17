@@ -1,3 +1,5 @@
-:root {
-  --h3--font-size: calc(var(--font-size) * var(--scale-ratio-pow-3));
+@layer base {
+  :root {
+    --h3--font-size: calc(var(--font-size) * var(--scale-ratio-pow-3));
+  }
 }

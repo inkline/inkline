@@ -4,47 +4,64 @@
  * Tab Title
  */
 
-.tabs .tab-title {
-    @include components.background('tabs', 'title', true);
-    @include components.border-radius('tabs', 'title');
-    @include components.border-width('tabs', 'title', true);
-    @include components.border-style('tabs', 'title', true);
-    @include components.border-color('tabs', 'title', true);
-    @include components.color('tabs', 'title', true);
-    @include components.font-size('tabs', 'title', true);
-    @include components.padding('tabs', 'title', true);
-    @include components.transition('tabs', 'title', true);
+@layer components {
+    .tab-title {
+        @include components.background('tabs', 'title', true);
+        @include components.border-radius('tabs', 'title');
+        @include components.border-width('tabs', 'title', true);
+        @include components.border-style('tabs', 'title', true);
+        @include components.border-color('tabs', 'title', true);
+        @include components.color('tabs', 'title', true);
+        @include components.font-size('tabs', 'title', true);
+        @include components.padding('tabs', 'title', true);
+        @include components.transition('tabs', 'title', true);
 
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
+        position: relative;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
 
-    &.-active {
-        @include components.background('tabs', 'title' 'active', true);
-        @include components.border-color('tabs', 'title' 'active', true);
-        @include components.color('tabs', 'title' 'active', true);
-        @include components.font-weight('tabs', 'title' 'active', true);
+        &:not(.-active, :active) {
+            &:hover,
+            &.-hover,
+            &:focus,
+            &.-focus {
+                cursor: pointer;
+                outline: none;
+            }
+
+            &:hover,
+            &.-hover {
+                @include components.background('tabs', 'title' 'hover', true);
+                @include components.border-color('tabs', 'title' 'hover', true);
+                @include components.color('tabs', 'title' 'hover', true);
+            }
+
+            &:focus,
+            &.-focus {
+                @include components.background('tabs', 'title' 'focus', true);
+                @include components.border-color('tabs', 'title' 'focus', true);
+                @include components.color('tabs', 'title' 'focus', true);
+            }
+        }
+
+        &:active,
+        &.-active {
+            @include components.background('tabs', 'title' 'active', true);
+            @include components.border-color('tabs', 'title' 'active', true);
+            @include components.color('tabs', 'title' 'active', true);
+            @include components.font-weight('tabs', 'title' 'active', true);
+        }
     }
 
-    &:hover,
-    &:focus {
-        @include components.background('tabs', 'title' 'hover', true);
-        @include components.border-color('tabs', 'title' 'hover', true);
-        @include components.color('tabs', 'title' 'hover', true);
+    .tabs.-stretch {
+        .tab-title {
+            flex-grow: 1;
 
-        cursor: pointer;
-        outline: none;
-    }
-}
-
-.tabs.-stretch {
-    > .tabs-header .tab-title {
-        flex-grow: 1;
-
-        &:last-child {
-            border-right-width: 0;
+            &:last-child {
+                border-right-width: 0;
+            }
         }
     }
 }

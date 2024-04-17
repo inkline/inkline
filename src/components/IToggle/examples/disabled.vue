@@ -2,11 +2,14 @@
 export default {
     data() {
         return {
-            toggled: false
+            disabledFalse: false,
+            disabledTrue: true
         };
     }
 };
 </script>
 <template>
-    <IToggle v-model="toggled" disabled>I accept the terms and conditions</IToggle>
+    <IToggle v-model="disabledFalse" disabled>I accept the terms and conditions</IToggle>
+
+    <IToggle v-model="disabledTrue" disabled>I accept the terms and conditions</IToggle>
 </template>

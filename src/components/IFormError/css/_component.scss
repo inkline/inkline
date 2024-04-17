@@ -2,19 +2,20 @@
  * Form Error
  */
 
-.form-error {
-    position: relative;
-    margin: var(
-        --form-error--margin,
-        var(--form-error--margin-top, var(--margin-top-1-4)) var(--form-error--margin-right, 0)
-            var(--form-error--margin-bottom, 0) var(--form-error--margin-left, 0)
-    );
-    padding: 0;
-    list-style: none;
-    color: var(--form-error--color, var(--color-danger));
-    font-size: var(--form-error-font-size, var(--font-size-sm));
+@use '../../../css/mixins/components';
 
-    li {
-        margin: 0;
+@layer components {
+    .form-error {
+        @include components.color('form-error');
+        @include components.font-size('form-error');
+        @include components.margin('form-error');
+
+        position: relative;
+        padding: 0;
+        list-style: none;
+
+        li {
+            margin: 0;
+        }
     }
 }

@@ -4,127 +4,129 @@
  * Card
  */
 
-.card {
-    @include components.border-radius('card');
-    @include components.box-shadow('card');
-    @include components.font-size('card');
-    @include components.transition('card');
+@layer components {
+    .card {
+        @include components.border-radius('card');
+        @include components.box-shadow('card');
+        @include components.font-size('card');
+        @include components.transition('card');
 
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-clip: border-box;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-clip: border-box;
 
-    > .card-header {
-        @include components.border-width('card', 'header', true);
-        @include components.border-style('card', 'header', true);
-        @include components.border-color('card', 'header', true);
-        @include components.background('card', 'header', true);
-        @include components.color('card', 'header', true);
-        @include components.padding('card', 'header', true);
-        @include components.transition('card', 'header', true);
+        > .card-header {
+            @include components.border-width('card', 'header', true);
+            @include components.border-style('card', 'header', true);
+            @include components.border-color('card', 'header', true);
+            @include components.background('card', 'header', true);
+            @include components.color('card', 'header', true);
+            @include components.padding('card', 'header', true);
+            @include components.transition('card', 'header', true);
 
-        border-bottom-width: 0;
-        margin-bottom: 0;
-
-        &:first-of-type {
-            @include components.border-top-left-radius('card', 'header', true);
-            @include components.border-top-right-radius('card', 'header', true);
-        }
-
-        > h1,
-        > h2,
-        > h3,
-        > h4,
-        > h5,
-        > h6,
-        > p,
-        > .h1,
-        > .h2,
-        > .h3,
-        > .h4,
-        > .h5,
-        > .h6,
-        > .p {
+            border-bottom-width: 0;
             margin-bottom: 0;
-            margin-top: 0;
-        }
 
-        + img,
-        + .card-body {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
+            &:first-of-type {
+                @include components.border-top-left-radius('card', 'header', true);
+                @include components.border-top-right-radius('card', 'header', true);
+            }
 
-        + .list-group {
-            .list-group-item:first-of-type {
-                border-top: 0;
+            > h1,
+            > h2,
+            > h3,
+            > h4,
+            > h5,
+            > h6,
+            > p,
+            > .h1,
+            > .h2,
+            > .h3,
+            > .h4,
+            > .h5,
+            > .h6,
+            > .p {
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+
+            + img,
+            + .card-body {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            + .list-group {
+                .list-group-item:first-of-type {
+                    border-top: 0;
+                }
             }
         }
-    }
 
-    > .card-body {
-        @include components.border-radius('card', 'body', true);
-        @include components.border-width('card', 'body', true);
-        @include components.border-style('card', 'body', true);
-        @include components.border-color('card', 'body', true);
-        @include components.background('card', 'body', true);
-        @include components.color('card', 'body', true);
-        @include components.padding('card', 'body', true);
-        @include components.transition('card', 'body', true);
+        > .card-body {
+            @include components.border-radius('card', 'body', true);
+            @include components.border-width('card', 'body', true);
+            @include components.border-style('card', 'body', true);
+            @include components.border-color('card', 'body', true);
+            @include components.background('card', 'body', true);
+            @include components.color('card', 'body', true);
+            @include components.padding('card', 'body', true);
+            @include components.transition('card', 'body', true);
 
-        // Enable `flex-grow: 1` for decks and groups so that card blocks take up
-        // as much space as possible, ensuring footers are aligned to the bottom.
-        flex: 1 1 auto;
+            // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+            // as much space as possible, ensuring footers are aligned to the bottom.
+            flex: 1 1 auto;
 
-        &:not(:first-child) {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
+            &:not(:first-child) {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            &:not(:last-child) {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
         }
 
-        &:not(:last-child) {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
+        > .card-footer {
+            @include components.border-bottom-left-radius('card', 'footer', true);
+            @include components.border-bottom-right-radius('card', 'footer', true);
+            @include components.border-width('card', 'footer', true);
+            @include components.border-style('card', 'footer', true);
+            @include components.border-color('card', 'footer', true);
+            @include components.background('card', 'footer', true);
+            @include components.color('card', 'footer', true);
+            @include components.padding('card', 'footer', true);
+            @include components.transition('card', 'footer', true);
+
+            border-top-width: 0;
         }
-    }
 
-    > .card-footer {
-        @include components.border-bottom-left-radius('card', 'footer', true);
-        @include components.border-bottom-right-radius('card', 'footer', true);
-        @include components.border-width('card', 'footer', true);
-        @include components.border-style('card', 'footer', true);
-        @include components.border-color('card', 'footer', true);
-        @include components.background('card', 'footer', true);
-        @include components.color('card', 'footer', true);
-        @include components.padding('card', 'footer', true);
-        @include components.transition('card', 'footer', true);
+        > img {
+            @include components.border-top-left-radius('card', 'img', true);
+            @include components.border-top-right-radius('card', 'img', true);
 
-        border-top-width: 0;
-    }
+            width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+        }
 
-    > img {
-        @include components.border-top-left-radius('card', 'img', true);
-        @include components.border-top-right-radius('card', 'img', true);
+        > hr {
+            margin-right: 0;
+            margin-left: 0;
+        }
 
-        width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
-    }
+        > .list-group:first-of-type,
+        .list-group-item:first-of-type {
+            @include components.border-top-left-radius('card', 'list-group', true);
+            @include components.border-top-right-radius('card', 'list-group', true);
+        }
 
-    > hr {
-        margin-right: 0;
-        margin-left: 0;
-    }
-
-    > .list-group:first-of-type,
-    .list-group-item:first-of-type {
-        @include components.border-top-left-radius('card', 'list-group', true);
-        @include components.border-top-right-radius('card', 'list-group', true);
-    }
-
-    > .list-group:last-of-type,
-    .list-group-item:last-of-type {
-        @include components.border-bottom-left-radius('card', 'list-group', true);
-        @include components.border-bottom-right-radius('card', 'list-group', true);
+        > .list-group:last-of-type,
+        .list-group-item:last-of-type {
+            @include components.border-bottom-left-radius('card', 'list-group', true);
+            @include components.border-bottom-right-radius('card', 'list-group', true);
+        }
     }
 }

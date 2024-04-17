@@ -2,11 +2,13 @@
  * Checkbox Group
  */
 
-.checkbox-group {
-    display: flex;
-    flex-direction: column;
+@layer components {
+    .checkbox-group {
+        display: flex;
+        flex-direction: column;
 
-    &.-inline {
-        flex-direction: row;
+        &.-inline {
+            flex-direction: row;
+        }
     }
 }

@@ -2,14 +2,12 @@
  * Expand Transition
  */
 
+@use '../../../css/mixins/components';
+
 .expand-enter-active,
 .expand-leave-active {
-    transition-property: height;
-    transition-duration: var(--expand-transition--transition-duration, var(--transition-duration));
-    transition-timing-function: var(
-        --expand-transition--transition-timing-function,
-        var(--transition-timing-function)
-    );
+    @include components.transition('expand-transition');
+
     overflow: hidden;
 }
 

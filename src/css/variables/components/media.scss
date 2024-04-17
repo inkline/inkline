@@ -1,9 +1,13 @@
 @use "../mixins/variants";
-.media {
+@layer components {
+  .media {
+  }
 }
-:root {
-  --media--image--margin-top: 0;
-  --media--image--margin-right: var(--margin-right);
-  --media--image--margin-bottom: 0;
-  --media--image--margin-left: 0;
+@layer base {
+  :root {
+    --media--image--margin-top: 0;
+    --media--image--margin-right: var(--margin-right);
+    --media--image--margin-bottom: 0;
+    --media--image--margin-left: 0;
+  }
 }

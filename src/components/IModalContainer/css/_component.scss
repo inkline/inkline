@@ -2,6 +2,8 @@
  * Modal Container
  */
 
-.modal-container {
-    position: relative;
+@layer components {
+    .modal-container {
+        position: relative;
+    }
 }

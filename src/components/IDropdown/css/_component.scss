@@ -2,22 +2,24 @@
  * Dropdown
  */
 
-@use '../../../css/mixins';
+@use '../../../css/mixins/popup';
 @use '../../../css/mixins/components';
 @use '../../../css/functions/properties';
 
-.dropdown-wrapper {
-    display: inline-block;
-    position: relative;
+@layer components {
+    .dropdown-wrapper {
+        display: inline-block;
+        position: relative;
+    }
 
     .dropdown-trigger {
         cursor: pointer;
     }
 
     .dropdown {
-        @include mixins.popup(var(--dropdown--z-index, 2000));
-        @include mixins.popup-arrow;
-        @include mixins.popup-arrow-size-variant(var(--dropdown--arrow--size, 6px));
+        @include popup.popup(var(--dropdown--z-index, 2000));
+        @include popup.popup-arrow;
+        @include popup.popup-arrow-size-variant(var(--dropdown--arrow--size, 6px));
 
         @include components.box-shadow('dropdown');
         @include components.font-size('dropdown');
@@ -76,22 +78,22 @@
             @include components.border-bottom-right-radius('dropdown');
         }
 
-        @include mixins.popup-arrow-color-variant-for-side(
+        @include popup.popup-arrow-color-variant-for-side(
             'top',
             properties.background('dropdown'),
             properties.border-bottom-color('dropdown')
         );
-        @include mixins.popup-arrow-color-variant-for-side(
+        @include popup.popup-arrow-color-variant-for-side(
             'right',
             properties.background('dropdown'),
             properties.border-left-color('dropdown')
         );
-        @include mixins.popup-arrow-color-variant-for-side(
+        @include popup.popup-arrow-color-variant-for-side(
             'bottom',
             properties.background('dropdown'),
             properties.border-top-color('dropdown')
         );
-        @include mixins.popup-arrow-color-variant-for-side(
+        @include popup.popup-arrow-color-variant-for-side(
             'left',
             properties.background('dropdown'),
             properties.border-right-color('dropdown')

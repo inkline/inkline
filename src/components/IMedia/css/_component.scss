@@ -4,22 +4,24 @@
  * Media
  */
 
-.media {
-    position: relative;
-    display: flex;
-    flex-direction: row;
+@layer components {
+    .media {
+        position: relative;
+        display: flex;
+        flex-direction: row;
 
-    > .media-body {
-        flex: 0 1 auto;
-    }
+        > .media-body {
+            flex: 0 1 auto;
+        }
 
-    > img,
-    > .img,
-    > .image {
-        @include components.margin('media', 'image', true);
+        > img,
+        > .img,
+        > .image {
+            @include components.margin('media', 'image', true);
 
-        align-self: flex-start;
-        height: auto;
-        flex: 0 0 auto;
+            align-self: flex-start;
+            height: auto;
+            flex: 0 0 auto;
+        }
     }
 }

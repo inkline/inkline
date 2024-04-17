@@ -1,99 +1,99 @@
 @use '../../../css/mixins/components';
 @use '../../../css/functions/properties';
-
-@import '../../../css/icons';
+@use '../../../css/icons';
 
 /**
  * Collapsible Item
  */
 
-.collapsible {
-    > .collapsible-item {
-        @include components.box-shadow('collapsible');
+@layer components {
+    .collapsible {
+        > .collapsible-item {
+            @include components.box-shadow('collapsible');
 
-        position: relative;
-        display: block;
-
-        > .collapsible-header {
-            @include components.border-width('collapsible', 'header', true);
-            @include components.border-style('collapsible', 'header', true);
-            @include components.border-color('collapsible', 'header', true);
-            @include components.background('collapsible', 'header', true);
-            @include components.color('collapsible', 'header', true);
-            @include components.padding('collapsible', 'header', true);
-            @include components.transition('collapsible', 'header', true);
-
-            display: flex;
-            cursor: pointer;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-
-            > .icon {
-                @include components.background('collapsible', 'icon', true);
-                @include components.size('collapsible', 'icon', true);
-                @include components.transition('collapsible', 'icon', true);
-
-                display: inline-block;
-                position: relative;
-                transform: rotate(-90deg);
-
-                mask-size: properties.width('collapsible', 'icon')
-                    properties.height('collapsible', 'icon');
-                mask-image: url($ink-chevron-down);
-                mask-position: center center;
-                mask-repeat: no-repeat;
-            }
-        }
-
-        > .collapsible-body {
-            @include components.border-width('collapsible', 'body', true);
-            @include components.border-style('collapsible', 'body', true);
-            @include components.border-color('collapsible', 'body', true);
-            @include components.background('collapsible', 'body', true);
-            @include components.color('collapsible', 'body', true);
-
-            display: block;
             position: relative;
+            display: block;
 
-            > .content {
-                @include components.padding('collapsible', 'body', true);
-            }
-        }
-
-        &:first-of-type {
             > .collapsible-header {
-                @include components.border-top-left-radius('collapsible', 'header', true);
-                @include components.border-top-right-radius('collapsible', 'header', true);
-            }
-        }
+                @include components.border-width('collapsible', 'header', true);
+                @include components.border-style('collapsible', 'header', true);
+                @include components.border-color('collapsible', 'header', true);
+                @include components.background('collapsible', 'header', true);
+                @include components.color('collapsible', 'header', true);
+                @include components.padding('collapsible', 'header', true);
+                @include components.transition('collapsible', 'header', true);
 
-        &:last-of-type {
-            > .collapsible-header {
-                @include components.border-bottom-left-radius('collapsible', 'header', true);
-                @include components.border-bottom-right-radius('collapsible', 'header', true);
+                display: flex;
+                cursor: pointer;
+                align-items: center;
+                justify-content: space-between;
+                text-decoration: none;
+
+                > .icon {
+                    @include components.size('collapsible', 'icon', true);
+                    @include components.transition('collapsible', 'icon', true);
+
+                    background: properties.color('collapsible', 'icon', true);
+                    display: inline-block;
+                    position: relative;
+                    transform: rotate(-90deg);
+                    mask-size: properties.width('collapsible', 'icon')
+                        properties.height('collapsible', 'icon');
+                    mask-image: url('#{icons.$ink-chevron-down}');
+                    mask-position: center center;
+                    mask-repeat: no-repeat;
+                }
             }
 
             > .collapsible-body {
-                @include components.border-bottom-left-radius('collapsible', 'body', true);
-                @include components.border-bottom-right-radius('collapsible', 'body', true);
-            }
-        }
+                @include components.border-width('collapsible', 'body', true);
+                @include components.border-style('collapsible', 'body', true);
+                @include components.border-color('collapsible', 'body', true);
+                @include components.background('collapsible', 'body', true);
+                @include components.color('collapsible', 'body', true);
 
-        &.-active {
-            > .collapsible-header {
-                border-bottom-left-radius: 0;
-                border-bottom-right-radius: 0;
+                display: block;
+                position: relative;
 
-                > .icon {
-                    transform: rotate(0deg);
+                > .content {
+                    @include components.padding('collapsible', 'body', true);
                 }
             }
-        }
 
-        + .collapsible-item {
-            > .collapsible-header {
-                border-top-width: 0;
+            &:first-of-type {
+                > .collapsible-header {
+                    @include components.border-top-left-radius('collapsible', 'header', true);
+                    @include components.border-top-right-radius('collapsible', 'header', true);
+                }
+            }
+
+            &:last-of-type {
+                > .collapsible-header {
+                    @include components.border-bottom-left-radius('collapsible', 'header', true);
+                    @include components.border-bottom-right-radius('collapsible', 'header', true);
+                }
+
+                > .collapsible-body {
+                    @include components.border-bottom-left-radius('collapsible', 'body', true);
+                    @include components.border-bottom-right-radius('collapsible', 'body', true);
+                }
+            }
+
+            &.-active {
+                > .collapsible-header {
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+
+                    > .icon {
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+
+            + .collapsible-item {
+                > .collapsible-header {
+                    border-top-width: 0;
+                }
             }
         }
     }

@@ -220,7 +220,6 @@ export default defineComponent({
         :id="name"
         ref="wrapperRef"
         class="tooltip-wrapper"
-        :class="classes"
         @keyup.esc="onKeyEscape"
     >
         <div
@@ -240,6 +239,7 @@ export default defineComponent({
                 :id="`${name}-popup`"
                 ref="popupRef"
                 class="tooltip"
+                :class="classes"
                 role="tooltip"
                 aria-live="polite"
                 :aria-hidden="visible ? 'false' : 'true'"

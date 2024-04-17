@@ -2,25 +2,27 @@
  * Container
  */
 
-@use '../../../css/mixins' as mixins;
+@use '../../../css/mixins/config';
 @use '../../../css/mixins/components';
 @use '../../../css/functions/properties';
 
-.container {
-    width: var(--container-xs);
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
+@layer components {
+    .container {
+        width: properties.generic('container-xs');
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
 
-    @each $breakpoint-name in mixins.$breakpoint-keys {
-        @include mixins.breakpoint-up($breakpoint-name) {
-            max-width: var(--container-#{$breakpoint-name});
-            padding-left: calc(var(--gutter-#{$breakpoint-name}) / 2);
-            padding-right: calc(var(--gutter-#{$breakpoint-name}) / 2);
+        @each $breakpoint-name in config.$breakpoint-keys {
+            @include config.breakpoint-up($breakpoint-name) {
+                max-width: properties.generic('container-#{$breakpoint-name}');
+                padding-left: calc(#{properties.generic('gutter-#{$breakpoint-name}')} / 2);
+                padding-right: calc(#{properties.generic('gutter-#{$breakpoint-name}')} / 2);
+            }
         }
-    }
 
-    &.-fluid {
-        max-width: 100%;
+        &.-fluid {
+            max-width: 100%;
+        }
     }
 }

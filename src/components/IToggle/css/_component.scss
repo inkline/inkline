@@ -2,236 +2,153 @@
  * Toggle
  */
 
-.toggle {
-    position: relative;
-    margin-bottom: 0;
-    display: flex;
+@use '../../../css/mixins/components';
+@use '../../../css/functions/properties';
 
-    .toggle-label {
-        display: flex;
-        align-items: center;
+@layer components {
+    .toggle {
         position: relative;
-        margin: 0;
-        color: var(--toggle--label--color, var(--toggle--color));
-        font-size: var(--toggle--label--font-size, var(--toggle--font-size, var(--font-size)));
+        margin-bottom: 0;
+        display: flex;
 
-        &::before {
-            content: '';
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-            transition-duration: var(--toggle--transition-duration, var(--transition-duration));
-            transition-property: var(
-                --toggle--transition-property,
-                background-color,
-                border-color,
-                transform
-            );
-            transition-timing-function: var(
-                --toggle--transition-timing-function,
-                var(--transition-timing-function)
-            );
-            border-width: var(
-                --toggle--border-width,
-                (
-                    var(--toggle--border-top-width, var(--border-top-width))
-                        var(--toggle--border-right-width, var(--border-right-width))
-                        var(--toggle--border-bottom-width, var(--border-bottom-width))
-                        var(--toggle--border-left-width, var(--border-left-width))
-                )
-            );
-            border-style: var(
-                --toggle--border-style,
-                (
-                    var(--toggle--border-top-style, var(--border-top-style))
-                        var(--toggle--border-right-style, var(--border-right-style))
-                        var(--toggle--border-bottom-style, var(--border-bottom-style))
-                        var(--toggle--border-left-style, var(--border-left-style))
-                )
-            );
-            border-color: var(
-                --toggle--border-color,
-                (
-                    var(--toggle--border-top-color, var(--border-top-color))
-                        var(--toggle--border-right-color, var(--border-right-color))
-                        var(--toggle--border-bottom-color, var(--border-bottom-color))
-                        var(--toggle--border-left-color, var(--border-left-color))
-                )
-            );
-            margin-right: var(--toggle--margin-right, var(--margin-right));
-            flex-shrink: 0;
-            flex-grow: 0;
-            background-color: var(--toggle--background);
-            width: var(--toggle--width, 40px);
-            height: var(--toggle--height, 20px);
-            border-radius: var(
-                --toggle--border-radius,
-                var(--toggle--border-top-left-radius, var(--border-top-left-radius))
-                    var(--toggle--border-top-right-radius, var(--border-top-right-radius))
-                    var(--toggle--border-bottom-right-radius, var(--border-bottom-right-radius))
-                    var(--toggle--border-bottom-left-radius, var(--border-bottom-left-radius))
-            );
-        }
-
-        &::after {
-            content: '';
-            position: absolute;
-            display: block;
-            top: 50%;
-            left: 0;
-            z-index: 1;
-            transform: translate(0, 0);
-            transition-duration: var(--toggle--transition-duration, var(--transition-duration));
-            transition-property: var(
-                --toggle--transition-property,
-                background-color,
-                border-color,
-                transform
-            );
-            transition-timing-function: var(
-                --toggle--transition-timing-function,
-                var(--transition-timing-function)
-            );
-            background-color: var(--toggle--indicator--background);
-            height: var(--toggle--indicator--width, 16px);
-            width: var(--toggle--indicator--height, 16px);
-            border-radius: var(
-                --toggle--indicator--border-radius,
-                (
-                    var(
-                            --toggle--indicator--border-top-left-radius,
-                            var(--toggle--border-top-left-radius, var(--border-top-left-radius))
-                        )
-                        var(
-                            --toggle--indicator--border-top-right-radius,
-                            var(--toggle--border-top-right-radius, var(--border-top-right-radius))
-                        )
-                        var(
-                            --toggle--indicator--border-bottom-right-radius,
-                            var(
-                                --toggle--border-bottom-right-radius,
-                                var(--border-bottom-right-radius)
-                            )
-                        )
-                        var(
-                            --toggle--indicator--border-bottom-left-radius,
-                            var(
-                                --toggle--border-bottom-left-radius,
-                                var(--border-bottom-left-radius)
-                            )
-                        )
-                )
-            );
-            margin-top: calc(var(--toggle--indicator--height, 16px) / -2);
-            margin-left: calc(
-                var(--toggle--height, 20px) / 2 - var(--toggle--indicator--height, 16px) / 2
-            );
-        }
-    }
-
-    &.-rounded {
         .toggle-label {
+            @include components.color('toggle', 'label', true);
+            @include components.font-size('toggle', 'label', true);
+
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin: 0;
+
             &::before {
-                border-radius: var(
-                    --toggle--rounded--border-radius,
-                    var(--toggle--rounded--border-top-left-radius, var(--toggle--height))
-                        var(--toggle--rounded--border-top-right-radius, var(--toggle--height))
-                        var(--toggle--rounded--border-bottom-right-radius, var(--toggle--height))
-                        var(--toggle--rounded--border-bottom-left-radius, var(--toggle--height))
-                );
+                @include components.background('toggle');
+                @include components.box-shadow('toggle');
+                @include components.border-width('toggle');
+                @include components.border-style('toggle');
+                @include components.border-color('toggle');
+                @include components.border-radius('toggle');
+                @include components.width('toggle');
+                @include components.height('toggle');
+                @include components.transition('toggle');
+                @include components.margin('toggle');
+
+                content: '';
+                position: relative;
+                display: inline-block;
+                cursor: pointer;
+                flex-shrink: 0;
+                flex-grow: 0;
             }
 
             &::after {
-                border-radius: var(
-                    --toggle--rounded--indicator--border-radius,
-                    var(--toggle--rounded--indicator--border-top-left-radius, 50%)
-                        var(--toggle--rounded--indicator--border-top-right-radius, 50%)
-                        var(--toggle--rounded--indicator--border-bottom-right-radius, 50%)
-                        var(--toggle--rounded--indicator--border-bottom-left-radius, 50%)
+                @include components.background('toggle', 'indicator');
+                @include components.border-radius('toggle', 'indicator', true);
+                @include components.transition('toggle', 'indicator', true);
+                @include components.width('toggle', 'indicator');
+                @include components.height('toggle', 'indicator');
+
+                content: '';
+                position: absolute;
+                display: block;
+                top: 50%;
+                left: 0;
+                z-index: 1;
+                transform: translate(0, 0);
+                margin-top: calc(#{properties.height('toggle', 'indicator')} / -2);
+                margin-left: calc(
+                    #{properties.height('toggle')} / 2 - #{properties.height('toggle', 'indicator')} /
+                        2
                 );
             }
         }
-    }
 
-    > input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-        cursor: pointer;
-        position: absolute;
-        top: 0;
-        left: 0;
+        &.-rounded {
+            .toggle-label {
+                &::before {
+                    @include components.border-radius(
+                        'toggle',
+                        'rounded',
+                        properties.height('toggle')
+                    );
+                }
 
-        &:checked + .toggle-label {
-            &::before {
-                background: var(--toggle--checked--background, var(--color-primary));
-                border-color: var(
-                    --toggle--checked--border-color,
-                    var(--toggle--checked--border-top-color, var(--color-primary))
-                        var(--toggle--checked--border-right-color, var(--color-primary))
-                        var(--toggle--checked--border-bottom-color, var(--color-primary))
-                        var(--toggle--checked--border-left-color, var(--color-primary))
-                );
-            }
-
-            &::after {
-                background: var(--toggle--checked--indicator--background, var(--color-white));
-                transform: translate(calc(var(--toggle--width, 40px) * 0.5), 0);
+                &::after {
+                    @include components.border-radius(
+                        'toggle',
+                        'rounded',
+                        properties.height('toggle', 'indicator')
+                    );
+                }
             }
         }
 
-        &:focus + .toggle-label::before {
-            box-shadow: 0 0 1px var(--toggle--checked--background);
-        }
+        > input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
 
-        &:disabled + .toggle-label,
-        &[readonly] + .toggle-label {
-            cursor: default;
-            color: var(--toggle--disabled--label--color);
+            &:checked + .toggle-label {
+                &::before {
+                    @include components.background('toggle', 'checked');
+                    @include components.border-color('toggle', 'checked');
+                }
 
-            &::before {
-                background: var(--toggle--disabled--background);
-                border-color: var(
-                    --toggle--disabled--border-color,
-                    var(
-                            --toggle--disabled--border-top-color,
-                            var(--toggle--border-top-color, var(--border-top-color))
-                        )
-                        var(
-                            --toggle--disabled--border-right-color,
-                            var(--toggle--border-right-color, var(--border-right-color))
-                        )
-                        var(
-                            --toggle--disabled--border-bottom-color,
-                            var(--toggle--border-bottom-color, var(--border-bottom-color))
-                        )
-                        var(
-                            --toggle--disabled--border-left-color,
-                            var(--toggle--border-left-color, var(--border-left-color))
-                        )
-                );
+                &::after {
+                    @include components.background('toggle', 'checked' 'indicator');
+
+                    transform: translate(calc(#{properties.width('toggle')} * 0.5), 0);
+                }
             }
 
-            &::after {
-                background: var(--toggle--disabled--indicator--background);
-            }
-        }
-
-        &:disabled:checked + .toggle-label,
-        &[readonly]:checked + .toggle-label {
-            &::before {
-                background: var(--toggle--checked--disabled--background);
-                border-color: var(
-                    --toggle--checked--disabled--border-color,
-                    var(--toggle--checked--disabled--border-top-color, var(--color-primary))
-                        var(--toggle--checked--disabled--border-right-color, var(--color-primary))
-                        var(--toggle--checked--disabled--border-bottom-color, var(--color-primary))
-                        var(--toggle--checked--disabled--border-left-color, var(--color-primary))
-                );
+            &:focus + .toggle-label::before {
+                box-shadow: 0 0 1px #{properties.background('toggle', 'checked')};
             }
 
-            &::after {
-                background: var(--toggle--checked--disabled--indicator--background);
+            &:disabled + .toggle-label {
+                &::before,
+                &::after {
+                    cursor: not-allowed;
+                }
+            }
+
+            @each $state in ('disabled' 'readonly') {
+                &[#{$state}] {
+                    + .toggle-label {
+                        @include components.color('toggle' $state, 'label', true);
+
+                        cursor: default;
+
+                        &::before {
+                            @include components.background('toggle', $state, true);
+                            @include components.border-color('toggle', $state, true);
+                        }
+
+                        &::after {
+                            @include components.background('toggle', $state 'indicator', true);
+                        }
+                    }
+
+                    &:checked + .toggle-label {
+                        &::before {
+                            @include components.background('toggle', 'checked' $state, true);
+                            @include components.border-color('toggle', 'checked' $state, true);
+                        }
+
+                        &::after {
+                            @include components.background(
+                                'toggle',
+                                'checked' $state 'indicator',
+                                properties.background-h('toggle', $state 'indicator')
+                                    properties.background-s('toggle', $state 'indicator')
+                                    properties.background-l('toggle', $state 'indicator')
+                                    properties.background-a('toggle', $state 'indicator')
+                            );
+                        }
+                    }
+                }
             }
         }
     }

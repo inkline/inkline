@@ -2,81 +2,65 @@
  * Select option
  */
 
-.select .select-option {
-    border-color: var(
-        --select--option--border-color,
-        var(
-                --select--option--border-top-color,
-                var(--select--border-top-color, var(--border-top-color))
-            )
-            var(
-                --select--option--border-right-color,
-                var(--select--border-right-color, var(--border-right-color))
-            )
-            var(
-                --select--option--border-bottom-color,
-                var(--select--border-bottom-color, var(--border-bottom-color))
-            )
-            var(
-                --select--option--border-left-color,
-                var(--select--border-left-color, var(--border-left-color))
-            )
-    );
-    padding: var(
-        --select--option--padding,
-        var(--select--option--padding-top, var(--select--padding-top, var(--padding-top)))
-            var(--select--option--padding-right, var(--select--padding-right, var(--padding-right)))
-            var(
-                --select--option--padding-bottom,
-                var(--select--padding-bottom, var(--padding-bottom))
-            )
-            var(--select--option--padding-left, var(--select--padding-left, var(--padding-left)))
-    );
-    color: var(--select--option--color, var(--select--color));
-    background: var(--select--option--background, var(--select--background));
-    display: block;
-    width: 100%;
-    clear: both;
-    margin-bottom: 0;
-    border: 0;
-    cursor: pointer;
-    transition-property: var(
-        --select--option--transition-property,
-        background-color,
-        border-color,
-        color
-    );
-    transition-timing-function: var(
-        --select--option--transition-timing-function,
-        var(--transition-timing-function)
-    );
-    transition-duration: var(--select--option--transition-duration, var(--transition-duration));
+@use '../../../css/mixins/components';
 
-    mark {
-        padding-left: 0;
-        padding-right: 0;
-    }
+@layer components {
+    .select-option {
+        @include components.border-width('select', 'option', true);
+        @include components.border-style('select', 'option', true);
+        @include components.border-color('select', 'option', true);
+        @include components.background('select', 'option', true);
+        @include components.color('select', 'option', true);
+        @include components.padding('select', 'option', true);
+        @include components.transition('select', 'option', true);
 
-    &:not(.-disabled, .-plaintext) {
-        &:hover,
-        &:focus {
-            outline: 0;
-            text-decoration: none;
-            color: var(--select--option--hover--color);
-            background: var(--select--option--hover--background);
+        display: block;
+        width: 100%;
+        clear: both;
+        margin-bottom: 0;
+        border: 0;
+        cursor: pointer;
+
+        mark {
+            padding-left: 0;
+            padding-right: 0;
         }
-    }
 
-    &.-disabled {
-        pointer-events: none;
-        cursor: not-allowed;
-        color: var(--select--option--disabled--color);
-        background: var(--select--option--disabled--background, var(--select--background));
-    }
+        &:not(.-disabled, .-plaintext, .-active) {
+            &:hover,
+            &.-hover,
+            &:focus,
+            &.-focus {
+                outline: 0;
+                text-decoration: none;
+            }
 
-    &.-active {
-        font-weight: bold;
-        color: var(--select--option--active--color, var(--select--color));
-        background: var(--select--option--active--background, var(--select--background));
+            &:hover,
+            &.-hover {
+                @include components.background('select' 'option', 'hover', true);
+                @include components.color('select' 'option', 'hover', true);
+            }
+
+            &:focus,
+            &.-focus {
+                @include components.background('select' 'option', 'focus', true);
+                @include components.color('select' 'option', 'focus', true);
+            }
+        }
+
+        &.-disabled {
+            @include components.color('select' 'option', 'disabled', true);
+            @include components.background('select' 'option', 'disabled', true);
+
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        &.-active {
+            @include components.background('select' 'option', 'active', true);
+            @include components.color('select' 'option', 'active', true);
+
+            font-weight: bold;
+        }
     }
 }

@@ -698,7 +698,7 @@ export default defineComponent({
         v-bind="$attrs"
         :id="name"
         ref="wrapperRef"
-        class="select-wrapper"
+        class="select"
         :class="wrapperClasses"
         :name="name"
         role="combobox"
@@ -772,7 +772,7 @@ export default defineComponent({
                 v-show="visible"
                 :id="`${name}-options`"
                 ref="popupRef"
-                class="select"
+                class="select-popup"
                 role="listbox"
                 :aria-hidden="visible ? 'false' : 'true'"
             >

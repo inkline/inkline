@@ -2,8 +2,10 @@
  * Column
  */
 
-@use '../../../css/mixins';
-@use '../../../css/functions';
+@use '../../../css/mixins/breakpoints';
+@use '../../../css/mixins/config';
+@use '../../../css/functions/properties';
+@use '../../../css/functions/escape';
 @use 'sass:math';
 @use 'sass:list';
 
@@ -35,101 +37,108 @@
     max-width: calc(#{$columns-count} * 100% / #{$columns});
 }
 
-.col,
-.column {
-    @include column-flexible;
+@layer components {
+    .col,
+    .column {
+        @include column-flexible;
 
-    box-sizing: border-box;
-    min-height: 1px;
-    position: relative;
+        box-sizing: border-box;
+        min-height: 1px;
+        position: relative;
 
-    @each $breakpoint-key in mixins.$breakpoint-keys {
-        @include mixins.breakpoint-up($breakpoint-key) {
-            padding-left: calc(var(--grid--#{$breakpoint-key}--gutter) / 2);
-            padding-right: calc(var(--grid--#{$breakpoint-key}--gutter) / 2);
-        }
-    }
-
-    // Column Responsive Sizes
-    //
-    @each $breakpoint-key in list.append(mixins.$breakpoint-keys, '') {
-        $breakpoint: functions.escape(mixins.breakpoint-infix($breakpoint-key));
-
-        @if $breakpoint-key != '' {
-            &.#{$breakpoint},
-            &.#{$breakpoint}-auto {
-                @include column-full-width;
+        @each $breakpoint-key in config.$breakpoint-keys {
+            @include config.breakpoint-up($breakpoint-key) {
+                padding-left: calc(#{properties.generic('gutter-#{$breakpoint-key}')} / 2);
+                padding-right: calc(#{properties.generic('gutter-#{$breakpoint-key}')} / 2);
             }
         }
 
-        @include mixins.breakpoint-up($breakpoint-key) {
-            @if $breakpoint-key != '' {
-                &.#{$breakpoint} {
-                    @include column-flexible;
-                }
+        // Column Responsive Sizes
+        //
+        @each $breakpoint-key in list.append(config.$breakpoint-keys, '') {
+            $breakpoint: escape.escape(breakpoints.breakpoint-infix($breakpoint-key));
 
+            @if $breakpoint-key != '' {
+                &.#{$breakpoint},
                 &.#{$breakpoint}-auto {
-                    flex: 1 0 auto;
-                    max-width: auto;
-                }
-            }
-
-            &.-first#{$breakpoint} {
-                order: -1;
-            }
-
-            &.-last#{$breakpoint} {
-                order: 1;
-            }
-        }
-
-        @for $column-count from 1 through mixins.$columns {
-            @if $breakpoint-key != '' {
-                &.#{$breakpoint}-#{$column-count} {
                     @include column-full-width;
                 }
             }
 
-            @include mixins.breakpoint-up($breakpoint-key) {
-                // Column width
-                //
+            @include config.breakpoint-up($breakpoint-key) {
                 @if $breakpoint-key != '' {
-                    &.#{$breakpoint}-#{$column-count} {
-                        @include column-fixed-width(var(--grid--columns), $column-count);
+                    &.#{$breakpoint} {
+                        @include column-flexible;
+                    }
+
+                    &.#{$breakpoint}-auto {
+                        flex: 1 0 auto;
+                        max-width: auto;
                     }
                 }
 
-                // Column offset
-                //
-                &.-offset#{$breakpoint}-#{$column-count} {
-                    margin-left: calc(#{$column-count} * 100% / var(--grid--columns));
+                &.-first#{$breakpoint} {
+                    order: -1;
                 }
 
-                // Column push
-                //
-                &.-push#{$breakpoint}-#{$column-count} {
-                    left: calc(#{$column-count} * 100% / var(--grid--columns));
-                }
-
-                // Column pull
-                //
-                &.-pull#{$breakpoint}-#{$column-count} {
-                    right: calc(#{$column-count} * 100% / var(--grid--columns));
+                &.-last#{$breakpoint} {
+                    order: 1;
                 }
             }
-        }
 
-        @include mixins.breakpoint-up($breakpoint-key) {
-            &.-offset#{$breakpoint}-0 {
-                margin-left: 0;
+            @for $column-count from 1 through config.$columns {
+                @if $breakpoint-key != '' {
+                    &.#{$breakpoint}-#{$column-count} {
+                        @include column-full-width;
+                    }
+                }
+
+                @include config.breakpoint-up($breakpoint-key) {
+                    // Column width
+                    //
+                    @if $breakpoint-key != '' {
+                        &.#{$breakpoint}-#{$column-count} {
+                            @include column-fixed-width(
+                                properties.generic('columns'),
+                                $column-count
+                            );
+                        }
+                    }
+
+                    // Column offset
+                    //
+                    &.-offset#{$breakpoint}-#{$column-count} {
+                        margin-left: calc(
+                            #{$column-count} * 100% / #{properties.generic('columns')}
+                        );
+                    }
+
+                    // Column push
+                    //
+                    &.-push#{$breakpoint}-#{$column-count} {
+                        left: calc(#{$column-count} * 100% / #{properties.generic('columns')});
+                    }
+
+                    // Column pull
+                    //
+                    &.-pull#{$breakpoint}-#{$column-count} {
+                        right: calc(#{$column-count} * 100% / #{properties.generic('columns')});
+                    }
+                }
             }
 
-            &.-push#{$breakpoint}-0 {
-                left: 0;
-            }
+            @include config.breakpoint-up($breakpoint-key) {
+                &.-offset#{$breakpoint}-0 {
+                    margin-left: 0;
+                }
 
-            &.-pull#{$breakpoint}-0 {
-                right: 0;
+                &.-push#{$breakpoint}-0 {
+                    left: 0;
+                }
+
+                &.-pull#{$breakpoint}-0 {
+                    right: 0;
+                }
             }
         }
     }

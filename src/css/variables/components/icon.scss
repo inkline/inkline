@@ -1,30 +1,34 @@
 @use "../mixins/variants";
-.icon {
-  @include variants.selector("xs") {
-    @include variants.font-size("icon", "xs");
-  }
-  @include variants.selector("sm") {
-    @include variants.font-size("icon", "sm");
-  }
-  @include variants.selector("md") {
-    @include variants.font-size("icon", "md");
-  }
-  @include variants.selector("lg") {
-    @include variants.font-size("icon", "lg");
-  }
-  @include variants.selector("xl") {
-    @include variants.font-size("icon", "xl");
-  }
-  @include variants.selector("xxl") {
-    @include variants.font-size("icon", "xxl");
+@layer components {
+  .icon {
+    @include variants.selector("xs") {
+      @include variants.font-size("icon", "xs");
+    }
+    @include variants.selector("sm") {
+      @include variants.font-size("icon", "sm");
+    }
+    @include variants.selector("md") {
+      @include variants.font-size("icon", "md");
+    }
+    @include variants.selector("lg") {
+      @include variants.font-size("icon", "lg");
+    }
+    @include variants.selector("xl") {
+      @include variants.font-size("icon", "xl");
+    }
+    @include variants.selector("xxl") {
+      @include variants.font-size("icon", "xxl");
+    }
   }
 }
-:root {
-  --icon--font-size: var(--font-size);
-  --icon--xs--font-size: var(--font-size-xs);
-  --icon--sm--font-size: var(--font-size-sm);
-  --icon--md--font-size: var(--font-size-md);
-  --icon--lg--font-size: var(--font-size-lg);
-  --icon--xl--font-size: var(--font-size-xl);
-  --icon--xxl--font-size: calc(var(--font-size) * var(--size-multiplier-xxl));
+@layer base {
+  :root {
+    --icon--font-size: var(--font-size);
+    --icon--xs--font-size: var(--font-size-xs);
+    --icon--sm--font-size: var(--font-size-sm);
+    --icon--md--font-size: var(--font-size-md);
+    --icon--lg--font-size: var(--font-size-lg);
+    --icon--xl--font-size: var(--font-size-xl);
+    --icon--xxl--font-size: calc(var(--font-size) * var(--size-multiplier-xxl));
+  }
 }

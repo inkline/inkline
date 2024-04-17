@@ -1,18 +1,20 @@
-:root {
-  --body--background--h: var(--color-white--h);
-  --body--background--s: var(--color-white--s);
-  --body--background--l: var(--color-white--l);
-  --body--background--a: var(--color-white--a);
-  --body--color--h: var(--text-color-dark--h);
-  --body--color--s: var(--text-color-dark--s);
-  --body--color--l: var(--text-color-dark--l);
-  --body--color--a: var(--text-color-dark--a);
-  --body--font-size: var(--font-size);
-  --body--font-family: var(--font-family);
-  --body--font-weight: var(--font-weight);
-  --body--line-height: var(--line-height);
-  --body--text-align: var(--text-align);
-  --body--transition-property: background-color, color;
-  --body--transition-duration: var(--transition-duration);
-  --body--transition-timing-function: var(--transition-timing-function);
+@layer base {
+  :root {
+    --body--background--h: var(--color-white--h);
+    --body--background--s: var(--color-white--s);
+    --body--background--l: var(--color-white--l);
+    --body--background--a: var(--color-white--a);
+    --body--color--h: var(--text-color-dark--h);
+    --body--color--s: var(--text-color-dark--s);
+    --body--color--l: var(--text-color-dark--l);
+    --body--color--a: var(--text-color-dark--a);
+    --body--font-size: var(--font-size);
+    --body--font-family: var(--font-family);
+    --body--font-weight: var(--font-weight);
+    --body--line-height: var(--line-height);
+    --body--text-align: var(--text-align);
+    --body--transition-property: background-color, color;
+    --body--transition-duration: var(--transition-duration);
+    --body--transition-timing-function: var(--transition-timing-function);
+  }
 }

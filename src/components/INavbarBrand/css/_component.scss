@@ -4,41 +4,43 @@
  * Navbar Brand
  */
 
-.navbar-brand {
-    @include components.color('navbar', 'brand', true);
-    @include components.font-size('navbar', 'brand', true);
-    @include components.margin('navbar', 'brand', true);
-    @include components.transition('navbar', 'brand', true);
-    @include components.padding('navbar', 'brand', true);
+@layer components {
+    .navbar-brand {
+        @include components.color('navbar', 'brand', true);
+        @include components.font-size('navbar', 'brand', true);
+        @include components.margin('navbar', 'brand', true);
+        @include components.transition('navbar', 'brand', true);
+        @include components.padding('navbar', 'brand', true);
 
-    display: inline-flex;
-    line-height: inherit;
-    white-space: nowrap;
-    align-items: center;
+        display: inline-flex;
+        line-height: inherit;
+        white-space: nowrap;
+        align-items: center;
 
-    &:hover,
-    &:focus {
-        text-decoration: none;
-    }
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
 
-    &[to],
-    &[href] {
-        cursor: pointer;
-    }
+        &[to],
+        &[href] {
+            cursor: pointer;
+        }
 
-    > .h1,
-    > .h2,
-    > .h3,
-    > .h4,
-    > .h5,
-    > .h6,
-    > h1,
-    > h2,
-    > h3,
-    > h4,
-    > h5,
-    > h6 {
-        margin-top: 0;
-        margin-bottom: 0;
+        > .h1,
+        > .h2,
+        > .h3,
+        > .h4,
+        > .h5,
+        > .h6,
+        > h1,
+        > h2,
+        > h3,
+        > h4,
+        > h5,
+        > h6 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
     }
 }

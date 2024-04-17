@@ -1,54 +1,58 @@
 @use "../mixins/variants";
-.loader {
-  @include variants.selector("light") {
-    @include variants.background-h("loader", "light");
-    @include variants.background-s("loader", "light");
-    @include variants.background-l("loader", "light");
-    @include variants.background-a("loader", "light");
-  }
-  @include variants.selector("dark") {
-    @include variants.background-h("loader", "dark");
-    @include variants.background-s("loader", "dark");
-    @include variants.background-l("loader", "dark");
-    @include variants.background-a("loader", "dark");
-  }
-  @include variants.selector("primary") {
-    @include variants.background-h("loader", "primary");
-    @include variants.background-s("loader", "primary");
-    @include variants.background-l("loader", "primary");
-    @include variants.background-a("loader", "primary");
-  }
-  @include variants.selector("sm") {
-    @include variants.width("loader", "sm");
-  }
-  @include variants.selector("md") {
-    @include variants.width("loader", "md");
-  }
-  @include variants.selector("lg") {
-    @include variants.width("loader", "lg");
+@layer components {
+  .loader {
+    @include variants.selector("light") {
+      @include variants.background-h("loader", "light");
+      @include variants.background-s("loader", "light");
+      @include variants.background-l("loader", "light");
+      @include variants.background-a("loader", "light");
+    }
+    @include variants.selector("dark") {
+      @include variants.background-h("loader", "dark");
+      @include variants.background-s("loader", "dark");
+      @include variants.background-l("loader", "dark");
+      @include variants.background-a("loader", "dark");
+    }
+    @include variants.selector("primary") {
+      @include variants.background-h("loader", "primary");
+      @include variants.background-s("loader", "primary");
+      @include variants.background-l("loader", "primary");
+      @include variants.background-a("loader", "primary");
+    }
+    @include variants.selector("sm") {
+      @include variants.width("loader", "sm");
+    }
+    @include variants.selector("md") {
+      @include variants.width("loader", "md");
+    }
+    @include variants.selector("lg") {
+      @include variants.width("loader", "lg");
+    }
   }
 }
-:root {
-  --loader--animation-duration: 1.2s;
-  --loader--background--h: var(--color-primary--h);
-  --loader--background--s: var(--color-primary--s);
-  --loader--background--l: var(--color-primary--l);
-  --loader--background--a: var(--color-primary--a);
-  --loader--width: 64px;
-  --loader--height: 64px;
-  --loader--light--background--h: var(--contrast-text-color-light--h);
-  --loader--light--background--s: var(--contrast-text-color-light--s);
-  --loader--light--background--l: var(--contrast-text-color-light--l);
-  --loader--light--background--a: var(--contrast-text-color-light--a);
-  --loader--dark--background--h: var(--contrast-text-color-dark--h);
-  --loader--dark--background--s: var(--contrast-text-color-dark--s);
-  --loader--dark--background--l: var(--contrast-text-color-dark--l);
-  --loader--dark--background--a: var(--contrast-text-color-dark--a);
-  --loader--primary--background--h: var(--color-primary--h);
-  --loader--primary--background--s: var(--color-primary--s);
-  --loader--primary--background--l: var(--color-primary--l);
-  --loader--primary--background--a: var(--color-primary--a);
-  --loader--sm--width: calc(64px * var(--size-multiplier-sm));
-  --loader--md--width: calc(64px * var(--size-multiplier-md));
-  --loader--lg--width: calc(64px * var(--size-multiplier-lg));
+@layer base {
+  :root {
+    --loader--animation-duration: 1.2s;
+    --loader--background--h: var(--color-primary--h);
+    --loader--background--s: var(--color-primary--s);
+    --loader--background--l: var(--color-primary--l);
+    --loader--background--a: var(--color-primary--a);
+    --loader--width: 64px;
+    --loader--height: 64px;
+    --loader--light--background--h: var(--contrast-text-color-light--h);
+    --loader--light--background--s: var(--contrast-text-color-light--s);
+    --loader--light--background--l: var(--contrast-text-color-light--l);
+    --loader--light--background--a: var(--contrast-text-color-light--a);
+    --loader--dark--background--h: var(--contrast-text-color-dark--h);
+    --loader--dark--background--s: var(--contrast-text-color-dark--s);
+    --loader--dark--background--l: var(--contrast-text-color-dark--l);
+    --loader--dark--background--a: var(--contrast-text-color-dark--a);
+    --loader--primary--background--h: var(--color-primary--h);
+    --loader--primary--background--s: var(--color-primary--s);
+    --loader--primary--background--l: var(--color-primary--l);
+    --loader--primary--background--a: var(--color-primary--a);
+    --loader--sm--width: calc(64px * var(--size-multiplier-sm));
+    --loader--md--width: calc(64px * var(--size-multiplier-md));
+    --loader--lg--width: calc(64px * var(--size-multiplier-lg));
+  }
 }

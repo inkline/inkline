@@ -3,9 +3,8 @@
  */
 
 @use '../../../css/mixins/components';
+@use '../../../css/mixins/config';
 @use '../../../css/functions/properties';
-@use '../../../css/mixins';
-@use '../../../css/functions';
 
 @mixin sidebar-wrapper-collapse {
     &.-collapse-fixed {
@@ -24,127 +23,135 @@
     }
 }
 
-.sidebar-wrapper {
-    @include components.z-index('sidebar');
-    @include components.width('sidebar');
-
-    position: relative;
-    min-height: 100%;
-    min-width: 0;
-    overflow: hidden;
-    flex-grow: 0;
-    flex-shrink: 0;
-
-    &.-collapse-relative {
-        &.-placement-left .sidebar {
-            right: 0;
-        }
-
-        &.-placement-right .sidebar {
-            left: 0;
-        }
-    }
-
-    &.-collapse-absolute,
-    &.-collapse-fixed {
-        &.-placement-left .sidebar {
-            left: 0;
-        }
-
-        &.-placement-right .sidebar {
-            right: 0;
-        }
-    }
-
-    .sidebar-overlay {
-        @include components.background('sidebar', 'overlay');
-        @include components.border-top-left-radius('sidebar');
-        @include components.border-bottom-left-radius('sidebar');
-
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-    }
-
-    @each $breakpoint in mixins.$breakpoint-keys {
-        &.-collapse-#{$breakpoint} {
-            @include mixins.breakpoint-down($breakpoint) {
-                @include sidebar-wrapper-collapse;
-            }
-        }
-    }
-
-    &.-collapse-true {
-        @include sidebar-wrapper-collapse;
-    }
-
-    &.sidebar-wrapper-transition-enter-to,
-    &.sidebar-wrapper-transition-leave {
+@layer components {
+    .sidebar-wrapper {
+        @include components.z-index('sidebar');
         @include components.width('sidebar');
-    }
-}
 
-.sidebar {
-    @include components.background('sidebar');
-    @include components.box-shadow('sidebar');
-    @include components.border-width('sidebar');
-    @include components.border-style('sidebar');
-    @include components.border-color('sidebar');
-    @include components.border-radius('sidebar');
-    @include components.color('sidebar');
-    @include components.padding('sidebar');
-    @include components.transition('sidebar');
-    @include components.width('sidebar');
+        position: relative;
+        min-height: 100%;
+        min-width: 0;
+        overflow: hidden;
+        flex-grow: 0;
+        flex-shrink: 0;
 
-    position: absolute;
-    height: 100%;
-    z-index: 1;
-
-    .sidebar-content {
-        height: 100%;
-        width: 100%;
-        overflow: auto;
-        display: flex;
-        flex-direction: column;
-
-        // Hack for fixing margin collapse bug
-        // https://github.com/ant-design/ant-design/issues/7967
-        // solution from https://stackoverflow.com/a/33132624/3040605
-        padding-top: 0.1px;
-        margin-top: -0.1px;
-
-        .nav.-vertical .nav-item,
-        .collapsible .collapsible-item .collapsible-header {
-            @include components.background('sidebar', 'item', true);
-            @include components.border-radius('sidebar', 'item', true);
-            @include components.color('sidebar', 'item', true);
-            @include components.font-size('sidebar', 'item', true);
-            @include components.padding('sidebar', 'item', true);
-            @include components.transition('sidebar', 'item', true);
-
-            width: 100%;
-
-            &:hover,
-            &.-hover,
-            &:focus,
-            &.-focus {
-                @include components.background('sidebar' 'item', 'hover', true);
-                @include components.color('sidebar' 'item', 'hover', true);
+        &.-collapse-relative {
+            &.-placement-left .sidebar {
+                right: 0;
             }
 
-            &:active,
-            &.-active {
-                @include components.background('sidebar' 'item', 'active', true);
-                @include components.color('sidebar' 'item', 'active', true);
+            &.-placement-right .sidebar {
+                left: 0;
             }
         }
 
-        .collapsible {
-            .collapsible-item > .collapsible-header > .icon {
-                background: properties.color('sidebar', 'item', true);
+        &.-collapse-absolute,
+        &.-collapse-fixed {
+            &.-placement-left .sidebar {
+                left: 0;
             }
 
+            &.-placement-right .sidebar {
+                right: 0;
+            }
+        }
+
+        .sidebar-overlay {
+            @include components.background('sidebar', 'overlay');
+            @include components.border-top-left-radius('sidebar');
+            @include components.border-bottom-left-radius('sidebar');
+
             width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        @each $breakpoint in config.$breakpoint-keys {
+            &.-collapse-#{$breakpoint} {
+                @include config.breakpoint-down($breakpoint) {
+                    @include sidebar-wrapper-collapse;
+                }
+            }
+        }
+
+        &.-collapse-true {
+            @include sidebar-wrapper-collapse;
+        }
+
+        &.sidebar-wrapper-transition-enter-to,
+        &.sidebar-wrapper-transition-leave {
+            @include components.width('sidebar');
+        }
+    }
+
+    .sidebar {
+        @include components.background('sidebar');
+        @include components.box-shadow('sidebar');
+        @include components.border-width('sidebar');
+        @include components.border-style('sidebar');
+        @include components.border-color('sidebar');
+        @include components.border-radius('sidebar');
+        @include components.color('sidebar');
+        @include components.padding('sidebar');
+        @include components.transition('sidebar');
+        @include components.width('sidebar');
+
+        position: absolute;
+        height: 100%;
+        z-index: 1;
+
+        .sidebar-content {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+
+            // Hack for fixing margin collapse bug
+            // https://github.com/ant-design/ant-design/issues/7967
+            // solution from https://stackoverflow.com/a/33132624/3040605
+            padding-top: 0.1px;
+            margin-top: -0.1px;
+
+            .nav.-vertical .nav-item,
+            .collapsible .collapsible-item .collapsible-header {
+                @include components.background('sidebar', 'item', true);
+                @include components.border-radius('sidebar', 'item', true);
+                @include components.color('sidebar', 'item', true);
+                @include components.font-size('sidebar', 'item', true);
+                @include components.padding('sidebar', 'item', true);
+                @include components.transition('sidebar', 'item', true);
+
+                width: 100%;
+
+                &:not(.-active, .-disabled) {
+                    &:hover,
+                    &.-hover {
+                        @include components.background('sidebar' 'item', 'hover', true);
+                        @include components.color('sidebar' 'item', 'hover', true);
+                    }
+
+                    &:focus,
+                    &.-focus {
+                        @include components.background('sidebar' 'item', 'focus', true);
+                        @include components.color('sidebar' 'item', 'focus', true);
+                    }
+                }
+
+                &:active,
+                &.-active {
+                    @include components.background('sidebar' 'item', 'active', true);
+                    @include components.color('sidebar' 'item', 'active', true);
+                }
+            }
+
+            .collapsible {
+                .collapsible-item > .collapsible-header > .icon {
+                    background: properties.color('sidebar', 'item', true);
+                }
+
+                width: 100%;
+            }
         }
     }
 }

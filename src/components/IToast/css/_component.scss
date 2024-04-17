@@ -4,67 +4,29 @@
  * Toast
  */
 
-.toast {
-    @include components.background('toast');
-    @include components.border-radius('toast');
-    @include components.border-width('toast');
-    @include components.border-style('toast');
-    @include components.border-color('toast');
-    @include components.box-shadow('toast');
-    @include components.color('toast');
-    @include components.font-size('toast');
+@layer components {
+    .toast {
+        @include components.background('toast');
+        @include components.border-radius('toast');
+        @include components.border-width('toast');
+        @include components.border-style('toast');
+        @include components.border-color('toast');
+        @include components.box-shadow('toast');
+        @include components.color('toast');
+        @include components.font-size('toast');
 
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex: 1 1 auto;
-    min-width: 0;
-    word-wrap: break-word;
-    overflow: hidden;
-    background-clip: border-box;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex: 1 1 auto;
+        min-width: 0;
+        word-wrap: break-word;
+        overflow: hidden;
+        background-clip: border-box;
 
-    // Enable `flex-grow: 1` for decks and groups so that card blocks take up
-    // as much space as possible, ensuring footers are aligned to the bottom.
-    align-items: center;
-
-    > hr {
-        margin-right: 0;
-        margin-left: 0;
-    }
-
-    > *:last-of-type {
-        margin-bottom: 0;
-    }
-
-    > *:first-of-type {
-        margin-top: 0;
-    }
-
-    a {
-        @include components.color('toast', 'link', true);
-        @include components.font-weight('toast', 'link', true);
-        @include components.transition('toast', 'link', true);
-
-        &:hover,
-        &:focus {
-            @include components.color('toast', 'link' 'hover', true);
-        }
-    }
-
-    code {
-        @include components.background('toast', 'code', true);
-        @include components.color('toast', 'code', true);
-    }
-
-    > .toast-content {
-        @include components.padding('toast');
-
-        flex: 0 1 100%;
-
-        > .toast-title {
-            @include components.font-weight('toast', 'title', true);
-            @include components.font-size('toast', 'title', true);
-        }
+        // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+        // as much space as possible, ensuring footers are aligned to the bottom.
+        align-items: center;
 
         > hr {
             margin-right: 0;
@@ -78,43 +40,86 @@
         > *:first-of-type {
             margin-top: 0;
         }
-    }
 
-    > .toast-icon {
-        @include components.margin('toast', 'icon', true);
+        a {
+            @include components.color('toast', 'link', true);
+            @include components.font-weight('toast', 'link', true);
+            @include components.transition('toast', 'link', true);
 
-        flex: 1;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
+            &:hover {
+                @include components.color('toast', 'link' 'hover', true);
+            }
 
-    > .toast-dismiss {
-        @include components.margin('toast', 'dismiss', true);
+            &:focus {
+                @include components.color('toast', 'link' 'focus', true);
+            }
+        }
 
-        flex: 0 0 auto;
-        cursor: pointer;
-        display: inline-block;
-        text-align: center;
-    }
+        code {
+            @include components.background('toast', 'code', true);
+            @include components.color('toast', 'code', true);
+        }
 
-    > .toast-progress {
-        @include components.background('toast', 'progress');
-        @include components.height('toast', 'progress');
+        > .toast-content {
+            @include components.padding('toast');
 
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1;
+            flex: 0 1 100%;
 
-        .toast-progress-bar {
-            @include components.background('toast', 'progress-bar');
+            > .toast-title {
+                @include components.font-weight('toast', 'title', true);
+                @include components.font-size('toast', 'title', true);
+            }
 
-            animation: toast-duration var(--toast--duration) forwards;
-            transform-origin: left center;
+            > hr {
+                margin-right: 0;
+                margin-left: 0;
+            }
+
+            > *:last-of-type {
+                margin-bottom: 0;
+            }
+
+            > *:first-of-type {
+                margin-top: 0;
+            }
+        }
+
+        > .toast-icon {
+            @include components.margin('toast', 'icon', true);
+
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        > .toast-dismiss {
+            @include components.margin('toast', 'dismiss', true);
+
+            flex: 0 0 auto;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+
+        > .toast-progress {
+            @include components.background('toast', 'progress');
+            @include components.height('toast', 'progress');
+
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            height: 100%;
+            z-index: 1;
+
+            .toast-progress-bar {
+                @include components.background('toast', 'progress-bar');
+
+                animation: toast-duration var(--toast--duration) forwards;
+                transform-origin: left center;
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 }

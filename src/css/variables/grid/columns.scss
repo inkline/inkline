@@ -1,3 +1,5 @@
-:root {
-  --columns: 12;
+@layer base {
+  :root {
+    --columns: 12;
+  }
 }

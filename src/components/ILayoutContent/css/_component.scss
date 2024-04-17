@@ -2,7 +2,9 @@
  * Layout Content
  */
 
-.layout-content {
-    flex: auto;
-    min-width: 0;
+@layer components {
+    .layout-content {
+        flex: auto;
+        min-width: 0;
+    }
 }

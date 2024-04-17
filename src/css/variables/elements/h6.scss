@@ -1,3 +1,5 @@
-:root {
-  --h6--font-size: var(--font-size);
+@layer base {
+  :root {
+    --h6--font-size: var(--font-size);
+  }
 }

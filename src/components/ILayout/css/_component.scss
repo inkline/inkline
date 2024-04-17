@@ -2,32 +2,34 @@
  * Layout
  */
 
-.layout {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    position: relative;
+@layer components {
+    .layout {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        position: relative;
 
-    &,
-    .layout,
-    .layout-aside,
-    .layout-header,
-    .layout-content,
-    .layout-footer {
-        box-sizing: border-box;
-    }
+        &,
+        .layout,
+        .layout-aside,
+        .layout-header,
+        .layout-content,
+        .layout-footer {
+            box-sizing: border-box;
+        }
 
-    > .container {
-        flex: auto;
-    }
-
-    &.-vertical {
-        flex-direction: row;
-        height: 100%;
-
-        > .layout,
         > .container {
-            overflow-x: hidden;
+            flex: auto;
+        }
+
+        &.-vertical {
+            flex-direction: row;
+            height: 100%;
+
+            > .layout,
+            > .container {
+                overflow-x: hidden;
+            }
         }
     }
 }

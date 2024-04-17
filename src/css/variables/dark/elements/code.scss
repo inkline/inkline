@@ -1,6 +1,8 @@
-.dark-theme {
-  --code--background--h: var(--color-gray-900--h);
-  --code--background--s: var(--color-gray-900--s);
-  --code--background--l: var(--color-gray-900--l);
-  --code--background--a: var(--color-gray-900--a);
+@layer base {
+  .dark-theme {
+    --code--background--h: var(--color-gray-900--h);
+    --code--background--s: var(--color-gray-900--s);
+    --code--background--l: var(--color-gray-900--l);
+    --code--background--a: var(--color-gray-900--a);
+  }
 }
