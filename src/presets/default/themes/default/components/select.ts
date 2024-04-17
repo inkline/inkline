@@ -1,6 +1,6 @@
 import type { RawTheme } from '../../../../../types';
 
-export const card: RawTheme['components']['card'] = {
+export const select: RawTheme['components']['select'] = {
     default: {
         background: 'var(--color-white)',
         boxShadow: {
@@ -40,6 +40,7 @@ export const card: RawTheme['components']['card'] = {
         },
         color: 'var(--contrast-text-color-light)',
         fontSize: 'var(--font-size)',
+        lineHeight: 'var(--line-height)',
         transition: {
             property: 'background-color, color, border-color',
             duration: 'var(--transition-duration)',
@@ -51,92 +52,48 @@ export const card: RawTheme['components']['card'] = {
             bottom: 'var(--padding-bottom)',
             left: 'var(--padding-left)'
         },
+        minWidth: '240px',
+        maxWidth: '90vw',
+        maxHeight: '300px',
+        zIndex: 2000,
+        arrow: {
+            size: '6px'
+        },
+        caret: {
+            width: '1rem',
+            height: '1rem',
+            color: 'var(--text-color-weak)',
+            spacing: 'var(--margin-right)'
+        },
+        error: {
+            border: {
+                color: 'var(--color-danger)'
+            }
+        },
         header: {
-            color: 'var(--card--color)'
+            border: {
+                bottom: {
+                    width: 0
+                }
+            }
+        },
+        body: {
+            padding: {
+                left: 0,
+                right: 0
+            }
         },
         footer: {
-            color: 'var(--card--color)'
-        }
-    },
-    primary: {
-        background: 'var(--color-primary)',
-        border: {
-            color: 'var(--color-primary-shade-50)'
+            border: {
+                top: {
+                    width: 0
+                }
+            }
         },
-        color: 'var(--contrast-text-color-dark)',
-        header: {
-            background: 'var(--color-primary-shade-50)',
-            color: 'var(--contrast-text-color-dark)'
+        divider: {
+            background: 'var(--text-color-weaker)'
         },
-        footer: {
-            background: 'var(--color-primary-shade-50)',
-            color: 'var(--contrast-text-color-dark)'
-        }
-    },
-    secondary: {
-        background: 'var(--color-secondary)',
-        border: {
-            color: 'var(--color-secondary-shade-50)'
-        },
-        color: 'var(--contrast-text-color-dark)',
-        header: {
-            background: 'var(--color-secondary-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-secondary-shade-50)'
-        }
-    },
-    info: {
-        background: 'var(--color-info)',
-        border: {
-            color: 'var(--color-info-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-info-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-info-shade-50)'
-        }
-    },
-    success: {
-        background: 'var(--color-success)',
-        border: {
-            color: 'var(--color-success-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-success-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-success-shade-50)'
-        }
-    },
-    warning: {
-        background: 'var(--color-warning)',
-        border: {
-            color: 'var(--color-warning-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-warning-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-warning-shade-50)'
-        }
-    },
-    danger: {
-        background: 'var(--color-danger)',
-        border: {
-            color: 'var(--color-danger-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-danger-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-danger-shade-50)'
-        }
+        option: {}
     },
     light: {
         background: 'var(--color-white)',
@@ -144,6 +101,17 @@ export const card: RawTheme['components']['card'] = {
             color: 'var(--color-light-shade-50)'
         },
         color: 'var(--contrast-text-color-light)',
+        option: {
+            disabled: {
+                color: 'var(--text-color-weaker)'
+            },
+            hover: {
+                background: 'var(--color-light)'
+            },
+            active: {
+                background: 'var(--color-light-shade-50)'
+            }
+        },
         header: {
             background: 'var(--color-light)'
         },
@@ -157,6 +125,17 @@ export const card: RawTheme['components']['card'] = {
             color: 'var(--color-dark-tint-50)'
         },
         color: 'var(--contrast-text-color-dark)',
+        option: {
+            disabled: {
+                color: 'var(--text-color-weaker)'
+            },
+            hover: {
+                background: 'var(--color-dark-tint-50)'
+            },
+            active: {
+                background: 'var(--color-dark-tint-100)'
+            }
+        },
         header: {
             background: 'var(--color-dark-shade-50)'
         },
@@ -173,10 +152,31 @@ export const card: RawTheme['components']['card'] = {
         },
         fontSize: 'var(--font-size-sm)',
         padding: {
-            top: 'var(--padding-top-sm)',
+            top: 'calc(var(--padding-top-sm) * 3 / 4)',
             right: 'var(--padding-right-sm)',
-            bottom: 'var(--padding-bottom-sm)',
+            bottom: 'calc(var(--padding-bottom-sm) * 3 / 4)',
             left: 'var(--padding-left-sm)'
+        },
+        caret: {
+            spacing: 'var(--margin-right-sm)'
+        },
+        header: {
+            padding: {
+                top: 'calc(var(--padding-top-sm) * 3 / 4)',
+                bottom: 'calc(var(--padding-bottom-sm) * 3 / 4)'
+            }
+        },
+        option: {
+            padding: {
+                top: 'calc(var(--padding-top-sm) * 0.5)',
+                bottom: 'calc(var(--padding-bottom-sm) * 0.5)'
+            }
+        },
+        footer: {
+            padding: {
+                top: 'calc(var(--padding-top-sm) * 3 / 4)',
+                bottom: 'calc(var(--padding-bottom-sm) * 3 / 4)'
+            }
         }
     },
     md: {
@@ -192,6 +192,27 @@ export const card: RawTheme['components']['card'] = {
             right: 'var(--padding-right-md)',
             bottom: 'var(--padding-bottom-md)',
             left: 'var(--padding-left-md)'
+        },
+        caret: {
+            spacing: 'var(--margin-right-md)'
+        },
+        header: {
+            padding: {
+                top: 'var(--padding-top-md)',
+                bottom: 'var(--padding-bottom-md)'
+            }
+        },
+        option: {
+            padding: {
+                top: 'calc(var(--padding-top-md) * 0.5)',
+                bottom: 'calc(var(--padding-bottom-md) * 0.5)'
+            }
+        },
+        footer: {
+            padding: {
+                top: 'var(--padding-top-md)',
+                bottom: 'var(--padding-bottom-md)'
+            }
         }
     },
     lg: {
@@ -207,6 +228,27 @@ export const card: RawTheme['components']['card'] = {
             right: 'var(--padding-right-lg)',
             bottom: 'var(--padding-bottom-lg)',
             left: 'var(--padding-left-lg)'
+        },
+        caret: {
+            spacing: 'var(--margin-right-lg)'
+        },
+        header: {
+            padding: {
+                top: 'var(--padding-top-lg)',
+                bottom: 'var(--padding-bottom-lg)'
+            }
+        },
+        option: {
+            padding: {
+                top: 'calc(var(--padding-top-lg) * 0.5)',
+                bottom: 'calc(var(--padding-bottom-lg) * 0.5)'
+            }
+        },
+        footer: {
+            padding: {
+                top: 'var(--padding-top-lg)',
+                bottom: 'var(--padding-bottom-lg)'
+            }
         }
     }
 };

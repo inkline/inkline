@@ -217,7 +217,7 @@ export const modal: RawTheme['components']['modal'] = {
     dark: {
         background: 'var(--color-dark)',
         border: {
-            color: 'var(--color-dark-shade-50)'
+            color: 'var(--color-dark-tint-50)'
         },
         color: 'var(--contrast-text-color-dark)',
         header: {

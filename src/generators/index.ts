@@ -8,6 +8,7 @@ export * from './components';
 export * from './elements';
 export * from './generic';
 export * from './grid';
+export * from './layers';
 export * from './scaleRatios';
 export * from './size';
 export * from './spacing';

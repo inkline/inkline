@@ -28,7 +28,8 @@ import {
     typographyLetterSpacingGenerator,
     typographyLineHeightGenerator,
     typographyTextAlignmentGenerator,
-    transitionGenerator
+    transitionGenerator,
+    layersGenerator
 } from '../../generators';
 
 export const defaultGenerators: Generator<any>[] = [
@@ -46,6 +47,7 @@ export const defaultGenerators: Generator<any>[] = [
     gridColumnsGenerator,
     gridContainerGenerator,
     gridGutterGenerator,
+    layersGenerator,
     scaleRatiosGenerator,
     sizePercentagesGenerator,
     sizeMultiplierGenerator,

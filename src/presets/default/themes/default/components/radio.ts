@@ -1,6 +1,6 @@
 import type { RawTheme } from '../../../../../types';
 
-export const card: RawTheme['components']['card'] = {
+export const radio: RawTheme['components']['radio'] = {
     default: {
         background: 'var(--color-white)',
         boxShadow: {
@@ -40,10 +40,17 @@ export const card: RawTheme['components']['card'] = {
         },
         color: 'var(--contrast-text-color-light)',
         fontSize: 'var(--font-size)',
+        lineHeight: 'var(--line-height)',
         transition: {
-            property: 'background-color, color, border-color',
+            property: 'background-color, color, border-color, transform',
             duration: 'var(--transition-duration)',
             timingFunction: 'var(--transition-timing-function)'
+        },
+        margin: {
+            top: 0,
+            right: 'var(--margin-right)',
+            bottom: 0,
+            left: 0
         },
         padding: {
             top: 'var(--padding-top)',
@@ -51,91 +58,33 @@ export const card: RawTheme['components']['card'] = {
             bottom: 'var(--padding-bottom)',
             left: 'var(--padding-left)'
         },
-        header: {
-            color: 'var(--card--color)'
+        zIndex: 2000,
+        arrow: {
+            size: '6px'
         },
-        footer: {
-            color: 'var(--card--color)'
-        }
-    },
-    primary: {
-        background: 'var(--color-primary)',
-        border: {
-            color: 'var(--color-primary-shade-50)'
+        width: '1rem',
+        height: '1rem',
+        checked: {
+            border: {
+                color: 'var(--color-primary-shade-50)'
+            },
+            background: 'var(--color-primary)',
+            disabled: {
+                background: 'var(--color-primary-300)',
+                border: {
+                    color: 'var(--color-primary-400)'
+                },
+                color: 'var(--text-color-white)'
+            }
         },
-        color: 'var(--contrast-text-color-dark)',
-        header: {
-            background: 'var(--color-primary-shade-50)',
-            color: 'var(--contrast-text-color-dark)'
+        disabled: {
+            color: 'var(--text-color-weakest)',
+            background: 'var(--color-gray-100)'
         },
-        footer: {
-            background: 'var(--color-primary-shade-50)',
-            color: 'var(--contrast-text-color-dark)'
-        }
-    },
-    secondary: {
-        background: 'var(--color-secondary)',
-        border: {
-            color: 'var(--color-secondary-shade-50)'
-        },
-        color: 'var(--contrast-text-color-dark)',
-        header: {
-            background: 'var(--color-secondary-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-secondary-shade-50)'
-        }
-    },
-    info: {
-        background: 'var(--color-info)',
-        border: {
-            color: 'var(--color-info-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-info-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-info-shade-50)'
-        }
-    },
-    success: {
-        background: 'var(--color-success)',
-        border: {
-            color: 'var(--color-success-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-success-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-success-shade-50)'
-        }
-    },
-    warning: {
-        background: 'var(--color-warning)',
-        border: {
-            color: 'var(--color-warning-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-warning-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-warning-shade-50)'
-        }
-    },
-    danger: {
-        background: 'var(--color-danger)',
-        border: {
-            color: 'var(--color-danger-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-danger-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-danger-shade-50)'
+        checkmark: {
+            color: 'var(--color-white)',
+            width: '0.5rem',
+            height: '0.5rem'
         }
     },
     light: {
@@ -144,11 +93,17 @@ export const card: RawTheme['components']['card'] = {
             color: 'var(--color-light-shade-50)'
         },
         color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-light)'
+        disabled: {
+            background: 'var(--color-gray-100)'
         },
-        footer: {
-            background: 'var(--color-light)'
+        checked: {
+            disabled: {
+                background: 'var(--color-primary-300)',
+                border: {
+                    color: 'var(--color-primary-400)'
+                },
+                color: 'var(--text-color-white)'
+            }
         }
     },
     dark: {
@@ -157,11 +112,17 @@ export const card: RawTheme['components']['card'] = {
             color: 'var(--color-dark-tint-50)'
         },
         color: 'var(--contrast-text-color-dark)',
-        header: {
-            background: 'var(--color-dark-shade-50)'
+        disabled: {
+            background: 'var(--color-gray-600)'
         },
-        footer: {
-            background: 'var(--color-dark-shade-50)'
+        checked: {
+            disabled: {
+                background: 'var(--color-primary-700)',
+                border: {
+                    color: 'var(--color-primary-800)'
+                },
+                color: 'var(--text-color-white)'
+            }
         }
     },
     sm: {
@@ -177,6 +138,15 @@ export const card: RawTheme['components']['card'] = {
             right: 'var(--padding-right-sm)',
             bottom: 'var(--padding-bottom-sm)',
             left: 'var(--padding-left-sm)'
+        },
+        margin: {
+            right: 'calc(var(--margin-right-sm) / 2)'
+        },
+        width: 'calc(1rem * var(--size-multiplier-sm))',
+        height: 'calc(1rem * var(--size-multiplier-sm))',
+        checkmark: {
+            width: 'calc(0.5rem * var(--size-multiplier-sm))',
+            height: 'calc(0.5rem * var(--size-multiplier-sm))'
         }
     },
     md: {
@@ -192,6 +162,15 @@ export const card: RawTheme['components']['card'] = {
             right: 'var(--padding-right-md)',
             bottom: 'var(--padding-bottom-md)',
             left: 'var(--padding-left-md)'
+        },
+        margin: {
+            right: 'calc(var(--margin-right-md) / 2)'
+        },
+        width: 'calc(1rem * var(--size-multiplier-md))',
+        height: 'calc(1rem * var(--size-multiplier-md))',
+        checkmark: {
+            width: 'calc(0.5rem * var(--size-multiplier-md))',
+            height: 'calc(0.5rem * var(--size-multiplier-md))'
         }
     },
     lg: {
@@ -207,6 +186,15 @@ export const card: RawTheme['components']['card'] = {
             right: 'var(--padding-right-lg)',
             bottom: 'var(--padding-bottom-lg)',
             left: 'var(--padding-left-lg)'
+        },
+        margin: {
+            right: 'calc(var(--margin-right-lg) / 2)'
+        },
+        width: 'calc(1rem * var(--size-multiplier-lg))',
+        height: 'calc(1rem * var(--size-multiplier-lg))',
+        checkmark: {
+            width: 'calc(0.5rem * var(--size-multiplier-lg))',
+            height: 'calc(0.5rem * var(--size-multiplier-lg))'
         }
     }
 };

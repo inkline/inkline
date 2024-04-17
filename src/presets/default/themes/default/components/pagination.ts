@@ -68,10 +68,7 @@ export const pagination: RawTheme['components']['pagination'] = {
                 border: {
                     color: 'var(--color-primary-shade-50)'
                 },
-                fontWeight: 'var(--font-weight-semibold)',
-                hover: {
-                    background: 'var(--color-primary-shade-50)'
-                }
+                fontWeight: 'var(--font-weight-semibold)'
             },
             disabled: {
                 color: 'var(--text-color-weaker)',
@@ -99,10 +96,10 @@ export const pagination: RawTheme['components']['pagination'] = {
         item: {
             background: 'var(--color-dark)',
             border: {
-                color: 'var(--color-dark-shade-50)'
+                color: 'var(--color-dark-tint-50)'
             },
             hover: {
-                background: 'var(--color-dark-shade-50)'
+                background: 'var(--color-dark-tint-50)'
             }
         }
     },

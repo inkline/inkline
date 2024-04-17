@@ -75,7 +75,7 @@ export const dropdown: RawTheme['components']['dropdown'] = {
     dark: {
         background: 'var(--color-dark)',
         border: {
-            color: 'var(--color-dark-shade-50)'
+            color: 'var(--color-dark-tint-50)'
         },
         color: 'var(--contrast-text-color-dark)',
         header: {
@@ -183,16 +183,31 @@ export const dropdownItem: RawTheme['components']['dropdownItem'] = {
         },
         hover: {
             background: 'var(--color-light)'
+        },
+        focus: {
+            background: 'var(--color-light)'
         }
     },
     light: {
         hover: {
             background: 'var(--color-light)'
+        },
+        focus: {
+            background: 'var(--color-light)'
+        },
+        active: {
+            background: 'var(--color-light-shade-50)'
         }
     },
     dark: {
         hover: {
             background: 'var(--color-dark-tint-50)'
+        },
+        focus: {
+            background: 'var(--color-dark-tint-50)'
+        },
+        active: {
+            background: 'var(--color-dark-tint-100)'
         }
     },
     sm: {

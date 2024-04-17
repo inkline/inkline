@@ -62,18 +62,15 @@ export const button: RawTheme['components']['button'] = {
         hover: {
             background: 'var(--color-light-shade-50)'
         },
+        focus: {
+            background: 'var(--color-light-shade-50)'
+        },
         block: {
             margin: {
                 top: 'var(--margin-top)',
                 right: 0,
                 bottom: 0,
                 left: 0
-            }
-        },
-        link: {
-            color: 'var(--color-primary)',
-            active: {
-                color: 'var(--color-primary-shade-100)'
             }
         },
         loader: {
@@ -98,14 +95,11 @@ export const button: RawTheme['components']['button'] = {
         hover: {
             background: 'var(--color-primary-shade-50)'
         },
+        focus: {
+            background: 'var(--color-primary-shade-50)'
+        },
         active: {
             background: 'var(--color-primary-shade-100)'
-        },
-        link: {
-            color: 'var(--color-primary)',
-            active: {
-                color: 'var(--color-primary-shade-100)'
-            }
         }
     },
     secondary: {
@@ -117,14 +111,11 @@ export const button: RawTheme['components']['button'] = {
         hover: {
             background: 'var(--color-secondary-shade-50)'
         },
+        focus: {
+            background: 'var(--color-secondary-shade-50)'
+        },
         active: {
             background: 'var(--color-secondary-shade-100)'
-        },
-        link: {
-            color: 'var(--color-secondary)',
-            active: {
-                color: 'var(--color-secondary-shade-100)'
-            }
         }
     },
     info: {
@@ -136,14 +127,11 @@ export const button: RawTheme['components']['button'] = {
         hover: {
             background: 'var(--color-info-shade-50)'
         },
+        focus: {
+            background: 'var(--color-info-shade-50)'
+        },
         active: {
             background: 'var(--color-info-shade-100)'
-        },
-        link: {
-            color: 'var(--color-info)',
-            active: {
-                color: 'var(--color-info-shade-100)'
-            }
         }
     },
     success: {
@@ -155,14 +143,11 @@ export const button: RawTheme['components']['button'] = {
         hover: {
             background: 'var(--color-success-shade-50)'
         },
+        focus: {
+            background: 'var(--color-success-shade-50)'
+        },
         active: {
             background: 'var(--color-success-shade-100)'
-        },
-        link: {
-            color: 'var(--color-success)',
-            active: {
-                color: 'var(--color-success-shade-100)'
-            }
         }
     },
     warning: {
@@ -174,14 +159,11 @@ export const button: RawTheme['components']['button'] = {
         hover: {
             background: 'var(--color-warning-shade-50)'
         },
+        focus: {
+            background: 'var(--color-warning-shade-50)'
+        },
         active: {
             background: 'var(--color-warning-shade-100)'
-        },
-        link: {
-            color: 'var(--color-warning)',
-            active: {
-                color: 'var(--color-warning-shade-100)'
-            }
         }
     },
     danger: {
@@ -193,14 +175,11 @@ export const button: RawTheme['components']['button'] = {
         hover: {
             background: 'var(--color-danger-shade-50)'
         },
+        focus: {
+            background: 'var(--color-danger-shade-50)'
+        },
         active: {
             background: 'var(--color-danger-shade-100)'
-        },
-        link: {
-            color: 'var(--color-danger)',
-            active: {
-                color: 'var(--color-danger-shade-100)'
-            }
         }
     },
     light: {
@@ -212,33 +191,27 @@ export const button: RawTheme['components']['button'] = {
         hover: {
             background: 'var(--color-light-shade-50)'
         },
+        focus: {
+            background: 'var(--color-light-shade-50)'
+        },
         active: {
             background: 'var(--color-light-shade-100)'
-        },
-        link: {
-            color: 'var(--color-light)',
-            active: {
-                color: 'var(--color-light-shade-100)'
-            }
         }
     },
     dark: {
         color: 'var(--contrast-text-color-dark)',
         background: 'var(--color-dark)',
         border: {
-            color: 'var(--color-dark-shade-50)'
+            color: 'var(--color-dark-tint-50)'
         },
         hover: {
-            background: 'var(--color-dark-shade-50)'
+            background: 'var(--color-dark-tint-50)'
+        },
+        focus: {
+            background: 'var(--color-dark-tint-50)'
         },
         active: {
-            background: 'var(--color-dark-shade-100)'
-        },
-        link: {
-            color: 'var(--color-dark)',
-            active: {
-                color: 'var(--color-dark-shade-100)'
-            }
+            background: 'var(--color-dark-tint-100)'
         }
     },
     sm: {

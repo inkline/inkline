@@ -189,6 +189,7 @@ export const componentVariantsGenerator = defineGenerator<ResolvedTheme['compone
         const componentSelector = `.${componentName}`;
 
         result.push(`@use '../mixins/variants';`);
+        result.push(`@layer components {`);
         result.push(`${componentSelector} {`);
 
         for (const variant of variants) {
@@ -199,6 +200,7 @@ export const componentVariantsGenerator = defineGenerator<ResolvedTheme['compone
             result.push(`}`);
         }
 
+        result.push('}');
         result.push('}');
 
         return result;

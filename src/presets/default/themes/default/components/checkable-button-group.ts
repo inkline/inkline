@@ -1,6 +1,6 @@
 import type { RawTheme } from '../../../../../types';
 
-export const tooltip: RawTheme['components']['tooltip'] = {
+export const checkableButtonGroup: RawTheme['components']['checkableButtonGroup'] = {
     default: {
         background: 'var(--color-white)',
         boxShadow: {
@@ -39,22 +39,23 @@ export const tooltip: RawTheme['components']['tooltip'] = {
             bottomLeft: 'var(--border-bottom-left-radius)'
         },
         color: 'var(--contrast-text-color-light)',
-        fontSize: 'var(--font-size)',
-        lineHeight: 'var(--line-height)',
+        gap: 'calc(var(--margin-right) * 0.5)',
         transition: {
             property: 'background-color, color, border-color',
             duration: 'var(--transition-duration)',
             timingFunction: 'var(--transition-timing-function)'
         },
         padding: {
-            top: 'var(--padding-top)',
-            right: 'var(--padding-right)',
-            bottom: 'var(--padding-bottom)',
-            left: 'var(--padding-left)'
+            top: 'calc(var(--padding-top) * 0.5)',
+            right: 'calc(var(--padding-right) * 0.5)',
+            bottom: 'calc(var(--padding-bottom) * 0.5)',
+            left: 'calc(var(--padding-left) * 0.5)'
         },
-        zIndex: 2000,
-        arrow: {
-            size: '6px'
+        button: {
+            background: 'transparent',
+            border: {
+                color: 'transparent'
+            }
         }
     },
     light: {
@@ -69,7 +70,12 @@ export const tooltip: RawTheme['components']['tooltip'] = {
         border: {
             color: 'var(--color-dark-tint-50)'
         },
-        color: 'var(--contrast-text-color-dark)'
+        color: 'var(--contrast-text-color-dark)',
+        button: {
+            active: {
+                background: 'var(--color-dark-tint-100)'
+            }
+        }
     },
     sm: {
         borderRadius: {
@@ -78,12 +84,12 @@ export const tooltip: RawTheme['components']['tooltip'] = {
             bottomRight: 'var(--border-bottom-right-radius-sm)',
             bottomLeft: 'var(--border-bottom-left-radius-sm)'
         },
-        fontSize: 'var(--font-size-sm)',
+        gap: 'calc(var(--margin-right-sm) * 0.5)',
         padding: {
-            top: 'var(--padding-top-sm)',
-            right: 'var(--padding-right-sm)',
-            bottom: 'var(--padding-bottom-sm)',
-            left: 'var(--padding-left-sm)'
+            top: 'calc(var(--padding-top-sm) * 0.5)',
+            right: 'calc(var(--padding-right-sm) * 0.5)',
+            bottom: 'calc(var(--padding-bottom-sm) * 0.5)',
+            left: 'calc(var(--padding-left-sm) * 0.5)'
         }
     },
     md: {
@@ -93,12 +99,12 @@ export const tooltip: RawTheme['components']['tooltip'] = {
             bottomRight: 'var(--border-bottom-right-radius-md)',
             bottomLeft: 'var(--border-bottom-left-radius-md)'
         },
-        fontSize: 'var(--font-size-md)',
+        gap: 'calc(var(--margin-right-md) * 0.5)',
         padding: {
-            top: 'var(--padding-top-md)',
-            right: 'var(--padding-right-md)',
-            bottom: 'var(--padding-bottom-md)',
-            left: 'var(--padding-left-md)'
+            top: 'calc(var(--padding-top-md) * 0.5)',
+            right: 'calc(var(--padding-right-md) * 0.5)',
+            bottom: 'calc(var(--padding-bottom-md) * 0.5)',
+            left: 'calc(var(--padding-left-md) * 0.5)'
         }
     },
     lg: {
@@ -108,12 +114,12 @@ export const tooltip: RawTheme['components']['tooltip'] = {
             bottomRight: 'var(--border-bottom-right-radius-lg)',
             bottomLeft: 'var(--border-bottom-left-radius-lg)'
         },
-        fontSize: 'var(--font-size-lg)',
+        gap: 'calc(var(--margin-right-lg) * 0.5)',
         padding: {
-            top: 'var(--padding-top-lg)',
-            right: 'var(--padding-right-lg)',
-            bottom: 'var(--padding-bottom-lg)',
-            left: 'var(--padding-left-lg)'
+            top: 'calc(var(--padding-top-lg) * 0.5)',
+            right: 'calc(var(--padding-right-lg) * 0.5)',
+            bottom: 'calc(var(--padding-bottom-lg) * 0.5)',
+            left: 'calc(var(--padding-left-lg) * 0.5)'
         }
     }
 };

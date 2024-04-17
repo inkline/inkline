@@ -61,6 +61,9 @@ export const sidebar: RawTheme['components']['sidebar'] = {
             hover: {
                 background: 'var(--color-light)'
             },
+            focus: {
+                background: 'var(--color-light)'
+            },
             active: {
                 background: 'var(--color-light-shade-50)'
             }
@@ -77,6 +80,9 @@ export const sidebar: RawTheme['components']['sidebar'] = {
             hover: {
                 background: 'var(--color-light)'
             },
+            focus: {
+                background: 'var(--color-light)'
+            },
             active: {
                 background: 'var(--color-light-shade-50)'
             }
@@ -85,12 +91,15 @@ export const sidebar: RawTheme['components']['sidebar'] = {
     dark: {
         background: 'var(--color-dark)',
         border: {
-            color: 'var(--color-dark-shade-50)'
+            color: 'var(--color-dark-tint-50)'
         },
         color: 'var(--contrast-text-color-dark)',
         item: {
             background: 'var(--color-dark)',
             hover: {
+                background: 'var(--color-dark-tint-50)'
+            },
+            focus: {
                 background: 'var(--color-dark-tint-50)'
             },
             active: {

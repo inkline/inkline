@@ -51,12 +51,6 @@ export const collapsible: RawTheme['components']['collapsible'] = {
             bottom: 'var(--padding-bottom)',
             left: 'var(--padding-left)'
         },
-        header: {
-            color: 'var(--card--color)'
-        },
-        footer: {
-            color: 'var(--card--color)'
-        },
         icon: {
             width: '12px',
             height: '12px'
@@ -70,22 +64,16 @@ export const collapsible: RawTheme['components']['collapsible'] = {
         color: 'var(--contrast-text-color-light)',
         header: {
             background: 'var(--color-light)'
-        },
-        icon: {
-            background: 'var(--contrast-text-color-light)'
         }
     },
     dark: {
-        background: 'var(--color-dark)',
+        background: 'var(--color-dark-shade-50)',
         border: {
-            color: 'var(--color-dark-shade-50)'
+            color: 'var(--color-dark-tint-50)'
         },
         color: 'var(--contrast-text-color-dark)',
         header: {
-            background: 'var(--color-dark-shade-50)'
-        },
-        icon: {
-            background: 'var(--contrast-text-color-dark)'
+            background: 'var(--color-dark)'
         }
     },
     transparent: {
@@ -98,7 +86,7 @@ export const collapsible: RawTheme['components']['collapsible'] = {
             background: 'transparent'
         },
         icon: {
-            background: 'var(--contrast-text-color-light)'
+            color: 'var(--contrast-text-color-light)'
         }
     },
     sm: {

@@ -56,7 +56,9 @@ import {
     ResolvedThemePadding,
     ResolvedThemeMargin,
     RawThemeTypographyTextAlignment,
-    ResolvedThemeTypographyTextAlignment
+    ResolvedThemeTypographyTextAlignment,
+    RawThemeLayers,
+    ResolvedThemeLayers
 } from '../types';
 
 export type RawThemeVariantsWithDefault<DefaultVariant, VariantModifiers = DefaultVariant> =
@@ -84,6 +86,7 @@ export interface RawTheme {
         gutter: RawThemeVariantsWithDefault<RawThemeGridGutter, RawThemeGridGutterVariant>;
         container: RawThemeVariantsWithDefault<RawThemeGridContainer>;
     };
+    layers: RawThemeLayers;
     scaleRatios: RawThemeVariantsWithDefault<RawThemeScaleRatio>;
     size: {
         multiplier: RawThemeVariantsWithDefault<
@@ -127,6 +130,7 @@ export interface ResolvedTheme {
         gutter: ResolvedThemeVariantsWithDefault<ResolvedThemeGridGutter>;
         container: ResolvedThemeVariantsWithDefault<ResolvedThemeGridContainer>;
     };
+    layers: ResolvedThemeLayers;
     scaleRatios: ResolvedThemeVariantsWithDefault<ResolvedThemeScaleRatio>;
     size: {
         multiplier: ResolvedThemeVariantsWithDefault<ResolvedThemeSizeMultiplier>;

@@ -54,7 +54,7 @@ export const progress: RawTheme['components']['progress'] = {
     dark: {
         background: 'var(--color-dark)',
         border: {
-            color: 'var(--color-dark-shade-50)'
+            color: 'var(--color-dark-tint-50)'
         }
     },
     sm: {

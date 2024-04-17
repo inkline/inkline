@@ -53,40 +53,16 @@ export const alert: RawTheme['components']['alert'] = {
             left: 'var(--padding-left)'
         },
         title: {
-            fontWeight: 'var(--font-weight-semibold)',
-            fontSize: 'var(--alert--font-size)'
+            fontWeight: 'var(--font-weight-semibold)'
         },
         link: {
-            color: 'var(--alert--color)',
             fontWeight: 'var(--font-weight-semibold)',
             transition: {
-                property: 'color',
-                duration: 'var(--transition-duration)',
-                timingFunction: 'var(--transition-timing-function)'
-            },
-            hover: {
-                color: 'var(--alert--link--color)'
+                property: 'color'
             }
         },
         code: {
-            background: 'hsla(0, 0%, 0%, 0.05)',
-            color: 'var(--alert--color)'
-        },
-        icon: {
-            margin: {
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 'var(--alert--padding-left)'
-            }
-        },
-        dismiss: {
-            margin: {
-                top: 0,
-                right: 'var(--alert--padding-left)',
-                bottom: 0,
-                left: 0
-            }
+            background: 'hsla(0, 0%, 0%, 0.05)'
         }
     },
     info: {

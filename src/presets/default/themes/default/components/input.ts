@@ -1,6 +1,6 @@
 import type { RawTheme } from '../../../../../types';
 
-export const card: RawTheme['components']['card'] = {
+export const input: RawTheme['components']['input'] = {
     default: {
         background: 'var(--color-white)',
         boxShadow: {
@@ -40,102 +40,44 @@ export const card: RawTheme['components']['card'] = {
         },
         color: 'var(--contrast-text-color-light)',
         fontSize: 'var(--font-size)',
+        lineHeight: 'var(--line-height)',
         transition: {
             property: 'background-color, color, border-color',
             duration: 'var(--transition-duration)',
             timingFunction: 'var(--transition-timing-function)'
         },
         padding: {
-            top: 'var(--padding-top)',
+            top: 'var(--padding-top-3-4)',
             right: 'var(--padding-right)',
-            bottom: 'var(--padding-bottom)',
+            bottom: 'var(--padding-bottom-3-4)',
             left: 'var(--padding-left)'
         },
-        header: {
-            color: 'var(--card--color)'
+        placeholder: {
+            color: 'var(--text-color-weaker)'
         },
-        footer: {
-            color: 'var(--card--color)'
-        }
-    },
-    primary: {
-        background: 'var(--color-primary)',
-        border: {
-            color: 'var(--color-primary-shade-50)'
+        icon: {
+            width: 'auto',
+            height: '1rem',
+            color: 'var(--text-color-weak)'
         },
-        color: 'var(--contrast-text-color-dark)',
-        header: {
-            background: 'var(--color-primary-shade-50)',
-            color: 'var(--contrast-text-color-dark)'
+        error: {
+            border: {
+                color: 'var(--color-danger)'
+            }
         },
-        footer: {
-            background: 'var(--color-primary-shade-50)',
-            color: 'var(--contrast-text-color-dark)'
-        }
-    },
-    secondary: {
-        background: 'var(--color-secondary)',
-        border: {
-            color: 'var(--color-secondary-shade-50)'
+        disabled: {
+            background: 'var(--color-light)'
         },
-        color: 'var(--contrast-text-color-dark)',
-        header: {
-            background: 'var(--color-secondary-shade-50)'
+        focus: {
+            border: {
+                color: 'var(--color-primary)'
+            }
         },
-        footer: {
-            background: 'var(--color-secondary-shade-50)'
-        }
-    },
-    info: {
-        background: 'var(--color-info)',
-        border: {
-            color: 'var(--color-info-shade-50)'
+        prefix: {
+            color: 'var(--text-color-weaker)'
         },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-info-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-info-shade-50)'
-        }
-    },
-    success: {
-        background: 'var(--color-success)',
-        border: {
-            color: 'var(--color-success-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-success-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-success-shade-50)'
-        }
-    },
-    warning: {
-        background: 'var(--color-warning)',
-        border: {
-            color: 'var(--color-warning-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-warning-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-warning-shade-50)'
-        }
-    },
-    danger: {
-        background: 'var(--color-danger)',
-        border: {
-            color: 'var(--color-danger-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        header: {
-            background: 'var(--color-danger-shade-50)'
-        },
-        footer: {
-            background: 'var(--color-danger-shade-50)'
+        suffix: {
+            color: 'var(--text-color-weaker)'
         }
     },
     light: {
@@ -144,10 +86,18 @@ export const card: RawTheme['components']['card'] = {
             color: 'var(--color-light-shade-50)'
         },
         color: 'var(--contrast-text-color-light)',
-        header: {
+        disabled: {
             background: 'var(--color-light)'
         },
-        footer: {
+        hover: {
+            border: {
+                color: 'var(--color-light-shade-100)'
+            }
+        },
+        prepend: {
+            background: 'var(--color-light)'
+        },
+        append: {
             background: 'var(--color-light)'
         }
     },
@@ -157,10 +107,18 @@ export const card: RawTheme['components']['card'] = {
             color: 'var(--color-dark-tint-50)'
         },
         color: 'var(--contrast-text-color-dark)',
-        header: {
+        disabled: {
+            background: 'var(--color-dark-tint-100)'
+        },
+        hover: {
+            border: {
+                color: 'var(--color-dark-tint-100)'
+            }
+        },
+        prepend: {
             background: 'var(--color-dark-shade-50)'
         },
-        footer: {
+        append: {
             background: 'var(--color-dark-shade-50)'
         }
     },
@@ -173,10 +131,13 @@ export const card: RawTheme['components']['card'] = {
         },
         fontSize: 'var(--font-size-sm)',
         padding: {
-            top: 'var(--padding-top-sm)',
+            top: 'calc(var(--padding-top-sm) * 3 / 4)',
             right: 'var(--padding-right-sm)',
-            bottom: 'var(--padding-bottom-sm)',
+            bottom: 'calc(var(--padding-bottom-sm) * 3 / 4)',
             left: 'var(--padding-left-sm)'
+        },
+        icon: {
+            height: 'calc(1rem * var(--size-multiplier-sm))'
         }
     },
     md: {
@@ -188,10 +149,13 @@ export const card: RawTheme['components']['card'] = {
         },
         fontSize: 'var(--font-size-md)',
         padding: {
-            top: 'var(--padding-top-md)',
+            top: 'calc(var(--padding-top-md) * 3 / 4)',
             right: 'var(--padding-right-md)',
-            bottom: 'var(--padding-bottom-md)',
+            bottom: 'calc(var(--padding-bottom-md) * 3 / 4)',
             left: 'var(--padding-left-md)'
+        },
+        icon: {
+            height: 'calc(1rem * var(--size-multiplier-md))'
         }
     },
     lg: {
@@ -203,10 +167,13 @@ export const card: RawTheme['components']['card'] = {
         },
         fontSize: 'var(--font-size-lg)',
         padding: {
-            top: 'var(--padding-top-lg)',
+            top: 'calc(var(--padding-top-lg) * 3 / 4)',
             right: 'var(--padding-right-lg)',
-            bottom: 'var(--padding-bottom-lg)',
+            bottom: 'calc(var(--padding-bottom-lg) * 3 / 4)',
             left: 'var(--padding-left-lg)'
+        },
+        icon: {
+            height: 'calc(1rem * var(--size-multiplier-lg))'
         }
     }
 };

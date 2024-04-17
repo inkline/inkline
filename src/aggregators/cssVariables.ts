@@ -14,8 +14,10 @@ export const cssVariablesAggregator = defineAggregator({
             return path;
         },
         content: (content, meta) => [
+            '@layer base {',
             `${isDefaultTheme(meta.themeName) ? ':root' : meta.themeSelector} {`,
             ...content,
+            '}',
             '}'
         ]
     }

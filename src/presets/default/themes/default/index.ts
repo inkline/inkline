@@ -7,6 +7,7 @@ import { borderRadius } from './borderRadius';
 import { breakpoints } from './breakpoints';
 import { colors } from './colors';
 import { grid } from './grid';
+import { layers } from './layers';
 import { scaleRatios } from './scaleRatios';
 import { size } from './size';
 import { margin, padding, spacing } from './spacing';
@@ -20,6 +21,7 @@ export const defaultTheme: RawTheme = {
     breakpoints,
     colors,
     grid,
+    layers,
     scaleRatios,
     size,
     spacing,

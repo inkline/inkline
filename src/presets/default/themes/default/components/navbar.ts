@@ -55,6 +55,12 @@ export const navbar: RawTheme['components']['navbar'] = {
             background: 'var(--color-white)',
             hover: {
                 background: 'var(--color-light)'
+            },
+            focus: {
+                background: 'var(--color-light)'
+            },
+            active: {
+                background: 'var(--color-light-shade-50)'
             }
         },
         brand: {
@@ -83,6 +89,12 @@ export const navbar: RawTheme['components']['navbar'] = {
             background: 'var(--color-white)',
             hover: {
                 background: 'var(--color-light)'
+            },
+            focus: {
+                background: 'var(--color-light)'
+            },
+            active: {
+                background: 'var(--color-light-shade-50)'
             }
         },
         collapsed: {
@@ -91,6 +103,12 @@ export const navbar: RawTheme['components']['navbar'] = {
                 background: 'var(--color-white)',
                 hover: {
                     background: 'var(--color-light)'
+                },
+                focus: {
+                    background: 'var(--color-light)'
+                },
+                active: {
+                    background: 'var(--color-light-shade-50)'
                 }
             }
         }
@@ -98,13 +116,19 @@ export const navbar: RawTheme['components']['navbar'] = {
     dark: {
         background: 'var(--color-dark)',
         border: {
-            color: 'var(--color-dark-shade-50)'
+            color: 'var(--color-dark-tint-50)'
         },
         color: 'var(--contrast-text-color-dark)',
         item: {
             background: 'var(--color-dark)',
             hover: {
-                background: 'var(--color-dark-shade-50)'
+                background: 'var(--color-dark-tint-50)'
+            },
+            focus: {
+                background: 'var(--color-dark-tint-50)'
+            },
+            active: {
+                background: 'var(--color-dark-tint-100)'
             }
         },
         collapsed: {
@@ -112,7 +136,13 @@ export const navbar: RawTheme['components']['navbar'] = {
             item: {
                 background: 'var(--color-dark)',
                 hover: {
-                    background: 'var(--color-dark-shade-50)'
+                    background: 'var(--color-dark-tint-50)'
+                },
+                focus: {
+                    background: 'var(--color-dark-tint-50)'
+                },
+                active: {
+                    background: 'var(--color-dark-tint-100)'
                 }
             }
         }
