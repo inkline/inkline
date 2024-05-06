@@ -1,6 +1,8 @@
 import {
     AggregatorFile,
     AggregatorMeta,
+    ClassifierMeta,
+    ClassifierType,
     GeneratorChunk,
     GeneratorMeta,
     GeneratorPriority,
@@ -8,22 +10,88 @@ import {
     ResolvedTheme,
     ResolverMeta
 } from './types';
-import { matchKey } from './utils';
-import { genericFieldGenerator, genericFieldWithVariantsGenerator } from './generators';
+import { getSortedVariantsFieldKeys, matchKey } from './utils';
+import { genericFieldGenerator } from './generators';
 
 type ApplyOptions = {
     multiple: boolean;
+    allowGenericGenerator?: boolean;
 };
+
+export function getMatchingTransformers<
+    T extends {
+        key: string | string[] | RegExp | RegExp[];
+        ignore?: string | string[] | RegExp | RegExp[];
+    }
+>(transformers: T[], path: string[]): T[] {
+    return transformers.filter((transformer) => {
+        const matchKeys = Array.isArray(transformer.key) ? transformer.key : [transformer.key];
+        const isMatch = !!matchKeys.find((key) => matchKey(path.join('.'), key));
+
+        let isIgnored = false;
+        if (transformer.ignore) {
+            const ignoreKeys = Array.isArray(transformer.ignore)
+                ? transformer.ignore
+                : [transformer.ignore];
+            isIgnored = !!ignoreKeys.find((key) => matchKey(path.join('.'), key));
+        }
+
+        return isMatch && !isIgnored;
+    });
+}
+
+export function applyClassifiers<RawValue extends Record<string, any> = RawTheme>(
+    object: RawValue,
+    meta: ClassifierMeta,
+    options: ApplyOptions = { multiple: true }
+): RawValue {
+    return Object.entries(object).reduce<RawValue>((acc, [key, value]) => {
+        const currentPath = [...meta.path, key];
+        const classifiers = getMatchingTransformers(meta.classifiers, currentPath);
+
+        acc[key as keyof RawValue] = value as RawValue[keyof RawValue];
+        if (key.startsWith('$')) {
+            return acc;
+        }
+
+        if (classifiers.length > 0) {
+            (options.multiple ? classifiers : classifiers.slice(0, 1)).forEach((classifier) => {
+                acc[key as keyof RawValue] = classifier.classify(acc[key as keyof RawValue], {
+                    ...meta,
+                    path: currentPath
+                }) as RawValue[keyof RawValue];
+            });
+        }
+
+        if (typeof acc[key] === 'object') {
+            if (!Array.isArray(value)) {
+                acc[key as keyof RawValue] = applyClassifiers<RawValue[keyof RawValue]>(
+                    acc[key],
+                    {
+                        ...meta,
+                        path: currentPath
+                    },
+                    options
+                ) as RawValue[keyof RawValue];
+            }
+        }
+
+        return acc;
+    }, {} as RawValue);
+}
 
 export function applyResolvers<
     RawValue extends Record<string, any> = RawTheme,
     ResolvedValue extends Record<string, any> = ResolvedTheme
 >(object: RawValue, meta: ResolverMeta, options: ApplyOptions = { multiple: true }): ResolvedValue {
     return Object.entries(object).reduce<ResolvedValue>((acc, [key, value]) => {
+        if (key.startsWith('$')) {
+            acc[key as keyof ResolvedValue] = value as ResolvedValue[keyof ResolvedValue];
+            return acc;
+        }
+
         const currentPath = [...meta.path, key];
-        const resolvers = meta.resolvers.filter((resolver) =>
-            matchKey(currentPath.join('.'), resolver.key)
-        );
+        const resolvers = getMatchingTransformers(meta.resolvers, currentPath);
 
         if (resolvers.length > 0) {
             (options.multiple ? resolvers : resolvers.slice(0, 1)).forEach((resolver) => {
@@ -55,15 +123,18 @@ export function applyResolvers<
 export function applyGenerators<ResolvedValue extends Record<string, any> = ResolvedTheme>(
     object: ResolvedValue,
     meta: GeneratorMeta,
-    options: ApplyOptions = { multiple: true }
+    options: ApplyOptions = { multiple: true, allowGenericGenerator: true }
 ): string[] {
     const lines: string[] = [];
 
-    Object.entries(object).forEach(([key, value]) => {
+    getSortedVariantsFieldKeys(object).forEach((key) => {
+        const value = object[key];
+        if (key.startsWith('$')) {
+            return;
+        }
+
         const currentPath = [...meta.path, key];
-        const generators = meta.generators.filter((resolver) =>
-            matchKey(currentPath.join('.'), resolver.key)
-        );
+        const generators = getMatchingTransformers(meta.generators, currentPath);
 
         if (generators.length > 0) {
             (options.multiple ? generators : generators.slice(0, 1)).forEach((generator) => {
@@ -74,7 +145,9 @@ export function applyGenerators<ResolvedValue extends Record<string, any> = Reso
                     })
                 );
             });
-        } else if (typeof value === 'object') {
+        }
+
+        if (typeof value === 'object') {
             lines.push(
                 ...applyGenerators<ResolvedValue[keyof ResolvedValue]>(
                     value,
@@ -82,10 +155,14 @@ export function applyGenerators<ResolvedValue extends Record<string, any> = Reso
                         ...meta,
                         path: currentPath
                     },
-                    options
+                    {
+                        ...options,
+                        allowGenericGenerator:
+                            options.allowGenericGenerator && generators.length === 0
+                    }
                 )
             );
-        } else {
+        } else if (options.allowGenericGenerator && generators.length === 0) {
             lines.push(
                 ...genericFieldGenerator.generate(value, {
                     ...meta,
@@ -101,15 +178,19 @@ export function applyGenerators<ResolvedValue extends Record<string, any> = Reso
 export function applyChunkGenerators<ResolvedValue extends Record<string, any> = ResolvedTheme>(
     object: ResolvedValue,
     meta: GeneratorMeta,
-    options: ApplyOptions = { multiple: true }
+    options: ApplyOptions = { multiple: true, allowGenericGenerator: true }
 ): GeneratorChunk[] {
     const chunks: GeneratorChunk[] = [];
 
-    Object.entries(object).forEach(([key, value]) => {
+    getSortedVariantsFieldKeys(object).forEach((key) => {
+        const value = object[key];
+        if (key.startsWith('$')) {
+            return;
+        }
+
         const currentPath = [...meta.path, key];
-        const generators = meta.generators.filter((resolver) =>
-            matchKey(currentPath.join('.'), resolver.key)
-        );
+        const generators = getMatchingTransformers(meta.generators, currentPath);
+        const allowGenericGenerator = options.allowGenericGenerator && generators.length === 0;
 
         if (generators.length > 0) {
             (options.multiple ? generators : generators.slice(0, 1)).forEach((generator) => {
@@ -123,7 +204,9 @@ export function applyChunkGenerators<ResolvedValue extends Record<string, any> =
                     })
                 });
             });
-        } else if (typeof value === 'object') {
+        }
+
+        if (typeof value === 'object' && !Array.isArray(value)) {
             chunks.push(
                 ...applyChunkGenerators<ResolvedValue[keyof ResolvedValue]>(
                     value,
@@ -131,12 +214,15 @@ export function applyChunkGenerators<ResolvedValue extends Record<string, any> =
                         ...meta,
                         path: currentPath
                     },
-                    options
+                    {
+                        ...options,
+                        allowGenericGenerator
+                    }
                 )
             );
-        } else {
+        } else if (allowGenericGenerator) {
             chunks.push({
-                path: ['generic'],
+                path: currentPath.length > 0 ? currentPath : ['generic'],
                 type: genericFieldGenerator.type,
                 priority: genericFieldGenerator.priority ?? GeneratorPriority.Low,
                 content: genericFieldGenerator.generate(value, {

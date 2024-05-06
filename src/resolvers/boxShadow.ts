@@ -2,14 +2,16 @@ import {
     defineResolver,
     defineResolverValueFn,
     defineResolverVariantFn,
-    createFieldWithOptionalVariantsResolveFn
+    createResolveFn
 } from '../utils';
 import type {
     RawTheme,
     RawThemeBoxShadow,
     ResolvedTheme,
     ResolvedThemeBoxShadow,
-    BoxShadow
+    BoxShadow,
+    ResolvedThemeValueType,
+    RawThemeValueType
 } from '../types';
 
 export const resolveBoxShadow = defineResolverValueFn<RawThemeBoxShadow, ResolvedThemeBoxShadow>(
@@ -41,7 +43,10 @@ export const resolveBoxShadowVariant = defineResolverVariantFn<
     ResolvedThemeBoxShadow
 >(resolveBoxShadow);
 
-export const boxShadowResolver = defineResolver<RawTheme['boxShadow'], ResolvedTheme['boxShadow']>({
-    key: 'boxShadow',
-    resolve: createFieldWithOptionalVariantsResolveFn(resolveBoxShadow, resolveBoxShadowVariant)
+export const boxShadowResolver = defineResolver<
+    RawThemeValueType<RawTheme['boxShadow']>,
+    ResolvedThemeValueType<ResolvedTheme['boxShadow']>
+>({
+    key: [/^boxShadow\.[^.]+$/, /.*\.boxShadow$/],
+    resolve: createResolveFn(resolveBoxShadow, resolveBoxShadowVariant)
 });

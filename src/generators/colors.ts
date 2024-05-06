@@ -2,71 +2,80 @@ import {
     codegenCssVariables,
     defineGenerator,
     defineGeneratorValueFn,
-    createMultipleFieldsWithVariantsGenerateFn,
-    createFieldWithVariantsGenerateFn,
-    getCssVariableNamePreamble,
+    createGenerateFn,
+    getCssVariablePreamble,
     shouldGenerateAggregateValue,
-    getResolvedPath,
-    toKebabCase
+    getResolvedCssVariableVariantName,
+    getCssVariableVariantName,
+    getCssVariablePreamblePath,
+    getCssVariableName
 } from '../utils';
-import { GeneratorType, ResolvedTheme, ResolvedThemeColor } from '../types';
+import { GeneratorType, ResolvedTheme, ResolvedThemeColor, ResolvedThemeValueType } from '../types';
 
-export const generateColor = defineGeneratorValueFn<ResolvedThemeColor>((color, meta) => {
-    const path = getResolvedPath(meta);
-    const variableNamePreamble = getCssVariableNamePreamble(path).replace(/colors?--/, 'color-');
-    const variantName = toKebabCase(path[path.length - 1]);
-    const colorName = toKebabCase(path[path.length - 2]);
+export const createColorGenerateFn = (variableName: string) => {
+    return defineGeneratorValueFn<ResolvedThemeColor>((color, meta) => {
+        if (typeof color === 'string') {
+            return [codegenCssVariables.set(variableName, color)];
+        }
 
-    const resolvedVariantName = variantName === 'default' ? '' : `-${variantName}`;
-    const cssVariableNameBase = `${variableNamePreamble}${colorName}${resolvedVariantName}`;
+        const tokens = [];
+        const { h, s, l, a } = color;
 
-    if (typeof color === 'string') {
-        return [codegenCssVariables.set(cssVariableNameBase, color)];
-    }
+        const resolvedH = typeof h === 'string' ? h : h.toString();
+        const resolvedS = typeof s === 'string' ? s : `${s}%`;
+        const resolvedL = typeof l === 'string' ? l : `${l}%`;
+        const resolvedA = typeof a === 'string' ? a : a.toString();
 
-    const tokens = [];
-    const { h, s, l, a } = color;
+        tokens.push(codegenCssVariables.set(`${variableName}--h`, resolvedH));
+        tokens.push(codegenCssVariables.set(`${variableName}--s`, resolvedS));
+        tokens.push(codegenCssVariables.set(`${variableName}--l`, resolvedL));
+        tokens.push(codegenCssVariables.set(`${variableName}--a`, resolvedA));
 
-    const resolvedH = typeof h === 'string' ? h : h.toString();
-    const resolvedS = typeof s === 'string' ? s : `${s}%`;
-    const resolvedL = typeof l === 'string' ? l : `${l}%`;
-    const resolvedA = typeof a === 'string' ? a : a.toString();
+        if (shouldGenerateAggregateValue(meta)) {
+            tokens.push(
+                codegenCssVariables.set(
+                    `${variableName}`,
+                    `hsla(${[
+                        codegenCssVariables.get(`${variableName}--h`),
+                        codegenCssVariables.get(`${variableName}--s`),
+                        codegenCssVariables.get(`${variableName}--l`)
+                    ].join(' ')} / ${codegenCssVariables.get(`${variableName}--a`)})`
+                )
+            );
+        }
 
-    tokens.push(codegenCssVariables.set(`${cssVariableNameBase}--h`, resolvedH));
-    tokens.push(codegenCssVariables.set(`${cssVariableNameBase}--s`, resolvedS));
-    tokens.push(codegenCssVariables.set(`${cssVariableNameBase}--l`, resolvedL));
-    tokens.push(codegenCssVariables.set(`${cssVariableNameBase}--a`, resolvedA));
+        return tokens;
+    });
+};
 
-    if (shouldGenerateAggregateValue(meta)) {
-        tokens.push(
-            codegenCssVariables.set(
-                `${cssVariableNameBase}`,
-                `hsla(${[
-                    codegenCssVariables.get(`${cssVariableNameBase}--h`),
-                    codegenCssVariables.get(`${cssVariableNameBase}--s`),
-                    codegenCssVariables.get(`${cssVariableNameBase}--l`)
-                ].join(' ')} / ${codegenCssVariables.get(`${cssVariableNameBase}--a`)})`
-            )
+export const colorsGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['colors'][string]>
+>({
+    key: [/^colors\.[^.]+\.[^.]+$/],
+    type: GeneratorType.CssVariables,
+    generate: createGenerateFn((value, meta) => {
+        const variablePath = meta.path.slice(-2).filter((part) => part !== 'default');
+
+        return createColorGenerateFn(`color-${variablePath.join('-')}`)(value, meta);
+    })
+});
+
+export const colorGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['colors'][string]>
+>({
+    key: [/.*\.color$/, /.*\.background$/],
+    ignore: [/^typography\.[^.]+$/, /border\..*/, /boxShadow\..*/],
+    type: GeneratorType.CssVariables,
+    generate: createGenerateFn((value, meta) => {
+        const variablePreamblePath = getCssVariablePreamblePath(meta);
+        const variablePreamble = getCssVariablePreamble(variablePreamblePath);
+        const variableName = getCssVariableName(meta);
+        const variantName = getCssVariableVariantName(meta);
+        const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
+
+        return createColorGenerateFn(`${variablePreamble}${variableName}${resolvedVariantName}`)(
+            value,
+            meta
         );
-    }
-
-    return tokens;
-});
-
-export const colorsGenerator = defineGenerator<ResolvedTheme['colors']>({
-    key: 'colors',
-    type: GeneratorType.CssVariables,
-    generate: createMultipleFieldsWithVariantsGenerateFn(generateColor)
-});
-
-export const colorGenerator = defineGenerator<ResolvedTheme['colors'][string]>({
-    key: 'color',
-    type: GeneratorType.CssVariables,
-    generate: createFieldWithVariantsGenerateFn(generateColor)
-});
-
-export const backgroundGenerator = defineGenerator<ResolvedTheme['colors'][string]>({
-    key: 'background',
-    type: GeneratorType.CssVariables,
-    generate: createFieldWithVariantsGenerateFn(generateColor)
+    })
 });

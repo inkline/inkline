@@ -2,9 +2,16 @@ import {
     defineResolver,
     defineResolverValueFn,
     defineResolverVariantFn,
-    createFieldWithOptionalVariantsResolveFn
+    createResolveFn
 } from '../utils';
-import { RawTheme, RawThemeScaleRatio, ResolvedTheme, ResolvedThemeScaleRatio } from '../types';
+import {
+    RawTheme,
+    RawThemeScaleRatio,
+    RawThemeValueType,
+    ResolvedTheme,
+    ResolvedThemeScaleRatio,
+    ResolvedThemeValueType
+} from '../types';
 
 export const resolveScaleRatio = defineResolverValueFn<RawThemeScaleRatio, ResolvedThemeScaleRatio>(
     (scaleRatio) => scaleRatio
@@ -16,9 +23,9 @@ export const resolveScaleRatioVariant = defineResolverVariantFn<
 >(resolveScaleRatio);
 
 export const scaleRatiosResolver = defineResolver<
-    RawTheme['scaleRatios'],
-    ResolvedTheme['scaleRatios']
+    RawThemeValueType<RawTheme['scaleRatios']>,
+    ResolvedThemeValueType<ResolvedTheme['scaleRatios']>
 >({
-    key: 'scaleRatios',
-    resolve: createFieldWithOptionalVariantsResolveFn(resolveScaleRatio, resolveScaleRatioVariant)
+    key: /^scaleRatios\.[^.]+$/,
+    resolve: createResolveFn(resolveScaleRatio, resolveScaleRatioVariant)
 });

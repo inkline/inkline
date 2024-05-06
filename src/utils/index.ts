@@ -1,4 +1,5 @@
 export * from './build';
+export * from './classifiers';
 export * from './config';
 export * from './codegen';
 export * from './file';

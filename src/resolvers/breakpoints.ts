@@ -2,9 +2,16 @@ import {
     defineResolver,
     defineResolverValueFn,
     defineResolverVariantFn,
-    createFieldWithOptionalVariantsResolveFn
+    createResolveFn
 } from '../utils';
-import { RawTheme, RawThemeBreakpoint, ResolvedTheme, ResolvedThemeBreakpoint } from '../types';
+import {
+    RawTheme,
+    RawThemeBreakpoint,
+    RawThemeValueType,
+    ResolvedTheme,
+    ResolvedThemeBreakpoint,
+    ResolvedThemeValueType
+} from '../types';
 
 export const resolveBreakpoint = defineResolverValueFn<RawThemeBreakpoint, ResolvedThemeBreakpoint>(
     (breakpoint) => breakpoint
@@ -16,9 +23,9 @@ export const resolveBreakpointVariant = defineResolverVariantFn<
 >(resolveBreakpoint);
 
 export const breakpointsResolver = defineResolver<
-    RawTheme['breakpoints'],
-    ResolvedTheme['breakpoints']
+    RawThemeValueType<RawTheme['breakpoints']>,
+    ResolvedThemeValueType<ResolvedTheme['breakpoints']>
 >({
-    key: 'breakpoints',
-    resolve: createFieldWithOptionalVariantsResolveFn(resolveBreakpoint, resolveBreakpointVariant)
+    key: /^breakpoints\.[^.]+$/,
+    resolve: createResolveFn(resolveBreakpoint, resolveBreakpointVariant)
 });

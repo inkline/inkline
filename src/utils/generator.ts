@@ -1,10 +1,11 @@
+import type { GenerateValueFn, Generator, GeneratorMeta } from '../types';
 import {
-    GenerateValueFn,
-    Generator,
-    GeneratorMeta,
-    ResolvedThemeVariantsWithDefault
-} from '../types';
-import { codegenCssVariables, getCssVariableNamePreamble } from './codegen';
+    codegenCssVariables,
+    getCssVariablePreamblePath,
+    getCssVariablePreamble,
+    getCssVariableVariantName,
+    getResolvedCssVariableVariantName
+} from './codegen';
 import { toKebabCase } from './string';
 import { getResolvedPath, shouldGenerateAggregateValue } from './meta';
 
@@ -18,7 +19,9 @@ export function defineGeneratorValueFn<ResolvedValue>(
     return fn;
 }
 
-export const getSortedFieldWithVariantsKeys = (variants: Record<string, unknown>): string[] => {
+export const getSortedVariantsFieldKeys = <Value extends Record<string, unknown>>(
+    variants: Value
+): string[] => {
     const sortedKeys = Object.keys(variants);
 
     sortedKeys.sort((variantName) => {
@@ -36,46 +39,14 @@ export const getSortedFieldWithVariantsKeys = (variants: Record<string, unknown>
     return sortedKeys;
 };
 
-export const createFieldWithVariantsGenerateFn =
-    <ResolvedValue>(generateValue: GenerateValueFn<ResolvedValue>) =>
-    (variants: ResolvedThemeVariantsWithDefault<ResolvedValue>, meta: GeneratorMeta): string[] => {
-        const sortedKeys = getSortedFieldWithVariantsKeys(variants);
-
-        return sortedKeys.reduce<string[]>((acc, variantName) => {
-            const variant = variants[variantName];
-            acc.push(...generateValue(variant, { ...meta, path: [...meta.path, variantName] }));
-
-            return acc;
-        }, []);
-    };
-
-export const createFieldWithoutVariantsGenerateFn =
+export const createGenerateFn =
     <ResolvedValue>(generateValue: GenerateValueFn<ResolvedValue>) =>
     (value: ResolvedValue, meta: GeneratorMeta): string[] => {
         return generateValue(value, meta);
     };
 
-export const createMultipleFieldsWithVariantsGenerateFn =
-    <ResolvedValue>(generateValue: GenerateValueFn<ResolvedValue>) =>
-    (
-        fields: Record<string, ResolvedThemeVariantsWithDefault<ResolvedValue>>,
-        meta: GeneratorMeta
-    ) => {
-        return Object.entries(fields).reduce<string[]>((acc, [fieldName, fieldOrVariants]) => {
-            acc.push(
-                ...createFieldWithVariantsGenerateFn(generateValue)(fieldOrVariants, {
-                    ...meta,
-                    path: [...meta.path, fieldName]
-                })
-            );
-
-            return acc;
-        }, []);
-    };
-
 export const createGenericDesignTokenVariantGenerateFn =
     <ResolvedValue extends Record<string, any> | string | number>(options?: {
-        key?: string;
         aggregate?: string[];
         replacePath?: (path: string[]) => string[];
     }) =>
@@ -87,25 +58,29 @@ export const createGenericDesignTokenVariantGenerateFn =
             path = options.replacePath(path);
         }
 
-        let cssVariableNameParts = path.map((part) => toKebabCase(part));
-        const keyIndex = cssVariableNameParts.indexOf(options?.key ?? '');
-        if (keyIndex !== -1 && path.length > 2) {
-            cssVariableNameParts = cssVariableNameParts.slice(keyIndex);
-        }
+        const variablePreamblePath = getCssVariablePreamblePath(meta);
+        const variablePreamble = getCssVariablePreamble(variablePreamblePath);
 
-        const variableNamePreamble = getCssVariableNamePreamble(path);
-        const variantName = cssVariableNameParts.pop() || '';
-        const propertyName = cssVariableNameParts.pop() || '';
-        const rootCssVariableName = `${variableNamePreamble}${propertyName}${variantName === 'default' ? '' : `${propertyName ? '-' : ''}${variantName}`}`;
+        const variantName = getCssVariableVariantName(meta);
+        const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
+        const propertyName = toKebabCase(
+            variablePreamblePath.length > 0 ? path[path.length - 1] : path[path.length - 2]
+        );
+
+        const rootCssVariableName = `${variablePreamble}${propertyName}${resolvedVariantName}`;
 
         if (typeof value === 'string' || typeof value === 'number') {
             return [codegenCssVariables.set(rootCssVariableName, `${value}`)];
         }
 
-        const sortedKeys = getSortedFieldWithVariantsKeys(value);
+        const sortedKeys = getSortedVariantsFieldKeys(value);
         const lines = sortedKeys.reduce<string[]>((acc, key) => {
+            if (key.startsWith('$')) {
+                return acc;
+            }
+
             const cssVariableValue = value[key];
-            const cssVariableName = `${variableNamePreamble}${propertyName}-${toKebabCase(key)}${variantName === 'default' ? '' : `-${variantName}`}`;
+            const cssVariableName = `${variablePreamble}${propertyName}-${toKebabCase(key)}${variantName === 'default' ? '' : `-${variantName}`}`;
 
             if (typeof cssVariableValue !== 'undefined') {
                 acc.push(codegenCssVariables.set(cssVariableName, cssVariableValue));

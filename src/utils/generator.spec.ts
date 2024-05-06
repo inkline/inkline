@@ -1,141 +1,256 @@
 import {
-    createFieldWithoutVariantsGenerateFn,
-    createFieldWithVariantsGenerateFn,
+    createGenerateFn,
     createGenericDesignTokenVariantGenerateFn,
-    createMultipleFieldsWithVariantsGenerateFn,
-    defineGenerator
+    defineGenerator,
+    defineGeneratorValueFn,
+    getSortedVariantsFieldKeys
 } from './generator';
+import {
+    ClassifierType,
+    GeneratorType,
+    ResolvedTheme,
+    ResolvedThemeColor,
+    ResolvedThemeTransition
+} from '../types';
 import { createTestingGeneratorMeta } from '../__tests__/utils';
-import { GeneratorType } from '../types';
 
 describe('defineGenerator', () => {
-    const meta = createTestingGeneratorMeta({ path: ['test'] });
-
-    it('should return the same generator that was passed in', () => {
-        const generator = {
-            key: 'test',
-            type: GeneratorType.Default,
-            generate: () => ['test']
-        };
-
-        const result = defineGenerator<string>(generator);
+    it('should return the same generator definition that was passed', () => {
+        const generatorFn = vi.fn();
+        const generator = { key: [], type: GeneratorType.Default, generate: generatorFn };
+        const result = defineGenerator(generator);
         expect(result).toBe(generator);
-        expect(result.generate('test', meta)).toEqual(['test']);
     });
 });
 
-describe('createFieldWithVariantsGenerateFn', () => {
-    const meta = createTestingGeneratorMeta({ path: [] });
-    it('should correctly generate fields with variants', () => {
-        const generateValue = (value: string) => [value.toUpperCase()];
-        const generateField = createFieldWithVariantsGenerateFn(generateValue);
-        const input = { default: 'test', variant1: 'test1', variant2: 'test2' };
-        const expected = ['TEST', 'TEST1', 'TEST2'];
-        const result = generateField(input, meta);
-
-        expect(result).toEqual(expected);
+describe('defineGeneratorValueFn', () => {
+    it('should return the same generator function that was passed', () => {
+        const generatorFn = vi.fn();
+        const result = defineGeneratorValueFn(generatorFn);
+        expect(result).toBe(generatorFn);
     });
 });
 
-describe('createFieldWithoutVariantsGenerateFn', () => {
-    const meta = createTestingGeneratorMeta({ path: [] });
-    it('should correctly generate a field without variants', () => {
-        const generateValue = (value: string) => [value.toUpperCase()];
-        const generateField = createFieldWithoutVariantsGenerateFn(generateValue);
-        const input = 'test';
-        const expected = ['TEST'];
-        const result = generateField(input, meta);
+describe('getSortedVariantsFieldKeys', () => {
+    it('should prioritize the "default" key to the top if its value does not contain "var"', () => {
+        const variants = { default: 'solid', bold: 'var(--bold)', light: 'var(--light)' };
+        const sortedKeys = getSortedVariantsFieldKeys(variants);
+        expect(sortedKeys[0]).toBe('default');
+        expect(sortedKeys).toEqual(['default', 'bold', 'light']);
+    });
 
-        expect(result).toEqual(expected);
+    it('should return keys in their original order when the "default" value contains "var"', () => {
+        const variants = { default: 'var(--default)', bold: 'bold', light: 'light' };
+        const sortedKeys = getSortedVariantsFieldKeys(variants);
+        expect(sortedKeys).toEqual(['default', 'bold', 'light']);
+    });
+
+    it('should return keys in their original order when "default" is not present', () => {
+        const variants = { bold: 'bold', light: 'light', extra: 'extra' };
+        const sortedKeys = getSortedVariantsFieldKeys(variants);
+        expect(sortedKeys).toEqual(['bold', 'light', 'extra']);
+    });
+
+    it('should handle an empty object without errors', () => {
+        const variants = {};
+        const sortedKeys = getSortedVariantsFieldKeys(variants);
+        expect(sortedKeys).toEqual([]);
     });
 });
 
-describe('createMultipleFieldsWithVariantsGenerateFn', () => {
-    const meta = createTestingGeneratorMeta({ path: [] });
-    it('should correctly generate multiple fields with variants', () => {
-        const generateValue = (value: string) => [value.toUpperCase()];
-        const generateFields = createMultipleFieldsWithVariantsGenerateFn(generateValue);
-        const input = {
-            field1: { default: 'test1', variant1: 'test1.1', variant2: 'test1.2' },
-            field2: { default: 'test2', variant1: 'test2.1', variant2: 'test2.2' }
-        };
-        const expected = ['TEST1', 'TEST1.1', 'TEST1.2', 'TEST2', 'TEST2.1', 'TEST2.2'];
-        const result = generateFields(input, meta);
+describe('createGenerateFn', () => {
+    it('should return a function that calls generateValue with provided value and meta', () => {
+        const mockGenerateValue = vi.fn().mockReturnValue(['generated']);
+        const generator = createGenerateFn(mockGenerateValue);
+        const value = 'test value';
+        const meta = createTestingGeneratorMeta();
 
-        expect(result).toEqual(expected);
+        const result = generator(value, meta);
+
+        expect(mockGenerateValue).toHaveBeenCalledWith(value, meta);
+        expect(result).toEqual(['generated']);
     });
 });
 
 describe('createGenericDesignTokenVariantGenerateFn', () => {
-    const defaultMeta = createTestingGeneratorMeta({ path: ['root', 'default'] });
-    const variantMeta = createTestingGeneratorMeta({ path: ['root', 'variant'] });
-
-    it('should correctly generate generic default variant fields with keys without numbers', () => {
-        const input = { field: 'test1', another: 'test2' };
-        const expected = ['--root-field: test1', '--root-another: test2'];
-        const genericGenerateFn = createGenericDesignTokenVariantGenerateFn();
-        const result = genericGenerateFn(input, defaultMeta);
-
-        expect(result).toEqual(expected);
-    });
-
-    it('should correctly generate generic default variant fields with aggregate option', () => {
-        const input = { keyA: 'testA', keyB: 'testB' };
-        const expected = [
-            '--root-key-a: testA',
-            '--root-key-b: testB',
-            '--root: var(--root-key-a) var(--root-key-b)'
-        ];
-        const genericGenerateFn = createGenericDesignTokenVariantGenerateFn({
-            aggregate: ['keyA', 'keyB']
+    it('should generate correct CSS variables for primitive value', () => {
+        const theme = {
+            transition: {
+                $type: ClassifierType.PrimitiveVariants,
+                default: {
+                    property: 'all',
+                    duration: 100,
+                    timingFunction: 'ease'
+                }
+            }
+        } as unknown as ResolvedTheme;
+        const meta = createTestingGeneratorMeta({
+            path: ['transition', 'default'],
+            theme
         });
-        const result = genericGenerateFn(input, defaultMeta);
 
-        expect(result).toEqual(expected);
+        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeTransition>();
+        expect(generateFn(theme.transition.default, meta)).toEqual([
+            '--transition-property: all;',
+            '--transition-duration: 100;',
+            '--transition-timing-function: ease;'
+        ]);
     });
 
-    it('should correctly generate generic variant fields with keys without numbers', () => {
-        const input = { field: 'test1', another: 'test2' };
-        const expected = ['--root-field-variant: test1', '--root-another-variant: test2'];
-        const genericGenerateFn = createGenericDesignTokenVariantGenerateFn();
-        const result = genericGenerateFn(input, variantMeta);
-
-        expect(result).toEqual(expected);
-    });
-
-    it('should correctly generate generic variant fields with keys with numbers', () => {
-        const input = { field1: 'test1', field2: 'test2' };
-        const expected = ['--root-field-1-variant: test1', '--root-field-2-variant: test2'];
-        const genericGenerateFn = createGenericDesignTokenVariantGenerateFn();
-        const result = genericGenerateFn(input, variantMeta);
-
-        expect(result).toEqual(expected);
-    });
-
-    it('should correctly generate generic variant fields with camelCase keys', () => {
-        const input = { fieldOne: 'test1', fieldTwoThree: 'test2' };
-        const expected = [
-            '--root-field-one-variant: test1',
-            '--root-field-two-three-variant: test2'
-        ];
-        const genericGenerateFn = createGenericDesignTokenVariantGenerateFn();
-        const result = genericGenerateFn(input, variantMeta);
-
-        expect(result).toEqual(expected);
-    });
-
-    it('should correctly generate generic variant fields with aggregate option', () => {
-        const input = { keyA: 'testA', keyB: 'testB' };
-        const expected = [
-            '--root-key-a-variant: testA',
-            '--root-key-b-variant: testB',
-            '--root-variant: var(--root-key-a-variant) var(--root-key-b-variant)'
-        ];
-        const genericGenerateFn = createGenericDesignTokenVariantGenerateFn({
-            aggregate: ['keyA', 'keyB']
+    it('should generate correct CSS variables and aggregate primitive value', () => {
+        const theme = {
+            transition: {
+                $type: ClassifierType.PrimitiveVariants,
+                default: {
+                    property: 'all',
+                    duration: 100,
+                    timingFunction: 'ease'
+                }
+            }
+        } as unknown as ResolvedTheme;
+        const meta = createTestingGeneratorMeta({
+            path: ['transition', 'default'],
+            theme
         });
-        const result = genericGenerateFn(input, variantMeta);
 
-        expect(result).toEqual(expected);
+        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeTransition>({
+            aggregate: ['property', 'duration', 'timingFunction']
+        });
+        expect(generateFn(theme.transition.default, meta)).toEqual([
+            '--transition-property: all;',
+            '--transition-duration: 100;',
+            '--transition-timing-function: ease;',
+            '--transition: var(--transition-property) var(--transition-duration) var(--transition-timing-function);'
+        ]);
+    });
+
+    it('should generate correct CSS variables for value in "default" entity variant', () => {
+        const theme = {
+            components: {
+                $type: ClassifierType.Group,
+                button: {
+                    $type: ClassifierType.EntityVariants,
+                    default: {
+                        $type: ClassifierType.Group,
+                        transition: {
+                            property: 'all',
+                            duration: 100,
+                            timingFunction: 'ease'
+                        }
+                    }
+                }
+            }
+        } as unknown as ResolvedTheme;
+        const meta = createTestingGeneratorMeta({
+            path: ['components', 'button', 'default', 'transition'],
+            theme
+        });
+
+        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeTransition>();
+        expect(generateFn(theme.components.button.default.transition, meta)).toEqual([
+            '--button--transition-property: all;',
+            '--button--transition-duration: 100;',
+            '--button--transition-timing-function: ease;'
+        ]);
+    });
+
+    it('should generate correct CSS variables for nested value in "default" entity variant', () => {
+        const theme = {
+            components: {
+                $type: ClassifierType.Group,
+                button: {
+                    $type: ClassifierType.EntityVariants,
+                    default: {
+                        $type: ClassifierType.Group,
+                        icon: {
+                            $type: ClassifierType.Group,
+                            transition: {
+                                property: 'all',
+                                duration: 100,
+                                timingFunction: 'ease'
+                            }
+                        }
+                    }
+                }
+            }
+        } as unknown as ResolvedTheme;
+        const meta = createTestingGeneratorMeta({
+            path: ['components', 'button', 'default', 'icon', 'transition'],
+            theme
+        });
+
+        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeTransition>();
+        expect(generateFn(theme.components.button.default.icon.transition, meta)).toEqual([
+            '--button--icon--transition-property: all;',
+            '--button--icon--transition-duration: 100;',
+            '--button--icon--transition-timing-function: ease;'
+        ]);
+    });
+
+    it('should generate correct CSS variables for value in non-default entity variant', () => {
+        const theme = {
+            components: {
+                $type: ClassifierType.Group,
+                button: {
+                    $type: ClassifierType.EntityVariants,
+                    primary: {
+                        $type: ClassifierType.Group,
+                        background: {
+                            h: 240,
+                            s: 100,
+                            l: 50,
+                            a: 1
+                        }
+                    }
+                }
+            }
+        } as unknown as ResolvedTheme;
+        const meta = createTestingGeneratorMeta({
+            path: ['components', 'button', 'primary', 'background'],
+            theme
+        });
+
+        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeColor>();
+        expect(generateFn(theme.components.button.primary.background, meta)).toEqual([
+            '--button--primary--background-h: 240;',
+            '--button--primary--background-s: 100;',
+            '--button--primary--background-l: 50;',
+            '--button--primary--background-a: 1;'
+        ]);
+    });
+
+    it('should generate correct CSS variables for nested value in non-default entity variant', () => {
+        const theme = {
+            components: {
+                $type: ClassifierType.Group,
+                button: {
+                    $type: ClassifierType.EntityVariants,
+                    primary: {
+                        $type: ClassifierType.Group,
+                        icon: {
+                            $type: ClassifierType.Group,
+                            background: {
+                                h: 240,
+                                s: 100,
+                                l: 50,
+                                a: 1
+                            }
+                        }
+                    }
+                }
+            }
+        } as unknown as ResolvedTheme;
+        const meta = createTestingGeneratorMeta({
+            path: ['components', 'button', 'primary', 'icon', 'background'],
+            theme
+        });
+
+        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeColor>();
+        expect(generateFn(theme.components.button.primary.icon.background, meta)).toEqual([
+            '--button--primary--icon--background-h: 240;',
+            '--button--primary--icon--background-s: 100;',
+            '--button--primary--icon--background-l: 50;',
+            '--button--primary--icon--background-a: 1;'
+        ]);
     });
 });

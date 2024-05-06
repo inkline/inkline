@@ -1,11 +1,11 @@
-import type { RawTheme, ResolvedTheme } from '../types';
-import { createFieldWithOptionalVariantsResolveFn, defineResolver } from '../utils';
+import type { RawTheme, RawThemeValueType, ResolvedTheme, ResolvedThemeValueType } from '../types';
+import { createResolveFn, defineResolver } from '../utils';
 import { resolveTransition, resolveTransitionVariant } from './transition';
 
 export const animationResolver = defineResolver<
-    RawTheme['transition'],
-    ResolvedTheme['transition']
+    RawThemeValueType<RawTheme['transition']>,
+    ResolvedThemeValueType<ResolvedTheme['transition']>
 >({
-    key: 'animation',
-    resolve: createFieldWithOptionalVariantsResolveFn(resolveTransition, resolveTransitionVariant)
+    key: [/^animation\.[^.]+$/, /.*\.animation$/],
+    resolve: createResolveFn(resolveTransition, resolveTransitionVariant)
 });

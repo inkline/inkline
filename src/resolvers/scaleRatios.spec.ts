@@ -1,46 +1,49 @@
 import { resolveScaleRatio, resolveScaleRatioVariant, scaleRatiosResolver } from './scaleRatios';
 import { createTestingResolverMeta } from '../__tests__/utils';
+import { matchKey } from '../utils';
 
 describe('resolveScaleRatio', () => {
     const meta = createTestingResolverMeta({ path: ['scaleRatios', 'default'] });
 
-    it('should return the same scale ratio value', () => {
-        const input = 1.618;
-        const expected = 1.618;
+    it('should return the same scale ratio when scale ratio is a number', () => {
+        const scaleRatio = 1.5;
+        const result = resolveScaleRatio(scaleRatio, meta);
+        expect(result).toEqual(scaleRatio);
+    });
 
-        const result = resolveScaleRatio(input, meta);
-        expect(result).toBe(expected);
+    it('should return the scale ratio with css variables when scale ratio is a variable', () => {
+        const scaleRatio = 'var(--scale-ratio)';
+        const result = resolveScaleRatio(scaleRatio, meta);
+        expect(result).toEqual(scaleRatio);
     });
 });
 
 describe('resolveScaleRatioVariant', () => {
-    const meta = createTestingResolverMeta({ path: ['scaleRatios', 'golden'] });
+    const meta = createTestingResolverMeta({ path: ['scaleRatios', 'variant'] });
 
-    it('should return the same scale ratio variant value', () => {
-        const input = 2.618;
-        const expected = 2.618;
+    it('should return the same scale ratio when variant is a number', () => {
+        const variant = 2.0;
+        const result = resolveScaleRatioVariant(variant, meta);
+        expect(result).toEqual(variant);
+    });
 
-        const result = resolveScaleRatioVariant(input, meta);
-        expect(result).toBe(expected);
+    it('should return the scale ratio with css variables when variant is a variable', () => {
+        const variant = 'var(--scale-ratio-variant)';
+        const result = resolveScaleRatioVariant(variant, meta);
+        expect(result).toEqual(variant);
     });
 });
 
 describe('scaleRatiosResolver', () => {
-    const meta = createTestingResolverMeta({ path: ['scaleRatios'] });
-
-    it('should correctly resolve scale ratios without variants', () => {
-        const input = {
-            default: 1.618,
-            golden: 1.618,
-            silver: 2.414
-        };
-        const expected = {
-            default: 1.618,
-            golden: 1.618,
-            silver: 2.414
-        };
-
-        const result = scaleRatiosResolver.resolve(input, meta);
-        expect(result).toEqual(expected);
+    describe('match', () => {
+        it.each([
+            ['scaleRatios', false],
+            ['scaleRatios.default', true],
+            ['components.button.default.scaleRatios', false],
+            ['other.scaleRatios.value', false]
+        ])('should match "%s" path => %s', (path, result) => {
+            const match = matchKey(path, scaleRatiosResolver.key as RegExp);
+            expect(match).toBe(result);
+        });
     });
 });

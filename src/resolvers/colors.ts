@@ -4,16 +4,17 @@ import {
     defineResolver,
     defineResolverValueFn,
     defineResolverVariantFn,
-    createMultipleFieldsWithOptionalVariantsResolveFn,
-    createFieldWithOptionalVariantsResolveFn
+    createResolveFn
 } from '../utils';
 import type {
     HSLAColor,
     RawTheme,
     RawThemeColor,
     RawThemeColorVariant,
+    RawThemeValueType,
     ResolvedTheme,
-    ResolvedThemeColor
+    ResolvedThemeColor,
+    ResolvedThemeValueType
 } from '../types';
 import { colorModifiers } from './modifiers';
 
@@ -71,15 +72,11 @@ export const resolveColorVariant = defineResolverVariantFn<
     return variantValue;
 });
 
-export const colorsResolver = defineResolver<RawTheme['colors'], ResolvedTheme['colors']>({
-    key: 'colors',
-    resolve: createMultipleFieldsWithOptionalVariantsResolveFn(resolveColor, resolveColorVariant)
-});
-
-export const colorResolver = defineResolver<
-    RawTheme['colors'][string],
-    ResolvedTheme['colors'][string]
+export const colorsResolver = defineResolver<
+    RawThemeValueType<RawTheme['colors'][string]>,
+    ResolvedThemeValueType<ResolvedTheme['colors'][string]>
 >({
-    key: 'color',
-    resolve: createFieldWithOptionalVariantsResolveFn(resolveColor, resolveColorVariant)
+    key: [/^colors\.[^.]+\.[^.]+$/, /.*\.color$/, /.*\.background$/],
+    ignore: [/^typography\..*$/, /border\..*/, /boxShadow\..*/],
+    resolve: createResolveFn(resolveColor, resolveColorVariant)
 });

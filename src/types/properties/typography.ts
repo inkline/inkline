@@ -42,6 +42,6 @@ export type ResolvedThemeTypographyColor = ResolvedThemeColor;
 
 export type ResolvedThemeTypographyContrastColor = ResolvedThemeColor;
 
-export type RawThemeTypographyTextAlignment = 'left' | 'center' | 'right' | 'justify';
+export type RawThemeTypographyTextAlignment = 'left' | 'center' | 'right' | 'justify' | string;
 
 export type ResolvedThemeTypographyTextAlignment = RawThemeTypographyTextAlignment;

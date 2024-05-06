@@ -1,12 +1,14 @@
 import {
     codegenCssVariables,
     codegenScssVariables,
-    createFieldWithVariantsGenerateFn,
+    createGenerateFn,
     defineGenerator,
     getResolvedPath,
+    getResolvedCssVariableVariantName,
+    getCssVariableVariantName,
     toUnitValue
 } from '../utils';
-import { GeneratorPriority, GeneratorType, ResolvedTheme } from '../types';
+import { GeneratorPriority, GeneratorType, ResolvedTheme, ResolvedThemeValueType } from '../types';
 
 export const gridColumnsGenerator = defineGenerator<ResolvedTheme['grid']['columns']>({
     key: 'grid.columns',
@@ -25,12 +27,14 @@ export const gridColumnsMixinsGenerator = defineGenerator<ResolvedTheme['grid'][
     }
 });
 
-export const gridContainerGenerator = defineGenerator<ResolvedTheme['grid']['container']>({
-    key: 'grid.container',
+export const gridContainerGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['grid']['container']>
+>({
+    key: /^grid\.container\.[^.]+$/,
     type: GeneratorType.CssVariables,
-    generate: createFieldWithVariantsGenerateFn((value, meta) => {
+    generate: createGenerateFn((value, meta) => {
         const path = getResolvedPath(meta);
-        const variantName = path[path.length - 1];
+        const variantName = getCssVariableVariantName(meta);
 
         if (variantName === 'default') {
             return [];
@@ -43,13 +47,14 @@ export const gridContainerGenerator = defineGenerator<ResolvedTheme['grid']['con
     })
 });
 
-export const gridGutterGenerator = defineGenerator<ResolvedTheme['grid']['container']>({
-    key: 'grid.gutter',
+export const gridGutterGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['grid']['container']>
+>({
+    key: /^grid\.gutter\.[^.]+$/,
     type: GeneratorType.CssVariables,
-    generate: createFieldWithVariantsGenerateFn((value, meta) => {
-        const path = getResolvedPath(meta);
-        const variantName = path[path.length - 1];
-        const resolvedVariantName = variantName === 'default' ? '' : `-${variantName}`;
+    generate: createGenerateFn((value, meta) => {
+        const variantName = getCssVariableVariantName(meta);
+        const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
         const variantValue = toUnitValue(value);
 
         return [codegenCssVariables.set(`gutter${resolvedVariantName}`, variantValue)];

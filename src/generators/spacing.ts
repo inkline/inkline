@@ -1,12 +1,15 @@
 import {
     codegenCssVariables,
-    createFieldWithVariantsGenerateFn,
+    createGenerateFn,
     defineGenerator,
     defineGeneratorValueFn,
-    getCssVariableNamePreamble,
+    getCssVariablePreamble,
     getResolvedPath,
+    getResolvedCssVariableVariantName,
+    getCssVariableVariantName,
     shouldGenerateAggregateValue,
-    toUnitValue
+    toUnitValue,
+    getCssVariablePreamblePath
 } from '../utils';
 import {
     GeneratorPriority,
@@ -16,7 +19,8 @@ import {
     ResolvedThemeSpacing,
     SpacingSide,
     ResolvedThemeMargin,
-    ResolvedThemePadding
+    ResolvedThemePadding,
+    ResolvedThemeValueType
 } from '../types';
 
 /**
@@ -27,14 +31,15 @@ const generateSpacingWithSides = (property: string) =>
     defineGeneratorValueFn<ResolvedThemeSpacingWithSides>((spacing, meta) => {
         const path = getResolvedPath(meta);
         const tokens: string[] = [];
-        const variableNamePreamble = getCssVariableNamePreamble(path);
-        const variantName = path[path.length - 1];
-        const resolvedVariantName = variantName === 'default' ? '' : `-${variantName}`;
+        const variablePreamblePath = getCssVariablePreamblePath(meta);
+        const variablePreamble = getCssVariablePreamble(variablePreamblePath);
+        const variantName = getCssVariableVariantName(meta);
+        const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
         const sides: SpacingSide[] = ['top', 'right', 'bottom', 'left'];
 
         sides.forEach((side) => {
             const variableValue = toUnitValue(spacing[side]);
-            const variableName = `${variableNamePreamble}${property}-${side}${resolvedVariantName}`;
+            const variableName = `${variablePreamble}${property}-${side}${resolvedVariantName}`;
 
             if (typeof spacing[side] !== 'undefined') {
                 tokens.push(codegenCssVariables.set(variableName, variableValue));
@@ -44,11 +49,11 @@ const generateSpacingWithSides = (property: string) =>
         if (shouldGenerateAggregateValue(meta)) {
             tokens.push(
                 codegenCssVariables.set(
-                    `${variableNamePreamble}${property}${resolvedVariantName}`,
+                    `${variablePreamble}${property}${resolvedVariantName}`,
                     sides
                         .map((side) =>
                             codegenCssVariables.get(
-                                `${variableNamePreamble}${property}-${side}${resolvedVariantName}`
+                                `${variablePreamble}${property}-${side}${resolvedVariantName}`
                             )
                         )
                         .join(' ')
@@ -67,11 +72,11 @@ export const generateMargin = defineGeneratorValueFn<ResolvedThemeMargin>(
     generateSpacingWithSides('margin')
 );
 
-export const marginGenerator = defineGenerator<ResolvedTheme['margin']>({
-    key: 'margin',
+export const marginGenerator = defineGenerator<ResolvedThemeValueType<ResolvedTheme['margin']>>({
+    key: [/^margin\.[^.]+$/, /.*\.margin$/],
     type: GeneratorType.CssVariables,
     priority: GeneratorPriority.Medium,
-    generate: createFieldWithVariantsGenerateFn(generateMargin)
+    generate: createGenerateFn(generateMargin)
 });
 
 /**
@@ -82,11 +87,11 @@ export const generatePadding = defineGeneratorValueFn<ResolvedThemePadding>(
     generateSpacingWithSides('padding')
 );
 
-export const paddingGenerator = defineGenerator<ResolvedTheme['padding']>({
-    key: 'padding',
+export const paddingGenerator = defineGenerator<ResolvedThemeValueType<ResolvedTheme['padding']>>({
+    key: [/^padding\.[^.]+$/, /.*\.padding$/],
     type: GeneratorType.CssVariables,
     priority: GeneratorPriority.Medium,
-    generate: createFieldWithVariantsGenerateFn(generatePadding)
+    generate: createGenerateFn(generatePadding)
 });
 
 /**
@@ -94,23 +99,23 @@ export const paddingGenerator = defineGenerator<ResolvedTheme['padding']>({
  */
 
 export const generateSpacing = defineGeneratorValueFn<ResolvedThemeSpacing>((spacing, meta) => {
-    const path = getResolvedPath(meta);
-    const preamble = getCssVariableNamePreamble(path);
+    const variablePreamblePath = getCssVariablePreamblePath(meta);
+    const variablePreamble = getCssVariablePreamble(variablePreamblePath);
 
     const tokens: string[] = [];
-    const variantName = path[path.length - 1];
-    const resolvedVariantName = variantName === 'default' ? '' : `-${variantName}`;
+    const variantName = getCssVariableVariantName(meta);
+    const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
 
-    const variableName = `${preamble}spacing${resolvedVariantName}`;
+    const variableName = `${variablePreamble}spacing${resolvedVariantName}`;
 
     tokens.push(codegenCssVariables.set(variableName, spacing));
 
     return tokens;
 });
 
-export const spacingGenerator = defineGenerator<ResolvedTheme['spacing']>({
-    key: 'spacing',
+export const spacingGenerator = defineGenerator<ResolvedThemeValueType<ResolvedTheme['spacing']>>({
+    key: [/^spacing\.[^.]+$/, /.*\.spacing$/],
     type: GeneratorType.CssVariables,
     priority: GeneratorPriority.High,
-    generate: createFieldWithVariantsGenerateFn(generateSpacing)
+    generate: createGenerateFn(generateSpacing)
 });

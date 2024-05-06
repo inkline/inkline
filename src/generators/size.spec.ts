@@ -1,63 +1,56 @@
+import {
+    generateSizeMultiplier,
+    sizeMultiplierGenerator,
+    generatePercentage,
+    sizePercentagesGenerator
+} from './size';
 import { createTestingGeneratorMeta } from '../__tests__/utils';
-import { generatePercentage, sizeMultiplierGenerator, sizePercentagesGenerator } from './size';
+import { matchKey } from '../utils';
+
+describe('generateSizeMultiplier', () => {
+    it('should generate css variables for size multiplier', () => {
+        const meta = createTestingGeneratorMeta({ path: ['size', 'multiplier', 'md'] });
+        const result = generateSizeMultiplier(1.5, meta);
+        expect(result).toEqual(['--size-multiplier-md: 1.5;']);
+    });
+});
 
 describe('sizeMultiplierGenerator', () => {
-    it('should generate correct size multiplier CSS variables for default variant', () => {
-        const meta = createTestingGeneratorMeta({ path: ['size', 'multiplier'] });
-        const sizeMultiplier = 1.5;
-
-        const result = sizeMultiplierGenerator.generate(sizeMultiplier, meta);
-
-        expect(result).toEqual(['--size-multiplier: 1.5']);
+    describe('match', () => {
+        it.each([
+            ['size', false],
+            ['size.multiplier', false],
+            ['size.multiplier.default', true],
+            ['size.multiplier.md', true],
+            ['components.button.size.multiplier.md', false],
+            ['other.size.multiplier.md.value', false]
+        ])('should match "%s" path => %s', (path, result) => {
+            const match = matchKey(path, sizeMultiplierGenerator.key as string);
+            expect(match).toBe(result);
+        });
     });
 });
 
 describe('generatePercentage', () => {
-    it('should generate correct size percentage CSS variable for number percentage', () => {
-        const meta = createTestingGeneratorMeta({ path: ['size', 'percentages', '50'] });
-        const percentage: number = 50;
-
-        const result = generatePercentage(percentage, meta);
-
-        expect(result).toContain('--size-percentage-50: 50%');
-    });
-
-    it('should generate correct size percentage CSS variable for string percentage', () => {
+    it('should generate css variables for size percentage', () => {
         const meta = createTestingGeneratorMeta({ path: ['size', 'percentages', 'half'] });
-        const percentage: string = '50%';
-
-        const result = generatePercentage(percentage, meta);
-
-        expect(result).toContain('--size-percentage-half: 50%');
-    });
-
-    it('should generate correct size percentage CSS variable for custom variant', () => {
-        const meta = createTestingGeneratorMeta({ path: ['size', 'percentages', 'custom'] });
-        const percentage: number = 75;
-
-        const result = generatePercentage(percentage, meta);
-
-        expect(result).toContain('--size-percentage-custom: 75%');
+        const result = generatePercentage(50, meta);
+        expect(result).toEqual(['--size-percentage-half: 50%;']);
     });
 });
 
 describe('sizePercentagesGenerator', () => {
-    it('should generate correct size percentage CSS variables for default variant', () => {
-        const meta = createTestingGeneratorMeta({ path: ['size', 'percentages'] });
-        const sizePercentages = {
-            '0': '0%',
-            '50': '50%',
-            '100': '100%',
-            '200': '200%'
-        };
-
-        const result = sizePercentagesGenerator.generate(sizePercentages, meta);
-
-        expect(result).toEqual([
-            '--size-percentage-0: 0%',
-            '--size-percentage-50: 50%',
-            '--size-percentage-100: 100%',
-            '--size-percentage-200: 200%'
-        ]);
+    describe('match', () => {
+        it.each([
+            ['size', false],
+            ['size.percentages', false],
+            ['size.percentages.default', true],
+            ['size.percentages.md', true],
+            ['components.button.size.percentages.md', false],
+            ['other.size.percentages.md.value', false]
+        ])('should match "%s" path => %s', (path, result) => {
+            const match = matchKey(path, sizePercentagesGenerator.key as string);
+            expect(match).toBe(result);
+        });
     });
 });

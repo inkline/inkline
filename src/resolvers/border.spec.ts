@@ -1,178 +1,122 @@
 import { assignBorder, borderResolver, resolveBorder, resolveBorderVariant } from './border';
 import { createTestingResolverMeta } from '../__tests__/utils';
+import type { BorderSide } from '../types';
+import { matchKey } from '../utils';
 
-describe('assignBorder', () => {
-    it('should correctly parse a border string into a Border object', () => {
-        const borderString = '1px solid black';
-        const expected = {
-            width: '1px',
-            style: 'solid',
-            color: 'black'
-        };
-        const result = assignBorder(borderString);
-        expect(result).toEqual(expected);
+describe('assignBorder()', () => {
+    it('should correctly parse a well-formed border string', () => {
+        const result = assignBorder('5px solid red');
+        expect(result).toEqual({ width: '5px', style: 'solid', color: 'red' });
     });
 
-    it('should handle extra spaces within the border string', () => {
-        const borderString = '2px  dashed  blue';
-        const expected = {
-            width: '2px',
-            style: 'dashed',
-            color: 'blue'
-        };
-        const result = assignBorder(borderString);
-        expect(result).toEqual(expected);
-    });
-});
-
-describe('resolveBorder', () => {
-    const meta = createTestingResolverMeta({ path: ['border'] });
-
-    it('should correctly resolve a simple border string for all sides', () => {
-        const input = '1px solid black';
-        const expected = {
-            top: { width: '1px', style: 'solid', color: 'black' },
-            right: { width: '1px', style: 'solid', color: 'black' },
-            bottom: { width: '1px', style: 'solid', color: 'black' },
-            left: { width: '1px', style: 'solid', color: 'black' }
-        };
-
-        const result = resolveBorder(input, meta);
-        expect(result).toEqual(expected);
+    it('should handle extra spaces between properties', () => {
+        const result = assignBorder('5px  solid   red');
+        expect(result).toEqual({ width: '5px', style: 'solid', color: 'red' });
     });
 
-    it('should correctly resolve individual border properties', () => {
-        const input = {
-            top: '2px dashed red',
-            right: '3px dotted green',
-            bottom: '4px double blue',
-            left: '5px groove yellow'
-        };
-        const expected = {
-            top: { width: '2px', style: 'dashed', color: 'red' },
-            right: { width: '3px', style: 'dotted', color: 'green' },
-            bottom: { width: '4px', style: 'double', color: 'blue' },
-            left: { width: '5px', style: 'groove', color: 'yellow' }
-        };
-
-        const result = resolveBorder(input, meta);
-        expect(result).toEqual(expected);
+    it('should return undefined properties if parts are missing', () => {
+        const result = assignBorder('5px solid');
+        expect(result).toEqual({ width: '5px', style: 'solid', color: undefined });
     });
 
-    it('should handle mixed border types', () => {
-        const input = {
-            top: '2px dashed red',
-            right: { width: '3px', style: 'dotted', color: 'green' },
-            bottom: '4px double blue',
-            left: { width: '5px', style: 'groove', color: 'yellow' }
-        };
-        const expected = {
-            top: { width: '2px', style: 'dashed', color: 'red' },
-            right: { width: '3px', style: 'dotted', color: 'green' },
-            bottom: { width: '4px', style: 'double', color: 'blue' },
-            left: { width: '5px', style: 'groove', color: 'yellow' }
-        };
-
-        const result = resolveBorder(input, meta);
-        expect(result).toEqual(expected);
+    it('should handle an empty input string', () => {
+        const result = assignBorder('');
+        expect(result).toEqual({ width: '', style: undefined, color: undefined });
     });
 });
 
-describe('resolveBorderVariant', () => {
-    const meta = createTestingResolverMeta({ path: ['border'] });
+describe('resolveBorder()', () => {
+    const meta = createTestingResolverMeta();
 
-    it('should correctly resolve a simple border string for all sides', () => {
-        const input = '1px solid black';
-        const expected = {
-            top: { width: '1px', style: 'solid', color: 'black' },
-            right: { width: '1px', style: 'solid', color: 'black' },
-            bottom: { width: '1px', style: 'solid', color: 'black' },
-            left: { width: '1px', style: 'solid', color: 'black' }
-        };
-
-        const result = resolveBorderVariant(input, meta);
-        expect(result).toEqual(expected);
+    it('should handle a single string input by assigning the same border to all sides', () => {
+        const border = '2px dashed blue';
+        const resolved = resolveBorder(border, meta);
+        const expectedBorder = assignBorder(border);
+        expect(resolved).toEqual({
+            top: expectedBorder,
+            right: expectedBorder,
+            bottom: expectedBorder,
+            left: expectedBorder
+        });
     });
 
-    it('should correctly resolve individual border properties', () => {
-        const input = {
-            top: '2px dashed red',
-            right: '3px dotted green',
-            bottom: '4px double blue',
-            left: '5px groove yellow'
-        };
-        const expected = {
-            top: { width: '2px', style: 'dashed', color: 'red' },
-            right: { width: '3px', style: 'dotted', color: 'green' },
-            bottom: { width: '4px', style: 'double', color: 'blue' },
-            left: { width: '5px', style: 'groove', color: 'yellow' }
-        };
-
-        const result = resolveBorderVariant(input, meta);
-        expect(result).toEqual(expected);
+    it('should handle individual border properties by assigning the same border to all sides', () => {
+        const border = { width: '3px', style: 'solid', color: 'black' };
+        const resolved = resolveBorder(border, meta);
+        expect(resolved).toEqual({
+            top: border,
+            right: border,
+            bottom: border,
+            left: border
+        });
     });
 
-    it('should handle mixed border types', () => {
-        const input = {
-            top: '2px dashed red',
-            right: { width: '3px', style: 'dotted', color: 'green' },
-            bottom: '4px double blue',
-            left: { width: '5px', style: 'groove', color: 'yellow' }
+    it('should handle separate border definitions for each side when provided', () => {
+        const borders = {
+            top: '1px solid red',
+            right: '2px dotted green',
+            bottom: '3px dashed blue',
+            left: '4px double yellow'
         };
-        const expected = {
-            top: { width: '2px', style: 'dashed', color: 'red' },
-            right: { width: '3px', style: 'dotted', color: 'green' },
-            bottom: { width: '4px', style: 'double', color: 'blue' },
-            left: { width: '5px', style: 'groove', color: 'yellow' }
-        };
+        const resolved = resolveBorder(borders, meta);
+        expect(resolved).toEqual({
+            top: assignBorder(borders.top),
+            right: assignBorder(borders.right),
+            bottom: assignBorder(borders.bottom),
+            left: assignBorder(borders.left)
+        });
+    });
 
-        const result = resolveBorderVariant(input, meta);
-        expect(result).toEqual(expected);
+    it('should handle mixed types of borders correctly', () => {
+        const borders = {
+            top: '1px solid red',
+            right: { width: '2px', style: 'dotted', color: 'green' },
+            bottom: '3px dashed blue',
+            left: { width: '4px', style: 'double', color: 'yellow' }
+        };
+        const resolved = resolveBorder(borders, meta);
+        expect(resolved).toEqual({
+            top: assignBorder(borders.top),
+            right: borders.right,
+            bottom: assignBorder(borders.bottom),
+            left: borders.left
+        });
+    });
+
+    it('should handle missing border sides with default values', () => {
+        const borders = {
+            top: '1px solid red',
+            left: '4px double yellow'
+        } as Record<BorderSide, string>;
+
+        const resolved = resolveBorder(borders, meta);
+        expect(resolved).toEqual({
+            top: assignBorder(borders.top),
+            right: undefined,
+            bottom: undefined,
+            left: assignBorder(borders.left)
+        });
+    });
+});
+
+describe('resolveBorderVariant()', () => {
+    it('should be a wrapper around "resolveBorder"', () => {
+        expect(resolveBorderVariant).toBe(resolveBorder);
     });
 });
 
 describe('borderResolver', () => {
-    const meta = createTestingResolverMeta({ path: ['border'] });
-
-    it('should correctly resolve a simple border string for all sides', () => {
-        const input = '1px solid black';
-        const expectedBorder = assignBorder(input);
-        const expected = {
-            default: {
-                top: expectedBorder,
-                right: expectedBorder,
-                bottom: expectedBorder,
-                left: expectedBorder
-            }
-        };
-
-        const result = borderResolver.resolve(input, meta);
-        expect(result).toEqual(expected);
-    });
-
-    it('should correctly resolve border with variants', () => {
-        const input = {
-            default: '2px dashed red',
-            hover: '3px dotted green'
-        };
-        const expectedDefaultBorder = assignBorder(input.default);
-        const expectedHoverBorder = assignBorder(input.hover);
-        const expected = {
-            default: {
-                top: expectedDefaultBorder,
-                right: expectedDefaultBorder,
-                bottom: expectedDefaultBorder,
-                left: expectedDefaultBorder
-            },
-            hover: {
-                top: expectedHoverBorder,
-                right: expectedHoverBorder,
-                bottom: expectedHoverBorder,
-                left: expectedHoverBorder
-            }
-        };
-
-        const result = borderResolver.resolve(input, meta);
-        expect(result).toEqual(expected);
+    describe('match', () => {
+        it.each([
+            ['border', false],
+            ['border.default', true],
+            ['border.default.width', false],
+            ['border.default.top', false],
+            ['components.button.default.border', true],
+            ['other.border.value', false]
+        ])('should match "%s" path => %s', (path, result) => {
+            const match = (borderResolver.key as RegExp[]).some((key) => matchKey(path, key));
+            expect(match).toBe(result);
+        });
     });
 });

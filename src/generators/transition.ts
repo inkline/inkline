@@ -1,18 +1,19 @@
 import {
     defineGenerator,
-    createFieldWithVariantsGenerateFn,
+    createGenerateFn,
     createGenericDesignTokenVariantGenerateFn
 } from '../utils';
-import type { ResolvedTheme } from '../types';
+import type { ResolvedTheme, ResolvedThemeValueType } from '../types';
 import { GeneratorType } from '../types';
 
 export const generateTransition = createGenericDesignTokenVariantGenerateFn({
-    key: 'transition',
     aggregate: ['property', 'duration', 'timingFunction']
 });
 
-export const transitionGenerator = defineGenerator<ResolvedTheme['transition']>({
-    key: 'transition',
+export const transitionGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['transition']>
+>({
+    key: [/^transition\.[^.]+$/, /.*\.transition$/],
     type: GeneratorType.CssVariables,
-    generate: createFieldWithVariantsGenerateFn(generateTransition)
+    generate: createGenerateFn(generateTransition)
 });

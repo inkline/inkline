@@ -5,166 +5,145 @@ import {
     resolveBorderRadiusVariant
 } from './borderRadius';
 import { createTestingResolverMeta } from '../__tests__/utils';
+import { borderResolver } from './border';
+import { matchKey } from '../utils';
 
 describe('assignBorderRadius', () => {
-    it('should assign the same border radius to all sides if a single value is provided', () => {
-        const borderRadius = '5px';
-        const expected = { topLeft: '5px', topRight: '5px', bottomRight: '5px', bottomLeft: '5px' };
-        const result = assignBorderRadius(borderRadius);
-        expect(result).toEqual(expected);
-    });
-
-    it('should assign correct border radius values for two values provided', () => {
-        const borderRadius = '5px 10px';
-        const expected = {
-            topLeft: '5px',
+    it('should assign all sides with the same value when one value is provided', () => {
+        const result = assignBorderRadius('10px');
+        expect(result).toEqual({
+            topLeft: '10px',
             topRight: '10px',
-            bottomRight: '5px',
+            bottomRight: '10px',
             bottomLeft: '10px'
-        };
-        const result = assignBorderRadius(borderRadius);
-        expect(result).toEqual(expected);
+        });
     });
 
-    it('should assign correct border radius values for three values provided', () => {
-        const borderRadius = '5px 10px 15px';
-        const expected = {
-            topLeft: '5px',
-            topRight: '10px',
-            bottomRight: '15px',
-            bottomLeft: '10px'
-        };
-        const result = assignBorderRadius(borderRadius);
-        expect(result).toEqual(expected);
-    });
-
-    it('should assign correct border radius values for four values provided', () => {
-        const borderRadius = '5px 10px 15px 20px';
-        const expected = {
-            topLeft: '5px',
-            topRight: '10px',
-            bottomRight: '15px',
+    it('should assign horizontal and vertical sides differently when two values are provided', () => {
+        const result = assignBorderRadius('10px 20px');
+        expect(result).toEqual({
+            topLeft: '10px',
+            topRight: '20px',
+            bottomRight: '10px',
             bottomLeft: '20px'
-        };
-        const result = assignBorderRadius(borderRadius);
-        expect(result).toEqual(expected);
+        });
+    });
+
+    it('should assign each side a different value when four values are provided', () => {
+        const result = assignBorderRadius('10px 20px 30px 40px');
+        expect(result).toEqual({
+            topLeft: '10px',
+            topRight: '20px',
+            bottomRight: '30px',
+            bottomLeft: '40px'
+        });
+    });
+
+    it('should assign top/bottom and left/right sides differently when three values are provided', () => {
+        const result = assignBorderRadius('10px 20px 30px');
+        expect(result).toEqual({
+            topLeft: '10px',
+            topRight: '20px',
+            bottomRight: '30px',
+            bottomLeft: '20px'
+        });
     });
 });
 
 describe('resolveBorderRadius', () => {
-    const meta = createTestingResolverMeta({ path: ['borderRadius'] });
+    const meta = createTestingResolverMeta({ path: ['borderRadius', 'default'] });
 
-    it('should correctly resolve borderRadius from string without var', () => {
-        const input = '5px 10px 15px 20px';
-        const expected = {
-            topLeft: '5px',
-            topRight: '10px',
+    it('should return the same borderRadius when borderRadius is an object', () => {
+        const borderRadius = {
+            topLeft: '10px',
+            topRight: '20px',
+            bottomRight: '30px',
+            bottomLeft: '40px'
+        };
+        const result = resolveBorderRadius(borderRadius, meta);
+        expect(result).toEqual(borderRadius);
+    });
+
+    it('should assign all sides with the same value when borderRadius is a single value string', () => {
+        const result = resolveBorderRadius('15px', meta);
+        expect(result).toEqual({
+            topLeft: '15px',
+            topRight: '15px',
             bottomRight: '15px',
-            bottomLeft: '20px'
-        };
-
-        const result = resolveBorderRadius(input, meta);
-        expect(result).toEqual(expected);
+            bottomLeft: '15px'
+        });
     });
 
-    it('should correctly resolve borderRadius from string with var', () => {
-        const input = 'var(--border-radius)';
-        const expected = {
-            topLeft: 'var(--border-radius)',
-            topRight: 'var(--border-radius)',
-            bottomRight: 'var(--border-radius)',
-            bottomLeft: 'var(--border-radius)'
-        };
-
-        const result = resolveBorderRadius(input, meta);
-        expect(result).toEqual(expected);
+    it('should assign all sides with the same value when borderRadius is a variable', () => {
+        const result = resolveBorderRadius('var(--radius)', meta);
+        expect(result).toEqual({
+            topLeft: 'var(--radius)',
+            topRight: 'var(--radius)',
+            bottomRight: 'var(--radius)',
+            bottomLeft: 'var(--radius)'
+        });
     });
 
-    it('should correctly resolve borderRadius from object', () => {
-        const input = { topLeft: '5px', topRight: '10px', bottomRight: '15px', bottomLeft: '20px' };
-        const expected = { ...input };
-
-        const result = resolveBorderRadius(input, meta);
-        expect(result).toEqual(expected);
+    it('should assign different values to sides when borderRadius is a multi value string', () => {
+        const result = resolveBorderRadius('10px 20px 30px 40px', meta);
+        expect(result).toEqual({
+            topLeft: '10px',
+            topRight: '20px',
+            bottomRight: '30px',
+            bottomLeft: '40px'
+        });
     });
 });
 
 describe('resolveBorderRadiusVariant', () => {
-    const meta = createTestingResolverMeta({ path: ['borderRadius', 'variant1'] });
+    const meta = createTestingResolverMeta({ path: ['borderRadius', 'variant'] });
 
-    it('should correctly resolve borderRadius variant with css variables', () => {
-        const variant = {};
-        const expected = {
+    it('should return the same borderRadius when variant is a string', () => {
+        const variant = '10px 20px 30px 40px';
+        const result = resolveBorderRadiusVariant(variant, meta);
+        expect(result).toEqual({
+            topLeft: '10px',
+            topRight: '20px',
+            bottomRight: '30px',
+            bottomLeft: '40px'
+        });
+    });
+
+    it('should return the borderRadius with css variables when variant is an object', () => {
+        const variant = {
             topLeft: 'var(--border-top-left-radius)',
             topRight: 'var(--border-top-right-radius)',
             bottomRight: 'var(--border-bottom-right-radius)',
             bottomLeft: 'var(--border-bottom-left-radius)'
         };
-
         const result = resolveBorderRadiusVariant(variant, meta);
-        expect(result).toEqual(expected);
+        expect(result).toEqual(variant);
     });
 
-    it('should apply modifiers to the resolved borderRadius variant', () => {
-        const variant = { add: '2px' };
-        const expected = {
-            topLeft: 'calc(var(--border-top-left-radius) + 2px)',
-            topRight: 'calc(var(--border-top-right-radius) + 2px)',
-            bottomRight: 'calc(var(--border-bottom-right-radius) + 2px)',
-            bottomLeft: 'calc(var(--border-bottom-left-radius) + 2px)'
+    it('should modify the borderRadius with modifiers when variant is an object with modifiers', () => {
+        const variant = {
+            add: '5px'
         };
-
         const result = resolveBorderRadiusVariant(variant, meta);
-        expect(result).toEqual(expected);
-    });
-
-    it('should ignore non-existent modifiers', () => {
-        const variant = { nonExistentModifier: '3px' };
-        const expected = {
-            topLeft: 'var(--border-top-left-radius)',
-            topRight: 'var(--border-top-right-radius)',
-            bottomRight: 'var(--border-bottom-right-radius)',
-            bottomLeft: 'var(--border-bottom-left-radius)'
-        };
-
-        const result = resolveBorderRadiusVariant(variant, meta);
-        expect(result).toEqual(expected);
+        expect(result).toEqual({
+            bottomLeft: 'calc(var(--border-bottom-left-radius) + 5px)',
+            bottomRight: 'calc(var(--border-bottom-right-radius) + 5px)',
+            topLeft: 'calc(var(--border-top-left-radius) + 5px)',
+            topRight: 'calc(var(--border-top-right-radius) + 5px)'
+        });
     });
 });
 
 describe('borderRadiusResolver', () => {
-    const meta = createTestingResolverMeta({ path: ['borderRadius'] });
-
-    it('should correctly resolve a simple borderRadius string', () => {
-        const input = '5px';
-        const expected = {
-            default: { topLeft: '5px', topRight: '5px', bottomRight: '5px', bottomLeft: '5px' }
-        };
-
-        const result = borderRadiusResolver.resolve(input, meta);
-        expect(result).toEqual(expected);
-    });
-
-    it('should correctly resolve borderRadius with variants', () => {
-        const input = {
-            default: '5px',
-            hover: { add: '2px' }
-        };
-        const expectedDefault = {
-            topLeft: '5px',
-            topRight: '5px',
-            bottomRight: '5px',
-            bottomLeft: '5px'
-        };
-        const expectedHover = {
-            topLeft: 'calc(var(--border-top-left-radius) + 2px)',
-            topRight: 'calc(var(--border-top-right-radius) + 2px)',
-            bottomRight: 'calc(var(--border-bottom-right-radius) + 2px)',
-            bottomLeft: 'calc(var(--border-bottom-left-radius) + 2px)'
-        };
-
-        const result = borderRadiusResolver.resolve(input, meta);
-        expect(result.default).toEqual(expectedDefault);
-        expect(result.hover).toEqual(expectedHover);
+    describe('match', () => {
+        it.each([
+            ['borderRadius.default', true],
+            ['borderRadius.default.topLeft', false],
+            ['components.button.default.borderRadius', true],
+            ['other.borderRadius.value', false]
+        ])('should match "%s" path => %s', (path, result) => {
+            const match = (borderRadiusResolver.key as RegExp[]).some((key) => matchKey(path, key));
+            expect(match).toBe(result);
+        });
     });
 });

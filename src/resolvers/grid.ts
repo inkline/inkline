@@ -1,24 +1,21 @@
-/**
- * Color
- */
 import {
-    createFieldWithOptionalVariantsResolveFn,
     codegenCssVariables,
     defineResolver,
     defineResolverValueFn,
-    defineResolverVariantFn
+    defineResolverVariantFn,
+    createResolveFn
 } from '../utils';
 import {
     RawTheme,
-    RawThemeGenericVariant,
     RawThemeGridContainer,
     RawThemeGridGutter,
     RawThemeGridGutterVariant,
+    RawThemeValueType,
     ResolvedTheme,
     ResolvedThemeGridContainer,
     ResolvedThemeGridGutter,
     ResolvedThemeTypographyFontSize,
-    ResolverMeta
+    ResolvedThemeValueType
 } from '../types';
 import { gutterModifiers } from './modifiers';
 
@@ -27,10 +24,9 @@ import { gutterModifiers } from './modifiers';
  */
 
 export const resolveGridGutter = defineResolverValueFn<RawThemeGridGutter, ResolvedThemeGridGutter>(
-    (gutter, meta) => {
-        return gutter;
-    }
+    (gutter, meta) => gutter
 );
+
 export const resolveGridGutterVariant = defineResolverVariantFn<
     RawThemeGridGutterVariant | RawThemeGridGutter,
     ResolvedThemeGridGutter
@@ -52,11 +48,11 @@ export const resolveGridGutterVariant = defineResolverVariantFn<
 });
 
 export const gridGutterResolver = defineResolver<
-    RawTheme['grid']['gutter'],
-    ResolvedTheme['grid']['gutter']
+    RawThemeValueType<RawTheme['grid']['gutter']>,
+    ResolvedThemeValueType<ResolvedTheme['grid']['gutter']>
 >({
-    key: 'grid.gutter',
-    resolve: createFieldWithOptionalVariantsResolveFn(resolveGridGutter, resolveGridGutterVariant)
+    key: [/^grid\.gutter\.[^.]+$/],
+    resolve: createResolveFn(resolveGridGutter, resolveGridGutterVariant)
 });
 
 /**
@@ -76,14 +72,11 @@ export const resolveGridContainerVariant = defineResolverVariantFn<
 >(resolveGridContainer);
 
 export const gridContainerResolver = defineResolver<
-    RawTheme['grid']['container'],
-    ResolvedTheme['grid']['container']
+    RawThemeValueType<RawTheme['grid']['container']>,
+    ResolvedThemeValueType<ResolvedTheme['grid']['container']>
 >({
-    key: 'grid.container',
-    resolve: createFieldWithOptionalVariantsResolveFn(
-        resolveGridContainer,
-        resolveGridContainerVariant
-    )
+    key: [/^grid\.container\.[^.]+$/],
+    resolve: createResolveFn(resolveGridContainer, resolveGridContainerVariant)
 });
 
 /**

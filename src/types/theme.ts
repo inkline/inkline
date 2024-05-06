@@ -61,12 +61,20 @@ import {
     ResolvedThemeLayers
 } from '../types';
 
-export type RawThemeVariantsWithDefault<DefaultVariant, VariantModifiers = DefaultVariant> =
+export type RawThemeVariantsWithOptionalDefault<
+    DefaultVariant,
+    VariantModifiers = DefaultVariant
+> =
     | DefaultVariant
     | {
           default: DefaultVariant;
           [key: string]: DefaultVariant | VariantModifiers;
       };
+
+export type RawThemeVariantsWithDefault<DefaultVariant, VariantModifiers = DefaultVariant> = {
+    default: DefaultVariant;
+    [key: string]: DefaultVariant | VariantModifiers;
+};
 
 export type ResolvedThemeVariantsWithDefault<DefaultVariant> = {
     default: DefaultVariant;
@@ -74,43 +82,52 @@ export type ResolvedThemeVariantsWithDefault<DefaultVariant> = {
 };
 
 export interface RawTheme {
-    boxShadow: RawThemeVariantsWithDefault<RawThemeBoxShadow>;
-    border: RawThemeVariantsWithDefault<RawThemeBorder>;
-    borderRadius: RawThemeVariantsWithDefault<RawThemeBorderRadius, RawThemeBorderRadiusVariant>;
-    breakpoints: RawThemeVariantsWithDefault<RawThemeBreakpoint>;
-    colors: Record<string, RawThemeVariantsWithDefault<RawThemeColor, RawThemeColorVariant>>;
-    components: Record<ThemeComponentName, RawThemeVariantsWithDefault<RawThemeComponent>>;
-    elements: Record<ThemeElementName, RawThemeVariantsWithDefault<RawThemeElement>>;
+    boxShadow: RawThemeVariantsWithOptionalDefault<RawThemeBoxShadow>;
+    border: RawThemeVariantsWithOptionalDefault<RawThemeBorder>;
+    borderRadius: RawThemeVariantsWithOptionalDefault<
+        RawThemeBorderRadius,
+        RawThemeBorderRadiusVariant
+    >;
+    breakpoints: RawThemeVariantsWithOptionalDefault<RawThemeBreakpoint>;
+    colors: Record<
+        string,
+        RawThemeVariantsWithOptionalDefault<RawThemeColor, RawThemeColorVariant>
+    >;
+    components: Record<ThemeComponentName, RawThemeVariantsWithOptionalDefault<RawThemeComponent>>;
+    elements: Record<ThemeElementName, RawThemeVariantsWithOptionalDefault<RawThemeElement>>;
     grid: {
         columns: RawThemeGridColumns;
-        gutter: RawThemeVariantsWithDefault<RawThemeGridGutter, RawThemeGridGutterVariant>;
-        container: RawThemeVariantsWithDefault<RawThemeGridContainer>;
+        gutter: RawThemeVariantsWithOptionalDefault<RawThemeGridGutter, RawThemeGridGutterVariant>;
+        container: RawThemeVariantsWithOptionalDefault<RawThemeGridContainer>;
     };
     layers: RawThemeLayers;
-    scaleRatios: RawThemeVariantsWithDefault<RawThemeScaleRatio>;
+    scaleRatios: RawThemeVariantsWithOptionalDefault<RawThemeScaleRatio>;
     size: {
-        multiplier: RawThemeVariantsWithDefault<
+        multiplier: RawThemeVariantsWithOptionalDefault<
             RawThemeSizeMultiplier,
             RawThemeSizeMultiplierVariant
         >;
-        percentages: RawThemeVariantsWithDefault<RawThemeSizePercentage>;
+        percentages: RawThemeVariantsWithOptionalDefault<RawThemeSizePercentage>;
     };
-    spacing: RawThemeVariantsWithDefault<RawThemeSpacing, RawThemeSpacingWithSidesVariant>;
-    margin: RawThemeVariantsWithDefault<RawThemeMargin, RawThemeSpacingWithSidesVariant>;
-    padding: RawThemeVariantsWithDefault<RawThemePadding, RawThemeSpacingWithSidesVariant>;
-    transition: RawThemeVariantsWithDefault<RawThemeTransition>;
+    spacing: RawThemeVariantsWithOptionalDefault<RawThemeSpacing, RawThemeSpacingWithSidesVariant>;
+    margin: RawThemeVariantsWithOptionalDefault<RawThemeMargin, RawThemeSpacingWithSidesVariant>;
+    padding: RawThemeVariantsWithOptionalDefault<RawThemePadding, RawThemeSpacingWithSidesVariant>;
+    transition: RawThemeVariantsWithOptionalDefault<RawThemeTransition>;
     typography: {
-        color: Record<string, RawThemeVariantsWithDefault<RawThemeTypographyColor>>;
-        contrastColor: Record<string, RawThemeVariantsWithDefault<RawThemeTypographyContrastColor>>;
-        fontFamily: RawThemeVariantsWithDefault<RawThemeTypographyFontFamily>;
-        fontSize: RawThemeVariantsWithDefault<
+        color: Record<string, RawThemeVariantsWithOptionalDefault<RawThemeTypographyColor>>;
+        contrastColor: Record<
+            string,
+            RawThemeVariantsWithOptionalDefault<RawThemeTypographyContrastColor>
+        >;
+        fontFamily: RawThemeVariantsWithOptionalDefault<RawThemeTypographyFontFamily>;
+        fontSize: RawThemeVariantsWithOptionalDefault<
             RawThemeTypographyFontSize,
             RawThemeTypographyFontSizeVariant
         >;
-        fontWeight: RawThemeVariantsWithDefault<RawThemeTypographyFontWeight>;
-        lineHeight: RawThemeVariantsWithDefault<RawThemeTypographyLineHeight>;
-        letterSpacing: RawThemeVariantsWithDefault<RawThemeTypographyLetterSpacing>;
-        textAlign: RawThemeTypographyTextAlignment;
+        fontWeight: RawThemeVariantsWithOptionalDefault<RawThemeTypographyFontWeight>;
+        lineHeight: RawThemeVariantsWithOptionalDefault<RawThemeTypographyLineHeight>;
+        letterSpacing: RawThemeVariantsWithOptionalDefault<RawThemeTypographyLetterSpacing>;
+        textAlign: RawThemeVariantsWithOptionalDefault<RawThemeTypographyTextAlignment>;
     };
 }
 
@@ -151,6 +168,19 @@ export interface ResolvedTheme {
         fontWeight: ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyFontWeight>;
         lineHeight: ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyLineHeight>;
         letterSpacing: ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyLetterSpacing>;
-        textAlign: ResolvedThemeTypographyTextAlignment;
+        textAlign: ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyTextAlignment>;
     };
 }
+
+export type RawThemeValueType<Value> =
+    Value extends RawThemeVariantsWithOptionalDefault<infer DefaultVariant>
+        ? DefaultVariant
+        : Value extends RawThemeVariantsWithOptionalDefault<
+                infer DefaultVariant,
+                infer VariantModifiers
+            >
+          ? DefaultVariant | VariantModifiers
+          : Value;
+
+export type ResolvedThemeValueType<Value> =
+    Value extends ResolvedThemeVariantsWithDefault<infer DefaultVariant> ? DefaultVariant : Value;

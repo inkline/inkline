@@ -34,9 +34,11 @@ export interface RawThemeColorVariant {
 
 export type RawThemeColor = string | RGBAColor | HSLAColor;
 
-export type ResolvedThemeColor = {
-    h: number | string;
-    s: number | string;
-    l: number | string;
-    a: number | string;
-};
+export type ResolvedThemeColor =
+    | {
+          h: number | string;
+          s: number | string;
+          l: number | string;
+          a: number | string;
+      }
+    | string;

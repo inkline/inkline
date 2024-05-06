@@ -3,8 +3,8 @@ import {
     defineResolver,
     defineResolverValueFn,
     defineResolverVariantFn,
-    createFieldWithOptionalVariantsResolveFn,
-    toUnitValue
+    toUnitValue,
+    createResolveFn
 } from '../utils';
 import {
     RawTheme,
@@ -13,16 +13,15 @@ import {
     RawThemeSpacing,
     RawThemeSpacingVariant,
     RawThemeSpacingWithSidesVariant,
-    RawThemeTypographyFontSize,
-    RawThemeTypographyFontSizeVariant,
     ResolvedThemeSpacingWithSides,
     ResolvedTheme,
     ResolvedThemeMargin,
     ResolvedThemePadding,
     ResolvedThemeSpacing,
-    ResolvedThemeTypographyFontSize
+    RawThemeValueType,
+    ResolvedThemeValueType
 } from '../types';
-import { fontSizeModifiers, spacingModifiers, spacingWithSidesModifiers } from './modifiers';
+import { spacingModifiers, spacingWithSidesModifiers } from './modifiers';
 
 /**
  * Spacing
@@ -52,9 +51,12 @@ export const resolveSpacingVariant = defineResolverVariantFn<
     }, codegenCssVariables.get('spacing'));
 });
 
-export const spacingResolver = defineResolver<RawTheme['spacing'], ResolvedTheme['spacing']>({
-    key: 'spacing',
-    resolve: createFieldWithOptionalVariantsResolveFn(resolveSpacing, resolveSpacingVariant)
+export const spacingResolver = defineResolver<
+    RawThemeValueType<RawTheme['spacing']>,
+    ResolvedThemeValueType<ResolvedTheme['spacing']>
+>({
+    key: [/^spacing\.[^.]+$/, /.*\.spacing$/],
+    resolve: createResolveFn(resolveSpacing, resolveSpacingVariant)
 });
 
 /**
@@ -123,18 +125,18 @@ export const resolveSpacingWithSidesVariant = (propertyName: string) =>
         return variantValue;
     });
 
-export const marginResolver = defineResolver<RawTheme['margin'], ResolvedTheme['margin']>({
-    key: 'margin',
-    resolve: createFieldWithOptionalVariantsResolveFn(
-        resolveSpacingWithSides,
-        resolveSpacingWithSidesVariant('margin')
-    )
+export const marginResolver = defineResolver<
+    RawThemeValueType<RawTheme['margin']>,
+    ResolvedThemeValueType<ResolvedTheme['margin']>
+>({
+    key: [/^margin\.[^.]+$/, /.*\.margin$/],
+    resolve: createResolveFn(resolveSpacingWithSides, resolveSpacingWithSidesVariant('margin'))
 });
 
-export const paddingResolver = defineResolver<RawTheme['padding'], ResolvedTheme['padding']>({
-    key: 'padding',
-    resolve: createFieldWithOptionalVariantsResolveFn(
-        resolveSpacingWithSides,
-        resolveSpacingWithSidesVariant('padding')
-    )
+export const paddingResolver = defineResolver<
+    RawThemeValueType<RawTheme['padding']>,
+    ResolvedThemeValueType<ResolvedTheme['padding']>
+>({
+    key: [/^padding\.[^.]+$/, /.*\.padding$/],
+    resolve: createResolveFn(resolveSpacingWithSides, resolveSpacingWithSidesVariant('padding'))
 });

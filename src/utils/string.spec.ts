@@ -1,27 +1,28 @@
 import { toKebabCase } from './string';
 
 describe('toKebabCase', () => {
-    it('should correctly convert camelCase to kebab-case', () => {
-        const input = 'camelCaseString';
-        const expected = 'camel-case-string';
-        const result = toKebabCase(input);
-
-        expect(result).toEqual(expected);
+    it('should convert camelCase to kebab-case', () => {
+        const result = toKebabCase('camelCaseString');
+        expect(result).toEqual('camel-case-string');
     });
 
-    it('should correctly convert keys with numbers to kebab-case', () => {
-        const input = 'field1';
-        const expected = 'field-1';
-        const result = toKebabCase(input);
-
-        expect(result).toEqual(expected);
+    it('should handle single word strings', () => {
+        const result = toKebabCase('word');
+        expect(result).toEqual('word');
     });
 
-    it('should correctly convert keys without numbers to kebab-case', () => {
-        const input = 'field';
-        const expected = 'field';
-        const result = toKebabCase(input);
+    it('should handle empty strings', () => {
+        const result = toKebabCase('');
+        expect(result).toEqual('');
+    });
 
-        expect(result).toEqual(expected);
+    it('should handle strings with numbers', () => {
+        const result = toKebabCase('string1With2Numbers');
+        expect(result).toEqual('string1-with2-numbers');
+    });
+
+    it('should handle strings with special characters', () => {
+        const result = toKebabCase('stringWith$pecialCharacters');
+        expect(result).toEqual('string-with$pecial-characters');
     });
 });

@@ -1,12 +1,27 @@
 import { RawConfiguration, RawTheme, ResolvedConfiguration, ResolvedTheme } from './types';
 import { loadConfig as c12, LoadConfigOptions } from 'c12';
 import { defaultConfig } from './presets';
-import { applyResolvers } from './apply';
+import { applyClassifiers, applyResolvers } from './apply';
 
 export function resolveConfiguration(config: RawConfiguration): ResolvedConfiguration {
-    const themes = Object.keys(config.themes).reduce<Record<string, ResolvedTheme>>(
+    const classifiedThemes = Object.keys(config.themes).reduce<Record<string, RawTheme>>(
         (themes, themeName) => {
-            const theme = config.themes[themeName];
+            const theme = config.themes[themeName] as RawTheme;
+
+            themes[themeName] = applyClassifiers(theme, {
+                path: [],
+                theme,
+                classifiers: config.classifiers
+            });
+
+            return themes;
+        },
+        {}
+    );
+
+    const themes = Object.keys(classifiedThemes).reduce<Record<string, ResolvedTheme>>(
+        (themes, themeName) => {
+            const theme = classifiedThemes[themeName];
 
             themes[themeName] = applyResolvers(theme, {
                 path: [],

@@ -1,53 +1,41 @@
+import { generateBreakpoint, breakpointsGenerator } from './breakpoints';
 import { createTestingGeneratorMeta } from '../__tests__/utils';
-import { breakpointsGenerator, generateBreakpoint } from './breakpoints';
+import { matchKey } from '../utils';
 
-describe('breakpointsGenerator', () => {
-    it('should generate correct breakpoint CSS variables for custom variant', () => {
-        const meta = createTestingGeneratorMeta({ path: ['breakpoints', 'custom'] });
-        const breakpoint = '800px';
-
-        const result = generateBreakpoint(breakpoint, meta);
-
-        expect(result).toEqual(['--breakpoint-custom: 800px']);
-    });
-
-    it('should not generate breakpoint CSS variables for default variant', () => {
+describe('generateBreakpoint', () => {
+    it('should not generate breakpoint css variables for default variant', () => {
         const meta = createTestingGeneratorMeta({ path: ['breakpoints', 'default'] });
-        const breakpoint = '800px';
-
+        const breakpoint = '';
         const result = generateBreakpoint(breakpoint, meta);
-
         expect(result).toEqual([]);
     });
 
-    it('should handle breakpoint as number correctly', () => {
-        const meta = createTestingGeneratorMeta({ path: ['breakpoints', 'custom'] });
-        const breakpoint = 800;
-
+    it('should generate breakpoint css variables when breakpoint is a string', () => {
+        const meta = createTestingGeneratorMeta({ path: ['breakpoints', 'xs'] });
+        const breakpoint = '768px';
         const result = generateBreakpoint(breakpoint, meta);
+        expect(result).toEqual(['--breakpoint-xs: 768px;']);
+    });
 
-        expect(result).toEqual(['--breakpoint-custom: 800px']);
+    it('should generate breakpoint css variables when breakpoint is a number', () => {
+        const meta = createTestingGeneratorMeta({ path: ['breakpoints', 'xs'] });
+        const breakpoint = 768;
+        const result = generateBreakpoint(breakpoint, meta);
+        expect(result).toEqual(['--breakpoint-xs: 768px;']);
     });
 });
 
 describe('breakpointsGenerator', () => {
-    const meta = createTestingGeneratorMeta({ path: ['breakpoints'] });
-
-    it('should correctly generate breakpoints fields with variants', () => {
-        const input = {
-            default: '',
-            xs: 0,
-            sm: 600,
-            md: 960,
-            lg: 1280
-        };
-        const result = breakpointsGenerator.generate(input, meta);
-
-        expect(result).toEqual([
-            '--breakpoint-xs: 0px',
-            '--breakpoint-sm: 600px',
-            '--breakpoint-md: 960px',
-            '--breakpoint-lg: 1280px'
-        ]);
+    describe('match', () => {
+        it.each([
+            ['breakpoints', false],
+            ['breakpoints.xs', true],
+            ['breakpoints.xs.width', false],
+            ['components.button.xs.breakpoints', false],
+            ['other.breakpoints.value', false]
+        ])('should match "%s" path => %s', (path, result) => {
+            const match = matchKey(path, breakpointsGenerator.key as RegExp);
+            expect(match).toBe(result);
+        });
     });
 });

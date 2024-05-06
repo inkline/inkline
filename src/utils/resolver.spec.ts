@@ -1,155 +1,54 @@
 import {
     defineResolver,
-    createFieldWithOptionalVariantsResolveFn,
-    createMultipleFieldsWithOptionalVariantsResolveFn,
-    createFieldWithoutVariantsResolveFn
+    defineResolverValueFn,
+    defineResolverVariantFn,
+    createResolveFn
 } from './resolver';
 import { createTestingResolverMeta } from '../__tests__/utils';
 
 describe('defineResolver', () => {
-    const meta = createTestingResolverMeta({ path: [] });
-
-    it('should return the same resolver that was passed in', () => {
-        const resolver = {
-            key: 'test',
-            resolve: () => 'test'
-        };
-
-        const result = defineResolver<string, string>(resolver);
+    it('should return the same resolver definition that was passed', () => {
+        const resolverFn = vi.fn();
+        const resolver = { key: [], resolve: resolverFn };
+        const result = defineResolver(resolver);
         expect(result).toBe(resolver);
-        expect(result.resolve('test', meta)).toEqual('test');
     });
 });
 
-const resolveValue = (value: string) => value;
-const resolveVariant = (variant: string, { path }: { path: string[] }) => `${variant}Resolved`;
-
-describe('createFieldWithOptionalVariantsResolveFn', () => {
-    const meta = createTestingResolverMeta({ path: [] });
-
-    it('should correctly resolve a field without variants', () => {
-        const input = 'testValue';
-        const expected = { default: 'testValue' };
-        const result = createFieldWithOptionalVariantsResolveFn(resolveValue, resolveVariant)(
-            input,
-            meta
-        );
-
-        expect(result).toEqual(expected);
-    });
-
-    it('should correctly resolve a field with variants', () => {
-        const input = {
-            default: 'defaultValue',
-            variant1: 'variantValue1',
-            variant2: 'variantValue2'
-        };
-        const expected = {
-            default: 'defaultValue',
-            variant1: 'variantValue1Resolved',
-            variant2: 'variantValue2Resolved'
-        };
-        const result = createFieldWithOptionalVariantsResolveFn(resolveValue, resolveVariant)(
-            input,
-            meta
-        );
-
-        expect(result).toEqual(expected);
-    });
-
-    it('should handle non-object inputs as default values', () => {
-        const input = 'nonObjectValue';
-        const expected = { default: 'nonObjectValue' };
-        const result = createFieldWithOptionalVariantsResolveFn(resolveValue, resolveVariant)(
-            input,
-            meta
-        );
-
-        expect(result).toEqual(expected);
+describe('defineResolverValueFn', () => {
+    it('should return the same function that was passed', () => {
+        const resolverValueFn = vi.fn();
+        const result = defineResolverValueFn(resolverValueFn);
+        expect(result).toBe(resolverValueFn);
     });
 });
 
-describe('createFieldWithoutVariantsResolveFn', () => {
-    const meta = createTestingResolverMeta({ path: [] });
-
-    it('should correctly resolve a field without variants', () => {
-        const resolveValue = (value: string) => value.toUpperCase();
-        const resolveField = createFieldWithoutVariantsResolveFn(resolveValue);
-        const input = 'testValue';
-        const expected = 'TESTVALUE';
-        const result = resolveField(input, meta);
-
-        expect(result).toEqual(expected);
+describe('defineResolverVariantFn', () => {
+    it('should return the same function that was passed', () => {
+        const resolverVariantFn = vi.fn();
+        const result = defineResolverVariantFn(resolverVariantFn);
+        expect(result).toBe(resolverVariantFn);
     });
 });
 
-describe('createMultipleFieldsWithOptionalVariantsResolveFn', () => {
-    const meta = createTestingResolverMeta({ path: [] });
-
-    it('should correctly resolve multiple fields without variants', () => {
-        const input = {
-            field1: 'testValue1',
-            field2: 'testValue2'
-        };
-        const expected = {
-            field1: { default: 'testValue1' },
-            field2: { default: 'testValue2' }
-        };
-        const result = createMultipleFieldsWithOptionalVariantsResolveFn(
-            resolveValue,
-            resolveVariant
-        )(input, meta);
-
-        expect(result).toEqual(expected);
+describe('createResolveFn', () => {
+    it('should use "resolveValue" when last path is "default"', () => {
+        const resolveValue = vi.fn();
+        const resolveVariant = vi.fn();
+        const resolve = createResolveFn(resolveValue, resolveVariant);
+        const meta = createTestingResolverMeta({ path: ['some', 'path', 'default'] });
+        resolve('value', meta);
+        expect(resolveValue).toHaveBeenCalled();
+        expect(resolveVariant).not.toHaveBeenCalled();
     });
 
-    it('should correctly resolve multiple fields with variants', () => {
-        const input = {
-            field1: {
-                default: 'defaultValue1',
-                variant1: 'variantValue1',
-                variant2: 'variantValue2'
-            },
-            field2: {
-                default: 'defaultValue2',
-                variant1: 'variantValue3',
-                variant2: 'variantValue4'
-            }
-        };
-        const expected = {
-            field1: {
-                default: 'defaultValue1',
-                variant1: 'variantValue1Resolved',
-                variant2: 'variantValue2Resolved'
-            },
-            field2: {
-                default: 'defaultValue2',
-                variant1: 'variantValue3Resolved',
-                variant2: 'variantValue4Resolved'
-            }
-        };
-        const result = createMultipleFieldsWithOptionalVariantsResolveFn(
-            resolveValue,
-            resolveVariant
-        )(input, meta);
-
-        expect(result).toEqual(expected);
-    });
-
-    it('should handle non-object inputs as default values for multiple fields', () => {
-        const input = {
-            field1: 'nonObjectValue1',
-            field2: 'nonObjectValue2'
-        };
-        const expected = {
-            field1: { default: 'nonObjectValue1' },
-            field2: { default: 'nonObjectValue2' }
-        };
-        const result = createMultipleFieldsWithOptionalVariantsResolveFn(
-            resolveValue,
-            resolveVariant
-        )(input, meta);
-
-        expect(result).toEqual(expected);
+    it('should use "resolveVariant" when last path is not "default"', () => {
+        const resolveValue = vi.fn();
+        const resolveVariant = vi.fn();
+        const resolve = createResolveFn(resolveValue, resolveVariant);
+        const meta = createTestingResolverMeta({ path: ['some', 'path', 'not-default'] });
+        resolve('variant', meta);
+        expect(resolveVariant).toHaveBeenCalled();
+        expect(resolveValue).not.toHaveBeenCalled();
     });
 });

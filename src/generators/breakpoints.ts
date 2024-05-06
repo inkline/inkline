@@ -1,18 +1,23 @@
 import {
     codegenBreakpoints,
     codegenCssVariables,
-    createFieldWithVariantsGenerateFn,
+    createGenerateFn,
     defineGenerator,
     defineGeneratorValueFn,
-    getResolvedPath,
+    getCssVariableVariantName,
     toUnitValue
 } from '../utils';
-import { GeneratorPriority, GeneratorType, ResolvedTheme, ResolvedThemeBreakpoint } from '../types';
+import {
+    GeneratorPriority,
+    GeneratorType,
+    ResolvedTheme,
+    ResolvedThemeBreakpoint,
+    ResolvedThemeValueType
+} from '../types';
 
 export const generateBreakpoint = defineGeneratorValueFn<ResolvedThemeBreakpoint>(
     (breakpoint, meta) => {
-        const path = getResolvedPath(meta);
-        const variantName = path[path.length - 1];
+        const variantName = getCssVariableVariantName(meta);
         if (variantName === 'default') {
             return [];
         }
@@ -21,10 +26,12 @@ export const generateBreakpoint = defineGeneratorValueFn<ResolvedThemeBreakpoint
     }
 );
 
-export const breakpointsGenerator = defineGenerator<ResolvedTheme['breakpoints']>({
-    key: 'breakpoints',
+export const breakpointsGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['breakpoints']>
+>({
+    key: /^breakpoints\.[^.]+$/,
     type: GeneratorType.CssVariables,
-    generate: createFieldWithVariantsGenerateFn(generateBreakpoint)
+    generate: createGenerateFn(generateBreakpoint)
 });
 
 export const generateBreakpointMixins = defineGeneratorValueFn<ResolvedTheme['breakpoints']>(
@@ -32,10 +39,12 @@ export const generateBreakpointMixins = defineGeneratorValueFn<ResolvedTheme['br
         const lines = [];
         const { default: _, ...breakpoints } = rawBreakpoints;
 
-        const breakpointKeys = Object.keys(breakpoints);
-        const breakpointPairs = Object.entries(breakpoints).sort((a, b) => {
-            return parseInt(a[1] as string, 10) - parseInt(b[1] as string, 10);
-        });
+        const breakpointKeys = Object.keys(breakpoints).filter((key) => !key.startsWith('$'));
+        const breakpointPairs = Object.entries(breakpoints)
+            .filter(([key]) => !key.startsWith('$'))
+            .sort((a, b) => {
+                return parseInt(a[1] as string, 10) - parseInt(b[1] as string, 10);
+            });
 
         lines.push(
             ...breakpointPairs
@@ -81,6 +90,7 @@ export const generateBreakpointMixins = defineGeneratorValueFn<ResolvedTheme['br
     }
 );
 
+// @TODO Fix generation of breakpoints mixins
 export const breakpointsMixinsGenerator = defineGenerator<ResolvedTheme['breakpoints']>({
     key: 'breakpoints',
     type: GeneratorType.Mixins,

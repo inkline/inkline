@@ -1,19 +1,21 @@
 import {
     defineResolver,
     defineResolverValueFn,
-    createFieldWithOptionalVariantsResolveFn,
     defineResolverVariantFn,
-    codegenCssVariables
+    codegenCssVariables,
+    createResolveFn
 } from '../utils';
 import {
     RawTheme,
     RawThemeSizeMultiplier,
     RawThemeSizeMultiplierVariant,
     RawThemeSizePercentage,
+    RawThemeValueType,
     ResolvedTheme,
     ResolvedThemeSizeMultiplier,
     ResolvedThemeSizePercentage,
-    ResolvedThemeTypographyFontSize
+    ResolvedThemeTypographyFontSize,
+    ResolvedThemeValueType
 } from '../types';
 import { sizeMultiplierModifiers } from './modifiers';
 
@@ -49,14 +51,11 @@ export const resolveSizeMultiplierVariant = defineResolverVariantFn<
 });
 
 export const sizeMultiplierResolver = defineResolver<
-    RawTheme['size']['multiplier'],
-    ResolvedTheme['size']['multiplier']
+    RawThemeValueType<RawTheme['size']['multiplier']>,
+    RawThemeValueType<ResolvedTheme['size']['multiplier']>
 >({
-    key: 'size.multiplier',
-    resolve: createFieldWithOptionalVariantsResolveFn(
-        resolveSizeMultiplier,
-        resolveSizeMultiplierVariant
-    )
+    key: /^size\.multiplier\.[^.]+$/,
+    resolve: createResolveFn(resolveSizeMultiplier, resolveSizeMultiplierVariant)
 });
 
 /**
@@ -76,12 +75,9 @@ export const resolveSizePercentageVariant = defineResolverVariantFn<
 >(resolveSizePercentage);
 
 export const sizePercentagesResolver = defineResolver<
-    RawTheme['size']['percentages'],
-    ResolvedTheme['size']['percentages']
+    RawThemeValueType<RawTheme['size']['percentages']>,
+    ResolvedThemeValueType<ResolvedTheme['size']['percentages']>
 >({
-    key: 'size.percentages',
-    resolve: createFieldWithOptionalVariantsResolveFn(
-        resolveSizePercentage,
-        resolveSizePercentageVariant
-    )
+    key: /^size\.percentages\.[^.]+$/,
+    resolve: createResolveFn(resolveSizePercentage, resolveSizePercentageVariant)
 });

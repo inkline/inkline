@@ -1,35 +1,23 @@
 import {
     codegenCssVariables,
-    createFieldWithVariantsGenerateFn,
     defineGenerator,
     defineGeneratorValueFn,
-    getResolvedPath,
-    toKebabCase
+    getCssVariableName,
+    getCssVariablePreamble,
+    getCssVariablePreamblePath
 } from '../utils';
 import { GeneratorType } from '../types';
 
 export const generateGeneric = defineGeneratorValueFn<string | number>((value, meta) => {
-    const path = getResolvedPath(meta);
+    const variablePreamblePath = getCssVariablePreamblePath(meta);
+    const variablePreamble = getCssVariablePreamble(variablePreamblePath);
+    const variableName = getCssVariableName(meta);
 
-    return [
-        codegenCssVariables.set(
-            path
-                .filter((part) => part !== 'default')
-                .map((part) => toKebabCase(part))
-                .join('--'),
-            `${value}`
-        )
-    ];
-});
-
-export const genericFieldWithVariantsGenerator = defineGenerator<any>({
-    key: '**',
-    type: GeneratorType.CssVariables,
-    generate: createFieldWithVariantsGenerateFn(generateGeneric)
+    return [codegenCssVariables.set(`${variablePreamble}${variableName}`, `${value}`)];
 });
 
 export const genericFieldGenerator = defineGenerator<any>({
-    key: '**',
+    key: /.*/,
     type: GeneratorType.CssVariables,
     generate: generateGeneric
 });

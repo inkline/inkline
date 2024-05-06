@@ -1,43 +1,71 @@
-import { boxShadowGenerator } from './boxShadow';
-import { ResolvedTheme } from '../types';
+import { generateBoxShadow, boxShadowGenerator } from './boxShadow';
 import { createTestingGeneratorMeta } from '../__tests__/utils';
+import { matchKey } from '../utils';
+import { ClassifierType, ResolvedTheme } from '../types';
+
+describe('generateBoxShadow', () => {
+    const boxShadow = {
+        offsetX: '10px',
+        offsetY: '10px',
+        blurRadius: '5px',
+        spreadRadius: '2px',
+        color: '#000'
+    };
+
+    it('should generate boxShadow css variables when boxShadow properties are strings', () => {
+        const meta = createTestingGeneratorMeta({
+            theme: {
+                boxShadow: {
+                    $type: ClassifierType.PrimitiveVariants,
+                    default: boxShadow
+                }
+            } as unknown as ResolvedTheme,
+            path: ['boxShadow', 'default']
+        });
+        const result = generateBoxShadow(boxShadow, meta);
+        expect(result).toEqual([
+            '--box-shadow-offset-x: 10px;',
+            '--box-shadow-offset-y: 10px;',
+            '--box-shadow-blur-radius: 5px;',
+            '--box-shadow-spread-radius: 2px;',
+            '--box-shadow-color: #000;',
+            '--box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y) var(--box-shadow-blur-radius) var(--box-shadow-spread-radius) var(--box-shadow-color);'
+        ]);
+    });
+
+    it('should generate boxShadow css variables for non-default variant "strong"', () => {
+        const meta = createTestingGeneratorMeta({
+            theme: {
+                boxShadow: {
+                    $type: ClassifierType.PrimitiveVariants,
+                    strong: boxShadow
+                }
+            } as unknown as ResolvedTheme,
+            path: ['boxShadow', 'strong']
+        });
+        const result = generateBoxShadow(boxShadow, meta);
+        expect(result).toEqual([
+            '--box-shadow-offset-x-strong: 10px;',
+            '--box-shadow-offset-y-strong: 10px;',
+            '--box-shadow-blur-radius-strong: 5px;',
+            '--box-shadow-spread-radius-strong: 2px;',
+            '--box-shadow-color-strong: #000;',
+            '--box-shadow-strong: var(--box-shadow-offset-x-strong) var(--box-shadow-offset-y-strong) var(--box-shadow-blur-radius-strong) var(--box-shadow-spread-radius-strong) var(--box-shadow-color-strong);'
+        ]);
+    });
+});
 
 describe('boxShadowGenerator', () => {
-    const meta = createTestingGeneratorMeta({ path: ['boxShadow'] });
-
-    it('should correctly generate boxShadow fields with variants', () => {
-        const input: ResolvedTheme['boxShadow'] = {
-            default: {
-                offsetX: '2px',
-                offsetY: '2px',
-                blurRadius: '5px',
-                spreadRadius: '0px',
-                color: '#000'
-            },
-            large: {
-                offsetX: '4px',
-                offsetY: '4px',
-                blurRadius: '10px',
-                spreadRadius: '0px',
-                color: '#000'
-            }
-        };
-        const expected = [
-            '--box-shadow-offset-x: 2px',
-            '--box-shadow-offset-y: 2px',
-            '--box-shadow-blur-radius: 5px',
-            '--box-shadow-spread-radius: 0px',
-            '--box-shadow-color: #000',
-            '--box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y) var(--box-shadow-blur-radius) var(--box-shadow-spread-radius) var(--box-shadow-color)',
-            '--box-shadow-offset-x-large: 4px',
-            '--box-shadow-offset-y-large: 4px',
-            '--box-shadow-blur-radius-large: 10px',
-            '--box-shadow-spread-radius-large: 0px',
-            '--box-shadow-color-large: #000',
-            '--box-shadow-large: var(--box-shadow-offset-x-large) var(--box-shadow-offset-y-large) var(--box-shadow-blur-radius-large) var(--box-shadow-spread-radius-large) var(--box-shadow-color-large)'
-        ];
-        const result = boxShadowGenerator.generate(input, meta);
-
-        expect(result).toEqual(expected);
+    describe('match', () => {
+        it.each([
+            ['boxShadow', false],
+            ['boxShadow.default', true],
+            ['boxShadow.default.offsetX', false],
+            ['components.button.default.boxShadow', true],
+            ['other.boxShadow.value', false]
+        ])('should match "%s" path => %s', (path, result) => {
+            const match = (boxShadowGenerator.key as RegExp[]).some((key) => matchKey(path, key));
+            expect(match).toBe(result);
+        });
     });
 });

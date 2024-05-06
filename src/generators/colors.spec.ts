@@ -1,133 +1,156 @@
-import { colorsGenerator, generateColor } from './colors';
-import { ResolvedTheme } from '../types';
+import { createColorGenerateFn, colorsGenerator, colorGenerator } from './colors';
 import { createTestingGeneratorMeta } from '../__tests__/utils';
+import { matchKey } from '../utils';
+import { ClassifierType, ResolvedTheme } from '../types';
 
-describe('generateColor', () => {
-    it('should generate correct color CSS variables for default variant', () => {
-        const meta = createTestingGeneratorMeta({ path: ['colors', 'primary', 'default'] });
-        const color = { h: 0, s: 100, l: 50, a: 1 };
-
-        const result = generateColor(color, meta);
-
-        expect(result).toContain('--color-primary--h: 0');
-        expect(result).toContain('--color-primary--s: 100%');
-        expect(result).toContain('--color-primary--l: 50%');
-        expect(result).toContain('--color-primary--a: 1');
-        expect(result).toContain(
-            '--color-primary: hsla(var(--color-primary--h), var(--color-primary--s), var(--color-primary--l), var(--color-primary--a))'
-        );
+describe('createColorGenerateFn', () => {
+    it('should generate color css variables for default color variant', () => {
+        const meta = createTestingGeneratorMeta({ path: ['colors', 'dark', 'default'] });
+        const color = { h: '0', s: '0%', l: '0%', a: '1' };
+        const result = createColorGenerateFn('color-dark')(color, meta);
+        expect(result).toEqual([
+            '--color-dark--h: 0;',
+            '--color-dark--s: 0%;',
+            '--color-dark--l: 0%;',
+            '--color-dark--a: 1;',
+            '--color-dark: hsla(var(--color-dark--h) var(--color-dark--s) var(--color-dark--l) / var(--color-dark--a));'
+        ]);
     });
 
-    it('should generate correct color CSS variables for custom variant', () => {
-        const meta = createTestingGeneratorMeta({ path: ['colors', 'primary', 'custom'] });
-        const color = { h: 0, s: 100, l: 50, a: 1 };
-
-        const result = generateColor(color, meta);
-
-        expect(result).toContain('--color-primary-custom--h: 0');
-        expect(result).toContain('--color-primary-custom--s: 100%');
-        expect(result).toContain('--color-primary-custom--l: 50%');
-        expect(result).toContain('--color-primary-custom--a: 1');
-        expect(result).toContain(
-            '--color-primary-custom: hsla(var(--color-primary-custom--h), var(--color-primary-custom--s), var(--color-primary-custom--l), var(--color-primary-custom--a))'
-        );
-    });
-
-    it('should handle color properties as strings correctly', () => {
-        const meta = createTestingGeneratorMeta({ path: ['colors', 'primary', 'default'] });
-        const color = { h: '0', s: '100%', l: '50%', a: '1' };
-
-        const result = generateColor(color, meta);
-
-        expect(result).toContain('--color-primary--h: 0');
-        expect(result).toContain('--color-primary--s: 100%');
-        expect(result).toContain('--color-primary--l: 50%');
-        expect(result).toContain('--color-primary--a: 1');
-        expect(result).toContain(
-            '--color-primary: hsla(var(--color-primary--h), var(--color-primary--s), var(--color-primary--l), var(--color-primary--a))'
-        );
+    it('should generate color css variables for non-default variant', () => {
+        const meta = createTestingGeneratorMeta({ path: ['colors', 'dark', 'tint-100'] });
+        const color = { h: '0', s: '0%', l: '100%', a: '1' };
+        const result = createColorGenerateFn('color-dark-tint-100')(color, meta);
+        expect(result).toEqual([
+            '--color-dark-tint-100--h: 0;',
+            '--color-dark-tint-100--s: 0%;',
+            '--color-dark-tint-100--l: 100%;',
+            '--color-dark-tint-100--a: 1;',
+            '--color-dark-tint-100: hsla(var(--color-dark-tint-100--h) var(--color-dark-tint-100--s) var(--color-dark-tint-100--l) / var(--color-dark-tint-100--a));'
+        ]);
     });
 });
 
 describe('colorsGenerator', () => {
-    const meta = createTestingGeneratorMeta({ path: ['colors'] });
+    describe('generate', () => {
+        it('should generate color css variables for default color variant', () => {
+            const color = { h: '0', s: '0%', l: '0%', a: '1' };
+            const meta = createTestingGeneratorMeta({
+                theme: {
+                    colors: {
+                        $type: ClassifierType.Group,
+                        dark: {
+                            $type: ClassifierType.PrimitiveVariants,
+                            default: color
+                        }
+                    }
+                } as unknown as ResolvedTheme,
+                path: ['colors', 'dark', 'default']
+            });
+            const result = colorsGenerator.generate(color, meta);
+            expect(result).toEqual([
+                '--color-dark--h: 0;',
+                '--color-dark--s: 0%;',
+                '--color-dark--l: 0%;',
+                '--color-dark--a: 1;',
+                '--color-dark: hsla(var(--color-dark--h) var(--color-dark--s) var(--color-dark--l) / var(--color-dark--a));'
+            ]);
+        });
 
-    it('should correctly generate tokens for a single color', () => {
-        const colors: ResolvedTheme['colors'] = {
-            primary: { default: { h: 0, s: 100, l: 50, a: 1 } }
-        };
-        const tokens = colorsGenerator.generate(colors, meta);
-        expect(tokens).toEqual([
-            '--color-primary--h: 0',
-            '--color-primary--s: 100%',
-            '--color-primary--l: 50%',
-            '--color-primary--a: 1',
-            '--color-primary: hsla(var(--color-primary--h), var(--color-primary--s), var(--color-primary--l), var(--color-primary--a))'
-        ]);
+        it('should generate color css variables for non-default variant', () => {
+            const meta = createTestingGeneratorMeta({ path: ['colors', 'dark', 'tint-100'] });
+            const color = { h: '0', s: '0%', l: '100%', a: '1' };
+            const result = colorsGenerator.generate(color, meta);
+            expect(result).toEqual([
+                '--color-dark-tint-100--h: 0;',
+                '--color-dark-tint-100--s: 0%;',
+                '--color-dark-tint-100--l: 100%;',
+                '--color-dark-tint-100--a: 1;',
+                '--color-dark-tint-100: hsla(var(--color-dark-tint-100--h) var(--color-dark-tint-100--s) var(--color-dark-tint-100--l) / var(--color-dark-tint-100--a));'
+            ]);
+        });
     });
 
-    it('should correctly generate tokens for multiple colors', () => {
-        const colors: ResolvedTheme['colors'] = {
-            primary: { default: { h: 0, s: 100, l: 50, a: 1 } },
-            secondary: {
-                default: {
-                    h: 'var(--color-primary--h)',
-                    s: 'var(--color-primary--s)',
-                    l: 'var(--color-primary--l)',
-                    a: 'var(--color-primary--a)'
-                }
-            }
-        };
-        const tokens = colorsGenerator.generate(colors, meta);
-        expect(tokens).toEqual([
-            '--color-primary--h: 0',
-            '--color-primary--s: 100%',
-            '--color-primary--l: 50%',
-            '--color-primary--a: 1',
-            '--color-primary: hsla(var(--color-primary--h), var(--color-primary--s), var(--color-primary--l), var(--color-primary--a))',
-            '--color-secondary--h: var(--color-primary--h)',
-            '--color-secondary--s: var(--color-primary--s)',
-            '--color-secondary--l: var(--color-primary--l)',
-            '--color-secondary--a: var(--color-primary--a)',
-            '--color-secondary: hsla(var(--color-secondary--h), var(--color-secondary--s), var(--color-secondary--l), var(--color-secondary--a))'
-        ]);
+    describe('match', () => {
+        it.each([
+            ['colors', false],
+            ['colors.red', false],
+            ['colors.red.default', true],
+            ['colors.red.default.h', false],
+            ['components.button.default.colors', false],
+            ['other.colors.value', false]
+        ])('should match "%s" path => %s', (path, result) => {
+            const match = (colorsGenerator.key as RegExp[]).some((key) => matchKey(path, key));
+            expect(match).toBe(result);
+        });
+    });
+});
+
+describe('colorGenerator', () => {
+    describe('generate', () => {
+        it('should generate color css variables for default variant', () => {
+            const color = { h: '0', s: '0%', l: '0%', a: '1' };
+            const meta = createTestingGeneratorMeta({
+                theme: {
+                    components: {
+                        $type: ClassifierType.Group,
+                        button: {
+                            $type: ClassifierType.EntityVariants,
+                            default: {
+                                $type: ClassifierType.Group,
+                                color
+                            }
+                        }
+                    }
+                } as unknown as ResolvedTheme,
+                path: ['components', 'button', 'default', 'color']
+            });
+            const result = colorGenerator.generate(color, meta);
+            expect(result).toEqual([
+                '--button--color--h: 0;',
+                '--button--color--s: 0%;',
+                '--button--color--l: 0%;',
+                '--button--color--a: 1;'
+            ]);
+        });
+
+        it('should generate color css variables for non-default variant', () => {
+            const color = { h: '0', s: '0%', l: '0%', a: '1' };
+            const meta = createTestingGeneratorMeta({
+                theme: {
+                    components: {
+                        $type: ClassifierType.Group,
+                        button: {
+                            $type: ClassifierType.EntityVariants,
+                            primary: {
+                                $type: ClassifierType.Group,
+                                color
+                            }
+                        }
+                    }
+                } as unknown as ResolvedTheme,
+                path: ['components', 'button', 'primary', 'color']
+            });
+            const result = colorGenerator.generate(color, meta);
+            expect(result).toEqual([
+                '--button--primary--color--h: 0;',
+                '--button--primary--color--s: 0%;',
+                '--button--primary--color--l: 0%;',
+                '--button--primary--color--a: 1;'
+            ]);
+        });
     });
 
-    it('should correctly generate tokens for a color with variants using CSS variables', () => {
-        const colors: ResolvedTheme['colors'] = {
-            primary: {
-                default: { h: 0, s: 100, l: 50, a: 1 },
-                'shade-150': {
-                    h: 'var(--color-primary--h)',
-                    s: 'var(--color-primary--s)',
-                    l: 'calc(var(--color-primary--l) - 15%)',
-                    a: 'var(--color-primary--a)'
-                },
-                'tint-150': {
-                    h: 'var(--color-primary--h)',
-                    s: 'var(--color-primary--s)',
-                    l: 'calc(var(--color-primary--l) + 15%)',
-                    a: 'var(--color-primary--a)'
-                }
-            }
-        };
-        const tokens = colorsGenerator.generate(colors, meta);
-        expect(tokens).toEqual([
-            '--color-primary--h: 0',
-            '--color-primary--s: 100%',
-            '--color-primary--l: 50%',
-            '--color-primary--a: 1',
-            '--color-primary: hsla(var(--color-primary--h), var(--color-primary--s), var(--color-primary--l), var(--color-primary--a))',
-            '--color-primary-shade-150--h: var(--color-primary--h)',
-            '--color-primary-shade-150--s: var(--color-primary--s)',
-            '--color-primary-shade-150--l: calc(var(--color-primary--l) - 15%)',
-            '--color-primary-shade-150--a: var(--color-primary--a)',
-            '--color-primary-shade-150: hsla(var(--color-primary-shade-150--h), var(--color-primary-shade-150--s), var(--color-primary-shade-150--l), var(--color-primary-shade-150--a))',
-            '--color-primary-tint-150--h: var(--color-primary--h)',
-            '--color-primary-tint-150--s: var(--color-primary--s)',
-            '--color-primary-tint-150--l: calc(var(--color-primary--l) + 15%)',
-            '--color-primary-tint-150--a: var(--color-primary--a)',
-            '--color-primary-tint-150: hsla(var(--color-primary-tint-150--h), var(--color-primary-tint-150--s), var(--color-primary-tint-150--l), var(--color-primary-tint-150--a))'
-        ]);
+    describe('match', () => {
+        it.each([
+            ['color', false],
+            ['color.default', false],
+            ['color.default.h', false],
+            ['components.button.default.color', true],
+            ['other.color.value', false]
+        ])('should match "%s" path => %s', (path, result) => {
+            const match = (colorGenerator.key as RegExp[]).some((key) => matchKey(path, key));
+            expect(match).toBe(result);
+        });
     });
 });

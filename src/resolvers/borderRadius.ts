@@ -3,7 +3,7 @@ import {
     defineResolver,
     defineResolverValueFn,
     defineResolverVariantFn,
-    createFieldWithOptionalVariantsResolveFn
+    createResolveFn
 } from '../utils';
 import {
     RawTheme,
@@ -11,7 +11,9 @@ import {
     RawThemeBorderRadiusVariant,
     ResolvedTheme,
     ResolvedThemeBorderRadius,
-    BorderRadius
+    BorderRadius,
+    RawThemeValueType,
+    ResolvedThemeValueType
 } from '../types';
 import { borderRadiusModifiers } from './modifiers';
 
@@ -87,12 +89,9 @@ export const resolveBorderRadiusVariant = defineResolverVariantFn<
 });
 
 export const borderRadiusResolver = defineResolver<
-    RawTheme['borderRadius'],
-    ResolvedTheme['borderRadius']
+    RawThemeValueType<RawTheme['borderRadius']>,
+    ResolvedThemeValueType<ResolvedTheme['borderRadius']>
 >({
-    key: 'borderRadius',
-    resolve: createFieldWithOptionalVariantsResolveFn(
-        resolveBorderRadius,
-        resolveBorderRadiusVariant
-    )
+    key: [/^borderRadius\.[^.]+$/, /.*\.borderRadius$/],
+    resolve: createResolveFn(resolveBorderRadius, resolveBorderRadiusVariant)
 });

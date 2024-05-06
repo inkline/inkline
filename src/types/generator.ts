@@ -22,7 +22,8 @@ export interface GeneratorMeta {
 }
 
 export interface Generator<Resolved> {
-    key: string;
+    key: string | string[] | RegExp | RegExp[];
+    ignore?: string | string[] | RegExp | RegExp[];
     type: GeneratorType;
     priority?: GeneratorPriority;
     generate: (value: Resolved, meta: GeneratorMeta) => string[];

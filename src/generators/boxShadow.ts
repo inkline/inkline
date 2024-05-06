@@ -1,17 +1,18 @@
 import {
     defineGenerator,
-    createFieldWithVariantsGenerateFn,
+    createGenerateFn,
     createGenericDesignTokenVariantGenerateFn
 } from '../utils';
-import { GeneratorType, ResolvedTheme } from '../types';
+import { GeneratorType, ResolvedTheme, ResolvedThemeValueType } from '../types';
 
 export const generateBoxShadow = createGenericDesignTokenVariantGenerateFn({
-    key: 'boxShadow',
     aggregate: ['offsetX', 'offsetY', 'blurRadius', 'spreadRadius', 'color']
 });
 
-export const boxShadowGenerator = defineGenerator<ResolvedTheme['boxShadow']>({
-    key: 'boxShadow',
+export const boxShadowGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['boxShadow']>
+>({
+    key: [/^boxShadow\.[^.]+$/, /.*\.boxShadow$/],
     type: GeneratorType.CssVariables,
-    generate: createFieldWithVariantsGenerateFn(generateBoxShadow)
+    generate: createGenerateFn(generateBoxShadow)
 });

@@ -3,9 +3,7 @@ import {
     defineResolver,
     defineResolverValueFn,
     defineResolverVariantFn,
-    createFieldWithOptionalVariantsResolveFn,
-    createFieldWithoutVariantsResolveFn,
-    createMultipleFieldsWithOptionalVariantsResolveFn
+    createResolveFn
 } from '../utils';
 import {
     RawTheme,
@@ -18,6 +16,7 @@ import {
     RawThemeTypographyLetterSpacing,
     RawThemeTypographyLineHeight,
     RawThemeTypographyTextAlignment,
+    RawThemeValueType,
     ResolvedTheme,
     ResolvedThemeTypographyColor,
     ResolvedThemeTypographyContrastColor,
@@ -26,7 +25,8 @@ import {
     ResolvedThemeTypographyFontWeight,
     ResolvedThemeTypographyLetterSpacing,
     ResolvedThemeTypographyLineHeight,
-    ResolvedThemeTypographyTextAlignment
+    ResolvedThemeTypographyTextAlignment,
+    ResolvedThemeValueType
 } from '../types';
 import { fontSizeModifiers } from './modifiers';
 import { resolveColor, resolveColorVariant } from './colors';
@@ -46,14 +46,11 @@ export const resolveTypographyColorVariant = defineResolverVariantFn<
 >(resolveColorVariant);
 
 export const typographyColorResolver = defineResolver<
-    RawTheme['typography']['color'],
-    ResolvedTheme['typography']['color']
+    RawThemeValueType<RawTheme['typography']['color'][string]>,
+    ResolvedThemeValueType<ResolvedTheme['typography']['color'][string]>
 >({
-    key: 'typography.color',
-    resolve: createMultipleFieldsWithOptionalVariantsResolveFn(
-        resolveTypographyColor,
-        resolveTypographyColorVariant
-    )
+    key: /^typography\.color\.[^.]+\.[^.]+$/,
+    resolve: createResolveFn(resolveTypographyColor, resolveTypographyColorVariant)
 });
 
 /**
@@ -71,14 +68,11 @@ export const resolveTypographyContrastColorVariant = defineResolverVariantFn<
 >(resolveColorVariant);
 
 export const typographyContrastColorResolver = defineResolver<
-    RawTheme['typography']['contrastColor'],
-    ResolvedTheme['typography']['contrastColor']
+    RawThemeValueType<RawTheme['typography']['contrastColor'][string]>,
+    ResolvedThemeValueType<ResolvedTheme['typography']['contrastColor'][string]>
 >({
-    key: 'typography.contrastColor',
-    resolve: createMultipleFieldsWithOptionalVariantsResolveFn(
-        resolveTypographyContrastColor,
-        resolveTypographyContrastColorVariant
-    )
+    key: /^typography\.contrastColor\.[^.]+\.[^.]+$/,
+    resolve: createResolveFn(resolveTypographyContrastColor, resolveTypographyContrastColorVariant)
 });
 
 /**
@@ -98,14 +92,11 @@ export const resolveTypographyFontFamilyVariant = defineResolverVariantFn<
 >(resolveTypographyFontFamily);
 
 export const typographyFontFamilyResolver = defineResolver<
-    RawTheme['typography']['fontFamily'],
-    ResolvedTheme['typography']['fontFamily']
+    RawThemeValueType<RawTheme['typography']['fontFamily']>,
+    ResolvedThemeValueType<ResolvedTheme['typography']['fontFamily']>
 >({
-    key: 'typography.fontFamily',
-    resolve: createFieldWithOptionalVariantsResolveFn(
-        resolveTypographyFontFamily,
-        resolveTypographyFontFamilyVariant
-    )
+    key: /^typography\.fontFamily\.[^.]+$/,
+    resolve: createResolveFn(resolveTypographyFontFamily, resolveTypographyFontFamilyVariant)
 });
 
 /**
@@ -140,14 +131,11 @@ export const resolveTypographyFontSizeVariant = defineResolverVariantFn<
 });
 
 export const typographyFontSizeResolver = defineResolver<
-    RawTheme['typography']['fontSize'],
-    ResolvedTheme['typography']['fontSize']
+    RawThemeValueType<RawTheme['typography']['fontSize']>,
+    ResolvedThemeValueType<ResolvedTheme['typography']['fontSize']>
 >({
-    key: 'typography.fontSize',
-    resolve: createFieldWithOptionalVariantsResolveFn(
-        resolveTypographyFontSize,
-        resolveTypographyFontSizeVariant
-    )
+    key: /^typography\.fontSize\.[^.]+$/,
+    resolve: createResolveFn(resolveTypographyFontSize, resolveTypographyFontSizeVariant)
 });
 
 /**
@@ -167,14 +155,11 @@ export const resolveTypographyFontWeightVariant = defineResolverVariantFn<
 >(resolveTypographyFontWeight);
 
 export const typographyFontWeightResolver = defineResolver<
-    RawTheme['typography']['fontWeight'],
-    ResolvedTheme['typography']['fontWeight']
+    RawThemeValueType<RawTheme['typography']['fontWeight']>,
+    ResolvedThemeValueType<ResolvedTheme['typography']['fontWeight']>
 >({
-    key: 'typography.fontWeight',
-    resolve: createFieldWithOptionalVariantsResolveFn(
-        resolveTypographyFontWeight,
-        resolveTypographyFontWeightVariant
-    )
+    key: /^typography\.fontWeight\.[^.]+$/,
+    resolve: createResolveFn(resolveTypographyFontWeight, resolveTypographyFontWeightVariant)
 });
 
 /**
@@ -194,14 +179,11 @@ export const resolveTypographyLetterSpacingVariant = defineResolverVariantFn<
 >(resolveTypographyLetterSpacing);
 
 export const typographyLetterSpacingResolver = defineResolver<
-    RawTheme['typography']['letterSpacing'],
-    ResolvedTheme['typography']['letterSpacing']
+    RawThemeValueType<RawTheme['typography']['letterSpacing']>,
+    ResolvedThemeValueType<ResolvedTheme['typography']['letterSpacing']>
 >({
-    key: 'typography.letterSpacing',
-    resolve: createFieldWithOptionalVariantsResolveFn(
-        resolveTypographyLetterSpacing,
-        resolveTypographyLetterSpacingVariant
-    )
+    key: /^typography\.letterSpacing\.[^.]+$/,
+    resolve: createResolveFn(resolveTypographyLetterSpacing, resolveTypographyLetterSpacingVariant)
 });
 
 /**
@@ -221,14 +203,11 @@ export const resolveTypographyLineHeightVariant = defineResolverVariantFn<
 >(resolveTypographyLineHeight);
 
 export const typographyLineHeightResolver = defineResolver<
-    RawTheme['typography']['lineHeight'],
-    ResolvedTheme['typography']['lineHeight']
+    RawThemeValueType<RawTheme['typography']['lineHeight']>,
+    ResolvedThemeValueType<ResolvedTheme['typography']['lineHeight']>
 >({
-    key: 'typography.lineHeight',
-    resolve: createFieldWithOptionalVariantsResolveFn(
-        resolveTypographyLineHeight,
-        resolveTypographyLineHeightVariant
-    )
+    key: /^typography\.lineHeight\.[^.]+$/,
+    resolve: createResolveFn(resolveTypographyLineHeight, resolveTypographyLineHeightVariant)
 });
 
 /**
@@ -242,10 +221,15 @@ export const resolveTypographyTextAlignment = defineResolverValueFn<
     return lineHeight;
 });
 
+export const resolveTypographyTextAlignmentVariant = defineResolverVariantFn<
+    RawThemeTypographyTextAlignment,
+    ResolvedThemeTypographyTextAlignment
+>(resolveTypographyTextAlignment);
+
 export const typographyTextAlignmentResolver = defineResolver<
-    RawTheme['typography']['textAlign'],
-    ResolvedTheme['typography']['textAlign']
+    RawThemeValueType<RawTheme['typography']['textAlign']>,
+    ResolvedThemeValueType<ResolvedTheme['typography']['textAlign']>
 >({
-    key: 'typography.textAlign',
-    resolve: createFieldWithoutVariantsResolveFn(resolveTypographyTextAlignment)
+    key: /^typography\.textAlign\.[^.]+$/,
+    resolve: createResolveFn(resolveTypographyTextAlignment, resolveTypographyTextAlignmentVariant)
 });

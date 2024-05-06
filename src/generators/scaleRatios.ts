@@ -1,13 +1,19 @@
 import {
     defineGenerator,
-    createFieldWithVariantsGenerateFn,
+    createGenerateFn,
     createGenericDesignTokenVariantGenerateFn,
     defineGeneratorValueFn,
     codegenCssVariables,
     shouldGenerateAggregateValue,
     getResolvedPath
 } from '../utils';
-import { GeneratorPriority, GeneratorType, ResolvedTheme, ResolvedThemeScaleRatio } from '../types';
+import {
+    GeneratorPriority,
+    GeneratorType,
+    ResolvedTheme,
+    ResolvedThemeScaleRatio,
+    ResolvedThemeValueType
+} from '../types';
 
 export const generateScaleRatio = defineGeneratorValueFn<ResolvedThemeScaleRatio>((value, meta) => {
     const path = getResolvedPath(meta);
@@ -31,9 +37,11 @@ export const generateScaleRatio = defineGeneratorValueFn<ResolvedThemeScaleRatio
     return tokens;
 });
 
-export const scaleRatiosGenerator = defineGenerator<ResolvedTheme['scaleRatios']>({
-    key: 'scaleRatios',
+export const scaleRatiosGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['scaleRatios']>
+>({
+    key: /^scaleRatios\.[^.]+$/,
     type: GeneratorType.CssVariables,
     priority: GeneratorPriority.Highest,
-    generate: createFieldWithVariantsGenerateFn(generateScaleRatio)
+    generate: createGenerateFn(generateScaleRatio)
 });

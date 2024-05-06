@@ -1,43 +1,48 @@
 import { resolveBreakpoint, resolveBreakpointVariant, breakpointsResolver } from './breakpoints';
 import { createTestingResolverMeta } from '../__tests__/utils';
+import { matchKey } from '../utils';
 
 describe('resolveBreakpoint', () => {
-    const meta = createTestingResolverMeta({ path: ['breakpoints', 'md'] });
+    const meta = createTestingResolverMeta({ path: ['breakpoints', 'default'] });
 
-    it('should return the same breakpoint value', () => {
-        const input = '768px';
-        const expected = '768px';
+    it('should return the same breakpoint when breakpoint is a string', () => {
+        const breakpoint = '768px';
+        const result = resolveBreakpoint(breakpoint, meta);
+        expect(result).toEqual(breakpoint);
+    });
 
-        const result = resolveBreakpoint(input, meta);
-        expect(result).toBe(expected);
+    it('should return the breakpoint with css variables when breakpoint is a variable', () => {
+        const breakpoint = 'var(--breakpoint)';
+        const result = resolveBreakpoint(breakpoint, meta);
+        expect(result).toEqual(breakpoint);
     });
 });
 
 describe('resolveBreakpointVariant', () => {
-    const meta = createTestingResolverMeta({ path: ['breakpoints', 'md'] });
+    const meta = createTestingResolverMeta({ path: ['breakpoints', 'variant'] });
 
-    it('should return the same breakpoint variant value', () => {
-        const input = '1024px';
-        const expected = '1024px';
+    it('should return the same breakpoint when variant is a string', () => {
+        const variant = '1024px';
+        const result = resolveBreakpointVariant(variant, meta);
+        expect(result).toEqual(variant);
+    });
 
-        const result = resolveBreakpointVariant(input, meta);
-        expect(result).toBe(expected);
+    it('should return the breakpoint with css variables when variant is a variable', () => {
+        const variant = 'var(--breakpoint-variant)';
+        const result = resolveBreakpointVariant(variant, meta);
+        expect(result).toEqual(variant);
     });
 });
 
 describe('breakpointsResolver', () => {
-    const meta = createTestingResolverMeta({ path: ['breakpoints'] });
-
-    it('should correctly resolve breakpoints with variants', () => {
-        const input = {
-            default: '',
-            sm: '320px',
-            md: '768px',
-            lg: '1024px'
-        };
-        const expected = input;
-
-        const result = breakpointsResolver.resolve(input, meta);
-        expect(result).toEqual(expected);
+    describe('match', () => {
+        it.each([
+            ['breakpoints.xs', true],
+            ['components.button.default.breakpoints', false],
+            ['other.breakpoints.value', false]
+        ])('should match "%s" path => %s', (path, result) => {
+            const match = matchKey(path, breakpointsResolver.key as RegExp);
+            expect(match).toBe(result);
+        });
     });
 });

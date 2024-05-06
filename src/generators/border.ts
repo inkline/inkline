@@ -2,18 +2,27 @@ import {
     codegenCssVariables,
     defineGenerator,
     defineGeneratorValueFn,
-    createFieldWithVariantsGenerateFn,
-    getCssVariableNamePreamble,
+    createGenerateFn,
+    getCssVariablePreamble,
     shouldGenerateAggregateValue,
-    getResolvedPath
+    getResolvedPath,
+    getCssVariableVariantName,
+    getResolvedCssVariableVariantName,
+    getCssVariablePreamblePath
 } from '../utils';
-import { BorderSide, GeneratorType, ResolvedTheme, ResolvedThemeBorder } from '../types';
+import {
+    BorderSide,
+    GeneratorType,
+    ResolvedTheme,
+    ResolvedThemeBorder,
+    ResolvedThemeValueType
+} from '../types';
 
 export const generateBorder = defineGeneratorValueFn<ResolvedThemeBorder>((border, meta) => {
-    const path = getResolvedPath(meta);
-    const variableNamePreamble = getCssVariableNamePreamble(path);
-    const variantName = path[path.length - 1];
-    const resolvedVariantName = variantName === 'default' ? '' : `-${variantName}`;
+    const variablePreamblePath = getCssVariablePreamblePath(meta);
+    const variablePreamble = getCssVariablePreamble(variablePreamblePath);
+    const variantName = getCssVariableVariantName(meta);
+    const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
     const sides: BorderSide[] = ['top', 'right', 'bottom', 'left'];
 
     const tokens: string[] = [];
@@ -24,17 +33,17 @@ export const generateBorder = defineGeneratorValueFn<ResolvedThemeBorder>((borde
 
         const { width, style, color } = border[side];
 
-        const widthCssVariableName = `${variableNamePreamble}border-${side}-width${resolvedVariantName}`;
+        const widthCssVariableName = `${variablePreamble}border-${side}-width${resolvedVariantName}`;
         if (typeof width !== 'undefined') {
             tokens.push(codegenCssVariables.set(widthCssVariableName, width));
         }
 
-        const styleCssVariableName = `${variableNamePreamble}border-${side}-style${resolvedVariantName}`;
+        const styleCssVariableName = `${variablePreamble}border-${side}-style${resolvedVariantName}`;
         if (typeof style !== 'undefined') {
             tokens.push(codegenCssVariables.set(styleCssVariableName, style));
         }
 
-        const colorCssVariableName = `${variableNamePreamble}border-${side}-color${resolvedVariantName}`;
+        const colorCssVariableName = `${variablePreamble}border-${side}-color${resolvedVariantName}`;
         if (typeof color !== 'undefined') {
             tokens.push(codegenCssVariables.set(colorCssVariableName, color));
         }
@@ -42,7 +51,7 @@ export const generateBorder = defineGeneratorValueFn<ResolvedThemeBorder>((borde
         if (shouldGenerateAggregateValue(meta)) {
             tokens.push(
                 codegenCssVariables.set(
-                    `${variableNamePreamble}border-${side}${resolvedVariantName}`,
+                    `${variablePreamble}border-${side}${resolvedVariantName}`,
                     [
                         codegenCssVariables.get(widthCssVariableName),
                         codegenCssVariables.get(styleCssVariableName),
@@ -57,11 +66,11 @@ export const generateBorder = defineGeneratorValueFn<ResolvedThemeBorder>((borde
         ['width', 'style', 'color'].forEach((property) => {
             tokens.push(
                 codegenCssVariables.set(
-                    `${variableNamePreamble}border-${property}${resolvedVariantName}`,
+                    `${variablePreamble}border-${property}${resolvedVariantName}`,
                     sides
                         .map((side) =>
                             codegenCssVariables.get(
-                                `${variableNamePreamble}border-${side}-${property}${resolvedVariantName}`
+                                `${variablePreamble}border-${side}-${property}${resolvedVariantName}`
                             )
                         )
                         .join(' ')
@@ -69,11 +78,11 @@ export const generateBorder = defineGeneratorValueFn<ResolvedThemeBorder>((borde
             );
         });
 
-        if (!variableNamePreamble) {
+        if (!variablePreamble) {
             tokens.push(
                 codegenCssVariables.set(
-                    `${variableNamePreamble}border${resolvedVariantName}`,
-                    `var(--${variableNamePreamble}border-top${resolvedVariantName})`
+                    `${variablePreamble}border${resolvedVariantName}`,
+                    `var(--${variablePreamble}border-top${resolvedVariantName})`
                 )
             );
         }
@@ -82,8 +91,8 @@ export const generateBorder = defineGeneratorValueFn<ResolvedThemeBorder>((borde
     return tokens;
 });
 
-export const borderGenerator = defineGenerator<ResolvedTheme['border']>({
-    key: 'border',
+export const borderGenerator = defineGenerator<ResolvedThemeValueType<ResolvedTheme['border']>>({
+    key: [/^border\.[^.]+$/, /.*\.border$/],
     type: GeneratorType.CssVariables,
-    generate: createFieldWithVariantsGenerateFn(generateBorder)
+    generate: createGenerateFn(generateBorder)
 });

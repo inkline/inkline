@@ -1,24 +1,65 @@
-import { animationGenerator } from './animation';
+import { generateTransition, transitionGenerator } from './transition';
 import { createTestingGeneratorMeta } from '../__tests__/utils';
+import { matchKey } from '../utils';
+import { ClassifierType, ResolvedTheme } from '../types';
 
-describe('animationGenerator', () => {
-    const meta = createTestingGeneratorMeta({ path: ['animation'] });
+describe('generateTransition', () => {
+    const transition = {
+        property: 'all',
+        duration: '1s',
+        timingFunction: 'ease-in-out'
+    };
 
-    it('should correctly generate animation fields with variants', () => {
-        const input = {
-            default: { duration: '1s', timingFunction: 'ease-in' },
-            slow: { duration: '2s', timingFunction: 'ease-in-out' }
-        };
-        const expected = [
-            '--animation-duration: 1s',
-            '--animation-timing-function: ease-in',
-            '--animation: var(--animation-duration) var(--animation-timing-function)',
-            '--animation-duration-slow: 2s',
-            '--animation-timing-function-slow: ease-in-out',
-            '--animation-slow: var(--animation-duration-slow) var(--animation-timing-function-slow)'
-        ];
-        const result = animationGenerator.generate(input, meta);
+    it('should generate transition css variables for default variant', () => {
+        const meta = createTestingGeneratorMeta({
+            theme: {
+                transition: {
+                    $type: ClassifierType.PrimitiveVariants,
+                    default: transition
+                }
+            } as unknown as ResolvedTheme,
+            path: ['transition', 'default']
+        });
+        const result = generateTransition(transition, meta);
+        expect(result).toEqual([
+            '--transition-property: all;',
+            '--transition-duration: 1s;',
+            '--transition-timing-function: ease-in-out;',
+            '--transition: var(--transition-property) var(--transition-duration) var(--transition-timing-function);'
+        ]);
+    });
 
-        expect(result).toEqual(expected);
+    it('should generate transition css variables for non-default variant', () => {
+        const meta = createTestingGeneratorMeta({
+            theme: {
+                transition: {
+                    $type: ClassifierType.PrimitiveVariants,
+                    slow: transition
+                }
+            } as unknown as ResolvedTheme,
+            path: ['transition', 'slow']
+        });
+        const result = generateTransition(transition, meta);
+        expect(result).toEqual([
+            '--transition-property-slow: all;',
+            '--transition-duration-slow: 1s;',
+            '--transition-timing-function-slow: ease-in-out;',
+            '--transition-slow: var(--transition-property-slow) var(--transition-duration-slow) var(--transition-timing-function-slow);'
+        ]);
+    });
+});
+
+describe('transitionGenerator', () => {
+    describe('match', () => {
+        it.each([
+            ['transition', false],
+            ['transition.default', true],
+            ['transition.default.property', false],
+            ['components.button.default.transition', true],
+            ['other.transition.value', false]
+        ])('should match "%s" path', (path, result) => {
+            const match = (transitionGenerator.key as RegExp[]).some((key) => matchKey(path, key));
+            expect(match).toBe(result);
+        });
     });
 });

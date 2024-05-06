@@ -1,5 +1,6 @@
 export * from './aggregator';
 export * from './build';
+export * from './classifier';
 export * from './properties';
 export * from './config';
 export * from './generator';

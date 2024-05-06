@@ -4,8 +4,6 @@ export * from './borderRadius';
 export * from './boxShadow';
 export * from './breakpoints';
 export * from './colors';
-export * from './components';
-export * from './elements';
 export * from './generic';
 export * from './grid';
 export * from './layers';

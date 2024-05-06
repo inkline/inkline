@@ -1,134 +1,104 @@
 import {
+    resolveSizeMultiplier,
     resolveSizeMultiplierVariant,
+    sizeMultiplierResolver,
     resolveSizePercentage,
     resolveSizePercentageVariant,
-    sizeMultiplierResolver,
     sizePercentagesResolver
 } from './size';
 import { createTestingResolverMeta } from '../__tests__/utils';
+import { matchKey } from '../utils';
 
-describe('resolveSizeMultiplierVariant', () => {
-    it('should resolve size multiplier variant for numeric values', () => {
-        const variant = 1.5;
-        const meta = createTestingResolverMeta({ path: ['size', 'multiplier'] });
+describe('resolveSizeMultiplier', () => {
+    const meta = createTestingResolverMeta({ path: ['size', 'multiplier'] });
 
-        const result = resolveSizeMultiplierVariant(variant, meta);
-        expect(result).toEqual(1.5);
+    it('should return the same multiplier when multiplier is a number', () => {
+        const multiplier = 1.5;
+        const result = resolveSizeMultiplier(multiplier, meta);
+        expect(result).toEqual(multiplier);
     });
 
-    it('should resolve size multiplier variant for string values', () => {
-        const variant = '1.5';
-        const meta = createTestingResolverMeta({ path: ['size', 'multiplier'] });
-
-        const result = resolveSizeMultiplierVariant(variant, meta);
-        expect(result).toEqual('1.5');
+    it('should return the multiplier with css variables when multiplier is a variable', () => {
+        const multiplier = 'var(--multiplier)';
+        const result = resolveSizeMultiplier(multiplier, meta);
+        expect(result).toEqual(multiplier);
     });
 });
 
 describe('resolveSizeMultiplierVariant', () => {
-    it('should resolve size multiplier variant for numeric values', () => {
-        const variant = 1.5;
-        const meta = createTestingResolverMeta({ path: ['size', 'multiplier', 'default'] });
+    const meta = createTestingResolverMeta({ path: ['size', 'multiplier', 'variant'] });
 
+    it('should return the same multiplier when variant is a number', () => {
+        const variant = 2.0;
         const result = resolveSizeMultiplierVariant(variant, meta);
-        expect(result).toEqual(1.5);
+        expect(result).toEqual(variant);
     });
 
-    it('should resolve size multiplier variant for string values', () => {
-        const variant = '1.5';
-        const meta = createTestingResolverMeta({ path: ['size', 'multiplier', 'custom'] });
-
+    it('should return the multiplier with css variables when variant is a variable', () => {
+        const variant = 'var(--multiplier-variant)';
         const result = resolveSizeMultiplierVariant(variant, meta);
-        expect(result).toEqual('1.5');
+        expect(result).toEqual(variant);
     });
 });
 
 describe('sizeMultiplierResolver', () => {
-    const meta = createTestingResolverMeta({ path: ['size', 'multiplier'] });
-
-    it('should resolve size multiplier for numeric values', () => {
-        const value = 1.5;
-        const resolvedTheme = sizeMultiplierResolver.resolve(value, meta);
-
-        expect(resolvedTheme).toEqual({
-            default: 1.5
+    describe('match', () => {
+        it.each([
+            ['size.multiplier', false],
+            ['size.multiplier.default', true],
+            ['size.multiplier.default.mobile', false],
+            ['components.button.default.size.multiplier', false],
+            ['other.size.multiplier.value', false]
+        ])('should match "%s" path', (path, result) => {
+            const match = matchKey(path, sizeMultiplierResolver.key as RegExp);
+            expect(match).toBe(result);
         });
-    });
-
-    it('should resolve size multiplier for string values', () => {
-        const value = '1.5';
-        const resolvedTheme = sizeMultiplierResolver.resolve(value, meta);
-
-        expect(resolvedTheme).toEqual({
-            default: '1.5'
-        });
-    });
-
-    it('should resolve size multiplier variant for object values', () => {
-        const value = { default: 1.5, compact: 1.2 };
-        const resolvedTheme = sizeMultiplierResolver.resolve(value, meta);
-
-        expect(resolvedTheme).toEqual({ default: 1.5, compact: 1.2 });
     });
 });
 
 describe('resolveSizePercentage', () => {
     const meta = createTestingResolverMeta({ path: ['size', 'percentages'] });
 
-    it('should resolve size percentage for numeric values', () => {
+    it('should return the same percentage when percentage is a number', () => {
         const percentage = 50;
         const result = resolveSizePercentage(percentage, meta);
-        expect(result).toEqual('50%');
+        expect(result).toEqual(`${percentage}%`);
     });
 
-    it('should resolve size percentage for string values', () => {
-        const percentage = '50%';
+    it('should return the percentage with css variables when percentage is a variable', () => {
+        const percentage = 'var(--percentage)';
         const result = resolveSizePercentage(percentage, meta);
-        expect(result).toEqual('50%');
+        expect(result).toEqual(percentage);
     });
 });
 
 describe('resolveSizePercentageVariant', () => {
-    const meta = createTestingResolverMeta({ path: ['size', 'percentages', 'default'] });
+    const meta = createTestingResolverMeta({ path: ['size', 'percentages', 'variant'] });
 
-    it('should resolve size percentage for numeric values', () => {
-        const percentage = 50;
-        const result = resolveSizePercentageVariant(percentage, meta);
-        expect(result).toEqual('50%');
+    it('should return the same percentage when variant is a number', () => {
+        const variant = 75;
+        const result = resolveSizePercentageVariant(variant, meta);
+        expect(result).toEqual(`${variant}%`);
     });
 
-    it('should resolve size percentage for string values', () => {
-        const percentage = '50%';
-        const result = resolveSizePercentageVariant(percentage, meta);
-        expect(result).toEqual('50%');
+    it('should return the percentage with css variables when variant is a variable', () => {
+        const variant = 'var(--percentage-variant)';
+        const result = resolveSizePercentageVariant(variant, meta);
+        expect(result).toEqual(variant);
     });
 });
 
 describe('sizePercentagesResolver', () => {
-    const meta = createTestingResolverMeta({ path: ['size', 'percentages'] });
-
-    it('should resolve size percentages for numeric values', () => {
-        const rawTheme = 50;
-        const resolvedTheme = sizePercentagesResolver.resolve(rawTheme, meta);
-
-        expect(resolvedTheme).toEqual({
-            default: '50%'
+    describe('match', () => {
+        it.each([
+            ['size.percentages', false],
+            ['size.percentages.default', true],
+            ['size.percentages.default.mobile', false],
+            ['components.button.default.size.percentages', false],
+            ['other.size.percentages.value', false]
+        ])('should match "%s" path => %s', (path, result) => {
+            const match = matchKey(path, sizePercentagesResolver.key as RegExp);
+            expect(match).toBe(result);
         });
-    });
-
-    it('should resolve size percentages for string values', () => {
-        const rawTheme = '50%';
-        const resolvedTheme = sizePercentagesResolver.resolve(rawTheme, meta);
-
-        expect(resolvedTheme).toEqual({
-            default: '50%'
-        });
-    });
-
-    it('should resolve size percentages variant for object values', () => {
-        const rawTheme = { default: 50, compact: '40%' };
-        const resolvedTheme = sizePercentagesResolver.resolve(rawTheme, meta);
-
-        expect(resolvedTheme).toEqual({ default: '50%', compact: '40%' });
     });
 });

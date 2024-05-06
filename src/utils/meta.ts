@@ -1,4 +1,5 @@
-import type { GeneratorMeta } from '../types';
+import { ClassifierType, GeneratorMeta } from '../types';
+import { traversePathByClassification } from './path';
 
 export function shouldGenerateAggregateValue(meta: GeneratorMeta) {
     return isDefaultTheme(meta.themeName) && !isEntityPath(meta.path);
@@ -13,9 +14,11 @@ export function isEntityPath(path: string[]) {
 }
 
 export function getResolvedPath(meta: GeneratorMeta) {
-    const indexOffset = meta.path.findIndex((part) =>
-        ['components', 'elements', 'typography'].includes(part)
-    );
+    const indexOffset = traversePathByClassification(meta, (path, part, ctx) => {
+        return ![ClassifierType.EntityVariants, ClassifierType.PrimitiveVariants].some(
+            (type) => ctx.typePath.includes(type) || ctx.type === type
+        );
+    }).length;
 
-    return indexOffset !== -1 ? meta.path.slice(indexOffset + 1) : meta.path;
+    return indexOffset > 0 ? meta.path.slice(indexOffset) : meta.path;
 }

@@ -4,12 +4,21 @@ import {
     AggregatorFile,
     AggregatorMeta,
     BuildOptions,
+    ClassifierType,
     GeneratorMeta,
     GeneratorPriority,
     ResolvedBuildOptions,
-    ResolvedConfiguration
+    ResolvedConfiguration,
+    ResolvedTheme
 } from './types';
-import { exists, getResolvedBuildOptions, interpolate, toKebabCase } from './utils';
+import {
+    exists,
+    getResolvedBuildOptions,
+    interpolate,
+    convertChunkPathToFilePath,
+    toKebabCase,
+    extractIndexFiles
+} from './utils';
 import { dirname, join, resolve } from 'pathe';
 import { mkdir, writeFile } from 'fs/promises';
 import prettier from 'prettier';
@@ -69,7 +78,10 @@ export async function build(options: BuildOptions = {}): Promise<{
             themeName,
             generators: resolvedConfig.generators
         };
-        const chunks = applyChunkGenerators(theme, generatorMeta);
+        const chunks = applyChunkGenerators(theme, generatorMeta).map((chunk) => ({
+            ...chunk,
+            path: convertChunkPathToFilePath({ ...generatorMeta, path: chunk.path })
+        }));
 
         const aggregatorMeta: AggregatorMeta = {
             themeName,
@@ -93,17 +105,6 @@ export async function build(options: BuildOptions = {}): Promise<{
             [...(resolvedConfig.dependencies as AggregatorFile[])]
         );
 
-        if (!isDefaultTheme) {
-            const themeIndexFile = `index${resolvedOptions.extName}`;
-            indexFiles[themeIndexFile] = [
-                ...(indexFiles[themeIndexFile] ?? []),
-                {
-                    importPath: themeName,
-                    priority: GeneratorPriority.Lowest
-                }
-            ];
-        }
-
         for (const file of resolvedFiles) {
             const filePathParts = file.path.map((part) => toKebabCase(part));
             const filePath = `${resolve(themeOutputDir, ...filePathParts)}${resolvedOptions.extName}`;
@@ -119,42 +120,21 @@ export async function build(options: BuildOptions = {}): Promise<{
                     parser: 'scss'
                 })
             );
-
-            for (let i = 0; i < filePathParts.length; i++) {
-                const indexPath = join(
-                    ...(isDefaultTheme ? [] : [themeName]),
-                    ...filePathParts.slice(0, i),
-                    `index${resolvedOptions.extName}`
-                );
-                const importPath = join(...filePathParts.slice(i, i + 1));
-
-                if (
-                    !indexFiles[indexPath] ||
-                    !indexFiles[indexPath].find((entry) => entry.importPath === importPath)
-                ) {
-                    indexFiles[indexPath] = [
-                        ...(indexFiles[indexPath] ?? []),
-                        {
-                            importPath,
-                            priority: file.priority
-                        }
-                    ];
-                }
-            }
         }
-    }
 
-    Object.keys(indexFiles).forEach((indexFilePath) => {
-        indexFiles[indexFilePath].sort((a, b) => a.priority - b.priority);
-    });
+        const indexFiles = extractIndexFiles(resolvedFiles);
+        for (const indexFile of indexFiles) {
+            const indexFilePath = resolve(
+                themeOutputDir,
+                ...indexFile.path,
+                `index${resolvedOptions.extName}`
+            );
+            const indexFileContents = indexFile.import
+                .map((importPath) => `@import './${importPath}';`)
+                .join('\n');
 
-    for (const indexPath in indexFiles) {
-        const indexFilePath = resolve(resolvedOptions.outputDir, indexPath);
-        const indexFileContents = indexFiles[indexPath]
-            .map(({ importPath }) => `@import './${importPath}';`)
-            .join('\n');
-
-        writeFilePromises.push(writeFile(indexFilePath, indexFileContents, 'utf-8'));
+            writeFilePromises.push(writeFile(indexFilePath, indexFileContents, 'utf-8'));
+        }
     }
 
     const fileContents = await Promise.all(formatFileContentsPromises);

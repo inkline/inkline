@@ -2,13 +2,15 @@ import {
     defineResolver,
     defineResolverValueFn,
     defineResolverVariantFn,
-    createFieldWithOptionalVariantsResolveFn
+    createResolveFn
 } from '../utils';
 import {
     RawTheme,
     RawThemeTransition,
+    RawThemeValueType,
     ResolvedTheme,
     ResolvedThemeTransition,
+    ResolvedThemeValueType,
     Transition
 } from '../types';
 
@@ -39,9 +41,9 @@ export const resolveTransitionVariant = defineResolverVariantFn<
 >(resolveTransition);
 
 export const transitionResolver = defineResolver<
-    RawTheme['transition'],
-    ResolvedTheme['transition']
+    RawThemeValueType<RawTheme['transition']>,
+    ResolvedThemeValueType<ResolvedTheme['transition']>
 >({
-    key: 'transition',
-    resolve: createFieldWithOptionalVariantsResolveFn(resolveTransition, resolveTransitionVariant)
+    key: [/^transition\.[^.]+$/, /.*\.transition$/],
+    resolve: createResolveFn(resolveTransition, resolveTransitionVariant)
 });

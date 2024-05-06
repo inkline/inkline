@@ -2,9 +2,17 @@ import {
     defineResolver,
     defineResolverValueFn,
     defineResolverVariantFn,
-    createFieldWithOptionalVariantsResolveFn
+    createResolveFn
 } from '../utils';
-import { Border, RawTheme, RawThemeBorder, ResolvedTheme, ResolvedThemeBorder } from '../types';
+import {
+    Border,
+    RawTheme,
+    RawThemeBorder,
+    RawThemeValueType,
+    ResolvedTheme,
+    ResolvedThemeBorder,
+    ResolvedThemeValueType
+} from '../types';
 
 export function assignBorder(borderString: string): Border {
     const [width, style, color] = borderString.split(/\s+/);
@@ -36,7 +44,10 @@ export const resolveBorderVariant = defineResolverVariantFn<RawThemeBorder, Reso
     resolveBorder
 );
 
-export const borderResolver = defineResolver<RawTheme['border'], ResolvedTheme['border']>({
-    key: 'border',
-    resolve: createFieldWithOptionalVariantsResolveFn(resolveBorder, resolveBorderVariant)
+export const borderResolver = defineResolver<
+    RawThemeValueType<RawTheme['border']>,
+    ResolvedThemeValueType<ResolvedTheme['border']>
+>({
+    key: [/^border\.[^.]+$/, /.*\.border$/],
+    resolve: createResolveFn(resolveBorder, resolveBorderVariant)
 });

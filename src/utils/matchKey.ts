@@ -1,5 +1,7 @@
-import { minimatch } from 'minimatch';
+export function matchKey(key: string, pattern: string | RegExp): boolean {
+    if (typeof pattern === 'string') {
+        return key === pattern;
+    }
 
-export function matchKey(key: string, pattern: string): boolean {
-    return minimatch(key, pattern);
+    return pattern.test(key);
 }

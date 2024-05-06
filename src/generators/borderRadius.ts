@@ -2,25 +2,28 @@ import {
     codegenCssVariables,
     defineGenerator,
     defineGeneratorValueFn,
-    createFieldWithVariantsGenerateFn,
+    createGenerateFn,
     toKebabCase,
-    getCssVariableNamePreamble,
+    getCssVariablePreamble,
     shouldGenerateAggregateValue,
-    getResolvedPath
+    getCssVariableVariantName,
+    getResolvedCssVariableVariantName,
+    getCssVariablePreamblePath
 } from '../utils';
 import {
     BorderRadiusCorner,
     GeneratorType,
     ResolvedTheme,
-    ResolvedThemeBorderRadius
+    ResolvedThemeBorderRadius,
+    ResolvedThemeValueType
 } from '../types';
 
 export const generateBorderRadius = defineGeneratorValueFn<ResolvedThemeBorderRadius>(
     (borderRadius, meta) => {
-        const path = getResolvedPath(meta);
-        const variableNamePreamble = getCssVariableNamePreamble(path);
-        const variantName = path[path.length - 1];
-        const resolvedVariantName = variantName === 'default' ? '' : `-${variantName}`;
+        const variablePreamblePath = getCssVariablePreamblePath(meta);
+        const variablePreamble = getCssVariablePreamble(variablePreamblePath);
+        const variantName = getCssVariableVariantName(meta);
+        const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
         const corners: BorderRadiusCorner[] = ['topLeft', 'topRight', 'bottomRight', 'bottomLeft'];
 
         const tokens: string[] = [];
@@ -28,7 +31,7 @@ export const generateBorderRadius = defineGeneratorValueFn<ResolvedThemeBorderRa
 
         corners.forEach((corner) => {
             const resolvedCornerName = toKebabCase(corner);
-            const cssVariableName = `${variableNamePreamble}border-${resolvedCornerName}-radius${resolvedVariantName}`;
+            const cssVariableName = `${variablePreamble}border-${resolvedCornerName}-radius${resolvedVariantName}`;
 
             if (typeof borderRadius[corner] !== 'undefined') {
                 tokens.push(codegenCssVariables.set(cssVariableName, borderRadius[corner]));
@@ -39,7 +42,7 @@ export const generateBorderRadius = defineGeneratorValueFn<ResolvedThemeBorderRa
         if (shouldGenerateAggregateValue(meta)) {
             tokens.push(
                 codegenCssVariables.set(
-                    `${variableNamePreamble}border-radius${resolvedVariantName}`,
+                    `${variablePreamble}border-radius${resolvedVariantName}`,
                     cornerCssVariables.join(' ')
                 )
             );
@@ -49,8 +52,10 @@ export const generateBorderRadius = defineGeneratorValueFn<ResolvedThemeBorderRa
     }
 );
 
-export const borderRadiusGenerator = defineGenerator<ResolvedTheme['borderRadius']>({
-    key: 'borderRadius',
+export const borderRadiusGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['borderRadius']>
+>({
+    key: [/^borderRadius\.[^.]+$/, /.*\.borderRadius$/],
     type: GeneratorType.CssVariables,
-    generate: createFieldWithVariantsGenerateFn(generateBorderRadius)
+    generate: createGenerateFn(generateBorderRadius)
 });

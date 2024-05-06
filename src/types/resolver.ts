@@ -7,7 +7,8 @@ export interface ResolverMeta {
 }
 
 export interface Resolver<Raw, Resolved> {
-    key: string;
+    key: string | string[] | RegExp | RegExp[];
+    ignore?: string | string[] | RegExp | RegExp[];
     resolve: (value: Raw, meta: ResolverMeta) => Resolved;
 }
 

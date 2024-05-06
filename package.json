@@ -42,7 +42,6 @@
         "color": "4.2.3",
         "csstype": "3.1",
         "micromustache": "8.0.3",
-        "minimatch": "^9.0.3",
         "pathe": "^1.0.0",
         "prettier": "^3.2.5"
     },
