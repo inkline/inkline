@@ -1,130 +1,3 @@
-@use "../mixins/variants";
-@layer components {
-  .select {
-    @include variants.selector("light") {
-      @include variants.background-h("select", "light");
-      @include variants.background-s("select", "light");
-      @include variants.background-l("select", "light");
-      @include variants.background-a("select", "light");
-      @include variants.border-top-color("select", "light");
-      @include variants.border-right-color("select", "light");
-      @include variants.border-bottom-color("select", "light");
-      @include variants.border-left-color("select", "light");
-      @include variants.color-h("select", "light");
-      @include variants.color-s("select", "light");
-      @include variants.color-l("select", "light");
-      @include variants.color-a("select", "light");
-      @include variants.color-h("select", "light", "option" "disabled");
-      @include variants.color-s("select", "light", "option" "disabled");
-      @include variants.color-l("select", "light", "option" "disabled");
-      @include variants.color-a("select", "light", "option" "disabled");
-      @include variants.background-h("select", "light", "option" "hover");
-      @include variants.background-s("select", "light", "option" "hover");
-      @include variants.background-l("select", "light", "option" "hover");
-      @include variants.background-a("select", "light", "option" "hover");
-      @include variants.background-h("select", "light", "option" "active");
-      @include variants.background-s("select", "light", "option" "active");
-      @include variants.background-l("select", "light", "option" "active");
-      @include variants.background-a("select", "light", "option" "active");
-      @include variants.background-h("select", "light", "header");
-      @include variants.background-s("select", "light", "header");
-      @include variants.background-l("select", "light", "header");
-      @include variants.background-a("select", "light", "header");
-      @include variants.background-h("select", "light", "footer");
-      @include variants.background-s("select", "light", "footer");
-      @include variants.background-l("select", "light", "footer");
-      @include variants.background-a("select", "light", "footer");
-    }
-    @include variants.selector("dark") {
-      @include variants.background-h("select", "dark");
-      @include variants.background-s("select", "dark");
-      @include variants.background-l("select", "dark");
-      @include variants.background-a("select", "dark");
-      @include variants.border-top-color("select", "dark");
-      @include variants.border-right-color("select", "dark");
-      @include variants.border-bottom-color("select", "dark");
-      @include variants.border-left-color("select", "dark");
-      @include variants.color-h("select", "dark");
-      @include variants.color-s("select", "dark");
-      @include variants.color-l("select", "dark");
-      @include variants.color-a("select", "dark");
-      @include variants.color-h("select", "dark", "option" "disabled");
-      @include variants.color-s("select", "dark", "option" "disabled");
-      @include variants.color-l("select", "dark", "option" "disabled");
-      @include variants.color-a("select", "dark", "option" "disabled");
-      @include variants.background-h("select", "dark", "option" "hover");
-      @include variants.background-s("select", "dark", "option" "hover");
-      @include variants.background-l("select", "dark", "option" "hover");
-      @include variants.background-a("select", "dark", "option" "hover");
-      @include variants.background-h("select", "dark", "option" "active");
-      @include variants.background-s("select", "dark", "option" "active");
-      @include variants.background-l("select", "dark", "option" "active");
-      @include variants.background-a("select", "dark", "option" "active");
-      @include variants.background-h("select", "dark", "header");
-      @include variants.background-s("select", "dark", "header");
-      @include variants.background-l("select", "dark", "header");
-      @include variants.background-a("select", "dark", "header");
-      @include variants.background-h("select", "dark", "footer");
-      @include variants.background-s("select", "dark", "footer");
-      @include variants.background-l("select", "dark", "footer");
-      @include variants.background-a("select", "dark", "footer");
-    }
-    @include variants.selector("sm") {
-      @include variants.border-top-left-radius("select", "sm");
-      @include variants.border-top-right-radius("select", "sm");
-      @include variants.border-bottom-right-radius("select", "sm");
-      @include variants.border-bottom-left-radius("select", "sm");
-      @include variants.font-size("select", "sm");
-      @include variants.padding-top("select", "sm");
-      @include variants.padding-right("select", "sm");
-      @include variants.padding-bottom("select", "sm");
-      @include variants.padding-left("select", "sm");
-
-      @include variants.padding-top("select", "sm", "header");
-      @include variants.padding-bottom("select", "sm", "header");
-      @include variants.padding-top("select", "sm", "option");
-      @include variants.padding-bottom("select", "sm", "option");
-      @include variants.padding-top("select", "sm", "footer");
-      @include variants.padding-bottom("select", "sm", "footer");
-    }
-    @include variants.selector("md") {
-      @include variants.border-top-left-radius("select", "md");
-      @include variants.border-top-right-radius("select", "md");
-      @include variants.border-bottom-right-radius("select", "md");
-      @include variants.border-bottom-left-radius("select", "md");
-      @include variants.font-size("select", "md");
-      @include variants.padding-top("select", "md");
-      @include variants.padding-right("select", "md");
-      @include variants.padding-bottom("select", "md");
-      @include variants.padding-left("select", "md");
-
-      @include variants.padding-top("select", "md", "header");
-      @include variants.padding-bottom("select", "md", "header");
-      @include variants.padding-top("select", "md", "option");
-      @include variants.padding-bottom("select", "md", "option");
-      @include variants.padding-top("select", "md", "footer");
-      @include variants.padding-bottom("select", "md", "footer");
-    }
-    @include variants.selector("lg") {
-      @include variants.border-top-left-radius("select", "lg");
-      @include variants.border-top-right-radius("select", "lg");
-      @include variants.border-bottom-right-radius("select", "lg");
-      @include variants.border-bottom-left-radius("select", "lg");
-      @include variants.font-size("select", "lg");
-      @include variants.padding-top("select", "lg");
-      @include variants.padding-right("select", "lg");
-      @include variants.padding-bottom("select", "lg");
-      @include variants.padding-left("select", "lg");
-
-      @include variants.padding-top("select", "lg", "header");
-      @include variants.padding-bottom("select", "lg", "header");
-      @include variants.padding-top("select", "lg", "option");
-      @include variants.padding-bottom("select", "lg", "option");
-      @include variants.padding-top("select", "lg", "footer");
-      @include variants.padding-bottom("select", "lg", "footer");
-    }
-  }
-}
 @layer base {
   :root {
     --select--background--h: var(--color-white--h);
@@ -182,7 +55,9 @@
     --select--error--border-bottom-color: var(--color-danger);
     --select--error--border-left-color: var(--color-danger);
     --select--header--border-bottom-width: 0;
+    --select--body--padding-top: var(--padding-top);
     --select--body--padding-right: 0;
+    --select--body--padding-bottom: var(--padding-bottom);
     --select--body--padding-left: 0;
     --select--footer--border-top-width: 0;
     --select--divider--background--h: var(--text-color-weaker--h);
@@ -284,15 +159,21 @@
     --select--sm--padding-left: var(--padding-left-sm);
     --select--sm--caret--spacing: var(--margin-right-sm);
     --select--sm--header--padding-top: calc(var(--padding-top-sm) * 3 / 4);
+    --select--sm--header--padding-right: var(--padding-right);
     --select--sm--header--padding-bottom: calc(
       var(--padding-bottom-sm) * 3 / 4
     );
+    --select--sm--header--padding-left: var(--padding-left);
     --select--sm--option--padding-top: calc(var(--padding-top-sm) * 0.5);
+    --select--sm--option--padding-right: var(--padding-right);
     --select--sm--option--padding-bottom: calc(var(--padding-bottom-sm) * 0.5);
+    --select--sm--option--padding-left: var(--padding-left);
     --select--sm--footer--padding-top: calc(var(--padding-top-sm) * 3 / 4);
+    --select--sm--footer--padding-right: var(--padding-right);
     --select--sm--footer--padding-bottom: calc(
       var(--padding-bottom-sm) * 3 / 4
     );
+    --select--sm--footer--padding-left: var(--padding-left);
     --select--md--border-top-left-radius: var(--border-top-left-radius-md);
     --select--md--border-top-right-radius: var(--border-top-right-radius-md);
     --select--md--border-bottom-right-radius: var(
@@ -308,11 +189,17 @@
     --select--md--padding-left: var(--padding-left-md);
     --select--md--caret--spacing: var(--margin-right-md);
     --select--md--header--padding-top: var(--padding-top-md);
+    --select--md--header--padding-right: var(--padding-right);
     --select--md--header--padding-bottom: var(--padding-bottom-md);
+    --select--md--header--padding-left: var(--padding-left);
     --select--md--option--padding-top: calc(var(--padding-top-md) * 0.5);
+    --select--md--option--padding-right: var(--padding-right);
     --select--md--option--padding-bottom: calc(var(--padding-bottom-md) * 0.5);
+    --select--md--option--padding-left: var(--padding-left);
     --select--md--footer--padding-top: var(--padding-top-md);
+    --select--md--footer--padding-right: var(--padding-right);
     --select--md--footer--padding-bottom: var(--padding-bottom-md);
+    --select--md--footer--padding-left: var(--padding-left);
     --select--lg--border-top-left-radius: var(--border-top-left-radius-lg);
     --select--lg--border-top-right-radius: var(--border-top-right-radius-lg);
     --select--lg--border-bottom-right-radius: var(
@@ -328,10 +215,16 @@
     --select--lg--padding-left: var(--padding-left-lg);
     --select--lg--caret--spacing: var(--margin-right-lg);
     --select--lg--header--padding-top: var(--padding-top-lg);
+    --select--lg--header--padding-right: var(--padding-right);
     --select--lg--header--padding-bottom: var(--padding-bottom-lg);
+    --select--lg--header--padding-left: var(--padding-left);
     --select--lg--option--padding-top: calc(var(--padding-top-lg) * 0.5);
+    --select--lg--option--padding-right: var(--padding-right);
     --select--lg--option--padding-bottom: calc(var(--padding-bottom-lg) * 0.5);
+    --select--lg--option--padding-left: var(--padding-left);
     --select--lg--footer--padding-top: var(--padding-top-lg);
+    --select--lg--footer--padding-right: var(--padding-right);
     --select--lg--footer--padding-bottom: var(--padding-bottom-lg);
+    --select--lg--footer--padding-left: var(--padding-left);
   }
 }

@@ -1,10 +1,6 @@
 @import './mixins';
-@import './layers';
-@import './scale-ratios';
-@import './size';
-@import './spacing';
-@import './margin';
-@import './padding';
+@import './components';
+@import './elements';
 @import './border';
 @import './border-radius';
 @import './box-shadow';
@@ -13,6 +9,9 @@
 @import './grid';
 @import './transition';
 @import './typography';
-@import './components';
-@import './elements';
-@import './dark';
+@import './margin';
+@import './padding';
+@import './size';
+@import './spacing';
+@import './layers';
+@import './scale-ratios';

@@ -1,11 +1,10 @@
+@use '../functions/properties';
+
 .fade-in-transition-enter-active,
 .fade-in-transition-leave-active {
-    transition-property: var(--fade-in-transition--transition-property, opacity);
-    transition-duration: var(--fade-in-transition--transition-duration, var(--transition-duration));
-    transition-timing-function: var(
-        --fade-in-transition--transition-timing-function,
-        cubic-bezier(0.55, 0, 0.1, 1)
-    );
+    transition-property: properties.generic('transition-property-fade-in');
+    transition-duration: properties.generic('transition-duration-fade-in');
+    transition-timing-function: properties.generic('transition-timing-function-fade-in');
 }
 
 .fade-in-transition-enter-from,

@@ -1,14 +1,10 @@
+@use '../functions/properties';
+
 .zoom-in-center-transition-enter-active,
 .zoom-in-center-transition-leave-active {
-    transition-property: var(--zoom-in-center-transition--transition-property, transform, opacity);
-    transition-duration: var(
-        --zoom-in-center-transition--transition-duration,
-        var(--transition-duration)
-    );
-    transition-timing-function: var(
-        --zoom-in-center-transition--transition-timing-function,
-        cubic-bezier(0.55, 0, 0.1, 1)
-    );
+    transition-property: properties.generic('transition-property-zoom-in-center');
+    transition-duration: properties.generic('transition-duration-zoom-in-center');
+    transition-timing-function: properties.generic('transition-timing-function-zoom-in-center');
     opacity: 1;
     transform-origin: center center;
 }

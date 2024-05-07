@@ -1,23 +1,22 @@
+/**
+ * Table
+ */
+
+@use '../mixins/components';
+
 table {
     caption-side: bottom;
     border-collapse: collapse;
 }
 
 caption {
-    padding-top: var(
-        --caption--padding-top,
-        var(--table--cell--padding-top, var(--padding-top-sm))
-    );
-    padding-bottom: var(
-        --caption--padding-bottom,
-        var(--table--cell--padding-bottom, var(--padding-bottom-sm))
-    );
-    color: var(--caption--color, var(--color-gray-600));
+    @include components.padding('caption');
+    @include components.color('caption');
+
     text-align: left;
 }
 
 th {
-    font-weight: var(--table--th--font-weight, var(--font-weight-bold));
     text-align: inherit;
     text-align: -webkit-match-parent;
 }

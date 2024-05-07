@@ -2,7 +2,9 @@
  * Mark
  */
 
+@use '../mixins/components';
+
 mark {
-    padding: var(--mark--padding, 0.1875rem);
-    background-color: var(--mark--background, var(--color-yellow-100));
+    @include components.background('mark');
+    @include components.padding('mark');
 }

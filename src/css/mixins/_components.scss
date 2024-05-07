@@ -112,6 +112,10 @@
     font-family: properties.font-family($component, $elementOrState, $fallback);
 }
 
+@mixin font-style($component, $elementOrState: null, $fallback: false) {
+    font-style: properties.font-style($component, $elementOrState, $fallback);
+}
+
 @mixin font-size($component, $elementOrState: null, $fallback: false) {
     font-size: properties.font-size($component, $elementOrState, $fallback);
 }
@@ -209,6 +213,14 @@
 
 @mixin text-align($component, $elementOrState: null, $fallback: false) {
     text-align: properties.text-align($component, $elementOrState, $fallback);
+}
+
+@mixin text-decoration($component, $elementOrState: null, $fallback: false) {
+    text-decoration: properties.text-decoration($component, $elementOrState, $fallback);
+}
+
+@mixin text-transform($component, $elementOrState: null, $fallback: false) {
+    text-transform: properties.text-transform($component, $elementOrState, $fallback);
 }
 
 @mixin z-index($component, $elementOrState: null, $fallback: false) {

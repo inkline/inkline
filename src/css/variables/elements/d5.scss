@@ -1,5 +1,14 @@
 @layer base {
   :root {
+    --d5--margin-top: 0;
+    --d5--margin-right: 0;
+    --d5--margin-bottom: var(--margin-bottom);
+    --d5--margin-left: 0;
+    --d5--font-family: var(--font-family-base-secondary);
+    --d5--font-style: var(--font-style-normal);
+    --d5--font-weight: var(--font-weight-bold);
+    --d5--color: inherit;
+    --d5--line-height: 1.2;
     --d5--font-size: calc(
       var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-1)
     );

@@ -1,8 +1,3 @@
-@use "../mixins/variants";
-@layer components {
-  .button-group {
-  }
-}
 @layer base {
   :root {
     --button-group--border-top-left-radius: var(

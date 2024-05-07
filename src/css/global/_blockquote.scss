@@ -1,23 +1,24 @@
+@use '../mixins/components';
+
 /**
  * Blockquote
  */
 
 blockquote {
-    margin: 0 0 var(--blockquote--margin-bottom, var(--margin-bottom));
+    @include components.margin-bottom('blockquote');
 }
 
 .blockquote {
-    font-size: var(--blockquote--font-size, var(--font-size));
+    @include components.font-size('blockquote');
 
     &.-left {
         text-align: left;
 
         &.-bordered {
-            padding-left: var(--blockquote--padding-left, var(--padding-left));
-            border-left: var(
-                --blockquote--border-left,
-                5px var(--border-left-style) var(--border-left-color)
-            );
+            @include components.padding-left('blockquote', 'bordered' 'left');
+            @include components.border-left-width('blockquote', 'bordered' 'left');
+            @include components.border-left-style('blockquote', 'bordered' 'left');
+            @include components.border-left-color('blockquote', 'bordered' 'left');
         }
     }
 
@@ -29,11 +30,10 @@ blockquote {
         text-align: right;
 
         &.-bordered {
-            padding-right: var(--blockquote--padding-right, var(--padding-right));
-            border-right: var(
-                --blockquote--border-right,
-                5px var(--border-right-style) var(--border-right-color)
-            );
+            @include components.padding-right('blockquote', 'bordered' 'left');
+            @include components.border-right-width('blockquote', 'bordered' 'left');
+            @include components.border-right-style('blockquote', 'bordered' 'left');
+            @include components.border-right-color('blockquote', 'bordered' 'left');
         }
     }
 
@@ -43,9 +43,10 @@ blockquote {
 
     > footer,
     > .footer {
+        @include components.color('blockquote', 'footer');
+        @include components.font-size('blockquote', 'footer');
+
         display: block;
-        font-size: 80%;
-        color: var(--blockquote--footer--color, var(--text-color-weak));
 
         &::before {
             content: '\2014 \00A0'; // em dash, nbsp

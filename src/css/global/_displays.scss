@@ -1,75 +1,17 @@
+@use '../mixins/components';
+
 /**
  * Displays
  */
 
 @for $i from 1 through 6 {
     .d#{$i} {
-        margin-top: var(
-            --d#{$i}--margin-top,
-            var(--display--margin-top, var(--heading--margin-top, 0))
-        );
-        margin-bottom: var(
-            --d#{$i}--margin-bottom,
-            var(--display--margin-bottom, var(--heading--margin-bottom, var(--margin-bottom-sm)))
-        );
-        font-family: var(
-            --d#{$i}--font-family,
-            var(
-                --display--font-family,
-                var(--heading--font-family, var(--font-family-base-secondary))
-            )
-        );
-        font-style: var(
-            --d#{$i}--font-style,
-            var(--display--font-style, var(--heading--font-style, normal))
-        );
-        font-weight: var(
-            --d#{$i}--font-weight,
-            var(--display--font-weight, var(--heading--font-weight, var(--font-weight-semibold)))
-        );
-        line-height: var(
-            --d#{$i}--line-height,
-            var(--display--line-height, var(--heading--line-height, 1.2))
-        );
-        color: var(--d#{$i}--color, var(--display--color, var(--heading--color, inherit)));
+        @include components.color('d#{$i}');
+        @include components.font-size('d#{$i}');
+        @include components.font-family('d#{$i}');
+        @include components.font-style('d#{$i}');
+        @include components.font-weight('d#{$i}');
+        @include components.line-height('d#{$i}');
+        @include components.margin('d#{$i}');
     }
-}
-
-.d1 {
-    font-size: var(
-        --d1--font-size,
-        (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-5)))
-    );
-}
-
-.d2 {
-    font-size: var(
-        --d2--font-size,
-        (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-4)))
-    );
-}
-
-.d3 {
-    font-size: var(
-        --d3--font-size,
-        (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-3)))
-    );
-}
-
-.d4 {
-    font-size: var(
-        --d4--font-size,
-        (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-2)))
-    );
-}
-
-.d5 {
-    font-size: var(
-        --d5--font-size,
-        (calc(var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-1)))
-    );
-}
-
-.d6 {
-    font-size: var(--d6--font-size, (calc(var(--font-size) * var(--scale-ratio-pow-5))));
 }

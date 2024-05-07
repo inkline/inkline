@@ -1,11 +1,10 @@
+@use '../functions/properties';
+
 .expand-enter-active,
 .expand-leave-active {
-    transition-property: var(--expand-transition--transition-property, height);
-    transition-duration: var(--expand-transition--transition-duration, var(--transition-duration));
-    transition-timing-function: var(
-        --expand-transition--transition-timing-function,
-        var(--transition-timing-function)
-    );
+    transition-property: properties.generic('transition-property-expand');
+    transition-duration: properties.generic('transition-duration-expand');
+    transition-timing-function: properties.generic('transition-timing-function-expand');
     overflow: hidden;
 }
 

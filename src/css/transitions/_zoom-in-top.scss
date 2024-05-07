@@ -1,14 +1,10 @@
+@use '../functions/properties';
+
 .zoom-in-top-transition-enter-active,
 .zoom-in-top-transition-leave-active {
-    transition-property: var(--zoom-in-top-transition--transition-property, transform, opacity);
-    transition-duration: var(
-        --zoom-in-top-transition--transition-duration,
-        var(--transition-duration)
-    );
-    transition-timing-function: var(
-        --zoom-in-top-transition--transition-timing-function,
-        cubic-bezier(0.23, 1, 0.32, 1)
-    );
+    transition-property: properties.generic('transition-property-zoom-in-top');
+    transition-duration: properties.generic('transition-duration-zoom-in-top');
+    transition-timing-function: properties.generic('transition-timing-function-zoom-in-top');
     opacity: 1;
     transform: scaleY(1);
     transform-origin: center top;

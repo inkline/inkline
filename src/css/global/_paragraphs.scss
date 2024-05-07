@@ -2,17 +2,18 @@
  * Paragraphs
  */
 
+@use '../mixins/components';
+
 p {
-    margin-top: var(--p--margin-top, 0);
-    margin-bottom: var(--p--margin-bottom, var(--margin-bottom));
+    @include components.margin('p');
 }
 
 .lead {
-    font-size: var(--lead--font-size, var(--font-size-lg));
-    font-weight: var(--lead--font-weight, var(--font-weight-light));
+    @include components.font-size('lead');
+    @include components.font-weight('lead');
 }
 
 .initialism {
-    font-size: var(--initialism--font-size, 90%);
-    text-transform: var(--initialism--text-transform, uppercase);
+    @include components.font-size('initialism');
+    @include components.text-transform('initialism');
 }

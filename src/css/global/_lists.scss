@@ -2,32 +2,23 @@
  * Lists
  */
 
+@use '../mixins/components';
+
 ol {
-    padding-left: var(--ol--padding-left, var(--list--padding-left, var(--padding-left-lg)));
-    margin-top: var(--ol--margin-top, var(--list--margin-top, 0));
-    margin-bottom: var(--ol--margin-bottom, var(--list--margin-bottom, var(--margin-bottom)));
+    @include components.padding('ol');
+    @include components.margin('ol');
+
+    li {
+        @include components.margin('ol', 'li');
+    }
 }
 
 ul {
-    padding-left: var(--ul--padding-left, var(--list--padding-left, var(--padding-left-lg)));
-    margin-top: var(--ul--margin-top, var(--list--margin-top, 0));
-    margin-bottom: var(--ul--margin-bottom, var(--list--margin-bottom, var(--margin-bottom)));
-}
+    @include components.padding('ul');
+    @include components.margin('ul');
 
-dl {
-    margin-top: var(--dl--margin-top, var(--list--margin-top, 0));
-    margin-bottom: var(--dl--margin-bottom, var(--list--margin-bottom, var(--margin-bottom)));
-}
-
-ul,
-ol,
-dl,
-.list,
-._list\:unstyled,
-._list\:inline {
-    > .item,
-    > li {
-        margin-bottom: var(--list--item--margin-bottom, var(--margin-bottom-1-2));
+    li {
+        @include components.margin('ul', 'li');
     }
 }
 
@@ -38,13 +29,30 @@ ul ol {
     margin-bottom: 0;
 }
 
-dt {
-    font-weight: var(--dl--dt--font-weight, var(--font-weight-bold));
+dl {
+    @include components.margin('dl');
+
+    dt {
+        @include components.font-weight('dl', 'dt');
+    }
+
+    dd {
+        @include components.margin('dl', 'dd');
+    }
 }
 
-dd {
-    margin-bottom: var(--dl--dd--margin-bottom, var(--margin-bottom-sm));
-    margin-left: var(--dl--dd--margin-left, 0); // Undo browser default
+.list {
+    @include components.padding('list');
+    @include components.margin('list');
+}
+
+.list,
+._list\:unstyled,
+._list\:inline {
+    > .item,
+    > li {
+        @include components.margin('list', 'item');
+    }
 }
 
 .list.-unstyled,
@@ -64,7 +72,7 @@ dd {
         margin-bottom: 0;
 
         &:not(:last-child) {
-            margin-right: var(--list--inline--item--margin-right, var(--margin-right));
+            @include components.margin('list', 'inline' 'item');
         }
     }
 }

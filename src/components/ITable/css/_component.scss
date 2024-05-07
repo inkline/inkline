@@ -40,6 +40,10 @@
             width: 100%;
             max-width: 100%;
 
+            th {
+                @include components.font-weight('table', 'th');
+            }
+
             th,
             td {
                 @include components.background('table');

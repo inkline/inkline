@@ -1,0 +1,14 @@
+@layer base {
+  :root {
+    --link--color--h: var(--color-primary-500--h);
+    --link--color--s: var(--color-primary-500--s);
+    --link--color--l: var(--color-primary-500--l);
+    --link--color--a: var(--color-primary-500--a);
+    --link--text-decoration: none;
+    --link--hover--color--h: var(--color-primary-600--h);
+    --link--hover--color--s: var(--color-primary-600--s);
+    --link--hover--color--l: var(--color-primary-600--l);
+    --link--hover--color--a: var(--color-primary-600--a);
+    --link--hover--text-decoration: underline;
+  }
+}

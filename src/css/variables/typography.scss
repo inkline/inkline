@@ -73,6 +73,7 @@
     --font-size-md: calc(var(--font-size) * var(--size-multiplier-md));
     --font-size-lg: calc(var(--font-size) * var(--size-multiplier-lg));
     --font-size-xl: calc(var(--font-size) * var(--size-multiplier-xl));
+    --font-weight: var(--font-weight-normal);
     --font-weight-extralight: 200;
     --font-weight-light: 300;
     --font-weight-normal: normal;
@@ -81,7 +82,6 @@
     --font-weight-black: 900;
     --font-weight-lighter: lighter;
     --font-weight-bolder: bolder;
-    --font-weight: var(--font-weight-normal);
     --line-height: 1.5;
     --letter-spacing: 0;
     --text-align: left;

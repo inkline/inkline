@@ -1,63 +1,3 @@
-@use "../mixins/variants";
-@layer components {
-  .dropdown-item {
-    @include variants.selector("light") {
-      @include variants.background-h("dropdown-item", "light", "hover");
-      @include variants.background-s("dropdown-item", "light", "hover");
-      @include variants.background-l("dropdown-item", "light", "hover");
-      @include variants.background-a("dropdown-item", "light", "hover");
-      @include variants.background-h("dropdown-item", "light", "focus");
-      @include variants.background-s("dropdown-item", "light", "focus");
-      @include variants.background-l("dropdown-item", "light", "focus");
-      @include variants.background-a("dropdown-item", "light", "focus");
-      @include variants.background-h("dropdown-item", "light", "active");
-      @include variants.background-s("dropdown-item", "light", "active");
-      @include variants.background-l("dropdown-item", "light", "active");
-      @include variants.background-a("dropdown-item", "light", "active");
-    }
-    @include variants.selector("dark") {
-      @include variants.background-h("dropdown-item", "dark", "hover");
-      @include variants.background-s("dropdown-item", "dark", "hover");
-      @include variants.background-l("dropdown-item", "dark", "hover");
-      @include variants.background-a("dropdown-item", "dark", "hover");
-      @include variants.background-h("dropdown-item", "dark", "focus");
-      @include variants.background-s("dropdown-item", "dark", "focus");
-      @include variants.background-l("dropdown-item", "dark", "focus");
-      @include variants.background-a("dropdown-item", "dark", "focus");
-      @include variants.background-h("dropdown-item", "dark", "active");
-      @include variants.background-s("dropdown-item", "dark", "active");
-      @include variants.background-l("dropdown-item", "dark", "active");
-      @include variants.background-a("dropdown-item", "dark", "active");
-    }
-    @include variants.selector("sm") {
-      @include variants.font-size("dropdown-item", "sm");
-      @include variants.margin-right("dropdown-item", "sm");
-      @include variants.margin-left("dropdown-item", "sm");
-      @include variants.padding-top("dropdown-item", "sm");
-      @include variants.padding-right("dropdown-item", "sm");
-      @include variants.padding-bottom("dropdown-item", "sm");
-      @include variants.padding-left("dropdown-item", "sm");
-    }
-    @include variants.selector("md") {
-      @include variants.font-size("dropdown-item", "md");
-      @include variants.margin-right("dropdown-item", "md");
-      @include variants.margin-left("dropdown-item", "md");
-      @include variants.padding-top("dropdown-item", "md");
-      @include variants.padding-right("dropdown-item", "md");
-      @include variants.padding-bottom("dropdown-item", "md");
-      @include variants.padding-left("dropdown-item", "md");
-    }
-    @include variants.selector("lg") {
-      @include variants.font-size("dropdown-item", "lg");
-      @include variants.margin-right("dropdown-item", "lg");
-      @include variants.margin-left("dropdown-item", "lg");
-      @include variants.padding-top("dropdown-item", "lg");
-      @include variants.padding-right("dropdown-item", "lg");
-      @include variants.padding-bottom("dropdown-item", "lg");
-      @include variants.padding-left("dropdown-item", "lg");
-    }
-  }
-}
 @layer base {
   :root {
     --dropdown-item--background: transparent;
@@ -133,21 +73,27 @@
     --dropdown-item--dark--active--background--l: var(--color-dark-tint-100--l);
     --dropdown-item--dark--active--background--a: var(--color-dark-tint-100--a);
     --dropdown-item--sm--font-size: var(--font-size-sm);
+    --dropdown-item--sm--margin-top: var(--margin-top);
     --dropdown-item--sm--margin-right: calc(var(--padding-right-sm) * -1);
+    --dropdown-item--sm--margin-bottom: var(--margin-bottom);
     --dropdown-item--sm--margin-left: calc(var(--padding-left-sm) * -1);
     --dropdown-item--sm--padding-top: calc(var(--padding-top-sm) * 0.5);
     --dropdown-item--sm--padding-right: var(--padding-right-sm);
     --dropdown-item--sm--padding-bottom: calc(var(--padding-bottom-sm) * 0.5);
     --dropdown-item--sm--padding-left: var(--padding-left-sm);
     --dropdown-item--md--font-size: var(--font-size-md);
+    --dropdown-item--md--margin-top: var(--margin-top);
     --dropdown-item--md--margin-right: calc(var(--padding-right-md) * -1);
+    --dropdown-item--md--margin-bottom: var(--margin-bottom);
     --dropdown-item--md--margin-left: calc(var(--padding-left-md) * -1);
     --dropdown-item--md--padding-top: calc(var(--padding-top-md) * 0.5);
     --dropdown-item--md--padding-right: var(--padding-right-md);
     --dropdown-item--md--padding-bottom: calc(var(--padding-bottom-md) * 0.5);
     --dropdown-item--md--padding-left: var(--padding-left-md);
     --dropdown-item--lg--font-size: var(--font-size-lg);
+    --dropdown-item--lg--margin-top: var(--margin-top);
     --dropdown-item--lg--margin-right: calc(var(--padding-right-lg) * -1);
+    --dropdown-item--lg--margin-bottom: var(--margin-bottom);
     --dropdown-item--lg--margin-left: calc(var(--padding-left-lg) * -1);
     --dropdown-item--lg--padding-top: calc(var(--padding-top-lg) * 0.5);
     --dropdown-item--lg--padding-right: var(--padding-right-lg);

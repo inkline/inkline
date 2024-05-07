@@ -439,6 +439,10 @@
     @return _generic-component-property($component, 'font-size', $elementOrState, $fallback);
 }
 
+@function font-style($component, $elementOrState: null, $fallback: false) {
+    @return _generic-component-property($component, 'font-style', $elementOrState, $fallback);
+}
+
 @function font-weight($component, $elementOrState: null, $fallback: false) {
     @return _generic-component-property($component, 'font-weight', $elementOrState, $fallback);
 }
@@ -459,8 +463,8 @@
     @return _generic-component-property($component, 'margin-right', $elementOrState, $fallback);
 }
 
-@function margin-bottom($component, $elementOrState: null) {
-    @return _generic-component-property($component, 'margin-bottom', $elementOrState);
+@function margin-bottom($component, $elementOrState: null, $fallback: false) {
+    @return _generic-component-property($component, 'margin-bottom', $elementOrState, $fallback);
 }
 
 @function margin-left($component, $elementOrState: null, $fallback: false) {
@@ -552,6 +556,14 @@
 
 @function text-align($component, $elementOrState: null, $fallback: false) {
     @return _generic-component-property($component, 'text-align', $elementOrState, $fallback);
+}
+
+@function text-decoration($component, $elementOrState: null, $fallback: false) {
+    @return _generic-component-property($component, 'text-decoration', $elementOrState, $fallback);
+}
+
+@function text-transform($component, $elementOrState: null, $fallback: false) {
+    @return _generic-component-property($component, 'text-transform', $elementOrState, $fallback);
 }
 
 @function z-index($component, $elementOrState: null, $fallback: false) {

@@ -1,0 +1,8 @@
+@layer base {
+  :root {
+    --address--margin-top: 0;
+    --address--margin-right: 0;
+    --address--margin-bottom: var(--margin-bottom);
+    --address--margin-left: 0;
+  }
+}

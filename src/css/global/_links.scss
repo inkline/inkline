@@ -3,13 +3,15 @@
  * @credit https://github.com/twbs/bootstrap/issues/19402
  */
 
+@use '../mixins/components';
+
 a {
-    color: var(--link--color, var(--color-primary-500));
-    text-decoration: var(--link--text-decoration, none);
+    @include components.color('link');
+    @include components.text-decoration('link');
 
     &:hover {
-        color: var(--link--hover--color, var(--color-primary-600));
-        text-decoration: var(--link--hover--text-decoration, underline);
+        @include components.color('link', 'hover', true);
+        @include components.text-decoration('link', 'hover', true);
     }
 }
 
