@@ -1,3 +1,180 @@
+@use "../mixins/variants";
+
+.toggle {
+  @include variants.selector("light") {
+    @include variants.background-h("toggle", "light");
+    @include variants.background-s("toggle", "light");
+    @include variants.background-l("toggle", "light");
+    @include variants.background-a("toggle", "light");
+    @include variants.border-top-color("toggle", "light");
+    @include variants.border-right-color("toggle", "light");
+    @include variants.border-bottom-color("toggle", "light");
+    @include variants.border-left-color("toggle", "light");
+    @include variants.color-h("toggle", "light");
+    @include variants.color-s("toggle", "light");
+    @include variants.color-l("toggle", "light");
+    @include variants.color-a("toggle", "light");
+
+    @include variants.background-h("toggle", "light", "disabled");
+    @include variants.background-s("toggle", "light", "disabled");
+    @include variants.background-l("toggle", "light", "disabled");
+    @include variants.background-a("toggle", "light", "disabled");
+    @include variants.border-top-color("toggle", "light", "disabled");
+    @include variants.border-right-color("toggle", "light", "disabled");
+    @include variants.border-bottom-color("toggle", "light", "disabled");
+    @include variants.border-left-color("toggle", "light", "disabled");
+
+    @include variants.background-h("toggle", "light", "disabled" "indicator");
+    @include variants.background-s("toggle", "light", "disabled" "indicator");
+    @include variants.background-l("toggle", "light", "disabled" "indicator");
+    @include variants.background-a("toggle", "light", "disabled" "indicator");
+
+    @include variants.background-h("toggle", "light", "readonly");
+    @include variants.background-s("toggle", "light", "readonly");
+    @include variants.background-l("toggle", "light", "readonly");
+    @include variants.background-a("toggle", "light", "readonly");
+    @include variants.border-top-color("toggle", "light", "readonly");
+    @include variants.border-right-color("toggle", "light", "readonly");
+    @include variants.border-bottom-color("toggle", "light", "readonly");
+    @include variants.border-left-color("toggle", "light", "readonly");
+
+    @include variants.background-h("toggle", "light", "readonly" "indicator");
+    @include variants.background-s("toggle", "light", "readonly" "indicator");
+    @include variants.background-l("toggle", "light", "readonly" "indicator");
+    @include variants.background-a("toggle", "light", "readonly" "indicator");
+
+    @include variants.background-h("toggle", "light", "checked" "disabled");
+    @include variants.background-s("toggle", "light", "checked" "disabled");
+    @include variants.background-l("toggle", "light", "checked" "disabled");
+    @include variants.background-a("toggle", "light", "checked" "disabled");
+    @include variants.border-top-color("toggle", "light", "checked" "disabled");
+    @include variants.border-right-color(
+      "toggle",
+      "light",
+      "checked" "disabled"
+    );
+    @include variants.border-bottom-color(
+      "toggle",
+      "light",
+      "checked" "disabled"
+    );
+    @include variants.border-left-color(
+      "toggle",
+      "light",
+      "checked" "disabled"
+    );
+
+    @include variants.background-h("toggle", "light", "checked" "readonly");
+    @include variants.background-s("toggle", "light", "checked" "readonly");
+    @include variants.background-l("toggle", "light", "checked" "readonly");
+    @include variants.background-a("toggle", "light", "checked" "readonly");
+    @include variants.border-top-color("toggle", "light", "checked" "readonly");
+    @include variants.border-right-color(
+      "toggle",
+      "light",
+      "checked" "readonly"
+    );
+    @include variants.border-bottom-color(
+      "toggle",
+      "light",
+      "checked" "readonly"
+    );
+    @include variants.border-left-color(
+      "toggle",
+      "light",
+      "checked" "readonly"
+    );
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("toggle", "dark");
+    @include variants.background-s("toggle", "dark");
+    @include variants.background-l("toggle", "dark");
+    @include variants.background-a("toggle", "dark");
+    @include variants.border-top-color("toggle", "dark");
+    @include variants.border-right-color("toggle", "dark");
+    @include variants.border-bottom-color("toggle", "dark");
+    @include variants.border-left-color("toggle", "dark");
+    @include variants.color-h("toggle", "dark");
+    @include variants.color-s("toggle", "dark");
+    @include variants.color-l("toggle", "dark");
+    @include variants.color-a("toggle", "dark");
+
+    @include variants.background-h("toggle", "dark", "disabled");
+    @include variants.background-s("toggle", "dark", "disabled");
+    @include variants.background-l("toggle", "dark", "disabled");
+    @include variants.background-a("toggle", "dark", "disabled");
+    @include variants.border-top-color("toggle", "dark", "disabled");
+    @include variants.border-right-color("toggle", "dark", "disabled");
+    @include variants.border-bottom-color("toggle", "dark", "disabled");
+    @include variants.border-left-color("toggle", "dark", "disabled");
+
+    @include variants.background-h("toggle", "dark", "disabled" "indicator");
+    @include variants.background-s("toggle", "dark", "disabled" "indicator");
+    @include variants.background-l("toggle", "dark", "disabled" "indicator");
+    @include variants.background-a("toggle", "dark", "disabled" "indicator");
+
+    @include variants.background-h("toggle", "dark", "readonly");
+    @include variants.background-s("toggle", "dark", "readonly");
+    @include variants.background-l("toggle", "dark", "readonly");
+    @include variants.background-a("toggle", "dark", "readonly");
+    @include variants.border-top-color("toggle", "dark", "readonly");
+    @include variants.border-right-color("toggle", "dark", "readonly");
+    @include variants.border-bottom-color("toggle", "dark", "readonly");
+    @include variants.border-left-color("toggle", "dark", "readonly");
+
+    @include variants.background-h("toggle", "dark", "readonly" "indicator");
+    @include variants.background-s("toggle", "dark", "readonly" "indicator");
+    @include variants.background-l("toggle", "dark", "readonly" "indicator");
+    @include variants.background-a("toggle", "dark", "readonly" "indicator");
+
+    @include variants.background-h("toggle", "dark", "checked" "disabled");
+    @include variants.background-s("toggle", "dark", "checked" "disabled");
+    @include variants.background-l("toggle", "dark", "checked" "disabled");
+    @include variants.background-a("toggle", "dark", "checked" "disabled");
+
+    @include variants.background-h("toggle", "dark", "checked" "readonly");
+    @include variants.background-s("toggle", "dark", "checked" "readonly");
+    @include variants.background-l("toggle", "dark", "checked" "readonly");
+    @include variants.background-a("toggle", "dark", "checked" "readonly");
+  }
+  @include variants.selector("sm") {
+    @include variants.border-top-left-radius("toggle", "sm");
+    @include variants.border-top-right-radius("toggle", "sm");
+    @include variants.border-bottom-right-radius("toggle", "sm");
+    @include variants.border-bottom-left-radius("toggle", "sm");
+    @include variants.font-size("toggle", "sm");
+    @include variants.width("toggle", "sm");
+    @include variants.height("toggle", "sm");
+
+    @include variants.width("toggle", "sm", "indicator");
+    @include variants.height("toggle", "sm", "indicator");
+  }
+  @include variants.selector("md") {
+    @include variants.border-top-left-radius("toggle", "md");
+    @include variants.border-top-right-radius("toggle", "md");
+    @include variants.border-bottom-right-radius("toggle", "md");
+    @include variants.border-bottom-left-radius("toggle", "md");
+    @include variants.font-size("toggle", "md");
+    @include variants.width("toggle", "md");
+    @include variants.height("toggle", "md");
+
+    @include variants.width("toggle", "md", "indicator");
+    @include variants.height("toggle", "md", "indicator");
+  }
+  @include variants.selector("lg") {
+    @include variants.border-top-left-radius("toggle", "lg");
+    @include variants.border-top-right-radius("toggle", "lg");
+    @include variants.border-bottom-right-radius("toggle", "lg");
+    @include variants.border-bottom-left-radius("toggle", "lg");
+    @include variants.font-size("toggle", "lg");
+    @include variants.width("toggle", "lg");
+    @include variants.height("toggle", "lg");
+
+    @include variants.width("toggle", "lg", "indicator");
+    @include variants.height("toggle", "lg", "indicator");
+  }
+}
+
 @layer base {
   :root {
     --toggle--background--h: var(--color-light-shade-50--h);

@@ -1,3 +1,303 @@
+@use "../mixins/variants";
+
+.modal {
+  @include variants.selector("fullscreen") {
+    @include variants.border-top-left-radius("modal", "fullscreen");
+    @include variants.border-top-right-radius("modal", "fullscreen");
+    @include variants.border-bottom-right-radius("modal", "fullscreen");
+    @include variants.border-bottom-left-radius("modal", "fullscreen");
+  }
+  @include variants.selector("primary") {
+    @include variants.background-h("modal", "primary");
+    @include variants.background-s("modal", "primary");
+    @include variants.background-l("modal", "primary");
+    @include variants.background-a("modal", "primary");
+    @include variants.border-top-color("modal", "primary");
+    @include variants.border-right-color("modal", "primary");
+    @include variants.border-bottom-color("modal", "primary");
+    @include variants.border-left-color("modal", "primary");
+    @include variants.color-h("modal", "primary");
+    @include variants.color-s("modal", "primary");
+    @include variants.color-l("modal", "primary");
+    @include variants.color-a("modal", "primary");
+
+    @include variants.background-h("modal", "primary", "header");
+    @include variants.background-s("modal", "primary", "header");
+    @include variants.background-l("modal", "primary", "header");
+    @include variants.background-a("modal", "primary", "header");
+    @include variants.color-h("modal", "primary", "header");
+    @include variants.color-s("modal", "primary", "header");
+    @include variants.color-l("modal", "primary", "header");
+    @include variants.color-a("modal", "primary", "header");
+
+    @include variants.background-h("modal", "primary", "footer");
+    @include variants.background-s("modal", "primary", "footer");
+    @include variants.background-l("modal", "primary", "footer");
+    @include variants.background-a("modal", "primary", "footer");
+    @include variants.color-h("modal", "primary", "footer");
+    @include variants.color-s("modal", "primary", "footer");
+    @include variants.color-l("modal", "primary", "footer");
+    @include variants.color-a("modal", "primary", "footer");
+  }
+  @include variants.selector("secondary") {
+    @include variants.background-h("modal", "secondary");
+    @include variants.background-s("modal", "secondary");
+    @include variants.background-l("modal", "secondary");
+    @include variants.background-a("modal", "secondary");
+    @include variants.border-top-color("modal", "secondary");
+    @include variants.border-right-color("modal", "secondary");
+    @include variants.border-bottom-color("modal", "secondary");
+    @include variants.border-left-color("modal", "secondary");
+    @include variants.color-h("modal", "secondary");
+    @include variants.color-s("modal", "secondary");
+    @include variants.color-l("modal", "secondary");
+    @include variants.color-a("modal", "secondary");
+
+    @include variants.background-h("modal", "secondary", "header");
+    @include variants.background-s("modal", "secondary", "header");
+    @include variants.background-l("modal", "secondary", "header");
+    @include variants.background-a("modal", "secondary", "header");
+    @include variants.color-h("modal", "secondary", "header");
+    @include variants.color-s("modal", "secondary", "header");
+    @include variants.color-l("modal", "secondary", "header");
+    @include variants.color-a("modal", "secondary", "header");
+
+    @include variants.background-h("modal", "secondary", "footer");
+    @include variants.background-s("modal", "secondary", "footer");
+    @include variants.background-l("modal", "secondary", "footer");
+    @include variants.background-a("modal", "secondary", "footer");
+    @include variants.color-h("modal", "secondary", "footer");
+    @include variants.color-s("modal", "secondary", "footer");
+    @include variants.color-l("modal", "secondary", "footer");
+    @include variants.color-a("modal", "secondary", "footer");
+  }
+  @include variants.selector("info") {
+    @include variants.background-h("modal", "info");
+    @include variants.background-s("modal", "info");
+    @include variants.background-l("modal", "info");
+    @include variants.background-a("modal", "info");
+    @include variants.border-top-color("modal", "info");
+    @include variants.border-right-color("modal", "info");
+    @include variants.border-bottom-color("modal", "info");
+    @include variants.border-left-color("modal", "info");
+    @include variants.color-h("modal", "info");
+    @include variants.color-s("modal", "info");
+    @include variants.color-l("modal", "info");
+    @include variants.color-a("modal", "info");
+
+    @include variants.background-h("modal", "info", "header");
+    @include variants.background-s("modal", "info", "header");
+    @include variants.background-l("modal", "info", "header");
+    @include variants.background-a("modal", "info", "header");
+    @include variants.color-h("modal", "info", "header");
+    @include variants.color-s("modal", "info", "header");
+    @include variants.color-l("modal", "info", "header");
+    @include variants.color-a("modal", "info", "header");
+
+    @include variants.background-h("modal", "info", "footer");
+    @include variants.background-s("modal", "info", "footer");
+    @include variants.background-l("modal", "info", "footer");
+    @include variants.background-a("modal", "info", "footer");
+    @include variants.color-h("modal", "info", "footer");
+    @include variants.color-s("modal", "info", "footer");
+    @include variants.color-l("modal", "info", "footer");
+    @include variants.color-a("modal", "info", "footer");
+  }
+  @include variants.selector("success") {
+    @include variants.background-h("modal", "success");
+    @include variants.background-s("modal", "success");
+    @include variants.background-l("modal", "success");
+    @include variants.background-a("modal", "success");
+    @include variants.border-top-color("modal", "success");
+    @include variants.border-right-color("modal", "success");
+    @include variants.border-bottom-color("modal", "success");
+    @include variants.border-left-color("modal", "success");
+    @include variants.color-h("modal", "success");
+    @include variants.color-s("modal", "success");
+    @include variants.color-l("modal", "success");
+    @include variants.color-a("modal", "success");
+
+    @include variants.background-h("modal", "success", "header");
+    @include variants.background-s("modal", "success", "header");
+    @include variants.background-l("modal", "success", "header");
+    @include variants.background-a("modal", "success", "header");
+    @include variants.color-h("modal", "success", "header");
+    @include variants.color-s("modal", "success", "header");
+    @include variants.color-l("modal", "success", "header");
+    @include variants.color-a("modal", "success", "header");
+
+    @include variants.background-h("modal", "success", "footer");
+    @include variants.background-s("modal", "success", "footer");
+    @include variants.background-l("modal", "success", "footer");
+    @include variants.background-a("modal", "success", "footer");
+    @include variants.color-h("modal", "success", "footer");
+    @include variants.color-s("modal", "success", "footer");
+    @include variants.color-l("modal", "success", "footer");
+    @include variants.color-a("modal", "success", "footer");
+  }
+  @include variants.selector("warning") {
+    @include variants.background-h("modal", "warning");
+    @include variants.background-s("modal", "warning");
+    @include variants.background-l("modal", "warning");
+    @include variants.background-a("modal", "warning");
+    @include variants.border-top-color("modal", "warning");
+    @include variants.border-right-color("modal", "warning");
+    @include variants.border-bottom-color("modal", "warning");
+    @include variants.border-left-color("modal", "warning");
+    @include variants.color-h("modal", "warning");
+    @include variants.color-s("modal", "warning");
+    @include variants.color-l("modal", "warning");
+    @include variants.color-a("modal", "warning");
+
+    @include variants.background-h("modal", "warning", "header");
+    @include variants.background-s("modal", "warning", "header");
+    @include variants.background-l("modal", "warning", "header");
+    @include variants.background-a("modal", "warning", "header");
+    @include variants.color-h("modal", "warning", "header");
+    @include variants.color-s("modal", "warning", "header");
+    @include variants.color-l("modal", "warning", "header");
+    @include variants.color-a("modal", "warning", "header");
+
+    @include variants.background-h("modal", "warning", "footer");
+    @include variants.background-s("modal", "warning", "footer");
+    @include variants.background-l("modal", "warning", "footer");
+    @include variants.background-a("modal", "warning", "footer");
+    @include variants.color-h("modal", "warning", "footer");
+    @include variants.color-s("modal", "warning", "footer");
+    @include variants.color-l("modal", "warning", "footer");
+    @include variants.color-a("modal", "warning", "footer");
+  }
+  @include variants.selector("danger") {
+    @include variants.background-h("modal", "danger");
+    @include variants.background-s("modal", "danger");
+    @include variants.background-l("modal", "danger");
+    @include variants.background-a("modal", "danger");
+    @include variants.border-top-color("modal", "danger");
+    @include variants.border-right-color("modal", "danger");
+    @include variants.border-bottom-color("modal", "danger");
+    @include variants.border-left-color("modal", "danger");
+    @include variants.color-h("modal", "danger");
+    @include variants.color-s("modal", "danger");
+    @include variants.color-l("modal", "danger");
+    @include variants.color-a("modal", "danger");
+
+    @include variants.background-h("modal", "danger", "header");
+    @include variants.background-s("modal", "danger", "header");
+    @include variants.background-l("modal", "danger", "header");
+    @include variants.background-a("modal", "danger", "header");
+    @include variants.color-h("modal", "danger", "header");
+    @include variants.color-s("modal", "danger", "header");
+    @include variants.color-l("modal", "danger", "header");
+    @include variants.color-a("modal", "danger", "header");
+
+    @include variants.background-h("modal", "danger", "footer");
+    @include variants.background-s("modal", "danger", "footer");
+    @include variants.background-l("modal", "danger", "footer");
+    @include variants.background-a("modal", "danger", "footer");
+    @include variants.color-h("modal", "danger", "footer");
+    @include variants.color-s("modal", "danger", "footer");
+    @include variants.color-l("modal", "danger", "footer");
+    @include variants.color-a("modal", "danger", "footer");
+  }
+  @include variants.selector("light") {
+    @include variants.background-h("modal", "light");
+    @include variants.background-s("modal", "light");
+    @include variants.background-l("modal", "light");
+    @include variants.background-a("modal", "light");
+    @include variants.border-top-color("modal", "light");
+    @include variants.border-right-color("modal", "light");
+    @include variants.border-bottom-color("modal", "light");
+    @include variants.border-left-color("modal", "light");
+    @include variants.color-h("modal", "light");
+    @include variants.color-s("modal", "light");
+    @include variants.color-l("modal", "light");
+    @include variants.color-a("modal", "light");
+
+    @include variants.background-h("modal", "light", "header");
+    @include variants.background-s("modal", "light", "header");
+    @include variants.background-l("modal", "light", "header");
+    @include variants.background-a("modal", "light", "header");
+    @include variants.color-h("modal", "light", "header");
+    @include variants.color-s("modal", "light", "header");
+    @include variants.color-l("modal", "light", "header");
+    @include variants.color-a("modal", "light", "header");
+
+    @include variants.background-h("modal", "light", "footer");
+    @include variants.background-s("modal", "light", "footer");
+    @include variants.background-l("modal", "light", "footer");
+    @include variants.background-a("modal", "light", "footer");
+    @include variants.color-h("modal", "light", "footer");
+    @include variants.color-s("modal", "light", "footer");
+    @include variants.color-l("modal", "light", "footer");
+    @include variants.color-a("modal", "light", "footer");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("modal", "dark");
+    @include variants.background-s("modal", "dark");
+    @include variants.background-l("modal", "dark");
+    @include variants.background-a("modal", "dark");
+    @include variants.border-top-color("modal", "dark");
+    @include variants.border-right-color("modal", "dark");
+    @include variants.border-bottom-color("modal", "dark");
+    @include variants.border-left-color("modal", "dark");
+    @include variants.color-h("modal", "dark");
+    @include variants.color-s("modal", "dark");
+    @include variants.color-l("modal", "dark");
+    @include variants.color-a("modal", "dark");
+
+    @include variants.background-h("modal", "dark", "header");
+    @include variants.background-s("modal", "dark", "header");
+    @include variants.background-l("modal", "dark", "header");
+    @include variants.background-a("modal", "dark", "header");
+    @include variants.color-h("modal", "dark", "header");
+    @include variants.color-s("modal", "dark", "header");
+    @include variants.color-l("modal", "dark", "header");
+    @include variants.color-a("modal", "dark", "header");
+
+    @include variants.background-h("modal", "dark", "footer");
+    @include variants.background-s("modal", "dark", "footer");
+    @include variants.background-l("modal", "dark", "footer");
+    @include variants.background-a("modal", "dark", "footer");
+    @include variants.color-h("modal", "dark", "footer");
+    @include variants.color-s("modal", "dark", "footer");
+    @include variants.color-l("modal", "dark", "footer");
+    @include variants.color-a("modal", "dark", "footer");
+  }
+  @include variants.selector("sm") {
+    @include variants.border-top-left-radius("modal", "sm");
+    @include variants.border-top-right-radius("modal", "sm");
+    @include variants.border-bottom-right-radius("modal", "sm");
+    @include variants.border-bottom-left-radius("modal", "sm");
+    @include variants.font-size("modal", "sm");
+    @include variants.padding-top("modal", "sm");
+    @include variants.padding-right("modal", "sm");
+    @include variants.padding-bottom("modal", "sm");
+    @include variants.padding-left("modal", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.border-top-left-radius("modal", "md");
+    @include variants.border-top-right-radius("modal", "md");
+    @include variants.border-bottom-right-radius("modal", "md");
+    @include variants.border-bottom-left-radius("modal", "md");
+    @include variants.font-size("modal", "md");
+    @include variants.padding-top("modal", "md");
+    @include variants.padding-right("modal", "md");
+    @include variants.padding-bottom("modal", "md");
+    @include variants.padding-left("modal", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.border-top-left-radius("modal", "lg");
+    @include variants.border-top-right-radius("modal", "lg");
+    @include variants.border-bottom-right-radius("modal", "lg");
+    @include variants.border-bottom-left-radius("modal", "lg");
+    @include variants.font-size("modal", "lg");
+    @include variants.padding-top("modal", "lg");
+    @include variants.padding-right("modal", "lg");
+    @include variants.padding-bottom("modal", "lg");
+    @include variants.padding-left("modal", "lg");
+  }
+}
+
 @layer base {
   :root {
     --modal--background--h: var(--color-white--h);

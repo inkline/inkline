@@ -1,3 +1,26 @@
+@use "../mixins/variants";
+
+.icon {
+  @include variants.selector("xs") {
+    @include variants.font-size("icon", "xs");
+  }
+  @include variants.selector("sm") {
+    @include variants.font-size("icon", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.font-size("icon", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.font-size("icon", "lg");
+  }
+  @include variants.selector("xl") {
+    @include variants.font-size("icon", "xl");
+  }
+  @include variants.selector("xxl") {
+    @include variants.font-size("icon", "xxl");
+  }
+}
+
 @layer base {
   :root {
     --icon--font-size: var(--font-size);

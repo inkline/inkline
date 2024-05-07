@@ -1,3 +1,35 @@
+@use "../mixins/variants";
+
+.loader {
+  @include variants.selector("light") {
+    @include variants.background-h("loader", "light");
+    @include variants.background-s("loader", "light");
+    @include variants.background-l("loader", "light");
+    @include variants.background-a("loader", "light");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("loader", "dark");
+    @include variants.background-s("loader", "dark");
+    @include variants.background-l("loader", "dark");
+    @include variants.background-a("loader", "dark");
+  }
+  @include variants.selector("primary") {
+    @include variants.background-h("loader", "primary");
+    @include variants.background-s("loader", "primary");
+    @include variants.background-l("loader", "primary");
+    @include variants.background-a("loader", "primary");
+  }
+  @include variants.selector("sm") {
+    @include variants.width("loader", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.width("loader", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.width("loader", "lg");
+  }
+}
+
 @layer base {
   :root {
     --loader--animation-duration: 1.2s;

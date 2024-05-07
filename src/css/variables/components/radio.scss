@@ -1,3 +1,144 @@
+@use "../mixins/variants";
+
+.radio {
+  @include variants.selector("light") {
+    @include variants.background-h("radio", "light");
+    @include variants.background-s("radio", "light");
+    @include variants.background-l("radio", "light");
+    @include variants.background-a("radio", "light");
+    @include variants.border-top-color("radio", "light");
+    @include variants.border-right-color("radio", "light");
+    @include variants.border-bottom-color("radio", "light");
+    @include variants.border-left-color("radio", "light");
+    @include variants.color-h("radio", "light");
+    @include variants.color-s("radio", "light");
+    @include variants.color-l("radio", "light");
+    @include variants.color-a("radio", "light");
+
+    @include variants.background-h("radio", "light", "disabled");
+    @include variants.background-s("radio", "light", "disabled");
+    @include variants.background-l("radio", "light", "disabled");
+    @include variants.background-a("radio", "light", "disabled");
+
+    @include variants.background-h("radio", "light", "checked" "disabled");
+    @include variants.background-s("radio", "light", "checked" "disabled");
+    @include variants.background-l("radio", "light", "checked" "disabled");
+    @include variants.background-a("radio", "light", "checked" "disabled");
+    @include variants.border-top-color("radio", "light", "checked" "disabled");
+    @include variants.border-right-color(
+      "radio",
+      "light",
+      "checked" "disabled"
+    );
+    @include variants.border-bottom-color(
+      "radio",
+      "light",
+      "checked" "disabled"
+    );
+    @include variants.border-left-color("radio", "light", "checked" "disabled");
+    @include variants.color-h("radio", "light", "checked" "disabled");
+    @include variants.color-s("radio", "light", "checked" "disabled");
+    @include variants.color-l("radio", "light", "checked" "disabled");
+    @include variants.color-a("radio", "light", "checked" "disabled");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("radio", "dark");
+    @include variants.background-s("radio", "dark");
+    @include variants.background-l("radio", "dark");
+    @include variants.background-a("radio", "dark");
+    @include variants.border-top-color("radio", "dark");
+    @include variants.border-right-color("radio", "dark");
+    @include variants.border-bottom-color("radio", "dark");
+    @include variants.border-left-color("radio", "dark");
+    @include variants.color-h("radio", "dark");
+    @include variants.color-s("radio", "dark");
+    @include variants.color-l("radio", "dark");
+    @include variants.color-a("radio", "dark");
+
+    @include variants.background-h("radio", "dark", "disabled");
+    @include variants.background-s("radio", "dark", "disabled");
+    @include variants.background-l("radio", "dark", "disabled");
+    @include variants.background-a("radio", "dark", "disabled");
+
+    @include variants.background-h("radio", "dark", "checked" "disabled");
+    @include variants.background-s("radio", "dark", "checked" "disabled");
+    @include variants.background-l("radio", "dark", "checked" "disabled");
+    @include variants.background-a("radio", "dark", "checked" "disabled");
+    @include variants.border-top-color("radio", "dark", "checked" "disabled");
+    @include variants.border-right-color("radio", "dark", "checked" "disabled");
+    @include variants.border-bottom-color(
+      "radio",
+      "dark",
+      "checked" "disabled"
+    );
+    @include variants.border-left-color("radio", "dark", "checked" "disabled");
+    @include variants.color-h("radio", "dark", "checked" "disabled");
+    @include variants.color-s("radio", "dark", "checked" "disabled");
+    @include variants.color-l("radio", "dark", "checked" "disabled");
+    @include variants.color-a("radio", "dark", "checked" "disabled");
+  }
+  @include variants.selector("sm") {
+    @include variants.border-top-left-radius("radio", "sm");
+    @include variants.border-top-right-radius("radio", "sm");
+    @include variants.border-bottom-right-radius("radio", "sm");
+    @include variants.border-bottom-left-radius("radio", "sm");
+    @include variants.font-size("radio", "sm");
+    @include variants.padding-top("radio", "sm");
+    @include variants.padding-right("radio", "sm");
+    @include variants.padding-bottom("radio", "sm");
+    @include variants.padding-left("radio", "sm");
+    @include variants.margin-top("radio", "sm");
+    @include variants.margin-right("radio", "sm");
+    @include variants.margin-bottom("radio", "sm");
+    @include variants.margin-left("radio", "sm");
+    @include variants.width("radio", "sm");
+    @include variants.height("radio", "sm");
+
+    @include variants.width("radio", "sm", "checkmark");
+    @include variants.height("radio", "sm", "checkmark");
+  }
+  @include variants.selector("md") {
+    @include variants.border-top-left-radius("radio", "md");
+    @include variants.border-top-right-radius("radio", "md");
+    @include variants.border-bottom-right-radius("radio", "md");
+    @include variants.border-bottom-left-radius("radio", "md");
+    @include variants.font-size("radio", "md");
+    @include variants.padding-top("radio", "md");
+    @include variants.padding-right("radio", "md");
+    @include variants.padding-bottom("radio", "md");
+    @include variants.padding-left("radio", "md");
+    @include variants.margin-top("radio", "md");
+    @include variants.margin-right("radio", "md");
+    @include variants.margin-bottom("radio", "md");
+    @include variants.margin-left("radio", "md");
+    @include variants.width("radio", "md");
+    @include variants.height("radio", "md");
+
+    @include variants.width("radio", "md", "checkmark");
+    @include variants.height("radio", "md", "checkmark");
+  }
+  @include variants.selector("lg") {
+    @include variants.border-top-left-radius("radio", "lg");
+    @include variants.border-top-right-radius("radio", "lg");
+    @include variants.border-bottom-right-radius("radio", "lg");
+    @include variants.border-bottom-left-radius("radio", "lg");
+    @include variants.font-size("radio", "lg");
+    @include variants.padding-top("radio", "lg");
+    @include variants.padding-right("radio", "lg");
+    @include variants.padding-bottom("radio", "lg");
+    @include variants.padding-left("radio", "lg");
+    @include variants.margin-top("radio", "lg");
+    @include variants.margin-right("radio", "lg");
+    @include variants.margin-bottom("radio", "lg");
+    @include variants.margin-left("radio", "lg");
+    @include variants.width("radio", "lg");
+    @include variants.height("radio", "lg");
+
+    @include variants.width("radio", "lg", "checkmark");
+    @include variants.height("radio", "lg", "checkmark");
+  }
+}
+
 @layer base {
   :root {
     --radio--background--h: var(--color-white--h);

@@ -1,3 +1,8 @@
+@use "../mixins/variants";
+
+.media {
+}
+
 @layer base {
   :root {
     --media--image--margin-top: 0;

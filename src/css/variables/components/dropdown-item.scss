@@ -1,3 +1,73 @@
+@use "../mixins/variants";
+
+.dropdown-item {
+  @include variants.selector("light") {
+    @include variants.background-h("dropdown-item", "light", "hover");
+    @include variants.background-s("dropdown-item", "light", "hover");
+    @include variants.background-l("dropdown-item", "light", "hover");
+    @include variants.background-a("dropdown-item", "light", "hover");
+
+    @include variants.background-h("dropdown-item", "light", "focus");
+    @include variants.background-s("dropdown-item", "light", "focus");
+    @include variants.background-l("dropdown-item", "light", "focus");
+    @include variants.background-a("dropdown-item", "light", "focus");
+
+    @include variants.background-h("dropdown-item", "light", "active");
+    @include variants.background-s("dropdown-item", "light", "active");
+    @include variants.background-l("dropdown-item", "light", "active");
+    @include variants.background-a("dropdown-item", "light", "active");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("dropdown-item", "dark", "hover");
+    @include variants.background-s("dropdown-item", "dark", "hover");
+    @include variants.background-l("dropdown-item", "dark", "hover");
+    @include variants.background-a("dropdown-item", "dark", "hover");
+
+    @include variants.background-h("dropdown-item", "dark", "focus");
+    @include variants.background-s("dropdown-item", "dark", "focus");
+    @include variants.background-l("dropdown-item", "dark", "focus");
+    @include variants.background-a("dropdown-item", "dark", "focus");
+
+    @include variants.background-h("dropdown-item", "dark", "active");
+    @include variants.background-s("dropdown-item", "dark", "active");
+    @include variants.background-l("dropdown-item", "dark", "active");
+    @include variants.background-a("dropdown-item", "dark", "active");
+  }
+  @include variants.selector("sm") {
+    @include variants.font-size("dropdown-item", "sm");
+    @include variants.margin-top("dropdown-item", "sm");
+    @include variants.margin-right("dropdown-item", "sm");
+    @include variants.margin-bottom("dropdown-item", "sm");
+    @include variants.margin-left("dropdown-item", "sm");
+    @include variants.padding-top("dropdown-item", "sm");
+    @include variants.padding-right("dropdown-item", "sm");
+    @include variants.padding-bottom("dropdown-item", "sm");
+    @include variants.padding-left("dropdown-item", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.font-size("dropdown-item", "md");
+    @include variants.margin-top("dropdown-item", "md");
+    @include variants.margin-right("dropdown-item", "md");
+    @include variants.margin-bottom("dropdown-item", "md");
+    @include variants.margin-left("dropdown-item", "md");
+    @include variants.padding-top("dropdown-item", "md");
+    @include variants.padding-right("dropdown-item", "md");
+    @include variants.padding-bottom("dropdown-item", "md");
+    @include variants.padding-left("dropdown-item", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.font-size("dropdown-item", "lg");
+    @include variants.margin-top("dropdown-item", "lg");
+    @include variants.margin-right("dropdown-item", "lg");
+    @include variants.margin-bottom("dropdown-item", "lg");
+    @include variants.margin-left("dropdown-item", "lg");
+    @include variants.padding-top("dropdown-item", "lg");
+    @include variants.padding-right("dropdown-item", "lg");
+    @include variants.padding-bottom("dropdown-item", "lg");
+    @include variants.padding-left("dropdown-item", "lg");
+  }
+}
+
 @layer base {
   :root {
     --dropdown-item--background: transparent;

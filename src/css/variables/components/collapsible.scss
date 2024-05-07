@@ -1,3 +1,94 @@
+@use "../mixins/variants";
+
+.collapsible {
+  @include variants.selector("light") {
+    @include variants.background-h("collapsible", "light");
+    @include variants.background-s("collapsible", "light");
+    @include variants.background-l("collapsible", "light");
+    @include variants.background-a("collapsible", "light");
+    @include variants.border-top-color("collapsible", "light");
+    @include variants.border-right-color("collapsible", "light");
+    @include variants.border-bottom-color("collapsible", "light");
+    @include variants.border-left-color("collapsible", "light");
+    @include variants.color-h("collapsible", "light");
+    @include variants.color-s("collapsible", "light");
+    @include variants.color-l("collapsible", "light");
+    @include variants.color-a("collapsible", "light");
+
+    @include variants.background-h("collapsible", "light", "header");
+    @include variants.background-s("collapsible", "light", "header");
+    @include variants.background-l("collapsible", "light", "header");
+    @include variants.background-a("collapsible", "light", "header");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("collapsible", "dark");
+    @include variants.background-s("collapsible", "dark");
+    @include variants.background-l("collapsible", "dark");
+    @include variants.background-a("collapsible", "dark");
+    @include variants.border-top-color("collapsible", "dark");
+    @include variants.border-right-color("collapsible", "dark");
+    @include variants.border-bottom-color("collapsible", "dark");
+    @include variants.border-left-color("collapsible", "dark");
+    @include variants.color-h("collapsible", "dark");
+    @include variants.color-s("collapsible", "dark");
+    @include variants.color-l("collapsible", "dark");
+    @include variants.color-a("collapsible", "dark");
+
+    @include variants.background-h("collapsible", "dark", "header");
+    @include variants.background-s("collapsible", "dark", "header");
+    @include variants.background-l("collapsible", "dark", "header");
+    @include variants.background-a("collapsible", "dark", "header");
+  }
+  @include variants.selector("transparent") {
+    @include variants.background("collapsible", "transparent");
+    @include variants.border-top-color("collapsible", "transparent");
+    @include variants.border-right-color("collapsible", "transparent");
+    @include variants.border-bottom-color("collapsible", "transparent");
+    @include variants.border-left-color("collapsible", "transparent");
+    @include variants.color("collapsible", "transparent");
+
+    @include variants.background("collapsible", "transparent", "header");
+
+    @include variants.color-h("collapsible", "transparent", "icon");
+    @include variants.color-s("collapsible", "transparent", "icon");
+    @include variants.color-l("collapsible", "transparent", "icon");
+    @include variants.color-a("collapsible", "transparent", "icon");
+  }
+  @include variants.selector("sm") {
+    @include variants.border-top-left-radius("collapsible", "sm");
+    @include variants.border-top-right-radius("collapsible", "sm");
+    @include variants.border-bottom-right-radius("collapsible", "sm");
+    @include variants.border-bottom-left-radius("collapsible", "sm");
+    @include variants.font-size("collapsible", "sm");
+    @include variants.padding-top("collapsible", "sm");
+    @include variants.padding-right("collapsible", "sm");
+    @include variants.padding-bottom("collapsible", "sm");
+    @include variants.padding-left("collapsible", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.border-top-left-radius("collapsible", "md");
+    @include variants.border-top-right-radius("collapsible", "md");
+    @include variants.border-bottom-right-radius("collapsible", "md");
+    @include variants.border-bottom-left-radius("collapsible", "md");
+    @include variants.font-size("collapsible", "md");
+    @include variants.padding-top("collapsible", "md");
+    @include variants.padding-right("collapsible", "md");
+    @include variants.padding-bottom("collapsible", "md");
+    @include variants.padding-left("collapsible", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.border-top-left-radius("collapsible", "lg");
+    @include variants.border-top-right-radius("collapsible", "lg");
+    @include variants.border-bottom-right-radius("collapsible", "lg");
+    @include variants.border-bottom-left-radius("collapsible", "lg");
+    @include variants.font-size("collapsible", "lg");
+    @include variants.padding-top("collapsible", "lg");
+    @include variants.padding-right("collapsible", "lg");
+    @include variants.padding-bottom("collapsible", "lg");
+    @include variants.padding-left("collapsible", "lg");
+  }
+}
+
 @layer base {
   :root {
     --collapsible--background--h: var(--color-white--h);

@@ -1,3 +1,56 @@
+@use "../mixins/variants";
+
+.header {
+  @include variants.selector("primary") {
+    @include variants.background-h("header", "primary");
+    @include variants.background-s("header", "primary");
+    @include variants.background-l("header", "primary");
+    @include variants.background-a("header", "primary");
+    @include variants.color-h("header", "primary");
+    @include variants.color-s("header", "primary");
+    @include variants.color-l("header", "primary");
+    @include variants.color-a("header", "primary");
+  }
+  @include variants.selector("light") {
+    @include variants.background-h("header", "light");
+    @include variants.background-s("header", "light");
+    @include variants.background-l("header", "light");
+    @include variants.background-a("header", "light");
+    @include variants.color-h("header", "light");
+    @include variants.color-s("header", "light");
+    @include variants.color-l("header", "light");
+    @include variants.color-a("header", "light");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("header", "dark");
+    @include variants.background-s("header", "dark");
+    @include variants.background-l("header", "dark");
+    @include variants.background-a("header", "dark");
+    @include variants.color-h("header", "dark");
+    @include variants.color-s("header", "dark");
+    @include variants.color-l("header", "dark");
+    @include variants.color-a("header", "dark");
+  }
+  @include variants.selector("sm") {
+    @include variants.padding-top("header", "sm");
+    @include variants.padding-right("header", "sm");
+    @include variants.padding-bottom("header", "sm");
+    @include variants.padding-left("header", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.padding-top("header", "md");
+    @include variants.padding-right("header", "md");
+    @include variants.padding-bottom("header", "md");
+    @include variants.padding-left("header", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.padding-top("header", "lg");
+    @include variants.padding-right("header", "lg");
+    @include variants.padding-bottom("header", "lg");
+    @include variants.padding-left("header", "lg");
+  }
+}
+
 @layer base {
   :root {
     --header--background--h: var(--color-white--h);

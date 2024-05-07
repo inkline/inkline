@@ -1,3 +1,8 @@
+@use "../mixins/variants";
+
+.expand-transition {
+}
+
 @layer base {
   :root {
     --expand-transition--transition-property: height;

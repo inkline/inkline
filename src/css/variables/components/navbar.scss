@@ -1,3 +1,285 @@
+@use "../mixins/variants";
+
+.navbar {
+  @include variants.selector("light") {
+    @include variants.background-h("navbar", "light");
+    @include variants.background-s("navbar", "light");
+    @include variants.background-l("navbar", "light");
+    @include variants.background-a("navbar", "light");
+    @include variants.border-top-color("navbar", "light");
+    @include variants.border-right-color("navbar", "light");
+    @include variants.border-bottom-color("navbar", "light");
+    @include variants.border-left-color("navbar", "light");
+    @include variants.color-h("navbar", "light");
+    @include variants.color-s("navbar", "light");
+    @include variants.color-l("navbar", "light");
+    @include variants.color-a("navbar", "light");
+
+    @include variants.background-h("navbar", "light", "item");
+    @include variants.background-s("navbar", "light", "item");
+    @include variants.background-l("navbar", "light", "item");
+    @include variants.background-a("navbar", "light", "item");
+
+    @include variants.background-h("navbar", "light", "item" "hover");
+    @include variants.background-s("navbar", "light", "item" "hover");
+    @include variants.background-l("navbar", "light", "item" "hover");
+    @include variants.background-a("navbar", "light", "item" "hover");
+
+    @include variants.background-h("navbar", "light", "item" "focus");
+    @include variants.background-s("navbar", "light", "item" "focus");
+    @include variants.background-l("navbar", "light", "item" "focus");
+    @include variants.background-a("navbar", "light", "item" "focus");
+
+    @include variants.background-h("navbar", "light", "item" "active");
+    @include variants.background-s("navbar", "light", "item" "active");
+    @include variants.background-l("navbar", "light", "item" "active");
+    @include variants.background-a("navbar", "light", "item" "active");
+
+    @include variants.background-h("navbar", "light", "collapsed");
+    @include variants.background-s("navbar", "light", "collapsed");
+    @include variants.background-l("navbar", "light", "collapsed");
+    @include variants.background-a("navbar", "light", "collapsed");
+
+    @include variants.background-h("navbar", "light", "collapsed" "item");
+    @include variants.background-s("navbar", "light", "collapsed" "item");
+    @include variants.background-l("navbar", "light", "collapsed" "item");
+    @include variants.background-a("navbar", "light", "collapsed" "item");
+
+    @include variants.background-h(
+      "navbar",
+      "light",
+      "collapsed" "item" "hover"
+    );
+    @include variants.background-s(
+      "navbar",
+      "light",
+      "collapsed" "item" "hover"
+    );
+    @include variants.background-l(
+      "navbar",
+      "light",
+      "collapsed" "item" "hover"
+    );
+    @include variants.background-a(
+      "navbar",
+      "light",
+      "collapsed" "item" "hover"
+    );
+
+    @include variants.background-h(
+      "navbar",
+      "light",
+      "collapsed" "item" "focus"
+    );
+    @include variants.background-s(
+      "navbar",
+      "light",
+      "collapsed" "item" "focus"
+    );
+    @include variants.background-l(
+      "navbar",
+      "light",
+      "collapsed" "item" "focus"
+    );
+    @include variants.background-a(
+      "navbar",
+      "light",
+      "collapsed" "item" "focus"
+    );
+
+    @include variants.background-h(
+      "navbar",
+      "light",
+      "collapsed" "item" "active"
+    );
+    @include variants.background-s(
+      "navbar",
+      "light",
+      "collapsed" "item" "active"
+    );
+    @include variants.background-l(
+      "navbar",
+      "light",
+      "collapsed" "item" "active"
+    );
+    @include variants.background-a(
+      "navbar",
+      "light",
+      "collapsed" "item" "active"
+    );
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("navbar", "dark");
+    @include variants.background-s("navbar", "dark");
+    @include variants.background-l("navbar", "dark");
+    @include variants.background-a("navbar", "dark");
+    @include variants.border-top-color("navbar", "dark");
+    @include variants.border-right-color("navbar", "dark");
+    @include variants.border-bottom-color("navbar", "dark");
+    @include variants.border-left-color("navbar", "dark");
+    @include variants.color-h("navbar", "dark");
+    @include variants.color-s("navbar", "dark");
+    @include variants.color-l("navbar", "dark");
+    @include variants.color-a("navbar", "dark");
+
+    @include variants.background-h("navbar", "dark", "item");
+    @include variants.background-s("navbar", "dark", "item");
+    @include variants.background-l("navbar", "dark", "item");
+    @include variants.background-a("navbar", "dark", "item");
+
+    @include variants.background-h("navbar", "dark", "item" "hover");
+    @include variants.background-s("navbar", "dark", "item" "hover");
+    @include variants.background-l("navbar", "dark", "item" "hover");
+    @include variants.background-a("navbar", "dark", "item" "hover");
+
+    @include variants.background-h("navbar", "dark", "item" "focus");
+    @include variants.background-s("navbar", "dark", "item" "focus");
+    @include variants.background-l("navbar", "dark", "item" "focus");
+    @include variants.background-a("navbar", "dark", "item" "focus");
+
+    @include variants.background-h("navbar", "dark", "item" "active");
+    @include variants.background-s("navbar", "dark", "item" "active");
+    @include variants.background-l("navbar", "dark", "item" "active");
+    @include variants.background-a("navbar", "dark", "item" "active");
+
+    @include variants.background-h("navbar", "dark", "collapsed");
+    @include variants.background-s("navbar", "dark", "collapsed");
+    @include variants.background-l("navbar", "dark", "collapsed");
+    @include variants.background-a("navbar", "dark", "collapsed");
+
+    @include variants.background-h("navbar", "dark", "collapsed" "item");
+    @include variants.background-s("navbar", "dark", "collapsed" "item");
+    @include variants.background-l("navbar", "dark", "collapsed" "item");
+    @include variants.background-a("navbar", "dark", "collapsed" "item");
+
+    @include variants.background-h(
+      "navbar",
+      "dark",
+      "collapsed" "item" "hover"
+    );
+    @include variants.background-s(
+      "navbar",
+      "dark",
+      "collapsed" "item" "hover"
+    );
+    @include variants.background-l(
+      "navbar",
+      "dark",
+      "collapsed" "item" "hover"
+    );
+    @include variants.background-a(
+      "navbar",
+      "dark",
+      "collapsed" "item" "hover"
+    );
+
+    @include variants.background-h(
+      "navbar",
+      "dark",
+      "collapsed" "item" "focus"
+    );
+    @include variants.background-s(
+      "navbar",
+      "dark",
+      "collapsed" "item" "focus"
+    );
+    @include variants.background-l(
+      "navbar",
+      "dark",
+      "collapsed" "item" "focus"
+    );
+    @include variants.background-a(
+      "navbar",
+      "dark",
+      "collapsed" "item" "focus"
+    );
+
+    @include variants.background-h(
+      "navbar",
+      "dark",
+      "collapsed" "item" "active"
+    );
+    @include variants.background-s(
+      "navbar",
+      "dark",
+      "collapsed" "item" "active"
+    );
+    @include variants.background-l(
+      "navbar",
+      "dark",
+      "collapsed" "item" "active"
+    );
+    @include variants.background-a(
+      "navbar",
+      "dark",
+      "collapsed" "item" "active"
+    );
+  }
+  @include variants.selector("sm") {
+    @include variants.border-top-left-radius("navbar", "sm");
+    @include variants.border-top-right-radius("navbar", "sm");
+    @include variants.border-bottom-right-radius("navbar", "sm");
+    @include variants.border-bottom-left-radius("navbar", "sm");
+    @include variants.font-size("navbar", "sm");
+    @include variants.padding-top("navbar", "sm");
+    @include variants.padding-right("navbar", "sm");
+    @include variants.padding-bottom("navbar", "sm");
+    @include variants.padding-left("navbar", "sm");
+
+    @include variants.padding-top("navbar", "sm", "brand");
+    @include variants.padding-right("navbar", "sm", "brand");
+    @include variants.padding-bottom("navbar", "sm", "brand");
+    @include variants.padding-left("navbar", "sm", "brand");
+
+    @include variants.padding-top("navbar", "sm", "item");
+    @include variants.padding-right("navbar", "sm", "item");
+    @include variants.padding-bottom("navbar", "sm", "item");
+    @include variants.padding-left("navbar", "sm", "item");
+  }
+  @include variants.selector("md") {
+    @include variants.border-top-left-radius("navbar", "md");
+    @include variants.border-top-right-radius("navbar", "md");
+    @include variants.border-bottom-right-radius("navbar", "md");
+    @include variants.border-bottom-left-radius("navbar", "md");
+    @include variants.font-size("navbar", "md");
+    @include variants.padding-top("navbar", "md");
+    @include variants.padding-right("navbar", "md");
+    @include variants.padding-bottom("navbar", "md");
+    @include variants.padding-left("navbar", "md");
+
+    @include variants.padding-top("navbar", "md", "brand");
+    @include variants.padding-right("navbar", "md", "brand");
+    @include variants.padding-bottom("navbar", "md", "brand");
+    @include variants.padding-left("navbar", "md", "brand");
+
+    @include variants.padding-top("navbar", "md", "item");
+    @include variants.padding-right("navbar", "md", "item");
+    @include variants.padding-bottom("navbar", "md", "item");
+    @include variants.padding-left("navbar", "md", "item");
+  }
+  @include variants.selector("lg") {
+    @include variants.border-top-left-radius("navbar", "lg");
+    @include variants.border-top-right-radius("navbar", "lg");
+    @include variants.border-bottom-right-radius("navbar", "lg");
+    @include variants.border-bottom-left-radius("navbar", "lg");
+    @include variants.font-size("navbar", "lg");
+    @include variants.padding-top("navbar", "lg");
+    @include variants.padding-right("navbar", "lg");
+    @include variants.padding-bottom("navbar", "lg");
+    @include variants.padding-left("navbar", "lg");
+
+    @include variants.padding-top("navbar", "lg", "brand");
+    @include variants.padding-right("navbar", "lg", "brand");
+    @include variants.padding-bottom("navbar", "lg", "brand");
+    @include variants.padding-left("navbar", "lg", "brand");
+
+    @include variants.padding-top("navbar", "lg", "item");
+    @include variants.padding-right("navbar", "lg", "item");
+    @include variants.padding-bottom("navbar", "lg", "item");
+    @include variants.padding-left("navbar", "lg", "item");
+  }
+}
+
 @layer base {
   :root {
     --navbar--background--h: var(--color-white--h);

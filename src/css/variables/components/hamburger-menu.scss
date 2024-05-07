@@ -1,3 +1,56 @@
+@use "../mixins/variants";
+
+.hamburger-menu {
+  @include variants.selector("light") {
+    @include variants.background-h("hamburger-menu", "light");
+    @include variants.background-s("hamburger-menu", "light");
+    @include variants.background-l("hamburger-menu", "light");
+    @include variants.background-a("hamburger-menu", "light");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("hamburger-menu", "dark");
+    @include variants.background-s("hamburger-menu", "dark");
+    @include variants.background-l("hamburger-menu", "dark");
+    @include variants.background-a("hamburger-menu", "dark");
+  }
+  @include variants.selector("sm") {
+    @include variants.width("hamburger-menu", "sm");
+    @include variants.height("hamburger-menu", "sm");
+
+    @include variants.width("hamburger-menu", "sm", "bar");
+    @include variants.height("hamburger-menu", "sm", "bar");
+
+    @include variants.border-top-left-radius("hamburger-menu", "sm", "bar");
+    @include variants.border-top-right-radius("hamburger-menu", "sm", "bar");
+    @include variants.border-bottom-right-radius("hamburger-menu", "sm", "bar");
+    @include variants.border-bottom-left-radius("hamburger-menu", "sm", "bar");
+  }
+  @include variants.selector("md") {
+    @include variants.width("hamburger-menu", "md");
+    @include variants.height("hamburger-menu", "md");
+
+    @include variants.width("hamburger-menu", "md", "bar");
+    @include variants.height("hamburger-menu", "md", "bar");
+
+    @include variants.border-top-left-radius("hamburger-menu", "md", "bar");
+    @include variants.border-top-right-radius("hamburger-menu", "md", "bar");
+    @include variants.border-bottom-right-radius("hamburger-menu", "md", "bar");
+    @include variants.border-bottom-left-radius("hamburger-menu", "md", "bar");
+  }
+  @include variants.selector("lg") {
+    @include variants.width("hamburger-menu", "lg");
+    @include variants.height("hamburger-menu", "lg");
+
+    @include variants.width("hamburger-menu", "lg", "bar");
+    @include variants.height("hamburger-menu", "lg", "bar");
+
+    @include variants.border-top-left-radius("hamburger-menu", "lg", "bar");
+    @include variants.border-top-right-radius("hamburger-menu", "lg", "bar");
+    @include variants.border-bottom-right-radius("hamburger-menu", "lg", "bar");
+    @include variants.border-bottom-left-radius("hamburger-menu", "lg", "bar");
+  }
+}
+
 @layer base {
   :root {
     --hamburger-menu--padding-top: 0;

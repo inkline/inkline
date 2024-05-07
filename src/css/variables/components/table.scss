@@ -1,3 +1,212 @@
+@use "../mixins/variants";
+
+.table {
+  @include variants.selector("bordered") {
+    @include variants.border-top-width("table", "bordered");
+    @include variants.border-right-width("table", "bordered");
+    @include variants.border-bottom-width("table", "bordered");
+    @include variants.border-left-width("table", "bordered");
+  }
+  @include variants.selector("condensed") {
+    @include variants.padding-top("table", "condensed");
+    @include variants.padding-right("table", "condensed");
+    @include variants.padding-bottom("table", "condensed");
+    @include variants.padding-left("table", "condensed");
+  }
+  @include variants.selector("primary") {
+    @include variants.background-h("table", "primary");
+    @include variants.background-s("table", "primary");
+    @include variants.background-l("table", "primary");
+    @include variants.background-a("table", "primary");
+    @include variants.border-top-color("table", "primary");
+    @include variants.border-right-color("table", "primary");
+    @include variants.border-bottom-color("table", "primary");
+    @include variants.border-left-color("table", "primary");
+    @include variants.color-h("table", "primary");
+    @include variants.color-s("table", "primary");
+    @include variants.color-l("table", "primary");
+    @include variants.color-a("table", "primary");
+
+    @include variants.background-h("table", "primary", "striped");
+    @include variants.background-s("table", "primary", "striped");
+    @include variants.background-l("table", "primary", "striped");
+    @include variants.background-a("table", "primary", "striped");
+
+    @include variants.background-h("table", "primary", "hover");
+    @include variants.background-s("table", "primary", "hover");
+    @include variants.background-l("table", "primary", "hover");
+    @include variants.background-a("table", "primary", "hover");
+  }
+  @include variants.selector("secondary") {
+    @include variants.background-h("table", "secondary");
+    @include variants.background-s("table", "secondary");
+    @include variants.background-l("table", "secondary");
+    @include variants.background-a("table", "secondary");
+    @include variants.border-top-color("table", "secondary");
+    @include variants.border-right-color("table", "secondary");
+    @include variants.border-bottom-color("table", "secondary");
+    @include variants.border-left-color("table", "secondary");
+    @include variants.color-h("table", "secondary");
+    @include variants.color-s("table", "secondary");
+    @include variants.color-l("table", "secondary");
+    @include variants.color-a("table", "secondary");
+
+    @include variants.background-h("table", "secondary", "striped");
+    @include variants.background-s("table", "secondary", "striped");
+    @include variants.background-l("table", "secondary", "striped");
+    @include variants.background-a("table", "secondary", "striped");
+
+    @include variants.background-h("table", "secondary", "hover");
+    @include variants.background-s("table", "secondary", "hover");
+    @include variants.background-l("table", "secondary", "hover");
+    @include variants.background-a("table", "secondary", "hover");
+  }
+  @include variants.selector("info") {
+    @include variants.background-h("table", "info");
+    @include variants.background-s("table", "info");
+    @include variants.background-l("table", "info");
+    @include variants.background-a("table", "info");
+    @include variants.border-top-color("table", "info");
+    @include variants.border-right-color("table", "info");
+    @include variants.border-bottom-color("table", "info");
+    @include variants.border-left-color("table", "info");
+    @include variants.color-h("table", "info");
+    @include variants.color-s("table", "info");
+    @include variants.color-l("table", "info");
+    @include variants.color-a("table", "info");
+
+    @include variants.background-h("table", "info", "striped");
+    @include variants.background-s("table", "info", "striped");
+    @include variants.background-l("table", "info", "striped");
+    @include variants.background-a("table", "info", "striped");
+
+    @include variants.background-h("table", "info", "hover");
+    @include variants.background-s("table", "info", "hover");
+    @include variants.background-l("table", "info", "hover");
+    @include variants.background-a("table", "info", "hover");
+  }
+  @include variants.selector("success") {
+    @include variants.background-h("table", "success");
+    @include variants.background-s("table", "success");
+    @include variants.background-l("table", "success");
+    @include variants.background-a("table", "success");
+    @include variants.border-top-color("table", "success");
+    @include variants.border-right-color("table", "success");
+    @include variants.border-bottom-color("table", "success");
+    @include variants.border-left-color("table", "success");
+    @include variants.color-h("table", "success");
+    @include variants.color-s("table", "success");
+    @include variants.color-l("table", "success");
+    @include variants.color-a("table", "success");
+
+    @include variants.background-h("table", "success", "striped");
+    @include variants.background-s("table", "success", "striped");
+    @include variants.background-l("table", "success", "striped");
+    @include variants.background-a("table", "success", "striped");
+
+    @include variants.background-h("table", "success", "hover");
+    @include variants.background-s("table", "success", "hover");
+    @include variants.background-l("table", "success", "hover");
+    @include variants.background-a("table", "success", "hover");
+  }
+  @include variants.selector("warning") {
+    @include variants.background-h("table", "warning");
+    @include variants.background-s("table", "warning");
+    @include variants.background-l("table", "warning");
+    @include variants.background-a("table", "warning");
+    @include variants.border-top-color("table", "warning");
+    @include variants.border-right-color("table", "warning");
+    @include variants.border-bottom-color("table", "warning");
+    @include variants.border-left-color("table", "warning");
+    @include variants.color-h("table", "warning");
+    @include variants.color-s("table", "warning");
+    @include variants.color-l("table", "warning");
+    @include variants.color-a("table", "warning");
+
+    @include variants.background-h("table", "warning", "striped");
+    @include variants.background-s("table", "warning", "striped");
+    @include variants.background-l("table", "warning", "striped");
+    @include variants.background-a("table", "warning", "striped");
+
+    @include variants.background-h("table", "warning", "hover");
+    @include variants.background-s("table", "warning", "hover");
+    @include variants.background-l("table", "warning", "hover");
+    @include variants.background-a("table", "warning", "hover");
+  }
+  @include variants.selector("danger") {
+    @include variants.background-h("table", "danger");
+    @include variants.background-s("table", "danger");
+    @include variants.background-l("table", "danger");
+    @include variants.background-a("table", "danger");
+    @include variants.border-top-color("table", "danger");
+    @include variants.border-right-color("table", "danger");
+    @include variants.border-bottom-color("table", "danger");
+    @include variants.border-left-color("table", "danger");
+    @include variants.color-h("table", "danger");
+    @include variants.color-s("table", "danger");
+    @include variants.color-l("table", "danger");
+    @include variants.color-a("table", "danger");
+
+    @include variants.background-h("table", "danger", "striped");
+    @include variants.background-s("table", "danger", "striped");
+    @include variants.background-l("table", "danger", "striped");
+    @include variants.background-a("table", "danger", "striped");
+
+    @include variants.background-h("table", "danger", "hover");
+    @include variants.background-s("table", "danger", "hover");
+    @include variants.background-l("table", "danger", "hover");
+    @include variants.background-a("table", "danger", "hover");
+  }
+  @include variants.selector("light") {
+    @include variants.background-h("table", "light");
+    @include variants.background-s("table", "light");
+    @include variants.background-l("table", "light");
+    @include variants.background-a("table", "light");
+    @include variants.border-top-color("table", "light");
+    @include variants.border-right-color("table", "light");
+    @include variants.border-bottom-color("table", "light");
+    @include variants.border-left-color("table", "light");
+    @include variants.color-h("table", "light");
+    @include variants.color-s("table", "light");
+    @include variants.color-l("table", "light");
+    @include variants.color-a("table", "light");
+
+    @include variants.background-h("table", "light", "striped");
+    @include variants.background-s("table", "light", "striped");
+    @include variants.background-l("table", "light", "striped");
+    @include variants.background-a("table", "light", "striped");
+
+    @include variants.background-h("table", "light", "hover");
+    @include variants.background-s("table", "light", "hover");
+    @include variants.background-l("table", "light", "hover");
+    @include variants.background-a("table", "light", "hover");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("table", "dark");
+    @include variants.background-s("table", "dark");
+    @include variants.background-l("table", "dark");
+    @include variants.background-a("table", "dark");
+    @include variants.border-top-color("table", "dark");
+    @include variants.border-right-color("table", "dark");
+    @include variants.border-bottom-color("table", "dark");
+    @include variants.border-left-color("table", "dark");
+    @include variants.color-h("table", "dark");
+    @include variants.color-s("table", "dark");
+    @include variants.color-l("table", "dark");
+    @include variants.color-a("table", "dark");
+
+    @include variants.background-h("table", "dark", "striped");
+    @include variants.background-s("table", "dark", "striped");
+    @include variants.background-l("table", "dark", "striped");
+    @include variants.background-a("table", "dark", "striped");
+
+    @include variants.background-h("table", "dark", "hover");
+    @include variants.background-s("table", "dark", "hover");
+    @include variants.background-l("table", "dark", "hover");
+    @include variants.background-a("table", "dark", "hover");
+  }
+}
+
 @layer base {
   :root {
     --table--background--h: var(--color-white--h);

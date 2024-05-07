@@ -1,3 +1,8 @@
+@use "../mixins/variants";
+
+.layout-aside {
+}
+
 @layer base {
   :root {
     --layout-aside--width: 320px;

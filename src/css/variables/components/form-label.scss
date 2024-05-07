@@ -1,3 +1,17 @@
+@use "../mixins/variants";
+
+.form-label {
+  @include variants.selector("sm") {
+    @include variants.font-size("form-label", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.font-size("form-label", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.font-size("form-label", "lg");
+  }
+}
+
 @layer base {
   :root {
     --form-label--font-size: var(--font-size);

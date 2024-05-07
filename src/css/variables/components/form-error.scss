@@ -1,3 +1,8 @@
+@use "../mixins/variants";
+
+.form-error {
+}
+
 @layer base {
   :root {
     --form-error--color--h: var(--color-danger--h);
