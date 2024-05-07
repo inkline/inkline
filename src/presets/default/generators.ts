@@ -8,6 +8,7 @@ import {
     breakpointsMixinsGenerator,
     colorGenerator,
     colorsGenerator,
+    componentVariantsGenerator,
     gridColumnsMixinsGenerator,
     gridGutterGenerator,
     gridContainerGenerator,
@@ -31,6 +32,7 @@ import {
 } from '../../generators';
 
 export const defaultGenerators: Generator<any>[] = [
+    componentVariantsGenerator,
     animationGenerator,
     borderGenerator,
     borderRadiusGenerator,

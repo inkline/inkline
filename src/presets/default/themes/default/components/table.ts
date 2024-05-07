@@ -55,6 +55,9 @@ export const table: RawTheme['components']['table'] = {
         },
         hover: {
             background: 'var(--color-light)'
+        },
+        th: {
+            fontWeight: 'var(--font-weight-bold)'
         }
     },
     bordered: {

@@ -181,8 +181,9 @@ export function applyChunkGenerators<ResolvedValue extends Record<string, any> =
     options: ApplyOptions = { multiple: true, allowGenericGenerator: true }
 ): GeneratorChunk[] {
     const chunks: GeneratorChunk[] = [];
+    const sortedKeys = getSortedVariantsFieldKeys(object);
 
-    getSortedVariantsFieldKeys(object).forEach((key) => {
+    sortedKeys.forEach((key) => {
         const value = object[key];
         if (key.startsWith('$')) {
             return;
@@ -190,7 +191,8 @@ export function applyChunkGenerators<ResolvedValue extends Record<string, any> =
 
         const currentPath = [...meta.path, key];
         const generators = getMatchingTransformers(meta.generators, currentPath);
-        const allowGenericGenerator = options.allowGenericGenerator && generators.length === 0;
+        const allowGenericGenerator =
+            options.allowGenericGenerator && (generators.length === 0 || generators[0].sideEffects);
 
         if (generators.length > 0) {
             (options.multiple ? generators : generators.slice(0, 1)).forEach((generator) => {

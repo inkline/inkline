@@ -3,6 +3,7 @@ export * from './border';
 export * from './borderRadius';
 export * from './boxShadow';
 export * from './breakpoints';
+export * from './components';
 export * from './colors';
 export * from './generic';
 export * from './grid';

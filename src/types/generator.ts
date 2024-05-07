@@ -26,6 +26,7 @@ export interface Generator<Resolved> {
     ignore?: string | string[] | RegExp | RegExp[];
     type: GeneratorType;
     priority?: GeneratorPriority;
+    sideEffects?: boolean;
     generate: (value: Resolved, meta: GeneratorMeta) => string[];
 }
 
