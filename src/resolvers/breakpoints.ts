@@ -1,18 +1,31 @@
-import { parseValue } from '../helpers';
-import { ResolvedTheme, Resolver, Theme } from '../types';
+import {
+    defineResolver,
+    defineResolverValueFn,
+    defineResolverVariantFn,
+    createResolveFn
+} from '../utils';
+import {
+    RawTheme,
+    RawThemeBreakpoint,
+    RawThemeValueType,
+    ResolvedTheme,
+    ResolvedThemeBreakpoint,
+    ResolvedThemeValueType
+} from '../types';
 
-export const breakpointsResolver: Resolver<
-    Theme['breakpoints'][string],
-    ResolvedTheme['breakpoints'][string]
-> = {
-    name: 'breakpoints',
-    test: /(.*)breakpoints\.([\w-]+)$/,
-    skip: /^variants/,
-    set: '$1breakpoints.$2',
-    apply: (context) => {
-        const value = parseValue(context);
-        return typeof value === 'string' ? value : `${value}px`;
-    }
-};
+export const resolveBreakpoint = defineResolverValueFn<RawThemeBreakpoint, ResolvedThemeBreakpoint>(
+    (breakpoint) => breakpoint
+);
 
-export const breakpointsResolvers = [breakpointsResolver];
+export const resolveBreakpointVariant = defineResolverVariantFn<
+    RawThemeBreakpoint,
+    ResolvedThemeBreakpoint
+>(resolveBreakpoint);
+
+export const breakpointsResolver = defineResolver<
+    RawThemeValueType<RawTheme['breakpoints']>,
+    ResolvedThemeValueType<ResolvedTheme['breakpoints']>
+>({
+    key: /^breakpoints\.[^.]+$/,
+    resolve: createResolveFn(resolveBreakpoint, resolveBreakpointVariant)
+});

@@ -1,93 +1,59 @@
-import { Generator, ResolvedTheme } from '../types';
-import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
-import { codegenSetCSSVariable } from '../helpers';
+import {
+    codegenBreakpoints,
+    codegenCssVariables,
+    createGenerateFn,
+    defineGenerator,
+    defineGeneratorValueFn,
+    getCssVariableVariantName,
+    toUnitValue
+} from '../utils';
+import {
+    GeneratorPriority,
+    GeneratorType,
+    ResolvedTheme,
+    ResolvedThemeBreakpoint,
+    ResolvedThemeValueType
+} from '../types';
 
-export const breakpointsGenerator: Generator<ResolvedTheme['breakpoints']> = {
-    name: 'breakpoints',
-    location: 'root',
-    test: /(.*)breakpoints$/,
-    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
-    apply: ({ value }) => {
-        return ['/**', ' * Breakpoint variables', ' */'].concat(
-            Object.entries(value).map(([key, value]) => {
-                return codegenSetCSSVariable(`breakpoint-${key}`, value);
-            })
-        );
-    }
-};
-
-const breakpointCodegen = {
-    css: {
-        down: (key: string, nextUnitValue: string, isLast = false) =>
-            isLast ? '' : `@custom-media --breakpoint-${key}-down (max-width: ${nextUnitValue});`,
-        up: (key: string, unitValue: string, isFirst = false) =>
-            isFirst ? '' : `@custom-media --breakpoint-${key}-up (min-width: ${unitValue});`,
-        match: (key: string, unitValue: string, nextUnitValue: string) =>
-            `@custom-media --breakpoint-${key} (min-width: ${unitValue})${
-                nextUnitValue ? ` and (max-width: ${nextUnitValue})` : ''
-            };`
-    },
-    scss: {
-        down: (key: string, nextUnitValue: string, isLast = false) =>
-            `@mixin breakpoint-${key}-down { ${
-                isLast
-                    ? '@content;'
-                    : `@media screen and (max-width: ${nextUnitValue}) { @content; }`
-            } }`,
-        up: (key: string, unitValue: string, isFirst = false) =>
-            `@mixin breakpoint-${key}-up { ${
-                isFirst ? '@content;' : `@media screen and (min-width: ${unitValue}) { @content; }`
-            } }`,
-        match: (key: string, unitValue: string, nextUnitValue: string) =>
-            `@mixin breakpoint-${key} { @media screen and (min-width: ${unitValue})${
-                nextUnitValue ? ` and (max-width: ${nextUnitValue})` : ''
-            } { @content; }}`,
-        list: (breakpoints: string[], columns: number) => [
-            `$columns: ${columns} !default;`,
-            `$breakpoint-keys: (${breakpoints
-                .map((breakpoint) => `'${breakpoint}'`)
-                .join(', ')}) !default;`
-        ],
-        aggregate: (type: string, breakpoints: string[]) => {
-            const suffix = type ? `-${type}` : '';
-            const indent = '    ';
-
-            return `\n@mixin breakpoint${suffix}($key) {\n${indent}${breakpoints
-                .map(
-                    (breakpoint, index) =>
-                        `@${
-                            index !== 0 ? 'else ' : ''
-                        }if $key == '${breakpoint}' { @include breakpoint-${breakpoint}${suffix} { @content; } }`
-                )
-                .join(`\n${indent}`)}\n${indent}@else { @content; }\n}`;
+export const generateBreakpoint = defineGeneratorValueFn<ResolvedThemeBreakpoint>(
+    (breakpoint, meta) => {
+        const variantName = getCssVariableVariantName(meta);
+        if (variantName === 'default') {
+            return [];
         }
+
+        return [codegenCssVariables.set(`breakpoint-${variantName}`, toUnitValue(breakpoint))];
     }
-};
+);
 
-export const breakpointsMixinsGenerator: Generator<ResolvedTheme['breakpoints']> = {
-    name: 'mixins',
-    location: 'default',
-    test: /(.*)breakpoints$/,
-    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
-    apply: ({ config, theme, value }) => {
-        const pairs = Object.entries(value).sort((a, b) => {
-            return parseInt(a[1], 10) - parseInt(b[1], 10);
-        });
-        const language = ['.css', '.pcss'].includes(config.buildOptions.extName as string)
-            ? 'css'
-            : 'scss';
+export const breakpointsGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['breakpoints']>
+>({
+    key: /^breakpoints\.[^.]+$/,
+    type: GeneratorType.CssVariables,
+    generate: createGenerateFn(generateBreakpoint)
+});
 
-        const breakpoints = Object.keys(theme.breakpoints);
-        const columns = theme.elements.grid.columns;
+export const generateBreakpointMixins = defineGeneratorValueFn<ResolvedTheme['breakpoints']>(
+    (rawBreakpoints, meta) => {
+        const lines = [];
+        const { default: _, ...breakpoints } = rawBreakpoints;
 
-        const result = ['/**', ' * Breakpoint mixins', ' */'];
+        const breakpointKeys = Object.keys(breakpoints).filter((key) => !key.startsWith('$'));
+        const breakpointPairs = Object.entries(breakpoints)
+            .filter(([key]) => !key.startsWith('$'))
+            .sort((a, b) => {
+                return parseInt(a[1] as string, 10) - parseInt(b[1] as string, 10);
+            });
 
-        result.push(
-            ...pairs
+        lines.push(
+            ...breakpointPairs
                 .map(([key, value], index) => {
                     const isFirst = index === 0;
-                    const isLast = index === pairs.length - 1;
-                    const nextValue: string | number = isLast ? Infinity : pairs[index + 1][1];
+                    const isLast = index === breakpointPairs.length - 1;
+                    const nextValue: string | number = isLast
+                        ? Infinity
+                        : breakpointPairs[index + 1][1];
 
                     let nextUnitValue;
                     if (typeof nextValue === 'string') {
@@ -95,20 +61,16 @@ export const breakpointsMixinsGenerator: Generator<ResolvedTheme['breakpoints']>
                             nextValue as string
                         ).replace(/^\d+/, '')}`;
                     } else {
-                        nextUnitValue = `${nextValue - 0.01}px`;
+                        nextUnitValue = toUnitValue(nextValue - 0.01);
                     }
-                    const unitValue = typeof value === 'string' ? value : `${value}px`;
+                    const unitValue = toUnitValue(value);
 
                     const rules: string[] = [];
 
-                    rules.push(breakpointCodegen[language].down(key, nextUnitValue, isLast));
-                    rules.push(breakpointCodegen[language].up(key, unitValue, isFirst));
+                    rules.push(...codegenBreakpoints.down(key, nextUnitValue, isLast));
+                    rules.push(...codegenBreakpoints.up(key, unitValue, isFirst));
                     rules.push(
-                        breakpointCodegen[language].match(
-                            key,
-                            unitValue,
-                            isLast ? '' : nextUnitValue
-                        )
+                        ...codegenBreakpoints.match(key, unitValue, isLast ? '' : nextUnitValue)
                     );
 
                     return rules;
@@ -117,23 +79,21 @@ export const breakpointsMixinsGenerator: Generator<ResolvedTheme['breakpoints']>
                 .filter((rule) => rule)
         );
 
-        if (language === 'scss') {
-            result.push(
-                ...[
-                    '',
-                    breakpointCodegen.scss.list(breakpoints, columns),
-                    breakpointCodegen.scss.aggregate('down', breakpoints),
-                    breakpointCodegen.scss.aggregate('up', breakpoints),
-                    breakpointCodegen.scss.aggregate('', breakpoints)
-                ].flat()
-            );
-        }
+        lines.push(
+            ...codegenBreakpoints.list(breakpointKeys),
+            ...codegenBreakpoints.aggregate('down', breakpointKeys),
+            ...codegenBreakpoints.aggregate('up', breakpointKeys),
+            ...codegenBreakpoints.aggregate('', breakpointKeys)
+        );
 
-        return result;
+        return lines;
     }
-};
+);
 
-export const breakpointsGenerators: Generator[] = [
-    breakpointsGenerator,
-    breakpointsMixinsGenerator
-];
+// @TODO Fix generation of breakpoints mixins
+export const breakpointsMixinsGenerator = defineGenerator<ResolvedTheme['breakpoints']>({
+    key: 'breakpoints',
+    type: GeneratorType.Mixins,
+    priority: GeneratorPriority.Highest,
+    generate: generateBreakpointMixins
+});

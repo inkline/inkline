@@ -1,40 +1,83 @@
-import { ResolvedTheme, Resolver, SizeMultiplierPropertyVariant, Theme } from '../types';
-import { parseValue } from '../helpers';
+import {
+    defineResolver,
+    defineResolverValueFn,
+    defineResolverVariantFn,
+    codegenCssVariables,
+    createResolveFn
+} from '../utils';
+import {
+    RawTheme,
+    RawThemeSizeMultiplier,
+    RawThemeSizeMultiplierVariant,
+    RawThemeSizePercentage,
+    RawThemeValueType,
+    ResolvedTheme,
+    ResolvedThemeSizeMultiplier,
+    ResolvedThemeSizePercentage,
+    ResolvedThemeTypographyFontSize,
+    ResolvedThemeValueType
+} from '../types';
+import { sizeMultiplierModifiers } from './modifiers';
 
-export const sizeMultiplierResolver: Resolver<
-    Theme['size']['multiplier'],
-    ResolvedTheme['size']['multiplier']
-> = {
-    name: 'sizes',
-    test: /(.*)size\.multiplier$/,
-    skip: /^variants/,
-    set: '$1size.multiplier',
-    apply: (context) => parseValue(context)
-};
+/**
+ * Size multiplier
+ */
 
-export const sizeMultiplierVariantResolver: Resolver<
-    SizeMultiplierPropertyVariant,
-    SizeMultiplierPropertyVariant
-> = {
-    name: 'sizes',
-    test: /variants\.size\.multiplier\.([\w-]+)$/,
-    set: 'variants.size.multiplier.$1',
-    apply: (context) => parseValue(context)
-};
+export const resolveSizeMultiplier = defineResolverValueFn<
+    RawThemeSizeMultiplier,
+    ResolvedThemeSizeMultiplier
+>((multiplier) => {
+    return multiplier;
+});
 
-export const sizePercentagesResolver: Resolver<
-    Theme['size']['percentages'][string],
-    Theme['size']['percentages'][string]
-> = {
-    name: 'sizes',
-    test: /(.*)size\.percentages\.([\w-]+)$/,
-    skip: /^variants/,
-    set: '$1size.percentages.$2',
-    apply: (context) => parseValue(context)
-};
+export const resolveSizeMultiplierVariant = defineResolverVariantFn<
+    RawThemeSizeMultiplierVariant | RawThemeSizeMultiplier,
+    ResolvedThemeSizeMultiplier
+>((variant, meta) => {
+    if (typeof variant === 'string' || typeof variant === 'number') {
+        return resolveSizeMultiplier(variant, meta);
+    }
 
-export const sizeResolvers = [
-    sizeMultiplierResolver,
-    sizeMultiplierVariantResolver,
-    sizePercentagesResolver
-];
+    return Object.keys(variant).reduce<ResolvedThemeTypographyFontSize>((acc, modifierName) => {
+        if (modifierName in sizeMultiplierModifiers) {
+            return sizeMultiplierModifiers[modifierName as keyof typeof sizeMultiplierModifiers](
+                acc,
+                variant[modifierName]
+            );
+        }
+
+        return acc;
+    }, codegenCssVariables.get('size-multiplier'));
+});
+
+export const sizeMultiplierResolver = defineResolver<
+    RawThemeValueType<RawTheme['size']['multiplier']>,
+    RawThemeValueType<ResolvedTheme['size']['multiplier']>
+>({
+    key: /^size\.multiplier\.[^.]+$/,
+    resolve: createResolveFn(resolveSizeMultiplier, resolveSizeMultiplierVariant)
+});
+
+/**
+ * Size percentage
+ */
+
+export const resolveSizePercentage = defineResolverValueFn<
+    RawThemeSizePercentage,
+    ResolvedThemeSizePercentage
+>((percentage) => {
+    return typeof percentage === 'number' ? `${percentage}%` : percentage;
+});
+
+export const resolveSizePercentageVariant = defineResolverVariantFn<
+    RawThemeSizePercentage,
+    ResolvedThemeSizePercentage
+>(resolveSizePercentage);
+
+export const sizePercentagesResolver = defineResolver<
+    RawThemeValueType<RawTheme['size']['percentages']>,
+    ResolvedThemeValueType<ResolvedTheme['size']['percentages']>
+>({
+    key: /^size\.percentages\.[^.]+$/,
+    resolve: createResolveFn(resolveSizePercentage, resolveSizePercentageVariant)
+});

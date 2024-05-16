@@ -17,8 +17,7 @@
         "typeRoots": [],
         "types": [
             "@types/shelljs",
-            "vite/client",
-            "vitest/globals"
+            "vite/client"
         ]
     },
     "include": [
@@ -26,9 +25,13 @@
         "src/**/*.d.ts",
         "src/**/*.tsx"
     ],
+    "exclude": ["src/__tests__", "src/**/*.test.ts", "src/**/*.spec.ts"],
     "references": [
         {
             "path": "./tsconfig.vite.json"
+        },
+        {
+            "path": "./tsconfig.vitest.json"
         }
     ],
     "ts-node": {

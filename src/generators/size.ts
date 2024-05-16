@@ -1,61 +1,51 @@
 import {
-    Generator,
-    GeneratorPriority,
-    NumberPropertyVariant,
-    ResolvedTheme,
-    ThemeVariants
-} from '../types';
-import { codegenNumberVariant, codegenSetCSSVariable } from '../helpers';
-import { toKebabCase } from '@grozav/utils';
-import { MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
+    codegenCssVariables,
+    createGenerateFn,
+    createGenericDesignTokenVariantGenerateFn,
+    defineGenerator,
+    defineGeneratorValueFn,
+    getResolvedPath,
+    getResolvedCssVariableVariantName,
+    getCssVariableVariantName
+} from '../utils';
+import { GeneratorPriority, GeneratorType, ResolvedTheme, ResolvedThemeValueType } from '../types';
 
-export const sizeMultiplierGenerator: Generator<ResolvedTheme['size']['multiplier']> = {
-    name: 'size',
-    test: /(.*)size\.multiplier$/,
-    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
+export const generateSizeMultiplier = defineGeneratorValueFn((multiplier, meta) => {
+    const variantName = getCssVariableVariantName(meta);
+    const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
+
+    return [codegenCssVariables.set(`size-multiplier${resolvedVariantName}`, `${multiplier}`)];
+});
+
+export const sizeMultiplierGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['size']['multiplier']>
+>({
+    key: /^size\.multiplier\.[^.]+$/,
+    type: GeneratorType.CssVariables,
     priority: GeneratorPriority.High,
-    apply: ({ value }) => {
-        return ['/**', ' * Size multiplier variable', ' */'].concat([
-            codegenSetCSSVariable('size-multiplier', value)
-        ]);
-    }
-};
+    generate: createGenerateFn(generateSizeMultiplier)
+});
 
-export const sizeMultiplierVariantsGenerator: Generator<ThemeVariants['size']['multiplier']> = {
-    name: 'size',
-    test: /variants\.size\.multiplier$/,
+export const generatePercentage = defineGeneratorValueFn(
+    (percentage: number | string, meta): string[] => {
+        const variantName = getCssVariableVariantName(meta);
+        const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
+        return variantName === 'default'
+            ? []
+            : [
+                  codegenCssVariables.set(
+                      `size-percentage${resolvedVariantName}`,
+                      `${percentage}${typeof percentage === 'number' ? '%' : ''}`
+                  )
+              ];
+    }
+);
+
+export const sizePercentagesGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['size']['percentages']>
+>({
+    key: /^size\.percentages\.[^.]+$/,
+    type: GeneratorType.CssVariables,
     priority: GeneratorPriority.High,
-    apply: ({ config, value }) => {
-        return ['/**', ' * Size multiplier variants variables', ' */'].concat(
-            Object.keys(value).map((sizeMultiplierName) =>
-                codegenNumberVariant(
-                    config,
-                    'size-multiplier',
-                    sizeMultiplierName,
-                    value[sizeMultiplierName] as NumberPropertyVariant
-                )
-            )
-        );
-    }
-};
-
-export const sizePercentagesGenerator: Generator<ResolvedTheme['size']['percentages']> = {
-    name: 'size',
-    location: 'root',
-    test: /(.*)size\.percentages$/,
-    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
-    priority: GeneratorPriority.High,
-    apply: ({ value }) => {
-        return ['/**', ' * Size percentage variables', ' */'].concat(
-            Object.keys(value).map((sizeName) =>
-                codegenSetCSSVariable(`size-percentages-${toKebabCase(sizeName)}`, value[sizeName])
-            )
-        );
-    }
-};
-
-export const sizeGenerators = [
-    sizeMultiplierGenerator,
-    sizeMultiplierVariantsGenerator,
-    sizePercentagesGenerator
-];
+    generate: createGenerateFn(generatePercentage)
+});

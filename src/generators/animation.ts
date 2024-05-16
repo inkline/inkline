@@ -1,20 +1,19 @@
-import { Generator, ResolvedTheme } from '../types';
-import { animationProperties, MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX } from '../constants';
-import { codegenSetCSSVariable } from '../helpers';
-import { toKebabCase } from '@grozav/utils';
+import {
+    createGenerateFn,
+    createGenericDesignTokenVariantGenerateFn,
+    defineGenerator
+} from '../utils';
+import { GeneratorType, ResolvedThemeValueType } from '../types';
+import type { ResolvedTheme } from '../types';
 
-export const animationGenerator: Generator<ResolvedTheme['animation']> = {
-    name: 'animation',
-    location: 'root',
-    test: /(.*)animation$/,
-    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
-    apply: ({ value }) => {
-        return ['/**', ' * Animation variables', ' */'].concat(
-            animationProperties.map((property) =>
-                codegenSetCSSVariable(`transition-${toKebabCase(property)}`, value[property])
-            )
-        );
-    }
-};
+export const generateAnimation = createGenericDesignTokenVariantGenerateFn({
+    aggregate: ['property', 'duration', 'timingFunction']
+});
 
-export const animationGenerators = [animationGenerator];
+export const animationGenerator = defineGenerator<
+    ResolvedThemeValueType<ResolvedTheme['transition']>
+>({
+    key: [/^animation\.[^.]+$/, /.*\.animation$/],
+    type: GeneratorType.CssVariables,
+    generate: createGenerateFn(generateAnimation)
+});

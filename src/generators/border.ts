@@ -1,46 +1,98 @@
-import { Generator, ResolvedTheme } from '../types';
 import {
-    borderProperties,
-    MATCH_VARIANTS_REGEX,
-    MATCH_ELEMENTS_REGEX,
-    sidesPropertyKeys
-} from '../constants';
-import { codegenGetCSSVariable, codegenSetCSSVariable } from '../helpers';
+    codegenCssVariables,
+    defineGenerator,
+    defineGeneratorValueFn,
+    createGenerateFn,
+    getCssVariablePreamble,
+    shouldGenerateAggregateValue,
+    getResolvedPath,
+    getCssVariableVariantName,
+    getResolvedCssVariableVariantName,
+    getCssVariablePreamblePath
+} from '../utils';
+import {
+    BorderSide,
+    GeneratorType,
+    ResolvedTheme,
+    ResolvedThemeBorder,
+    ResolvedThemeValueType
+} from '../types';
+import { sidesPropertyKeys } from '../constants';
 
-export const borderGenerator: Generator<ResolvedTheme['border']> = {
-    name: 'border',
-    location: 'root',
-    test: /(.*)border$/,
-    skip: [MATCH_VARIANTS_REGEX, MATCH_ELEMENTS_REGEX],
-    apply: ({ value }) =>
-        ['/**', ' * Border variables', ' */'].concat(
-            borderProperties
-                .map((property) => {
-                    const variables = sidesPropertyKeys
-                        .filter((side) => value[side][property])
+export const generateBorder = defineGeneratorValueFn<ResolvedThemeBorder>((border, meta) => {
+    const variablePreamblePath = getCssVariablePreamblePath(meta);
+    const variablePreamble = getCssVariablePreamble(variablePreamblePath);
+    const variantName = getCssVariableVariantName(meta);
+    const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
+
+    const tokens: string[] = [];
+    sidesPropertyKeys.forEach((side) => {
+        if (!border[side]) {
+            return;
+        }
+
+        const { width, style, color } = border[side];
+
+        const widthCssVariableName = `${variablePreamble}border-${side}-width${resolvedVariantName}`;
+        if (typeof width !== 'undefined') {
+            tokens.push(codegenCssVariables.set(widthCssVariableName, width));
+        }
+
+        const styleCssVariableName = `${variablePreamble}border-${side}-style${resolvedVariantName}`;
+        if (typeof style !== 'undefined') {
+            tokens.push(codegenCssVariables.set(styleCssVariableName, style));
+        }
+
+        const colorCssVariableName = `${variablePreamble}border-${side}-color${resolvedVariantName}`;
+        if (typeof color !== 'undefined') {
+            tokens.push(codegenCssVariables.set(colorCssVariableName, color));
+        }
+
+        if (shouldGenerateAggregateValue(meta)) {
+            tokens.push(
+                codegenCssVariables.set(
+                    `${variablePreamble}border-${side}${resolvedVariantName}`,
+                    [
+                        codegenCssVariables.get(widthCssVariableName),
+                        codegenCssVariables.get(styleCssVariableName),
+                        codegenCssVariables.get(colorCssVariableName)
+                    ].join(' ')
+                )
+            );
+        }
+    });
+
+    if (shouldGenerateAggregateValue(meta)) {
+        ['width', 'style', 'color'].forEach((property) => {
+            tokens.push(
+                codegenCssVariables.set(
+                    `${variablePreamble}border-${property}${resolvedVariantName}`,
+                    sidesPropertyKeys
                         .map((side) =>
-                            codegenSetCSSVariable(
-                                `border-${side}-${property}`,
-                                value[side][property]
+                            codegenCssVariables.get(
+                                `${variablePreamble}border-${side}-${property}${resolvedVariantName}`
                             )
-                        );
-
-                    if (variables.length === 0) {
-                        return [];
-                    }
-
-                    return [
-                        variables,
-                        codegenSetCSSVariable(
-                            `border-${property}`,
-                            sidesPropertyKeys
-                                .map((side) => codegenGetCSSVariable(`border-${side}-${property}`))
-                                .join(' ')
                         )
-                    ].flat();
-                })
-                .flat()
-        )
-};
+                        .join(' ')
+                )
+            );
+        });
 
-export const borderGenerators = [borderGenerator];
+        if (!variablePreamble) {
+            tokens.push(
+                codegenCssVariables.set(
+                    `${variablePreamble}border${resolvedVariantName}`,
+                    `var(--${variablePreamble}border-top${resolvedVariantName})`
+                )
+            );
+        }
+    }
+
+    return tokens;
+});
+
+export const borderGenerator = defineGenerator<ResolvedThemeValueType<ResolvedTheme['border']>>({
+    key: [/^border\.[^.]+$/, /.*\.border$/],
+    type: GeneratorType.CssVariables,
+    generate: createGenerateFn(generateBorder)
+});
