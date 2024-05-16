@@ -8,9 +8,10 @@ module.exports = {
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         '@storybook/addon-a11y',
-        'storybook-dark-mode'
         // Disabled until this is actually used rather otherwise its a blank tab
         // '@storybook/addon-interactions',
+        'storybook-dark-mode',
+        '@chromatic-com/storybook'
     ],
     staticDirs: ['../public'],
     framework: {
@@ -33,7 +34,5 @@ module.exports = {
             define: { 'process.env': {} }
         });
     },
-    docs: {
-        autodocs: true
-    }
+    docs: {}
 };

@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > IColumn > should render correctly 1`] = `
-"<div class="column -xs-12 -sm-12 -md-12 -lg-12 -xl-12 --12">
+"<div class="column -xs-12 -sm-12 -md-12 -lg-12 -xl-12 -xxl-12">
   <!-- @slot default Slot for default column content -->
 </div>"
 `;
