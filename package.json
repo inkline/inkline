@@ -46,9 +46,6 @@
         "pathe": "^1.0.0",
         "prettier": "^3.2.5"
     },
-    "optionalDependencies": {
-        "@rollup/rollup-linux-x64-gnu": "4.9.5"
-    },
     "main": "index.js",
     "module": "index.mjs",
     "jsdelivr": "index.js",
