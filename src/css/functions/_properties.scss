@@ -1,4 +1,5 @@
 @use 'sass:list';
+@use 'sass:meta';
 @use 'sass:string';
 @use 'sass:selector';
 
@@ -17,7 +18,7 @@
 
 @function create-css-variables-fallback($fallbackValue, $defaultFallbackValue) {
     @if $fallbackValue {
-        @if type-of($fallbackValue) == 'string' {
+        @if meta.type-of($fallbackValue) == 'string' {
             @return ', #{$fallbackValue}';
         } @else {
             @return ', #{$defaultFallbackValue}';
@@ -54,7 +55,7 @@
     $border-right-fallback: $fallback;
     $border-bottom-fallback: $fallback;
     $border-left-fallback: $fallback;
-    @if type-of($fallback) == 'list' {
+    @if meta.type-of($fallback) == 'list' {
         $border-top-fallback: list.nth($fallback, 1);
         $border-right-fallback: list.nth($fallback, 2);
         $border-bottom-fallback: list.nth($fallback, 3);
@@ -127,7 +128,7 @@
     $color-l-fallback: $fallback;
     $color-a-fallback: $fallback;
 
-    @if type-of($fallback) == 'list' {
+    @if meta.type-of($fallback) == 'list' {
         $color-h-fallback: list.nth($fallback, 1);
         $color-s-fallback: list.nth($fallback, 2);
         $color-l-fallback: list.nth($fallback, 3);
@@ -287,7 +288,7 @@
     $border-top-right-radius-fallback: $fallback;
     $border-bottom-right-radius-fallback: $fallback;
     $border-bottom-left-radius-fallback: $fallback;
-    @if type-of($fallback) == 'list' {
+    @if meta.type-of($fallback) == 'list' {
         $border-top-left-radius-fallback: list.nth($fallback, 1);
         $border-top-right-radius-fallback: list.nth($fallback, 2);
         $border-bottom-right-radius-fallback: list.nth($fallback, 3);
@@ -367,7 +368,7 @@
     $box-shadow-blur-radius-fallback: $fallback;
     $box-shadow-spread-radius-fallback: $fallback;
     $box-shadow-color-fallback: $fallback;
-    @if type-of($fallback) == 'list' {
+    @if meta.type-of($fallback) == 'list' {
         $box-shadow-offset-x-fallback: list.nth($fallback, 1);
         $box-shadow-offset-y-fallback: list.nth($fallback, 2);
         $box-shadow-blur-radius-fallback: list.nth($fallback, 3);

@@ -6,7 +6,7 @@ import '../src/inkline.scss';
 import './preview.scss';
 import { DecoratorHelpers } from '@storybook/addon-themes';
 import { RouterLink } from './components';
-import { useInkline } from '../lib/composables/useInkline';
+import { useInkline } from '../src/composables';
 
 export const withInklineTheme = ({ themes, defaultTheme }) => {
     const currentTheme = ref(defaultTheme);
