@@ -25,10 +25,10 @@ export const resolveColor = defineResolverValueFn<RawThemeColor, ResolvedThemeCo
             return color;
         } else if (color.includes('var')) {
             const colorName = color.slice(6, -1); // remove 'var(--' and ')'
-            h = codegenCssVariables.get(`${colorName}--h`);
-            s = codegenCssVariables.get(`${colorName}--s`);
-            l = codegenCssVariables.get(`${colorName}--l`);
-            a = codegenCssVariables.get(`${colorName}--a`);
+            h = codegenCssVariables.get(`${colorName}-h`);
+            s = codegenCssVariables.get(`${colorName}-s`);
+            l = codegenCssVariables.get(`${colorName}-l`);
+            a = codegenCssVariables.get(`${colorName}-a`);
         } else {
             ({ h, s, l, alpha: a } = Color(color).hsl().object());
         }
@@ -54,10 +54,10 @@ export const resolveColorVariant = defineResolverVariantFn<
     const colorName = meta.path[meta.path.length - 2];
 
     const variantValue = {
-        h: codegenCssVariables.get(`${propertyName}-${colorName}--h`),
-        s: codegenCssVariables.get(`${propertyName}-${colorName}--s`),
-        l: codegenCssVariables.get(`${propertyName}-${colorName}--l`),
-        a: codegenCssVariables.get(`${propertyName}-${colorName}--a`)
+        h: codegenCssVariables.get(`${propertyName}-${colorName}-h`),
+        s: codegenCssVariables.get(`${propertyName}-${colorName}-s`),
+        l: codegenCssVariables.get(`${propertyName}-${colorName}-l`),
+        a: codegenCssVariables.get(`${propertyName}-${colorName}-a`)
     };
 
     Object.keys(variant).forEach((modifierName) => {

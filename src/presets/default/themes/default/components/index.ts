@@ -33,6 +33,7 @@ import { sidebar } from './sidebar';
 import { table } from './table';
 import { tabs } from './tabs';
 import { toast } from './toast';
+import { toastContainer } from './toastContainer';
 import { tooltip } from './tooltip';
 import { toggle } from './toggle';
 
@@ -73,6 +74,7 @@ export const components: RawTheme['components'] = {
     table,
     tabs,
     toast,
+    toastContainer,
     toggle,
     tooltip
 };

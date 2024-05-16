@@ -17,16 +17,16 @@ import {
     ResolvedThemeBorder,
     ResolvedThemeValueType
 } from '../types';
+import { sidesPropertyKeys } from '../constants';
 
 export const generateBorder = defineGeneratorValueFn<ResolvedThemeBorder>((border, meta) => {
     const variablePreamblePath = getCssVariablePreamblePath(meta);
     const variablePreamble = getCssVariablePreamble(variablePreamblePath);
     const variantName = getCssVariableVariantName(meta);
     const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
-    const sides: BorderSide[] = ['top', 'right', 'bottom', 'left'];
 
     const tokens: string[] = [];
-    sides.forEach((side) => {
+    sidesPropertyKeys.forEach((side) => {
         if (!border[side]) {
             return;
         }
@@ -67,7 +67,7 @@ export const generateBorder = defineGeneratorValueFn<ResolvedThemeBorder>((borde
             tokens.push(
                 codegenCssVariables.set(
                     `${variablePreamble}border-${property}${resolvedVariantName}`,
-                    sides
+                    sidesPropertyKeys
                         .map((side) =>
                             codegenCssVariables.get(
                                 `${variablePreamble}border-${side}-${property}${resolvedVariantName}`

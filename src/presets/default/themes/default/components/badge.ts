@@ -118,6 +118,7 @@ export const badge: RawTheme['components']['badge'] = {
         color: 'var(--contrast-text-color-dark)'
     },
     sm: {
+        fontSize: '75%',
         padding: {
             top: 'calc(var(--padding-top-sm) * 0.25)',
             right: 'calc(var(--padding-right-sm) * 0.5)',
@@ -132,6 +133,7 @@ export const badge: RawTheme['components']['badge'] = {
         }
     },
     md: {
+        fontSize: '80%',
         padding: {
             top: 'calc(var(--padding-top-md) * 0.25)',
             right: 'calc(var(--padding-right-md) * 0.5)',
@@ -146,6 +148,7 @@ export const badge: RawTheme['components']['badge'] = {
         }
     },
     lg: {
+        fontSize: '85%',
         padding: {
             top: 'calc(var(--padding-top-lg) * 0.25)',
             right: 'calc(var(--padding-right-lg) * 0.5)',

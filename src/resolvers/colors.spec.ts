@@ -15,10 +15,10 @@ describe('resolveColor', () => {
         const color = 'var(--color)';
         const result = resolveColor(color, meta);
         expect(result).toEqual({
-            h: 'var(--color--h)',
-            s: 'var(--color--s)',
-            l: 'var(--color--l)',
-            a: 'var(--color--a)'
+            h: 'var(--color-h)',
+            s: 'var(--color-s)',
+            l: 'var(--color-l)',
+            a: 'var(--color-a)'
         });
     });
 
@@ -60,10 +60,10 @@ describe('resolveColorVariant', () => {
         const variant = 'var(--color-variant)';
         const result = resolveColorVariant(variant, meta);
         expect(result).toEqual({
-            h: 'var(--color-variant--h)',
-            s: 'var(--color-variant--s)',
-            l: 'var(--color-variant--l)',
-            a: 'var(--color-variant--a)'
+            h: 'var(--color-variant-h)',
+            s: 'var(--color-variant-s)',
+            l: 'var(--color-variant-l)',
+            a: 'var(--color-variant-a)'
         });
     });
 
@@ -79,10 +79,10 @@ describe('resolveColorVariant', () => {
         };
         const result = resolveColorVariant(variant, meta);
         expect(result).toEqual({
-            a: 'calc(calc(var(--color-colors--a) - var(--color-colors--a) * 0.5) + calc(var(--color-colors--a) - var(--color-colors--a) * 0.5) * 0.6)',
-            h: 'calc(var(--color-colors--h) + 45)',
-            l: 'calc(calc(var(--color-colors--l) + var(--color-colors--l) * 0.2) - calc(var(--color-colors--l) + var(--color-colors--l) * 0.2) * 0.1)',
-            s: 'calc(calc(var(--color-colors--s) + var(--color-colors--s) * 0.3) - calc(var(--color-colors--s) + var(--color-colors--s) * 0.3) * 0.4)'
+            a: 'calc(calc(var(--color-colors-a) - var(--color-colors-a) * 0.5) + calc(var(--color-colors-a) - var(--color-colors-a) * 0.5) * 0.6)',
+            h: 'calc(var(--color-colors-h) + 45)',
+            l: 'calc(calc(var(--color-colors-l) + var(--color-colors-l) * 0.2) - calc(var(--color-colors-l) + var(--color-colors-l) * 0.2) * 0.1)',
+            s: 'calc(calc(var(--color-colors-s) + var(--color-colors-s) * 0.3) - calc(var(--color-colors-s) + var(--color-colors-s) * 0.3) * 0.4)'
         });
     });
 });

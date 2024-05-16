@@ -34,11 +34,11 @@ describe('typographyColorGenerator', () => {
             });
             const result = typographyColorGenerator.generate(color, meta);
             expect(result).toEqual([
-                '--text-color-primary--h: 0;',
-                '--text-color-primary--s: 0%;',
-                '--text-color-primary--l: 0%;',
-                '--text-color-primary--a: 1;',
-                '--text-color-primary: hsla(var(--text-color-primary--h) var(--text-color-primary--s) var(--text-color-primary--l) / var(--text-color-primary--a));'
+                '--text-color-primary-h: 0;',
+                '--text-color-primary-s: 0%;',
+                '--text-color-primary-l: 0%;',
+                '--text-color-primary-a: 1;',
+                '--text-color-primary: hsla(var(--text-color-primary-h) var(--text-color-primary-s) var(--text-color-primary-l) / var(--text-color-primary-a));'
             ]);
         });
 
@@ -62,11 +62,11 @@ describe('typographyColorGenerator', () => {
             });
             const result = typographyColorGenerator.generate(color, meta);
             expect(result).toEqual([
-                '--text-color-primary-shade-100--h: 0;',
-                '--text-color-primary-shade-100--s: 0%;',
-                '--text-color-primary-shade-100--l: 0%;',
-                '--text-color-primary-shade-100--a: 1;',
-                '--text-color-primary-shade-100: hsla(var(--text-color-primary-shade-100--h) var(--text-color-primary-shade-100--s) var(--text-color-primary-shade-100--l) / var(--text-color-primary-shade-100--a));'
+                '--text-color-primary-shade-100-h: 0;',
+                '--text-color-primary-shade-100-s: 0%;',
+                '--text-color-primary-shade-100-l: 0%;',
+                '--text-color-primary-shade-100-a: 1;',
+                '--text-color-primary-shade-100: hsla(var(--text-color-primary-shade-100-h) var(--text-color-primary-shade-100-s) var(--text-color-primary-shade-100-l) / var(--text-color-primary-shade-100-a));'
             ]);
         });
     });
@@ -111,11 +111,11 @@ describe('typographyContrastColorGenerator', () => {
             });
             const result = typographyContrastColorGenerator.generate(color, meta);
             expect(result).toEqual([
-                '--contrast-text-color-primary--h: 0;',
-                '--contrast-text-color-primary--s: 0%;',
-                '--contrast-text-color-primary--l: 100%;',
-                '--contrast-text-color-primary--a: 1;',
-                '--contrast-text-color-primary: hsla(var(--contrast-text-color-primary--h) var(--contrast-text-color-primary--s) var(--contrast-text-color-primary--l) / var(--contrast-text-color-primary--a));'
+                '--contrast-text-color-primary-h: 0;',
+                '--contrast-text-color-primary-s: 0%;',
+                '--contrast-text-color-primary-l: 100%;',
+                '--contrast-text-color-primary-a: 1;',
+                '--contrast-text-color-primary: hsla(var(--contrast-text-color-primary-h) var(--contrast-text-color-primary-s) var(--contrast-text-color-primary-l) / var(--contrast-text-color-primary-a));'
             ]);
         });
 
@@ -139,11 +139,11 @@ describe('typographyContrastColorGenerator', () => {
             });
             const result = typographyContrastColorGenerator.generate(color, meta);
             expect(result).toEqual([
-                '--contrast-text-color-primary-shade-100--h: 0;',
-                '--contrast-text-color-primary-shade-100--s: 0%;',
-                '--contrast-text-color-primary-shade-100--l: 100%;',
-                '--contrast-text-color-primary-shade-100--a: 1;',
-                '--contrast-text-color-primary-shade-100: hsla(var(--contrast-text-color-primary-shade-100--h) var(--contrast-text-color-primary-shade-100--s) var(--contrast-text-color-primary-shade-100--l) / var(--contrast-text-color-primary-shade-100--a));'
+                '--contrast-text-color-primary-shade-100-h: 0;',
+                '--contrast-text-color-primary-shade-100-s: 0%;',
+                '--contrast-text-color-primary-shade-100-l: 100%;',
+                '--contrast-text-color-primary-shade-100-a: 1;',
+                '--contrast-text-color-primary-shade-100: hsla(var(--contrast-text-color-primary-shade-100-h) var(--contrast-text-color-primary-shade-100-s) var(--contrast-text-color-primary-shade-100-l) / var(--contrast-text-color-primary-shade-100-a));'
             ]);
         });
     });

@@ -9,11 +9,11 @@ describe('createColorGenerateFn', () => {
         const color = { h: '0', s: '0%', l: '0%', a: '1' };
         const result = createColorGenerateFn('color-dark')(color, meta);
         expect(result).toEqual([
-            '--color-dark--h: 0;',
-            '--color-dark--s: 0%;',
-            '--color-dark--l: 0%;',
-            '--color-dark--a: 1;',
-            '--color-dark: hsla(var(--color-dark--h) var(--color-dark--s) var(--color-dark--l) / var(--color-dark--a));'
+            '--color-dark-h: 0;',
+            '--color-dark-s: 0%;',
+            '--color-dark-l: 0%;',
+            '--color-dark-a: 1;',
+            '--color-dark: hsla(var(--color-dark-h) var(--color-dark-s) var(--color-dark-l) / var(--color-dark-a));'
         ]);
     });
 
@@ -22,11 +22,11 @@ describe('createColorGenerateFn', () => {
         const color = { h: '0', s: '0%', l: '100%', a: '1' };
         const result = createColorGenerateFn('color-dark-tint-100')(color, meta);
         expect(result).toEqual([
-            '--color-dark-tint-100--h: 0;',
-            '--color-dark-tint-100--s: 0%;',
-            '--color-dark-tint-100--l: 100%;',
-            '--color-dark-tint-100--a: 1;',
-            '--color-dark-tint-100: hsla(var(--color-dark-tint-100--h) var(--color-dark-tint-100--s) var(--color-dark-tint-100--l) / var(--color-dark-tint-100--a));'
+            '--color-dark-tint-100-h: 0;',
+            '--color-dark-tint-100-s: 0%;',
+            '--color-dark-tint-100-l: 100%;',
+            '--color-dark-tint-100-a: 1;',
+            '--color-dark-tint-100: hsla(var(--color-dark-tint-100-h) var(--color-dark-tint-100-s) var(--color-dark-tint-100-l) / var(--color-dark-tint-100-a));'
         ]);
     });
 });
@@ -49,11 +49,11 @@ describe('colorsGenerator', () => {
             });
             const result = colorsGenerator.generate(color, meta);
             expect(result).toEqual([
-                '--color-dark--h: 0;',
-                '--color-dark--s: 0%;',
-                '--color-dark--l: 0%;',
-                '--color-dark--a: 1;',
-                '--color-dark: hsla(var(--color-dark--h) var(--color-dark--s) var(--color-dark--l) / var(--color-dark--a));'
+                '--color-dark-h: 0;',
+                '--color-dark-s: 0%;',
+                '--color-dark-l: 0%;',
+                '--color-dark-a: 1;',
+                '--color-dark: hsla(var(--color-dark-h) var(--color-dark-s) var(--color-dark-l) / var(--color-dark-a));'
             ]);
         });
 
@@ -62,11 +62,11 @@ describe('colorsGenerator', () => {
             const color = { h: '0', s: '0%', l: '100%', a: '1' };
             const result = colorsGenerator.generate(color, meta);
             expect(result).toEqual([
-                '--color-dark-tint-100--h: 0;',
-                '--color-dark-tint-100--s: 0%;',
-                '--color-dark-tint-100--l: 100%;',
-                '--color-dark-tint-100--a: 1;',
-                '--color-dark-tint-100: hsla(var(--color-dark-tint-100--h) var(--color-dark-tint-100--s) var(--color-dark-tint-100--l) / var(--color-dark-tint-100--a));'
+                '--color-dark-tint-100-h: 0;',
+                '--color-dark-tint-100-s: 0%;',
+                '--color-dark-tint-100-l: 100%;',
+                '--color-dark-tint-100-a: 1;',
+                '--color-dark-tint-100: hsla(var(--color-dark-tint-100-h) var(--color-dark-tint-100-s) var(--color-dark-tint-100-l) / var(--color-dark-tint-100-a));'
             ]);
         });
     });
@@ -107,10 +107,10 @@ describe('colorGenerator', () => {
             });
             const result = colorGenerator.generate(color, meta);
             expect(result).toEqual([
-                '--button--color--h: 0;',
-                '--button--color--s: 0%;',
-                '--button--color--l: 0%;',
-                '--button--color--a: 1;'
+                '--button--color-h: 0;',
+                '--button--color-s: 0%;',
+                '--button--color-l: 0%;',
+                '--button--color-a: 1;'
             ]);
         });
 
@@ -133,10 +133,10 @@ describe('colorGenerator', () => {
             });
             const result = colorGenerator.generate(color, meta);
             expect(result).toEqual([
-                '--button--primary--color--h: 0;',
-                '--button--primary--color--s: 0%;',
-                '--button--primary--color--l: 0%;',
-                '--button--primary--color--a: 1;'
+                '--button--primary--color-h: 0;',
+                '--button--primary--color-s: 0%;',
+                '--button--primary--color-l: 0%;',
+                '--button--primary--color-a: 1;'
             ]);
         });
     });

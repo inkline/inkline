@@ -57,6 +57,15 @@ export const dropdown: RawTheme['components']['dropdown'] = {
         },
         footer: {
             color: 'var(--dropdown--color)'
+        },
+        divider: {
+            margin: {
+                top: 'var(--margin-top-1-2)',
+                right: 'calc(var(--padding-right) * -1)',
+                bottom: 'var(--margin-bottom-1-2)',
+                left: 'calc(var(--padding-left) * -1)'
+            },
+            background: 'var(--text-color-weaker)'
         }
     },
     light: {

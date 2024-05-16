@@ -26,20 +26,20 @@ export const createColorGenerateFn = (variableName: string) => {
         const resolvedL = typeof l === 'string' ? l : `${l}%`;
         const resolvedA = typeof a === 'string' ? a : a.toString();
 
-        tokens.push(codegenCssVariables.set(`${variableName}--h`, resolvedH));
-        tokens.push(codegenCssVariables.set(`${variableName}--s`, resolvedS));
-        tokens.push(codegenCssVariables.set(`${variableName}--l`, resolvedL));
-        tokens.push(codegenCssVariables.set(`${variableName}--a`, resolvedA));
+        tokens.push(codegenCssVariables.set(`${variableName}-h`, resolvedH));
+        tokens.push(codegenCssVariables.set(`${variableName}-s`, resolvedS));
+        tokens.push(codegenCssVariables.set(`${variableName}-l`, resolvedL));
+        tokens.push(codegenCssVariables.set(`${variableName}-a`, resolvedA));
 
         if (shouldGenerateAggregateValue(meta)) {
             tokens.push(
                 codegenCssVariables.set(
                     `${variableName}`,
                     `hsla(${[
-                        codegenCssVariables.get(`${variableName}--h`),
-                        codegenCssVariables.get(`${variableName}--s`),
-                        codegenCssVariables.get(`${variableName}--l`)
-                    ].join(' ')} / ${codegenCssVariables.get(`${variableName}--a`)})`
+                        codegenCssVariables.get(`${variableName}-h`),
+                        codegenCssVariables.get(`${variableName}-s`),
+                        codegenCssVariables.get(`${variableName}-l`)
+                    ].join(' ')} / ${codegenCssVariables.get(`${variableName}-a`)})`
                 )
             );
         }

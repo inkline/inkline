@@ -50,6 +50,22 @@ export const table: RawTheme['components']['table'] = {
                 }
             }
         },
+        bordered: {
+            border: {
+                top: {
+                    width: 'var(--border-top-width)'
+                },
+                right: {
+                    width: 'var(--border-right-width)'
+                },
+                bottom: {
+                    width: 'var(--border-bottom-width)'
+                },
+                left: {
+                    width: 'var(--border-left-width)'
+                }
+            }
+        },
         striped: {
             background: 'var(--color-gray-100)'
         },

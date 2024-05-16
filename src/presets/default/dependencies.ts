@@ -64,8 +64,8 @@ export const defaultDependencies: Dependency[] = [
     $elementOrStateChain: _create-css-variables-chain($elementOrState);
     $variantChain: _create-css-variables-chain($variant);
 
-    --#{$component}#{$elementOrStateChain}--#{$property}--#{$part}: var(
-            --#{$component}#{$variantChain}#{$elementOrStateChain}--#{$property}--#{$part}
+    --#{$component}#{$elementOrStateChain}--#{$property}-#{$part}: var(
+            --#{$component}#{$variantChain}#{$elementOrStateChain}--#{$property}-#{$part}
     );
 }
 

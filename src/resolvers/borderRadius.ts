@@ -16,18 +16,13 @@ import {
     ResolvedThemeValueType
 } from '../types';
 import { borderRadiusModifiers } from './modifiers';
+import { cornersPropertyKeys } from '../constants';
 
 export function assignBorderRadius(borderRadius: string): BorderRadius {
-    const sides: Array<'topLeft' | 'topRight' | 'bottomRight' | 'bottomLeft'> = [
-        'topLeft',
-        'topRight',
-        'bottomRight',
-        'bottomLeft'
-    ];
     const values = borderRadius.split(/\s+/);
     const value = { topLeft: '', topRight: '', bottomRight: '', bottomLeft: '' };
 
-    sides.forEach((side, index) => {
+    cornersPropertyKeys.forEach((side, index) => {
         value[side] = values[index % 4] || values[index % 2] || values[0];
     });
 

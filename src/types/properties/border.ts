@@ -1,10 +1,12 @@
+import type { SidesPropertyKey } from './generic';
+
 export type Border = {
     width: string;
     style: string;
     color: string;
 };
 
-export type BorderSide = 'top' | 'right' | 'bottom' | 'left';
+export type BorderSide = SidesPropertyKey;
 
 export type RawThemeBorder = string | Border | Record<BorderSide, string | Border>;
 

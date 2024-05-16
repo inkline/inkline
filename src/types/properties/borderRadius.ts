@@ -1,4 +1,6 @@
-export type BorderRadiusCorner = 'topLeft' | 'topRight' | 'bottomRight' | 'bottomLeft';
+import type { CornersPropertyKey } from './generic';
+
+export type BorderRadiusCorner = CornersPropertyKey;
 
 export type BorderRadius = Record<BorderRadiusCorner, string>;
 

@@ -216,9 +216,9 @@ export const button: RawTheme['components']['button'] = {
     },
     sm: {
         padding: {
-            top: 'calc(var(--padding-top-sm) * 3 / 4)',
+            top: 'var(--padding-top-sm)',
             right: 'var(--padding-right-sm)',
-            bottom: 'calc(var(--padding-bottom-sm) * 3 / 4)',
+            bottom: 'var(--padding-bottom-sm)',
             left: 'var(--padding-left-sm)'
         },
         borderRadius: {
@@ -229,15 +229,19 @@ export const button: RawTheme['components']['button'] = {
         },
         fontSize: 'var(--font-size-sm)',
         circle: {
-            width: 'calc(34px * var(--size-multiplier-sm))',
-            height: 'calc(34px * var(--size-multiplier-sm))'
+            width: 'calc(50px * var(--size-multiplier-sm))',
+            height: 'calc(50px * var(--size-multiplier-sm))'
+        },
+        square: {
+            width: 'calc(50px * var(--size-multiplier-sm))',
+            height: 'calc(50px * var(--size-multiplier-sm))'
         }
     },
     md: {
         padding: {
-            top: 'calc(var(--padding-top-md) * 3 / 4)',
+            top: 'var(--padding-top-md)',
             right: 'var(--padding-right-md)',
-            bottom: 'calc(var(--padding-bottom-md) * 3 / 4)',
+            bottom: 'var(--padding-bottom-md)',
             left: 'var(--padding-left-md)'
         },
         borderRadius: {
@@ -248,15 +252,19 @@ export const button: RawTheme['components']['button'] = {
         },
         fontSize: 'var(--font-size-md)',
         circle: {
-            width: 'calc(40px * var(--size-multiplier-md))',
-            height: 'calc(40px * var(--size-multiplier-md))'
+            width: 'calc(50px * var(--size-multiplier-md))',
+            height: 'calc(50px * var(--size-multiplier-md))'
+        },
+        square: {
+            width: 'calc(50px * var(--size-multiplier-md))',
+            height: 'calc(50px * var(--size-multiplier-md))'
         }
     },
     lg: {
         padding: {
-            top: 'calc(var(--padding-top-lg) * 3 / 4)',
+            top: 'var(--padding-top-lg)',
             right: 'var(--padding-right-lg)',
-            bottom: 'calc(var(--padding-bottom-lg) * 3 / 4)',
+            bottom: 'var(--padding-bottom-lg)',
             left: 'var(--padding-left-lg)'
         },
         borderRadius: {
@@ -267,6 +275,10 @@ export const button: RawTheme['components']['button'] = {
         },
         fontSize: 'var(--font-size-lg)',
         circle: {
+            width: 'calc(50px * var(--size-multiplier-lg))',
+            height: 'calc(50px * var(--size-multiplier-lg))'
+        },
+        square: {
             width: 'calc(50px * var(--size-multiplier-lg))',
             height: 'calc(50px * var(--size-multiplier-lg))'
         }

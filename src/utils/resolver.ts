@@ -1,4 +1,5 @@
-import type { Resolver, ResolverMeta, ResolveValueFn, ResolveVariantFn } from '../types';
+import { ClassifierType, Resolver, ResolverMeta, ResolveValueFn, ResolveVariantFn } from '../types';
+import { traversePathByClassification } from './path';
 
 export function defineResolver<RawValue, ResolvedValue>(
     resolver: Resolver<RawValue, ResolvedValue>
@@ -24,7 +25,13 @@ export const createResolveFn =
         resolveVariant: ResolveVariantFn<RawVariant, ResolvedValue>
     ) =>
     (value: RawValue | RawVariant, meta: ResolverMeta) => {
-        if (meta.path[meta.path.length - 1] === 'default') {
+        const isEntityVariantsPath =
+            traversePathByClassification(
+                meta,
+                (path, part, ctx) => ctx.type === ClassifierType.EntityVariants
+            ).length > 0;
+
+        if (meta.path[meta.path.length - 1] === 'default' || isEntityVariantsPath) {
             return resolveValue(value as RawValue, meta);
         } else {
             return resolveVariant(value as RawVariant, meta);

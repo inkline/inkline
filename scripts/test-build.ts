@@ -1,4 +1,4 @@
-import { build } from '../src/build';
+import { build } from '../src';
 import { resolve } from 'pathe';
 import { rm, cp } from 'node:fs/promises';
 

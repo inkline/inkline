@@ -36,7 +36,16 @@ describe('createResolveFn', () => {
         const resolveValue = vi.fn();
         const resolveVariant = vi.fn();
         const resolve = createResolveFn(resolveValue, resolveVariant);
-        const meta = createTestingResolverMeta({ path: ['some', 'path', 'default'] });
+        const meta = createTestingResolverMeta({
+            path: ['components', 'path', 'default'],
+            theme: {
+                components: {
+                    path: {
+                        default: 'value'
+                    }
+                }
+            }
+        });
         resolve('value', meta);
         expect(resolveValue).toHaveBeenCalled();
         expect(resolveVariant).not.toHaveBeenCalled();
@@ -46,7 +55,16 @@ describe('createResolveFn', () => {
         const resolveValue = vi.fn();
         const resolveVariant = vi.fn();
         const resolve = createResolveFn(resolveValue, resolveVariant);
-        const meta = createTestingResolverMeta({ path: ['some', 'path', 'not-default'] });
+        const meta = createTestingResolverMeta({
+            path: ['components', 'path', 'notDefault'],
+            theme: {
+                components: {
+                    path: {
+                        nonDefault: 'value'
+                    }
+                }
+            }
+        });
         resolve('variant', meta);
         expect(resolveVariant).toHaveBeenCalled();
         expect(resolveValue).not.toHaveBeenCalled();

@@ -11,12 +11,12 @@ import {
     getCssVariablePreamblePath
 } from '../utils';
 import {
-    BorderRadiusCorner,
     GeneratorType,
     ResolvedTheme,
     ResolvedThemeBorderRadius,
     ResolvedThemeValueType
 } from '../types';
+import { cornersPropertyKeys } from '../constants';
 
 export const generateBorderRadius = defineGeneratorValueFn<ResolvedThemeBorderRadius>(
     (borderRadius, meta) => {
@@ -24,12 +24,11 @@ export const generateBorderRadius = defineGeneratorValueFn<ResolvedThemeBorderRa
         const variablePreamble = getCssVariablePreamble(variablePreamblePath);
         const variantName = getCssVariableVariantName(meta);
         const resolvedVariantName = getResolvedCssVariableVariantName(variantName);
-        const corners: BorderRadiusCorner[] = ['topLeft', 'topRight', 'bottomRight', 'bottomLeft'];
 
         const tokens: string[] = [];
         const cornerCssVariables: string[] = [];
 
-        corners.forEach((corner) => {
+        cornersPropertyKeys.forEach((corner) => {
             const resolvedCornerName = toKebabCase(corner);
             const cssVariableName = `${variablePreamble}border-${resolvedCornerName}-radius${resolvedVariantName}`;
 

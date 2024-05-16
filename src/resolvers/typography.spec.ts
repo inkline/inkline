@@ -31,10 +31,10 @@ describe('resolveTypographyColor', () => {
         const color = 'var(--color)';
         const result = resolveTypographyColor(color, meta);
         expect(result).toEqual({
-            h: 'var(--color--h)',
-            s: 'var(--color--s)',
-            l: 'var(--color--l)',
-            a: 'var(--color--a)'
+            h: 'var(--color-h)',
+            s: 'var(--color-s)',
+            l: 'var(--color-l)',
+            a: 'var(--color-a)'
         });
     });
 });
@@ -52,10 +52,10 @@ describe('resolveTypographyColorVariant', () => {
         const variant = 'var(--color-variant)';
         const result = resolveTypographyColorVariant(variant, meta);
         expect(result).toEqual({
-            h: 'var(--color-variant--h)',
-            s: 'var(--color-variant--s)',
-            l: 'var(--color-variant--l)',
-            a: 'var(--color-variant--a)'
+            h: 'var(--color-variant-h)',
+            s: 'var(--color-variant-s)',
+            l: 'var(--color-variant-l)',
+            a: 'var(--color-variant-a)'
         });
     });
 });

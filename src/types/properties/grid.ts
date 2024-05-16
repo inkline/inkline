@@ -1,4 +1,4 @@
-import { RawThemeGenericVariant } from './generic';
+import type { RawThemeGenericVariant } from './generic';
 
 export type RawThemeGridColumns = number;
 

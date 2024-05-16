@@ -50,12 +50,6 @@ export const card: RawTheme['components']['card'] = {
             right: 'var(--padding-right)',
             bottom: 'var(--padding-bottom)',
             left: 'var(--padding-left)'
-        },
-        header: {
-            color: 'var(--card--color)'
-        },
-        footer: {
-            color: 'var(--card--color)'
         }
     },
     primary: {

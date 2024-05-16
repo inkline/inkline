@@ -1,4 +1,10 @@
-import { ClassifierType, GeneratorChunk, GeneratorMeta, ResolvedTheme } from '../types';
+import {
+    ClassifierType,
+    GeneratorChunk,
+    GeneratorMeta,
+    ResolvedTheme,
+    ResolverMeta
+} from '../types';
 import { toKebabCase } from './string';
 
 export type TraversePathByClassificationFn = (
@@ -12,14 +18,14 @@ export type TraversePathByClassificationFn = (
 ) => boolean;
 
 export function traversePathByClassification(
-    meta: GeneratorMeta,
+    meta: GeneratorMeta | ResolverMeta,
     fn: TraversePathByClassificationFn
 ): GeneratorChunk['path'] {
     const { theme, path } = meta;
     const chunkPath: string[] = [];
     const typePath: ClassifierType[] = [];
 
-    let schema: ResolvedTheme | ResolvedTheme[keyof ResolvedTheme] = theme;
+    let schema: ResolvedTheme | ResolvedTheme[keyof ResolvedTheme] = theme as ResolvedTheme;
     path.forEach((part, index) => {
         schema = (schema as ResolvedTheme)[
             part as keyof ResolvedTheme

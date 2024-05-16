@@ -1,3 +1,5 @@
+import type { SidesPropertyKey } from './generic';
+
 export type RawThemeSpacing = number | string;
 
 export type ResolvedThemeSpacing = string;
@@ -10,7 +12,7 @@ export interface RawThemeSpacingVariant {
     [key: string]: string | number | boolean | undefined;
 }
 
-export type SpacingSide = 'top' | 'right' | 'bottom' | 'left';
+export type SpacingSide = SidesPropertyKey;
 
 export type RawThemeSpacingWithSides = Record<SpacingSide, number | string>;
 

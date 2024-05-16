@@ -1,7 +1,9 @@
-import { defaultConfig } from '../src/presets';
+import { defaultConfig } from '../src';
 import { writeFileSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'pathe';
 import prettier from 'prettier';
+
+// @ts-ignore
 import prettierConfig from '../.prettierrc';
 
 function stringifyObject(obj: any) {
@@ -10,7 +12,8 @@ function stringifyObject(obj: any) {
 
 (async () => {
     const defaultsFilePath = resolve(__dirname, '../lib/examples/defaults.ts');
-    const { generators, resolvers, aggregators, dependencies, build, ...config } = defaultConfig;
+    const { generators, resolvers, aggregators, classifiers, dependencies, build, ...config } =
+        defaultConfig;
     const objectString = stringifyObject(config);
     const exportObjectString = await prettier.format(
         `import { defineConfig } from '@inkline/config';

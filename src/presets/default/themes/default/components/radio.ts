@@ -48,15 +48,9 @@ export const radio: RawTheme['components']['radio'] = {
         },
         margin: {
             top: 0,
-            right: 'var(--margin-right)',
-            bottom: 0,
+            right: 'calc(var(--margin-right) / 2)',
+            bottom: 'calc(var(--margin-bottom) / 2)',
             left: 0
-        },
-        padding: {
-            top: 'var(--padding-top)',
-            right: 'var(--padding-right)',
-            bottom: 'var(--padding-bottom)',
-            left: 'var(--padding-left)'
         },
         zIndex: 2000,
         arrow: {
@@ -133,14 +127,9 @@ export const radio: RawTheme['components']['radio'] = {
             bottomLeft: 'var(--border-bottom-left-radius-sm)'
         },
         fontSize: 'var(--font-size-sm)',
-        padding: {
-            top: 'var(--padding-top-sm)',
-            right: 'var(--padding-right-sm)',
-            bottom: 'var(--padding-bottom-sm)',
-            left: 'var(--padding-left-sm)'
-        },
         margin: {
-            right: 'calc(var(--margin-right-sm) / 2)'
+            right: 'calc(var(--margin-right-sm) / 2)',
+            bottom: 'calc(var(--margin-bottom-sm) / 2)'
         },
         width: 'calc(1rem * var(--size-multiplier-sm))',
         height: 'calc(1rem * var(--size-multiplier-sm))',
@@ -157,14 +146,9 @@ export const radio: RawTheme['components']['radio'] = {
             bottomLeft: 'var(--border-bottom-left-radius-md)'
         },
         fontSize: 'var(--font-size-md)',
-        padding: {
-            top: 'var(--padding-top-md)',
-            right: 'var(--padding-right-md)',
-            bottom: 'var(--padding-bottom-md)',
-            left: 'var(--padding-left-md)'
-        },
         margin: {
-            right: 'calc(var(--margin-right-md) / 2)'
+            right: 'calc(var(--margin-right-md) / 2)',
+            bottom: 'calc(var(--margin-bottom-md) / 2)'
         },
         width: 'calc(1rem * var(--size-multiplier-md))',
         height: 'calc(1rem * var(--size-multiplier-md))',
@@ -181,14 +165,9 @@ export const radio: RawTheme['components']['radio'] = {
             bottomLeft: 'var(--border-bottom-left-radius-lg)'
         },
         fontSize: 'var(--font-size-lg)',
-        padding: {
-            top: 'var(--padding-top-lg)',
-            right: 'var(--padding-right-lg)',
-            bottom: 'var(--padding-bottom-lg)',
-            left: 'var(--padding-left-lg)'
-        },
         margin: {
-            right: 'calc(var(--margin-right-lg) / 2)'
+            right: 'calc(var(--margin-right-lg) / 2)',
+            bottom: 'calc(var(--margin-bottom-lg) / 2)'
         },
         width: 'calc(1rem * var(--size-multiplier-lg))',
         height: 'calc(1rem * var(--size-multiplier-lg))',

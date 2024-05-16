@@ -5,6 +5,7 @@
         "start": "npm run build && node lib/playground.mjs",
         "dev": "vite",
         "build": "unbuild && npm run generate",
+        "build:local": "npm run build && cd lib && cp ../package.json . && npm pack",
         "generate": "npm run generate:defaults",
         "generate:defaults": "tsx scripts/generate-defaults.ts",
         "postbuild": "tsx scripts/postbuild.ts",

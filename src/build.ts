@@ -4,12 +4,10 @@ import {
     AggregatorFile,
     AggregatorMeta,
     BuildOptions,
-    ClassifierType,
     GeneratorMeta,
     GeneratorPriority,
     ResolvedBuildOptions,
-    ResolvedConfiguration,
-    ResolvedTheme
+    ResolvedConfiguration
 } from './types';
 import {
     exists,
@@ -19,7 +17,7 @@ import {
     toKebabCase,
     extractIndexFiles
 } from './utils';
-import { dirname, join, resolve } from 'pathe';
+import { dirname, resolve } from 'pathe';
 import { mkdir, writeFile } from 'fs/promises';
 import prettier from 'prettier';
 
@@ -123,6 +121,13 @@ export async function build(options: BuildOptions = {}): Promise<{
         }
 
         const indexFiles = extractIndexFiles(resolvedFiles);
+
+        if (themeName === 'default') {
+            indexFiles[0].import.push(
+                ...Object.keys(resolvedConfig.themes).filter((t) => t !== 'default')
+            );
+        }
+
         for (const indexFile of indexFiles) {
             const indexFilePath = resolve(
                 themeOutputDir,

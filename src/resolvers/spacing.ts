@@ -22,6 +22,7 @@ import {
     ResolvedThemeValueType
 } from '../types';
 import { spacingModifiers, spacingWithSidesModifiers } from './modifiers';
+import { sidesPropertyKeys } from '../constants';
 
 /**
  * Spacing
@@ -64,11 +65,10 @@ export const spacingResolver = defineResolver<
  */
 
 export function assignSpacingSides(spacing: string): ResolvedThemeSpacingWithSides {
-    const sides: Array<'top' | 'right' | 'bottom' | 'left'> = ['top', 'right', 'bottom', 'left'];
     const values = spacing.split(/\s+/);
     const value = { top: '', right: '', bottom: '', left: '' };
 
-    sides.forEach((side, index) => {
+    sidesPropertyKeys.forEach((side, index) => {
         value[side] = values[index % 4] || values[index % 2] || values[0];
     });
 

@@ -47,6 +47,8 @@ export function getResolvedBuildOptions(options: BuildOptions): ResolvedBuildOpt
     return resolvedOptions;
 }
 
+export const chunkToFilePathAllowlist = ['generic', 'mixins', 'layers', 'columns'];
+
 export function convertChunkPathToFilePath(meta: GeneratorMeta): GeneratorChunk['path'] {
     return traversePathByClassification(meta, (path, part, ctx) => {
         const isSpecialPath = path[0] === 'colors' && part !== 'colors';
@@ -59,7 +61,7 @@ export function convertChunkPathToFilePath(meta: GeneratorMeta): GeneratorChunk[
                 ClassifierType.Group,
                 ClassifierType.EntityVariants,
                 ClassifierType.PrimitiveVariants
-            ].includes(ctx.type) || ['generic', 'mixins', 'layers'].includes(part);
+            ].includes(ctx.type) || chunkToFilePathAllowlist.includes(part);
 
         return !isVariantChild && !isSpecialPath && isValidType;
     }).slice(0, 2);
