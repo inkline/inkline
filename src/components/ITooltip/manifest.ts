@@ -120,173 +120,65 @@ export const manifest: ComponentManifest = {
         selector: '.tooltip-wrapper',
         variables: [
             {
-                name: '--tooltip--line-height',
-                value: [
-                    {
-                        name: '--line-height'
-                    }
-                ]
-            },
-            {
-                name: '--tooltip--border-width',
-                value: [
-                    {
-                        value: '(\n                var(--tooltip--border-top-width, var(--border-top-width))\n                    var(--tooltip--border-right-width, var(--border-right-width))\n                    var(--tooltip--border-bottom-width, var(--border-bottom-width))\n                    var(--tooltip--border-left-width, var(--border-left-width))\n            )'
-                    }
-                ]
+                name: '--tooltip--background',
+                value: []
             },
             {
                 name: '--tooltip--border-style',
-                value: [
-                    {
-                        value: '(\n                var(--tooltip--border-top-style, var(--border-top-style))\n                    var(--tooltip--border-right-style, var(--border-right-style))\n                    var(--tooltip--border-bottom-style, var(--border-bottom-style))\n                    var(--tooltip--border-left-style, var(--border-left-style))\n            )'
-                    }
-                ]
+                value: []
             },
             {
-                name: '--tooltip--color',
-                variants: [
-                    {
-                        name: '--tooltip--light--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-white'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--tooltip--dark--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--tooltip--background',
-                variants: [
-                    {
-                        name: '--tooltip--light--background',
-                        value: [
-                            {
-                                name: '--color-white'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--tooltip--dark--background',
-                        value: [
-                            {
-                                name: '--color-dark'
-                            }
-                        ]
-                    }
-                ]
+                name: '--tooltip--border-width',
+                value: []
             },
             {
                 name: '--tooltip--border-color',
                 value: [
                     {
-                        value: '(\n                var(--tooltip--border-top-color, var(--border-top-color))\n                    var(--tooltip--border-right-color, var(--border-right-color))\n                    var(--tooltip--border-bottom-color, var(--border-bottom-color))\n                    var(--tooltip--border-left-color, var(--border-left-color))\n            )'
+                        name: '--tooltip--border-top-color'
+                    },
+                    {
+                        name: '--tooltip--border-right-color'
+                    },
+                    {
+                        name: '--tooltip--border-bottom-color'
+                    },
+                    {
+                        name: '--tooltip--border-left-color'
                     }
                 ]
             },
             {
                 name: '--tooltip--border-radius',
-                value: [
-                    {
-                        value: '(\n                var(--tooltip--border-top-left-radius, var(--border-top-left-radius))\n                    var(--tooltip--border-top-right-radius, var(--border-top-right-radius))\n                    var(--tooltip--border-bottom-right-radius, var(--border-bottom-right-radius))\n                    var(--tooltip--border-bottom-left-radius, var(--border-bottom-left-radius))\n            )'
-                    }
-                ]
-            },
-            {
-                name: '--tooltip--font-size',
-                value: [
-                    {
-                        name: '--font-size'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--tooltip--sm--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--tooltip--md--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--tooltip--lg--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--tooltip--padding',
-                value: [
-                    {
-                        value: '(\n                var(--tooltip--padding-top, var(--padding-top))\n                    var(--tooltip--padding-right, var(--padding-right))\n                    var(--tooltip--padding-bottom, var(--padding-bottom))\n                    var(--tooltip--padding-left, var(--padding-left))\n            )'
-                    }
-                ]
+                value: []
             },
             {
                 name: '--tooltip--box-shadow',
-                value: [
-                    {
-                        name: '--tooltip--box-shadow-x-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-x'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--tooltip--box-shadow-y-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-y'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--tooltip--box-shadow-blur-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-blur-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--tooltip--box-shadow-spread-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-spread-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--tooltip--box-shadow-color',
-                        value: [
-                            {
-                                name: '--box-shadow-color'
-                            }
-                        ]
-                    }
-                ]
+                value: []
+            },
+            {
+                name: '--tooltip--color',
+                value: []
+            },
+            {
+                name: '--tooltip--font-size',
+                value: []
+            },
+            {
+                name: '--tooltip--line-height',
+                value: []
+            },
+            {
+                name: '--tooltip--padding',
+                value: []
+            },
+            {
+                name: '--tooltip--z-index',
+                value: []
+            },
+            {
+                name: '--tooltip--arrow--size',
+                value: []
             }
         ]
     }

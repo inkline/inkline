@@ -3,7 +3,7 @@ import {
     ITableBasicExample,
     ITableBorderedExample,
     ITableColorVariantsExample,
-    ITableHoverExample,
+    ITableHoverableExample,
     ITableResponsiveExample,
     ITableStripedExample
 } from '@inkline/inkline/components/ITable/examples/index';
@@ -21,6 +21,6 @@ export default {
 export const Basic = createStory(ITableBasicExample);
 export const Bordered = () => ITableBorderedExample;
 export const ColorVariants = () => ITableColorVariantsExample;
-export const Hover = () => ITableHoverExample;
+export const Hoverable = () => ITableHoverableExample;
 export const Responsive = () => ITableResponsiveExample;
 export const Striped = () => ITableStripedExample;

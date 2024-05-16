@@ -14,6 +14,51 @@ export const manifest: ComponentManifest = {
         selector: '.layout-aside',
         variables: [
             {
+                name: '--layout-aside--transition',
+                value: [
+                    {
+                        name: '--layout-aside--transition-property',
+                        value: [
+                            {
+                                value: 'width, height'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--layout-aside--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--layout-aside--transition-timing-function',
+                        value: []
+                    },
+                    {
+                        name: '--layout-aside--transition-property',
+                        value: [
+                            {
+                                value: 'width, height'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--layout-aside--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--layout-aside--transition-timing-function',
+                        value: []
+                    }
+                ]
+            },
+            {
                 name: '--layout-aside--width',
                 value: [
                     {

@@ -48,11 +48,9 @@ describe('Components', () => {
                             }
                         }
                     });
+                    const popover = wrapper.container.querySelector('.popover');
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        `-${props.color}`,
-                        `-${props.size}`
-                    );
+                    expect(popover).toHaveClass(`-${props.color}`, `-${props.size}`);
                 });
             });
         });

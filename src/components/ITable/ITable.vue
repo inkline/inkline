@@ -12,9 +12,9 @@ export default defineComponent({
          * Display the table with borders
          * @type Boolean
          * @default false
-         * @name border
+         * @name bordered
          */
-        border: {
+        bordered: {
             type: Boolean,
             default: false
         },
@@ -42,9 +42,9 @@ export default defineComponent({
          * Set the table rows as hoverable
          * @type Boolean
          * @default false
-         * @name hover
+         * @name hoverable
          */
-        hover: {
+        hoverable: {
             type: Boolean,
             default: false
         },
@@ -85,10 +85,10 @@ export default defineComponent({
 
         const classes = computed(() => ({
             [`-${color.value}`]: true,
-            '-border': props.border,
+            '-bordered': props.bordered,
             '-condensed': props.condensed,
             '-striped': props.striped,
-            '-hover': props.hover,
+            '-hoverable': props.hoverable,
             '-nowrap': props.nowrap,
             [`-responsive${typeof props.responsive === 'boolean' ? '' : `-${props.responsive}`}`]:
                 Boolean(props.responsive)

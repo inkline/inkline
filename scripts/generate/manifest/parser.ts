@@ -1,5 +1,6 @@
-import { Block, parse } from 'comment-parser';
-import { ContextBlock, ManifestCSSVariable } from './types';
+import type { Block } from 'comment-parser';
+import { parse } from 'comment-parser';
+import type { ContextBlock, ManifestCSSVariable } from './types';
 
 export const parseSassOptions = {
     markers: {
@@ -77,19 +78,32 @@ function parseFallbackValue(source: string): ManifestCSSVariable[] {
     }));
 }
 
-export function parseCssVariables(source: string): ManifestCSSVariable[] {
-    const valueRegex = /\w:\s+var\(\s*(--[\w-]+)(,[^;]+)?\)/g;
-    return Array.from(source.matchAll(valueRegex), ([_, variableName, fallbackValue]) => ({
+export function parseUsedCssVariables(source: string): ManifestCSSVariable[] {
+    const valueRegex = /var\(\s*(--[\w-]+)(,[^;]+)?\)/g;
+
+    return Array.from(source.matchAll(valueRegex), ([_, variableName, fallbackValue]) => {
+        return {
+            name: variableName,
+            ...(fallbackValue ? { value: parseFallbackValue(fallbackValue.slice(1).trim()) } : {})
+        };
+    }).filter(
+        (variable, index, array) => array.findIndex((v) => v.name === variable.name) === index
+    );
+}
+
+export function parseDefinedCssVariables(source: string): ManifestCSSVariable[] {
+    const valueRegex = /(--[\w-]+):\s*([^;]+);/g;
+    return Array.from(source.matchAll(valueRegex), ([_, variableName, value]) => ({
         name: variableName,
-        ...(fallbackValue ? { value: parseFallbackValue(fallbackValue.slice(1).trim()) } : {})
+        ...(value ? { value: parseFallbackValue(value.trim()) } : {})
     })).filter(
         (variable, index, array) => array.findIndex((v) => v.name === variable.name) === index
     );
 }
 
 export function parseCssSelector(source: string): string {
-    const selectorRegex = /^(\.[a-z-]+)/g;
+    const selectorRegex = /^\s*(\.[a-z-]+)/g;
     const selectorMatch = source.split('\n').find((line) => selectorRegex.test(line));
 
-    return selectorMatch ? selectorMatch.match(selectorRegex)![0] : '';
+    return selectorMatch ? selectorMatch.match(selectorRegex)![0].trim() : '';
 }

@@ -30,88 +30,37 @@ export const manifest: ComponentManifest = {
         }
     ],
     css: {
-        selector: '.navbar',
+        selector: '.navbar-brand',
         variables: [
             {
-                name: '--navbar--color'
-            },
-            {
-                name: '--navbar--item--padding',
-                value: [
-                    {
-                        name: '--navbar--item--padding-top',
-                        value: [
-                            {
-                                name: '--navbar--padding-top',
-                                value: [
-                                    {
-                                        name: '--padding-top'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--item--padding-right',
-                        value: [
-                            {
-                                name: '--navbar--padding-right',
-                                value: [
-                                    {
-                                        name: '--padding-right'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--item--padding-bottom',
-                        value: [
-                            {
-                                name: '--navbar--padding-bottom',
-                                value: [
-                                    {
-                                        name: '--padding-bottom'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--item--padding-left',
-                        value: [
-                            {
-                                name: '--navbar--padding-left',
-                                value: [
-                                    {
-                                        name: '--padding-left'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                name: '--navbar--brand--color',
+                value: []
             },
             {
                 name: '--navbar--brand--font-size',
+                value: []
+            },
+            {
+                name: '--navbar--brand--margin',
+                value: []
+            },
+            {
+                name: '--navbar--brand--transition',
                 value: [
                     {
-                        name: '--navbar--font-size',
-                        value: [
-                            {
-                                name: '--font-size'
-                            }
-                        ]
+                        name: '--navbar--brand--transition-property'
+                    },
+                    {
+                        name: '--navbar--brand--transition-duration'
+                    },
+                    {
+                        name: '--navbar--brand--transition-timing-function'
                     }
                 ]
             },
             {
-                name: '--navbar--brand--margin-right',
-                value: [
-                    {
-                        name: '--margin-right'
-                    }
-                ]
+                name: '--navbar--brand--padding',
+                value: []
             }
         ]
     }

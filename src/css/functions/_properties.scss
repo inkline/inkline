@@ -115,9 +115,7 @@
         'var(#{$componentChain}--#{$property}--#{$part})'
     );
 
-    @return var(
-        #{$componentChain}#{$elementOrStateChain}--#{$property}--#{$part}#{$fallbackSuffix}
-    );
+    @return var(#{$componentChain}#{$elementOrStateChain}--#{$property}-#{$part}#{$fallbackSuffix});
 }
 
 @function _color-property($component, $property, $elementOrState: null, $fallback: false) {
@@ -566,12 +564,28 @@
     @return _generic-component-property($component, 'text-transform', $elementOrState, $fallback);
 }
 
+@function top($component, $elementOrState: null, $fallback: false) {
+    @return _generic-component-property($component, 'top', $elementOrState, $fallback);
+}
+
+@function right($component, $elementOrState: null, $fallback: false) {
+    @return _generic-component-property($component, 'right', $elementOrState, $fallback);
+}
+
+@function bottom($component, $elementOrState: null, $fallback: false) {
+    @return _generic-component-property($component, 'bottom', $elementOrState, $fallback);
+}
+
+@function left($component, $elementOrState: null, $fallback: false) {
+    @return _generic-component-property($component, 'left', $elementOrState, $fallback);
+}
+
 @function z-index($component, $elementOrState: null, $fallback: false) {
     @return _generic-component-property($component, 'z-index', $elementOrState, $fallback);
 }
 
 @function generic($componentOrProperty, $property: null, $elementOrState: null, $fallback: false) {
-    @if $property == null {
+    @if not $property {
         @return _generic-property($componentOrProperty, $fallback);
     }
 

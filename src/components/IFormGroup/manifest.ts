@@ -63,10 +63,39 @@ export const manifest: ComponentManifest = {
         selector: '.form-group',
         variables: [
             {
-                name: '--form-group--margin-top',
+                name: '--form-group--adjacent--margin',
                 value: [
                     {
-                        name: '--margin-top'
+                        name: '--form-group--adjacent--margin-top',
+                        value: [
+                            {
+                                name: '--margin-top'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-group--adjacent--margin-right',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-group--adjacent--margin-bottom',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-group--adjacent--margin-left',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
                     }
                 ]
             }

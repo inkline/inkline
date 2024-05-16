@@ -69,207 +69,393 @@ export const manifest: ComponentManifest = {
         selector: '.navbar',
         variables: [
             {
-                name: '--navbar--border-radius',
-                value: [
-                    {
-                        name: '--navbar--border-top-left-radius',
-                        value: [
-                            {
-                                name: '--border-top-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--border-top-right-radius',
-                        value: [
-                            {
-                                name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--border-bottom-right-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--border-bottom-left-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--navbar--collapsed--margin-top',
-                value: [
-                    {
-                        name: '--margin-top'
-                    }
-                ]
-            },
-            {
-                name: '--navbar--transition-property',
-                value: [
-                    {
-                        value: '(background-color, color)'
-                    }
-                ]
-            },
-            {
-                name: '--navbar--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
-                name: '--navbar--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--navbar--color',
-                variants: [
-                    {
-                        name: '--navbar--light--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--dark--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 name: '--navbar--background',
+                value: [
+                    {
+                        name: '--navbar--background-h',
+                        value: [
+                            {
+                                name: '--color-white-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--background-s',
+                        value: [
+                            {
+                                name: '--color-white-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--background-l',
+                        value: [
+                            {
+                                name: '--color-white-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--background-a',
+                        value: [
+                            {
+                                name: '--color-white-a'
+                            }
+                        ]
+                    }
+                ],
                 variants: [
                     {
                         name: '--navbar--light--background',
                         value: [
                             {
-                                name: '--color-light'
+                                name: '--navbar--light--background-h',
+                                value: [
+                                    {
+                                        name: '--color-white-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--background-s',
+                                value: [
+                                    {
+                                        name: '--color-white-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--background-l',
+                                value: [
+                                    {
+                                        name: '--color-white-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--background-a',
+                                value: [
+                                    {
+                                        name: '--color-white-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--light--item--background',
+                        value: [
+                            {
+                                name: '--navbar--light--item--background-h',
+                                value: [
+                                    {
+                                        name: '--color-white-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--background-s',
+                                value: [
+                                    {
+                                        name: '--color-white-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--background-l',
+                                value: [
+                                    {
+                                        name: '--color-white-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--background-a',
+                                value: [
+                                    {
+                                        name: '--color-white-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--light--item--hover--background',
+                        value: [
+                            {
+                                name: '--navbar--light--item--hover--background-h',
+                                value: [
+                                    {
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--hover--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--hover--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--hover--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--light--item--focus--background',
+                        value: [
+                            {
+                                name: '--navbar--light--item--focus--background-h',
+                                value: [
+                                    {
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--focus--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--focus--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--focus--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--light--item--active--background',
+                        value: [
+                            {
+                                name: '--navbar--light--item--active--background-h',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--active--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--active--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--item--active--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--light--collapsed--background',
+                        value: [
+                            {
+                                name: '--navbar--light--collapsed--background-h',
+                                value: [
+                                    {
+                                        name: '--color-white-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--background-s',
+                                value: [
+                                    {
+                                        name: '--color-white-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--background-l',
+                                value: [
+                                    {
+                                        name: '--color-white-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--background-a',
+                                value: [
+                                    {
+                                        name: '--color-white-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--light--collapsed--item--background',
+                        value: [
+                            {
+                                name: '--navbar--light--collapsed--item--background-h',
+                                value: [
+                                    {
+                                        name: '--color-white-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--background-s',
+                                value: [
+                                    {
+                                        name: '--color-white-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--background-l',
+                                value: [
+                                    {
+                                        name: '--color-white-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--background-a',
+                                value: [
+                                    {
+                                        name: '--color-white-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--light--collapsed--item--hover--background',
+                        value: [
+                            {
+                                name: '--navbar--light--collapsed--item--hover--background-h',
+                                value: [
+                                    {
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--hover--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--hover--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--hover--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--light--collapsed--item--focus--background',
+                        value: [
+                            {
+                                name: '--navbar--light--collapsed--item--focus--background-h',
+                                value: [
+                                    {
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--focus--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--focus--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--focus--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--light--collapsed--item--active--background',
+                        value: [
+                            {
+                                name: '--navbar--light--collapsed--item--active--background-h',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--active--background-s',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--active--background-l',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--light--collapsed--item--active--background-a',
+                                value: []
                             }
                         ]
                     },
@@ -277,227 +463,321 @@ export const manifest: ComponentManifest = {
                         name: '--navbar--dark--background',
                         value: [
                             {
-                                name: '--color-dark'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--navbar--padding',
-                value: [
-                    {
-                        name: '--navbar--padding-top',
-                        value: [
-                            {
-                                name: '--padding-top'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--padding-top',
+                                name: '--navbar--dark--background-h',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-top) * var(--size-multiplier-sm))'
+                                        name: '--color-dark-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--navbar--md--padding-top',
+                                name: '--navbar--dark--background-s',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-top) * var(--size-multiplier-md))'
+                                        name: '--color-dark-s'
                                     }
                                 ]
                             },
                             {
-                                name: '--navbar--lg--padding-top',
+                                name: '--navbar--dark--background-l',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-top) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--padding-right',
-                        value: [
-                            {
-                                name: '--padding-right'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
+                                        name: '--color-dark-l'
                                     }
                                 ]
                             },
                             {
-                                name: '--navbar--md--padding-right',
+                                name: '--navbar--dark--background-a',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
+                                        name: '--color-dark-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--dark--item--background',
+                        value: [
+                            {
+                                name: '--navbar--dark--item--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--navbar--lg--padding-right',
+                                name: '--navbar--dark--item--background-s',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--padding-bottom',
-                        value: [
-                            {
-                                name: '--padding-bottom'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))'
+                                        name: '--color-dark-s'
                                     }
                                 ]
                             },
                             {
-                                name: '--navbar--md--padding-bottom',
+                                name: '--navbar--dark--item--background-l',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-bottom) * var(--size-multiplier-md))'
+                                        name: '--color-dark-l'
                                     }
                                 ]
                             },
                             {
-                                name: '--navbar--lg--padding-bottom',
+                                name: '--navbar--dark--item--background-a',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-bottom) * var(--size-multiplier-lg))'
+                                        name: '--color-dark-a'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--navbar--padding-left',
+                        name: '--navbar--dark--item--hover--background',
                         value: [
                             {
-                                name: '--padding-left'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--padding-left',
+                                name: '--navbar--dark--item--hover--background-h',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
+                                        name: '--color-dark-tint-50-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--navbar--md--padding-left',
+                                name: '--navbar--dark--item--hover--background-s',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
+                                        name: '--color-dark-tint-50-s'
                                     }
                                 ]
                             },
                             {
-                                name: '--navbar--lg--padding-left',
+                                name: '--navbar--dark--item--hover--background-l',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
+                                        name: '--color-dark-tint-50-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--item--hover--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-a'
                                     }
                                 ]
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: '--navbar--font-size',
-                value: [
+                    },
                     {
-                        name: '--font-size'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--navbar--sm--font-size',
+                        name: '--navbar--dark--item--focus--background',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
+                                name: '--navbar--dark--item--focus--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--item--focus--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--item--focus--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--item--focus--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-a'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        name: '--navbar--md--font-size',
+                        name: '--navbar--dark--item--active--background',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
+                                name: '--navbar--dark--item--active--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--item--active--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--item--active--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--item--active--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-a'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        name: '--navbar--lg--font-size',
+                        name: '--navbar--dark--collapsed--background',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--navbar--box-shadow',
-                value: [
-                    {
-                        name: '--navbar--box-shadow-x-offset',
-                        value: [
+                                name: '--navbar--dark--collapsed--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-h'
+                                    }
+                                ]
+                            },
                             {
-                                name: '--box-shadow-offset-x'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--box-shadow-y-offset',
-                        value: [
+                                name: '--navbar--dark--collapsed--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-s'
+                                    }
+                                ]
+                            },
                             {
-                                name: '--box-shadow-offset-y'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--box-shadow-blur-radius',
-                        value: [
+                                name: '--navbar--dark--collapsed--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-l'
+                                    }
+                                ]
+                            },
                             {
-                                name: '--box-shadow-blur-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--box-shadow-spread-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-spread-radius'
+                                name: '--navbar--dark--collapsed--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-a'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        name: '--navbar--box-shadow-color',
+                        name: '--navbar--dark--collapsed--item--background',
                         value: [
                             {
-                                name: '--box-shadow-color'
+                                name: '--navbar--dark--collapsed--item--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--dark--collapsed--item--hover--background',
+                        value: [
+                            {
+                                name: '--navbar--dark--collapsed--item--hover--background-h',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--hover--background-s',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--hover--background-l',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--hover--background-a',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--dark--collapsed--item--focus--background',
+                        value: [
+                            {
+                                name: '--navbar--dark--collapsed--item--focus--background-h',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--focus--background-s',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--focus--background-l',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--focus--background-a',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--dark--collapsed--item--active--background',
+                        value: [
+                            {
+                                name: '--navbar--dark--collapsed--item--active--background-h',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--active--background-s',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--active--background-l',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--dark--collapsed--item--active--background-a',
+                                value: []
                             }
                         ]
                     }
@@ -582,12 +862,25 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         name: '--navbar--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--navbar--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--navbar--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--navbar--border-left-color',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--navbar--light--border-color',
                         value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ],
-                        variants: [
                             {
                                 name: '--navbar--light--border-top-color',
                                 value: [
@@ -597,28 +890,39 @@ export const manifest: ComponentManifest = {
                                 ]
                             },
                             {
-                                name: '--navbar--dark--border-top-color',
+                                name: '--navbar--light--border-right-color',
                                 value: [
                                     {
-                                        name: '--color-dark-tint-50'
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--navbar--border-right-color',
+                        name: '--navbar--dark--border-color',
                         value: [
                             {
-                                name: '--border-right-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--light--border-right-color',
+                                name: '--navbar--dark--border-top-color',
                                 value: [
                                     {
-                                        name: '--color-light-shade-50'
+                                        name: '--color-dark-tint-50'
                                     }
                                 ]
                             },
@@ -629,48 +933,12 @@ export const manifest: ComponentManifest = {
                                         name: '--color-dark-tint-50'
                                     }
                                 ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--light--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
                             },
                             {
                                 name: '--navbar--dark--border-bottom-color',
                                 value: [
                                     {
                                         name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--light--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
                                     }
                                 ]
                             },
@@ -687,68 +955,497 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--navbar--item--color'
-            },
-            {
-                name: '--navbar--item--padding',
+                name: '--navbar--border-radius',
                 value: [
                     {
-                        name: '--navbar--item--padding-top',
+                        name: '--navbar--border-top-left-radius',
+                        value: []
+                    },
+                    {
+                        name: '--navbar--border-top-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--navbar--border-bottom-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--navbar--border-bottom-left-radius',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--navbar--sm--border-radius',
                         value: [
                             {
-                                name: '--navbar--padding-top',
+                                name: '--navbar--sm--border-top-left-radius',
                                 value: [
                                     {
-                                        name: '--padding-top'
+                                        name: '--border-top-left-radius-sm'
                                     }
                                 ]
+                            },
+                            {
+                                name: '--navbar--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--sm--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--sm--border-bottom-left-radius',
+                                value: []
                             }
-                        ],
-                        variants: [
+                        ]
+                    },
+                    {
+                        name: '--navbar--md--border-radius',
+                        value: [
                             {
-                                name: '--navbar--sm--item--padding-top',
+                                name: '--navbar--md--border-top-left-radius',
                                 value: [
                                     {
-                                        value: 'calc(#{calc(var(--padding-top) / 2)} * var(--size-multiplier-sm))'
+                                        name: '--border-top-left-radius-md'
                                     }
                                 ]
                             },
                             {
-                                name: '--navbar--md--item--padding-top',
+                                name: '--navbar--md--border-top-right-radius',
                                 value: [
                                     {
-                                        value: 'calc(#{calc(var(--padding-top) / 2)} * var(--size-multiplier-md))'
+                                        name: '--border-top-right-radius-md'
                                     }
                                 ]
                             },
                             {
-                                name: '--navbar--lg--item--padding-top',
+                                name: '--navbar--md--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--md--border-bottom-left-radius',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--lg--border-radius',
+                        value: [
+                            {
+                                name: '--navbar--lg--border-top-left-radius',
                                 value: [
                                     {
-                                        value: 'calc(#{calc(var(--padding-top) / 2)} * var(--size-multiplier-lg))'
+                                        name: '--border-top-left-radius-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--lg--border-bottom-left-radius',
+                                value: []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--navbar--box-shadow',
+                value: []
+            },
+            {
+                name: '--navbar--color',
+                value: [
+                    {
+                        name: '--navbar--color-h',
+                        value: [
+                            {
+                                name: '--contrast-text-color-light-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--color-s',
+                        value: [
+                            {
+                                name: '--contrast-text-color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--color-l',
+                        value: [
+                            {
+                                name: '--contrast-text-color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--color-a',
+                        value: [
+                            {
+                                name: '--contrast-text-color-light-a'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--navbar--light--color',
+                        value: [
+                            {
+                                name: '--navbar--light--color-h',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--color-s',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--color-l',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--light--color-a',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-a'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--navbar--item--padding-right',
+                        name: '--navbar--dark--color',
                         value: [
                             {
-                                name: '--navbar--padding-right',
+                                name: '--navbar--dark--color-h',
                                 value: [
                                     {
-                                        name: '--padding-right'
+                                        name: '--contrast-text-color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--color-s',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--color-l',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--dark--color-a',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-a'
                                     }
                                 ]
                             }
-                        ],
-                        variants: [
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--navbar--font-size',
+                value: [],
+                variants: [
+                    {
+                        name: '--navbar--sm--font-size',
+                        value: [
+                            {
+                                name: '--font-size-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--md--font-size',
+                        value: [
+                            {
+                                name: '--font-size-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--lg--font-size',
+                        value: [
+                            {
+                                name: '--font-size-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--navbar--padding',
+                value: [
+                    {
+                        name: '--navbar--padding-top',
+                        value: []
+                    },
+                    {
+                        name: '--navbar--padding-right',
+                        value: []
+                    },
+                    {
+                        name: '--navbar--padding-bottom',
+                        value: []
+                    },
+                    {
+                        name: '--navbar--padding-left',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--navbar--brand--padding',
+                        value: [
+                            {
+                                name: '--navbar--brand--padding-top',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--brand--padding-right',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--brand--padding-bottom',
+                                value: []
+                            },
+                            {
+                                name: '--navbar--brand--padding-left',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--sm--padding',
+                        value: [
+                            {
+                                name: '--navbar--sm--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--sm--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--sm--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--sm--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-sm'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--sm--brand--padding',
+                        value: [
+                            {
+                                name: '--navbar--sm--brand--padding-top',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-top-sm) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--sm--brand--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--sm--brand--padding-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-bottom-sm) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--sm--brand--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-sm'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--sm--item--padding',
+                        value: [
+                            {
+                                name: '--navbar--sm--item--padding-top',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-top-sm) * 0.5)'
+                                    }
+                                ]
+                            },
                             {
                                 name: '--navbar--sm--item--padding-right',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
+                                        name: '--padding-right-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--sm--item--padding-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-bottom-sm) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--sm--item--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-sm'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--md--padding',
+                        value: [
+                            {
+                                name: '--navbar--md--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--md--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--md--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--md--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-md'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--md--brand--padding',
+                        value: [
+                            {
+                                name: '--navbar--md--brand--padding-top',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-top-md) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--md--brand--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--md--brand--padding-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-bottom-md) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--md--brand--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-md'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--md--item--padding',
+                        value: [
+                            {
+                                name: '--navbar--md--item--padding-top',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-top-md) * 0.5)'
                                     }
                                 ]
                             },
@@ -756,38 +1453,7 @@ export const manifest: ComponentManifest = {
                                 name: '--navbar--md--item--padding-right',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--lg--item--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--item--padding-bottom',
-                        value: [
-                            {
-                                name: '--navbar--padding-bottom',
-                                value: [
-                                    {
-                                        name: '--padding-bottom'
-                                    }
-                                ]
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--item--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * var(--size-multiplier-sm))'
+                                        name: '--padding-right-md'
                                     }
                                 ]
                             },
@@ -795,38 +1461,7 @@ export const manifest: ComponentManifest = {
                                 name: '--navbar--md--item--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--lg--item--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(#{calc(var(--padding-bottom) / 2)} * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--item--padding-left',
-                        value: [
-                            {
-                                name: '--navbar--padding-left',
-                                value: [
-                                    {
-                                        name: '--padding-left'
-                                    }
-                                ]
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--navbar--sm--item--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
+                                        value: 'calc(var(--padding-bottom-md) * 0.5)'
                                     }
                                 ]
                             },
@@ -834,7 +1469,110 @@ export const manifest: ComponentManifest = {
                                 name: '--navbar--md--item--padding-left',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
+                                        name: '--padding-left-md'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--lg--padding',
+                        value: [
+                            {
+                                name: '--navbar--lg--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--lg--brand--padding',
+                        value: [
+                            {
+                                name: '--navbar--lg--brand--padding-top',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-top-lg) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--brand--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--brand--padding-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-bottom-lg) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--brand--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--lg--item--padding',
+                        value: [
+                            {
+                                name: '--navbar--lg--item--padding-top',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-top-lg) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--item--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--navbar--lg--item--padding-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-bottom-lg) * 0.5)'
                                     }
                                 ]
                             },
@@ -842,7 +1580,7 @@ export const manifest: ComponentManifest = {
                                 name: '--navbar--lg--item--padding-left',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
+                                        name: '--padding-left-lg'
                                     }
                                 ]
                             }
@@ -851,13 +1589,105 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--navbar--item--font-size',
+                name: '--navbar--transition',
                 value: [
                     {
-                        name: '--navbar--font-size',
+                        name: '--navbar--transition-property',
                         value: [
                             {
-                                name: '--font-size'
+                                value: 'background-color, color, border-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--transition-property',
+                        value: [
+                            {
+                                value: 'background-color, color, border-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--navbar--collapsible--transition',
+                        value: [
+                            {
+                                name: '--navbar--collapsible--transition-property',
+                                value: [
+                                    {
+                                        value: 'height, background-color, color,\n      border-color'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--navbar--item--background',
+                value: [
+                    {
+                        name: '--navbar--item--background-h',
+                        value: [
+                            {
+                                name: '--color-white-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--item--background-s',
+                        value: [
+                            {
+                                name: '--color-white-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--item--background-l',
+                        value: [
+                            {
+                                name: '--color-white-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--item--background-a',
+                        value: [
+                            {
+                                name: '--color-white-a'
                             }
                         ]
                     }
@@ -865,66 +1695,48 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--navbar--item--border-radius',
+                value: []
+            },
+            {
+                name: '--navbar--item--color',
+                value: []
+            },
+            {
+                name: '--navbar--item--font-size',
+                value: []
+            },
+            {
+                name: '--navbar--item--padding',
                 value: [
                     {
-                        name: '--navbar--item--border-top-left-radius',
-                        value: [
-                            {
-                                name: '--navbar--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--navbar--item--padding-top',
+                        value: []
                     },
                     {
-                        name: '--navbar--item--border-top-right-radius',
-                        value: [
-                            {
-                                name: '--navbar--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--navbar--item--padding-right',
+                        value: []
                     },
                     {
-                        name: '--navbar--item--border-bottom-right-radius',
-                        value: [
-                            {
-                                name: '--navbar--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-right-radius'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--navbar--item--padding-bottom',
+                        value: []
                     },
                     {
-                        name: '--navbar--item--border-bottom-left-radius',
-                        value: [
-                            {
-                                name: '--navbar--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-left-radius'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--navbar--item--padding-left',
+                        value: []
                     }
                 ]
             },
             {
-                name: '--navbar--item--hover--color',
+                name: '--navbar--item--transition',
                 value: [
                     {
-                        name: '--navbar--item--color'
+                        name: '--navbar--item--transition-property'
+                    },
+                    {
+                        name: '--navbar--item--transition-duration'
+                    },
+                    {
+                        name: '--navbar--item--transition-timing-function'
                     }
                 ]
             },
@@ -932,96 +1744,159 @@ export const manifest: ComponentManifest = {
                 name: '--navbar--item--hover--background',
                 value: [
                     {
-                        name: '--navbar--item--background',
-                        variants: [
-                            {
-                                name: '--navbar--light--item--background',
-                                value: [
-                                    {
-                                        name: '--color-light'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--navbar--dark--item--background',
-                                value: [
-                                    {
-                                        name: '--color-dark'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--navbar--light--item--hover--background',
+                        name: '--navbar--item--hover--background-h',
                         value: [
                             {
-                                name: '--color-light-shade-50'
+                                name: '--color-light-h'
                             }
                         ]
                     },
                     {
-                        name: '--navbar--dark--item--hover--background',
+                        name: '--navbar--item--hover--background-s',
                         value: [
                             {
-                                name: '--color-dark-tint-50'
+                                name: '--color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--item--hover--background-l',
+                        value: [
+                            {
+                                name: '--color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--item--hover--background-a',
+                        value: [
+                            {
+                                name: '--color-light-a'
                             }
                         ]
                     }
                 ]
+            },
+            {
+                name: '--navbar--item--hover--color',
+                value: []
+            },
+            {
+                name: '--navbar--item--focus--background',
+                value: [
+                    {
+                        name: '--navbar--item--focus--background-h',
+                        value: [
+                            {
+                                name: '--color-light-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--item--focus--background-s',
+                        value: [
+                            {
+                                name: '--color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--item--focus--background-l',
+                        value: [
+                            {
+                                name: '--color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--item--focus--background-a',
+                        value: [
+                            {
+                                name: '--color-light-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--navbar--item--focus--color',
+                value: []
+            },
+            {
+                name: '--navbar--item--active--background',
+                value: [
+                    {
+                        name: '--navbar--item--active--background-h',
+                        value: [
+                            {
+                                name: '--color-light-shade-50-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--item--active--background-s',
+                        value: [
+                            {
+                                name: '--color-light-shade-50-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--item--active--background-l',
+                        value: [
+                            {
+                                name: '--color-light-shade-50-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--navbar--item--active--background-a',
+                        value: [
+                            {
+                                name: '--color-light-shade-50-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--navbar--item--active--color',
+                value: []
+            },
+            {
+                name: '--navbar--item--active--font-weight',
+                value: []
             },
             {
                 name: '--navbar--collapsed--background',
-                variants: [
-                    {
-                        name: '--navbar--light--collapsed--background',
-                        value: [
-                            {
-                                name: '--color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--navbar--dark--collapsed--background',
-                        value: [
-                            {
-                                name: '--color-dark'
-                            }
-                        ]
-                    }
-                ]
+                value: []
             },
             {
                 name: '--navbar--collapsed--item--background',
-                value: [
-                    {
-                        name: '--navbar--item--background'
-                    }
-                ]
+                value: []
             },
             {
                 name: '--navbar--collapsed--item--color',
-                value: [
-                    {
-                        name: '--navbar--item--color'
-                    }
-                ]
-            },
-            {
-                name: '--navbar--collapsed--item--hover--color',
-                value: [
-                    {
-                        name: '--navbar--item--hover--color'
-                    }
-                ]
+                value: []
             },
             {
                 name: '--navbar--collapsed--item--hover--background',
+                value: []
+            },
+            {
+                name: '--navbar--collapsed--item--hover--color',
+                value: []
+            },
+            {
+                name: '--navbar--collapsed--margin',
                 value: [
                     {
-                        name: '--navbar--item--hover--background'
+                        name: '--navbar--collapsed--margin-top',
+                        value: [
+                            {
+                                name: '--margin-top'
+                            }
+                        ]
                     }
                 ]
             }

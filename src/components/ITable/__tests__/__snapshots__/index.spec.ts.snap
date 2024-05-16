@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > ITable > should render correctly 1`] = `
-"<div class="table-wrapper -light -responsive">
-  <table class="table">
+"<div class="table -light -responsive">
+  <table>
     <!-- @slot default Slot for table rows and data -->
   </table>
 </div>"

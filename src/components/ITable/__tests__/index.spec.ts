@@ -32,10 +32,10 @@ describe('Components', () => {
                     const wrapper = render(ITable, {
                         props: {
                             ...props,
-                            border: true,
+                            bordered: true,
                             condensed: true,
                             striped: true,
-                            hover: true,
+                            hoverable: true,
                             nowrap: true,
                             responsive: true
                         },
@@ -48,10 +48,10 @@ describe('Components', () => {
 
                     expect(wrapper.container.firstChild).toHaveClass(
                         '-light',
-                        '-border',
+                        '-bordered',
                         '-condensed',
                         '-striped',
-                        '-hover',
+                        '-hoverable',
                         '-nowrap',
                         '-responsive'
                     );

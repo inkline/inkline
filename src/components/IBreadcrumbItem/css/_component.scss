@@ -5,65 +5,64 @@
  * Breadcrumb Item
  */
 
-@layer components {
-    .breadcrumb-item {
-        @include components.padding-left('breadcrumb');
+.breadcrumb-item {
+    @include components.padding-left('breadcrumb');
+    @include components.color('breadcrumb');
+
+    margin-bottom: 0;
+
+    &:first-of-type {
+        padding-left: 0;
+    }
+
+    a {
         @include components.color('breadcrumb');
+    }
 
-        margin-bottom: 0;
+    &.-active,
+    &.-active a {
+        @include components.color('breadcrumb', 'active');
+    }
 
-        &:first-of-type {
-            padding-left: 0;
+    > span {
+        display: inline-block;
+    }
+
+    // The separator between breadcrumbs (by default, a forward-slash: "/")
+    + .breadcrumb-item {
+        &::before {
+            @include components.padding-right('breadcrumb');
+
+            display: inline-block; // } Suppress underlining of the separator in modern browsers
+            content: properties.generic('breadcrumb', 'separator');
         }
+    }
 
-        a {
-            @include components.color('breadcrumb');
-        }
+    // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
+    // without `<ul>`s. The `::before` pseudo-element generates an element
+    // *within* the .breadcrumb-item and thereby inherits the `text-decoration`.
+    //
+    // To trick IE into suppressing the underline, we give the pseudo-element an
+    // underline and then immediately remove it.
+    // stylelint-disable-next-line no-duplicate-selectors
+    + .breadcrumb-item:hover::before {
+        text-decoration: underline;
+    }
 
-        &.-active {
-            @include components.color('breadcrumb', 'active');
-        }
+    // Check the above for duplication
+    // stylelint-disable-next-line no-duplicate-selectors
+    + .breadcrumb-item:hover::before {
+        text-decoration: none;
+    }
 
-        > span {
-            display: inline-block;
-        }
+    :not([href], [to]) {
+        text-decoration: none;
+    }
 
-        // The separator between breadcrumbs (by default, a forward-slash: "/")
-        + .breadcrumb-item {
-            &::before {
-                @include components.padding-right('breadcrumb');
+    [href],
+    [to] {
+        @include components.color('breadcrumb', 'link');
 
-                display: inline-block; // } Suppress underlining of the separator in modern browsers
-                content: properties.generic('breadcrumb', 'separator');
-            }
-        }
-
-        // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
-        // without `<ul>`s. The `::before` pseudo-element generates an element
-        // *within* the .breadcrumb-item and thereby inherits the `text-decoration`.
-        //
-        // To trick IE into suppressing the underline, we give the pseudo-element an
-        // underline and then immediately remove it.
-        // stylelint-disable-next-line no-duplicate-selectors
-        + .breadcrumb-item:hover::before {
-            text-decoration: underline;
-        }
-
-        // Check the above for duplication
-        // stylelint-disable-next-line no-duplicate-selectors
-        + .breadcrumb-item:hover::before {
-            text-decoration: none;
-        }
-
-        :not([href], [to]) {
-            text-decoration: none;
-        }
-
-        [href],
-        [to] {
-            @include components.color('breadcrumb', 'link');
-
-            cursor: pointer;
-        }
+        cursor: pointer;
     }
 }

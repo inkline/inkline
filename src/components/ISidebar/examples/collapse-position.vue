@@ -22,7 +22,7 @@ export default {
             <ISidebar v-model="openRelative" :collapse="true" collapse-position="relative">
                 <INav vertical>
                     <INavItem to="/"> Home </INavItem>
-                    <INavItem to="/about"> Contact </INavItem>
+                    <INavItem to="/about"> About </INavItem>
                     <INavItem to="/contact"> Contact </INavItem>
                 </INav>
             </ISidebar>

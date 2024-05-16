@@ -34,42 +34,71 @@ export const manifest: ComponentManifest = {
         selector: '.form-label',
         variables: [
             {
-                name: '--form-label--transition-property',
-                value: [
-                    {
-                        value: 'color'
-                    }
-                ]
+                name: '--form-label--color',
+                value: []
             },
             {
-                name: '--form-label--transition-duration',
+                name: '--form-label--transition',
                 value: [
                     {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--form-label--transition-timing-function',
-                value: [
+                        name: '--form-label--transition-property',
+                        value: [
+                            {
+                                value: 'color'
+                            }
+                        ]
+                    },
                     {
-                        name: '--transition-timing-function'
+                        name: '--form-label--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--transition-property',
+                        value: [
+                            {
+                                value: 'color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
                     }
                 ]
             },
             {
                 name: '--form-label--font-size',
-                value: [
-                    {
-                        name: '--font-size'
-                    }
-                ],
+                value: [],
                 variants: [
                     {
                         name: '--form-label--sm--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
+                                name: '--font-size-sm'
                             }
                         ]
                     },
@@ -77,7 +106,7 @@ export const manifest: ComponentManifest = {
                         name: '--form-label--md--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
+                                name: '--font-size-md'
                             }
                         ]
                     },
@@ -85,7 +114,7 @@ export const manifest: ComponentManifest = {
                         name: '--form-label--lg--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
+                                name: '--font-size-lg'
                             }
                         ]
                     }
@@ -132,7 +161,36 @@ export const manifest: ComponentManifest = {
                 name: '--form-label--required--color',
                 value: [
                     {
-                        name: '--color-danger'
+                        name: '--form-label--required--color-h',
+                        value: [
+                            {
+                                name: '--color-danger-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--required--color-s',
+                        value: [
+                            {
+                                name: '--color-danger-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--required--color-l',
+                        value: [
+                            {
+                                name: '--color-danger-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--required--color-a',
+                        value: [
+                            {
+                                name: '--color-danger-a'
+                            }
+                        ]
                     }
                 ]
             },
@@ -140,23 +198,73 @@ export const manifest: ComponentManifest = {
                 name: '--form-label--error--color',
                 value: [
                     {
-                        name: '--color-danger'
+                        name: '--form-label--error--color-h',
+                        value: [
+                            {
+                                name: '--color-danger-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--error--color-s',
+                        value: [
+                            {
+                                name: '--color-danger-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--error--color-l',
+                        value: [
+                            {
+                                name: '--color-danger-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--error--color-a',
+                        value: [
+                            {
+                                name: '--color-danger-a'
+                            }
+                        ]
                     }
                 ]
             },
             {
-                name: '--form-label--inline--margin-right',
+                name: '--form-label--inline--margin',
                 value: [
                     {
-                        name: '--margin-right'
-                    }
-                ]
-            },
-            {
-                name: '--form-label--inline--margin-left',
-                value: [
+                        name: '--form-label--inline--margin-right',
+                        value: [
+                            {
+                                name: '--margin-right'
+                            }
+                        ]
+                    },
                     {
-                        name: '--margin-left'
+                        name: '--form-label--inline--margin-left',
+                        value: [
+                            {
+                                name: '--margin-left'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--inline--margin-right',
+                        value: [
+                            {
+                                name: '--margin-right'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-label--inline--margin-left',
+                        value: [
+                            {
+                                name: '--margin-left'
+                            }
+                        ]
                     }
                 ]
             }

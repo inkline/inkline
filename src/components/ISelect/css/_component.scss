@@ -7,123 +7,121 @@
 @use '../../../css/functions/properties';
 @use '../../../css/icons';
 
-@layer components {
-    .select {
-        display: block;
-        position: relative;
+.select {
+    display: block;
+    position: relative;
 
-        &.-error {
-            > .input .input-field {
-                @include components.border-color('select', 'error', true);
-            }
-        }
-
-        .input {
-            .input-suffix {
-                > *:not(.select-caret) {
-                    margin-right: properties.spacing('select', 'caret');
-                }
-
-                > .select-caret {
-                    @include components.width('select', 'caret');
-                    @include components.height('select', 'caret');
-
-                    cursor: pointer;
-                    mask-image: url('#{icons.$ink-caret-down}');
-                    mask-position: center center;
-                    mask-repeat: no-repeat;
-                    background-color: properties.color('select', 'caret', true);
-                    mask-size: #{properties.width('select', 'caret')} #{properties.height(
-                            'select',
-                            'caret'
-                        )};
-                }
-            }
+    &.-error {
+        > .input .input-field {
+            @include components.border-color('select', 'error', true);
         }
     }
 
-    .select-popup {
-        @include components.box-shadow('select');
-        @include components.color('select');
-        @include components.font-size('select');
-        @include components.line-height('select');
-        @include components.min-width('select');
-        @include components.max-width('select');
-
-        @include popup.popup(properties.z-index('select'));
-        @include popup.popup-arrow;
-        @include popup.popup-arrow-size-variant(properties.size('select', 'arrow'));
-
-        text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
-        list-style: none;
-        display: block;
-        white-space: normal;
-        width: 100%;
-
-        > .select-header {
-            @include components.border-width('select', 'header', true);
-            @include components.border-style('select', 'header', true);
-            @include components.border-color('select', 'header', true);
-            @include components.background('select', 'header', true);
-            @include components.padding('select', 'header', true);
-        }
-
-        > .select-body {
-            @include components.border-width('select', 'body', true);
-            @include components.border-style('select', 'body', true);
-            @include components.border-color('select', 'body', true);
-            @include components.background('select', 'body', true);
-            @include components.padding('select', 'body', true);
-            @include components.max-height('select');
-
-            overflow: auto;
-
-            .select-divider {
-                @include components.background('select', 'divider');
+    .input {
+        .input-suffix {
+            > *:not(.select-caret) {
+                margin-right: properties.spacing('select', 'caret');
             }
 
-            .select-no-results {
-                text-align: center;
+            > .select-caret {
+                @include components.width('select', 'caret');
+                @include components.height('select', 'caret');
+
+                cursor: pointer;
+                mask-image: url('#{icons.$ink-caret-down}');
+                mask-position: center center;
+                mask-repeat: no-repeat;
+                background-color: properties.color('select', 'caret', true);
+                mask-size: #{properties.width('select', 'caret')} #{properties.height(
+                        'select',
+                        'caret'
+                    )};
             }
         }
-
-        > .select-footer {
-            @include components.border-width('select', 'footer', true);
-            @include components.border-style('select', 'footer', true);
-            @include components.border-color('select', 'footer', true);
-            @include components.background('select', 'footer', true);
-            @include components.padding('select', 'footer', true);
-        }
-
-        > div:first-of-type {
-            @include components.border-top-left-radius('select');
-            @include components.border-top-right-radius('select');
-        }
-
-        > div:last-of-type {
-            @include components.border-bottom-left-radius('select');
-            @include components.border-bottom-right-radius('select');
-        }
-
-        @include popup.popup-arrow-color-variant-for-side(
-            'top',
-            properties.background('select'),
-            properties.border-bottom-color('select')
-        );
-        @include popup.popup-arrow-color-variant-for-side(
-            'right',
-            properties.background('select'),
-            properties.border-left-color('select')
-        );
-        @include popup.popup-arrow-color-variant-for-side(
-            'bottom',
-            properties.background('select'),
-            properties.border-top-color('select')
-        );
-        @include popup.popup-arrow-color-variant-for-side(
-            'left',
-            properties.background('select'),
-            properties.border-right-color('select')
-        );
     }
+}
+
+.select-popup {
+    @include components.box-shadow('select');
+    @include components.color('select');
+    @include components.font-size('select');
+    @include components.line-height('select');
+    @include components.min-width('select');
+    @include components.max-width('select');
+
+    @include popup.popup(properties.z-index('select'));
+    @include popup.popup-arrow;
+    @include popup.popup-arrow-size-variant(properties.size('select', 'arrow'));
+
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    display: block;
+    white-space: normal;
+    width: 100%;
+
+    > .select-header {
+        @include components.border-width('select', 'header', true);
+        @include components.border-style('select', 'header', true);
+        @include components.border-color('select', 'header', true);
+        @include components.background('select', 'header', true);
+        @include components.padding('select', 'header', true);
+    }
+
+    > .select-body {
+        @include components.border-width('select', 'body', true);
+        @include components.border-style('select', 'body', true);
+        @include components.border-color('select', 'body', true);
+        @include components.background('select', 'body', true);
+        @include components.padding('select', 'body', true);
+        @include components.max-height('select');
+
+        overflow: auto;
+
+        .select-divider {
+            @include components.background('select', 'divider');
+        }
+
+        .select-no-results {
+            text-align: center;
+        }
+    }
+
+    > .select-footer {
+        @include components.border-width('select', 'footer', true);
+        @include components.border-style('select', 'footer', true);
+        @include components.border-color('select', 'footer', true);
+        @include components.background('select', 'footer', true);
+        @include components.padding('select', 'footer', true);
+    }
+
+    > div:first-of-type {
+        @include components.border-top-left-radius('select');
+        @include components.border-top-right-radius('select');
+    }
+
+    > div:last-of-type {
+        @include components.border-bottom-left-radius('select');
+        @include components.border-bottom-right-radius('select');
+    }
+
+    @include popup.popup-arrow-color-variant-for-side(
+        'top',
+        properties.background('select'),
+        properties.border-bottom-color('select')
+    );
+    @include popup.popup-arrow-color-variant-for-side(
+        'right',
+        properties.background('select'),
+        properties.border-left-color('select')
+    );
+    @include popup.popup-arrow-color-variant-for-side(
+        'bottom',
+        properties.background('select'),
+        properties.border-top-color('select')
+    );
+    @include popup.popup-arrow-color-variant-for-side(
+        'left',
+        properties.background('select'),
+        properties.border-right-color('select')
+    );
 }

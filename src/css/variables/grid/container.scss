@@ -1,10 +1,8 @@
-@layer base {
-  :root {
-    --container-xs: 100%;
-    --container-sm: calc(var(--breakpoint-sm) - var(--gutter-sm));
-    --container-md: calc(var(--breakpoint-md) - var(--gutter-md));
-    --container-lg: calc(var(--breakpoint-lg) - var(--gutter-lg));
-    --container-xl: calc(var(--breakpoint-xl) - var(--gutter-xl));
-    --container-xxl: calc(var(--breakpoint-xxl) - var(--gutter-xxl));
-  }
+:root {
+  --container-xs: 100%;
+  --container-sm: calc(var(--breakpoint-sm) - var(--gutter-sm));
+  --container-md: calc(var(--breakpoint-md) - var(--gutter-md));
+  --container-lg: calc(var(--breakpoint-lg) - var(--gutter-lg));
+  --container-xl: calc(var(--breakpoint-xl) - var(--gutter-xl));
+  --container-xxl: calc(var(--breakpoint-xxl) - var(--gutter-xxl));
 }

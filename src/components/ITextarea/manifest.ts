@@ -127,8 +127,343 @@ export const manifest: ComponentManifest = {
         }
     ],
     css: {
-        selector: '.input-wrapper',
+        selector: '.input',
         variables: [
+            {
+                name: '--input--background',
+                value: [
+                    {
+                        name: '--input--background-h',
+                        value: [
+                            {
+                                name: '--color-white-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--background-s',
+                        value: [
+                            {
+                                name: '--color-white-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--background-l',
+                        value: [
+                            {
+                                name: '--color-white-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--background-a',
+                        value: [
+                            {
+                                name: '--color-white-a'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--light--background',
+                        value: [
+                            {
+                                name: '--input--light--background-h',
+                                value: [
+                                    {
+                                        name: '--color-white-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--background-s',
+                                value: [
+                                    {
+                                        name: '--color-white-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--background-l',
+                                value: [
+                                    {
+                                        name: '--color-white-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--background-a',
+                                value: [
+                                    {
+                                        name: '--color-white-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--light--disabled--background',
+                        value: [
+                            {
+                                name: '--input--light--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--light--prepend--background',
+                        value: [
+                            {
+                                name: '--input--light--prepend--background-h',
+                                value: [
+                                    {
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--prepend--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--prepend--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--prepend--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--light--append--background',
+                        value: [
+                            {
+                                name: '--input--light--append--background-h',
+                                value: [
+                                    {
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--append--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--append--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--append--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--background',
+                        value: [
+                            {
+                                name: '--input--dark--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--disabled--background',
+                        value: [
+                            {
+                                name: '--input--dark--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--prepend--background',
+                        value: [
+                            {
+                                name: '--input--dark--prepend--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-shade-50-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--prepend--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-shade-50-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--prepend--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-shade-50-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--prepend--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-shade-50-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--append--background',
+                        value: [
+                            {
+                                name: '--input--dark--append--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-shade-50-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--append--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-shade-50-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--append--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-shade-50-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--append--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-shade-50-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
             {
                 name: '--input--border-width',
                 value: [
@@ -208,35 +543,19 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         name: '--input--border-top-color',
-                        value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ]
+                        value: []
                     },
                     {
                         name: '--input--border-right-color',
-                        value: [
-                            {
-                                name: '--border-right-color'
-                            }
-                        ]
+                        value: []
                     },
                     {
                         name: '--input--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ]
+                        value: []
                     },
                     {
                         name: '--input--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ]
+                        value: []
                     }
                 ],
                 variants: [
@@ -244,7 +563,73 @@ export const manifest: ComponentManifest = {
                         name: '--input--light--border-color',
                         value: [
                             {
-                                name: '--color-light-shade-50'
+                                name: '--input--light--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--light--hover--border-color',
+                        value: [
+                            {
+                                name: '--input--light--hover--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--hover--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--hover--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--hover--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-100'
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -252,7 +637,73 @@ export const manifest: ComponentManifest = {
                         name: '--input--dark--border-color',
                         value: [
                             {
-                                name: '--color-dark-tint-50'
+                                name: '--input--dark--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--hover--border-color',
+                        value: [
+                            {
+                                name: '--input--dark--hover--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--hover--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--hover--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--hover--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -263,51 +714,79 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         name: '--input--border-top-left-radius',
+                        value: []
+                    },
+                    {
+                        name: '--input--border-bottom-left-radius',
+                        value: []
+                    },
+                    {
+                        name: '--input--border-top-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--input--border-bottom-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--input--border-top-left-radius',
+                        value: []
+                    },
+                    {
+                        name: '--input--border-top-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--input--border-bottom-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--input--border-bottom-left-radius',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--sm--border-radius',
                         value: [
-                            {
-                                name: '--border-top-left-radius'
-                            }
-                        ],
-                        variants: [
                             {
                                 name: '--input--sm--border-top-left-radius',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
+                                        name: '--border-top-left-radius-sm'
                                     }
                                 ]
                             },
                             {
-                                name: '--input--md--border-top-left-radius',
+                                name: '--input--sm--border-top-right-radius',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
+                                        name: '--border-top-right-radius-sm'
                                     }
                                 ]
                             },
                             {
-                                name: '--input--lg--border-top-left-radius',
+                                name: '--input--sm--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--input--sm--border-bottom-left-radius',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
+                                        name: '--border-bottom-left-radius-sm'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--input--border-top-right-radius',
+                        name: '--input--md--border-radius',
                         value: [
                             {
-                                name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--border-top-right-radius',
+                                name: '--input--md--border-top-left-radius',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
+                                        name: '--border-top-left-radius-md'
                                     }
                                 ]
                             },
@@ -315,7 +794,32 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--border-top-right-radius',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
+                                        name: '--border-top-right-radius-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--md--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--input--md--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius-md'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--lg--border-radius',
+                        value: [
+                            {
+                                name: '--input--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-lg'
                                     }
                                 ]
                             },
@@ -323,75 +827,19 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--border-top-right-radius',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-bottom-right-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
+                                        name: '--border-top-right-radius-lg'
                                     }
                                 ]
                             },
                             {
                                 name: '--input--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-bottom-left-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
+                                value: []
                             },
                             {
                                 name: '--input--lg--border-bottom-left-radius',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
+                                        name: '--border-bottom-left-radius-lg'
                                     }
                                 ]
                             }
@@ -401,128 +849,17 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--input--box-shadow',
-                value: [
-                    {
-                        name: '--input--box-shadow-x-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-x'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--box-shadow-y-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-y'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--box-shadow-blur-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-blur-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--box-shadow-spread-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-spread-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--box-shadow-color',
-                        value: [
-                            {
-                                name: '--box-shadow-color'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-property',
-                value: [
-                    {
-                        value: 'background-color,\n            color,\n            border-color,\n            box-shadow'
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--input--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
-                name: '--input--color',
-                variants: [
-                    {
-                        name: '--input--light--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-white'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--background',
-                variants: [
-                    {
-                        name: '--input--light--background',
-                        value: [
-                            {
-                                name: '--color-white'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--background',
-                        value: [
-                            {
-                                name: '--color-dark'
-                            }
-                        ]
-                    }
-                ]
+                value: []
             },
             {
                 name: '--input--font-size',
-                value: [
-                    {
-                        name: '--font-size'
-                    }
-                ],
+                value: [],
                 variants: [
                     {
                         name: '--input--sm--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
+                                name: '--font-size-sm'
                             }
                         ]
                     },
@@ -530,7 +867,7 @@ export const manifest: ComponentManifest = {
                         name: '--input--md--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
+                                name: '--font-size-md'
                             }
                         ]
                     },
@@ -538,49 +875,173 @@ export const manifest: ComponentManifest = {
                         name: '--input--lg--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
+                                name: '--font-size-lg'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--input--hover--border-color',
-                variants: [
+                name: '--input--transition',
+                value: [
                     {
-                        name: '--input--light--hover--border-color',
+                        name: '--input--transition-property',
                         value: [
                             {
-                                name: '--color-light-shade-100'
+                                value: 'background-color, color, border-color'
                             }
                         ]
                     },
                     {
-                        name: '--input--dark--hover--border-color',
+                        name: '--input--transition-duration',
                         value: [
                             {
-                                name: '--color-dark-tint-100'
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--transition-property',
+                        value: [
+                            {
+                                value: 'background-color, color, border-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--input--focus--border-color',
-                variants: [
+                name: '--input--color',
+                value: [
                     {
-                        name: '--input--light--focus--border-color',
+                        name: '--input--color-h',
                         value: [
                             {
-                                name: '--color-primary'
+                                name: '--contrast-text-color-light-h'
                             }
                         ]
                     },
                     {
-                        name: '--input--dark--focus--border-color',
+                        name: '--input--color-s',
                         value: [
                             {
-                                name: '--color-primary'
+                                name: '--contrast-text-color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--color-l',
+                        value: [
+                            {
+                                name: '--contrast-text-color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--color-a',
+                        value: [
+                            {
+                                name: '--contrast-text-color-light-a'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--light--color',
+                        value: [
+                            {
+                                name: '--input--light--color-h',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--color-s',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--color-l',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--light--color-a',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--dark--color',
+                        value: [
+                            {
+                                name: '--input--dark--color-h',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--color-s',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--color-l',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--dark--color-a',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-a'
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -599,51 +1060,67 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         name: '--input--padding-top',
+                        value: []
+                    },
+                    {
+                        name: '--input--padding-right',
+                        value: []
+                    },
+                    {
+                        name: '--input--padding-bottom',
+                        value: []
+                    },
+                    {
+                        name: '--input--padding-left',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--input--sm--padding',
                         value: [
-                            {
-                                name: '--padding-top'
-                            }
-                        ],
-                        variants: [
                             {
                                 name: '--input--sm--padding-top',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-top) * 0.5 * var(--size-multiplier-sm))'
+                                        value: 'calc(var(--padding-top-sm) * 3 / 4)'
                                     }
                                 ]
                             },
                             {
-                                name: '--input--md--padding-top',
+                                name: '--input--sm--padding-right',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-top) * 0.5 * var(--size-multiplier-md))'
+                                        name: '--padding-right-sm'
                                     }
                                 ]
                             },
                             {
-                                name: '--input--lg--padding-top',
+                                name: '--input--sm--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-top) * 0.5 * var(--size-multiplier-lg))'
+                                        value: 'calc(var(--padding-bottom-sm) * 3 / 4)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--sm--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-sm'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--input--padding-right',
+                        name: '--input--md--padding',
                         value: [
                             {
-                                name: '--padding-right'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--padding-right',
+                                name: '--input--md--padding-top',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
+                                        value: 'calc(var(--padding-top-md) * 3 / 4)'
                                     }
                                 ]
                             },
@@ -651,33 +1128,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--padding-right',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--padding-bottom',
-                        value: [
-                            {
-                                name: '--padding-bottom'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-bottom) * 0.5 * var(--size-multiplier-sm))'
+                                        name: '--padding-right-md'
                                     }
                                 ]
                             },
@@ -685,33 +1136,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-bottom) * 0.5 * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-bottom) * 0.5 * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--input--sm--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
+                                        value: 'calc(var(--padding-bottom-md) * 3 / 4)'
                                     }
                                 ]
                             },
@@ -719,7 +1144,36 @@ export const manifest: ComponentManifest = {
                                 name: '--input--md--padding-left',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
+                                        name: '--padding-left-md'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--lg--padding',
+                        value: [
+                            {
+                                name: '--input--lg--padding-top',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-top-lg) * 3 / 4)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--input--lg--padding-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-bottom-lg) * 3 / 4)'
                                     }
                                 ]
                             },
@@ -727,7 +1181,7 @@ export const manifest: ComponentManifest = {
                                 name: '--input--lg--padding-left',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
+                                        name: '--padding-left-lg'
                                     }
                                 ]
                             }
@@ -737,234 +1191,420 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--input--placeholder--color',
-                variants: [
+                value: [
                     {
-                        name: '--input--light--placeholder--color',
+                        name: '--input--placeholder--color-h',
                         value: [
                             {
-                                name: '--color-gray-300'
+                                name: '--text-color-weaker-h'
                             }
                         ]
                     },
                     {
-                        name: '--input--dark--placeholder--color',
+                        name: '--input--placeholder--color-s',
                         value: [
                             {
-                                name: '--color-gray-600'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--input--prefix-suffix--color',
-                variants: [
-                    {
-                        name: '--input--light--prefix-suffix--color',
-                        value: [
-                            {
-                                name: '--color-gray-700'
+                                name: '--text-color-weaker-s'
                             }
                         ]
                     },
                     {
-                        name: '--input--dark--prefix-suffix--color',
+                        name: '--input--placeholder--color-l',
                         value: [
                             {
-                                name: '--color-dark-250'
+                                name: '--text-color-weaker-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--placeholder--color-a',
+                        value: [
+                            {
+                                name: '--text-color-weaker-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--input--prefix-suffix--padding-right',
+                name: '--input--prefix--border-width',
                 value: [
                     {
-                        name: '--input--padding-right',
-                        value: [
-                            {
-                                name: '--padding-right'
-                            }
-                        ]
+                        name: '--input--prefix--border-right-width'
                     }
                 ]
             },
             {
-                name: '--input--prefix-suffix--padding-left',
+                name: '--input--prefix--border-style',
                 value: [
                     {
-                        name: '--input--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left'
-                            }
-                        ]
+                        name: '--input--prefix--border-right-style'
                     }
                 ]
             },
             {
-                name: '--input--prefix--border-right-width',
+                name: '--input--prefix--border-color',
+                value: []
+            },
+            {
+                name: '--input--prefix--color',
                 value: [
                     {
-                        name: '--input--border-right-width',
+                        name: '--input--prefix--color-h',
                         value: [
                             {
-                                name: '--border-right-width'
+                                name: '--text-color-weaker-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--prefix--color-s',
+                        value: [
+                            {
+                                name: '--text-color-weaker-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--prefix--color-l',
+                        value: [
+                            {
+                                name: '--text-color-weaker-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--prefix--color-a',
+                        value: [
+                            {
+                                name: '--text-color-weaker-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--input--prefix--border-right-style',
+                name: '--input--prefix--padding',
                 value: [
                     {
-                        name: '--input--border-right-style',
-                        value: [
-                            {
-                                name: '--border-right-style'
-                            }
-                        ]
+                        name: '--input--prefix--padding-left'
+                    },
+                    {
+                        name: '--input--prefix--padding-right'
                     }
                 ]
             },
             {
-                name: '--input--suffix--border-left-width',
+                name: '--input--prefix--transition',
                 value: [
                     {
-                        name: '--input--border-left-width',
-                        value: [
-                            {
-                                name: '--border-left-width'
-                            }
-                        ]
+                        name: '--input--prefix--transition-property'
+                    },
+                    {
+                        name: '--input--prefix--transition-duration'
+                    },
+                    {
+                        name: '--input--prefix--transition-timing-function'
                     }
                 ]
             },
             {
-                name: '--input--prefix--border-left-style',
+                name: '--input--suffix--border-width',
                 value: [
                     {
-                        name: '--input--border-left-style',
+                        name: '--input--suffix--border-left-width'
+                    }
+                ]
+            },
+            {
+                name: '--input--suffix--border-style',
+                value: [
+                    {
+                        name: '--input--suffix--border-left-style'
+                    }
+                ]
+            },
+            {
+                name: '--input--suffix--border-color',
+                value: []
+            },
+            {
+                name: '--input--suffix--color',
+                value: [
+                    {
+                        name: '--input--suffix--color-h',
                         value: [
                             {
-                                name: '--border-left-style'
+                                name: '--text-color-weaker-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--suffix--color-s',
+                        value: [
+                            {
+                                name: '--text-color-weaker-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--suffix--color-l',
+                        value: [
+                            {
+                                name: '--text-color-weaker-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--suffix--color-a',
+                        value: [
+                            {
+                                name: '--text-color-weaker-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--input--icon--size'
+                name: '--input--suffix--padding',
+                value: [
+                    {
+                        name: '--input--suffix--padding-left'
+                    },
+                    {
+                        name: '--input--suffix--padding-right'
+                    }
+                ]
+            },
+            {
+                name: '--input--suffix--transition',
+                value: [
+                    {
+                        name: '--input--suffix--transition-property'
+                    },
+                    {
+                        name: '--input--suffix--transition-duration'
+                    },
+                    {
+                        name: '--input--suffix--transition-timing-function'
+                    }
+                ]
             },
             {
                 name: '--input--icon--color',
-                variants: [
+                value: [
                     {
-                        name: '--input--light--icon--color',
+                        name: '--input--icon--color-h',
                         value: [
                             {
-                                name: '--text-color-weak'
+                                name: '--text-color-weak-h'
                             }
                         ]
                     },
                     {
-                        name: '--input--dark--icon--color',
+                        name: '--input--icon--color-s',
                         value: [
                             {
-                                name: '--text-color-weak'
+                                name: '--text-color-weak-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--icon--color-l',
+                        value: [
+                            {
+                                name: '--text-color-weak-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--icon--color-a',
+                        value: [
+                            {
+                                name: '--text-color-weak-a'
                             }
                         ]
                     }
                 ]
+            },
+            {
+                name: '--input--icon--transition',
+                value: [
+                    {
+                        name: '--input--icon--transition-property'
+                    },
+                    {
+                        name: '--input--icon--transition-duration'
+                    },
+                    {
+                        name: '--input--icon--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--input--icon--width',
+                value: [
+                    {
+                        value: 'auto'
+                    }
+                ]
+            },
+            {
+                name: '--input--icon--height',
+                value: []
             },
             {
                 name: '--input--icon--hover--color',
+                value: []
+            },
+            {
+                name: '--input--icon--focus--color',
+                value: []
+            },
+            {
+                name: '--input--hover--border-color',
                 value: [
                     {
-                        name: '--input--icon--color'
+                        name: '--input--hover--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--input--hover--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--input--hover--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--input--hover--border-left-color',
+                        value: []
                     }
                 ]
             },
             {
-                name: '--input-line-height',
-                value: [
-                    {
-                        name: '--line-height'
-                    }
-                ]
+                name: '--input--focus--box-shadow',
+                value: []
             },
             {
-                name: '--input--prepend-append--background',
-                variants: [
+                name: '--input--focus--border-color',
+                value: [
                     {
-                        name: '--input--light--prepend-append--background',
+                        name: '--input--focus--border-top-color',
                         value: [
                             {
-                                name: '--color-light'
+                                name: '--color-primary'
                             }
                         ]
                     },
                     {
-                        name: '--input--dark--prepend-append--background',
+                        name: '--input--focus--border-right-color',
                         value: [
                             {
-                                name: '--color-dark'
+                                name: '--color-primary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--focus--border-bottom-color',
+                        value: [
+                            {
+                                name: '--color-primary'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--focus--border-left-color',
+                        value: [
+                            {
+                                name: '--color-primary'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--input--prepend-append--padding-left',
+                name: '--input--value-overlay--padding',
                 value: [
                     {
-                        name: '--input--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left'
-                            }
-                        ]
+                        name: '--input--value-overlay--padding-left'
+                    },
+                    {
+                        name: '--input--value-overlay--padding-right'
                     }
                 ]
             },
             {
-                name: '--input--prepend-append--padding-right',
+                name: '--input--prepend--background',
+                value: []
+            },
+            {
+                name: '--input--prepend--font-size',
+                value: []
+            },
+            {
+                name: '--input--prepend--line-height',
+                value: []
+            },
+            {
+                name: '--input--prepend--transition',
                 value: [
                     {
-                        name: '--input--padding-right',
-                        value: [
-                            {
-                                name: '--padding-right'
-                            }
-                        ]
+                        name: '--input--prepend--transition-property'
+                    },
+                    {
+                        name: '--input--prepend--transition-duration'
+                    },
+                    {
+                        name: '--input--prepend--transition-timing-function'
                     }
                 ]
             },
             {
-                name: '--input--value-overlay--padding-left',
+                name: '--input--prepend--padding',
                 value: [
                     {
-                        name: '--input--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left'
-                            }
-                        ]
+                        name: '--input--prepend--padding-left'
+                    },
+                    {
+                        name: '--input--prepend--padding-right'
                     }
                 ]
             },
             {
-                name: '--input--value-overlay--padding-right',
+                name: '--input--append--background',
+                value: []
+            },
+            {
+                name: '--input--append--font-size',
+                value: []
+            },
+            {
+                name: '--input--append--line-height',
+                value: []
+            },
+            {
+                name: '--input--append--transition',
                 value: [
                     {
-                        name: '--input--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left'
-                            }
-                        ]
+                        name: '--input--append--transition-property'
+                    },
+                    {
+                        name: '--input--append--transition-duration'
+                    },
+                    {
+                        name: '--input--append--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--input--append--padding',
+                value: [
+                    {
+                        name: '--input--append--padding-left'
+                    },
+                    {
+                        name: '--input--append--padding-right'
                     }
                 ]
             },
@@ -972,31 +1612,34 @@ export const manifest: ComponentManifest = {
                 name: '--input--error--border-color',
                 value: [
                     {
-                        name: '--color-danger'
-                    }
-                ]
-            },
-            {
-                name: '--input--disabled--color',
-                value: [
-                    {
-                        name: '--input--color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--light--disabled--color',
+                        name: '--input--error--border-top-color',
                         value: [
                             {
-                                name: '--text-color-weak'
+                                name: '--color-danger'
                             }
                         ]
                     },
                     {
-                        name: '--input--dark--disabled--color',
+                        name: '--input--error--border-right-color',
                         value: [
                             {
-                                name: '--text-color-weak'
+                                name: '--color-danger'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--error--border-bottom-color',
+                        value: [
+                            {
+                                name: '--color-danger'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--error--border-left-color',
+                        value: [
+                            {
+                                name: '--color-danger'
                             }
                         ]
                     }
@@ -1006,27 +1649,46 @@ export const manifest: ComponentManifest = {
                 name: '--input--disabled--background',
                 value: [
                     {
-                        name: '--input--background'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--light--disabled--background',
+                        name: '--input--disabled--background-h',
                         value: [
                             {
-                                name: '--color-light'
+                                name: '--color-light-h'
                             }
                         ]
                     },
                     {
-                        name: '--input--dark--disabled--background',
+                        name: '--input--disabled--background-s',
                         value: [
                             {
-                                name: '--color-dark-tint-50'
+                                name: '--color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--disabled--background-l',
+                        value: [
+                            {
+                                name: '--color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--input--disabled--background-a',
+                        value: [
+                            {
+                                name: '--color-light-a'
                             }
                         ]
                     }
                 ]
+            },
+            {
+                name: '--input--disabled--border-color',
+                value: []
+            },
+            {
+                name: '--input--disabled--color',
+                value: []
             }
         ]
     }

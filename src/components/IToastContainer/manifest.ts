@@ -38,110 +38,47 @@ export const manifest: ComponentManifest = {
         variables: [
             {
                 name: '--toast-container--z-index',
-                value: [
-                    {
-                        value: '2010'
-                    }
-                ]
+                value: []
             },
             {
                 name: '--toast-container--margin',
-                value: [
-                    {
-                        name: '--toast-container--margin-top',
-                        value: [
-                            {
-                                name: '--margin-top'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast-container--margin-right',
-                        value: [
-                            {
-                                name: '--margin-right'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast-container--margin-bottom',
-                        value: [
-                            {
-                                name: '--margin-bottom'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast-container--margin-left',
-                        value: [
-                            {
-                                name: '--margin-left'
-                            }
-                        ]
-                    }
-                ]
+                value: []
             },
             {
                 name: '--toast-container--top',
-                value: [
-                    {
-                        value: '0'
-                    }
-                ]
+                value: []
             },
             {
                 name: '--toast-container--left',
-                value: [
-                    {
-                        value: '0'
-                    }
-                ]
+                value: []
             },
             {
                 name: '--toast-container--right',
-                value: [
-                    {
-                        value: '0'
-                    }
-                ]
+                value: []
             },
             {
                 name: '--toast-container--bottom',
+                value: []
+            },
+            {
+                name: '--toast-container--toast--margin',
                 value: [
                     {
-                        value: '0'
+                        name: '--toast-container--toast--margin-bottom'
                     }
                 ]
             },
             {
-                name: '--toast-container--toast--margin-bottom',
+                name: '--toast-container--toast--transition',
                 value: [
                     {
-                        name: '--margin-bottom'
-                    }
-                ]
-            },
-            {
-                name: '--toast-container--toast--transition-property',
-                value: [
+                        name: '--toast-container--toast--transition-property'
+                    },
                     {
-                        value: 'transform, opacity'
-                    }
-                ]
-            },
-            {
-                name: '--toast-container--toast--transition-duration',
-                value: [
+                        name: '--toast-container--toast--transition-duration'
+                    },
                     {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--toast-container--toast--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
+                        name: '--toast-container--toast--transition-timing-function'
                     }
                 ]
             }

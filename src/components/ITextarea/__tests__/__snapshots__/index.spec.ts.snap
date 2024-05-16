@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components > ITextarea > should render correctly 1`] = `
-"<div class="input-wrapper -light -md">
+"<div class="input -light -md">
   <!--v-if-->
-  <div class="input">
+  <div class="input-field">
     <!--v-if-->
     <!--v-if--><textarea role="textbox" name="textarea" tabindex="0" aria-disabled="false" aria-readonly="false" aria-multiline="true"></textarea>
     <!--v-if-->

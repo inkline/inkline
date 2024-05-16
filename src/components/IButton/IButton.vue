@@ -122,6 +122,16 @@ export default defineComponent({
             default: false
         },
         /**
+         * Display the button as a square
+         * @type Boolean
+         * @default false
+         * @name square
+         */
+        square: {
+            type: Boolean,
+            default: false
+        },
+        /**
          * Set the HTML tag to be used for rendering the button
          * @type String
          * @default button
@@ -222,6 +232,7 @@ export default defineComponent({
                 '-active': props.active,
                 '-block': props.block,
                 '-circle': props.circle,
+                '-square': props.square,
                 '-disabled': disabled.value,
                 '-link': props.link,
                 '-outline': props.outline,

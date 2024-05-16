@@ -1,10 +1,8 @@
-@layer base {
-  :root {
-    --pre--font-family: var(--font-family-monospace);
-    --pre--font-size: var(--font-size);
-    --pre--margin-top: 0;
-    --pre--margin-right: 0;
-    --pre--margin-bottom: var(--margin-bottom);
-    --pre--margin-left: 0;
-  }
+:root {
+  --pre--font-family: var(--font-family-monospace);
+  --pre--font-size: var(--font-size);
+  --pre--margin-top: 0;
+  --pre--margin-right: 0;
+  --pre--margin-bottom: var(--margin-bottom);
+  --pre--margin-left: 0;
 }

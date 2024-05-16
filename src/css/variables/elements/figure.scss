@@ -1,17 +1,15 @@
-@layer base {
-  :root {
-    --figure--margin-top: 0;
-    --figure--margin-right: 0;
-    --figure--margin-bottom: var(--margin-bottom);
-    --figure--margin-left: 0;
-    --figure--caption--color--h: var(--text-color-weak--h);
-    --figure--caption--color--s: var(--text-color-weak--s);
-    --figure--caption--color--l: var(--text-color-weak--l);
-    --figure--caption--color--a: var(--text-color-weak--a);
-    --figure--caption--font-size: var(--font-size-sm);
-    --figure--image--margin-top: 0;
-    --figure--image--margin-right: 0;
-    --figure--image--margin-bottom: var(--margin-bottom);
-    --figure--image--margin-left: 0;
-  }
+:root {
+  --figure--margin-top: 0;
+  --figure--margin-right: 0;
+  --figure--margin-bottom: var(--margin-bottom);
+  --figure--margin-left: 0;
+  --figure--caption--color-h: var(--text-color-weak-h);
+  --figure--caption--color-s: var(--text-color-weak-s);
+  --figure--caption--color-l: var(--text-color-weak-l);
+  --figure--caption--color-a: var(--text-color-weak-a);
+  --figure--caption--font-size: var(--font-size-sm);
+  --figure--image--margin-top: 0;
+  --figure--image--margin-right: 0;
+  --figure--image--margin-bottom: var(--margin-bottom);
+  --figure--image--margin-left: 0;
 }

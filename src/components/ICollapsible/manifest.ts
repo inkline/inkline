@@ -46,17 +46,13 @@ export const manifest: ComponentManifest = {
         variables: [
             {
                 name: '--collapsible--font-size',
-                value: [
-                    {
-                        name: '--font-size'
-                    }
-                ],
+                value: [],
                 variants: [
                     {
                         name: '--collapsible--sm--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
+                                name: '--font-size-sm'
                             }
                         ]
                     },
@@ -64,7 +60,7 @@ export const manifest: ComponentManifest = {
                         name: '--collapsible--md--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
+                                name: '--font-size-md'
                             }
                         ]
                     },
@@ -72,7 +68,7 @@ export const manifest: ComponentManifest = {
                         name: '--collapsible--lg--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
+                                name: '--font-size-lg'
                             }
                         ]
                     }

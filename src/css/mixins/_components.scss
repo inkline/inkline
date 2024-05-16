@@ -223,6 +223,22 @@
     text-transform: properties.text-transform($component, $elementOrState, $fallback);
 }
 
+@mixin top($component, $elementOrState: null, $fallback: false) {
+    top: properties.top($component, $elementOrState, $fallback);
+}
+
+@mixin right($component, $elementOrState: null, $fallback: false) {
+    right: properties.right($component, $elementOrState, $fallback);
+}
+
+@mixin bottom($component, $elementOrState: null, $fallback: false) {
+    bottom: properties.bottom($component, $elementOrState, $fallback);
+}
+
+@mixin left($component, $elementOrState: null, $fallback: false) {
+    left: properties.left($component, $elementOrState, $fallback);
+}
+
 @mixin z-index($component, $elementOrState: null, $fallback: false) {
     z-index: properties.z-index($component, $elementOrState, $fallback);
 }

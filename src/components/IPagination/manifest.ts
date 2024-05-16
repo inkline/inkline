@@ -78,141 +78,152 @@ export const manifest: ComponentManifest = {
         selector: '.pagination',
         variables: [
             {
-                name: '--pagination--font-size',
-                value: [
-                    {
-                        name: '--font-size'
-                    }
-                ],
+                name: '--pagination--background',
+                value: [],
                 variants: [
                     {
-                        name: '--pagination--sm--font-size',
+                        name: '--pagination--light--item--background',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--md--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--lg--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--pagination--border-color',
-                value: [
-                    {
-                        name: '--pagination--border-top-color',
-                        value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--light--border-top-color',
+                                name: '--pagination--light--item--background-h',
                                 value: [
                                     {
-                                        name: '--color-light-shade-50'
+                                        name: '--color-white-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--pagination--dark--border-top-color',
+                                name: '--pagination--light--item--background-s',
                                 value: [
                                     {
-                                        name: '--color-dark-tint-50'
+                                        name: '--color-white-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--light--item--background-l',
+                                value: [
+                                    {
+                                        name: '--color-white-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--light--item--background-a',
+                                value: [
+                                    {
+                                        name: '--color-white-a'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--pagination--border-right-color',
+                        name: '--pagination--light--item--hover--background',
                         value: [
                             {
-                                name: '--border-right-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--light--border-right-color',
+                                name: '--pagination--light--item--hover--background-h',
                                 value: [
                                     {
-                                        name: '--color-light-shade-50'
+                                        name: '--color-light-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--pagination--dark--border-right-color',
+                                name: '--pagination--light--item--hover--background-s',
                                 value: [
                                     {
-                                        name: '--color-dark-tint-50'
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--light--item--hover--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--light--item--hover--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--pagination--border-bottom-color',
+                        name: '--pagination--dark--item--background',
                         value: [
                             {
-                                name: '--border-bottom-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--light--border-bottom-color',
+                                name: '--pagination--dark--item--background-h',
                                 value: [
                                     {
-                                        name: '--color-light-shade-50'
+                                        name: '--color-dark-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--pagination--dark--border-bottom-color',
+                                name: '--pagination--dark--item--background-s',
                                 value: [
                                     {
-                                        name: '--color-dark-tint-50'
+                                        name: '--color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--dark--item--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--dark--item--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-a'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--pagination--border-left-color',
+                        name: '--pagination--dark--item--hover--background',
                         value: [
                             {
-                                name: '--border-left-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--light--border-left-color',
+                                name: '--pagination--dark--item--hover--background-h',
                                 value: [
                                     {
-                                        name: '--color-light-shade-50'
+                                        name: '--color-dark-tint-50-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--pagination--dark--border-left-color',
+                                name: '--pagination--dark--item--hover--background-s',
                                 value: [
                                     {
-                                        name: '--color-dark-tint-50'
+                                        name: '--color-dark-tint-50-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--dark--item--hover--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--dark--item--hover--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-a'
                                     }
                                 ]
                             }
@@ -222,9 +233,492 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--pagination--border-width',
+                value: []
+            },
+            {
+                name: '--pagination--border-style',
+                value: []
+            },
+            {
+                name: '--pagination--border-color',
+                value: [],
+                variants: [
+                    {
+                        name: '--pagination--item--disabled--border-color',
+                        value: [
+                            {
+                                name: '--pagination--item--disabled--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--item--disabled--border-right-color',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--item--disabled--border-bottom-color',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--item--disabled--border-left-color',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--light--item--border-color',
+                        value: [
+                            {
+                                name: '--pagination--light--item--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--light--item--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--light--item--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--light--item--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--dark--item--border-color',
+                        value: [
+                            {
+                                name: '--pagination--dark--item--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--dark--item--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--dark--item--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--dark--item--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--pagination--border-radius',
+                value: [],
+                variants: [
+                    {
+                        name: '--pagination--sm--item--border-radius',
+                        value: [
+                            {
+                                name: '--pagination--sm--item--border-top-left-radius',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--sm--item--border-top-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--sm--item--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--sm--item--border-bottom-left-radius',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--md--item--border-radius',
+                        value: [
+                            {
+                                name: '--pagination--md--item--border-top-left-radius',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--md--item--border-top-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--md--item--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--md--item--border-bottom-left-radius',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--lg--item--border-radius',
+                        value: [
+                            {
+                                name: '--pagination--lg--item--border-top-left-radius',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--lg--item--border-top-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--lg--item--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--lg--item--border-bottom-left-radius',
+                                value: []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--pagination--box-shadow',
+                value: []
+            },
+            {
+                name: '--pagination--color',
                 value: [
                     {
-                        name: '--pagination--border-top-width',
+                        name: '--pagination--color-h',
+                        value: [
+                            {
+                                name: '--contrast-text-color-light-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--color-s',
+                        value: [
+                            {
+                                name: '--contrast-text-color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--color-l',
+                        value: [
+                            {
+                                name: '--contrast-text-color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--color-a',
+                        value: [
+                            {
+                                name: '--contrast-text-color-light-a'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--pagination--light--color',
+                        value: [
+                            {
+                                name: '--pagination--light--color-h',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--light--color-s',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--light--color-l',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--light--color-a',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--dark--color',
+                        value: [
+                            {
+                                name: '--pagination--dark--color-h',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--dark--color-s',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--dark--color-l',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--dark--color-a',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--pagination--font-size',
+                value: [],
+                variants: [
+                    {
+                        name: '--pagination--sm--font-size',
+                        value: [
+                            {
+                                name: '--font-size-sm'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--md--font-size',
+                        value: [
+                            {
+                                name: '--font-size-md'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--lg--font-size',
+                        value: [
+                            {
+                                name: '--font-size-lg'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--pagination--padding',
+                value: [],
+                variants: [
+                    {
+                        name: '--pagination--sm--item--padding',
+                        value: [
+                            {
+                                name: '--pagination--sm--item--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--sm--item--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--sm--item--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--sm--item--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-sm'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--md--item--padding',
+                        value: [
+                            {
+                                name: '--pagination--md--item--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--md--item--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--md--item--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--md--item--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-md'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--lg--item--padding',
+                        value: [
+                            {
+                                name: '--pagination--lg--item--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--lg--item--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--lg--item--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--pagination--lg--item--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-lg'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--pagination--item--background',
+                value: [
+                    {
+                        name: '--pagination--item--background-h',
+                        value: [
+                            {
+                                name: '--color-white-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--item--background-s',
+                        value: [
+                            {
+                                name: '--color-white-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--item--background-l',
+                        value: [
+                            {
+                                name: '--color-white-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--item--background-a',
+                        value: [
+                            {
+                                name: '--color-white-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--pagination--item--border-width',
+                value: [
+                    {
+                        name: '--pagination--item--border-top-width',
                         value: [
                             {
                                 name: '--border-top-width'
@@ -232,7 +726,7 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
-                        name: '--pagination--border-right-width',
+                        name: '--pagination--item--border-right-width',
                         value: [
                             {
                                 name: '--border-right-width'
@@ -240,7 +734,7 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
-                        name: '--pagination--border-bottom-width',
+                        name: '--pagination--item--border-bottom-width',
                         value: [
                             {
                                 name: '--border-bottom-width'
@@ -248,7 +742,7 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
-                        name: '--pagination--border-left-width',
+                        name: '--pagination--item--border-left-width',
                         value: [
                             {
                                 name: '--border-left-width'
@@ -258,10 +752,10 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--pagination--border-style',
+                name: '--pagination--item--border-style',
                 value: [
                     {
-                        name: '--pagination--border-top-style',
+                        name: '--pagination--item--border-top-style',
                         value: [
                             {
                                 name: '--border-top-style'
@@ -269,7 +763,7 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
-                        name: '--pagination--border-right-style',
+                        name: '--pagination--item--border-right-style',
                         value: [
                             {
                                 name: '--border-right-style'
@@ -277,7 +771,7 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
-                        name: '--pagination--border-bottom-style',
+                        name: '--pagination--item--border-bottom-style',
                         value: [
                             {
                                 name: '--border-bottom-style'
@@ -285,7 +779,7 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
-                        name: '--pagination--border-left-style',
+                        name: '--pagination--item--border-left-style',
                         value: [
                             {
                                 name: '--border-left-style'
@@ -295,703 +789,327 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--pagination--border-radius',
+                name: '--pagination--item--border-color',
                 value: [
                     {
-                        name: '--pagination--border-top-left-radius',
-                        value: [
-                            {
-                                name: '--border-top-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--pagination--item--border-top-color',
+                        value: []
                     },
                     {
-                        name: '--pagination--border-top-right-radius',
-                        value: [
-                            {
-                                name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--pagination--item--border-right-color',
+                        value: []
                     },
                     {
-                        name: '--pagination--border-bottom-right-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--pagination--item--border-bottom-color',
+                        value: []
                     },
                     {
-                        name: '--pagination--border-bottom-left-radius',
+                        name: '--pagination--item--border-left-color',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--pagination--item--disabled--border-color',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--sm--border-bottom-left-radius',
+                                name: '--pagination--item--disabled--border-top-color',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
+                                        name: '--color-light-shade-50'
                                     }
                                 ]
                             },
                             {
-                                name: '--pagination--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
+                                name: '--pagination--item--disabled--border-right-color',
+                                value: []
                             },
                             {
-                                name: '--pagination--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
+                                name: '--pagination--item--disabled--border-bottom-color',
+                                value: []
+                            },
+                            {
+                                name: '--pagination--item--disabled--border-left-color',
+                                value: []
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--pagination--box-shadow',
+                name: '--pagination--item--border-radius',
                 value: [
                     {
-                        name: '--pagination--box-shadow-x-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-x'
-                            }
-                        ]
+                        name: '--pagination--item--border-top-left-radius',
+                        value: []
                     },
                     {
-                        name: '--pagination--box-shadow-y-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-y'
-                            }
-                        ]
+                        name: '--pagination--item--border-top-right-radius',
+                        value: []
                     },
                     {
-                        name: '--pagination--box-shadow-blur-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-blur-radius'
-                            }
-                        ]
+                        name: '--pagination--item--border-bottom-right-radius',
+                        value: []
                     },
                     {
-                        name: '--pagination--box-shadow-spread-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-spread-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--box-shadow-color',
-                        value: [
-                            {
-                                name: '--box-shadow-color'
-                            }
-                        ]
+                        name: '--pagination--item--border-bottom-left-radius',
+                        value: []
                     }
                 ]
             },
             {
-                name: '--pagination--padding',
-                value: [
-                    {
-                        name: '--pagination--padding-top',
-                        value: [
-                            {
-                                name: '--padding-top'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--sm--padding-top',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-top) / 2 * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--md--padding-top',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-top) / 2 * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--lg--padding-top',
-                                value: [
-                                    {
-                                        value: 'calc(calc(var(--padding-top) / 2) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--padding-right',
-                        value: [
-                            {
-                                name: '--padding-right'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--sm--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) / 2 * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--md--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) / 2 * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--lg--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) / 2 * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--padding-bottom',
-                        value: [
-                            {
-                                name: '--padding-bottom'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--sm--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-bottom) / 2 * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--md--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-bottom) / 2 * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--lg--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-bottom) / 2 * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--sm--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) / 2 * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--md--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) / 2 * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--lg--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) / 2 * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                name: '--pagination--item--box-shadow',
+                value: []
             },
             {
-                name: '--pagination--min-width',
+                name: '--pagination--item--color',
+                value: []
+            },
+            {
+                name: '--pagination--item--min-width',
                 value: [
                     {
                         value: '40px'
                     }
-                ],
-                variants: [
-                    {
-                        name: '--pagination--sm--min-width',
-                        value: [
-                            {
-                                value: 'calc(40px * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--md--min-width',
-                        value: [
-                            {
-                                value: 'calc(40px * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--lg--min-width',
-                        value: [
-                            {
-                                value: 'calc(40px * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
                 ]
             },
             {
-                name: '--pagination--color',
-                variants: [
-                    {
-                        name: '--pagination--light--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--dark--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
-                    }
-                ]
+                name: '--pagination--item--margin',
+                value: []
             },
             {
-                name: '--pagination--background',
-                variants: [
-                    {
-                        name: '--pagination--light--background',
-                        value: [
-                            {
-                                name: '--color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--dark--background',
-                        value: [
-                            {
-                                name: '--color-dark'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--pagination--margin',
+                name: '--pagination--item--padding',
                 value: [
                     {
-                        name: '--pagination--margin-top',
-                        value: [
-                            {
-                                name: '--margin-top'
-                            }
-                        ]
+                        name: '--pagination--item--padding-top',
+                        value: []
                     },
                     {
-                        name: '--pagination--margin-right',
-                        value: [
-                            {
-                                name: '--margin-right'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--sm--margin-right',
-                                value: [
-                                    {
-                                        value: 'calc(calc(var(--margin-right) / 4) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--md--margin-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--margin-right) / 4 * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--lg--margin-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--margin-right) / 4 * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--pagination--item--padding-right',
+                        value: []
                     },
                     {
-                        name: '--pagination--margin-bottom',
-                        value: [
-                            {
-                                name: '--margin-bottom'
-                            }
-                        ]
+                        name: '--pagination--item--padding-bottom',
+                        value: []
                     },
                     {
-                        name: '--pagination--margin-left',
-                        value: [
-                            {
-                                name: '--margin-left'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--pagination--sm--margin-left',
-                                value: [
-                                    {
-                                        value: 'calc(calc(var(--margin-left) / 4) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--md--margin-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--margin-left) / 4 * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--pagination--lg--margin-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--margin-left) / 4 * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        name: '--pagination--item--padding-left',
+                        value: []
                     }
                 ]
             },
             {
-                name: '--pagination--transition-property',
+                name: '--pagination--item--transition',
                 value: [
                     {
-                        value: '(background, color, border)'
+                        name: '--pagination--item--transition-property'
+                    },
+                    {
+                        name: '--pagination--item--transition-duration'
+                    },
+                    {
+                        name: '--pagination--item--transition-timing-function'
                     }
                 ]
             },
             {
-                name: '--pagination--transition-timing-function',
+                name: '--pagination--item--hover--background',
                 value: [
                     {
-                        name: '--transition-timing-function'
+                        name: '--pagination--item--hover--background-h',
+                        value: [
+                            {
+                                name: '--color-light-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--item--hover--background-s',
+                        value: [
+                            {
+                                name: '--color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--item--hover--background-l',
+                        value: [
+                            {
+                                name: '--color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--item--hover--background-a',
+                        value: [
+                            {
+                                name: '--color-light-a'
+                            }
+                        ]
                     }
                 ]
             },
             {
-                name: '--pagination--transition-duration',
+                name: '--pagination--item--focus--background',
+                value: []
+            },
+            {
+                name: '--pagination--item--active--background',
                 value: [
                     {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--pagination--hover--background',
-                variants: [
-                    {
-                        name: '--pagination--light--hover--background',
+                        name: '--pagination--item--active--background-h',
                         value: [
                             {
-                                name: '--color-light-shade-50'
+                                name: '--color-primary-h'
                             }
                         ]
                     },
                     {
-                        name: '--pagination--dark--hover--background',
+                        name: '--pagination--item--active--background-s',
                         value: [
                             {
-                                name: '--color-dark-tint-50'
+                                name: '--color-primary-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--item--active--background-l',
+                        value: [
+                            {
+                                name: '--color-primary-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--item--active--background-a',
+                        value: [
+                            {
+                                name: '--color-primary-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--pagination--active--background',
+                name: '--pagination--item--active--border-color',
                 value: [
                     {
-                        name: '--pagination--background'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--pagination--light--active--background',
+                        name: '--pagination--item--active--border-top-color',
                         value: [
                             {
-                                name: '--color-primary'
+                                name: '--color-primary-shade-50'
                             }
                         ]
                     },
                     {
-                        name: '--pagination--dark--active--background',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
+                        name: '--pagination--item--active--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--pagination--item--active--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--pagination--item--active--border-left-color',
+                        value: []
                     }
                 ]
             },
             {
-                name: '--pagination--active--border-color',
+                name: '--pagination--item--active--color',
                 value: [
                     {
-                        name: '--pagination--active--border-top-color',
+                        name: '--pagination--item--active--color-h',
                         value: [
                             {
-                                name: '--pagination--border-top-color',
-                                value: [
-                                    {
-                                        name: '--border-top-color'
-                                    }
-                                ]
+                                name: '--contrast-text-color-dark-h'
                             }
                         ]
                     },
                     {
-                        name: '--pagination--active--border-right-color',
+                        name: '--pagination--item--active--color-s',
                         value: [
                             {
-                                name: '--pagination--border-right-color',
-                                value: [
-                                    {
-                                        name: '--border-right-color'
-                                    }
-                                ]
+                                name: '--contrast-text-color-dark-s'
                             }
                         ]
                     },
                     {
-                        name: '--pagination--active--border-bottom-color',
+                        name: '--pagination--item--active--color-l',
                         value: [
                             {
-                                name: '--pagination--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--border-bottom-color'
-                                    }
-                                ]
+                                name: '--contrast-text-color-dark-l'
                             }
                         ]
                     },
                     {
-                        name: '--pagination--active--border-left-color',
+                        name: '--pagination--item--active--color-a',
                         value: [
                             {
-                                name: '--pagination--border-left-color',
-                                value: [
-                                    {
-                                        name: '--border-left-color'
-                                    }
-                                ]
+                                name: '--contrast-text-color-dark-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--pagination--active--color',
+                name: '--pagination--item--active--font-weight',
                 value: [
                     {
-                        name: '--pagination--color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--pagination--light--active--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-primary'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--pagination--dark--active--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-primary'
-                            }
-                        ]
+                        name: '--font-weight-semibold'
                     }
                 ]
             },
             {
-                name: '--pagination--disabled--color',
+                name: '--pagination--item--active--hover--background',
+                value: []
+            },
+            {
+                name: '--pagination--item--active--focus--background',
+                value: []
+            },
+            {
+                name: '--pagination--item--disabled--color',
                 value: [
                     {
-                        name: '--pagination--color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--pagination--light--disabled--color',
+                        name: '--pagination--item--disabled--color-h',
                         value: [
                             {
-                                name: '--text-color-weak'
+                                name: '--text-color-weaker-h'
                             }
                         ]
                     },
                     {
-                        name: '--pagination--dark--disabled--color',
+                        name: '--pagination--item--disabled--color-s',
                         value: [
                             {
-                                name: '--text-color-weak'
+                                name: '--text-color-weaker-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--item--disabled--color-l',
+                        value: [
+                            {
+                                name: '--text-color-weaker-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--pagination--item--disabled--color-a',
+                        value: [
+                            {
+                                name: '--text-color-weaker-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--pagination--disabled--opacity',
+                name: '--pagination--item--disabled--opacity',
                 value: [
                     {
                         value: '0.75'
-                    }
-                ]
-            },
-            {
-                name: '--pagination--quick--disabled--border-color',
-                value: [
-                    {
-                        name: '--pagination--disabled--color'
-                    }
-                ]
-            },
-            {
-                name: '--pagination--quick--disabled--opacity',
-                value: [
-                    {
-                        name: '--pagination--disabled--opacity',
-                        value: [
-                            {
-                                value: '0.75'
-                            }
-                        ]
                     }
                 ]
             }

@@ -106,111 +106,457 @@ export const manifest: ComponentManifest = {
         selector: '.checkbox',
         variables: [
             {
-                name: '--checkbox--margin-right',
+                name: '--checkbox--margin',
                 value: [
                     {
-                        name: '--margin-right'
+                        name: '--checkbox--margin-right',
+                        value: []
+                    },
+                    {
+                        name: '--checkbox--margin-right',
+                        value: []
+                    },
+                    {
+                        name: '--checkbox--margin-bottom',
+                        value: []
+                    },
+                    {
+                        name: '--checkbox--margin-top',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--margin-left',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--checkbox--sm--margin',
+                        value: [
+                            {
+                                name: '--checkbox--sm--margin-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-right-sm) / 2)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--sm--margin-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-bottom-sm) / 2)'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--md--margin',
+                        value: [
+                            {
+                                name: '--checkbox--md--margin-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-right-md) / 2)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--md--margin-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-bottom-md) / 2)'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--lg--margin',
+                        value: [
+                            {
+                                name: '--checkbox--lg--margin-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-right-lg) / 2)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--lg--margin-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-bottom-lg) / 2)'
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             },
             {
-                name: '--checkbox--transition-property',
+                name: '--checkbox--label--transition',
                 value: [
                     {
-                        value: 'color'
-                    }
-                ]
-            },
-            {
-                name: '--checkbox--transition-duration',
-                value: [
+                        name: '--checkbox--label--transition-property'
+                    },
                     {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--checkbox--transition-timing-function',
-                value: [
+                        name: '--checkbox--label--transition-duration'
+                    },
                     {
-                        name: '--transition-timing-function'
+                        name: '--checkbox--label--transition-timing-function'
                     }
                 ]
             },
             {
                 name: '--checkbox--label--color',
-                variants: [
-                    {
-                        name: '--checkbox--light--label--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--dark--label--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
-                    }
-                ]
+                value: []
             },
             {
                 name: '--checkbox--label--font-size',
+                value: []
+            },
+            {
+                name: '--checkbox--width',
+                value: [],
                 variants: [
                     {
-                        name: '--checkbox--sm--label--font-size',
+                        name: '--checkbox--sm--width',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
+                                value: 'calc(1rem * var(--size-multiplier-sm))'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--md--label--font-size',
+                        name: '--checkbox--sm--checkmark--width',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
+                                value: 'calc(0.5rem * var(--size-multiplier-sm))'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--lg--label--font-size',
+                        name: '--checkbox--md--width',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
+                                value: 'calc(1rem * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--md--checkmark--width',
+                        value: [
+                            {
+                                value: 'calc(0.5rem * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--lg--width',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--lg--checkmark--width',
+                        value: [
+                            {
+                                value: 'calc(0.5rem * var(--size-multiplier-lg))'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--checkbox--size',
+                name: '--checkbox--height',
+                value: [],
                 variants: [
                     {
-                        name: '--checkbox--sm--size',
+                        name: '--checkbox--sm--height',
                         value: [
                             {
-                                value: 'calc(#{1rem} * var(--size-multiplier-sm))'
+                                value: 'calc(1rem * var(--size-multiplier-sm))'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--md--size',
+                        name: '--checkbox--sm--checkmark--height',
                         value: [
                             {
-                                value: 'calc(#{1rem} * var(--size-multiplier-md))'
+                                value: 'calc(0.5rem * var(--size-multiplier-sm))'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--lg--size',
+                        name: '--checkbox--md--height',
                         value: [
                             {
-                                value: 'calc(#{1rem} * var(--size-multiplier-lg))'
+                                value: 'calc(1rem * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--md--checkmark--height',
+                        value: [
+                            {
+                                value: 'calc(0.5rem * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--lg--height',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--lg--checkmark--height',
+                        value: [
+                            {
+                                value: 'calc(0.5rem * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--checkbox--background',
+                value: [
+                    {
+                        name: '--checkbox--background-h',
+                        value: [
+                            {
+                                name: '--color-white-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--background-s',
+                        value: [
+                            {
+                                name: '--color-white-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--background-l',
+                        value: [
+                            {
+                                name: '--color-white-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--background-a',
+                        value: [
+                            {
+                                name: '--color-white-a'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--checkbox--light--background',
+                        value: [
+                            {
+                                name: '--checkbox--light--background-h',
+                                value: [
+                                    {
+                                        name: '--color-white-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--light--background-s',
+                                value: [
+                                    {
+                                        name: '--color-white-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--light--background-l',
+                                value: [
+                                    {
+                                        name: '--color-white-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--light--background-a',
+                                value: [
+                                    {
+                                        name: '--color-white-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--light--disabled--background',
+                        value: [
+                            {
+                                name: '--checkbox--light--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--light--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--light--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--light--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--light--checked--disabled--background',
+                        value: [
+                            {
+                                name: '--checkbox--light--checked--disabled--background-h',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--light--checked--disabled--background-s',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--light--checked--disabled--background-l',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--light--checked--disabled--background-a',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--dark--background',
+                        value: [
+                            {
+                                name: '--checkbox--dark--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--dark--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--dark--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--dark--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--dark--disabled--background',
+                        value: [
+                            {
+                                name: '--checkbox--dark--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-gray-600-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--dark--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-gray-600-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--dark--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-gray-600-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--dark--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-gray-600-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--dark--checked--disabled--background',
+                        value: [
+                            {
+                                name: '--checkbox--dark--checked--disabled--background-h',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--dark--checked--disabled--background-s',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--dark--checked--disabled--background-l',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--dark--checked--disabled--background-a',
+                                value: []
                             }
                         ]
                     }
@@ -220,7 +566,36 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--border-width',
                 value: [
                     {
-                        value: '(\n                    var(--checkbox--border-top-width, var(--border-top-width))\n                        var(--checkbox--border-right-width, var(--border-right-width))\n                        var(--checkbox--border-bottom-width, var(--border-bottom-width))\n                        var(--checkbox--border-left-width, var(--border-left-width))\n                )'
+                        name: '--checkbox--border-top-width',
+                        value: [
+                            {
+                                name: '--border-top-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--border-right-width',
+                        value: [
+                            {
+                                name: '--border-right-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--border-bottom-width',
+                        value: [
+                            {
+                                name: '--border-bottom-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--border-left-width',
+                        value: [
+                            {
+                                name: '--border-left-width'
+                            }
+                        ]
                     }
                 ]
             },
@@ -228,7 +603,36 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--border-style',
                 value: [
                     {
-                        value: '(\n                    var(--checkbox--border-top-style, var(--border-top-style))\n                        var(--checkbox--border-right-style, var(--border-right-style))\n                        var(--checkbox--border-bottom-style, var(--border-bottom-style))\n                        var(--checkbox--border-left-style, var(--border-left-style))\n                )'
+                        name: '--checkbox--border-top-style',
+                        value: [
+                            {
+                                name: '--border-top-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--border-right-style',
+                        value: [
+                            {
+                                name: '--border-right-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--border-bottom-style',
+                        value: [
+                            {
+                                name: '--border-bottom-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--border-left-style',
+                        value: [
+                            {
+                                name: '--border-left-style'
+                            }
+                        ]
                     }
                 ]
             },
@@ -236,7 +640,138 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--border-color',
                 value: [
                     {
-                        value: '(\n                    var(--checkbox--border-top-color, var(--border-top-color))\n                        var(--checkbox--border-right-color, var(--border-right-color))\n                        var(--checkbox--border-bottom-color, var(--border-bottom-color))\n                        var(--checkbox--border-left-color, var(--border-left-color))\n                )'
+                        name: '--checkbox--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--checkbox--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--checkbox--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--checkbox--border-left-color',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--checkbox--light--border-color',
+                        value: [
+                            {
+                                name: '--checkbox--light--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--light--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--light--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--light--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--light--checked--disabled--border-color',
+                        value: [
+                            {
+                                name: '--checkbox--light--checked--disabled--border-top-color',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--light--checked--disabled--border-right-color',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--light--checked--disabled--border-bottom-color',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--light--checked--disabled--border-left-color',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--dark--border-color',
+                        value: [
+                            {
+                                name: '--checkbox--dark--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--dark--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--dark--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--dark--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--dark--checked--disabled--border-color',
+                        value: [
+                            {
+                                name: '--checkbox--dark--checked--disabled--border-top-color',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--dark--checked--disabled--border-right-color',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--dark--checked--disabled--border-bottom-color',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--dark--checked--disabled--border-left-color',
+                                value: []
+                            }
+                        ]
                     }
                 ]
             },
@@ -244,136 +779,233 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--border-radius',
                 value: [
                     {
-                        value: '(\n                    var(--checkbox--border-top-left-radius, var(--border-top-left-radius))\n                        var(--checkbox--border-top-right-radius, var(--border-top-right-radius))\n                        var(\n                            --checkbox--border-bottom-right-radius,\n                            var(--border-bottom-right-radius)\n                        )\n                        var(--checkbox--border-bottom-left-radius, var(--border-bottom-left-radius))\n                )'
+                        name: '--checkbox--border-top-left-radius',
+                        value: []
+                    },
+                    {
+                        name: '--checkbox--border-top-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--checkbox--border-bottom-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--checkbox--border-bottom-left-radius',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--checkbox--sm--border-radius',
+                        value: [
+                            {
+                                name: '--checkbox--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--sm--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--sm--border-bottom-left-radius',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--md--border-radius',
+                        value: [
+                            {
+                                name: '--checkbox--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--md--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--md--border-bottom-left-radius',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--lg--border-radius',
+                        value: [
+                            {
+                                name: '--checkbox--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkbox--lg--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--checkbox--lg--border-bottom-left-radius',
+                                value: []
+                            }
+                        ]
                     }
                 ]
             },
             {
                 name: '--checkbox--box-shadow',
+                value: []
+            },
+            {
+                name: '--checkbox--transition',
                 value: [
                     {
-                        name: '--checkbox--box-shadow-x-offset',
+                        name: '--checkbox--transition-property',
                         value: [
                             {
-                                name: '--box-shadow-offset-x'
+                                value: 'background-color, color, border-color,\n      transform'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--box-shadow-y-offset',
+                        name: '--checkbox--transition-duration',
                         value: [
                             {
-                                name: '--box-shadow-offset-y'
+                                name: '--transition-duration'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--box-shadow-blur-radius',
+                        name: '--checkbox--transition-timing-function',
                         value: [
                             {
-                                name: '--box-shadow-blur-radius'
+                                name: '--transition-timing-function'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--box-shadow-spread-radius',
+                        name: '--checkbox--transition-property',
                         value: [
                             {
-                                name: '--box-shadow-spread-radius'
+                                value: 'background-color, color, border-color,\n      transform'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--box-shadow-color',
+                        name: '--checkbox--transition-duration',
                         value: [
                             {
-                                name: '--box-shadow-color'
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--checkbox--background',
-                variants: [
+                name: '--checkbox--checkmark--transition',
+                value: [
                     {
-                        name: '--checkbox--light--background',
+                        name: '--checkbox--checkmark--transition-property'
+                    },
+                    {
+                        name: '--checkbox--checkmark--transition-duration'
+                    },
+                    {
+                        name: '--checkbox--checkmark--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--checkbox--checkmark--color',
+                value: [
+                    {
+                        name: '--checkbox--checkmark--color-h',
                         value: [
                             {
-                                name: '--color-white'
+                                name: '--color-white-h'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--dark--background',
+                        name: '--checkbox--checkmark--color-s',
                         value: [
                             {
-                                name: '--color-dark'
+                                name: '--color-white-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--checkmark--color-l',
+                        value: [
+                            {
+                                name: '--color-white-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--checkmark--color-a',
+                        value: [
+                            {
+                                name: '--color-white-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--checkbox--checkmark--size',
-                variants: [
-                    {
-                        name: '--checkbox--sm--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--md--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--lg--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
+                name: '--checkbox--checkmark--width',
+                value: []
             },
             {
-                name: '--checkbox--color',
-                variants: [
-                    {
-                        name: '--checkbox--light--color',
-                        value: [
-                            {
-                                name: '--color-white'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--dark--color',
-                        value: [
-                            {
-                                name: '--color-white'
-                            }
-                        ]
-                    }
-                ]
+                name: '--checkbox--checkmark--height',
+                value: []
             },
             {
                 name: '--checkbox--checked--border-color',
                 value: [
                     {
-                        name: '--checkbox--border-color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--checkbox--light--checked--border-color',
+                        name: '--checkbox--checked--border-top-color',
                         value: [
                             {
                                 name: '--color-primary-shade-50'
@@ -381,10 +1013,26 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
-                        name: '--checkbox--dark--checked--border-color',
+                        name: '--checkbox--checked--border-right-color',
                         value: [
                             {
-                                name: '--color-primary-tint-50'
+                                name: '--color-primary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--checked--border-bottom-color',
+                        value: [
+                            {
+                                name: '--color-primary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--checked--border-left-color',
+                        value: [
+                            {
+                                name: '--color-primary-shade-50'
                             }
                         ]
                     }
@@ -394,101 +1042,79 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--checked--background',
                 value: [
                     {
-                        name: '--checkbox--background'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--checkbox--light--checked--background',
+                        name: '--checkbox--checked--background-h',
                         value: [
                             {
-                                name: '--color-primary'
+                                name: '--color-primary-h'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--dark--checked--background',
+                        name: '--checkbox--checked--background-s',
                         value: [
                             {
-                                name: '--color-primary'
+                                name: '--color-primary-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--checked--background-l',
+                        value: [
+                            {
+                                name: '--color-primary-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--checked--background-a',
+                        value: [
+                            {
+                                name: '--color-primary-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--checkbox--disabled--label--color',
-                value: [
-                    {
-                        name: '--checkbox--label--color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--checkbox--light--disabled--label--color',
-                        value: [
-                            {
-                                name: '--text-color-weak'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--dark--disabled--label--color',
-                        value: [
-                            {
-                                name: '--text-color-weak'
-                            }
-                        ]
-                    }
-                ]
+                name: '--checkbox--label--disabled--color',
+                value: []
             },
             {
                 name: '--checkbox--disabled--border-color',
-                value: [
-                    {
-                        name: '--checkbox--border-color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--checkbox--light--disabled--border-color',
-                        value: [
-                            {
-                                name: '--color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--dark--disabled--border-color',
-                        value: [
-                            {
-                                name: '--color-dark-tint-50'
-                            }
-                        ]
-                    }
-                ]
+                value: []
             },
             {
                 name: '--checkbox--disabled--background',
                 value: [
                     {
-                        name: '--checkbox--background'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--checkbox--light--disabled--background',
+                        name: '--checkbox--disabled--background-h',
                         value: [
                             {
-                                name: '--color-gray-50'
+                                name: '--color-gray-100-h'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--dark--disabled--background',
+                        name: '--checkbox--disabled--background-s',
                         value: [
                             {
-                                name: '--color-dark-tint-100'
+                                name: '--color-gray-100-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--disabled--background-l',
+                        value: [
+                            {
+                                name: '--color-gray-100-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--disabled--background-a',
+                        value: [
+                            {
+                                name: '--color-gray-100-a'
                             }
                         ]
                     }
@@ -498,25 +1124,20 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--checked--disabled--border-color',
                 value: [
                     {
-                        name: '--checkbox--border-color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--checkbox--light--checked--disabled--border-color',
-                        value: [
-                            {
-                                name: '--color-primary-400'
-                            }
-                        ]
+                        name: '--checkbox--checked--disabled--border-top-color',
+                        value: []
                     },
                     {
-                        name: '--checkbox--dark--checked--disabled--border-color',
-                        value: [
-                            {
-                                name: '--color-primary-700'
-                            }
-                        ]
+                        name: '--checkbox--checked--disabled--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--checkbox--checked--disabled--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--checkbox--checked--disabled--border-left-color',
+                        value: []
                     }
                 ]
             },
@@ -524,53 +1145,42 @@ export const manifest: ComponentManifest = {
                 name: '--checkbox--checked--disabled--background',
                 value: [
                     {
-                        name: '--checkbox--background'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--checkbox--light--checked--disabled--background',
+                        name: '--checkbox--checked--disabled--background-h',
                         value: [
                             {
-                                name: '--color-primary-300'
+                                name: '--color-primary-300-h'
                             }
                         ]
                     },
                     {
-                        name: '--checkbox--dark--checked--disabled--background',
+                        name: '--checkbox--checked--disabled--background-s',
                         value: [
                             {
-                                name: '--color-primary-800'
+                                name: '--color-primary-300-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--checked--disabled--background-l',
+                        value: [
+                            {
+                                name: '--color-primary-300-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkbox--checked--disabled--background-a',
+                        value: [
+                            {
+                                name: '--color-primary-300-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--checkbox--disabled--color',
-                value: [
-                    {
-                        name: '--checkbox--color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--checkbox--light--disabled--color',
-                        value: [
-                            {
-                                name: '--color-white'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkbox--dark--disabled--color',
-                        value: [
-                            {
-                                name: '--color-white'
-                            }
-                        ]
-                    }
-                ]
+                name: '--checkbox--checkmark--disabled--color',
+                value: []
             }
         ]
     }

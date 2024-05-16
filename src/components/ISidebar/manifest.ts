@@ -77,235 +77,126 @@ export const manifest: ComponentManifest = {
         variables: [
             {
                 name: '--sidebar--z-index',
-                value: [
-                    {
-                        value: '1030'
-                    }
-                ]
+                value: []
             },
             {
                 name: '--sidebar--width',
-                value: [
-                    {
-                        value: '14rem'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--sidebar--sm--width',
-                        value: [
-                            {
-                                value: 'calc(#{14rem} * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--md--width',
-                        value: [
-                            {
-                                value: 'calc(#{14rem} * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--lg--width',
-                        value: [
-                            {
-                                value: 'calc(#{14rem} * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
+                value: []
             },
             {
-                name: '--sidebar--color',
-                variants: [
-                    {
-                        name: '--sidebar--light--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--dark--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--sidebar--background',
-                variants: [
-                    {
-                        name: '--sidebar--light--background',
-                        value: [
-                            {
-                                name: '--color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--dark--background',
-                        value: [
-                            {
-                                name: '--color-dark'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--sidebar--transition-property',
-                value: [
-                    {
-                        value: 'background-color,\n            color,\n            border-color,\n            transform'
-                    }
-                ]
-            },
-            {
-                name: '--sidebar--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--sidebar--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
-                name: '--sidebar--box-shadow',
-                value: [
-                    {
-                        value: '(\n                var(--sidebar--box-shadow-x-offset, var(--box-shadow-offset-x))\n                    var(--sidebar--box-shadow-y-offset, var(--box-shadow-offset-y))\n                    var(--sidebar--box-shadow-blur-radius, var(--box-shadow-blur-radius))\n                    var(--sidebar--box-shadow-spread-radius, var(--box-shadow-spread-radius))\n                    var(--sidebar--box-shadow-color, var(--box-shadow-color))\n            )'
-                    }
-                ]
-            },
-            {
-                name: '--sidebar--border-width',
-                value: [
-                    {
-                        value: '(\n                var(--sidebar--border-top-width, var(--border-top-width))\n                    var(--sidebar--border-right-width, var(--border-right-width))\n                    var(--sidebar--border-bottom-width, var(--border-bottom-width))\n                    var(--sidebar--border-left-width, var(--border-left-width))\n            )'
-                    }
-                ]
-            },
-            {
-                name: '--sidebar--border-style',
-                value: [
-                    {
-                        value: '(\n                var(--sidebar--border-top-style, var(--border-top-style))\n                    var(--sidebar--border-right-style, var(--border-right-style))\n                    var(--sidebar--border-bottom-style, var(--border-bottom-style))\n                    var(--sidebar--border-left-style, var(--border-left-style))\n            )'
-                    }
-                ]
-            },
-            {
-                name: '--sidebar--border-color',
-                value: [
-                    {
-                        value: '(\n                var(--sidebar--border-top-color, var(--border-top-color))\n                    var(--sidebar--border-right-color, var(--border-right-color))\n                    var(--sidebar--border-bottom-color, var(--border-bottom-color))\n                    var(--sidebar--border-left-color, var(--border-left-color))\n            )'
-                    }
-                ]
+                name: '--sidebar--overlay--background',
+                value: []
             },
             {
                 name: '--sidebar--border-radius',
                 value: [
                     {
-                        value: '(\n                var(--sidebar--border-top-left-radius, var(--border-top-left-radius))\n                    var(--sidebar--border-top-right-radius, var(--border-top-right-radius))\n                    var(--sidebar--border-bottom-right-radius, var(--border-bottom-right-radius))\n                    var(--sidebar--border-bottom-left-radius, var(--border-bottom-left-radius))\n            )'
+                        name: '--sidebar--border-top-left-radius'
+                    },
+                    {
+                        name: '--sidebar--border-bottom-left-radius'
                     }
                 ]
+            },
+            {
+                name: '--sidebar--background',
+                value: []
+            },
+            {
+                name: '--sidebar--box-shadow',
+                value: []
+            },
+            {
+                name: '--sidebar--border-width',
+                value: []
+            },
+            {
+                name: '--sidebar--border-style',
+                value: []
+            },
+            {
+                name: '--sidebar--border-color',
+                value: []
+            },
+            {
+                name: '--sidebar--color',
+                value: []
             },
             {
                 name: '--sidebar--padding',
+                value: []
+            },
+            {
+                name: '--sidebar--transition',
                 value: [
                     {
-                        value: '(\n                var(--sidebar--padding-top, var(--padding-top))\n                    var(--sidebar--padding-right, var(--padding-right))\n                    var(--sidebar--padding-bottom, var(--padding-bottom))\n                    var(--sidebar--padding-left, var(--padding-left))\n            )'
+                        name: '--sidebar--transition-property'
+                    },
+                    {
+                        name: '--sidebar--transition-duration'
+                    },
+                    {
+                        name: '--sidebar--transition-timing-function'
                     }
                 ]
             },
             {
-                name: '--sidebar--overlay--background',
+                name: '--sidebar--item--background',
+                value: []
+            },
+            {
+                name: '--sidebar--item--border-radius',
+                value: []
+            },
+            {
+                name: '--sidebar--item--color',
+                value: []
+            },
+            {
+                name: '--sidebar--item--font-size',
+                value: []
+            },
+            {
+                name: '--sidebar--item--padding',
+                value: []
+            },
+            {
+                name: '--sidebar--item--transition',
                 value: [
                     {
-                        value: 'rgba(0, 0, 0, 0.5)'
+                        name: '--sidebar--item--transition-property'
+                    },
+                    {
+                        name: '--sidebar--item--transition-duration'
+                    },
+                    {
+                        name: '--sidebar--item--transition-timing-function'
                     }
                 ]
             },
             {
-                name: '--sidebar--border-top-left-radius',
-                value: [
-                    {
-                        name: '--border-top-left-radius'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--sidebar--sm--border-top-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--md--border-top-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--lg--border-top-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
+                name: '--sidebar--item--hover--background',
+                value: []
             },
             {
-                name: '--sidebar--border-bottom-left-radius',
-                value: [
-                    {
-                        name: '--border-bottom-left-radius'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--sidebar--sm--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--md--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--sidebar--lg--border-bottom-left-radius',
-                        value: [
-                            {
-                                value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
+                name: '--sidebar--item--hover--color',
+                value: []
+            },
+            {
+                name: '--sidebar--item--focus--background',
+                value: []
+            },
+            {
+                name: '--sidebar--item--focus--color',
+                value: []
+            },
+            {
+                name: '--sidebar--item--active--background',
+                value: []
+            },
+            {
+                name: '--sidebar--item--active--color',
+                value: []
             }
         ]
     }

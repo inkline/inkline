@@ -3,9 +3,9 @@
 exports[`Components > IFormGroup > should render correctly 1`] = `
 "<fieldset class="form-group -md -light" name="form-group" role="group">
   <!-- @slot default Slot for default form group content -->
-  <div class="input-wrapper -light -md">
+  <div class="input -light -md">
     <!--v-if-->
-    <div class="input">
+    <div class="input-field">
       <!--v-if-->
       <!--v-if--><input name="input" type="text" tabindex="0" aria-disabled="false" aria-readonly="false">
       <!--v-if-->

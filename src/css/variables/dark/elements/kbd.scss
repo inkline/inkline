@@ -1,12 +1,10 @@
-@layer base {
-  .dark-theme {
-    --kbd--background--h: var(--color-light--h);
-    --kbd--background--s: var(--color-light--s);
-    --kbd--background--l: var(--color-light--l);
-    --kbd--background--a: var(--color-light--a);
-    --kbd--color--h: var(--contrast-text-color-light--h);
-    --kbd--color--s: var(--contrast-text-color-light--s);
-    --kbd--color--l: var(--contrast-text-color-light--l);
-    --kbd--color--a: var(--contrast-text-color-light--a);
-  }
+.dark-theme {
+  --kbd--background-h: var(--color-light-h);
+  --kbd--background-s: var(--color-light-s);
+  --kbd--background-l: var(--color-light-l);
+  --kbd--background-a: var(--color-light-a);
+  --kbd--color-h: var(--contrast-text-color-light-h);
+  --kbd--color-s: var(--contrast-text-color-light-s);
+  --kbd--color-l: var(--contrast-text-color-light-l);
+  --kbd--color-a: var(--contrast-text-color-light-a);
 }

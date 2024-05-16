@@ -98,7 +98,7 @@ export const manifest: ComponentManifest = {
         }
     ],
     css: {
-        selector: '.radio-buttons',
+        selector: '',
         variables: []
     }
 };

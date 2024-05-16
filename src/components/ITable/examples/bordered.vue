@@ -1,5 +1,5 @@
 <template>
-    <ITable border>
+    <ITable bordered>
         <thead>
             <tr>
                 <th>#</th>

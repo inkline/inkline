@@ -1,16 +1,14 @@
-@layer base {
-  :root {
-    --ol--padding-top: 0;
-    --ol--padding-right: 0;
-    --ol--padding-bottom: 0;
-    --ol--padding-left: var(--padding-left-lg);
-    --ol--margin-top: 0;
-    --ol--margin-right: 0;
-    --ol--margin-bottom: var(--margin-bottom);
-    --ol--margin-left: 0;
-    --ol--li--margin-top: 0;
-    --ol--li--margin-right: 0;
-    --ol--li--margin-bottom: var(--margin-bottom-1-2);
-    --ol--li--margin-left: 0;
-  }
+:root {
+  --ol--padding-top: 0;
+  --ol--padding-right: 0;
+  --ol--padding-bottom: 0;
+  --ol--padding-left: var(--padding-left-lg);
+  --ol--margin-top: 0;
+  --ol--margin-right: 0;
+  --ol--margin-bottom: var(--margin-bottom);
+  --ol--margin-left: 0;
+  --ol--li--margin-top: 0;
+  --ol--li--margin-right: 0;
+  --ol--li--margin-bottom: var(--margin-bottom-1-2);
+  --ol--li--margin-left: 0;
 }

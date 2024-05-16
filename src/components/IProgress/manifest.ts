@@ -40,12 +40,75 @@ export const manifest: ComponentManifest = {
         variables: [
             {
                 name: '--progress--background',
+                value: [
+                    {
+                        name: '--progress--background-h',
+                        value: [
+                            {
+                                name: '--color-light-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--progress--background-s',
+                        value: [
+                            {
+                                name: '--color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--progress--background-l',
+                        value: [
+                            {
+                                name: '--color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--progress--background-a',
+                        value: [
+                            {
+                                name: '--color-light-a'
+                            }
+                        ]
+                    }
+                ],
                 variants: [
                     {
                         name: '--progress--light--background',
                         value: [
                             {
-                                name: '--color-light'
+                                name: '--progress--light--background-h',
+                                value: [
+                                    {
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--light--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--light--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--light--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -53,7 +116,36 @@ export const manifest: ComponentManifest = {
                         name: '--progress--dark--background',
                         value: [
                             {
-                                name: '--color-dark'
+                                name: '--progress--dark--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--dark--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--dark--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--dark--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-a'
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -64,51 +156,59 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         name: '--progress--border-top-left-radius',
+                        value: []
+                    },
+                    {
+                        name: '--progress--border-top-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--progress--border-bottom-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--progress--border-bottom-left-radius',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--progress--sm--border-radius',
                         value: [
-                            {
-                                name: '--border-top-left-radius'
-                            }
-                        ],
-                        variants: [
                             {
                                 name: '--progress--sm--border-top-left-radius',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
+                                        name: '--border-top-left-radius-sm'
                                     }
                                 ]
                             },
-                            {
-                                name: '--progress--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--progress--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--progress--border-top-right-radius',
-                        value: [
-                            {
-                                name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
                             {
                                 name: '--progress--sm--border-top-right-radius',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
+                                        name: '--border-top-right-radius-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--sm--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--progress--sm--border-bottom-left-radius',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--progress--md--border-radius',
+                        value: [
+                            {
+                                name: '--progress--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-md'
                                     }
                                 ]
                             },
@@ -116,7 +216,28 @@ export const manifest: ComponentManifest = {
                                 name: '--progress--md--border-top-right-radius',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
+                                        name: '--border-top-right-radius-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--md--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--progress--md--border-bottom-left-radius',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--progress--lg--border-radius',
+                        value: [
+                            {
+                                name: '--progress--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-lg'
                                     }
                                 ]
                             },
@@ -124,223 +245,17 @@ export const manifest: ComponentManifest = {
                                 name: '--progress--lg--border-top-right-radius',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--progress--border-bottom-right-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--progress--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--progress--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
+                                        name: '--border-top-right-radius-lg'
                                     }
                                 ]
                             },
                             {
                                 name: '--progress--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--progress--border-bottom-left-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--progress--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--progress--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
+                                value: []
                             },
                             {
                                 name: '--progress--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--progress--border-color',
-                value: [
-                    {
-                        name: '--progress--border-top-color',
-                        value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--progress--light--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--progress--dark--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--progress--border-right-color',
-                        value: [
-                            {
-                                name: '--border-right-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--progress--light--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--progress--dark--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--progress--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--progress--light--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--progress--dark--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--progress--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--progress--light--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--progress--dark--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--progress--border-style',
-                value: [
-                    {
-                        name: '--progress--border-top-style',
-                        value: [
-                            {
-                                name: '--border-top-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--progress--border-right-style',
-                        value: [
-                            {
-                                name: '--border-right-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--progress--border-bottom-style',
-                        value: [
-                            {
-                                name: '--border-bottom-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--progress--border-left-style',
-                        value: [
-                            {
-                                name: '--border-left-style'
+                                value: []
                             }
                         ]
                     }
@@ -384,52 +299,146 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--progress--box-shadow',
+                name: '--progress--border-style',
                 value: [
                     {
-                        name: '--progress--box-shadow-x-offset',
+                        name: '--progress--border-top-style',
                         value: [
                             {
-                                name: '--box-shadow-offset-x'
+                                name: '--border-top-style'
                             }
                         ]
                     },
                     {
-                        name: '--progress--box-shadow-y-offset',
+                        name: '--progress--border-right-style',
                         value: [
                             {
-                                name: '--box-shadow-offset-y'
+                                name: '--border-right-style'
                             }
                         ]
                     },
                     {
-                        name: '--progress--box-shadow-blur-radius',
+                        name: '--progress--border-bottom-style',
                         value: [
                             {
-                                name: '--box-shadow-blur-radius'
+                                name: '--border-bottom-style'
                             }
                         ]
                     },
                     {
-                        name: '--progress--box-shadow-spread-radius',
+                        name: '--progress--border-left-style',
                         value: [
                             {
-                                name: '--box-shadow-spread-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--progress--box-shadow-color',
-                        value: [
-                            {
-                                name: '--box-shadow-color'
+                                name: '--border-left-style'
                             }
                         ]
                     }
                 ]
             },
             {
+                name: '--progress--border-color',
+                value: [
+                    {
+                        name: '--progress--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--progress--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--progress--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--progress--border-left-color',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--progress--light--border-color',
+                        value: [
+                            {
+                                name: '--progress--light--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--light--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--light--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--light--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--progress--dark--border-color',
+                        value: [
+                            {
+                                name: '--progress--dark--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--dark--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--dark--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--progress--dark--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--progress--box-shadow',
+                value: []
+            },
+            {
                 name: '--progress--height',
+                value: [],
                 variants: [
                     {
                         name: '--progress--sm--height',
@@ -452,6 +461,59 @@ export const manifest: ComponentManifest = {
                         value: [
                             {
                                 value: 'calc(0.75rem * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--progress--transition',
+                value: [
+                    {
+                        name: '--progress--transition-property',
+                        value: [
+                            {
+                                value: 'background-color, color, border-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--progress--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--progress--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--progress--transition-property',
+                        value: [
+                            {
+                                value: 'background-color, color, border-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--progress--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--progress--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
                             }
                         ]
                     }

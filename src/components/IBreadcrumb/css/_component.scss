@@ -4,19 +4,17 @@
  * Breadcrumb
  */
 
-@layer components {
-    .breadcrumb {
-        @include components.font-size('breadcrumb');
-        @include components.margin('breadcrumb');
-        @include components.padding('breadcrumb');
+.breadcrumb {
+    @include components.font-size('breadcrumb');
+    @include components.margin('breadcrumb');
+    @include components.padding('breadcrumb');
 
+    display: flex;
+
+    ol {
         display: flex;
-
-        ol {
-            display: flex;
-            flex-wrap: wrap;
-            padding-left: 0;
-            list-style: none;
-        }
+        flex-wrap: wrap;
+        padding-left: 0;
+        list-style: none;
     }
 }

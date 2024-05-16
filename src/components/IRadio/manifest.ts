@@ -93,137 +93,563 @@ export const manifest: ComponentManifest = {
         selector: '.radio',
         variables: [
             {
-                name: '--radio--margin-right',
+                name: '--radio--margin',
                 value: [
                     {
-                        name: '--margin-right'
+                        name: '--radio--margin-right',
+                        value: []
+                    },
+                    {
+                        name: '--radio--margin-right',
+                        value: []
+                    },
+                    {
+                        name: '--radio--margin-bottom',
+                        value: []
+                    },
+                    {
+                        name: '--radio--margin-top',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--margin-left',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
                     }
-                ]
-            },
-            {
-                name: '--radio--transition-property',
-                value: [
+                ],
+                variants: [
                     {
-                        value: 'color'
-                    }
-                ]
-            },
-            {
-                name: '--radio--transition-duration',
-                value: [
+                        name: '--radio--sm--margin',
+                        value: [
+                            {
+                                name: '--radio--sm--margin-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-right-sm) / 2)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--sm--margin-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-bottom-sm) / 2)'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
                     {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--radio--transition-timing-function',
-                value: [
+                        name: '--radio--md--margin',
+                        value: [
+                            {
+                                name: '--radio--md--margin-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-right-md) / 2)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--md--margin-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-bottom-md) / 2)'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
                     {
-                        name: '--transition-timing-function'
+                        name: '--radio--lg--margin',
+                        value: [
+                            {
+                                name: '--radio--lg--margin-right',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-right-lg) / 2)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--lg--margin-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--margin-bottom-lg) / 2)'
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             },
             {
                 name: '--radio--label--color',
-                variants: [
-                    {
-                        name: '--radio--light--label--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--dark--label--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
-                    }
-                ]
+                value: []
             },
             {
                 name: '--radio--label--font-size',
-                variants: [
-                    {
-                        name: '--radio--sm--label--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--md--label--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--lg--label--font-size',
-                        value: [
-                            {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
+                value: []
             },
             {
-                name: '--radio--size',
-                variants: [
-                    {
-                        name: '--radio--sm--size',
-                        value: [
-                            {
-                                value: 'calc(#{1rem} * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--md--size',
-                        value: [
-                            {
-                                value: 'calc(#{1rem} * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--lg--size',
-                        value: [
-                            {
-                                value: 'calc(#{1rem} * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--radio--border-color',
+                name: '--radio--label--transition',
                 value: [
                     {
-                        value: '(\n                    var(--radio--border-top-color, var(--border-top-color))\n                        var(--radio--border-right-color, var(--border-right-color))\n                        var(--radio--border-bottom-color, var(--border-bottom-color))\n                        var(--radio--border-left-color, var(--border-left-color))\n                )'
+                        name: '--radio--label--transition-property'
+                    },
+                    {
+                        name: '--radio--label--transition-duration'
+                    },
+                    {
+                        name: '--radio--label--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--radio--width',
+                value: [],
+                variants: [
+                    {
+                        name: '--radio--sm--width',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-sm))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--sm--checkmark--width',
+                        value: [
+                            {
+                                value: 'calc(0.5rem * var(--size-multiplier-sm))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--md--width',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--md--checkmark--width',
+                        value: [
+                            {
+                                value: 'calc(0.5rem * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--lg--width',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--lg--checkmark--width',
+                        value: [
+                            {
+                                value: 'calc(0.5rem * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--radio--height',
+                value: [],
+                variants: [
+                    {
+                        name: '--radio--sm--height',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-sm))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--sm--checkmark--height',
+                        value: [
+                            {
+                                value: 'calc(0.5rem * var(--size-multiplier-sm))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--md--height',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--md--checkmark--height',
+                        value: [
+                            {
+                                value: 'calc(0.5rem * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--lg--height',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--lg--checkmark--height',
+                        value: [
+                            {
+                                value: 'calc(0.5rem * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--radio--background',
+                value: [
+                    {
+                        name: '--radio--background-h',
+                        value: [
+                            {
+                                name: '--color-white-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--background-s',
+                        value: [
+                            {
+                                name: '--color-white-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--background-l',
+                        value: [
+                            {
+                                name: '--color-white-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--background-a',
+                        value: [
+                            {
+                                name: '--color-white-a'
+                            }
+                        ]
                     }
                 ],
                 variants: [
                     {
-                        name: '--radio--light--border-color',
+                        name: '--radio--disabled--background',
                         value: [
                             {
-                                name: '--color-light-shade-50'
+                                name: '--radio--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-a'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        name: '--radio--dark--border-color',
+                        name: '--radio--light--background',
                         value: [
                             {
-                                name: '--color-dark-tint-50'
+                                name: '--radio--light--background-h',
+                                value: [
+                                    {
+                                        name: '--color-white-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--background-s',
+                                value: [
+                                    {
+                                        name: '--color-white-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--background-l',
+                                value: [
+                                    {
+                                        name: '--color-white-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--background-a',
+                                value: [
+                                    {
+                                        name: '--color-white-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--light--disabled--background',
+                        value: [
+                            {
+                                name: '--radio--light--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--light--checked--disabled--background',
+                        value: [
+                            {
+                                name: '--radio--light--checked--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-primary-300-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--checked--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-primary-300-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--checked--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-primary-300-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--checked--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-primary-300-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--dark--background',
+                        value: [
+                            {
+                                name: '--radio--dark--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--dark--disabled--background',
+                        value: [
+                            {
+                                name: '--radio--dark--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-gray-600-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-gray-600-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-gray-600-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-gray-600-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--dark--checked--disabled--background',
+                        value: [
+                            {
+                                name: '--radio--dark--checked--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-primary-700-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--checked--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-primary-700-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--checked--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-primary-700-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--checked--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-primary-700-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--radio--border-width',
+                value: [
+                    {
+                        name: '--radio--border-top-width',
+                        value: [
+                            {
+                                name: '--border-top-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--border-right-width',
+                        value: [
+                            {
+                                name: '--border-right-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--border-bottom-width',
+                        value: [
+                            {
+                                name: '--border-bottom-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--border-left-width',
+                        value: [
+                            {
+                                name: '--border-left-width'
                             }
                         ]
                     }
@@ -233,136 +659,299 @@ export const manifest: ComponentManifest = {
                 name: '--radio--border-style',
                 value: [
                     {
-                        value: '(\n                    var(--radio--border-top-style, var(--border-top-style))\n                        var(--radio--border-right-style, var(--border-right-style))\n                        var(--radio--border-bottom-style, var(--border-bottom-style))\n                        var(--radio--border-left-style, var(--border-left-style))\n                )'
+                        name: '--radio--border-top-style',
+                        value: [
+                            {
+                                name: '--border-top-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--border-right-style',
+                        value: [
+                            {
+                                name: '--border-right-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--border-bottom-style',
+                        value: [
+                            {
+                                name: '--border-bottom-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--border-left-style',
+                        value: [
+                            {
+                                name: '--border-left-style'
+                            }
+                        ]
                     }
                 ]
             },
             {
-                name: '--radio--border-width',
+                name: '--radio--border-color',
                 value: [
                     {
-                        value: '(\n                    var(--radio--border-top-width, var(--border-top-width))\n                        var(--radio--border-right-width, var(--border-right-width))\n                        var(--radio--border-bottom-width, var(--border-bottom-width))\n                        var(--radio--border-left-width, var(--border-left-width))\n                )'
+                        name: '--radio--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--radio--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--radio--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--radio--border-left-color',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--radio--light--border-color',
+                        value: [
+                            {
+                                name: '--radio--light--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--light--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--light--checked--disabled--border-color',
+                        value: [
+                            {
+                                name: '--radio--light--checked--disabled--border-top-color',
+                                value: []
+                            },
+                            {
+                                name: '--radio--light--checked--disabled--border-right-color',
+                                value: []
+                            },
+                            {
+                                name: '--radio--light--checked--disabled--border-bottom-color',
+                                value: []
+                            },
+                            {
+                                name: '--radio--light--checked--disabled--border-left-color',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--dark--border-color',
+                        value: [
+                            {
+                                name: '--radio--dark--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--radio--dark--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--dark--checked--disabled--border-color',
+                        value: [
+                            {
+                                name: '--radio--dark--checked--disabled--border-top-color',
+                                value: []
+                            },
+                            {
+                                name: '--radio--dark--checked--disabled--border-right-color',
+                                value: []
+                            },
+                            {
+                                name: '--radio--dark--checked--disabled--border-bottom-color',
+                                value: []
+                            },
+                            {
+                                name: '--radio--dark--checked--disabled--border-left-color',
+                                value: []
+                            }
+                        ]
                     }
                 ]
             },
             {
                 name: '--radio--box-shadow',
+                value: []
+            },
+            {
+                name: '--radio--transition',
                 value: [
                     {
-                        name: '--radio--box-shadow-x-offset',
+                        name: '--radio--transition-property',
                         value: [
                             {
-                                name: '--box-shadow-offset-x'
+                                value: 'background-color, color, border-color,\n      transform'
                             }
                         ]
                     },
                     {
-                        name: '--radio--box-shadow-y-offset',
+                        name: '--radio--transition-duration',
                         value: [
                             {
-                                name: '--box-shadow-offset-y'
+                                name: '--transition-duration'
                             }
                         ]
                     },
                     {
-                        name: '--radio--box-shadow-blur-radius',
+                        name: '--radio--transition-timing-function',
                         value: [
                             {
-                                name: '--box-shadow-blur-radius'
+                                name: '--transition-timing-function'
                             }
                         ]
                     },
                     {
-                        name: '--radio--box-shadow-spread-radius',
+                        name: '--radio--transition-property',
                         value: [
                             {
-                                name: '--box-shadow-spread-radius'
+                                value: 'background-color, color, border-color,\n      transform'
                             }
                         ]
                     },
                     {
-                        name: '--radio--box-shadow-color',
+                        name: '--radio--transition-duration',
                         value: [
                             {
-                                name: '--box-shadow-color'
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--radio--background',
-                variants: [
+                name: '--radio--checkmark--transition',
+                value: [
                     {
-                        name: '--radio--light--background',
+                        name: '--radio--checkmark--transition-property'
+                    },
+                    {
+                        name: '--radio--checkmark--transition-duration'
+                    },
+                    {
+                        name: '--radio--checkmark--transition-timing-function'
+                    }
+                ]
+            },
+            {
+                name: '--radio--checkmark--color',
+                value: [
+                    {
+                        name: '--radio--checkmark--color-h',
                         value: [
                             {
-                                name: '--color-white'
+                                name: '--color-white-h'
                             }
                         ]
                     },
                     {
-                        name: '--radio--dark--background',
+                        name: '--radio--checkmark--color-s',
                         value: [
                             {
-                                name: '--color-dark'
+                                name: '--color-white-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--checkmark--color-l',
+                        value: [
+                            {
+                                name: '--color-white-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--checkmark--color-a',
+                        value: [
+                            {
+                                name: '--color-white-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--radio--color',
-                variants: [
-                    {
-                        name: '--radio--light--color',
-                        value: [
-                            {
-                                name: '--color-white'
-                            }
-                        ]
-                    }
-                ]
+                name: '--radio--checkmark--width',
+                value: []
             },
             {
-                name: '--radio--checkmark--size',
-                variants: [
-                    {
-                        name: '--radio--sm--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--md--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--lg--checkmark--size',
-                        value: [
-                            {
-                                value: 'calc(#{8px} * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
+                name: '--radio--checkmark--height',
+                value: []
             },
             {
                 name: '--radio--checked--border-color',
                 value: [
                     {
-                        name: '--radio--border-color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--radio--light--checked--border-color',
+                        name: '--radio--checked--border-top-color',
                         value: [
                             {
                                 name: '--color-primary-shade-50'
@@ -370,10 +959,26 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
-                        name: '--radio--dark--checked--border-color',
+                        name: '--radio--checked--border-right-color',
                         value: [
                             {
-                                name: '--color-primary-lighten-50'
+                                name: '--color-primary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--checked--border-bottom-color',
+                        value: [
+                            {
+                                name: '--color-primary-shade-50'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--checked--border-left-color',
+                        value: [
+                            {
+                                name: '--color-primary-shade-50'
                             }
                         ]
                     }
@@ -383,77 +988,65 @@ export const manifest: ComponentManifest = {
                 name: '--radio--checked--background',
                 value: [
                     {
-                        name: '--radio--background'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--radio--light--checked--background',
+                        name: '--radio--checked--background-h',
                         value: [
                             {
-                                name: '--color-primary'
+                                name: '--color-primary-h'
                             }
                         ]
                     },
                     {
-                        name: '--radio--dark--checked--background',
+                        name: '--radio--checked--background-s',
                         value: [
                             {
-                                name: '--color-primary'
+                                name: '--color-primary-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--checked--background-l',
+                        value: [
+                            {
+                                name: '--color-primary-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--checked--background-a',
+                        value: [
+                            {
+                                name: '--color-primary-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--radio--disabled--label--color',
-                value: [
-                    {
-                        name: '--radio--label--color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--radio--light--disabled--label--color',
-                        value: [
-                            {
-                                name: '--color-light-700'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--dark--disabled--label--color',
-                        value: [
-                            {
-                                name: '--color-dark-300'
-                            }
-                        ]
-                    }
-                ]
+                name: '--radio--label--disabled--color',
+                value: []
+            },
+            {
+                name: '--checkbox--label--disabled--color',
+                value: []
             },
             {
                 name: '--radio--checked--disabled--border-color',
                 value: [
                     {
-                        name: '--radio--border-color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--radio--light--checked--disabled--border-color',
-                        value: [
-                            {
-                                name: '--color-primary-300'
-                            }
-                        ]
+                        name: '--radio--checked--disabled--border-top-color',
+                        value: []
                     },
                     {
-                        name: '--radio--dark--checked--disabled--border-color',
-                        value: [
-                            {
-                                name: '--color-primary-700'
-                            }
-                        ]
+                        name: '--radio--checked--disabled--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--radio--checked--disabled--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--radio--checked--disabled--border-left-color',
+                        value: []
                     }
                 ]
             },
@@ -461,53 +1054,42 @@ export const manifest: ComponentManifest = {
                 name: '--radio--checked--disabled--background',
                 value: [
                     {
-                        name: '--radio--background'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--radio--light--checked--disabled--background',
+                        name: '--radio--checked--disabled--background-h',
                         value: [
                             {
-                                name: '--color-primary-200'
+                                name: '--color-primary-300-h'
                             }
                         ]
                     },
                     {
-                        name: '--radio--dark--checked--disabled--background',
+                        name: '--radio--checked--disabled--background-s',
                         value: [
                             {
-                                name: '--color-primary-700'
+                                name: '--color-primary-300-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--checked--disabled--background-l',
+                        value: [
+                            {
+                                name: '--color-primary-300-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--radio--checked--disabled--background-a',
+                        value: [
+                            {
+                                name: '--color-primary-300-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--radio--disabled--color',
-                value: [
-                    {
-                        name: '--radio--color'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--radio--light--disabled--color',
-                        value: [
-                            {
-                                name: '--color-light-200'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--radio--dark--disabled--color',
-                        value: [
-                            {
-                                name: '--color-dark-200'
-                            }
-                        ]
-                    }
-                ]
+                name: '--radio--checkmark--disabled--color',
+                value: []
             }
         ]
     }

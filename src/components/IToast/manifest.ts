@@ -108,37 +108,457 @@ export const manifest: ComponentManifest = {
         selector: '.toast',
         variables: [
             {
-                name: '--toast--border-style',
+                name: '--toast--background',
                 value: [
                     {
-                        name: '--toast--border-top-style',
+                        name: '--toast--background-h',
                         value: [
                             {
-                                name: '--border-top-style'
+                                name: '--color-white-h'
                             }
                         ]
                     },
                     {
-                        name: '--toast--border-right-style',
+                        name: '--toast--background-s',
                         value: [
                             {
-                                name: '--border-right-style'
+                                name: '--color-white-s'
                             }
                         ]
                     },
                     {
-                        name: '--toast--border-bottom-style',
+                        name: '--toast--background-l',
                         value: [
                             {
-                                name: '--border-bottom-style'
+                                name: '--color-white-l'
                             }
                         ]
                     },
                     {
-                        name: '--toast--border-left-style',
+                        name: '--toast--background-a',
                         value: [
                             {
-                                name: '--border-left-style'
+                                name: '--color-white-a'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--toast--light--background',
+                        value: [
+                            {
+                                name: '--toast--light--background-h',
+                                value: [
+                                    {
+                                        name: '--color-white-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--light--background-s',
+                                value: [
+                                    {
+                                        name: '--color-white-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--light--background-l',
+                                value: [
+                                    {
+                                        name: '--color-white-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--light--background-a',
+                                value: [
+                                    {
+                                        name: '--color-white-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--dark--background',
+                        value: [
+                            {
+                                name: '--toast--dark--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--dark--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--dark--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--dark--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--dark--progress--background',
+                        value: [
+                            {
+                                name: '--toast--dark--progress--background-h',
+                                value: [
+                                    {
+                                        value: '0'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--dark--progress--background-s',
+                                value: [
+                                    {
+                                        value: '0%'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--dark--progress--background-l',
+                                value: [
+                                    {
+                                        value: '100%'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--dark--progress--background-a',
+                                value: [
+                                    {
+                                        value: '0.05'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--dark--progress-bar--background',
+                        value: [
+                            {
+                                name: '--toast--dark--progress-bar--background-h',
+                                value: [
+                                    {
+                                        value: '0'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--dark--progress-bar--background-s',
+                                value: [
+                                    {
+                                        value: '0%'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--dark--progress-bar--background-l',
+                                value: [
+                                    {
+                                        value: '100%'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--dark--progress-bar--background-a',
+                                value: [
+                                    {
+                                        value: '0.15'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--info--background',
+                        value: [
+                            {
+                                name: '--toast--info--background-h',
+                                value: [
+                                    {
+                                        name: '--color-info-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--info--background-s',
+                                value: [
+                                    {
+                                        name: '--color-info-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--info--background-l',
+                                value: [
+                                    {
+                                        name: '--color-info-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--info--background-a',
+                                value: [
+                                    {
+                                        name: '--color-info-100-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--success--background',
+                        value: [
+                            {
+                                name: '--toast--success--background-h',
+                                value: [
+                                    {
+                                        name: '--color-success-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--success--background-s',
+                                value: [
+                                    {
+                                        name: '--color-success-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--success--background-l',
+                                value: [
+                                    {
+                                        name: '--color-success-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--success--background-a',
+                                value: [
+                                    {
+                                        name: '--color-success-100-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--warning--background',
+                        value: [
+                            {
+                                name: '--toast--warning--background-h',
+                                value: [
+                                    {
+                                        name: '--color-warning-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--warning--background-s',
+                                value: [
+                                    {
+                                        name: '--color-warning-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--warning--background-l',
+                                value: [
+                                    {
+                                        name: '--color-warning-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--warning--background-a',
+                                value: [
+                                    {
+                                        name: '--color-warning-100-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--danger--background',
+                        value: [
+                            {
+                                name: '--toast--danger--background-h',
+                                value: [
+                                    {
+                                        name: '--color-danger-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--danger--background-s',
+                                value: [
+                                    {
+                                        name: '--color-danger-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--danger--background-l',
+                                value: [
+                                    {
+                                        name: '--color-danger-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--danger--background-a',
+                                value: [
+                                    {
+                                        name: '--color-danger-100-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toast--border-radius',
+                value: [
+                    {
+                        name: '--toast--border-top-left-radius',
+                        value: []
+                    },
+                    {
+                        name: '--toast--border-top-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--toast--border-bottom-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--toast--border-bottom-left-radius',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--toast--sm--border-radius',
+                        value: [
+                            {
+                                name: '--toast--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--sm--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--toast--sm--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius-sm'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--md--border-radius',
+                        value: [
+                            {
+                                name: '--toast--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--md--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--toast--md--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius-md'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--lg--border-radius',
+                        value: [
+                            {
+                                name: '--toast--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--lg--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--toast--lg--border-bottom-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-bottom-left-radius-lg'
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -182,16 +602,66 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
+                name: '--toast--border-style',
+                value: [
+                    {
+                        name: '--toast--border-top-style',
+                        value: [
+                            {
+                                name: '--border-top-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--border-right-style',
+                        value: [
+                            {
+                                name: '--border-right-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--border-bottom-style',
+                        value: [
+                            {
+                                name: '--border-bottom-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--border-left-style',
+                        value: [
+                            {
+                                name: '--border-left-style'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 name: '--toast--border-color',
                 value: [
                     {
                         name: '--toast--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--toast--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--toast--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--toast--border-left-color',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--toast--light--border-color',
                         value: [
-                            {
-                                name: '--border-top-color'
-                            }
-                        ],
-                        variants: [
                             {
                                 name: '--toast--light--border-top-color',
                                 value: [
@@ -201,60 +671,39 @@ export const manifest: ComponentManifest = {
                                 ]
                             },
                             {
-                                name: '--toast--dark--border-top-color',
+                                name: '--toast--light--border-right-color',
                                 value: [
                                     {
-                                        name: '--color-dark-tint-50'
+                                        name: '--color-light-shade-50'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--info--border-top-color',
+                                name: '--toast--light--border-bottom-color',
                                 value: [
                                     {
-                                        name: '--color-info-500'
+                                        name: '--color-light-shade-50'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--success--border-top-color',
+                                name: '--toast--light--border-left-color',
                                 value: [
                                     {
-                                        name: '--color-success-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toast--warning--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-warning-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toast--danger--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-danger-500'
+                                        name: '--color-light-shade-50'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--toast--border-right-color',
+                        name: '--toast--dark--border-color',
                         value: [
                             {
-                                name: '--border-right-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toast--light--border-right-color',
+                                name: '--toast--dark--border-top-color',
                                 value: [
                                     {
-                                        name: '--color-light-shade-50'
+                                        name: '--color-dark-tint-50'
                                     }
                                 ]
                             },
@@ -267,110 +716,10 @@ export const manifest: ComponentManifest = {
                                 ]
                             },
                             {
-                                name: '--toast--info--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-info-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toast--success--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-success-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toast--warning--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-warning-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toast--danger--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-danger-500'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toast--light--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
                                 name: '--toast--dark--border-bottom-color',
                                 value: [
                                     {
                                         name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toast--info--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-info-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toast--success--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-success-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toast--warning--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-warning-500'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toast--danger--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-danger-500'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toast--light--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
                                     }
                                 ]
                             },
@@ -381,12 +730,70 @@ export const manifest: ComponentManifest = {
                                         name: '--color-dark-tint-50'
                                     }
                                 ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--info--border-color',
+                        value: [
+                            {
+                                name: '--toast--info--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-info-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--info--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-info-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--info--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-info-shade-50'
+                                    }
+                                ]
                             },
                             {
                                 name: '--toast--info--border-left-color',
                                 value: [
                                     {
-                                        name: '--color-info-500'
+                                        name: '--color-info-shade-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--success--border-color',
+                        value: [
+                            {
+                                name: '--toast--success--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-success-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--success--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-success-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--success--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-success-shade-50'
                                     }
                                 ]
                             },
@@ -394,7 +801,36 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--success--border-left-color',
                                 value: [
                                     {
-                                        name: '--color-success-500'
+                                        name: '--color-success-shade-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--warning--border-color',
+                        value: [
+                            {
+                                name: '--toast--warning--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-warning-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--warning--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-warning-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--warning--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-warning-shade-50'
                                     }
                                 ]
                             },
@@ -402,7 +838,36 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--warning--border-left-color',
                                 value: [
                                     {
-                                        name: '--color-warning-500'
+                                        name: '--color-warning-shade-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--danger--border-color',
+                        value: [
+                            {
+                                name: '--toast--danger--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-danger-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--danger--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-danger-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--danger--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-danger-shade-50'
                                     }
                                 ]
                             },
@@ -410,7 +875,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--danger--border-left-color',
                                 value: [
                                     {
-                                        name: '--color-danger-500'
+                                        name: '--color-danger-shade-50'
                                     }
                                 ]
                             }
@@ -419,139 +884,263 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--toast--border-radius',
+                name: '--toast--box-shadow',
+                value: []
+            },
+            {
+                name: '--toast--color',
                 value: [
                     {
-                        name: '--toast--border-top-left-radius',
+                        name: '--toast--color-h',
                         value: [
                             {
-                                name: '--border-top-left-radius'
+                                name: '--text-contrast-color-light-h'
                             }
-                        ],
-                        variants: [
+                        ]
+                    },
+                    {
+                        name: '--toast--color-s',
+                        value: [
                             {
-                                name: '--toast--sm--border-top-left-radius',
+                                name: '--text-contrast-color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--color-l',
+                        value: [
+                            {
+                                name: '--text-contrast-color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--color-a',
+                        value: [
+                            {
+                                name: '--text-contrast-color-light-a'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--toast--light--color',
+                        value: [
+                            {
+                                name: '--toast--light--color-h',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
+                                        name: '--contrast-text-color-light-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--md--border-top-left-radius',
+                                name: '--toast--light--color-s',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
+                                        name: '--contrast-text-color-light-s'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--lg--border-top-left-radius',
+                                name: '--toast--light--color-l',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
+                                        name: '--contrast-text-color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--light--color-a',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-a'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--toast--border-top-right-radius',
+                        name: '--toast--dark--color',
                         value: [
                             {
-                                name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toast--sm--border-top-right-radius',
+                                name: '--toast--dark--color-h',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
+                                        name: '--contrast-text-color-dark-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--md--border-top-right-radius',
+                                name: '--toast--dark--color-s',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
+                                        name: '--contrast-text-color-dark-s'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--lg--border-top-right-radius',
+                                name: '--toast--dark--color-l',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
+                                        name: '--contrast-text-color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--dark--color-a',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-a'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--toast--border-bottom-right-radius',
+                        name: '--toast--info--color',
                         value: [
                             {
-                                name: '--border-bottom-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toast--sm--border-bottom-right-radius',
+                                name: '--toast--info--color-h',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
+                                        name: '--color-info-800-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--md--border-bottom-right-radius',
+                                name: '--toast--info--color-s',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
+                                        name: '--color-info-800-s'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--lg--border-bottom-right-radius',
+                                name: '--toast--info--color-l',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
+                                        name: '--color-info-800-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--info--color-a',
+                                value: [
+                                    {
+                                        name: '--color-info-800-a'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--toast--border-bottom-left-radius',
+                        name: '--toast--success--color',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
+                                name: '--toast--success--color-h',
+                                value: [
+                                    {
+                                        name: '--color-success-800-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--success--color-s',
+                                value: [
+                                    {
+                                        name: '--color-success-800-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--success--color-l',
+                                value: [
+                                    {
+                                        name: '--color-success-800-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--success--color-a',
+                                value: [
+                                    {
+                                        name: '--color-success-800-a'
+                                    }
+                                ]
                             }
-                        ],
-                        variants: [
+                        ]
+                    },
+                    {
+                        name: '--toast--warning--color',
+                        value: [
                             {
-                                name: '--toast--sm--border-bottom-left-radius',
+                                name: '--toast--warning--color-h',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
+                                        name: '--color-warning-800-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--md--border-bottom-left-radius',
+                                name: '--toast--warning--color-s',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
+                                        name: '--color-warning-800-s'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--lg--border-bottom-left-radius',
+                                name: '--toast--warning--color-l',
                                 value: [
                                     {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
+                                        name: '--color-warning-800-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--warning--color-a',
+                                value: [
+                                    {
+                                        name: '--color-warning-800-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--danger--color',
+                        value: [
+                            {
+                                name: '--toast--danger--color-h',
+                                value: [
+                                    {
+                                        name: '--color-danger-800-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--danger--color-s',
+                                value: [
+                                    {
+                                        name: '--color-danger-800-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--danger--color-l',
+                                value: [
+                                    {
+                                        name: '--color-danger-800-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--danger--color-a',
+                                value: [
+                                    {
+                                        name: '--color-danger-800-a'
                                     }
                                 ]
                             }
@@ -561,17 +1150,13 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--toast--font-size',
-                value: [
-                    {
-                        name: '--font-size'
-                    }
-                ],
+                value: [],
                 variants: [
                     {
                         name: '--toast--sm--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
+                                name: '--font-size-sm'
                             }
                         ]
                     },
@@ -579,7 +1164,7 @@ export const manifest: ComponentManifest = {
                         name: '--toast--md--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
+                                name: '--font-size-md'
                             }
                         ]
                     },
@@ -587,184 +1172,9 @@ export const manifest: ComponentManifest = {
                         name: '--toast--lg--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
+                                name: '--font-size-lg'
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: '--toast--box-shadow',
-                value: [
-                    {
-                        name: '--toast--box-shadow-x-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-x'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--box-shadow-y-offset',
-                        value: [
-                            {
-                                name: '--box-shadow-offset-y'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--box-shadow-blur-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-blur-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--box-shadow-spread-radius',
-                        value: [
-                            {
-                                name: '--box-shadow-spread-radius'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--box-shadow-color',
-                        value: [
-                            {
-                                name: '--box-shadow-color'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toast--background',
-                variants: [
-                    {
-                        name: '--toast--light--background',
-                        value: [
-                            {
-                                name: '--color-white'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--dark--background',
-                        value: [
-                            {
-                                name: '--color-dark'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--info--background',
-                        value: [
-                            {
-                                name: '--color-info-100'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--success--background',
-                        value: [
-                            {
-                                name: '--color-success-100'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--warning--background',
-                        value: [
-                            {
-                                name: '--color-warning-100'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--danger--background',
-                        value: [
-                            {
-                                name: '--color-danger-100'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toast--color',
-                variants: [
-                    {
-                        name: '--toast--light--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--dark--color',
-                        value: [
-                            {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--info--color',
-                        value: [
-                            {
-                                name: '--color-info-800'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--success--color',
-                        value: [
-                            {
-                                name: '--color-success-800'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--warning--color',
-                        value: [
-                            {
-                                name: '--color-warning-800'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--danger--color',
-                        value: [
-                            {
-                                name: '--color-danger-800'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toast--transition-property',
-                value: [
-                    {
-                        value: '(background-color, color, border-color)'
-                    }
-                ]
-            },
-            {
-                name: '--toast--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--toast--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
                     }
                 ]
             },
@@ -772,82 +1182,273 @@ export const manifest: ComponentManifest = {
                 name: '--toast--link--color',
                 value: [
                     {
-                        name: '--toast--color'
+                        name: '--toast--link--color-h',
+                        value: [
+                            {
+                                name: '--toast--color-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--link--color-s',
+                        value: [
+                            {
+                                name: '--toast--color-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--link--color-l',
+                        value: [
+                            {
+                                name: '--toast--color-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--link--color-a',
+                        value: [
+                            {
+                                name: '--toast--color-a'
+                            }
+                        ]
                     }
                 ]
             },
             {
-                name: '--toast--link--transition-property',
+                name: '--toast--link--font-weight',
                 value: [
                     {
-                        value: 'color'
+                        name: '--font-weight-semibold'
                     }
                 ]
             },
             {
-                name: '--toast--link-color',
+                name: '--toast--link--transition',
                 value: [
                     {
-                        name: '--color'
+                        name: '--toast--link--transition-property',
+                        value: [
+                            {
+                                value: 'color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--link--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--link--transition-timing-function',
+                        value: []
+                    },
+                    {
+                        name: '--toast--link--transition-property',
+                        value: [
+                            {
+                                value: 'color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--link--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--link--transition-timing-function',
+                        value: []
                     }
                 ]
             },
             {
-                name: '--toast--code--background'
+                name: '--toast--link--hover--color',
+                value: [
+                    {
+                        name: '--toast--link--hover--color-h',
+                        value: [
+                            {
+                                name: '--toast--link--color-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--link--hover--color-s',
+                        value: [
+                            {
+                                name: '--toast--link--color-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--link--hover--color-l',
+                        value: [
+                            {
+                                name: '--toast--link--color-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--link--hover--color-a',
+                        value: [
+                            {
+                                name: '--toast--link--color-a'
+                            }
+                        ]
+                    }
+                ]
             },
             {
-                name: '--toast--code--color'
+                name: '--toast--link--focus--color',
+                value: []
+            },
+            {
+                name: '--toast--code--background',
+                value: [
+                    {
+                        name: '--toast--code--background-h',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--code--background-s',
+                        value: [
+                            {
+                                value: '0%'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--code--background-l',
+                        value: [
+                            {
+                                value: '0%'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--code--background-a',
+                        value: [
+                            {
+                                value: '0.05'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toast--code--color',
+                value: [
+                    {
+                        name: '--toast--code--color-h',
+                        value: [
+                            {
+                                name: '--toast--color-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--code--color-s',
+                        value: [
+                            {
+                                name: '--toast--color-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--code--color-l',
+                        value: [
+                            {
+                                name: '--toast--color-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--code--color-a',
+                        value: [
+                            {
+                                name: '--toast--color-a'
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 name: '--toast--padding',
                 value: [
                     {
                         name: '--toast--padding-top',
+                        value: []
+                    },
+                    {
+                        name: '--toast--padding-right',
+                        value: []
+                    },
+                    {
+                        name: '--toast--padding-bottom',
+                        value: []
+                    },
+                    {
+                        name: '--toast--padding-left',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--toast--sm--padding',
                         value: [
-                            {
-                                name: '--padding-top'
-                            }
-                        ],
-                        variants: [
                             {
                                 name: '--toast--sm--padding-top',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-top) * var(--size-multiplier-sm))'
+                                        name: '--padding-top-sm'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--md--padding-top',
+                                name: '--toast--sm--padding-right',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-top) * var(--size-multiplier-md))'
+                                        name: '--padding-right-sm'
                                     }
                                 ]
                             },
                             {
-                                name: '--toast--lg--padding-top',
+                                name: '--toast--sm--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-top) * var(--size-multiplier-lg))'
+                                        name: '--padding-bottom-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--sm--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-sm'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--toast--padding-right',
+                        name: '--toast--md--padding',
                         value: [
                             {
-                                name: '--padding-right'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toast--sm--padding-right',
+                                name: '--toast--md--padding-top',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-sm))'
+                                        name: '--padding-top-md'
                                     }
                                 ]
                             },
@@ -855,33 +1456,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--md--padding-right',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toast--lg--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-right) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--padding-bottom',
-                        value: [
-                            {
-                                name: '--padding-bottom'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toast--sm--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))'
+                                        name: '--padding-right-md'
                                     }
                                 ]
                             },
@@ -889,33 +1464,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--md--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-bottom) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toast--lg--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-bottom) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toast--sm--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-sm))'
+                                        name: '--padding-bottom-md'
                                     }
                                 ]
                             },
@@ -923,7 +1472,36 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--md--padding-left',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-md))'
+                                        name: '--padding-left-md'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--lg--padding',
+                        value: [
+                            {
+                                name: '--toast--lg--padding-top',
+                                value: [
+                                    {
+                                        name: '--padding-top-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--lg--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toast--lg--padding-bottom',
+                                value: [
+                                    {
+                                        name: '--padding-bottom-lg'
                                     }
                                 ]
                             },
@@ -931,7 +1509,7 @@ export const manifest: ComponentManifest = {
                                 name: '--toast--lg--padding-left',
                                 value: [
                                     {
-                                        value: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
+                                        name: '--padding-left-lg'
                                     }
                                 ]
                             }
@@ -948,6 +1526,125 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
+                name: '--toast--title--font-size',
+                value: [
+                    {
+                        name: '--alert--font-size'
+                    }
+                ]
+            },
+            {
+                name: '--toast--icon--margin',
+                value: [
+                    {
+                        name: '--toast--icon--margin-top',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--icon--margin-right',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--icon--margin-bottom',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--icon--margin-left',
+                        value: [
+                            {
+                                name: '--toast--padding-left'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toast--dismiss--margin',
+                value: [
+                    {
+                        name: '--toast--dismiss--margin-top',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--dismiss--margin-right',
+                        value: [
+                            {
+                                name: '--toast--padding-left'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--dismiss--margin-bottom',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--dismiss--margin-left',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toast--progress--background',
+                value: [
+                    {
+                        name: '--toast--progress--background-h',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--progress--background-s',
+                        value: [
+                            {
+                                value: '0%'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--progress--background-l',
+                        value: [
+                            {
+                                value: '0%'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toast--progress--background-a',
+                        value: [
+                            {
+                                value: '0.05'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 name: '--toast--progress--height',
                 value: [
                     {
@@ -956,110 +1653,45 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--toast--progress--background',
-                variants: [
+                name: '--toast--progress-bar--background',
+                value: [
                     {
-                        name: '--toast--light--progress--background',
+                        name: '--toast--progress-bar--background-h',
                         value: [
                             {
-                                value: 'rgba(0, 0, 0, 0.05)'
+                                value: '0'
                             }
                         ]
                     },
                     {
-                        name: '--toast--dark--progress--background',
+                        name: '--toast--progress-bar--background-s',
                         value: [
                             {
-                                value: 'rgba(255, 255, 255, 0.05)'
+                                value: '0%'
                             }
                         ]
                     },
                     {
-                        name: '--toast--info--progress--background',
+                        name: '--toast--progress-bar--background-l',
                         value: [
                             {
-                                value: 'rgba(0, 0, 0, 0.05)'
+                                value: '0%'
                             }
                         ]
                     },
                     {
-                        name: '--toast--success--progress--background',
+                        name: '--toast--progress-bar--background-a',
                         value: [
                             {
-                                value: 'rgba(0, 0, 0, 0.05)'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--warning--progress--background',
-                        value: [
-                            {
-                                value: 'rgba(0, 0, 0, 0.05)'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--danger--progress--background',
-                        value: [
-                            {
-                                value: 'rgba(0, 0, 0, 0.05)'
+                                value: '0.15'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--toast--progress-bar--background',
-                variants: [
-                    {
-                        name: '--toast--light--progress-bar--background',
-                        value: [
-                            {
-                                value: 'rgba(0, 0, 0, 0.15)'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--dark--progress-bar--background',
-                        value: [
-                            {
-                                value: 'rgba(255, 255, 255, 0.15)'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--info--progress-bar--background',
-                        value: [
-                            {
-                                value: 'rgba(0, 0, 0, 0.15)'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--success--progress-bar--background',
-                        value: [
-                            {
-                                value: 'rgba(0, 0, 0, 0.15)'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--warning--progress-bar--background',
-                        value: [
-                            {
-                                value: 'rgba(0, 0, 0, 0.15)'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toast--danger--progress-bar--background',
-                        value: [
-                            {
-                                value: 'rgba(0, 0, 0, 0.15)'
-                            }
-                        ]
-                    }
-                ]
+                name: '--toast--duration',
+                value: []
             }
         ]
     }

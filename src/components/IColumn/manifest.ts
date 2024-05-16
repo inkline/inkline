@@ -82,7 +82,7 @@ export const manifest: ComponentManifest = {
             description: 'Display the column as the first column on extra-large screens'
         },
         {
-            name: 'first-2xl',
+            name: 'first-xxl',
             type: ['Boolean'],
             default: 'false',
             description: 'Display the column as the first column on extra-extra-large screens'
@@ -124,7 +124,7 @@ export const manifest: ComponentManifest = {
             description: 'Display the column as the last column on extra-large screens'
         },
         {
-            name: 'last-2xl',
+            name: 'last-xxl',
             type: ['Boolean'],
             default: 'false',
             description: 'Display the column as the last column on extra-extra-large screens'
@@ -166,7 +166,7 @@ export const manifest: ComponentManifest = {
             description: 'The number of columns to offset the column by on extra-large screens'
         },
         {
-            name: 'offset-2xl',
+            name: 'offset-xxl',
             type: ['String', 'Number'],
             default: '',
             description:
@@ -209,7 +209,7 @@ export const manifest: ComponentManifest = {
             description: 'The number of columns to push the column by on extra-large screens'
         },
         {
-            name: 'push-2xl',
+            name: 'push-xxl',
             type: ['String', 'Number'],
             default: '',
             description: 'The number of columns to push the column by on extra-extra-large screens'
@@ -251,7 +251,7 @@ export const manifest: ComponentManifest = {
             description: 'The number of columns to pull the column by on extra-large screens'
         },
         {
-            name: 'pull-2xl',
+            name: 'pull-xxl',
             type: ['String', 'Number'],
             default: '',
             description: 'The number of columns to pull the column by on extra-extra-large screens'
@@ -266,7 +266,64 @@ export const manifest: ComponentManifest = {
     ],
     css: {
         selector: '.col',
-        variables: []
+        variables: [
+            {
+                name: '--gutter-xs--gutter-xs',
+                value: [
+                    {
+                        name: '--gutter-xs'
+                    }
+                ]
+            },
+            {
+                name: '--gutter-sm--gutter-sm',
+                value: [
+                    {
+                        name: '--gutter-sm'
+                    }
+                ]
+            },
+            {
+                name: '--gutter-md--gutter-md',
+                value: [
+                    {
+                        name: '--gutter-md'
+                    }
+                ]
+            },
+            {
+                name: '--gutter-lg--gutter-lg',
+                value: [
+                    {
+                        name: '--gutter-lg'
+                    }
+                ]
+            },
+            {
+                name: '--gutter-xl--gutter-xl',
+                value: [
+                    {
+                        name: '--gutter-xl'
+                    }
+                ]
+            },
+            {
+                name: '--gutter-xxl--gutter-xxl',
+                value: [
+                    {
+                        name: '--gutter-xxl'
+                    }
+                ]
+            },
+            {
+                name: '--columns--columns',
+                value: [
+                    {
+                        name: '--columns'
+                    }
+                ]
+            }
+        ]
     }
 };
 

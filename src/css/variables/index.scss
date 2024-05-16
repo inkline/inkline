@@ -1,12 +1,12 @@
 @import './mixins';
 @import './components';
 @import './elements';
+@import './grid';
 @import './border';
 @import './border-radius';
 @import './box-shadow';
 @import './breakpoints';
 @import './colors';
-@import './grid';
 @import './transition';
 @import './typography';
 @import './margin';
@@ -15,3 +15,4 @@
 @import './spacing';
 @import './layers';
 @import './scale-ratios';
+@import './dark';

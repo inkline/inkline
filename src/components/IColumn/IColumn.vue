@@ -107,11 +107,11 @@ export default defineComponent({
 
         /**
          * Display the column as the first column on extra-extra-large screens
-         * @name first-2xl
+         * @name first-xxl
          * @type Boolean
          * @default false
          */
-        first2xl: { type: [Boolean], default: false },
+        firstXxl: { type: [Boolean], default: false },
 
         /**
          * Display the column as the last column
@@ -163,11 +163,11 @@ export default defineComponent({
 
         /**
          * Display the column as the last column on extra-extra-large screens
-         * @name last-2xl
+         * @name last-xxl
          * @type Boolean
          * @default false
          */
-        last2xl: { type: [Boolean], default: false },
+        lastXxl: { type: [Boolean], default: false },
 
         /**
          * The number of columns to offset the column by
@@ -219,11 +219,11 @@ export default defineComponent({
 
         /**
          * The number of columns to offset the column by on extra-extra-large screens
-         * @name offset-2xl
+         * @name offset-xxl
          * @type String | Number
          * @default
          */
-        offset2xl: { type: [String, Number] as PropType<string>, default: '' },
+        offsetXxl: { type: [String, Number] as PropType<string>, default: '' },
 
         /**
          * The number of columns to push the column by
@@ -275,11 +275,11 @@ export default defineComponent({
 
         /**
          * The number of columns to push the column by on extra-extra-large screens
-         * @name push-2xl
+         * @name push-xxl
          * @type String | Number
          * @default
          */
-        push2xl: { type: [String, Number] as PropType<string>, default: '' },
+        pushXxl: { type: [String, Number] as PropType<string>, default: '' },
 
         /**
          * The number of columns to pull the column by
@@ -331,11 +331,11 @@ export default defineComponent({
 
         /**
          * The number of columns to pull the column by on extra-extra-large screens
-         * @name pull-2xl
+         * @name pull-xxl
          * @type String | Number
          * @default
          */
-        pull2xl: { type: [String, Number] as PropType<string>, default: '' }
+        pullXxl: { type: [String, Number] as PropType<string>, default: '' }
     },
     setup(props) {
         const classes = computed(() =>

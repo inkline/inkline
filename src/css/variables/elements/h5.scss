@@ -1,14 +1,12 @@
-@layer base {
-  :root {
-    --h5--margin-top: 0;
-    --h5--margin-right: 0;
-    --h5--margin-bottom: var(--margin-bottom);
-    --h5--margin-left: 0;
-    --h5--font-family: var(--font-family-base-secondary);
-    --h5--font-style: var(--font-style-normal);
-    --h5--font-weight: var(--font-weight-bold);
-    --h5--color: inherit;
-    --h5--line-height: 1.2;
-    --h5--font-size: calc(var(--font-size) * var(--scale-ratio-pow-1));
-  }
+:root {
+  --h5--margin-top: 0;
+  --h5--margin-right: 0;
+  --h5--margin-bottom: var(--margin-bottom);
+  --h5--margin-left: 0;
+  --h5--font-family: var(--font-family-base-secondary);
+  --h5--font-style: var(--font-style-normal);
+  --h5--font-weight: var(--font-weight-bold);
+  --h5--color: inherit;
+  --h5--line-height: 1.2;
+  --h5--font-size: calc(var(--font-size) * var(--scale-ratio-pow-1));
 }

@@ -2,73 +2,85 @@ import fs from 'fs';
 import path from 'path';
 import glob from 'fast-glob';
 import prettier from 'prettier';
+import sass from 'sass';
 import type { Manifest, ManifestEntry } from './manifest/index';
 import {
+    mapDefinedCssVariablesToUsedCssVariables,
+    parseDefinedCssVariables,
     parseBlocks,
     mapBlocksToEvents,
     mapBlocksToProps,
     mapSourceToSlots,
-    parseCssVariables,
-    mapVariantsToVariables,
-    parseCssSelector
+    parseCssSelector,
+    parseUsedCssVariables
 } from './manifest/index';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import prettierConfig from '../../.prettierrc';
 
-(async function () {
-    const manifestFileName = 'manifest.ts';
+const rootDir = path.resolve(__dirname, '..', '..');
+const srcDir = path.resolve(rootDir, 'src');
+const cssVariablesDir = path.resolve(srcDir, 'css', 'variables');
+const componentsCssVariablesDir = path.resolve(cssVariablesDir, 'components');
 
-    function stringifyObject(obj: any) {
-        return JSON.stringify(obj, null, 4);
-    }
+function stringifyObject(obj: any) {
+    return JSON.stringify(obj, null, 4);
+}
 
-    function readSyncIfExists(filePaths: string | string[]) {
-        const firstExistingFilePath = (Array.isArray(filePaths) ? filePaths : [filePaths]).find(
-            (filePath) => fs.existsSync(filePath)
-        );
-
-        if (!firstExistingFilePath) {
-            return '';
-        }
-
-        return fs.readFileSync(firstExistingFilePath).toString();
-    }
-
-    const files = await glob(
-        path.resolve(__dirname, '..', '..', 'src', 'components', '**', manifestFileName)
+function readSyncIfExists(filePaths: string | string[]) {
+    const firstExistingFilePath = (Array.isArray(filePaths) ? filePaths : [filePaths]).find(
+        (filePath) => fs.existsSync(filePath)
     );
 
-    const manifestEntries: Array<{
-        componentName: string;
-        manifestFilePath: string;
-        manifest: Manifest;
-        map?: {
-            component: string;
-            props?: { exclude?: string[] };
-            events?: { exclude?: string[] };
-            slots?: { exclude?: string[] };
-        };
-    }> = [];
+    if (!firstExistingFilePath) {
+        return '';
+    }
 
-    files.forEach((manifestFilePath) => {
+    return fs.readFileSync(firstExistingFilePath).toString();
+}
+
+const manifestFileName = 'manifest.ts';
+
+const manifestEntries: Array<{
+    componentName: string;
+    manifestFilePath: string;
+    manifest: Manifest;
+    map?: {
+        component: string;
+        props?: { exclude?: string[] };
+        events?: { exclude?: string[] };
+        slots?: { exclude?: string[] };
+    };
+}> = [];
+
+(async function () {
+    const files = await glob(path.resolve(srcDir, 'components', '**', manifestFileName));
+
+    for (const manifestFilePath of files) {
         try {
             const componentDirPath = path.dirname(manifestFilePath);
+            const cssDirPath = path.resolve(componentDirPath, 'css');
             const componentName = path.basename(componentDirPath);
-            const componentFilePaths = [
+
+            const mapSource = readSyncIfExists(path.resolve(componentDirPath, `manifest.map.json`));
+            const componentSource = readSyncIfExists([
                 path.resolve(componentDirPath, `${componentName}.vue`),
                 path.resolve(componentDirPath, `${componentName}.ts`)
-            ];
-            const componentSource = readSyncIfExists(componentFilePaths);
-            const cssDirPath = path.resolve(componentDirPath, 'css');
-            const componentCssFilePath = path.resolve(cssDirPath, '_component.scss');
-            const componentCssSource = readSyncIfExists(componentCssFilePath);
-            const colorsCssFilePath = path.resolve(cssDirPath, '_colors.scss');
-            const colorsCssSource = readSyncIfExists(colorsCssFilePath);
-            const sizesCssFilePath = path.resolve(cssDirPath, '_sizes.scss');
-            const sizesCssSource = readSyncIfExists(sizesCssFilePath);
-            const mapFilePath = path.resolve(componentDirPath, `manifest.map.json`);
-            const mapSource = readSyncIfExists(mapFilePath);
+            ]);
+            const componentScssSourceFilePath = path.resolve(cssDirPath, '_component.scss');
+            const { css: componentCssSource } = fs.existsSync(componentScssSourceFilePath)
+                ? sass.compile(componentScssSourceFilePath)
+                : { css: '' };
+            const cssSelector = parseCssSelector(componentCssSource);
+            const componentVariablesScssFilePath = path.resolve(
+                componentsCssVariablesDir,
+                `${cssSelector.slice(1)}.scss`
+            );
+            const { css: componentVariablesCssSource } = fs.existsSync(
+                componentVariablesScssFilePath
+            )
+                ? sass.compile(componentVariablesScssFilePath)
+                : { css: '' };
 
             console.log(`- Generating manifest for ${componentName}`);
 
@@ -76,16 +88,12 @@ import prettierConfig from '../../.prettierrc';
             const props = mapBlocksToProps(componentBlocks);
             const events = mapBlocksToEvents(componentBlocks);
             const slots = mapSourceToSlots(componentSource);
-
-            const cssSelector = parseCssSelector(componentCssSource);
-            const componentCssVariables = parseCssVariables(componentCssSource);
-            const colorsCssVariables = parseCssVariables(colorsCssSource);
-            const sizesCssVariables = parseCssVariables(sizesCssSource);
-
-            const cssVariables = mapVariantsToVariables(componentCssVariables, [
-                colorsCssVariables,
-                sizesCssVariables
-            ]);
+            const usedCssVariables = parseUsedCssVariables(componentCssSource);
+            const definedCssVariables = parseDefinedCssVariables(componentVariablesCssSource);
+            const cssVariables = mapDefinedCssVariablesToUsedCssVariables(
+                definedCssVariables,
+                usedCssVariables
+            );
 
             const manifest: Manifest = {
                 name: componentName,
@@ -108,7 +116,7 @@ import prettierConfig from '../../.prettierrc';
             console.error(`Parse error occured for ${manifestFilePath}`);
             console.error(error);
         }
-    });
+    }
 
     // Merge mapped manifest entries
     manifestEntries

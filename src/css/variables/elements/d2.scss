@@ -1,16 +1,14 @@
-@layer base {
-  :root {
-    --d2--margin-top: 0;
-    --d2--margin-right: 0;
-    --d2--margin-bottom: var(--margin-bottom);
-    --d2--margin-left: 0;
-    --d2--font-family: var(--font-family-base-secondary);
-    --d2--font-style: var(--font-style-normal);
-    --d2--font-weight: var(--font-weight-bold);
-    --d2--color: inherit;
-    --d2--line-height: 1.2;
-    --d2--font-size: calc(
-      var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-4)
-    );
-  }
+:root {
+  --d2--margin-top: 0;
+  --d2--margin-right: 0;
+  --d2--margin-bottom: var(--margin-bottom);
+  --d2--margin-left: 0;
+  --d2--font-family: var(--font-family-base-secondary);
+  --d2--font-style: var(--font-style-normal);
+  --d2--font-weight: var(--font-weight-bold);
+  --d2--color: inherit;
+  --d2--line-height: 1.2;
+  --d2--font-size: calc(
+    var(--font-size) * var(--scale-ratio-pow-5) * var(--scale-ratio-pow-4)
+  );
 }

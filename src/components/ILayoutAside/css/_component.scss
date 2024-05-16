@@ -5,28 +5,26 @@
 @use '../../../css/mixins/components';
 @use '../../../css/functions/properties';
 
-@layer components {
-    .layout-aside {
-        @include components.transition('layout-aside');
-        @include components.width('layout-aside');
+.layout-aside {
+    @include components.transition('layout-aside');
+    @include components.width('layout-aside');
 
-        flex: 0 0 #{properties.width('layout-aside')};
-        position: relative;
-        /* Fix firefox can't set width smaller than content on flex item */
-        min-width: 0;
+    flex: 0 0 #{properties.width('layout-aside')};
+    position: relative;
+    /* Fix firefox can't set width smaller than content on flex item */
+    min-width: 0;
 
-        &-children {
-            height: 100%;
+    &-children {
+        height: 100%;
 
-            // Hack for fixing margin collapse bug
-            // https://github.com/ant-design/ant-design/issues/7967
-            // solution from https://stackoverflow.com/a/33132624/3040605
-            padding-top: 0.1px;
-            margin-top: -0.1px;
-        }
+        // Hack for fixing margin collapse bug
+        // https://github.com/ant-design/ant-design/issues/7967
+        // solution from https://stackoverflow.com/a/33132624/3040605
+        padding-top: 0.1px;
+        margin-top: -0.1px;
+    }
 
-        &.-right {
-            order: 1;
-        }
+    &.-right {
+        order: 1;
     }
 }

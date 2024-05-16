@@ -6,157 +6,155 @@
 @use '../../../css/mixins/components';
 @use '../../../css/icons';
 
-@layer components {
-    .radio {
-        @include components.margin('radio');
+.radio {
+    @include components.margin('radio');
 
-        position: relative;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    outline: none;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    .radio-label {
+        @include components.color('radio', 'label', true);
+        @include components.font-size('radio', 'label', true);
+        @include components.transition('radio', 'label', true);
+
+        cursor: pointer;
+        margin-bottom: 0;
         display: inline-flex;
         align-items: center;
-        white-space: nowrap;
-        outline: none;
+        position: relative;
+        padding-left: calc(#{properties.width('radio')} + #{properties.margin-right('radio')});
 
-        &:last-of-type {
-            margin-right: 0;
-        }
+        &::before,
+        &::after {
+            @include components.width('radio');
+            @include components.height('radio');
 
-        .radio-label {
-            @include components.color('radio', 'label', true);
-            @include components.font-size('radio', 'label', true);
-            @include components.transition('radio', 'label', true);
-
-            cursor: pointer;
-            margin-bottom: 0;
             display: inline-flex;
-            align-items: center;
-            position: relative;
-            padding-left: calc(#{properties.width('radio')} + #{properties.margin-right('radio')});
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 0;
+        }
 
-            &::before,
-            &::after {
-                @include components.width('radio');
-                @include components.height('radio');
+        &::before {
+            @include components.background('radio');
+            @include components.border-width('radio');
+            @include components.border-style('radio');
+            @include components.border-color('radio');
+            @include components.box-shadow('radio');
+            @include components.transition('radio');
 
-                display: inline-flex;
-                cursor: pointer;
-                position: absolute;
-                top: 50%;
-                left: 0;
-            }
+            content: '';
+            user-select: none;
+            border-radius: 100%;
+            transform: translate(0, -50%);
+        }
 
+        &::after {
+            @include components.transition('radio', 'checkmark', true);
+
+            transform: scale(0) translate(0, -50%);
+            transform-origin: center top;
+            z-index: 1;
+            text-align: center;
+            background-color: properties.color('radio', 'checkmark', true);
+            mask-image: url('#{icons.$ink-circle}');
+            mask-size: #{properties.width('radio', 'checkmark')} #{properties.height(
+                    'radio',
+                    'checkmark'
+                )};
+            mask-position: center center;
+        }
+    }
+
+    input {
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 0; // Put the input behind the label so it doesn't overlay text
+        opacity: 0;
+        height: 0;
+        width: 0;
+
+        &:focus,
+        &:active {
+            outline: none;
+        }
+
+        &:checked ~ .radio-label {
             &::before {
-                @include components.background('radio');
-                @include components.border-width('radio');
-                @include components.border-style('radio');
-                @include components.border-color('radio');
-                @include components.box-shadow('radio');
-                @include components.transition('radio');
-                @include components.margin('radio');
-
-                content: '';
-                user-select: none;
-                border-radius: 100%;
-                transform: translate(0, -50%);
+                @include components.border-color('radio', 'checked', true);
+                @include components.background('radio', 'checked', true);
             }
 
             &::after {
-                @include components.transition('radio', 'checkmark', true);
-
-                transform: scale(0) translate(0, -50%);
-                z-index: 1;
-                text-align: center;
-                background-color: properties.color('radio', 'checkmark', true);
-                mask-image: url('#{icons.$ink-circle}');
-                mask-size: #{properties.width('radio', 'checkmark')} #{properties.height(
-                        'radio',
-                        'checkmark'
-                    )};
+                content: '';
                 mask-position: center center;
+                mask-repeat: no-repeat;
+                transform: scale(1) translate(0, -50%);
             }
         }
 
-        input {
-            top: 0;
-            left: 0;
-            position: absolute;
-            z-index: 0; // Put the input behind the label so it doesn't overlay text
-            opacity: 0;
-            height: 0;
-            width: 0;
-
-            &:focus,
-            &:active {
-                outline: none;
+        &:disabled,
+        &[readonly] {
+            ~ .radio-label {
+                @include components.color('radio' 'label', 'disabled', true);
             }
 
-            &:checked ~ .radio-label {
-                &::before {
-                    @include components.border-color('radio', 'checked', true);
-                    @include components.background('radio', 'checked', true);
-                }
-
-                &::after {
-                    content: '';
-                    mask-position: center center;
-                    mask-repeat: no-repeat;
-                    transform: scale(1) translate(0, -50%);
-                }
-            }
-
-            &:disabled,
-            &[readonly] {
+            &:checked {
                 ~ .radio-label {
-                    @include components.color('radio' 'label', 'disabled', true);
-                }
+                    @include components.color('checkbox' 'label', 'disabled', true);
 
-                &:checked {
-                    ~ .radio-label {
-                        @include components.color('checkbox' 'label', 'disabled', true);
+                    cursor: default;
 
-                        cursor: default;
+                    &::before {
+                        @include components.border-color('radio' 'checked', 'disabled', true);
+                        @include components.background('radio' 'checked', 'disabled', true);
+                    }
 
-                        &::before {
-                            @include components.border-color('radio' 'checked', 'disabled', true);
-                            @include components.background('radio' 'checked', 'disabled', true);
-                        }
-
-                        &::after {
-                            cursor: not-allowed;
-                            background: properties.color('radio' 'checkmark', 'disabled', true);
-                        }
+                    &::after {
+                        cursor: not-allowed;
+                        background: properties.color('radio' 'checkmark', 'disabled', true);
                     }
                 }
             }
         }
+    }
 
-        &.-disabled {
-            cursor: default;
+    &.-disabled {
+        cursor: default;
 
-            .radio-label {
-                &::before,
-                &::after {
-                    cursor: not-allowed;
-                }
+        .radio-label {
+            &::before,
+            &::after {
+                cursor: not-allowed;
             }
         }
+    }
 
-        &.-native {
-            input {
-                top: auto;
-                left: auto;
-                position: relative;
-                opacity: 1;
-                height: auto;
-                width: auto;
-            }
+    &.-native {
+        input {
+            top: auto;
+            left: auto;
+            position: relative;
+            opacity: 1;
+            height: auto;
+            width: auto;
+        }
 
-            .radio-label {
-                padding-left: #{properties.margin-right('radio')};
+        .radio-label {
+            padding-left: #{properties.margin-right('radio')};
 
-                &::after,
-                &::before {
-                    display: none;
-                }
+            &::after,
+            &::before {
+                display: none;
             }
         }
     }

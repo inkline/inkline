@@ -4,22 +4,20 @@
  * List Group
  */
 
-@layer components {
-    .list-group {
-        @include components.background('list-group');
-        @include components.border-radius('list-group');
-        @include components.color('list-group');
-        @include components.font-size('list-group');
-        @include components.padding('list-group');
-        @include components.transition('list-group');
+.list-group {
+    @include components.background('list-group');
+    @include components.border-radius('list-group');
+    @include components.color('list-group');
+    @include components.font-size('list-group');
+    @include components.padding('list-group');
+    @include components.transition('list-group');
 
-        display: flex;
-        flex-flow: column wrap;
+    display: flex;
+    flex-flow: column wrap;
 
-        &.-border {
-            @include components.border-width('list-group');
-            @include components.border-style('list-group');
-            @include components.border-color('list-group');
-        }
+    &.-border {
+        @include components.border-width('list-group');
+        @include components.border-style('list-group');
+        @include components.border-color('list-group');
     }
 }

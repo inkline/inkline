@@ -22,6 +22,51 @@ export const manifest: ComponentManifest = {
         selector: '.form-error',
         variables: [
             {
+                name: '--form-error--color',
+                value: [
+                    {
+                        name: '--form-error--color-h',
+                        value: [
+                            {
+                                name: '--color-danger-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-error--color-s',
+                        value: [
+                            {
+                                name: '--color-danger-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-error--color-l',
+                        value: [
+                            {
+                                name: '--color-danger-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--form-error--color-a',
+                        value: [
+                            {
+                                name: '--color-danger-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--form-error--font-size',
+                value: [
+                    {
+                        name: '--font-size-sm'
+                    }
+                ]
+            },
+            {
                 name: '--form-error--margin',
                 value: [
                     {
@@ -55,22 +100,6 @@ export const manifest: ComponentManifest = {
                                 value: '0'
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: '--form-error--color',
-                value: [
-                    {
-                        name: '--color-danger'
-                    }
-                ]
-            },
-            {
-                name: '--form-error-font-size',
-                value: [
-                    {
-                        name: '--font-size-sm'
                     }
                 ]
             }

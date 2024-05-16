@@ -6,182 +6,180 @@
 @use '../../../css/functions/properties';
 @use '../../../css/icons';
 
-@layer components {
-    .modal-wrapper {
-        @include components.background('modal', 'wrapper');
+.modal-wrapper {
+    @include components.background('modal', 'wrapper');
 
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 2000;
-        width: 100%;
-        height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.-alert,
+    &.-confirm,
+    &.-prompt {
+        > .modal > .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+
+            .button + .button {
+                @include components.margin('modal', 'footer' 'button');
+            }
+        }
+    }
+}
+
+.modal {
+    @include components.border-radius('modal');
+    @include components.box-shadow('modal');
+    @include components.max-width('modal');
+    @include components.width('modal');
+    @include components.font-size('modal');
+    @include components.line-height('modal');
+
+    text-align: left; // Ensures proper alignment if parent has it changed
+    list-style: none;
+    display: block;
+
+    > .modal-header {
+        @include components.background('modal', 'header', true);
+        @include components.border-style('modal', 'header', true);
+        @include components.border-width('modal', 'header', true);
+        @include components.border-color('modal', 'header', true);
+        @include components.color('modal', 'header', true);
+        @include components.padding('modal', 'header', true);
+
         display: flex;
-        align-items: center;
-        justify-content: center;
+        justify-content: space-between;
 
-        &.-alert,
-        &.-confirm,
-        &.-prompt {
-            > .modal > .modal-footer {
-                display: flex;
-                justify-content: flex-end;
+        > .close {
+            @include components.border-radius('modal', 'header' 'close', true);
 
-                .button + .button {
-                    @include components.margin('modal', 'footer' 'button');
-                }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1.5rem;
+            width: 1.5rem;
+            line-height: 1.5rem;
+            font-size: 0.5rem;
+            cursor: pointer;
+            padding: 0;
+            border: 0;
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+
+            > .icon {
+                @include components.width('modal', 'header' 'close', true);
+                @include components.height('modal', 'header' 'close', true);
+
+                background: properties.color('modal', 'header' 'close', true);
+                mask-size: properties.font-size('modal', 'header' 'close', true);
+                mask-image: url('#{icons.$ink-times}');
+                mask-position: center center;
+                mask-repeat: no-repeat;
+            }
+
+            &:hover {
+                @include components.background('modal', 'header' 'close' 'hover', true);
+
+                outline: none;
+            }
+
+            &:focus {
+                @include components.background('modal', 'header' 'close' 'focus', true);
+
+                outline: none;
+            }
+
+            &:active {
+                @include components.background('modal', 'header' 'close' 'active', true);
             }
         }
     }
 
-    .modal {
-        @include components.border-radius('modal');
-        @include components.box-shadow('modal');
-        @include components.max-width('modal');
-        @include components.width('modal');
-        @include components.font-size('modal');
-        @include components.line-height('modal');
+    > .modal-body {
+        @include components.background('modal');
+        @include components.border-style('modal');
+        @include components.border-width('modal');
+        @include components.border-color('modal');
+        @include components.color('modal');
+        @include components.padding('modal');
 
-        text-align: left; // Ensures proper alignment if parent has it changed
-        list-style: none;
-        display: block;
+        display: flex;
+        flex-direction: row;
+
+        .modal-icon {
+            @include components.margin('modal', 'icon');
+        }
+
+        .modal-content {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    > .modal-footer {
+        @include components.background('modal', 'footer', true);
+        @include components.border-style('modal', 'footer', true);
+        @include components.border-width('modal', 'footer', true);
+        @include components.border-color('modal', 'footer', true);
+        @include components.color('modal', 'footer', true);
+        @include components.padding('modal', 'footer', true);
+    }
+
+    > *:first-child {
+        @include components.border-top-left-radius('modal');
+        @include components.border-top-right-radius('modal');
+    }
+
+    > *:last-child {
+        @include components.border-bottom-left-radius('modal');
+        @include components.border-bottom-right-radius('modal');
+    }
+
+    > .modal-header + .modal-body,
+    > .modal-header + .modal-footer,
+    > .modal-body + .modal-footer,
+    > .modal-body + .modal-body {
+        border-top-width: 0;
+    }
+
+    &.-fullscreen {
+        @include components.border-radius('modal', 'fullscreen', true);
+
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
 
         > .modal-header {
-            @include components.background('modal', 'header', true);
-            @include components.border-style('modal', 'header', true);
-            @include components.border-width('modal', 'header', true);
-            @include components.border-color('modal', 'header', true);
-            @include components.color('modal', 'header', true);
-            @include components.padding('modal', 'header', true);
-
-            display: flex;
-            justify-content: space-between;
-
-            > .close {
-                @include components.border-radius('modal', 'header' 'close', true);
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 1.5rem;
-                width: 1.5rem;
-                line-height: 1.5rem;
-                font-size: 0.5rem;
-                cursor: pointer;
-                padding: 0;
-                border: 0;
-                transition: background-color 0.3s ease;
-                background-color: transparent;
-
-                > .icon {
-                    @include components.width('modal', 'header' 'close', true);
-                    @include components.height('modal', 'header' 'close', true);
-
-                    background: properties.color('modal', 'header' 'close', true);
-                    mask-size: properties.font-size('modal', 'header' 'close', true);
-                    mask-image: url('#{icons.$ink-times}');
-                    mask-position: center center;
-                    mask-repeat: no-repeat;
-                }
-
-                &:hover {
-                    @include components.background('modal', 'header' 'close' 'hover', true);
-
-                    outline: none;
-                }
-
-                &:focus {
-                    @include components.background('modal', 'header' 'close' 'focus', true);
-
-                    outline: none;
-                }
-
-                &:active {
-                    @include components.background('modal', 'header' 'close' 'active', true);
-                }
-            }
+            @include components.background('modal', 'fullscreen' 'header', true);
         }
 
         > .modal-body {
-            @include components.background('modal');
-            @include components.border-style('modal');
-            @include components.border-width('modal');
-            @include components.border-color('modal');
-            @include components.color('modal');
-            @include components.padding('modal');
+            @include components.background('modal', 'fullscreen' 'body', true);
 
-            display: flex;
-            flex-direction: row;
-
-            .modal-icon {
-                @include components.margin('modal', 'icon');
-            }
-
-            .modal-content {
-                width: 100%;
-                display: block;
-            }
+            flex: 1;
+            overflow: auto;
         }
 
         > .modal-footer {
-            @include components.background('modal', 'footer', true);
-            @include components.border-style('modal', 'footer', true);
-            @include components.border-width('modal', 'footer', true);
-            @include components.border-color('modal', 'footer', true);
-            @include components.color('modal', 'footer', true);
-            @include components.padding('modal', 'footer', true);
+            @include components.background('modal', 'fullscreen' 'footer', true);
         }
 
         > *:first-child {
-            @include components.border-top-left-radius('modal');
-            @include components.border-top-right-radius('modal');
+            @include components.border-top-left-radius('modal', 'fullscreen', true);
+            @include components.border-top-right-radius('modal', 'fullscreen', true);
         }
 
         > *:last-child {
-            @include components.border-bottom-left-radius('modal');
-            @include components.border-bottom-right-radius('modal');
-        }
-
-        > .modal-header + .modal-body,
-        > .modal-header + .modal-footer,
-        > .modal-body + .modal-footer,
-        > .modal-body + .modal-body {
-            border-top-width: 0;
-        }
-
-        &.-fullscreen {
-            @include components.border-radius('modal', 'fullscreen', true);
-
-            width: 100%;
-            height: 100%;
-            max-width: 100%;
-            display: flex;
-            flex-direction: column;
-
-            > .modal-header {
-                @include components.background('modal', 'fullscreen' 'header', true);
-            }
-
-            > .modal-body {
-                @include components.background('modal', 'fullscreen' 'body', true);
-
-                flex: 1;
-                overflow: auto;
-            }
-
-            > .modal-footer {
-                @include components.background('modal', 'fullscreen' 'footer', true);
-            }
-
-            > *:first-child {
-                @include components.border-top-left-radius('modal', 'fullscreen', true);
-                @include components.border-top-right-radius('modal', 'fullscreen', true);
-            }
-
-            > *:last-child {
-                @include components.border-bottom-left-radius('modal', 'fullscreen', true);
-                @include components.border-bottom-right-radius('modal', 'fullscreen', true);
-            }
+            @include components.border-bottom-left-radius('modal', 'fullscreen', true);
+            @include components.border-bottom-right-radius('modal', 'fullscreen', true);
         }
     }
 }

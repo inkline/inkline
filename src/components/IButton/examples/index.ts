@@ -9,6 +9,7 @@ export { default as IButtonLinkExample } from '@inkline/inkline/components/IButt
 export { default as IButtonOutlineExample } from '@inkline/inkline/components/IButton/examples/outline.vue';
 export { default as IButtonRoutingExample } from '@inkline/inkline/components/IButton/examples/routing.vue';
 export { default as IButtonSizeVariantsExample } from '@inkline/inkline/components/IButton/examples/size-variants.vue';
+export { default as IButtonSquareExample } from '@inkline/inkline/components/IButton/examples/square.vue';
 export { default as IButtonStateActiveExample } from '@inkline/inkline/components/IButton/examples/state-active.vue';
 export { default as IButtonStateDisabledExample } from '@inkline/inkline/components/IButton/examples/state-disabled.vue';
 export { default as IButtonStateLoadingExample } from '@inkline/inkline/components/IButton/examples/state-loading.vue';

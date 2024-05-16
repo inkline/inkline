@@ -21,9 +21,7 @@
         width: 100%;
         height: 100%;
     }
-}
 
-@layer components {
     .sidebar-wrapper {
         @include components.z-index('sidebar');
         @include components.width('sidebar');
@@ -112,6 +110,10 @@
             // solution from https://stackoverflow.com/a/33132624/3040605
             padding-top: 0.1px;
             margin-top: -0.1px;
+
+            .collapsible .collapsible-item {
+                box-shadow: none;
+            }
 
             .nav.-vertical .nav-item,
             .collapsible .collapsible-item .collapsible-header {

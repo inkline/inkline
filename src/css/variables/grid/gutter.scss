@@ -1,11 +1,9 @@
-@layer base {
-  :root {
-    --gutter: 28px;
-    --gutter-xs: calc(var(--gutter) * var(--size-multiplier-xs));
-    --gutter-sm: calc(var(--gutter) * var(--size-multiplier-sm));
-    --gutter-md: calc(var(--gutter) * var(--size-multiplier-md));
-    --gutter-lg: calc(var(--gutter) * var(--size-multiplier-lg));
-    --gutter-xl: calc(var(--gutter) * var(--size-multiplier-xl));
-    --gutter-xxl: calc(var(--gutter) * var(--size-multiplier-xxl));
-  }
+:root {
+  --gutter: 28px;
+  --gutter-xs: calc(var(--gutter) * var(--size-multiplier-xs));
+  --gutter-sm: calc(var(--gutter) * var(--size-multiplier-sm));
+  --gutter-md: calc(var(--gutter) * var(--size-multiplier-md));
+  --gutter-lg: calc(var(--gutter) * var(--size-multiplier-lg));
+  --gutter-xl: calc(var(--gutter) * var(--size-multiplier-xl));
+  --gutter-xxl: calc(var(--gutter) * var(--size-multiplier-xxl));
 }

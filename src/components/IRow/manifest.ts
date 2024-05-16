@@ -40,7 +40,7 @@ export const manifest: ComponentManifest = {
             description: 'Justify the content to the start of the row on extra-large screens'
         },
         {
-            name: 'start-2xl',
+            name: 'start-xxl',
             type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the start of the row on extra-extra-large screens'
@@ -82,7 +82,7 @@ export const manifest: ComponentManifest = {
             description: 'Justify the content to the center of the row on extra-large screens'
         },
         {
-            name: 'center-2xl',
+            name: 'center-xxl',
             type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the center of the row on extra-extra-large screens'
@@ -124,7 +124,7 @@ export const manifest: ComponentManifest = {
             description: 'Justify the content to the end of the row on extra-large screens'
         },
         {
-            name: 'end-2xl',
+            name: 'end-xxl',
             type: ['Boolean'],
             default: 'false',
             description: 'Justify the content to the end of the row on extra-extra-large screens'
@@ -166,7 +166,7 @@ export const manifest: ComponentManifest = {
             description: 'Align the content to the top of the row on extra-large screens'
         },
         {
-            name: 'top-2xl',
+            name: 'top-xxl',
             type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the top of the row on extra-extra-large screens'
@@ -208,7 +208,7 @@ export const manifest: ComponentManifest = {
             description: 'Align the content to the middle of the row on extra-large screens'
         },
         {
-            name: 'middle-2xl',
+            name: 'middle-xxl',
             type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the middle of the row on extra-extra-large screens'
@@ -250,7 +250,7 @@ export const manifest: ComponentManifest = {
             description: 'Align the content to the bottom of the row on extra-large screens'
         },
         {
-            name: 'bottom-2xl',
+            name: 'bottom-xxl',
             type: ['Boolean'],
             default: 'false',
             description: 'Align the content to the bottom of the row on extra-extra-large screens'
@@ -297,7 +297,7 @@ export const manifest: ComponentManifest = {
                 'Justify the content to have space around each item inside the row on extra-large screens'
         },
         {
-            name: 'around-2xl',
+            name: 'around-xxl',
             type: ['Boolean'],
             default: 'false',
             description:
@@ -345,7 +345,7 @@ export const manifest: ComponentManifest = {
                 'Justify the content to have space between each item inside the row on extra-large screens'
         },
         {
-            name: 'between-2xl',
+            name: 'between-xxl',
             type: ['Boolean'],
             default: 'false',
             description:
@@ -388,7 +388,7 @@ export const manifest: ComponentManifest = {
             description: 'Order the content in reverse order inside the row on extra-large screens'
         },
         {
-            name: 'reverse-2xl',
+            name: 'reverse-xxl',
             type: ['Boolean'],
             default: 'false',
             description:
@@ -416,7 +416,56 @@ export const manifest: ComponentManifest = {
     ],
     css: {
         selector: '.row',
-        variables: []
+        variables: [
+            {
+                name: '--gutter-xs--gutter-xs',
+                value: [
+                    {
+                        name: '--gutter-xs'
+                    }
+                ]
+            },
+            {
+                name: '--gutter-sm--gutter-sm',
+                value: [
+                    {
+                        name: '--gutter-sm'
+                    }
+                ]
+            },
+            {
+                name: '--gutter-md--gutter-md',
+                value: [
+                    {
+                        name: '--gutter-md'
+                    }
+                ]
+            },
+            {
+                name: '--gutter-lg--gutter-lg',
+                value: [
+                    {
+                        name: '--gutter-lg'
+                    }
+                ]
+            },
+            {
+                name: '--gutter-xl--gutter-xl',
+                value: [
+                    {
+                        name: '--gutter-xl'
+                    }
+                ]
+            },
+            {
+                name: '--gutter-xxl--gutter-xxl',
+                value: [
+                    {
+                        name: '--gutter-xxl'
+                    }
+                ]
+            }
+        ]
     }
 };
 

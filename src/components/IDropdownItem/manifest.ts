@@ -54,93 +54,233 @@ export const manifest: ComponentManifest = {
         }
     ],
     css: {
-        selector: '.dropdown',
+        selector: '.dropdown-item',
         variables: [
             {
-                name: '--dropdown--item--margin',
+                name: '--dropdown-item--background',
                 value: [
                     {
-                        value: '(\n            var(--dropdown--item--margin-top, 0)\n                var(\n                    --dropdown--item--margin-right,\n                    var(--dropdown--body--padding-right, calc(var(--dropdown--padding-right) * -1))\n                )\n                var(--dropdown--item--margin-bottom, 0)\n                var(\n                    --dropdown--item--margin-left,\n                    var(--dropdown--body--padding-left, calc(var(--dropdown--padding-left) * -1))\n                )\n        )'
+                        value: 'transparent'
                     }
-                ]
-            },
-            {
-                name: '--dropdown--item--transition-property',
-                value: [
+                ],
+                variants: [
                     {
-                        value: '(background-color, border-color, color)'
-                    }
-                ]
-            },
-            {
-                name: '--dropdown--item--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
-                name: '--dropdown--item--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--dropdown--item--color',
-                value: [
-                    {
-                        name: '--dropdown--color'
-                    }
-                ]
-            },
-            {
-                name: '--dropdown--item--border-style',
-                value: [
-                    {
-                        name: '--dropdown--border-style',
+                        name: '--dropdown-item--light--hover--background',
                         value: [
                             {
-                                value: '(\n                var(\n                        --dropdown--item--border-top-style,\n                        var(--dropdown--border-top-style, var(--border-top-style))))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--item--border-right-style',
-                        value: [
-                            {
-                                name: '--dropdown--border-right-style',
+                                name: '--dropdown-item--light--hover--background-h',
                                 value: [
                                     {
-                                        name: '--border-right-style'
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--light--hover--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--light--hover--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--light--hover--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--dropdown--item--border-bottom-style',
+                        name: '--dropdown-item--light--focus--background',
                         value: [
                             {
-                                name: '--dropdown--border-bottom-style',
+                                name: '--dropdown-item--light--focus--background-h',
                                 value: [
                                     {
-                                        name: '--border-bottom-style'
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--light--focus--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--light--focus--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--light--focus--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--dropdown--item--border-left-style',
+                        name: '--dropdown-item--light--active--background',
                         value: [
                             {
-                                name: '--dropdown--border-left-style',
+                                name: '--dropdown-item--light--active--background-h',
                                 value: [
                                     {
-                                        name: '--border-left-style'
+                                        name: '--color-light-shade-50-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--light--active--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--light--active--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--light--active--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--dark--hover--background',
+                        value: [
+                            {
+                                name: '--dropdown-item--dark--hover--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--dark--hover--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--dark--hover--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--dark--hover--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--dark--focus--background',
+                        value: [
+                            {
+                                name: '--dropdown-item--dark--focus--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--dark--focus--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--dark--focus--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--dark--focus--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--dark--active--background',
+                        value: [
+                            {
+                                name: '--dropdown-item--dark--active--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--dark--active--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--dark--active--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--dark--active--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100-a'
                                     }
                                 ]
                             }
@@ -149,105 +289,211 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--dropdown--item--border-width',
+                name: '--dropdown-item--border-width',
                 value: [
                     {
-                        value: '(\n            var(--dropdown--item--border-top-width, 0) var(--dropdown--item--border-right-width, 0)\n                var(--dropdown--item--border-bottom-width, 0)\n                var(--dropdown--item--border-left-width, 0)\n        )'
-                    }
-                ]
-            },
-            {
-                name: '--dropdown--item--border-color',
-                value: [
-                    {
-                        name: '--dropdown--border-color',
+                        name: '--dropdown-item--border-top-width',
                         value: [
                             {
-                                value: '(\n                var(\n                        --dropdown--item--border-top-color,\n                        var(--dropdown--border-top-color, var(--border-top-color))))'
+                                value: '0'
                             }
                         ]
                     },
                     {
-                        name: '--dropdown--item--border-right-color',
+                        name: '--dropdown-item--border-right-width',
                         value: [
                             {
-                                name: '--dropdown--border-right-color',
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--border-bottom-width',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--border-left-width',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown-item--border-style',
+                value: [
+                    {
+                        name: '--dropdown-item--border-top-style',
+                        value: [
+                            {
+                                name: '--border-top-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--border-right-style',
+                        value: [
+                            {
+                                name: '--border-right-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--border-bottom-style',
+                        value: [
+                            {
+                                name: '--border-bottom-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--border-left-style',
+                        value: [
+                            {
+                                name: '--border-left-style'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown-item--border-color',
+                value: [
+                    {
+                        name: '--dropdown-item--border-top-color',
+                        value: [
+                            {
+                                name: '--border-top-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--border-right-color',
+                        value: [
+                            {
+                                name: '--border-right-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--border-bottom-color',
+                        value: [
+                            {
+                                name: '--border-bottom-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--border-left-color',
+                        value: [
+                            {
+                                name: '--border-left-color'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown-item--color',
+                value: [
+                    {
+                        value: 'inherit'
+                    }
+                ]
+            },
+            {
+                name: '--dropdown-item--margin',
+                value: [
+                    {
+                        name: '--dropdown-item--margin-right',
+                        value: []
+                    },
+                    {
+                        name: '--dropdown-item--margin-left',
+                        value: []
+                    },
+                    {
+                        name: '--dropdown-item--margin-top',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--margin-bottom',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--dropdown-item--sm--margin',
+                        value: [
+                            {
+                                name: '--dropdown-item--sm--margin-right',
                                 value: [
                                     {
-                                        name: '--border-right-color'
+                                        value: 'calc(var(--padding-right-sm) * -1)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--sm--margin-left',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-left-sm) * -1)'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--dropdown--item--border-bottom-color',
+                        name: '--dropdown-item--md--margin',
                         value: [
                             {
-                                name: '--dropdown--border-bottom-color',
+                                name: '--dropdown-item--md--margin-right',
                                 value: [
                                     {
-                                        name: '--border-bottom-color'
+                                        value: 'calc(var(--padding-right-md) * -1)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--md--margin-left',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-left-md) * -1)'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--dropdown--item--border-left-color',
+                        name: '--dropdown-item--lg--margin',
                         value: [
                             {
-                                name: '--dropdown--border-left-color',
+                                name: '--dropdown-item--lg--margin-right',
                                 value: [
                                     {
-                                        name: '--border-left-color'
+                                        value: 'calc(var(--padding-right-lg) * -1)'
                                     }
                                 ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--dropdown--item--padding',
-                value: [
-                    {
-                        name: '--dropdown--padding',
-                        value: [
+                            },
                             {
-                                value: '(\n                var(\n                        --dropdown--item--padding-top,\n                        calc(var(--dropdown--padding-top, var(--padding-top)))))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--item--padding-right',
-                        value: [
-                            {
-                                name: '--dropdown--padding-right',
+                                name: '--dropdown-item--lg--margin-left',
                                 value: [
                                     {
-                                        name: '--padding-right'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--item--padding-bottom',
-                        value: [
-                            {
-                                value: 'calc(var(--dropdown--padding-bottom, var(--padding-bottom)))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--dropdown--item--padding-left',
-                        value: [
-                            {
-                                name: '--dropdown--padding-left',
-                                value: [
-                                    {
-                                        name: '--padding-left'
+                                        value: 'calc(var(--padding-left-lg) * -1)'
                                     }
                                 ]
                             }
@@ -256,73 +502,322 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--dropdown--item--background',
+                name: '--dropdown-item--padding',
                 value: [
                     {
-                        name: '--dropdown--background',
+                        name: '--dropdown-item--padding-top',
+                        value: []
+                    },
+                    {
+                        name: '--dropdown-item--padding-right',
+                        value: []
+                    },
+                    {
+                        name: '--dropdown-item--padding-bottom',
+                        value: []
+                    },
+                    {
+                        name: '--dropdown-item--padding-left',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--dropdown-item--sm--padding',
                         value: [
                             {
-                                value: 'transparent'
+                                name: '--dropdown-item--sm--padding-top',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-top-sm) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--sm--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--sm--padding-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-bottom-sm) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--sm--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-sm'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--md--padding',
+                        value: [
+                            {
+                                name: '--dropdown-item--md--padding-top',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-top-md) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--md--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-md'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--md--padding-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-bottom-md) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--md--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-md'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--lg--padding',
+                        value: [
+                            {
+                                name: '--dropdown-item--lg--padding-top',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-top-lg) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--lg--padding-right',
+                                value: [
+                                    {
+                                        name: '--padding-right-lg'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--lg--padding-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(var(--padding-bottom-lg) * 0.5)'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--dropdown-item--lg--padding-left',
+                                value: [
+                                    {
+                                        name: '--padding-left-lg'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--dropdown--item--hover--color',
+                name: '--dropdown-item--transition',
                 value: [
                     {
-                        name: '--dropdown--item--color'
+                        name: '--dropdown-item--transition-property',
+                        value: [
+                            {
+                                value: 'background-color, color, border-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--transition-timing-function',
+                        value: []
+                    },
+                    {
+                        name: '--dropdown-item--transition-property',
+                        value: [
+                            {
+                                value: 'background-color, color, border-color'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--transition-timing-function',
+                        value: []
                     }
                 ]
             },
             {
-                name: '--dropdown--item--hover--background',
+                name: '--dropdown-item--disabled--background',
+                value: []
+            },
+            {
+                name: '--dropdown-item--disabled--color',
                 value: [
                     {
-                        name: '--dropdown--item--background'
+                        name: '--dropdown-item--disabled--color-h',
+                        value: [
+                            {
+                                name: '--text-color-weaker-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--disabled--color-s',
+                        value: [
+                            {
+                                name: '--text-color-weaker-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--disabled--color-l',
+                        value: [
+                            {
+                                name: '--text-color-weaker-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--disabled--color-a',
+                        value: [
+                            {
+                                name: '--text-color-weaker-a'
+                            }
+                        ]
                     }
                 ]
             },
             {
-                name: '--dropdown--item--disabled--color',
-                value: [
-                    {
-                        name: '--dropdown--item--color'
-                    }
-                ]
+                name: '--dropdown-item--active--background',
+                value: []
             },
             {
-                name: '--dropdown--item--disabled--background',
-                value: [
-                    {
-                        name: '--dropdown--item--background'
-                    }
-                ]
+                name: '--dropdown-item--active--color',
+                value: []
             },
             {
-                name: '--dropdown--item--active--color',
-                value: [
-                    {
-                        name: '--dropdown--item--color'
-                    }
-                ]
-            },
-            {
-                name: '--dropdown--item--active--background',
-                value: [
-                    {
-                        name: '--dropdown--item--background'
-                    }
-                ]
-            },
-            {
-                name: '--dropdown--item--active--font-weight',
+                name: '--dropdown-item--active--font-weight',
                 value: [
                     {
                         name: '--font-weight-semibold'
                     }
                 ]
+            },
+            {
+                name: '--dropdown-item--hover--background',
+                value: [
+                    {
+                        name: '--dropdown-item--hover--background-h',
+                        value: [
+                            {
+                                name: '--color-light-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--hover--background-s',
+                        value: [
+                            {
+                                name: '--color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--hover--background-l',
+                        value: [
+                            {
+                                name: '--color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--hover--background-a',
+                        value: [
+                            {
+                                name: '--color-light-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown-item--hover--color',
+                value: []
+            },
+            {
+                name: '--dropdown-item--focus--background',
+                value: [
+                    {
+                        name: '--dropdown-item--focus--background-h',
+                        value: [
+                            {
+                                name: '--color-light-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--focus--background-s',
+                        value: [
+                            {
+                                name: '--color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--focus--background-l',
+                        value: [
+                            {
+                                name: '--color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--dropdown-item--focus--background-a',
+                        value: [
+                            {
+                                name: '--color-light-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--dropdown-item--focus--color',
+                value: []
             }
         ]
     }

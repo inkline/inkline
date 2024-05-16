@@ -32,4 +32,34 @@ exports[`Components > IModalContainer > methods > showModal() > should show a mo
 </div>"
 `;
 
+exports[`Components > IModalContainer > methods > showModal() > should show a modal 2`] = `
+"<div class="modal-container">
+  <transition-stub name="fade-in-transition" appear="false" persisted="true" css="true">
+    <div id="modal" class="modal-wrapper" role="dialog" aria-modal="true" aria-hidden="false" name="modal" aria-labelledby="modal-header" style="z-index: 1050;">
+      <transition-stub name="zoom-in-center-transition" appear="false" persisted="true" css="true">
+        <div class="modal -light -md" style="">
+          <div id="modal-header" class="modal-header">
+            <!-- @slot footer Slot for modal header content -->
+            <div>Modal Header</div><button class="close" aria-hidden="true" aria-label="Close">
+              <!-- @slot close Close icon slot --><i class="icon"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!--v-if-->
+            <div class="modal-content">
+              <!-- @slot default Slot for modal body content -->
+              <div>Modal Body</div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- @slot footer Slot for modal footer content -->
+            <div>Modal Footer</div>
+          </div>
+        </div>
+      </transition-stub>
+    </div>
+  </transition-stub>
+</div>"
+`;
+
 exports[`Components > IModalContainer > should render correctly 1`] = `"<div class="modal-container"></div>"`;

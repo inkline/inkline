@@ -9,5 +9,5 @@
 
     <p class="_xl:text-align:center!">Center aligned text starting from xl viewport size.</p>
 
-    <p class="_2xl:text-align:center!">Center aligned text starting from 2xl viewport size.</p>
+    <p class="_xxl:text-align:center!">Center aligned text starting from xxl viewport size.</p>
 </template>

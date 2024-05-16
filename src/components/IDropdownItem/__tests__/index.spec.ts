@@ -92,6 +92,8 @@ describe('Components', () => {
                                 [InklineKey as symbol]: createInkline(),
                                 [DropdownKey as symbol]: {
                                     disabled: ref(false),
+                                    color: ref('light'),
+                                    size: ref('md'),
                                     onItemClick
                                 }
                             }

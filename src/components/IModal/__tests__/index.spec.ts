@@ -61,7 +61,7 @@ describe('Components', () => {
 
         describe('computed', () => {
             describe('classes', () => {
-                it('should add classes based on props', async () => {
+                it('should add classes based on props', () => {
                     const wrapper = render(IModal, {
                         props: {
                             modelValue: true,
@@ -74,7 +74,8 @@ describe('Components', () => {
                             }
                         }
                     });
-                    const modal = await wrapper.getByRole('dialog');
+                    const modalWrapper = wrapper.getByRole('dialog');
+                    const modal = modalWrapper.querySelector('.modal');
 
                     expect(modal).toHaveClass(`-${props.color}`, `-${props.size}`, '-disabled');
                 });

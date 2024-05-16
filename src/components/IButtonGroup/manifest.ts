@@ -45,82 +45,39 @@ export const manifest: ComponentManifest = {
         selector: '.button-group',
         variables: [
             {
-                name: '--button-group--font-size',
+                name: '--button-group--border-radius',
                 value: [
                     {
-                        name: '--button--font-size'
-                    }
-                ]
-            },
-            {
-                name: '--button-group--padding',
-                value: [
-                    {
-                        name: '--button-group--padding-top',
-                        value: [
-                            {
-                                name: '--button--padding-top'
-                            }
-                        ]
+                        name: '--button-group--border-bottom-left-radius',
+                        value: []
                     },
                     {
-                        name: '--button-group--padding-right',
-                        value: [
-                            {
-                                name: '--button--padding-right'
-                            }
-                        ]
+                        name: '--button-group--border-bottom-right-radius',
+                        value: []
                     },
                     {
-                        name: '--button-group--padding-bottom',
-                        value: [
-                            {
-                                name: '--button--padding-bottom'
-                            }
-                        ]
+                        name: '--button-group--border-top-left-radius',
+                        value: []
                     },
                     {
-                        name: '--button-group--padding-left',
-                        value: [
-                            {
-                                name: '--button--padding-left'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--button--circle--size'
-            },
-            {
-                name: '--button-group--border-top-right-radius',
-                value: [
+                        name: '--button-group--border-top-right-radius',
+                        value: []
+                    },
                     {
-                        name: '--button--border-top-right-radius'
-                    }
-                ]
-            },
-            {
-                name: '--button-group--border-bottom-right-radius',
-                value: [
+                        name: '--button-group--border-top-left-radius',
+                        value: []
+                    },
                     {
-                        name: '--button--border-bottom-right-radius'
-                    }
-                ]
-            },
-            {
-                name: '--button-group--border-top-left-radius',
-                value: [
+                        name: '--button-group--border-top-right-radius',
+                        value: []
+                    },
                     {
-                        name: '--button--border-top-left-radius'
-                    }
-                ]
-            },
-            {
-                name: '--button-group--border-bottom-left-radius',
-                value: [
+                        name: '--button-group--border-bottom-right-radius',
+                        value: []
+                    },
                     {
-                        name: '--button--border-bottom-left-radius'
+                        name: '--button-group--border-bottom-left-radius',
+                        value: []
                     }
                 ]
             }

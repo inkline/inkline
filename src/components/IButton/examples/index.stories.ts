@@ -11,6 +11,7 @@ import {
     IButtonOutlineExample,
     IButtonRoutingExample,
     IButtonSizeVariantsExample,
+    IButtonSquareExample,
     IButtonStateActiveExample,
     IButtonStateDisabledExample,
     IButtonStateLoadingExample
@@ -55,6 +56,7 @@ export const Link = createExampleStory(IButtonLinkExample);
 export const Outline = createExampleStory(IButtonOutlineExample);
 export const Routing = createExampleStory(IButtonRoutingExample);
 export const SizeVariants = createExampleStory(IButtonSizeVariantsExample);
+export const Square = createExampleStory(IButtonSquareExample);
 export const StateActive = createExampleStory(IButtonStateActiveExample);
 export const StateDisabled = createExampleStory(IButtonStateDisabledExample);
 export const StateLoading = createExampleStory(IButtonStateLoadingExample);

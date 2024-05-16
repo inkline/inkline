@@ -62,7 +62,7 @@ describe('Components', () => {
                                 [`${position}Md`]: true,
                                 [`${position}Lg`]: true,
                                 [`${position}Xl`]: true,
-                                [`${position}2xl`]: true,
+                                [`${position}Xxl`]: true,
                                 ...props
                             },
                             global: {
@@ -79,7 +79,7 @@ describe('Components', () => {
                             `-${position}-md`,
                             `-${position}-lg`,
                             `-${position}-xl`,
-                            `-${position}-2xl`
+                            `-${position}-xxl`
                         );
                     });
                 });

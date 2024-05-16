@@ -3,11 +3,9 @@
 .form-group {
 }
 
-@layer base {
-  :root {
-    --form-group--adjacent--margin-top: var(--margin-top);
-    --form-group--adjacent--margin-right: 0;
-    --form-group--adjacent--margin-bottom: 0;
-    --form-group--adjacent--margin-left: 0;
-  }
+:root {
+  --form-group--adjacent--margin-top: var(--margin-top);
+  --form-group--adjacent--margin-right: 0;
+  --form-group--adjacent--margin-bottom: 0;
+  --form-group--adjacent--margin-left: 0;
 }

@@ -92,177 +92,311 @@ export const manifest: ComponentManifest = {
         selector: '.toggle',
         variables: [
             {
-                name: '--toggle--checked--background',
+                name: '--toggle--label--color',
+                value: []
+            },
+            {
+                name: '--toggle--label--font-size',
+                value: []
+            },
+            {
+                name: '--toggle--background',
                 value: [
                     {
-                        name: '--color-primary'
+                        name: '--toggle--background-h',
+                        value: [
+                            {
+                                name: '--color-light-shade-50-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--background-s',
+                        value: [
+                            {
+                                name: '--color-light-shade-50-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--background-l',
+                        value: [
+                            {
+                                name: '--color-light-shade-50-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--background-a',
+                        value: [
+                            {
+                                name: '--color-light-shade-50-a'
+                            }
+                        ]
                     }
                 ],
                 variants: [
                     {
-                        name: '--toggle--light--checked--background',
+                        name: '--toggle--light--background',
                         value: [
                             {
-                                name: '--color-primary'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--checked--background',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--checked--border-color',
-                value: [
-                    {
-                        name: '--toggle--checked--border-top-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--light--checked--border-top-color',
+                                name: '--toggle--light--background-h',
                                 value: [
                                     {
-                                        name: '--color-primary-shade-50'
+                                        name: '--color-light-shade-50-h'
                                     }
                                 ]
                             },
                             {
-                                name: '--toggle--dark--checked--border-top-color',
+                                name: '--toggle--light--background-s',
                                 value: [
                                     {
-                                        name: '--color-primary-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--border-right-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--light--checked--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-primary-shade-50'
+                                        name: '--color-light-shade-50-s'
                                     }
                                 ]
                             },
                             {
-                                name: '--toggle--dark--checked--border-right-color',
+                                name: '--toggle--light--background-l',
                                 value: [
                                     {
-                                        name: '--color-primary-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--border-bottom-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--light--checked--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-primary-shade-50'
+                                        name: '--color-light-shade-50-l'
                                     }
                                 ]
                             },
                             {
-                                name: '--toggle--dark--checked--border-bottom-color',
+                                name: '--toggle--light--background-a',
                                 value: [
                                     {
-                                        name: '--color-primary-tint-50'
+                                        name: '--color-light-shade-50-a'
                                     }
                                 ]
                             }
                         ]
                     },
-                    {
-                        name: '--toggle--checked--border-left-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--light--checked--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-primary-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--checked--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-primary-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--checked--indicator--background',
-                value: [
-                    {
-                        name: '--color-white'
-                    }
-                ]
-            },
-            {
-                name: '--toggle--disabled--label--color',
-                variants: [
-                    {
-                        name: '--toggle--light--disabled--label--color',
-                        value: [
-                            {
-                                name: '--text-color-weak'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--disabled--label--color',
-                        value: [
-                            {
-                                name: '--text-color-weak'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--disabled--background',
-                variants: [
                     {
                         name: '--toggle--light--disabled--background',
                         value: [
                             {
-                                name: '--color-light-shade-50'
+                                name: '--toggle--light--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--light--disabled--indicator--background',
+                        value: [
+                            {
+                                name: '--toggle--light--disabled--indicator--background-h',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--disabled--indicator--background-s',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--disabled--indicator--background-l',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--disabled--indicator--background-a',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--light--readonly--background',
+                        value: [
+                            {
+                                name: '--toggle--light--readonly--background-h',
+                                value: [
+                                    {
+                                        name: '--color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--readonly--background-s',
+                                value: [
+                                    {
+                                        name: '--color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--readonly--background-l',
+                                value: [
+                                    {
+                                        name: '--color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--readonly--background-a',
+                                value: [
+                                    {
+                                        name: '--color-light-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--light--readonly--indicator--background',
+                        value: [
+                            {
+                                name: '--toggle--light--readonly--indicator--background-h',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--readonly--indicator--background-s',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--readonly--indicator--background-l',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--readonly--indicator--background-a',
+                                value: [
+                                    {
+                                        name: '--color-gray-100-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--light--checked--disabled--background',
+                        value: [
+                            {
+                                name: '--toggle--light--checked--disabled--background-h',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--disabled--background-s',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--disabled--background-l',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--disabled--background-a',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--light--checked--readonly--background',
+                        value: [
+                            {
+                                name: '--toggle--light--checked--readonly--background-h',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--readonly--background-s',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--readonly--background-l',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--readonly--background-a',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--dark--background',
+                        value: [
+                            {
+                                name: '--toggle--dark--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-a'
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -270,46 +404,365 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--dark--disabled--background',
                         value: [
                             {
-                                name: '--color-dark-tint-100'
+                                name: '--toggle--dark--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--dark--disabled--indicator--background',
+                        value: [
+                            {
+                                name: '--toggle--dark--disabled--indicator--background-h',
+                                value: [
+                                    {
+                                        name: '--color-gray-300-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--disabled--indicator--background-s',
+                                value: [
+                                    {
+                                        name: '--color-gray-300-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--disabled--indicator--background-l',
+                                value: [
+                                    {
+                                        name: '--color-gray-300-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--disabled--indicator--background-a',
+                                value: [
+                                    {
+                                        name: '--color-gray-300-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--dark--readonly--background',
+                        value: [
+                            {
+                                name: '--toggle--dark--readonly--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--readonly--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--readonly--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--readonly--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--dark--readonly--indicator--background',
+                        value: [
+                            {
+                                name: '--toggle--dark--readonly--indicator--background-h',
+                                value: [
+                                    {
+                                        name: '--color-gray-300-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--readonly--indicator--background-s',
+                                value: [
+                                    {
+                                        name: '--color-gray-300-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--readonly--indicator--background-l',
+                                value: [
+                                    {
+                                        name: '--color-gray-300-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--readonly--indicator--background-a',
+                                value: [
+                                    {
+                                        name: '--color-gray-300-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--dark--checked--disabled--background',
+                        value: [
+                            {
+                                name: '--toggle--dark--checked--disabled--background-h',
+                                value: [
+                                    {
+                                        name: '--color-primary-800-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--checked--disabled--background-s',
+                                value: [
+                                    {
+                                        name: '--color-primary-800-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--checked--disabled--background-l',
+                                value: [
+                                    {
+                                        name: '--color-primary-800-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--checked--disabled--background-a',
+                                value: [
+                                    {
+                                        name: '--color-primary-800-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--dark--checked--readonly--background',
+                        value: [
+                            {
+                                name: '--toggle--dark--checked--readonly--background-h',
+                                value: [
+                                    {
+                                        name: '--color-primary-800-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--checked--readonly--background-s',
+                                value: [
+                                    {
+                                        name: '--color-primary-800-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--checked--readonly--background-l',
+                                value: [
+                                    {
+                                        name: '--color-primary-800-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--checked--readonly--background-a',
+                                value: [
+                                    {
+                                        name: '--color-primary-800-a'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--toggle--disabled--border-color',
+                name: '--toggle--box-shadow',
+                value: []
+            },
+            {
+                name: '--toggle--border-width',
                 value: [
                     {
-                        name: '--toggle--disabled--border-top-color',
+                        name: '--toggle--border-top-width',
                         value: [
                             {
-                                name: '--toggle--border-top-color',
+                                name: '--border-top-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--border-right-width',
+                        value: [
+                            {
+                                name: '--border-right-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--border-bottom-width',
+                        value: [
+                            {
+                                name: '--border-bottom-width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--border-left-width',
+                        value: [
+                            {
+                                name: '--border-left-width'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--border-style',
+                value: [
+                    {
+                        name: '--toggle--border-top-style',
+                        value: [
+                            {
+                                name: '--border-top-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--border-right-style',
+                        value: [
+                            {
+                                name: '--border-right-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--border-bottom-style',
+                        value: [
+                            {
+                                name: '--border-bottom-style'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--border-left-style',
+                        value: [
+                            {
+                                name: '--border-left-style'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--border-color',
+                value: [
+                    {
+                        name: '--toggle--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--border-left-color',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--toggle--light--border-color',
+                        value: [
+                            {
+                                name: '--toggle--light--border-top-color',
                                 value: [
                                     {
-                                        name: '--border-top-color'
+                                        name: '--color-light-shade-100'
                                     }
-                                ],
-                                variants: [
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--border-right-color',
+                                value: [
                                     {
-                                        name: '--toggle--light--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
+                                        name: '--color-light-shade-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--border-bottom-color',
+                                value: [
                                     {
-                                        name: '--toggle--dark--border-top-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
+                                        name: '--color-light-shade-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-100'
                                     }
                                 ]
                             }
-                        ],
-                        variants: [
+                        ]
+                    },
+                    {
+                        name: '--toggle--light--disabled--border-color',
+                        value: [
                             {
                                 name: '--toggle--light--disabled--border-top-color',
                                 value: [
@@ -317,40 +770,7 @@ export const manifest: ComponentManifest = {
                                         name: '--color-light-shade-50'
                                     }
                                 ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--disabled--border-right-color',
-                        value: [
-                            {
-                                name: '--toggle--border-right-color',
-                                value: [
-                                    {
-                                        name: '--border-right-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--toggle--light--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--dark--border-right-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ],
-                        variants: [
+                            },
                             {
                                 name: '--toggle--light--disabled--border-right-color',
                                 value: [
@@ -358,40 +778,7 @@ export const manifest: ComponentManifest = {
                                         name: '--color-light-shade-50'
                                     }
                                 ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--disabled--border-bottom-color',
-                        value: [
-                            {
-                                name: '--toggle--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--border-bottom-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--toggle--light--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--dark--border-bottom-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ],
-                        variants: [
+                            },
                             {
                                 name: '--toggle--light--disabled--border-bottom-color',
                                 value: [
@@ -399,40 +786,7 @@ export const manifest: ComponentManifest = {
                                         name: '--color-light-shade-50'
                                     }
                                 ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--disabled--border-left-color',
-                        value: [
-                            {
-                                name: '--toggle--border-left-color',
-                                value: [
-                                    {
-                                        name: '--border-left-color'
-                                    }
-                                ],
-                                variants: [
-                                    {
-                                        name: '--toggle--light--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-light-shade-50'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        name: '--toggle--dark--border-left-color',
-                                        value: [
-                                            {
-                                                name: '--color-dark-tint-50'
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ],
-                        variants: [
+                            },
                             {
                                 name: '--toggle--light--disabled--border-left-color',
                                 value: [
@@ -442,258 +796,304 @@ export const manifest: ComponentManifest = {
                                 ]
                             }
                         ]
-                    }
-                ],
-                variants: [
+                    },
                     {
-                        name: '--toggle--dark--disabled--border-color',
+                        name: '--toggle--light--readonly--border-color',
                         value: [
                             {
-                                name: '--color-dark-tint-50'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--disabled--indicator--background',
-                variants: [
-                    {
-                        name: '--toggle--dark--disabled--indicator--background',
-                        value: [
+                                name: '--toggle--light--readonly--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
                             {
-                                name: '--color-gray-400'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--checked--disabled--background',
-                variants: [
-                    {
-                        name: '--toggle--light--checked--disabled--background',
-                        value: [
+                                name: '--toggle--light--readonly--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
                             {
-                                name: '--color-primary-200'
+                                name: '--toggle--light--readonly--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--light--readonly--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-light-shade-50'
+                                    }
+                                ]
                             }
                         ]
                     },
-                    {
-                        name: '--toggle--dark--checked--disabled--background',
-                        value: [
-                            {
-                                name: '--color-primary-800'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--checked--disabled--border-color',
-                value: [
-                    {
-                        name: '--toggle--checked--disabled--border-top-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--disabled--border-right-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--disabled--border-bottom-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--disabled--border-left-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    }
-                ],
-                variants: [
                     {
                         name: '--toggle--light--checked--disabled--border-color',
                         value: [
                             {
-                                name: '--color-primary-300'
+                                name: '--toggle--light--checked--disabled--border-top-color',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--disabled--border-right-color',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--disabled--border-bottom-color',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--disabled--border-left-color',
+                                value: []
                             }
                         ]
                     },
                     {
-                        name: '--toggle--dark--checked--disabled--border-color',
+                        name: '--toggle--light--checked--readonly--border-color',
                         value: [
                             {
-                                name: '--color-primary-900'
+                                name: '--toggle--light--checked--readonly--border-top-color',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--readonly--border-right-color',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--readonly--border-bottom-color',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--light--checked--readonly--border-left-color',
+                                value: []
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--checked--disabled--indicator--background',
-                variants: [
+                    },
                     {
-                        name: '--toggle--dark--checked--disabled--indicator--background',
+                        name: '--toggle--dark--border-color',
                         value: [
                             {
-                                name: '--color-gray-300'
+                                name: '--toggle--dark--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-50'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--dark--disabled--border-color',
+                        value: [
+                            {
+                                name: '--toggle--dark--disabled--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--disabled--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--disabled--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--disabled--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--dark--readonly--border-color',
+                        value: [
+                            {
+                                name: '--toggle--dark--readonly--border-top-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--readonly--border-right-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--readonly--border-bottom-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--dark--readonly--border-left-color',
+                                value: [
+                                    {
+                                        name: '--color-dark-tint-100'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--toggle--label--color',
+                name: '--toggle--border-radius',
                 value: [
                     {
-                        name: '--toggle--color'
+                        name: '--toggle--border-top-left-radius',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--border-top-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--border-bottom-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--border-bottom-left-radius',
+                        value: []
                     }
                 ],
                 variants: [
                     {
-                        name: '--toggle--light--label--color',
+                        name: '--toggle--sm--border-radius',
                         value: [
                             {
-                                name: '--contrast-text-color-white'
+                                name: '--toggle--sm--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--sm--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius-sm'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--toggle--sm--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--sm--border-bottom-left-radius',
+                                value: []
                             }
                         ]
                     },
                     {
-                        name: '--toggle--dark--label--color',
+                        name: '--toggle--md--border-radius',
                         value: [
                             {
-                                name: '--contrast-text-color-dark'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--label--font-size',
-                value: [
-                    {
-                        name: '--toggle--font-size',
-                        value: [
+                                name: '--toggle--md--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-md'
+                                    }
+                                ]
+                            },
                             {
-                                name: '--font-size'
-                            }
-                        ]
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--toggle--sm--label--font-size',
-                        value: [
+                                name: '--toggle--md--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius-md'
+                                    }
+                                ]
+                            },
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--md--label--font-size',
-                        value: [
+                                name: '--toggle--md--border-bottom-right-radius',
+                                value: []
+                            },
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
+                                name: '--toggle--md--border-bottom-left-radius',
+                                value: []
                             }
                         ]
                     },
                     {
-                        name: '--toggle--lg--label--font-size',
+                        name: '--toggle--lg--border-radius',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--transition-duration',
-                value: [
-                    {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--toggle--transition-property',
-                value: [
-                    {
-                        value: 'background-color,\n                border-color,\n                transform'
-                    }
-                ]
-            },
-            {
-                name: '--toggle--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
-                name: '--toggle--border-width',
-                value: [
-                    {
-                        value: '(\n                    var(--toggle--border-top-width, var(--border-top-width))\n                        var(--toggle--border-right-width, var(--border-right-width))\n                        var(--toggle--border-bottom-width, var(--border-bottom-width))\n                        var(--toggle--border-left-width, var(--border-left-width))\n                )'
-                    }
-                ]
-            },
-            {
-                name: '--toggle--border-style',
-                value: [
-                    {
-                        value: '(\n                    var(--toggle--border-top-style, var(--border-top-style))\n                        var(--toggle--border-right-style, var(--border-right-style))\n                        var(--toggle--border-bottom-style, var(--border-bottom-style))\n                        var(--toggle--border-left-style, var(--border-left-style))\n                )'
-                    }
-                ]
-            },
-            {
-                name: '--toggle--border-color',
-                value: [
-                    {
-                        value: '(\n                    var(--toggle--border-top-color, var(--border-top-color))\n                        var(--toggle--border-right-color, var(--border-right-color))\n                        var(--toggle--border-bottom-color, var(--border-bottom-color))\n                        var(--toggle--border-left-color, var(--border-left-color))\n                )'
-                    }
-                ]
-            },
-            {
-                name: '--toggle--margin-right',
-                value: [
-                    {
-                        name: '--margin-right'
-                    }
-                ]
-            },
-            {
-                name: '--toggle--background',
-                variants: [
-                    {
-                        name: '--toggle--light--background',
-                        value: [
+                                name: '--toggle--lg--border-top-left-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-left-radius-lg'
+                                    }
+                                ]
+                            },
                             {
-                                name: '--color-light'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--background',
-                        value: [
+                                name: '--toggle--lg--border-top-right-radius',
+                                value: [
+                                    {
+                                        name: '--border-top-right-radius-lg'
+                                    }
+                                ]
+                            },
                             {
-                                name: '--color-dark'
+                                name: '--toggle--lg--border-bottom-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--toggle--lg--border-bottom-left-radius',
+                                value: []
                             }
                         ]
                     }
@@ -701,17 +1101,21 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--toggle--width',
-                value: [
-                    {
-                        value: '40px'
-                    }
-                ],
+                value: [],
                 variants: [
                     {
                         name: '--toggle--sm--width',
                         value: [
                             {
                                 value: 'calc(40px * var(--size-multiplier-sm))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--sm--indicator--width',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -724,10 +1128,26 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
+                        name: '--toggle--md--indicator--width',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
                         name: '--toggle--lg--width',
                         value: [
                             {
                                 value: 'calc(40px * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--lg--indicator--width',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-lg))'
                             }
                         ]
                     }
@@ -735,17 +1155,21 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--toggle--height',
-                value: [
-                    {
-                        value: '20px'
-                    }
-                ],
+                value: [],
                 variants: [
                     {
                         name: '--toggle--sm--height',
                         value: [
                             {
                                 value: 'calc(20px * var(--size-multiplier-sm))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--sm--indicator--height',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-sm))'
                             }
                         ]
                     },
@@ -758,224 +1182,18 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
+                        name: '--toggle--md--indicator--height',
+                        value: [
+                            {
+                                value: 'calc(1rem * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
                         name: '--toggle--lg--height',
                         value: [
                             {
                                 value: 'calc(20px * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--border-radius',
-                value: [
-                    {
-                        name: '--toggle--border-top-left-radius',
-                        value: [
-                            {
-                                name: '--border-top-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-top-right-radius',
-                        value: [
-                            {
-                                name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-bottom-right-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-bottom-left-radius',
-                        value: [
-                            {
-                                name: '--border-bottom-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--toggle--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--indicator--background',
-                variants: [
-                    {
-                        name: '--toggle--light--indicator--background',
-                        value: [
-                            {
-                                name: '--color-white'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--indicator--width',
-                value: [
-                    {
-                        value: '16px'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--toggle--sm--indicator--width',
-                        value: [
-                            {
-                                value: 'calc(16px * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--md--indicator--width',
-                        value: [
-                            {
-                                value: 'calc(16px * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--lg--indicator--width',
-                        value: [
-                            {
-                                value: 'calc(16px * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--toggle--indicator--height',
-                value: [
-                    {
-                        value: '16px'
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--toggle--sm--indicator--height',
-                        value: [
-                            {
-                                value: 'calc(16px * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--md--indicator--height',
-                        value: [
-                            {
-                                value: 'calc(16px * var(--size-multiplier-md))'
                             }
                         ]
                     },
@@ -983,7 +1201,134 @@ export const manifest: ComponentManifest = {
                         name: '--toggle--lg--indicator--height',
                         value: [
                             {
-                                value: 'calc(16px * var(--size-multiplier-lg))'
+                                value: 'calc(1rem * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--transition',
+                value: [
+                    {
+                        name: '--toggle--transition-property',
+                        value: [
+                            {
+                                value: 'background-color, color, border-color,\n      transform'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--transition-property',
+                        value: [
+                            {
+                                value: 'background-color, color, border-color,\n      transform'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--transition-timing-function',
+                        value: [
+                            {
+                                name: '--transition-timing-function'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--margin',
+                value: [
+                    {
+                        name: '--toggle--margin-top',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--margin-right',
+                        value: [
+                            {
+                                name: '--margin-right'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--margin-bottom',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--margin-left',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--indicator--background',
+                value: [
+                    {
+                        name: '--toggle--indicator--background-h',
+                        value: [
+                            {
+                                name: '--color-white-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--indicator--background-s',
+                        value: [
+                            {
+                                name: '--color-white-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--indicator--background-l',
+                        value: [
+                            {
+                                name: '--color-white-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--indicator--background-a',
+                        value: [
+                            {
+                                name: '--color-white-a'
                             }
                         ]
                     }
@@ -991,85 +1336,466 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--toggle--indicator--border-radius',
+                value: []
+            },
+            {
+                name: '--toggle--indicator--transition',
                 value: [
                     {
-                        value: '(\n                    var(\n                            --toggle--indicator--border-top-left-radius,\n                            var(--toggle--border-top-left-radius, var(--border-top-left-radius))\n                        )\n                        var(\n                            --toggle--indicator--border-top-right-radius,\n                            var(--toggle--border-top-right-radius, var(--border-top-right-radius))\n                        )\n                        var(\n                            --toggle--indicator--border-bottom-right-radius,\n                            var(\n                                --toggle--border-bottom-right-radius,\n                                var(--border-bottom-right-radius)\n                            )\n                        )\n                        var(\n                            --toggle--indicator--border-bottom-left-radius,\n                            var(\n                                --toggle--border-bottom-left-radius,\n                                var(--border-bottom-left-radius)\n                            )\n                        )\n                )'
+                        name: '--toggle--indicator--transition-property'
+                    },
+                    {
+                        name: '--toggle--indicator--transition-duration'
+                    },
+                    {
+                        name: '--toggle--indicator--transition-timing-function'
                     }
                 ]
+            },
+            {
+                name: '--toggle--indicator--width',
+                value: []
+            },
+            {
+                name: '--toggle--indicator--height',
+                value: []
             },
             {
                 name: '--toggle--rounded--border-radius',
+                value: []
+            },
+            {
+                name: '--toggle--checked--background',
                 value: [
                     {
-                        name: '--toggle--rounded--border-top-left-radius',
+                        name: '--toggle--checked--background-h',
                         value: [
                             {
-                                name: '--toggle--height'
+                                name: '--color-primary-h'
                             }
                         ]
                     },
                     {
-                        name: '--toggle--rounded--border-top-right-radius',
+                        name: '--toggle--checked--background-s',
                         value: [
                             {
-                                name: '--toggle--height'
+                                name: '--color-primary-s'
                             }
                         ]
                     },
                     {
-                        name: '--toggle--rounded--border-bottom-right-radius',
+                        name: '--toggle--checked--background-l',
                         value: [
                             {
-                                name: '--toggle--height'
+                                name: '--color-primary-l'
                             }
                         ]
                     },
                     {
-                        name: '--toggle--rounded--border-bottom-left-radius',
+                        name: '--toggle--checked--background-a',
                         value: [
                             {
-                                name: '--toggle--height'
+                                name: '--color-primary-a'
                             }
                         ]
                     }
                 ]
             },
             {
-                name: '--toggle--rounded--indicator--border-radius',
+                name: '--toggle--checked--border-color',
                 value: [
                     {
-                        name: '--toggle--rounded--indicator--border-top-left-radius',
+                        name: '--toggle--checked--border-top-color',
                         value: [
                             {
-                                value: '50%'
+                                name: '--color-primary-shade-50'
                             }
                         ]
                     },
                     {
-                        name: '--toggle--rounded--indicator--border-top-right-radius',
+                        name: '--toggle--checked--border-right-color',
                         value: [
                             {
-                                value: '50%'
+                                name: '--color-primary-shade-50'
                             }
                         ]
                     },
                     {
-                        name: '--toggle--rounded--indicator--border-bottom-right-radius',
+                        name: '--toggle--checked--border-bottom-color',
                         value: [
                             {
-                                value: '50%'
+                                name: '--color-primary-shade-50'
                             }
                         ]
                     },
                     {
-                        name: '--toggle--rounded--indicator--border-bottom-left-radius',
+                        name: '--toggle--checked--border-left-color',
                         value: [
                             {
-                                value: '50%'
+                                name: '--color-primary-shade-50'
                             }
                         ]
                     }
                 ]
+            },
+            {
+                name: '--toggle--checked--indicator--background',
+                value: [
+                    {
+                        name: '--toggle--checked--indicator--background-h',
+                        value: [
+                            {
+                                name: '--color-white-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--checked--indicator--background-s',
+                        value: [
+                            {
+                                name: '--color-white-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--checked--indicator--background-l',
+                        value: [
+                            {
+                                name: '--color-white-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--checked--indicator--background-a',
+                        value: [
+                            {
+                                name: '--color-white-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--disabled--label--color',
+                value: []
+            },
+            {
+                name: '--toggle--disabled--background',
+                value: [
+                    {
+                        name: '--toggle--disabled--background-h',
+                        value: [
+                            {
+                                name: '--color-light-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--disabled--background-s',
+                        value: [
+                            {
+                                name: '--color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--disabled--background-l',
+                        value: [
+                            {
+                                name: '--color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--disabled--background-a',
+                        value: [
+                            {
+                                name: '--color-light-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--disabled--border-color',
+                value: [
+                    {
+                        name: '--toggle--disabled--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--disabled--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--disabled--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--disabled--border-left-color',
+                        value: []
+                    }
+                ]
+            },
+            {
+                name: '--toggle--disabled--indicator--background',
+                value: [
+                    {
+                        name: '--toggle--disabled--indicator--background-h',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--disabled--indicator--background-s',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--disabled--indicator--background-l',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--disabled--indicator--background-a',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--checked--disabled--background',
+                value: [
+                    {
+                        name: '--toggle--checked--disabled--background-h',
+                        value: [
+                            {
+                                name: '--color-primary-shade-100-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--checked--disabled--background-s',
+                        value: [
+                            {
+                                name: '--color-primary-shade-100-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--checked--disabled--background-l',
+                        value: [
+                            {
+                                name: '--color-primary-shade-100-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--checked--disabled--background-a',
+                        value: [
+                            {
+                                name: '--color-primary-shade-100-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--checked--disabled--border-color',
+                value: [
+                    {
+                        name: '--toggle--checked--disabled--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--checked--disabled--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--checked--disabled--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--checked--disabled--border-left-color',
+                        value: []
+                    }
+                ]
+            },
+            {
+                name: '--toggle--checked--disabled--indicator--background',
+                value: []
+            },
+            {
+                name: '--toggle--readonly--label--color',
+                value: []
+            },
+            {
+                name: '--toggle--readonly--background',
+                value: [
+                    {
+                        name: '--toggle--readonly--background-h',
+                        value: [
+                            {
+                                name: '--color-light-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--readonly--background-s',
+                        value: [
+                            {
+                                name: '--color-light-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--readonly--background-l',
+                        value: [
+                            {
+                                name: '--color-light-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--readonly--background-a',
+                        value: [
+                            {
+                                name: '--color-light-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--readonly--border-color',
+                value: [
+                    {
+                        name: '--toggle--readonly--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--readonly--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--readonly--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--readonly--border-left-color',
+                        value: []
+                    }
+                ]
+            },
+            {
+                name: '--toggle--readonly--indicator--background',
+                value: [
+                    {
+                        name: '--toggle--readonly--indicator--background-h',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--readonly--indicator--background-s',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--readonly--indicator--background-l',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--readonly--indicator--background-a',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--checked--readonly--background',
+                value: [
+                    {
+                        name: '--toggle--checked--readonly--background-h',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--checked--readonly--background-s',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--checked--readonly--background-l',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--toggle--checked--readonly--background-a',
+                        value: [
+                            {
+                                name: '--color-light-shade-100-a'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--toggle--checked--readonly--border-color',
+                value: [
+                    {
+                        name: '--toggle--checked--readonly--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--checked--readonly--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--checked--readonly--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--toggle--checked--readonly--border-left-color',
+                        value: []
+                    }
+                ]
+            },
+            {
+                name: '--toggle--checked--readonly--indicator--background',
+                value: []
             }
         ]
     }

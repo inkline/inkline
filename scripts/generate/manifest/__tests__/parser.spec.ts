@@ -1,4 +1,4 @@
-import { parseCssSelector, parseCssVariables } from '../parser';
+import { parseCssSelector, parseDefinedCssVariables, parseUsedCssVariables } from '../parser';
 import { mapVariantsToVariables } from '../transformers';
 
 describe('parseCssSelector', () => {
@@ -17,7 +17,7 @@ describe('parseCssSelector', () => {
     });
 });
 
-describe('parseCssVariables', () => {
+describe('parseUsedCssVariables', () => {
     it('should parse CSS variables without fallback', () => {
         const source = `
 /*
@@ -29,7 +29,7 @@ describe('parseCssVariables', () => {
     background: var(--button--background);
 }
 `;
-        const variables = parseCssVariables(source);
+        const variables = parseUsedCssVariables(source);
 
         expect(variables).toEqual([{ name: '--button--color' }, { name: '--button--background' }]);
     });
@@ -45,7 +45,7 @@ describe('parseCssVariables', () => {
     background: var(--button--background, #ff5500);
 }
 `;
-        const variables = parseCssVariables(source);
+        const variables = parseUsedCssVariables(source);
 
         expect(variables).toEqual([
             { name: '--button--color', value: [{ value: 'red' }] },
@@ -63,7 +63,7 @@ describe('parseCssVariables', () => {
     transition: var(--button--transition, background 0.2s ease, color 0.2s ease);
 }
 `;
-        const variables = parseCssVariables(source);
+        const variables = parseUsedCssVariables(source);
 
         expect(variables).toEqual([
             {
@@ -84,7 +84,7 @@ describe('parseCssVariables', () => {
     background: var(--button--background, var(--color--primary));
 }
 `;
-        const variables = parseCssVariables(source);
+        const variables = parseUsedCssVariables(source);
 
         expect(variables).toEqual([
             { name: '--button--color', value: [{ name: '--color-white' }] },
@@ -102,7 +102,7 @@ describe('parseCssVariables', () => {
     border-color: var(--button--border-color, var(--border-top-color) var(--border-right-color) var(--border-bottom-color) var(--border-left-color));
 }
 `;
-        const variables = parseCssVariables(source);
+        const variables = parseUsedCssVariables(source);
 
         expect(variables).toEqual([
             {
@@ -133,7 +133,7 @@ describe('parseCssVariables', () => {
     );
 }
 `;
-        const variables = parseCssVariables(source);
+        const variables = parseUsedCssVariables(source);
 
         expect(variables).toEqual([
             {
@@ -143,6 +143,88 @@ describe('parseCssVariables', () => {
                     { name: '--border-right-color' },
                     { name: '--border-bottom-color' },
                     { name: '--border-left-color' }
+                ]
+            }
+        ]);
+    });
+});
+
+describe('parseDefinedCssVariables', () => {
+    it('should parse CSS variables with simple values', () => {
+        const source = `
+/*
+ * Button
+ */
+
+.button {
+    --button--color: red;
+    --button--background: #ff5500;
+}
+`;
+        const variables = parseDefinedCssVariables(source);
+
+        expect(variables).toEqual([
+            { name: '--button--color', value: [{ value: 'red' }] },
+            { name: '--button--background', value: [{ value: '#ff5500' }] }
+        ]);
+    });
+
+    it('should parse CSS variables with complex values', () => {
+        const source = `
+/*
+ * Button
+ */
+
+.button {
+    --button--color: var(--color, red);
+    --button--background: var(--background, #ff5500);
+    --button--border-color: var(--border-top-color) var(--border-right-color) var(--border-bottom-color) var(--border-left-color);
+}
+`;
+        const variables = parseDefinedCssVariables(source);
+
+        expect(variables).toEqual([
+            {
+                name: '--button--color',
+                value: [
+                    {
+                        name: '--color',
+                        value: [
+                            {
+                                value: 'red'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--background',
+                value: [
+                    {
+                        name: '--background',
+                        value: [
+                            {
+                                value: '#ff5500'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--button--border-color',
+                value: [
+                    {
+                        name: '--border-top-color'
+                    },
+                    {
+                        name: '--border-right-color'
+                    },
+                    {
+                        name: '--border-bottom-color'
+                    },
+                    {
+                        name: '--border-left-color'
+                    }
                 ]
             }
         ]);

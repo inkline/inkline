@@ -55,85 +55,45 @@ export const manifest: ComponentManifest = {
         }
     ],
     css: {
-        selector: '.nav',
+        selector: '.nav-item',
         variables: [
             {
-                name: '--nav--transition-property',
-                value: [
-                    {
-                        value: 'background-color, border-color, color'
-                    }
-                ]
+                name: '--nav--item--color',
+                value: []
             },
             {
-                name: '--nav--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
-                    }
-                ]
+                name: '--nav--item--font-size',
+                value: []
             },
             {
-                name: '--nav--transition-duration',
+                name: '--nav--item--transition',
                 value: [
                     {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--nav--padding',
-                value: [
-                    {
-                        name: '--nav--padding-top',
-                        value: [
-                            {
-                                name: '--padding-top'
-                            }
-                        ]
+                        name: '--nav--item--transition-property'
                     },
                     {
-                        name: '--nav--padding-right',
-                        value: [
-                            {
-                                name: '--padding-right'
-                            }
-                        ]
+                        name: '--nav--item--transition-duration'
                     },
                     {
-                        name: '--nav--padding-bottom',
-                        value: [
-                            {
-                                name: '--padding-bottom'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--nav--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left'
-                            }
-                        ]
+                        name: '--nav--item--transition-timing-function'
                     }
                 ]
             },
             {
-                name: '--nav--color'
+                name: '--nav--item--padding',
+                value: []
             },
             {
-                name: '--nav--font-size',
-                value: [
-                    {
-                        name: '--font-size'
-                    }
-                ]
+                name: '--nav--item--disabled--color',
+                value: []
             },
             {
-                name: '--nav--disabled--color'
+                name: '--nav--item--active--color',
+                value: []
             },
             {
-                name: '--nav--active--color'
+                name: '--nav--item--active--font-weight',
+                value: []
             }
         ]
     }

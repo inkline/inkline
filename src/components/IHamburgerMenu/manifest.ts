@@ -39,6 +39,114 @@ export const manifest: ComponentManifest = {
         selector: '.hamburger-menu',
         variables: [
             {
+                name: '--hamburger-menu--width',
+                value: [],
+                variants: [
+                    {
+                        name: '--hamburger-menu--sm--width',
+                        value: [
+                            {
+                                name: '--hamburger-menu--sm--bar--width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--sm--bar--width',
+                        value: [
+                            {
+                                value: 'calc(30px * var(--size-multiplier-sm))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--md--width',
+                        value: [
+                            {
+                                name: '--hamburger-menu--md--bar--width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--md--bar--width',
+                        value: [
+                            {
+                                value: 'calc(30px * var(--size-multiplier-md))'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--lg--width',
+                        value: [
+                            {
+                                name: '--hamburger-menu--lg--bar--width'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--lg--bar--width',
+                        value: [
+                            {
+                                value: 'calc(30px * var(--size-multiplier-lg))'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--hamburger-menu--height',
+                value: [],
+                variants: [
+                    {
+                        name: '--hamburger-menu--sm--height',
+                        value: [
+                            {
+                                value: 'calc(\n      var(--hamburger-menu--sm--bar--height) * 3 +\n        var(--hamburger-menu--sm--bar--spacing) * 2\n    )'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--sm--bar--height',
+                        value: [
+                            {
+                                value: '2px'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--md--height',
+                        value: [
+                            {
+                                value: 'calc(\n      var(--hamburger-menu--md--bar--height) * 3 +\n        var(--hamburger-menu--md--bar--spacing) * 2\n    )'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--md--bar--height',
+                        value: [
+                            {
+                                value: '3px'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--lg--height',
+                        value: [
+                            {
+                                value: 'calc(\n      var(--hamburger-menu--lg--bar--height) * 3 +\n        var(--hamburger-menu--lg--bar--spacing) * 2\n    )'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--hamburger-menu--lg--bar--height',
+                        value: [
+                            {
+                                value: '4px'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 name: '--hamburger-menu--opacity',
                 value: [
                     {
@@ -84,55 +192,47 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--hamburger-menu--bar--width',
-                variants: [
+                name: '--hamburger-menu--transition',
+                value: [
                     {
-                        name: '--hamburger-menu--sm--bar--width',
+                        name: '--hamburger-menu--transition-property',
                         value: [
                             {
-                                value: 'calc(30px * var(--size-multiplier-sm))'
+                                value: 'background-color, color, border-color'
                             }
                         ]
                     },
                     {
-                        name: '--hamburger-menu--md--bar--width',
+                        name: '--hamburger-menu--transition-duration',
                         value: [
                             {
-                                value: 'calc(30px * var(--size-multiplier-md))'
+                                name: '--transition-duration'
                             }
                         ]
                     },
                     {
-                        name: '--hamburger-menu--lg--bar--width',
+                        name: '--hamburger-menu--transition-timing-function',
+                        value: []
+                    },
+                    {
+                        name: '--hamburger-menu--transition-property',
                         value: [
                             {
-                                value: 'calc(30px * var(--size-multiplier-lg))'
+                                value: 'background-color, color, border-color'
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                name: '--hamburger-menu--transition-property',
-                value: [
+                    },
                     {
-                        value: 'background-color,\n        color,\n        border-color'
-                    }
-                ]
-            },
-            {
-                name: '--hamburger-menu--transition-duration',
-                value: [
+                        name: '--hamburger-menu--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
                     {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--hamburger-menu--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
+                        name: '--hamburger-menu--transition-timing-function',
+                        value: []
                     }
                 ]
             },
@@ -146,109 +246,87 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--hamburger-menu--bar--height',
-                variants: [
-                    {
-                        name: '--hamburger-menu--sm--bar--height',
-                        value: [
-                            {
-                                value: '2px'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--hamburger-menu--md--bar--height',
-                        value: [
-                            {
-                                value: '3px'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--hamburger-menu--lg--bar--height',
-                        value: [
-                            {
-                                value: '4px'
-                            }
-                        ]
-                    }
-                ]
+                value: []
             },
             {
                 name: '--hamburger-menu--bar--border-radius',
                 value: [
                     {
-                        name: '--border-radius-sm'
-                    }
-                ],
-                variants: [
+                        name: '--hamburger-menu--bar--border-top-left-radius',
+                        value: []
+                    },
                     {
-                        name: '--hamburger-menu--sm--bar--border-radius',
+                        name: '--hamburger-menu--bar--border-top-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--hamburger-menu--bar--border-bottom-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--hamburger-menu--bar--border-bottom-left-radius',
+                        value: []
+                    }
+                ]
+            },
+            {
+                name: '--hamburger-menu--bar--background',
+                value: []
+            },
+            {
+                name: '--hamburger-menu--bar--width',
+                value: []
+            },
+            {
+                name: '--hamburger-menu--bar--transition',
+                value: [
+                    {
+                        name: '--hamburger-menu--bar--transition-property',
                         value: [
                             {
-                                value: '1px'
+                                value: 'background, transform'
                             }
                         ]
                     },
                     {
-                        name: '--hamburger-menu--md--bar--border-radius',
+                        name: '--hamburger-menu--bar--transition-duration',
                         value: [
                             {
-                                value: '2px'
+                                value: '175ms'
                             }
                         ]
                     },
                     {
-                        name: '--hamburger-menu--lg--bar--border-radius',
-                        value: [
-                            {
-                                value: '3px'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--hamburger-menu--background',
-                variants: [
+                        name: '--hamburger-menu--bar--transition-timing-function',
+                        value: []
+                    },
                     {
-                        name: '--hamburger-menu--light--background',
+                        name: '--hamburger-menu--bar--transition-property',
                         value: [
                             {
-                                name: '--color-dark'
+                                value: 'background, transform'
                             }
                         ]
                     },
                     {
-                        name: '--hamburger-menu--dark--background',
+                        name: '--hamburger-menu--bar--transition-duration',
                         value: [
                             {
-                                name: '--color-light'
+                                value: '175ms'
                             }
                         ]
+                    },
+                    {
+                        name: '--hamburger-menu--bar--transition-timing-function',
+                        value: []
                     }
                 ]
             },
             {
-                name: '--hamburger-menu--bar--transition-property',
+                name: '--hamburger-menu--bar--spacing',
                 value: [
                     {
-                        value: 'background-color,\n                transform'
-                    }
-                ]
-            },
-            {
-                name: '--hamburger-menu--bar--transition-duration',
-                value: [
-                    {
-                        value: '175ms'
-                    }
-                ]
-            },
-            {
-                name: '--hamburger-menu--bar--transition-timing-function',
-                value: [
-                    {
-                        name: '--transition-timing-function'
+                        value: '4px'
                     }
                 ]
             }

@@ -21,14 +21,12 @@
   }
 }
 
-@layer base {
-  :root {
-    --icon--font-size: var(--font-size);
-    --icon--xs--font-size: var(--font-size-xs);
-    --icon--sm--font-size: var(--font-size-sm);
-    --icon--md--font-size: var(--font-size-md);
-    --icon--lg--font-size: var(--font-size-lg);
-    --icon--xl--font-size: var(--font-size-xl);
-    --icon--xxl--font-size: calc(var(--font-size) * var(--size-multiplier-xxl));
-  }
+:root {
+  --icon--font-size: var(--font-size);
+  --icon--xs--font-size: var(--font-size-xs);
+  --icon--sm--font-size: var(--font-size-sm);
+  --icon--md--font-size: var(--font-size-md);
+  --icon--lg--font-size: var(--font-size-lg);
+  --icon--xl--font-size: var(--font-size-xl);
+  --icon--xxl--font-size: calc(var(--font-size) * var(--size-multiplier-xxl));
 }

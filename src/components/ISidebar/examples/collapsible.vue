@@ -21,9 +21,9 @@ export default {
                     <INavItem to="/"> Home </INavItem>
                     <ICollapsible color="transparent">
                         <ICollapsibleItem title="Menu">
-                            <INavItem to="/about"> Item 1 </INavItem>
-                            <INavItem to="/about"> Item 2 </INavItem>
-                            <INavItem to="/about"> Item 3 </INavItem>
+                            <INavItem to="/1"> Item 1 </INavItem>
+                            <INavItem to="/2"> Item 2 </INavItem>
+                            <INavItem to="/3"> Item 3 </INavItem>
                         </ICollapsibleItem>
                     </ICollapsible>
                     <INavItem to="/contact"> Contact </INavItem>

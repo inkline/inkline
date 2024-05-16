@@ -4,11 +4,9 @@
  * Collapsible
  */
 
-@layer components {
-    .collapsible {
-        @include components.font-size('collapsible');
+.collapsible {
+    @include components.font-size('collapsible');
 
-        position: relative;
-        display: block;
-    }
+    position: relative;
+    display: block;
 }

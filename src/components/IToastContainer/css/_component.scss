@@ -2,77 +2,73 @@
  * Toast Container
  */
 
-@layer components {
-    .toast-container {
-        position: relative;
+@use '../../../css/mixins/components';
 
-        .toast-position {
-            position: fixed;
+.toast-container {
+    position: relative;
+
+    .toast-position {
+        @include components.margin('toast-container');
+        @include components.z-index('toast-container');
+
+        position: fixed;
+        width: 320px;
+        max-width: 100%;
+        max-height: 100%;
+        overflow: visible;
+
+        &.-top-left {
+            @include components.top('toast-container');
+            @include components.left('toast-container');
+        }
+
+        &.-top {
+            @include components.top('toast-container');
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &.-top-right {
+            @include components.top('toast-container');
+            @include components.right('toast-container');
+        }
+
+        &.-right {
+            @include components.right('toast-container');
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &.-bottom-right {
+            @include components.bottom('toast-container');
+            @include components.right('toast-container');
+        }
+
+        &.-bottom {
+            @include components.bottom('toast-container');
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &.-bottom-left {
+            @include components.bottom('toast-container');
+            @include components.left('toast-container');
+        }
+
+        &.-left {
+            @include components.left('toast-container');
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        > .toast {
+            @include components.margin('toast-container', 'toast');
+
             width: 320px;
             max-width: 100%;
-            z-index: var(--toast-container--z-index, 2010);
-            margin: var(
-                --toast-container--margin,
-                var(--toast-container--margin-top, var(--margin-top))
-                    var(--toast-container--margin-right, var(--margin-right))
-                    var(--toast-container--margin-bottom, var(--margin-bottom))
-                    var(--toast-container--margin-left, var(--margin-left))
-            );
-            max-height: 100%;
-            overflow: visible;
 
-            &.-top-left {
-                top: var(--toast-container--top, 0);
-                left: var(--toast-container--left, 0);
-            }
-
-            &.-top {
-                top: var(--toast-container--top, 0);
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            &.-top-right {
-                top: var(--toast-container--top, 0);
-                right: var(--toast-container--right, 0);
-            }
-
-            &.-right {
-                top: 50%;
-                right: var(--toast-container--right, 0);
-                transform: translateY(-50%);
-            }
-
-            &.-bottom-right {
-                bottom: var(--toast-container--bottom, 0);
-                right: var(--toast-container--right, 0);
-            }
-
-            &.-bottom {
-                bottom: var(--toast-container--bottom, 0);
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            &.-bottom-left {
-                bottom: var(--toast-container--bottom, 0);
-                left: var(--toast-container--left, 0);
-            }
-
-            &.-left {
-                top: 50%;
-                left: var(--toast-container--left, 0);
-                transform: translateY(-50%);
-            }
-
-            > .toast {
-                width: 320px;
-                max-width: 100%;
-                margin-bottom: var(--toast-container--toast--margin-bottom, var(--margin-bottom));
-
-                &:last-of-type {
-                    margin-bottom: 0;
-                }
+            &:last-of-type {
+                margin-bottom: 0;
             }
         }
     }
@@ -81,15 +77,7 @@
 .toast-transition-move, /* apply transition to moving elements */
 .toast-transition-enter-active,
 .toast-transition-leave-active {
-    transition-property: var(--toast-container--toast--transition-property, transform, opacity);
-    transition-duration: var(
-        --toast-container--toast--transition-duration,
-        var(--transition-duration)
-    );
-    transition-timing-function: var(
-        --toast-container--toast--transition-timing-function,
-        var(--transition-timing-function)
-    );
+    @include components.transition('toast-container', 'toast');
 }
 
 .toast-transition-enter-from,

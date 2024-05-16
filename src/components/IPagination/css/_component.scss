@@ -4,78 +4,76 @@
  * Pagination
  */
 
-@layer components {
-    .pagination {
-        @include components.background('pagination');
-        @include components.border-width('pagination');
-        @include components.border-style('pagination');
-        @include components.border-color('pagination');
-        @include components.border-radius('pagination');
-        @include components.box-shadow('pagination');
-        @include components.color('pagination');
-        @include components.font-size('pagination');
-        @include components.padding('pagination');
+.pagination {
+    @include components.background('pagination');
+    @include components.border-width('pagination');
+    @include components.border-style('pagination');
+    @include components.border-color('pagination');
+    @include components.border-radius('pagination');
+    @include components.box-shadow('pagination');
+    @include components.color('pagination');
+    @include components.font-size('pagination');
+    @include components.padding('pagination');
 
+    display: flex;
+    max-width: 100%;
+
+    .pagination-items {
+        list-style: none;
+        margin-bottom: 0;
+        padding-left: 0;
         display: flex;
-        max-width: 100%;
+        align-items: center;
+    }
 
-        .pagination-items {
-            list-style: none;
-            margin-bottom: 0;
-            padding-left: 0;
-            display: flex;
-            align-items: center;
+    .pagination-item {
+        @include components.background('pagination', 'item', true);
+        @include components.border-width('pagination', 'item', true);
+        @include components.border-style('pagination', 'item', true);
+        @include components.border-color('pagination', 'item', true);
+        @include components.border-radius('pagination', 'item', true);
+        @include components.box-shadow('pagination', 'item', true);
+        @include components.color('pagination', 'item', true);
+        @include components.min-width('pagination', 'item', true);
+        @include components.margin('pagination', 'item', true);
+        @include components.padding('pagination', 'item', true);
+        @include components.transition('pagination', 'item', true);
+
+        display: inline-flex;
+        text-align: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &:not(.-disabled, .-active) {
+            &:hover {
+                @include components.background('pagination' 'item', 'hover', true);
+            }
+
+            &:focus {
+                @include components.background('pagination' 'item', 'focus', true);
+            }
         }
 
-        .pagination-item {
-            @include components.background('pagination', 'item', true);
-            @include components.border-width('pagination', 'item', true);
-            @include components.border-style('pagination', 'item', true);
-            @include components.border-color('pagination', 'item', true);
-            @include components.border-radius('pagination', 'item', true);
-            @include components.box-shadow('pagination', 'item', true);
-            @include components.color('pagination', 'item', true);
-            @include components.min-width('pagination', 'item', true);
-            @include components.margin('pagination', 'item', true);
-            @include components.padding('pagination', 'item', true);
-            @include components.transition('pagination', 'item', true);
+        &.-active {
+            @include components.background('pagination' 'item', 'active', true);
+            @include components.border-color('pagination' 'item', 'active', true);
+            @include components.color('pagination' 'item', 'active', true);
+            @include components.font-weight('pagination', 'item' 'active', true);
 
-            display: inline-flex;
-            text-align: center;
-            justify-content: center;
-            cursor: pointer;
-
-            &:not(.-disabled, .-active) {
-                &:hover {
-                    @include components.background('pagination' 'item', 'hover', true);
-                }
-
-                &:focus {
-                    @include components.background('pagination' 'item', 'focus', true);
-                }
+            &:hover {
+                @include components.background('pagination' 'item' 'active', 'hover', true);
             }
 
-            &.-active {
-                @include components.background('pagination' 'item', 'active', true);
-                @include components.border-color('pagination' 'item', 'active', true);
-                @include components.color('pagination' 'item', 'active', true);
-                @include components.font-weight('pagination', 'item' 'active', true);
-
-                &:hover {
-                    @include components.background('pagination' 'item' 'active', 'hover', true);
-                }
-
-                &:focus {
-                    @include components.background('pagination' 'item' 'active', 'focus', true);
-                }
+            &:focus {
+                @include components.background('pagination' 'item' 'active', 'focus', true);
             }
+        }
 
-            &.-disabled {
-                @include components.color('pagination' 'item', 'disabled', true);
-                @include components.opacity('pagination', 'item' 'disabled', true);
+        &.-disabled {
+            @include components.color('pagination' 'item', 'disabled', true);
+            @include components.opacity('pagination', 'item' 'disabled', true);
 
-                cursor: default;
-            }
+            cursor: default;
         }
     }
 }

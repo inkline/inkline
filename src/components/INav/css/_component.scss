@@ -2,18 +2,16 @@
  * Nav
  */
 
-@layer components {
-    .nav {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        padding-left: 0;
-        margin-bottom: 0;
-        list-style: none;
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
 
-        &.-vertical {
-            flex-direction: column;
-            align-items: flex-start;
-        }
+    &.-vertical {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

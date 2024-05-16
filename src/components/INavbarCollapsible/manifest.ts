@@ -14,26 +14,16 @@ export const manifest: ComponentManifest = {
         selector: '.navbar-collapsible',
         variables: [
             {
-                name: '--navbar--transition-property',
+                name: '--navbar--collapsible--transition',
                 value: [
                     {
-                        value: '(height, background-color, border-color)'
-                    }
-                ]
-            },
-            {
-                name: '--navbar--transition-timing-function',
-                value: [
+                        name: '--navbar--collapsible--transition-property'
+                    },
                     {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
-                name: '--navbar--transition-duration',
-                value: [
+                        name: '--navbar--collapsible--transition-duration'
+                    },
                     {
-                        name: '--transition-duration'
+                        name: '--navbar--collapsible--transition-timing-function'
                     }
                 ]
             }

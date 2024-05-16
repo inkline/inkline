@@ -13,14 +13,14 @@ exports[`Components > IDropdown > should render correctly 1`] = `
       <!--v-if-->
       <div class="dropdown-body">
         <!-- @slot body Slot for dropdown body content -->
-        <div role="menuitem" tabindex="0" tag="div" class="dropdown-item">
+        <div role="menuitem" tabindex="0" tag="div" class="dropdown-item -light -md">
           <!-- @slot default Slot for default dropdown item content -->
         </div>
-        <div role="menuitem" tabindex="0" tag="div" class="dropdown-item">
+        <div role="menuitem" tabindex="0" tag="div" class="dropdown-item -light -md">
           <!-- @slot default Slot for default dropdown item content -->
         </div>
         <div class="dropdown-divider" role="separator"></div>
-        <div role="menuitem" tabindex="0" tag="div" class="dropdown-item">
+        <div role="menuitem" tabindex="0" tag="div" class="dropdown-item -light -md">
           <!-- @slot default Slot for default dropdown item content -->
         </div>
       </div>

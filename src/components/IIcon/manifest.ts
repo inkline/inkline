@@ -25,56 +25,57 @@ export const manifest: ComponentManifest = {
     events: [],
     slots: [],
     css: {
-        selector: '.inkline-icon',
+        selector: '.icon',
         variables: [
             {
-                name: '--icon--size',
+                name: '--icon--font-size',
+                value: [],
                 variants: [
                     {
-                        name: '--icon--xs--size',
+                        name: '--icon--xs--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-xs))'
+                                name: '--font-size-xs'
                             }
                         ]
                     },
                     {
-                        name: '--icon--sm--size',
+                        name: '--icon--sm--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-sm))'
+                                name: '--font-size-sm'
                             }
                         ]
                     },
                     {
-                        name: '--icon--md--size',
+                        name: '--icon--md--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-md))'
+                                name: '--font-size-md'
                             }
                         ]
                     },
                     {
-                        name: '--icon--lg--size',
+                        name: '--icon--lg--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-lg))'
+                                name: '--font-size-lg'
                             }
                         ]
                     },
                     {
-                        name: '--icon--xl--size',
+                        name: '--icon--xl--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-xl))'
+                                name: '--font-size-xl'
                             }
                         ]
                     },
                     {
-                        name: '--icon--2xl--size',
+                        name: '--icon--xxl--font-size',
                         value: [
                             {
-                                value: 'calc(var(--font-size) * var(--size-multiplier-2xl))'
+                                value: 'calc(var(--font-size) * var(--size-multiplier-xxl))'
                             }
                         ]
                     }

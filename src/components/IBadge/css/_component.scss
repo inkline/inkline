@@ -4,38 +4,36 @@
  * Badge
  */
 
-@layer components {
-    .badge {
-        @include components.background('badge');
-        @include components.border-style('badge');
-        @include components.border-width('badge');
-        @include components.border-color('badge');
-        @include components.border-radius('badge');
-        @include components.box-shadow('badge');
-        @include components.color('badge');
-        @include components.font-size('badge');
-        @include components.font-weight('badge');
-        @include components.padding('badge');
-        @include components.transition('badge');
+.badge {
+    @include components.background('badge');
+    @include components.border-style('badge');
+    @include components.border-width('badge');
+    @include components.border-color('badge');
+    @include components.border-radius('badge');
+    @include components.box-shadow('badge');
+    @include components.color('badge');
+    @include components.font-size('badge');
+    @include components.font-weight('badge');
+    @include components.padding('badge');
+    @include components.transition('badge');
 
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 
-        .button & {
-            position: relative;
-            top: -1px;
-        }
+    .button & {
+        position: relative;
+        top: -1px;
+    }
 
-        a:hover &,
-        a:focus & {
-            @include components.background('badge', 'link' 'hover');
+    a:hover &,
+    a:focus & {
+        @include components.background('badge', 'link' 'hover');
 
-            text-decoration: none;
-        }
+        text-decoration: none;
+    }
 
-        &.-pill {
-            @include components.border-radius('badge', 'pill');
-        }
+    &.-pill {
+        @include components.border-radius('badge', 'pill');
     }
 }

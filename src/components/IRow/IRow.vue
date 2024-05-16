@@ -58,11 +58,11 @@ export default defineComponent({
 
         /**
          * Justify the content to the start of the row on extra-extra-large screens
-         * @name start-2xl
+         * @name start-xxl
          * @type Boolean
          * @default false
          */
-        start2xl: { type: Boolean, default: false },
+        startXxl: { type: Boolean, default: false },
 
         /**
          * Justify the content to the center of the row
@@ -114,11 +114,11 @@ export default defineComponent({
 
         /**
          * Justify the content to the center of the row on extra-extra-large screens
-         * @name center-2xl
+         * @name center-xxl
          * @type Boolean
          * @default false
          */
-        center2xl: { type: Boolean, default: false },
+        centerXxl: { type: Boolean, default: false },
 
         /**
          * Justify the content to the end of the row
@@ -170,11 +170,11 @@ export default defineComponent({
 
         /**
          * Justify the content to the end of the row on extra-extra-large screens
-         * @name end-2xl
+         * @name end-xxl
          * @type Boolean
          * @default false
          */
-        end2xl: { type: Boolean, default: false },
+        endXxl: { type: Boolean, default: false },
 
         /**
          * Align the content to the top of the row
@@ -226,11 +226,11 @@ export default defineComponent({
 
         /**
          * Align the content to the top of the row on extra-extra-large screens
-         * @name top-2xl
+         * @name top-xxl
          * @type Boolean
          * @default false
          */
-        top2xl: { type: Boolean, default: false },
+        topXxl: { type: Boolean, default: false },
 
         /**
          * Align the content to the middle of the row
@@ -282,11 +282,11 @@ export default defineComponent({
 
         /**
          * Align the content to the middle of the row on extra-extra-large screens
-         * @name middle-2xl
+         * @name middle-xxl
          * @type Boolean
          * @default false
          */
-        middle2xl: { type: Boolean, default: false },
+        middleXxl: { type: Boolean, default: false },
 
         /**
          * Align the content to the bottom of the row
@@ -338,11 +338,11 @@ export default defineComponent({
 
         /**
          * Align the content to the bottom of the row on extra-extra-large screens
-         * @name bottom-2xl
+         * @name bottom-xxl
          * @type Boolean
          * @default false
          */
-        bottom2xl: { type: Boolean, default: false },
+        bottomXxl: { type: Boolean, default: false },
 
         /**
          * Justify the content to have space around each item inside the row
@@ -394,11 +394,11 @@ export default defineComponent({
 
         /**
          * Justify the content to have space around each item inside the row on extra-extra-large screens
-         * @name around-2xl
+         * @name around-xxl
          * @type Boolean
          * @default false
          */
-        around2xl: { type: Boolean, default: false },
+        aroundXxl: { type: Boolean, default: false },
 
         /**
          * Justify the content to have space between each item inside the row
@@ -450,11 +450,11 @@ export default defineComponent({
 
         /**
          * Justify the content to have space between each item inside the row on extra-extra-large screens
-         * @name between-2xl
+         * @name between-xxl
          * @type Boolean
          * @default false
          */
-        between2xl: { type: Boolean, default: false },
+        betweenXxl: { type: Boolean, default: false },
 
         /**
          * Order the content in reverse order inside the row
@@ -506,11 +506,11 @@ export default defineComponent({
 
         /**
          * Order the content in reverse order inside the row on extra-extra-large screens
-         * @name reverse-2xl
+         * @name reverse-xxl
          * @type Boolean
          * @default false
          */
-        reverse2xl: { type: Boolean, default: false },
+        reverseXxl: { type: Boolean, default: false },
 
         /**
          * Remove gutter between columns

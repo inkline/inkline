@@ -49,7 +49,7 @@ describe('Components', () => {
                         '-md-12',
                         '-lg-12',
                         '-xl-12',
-                        '-2xl-12'
+                        '-xxl-12'
                     );
                 });
 
@@ -63,7 +63,7 @@ describe('Components', () => {
                                 [`${position}Md`]: true,
                                 [`${position}Lg`]: true,
                                 [`${position}Xl`]: true,
-                                [`${position}2xl`]: true,
+                                [`${position}Xxl`]: true,
                                 ...props
                             },
                             global: {
@@ -80,7 +80,7 @@ describe('Components', () => {
                             `-${position}-md`,
                             `-${position}-lg`,
                             `-${position}-xl`,
-                            `-${position}-2xl`
+                            `-${position}-xxl`
                         );
                     });
                 });
@@ -95,7 +95,7 @@ describe('Components', () => {
                                 [`${action}Md`]: 6,
                                 [`${action}Lg`]: 6,
                                 [`${action}Xl`]: 6,
-                                [`${action}2xl`]: 6,
+                                [`${action}Xxl`]: 6,
                                 ...props
                             },
                             global: {
@@ -112,7 +112,7 @@ describe('Components', () => {
                             `-${action}-md-6`,
                             `-${action}-lg-6`,
                             `-${action}-xl-6`,
-                            `-${action}-2xl-6`
+                            `-${action}-xxl-6`
                         );
                     });
                 });

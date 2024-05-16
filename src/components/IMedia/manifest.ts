@@ -18,10 +18,39 @@ export const manifest: ComponentManifest = {
         selector: '.media',
         variables: [
             {
-                name: '--media--image--margin-right',
+                name: '--media--image--margin',
                 value: [
                     {
-                        name: '--margin-right'
+                        name: '--media--image--margin-top',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--media--image--margin-right',
+                        value: [
+                            {
+                                name: '--margin-right'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--media--image--margin-bottom',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--media--image--margin-left',
+                        value: [
+                            {
+                                value: '0'
+                            }
+                        ]
                     }
                 ]
             }

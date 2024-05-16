@@ -4,38 +4,36 @@
 
 @use '../../../css/mixins/components';
 
-@layer components {
-    .form-label {
-        @include components.color('form-label');
-        @include components.transition('form-label');
-        @include components.font-size('form-label');
-        @include components.margin('form-label');
+.form-label {
+    @include components.color('form-label');
+    @include components.transition('form-label');
+    @include components.font-size('form-label');
+    @include components.margin('form-label');
 
-        position: relative;
-        flex-basis: 100%;
+    position: relative;
+    flex-basis: 100%;
+
+    &.-right {
+        margin-right: 0;
+        order: 1;
+    }
+
+    .form-group.-required > & {
+        &::after {
+            @include components.color('form-label', 'required', true);
+            content: ' *';
+        }
+    }
+
+    .form-group.-error > & {
+        @include components.color('form-label', 'error', true);
+    }
+
+    .form-group.-inline > & {
+        @include components.margin-right('form-label', 'inline');
 
         &.-right {
-            margin-right: 0;
-            order: 1;
-        }
-
-        .form-group.-required > & {
-            &::after {
-                @include components.color('form-label', 'required', true);
-                content: ' *';
-            }
-        }
-
-        .form-group.-error > & {
-            @include components.color('form-label', 'error', true);
-        }
-
-        .form-group.-inline > & {
-            @include components.margin-right('form-label', 'inline');
-
-            &.-right {
-                @include components.margin-left('form-label', 'inline');
-            }
+            @include components.margin-left('form-label', 'inline');
         }
     }
 }

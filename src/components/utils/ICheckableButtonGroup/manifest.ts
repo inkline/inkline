@@ -40,12 +40,75 @@ export const manifest: ComponentManifest = {
         variables: [
             {
                 name: '--checkable-button-group--background',
+                value: [
+                    {
+                        name: '--checkable-button-group--background-h',
+                        value: [
+                            {
+                                name: '--color-white-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--background-s',
+                        value: [
+                            {
+                                name: '--color-white-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--background-l',
+                        value: [
+                            {
+                                name: '--color-white-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--background-a',
+                        value: [
+                            {
+                                name: '--color-white-a'
+                            }
+                        ]
+                    }
+                ],
                 variants: [
                     {
                         name: '--checkable-button-group--light--background',
                         value: [
                             {
-                                name: '--color-light-tint-100'
+                                name: '--checkable-button-group--light--background-h',
+                                value: [
+                                    {
+                                        name: '--color-white-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkable-button-group--light--background-s',
+                                value: [
+                                    {
+                                        name: '--color-white-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkable-button-group--light--background-l',
+                                value: [
+                                    {
+                                        name: '--color-white-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkable-button-group--light--background-a',
+                                value: [
+                                    {
+                                        name: '--color-white-a'
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -53,28 +116,57 @@ export const manifest: ComponentManifest = {
                         name: '--checkable-button-group--dark--background',
                         value: [
                             {
-                                name: '--color-dark-shade-100'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '--checkable-button-group--color',
-                variants: [
-                    {
-                        name: '--checkable-button-group--light--color',
-                        value: [
+                                name: '--checkable-button-group--dark--background-h',
+                                value: [
+                                    {
+                                        name: '--color-dark-h'
+                                    }
+                                ]
+                            },
                             {
-                                name: '--contrast-text-color-light'
+                                name: '--checkable-button-group--dark--background-s',
+                                value: [
+                                    {
+                                        name: '--color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkable-button-group--dark--background-l',
+                                value: [
+                                    {
+                                        name: '--color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkable-button-group--dark--background-a',
+                                value: [
+                                    {
+                                        name: '--color-dark-a'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        name: '--checkable-button-group--dark--color',
+                        name: '--checkable-button-group--dark--button--active--background',
                         value: [
                             {
-                                name: '--contrast-text-color-dark'
+                                name: '--checkable-button-group--dark--button--active--background-h',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--dark--button--active--background-s',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--dark--button--active--background-l',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--dark--button--active--background-a',
+                                value: []
                             }
                         ]
                     }
@@ -159,20 +251,46 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         name: '--checkable-button-group--border-top-color',
+                        value: []
+                    },
+                    {
+                        name: '--checkable-button-group--border-right-color',
+                        value: []
+                    },
+                    {
+                        name: '--checkable-button-group--border-bottom-color',
+                        value: []
+                    },
+                    {
+                        name: '--checkable-button-group--border-left-color',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--checkable-button-group--light--border-color',
                         value: [
                             {
-                                name: '--border-top-color'
-                            }
-                        ],
-                        variants: [
-                            {
                                 name: '--checkable-button-group--light--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
+                                value: []
                             },
+                            {
+                                name: '--checkable-button-group--light--border-right-color',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--light--border-bottom-color',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--light--border-left-color',
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--dark--border-color',
+                        value: [
                             {
                                 name: '--checkable-button-group--dark--border-top-color',
                                 value: [
@@ -180,84 +298,18 @@ export const manifest: ComponentManifest = {
                                         name: '--color-dark-tint-50'
                                     }
                                 ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkable-button-group--border-right-color',
-                        value: [
-                            {
-                                name: '--border-right-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkable-button-group--light--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
                             },
                             {
                                 name: '--checkable-button-group--dark--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkable-button-group--border-bottom-color',
-                        value: [
-                            {
-                                name: '--border-bottom-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkable-button-group--light--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
+                                value: []
                             },
                             {
                                 name: '--checkable-button-group--dark--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkable-button-group--border-left-color',
-                        value: [
-                            {
-                                name: '--border-left-color'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkable-button-group--light--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
+                                value: []
                             },
                             {
                                 name: '--checkable-button-group--dark--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
+                                value: []
                             }
                         ]
                     }
@@ -268,137 +320,82 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         name: '--checkable-button-group--border-top-left-radius',
-                        value: [
-                            {
-                                name: '--border-top-left-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkable-button-group--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkable-button-group--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkable-button-group--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        value: []
                     },
                     {
                         name: '--checkable-button-group--border-top-right-radius',
-                        value: [
-                            {
-                                name: '--border-top-right-radius'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkable-button-group--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkable-button-group--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkable-button-group--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-top-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
-                            }
-                        ]
+                        value: []
                     },
                     {
                         name: '--checkable-button-group--border-bottom-right-radius',
+                        value: []
+                    },
+                    {
+                        name: '--checkable-button-group--border-bottom-left-radius',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--checkable-button-group--sm--border-radius',
                         value: [
                             {
-                                name: '--border-bottom-right-radius'
-                            }
-                        ],
-                        variants: [
+                                name: '--checkable-button-group--sm--border-top-left-radius',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--sm--border-top-right-radius',
+                                value: []
+                            },
                             {
                                 name: '--checkable-button-group--sm--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
+                                value: []
                             },
                             {
-                                name: '--checkable-button-group--md--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkable-button-group--lg--border-bottom-right-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-right-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
+                                name: '--checkable-button-group--sm--border-bottom-left-radius',
+                                value: []
                             }
                         ]
                     },
                     {
-                        name: '--checkable-button-group--border-bottom-left-radius',
+                        name: '--checkable-button-group--md--border-radius',
                         value: [
                             {
-                                name: '--border-bottom-left-radius'
-                            }
-                        ],
-                        variants: [
+                                name: '--checkable-button-group--md--border-top-left-radius',
+                                value: []
+                            },
                             {
-                                name: '--checkable-button-group--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-sm))'
-                                    }
-                                ]
+                                name: '--checkable-button-group--md--border-top-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--md--border-bottom-right-radius',
+                                value: []
                             },
                             {
                                 name: '--checkable-button-group--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-md))'
-                                    }
-                                ]
+                                value: []
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--lg--border-radius',
+                        value: [
+                            {
+                                name: '--checkable-button-group--lg--border-top-left-radius',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--lg--border-top-right-radius',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--lg--border-bottom-right-radius',
+                                value: []
                             },
                             {
                                 name: '--checkable-button-group--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        value: 'calc(var(--border-bottom-left-radius) * var(--size-multiplier-lg))'
-                                    }
-                                ]
+                                value: []
                             }
                         ]
                     }
@@ -406,44 +403,100 @@ export const manifest: ComponentManifest = {
             },
             {
                 name: '--checkable-button-group--box-shadow',
+                value: []
+            },
+            {
+                name: '--checkable-button-group--color',
                 value: [
                     {
-                        name: '--checkable-button-group--box-shadow-x-offset',
+                        name: '--checkable-button-group--color-h',
                         value: [
                             {
-                                name: '--box-shadow-offset-x'
+                                name: '--contrast-text-color-light-h'
                             }
                         ]
                     },
                     {
-                        name: '--checkable-button-group--box-shadow-y-offset',
+                        name: '--checkable-button-group--color-s',
                         value: [
                             {
-                                name: '--box-shadow-offset-y'
+                                name: '--contrast-text-color-light-s'
                             }
                         ]
                     },
                     {
-                        name: '--checkable-button-group--box-shadow-blur-radius',
+                        name: '--checkable-button-group--color-l',
                         value: [
                             {
-                                name: '--box-shadow-blur-radius'
+                                name: '--contrast-text-color-light-l'
                             }
                         ]
                     },
                     {
-                        name: '--checkable-button-group--box-shadow-spread-radius',
+                        name: '--checkable-button-group--color-a',
                         value: [
                             {
-                                name: '--box-shadow-spread-radius'
+                                name: '--contrast-text-color-light-a'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--checkable-button-group--light--color',
+                        value: [
+                            {
+                                name: '--checkable-button-group--light--color-h',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--light--color-s',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--light--color-l',
+                                value: []
+                            },
+                            {
+                                name: '--checkable-button-group--light--color-a',
+                                value: []
                             }
                         ]
                     },
                     {
-                        name: '--checkable-button-group--box-shadow-color',
+                        name: '--checkable-button-group--dark--color',
                         value: [
                             {
-                                name: '--box-shadow-color'
+                                name: '--checkable-button-group--dark--color-h',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkable-button-group--dark--color-s',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkable-button-group--dark--color-l',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkable-button-group--dark--color-a',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-a'
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -454,51 +507,67 @@ export const manifest: ComponentManifest = {
                 value: [
                     {
                         name: '--checkable-button-group--padding-top',
+                        value: []
+                    },
+                    {
+                        name: '--checkable-button-group--padding-right',
+                        value: []
+                    },
+                    {
+                        name: '--checkable-button-group--padding-bottom',
+                        value: []
+                    },
+                    {
+                        name: '--checkable-button-group--padding-left',
+                        value: []
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--checkable-button-group--sm--padding',
                         value: [
-                            {
-                                name: '--padding-top-1-2'
-                            }
-                        ],
-                        variants: [
                             {
                                 name: '--checkable-button-group--sm--padding-top',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-sm)) * 0.5)'
+                                        value: 'calc(\n      var(--padding-top-sm) * 0.5\n    )'
                                     }
                                 ]
                             },
                             {
-                                name: '--checkable-button-group--md--padding-top',
+                                name: '--checkable-button-group--sm--padding-right',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-md)) * 0.5)'
+                                        value: 'calc(\n      var(--padding-right-sm) * 0.5\n    )'
                                     }
                                 ]
                             },
                             {
-                                name: '--checkable-button-group--lg--padding-top',
+                                name: '--checkable-button-group--sm--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-top) * var(--size-multiplier-lg)) * 0.5)'
+                                        value: 'calc(\n      var(--padding-bottom-sm) * 0.5\n    )'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkable-button-group--sm--padding-left',
+                                value: [
+                                    {
+                                        value: 'calc(\n      var(--padding-left-sm) * 0.5\n    )'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '--checkable-button-group--padding-right',
+                        name: '--checkable-button-group--md--padding',
                         value: [
                             {
-                                name: '--padding-right-1-2'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkable-button-group--sm--padding-right',
+                                name: '--checkable-button-group--md--padding-top',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-right) * var(--size-multiplier-sm)) * 0.5)'
+                                        value: 'calc(\n      var(--padding-top-md) * 0.5\n    )'
                                     }
                                 ]
                             },
@@ -506,33 +575,7 @@ export const manifest: ComponentManifest = {
                                 name: '--checkable-button-group--md--padding-right',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-right) * var(--size-multiplier-md)) * 0.5)'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkable-button-group--lg--padding-right',
-                                value: [
-                                    {
-                                        value: 'calc(calc(var(--padding-right) * var(--size-multiplier-lg)) * 0.5)'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkable-button-group--padding-bottom',
-                        value: [
-                            {
-                                name: '--padding-bottom-1-2'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkable-button-group--sm--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-sm)) * 0.5)'
+                                        value: 'calc(\n      var(--padding-right-md) * 0.5\n    )'
                                     }
                                 ]
                             },
@@ -540,33 +583,7 @@ export const manifest: ComponentManifest = {
                                 name: '--checkable-button-group--md--padding-bottom',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-md)) * 0.5)'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--checkable-button-group--lg--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(calc(var(--padding-bottom) * var(--size-multiplier-lg)) * 0.5)'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--checkable-button-group--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left-1-2'
-                            }
-                        ],
-                        variants: [
-                            {
-                                name: '--checkable-button-group--sm--padding-left',
-                                value: [
-                                    {
-                                        value: 'calc(calc(var(--padding-left) * var(--size-multiplier-sm)) * 0.5)'
+                                        value: 'calc(\n      var(--padding-bottom-md) * 0.5\n    )'
                                     }
                                 ]
                             },
@@ -574,7 +591,36 @@ export const manifest: ComponentManifest = {
                                 name: '--checkable-button-group--md--padding-left',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-left) * var(--size-multiplier-md)) * 0.5)'
+                                        value: 'calc(\n      var(--padding-left-md) * 0.5\n    )'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--lg--padding',
+                        value: [
+                            {
+                                name: '--checkable-button-group--lg--padding-top',
+                                value: [
+                                    {
+                                        value: 'calc(\n      var(--padding-top-lg) * 0.5\n    )'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkable-button-group--lg--padding-right',
+                                value: [
+                                    {
+                                        value: 'calc(\n      var(--padding-right-lg) * 0.5\n    )'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--checkable-button-group--lg--padding-bottom',
+                                value: [
+                                    {
+                                        value: 'calc(\n      var(--padding-bottom-lg) * 0.5\n    )'
                                     }
                                 ]
                             },
@@ -582,7 +628,7 @@ export const manifest: ComponentManifest = {
                                 name: '--checkable-button-group--lg--padding-left',
                                 value: [
                                     {
-                                        value: 'calc(calc(var(--padding-left) * var(--size-multiplier-lg)) * 0.5)'
+                                        value: 'calc(\n      var(--padding-left-lg) * 0.5\n    )'
                                     }
                                 ]
                             }
@@ -591,42 +637,47 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--checkable-button-group--transition-property',
+                name: '--checkable-button-group--transition',
                 value: [
                     {
-                        value: '(background-color, border-color)'
-                    }
-                ]
-            },
-            {
-                name: '--checkable-button-group--transition-duration',
-                value: [
+                        name: '--checkable-button-group--transition-property',
+                        value: [
+                            {
+                                value: 'background-color, color,\n      border-color'
+                            }
+                        ]
+                    },
                     {
-                        name: '--transition-duration'
-                    }
-                ]
-            },
-            {
-                name: '--checkable-button-group--transition-timing-function',
-                value: [
+                        name: '--checkable-button-group--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
                     {
-                        name: '--transition-timing-function'
-                    }
-                ]
-            },
-            {
-                name: '--checkable-button-group--gap',
-                value: [
+                        name: '--checkable-button-group--transition-timing-function',
+                        value: []
+                    },
                     {
-                        name: '--margin-right-1-2'
-                    }
-                ]
-            },
-            {
-                name: '--checkable-button-group--button--active--background',
-                value: [
+                        name: '--checkable-button-group--transition-property',
+                        value: [
+                            {
+                                value: 'background-color, color,\n      border-color'
+                            }
+                        ]
+                    },
                     {
-                        name: '--button--background'
+                        name: '--checkable-button-group--transition-duration',
+                        value: [
+                            {
+                                name: '--transition-duration'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--transition-timing-function',
+                        value: []
                     }
                 ]
             },
@@ -639,23 +690,107 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
+                name: '--checkable-button-group--button--border-width',
+                value: []
+            },
+            {
+                name: '--checkable-button-group--button--border-style',
+                value: []
+            },
+            {
                 name: '--checkable-button-group--button--border-color',
                 value: [
                     {
-                        value: 'transparent'
+                        name: '--checkable-button-group--button--border-top-color',
+                        value: [
+                            {
+                                value: 'transparent'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--button--border-right-color',
+                        value: [
+                            {
+                                value: 'transparent'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--button--border-bottom-color',
+                        value: [
+                            {
+                                value: 'transparent'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--button--border-left-color',
+                        value: [
+                            {
+                                value: 'transparent'
+                            }
+                        ]
                     }
                 ]
             },
             {
-                name: '--checkable-button-group--button--box-shadow',
+                name: '--checkable-button-group--button--color',
+                value: []
+            },
+            {
+                name: '--checkable-button-group--gap',
                 value: [
                     {
-                        value: 'none'
+                        value: 'calc(var(--margin-right) * 0.5)'
+                    }
+                ],
+                variants: [
+                    {
+                        name: '--checkable-button-group--sm--gap',
+                        value: [
+                            {
+                                value: 'calc(var(--margin-right-sm) * 0.5)'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--md--gap',
+                        value: [
+                            {
+                                value: 'calc(var(--margin-right-md) * 0.5)'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--checkable-button-group--lg--gap',
+                        value: [
+                            {
+                                value: 'calc(var(--margin-right-lg) * 0.5)'
+                            }
+                        ]
                     }
                 ]
             },
             {
-                name: '--button--border-top-color'
+                name: '--checkable-button-group--button--active--background',
+                value: []
+            },
+            {
+                name: '--checkable-button-group--button--hover--background',
+                value: []
+            },
+            {
+                name: '--checkable-button-group--button--hover--border-color',
+                value: []
+            },
+            {
+                name: '--checkable-button-group--button--focus--background',
+                value: []
+            },
+            {
+                name: '--checkable-button-group--button--focus--border-color',
+                value: []
             }
         ]
     }

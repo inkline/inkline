@@ -51,47 +51,31 @@ export const manifest: ComponentManifest = {
         selector: '.breadcrumb-item',
         variables: [
             {
-                name: '--breadcrumb--padding-left',
+                name: '--breadcrumb--padding',
                 value: [
                     {
-                        name: '--padding-left'
+                        name: '--breadcrumb--padding-left'
+                    },
+                    {
+                        name: '--breadcrumb--padding-right'
                     }
                 ]
             },
             {
-                name: '--breadcrumb--color'
-            },
-            {
-                name: '--breadcrumb--link--color',
-                value: [
-                    {
-                        name: '--breadcrumb--color'
-                    }
-                ]
+                name: '--breadcrumb--color',
+                value: []
             },
             {
                 name: '--breadcrumb--active--color',
-                value: [
-                    {
-                        name: '--breadcrumb--color'
-                    }
-                ]
-            },
-            {
-                name: '--breadcrumb--padding-right',
-                value: [
-                    {
-                        name: '--padding-right'
-                    }
-                ]
+                value: []
             },
             {
                 name: '--breadcrumb--separator',
-                value: [
-                    {
-                        value: "'/'"
-                    }
-                ]
+                value: []
+            },
+            {
+                name: '--breadcrumb--link--color',
+                value: []
             }
         ]
     }

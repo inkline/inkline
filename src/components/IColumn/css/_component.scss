@@ -18,7 +18,6 @@
     flex-basis: 100%;
     width: 100%;
 }
-
 // Create a flexible column that takes up the space it can
 //
 @mixin column-flexible() {
@@ -37,108 +36,101 @@
     max-width: calc(#{$columns-count} * 100% / #{$columns});
 }
 
-@layer components {
-    .col,
-    .column {
-        @include column-flexible;
+.col,
+.column {
+    @include column-flexible;
 
-        box-sizing: border-box;
-        min-height: 1px;
-        position: relative;
+    box-sizing: border-box;
+    min-height: 1px;
+    position: relative;
 
-        @each $breakpoint-key in config.$breakpoint-keys {
-            @include config.breakpoint-up($breakpoint-key) {
-                padding-left: calc(#{properties.generic('gutter-#{$breakpoint-key}')} / 2);
-                padding-right: calc(#{properties.generic('gutter-#{$breakpoint-key}')} / 2);
+    @each $breakpoint-key in config.$breakpoint-keys {
+        @include config.breakpoint-up($breakpoint-key) {
+            padding-left: calc(#{properties.generic('gutter-#{$breakpoint-key}')} / 2);
+            padding-right: calc(#{properties.generic('gutter-#{$breakpoint-key}')} / 2);
+        }
+    }
+
+    // Column Responsive Sizes
+    //
+    @each $breakpoint-key in list.append(config.$breakpoint-keys, '') {
+        $breakpoint: escape.escape(breakpoints.breakpoint-infix($breakpoint-key));
+
+        @if $breakpoint-key != '' {
+            &.#{$breakpoint},
+            &.#{$breakpoint}-auto {
+                @include column-full-width;
             }
         }
 
-        // Column Responsive Sizes
-        //
-        @each $breakpoint-key in list.append(config.$breakpoint-keys, '') {
-            $breakpoint: escape.escape(breakpoints.breakpoint-infix($breakpoint-key));
-
+        @include config.breakpoint-up($breakpoint-key) {
             @if $breakpoint-key != '' {
-                &.#{$breakpoint},
+                &.#{$breakpoint} {
+                    @include column-flexible;
+                }
+
                 &.#{$breakpoint}-auto {
+                    flex: 1 0 auto;
+                    max-width: auto;
+                }
+            }
+
+            &.-first#{$breakpoint} {
+                order: -1;
+            }
+
+            &.-last#{$breakpoint} {
+                order: 1;
+            }
+        }
+
+        @for $column-count from 1 through config.$columns {
+            @if $breakpoint-key != '' {
+                &.#{$breakpoint}-#{$column-count} {
                     @include column-full-width;
                 }
             }
 
             @include config.breakpoint-up($breakpoint-key) {
-                @if $breakpoint-key != '' {
-                    &.#{$breakpoint} {
-                        @include column-flexible;
-                    }
-
-                    &.#{$breakpoint}-auto {
-                        flex: 1 0 auto;
-                        max-width: auto;
-                    }
-                }
-
-                &.-first#{$breakpoint} {
-                    order: -1;
-                }
-
-                &.-last#{$breakpoint} {
-                    order: 1;
-                }
-            }
-
-            @for $column-count from 1 through config.$columns {
+                // Column width
+                //
                 @if $breakpoint-key != '' {
                     &.#{$breakpoint}-#{$column-count} {
-                        @include column-full-width;
+                        @include column-fixed-width(properties.generic('columns'), $column-count);
                     }
                 }
 
-                @include config.breakpoint-up($breakpoint-key) {
-                    // Column width
-                    //
-                    @if $breakpoint-key != '' {
-                        &.#{$breakpoint}-#{$column-count} {
-                            @include column-fixed-width(
-                                properties.generic('columns'),
-                                $column-count
-                            );
-                        }
-                    }
+                // Column offset
+                //
+                &.-offset#{$breakpoint}-#{$column-count} {
+                    margin-left: calc(#{$column-count} * 100% / #{properties.generic('columns')});
+                }
 
-                    // Column offset
-                    //
-                    &.-offset#{$breakpoint}-#{$column-count} {
-                        margin-left: calc(
-                            #{$column-count} * 100% / #{properties.generic('columns')}
-                        );
-                    }
+                // Column push
+                //
+                &.-push#{$breakpoint}-#{$column-count} {
+                    left: calc(#{$column-count} * 100% / #{properties.generic('columns')});
+                }
 
-                    // Column push
-                    //
-                    &.-push#{$breakpoint}-#{$column-count} {
-                        left: calc(#{$column-count} * 100% / #{properties.generic('columns')});
-                    }
-
-                    // Column pull
-                    //
-                    &.-pull#{$breakpoint}-#{$column-count} {
-                        right: calc(#{$column-count} * 100% / #{properties.generic('columns')});
-                    }
+                // Column pull
+                //
+                &.-pull#{$breakpoint}-#{$column-count} {
+                    right: calc(#{$column-count} * 100% / #{properties.generic('columns')});
                 }
             }
+        }
 
-            @include config.breakpoint-up($breakpoint-key) {
-                &.-offset#{$breakpoint}-0 {
-                    margin-left: 0;
-                }
+        @include config.breakpoint-up($breakpoint-key) {
+            &.-offset#{$breakpoint}-0 {
+                margin-left: 0;
+            }
 
-                &.-push#{$breakpoint}-0 {
-                    left: 0;
-                }
+            &.-push#{$breakpoint}-0 {
+                left: 0;
+            }
 
-                &.-pull#{$breakpoint}-0 {
-                    right: 0;
-                }
+            &.-pull#{$breakpoint}-0 {
+                right: 0;
             }
         }
     }

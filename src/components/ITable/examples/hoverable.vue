@@ -1,5 +1,5 @@
 <template>
-    <ITable hover>
+    <ITable hoverable>
         <thead>
             <tr>
                 <th>#</th>

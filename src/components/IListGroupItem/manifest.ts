@@ -48,98 +48,86 @@ export const manifest: ComponentManifest = {
         }
     ],
     css: {
-        selector: '.list-group',
+        selector: '.list-group-item',
         variables: [
             {
-                name: '--list-group--border-bottom-width',
+                name: '--list-group--item--border-width',
                 value: [
                     {
-                        name: '--border-bottom-width'
+                        name: '--list-group--item--border-bottom-width'
                     }
                 ]
             },
             {
-                name: '--list-group--border-bottom-style',
+                name: '--list-group--item--border-style',
                 value: [
                     {
-                        name: '--border-bottom-style'
+                        name: '--list-group--item--border-bottom-style'
                     }
                 ]
             },
             {
-                name: '--list-group--border-bottom-color',
+                name: '--list-group--item--border-color',
                 value: [
                     {
-                        name: '--border-bottom-color'
+                        name: '--list-group--item--border-bottom-color'
                     }
                 ]
             },
             {
-                name: '--transition-duration'
+                name: '--list-group--item--padding',
+                value: []
             },
             {
-                name: '--transition-timing-function'
-            },
-            {
-                name: '--list-group--padding',
+                name: '--list-group--item--transition',
                 value: [
                     {
-                        name: '--list-group--padding-top',
-                        value: [
-                            {
-                                name: '--padding-top'
-                            }
-                        ]
+                        name: '--list-group--item--transition-property'
                     },
                     {
-                        name: '--list-group--padding-right',
-                        value: [
-                            {
-                                name: '--padding-right'
-                            }
-                        ]
+                        name: '--list-group--item--transition-duration'
                     },
                     {
-                        name: '--list-group--padding-bottom',
-                        value: [
-                            {
-                                name: '--padding-bottom'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--list-group--padding-left',
-                        value: [
-                            {
-                                name: '--padding-left'
-                            }
-                        ]
+                        name: '--list-group--item--transition-timing-function'
                     }
                 ]
             },
             {
-                name: '--list-group--active--color'
+                name: '--list-group--item--border-radius',
+                value: [
+                    {
+                        name: '--list-group--item--border-top-left-radius'
+                    },
+                    {
+                        name: '--list-group--item--border-top-right-radius'
+                    },
+                    {
+                        name: '--list-group--item--border-bottom-left-radius'
+                    },
+                    {
+                        name: '--list-group--item--border-bottom-right-radius'
+                    }
+                ]
             },
             {
-                name: '--list-group--active--background'
+                name: '--list-group--item--active--background',
+                value: []
             },
             {
-                name: '--list-group--active--border-color'
+                name: '--list-group--item--active--border-color',
+                value: [
+                    {
+                        name: '--list-group--item--active--border-bottom-color'
+                    }
+                ]
             },
             {
-                name: '--list-group--border-top-left-radius'
+                name: '--list-group--item--active--color',
+                value: []
             },
             {
-                name: '--list-group--border-top-right-radius'
-            },
-            {
-                name: '--list-group--border-bottom-left-radius'
-            },
-            {
-                name: '--list-group--border-bottom-right-radius'
-            },
-            {
-                name: '--list-group--disabled--color'
+                name: '--list-group--item--disabled--color',
+                value: []
             }
         ]
     }

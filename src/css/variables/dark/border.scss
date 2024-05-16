@@ -1,8 +1,6 @@
-@layer base {
-  .dark-theme {
-    --border-top-color: var(--color-gray-700);
-    --border-right-color: var(--color-gray-700);
-    --border-bottom-color: var(--color-gray-700);
-    --border-left-color: var(--color-gray-700);
-  }
+.dark-theme {
+  --border-top-color: var(--color-gray-700);
+  --border-right-color: var(--color-gray-700);
+  --border-bottom-color: var(--color-gray-700);
+  --border-left-color: var(--color-gray-700);
 }

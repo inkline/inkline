@@ -2,9 +2,9 @@
 
 exports[`Components > ISidebar > should render correctly 1`] = `
 "<transition-stub name="sidebar-wrapper-none-transition" appear="false" persisted="true" css="true">
-  <aside role="complementary" class="sidebar-wrapper -collapse-md -light -md -collapse-absolute -placement-left" aria-label="Sidebar">
+  <aside role="complementary" class="sidebar-wrapper -collapse-md -collapse-absolute -placement-left" aria-label="Sidebar">
     <transition-stub name="sidebar-transition" appear="false" persisted="true" css="true">
-      <div class="sidebar">
+      <div class="sidebar -light -md">
         <div class="sidebar-content">
           <!-- @slot default Slot for sidebar content -->
           <nav class="nav -light -md" role="menubar">

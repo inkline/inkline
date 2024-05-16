@@ -70,11 +70,9 @@ describe('Components', () => {
                             }
                         }
                     });
+                    const tooltip = wrapper.container.querySelector('.tooltip');
 
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        `-${props.color}`,
-                        `-${props.size}`
-                    );
+                    expect(tooltip).toHaveClass(`-${props.color}`, `-${props.size}`);
                 });
             });
         });

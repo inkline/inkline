@@ -27,10 +27,11 @@ export const manifest: ComponentManifest = {
         selector: '.loader',
         variables: [
             {
-                name: '--loader--size',
+                name: '--loader--width',
+                value: [],
                 variants: [
                     {
-                        name: '--loader--sm--size',
+                        name: '--loader--sm--width',
                         value: [
                             {
                                 value: 'calc(64px * var(--size-multiplier-sm))'
@@ -38,7 +39,7 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
-                        name: '--loader--md--size',
+                        name: '--loader--md--width',
                         value: [
                             {
                                 value: 'calc(64px * var(--size-multiplier-md))'
@@ -46,7 +47,7 @@ export const manifest: ComponentManifest = {
                         ]
                     },
                     {
-                        name: '--loader--lg--size',
+                        name: '--loader--lg--width',
                         value: [
                             {
                                 value: 'calc(64px * var(--size-multiplier-lg))'
@@ -56,21 +57,105 @@ export const manifest: ComponentManifest = {
                 ]
             },
             {
-                name: '--loader--background',
-                variants: [
+                name: '--loader--height',
+                value: [
                     {
-                        name: '--loader--primary--background',
+                        value: '64px'
+                    }
+                ]
+            },
+            {
+                name: '--loader--animation',
+                value: [
+                    {
+                        name: '--loader--animation-duration',
                         value: [
                             {
-                                name: '--color-primary'
+                                value: '1.2s'
                             }
                         ]
                     },
                     {
+                        name: '--loader--animation-duration',
+                        value: [
+                            {
+                                value: '1.2s'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: '--loader--background',
+                value: [
+                    {
+                        name: '--loader--background-h',
+                        value: [
+                            {
+                                name: '--color-primary-h'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--loader--background-s',
+                        value: [
+                            {
+                                name: '--color-primary-s'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--loader--background-l',
+                        value: [
+                            {
+                                name: '--color-primary-l'
+                            }
+                        ]
+                    },
+                    {
+                        name: '--loader--background-a',
+                        value: [
+                            {
+                                name: '--color-primary-a'
+                            }
+                        ]
+                    }
+                ],
+                variants: [
+                    {
                         name: '--loader--light--background',
                         value: [
                             {
-                                name: '--color-dark'
+                                name: '--loader--light--background-h',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--loader--light--background-s',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--loader--light--background-l',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--loader--light--background-a',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-light-a'
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -78,7 +163,73 @@ export const manifest: ComponentManifest = {
                         name: '--loader--dark--background',
                         value: [
                             {
-                                name: '--color-light'
+                                name: '--loader--dark--background-h',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--loader--dark--background-s',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--loader--dark--background-l',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--loader--dark--background-a',
+                                value: [
+                                    {
+                                        name: '--contrast-text-color-dark-a'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '--loader--primary--background',
+                        value: [
+                            {
+                                name: '--loader--primary--background-h',
+                                value: [
+                                    {
+                                        name: '--color-primary-h'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--loader--primary--background-s',
+                                value: [
+                                    {
+                                        name: '--color-primary-s'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--loader--primary--background-l',
+                                value: [
+                                    {
+                                        name: '--color-primary-l'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '--loader--primary--background-a',
+                                value: [
+                                    {
+                                        name: '--color-primary-a'
+                                    }
+                                ]
                             }
                         ]
                     }

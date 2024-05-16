@@ -46,7 +46,7 @@ describe('Components', () => {
 
         describe('computed', () => {
             describe('classes', () => {
-                it('should add classes based on props', async () => {
+                it('should add classes based on props', () => {
                     const wrapper = render(ISidebar, {
                         global: {
                             stubs,
@@ -61,17 +61,17 @@ describe('Components', () => {
                         },
                         slots
                     });
-                    const sidebar = await wrapper.getByRole('complementary');
+                    const sidebarWrapper = wrapper.getByRole('complementary');
+                    const sidebar = sidebarWrapper.querySelector('.sidebar');
 
-                    expect(sidebar).toHaveClass(
+                    expect(sidebarWrapper).toHaveClass(
                         '-open',
                         '-collapsible',
                         '-collapse-true',
-                        '-light',
-                        '-md',
                         '-collapse-absolute',
                         '-placement-left'
                     );
+                    expect(sidebar).toHaveClass('-light', '-md');
                 });
             });
         });

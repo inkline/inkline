@@ -4,16 +4,14 @@
  * Progress bar
  */
 
-@layer components {
-    .progress-bar {
-        @include components.background('progress-bar');
-        @include components.color('progress-bar');
+.progress-bar {
+    @include components.background('progress-bar');
+    @include components.color('progress-bar');
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        white-space: nowrap;
-        height: 100%;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    height: 100%;
 }

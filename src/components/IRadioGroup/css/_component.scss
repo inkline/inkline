@@ -2,13 +2,11 @@
  * Radio Group
  */
 
-@layer components {
-    .radio-group {
-        display: flex;
-        flex-direction: column;
+.radio-group {
+    display: flex;
+    flex-direction: column;
 
-        &.-inline {
-            flex-direction: row;
-        }
+    &.-inline {
+        flex-direction: row;
     }
 }
