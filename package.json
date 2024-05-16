@@ -1686,8 +1686,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inkline/inkline.git"
-  },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.17.2"
   }
 }
