@@ -1008,12 +1008,6 @@
                 "xxl": "calc(var(--breakpoint-xxl) - var(--gutter-xxl))"
             }
         },
-        "layers": [
-            "base",
-            "components",
-            "variants",
-            "utilities"
-        ],
         "scaleRatios": {
             "$type": "primitive-variants",
             "minorSecond": 1.067,
@@ -9340,6 +9334,20 @@
                             "l": "var(--color-white-l)",
                             "a": "var(--color-white-a)"
                         },
+                        "border": {
+                            "top": {
+                                "color": "var(--color-light-shade-50)"
+                            },
+                            "right": {
+                                "color": "var(--color-light-shade-50)"
+                            },
+                            "bottom": {
+                                "color": "var(--color-light-shade-50)"
+                            },
+                            "left": {
+                                "color": "var(--color-light-shade-50)"
+                            }
+                        },
                         "focus": {
                             "$type": "group",
                             "background": {
@@ -9404,6 +9412,20 @@
                             "s": "var(--color-dark-s)",
                             "l": "var(--color-dark-l)",
                             "a": "var(--color-dark-a)"
+                        },
+                        "border": {
+                            "top": {
+                                "color": "var(--color-dark-tint-50)"
+                            },
+                            "right": {
+                                "color": "var(--color-dark-tint-50)"
+                            },
+                            "bottom": {
+                                "color": "var(--color-dark-tint-50)"
+                            },
+                            "left": {
+                                "color": "var(--color-dark-tint-50)"
+                            }
                         },
                         "hover": {
                             "$type": "group",

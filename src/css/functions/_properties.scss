@@ -113,7 +113,7 @@
     $elementOrStateChain: create-css-variables-chain($elementOrState);
     $fallbackSuffix: create-css-variables-fallback(
         $fallback,
-        'var(#{$componentChain}--#{$property}--#{$part})'
+        'var(#{$componentChain}--#{$property}-#{$part})'
     );
 
     @return var(#{$componentChain}#{$elementOrStateChain}--#{$property}-#{$part}#{$fallbackSuffix});

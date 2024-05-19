@@ -19,6 +19,10 @@
     @include variants.background-s("tabs", "light", "title");
     @include variants.background-l("tabs", "light", "title");
     @include variants.background-a("tabs", "light", "title");
+    @include variants.border-top-color("tabs", "light", "title");
+    @include variants.border-right-color("tabs", "light", "title");
+    @include variants.border-bottom-color("tabs", "light", "title");
+    @include variants.border-left-color("tabs", "light", "title");
 
     @include variants.background-h("tabs", "light", "title" "focus");
     @include variants.background-s("tabs", "light", "title" "focus");
@@ -53,6 +57,10 @@
     @include variants.background-s("tabs", "dark", "title");
     @include variants.background-l("tabs", "dark", "title");
     @include variants.background-a("tabs", "dark", "title");
+    @include variants.border-top-color("tabs", "dark", "title");
+    @include variants.border-right-color("tabs", "dark", "title");
+    @include variants.border-bottom-color("tabs", "dark", "title");
+    @include variants.border-left-color("tabs", "dark", "title");
 
     @include variants.background-h("tabs", "dark", "title" "hover");
     @include variants.background-s("tabs", "dark", "title" "hover");
@@ -191,6 +199,10 @@
   --tabs--light--title--background-s: var(--color-white-s);
   --tabs--light--title--background-l: var(--color-white-l);
   --tabs--light--title--background-a: var(--color-white-a);
+  --tabs--light--title--border-top-color: var(--color-light-shade-50);
+  --tabs--light--title--border-right-color: var(--color-light-shade-50);
+  --tabs--light--title--border-bottom-color: var(--color-light-shade-50);
+  --tabs--light--title--border-left-color: var(--color-light-shade-50);
   --tabs--light--title--focus--background-h: var(--color-light-h);
   --tabs--light--title--focus--background-s: var(--color-light-s);
   --tabs--light--title--focus--background-l: var(--color-light-l);
@@ -219,6 +231,10 @@
   --tabs--dark--title--background-s: var(--color-dark-s);
   --tabs--dark--title--background-l: var(--color-dark-l);
   --tabs--dark--title--background-a: var(--color-dark-a);
+  --tabs--dark--title--border-top-color: var(--color-dark-tint-50);
+  --tabs--dark--title--border-right-color: var(--color-dark-tint-50);
+  --tabs--dark--title--border-bottom-color: var(--color-dark-tint-50);
+  --tabs--dark--title--border-left-color: var(--color-dark-tint-50);
   --tabs--dark--title--hover--background-h: var(--color-dark-tint-50-h);
   --tabs--dark--title--hover--background-s: var(--color-dark-tint-50-s);
   --tabs--dark--title--hover--background-l: var(--color-dark-tint-50-l);
