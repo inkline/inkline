@@ -1,136 +1,30 @@
 {
-    "name": "@inkline/config",
-    "version": "2.0.0-rc.1",
-    "scripts": {
-        "start": "npm run build && node lib/playground.mjs",
-        "dev": "vite",
-        "build": "unbuild && npm run generate",
-        "build:local": "npm run build && cd lib && cp ../package.json . && npm pack",
-        "generate": "npm run generate:defaults",
-        "generate:defaults": "tsx scripts/generate-defaults.ts",
-        "postbuild": "tsx scripts/postbuild.ts",
-        "lint": "eslint --ext .vue,.ts,.tsx,.js,.jsx src",
-        "preview": "vite preview",
-        "test": "vitest run",
-        "test:ci": "vitest run --coverage",
-        "test:dev": "vitest",
-        "test:build": "tsx scripts/test-build.ts",
-        "prerelease": "npm-run-all test build",
-        "release": "np",
-        "postrelease": "tsx scripts/postrelease.ts",
-        "postversion": "tsx scripts/postversion.ts"
-    },
-    "devDependencies": {
-        "@grozav/eslint-config": "1.2.0",
-        "@types/color": "3.0.6",
-        "@types/prettier": "3.0.0",
-        "@types/shelljs": "0.8.15",
-        "eslint": "8.57.0",
-        "jsdom": "24.0.0",
-        "np": "10.0.5",
-        "npm-run-all": "4.1.5",
-        "shelljs": "0.8.5",
-        "tsx": "4.10.2",
-        "type-fest": "4.18.2",
-        "typescript": "5.4.5",
-        "unbuild": "2.0.0",
-        "vite": "5.2.11",
-        "vitest": "1.6.0"
-    },
-    "dependencies": {
-        "@grozav/utils": "^1.3.1",
-        "c12": "^1.1.0",
-        "color": "4.2.3",
-        "csstype": "3.1",
-        "micromustache": "8.0.3",
-        "pathe": "^1.0.0",
-        "prettier": "^3.2.5"
-    },
-    "main": "index.js",
-    "module": "index.mjs",
-    "jsdelivr": "index.js",
-    "unpkg": "index.js",
-    "types": "index.d.ts",
-    "files": [
-        "**/*"
-    ],
-    "exports": {
-        ".": {
-            "require": "./index.js",
-            "import": "./index.mjs",
-            "types": "./index.d.ts"
-        },
-        "./applicators": {
-            "require": "./applicators/index.js",
-            "import": "./applicators/index.mjs",
-            "types": "./applicators/index.d.ts"
-        },
-        "./constants": {
-            "require": "./constants/index.js",
-            "import": "./constants/index.mjs",
-            "types": "./constants/index.d.ts"
-        },
-        "./generators": {
-            "require": "./generators/index.js",
-            "import": "./generators/index.mjs",
-            "types": "./generators/index.d.ts"
-        },
-        "./helpers": {
-            "require": "./helpers/index.js",
-            "import": "./helpers/index.mjs",
-            "types": "./helpers/index.d.ts"
-        },
-        "./resolvers": {
-            "require": "./resolvers/index.js",
-            "import": "./resolvers/index.mjs",
-            "types": "./resolvers/index.d.ts"
-        },
-        "./build": {
-            "require": "./build.js",
-            "import": "./build.mjs",
-            "types": "./build.d.ts"
-        },
-        "./defaults": {
-            "require": "./defaults.js",
-            "import": "./defaults.mjs",
-            "types": "./defaults.d.ts"
-        },
-        "./define": {
-            "require": "./define.js",
-            "import": "./define.mjs",
-            "types": "./define.d.ts"
-        },
-        "./generate": {
-            "require": "./generate.js",
-            "import": "./generate.mjs",
-            "types": "./generate.d.ts"
-        },
-        "./load": {
-            "require": "./load.js",
-            "import": "./load.mjs",
-            "types": "./load.d.ts"
-        },
-        "./resolve": {
-            "require": "./resolve.js",
-            "import": "./resolve.mjs",
-            "types": "./resolve.d.ts"
-        },
-        "./*": "./*"
-    },
-    "publishConfig": {
-        "access": "public"
-    },
-    "funding": {
-        "type": "github",
-        "url": "https://github.com/sponsors/alexgrozav"
-    },
-    "bugs": {
-        "url": "https://github.com/inkline/inkline/issues"
-    },
-    "homepage": "https://inkline.io",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/inkline/config.git"
-    },
-    "license": "ISC"
+  "name": "inkline",
+  "version": "1.0.0",
+  "description": "Inkline monorepo",
+  "main": "index.js",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inkline/inkline.git"
+  },
+  "keywords": [
+    "inkline"
+  ],
+  "author": "Alex Grozav <alex@grozav.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inkline/inkline/issues"
+  },
+  "homepage": "https://github.com/inkline/inkline#readme",
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "turbo": "^1.13.3"
+  },
+  "packageManager": "pnpm@8.15.1"
 }
