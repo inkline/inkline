@@ -15,8 +15,7 @@ import {
     detectDevEnv,
     detectEntryFile,
     extendPackageJson,
-    initDevEnvConfigFile,
-    execShellCommand
+    initDevEnvConfigFile
 } from '../helpers';
 import type { InitEnv } from '../types';
 import { Commands, DevEnvType, PackageJsonSchema } from '../types';
@@ -25,7 +24,7 @@ import { capitalizeFirst } from '@grozav/utils';
 
 async function createConfigFile(env: InitEnv) {
     const outputFilePath = resolve(env.cwd, `inkline.config.${env.isTypescript ? 'ts' : 'js'}`);
-    const formattedCode = prettier.format(defaultConfigFileContents, defaultPrettierConfig);
+    const formattedCode = await prettier.format(defaultConfigFileContents, defaultPrettierConfig);
 
     await writeFile(outputFilePath, formattedCode);
 

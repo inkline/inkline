@@ -34,7 +34,7 @@ export async function initDevEnvConfigFile(
     }
 
     if (configFileContents) {
-        const formattedCode = prettier.format(configFileContents, defaultPrettierConfig);
+        const formattedCode = await prettier.format(configFileContents, defaultPrettierConfig);
 
         await writeFile(devEnv.configFile, formattedCode, 'utf-8');
 
@@ -165,7 +165,7 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
         configFile = addFieldToDefaultExport(configFile, 'plugins', ['inkline(inklineConfig)']);
     }
 
-    const formattedCode = prettier.format(configFile, defaultPrettierConfig);
+    const formattedCode = await prettier.format(configFile, defaultPrettierConfig);
 
     await writeFile(devEnv.configFile, formattedCode, 'utf-8');
 

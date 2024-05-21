@@ -27,15 +27,6 @@ const generate = program
     .description('Generate core and helper files for Inkline.');
 
 generate
-    .command(Commands.Generate.Css.name)
-    .description('Generate CSS variables based on your inkline configuration file.')
-    .option('-c, --config <path>', 'Path to inkline configuration file.')
-    .option('-o, --outputDir <path>', 'Path to output directory.')
-    .action(async (options: Commands.Generate.Css.Options) => {
-        await generateCss(options);
-    });
-
-generate
     .command(Commands.Generate.Scss.name)
     .description('Generate SCSS variables based on your inkline configuration file.')
     .option('-c, --config <path>', 'Path to inkline configuration file.')

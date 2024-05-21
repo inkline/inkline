@@ -1,10 +1,10 @@
 export const packageJsonExtension = {
     dependencies: {
-        '@inkline/inkline': '^4.2.1'
+        '@inkline/inkline': '^5.0.0'
     },
     devDependencies: {
-        '@inkline/plugin': '^1.5.2',
-        '@inkline/config': '^1.9.1',
-        sass: '^1.64.0'
+        '@inkline/plugin': '^2.0.0',
+        '@inkline/config': '^2.0.0',
+        sass: '^1.77.1'
     }
 };

@@ -47,7 +47,7 @@ export async function addPluginToEntryFile(entryFile: string, env: InitEnv): Pro
             ].join('\n')
         );
 
-        const formattedCode = prettier.format(entryFileContents, defaultPrettierConfig);
+        const formattedCode = await prettier.format(entryFileContents, defaultPrettierConfig);
 
         await writeFile(entryFile, formattedCode, 'utf-8');
 
