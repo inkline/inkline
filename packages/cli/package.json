@@ -1,0 +1,91 @@
+{
+  "name": "inkline",
+  "version": "2.6.1",
+  "description": "CLI for Inkline, the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
+  "scripts": {
+    "start": "npm run build && node lib/index.mjs",
+    "dev": "vite",
+    "build": "unbuild && cp package.json lib",
+    "postbuild": "tsx scripts/postbuild.ts",
+    "lint": "eslint --ext .vue,.ts,.tsx,.js,.jsx src",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:ci": "vitest run --coverage",
+    "test:dev": "vitest",
+    "prerelease": "npm-run-all test build",
+    "release": "np",
+    "postrelease": "tsx scripts/postrelease.ts",
+    "postversion": "tsx scripts/postversion.ts"
+  },
+  "devDependencies": {
+    "@grozav/eslint-config": "^1.1.4",
+    "@schemastore/package": "^0.0.10",
+    "@types/object-inspect": "1.13.0",
+    "@types/prettier": "^3.0.0",
+    "@types/shelljs": "0.8.15",
+    "eslint": "8.31",
+    "fast-glob": "^3.2.12",
+    "mjscjs": "^1.1.0",
+    "np": "^10.0.5",
+    "npm-run-all": "4.1.5",
+    "pathe": "^1.0.0",
+    "shelljs": "0.8.5",
+    "tsx": "^4.10.3",
+    "typescript": "^5.4.5",
+    "unbuild": "^2.0.0",
+    "vite": "^5.2.11",
+    "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "@grozav/logger": "^1.0.0",
+    "@grozav/utils": "^1.0.0",
+    "@inkline/config": "^2.0.0-rc.1",
+    "chalk": "^4.1.2",
+    "commander": "^12.0.0",
+    "object-inspect": "^1.12.3",
+    "prettier": "^3.2.5"
+  },
+  "main": "index.js",
+  "module": "index.mjs",
+  "jsdelivr": "index.js",
+  "unpkg": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "**/*"
+  ],
+  "exports": {
+    ".": {
+      "require": "./index.js",
+      "import": "./index.mjs",
+      "types": "./index.d.ts"
+    },
+    "./commands": {
+      "require": "./commands/index.js",
+      "import": "./commands/index.mjs",
+      "types": "./commands/index.d.ts"
+    },
+    "./helpers": {
+      "require": "./helpers/index.js",
+      "import": "./helpers/index.mjs",
+      "types": "./helpers/index.d.ts"
+    },
+    "./constants": {
+      "require": "./constants.js",
+      "import": "./constants.mjs",
+      "types": "./constants.d.ts"
+    },
+    "./types": {
+      "require": "./types.js",
+      "import": "./types.mjs",
+      "types": "./types.d.ts"
+    },
+    "./*": "./*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "inkline": "./index.js"
+  },
+  "license": "MIT"
+}
