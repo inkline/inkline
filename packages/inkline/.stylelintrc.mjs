@@ -1,4 +1,4 @@
-import config from '@grozav/stylelint-config';
+import config from '@inkline/stylelint-config';
 
 export default {
     extends: [
@@ -6,6 +6,5 @@ export default {
     ],
     rules: {
         ...config.rules,
-        'declaration-block-no-duplicate-properties': null
     }
 }

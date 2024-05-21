@@ -1,6 +1,0 @@
-dist
-lib
-node_modules
-public
-storybook-static
-**/*.d.ts

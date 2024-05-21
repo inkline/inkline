@@ -5,8 +5,8 @@ export function isFormField<T extends Form>(
 ): schema is FormField<T[keyof T]> {
     return (
         Object.keys(schema).length === 0 ||
-        schema.hasOwnProperty('value') ||
-        schema.hasOwnProperty('validators')
+        'value' in schema ||
+        'validators' in schema
     );
 }
 

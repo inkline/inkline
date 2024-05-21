@@ -1,0 +1,26 @@
+{
+  "name": "@inkline/eslint-config",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "scripts": {
+    "release": "np",
+    "test": "echo 'All tests passed!'"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.3.0",
+    "eslint": "^9.3.0",
+    "eslint-plugin-vue": "^9.26.0",
+    "typescript-eslint": "^7.9.0"
+  },
+  "devDependencies": {
+    "np": "^10.0.1"
+  },
+  "files": [
+    "index.mjs",
+    ".prettierrc.js",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "ISC"
+}

@@ -1,23 +1,2 @@
-node_modules
-dist
-lib
-tmp
-lib-cjs
-lib-esm
-storybook-static
-package
-coverage
-.idea
-.DS_Store
-dist-ssr
-*.local
-build-storybook.log
-
-# CI
-/inkline-vite
-/inkline-nuxt
-
-# E2E
-/test-results/
-/playwright-report/
-/playwright/.cache/
+node_modules/
+.turbo
