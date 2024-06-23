@@ -1,6 +1,6 @@
-import type { RawTheme } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-const common: RawTheme['elements']['heading'] = {
+const common = {
     margin: {
         top: 0,
         right: 0,
@@ -14,32 +14,32 @@ const common: RawTheme['elements']['heading'] = {
     lineHeight: 1.2
 };
 
-export const h1: RawTheme['elements']['h1'] = {
+export const h1 = defineElement({
     ...common,
     fontSize: 'calc(var(--font-size) * var(--scale-ratio-pow-5))'
-};
+});
 
-export const h2: RawTheme['elements']['h2'] = {
+export const h2 = defineElement({
     ...common,
     fontSize: 'calc(var(--font-size) * var(--scale-ratio-pow-4))'
-};
+});
 
-export const h3: RawTheme['elements']['h3'] = {
+export const h3 = defineElement({
     ...common,
     fontSize: 'calc(var(--font-size) * var(--scale-ratio-pow-3))'
-};
+});
 
-export const h4: RawTheme['elements']['h4'] = {
+export const h4 = defineElement({
     ...common,
     fontSize: 'calc(var(--font-size) * var(--scale-ratio-pow-2))'
-};
+});
 
-export const h5: RawTheme['elements']['h5'] = {
+export const h5 = defineElement({
     ...common,
     fontSize: 'calc(var(--font-size) * var(--scale-ratio-pow-1))'
-};
+});
 
-export const h6: RawTheme['elements']['h6'] = {
+export const h6 = defineElement({
     ...common,
     fontSize: 'var(--font-size)'
-};
+});

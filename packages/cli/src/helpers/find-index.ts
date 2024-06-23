@@ -1,6 +1,6 @@
 import { importRegEx } from '../constants';
 
-export function findLastImportLineIndex(code: string) {
+export function findLastImportLineIndex(code: string): number {
     const matches = [...code.matchAll(importRegEx)];
 
     if (matches.length > 0) {

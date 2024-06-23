@@ -21,11 +21,11 @@ export async function initDevEnvConfigFile(
     { isTypescript }: InitEnv
 ): Promise<boolean> {
     let configFileContents;
-    if (devEnv.type === 'nuxt') {
+    if (devEnv.type === DevEnvType.Nuxt) {
         configFileContents = defaultNuxtDevEnvConfigFileContents;
-    } else if (devEnv.type === 'vite') {
+    } else if (devEnv.type === DevEnvType.Vite) {
         configFileContents = defaultViteDevEnvConfigFileContents;
-    } else if (devEnv.type === 'webpack') {
+    } else if (devEnv.type === DevEnvType.Webpack) {
         if (isTypescript) {
             configFileContents = defaultWebpackTsDevEnvConfigFileContents;
         } else {
@@ -109,7 +109,7 @@ export async function detectDevEnv(
         let packageJson: PackageJsonSchema = {};
         if (existsSync(packageJsonPath)) {
             const packageJsonContents = await readFile(packageJsonPath, 'utf-8');
-            packageJson = JSON.parse(packageJsonContents);
+            packageJson = JSON.parse(packageJsonContents) as PackageJsonSchema;
 
             if (packageJson.dependencies?.nuxt || packageJson.devDependencies?.nuxt) {
                 inferredDevEnvironment = {
@@ -139,16 +139,16 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
     }
 
     let configFile = await readFile(devEnv.configFile, 'utf-8');
-    if (devEnv.type === 'nuxt') {
+    if (devEnv.type === DevEnvType.Nuxt) {
         configFile = addFieldToDefaultExport(configFile, 'modules', ["'@inkline/plugin/nuxt'"]);
-    } else if (devEnv.type === 'vite') {
+    } else if (devEnv.type === DevEnvType.Vite) {
         configFile = addImport(configFile, {
             name: 'inkline',
             from: '@inkline/plugin/vite'
         });
         configFile = addAfterImports(configFile, getPluginPreamble(configFile, devEnv, env));
         configFile = addFieldToDefaultExport(configFile, 'plugins', ['inkline(inklineConfig)']);
-    } else if (devEnv.type === 'webpack') {
+    } else if (devEnv.type === DevEnvType.Webpack) {
         if (env.isTypescript && devEnv.configFile.endsWith('.ts')) {
             configFile = addImport(configFile, {
                 name: 'inkline',

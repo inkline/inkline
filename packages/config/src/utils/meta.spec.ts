@@ -2,10 +2,11 @@ import {
     getResolvedPath,
     isDefaultTheme,
     isEntityPath,
-    shouldGenerateAggregateValue
+    shouldGenerateAggregateValue,
+    traversePathByClassification
 } from './meta';
 import { createTestingGeneratorMeta } from '../__tests__/utils';
-import { ClassifierType, ResolvedTheme } from '../types';
+import { ClassificationType, ResolvedTheme } from '../types';
 
 describe('shouldGenerateAggregateValue', () => {
     it('should return true for default theme and entity path', () => {
@@ -84,11 +85,11 @@ describe('getResolvedPath', () => {
         const meta = createTestingGeneratorMeta({
             theme: {
                 components: {
-                    $type: ClassifierType.Group,
+                    __type: ClassificationType.Group,
                     button: {
-                        $type: ClassifierType.EntityVariants,
+                        __type: ClassificationType.Element,
                         default: {
-                            $type: ClassifierType.Group,
+                            __type: ClassificationType.Group,
                             color: {
                                 h: 0,
                                 s: 0,
@@ -103,5 +104,61 @@ describe('getResolvedPath', () => {
         });
         const result = getResolvedPath(meta);
         expect(result).toEqual(['button', 'default', 'color']);
+    });
+});
+
+describe('traversePathByClassification', () => {
+    it('should traverse path and return kebab-case chunks', () => {
+        const meta = createTestingGeneratorMeta({
+            theme: {
+                components: {
+                    buttonGroup: {
+                        color: 'red'
+                    }
+                }
+            } as unknown as ResolvedTheme,
+            path: ['components', 'buttonGroup', 'color']
+        });
+        const result = traversePathByClassification(meta, () => true);
+        expect(result).toEqual(['components', 'button-group', 'color']);
+    });
+
+    it('should ignore chunks when function returns false', () => {
+        const meta = createTestingGeneratorMeta({
+            theme: {
+                components: {
+                    button: {
+                        color: 'red'
+                    }
+                }
+            } as unknown as ResolvedTheme,
+            path: ['components', 'button', 'color']
+        });
+        const result = traversePathByClassification(meta, () => false);
+        expect(result).toEqual([]);
+    });
+
+    it('should handle empty path', () => {
+        const meta = createTestingGeneratorMeta({
+            theme: {},
+            path: []
+        });
+        const result = traversePathByClassification(meta, () => true);
+        expect(result).toEqual([]);
+    });
+
+    it('should handle path with ignored keys', () => {
+        const meta = createTestingGeneratorMeta({
+            theme: {
+                components: {
+                    button: {
+                        color: 'red'
+                    }
+                }
+            } as unknown as ResolvedTheme,
+            path: ['components', 'button', 'color']
+        });
+        const result = traversePathByClassification(meta, (path, part, ctx) => !ctx.consume);
+        expect(result).toEqual(['button', 'color']);
     });
 });

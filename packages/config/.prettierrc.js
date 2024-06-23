@@ -1,1 +1,1 @@
-module.exports = require('@grozav/eslint-config/.prettierrc');
+module.exports = require('@inkline/eslint-config/.prettierrc');

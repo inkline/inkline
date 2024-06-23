@@ -1,11 +1,11 @@
-import type { RawTheme } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-export const ol: RawTheme['elements']['ol'] = {
+const listBase = {
     padding: {
         top: 0,
         right: 0,
         bottom: 0,
-        left: 'var(--padding-left-lg)'
+        left: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
     },
     margin: {
         top: 0,
@@ -23,11 +23,11 @@ export const ol: RawTheme['elements']['ol'] = {
     }
 };
 
-export const ul: RawTheme['elements']['ul'] = {
-    ...ol
-};
+export const ol = defineElement({ ...listBase });
 
-export const dl: RawTheme['elements']['dl'] = {
+export const ul = defineElement({ ...listBase });
+
+export const dl = defineElement({
     margin: {
         top: 0,
         right: 0,
@@ -45,14 +45,14 @@ export const dl: RawTheme['elements']['dl'] = {
             left: 0
         }
     }
-};
+});
 
-export const list: RawTheme['elements']['list'] = {
+export const list = defineElement({
     padding: {
         top: 0,
         right: 0,
         bottom: 0,
-        left: 'var(--padding-left-lg)'
+        left: 'calc(var(--padding-left) * var(--size-multiplier-lg))'
     },
     margin: {
         top: 0,
@@ -78,4 +78,4 @@ export const list: RawTheme['elements']['list'] = {
             }
         }
     }
-};
+});

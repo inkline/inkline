@@ -8,13 +8,13 @@ import {
 } from './cssVariables';
 import { createTestingGeneratorMeta } from '../../__tests__/utils';
 import type { ResolvedTheme } from '../../types';
-import { ClassifierType } from '../../types';
+import { ClassificationType } from '../../types';
 
 const theme = {
     colors: {
-        $type: ClassifierType.Group,
+        __type: ClassificationType.Group,
         red: {
-            $type: ClassifierType.PrimitiveVariants,
+            __type: ClassificationType.Variable,
             default: {
                 h: '0',
                 s: '100%',
@@ -24,12 +24,11 @@ const theme = {
         }
     },
     components: {
-        $type: ClassifierType.Group,
-        $ignoreKey: true,
+        __type: ClassificationType.Group,
         button: {
-            $type: ClassifierType.EntityVariants,
+            __type: ClassificationType.Element,
             default: {
-                $type: ClassifierType.Group,
+                __type: ClassificationType.Group,
                 color: {
                     h: '240',
                     s: '100%',
@@ -37,12 +36,12 @@ const theme = {
                     a: 1
                 },
                 icon: {
-                    $type: ClassifierType.Group,
+                    __type: ClassificationType.ChildElement,
                     size: '16px'
                 }
             },
             primary: {
-                $type: ClassifierType.Group,
+                __type: ClassificationType.Group,
                 spacing: '1rem',
                 color: {
                     h: '0',
@@ -65,13 +64,18 @@ describe('getCssVariablePreamblePath', () => {
         expect(result).toEqual([]);
     });
 
-    it('should filter out fields with $ignoreKey set to true', () => {
+    it('should not filter out fields with __consume set to true', () => {
         const meta = createTestingGeneratorMeta({
-            path: ['components'],
-            theme
+            path: ['test'],
+            theme: {
+                test: {
+                    __type: ClassificationType.Group,
+                    __consume: true
+                }
+            }
         });
         const result = getCssVariablePreamblePath(meta);
-        expect(result).toEqual([]);
+        expect(result).toEqual(['test']);
     });
 
     it('should filter out "default" variant name for entity variants', () => {

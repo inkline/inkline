@@ -1,11 +1,10 @@
-import type { RawTheme } from '../../../../types';
-import type { PartialDeep } from 'type-fest';
 import { border } from './border';
-import { typography } from './typography';
+import { textColor } from './typography';
 import { elements } from './elements';
+import { defineTheme } from '../../../../utils';
 
-export const darkTheme: PartialDeep<RawTheme> = {
+export const darkTheme = defineTheme({
     border,
-    typography,
+    textColor,
     elements
-};
+});

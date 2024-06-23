@@ -1,6 +1,6 @@
-import type { RawTheme } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-export const body: RawTheme['elements']['body'] = {
+export const body = defineElement({
     background: 'var(--color-white)',
     color: 'var(--text-color-dark)',
     fontSize: 'var(--font-size)',
@@ -13,4 +13,4 @@ export const body: RawTheme['elements']['body'] = {
         duration: 'var(--transition-duration)',
         timingFunction: 'var(--transition-timing-function)'
     }
-};
+});

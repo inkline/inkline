@@ -1,17 +1,18 @@
-import type { RawTheme } from '../../../../types';
 import { spacingVariants } from '../../../common';
+import {
+    defineMarginVariable,
+    definePaddingVariable,
+    defineSpacingVariable
+} from '../../../../utils';
 
-export const spacing: RawTheme['spacing'] = {
-    default: '1rem',
+export const spacing = defineSpacingVariable('1rem', {
     ...spacingVariants
-};
+});
 
-export const margin: RawTheme['margin'] = {
-    default: 'var(--spacing)',
+export const margin = defineMarginVariable('var(--spacing)', {
     ...spacingVariants
-};
+});
 
-export const padding: RawTheme['padding'] = {
-    default: 'var(--spacing)',
+export const padding = definePaddingVariable('var(--spacing)', {
     ...spacingVariants
-};
+});

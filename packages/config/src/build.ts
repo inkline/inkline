@@ -1,11 +1,9 @@
 import { loadConfigurationFromFile } from './load';
-import { applyAggregators, applyChunkGenerators } from './apply';
 import {
-    AggregatorFile,
-    AggregatorMeta,
+    BuildChunk,
     BuildOptions,
     GeneratorMeta,
-    GeneratorPriority,
+    OutputModifierMeta,
     ResolvedBuildOptions,
     ResolvedConfiguration
 } from './types';
@@ -20,6 +18,11 @@ import {
 import { dirname, resolve } from 'pathe';
 import { mkdir, writeFile } from 'fs/promises';
 import prettier from 'prettier';
+import {
+    applyChunkGenerators,
+    applyOutputContentModifiers,
+    applyOutputPathModifiers
+} from './apply';
 
 /**
  * Load configuration, resolve and generate CSS files.
@@ -33,79 +36,141 @@ export async function build(options: BuildOptions = {}): Promise<{
     filePaths: string[];
     fileContents: string[];
 }> {
-    const resolvedOptions = getResolvedBuildOptions(options);
+    /**
+     * Load configuration
+     */
 
-    const resolvedConfig = await loadConfigurationFromFile({
-        cwd: resolvedOptions.configDir,
-        configFile: `${resolvedOptions.configFile}${resolvedOptions.configExtName}`
+    const buildOptions = getResolvedBuildOptions(options);
+    const configuration = await loadConfigurationFromFile({
+        cwd: buildOptions.configDir,
+        configFile: `${buildOptions.configFile}${buildOptions.configExtName}`
     });
 
-    if (!(await exists(resolvedOptions.outputDir))) {
-        await mkdir(resolvedOptions.outputDir, { recursive: true });
+    /**
+     * Create output directory
+     */
+
+    if (!(await exists(buildOptions.outputDir))) {
+        await mkdir(buildOptions.outputDir, { recursive: true });
     }
 
     const formatFileContentsPromises: Promise<string>[] = [];
     const mkdirPromises: Promise<string | undefined>[] = [];
     const writeFilePromises: Promise<void>[] = [];
     const filePaths: string[] = [];
-    const indexFiles: Record<
-        string,
-        Array<{
-            importPath: string;
-            priority: GeneratorPriority;
-        }>
-    > = {};
 
-    for (const themeName in resolvedConfig.themes) {
-        const theme = resolvedConfig.themes[themeName];
-        const themeSelector = interpolate(resolvedOptions.themeSelector, {
+    for (const themeName in configuration.themes) {
+        const theme = configuration.themes[themeName];
+        const themeSelector = interpolate(buildOptions.themeSelector, {
             themeName
         });
         const isDefaultTheme = themeName === 'default';
 
+        /**
+         * Create theme output directory
+         */
+
         const themeOutputDir: string = isDefaultTheme
-            ? resolvedOptions.outputDir
-            : resolve(resolvedOptions.outputDir, themeName);
+            ? buildOptions.outputDir
+            : resolve(buildOptions.outputDir, themeName);
         if (!(await exists(themeOutputDir))) {
             await mkdir(themeOutputDir);
         }
+
+        /**
+         * Generate chunks
+         */
 
         const generatorMeta: GeneratorMeta = {
             path: [],
             theme,
             themeName,
-            generators: resolvedConfig.generators
+            generators: configuration.generators
         };
-        const chunks = applyChunkGenerators(theme, generatorMeta).map((chunk) => ({
+        let chunks = applyChunkGenerators(theme, generatorMeta).map((chunk) => ({
             ...chunk,
             path: convertChunkPathToFilePath({ ...generatorMeta, path: chunk.path })
         }));
 
-        const aggregatorMeta: AggregatorMeta = {
+        /**
+         * Apply output path modifiers
+         */
+
+        const outputModifierMeta: OutputModifierMeta = {
             themeName,
-            themeSelector,
-            aggregators: resolvedConfig.aggregators
+            themeSelector
         };
-        const files = applyAggregators(chunks, aggregatorMeta);
-        files.sort((a, b) => a.priority - b.priority);
 
-        const resolvedFiles = files.reduce<AggregatorFile[]>(
-            (acc, file) => {
-                const existingFile = acc.find((f) => f.path.join('.') === file.path.join('.'));
-                if (existingFile) {
-                    existingFile.content.push(...file.content);
-                } else {
-                    acc.push(file);
-                }
-
-                return acc;
-            },
-            [...(resolvedConfig.dependencies as AggregatorFile[])]
+        chunks = applyOutputPathModifiers(
+            chunks,
+            configuration.outputModifiers,
+            outputModifierMeta
         );
 
-        for (const file of resolvedFiles) {
+        /**
+         * Join chunks with the same path and type
+         */
+
+        chunks = chunks.reduce<BuildChunk[]>((acc, chunk) => {
+            const existingChunk = acc.find(
+                (c) => c.path.join('.') === chunk.path.join('.') && chunk.output === c.output
+            );
+
+            if (existingChunk) {
+                existingChunk.content.push(...chunk.content);
+            } else {
+                acc.push(chunk);
+            }
+
+            return acc;
+        }, []);
+
+        /**
+         * Apply output content modifiers
+         */
+
+        chunks = applyOutputContentModifiers(
+            chunks,
+            configuration.outputModifiers,
+            outputModifierMeta
+        );
+
+        /**
+         * Sort chunks by priority
+         */
+
+        chunks.sort((a, b) => a.priority - b.priority);
+
+        /**
+         * Join chunks with the same path regardless of type
+         */
+
+        chunks = chunks.reduce<BuildChunk[]>((acc, chunk) => {
+            const existingFile = acc.find((c) => c.path.join('.') === chunk.path.join('.'));
+            if (existingFile) {
+                existingFile.content.push(...chunk.content);
+            } else {
+                acc.push(chunk);
+            }
+
+            return acc;
+        }, []);
+
+        /**
+         * Create files
+         */
+
+        const files = chunks
+            .map((chunk) => ({ path: chunk.path, content: chunk.content }))
+            .concat(configuration.files);
+
+        /**
+         * Format file contents
+         */
+
+        for (const file of files) {
             const filePathParts = file.path.map((part) => toKebabCase(part));
-            const filePath = `${resolve(themeOutputDir, ...filePathParts)}${resolvedOptions.extName}`;
+            const filePath = `${resolve(themeOutputDir, ...filePathParts)}${buildOptions.extName}`;
             const fileDir = dirname(filePath);
 
             if (!(await exists(fileDir))) {
@@ -120,11 +185,16 @@ export async function build(options: BuildOptions = {}): Promise<{
             );
         }
 
-        const indexFiles = extractIndexFiles(resolvedFiles);
+        /**
+         * Generate index files
+         */
 
+        const indexFiles = extractIndexFiles(files);
+
+        // Add all themes to the default theme index file
         if (themeName === 'default') {
             indexFiles[0].import.push(
-                ...Object.keys(resolvedConfig.themes).filter((t) => t !== 'default')
+                ...Object.keys(configuration.themes).filter((t) => t !== 'default')
             );
         }
 
@@ -132,7 +202,7 @@ export async function build(options: BuildOptions = {}): Promise<{
             const indexFilePath = resolve(
                 themeOutputDir,
                 ...indexFile.path,
-                `index${resolvedOptions.extName}`
+                `index${buildOptions.extName}`
             );
             const indexFileContents = indexFile.import
                 .map((importPath) => `@import './${importPath}';`)
@@ -142,16 +212,24 @@ export async function build(options: BuildOptions = {}): Promise<{
         }
     }
 
+    /**
+     * Write files
+     */
+
     const fileContents = await Promise.all(formatFileContentsPromises);
     for (let i = 0; i < fileContents.length; i++) {
         writeFilePromises.push(writeFile(filePaths[i], fileContents[i], 'utf-8'));
     }
 
+    /**
+     * Write manifest
+     */
+
     // if (resolvedOptions.manifest) {
     writeFilePromises.push(
         writeFile(
-            resolve(resolvedOptions.outputDir, 'manifest.json'),
-            JSON.stringify(resolvedConfig.themes, null, 4)
+            resolve(buildOptions.outputDir, 'manifest.json'),
+            JSON.stringify(configuration.themes, null, 4)
         )
     );
     // }
@@ -160,8 +238,8 @@ export async function build(options: BuildOptions = {}): Promise<{
     await Promise.all(writeFilePromises);
 
     return {
-        options: resolvedOptions,
-        config: resolvedConfig,
+        options: buildOptions,
+        config: configuration,
         filePaths,
         fileContents
     };

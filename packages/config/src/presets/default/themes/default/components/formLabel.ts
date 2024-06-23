@@ -1,7 +1,7 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const formLabel: RawTheme['components']['formLabel'] = {
-    default: {
+export const formLabel = defineComponent(
+    {
         fontSize: 'var(--font-size)',
         margin: {
             top: 0,
@@ -27,13 +27,15 @@ export const formLabel: RawTheme['components']['formLabel'] = {
             color: 'var(--color-danger)'
         }
     },
-    sm: {
-        fontSize: 'var(--font-size-sm)'
-    },
-    md: {
-        fontSize: 'var(--font-size-md)'
-    },
-    lg: {
-        fontSize: 'var(--font-size-lg)'
+    {
+        sm: {
+            fontSize: 'calc(var(--form-label--font-size) * var(--size-multiplier-sm))'
+        },
+        md: {
+            fontSize: 'calc(var(--form-label--font-size) * var(--size-multiplier-md))'
+        },
+        lg: {
+            fontSize: 'calc(var(--form-label--font-size) * var(--size-multiplier-lg))'
+        }
     }
-};
+);

@@ -1,6 +1,6 @@
-import type { RawTheme } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-export const blockquote: RawTheme['elements']['blockquote'] = {
+export const blockquote = defineElement({
     fontSize: 'var(--font-size)',
     margin: {
         top: 0,
@@ -38,4 +38,4 @@ export const blockquote: RawTheme['elements']['blockquote'] = {
         color: 'var(--text-color-weak)',
         fontSize: '80%'
     }
-};
+});

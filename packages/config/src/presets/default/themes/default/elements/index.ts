@@ -1,4 +1,3 @@
-import type { RawTheme } from '../../../../../types';
 import { address } from './address';
 import { blockquote } from './blockquote';
 import { body } from './body';
@@ -15,8 +14,9 @@ import { figure, thumbnail } from './images';
 import { dl, list, ol, ul } from './lists';
 import { mark } from './mark';
 import { initialism, lead, p } from './paragraphs';
+import { defineElementsGroup } from '../../../../../utils';
 
-export const elements: RawTheme['elements'] = {
+export const elements = defineElementsGroup({
     address,
     blockquote,
     body,
@@ -49,4 +49,4 @@ export const elements: RawTheme['elements'] = {
     samp,
     thumbnail,
     ul
-};
+});

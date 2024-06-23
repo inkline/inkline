@@ -1,9 +1,17 @@
 {
-    "extends": "./src/playground/nuxt/.nuxt/tsconfig.json",
+    "extends": [
+        "./playground/nuxt/.nuxt/tsconfig.json",
+        "../../tooling/typescript-config/tsconfig.json",
+    ],
+    "compilerOptions": {
+        "moduleResolution": "node"
+    },
     "include": [
-        "src/playground/nuxt/*.ts",
-        "src/playground/nuxt/*.d.ts",
-        "src/playground/nuxt/*.tsx",
+        "src/nuxt.ts",
+        "src/plugin/types.ts",
+        "playground/nuxt/*.ts",
+        "playground/nuxt/*.d.ts",
+        "playground/nuxt/*.tsx",
         "nuxt.config.ts"
     ]
 }

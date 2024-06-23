@@ -1,0 +1,14 @@
+:root {
+  --size-multiplier: 1;
+  --size-multiplier-xxs: calc(
+    var(--size-multiplier) / var(--scale-ratio-pow-3)
+  );
+  --size-multiplier-xs: calc(var(--size-multiplier) / var(--scale-ratio-pow-2));
+  --size-multiplier-sm: calc(var(--size-multiplier) / var(--scale-ratio-pow-1));
+  --size-multiplier-md: var(--size-multiplier);
+  --size-multiplier-lg: calc(var(--size-multiplier) * var(--scale-ratio-pow-1));
+  --size-multiplier-xl: calc(var(--size-multiplier) * var(--scale-ratio-pow-2));
+  --size-multiplier-xxl: calc(
+    var(--size-multiplier) * var(--scale-ratio-pow-3)
+  );
+}

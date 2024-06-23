@@ -113,7 +113,7 @@ describe('Components', () => {
                             }
                         },
                         props: {
-                            value,
+                            modelValue: value,
                             ...props
                         }
                     });

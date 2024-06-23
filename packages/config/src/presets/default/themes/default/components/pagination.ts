@@ -1,7 +1,7 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const pagination: RawTheme['components']['pagination'] = {
-    default: {
+export const pagination = defineComponent(
+    {
         color: 'var(--contrast-text-color-light)',
         fontSize: 'var(--font-size)',
         transition: {
@@ -79,82 +79,96 @@ export const pagination: RawTheme['components']['pagination'] = {
             }
         }
     },
-    light: {
-        color: 'var(--contrast-text-color-light)',
-        item: {
-            background: 'var(--color-white)',
-            border: {
-                color: 'var(--color-light-shade-50)'
-            },
-            hover: {
-                background: 'var(--color-light)'
+    {
+        light: {
+            color: 'var(--contrast-text-color-light)',
+            item: {
+                background: 'var(--color-white)',
+                border: {
+                    color: 'var(--color-light-shade-50)'
+                },
+                hover: {
+                    background: 'var(--color-light)'
+                }
             }
-        }
-    },
-    dark: {
-        color: 'var(--contrast-text-color-dark)',
-        item: {
-            background: 'var(--color-dark)',
-            border: {
-                color: 'var(--color-dark-tint-50)'
-            },
-            hover: {
-                background: 'var(--color-dark-tint-50)'
+        },
+        dark: {
+            color: 'var(--contrast-text-color-dark)',
+            item: {
+                background: 'var(--color-dark)',
+                border: {
+                    color: 'var(--color-dark-tint-50)'
+                },
+                hover: {
+                    background: 'var(--color-dark-tint-50)'
+                }
             }
-        }
-    },
-    sm: {
-        fontSize: 'var(--font-size-sm)',
-        item: {
-            borderRadius: {
-                topLeft: 'var(--border-top-left-radius-sm)',
-                topRight: 'var(--border-top-right-radius-sm)',
-                bottomRight: 'var(--border-bottom-right-radius-sm)',
-                bottomLeft: 'var(--border-bottom-left-radius-sm)'
-            },
-            padding: {
-                top: 'var(--padding-top-sm)',
-                right: 'var(--padding-right-sm)',
-                bottom: 'var(--padding-bottom-sm)',
-                left: 'var(--padding-left-sm)'
-            },
-            minWidth: '32px'
-        }
-    },
-    md: {
-        fontSize: 'var(--font-size-md)',
-        item: {
-            borderRadius: {
-                topLeft: 'var(--border-top-left-radius-md)',
-                topRight: 'var(--border-top-right-radius-md)',
-                bottomRight: 'var(--border-bottom-right-radius-md)',
-                bottomLeft: 'var(--border-bottom-left-radius-md)'
-            },
-            padding: {
-                top: 'var(--padding-top-md)',
-                right: 'var(--padding-right-md)',
-                bottom: 'var(--padding-bottom-md)',
-                left: 'var(--padding-left-md)'
-            },
-            minWidth: '40px'
-        }
-    },
-    lg: {
-        fontSize: 'var(--font-size-lg)',
-        item: {
-            borderRadius: {
-                topLeft: 'var(--border-top-left-radius-lg)',
-                topRight: 'var(--border-top-right-radius-lg)',
-                bottomRight: 'var(--border-bottom-right-radius-lg)',
-                bottomLeft: 'var(--border-bottom-left-radius-lg)'
-            },
-            padding: {
-                top: 'var(--padding-top-lg)',
-                right: 'var(--padding-right-lg)',
-                bottom: 'var(--padding-bottom-lg)',
-                left: 'var(--padding-left-lg)'
-            },
-            minWidth: '48px'
+        },
+        sm: {
+            fontSize: 'calc(var(--pagination--font-size) * var(--size-multiplier-sm))',
+            item: {
+                borderRadius: {
+                    topLeft:
+                        'calc(var(--pagination--border-top-left-radius) * var(--size-multiplier-sm))',
+                    topRight:
+                        'calc(var(--pagination--border-top-right-radius) * var(--size-multiplier-sm))',
+                    bottomRight:
+                        'calc(var(--pagination--border-bottom-right-radius) * var(--size-multiplier-sm))',
+                    bottomLeft:
+                        'calc(var(--pagination--border-bottom-left-radius) * var(--size-multiplier-sm))'
+                },
+                padding: {
+                    top: 'calc(var(--pagination--padding-top) * var(--size-multiplier-sm))',
+                    right: 'calc(var(--pagination--padding-right) * var(--size-multiplier-sm))',
+                    bottom: 'calc(var(--pagination--padding-bottom) * var(--size-multiplier-sm))',
+                    left: 'calc(var(--pagination--padding-left) * var(--size-multiplier-sm))'
+                },
+                minWidth: '32px'
+            }
+        },
+        md: {
+            fontSize: 'calc(var(--pagination--font-size) * var(--size-multiplier-md))',
+            item: {
+                borderRadius: {
+                    topLeft:
+                        'calc(var(--pagination--border-top-left-radius) * var(--size-multiplier-md))',
+                    topRight:
+                        'calc(var(--pagination--border-top-right-radius) * var(--size-multiplier-md))',
+                    bottomRight:
+                        'calc(var(--pagination--border-bottom-right-radius) * var(--size-multiplier-md))',
+                    bottomLeft:
+                        'calc(var(--pagination--border-bottom-left-radius) * var(--size-multiplier-md))'
+                },
+                padding: {
+                    top: 'calc(var(--pagination--padding-top) * var(--size-multiplier-md))',
+                    right: 'calc(var(--pagination--padding-right) * var(--size-multiplier-md))',
+                    bottom: 'calc(var(--pagination--padding-bottom) * var(--size-multiplier-md))',
+                    left: 'calc(var(--pagination--padding-left) * var(--size-multiplier-md))'
+                },
+                minWidth: '40px'
+            }
+        },
+        lg: {
+            fontSize: 'calc(var(--pagination--font-size) * var(--size-multiplier-lg))',
+            item: {
+                borderRadius: {
+                    topLeft:
+                        'calc(var(--pagination--border-top-left-radius) * var(--size-multiplier-lg))',
+                    topRight:
+                        'calc(var(--pagination--border-top-right-radius) * var(--size-multiplier-lg))',
+                    bottomRight:
+                        'calc(var(--pagination--border-bottom-right-radius) * var(--size-multiplier-lg))',
+                    bottomLeft:
+                        'calc(var(--pagination--border-bottom-left-radius) * var(--size-multiplier-lg))'
+                },
+                padding: {
+                    top: 'calc(var(--pagination--padding-top) * var(--size-multiplier-lg))',
+                    right: 'calc(var(--pagination--padding-right) * var(--size-multiplier-lg))',
+                    bottom: 'calc(var(--pagination--padding-bottom) * var(--size-multiplier-lg))',
+                    left: 'calc(var(--pagination--padding-left) * var(--size-multiplier-lg))'
+                },
+                minWidth: '48px'
+            }
         }
     }
-};
+);

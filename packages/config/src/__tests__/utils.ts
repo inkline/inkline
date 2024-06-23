@@ -1,27 +1,17 @@
 import type {
-    Classifier,
-    ClassifierMeta,
     Generator,
     GeneratorMeta,
     RawTheme,
     ResolvedTheme,
     Resolver,
-    ResolverMeta
+    ResolverMeta,
+    ThemeGroup
 } from '../types';
-import { defaultClassifiers, defaultGenerators, defaultResolvers, defaultThemes } from '../presets';
+import { defaultModules, defaultThemes } from '../presets';
 import { applyResolvers } from '../apply';
+import { loadModules } from '../load';
 
-export function createTestingClassifierMeta(options?: {
-    path?: string[];
-    theme?: Partial<RawTheme>;
-    classifiers?: Classifier[];
-}): ClassifierMeta {
-    return {
-        path: options?.path ?? [],
-        theme: (options?.theme ?? defaultThemes.default) as RawTheme,
-        classifiers: options?.classifiers ?? defaultClassifiers
-    };
-}
+const { resolvers, generators } = loadModules(defaultModules);
 
 export function createTestingResolverMeta(options?: {
     path?: string[];
@@ -30,8 +20,8 @@ export function createTestingResolverMeta(options?: {
 }): ResolverMeta {
     return {
         path: options?.path ?? [],
-        theme: (options?.theme ?? defaultThemes.default) as RawTheme,
-        resolvers: options?.resolvers ?? defaultResolvers
+        theme: (options?.theme ?? defaultThemes.default) as ThemeGroup<RawTheme>,
+        resolvers: options?.resolvers ?? resolvers
     };
 }
 
@@ -46,10 +36,10 @@ export function createTestingGeneratorMeta(options?: {
         theme: (options?.theme ??
             applyResolvers(defaultThemes.default, {
                 path: [],
-                theme: defaultThemes.default,
-                resolvers: defaultResolvers
+                theme: defaultThemes.default as ThemeGroup<RawTheme>,
+                resolvers
             })) as ResolvedTheme,
         themeName: options?.themeName ?? 'default',
-        generators: options?.generators ?? defaultGenerators
+        generators: options?.generators ?? generators
     };
 }

@@ -1,8 +1,9 @@
 import type { RawTheme } from './theme';
+import { ThemeGroup } from './classifier';
 
 export interface ResolverMeta {
     path: string[];
-    theme: RawTheme;
+    theme: ThemeGroup<RawTheme>;
     resolvers: Resolver<any, any>[];
 }
 

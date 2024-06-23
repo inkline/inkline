@@ -2,23 +2,24 @@
 
 import chalk from 'chalk';
 import { program } from 'commander';
-import { Commands } from './types';
-import { generateCss, generateScss, init } from './commands';
+import { Commands, PackageJsonSchema } from "./types";
+import { generateScss, init } from './commands';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const packageJson = require('../package.json');
+const packageJson = require('../package.json') as PackageJsonSchema;
 
 program
     .name(chalk.blue('inkline'))
-    .description(packageJson.description)
-    .version(packageJson.version);
+    .description(packageJson.description ?? '')
+    .version(packageJson.version ?? '1.0.0');
 
 program
     .command(Commands.Init.name)
     .description('Initialize Inkline and create a configuration file.')
     .option('-m, --manual', 'Skip file processing and create a configuration file only.')
-    .action(async (type: string, options: Commands.Init.Options) => {
+    .option('-d, --dev', 'Enable development mode.')
+    .action(async (options: Commands.Init.Options) => {
         await init(options);
     });
 

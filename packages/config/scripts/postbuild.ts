@@ -1,14 +1,8 @@
-import * as shell from 'shelljs';
-import { resolve } from 'path';
+import { postbuild } from '@inkline/build';
+import * as path from 'path';
 
-/**
- * Change directory to root
- */
+(async () => {
+    const baseDir = path.resolve(__dirname, '..');
 
-shell.cd(resolve(__dirname, '..'));
-
-shell.rm('-r', 'lib/**/__tests__');
-
-shell.cp('./README.md', 'lib');
-shell.cp('./LICENSE', 'lib');
-shell.cp('./package.json', 'lib');
+    await postbuild(baseDir);
+})();

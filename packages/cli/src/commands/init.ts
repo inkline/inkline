@@ -6,9 +6,9 @@ import chalk from 'chalk';
 import {
     defaultConfigFileContents,
     defaultPrettierConfig,
-    manualInstallationUrl,
+    manualInstallationUrl, packageJsonDevelopmentExtension,
     packageJsonExtension
-} from '../constants';
+} from "../constants";
 import {
     addPluginToDevEnvConfigFile,
     addPluginToEntryFile,
@@ -46,7 +46,8 @@ export async function init(options: Commands.Init.Options) {
         let packageJson: PackageJsonSchema = {};
         if (packageJsonFound) {
             Logger.success(`Detected package.json file.`);
-            packageJson = await extendPackageJson(packageJsonPath, packageJsonExtension);
+            packageJson = await extendPackageJson(packageJsonPath,
+                options.dev ? packageJsonDevelopmentExtension : packageJsonExtension);
             Logger.default(`Updated ${packageJsonPath}`);
         } else {
             initSuccessful = false;
@@ -75,7 +76,7 @@ export async function init(options: Commands.Init.Options) {
             await addPluginToDevEnvConfigFile(devEnv, initEnv);
 
             if (devEnv.type !== DevEnvType.Nuxt) {
-                const entryFile = await detectEntryFile(initEnv);
+                const entryFile = detectEntryFile(initEnv);
                 if (entryFile) {
                     const updated = await addPluginToEntryFile(entryFile, initEnv);
 

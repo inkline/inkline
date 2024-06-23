@@ -1,62 +1,53 @@
-import type { RawTheme } from '../../../../types';
 import {
     colorLightnessVariants,
     colorShadeAndTintVariants,
     colorShadeVariants
 } from '../../../common';
+import { defineColorVariable, defineColorsGroup } from '../../../../utils';
 
-export const colors: RawTheme['colors'] = {
-    red: '#f2413d',
-    orange: '#f98e5a',
-    yellow: '#ffda77',
-    green: '#2fb079',
-    teal: '#48b4a9',
-    blue: '#178bb2',
-    purple: '#8268ae',
-    pink: '#fc778a',
-    white: '#ffffff',
-    black: '#000000',
-    gray: {
-        default: '#8e9fa4',
+export const colors = defineColorsGroup({
+    red: defineColorVariable('#f55252'),
+    orange: defineColorVariable('#f98e5a'),
+    yellow: defineColorVariable('#ffda77'),
+    green: defineColorVariable('#2fb079'),
+    teal: defineColorVariable('#48b4a9'),
+    blue: defineColorVariable('#178bb2'),
+    purple: defineColorVariable('#8268ae'),
+    pink: defineColorVariable('#fc778a'),
+    white: defineColorVariable('#ffffff'),
+    black: defineColorVariable('#000000'),
+    gray: defineColorVariable('#8e9fa4', {
         ...colorShadeAndTintVariants,
         ...colorLightnessVariants
-    },
-    light: {
-        default: 'var(--color-gray-50)',
+    }),
+    light: defineColorVariable('var(--color-gray-50)', {
         ...colorShadeVariants
-    },
-    dark: {
-        default: 'var(--color-gray-800)',
+    }),
+    dark: defineColorVariable('var(--color-gray-800)', {
         ...colorShadeAndTintVariants
-    },
-    primary: {
-        default: 'var(--color-blue)',
+    }),
+    primary: defineColorVariable('var(--color-blue)', {
         ...colorLightnessVariants,
         ...colorShadeAndTintVariants
-    },
-    secondary: {
-        default: 'var(--color-purple)',
+    }),
+    secondary: defineColorVariable('var(--color-purple)', {
         ...colorLightnessVariants,
         ...colorShadeAndTintVariants
-    },
-    info: {
-        default: 'var(--color-teal)',
+    }),
+    info: defineColorVariable('var(--color-teal)', {
         ...colorLightnessVariants,
         ...colorShadeAndTintVariants
-    },
-    success: {
-        default: 'var(--color-green)',
+    }),
+    success: defineColorVariable('var(--color-green)', {
         ...colorLightnessVariants,
         ...colorShadeAndTintVariants
-    },
-    warning: {
-        default: 'var(--color-yellow)',
+    }),
+    warning: defineColorVariable('var(--color-orange)', {
         ...colorLightnessVariants,
         ...colorShadeAndTintVariants
-    },
-    danger: {
-        default: 'var(--color-red)',
+    }),
+    danger: defineColorVariable('var(--color-red)', {
         ...colorLightnessVariants,
         ...colorShadeAndTintVariants
-    }
-};
+    })
+});

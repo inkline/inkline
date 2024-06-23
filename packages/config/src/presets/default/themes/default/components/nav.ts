@@ -1,7 +1,7 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const nav: RawTheme['components']['nav'] = {
-    default: {
+export const nav = defineComponent(
+    {
         color: 'var(--contrast-text-color-light)',
         fontSize: 'var(--font-size)',
         transition: {
@@ -25,37 +25,39 @@ export const nav: RawTheme['components']['nav'] = {
             }
         }
     },
-    light: {
-        color: 'var(--contrast-text-color-light)'
-    },
-    dark: {
-        color: 'var(--contrast-text-color-dark)'
-    },
-    sm: {
-        fontSize: 'var(--font-size-sm)',
-        padding: {
-            top: 'var(--padding-top-sm)',
-            right: 'var(--padding-right-sm)',
-            bottom: 'var(--padding-bottom-sm)',
-            left: 'var(--padding-left-sm)'
-        }
-    },
-    md: {
-        fontSize: 'var(--font-size-md)',
-        padding: {
-            top: 'var(--padding-top-md)',
-            right: 'var(--padding-right-md)',
-            bottom: 'var(--padding-bottom-md)',
-            left: 'var(--padding-left-md)'
-        }
-    },
-    lg: {
-        fontSize: 'var(--font-size-lg)',
-        padding: {
-            top: 'var(--padding-top-lg)',
-            right: 'var(--padding-right-lg)',
-            bottom: 'var(--padding-bottom-lg)',
-            left: 'var(--padding-left-lg)'
+    {
+        light: {
+            color: 'var(--contrast-text-color-light)'
+        },
+        dark: {
+            color: 'var(--contrast-text-color-dark)'
+        },
+        sm: {
+            fontSize: 'calc(var(--nav--font-size) * var(--size-multiplier-sm))',
+            padding: {
+                top: 'calc(var(--nav--padding-top) * var(--size-multiplier-sm))',
+                right: 'calc(var(--nav--padding-right) * var(--size-multiplier-sm))',
+                bottom: 'calc(var(--nav--padding-bottom) * var(--size-multiplier-sm))',
+                left: 'calc(var(--nav--padding-left) * var(--size-multiplier-sm))'
+            }
+        },
+        md: {
+            fontSize: 'calc(var(--nav--font-size) * var(--size-multiplier-md))',
+            padding: {
+                top: 'calc(var(--nav--padding-top) * var(--size-multiplier-md))',
+                right: 'calc(var(--nav--padding-right) * var(--size-multiplier-md))',
+                bottom: 'calc(var(--nav--padding-bottom) * var(--size-multiplier-md))',
+                left: 'calc(var(--nav--padding-left) * var(--size-multiplier-md))'
+            }
+        },
+        lg: {
+            fontSize: 'calc(var(--nav--font-size) * var(--size-multiplier-lg))',
+            padding: {
+                top: 'calc(var(--nav--padding-top) * var(--size-multiplier-lg))',
+                right: 'calc(var(--nav--padding-right) * var(--size-multiplier-lg))',
+                bottom: 'calc(var(--nav--padding-bottom) * var(--size-multiplier-lg))',
+                left: 'calc(var(--nav--padding-left) * var(--size-multiplier-lg))'
+            }
         }
     }
-};
+);

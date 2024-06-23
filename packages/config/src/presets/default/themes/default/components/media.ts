@@ -1,14 +1,12 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const media: RawTheme['components']['media'] = {
-    default: {
-        image: {
-            margin: {
-                top: 0,
-                right: 'var(--margin-right)',
-                bottom: 0,
-                left: 0
-            }
+export const media = defineComponent({
+    image: {
+        margin: {
+            top: 0,
+            right: 'var(--margin-right)',
+            bottom: 0,
+            left: 0
         }
     }
-};
+});

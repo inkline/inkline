@@ -8,15 +8,16 @@ import {
 import { basename, dirname, extname, resolve } from 'pathe';
 import {
     BuildOptions,
-    ClassifierType,
-    GeneratorChunk,
+    ClassificationType,
+    BuildChunk,
     GeneratorMeta,
     GeneratorPriority,
     IndexFile,
-    ResolvedBuildOptions
+    ResolvedBuildOptions,
+    GeneratorOutput
 } from '../types';
 import { existsSync } from 'fs';
-import { traversePathByClassification } from './path';
+import { traversePathByClassification } from './meta';
 
 export function getResolvedBuildOptions(options: BuildOptions): ResolvedBuildOptions {
     const resolvedOptions: ResolvedBuildOptions = {
@@ -49,21 +50,15 @@ export function getResolvedBuildOptions(options: BuildOptions): ResolvedBuildOpt
 
 export const chunkToFilePathAllowlist = ['generic', 'mixins', 'layers', 'columns'];
 
-export function convertChunkPathToFilePath(meta: GeneratorMeta): GeneratorChunk['path'] {
+export function convertChunkPathToFilePath(meta: GeneratorMeta): BuildChunk['path'] {
     return traversePathByClassification(meta, (path, part, ctx) => {
-        const isSpecialPath = path[0] === 'colors' && part !== 'colors';
-        const isVariantChild = [
-            ClassifierType.EntityVariants,
-            ClassifierType.PrimitiveVariants
-        ].includes(ctx.typePath[ctx.typePath.length - 1]);
-        const isValidType =
+        return (
             [
-                ClassifierType.Group,
-                ClassifierType.EntityVariants,
-                ClassifierType.PrimitiveVariants
-            ].includes(ctx.type) || chunkToFilePathAllowlist.includes(part);
-
-        return !isVariantChild && !isSpecialPath && isValidType;
+                ClassificationType.Group,
+                ClassificationType.Variable,
+                ClassificationType.Element
+            ].includes(ctx.type) || chunkToFilePathAllowlist.includes(part)
+        );
     }).slice(0, 2);
 }
 

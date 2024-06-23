@@ -1,23 +1,24 @@
 import type { PartialDeep } from 'type-fest';
-import type { Resolver } from './resolver';
-import type { Generator } from './generator';
 import type { RawTheme, ResolvedTheme } from './theme';
-import type { Aggregator } from './aggregator';
-import type { BuildOptions } from './build';
-import type { Dependency } from './dependency';
-import type { Classifier } from './classifier';
+import type { BuildFile, BuildOptions } from './build';
+import { Module, OutputModifier } from './modules';
+import { Generator } from './generator';
+import { Resolver } from './resolver';
 
-export interface BaseConfiguration<ThemeType> {
-    aggregators: Aggregator[];
-    classifiers: Classifier[];
-    resolvers: Resolver<any, any>[];
-    generators: Generator<any>[];
-    dependencies: Dependency[];
-    themes: Record<string, ThemeType>;
+export interface BaseUserConfiguration<ThemeType> {
+    modules?: Module[];
+    themes?: Record<string, ThemeType>;
     buildOptions?: BuildOptions;
     [key: string]: any;
 }
 
-export type RawConfiguration = BaseConfiguration<PartialDeep<RawTheme>>;
+export type UserConfiguration<ThemeType = RawTheme> = BaseUserConfiguration<PartialDeep<ThemeType>>;
 
-export type ResolvedConfiguration = BaseConfiguration<ResolvedTheme>;
+export interface BaseResolvedConfiguration<ThemeType> extends BaseUserConfiguration<ThemeType> {
+    resolvers: Resolver<any, any>[];
+    generators: Generator<any>[];
+    outputModifiers: OutputModifier[];
+    files: BuildFile[];
+}
+
+export type ResolvedConfiguration<ThemeType = ResolvedTheme> = BaseResolvedConfiguration<ThemeType>;

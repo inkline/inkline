@@ -80,10 +80,11 @@ export default defineComponent({
         },
         /**
          * Used to set the radio buttons value
-         * @default []
+         * @default
          * @name modelValue
          */
         modelValue: {
+            type: [String, Number, Boolean] as PropType<string | number | boolean>,
             default: undefined
         },
         /**
@@ -122,7 +123,7 @@ export default defineComponent({
          * The size variant of the radio buttons
          * @type sm | md | lg
          * @default
-         * @name size
+         * @name sizeMultiplier
          */
         size: {
             type: String,

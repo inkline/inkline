@@ -67,6 +67,7 @@ export default defineComponent({
          * @deprecated
          */
         value: {
+            type: [String, Number, Boolean] as PropType<string | number | boolean>,
             default: undefined
         },
         /**
@@ -75,6 +76,7 @@ export default defineComponent({
          * @name modelValue
          */
         modelValue: {
+            type: Boolean as PropType<boolean>,
             default: false
         },
         /**
@@ -113,7 +115,7 @@ export default defineComponent({
          * The size variant of the checkbox
          * @type sm | md | lg
          * @default
-         * @name size
+         * @name sizeMultiplier
          *
          */
         size: {

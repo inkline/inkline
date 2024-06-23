@@ -7,4 +7,5 @@ export { default as ILayoutContentWithRightAsideHeaderFooterExample } from '@ink
 export { default as ILayoutLeftAndRightAsidesWithContentHeaderFooterExample } from '@inkline/inkline/components/ILayout/examples/left-and-right-asides-with-content-header-footer.vue';
 export { default as ILayoutLeftAsideWithContentHeaderFooterExample } from '@inkline/inkline/components/ILayout/examples/left-aside-with-content-header-footer.vue';
 export { default as ILayoutRightAsideWithContentHeaderFooterExample } from '@inkline/inkline/components/ILayout/examples/right-aside-with-content-header-footer.vue';
+// @ts-expect-error
 export { default as ILayoutWithAsideCSSExample } from '@inkline/inkline/components/ILayout/examples/with-aside.scss?inline';

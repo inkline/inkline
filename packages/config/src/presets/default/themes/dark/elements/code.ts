@@ -1,5 +1,5 @@
-import type { RawTheme } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-export const code: RawTheme['elements']['code'] = {
+export const code = defineElement({
     background: 'var(--color-gray-900)'
-};
+});

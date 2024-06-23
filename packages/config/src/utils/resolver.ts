@@ -1,39 +1,44 @@
-import { ClassifierType, Resolver, ResolverMeta, ResolveValueFn, ResolveVariantFn } from '../types';
-import { traversePathByClassification } from './path';
+import {
+    ClassificationType,
+    Resolver,
+    ResolverMeta,
+    ResolveValueFn,
+    ResolveVariantFn
+} from '../types';
+import { traversePathByClassification } from './meta';
 
-export function defineResolver<RawValue, ResolvedValue>(
-    resolver: Resolver<RawValue, ResolvedValue>
-): Resolver<RawValue, ResolvedValue> {
-    return resolver;
-}
-
-export function defineResolverValueFn<RawValue, ResolvedValue>(
-    fn: ResolveValueFn<RawValue, ResolvedValue>
-): ResolveValueFn<RawValue, ResolvedValue> {
-    return fn;
-}
-
-export function defineResolverVariantFn<RawVariant, ResolvedValue>(
-    fn: ResolveVariantFn<RawVariant, ResolvedValue>
-): ResolveVariantFn<RawVariant, ResolvedValue> {
-    return fn;
-}
-
-export const createResolveFn =
-    <RawValue, RawVariant, ResolvedValue>(
+export const createGenericVariantResolveFn =
+    <RawValue, ResolvedValue>(
         resolveValue: ResolveValueFn<RawValue, ResolvedValue>,
-        resolveVariant: ResolveVariantFn<RawVariant, ResolvedValue>
+        resolveVariant: ResolveVariantFn<RawValue, ResolvedValue> = resolveValue
     ) =>
-    (value: RawValue | RawVariant, meta: ResolverMeta) => {
+    (value: RawValue, meta: ResolverMeta) => {
         const isEntityVariantsPath =
-            traversePathByClassification(
-                meta,
-                (path, part, ctx) => ctx.type === ClassifierType.EntityVariants
+            traversePathByClassification(meta, (path, part, ctx) =>
+                [ClassificationType.Element].includes(ctx.type)
             ).length > 0;
 
         if (meta.path[meta.path.length - 1] === 'default' || isEntityVariantsPath) {
-            return resolveValue(value as RawValue, meta);
+            return resolveValue(value, meta);
         } else {
-            return resolveVariant(value as RawVariant, meta);
+            return resolveVariant(value, meta);
         }
     };
+
+export function resolveStringValue<T extends Record<string, any>>(
+    value: string,
+    returnKeys: string[],
+    mode: 'default' | 'sides' = 'default'
+): T {
+    const parts = (value ?? '').split(/\s+/);
+
+    return returnKeys.reduce<T>((acc, key, index) => {
+        if (mode === 'default' && parts[index]) {
+            (acc as Record<string, string>)[key] = parts[index];
+        } else if (mode === 'sides') {
+            (acc as Record<string, string>)[key] = parts[index % 4] || parts[index % 2] || parts[0];
+        }
+
+        return acc;
+    }, {} as T);
+}

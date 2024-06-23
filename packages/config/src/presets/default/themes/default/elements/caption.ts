@@ -1,11 +1,11 @@
-import type { RawTheme } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-export const caption: RawTheme['elements']['caption'] = {
+export const caption = defineElement({
     padding: {
-        top: 'var(--padding-top-sm)',
+        top: 'calc(var(--padding-top) * var(--size-multiplier-sm))',
         right: 0,
-        bottom: 'var(--padding-bottom-sm)',
+        bottom: 'calc(var(--padding-bottom) * var(--size-multiplier-sm))',
         left: 0
     },
     color: 'var(--text-color-weaker)'
-};
+});

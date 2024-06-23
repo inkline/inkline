@@ -37,6 +37,7 @@ describe('Components', () => {
                     const wrapper = render(ISelectOption, {
                         props: {
                             option: {
+                                id: 'option',
                                 active: true,
                                 disabled: true
                             }
@@ -63,7 +64,7 @@ describe('Components', () => {
                     const wrapper = render(ISelectOption, {
                         props: {
                             ...props,
-                            option: { disabled: true }
+                            option: { id: 'option', disabled: true }
                         },
                         global: {
                             provide: {
@@ -141,7 +142,7 @@ describe('Components', () => {
                         },
                         props: {
                             ...props,
-                            option: { disabled: true }
+                            option: { id: 'option', disabled: true }
                         }
                     });
                     const item = await wrapper.getByRole('option');

@@ -25,7 +25,7 @@ export function detectEntryFile(env: InitEnv): string | undefined {
     return possibleEntryFiles.find((file) => existsSync(file));
 }
 
-export async function addPluginToEntryFile(entryFile: string, env: InitEnv): Promise<boolean> {
+export async function addPluginToEntryFile(entryFile: string, _: InitEnv): Promise<boolean> {
     let entryFileContents = await readFile(entryFile, 'utf-8');
 
     if (createAppRegEx.test(entryFileContents)) {

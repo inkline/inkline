@@ -34,16 +34,16 @@ export function updateExistingImport(code: string, importMeta: ImportFileMeta) {
         'g'
     );
 
-    return code.replace(importMatch, (match, defaultImport, namedImportsGroup, namedImports) => {
+    return code.replace(importMatch, (match, defaultImport: string, namedImportsGroup, namedImports: string) => {
         const isImportMetaDefaultImport = !Array.isArray(importMeta.name);
-        const existingNamedImports = namedImports
+        const existingNamedImports: string[] = namedImports
             ? namedImports.split(',').map((name: string) => name.trim())
             : [];
 
         const newNamedImports = isImportMetaDefaultImport
             ? [...existingNamedImports]
             : [...existingNamedImports, ...importMeta.name];
-        const newDefaultImport = isImportMetaDefaultImport ? importMeta.name : defaultImport;
+        const newDefaultImport = isImportMetaDefaultImport ? importMeta.name as string : defaultImport;
 
         return `import ${newDefaultImport || ''}${
             newNamedImports.length > 0

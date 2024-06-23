@@ -1,7 +1,7 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const checkableButtonGroup: RawTheme['components']['checkableButtonGroup'] = {
-    default: {
+export const checkableButtonGroup = defineComponent(
+    {
         background: 'var(--color-white)',
         boxShadow: {
             offsetX: 'var(--box-shadow-offset-x)',
@@ -58,68 +58,82 @@ export const checkableButtonGroup: RawTheme['components']['checkableButtonGroup'
             }
         }
     },
-    light: {
-        background: 'var(--color-white)',
-        border: {
-            color: 'var(--color-light-shade-50)'
+    {
+        light: {
+            background: 'var(--color-white)',
+            border: {
+                color: 'var(--color-light-shade-50)'
+            },
+            color: 'var(--contrast-text-color-light)'
         },
-        color: 'var(--contrast-text-color-light)'
-    },
-    dark: {
-        background: 'var(--color-dark)',
-        border: {
-            color: 'var(--color-dark-tint-50)'
+        dark: {
+            background: 'var(--color-dark)',
+            border: {
+                color: 'var(--color-dark-tint-50)'
+            },
+            color: 'var(--contrast-text-color-dark)',
+            button: {
+                active: {
+                    background: 'var(--color-dark-tint-100)'
+                }
+            }
         },
-        color: 'var(--contrast-text-color-dark)',
-        button: {
-            active: {
-                background: 'var(--color-dark-tint-100)'
+        sm: {
+            borderRadius: {
+                topLeft:
+                    'calc(var(--checkable--border-top-left-radius) * var(--size-multiplier-sm))',
+                topRight:
+                    'calc(var(--checkable--border-top-right-radius) * var(--size-multiplier-sm))',
+                bottomRight:
+                    'calc(var(--checkable--border-bottom-right-radius) * var(--size-multiplier-sm))',
+                bottomLeft:
+                    'calc(var(--checkable--border-bottom-left-radius) * var(--size-multiplier-sm))'
+            },
+            gap: 'calc(var(--checkable--margin-right) * var(--size-multiplier-sm) * 0.5)',
+            padding: {
+                top: 'calc(var(--checkable--padding-top) * var(--size-multiplier-sm) * 0.5)',
+                right: 'calc(var(--checkable--padding-right) * var(--size-multiplier-sm) * 0.5)',
+                bottom: 'calc(var(--checkable--padding-bottom) * var(--size-multiplier-sm) * 0.5)',
+                left: 'calc(var(--checkable--padding-left) * var(--size-multiplier-sm) * 0.5)'
+            }
+        },
+        md: {
+            borderRadius: {
+                topLeft:
+                    'calc(var(--checkable--border-top-left-radius) * var(--size-multiplier-md))',
+                topRight:
+                    'calc(var(--checkable--border-top-right-radius) * var(--size-multiplier-md))',
+                bottomRight:
+                    'calc(var(--checkable--border-bottom-right-radius) * var(--size-multiplier-md))',
+                bottomLeft:
+                    'calc(var(--checkable--border-bottom-left-radius) * var(--size-multiplier-md))'
+            },
+            gap: 'calc(var(--checkable--margin-right) * var(--size-multiplier-md) * 0.5)',
+            padding: {
+                top: 'calc(var(--checkable--padding-top) * var(--size-multiplier-md) * 0.5)',
+                right: 'calc(var(--checkable--padding-right) * var(--size-multiplier-md) * 0.5)',
+                bottom: 'calc(var(--checkable--padding-bottom) * var(--size-multiplier-md) * 0.5)',
+                left: 'calc(var(--checkable--padding-left) * var(--size-multiplier-md) * 0.5)'
+            }
+        },
+        lg: {
+            borderRadius: {
+                topLeft:
+                    'calc(var(--checkable--border-top-left-radius) * var(--size-multiplier-lg))',
+                topRight:
+                    'calc(var(--checkable--border-top-right-radius) * var(--size-multiplier-lg))',
+                bottomRight:
+                    'calc(var(--checkable--border-bottom-right-radius) * var(--size-multiplier-lg))',
+                bottomLeft:
+                    'calc(var(--checkable--border-bottom-left-radius) * var(--size-multiplier-lg))'
+            },
+            gap: 'calc(var(--checkable--margin-right) * var(--size-multiplier-lg) * 0.5)',
+            padding: {
+                top: 'calc(var(--checkable--padding-top) * var(--size-multiplier-lg) * 0.5)',
+                right: 'calc(var(--checkable--padding-right) * var(--size-multiplier-lg) * 0.5)',
+                bottom: 'calc(var(--checkable--padding-bottom) * var(--size-multiplier-lg) * 0.5)',
+                left: 'calc(var(--checkable--padding-left) * var(--size-multiplier-lg) * 0.5)'
             }
         }
-    },
-    sm: {
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-sm)',
-            topRight: 'var(--border-top-right-radius-sm)',
-            bottomRight: 'var(--border-bottom-right-radius-sm)',
-            bottomLeft: 'var(--border-bottom-left-radius-sm)'
-        },
-        gap: 'calc(var(--margin-right-sm) * 0.5)',
-        padding: {
-            top: 'calc(var(--padding-top-sm) * 0.5)',
-            right: 'calc(var(--padding-right-sm) * 0.5)',
-            bottom: 'calc(var(--padding-bottom-sm) * 0.5)',
-            left: 'calc(var(--padding-left-sm) * 0.5)'
-        }
-    },
-    md: {
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-md)',
-            topRight: 'var(--border-top-right-radius-md)',
-            bottomRight: 'var(--border-bottom-right-radius-md)',
-            bottomLeft: 'var(--border-bottom-left-radius-md)'
-        },
-        gap: 'calc(var(--margin-right-md) * 0.5)',
-        padding: {
-            top: 'calc(var(--padding-top-md) * 0.5)',
-            right: 'calc(var(--padding-right-md) * 0.5)',
-            bottom: 'calc(var(--padding-bottom-md) * 0.5)',
-            left: 'calc(var(--padding-left-md) * 0.5)'
-        }
-    },
-    lg: {
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-lg)',
-            topRight: 'var(--border-top-right-radius-lg)',
-            bottomRight: 'var(--border-bottom-right-radius-lg)',
-            bottomLeft: 'var(--border-bottom-left-radius-lg)'
-        },
-        gap: 'calc(var(--margin-right-lg) * 0.5)',
-        padding: {
-            top: 'calc(var(--padding-top-lg) * 0.5)',
-            right: 'calc(var(--padding-right-lg) * 0.5)',
-            bottom: 'calc(var(--padding-bottom-lg) * 0.5)',
-            left: 'calc(var(--padding-left-lg) * 0.5)'
-        }
     }
-};
+);

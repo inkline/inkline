@@ -15,7 +15,7 @@ export default {
             ext: 'js',
             input: './src',
             outDir: './lib',
-            declaration: true
+            declaration: false
         }
     ]
 };

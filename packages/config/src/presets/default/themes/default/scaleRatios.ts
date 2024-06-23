@@ -1,6 +1,6 @@
-import type { RawTheme } from '../../../../types';
+import { defineScaleRatiosVariable } from '../../../../utils';
 
-export const scaleRatios: RawTheme['scaleRatios'] = {
+export const scaleRatios = defineScaleRatiosVariable('var(--scale-ratio-minor-third)', {
     minorSecond: 1.067,
     majorSecond: 1.125,
     minorThird: 1.2,
@@ -8,6 +8,5 @@ export const scaleRatios: RawTheme['scaleRatios'] = {
     perfectFourth: 1.333,
     augmentedFourth: 1.414,
     perfectFifth: 1.5,
-    golden: 1.618,
-    default: 'var(--scale-ratio-minor-third)'
-};
+    golden: 1.618
+});

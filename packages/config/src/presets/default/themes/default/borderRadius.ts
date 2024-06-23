@@ -1,7 +1,4 @@
-import type { RawTheme } from '../../../../types';
+import { defineBorderRadiusVariable } from '../../../../utils';
 import { sizeMultiplierVariants } from '../../../common';
 
-export const borderRadius: RawTheme['borderRadius'] = {
-    default: '4px',
-    ...sizeMultiplierVariants
-};
+export const borderRadius = defineBorderRadiusVariable('4px', sizeMultiplierVariants);

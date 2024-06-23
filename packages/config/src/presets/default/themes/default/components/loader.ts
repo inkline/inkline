@@ -1,7 +1,7 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const loader: RawTheme['components']['loader'] = {
-    default: {
+export const loader = defineComponent(
+    {
         animation: {
             duration: '1.2s'
         },
@@ -9,22 +9,24 @@ export const loader: RawTheme['components']['loader'] = {
         width: '64px',
         height: '64px'
     },
-    light: {
-        background: 'var(--contrast-text-color-light)'
-    },
-    dark: {
-        background: 'var(--contrast-text-color-dark)'
-    },
-    primary: {
-        background: 'var(--color-primary)'
-    },
-    sm: {
-        width: 'calc(64px * var(--size-multiplier-sm))'
-    },
-    md: {
-        width: 'calc(64px * var(--size-multiplier-md))'
-    },
-    lg: {
-        width: 'calc(64px * var(--size-multiplier-lg))'
+    {
+        light: {
+            background: 'var(--contrast-text-color-light)'
+        },
+        dark: {
+            background: 'var(--contrast-text-color-dark)'
+        },
+        primary: {
+            background: 'var(--color-primary)'
+        },
+        sm: {
+            width: 'calc(var(--loader--width) * var(--size-multiplier-sm))'
+        },
+        md: {
+            width: 'calc(var(--loader--width) * var(--size-multiplier-md))'
+        },
+        lg: {
+            width: 'calc(var(--loader--width) * var(--size-multiplier-lg))'
+        }
     }
-};
+);

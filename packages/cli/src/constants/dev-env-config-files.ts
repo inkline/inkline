@@ -1,17 +1,20 @@
-import inspect from 'object-inspect';
-import { defaultConfig } from '@inkline/config';
+export const defaultConfigFileContents = `import { defineConfig, defineTheme, defineThemes } from '@inkline/config';
 
-export const defaultConfigFileContents = `import { defineConfig } from '@inkline/config';
+/**
+ * Inkline Configuration
+ *
+ * This configuration will be merged with the default configuration.
+ * You can override any default values for variables, elements, or components here.
+ *
+ * @docs https://inkline.io/docs/theming
+ */
 
-export default defineConfig(${inspect(
-    {
-        theme: defaultConfig.theme
-    },
-    {
-        indent: 4,
-        depth: Infinity
-    }
-).replace(/(\d+[a-zA-Z]+):/g, "'$1':")});
+export default defineConfig({
+    themes: defineThemes({
+        default: defineTheme({}),
+        dark: defineTheme({})
+    })
+});
 `;
 
 export const defaultNuxtDevEnvConfigFileContents = `import { defineNuxtConfig } from 'nuxt/config';

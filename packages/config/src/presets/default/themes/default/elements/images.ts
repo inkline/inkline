@@ -1,27 +1,31 @@
-import type { RawTheme } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-export const figure: RawTheme['elements']['figure'] = {
-    margin: {
-        top: 0,
-        right: 0,
-        bottom: 'var(--margin-bottom)',
-        left: 0
-    },
-    caption: {
-        color: 'var(--text-color-weak)',
-        fontSize: 'var(--font-size-sm)'
-    },
-    image: {
+export const figure = defineElement(
+    {
         margin: {
             top: 0,
             right: 0,
             bottom: 'var(--margin-bottom)',
             left: 0
+        },
+        caption: {
+            color: 'var(--text-color-weak)',
+            fontSize: 'var(--font-size-sm)'
+        },
+        image: {
+            margin: {
+                top: 0,
+                right: 0,
+                bottom: 'var(--margin-bottom)',
+                left: 0
+            }
         }
-    }
-};
+    },
+    {},
+    { name: 'figure' }
+);
 
-export const thumbnail: RawTheme['elements']['thumbnail'] = {
+export const thumbnail = defineElement({
     padding: {
         top: 'var(--padding-top)',
         right: 'var(--padding-right)',
@@ -69,4 +73,4 @@ export const thumbnail: RawTheme['elements']['thumbnail'] = {
         spreadRadius: 'var(--box-shadow-spread-radius)',
         color: 'var(--box-shadow-color)'
     }
-};
+});

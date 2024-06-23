@@ -15,7 +15,10 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        xs: { type: [Boolean, String, Number] as PropType<string>, default: false },
+        xs: {
+            type: [Boolean, String, Number] as PropType<string | number | boolean>,
+            default: false
+        },
 
         /**
          * The number of columns to span for small screen sizes. Setting the prop to true will set the width automatically
@@ -23,7 +26,10 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        sm: { type: [Boolean, String, Number] as PropType<string>, default: false },
+        sm: {
+            type: [Boolean, String, Number] as PropType<string | number | boolean>,
+            default: false
+        },
 
         /**
          * The number of columns to span for medium screen sizes. Setting the prop to true will set the width automatically
@@ -31,7 +37,10 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        md: { type: [Boolean, String, Number] as PropType<string>, default: false },
+        md: {
+            type: [Boolean, String, Number] as PropType<string | number | boolean>,
+            default: false
+        },
 
         /**
          * The number of columns to span for large screen sizes. Setting the prop to true will set the width automatically
@@ -39,7 +48,10 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        lg: { type: [Boolean, String, Number] as PropType<string>, default: false },
+        lg: {
+            type: [Boolean, String, Number] as PropType<string | number | boolean>,
+            default: false
+        },
 
         /**
          * The number of columns to span for extra-large screen sizes. Setting the prop to true will set the width automatically
@@ -47,7 +59,10 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        xl: { type: [Boolean, String, Number] as PropType<string>, default: false },
+        xl: {
+            type: [Boolean, String, Number] as PropType<string | number | boolean>,
+            default: false
+        },
 
         /**
          * The number of columns to span for extra-extra-large screen sizes. Setting the prop to true will set the width automatically
@@ -55,7 +70,10 @@ export default defineComponent({
          * @type Boolean | String | Number
          * @default
          */
-        xxl: { type: [Boolean, String, Number] as PropType<string>, default: false },
+        xxl: {
+            type: [Boolean, String, Number] as PropType<string | number | boolean>,
+            default: false
+        },
 
         /**
          * Display the column as the first column
@@ -175,7 +193,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        offset: { type: [String, Number] as PropType<string>, default: '' },
+        offset: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to offset the column by on extra-small screens
@@ -183,7 +201,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        offsetXs: { type: [String, Number] as PropType<string>, default: '' },
+        offsetXs: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to offset the column by on small screens
@@ -191,7 +209,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        offsetSm: { type: [String, Number] as PropType<string>, default: '' },
+        offsetSm: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to offset the column by on medium screens
@@ -199,7 +217,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        offsetMd: { type: [String, Number] as PropType<string>, default: '' },
+        offsetMd: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to offset the column by on large screens
@@ -207,7 +225,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        offsetLg: { type: [String, Number] as PropType<string>, default: '' },
+        offsetLg: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to offset the column by on extra-large screens
@@ -215,7 +233,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        offsetXl: { type: [String, Number] as PropType<string>, default: '' },
+        offsetXl: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to offset the column by on extra-extra-large screens
@@ -223,7 +241,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        offsetXxl: { type: [String, Number] as PropType<string>, default: '' },
+        offsetXxl: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to push the column by
@@ -231,7 +249,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        push: { type: [String, Number] as PropType<string>, default: '' },
+        push: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to push the column by on extra-small screens
@@ -239,7 +257,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pushXs: { type: [String, Number] as PropType<string>, default: '' },
+        pushXs: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to push the column by on small screens
@@ -247,7 +265,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pushSm: { type: [String, Number] as PropType<string>, default: '' },
+        pushSm: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to push the column by on medium screens
@@ -255,7 +273,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pushMd: { type: [String, Number] as PropType<string>, default: '' },
+        pushMd: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to push the column by on large screens
@@ -263,7 +281,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pushLg: { type: [String, Number] as PropType<string>, default: '' },
+        pushLg: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to push the column by on extra-large screens
@@ -271,7 +289,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pushXl: { type: [String, Number] as PropType<string>, default: '' },
+        pushXl: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to push the column by on extra-extra-large screens
@@ -279,7 +297,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pushXxl: { type: [String, Number] as PropType<string>, default: '' },
+        pushXxl: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to pull the column by
@@ -287,7 +305,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pull: { type: [String, Number] as PropType<string>, default: '' },
+        pull: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to pull the column by on extra-small screens
@@ -295,7 +313,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pullXs: { type: [String, Number] as PropType<string>, default: '' },
+        pullXs: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to pull the column by on small screens
@@ -303,7 +321,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pullSm: { type: [String, Number] as PropType<string>, default: '' },
+        pullSm: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to pull the column by on medium screens
@@ -311,7 +329,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pullMd: { type: [String, Number] as PropType<string>, default: '' },
+        pullMd: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to pull the column by on large screens
@@ -319,7 +337,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pullLg: { type: [String, Number] as PropType<string>, default: '' },
+        pullLg: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to pull the column by on extra-large screens
@@ -327,7 +345,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pullXl: { type: [String, Number] as PropType<string>, default: '' },
+        pullXl: { type: [String, Number] as PropType<string | number>, default: '' },
 
         /**
          * The number of columns to pull the column by on extra-extra-large screens
@@ -335,7 +353,7 @@ export default defineComponent({
          * @type String | Number
          * @default
          */
-        pullXxl: { type: [String, Number] as PropType<string>, default: '' }
+        pullXxl: { type: [String, Number] as PropType<string | number>, default: '' }
     },
     setup(props) {
         const classes = computed(() =>

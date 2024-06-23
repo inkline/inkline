@@ -1,3 +1,5 @@
+import { GeneratorOutput, GeneratorPriority } from './generator';
+
 export interface BuildOptions {
     configFile?: string;
     outputDir?: string;
@@ -14,4 +16,14 @@ export interface ResolvedBuildOptions extends Required<BuildOptions> {
 export interface IndexFile {
     path: string[];
     import: string[];
+}
+
+export interface BuildFile {
+    path: string[];
+    content: string[];
+}
+
+export interface BuildChunk extends BuildFile {
+    output: GeneratorOutput;
+    priority: GeneratorPriority;
 }

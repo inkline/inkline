@@ -1,5 +1,5 @@
-import type { RawTheme } from '../../../../types';
+import { defineBorderVariable } from '../../../../utils';
 
-export const border: Partial<RawTheme['border']> = {
+export const border = defineBorderVariable({
     color: 'var(--color-gray-700)'
-};
+});

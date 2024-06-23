@@ -113,7 +113,7 @@ describe('Components', () => {
                             }
                         },
                         props: {
-                            value,
+                            modelValue: value,
                             ...props
                         }
                     });
@@ -154,7 +154,7 @@ describe('Components', () => {
                             }
                         },
                         props: {
-                            modelValue: [],
+                            modelValue: undefined,
                             ...props
                         }
                     });
@@ -202,7 +202,7 @@ describe('Components', () => {
                             }
                         },
                         props: {
-                            modelValue: [],
+                            modelValue: undefined,
                             ...props
                         }
                     });

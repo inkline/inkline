@@ -1,0 +1,11 @@
+@use "../mixins/variants";
+
+.layout-aside {
+}
+
+:root {
+  --layout-aside--width: 320px;
+  --layout-aside--transition-property: width, height;
+  --layout-aside--transition-duration: var(--transition-duration);
+  --layout-aside--transition-timing-function: var(--transition-timing-function);
+}

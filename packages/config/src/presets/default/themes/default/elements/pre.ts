@@ -1,6 +1,6 @@
-import type { RawTheme } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-export const pre: RawTheme['elements']['pre'] = {
+export const pre = defineElement({
     fontFamily: 'var(--font-family-monospace)',
     fontSize: 'var(--font-size)',
     margin: {
@@ -9,4 +9,4 @@ export const pre: RawTheme['elements']['pre'] = {
         bottom: 'var(--margin-bottom)',
         left: 0
     }
-};
+});

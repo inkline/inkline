@@ -1,25 +1,27 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const icon: RawTheme['components']['icon'] = {
-    default: {
+export const icon = defineComponent(
+    {
         fontSize: 'var(--font-size)'
     },
-    xs: {
-        fontSize: 'var(--font-size-xs)'
-    },
-    sm: {
-        fontSize: 'var(--font-size-sm)'
-    },
-    md: {
-        fontSize: 'var(--font-size-md)'
-    },
-    lg: {
-        fontSize: 'var(--font-size-lg)'
-    },
-    xl: {
-        fontSize: 'var(--font-size-xl)'
-    },
-    xxl: {
-        fontSize: 'calc(var(--font-size) * var(--size-multiplier-xxl))'
+    {
+        xs: {
+            fontSize: 'calc(var(--icon--font-size) * var(--size-multiplier-xs))'
+        },
+        sm: {
+            fontSize: 'calc(var(--icon--font-size) * var(--size-multiplier-sm))'
+        },
+        md: {
+            fontSize: 'calc(var(--icon--font-size) * var(--size-multiplier-md))'
+        },
+        lg: {
+            fontSize: 'calc(var(--icon--font-size) * var(--size-multiplier-lg))'
+        },
+        xl: {
+            fontSize: 'calc(var(--icon--font-size) * var(--size-multiplier-xl))'
+        },
+        xxl: {
+            fontSize: 'calc(var(--icon--font-size) * var(--size-multiplier-xxl))'
+        }
     }
-};
+);

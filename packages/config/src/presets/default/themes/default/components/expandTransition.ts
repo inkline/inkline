@@ -1,11 +1,9 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const expandTransition: RawTheme['components']['expandTransition'] = {
-    default: {
-        transition: {
-            property: 'height',
-            duration: 'var(--transition-duration)',
-            timingFunction: 'var(--transition-timing-function)'
-        }
+export const expandTransition = defineComponent({
+    transition: {
+        property: 'height',
+        duration: 'var(--transition-duration)',
+        timingFunction: 'var(--transition-timing-function)'
     }
-};
+});

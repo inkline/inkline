@@ -1,5 +1,5 @@
-import { ClassifierType, GeneratorMeta } from '../../types';
-import { traversePathByClassification } from '../path';
+import { ClassificationType, GeneratorMeta } from '../../types';
+import { traversePathByClassification } from '../meta';
 import { toKebabCase } from '../string';
 
 export const codegenCssVariables = {
@@ -8,30 +8,15 @@ export const codegenCssVariables = {
 };
 
 export function getCssVariablePreamblePath(meta: GeneratorMeta): string[] {
-    return traversePathByClassification(meta, (path, part, ctx) => {
-        const isIgnoredPath = ctx.ignoreKey;
-
-        const isSubgroupPath = ctx.typePath.includes(ClassifierType.Group);
-        const isGroupPath = ctx.type === ClassifierType.Group;
-
-        const isPrimitiveVariantsPath =
-            ctx.typePath.includes(ClassifierType.PrimitiveVariants) ||
-            ctx.type === ClassifierType.PrimitiveVariants;
-
-        const isEntityVariantsPath = ctx.type === ClassifierType.EntityVariants;
-        const isEntityVariantsDirectChild =
-            ctx.typePath[ctx.typePath.length - 1] === ClassifierType.EntityVariants;
-        const isEntityVariantsChild =
-            ctx.typePath.includes(ClassifierType.EntityVariants) && !isEntityVariantsDirectChild;
+    return traversePathByClassification(meta, (path, part, { type, typePath, consume }) => {
+        const isElementVariant =
+            [ClassificationType.Element].includes(typePath[typePath.length - 1]) &&
+            part !== 'default';
 
         return (
-            isSubgroupPath &&
-            !(
-                isPrimitiveVariantsPath ||
-                (isEntityVariantsDirectChild && part === 'default') ||
-                (isEntityVariantsChild && !isGroupPath)
-            ) &&
-            !isIgnoredPath
+            consume ||
+            [ClassificationType.Element, ClassificationType.ChildElement].includes(type) ||
+            isElementVariant
         );
     }).map(toKebabCase);
 }

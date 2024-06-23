@@ -12,6 +12,7 @@ coverage
 dist-ssr
 *.local
 build-storybook.log
+inkline-inkline-*.tgz
 
 # CI
 /inkline-vite
@@ -21,3 +22,4 @@ build-storybook.log
 /test-results/
 /playwright-report/
 /playwright/.cache/
+

@@ -7,11 +7,10 @@ import {
     RawThemeBreakpoint,
     RawThemeColor,
     RawThemeColorVariant,
-    RawThemeComponent,
     RawThemeScaleRatio,
     RawThemeSpacing,
     RawThemeSpacingWithSidesVariant,
-    RawThemeSizePercentage,
+    RawThemePercentage,
     RawThemeSizeMultiplier,
     RawThemeSizeMultiplierVariant,
     ResolvedThemeTransition,
@@ -20,7 +19,6 @@ import {
     ResolvedThemeBoxShadow,
     ResolvedThemeBreakpoint,
     ResolvedThemeColor,
-    ResolvedThemeComponent,
     ResolvedThemeScaleRatio,
     ResolvedThemeSpacing,
     ResolvedThemeTypographyFontFamily,
@@ -38,7 +36,7 @@ import {
     RawThemeTypographyFontWeight,
     RawThemeTypographyFontFamily,
     RawThemeTypographyFontSizeVariant,
-    ResolvedThemeSizePercentage,
+    ResolvedThemePercentage,
     ResolvedThemeSizeMultiplier,
     ThemeComponentName,
     RawThemeGridColumns,
@@ -49,8 +47,7 @@ import {
     ResolvedThemeGridColumns,
     RawThemeGridGutterVariant,
     ThemeElementName,
-    ResolvedThemeElement,
-    RawThemeElement,
+    ResolvedThemeElementDefinition,
     RawThemeMargin,
     RawThemePadding,
     ResolvedThemePadding,
@@ -58,129 +55,85 @@ import {
     RawThemeTypographyTextAlignment,
     ResolvedThemeTypographyTextAlignment,
     RawThemeLayers,
-    ResolvedThemeLayers
-} from '../types';
+    ResolvedThemeLayers,
+    RawThemeMarginVariant,
+    RawThemePaddingVariant,
+    RawThemeElementDefinition
+} from '../modules';
+import { ThemeElement, ThemeGroup, ThemeVariable } from './classifier';
 
-export type RawThemeVariantsWithOptionalDefault<
-    DefaultVariant,
-    VariantModifiers = DefaultVariant
-> =
-    | DefaultVariant
-    | {
-          default: DefaultVariant;
-          [key: string]: DefaultVariant | VariantModifiers;
-      };
-
-export type RawThemeVariantsWithDefault<DefaultVariant, VariantModifiers = DefaultVariant> = {
-    default: DefaultVariant;
-    [key: string]: DefaultVariant | VariantModifiers;
+export type RawTheme = {
+    boxShadow: ThemeVariable<RawThemeBoxShadow>;
+    border: ThemeVariable<RawThemeBorder>;
+    borderRadius: ThemeVariable<RawThemeBorderRadius, RawThemeBorderRadiusVariant>;
+    breakpoints: ThemeVariable<RawThemeBreakpoint>;
+    colors: ThemeGroup<Record<string, ThemeVariable<RawThemeColor, RawThemeColorVariant>>>;
+    components: ThemeGroup<Record<ThemeComponentName, ThemeElement>>;
+    elements: ThemeGroup<Record<ThemeElementName, ThemeElement>>;
+    grid: ThemeGroup<{
+        columns: ThemeVariable<RawThemeGridColumns>;
+        gutter: ThemeVariable<RawThemeGridGutter, RawThemeGridGutterVariant>;
+        container: ThemeVariable<RawThemeGridContainer>;
+    }>;
+    layers: ThemeVariable<RawThemeLayers>;
+    scaleRatios: ThemeVariable<RawThemeScaleRatio>;
+    sizeMultiplier: ThemeVariable<RawThemeSizeMultiplier, RawThemeSizeMultiplierVariant>;
+    percentages: ThemeVariable<RawThemePercentage>;
+    spacing: ThemeVariable<RawThemeSpacing, RawThemeSpacingWithSidesVariant>;
+    margin: ThemeVariable<RawThemeMargin, RawThemeMarginVariant>;
+    padding: ThemeVariable<RawThemePadding, RawThemePaddingVariant>;
+    transition: ThemeVariable<RawThemeTransition>;
+    textColor: ThemeVariable<RawThemeTypographyColor>;
+    textContrastColor: ThemeVariable<RawThemeTypographyContrastColor>;
+    fontFamily: ThemeVariable<RawThemeTypographyFontFamily>;
+    fontSize: ThemeVariable<RawThemeTypographyFontSize, RawThemeTypographyFontSizeVariant>;
+    fontWeight: ThemeVariable<RawThemeTypographyFontWeight>;
+    lineHeight: ThemeVariable<RawThemeTypographyLineHeight>;
+    letterSpacing: ThemeVariable<RawThemeTypographyLetterSpacing>;
+    textAlign: ThemeVariable<RawThemeTypographyTextAlignment>;
+    [key: string]: any;
 };
 
-export type ResolvedThemeVariantsWithDefault<DefaultVariant> = {
-    default: DefaultVariant;
-    [key: string]: DefaultVariant;
-};
-
-export interface RawTheme {
-    boxShadow: RawThemeVariantsWithOptionalDefault<RawThemeBoxShadow>;
-    border: RawThemeVariantsWithOptionalDefault<RawThemeBorder>;
-    borderRadius: RawThemeVariantsWithOptionalDefault<
-        RawThemeBorderRadius,
-        RawThemeBorderRadiusVariant
+export type ResolvedTheme = {
+    boxShadow: ThemeVariable<ResolvedThemeBoxShadow>;
+    border: ThemeVariable<ResolvedThemeBorder>;
+    borderRadius: ThemeVariable<ResolvedThemeBorderRadius>;
+    breakpoints: ThemeVariable<ResolvedThemeBreakpoint>;
+    colors: ThemeGroup<Record<string, ThemeVariable<ResolvedThemeColor>>>;
+    components: ThemeGroup<
+        Record<ThemeComponentName, ThemeVariable<ResolvedThemeElementDefinition>>
     >;
-    breakpoints: RawThemeVariantsWithOptionalDefault<RawThemeBreakpoint>;
-    colors: Record<
-        string,
-        RawThemeVariantsWithOptionalDefault<RawThemeColor, RawThemeColorVariant>
-    >;
-    components: Record<ThemeComponentName, RawThemeVariantsWithOptionalDefault<RawThemeComponent>>;
-    elements: Record<ThemeElementName, RawThemeVariantsWithOptionalDefault<RawThemeElement>>;
-    grid: {
-        columns: RawThemeGridColumns;
-        gutter: RawThemeVariantsWithOptionalDefault<RawThemeGridGutter, RawThemeGridGutterVariant>;
-        container: RawThemeVariantsWithOptionalDefault<RawThemeGridContainer>;
-    };
-    layers: RawThemeLayers;
-    scaleRatios: RawThemeVariantsWithOptionalDefault<RawThemeScaleRatio>;
-    size: {
-        multiplier: RawThemeVariantsWithOptionalDefault<
-            RawThemeSizeMultiplier,
-            RawThemeSizeMultiplierVariant
-        >;
-        percentages: RawThemeVariantsWithOptionalDefault<RawThemeSizePercentage>;
-    };
-    spacing: RawThemeVariantsWithOptionalDefault<RawThemeSpacing, RawThemeSpacingWithSidesVariant>;
-    margin: RawThemeVariantsWithOptionalDefault<RawThemeMargin, RawThemeSpacingWithSidesVariant>;
-    padding: RawThemeVariantsWithOptionalDefault<RawThemePadding, RawThemeSpacingWithSidesVariant>;
-    transition: RawThemeVariantsWithOptionalDefault<RawThemeTransition>;
-    typography: {
-        color: Record<string, RawThemeVariantsWithOptionalDefault<RawThemeTypographyColor>>;
-        contrastColor: Record<
-            string,
-            RawThemeVariantsWithOptionalDefault<RawThemeTypographyContrastColor>
-        >;
-        fontFamily: RawThemeVariantsWithOptionalDefault<RawThemeTypographyFontFamily>;
-        fontSize: RawThemeVariantsWithOptionalDefault<
-            RawThemeTypographyFontSize,
-            RawThemeTypographyFontSizeVariant
-        >;
-        fontWeight: RawThemeVariantsWithOptionalDefault<RawThemeTypographyFontWeight>;
-        lineHeight: RawThemeVariantsWithOptionalDefault<RawThemeTypographyLineHeight>;
-        letterSpacing: RawThemeVariantsWithOptionalDefault<RawThemeTypographyLetterSpacing>;
-        textAlign: RawThemeVariantsWithOptionalDefault<RawThemeTypographyTextAlignment>;
-    };
-}
-
-export interface ResolvedTheme {
-    boxShadow: ResolvedThemeVariantsWithDefault<ResolvedThemeBoxShadow>;
-    border: ResolvedThemeVariantsWithDefault<ResolvedThemeBorder>;
-    borderRadius: ResolvedThemeVariantsWithDefault<ResolvedThemeBorderRadius>;
-    breakpoints: ResolvedThemeVariantsWithDefault<ResolvedThemeBreakpoint>;
-    colors: Record<string, ResolvedThemeVariantsWithDefault<ResolvedThemeColor>>;
-    components: Record<
-        ThemeComponentName,
-        ResolvedThemeVariantsWithDefault<ResolvedThemeComponent>
-    >;
-    elements: Record<ThemeElementName, ResolvedThemeVariantsWithDefault<ResolvedThemeElement>>;
-    grid: {
-        columns: ResolvedThemeGridColumns;
-        gutter: ResolvedThemeVariantsWithDefault<ResolvedThemeGridGutter>;
-        container: ResolvedThemeVariantsWithDefault<ResolvedThemeGridContainer>;
-    };
+    elements: ThemeGroup<Record<ThemeElementName, ThemeVariable<ResolvedThemeElementDefinition>>>;
+    grid: ThemeGroup<{
+        columns: ThemeVariable<ResolvedThemeGridColumns>;
+        gutter: ThemeVariable<ResolvedThemeGridGutter>;
+        container: ThemeVariable<ResolvedThemeGridContainer>;
+    }>;
     layers: ResolvedThemeLayers;
-    scaleRatios: ResolvedThemeVariantsWithDefault<ResolvedThemeScaleRatio>;
-    size: {
-        multiplier: ResolvedThemeVariantsWithDefault<ResolvedThemeSizeMultiplier>;
-        percentages: ResolvedThemeVariantsWithDefault<ResolvedThemeSizePercentage>;
-    };
-    spacing: ResolvedThemeVariantsWithDefault<ResolvedThemeSpacing>;
-    margin: ResolvedThemeVariantsWithDefault<ResolvedThemeMargin>;
-    padding: ResolvedThemeVariantsWithDefault<ResolvedThemePadding>;
-    transition: ResolvedThemeVariantsWithDefault<ResolvedThemeTransition>;
-    typography: {
-        color: Record<string, ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyColor>>;
-        contrastColor: Record<
-            string,
-            ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyContrastColor>
-        >;
-        fontFamily: ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyFontFamily>;
-        fontSize: ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyFontSize>;
-        fontWeight: ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyFontWeight>;
-        lineHeight: ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyLineHeight>;
-        letterSpacing: ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyLetterSpacing>;
-        textAlign: ResolvedThemeVariantsWithDefault<ResolvedThemeTypographyTextAlignment>;
-    };
-}
+    scaleRatios: ThemeVariable<ResolvedThemeScaleRatio>;
+    sizeMultiplier: ThemeVariable<ResolvedThemeSizeMultiplier>;
+    percentages: ThemeVariable<ResolvedThemePercentage>;
+    spacing: ThemeVariable<ResolvedThemeSpacing>;
+    margin: ThemeVariable<ResolvedThemeMargin>;
+    padding: ThemeVariable<ResolvedThemePadding>;
+    transition: ThemeVariable<ResolvedThemeTransition>;
+    textColor: ThemeVariable<ResolvedThemeTypographyColor>;
+    textContrastColor: ThemeVariable<ResolvedThemeTypographyContrastColor>;
+    fontFamily: ThemeVariable<ResolvedThemeTypographyFontFamily>;
+    fontSize: ThemeVariable<ResolvedThemeTypographyFontSize>;
+    fontWeight: ThemeVariable<ResolvedThemeTypographyFontWeight>;
+    lineHeight: ThemeVariable<ResolvedThemeTypographyLineHeight>;
+    letterSpacing: ThemeVariable<ResolvedThemeTypographyLetterSpacing>;
+    textAlign: ThemeVariable<ResolvedThemeTypographyTextAlignment>;
+    [key: string]: any;
+};
 
 export type RawThemeValueType<Value> =
-    Value extends RawThemeVariantsWithOptionalDefault<infer DefaultVariant>
+    Value extends ThemeVariable<infer DefaultVariant>
         ? DefaultVariant
-        : Value extends RawThemeVariantsWithOptionalDefault<
-                infer DefaultVariant,
-                infer VariantModifiers
-            >
+        : Value extends ThemeVariable<infer DefaultVariant, infer VariantModifiers>
           ? DefaultVariant | VariantModifiers
           : Value;
 
 export type ResolvedThemeValueType<Value> =
-    Value extends ResolvedThemeVariantsWithDefault<infer DefaultVariant> ? DefaultVariant : Value;
+    Value extends ThemeVariable<infer DefaultVariant> ? DefaultVariant : Value;

@@ -1,4 +1,5 @@
 {
+    "extends": "../../tooling/typescript-config/tsconfig.json",
     "compilerOptions": {
         "composite": true,
         "module": "esnext",
@@ -9,9 +10,12 @@
         ]
     },
     "include": [
-        "src/playground/vite/*.ts",
-        "src/playground/vite/*.d.ts",
-        "src/playground/vite/*.tsx",
+        "src/vite.ts",
+        "src/plugin/types.ts",
+        "playground/vite/*.ts",
+        "playground/vite/*.d.ts",
+        "playground/vite/*.tsx",
+        "playground/vite/*.vue",
         "vite.config.ts"
     ]
 }

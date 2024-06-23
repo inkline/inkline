@@ -1,38 +1,17 @@
-/* eslint-disable quotes */
-
-import shell from 'shelljs';
+import * as shell from 'shelljs';
 import glob from 'fast-glob';
-import path from 'path';
+import * as path from 'path';
+import { postbuild } from '@inkline/build';
 
 (async () => {
     /**
      * Change directory to root
      */
 
-    const rootDir = path.resolve(__dirname, '..');
-    const srcDir = path.resolve(rootDir, 'src');
-    const cjsDir = path.resolve(rootDir, 'tmp', 'cjs');
-    shell.cd(rootDir);
+    const baseDir = path.resolve(__dirname, '..');
+    const srcDir = path.resolve(baseDir, 'src');
 
-    /**
-     * Copy files to lib
-     */
-
-    const cjsFiles = await glob(path.resolve(cjsDir, '**/*.js'));
-    cjsFiles.forEach((file) => shell.mv(file, file.replace('tmp/cjs', 'lib')));
-    shell.rm('-rf', cjsDir);
-
-    const scssFiles = await glob(path.resolve(srcDir, '**/*.scss'));
-    scssFiles.forEach((file) => {
-        const destFile = file.replace('src', 'lib');
-        const destDir = path.dirname(destFile);
-
-        if (!shell.test('-d', destDir)) {
-            shell.mkdir('-p', destDir);
-        }
-
-        shell.cp(file, destFile);
-    });
+    await postbuild(baseDir);
 
     const exampleFiles = await glob(path.resolve(srcDir, '**/examples/*.vue'));
     const storiesFiles = await glob(path.resolve(srcDir, 'stories/**/*.vue'));
@@ -41,14 +20,6 @@ import path from 'path';
 
         shell.cp(file, destFile);
     });
-
-    // /**
-    //  * Resolve sourcemaps
-    //  */
-    // shell.cp('-R', './src', './lib/src');
-    // shell.exec(
-    //     `bash -c 'find lib -type f -name *.mjs.map -exec perl -i -pe"s/..\\/src/src/g" {} +'`
-    // );
 
     /**
      * Remove unnecessary files
@@ -66,11 +37,4 @@ import path from 'path';
     shell.cp('./dist/inkline.umd.js', './lib/inkline.js');
     shell.cp('./dist/style.css', './lib/inkline.css');
     shell.cp('-R', './src/assets', './lib/assets');
-
-    /**
-     * Copy meta files
-     */
-
-    shell.cp('./README.md', './lib/README.md');
-    shell.cp('./LICENSE', './lib/LICENSE');
 })();

@@ -3,16 +3,16 @@ import { UserOptions } from "./types";
 import { watch } from "./watch";
 import { build } from "./build";
 
-export const plugin = createUnplugin((options: UserOptions = {}, meta) => {
+export const plugin = createUnplugin<UserOptions>((options = {}, meta) => {
     let isDevMode = options.watch || false;
     if (!isDevMode && meta.framework === "vite") {
         isDevMode = !process.argv.includes("build");
     }
 
     if (isDevMode) {
-        watch(options);
+        void watch(options);
     } else {
-        build(options);
+        void build(options);
     }
 
     return {

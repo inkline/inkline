@@ -124,7 +124,7 @@ export default defineComponent({
          * The size variant of the checkbox buttons
          * @type sm | md | lg
          * @default
-         * @name size
+         * @name sizeMultiplier
          */
         size: {
             type: String,

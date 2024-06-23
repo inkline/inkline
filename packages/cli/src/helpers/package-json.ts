@@ -6,10 +6,10 @@ export async function extendPackageJson(
     extension: PackageJsonSchema
 ): Promise<PackageJsonSchema> {
     const packageJsonContents = await readFile(packageJsonPath, 'utf-8');
-    const packageJson = JSON.parse(packageJsonContents);
+    const packageJson = JSON.parse(packageJsonContents) as PackageJsonSchema;
 
-    Object.keys(extension).forEach((key) => {
-        packageJson[key] = { ...packageJson[key], ...extension[key] };
+    Object.keys(extension).forEach((key: keyof PackageJsonSchema) => {
+        packageJson[key] = { ...packageJson[key], ...extension[key] } as unknown;
     });
 
     await writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));

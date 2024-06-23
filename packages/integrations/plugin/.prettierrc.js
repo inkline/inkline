@@ -1,3 +1,3 @@
 module.exports = {
-    extends: '@grozav/eslint-config/.prettierrc'
+    extends: "@inkline/eslint-config/.prettierrc",
 };

@@ -1,0 +1,17 @@
+@use "../mixins/variants";
+
+.button-group {
+}
+
+:root {
+  --button-group--border-top-left-radius: var(--button--border-top-left-radius);
+  --button-group--border-top-right-radius: var(
+    --button--border-top-right-radius
+  );
+  --button-group--border-bottom-right-radius: var(
+    --button--border-bottom-right-radius
+  );
+  --button-group--border-bottom-left-radius: var(
+    --button--border-bottom-left-radius
+  );
+}

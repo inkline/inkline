@@ -1,7 +1,7 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const button: RawTheme['components']['button'] = {
-    default: {
+export const button = defineComponent(
+    {
         color: 'var(--contrast-text-color-light)',
         background: 'var(--color-light)',
         border: {
@@ -86,201 +86,212 @@ export const button: RawTheme['components']['button'] = {
             }
         }
     },
-    primary: {
-        color: 'var(--contrast-text-color-dark)',
-        background: 'var(--color-primary)',
-        border: {
-            color: 'var(--color-primary-shade-50)'
+    {
+        primary: {
+            color: 'var(--contrast-text-color-dark)',
+            background: 'var(--color-primary)',
+            border: {
+                color: 'var(--color-primary-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-primary-shade-50)'
+            },
+            focus: {
+                background: 'var(--color-primary-shade-50)'
+            },
+            active: {
+                background: 'var(--color-primary-shade-100)'
+            }
         },
-        hover: {
-            background: 'var(--color-primary-shade-50)'
+        secondary: {
+            color: 'var(--contrast-text-color-dark)',
+            background: 'var(--color-secondary)',
+            border: {
+                color: 'var(--color-secondary-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-secondary-shade-50)'
+            },
+            focus: {
+                background: 'var(--color-secondary-shade-50)'
+            },
+            active: {
+                background: 'var(--color-secondary-shade-100)'
+            }
         },
-        focus: {
-            background: 'var(--color-primary-shade-50)'
+        info: {
+            color: 'var(--contrast-text-color-light)',
+            background: 'var(--color-info)',
+            border: {
+                color: 'var(--color-info-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-info-shade-50)'
+            },
+            focus: {
+                background: 'var(--color-info-shade-50)'
+            },
+            active: {
+                background: 'var(--color-info-shade-100)'
+            }
         },
-        active: {
-            background: 'var(--color-primary-shade-100)'
-        }
-    },
-    secondary: {
-        color: 'var(--contrast-text-color-dark)',
-        background: 'var(--color-secondary)',
-        border: {
-            color: 'var(--color-secondary-shade-50)'
+        success: {
+            color: 'var(--contrast-text-color-light)',
+            background: 'var(--color-success)',
+            border: {
+                color: 'var(--color-success-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-success-shade-50)'
+            },
+            focus: {
+                background: 'var(--color-success-shade-50)'
+            },
+            active: {
+                background: 'var(--color-success-shade-100)'
+            }
         },
-        hover: {
-            background: 'var(--color-secondary-shade-50)'
+        warning: {
+            color: 'var(--contrast-text-color-light)',
+            background: 'var(--color-warning)',
+            border: {
+                color: 'var(--color-warning-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-warning-shade-50)'
+            },
+            focus: {
+                background: 'var(--color-warning-shade-50)'
+            },
+            active: {
+                background: 'var(--color-warning-shade-100)'
+            }
         },
-        focus: {
-            background: 'var(--color-secondary-shade-50)'
+        danger: {
+            color: 'var(--contrast-text-color-light)',
+            background: 'var(--color-danger)',
+            border: {
+                color: 'var(--color-danger-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-danger-shade-50)'
+            },
+            focus: {
+                background: 'var(--color-danger-shade-50)'
+            },
+            active: {
+                background: 'var(--color-danger-shade-100)'
+            }
         },
-        active: {
-            background: 'var(--color-secondary-shade-100)'
-        }
-    },
-    info: {
-        color: 'var(--contrast-text-color-light)',
-        background: 'var(--color-info)',
-        border: {
-            color: 'var(--color-info-shade-50)'
+        light: {
+            color: 'var(--contrast-text-color-light)',
+            background: 'var(--color-light)',
+            border: {
+                color: 'var(--color-light-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-light-shade-50)'
+            },
+            focus: {
+                background: 'var(--color-light-shade-50)'
+            },
+            active: {
+                background: 'var(--color-light-shade-100)'
+            }
         },
-        hover: {
-            background: 'var(--color-info-shade-50)'
+        dark: {
+            color: 'var(--contrast-text-color-dark)',
+            background: 'var(--color-dark)',
+            border: {
+                color: 'var(--color-dark-tint-50)'
+            },
+            hover: {
+                background: 'var(--color-dark-tint-50)'
+            },
+            focus: {
+                background: 'var(--color-dark-tint-50)'
+            },
+            active: {
+                background: 'var(--color-dark-tint-100)'
+            }
         },
-        focus: {
-            background: 'var(--color-info-shade-50)'
+        sm: {
+            padding: {
+                top: 'calc(var(--button--padding-top) * var(--size-multiplier-sm))',
+                right: 'calc(var(--button--padding-right) * var(--size-multiplier-sm))',
+                bottom: 'calc(var(--button--padding-bottom) * var(--size-multiplier-sm))',
+                left: 'calc(var(--button--padding-left) * var(--size-multiplier-sm))'
+            },
+            borderRadius: {
+                topLeft: 'calc(var(--button--border-top-left-radius) * var(--size-multiplier-sm))',
+                topRight:
+                    'calc(var(--button--border-top-right-radius) * var(--size-multiplier-sm))',
+                bottomRight:
+                    'calc(var(--button--border-bottom-right-radius) * var(--size-multiplier-sm))',
+                bottomLeft:
+                    'calc(var(--button--border-bottom-left-radius) * var(--size-multiplier-sm))'
+            },
+            fontSize: 'calc(var(--button--font-size) * var(--size-multiplier-sm))',
+            circle: {
+                width: 'calc(50px * var(--size-multiplier-sm))',
+                height: 'calc(50px * var(--size-multiplier-sm))'
+            },
+            square: {
+                width: 'calc(50px * var(--size-multiplier-sm))',
+                height: 'calc(50px * var(--size-multiplier-sm))'
+            }
         },
-        active: {
-            background: 'var(--color-info-shade-100)'
-        }
-    },
-    success: {
-        color: 'var(--contrast-text-color-light)',
-        background: 'var(--color-success)',
-        border: {
-            color: 'var(--color-success-shade-50)'
+        md: {
+            padding: {
+                top: 'calc(var(--button--padding-top) * var(--size-multiplier-md))',
+                right: 'calc(var(--button--padding-right) * var(--size-multiplier-md))',
+                bottom: 'calc(var(--button--padding-bottom) * var(--size-multiplier-md))',
+                left: 'calc(var(--button--padding-left) * var(--size-multiplier-md))'
+            },
+            borderRadius: {
+                topLeft: 'calc(var(--button--border-top-left-radius) * var(--size-multiplier-md))',
+                topRight:
+                    'calc(var(--button--border-top-right-radius) * var(--size-multiplier-md))',
+                bottomRight:
+                    'calc(var(--button--border-bottom-right-radius) * var(--size-multiplier-md))',
+                bottomLeft:
+                    'calc(var(--button--border-bottom-left-radius) * var(--size-multiplier-md))'
+            },
+            fontSize: 'calc(var(--button--font-size) * var(--size-multiplier-md))',
+            circle: {
+                width: 'calc(50px * var(--size-multiplier-md))',
+                height: 'calc(50px * var(--size-multiplier-md))'
+            },
+            square: {
+                width: 'calc(50px * var(--size-multiplier-md))',
+                height: 'calc(50px * var(--size-multiplier-md))'
+            }
         },
-        hover: {
-            background: 'var(--color-success-shade-50)'
-        },
-        focus: {
-            background: 'var(--color-success-shade-50)'
-        },
-        active: {
-            background: 'var(--color-success-shade-100)'
-        }
-    },
-    warning: {
-        color: 'var(--contrast-text-color-light)',
-        background: 'var(--color-warning)',
-        border: {
-            color: 'var(--color-warning-shade-50)'
-        },
-        hover: {
-            background: 'var(--color-warning-shade-50)'
-        },
-        focus: {
-            background: 'var(--color-warning-shade-50)'
-        },
-        active: {
-            background: 'var(--color-warning-shade-100)'
-        }
-    },
-    danger: {
-        color: 'var(--contrast-text-color-light)',
-        background: 'var(--color-danger)',
-        border: {
-            color: 'var(--color-danger-shade-50)'
-        },
-        hover: {
-            background: 'var(--color-danger-shade-50)'
-        },
-        focus: {
-            background: 'var(--color-danger-shade-50)'
-        },
-        active: {
-            background: 'var(--color-danger-shade-100)'
-        }
-    },
-    light: {
-        color: 'var(--contrast-text-color-light)',
-        background: 'var(--color-light)',
-        border: {
-            color: 'var(--color-light-shade-50)'
-        },
-        hover: {
-            background: 'var(--color-light-shade-50)'
-        },
-        focus: {
-            background: 'var(--color-light-shade-50)'
-        },
-        active: {
-            background: 'var(--color-light-shade-100)'
-        }
-    },
-    dark: {
-        color: 'var(--contrast-text-color-dark)',
-        background: 'var(--color-dark)',
-        border: {
-            color: 'var(--color-dark-tint-50)'
-        },
-        hover: {
-            background: 'var(--color-dark-tint-50)'
-        },
-        focus: {
-            background: 'var(--color-dark-tint-50)'
-        },
-        active: {
-            background: 'var(--color-dark-tint-100)'
-        }
-    },
-    sm: {
-        padding: {
-            top: 'var(--padding-top-sm)',
-            right: 'var(--padding-right-sm)',
-            bottom: 'var(--padding-bottom-sm)',
-            left: 'var(--padding-left-sm)'
-        },
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-sm)',
-            topRight: 'var(--border-top-right-radius-sm)',
-            bottomRight: 'var(--border-bottom-right-radius-sm)',
-            bottomLeft: 'var(--border-bottom-left-radius-sm)'
-        },
-        fontSize: 'var(--font-size-sm)',
-        circle: {
-            width: 'calc(50px * var(--size-multiplier-sm))',
-            height: 'calc(50px * var(--size-multiplier-sm))'
-        },
-        square: {
-            width: 'calc(50px * var(--size-multiplier-sm))',
-            height: 'calc(50px * var(--size-multiplier-sm))'
-        }
-    },
-    md: {
-        padding: {
-            top: 'var(--padding-top-md)',
-            right: 'var(--padding-right-md)',
-            bottom: 'var(--padding-bottom-md)',
-            left: 'var(--padding-left-md)'
-        },
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-md)',
-            topRight: 'var(--border-top-right-radius-md)',
-            bottomRight: 'var(--border-bottom-right-radius-md)',
-            bottomLeft: 'var(--border-bottom-left-radius-md)'
-        },
-        fontSize: 'var(--font-size-md)',
-        circle: {
-            width: 'calc(50px * var(--size-multiplier-md))',
-            height: 'calc(50px * var(--size-multiplier-md))'
-        },
-        square: {
-            width: 'calc(50px * var(--size-multiplier-md))',
-            height: 'calc(50px * var(--size-multiplier-md))'
-        }
-    },
-    lg: {
-        padding: {
-            top: 'var(--padding-top-lg)',
-            right: 'var(--padding-right-lg)',
-            bottom: 'var(--padding-bottom-lg)',
-            left: 'var(--padding-left-lg)'
-        },
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-lg)',
-            topRight: 'var(--border-top-right-radius-lg)',
-            bottomRight: 'var(--border-bottom-right-radius-lg)',
-            bottomLeft: 'var(--border-bottom-left-radius-lg)'
-        },
-        fontSize: 'var(--font-size-lg)',
-        circle: {
-            width: 'calc(50px * var(--size-multiplier-lg))',
-            height: 'calc(50px * var(--size-multiplier-lg))'
-        },
-        square: {
-            width: 'calc(50px * var(--size-multiplier-lg))',
-            height: 'calc(50px * var(--size-multiplier-lg))'
+        lg: {
+            padding: {
+                top: 'calc(var(--button--padding-top) * var(--size-multiplier-lg))',
+                right: 'calc(var(--button--padding-right) * var(--size-multiplier-lg))',
+                bottom: 'calc(var(--button--padding-bottom) * var(--size-multiplier-lg))',
+                left: 'calc(var(--button--padding-left) * var(--size-multiplier-lg))'
+            },
+            borderRadius: {
+                topLeft: 'calc(var(--button--border-top-left-radius) * var(--size-multiplier-lg))',
+                topRight:
+                    'calc(var(--button--border-top-right-radius) * var(--size-multiplier-lg))',
+                bottomRight:
+                    'calc(var(--button--border-bottom-right-radius) * var(--size-multiplier-lg))',
+                bottomLeft:
+                    'calc(var(--button--border-bottom-left-radius) * var(--size-multiplier-lg))'
+            },
+            fontSize: 'calc(var(--button--font-size) * var(--size-multiplier-lg))',
+            circle: {
+                width: 'calc(50px * var(--size-multiplier-lg))',
+                height: 'calc(50px * var(--size-multiplier-lg))'
+            },
+            square: {
+                width: 'calc(50px * var(--size-multiplier-lg))',
+                height: 'calc(50px * var(--size-multiplier-lg))'
+            }
         }
     }
-};
+);

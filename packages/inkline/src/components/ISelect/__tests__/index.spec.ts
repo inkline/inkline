@@ -160,7 +160,7 @@ describe('Components', () => {
                     const wrapper = render(ISelect, {
                         props: {
                             ...props,
-                            modelValue: null,
+                            modelValue: undefined,
                             placeholder
                         },
                         global: {
@@ -547,7 +547,6 @@ describe('Components', () => {
                         it('should click item and focus trigger', async () => {
                             const wrapper = render(ISelect, {
                                 props: {
-                                    hideOnItemClick: false,
                                     ...props
                                 },
                                 global: {
@@ -568,7 +567,6 @@ describe('Components', () => {
                         it('should close dropdown if hideOnItemClick', async () => {
                             const wrapper = render(ISelect, {
                                 props: {
-                                    hideOnItemClick: true,
                                     ...props
                                 },
                                 global: {
@@ -594,7 +592,6 @@ describe('Components', () => {
                         it('should close dropdown if hideOnItemClick', async () => {
                             const wrapper = render(ISelect, {
                                 props: {
-                                    hideOnItemClick: true,
                                     ...props
                                 },
                                 global: {

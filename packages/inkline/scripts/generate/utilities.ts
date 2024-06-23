@@ -7,7 +7,7 @@ import { readFile, writeFile } from 'fs/promises';
 const baseDir = path.resolve(__dirname, '..', '..');
 const cssDir = path.resolve(baseDir, 'src', 'css');
 const outputFile = path.resolve(cssDir, 'utilities.scss');
-const unocssDir = path.resolve(baseDir, '..', 'unocss');
+const unocssDir = path.resolve(baseDir, '..', 'integrations', 'unocss');
 const unocssPlaygroundDir = path.resolve(unocssDir, 'src', 'playground');
 const unocssDistDir = path.resolve(unocssPlaygroundDir, 'dist');
 const prettierConfigFile = path.resolve(baseDir, '.prettierrc');

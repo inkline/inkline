@@ -1,7 +1,7 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const table: RawTheme['components']['table'] = {
-    default: {
+export const table = defineComponent(
+    {
         background: 'var(--color-white)',
         border: {
             top: {
@@ -76,132 +76,134 @@ export const table: RawTheme['components']['table'] = {
             fontWeight: 'var(--font-weight-bold)'
         }
     },
-    bordered: {
-        border: {
-            top: {
-                width: 'var(--border-top-width)'
+    {
+        bordered: {
+            border: {
+                top: {
+                    width: 'var(--table--border-top-width)'
+                },
+                right: {
+                    width: 'var(--table--border-right-width)'
+                },
+                bottom: {
+                    width: 'var(--table--border-bottom-width)'
+                },
+                left: {
+                    width: 'var(--table--border-left-width)'
+                }
+            }
+        },
+        condensed: {
+            padding: {
+                top: 'calc(var(--table--padding-top) * 0.5)',
+                right: 'calc(var(--table--padding-right) * 0.5)',
+                bottom: 'calc(var(--table--padding-bottom) * 0.5)',
+                left: 'calc(var(--table--padding-left) * 0.5)'
+            }
+        },
+        primary: {
+            background: 'var(--color-primary)',
+            border: {
+                color: 'var(--color-primary-shade-50)'
             },
-            right: {
-                width: 'var(--border-right-width)'
+            color: 'var(--contrast-text-color-dark)',
+            striped: {
+                background: 'var(--color-primary-shade-50)'
             },
-            bottom: {
-                width: 'var(--border-bottom-width)'
+            hover: {
+                background: 'var(--color-primary-shade-100)'
+            }
+        },
+        secondary: {
+            background: 'var(--color-secondary)',
+            border: {
+                color: 'var(--color-secondary-shade-50)'
             },
-            left: {
-                width: 'var(--border-left-width)'
+            color: 'var(--contrast-text-color-dark)',
+            striped: {
+                background: 'var(--color-secondary-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-secondary-shade-100)'
+            }
+        },
+        info: {
+            background: 'var(--color-info)',
+            border: {
+                color: 'var(--color-info-shade-50)'
+            },
+            color: 'var(--contrast-text-color-light)',
+            striped: {
+                background: 'var(--color-info-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-info-shade-100)'
+            }
+        },
+        success: {
+            background: 'var(--color-success)',
+            border: {
+                color: 'var(--color-success-shade-50)'
+            },
+            color: 'var(--contrast-text-color-light)',
+            striped: {
+                background: 'var(--color-success-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-success-shade-100)'
+            }
+        },
+        warning: {
+            background: 'var(--color-warning)',
+            border: {
+                color: 'var(--color-warning-shade-50)'
+            },
+            color: 'var(--contrast-text-color-light)',
+            striped: {
+                background: 'var(--color-warning-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-warning-shade-100)'
+            }
+        },
+        danger: {
+            background: 'var(--color-danger)',
+            border: {
+                color: 'var(--color-danger-shade-50)'
+            },
+            color: 'var(--contrast-text-color-light)',
+            striped: {
+                background: 'var(--color-danger-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-danger-shade-100)'
+            }
+        },
+        light: {
+            background: 'var(--color-white)',
+            border: {
+                color: 'var(--color-light-shade-50)'
+            },
+            color: 'var(--contrast-text-color-light)',
+            striped: {
+                background: 'var(--color-gray-50)'
+            },
+            hover: {
+                background: 'var(--color-light)'
+            }
+        },
+        dark: {
+            background: 'var(--color-dark)',
+            border: {
+                color: 'var(--color-dark-tint-50)'
+            },
+            color: 'var(--contrast-text-color-dark)',
+            striped: {
+                background: 'var(--color-dark-shade-50)'
+            },
+            hover: {
+                background: 'var(--color-dark-shade-100)'
             }
         }
-    },
-    condensed: {
-        padding: {
-            top: 'var(--padding-top-1-2)',
-            right: 'var(--padding-right-1-2)',
-            bottom: 'var(--padding-bottom-1-2)',
-            left: 'var(--padding-left-1-2)'
-        }
-    },
-    primary: {
-        background: 'var(--color-primary)',
-        border: {
-            color: 'var(--color-primary-shade-50)'
-        },
-        color: 'var(--contrast-text-color-dark)',
-        striped: {
-            background: 'var(--color-primary-shade-50)'
-        },
-        hover: {
-            background: 'var(--color-primary-shade-100)'
-        }
-    },
-    secondary: {
-        background: 'var(--color-secondary)',
-        border: {
-            color: 'var(--color-secondary-shade-50)'
-        },
-        color: 'var(--contrast-text-color-dark)',
-        striped: {
-            background: 'var(--color-secondary-shade-50)'
-        },
-        hover: {
-            background: 'var(--color-secondary-shade-100)'
-        }
-    },
-    info: {
-        background: 'var(--color-info)',
-        border: {
-            color: 'var(--color-info-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        striped: {
-            background: 'var(--color-info-shade-50)'
-        },
-        hover: {
-            background: 'var(--color-info-shade-100)'
-        }
-    },
-    success: {
-        background: 'var(--color-success)',
-        border: {
-            color: 'var(--color-success-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        striped: {
-            background: 'var(--color-success-shade-50)'
-        },
-        hover: {
-            background: 'var(--color-success-shade-100)'
-        }
-    },
-    warning: {
-        background: 'var(--color-warning)',
-        border: {
-            color: 'var(--color-warning-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        striped: {
-            background: 'var(--color-warning-shade-50)'
-        },
-        hover: {
-            background: 'var(--color-warning-shade-100)'
-        }
-    },
-    danger: {
-        background: 'var(--color-danger)',
-        border: {
-            color: 'var(--color-danger-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        striped: {
-            background: 'var(--color-danger-shade-50)'
-        },
-        hover: {
-            background: 'var(--color-danger-shade-100)'
-        }
-    },
-    light: {
-        background: 'var(--color-white)',
-        border: {
-            color: 'var(--color-light-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        striped: {
-            background: 'var(--color-gray-50)'
-        },
-        hover: {
-            background: 'var(--color-light)'
-        }
-    },
-    dark: {
-        background: 'var(--color-dark)',
-        border: {
-            color: 'var(--color-dark-tint-50)'
-        },
-        color: 'var(--contrast-text-color-dark)',
-        striped: {
-            background: 'var(--color-dark-shade-50)'
-        },
-        hover: {
-            background: 'var(--color-dark-shade-100)'
-        }
     }
-};
+);

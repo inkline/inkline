@@ -1,6 +1,6 @@
-import type { RawTheme } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-export const code: RawTheme['elements']['code'] = {
+export const code = defineElement({
     color: 'var(--color-pink)',
     background: 'var(--color-gray-50)',
     borderRadius: {
@@ -17,4 +17,4 @@ export const code: RawTheme['elements']['code'] = {
         bottom: '0.15rem',
         left: '0.45rem'
     }
-};
+});

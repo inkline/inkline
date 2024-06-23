@@ -1,23 +1,22 @@
+import { createGenericVariantGenerateFn, getSortedVariantsFieldKeys } from './generator';
+import { ClassificationType, GeneratorOutput, ResolvedTheme, Transition } from '../types';
+import { createTestingGeneratorMeta } from '../__tests__/utils';
+import { RawThemeTransition, ResolvedThemeColor, ResolvedThemeTransition } from '../modules';
 import {
-    createGenerateFn,
-    createGenericDesignTokenVariantGenerateFn,
+    defineComponent,
+    defineComponentsGroup,
     defineGenerator,
     defineGeneratorValueFn,
-    getSortedVariantsFieldKeys
-} from './generator';
-import {
-    ClassifierType,
-    GeneratorType,
-    ResolvedTheme,
-    ResolvedThemeColor,
-    ResolvedThemeTransition
-} from '../types';
-import { createTestingGeneratorMeta } from '../__tests__/utils';
+    defineTheme,
+    defineThemes,
+    defineTransitionVariable,
+    defineVariable
+} from './define';
 
 describe('defineGenerator', () => {
     it('should return the same generator definition that was passed', () => {
         const generatorFn = vi.fn();
-        const generator = { key: [], type: GeneratorType.Default, generate: generatorFn };
+        const generator = { key: [], output: GeneratorOutput.Default, generate: generatorFn };
         const result = defineGenerator(generator);
         expect(result).toBe(generator);
     });
@@ -58,38 +57,21 @@ describe('getSortedVariantsFieldKeys', () => {
     });
 });
 
-describe('createGenerateFn', () => {
-    it('should return a function that calls generateValue with provided value and meta', () => {
-        const mockGenerateValue = vi.fn().mockReturnValue(['generated']);
-        const generator = createGenerateFn(mockGenerateValue);
-        const value = 'test value';
-        const meta = createTestingGeneratorMeta();
-
-        const result = generator(value, meta);
-
-        expect(mockGenerateValue).toHaveBeenCalledWith(value, meta);
-        expect(result).toEqual(['generated']);
-    });
-});
-
 describe('createGenericDesignTokenVariantGenerateFn', () => {
     it('should generate correct CSS variables for primitive value', () => {
-        const theme = {
-            transition: {
-                $type: ClassifierType.PrimitiveVariants,
-                default: {
-                    property: 'all',
-                    duration: 100,
-                    timingFunction: 'ease'
-                }
-            }
-        } as unknown as ResolvedTheme;
+        const theme = defineTheme('default', {
+            transition: defineTransitionVariable({
+                property: 'all',
+                duration: 100,
+                timingFunction: 'ease'
+            })
+        }) as unknown as ResolvedTheme;
         const meta = createTestingGeneratorMeta({
             path: ['transition', 'default'],
             theme
         });
 
-        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeTransition>();
+        const generateFn = createGenericVariantGenerateFn<ResolvedThemeTransition>();
         expect(generateFn(theme.transition.default, meta)).toEqual([
             '--transition-property: all;',
             '--transition-duration: 100;',
@@ -98,22 +80,19 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
     });
 
     it('should generate correct CSS variables and aggregate primitive value', () => {
-        const theme = {
-            transition: {
-                $type: ClassifierType.PrimitiveVariants,
-                default: {
-                    property: 'all',
-                    duration: 100,
-                    timingFunction: 'ease'
-                }
-            }
-        } as unknown as ResolvedTheme;
+        const theme = defineTheme('default', {
+            transition: defineTransitionVariable({
+                property: 'all',
+                duration: 100,
+                timingFunction: 'ease'
+            })
+        }) as unknown as ResolvedTheme;
         const meta = createTestingGeneratorMeta({
             path: ['transition', 'default'],
             theme
         });
 
-        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeTransition>({
+        const generateFn = createGenericVariantGenerateFn<ResolvedThemeTransition>({
             aggregate: ['property', 'duration', 'timingFunction']
         });
         expect(generateFn(theme.transition.default, meta)).toEqual([
@@ -125,29 +104,29 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
     });
 
     it('should generate correct CSS variables for value in "default" entity variant', () => {
-        const theme = {
-            components: {
-                $type: ClassifierType.Group,
-                button: {
-                    $type: ClassifierType.EntityVariants,
-                    default: {
-                        $type: ClassifierType.Group,
-                        transition: {
-                            property: 'all',
-                            duration: 100,
-                            timingFunction: 'ease'
-                        }
+        const theme = defineTheme('default', {
+            components: defineComponentsGroup({
+                button: defineComponent({
+                    transition: {
+                        property: 'all',
+                        duration: 100,
+                        timingFunction: 'ease'
                     }
-                }
-            }
-        } as unknown as ResolvedTheme;
+                })
+            })
+        });
         const meta = createTestingGeneratorMeta({
             path: ['components', 'button', 'default', 'transition'],
-            theme
+            theme: theme as unknown as ResolvedTheme
         });
 
-        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeTransition>();
-        expect(generateFn(theme.components.button.default.transition, meta)).toEqual([
+        const generateFn = createGenericVariantGenerateFn<ResolvedThemeTransition>();
+        expect(
+            generateFn(
+                theme.components?.button?.default?.transition as ResolvedThemeTransition,
+                meta
+            )
+        ).toEqual([
             '--button--transition-property: all;',
             '--button--transition-duration: 100;',
             '--button--transition-timing-function: ease;'
@@ -155,32 +134,32 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
     });
 
     it('should generate correct CSS variables for nested value in "default" entity variant', () => {
-        const theme = {
-            components: {
-                $type: ClassifierType.Group,
-                button: {
-                    $type: ClassifierType.EntityVariants,
-                    default: {
-                        $type: ClassifierType.Group,
-                        icon: {
-                            $type: ClassifierType.Group,
-                            transition: {
-                                property: 'all',
-                                duration: 100,
-                                timingFunction: 'ease'
-                            }
+        const theme = defineTheme('default', {
+            components: defineComponentsGroup({
+                button: defineComponent({
+                    icon: {
+                        transition: {
+                            property: 'all',
+                            duration: 100,
+                            timingFunction: 'ease'
                         }
                     }
-                }
-            }
-        } as unknown as ResolvedTheme;
+                })
+            })
+        }) as unknown as ResolvedTheme;
         const meta = createTestingGeneratorMeta({
             path: ['components', 'button', 'default', 'icon', 'transition'],
             theme
         });
 
-        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeTransition>();
-        expect(generateFn(theme.components.button.default.icon.transition, meta)).toEqual([
+        const generateFn = createGenericVariantGenerateFn<ResolvedThemeTransition>();
+        expect(
+            generateFn(
+                (theme.components.button.default.icon as Record<string, ResolvedThemeTransition>)
+                    .transition,
+                meta
+            )
+        ).toEqual([
             '--button--icon--transition-property: all;',
             '--button--icon--transition-duration: 100;',
             '--button--icon--transition-timing-function: ease;'
@@ -188,30 +167,32 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
     });
 
     it('should generate correct CSS variables for value in non-default entity variant', () => {
-        const theme = {
-            components: {
-                $type: ClassifierType.Group,
-                button: {
-                    $type: ClassifierType.EntityVariants,
-                    primary: {
-                        $type: ClassifierType.Group,
-                        background: {
-                            h: 240,
-                            s: 100,
-                            l: 50,
-                            a: 1
+        const theme = defineTheme('default', {
+            components: defineComponentsGroup({
+                button: defineComponent(
+                    {},
+                    {
+                        primary: {
+                            background: {
+                                h: 240,
+                                s: 100,
+                                l: 50,
+                                a: 1
+                            }
                         }
                     }
-                }
-            }
-        } as unknown as ResolvedTheme;
+                )
+            })
+        }) as unknown as ResolvedTheme;
         const meta = createTestingGeneratorMeta({
             path: ['components', 'button', 'primary', 'background'],
             theme
         });
 
-        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeColor>();
-        expect(generateFn(theme.components.button.primary.background, meta)).toEqual([
+        const generateFn = createGenericVariantGenerateFn<ResolvedThemeColor>();
+        expect(
+            generateFn(theme.components.button.primary.background as ResolvedThemeColor, meta)
+        ).toEqual([
             '--button--primary--background-h: 240;',
             '--button--primary--background-s: 100;',
             '--button--primary--background-l: 50;',
@@ -222,13 +203,13 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
     it('should generate correct CSS variables for nested value in non-default entity variant', () => {
         const theme = {
             components: {
-                $type: ClassifierType.Group,
+                __type: ClassificationType.Group,
                 button: {
-                    $type: ClassifierType.EntityVariants,
+                    __type: ClassificationType.Element,
                     primary: {
-                        $type: ClassifierType.Group,
+                        __type: ClassificationType.Group,
                         icon: {
-                            $type: ClassifierType.Group,
+                            __type: ClassificationType.Group,
                             background: {
                                 h: 240,
                                 s: 100,
@@ -245,8 +226,14 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
             theme
         });
 
-        const generateFn = createGenericDesignTokenVariantGenerateFn<ResolvedThemeColor>();
-        expect(generateFn(theme.components.button.primary.icon.background, meta)).toEqual([
+        const generateFn = createGenericVariantGenerateFn<ResolvedThemeColor>();
+        expect(
+            generateFn(
+                (theme.components.button.primary.icon as Record<string, ResolvedThemeColor>)
+                    .background,
+                meta
+            )
+        ).toEqual([
             '--button--primary--icon--background-h: 240;',
             '--button--primary--icon--background-s: 100;',
             '--button--primary--icon--background-l: 50;',

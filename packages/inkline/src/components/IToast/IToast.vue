@@ -24,7 +24,7 @@ export default defineComponent({
          * The size variant of the toast
          * @type sm | md | lg
          * @default
-         * @name size
+         * @name sizeMultiplier
          */
         size: {
             type: String,

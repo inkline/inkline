@@ -1,3 +1,3 @@
-module.exports = {
-    extends: '@grozav'
-};
+import pluginInkline from "@inkline/eslint-config";
+
+export default pluginInkline.configs["default"];

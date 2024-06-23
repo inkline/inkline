@@ -1,0 +1,12 @@
+:root {
+  --h3--margin-top: 0;
+  --h3--margin-right: 0;
+  --h3--margin-bottom: var(--margin-bottom);
+  --h3--margin-left: 0;
+  --h3--font-family: var(--font-family-base-secondary);
+  --h3--font-style: var(--font-style-normal);
+  --h3--font-weight: var(--font-weight-bold);
+  --h3--color: inherit;
+  --h3--line-height: 1.2;
+  --h3--font-size: calc(var(--font-size) * var(--scale-ratio-pow-3));
+}

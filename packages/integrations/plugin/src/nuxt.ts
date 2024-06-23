@@ -6,12 +6,12 @@ import {
 import { join, resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
-import { InklinePluginOptions } from "@inkline/inkline";
-import { NuxtModule } from "@nuxt/schema";
-import { UserOptions } from "./plugin/types";
+import type { InklinePluginOptions } from "@inkline/inkline";
+import type { NuxtModule } from "@nuxt/schema";
+import type { UserOptions } from "./plugin/types";
 import { watch } from "./plugin/watch";
 import { build } from "./plugin/build";
-import { getResolvedOptions } from "@inkline/config";
+import { getResolvedBuildOptions } from "@inkline/config";
 
 interface ModuleConfig {
     import?: {
@@ -46,7 +46,7 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
     },
     async setup(
         { import: importOptions, configFile, outputDir, extName, globals },
-        nuxt
+        nuxt,
     ) {
         importOptions = {
             ...defaultImportOptions,
@@ -58,10 +58,10 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
             outputDir,
             extName,
         };
-        const resolvedPluginOptions = getResolvedOptions(pluginOptions);
+        const resolvedPluginOptions = getResolvedBuildOptions(pluginOptions);
 
         const templatesDir = fileURLToPath(
-            new URL("./templates", import.meta.url)
+            new URL("./templates", import.meta.url),
         );
         const inklineRequire = createRequire(import.meta.url);
 
@@ -70,12 +70,14 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
             nuxt.options.css = nuxt.options.css || [];
 
             nuxt.options.css.unshift(
-                `${resolvedPluginOptions.outputDir}/index.scss`
+                `${resolvedPluginOptions.outputDir}/index.scss`,
             );
-            nuxt.options.css.unshift("@inkline/inkline/css/index.scss");
+            nuxt.options.css.unshift("@inkline/inkline/lib/css/index.scss");
 
             if (importOptions.utilities !== false) {
-                nuxt.options.css.push("@inkline/inkline/css/utilities.scss");
+                nuxt.options.css.push(
+                    "@inkline/inkline/lib/css/utilities.scss",
+                );
             }
         }
 
@@ -93,11 +95,13 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
             });
         }
 
+        console.log(inklineRequire.resolve("@inkline/inkline"));
+
         // Add dynamic component imports
         await addComponentsDir({
             path: join(
                 dirname(inklineRequire.resolve("@inkline/inkline")),
-                "components"
+                "components",
             ),
             pathPrefix: false,
             pattern: "**/*.vue",
@@ -107,9 +111,9 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
         });
 
         if (nuxt.options.dev) {
-            watch(pluginOptions);
+            void watch(pluginOptions);
         } else {
-            build(pluginOptions);
+            void build(pluginOptions);
         }
     },
 });

@@ -1,14 +1,12 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const formError: RawTheme['components']['formError'] = {
-    default: {
-        color: 'var(--color-danger)',
-        fontSize: 'var(--font-size-sm)',
-        margin: {
-            top: 'var(--margin-top-1-4)',
-            right: 0,
-            bottom: 0,
-            left: 0
-        }
+export const formError = defineComponent({
+    color: 'var(--color-danger)',
+    fontSize: 'calc(var(--font-size) * var(--size-multiplier-sm))',
+    margin: {
+        top: 'var(--margin-top-1-4)',
+        right: 0,
+        bottom: 0,
+        left: 0
     }
-};
+});

@@ -5,3 +5,7 @@ export function matchKey(key: string, pattern: string | RegExp): boolean {
 
     return pattern.test(key);
 }
+
+export function isInternalKey(key: string): boolean {
+    return key.startsWith('__');
+}

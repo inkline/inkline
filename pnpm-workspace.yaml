@@ -1,4 +1,5 @@
 packages:
   - packages/*
   - packages/tooling/*
+  - packages/e2e/*
   - packages/integrations/*

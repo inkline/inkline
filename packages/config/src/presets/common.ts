@@ -1,4 +1,4 @@
-import type { RawThemeColorVariant } from '../types';
+import { RawThemeColorVariant } from '../modules';
 
 export const colorShadeVariants: Record<string, RawThemeColorVariant> = {
     'shade-150': { darken: 15 },

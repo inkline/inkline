@@ -1,4 +1,3 @@
-import type { RawTheme } from '../../../../../types';
 import { alert } from './alert';
 import { badge } from './badge';
 import { breadcrumb } from './breadcrumb';
@@ -36,8 +35,9 @@ import { toast } from './toast';
 import { toastContainer } from './toastContainer';
 import { tooltip } from './tooltip';
 import { toggle } from './toggle';
+import { defineComponentsGroup } from '../../../../../utils';
 
-export const components: RawTheme['components'] = {
+export const components = defineComponentsGroup({
     alert,
     badge,
     breadcrumb,
@@ -77,4 +77,4 @@ export const components: RawTheme['components'] = {
     toastContainer,
     toggle,
     tooltip
-};
+});

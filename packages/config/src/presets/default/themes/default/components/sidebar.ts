@@ -1,7 +1,7 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const sidebar: RawTheme['components']['sidebar'] = {
-    default: {
+export const sidebar = defineComponent(
+    {
         background: 'var(--color-white)',
         boxShadow: {
             offsetX: 'var(--box-shadow-offset-x)',
@@ -69,111 +69,122 @@ export const sidebar: RawTheme['components']['sidebar'] = {
             }
         }
     },
-    light: {
-        background: 'var(--color-white)',
-        border: {
-            color: 'var(--color-light-shade-50)'
-        },
-        color: 'var(--contrast-text-color-light)',
-        item: {
+    {
+        light: {
             background: 'var(--color-white)',
-            hover: {
-                background: 'var(--color-light)'
+            border: {
+                color: 'var(--color-light-shade-50)'
             },
-            focus: {
-                background: 'var(--color-light)'
-            },
-            active: {
-                background: 'var(--color-light-shade-50)'
+            color: 'var(--contrast-text-color-light)',
+            item: {
+                background: 'var(--color-white)',
+                hover: {
+                    background: 'var(--color-light)'
+                },
+                focus: {
+                    background: 'var(--color-light)'
+                },
+                active: {
+                    background: 'var(--color-light-shade-50)'
+                }
             }
-        }
-    },
-    dark: {
-        background: 'var(--color-dark)',
-        border: {
-            color: 'var(--color-dark-tint-50)'
         },
-        color: 'var(--contrast-text-color-dark)',
-        item: {
+        dark: {
             background: 'var(--color-dark)',
-            hover: {
-                background: 'var(--color-dark-tint-50)'
+            border: {
+                color: 'var(--color-dark-tint-50)'
             },
-            focus: {
-                background: 'var(--color-dark-tint-50)'
+            color: 'var(--contrast-text-color-dark)',
+            item: {
+                background: 'var(--color-dark)',
+                hover: {
+                    background: 'var(--color-dark-tint-50)'
+                },
+                focus: {
+                    background: 'var(--color-dark-tint-50)'
+                },
+                active: {
+                    background: 'var(--color-dark-tint-100)'
+                }
+            }
+        },
+        sm: {
+            borderRadius: {
+                topLeft: 'calc(var(--sidebar--border-top-left-radius) * var(--size-multiplier-sm))',
+                topRight:
+                    'calc(var(--sidebar--border-top-right-radius) * var(--size-multiplier-sm))',
+                bottomRight:
+                    'calc(var(--sidebar--border-bottom-right-radius) * var(--size-multiplier-sm))',
+                bottomLeft:
+                    'calc(var(--sidebar--border-bottom-left-radius) * var(--size-multiplier-sm))'
             },
-            active: {
-                background: 'var(--color-dark-tint-100)'
-            }
-        }
-    },
-    sm: {
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-sm)',
-            topRight: 'var(--border-top-right-radius-sm)',
-            bottomRight: 'var(--border-bottom-right-radius-sm)',
-            bottomLeft: 'var(--border-bottom-left-radius-sm)'
-        },
-        fontSize: 'var(--font-size-sm)',
-        padding: {
-            top: 'var(--padding-top-sm)',
-            right: 'var(--padding-right-sm)',
-            bottom: 'var(--padding-bottom-sm)',
-            left: 'var(--padding-left-sm)'
-        },
-        item: {
+            fontSize: 'calc(var(--sidebar--font-size) * var(--size-multiplier-sm))',
             padding: {
-                top: 'calc(var(--padding-top-sm) * 0.5)',
-                right: 'var(--padding-right-sm)',
-                bottom: 'calc(var(--padding-bottom-sm) * 0.5)',
-                left: 'var(--padding-left-sm)'
+                top: 'calc(var(--sidebar--padding-top) * var(--size-multiplier-sm))',
+                right: 'calc(var(--sidebar--padding-right) * var(--size-multiplier-sm))',
+                bottom: 'calc(var(--sidebar--padding-bottom) * var(--size-multiplier-sm))',
+                left: 'calc(var(--sidebar--padding-left) * var(--size-multiplier-sm))'
+            },
+            item: {
+                padding: {
+                    top: 'calc(var(--sidebar--padding-top) * var(--size-multiplier-sm) * 0.5)',
+                    right: 'calc(var(--sidebar--padding-right) * var(--size-multiplier-sm))',
+                    bottom: 'calc(var(--sidebar--padding-bottom) * var(--size-multiplier-sm) * 0.5)',
+                    left: 'calc(var(--sidebar--padding-left) * var(--size-multiplier-sm))'
+                }
             }
-        }
-    },
-    md: {
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-md)',
-            topRight: 'var(--border-top-right-radius-md)',
-            bottomRight: 'var(--border-bottom-right-radius-md)',
-            bottomLeft: 'var(--border-bottom-left-radius-md)'
         },
-        fontSize: 'var(--font-size-md)',
-        padding: {
-            top: 'var(--padding-top-md)',
-            right: 'var(--padding-right-md)',
-            bottom: 'var(--padding-bottom-md)',
-            left: 'var(--padding-left-md)'
-        },
-        item: {
+        md: {
+            borderRadius: {
+                topLeft: 'calc(var(--sidebar--border-top-left-radius) * var(--size-multiplier-md))',
+                topRight:
+                    'calc(var(--sidebar--border-top-right-radius) * var(--size-multiplier-md))',
+                bottomRight:
+                    'calc(var(--sidebar--border-bottom-right-radius) * var(--size-multiplier-md))',
+                bottomLeft:
+                    'calc(var(--sidebar--border-bottom-left-radius) * var(--size-multiplier-md))'
+            },
+            fontSize: 'calc(var(--sidebar--font-size) * var(--size-multiplier-md))',
             padding: {
-                top: 'calc(var(--padding-top-md) * 0.5)',
-                right: 'var(--padding-right-md)',
-                bottom: 'calc(var(--padding-bottom-md) * 0.5)',
-                left: 'var(--padding-left-md)'
+                top: 'calc(var(--sidebar--padding-top) * var(--size-multiplier-md))',
+                right: 'calc(var(--sidebar--padding-right) * var(--size-multiplier-md))',
+                bottom: 'calc(var(--sidebar--padding-bottom) * var(--size-multiplier-md))',
+                left: 'calc(var(--sidebar--padding-left) * var(--size-multiplier-md))'
+            },
+            item: {
+                padding: {
+                    top: 'calc(var(--sidebar--padding-top) * var(--size-multiplier-md) * 0.5)',
+                    right: 'calc(var(--sidebar--padding-right) * var(--size-multiplier-md))',
+                    bottom: 'calc(var(--sidebar--padding-bottom) * var(--size-multiplier-md) * 0.5)',
+                    left: 'calc(var(--sidebar--padding-left) * var(--size-multiplier-md))'
+                }
             }
-        }
-    },
-    lg: {
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-lg)',
-            topRight: 'var(--border-top-right-radius-lg)',
-            bottomRight: 'var(--border-bottom-right-radius-lg)',
-            bottomLeft: 'var(--border-bottom-left-radius-lg)'
         },
-        fontSize: 'var(--font-size-lg)',
-        padding: {
-            top: 'var(--padding-top-lg)',
-            right: 'var(--padding-right-lg)',
-            bottom: 'var(--padding-bottom-lg)',
-            left: 'var(--padding-left-lg)'
-        },
-        item: {
+        lg: {
+            borderRadius: {
+                topLeft: 'calc(var(--sidebar--border-top-left-radius) * var(--size-multiplier-lg))',
+                topRight:
+                    'calc(var(--sidebar--border-top-right-radius) * var(--size-multiplier-lg))',
+                bottomRight:
+                    'calc(var(--sidebar--border-bottom-right-radius) * var(--size-multiplier-lg))',
+                bottomLeft:
+                    'calc(var(--sidebar--border-bottom-left-radius) * var(--size-multiplier-lg))'
+            },
+            fontSize: 'calc(var(--sidebar--font-size) * var(--size-multiplier-lg))',
             padding: {
-                top: 'calc(var(--padding-top-lg) * 0.5)',
-                right: 'var(--padding-right-lg)',
-                bottom: 'calc(var(--padding-bottom-lg) * 0.5)',
-                left: 'var(--padding-left-lg)'
+                top: 'calc(var(--sidebar--padding-top) * var(--size-multiplier-lg))',
+                right: 'calc(var(--sidebar--padding-right) * var(--size-multiplier-lg))',
+                bottom: 'calc(var(--sidebar--padding-bottom) * var(--size-multiplier-lg))',
+                left: 'calc(var(--sidebar--padding-left) * var(--size-multiplier-lg))'
+            },
+            item: {
+                padding: {
+                    top: 'calc(var(--sidebar--padding-top) * var(--size-multiplier-lg) * 0.5)',
+                    right: 'calc(var(--sidebar--padding-right) * var(--size-multiplier-lg))',
+                    bottom: 'calc(var(--sidebar--padding-bottom) * var(--size-multiplier-lg) * 0.5)',
+                    left: 'calc(var(--sidebar--padding-left) * var(--size-multiplier-lg))'
+                }
             }
         }
     }
-};
+);

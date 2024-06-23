@@ -63,6 +63,7 @@ export default defineComponent({
          * @name value
          */
         value: {
+            type: Boolean,
             default: undefined
         },
         /**
@@ -71,6 +72,7 @@ export default defineComponent({
          * @name modelValue
          */
         modelValue: {
+            type: Boolean,
             default: false
         },
         /**
@@ -109,7 +111,7 @@ export default defineComponent({
          * The size variant of the checkbox
          * @type sm | md | lg
          * @default
-         * @name size
+         * @name sizeMultiplier
          *
          */
         size: {

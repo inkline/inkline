@@ -1,6 +1,6 @@
-import type { RawTheme, RawThemeElement } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-export const hr: RawTheme['elements']['hr'] = {
+export const hr = defineElement({
     margin: {
         top: 'var(--margin-top)',
         right: 0,
@@ -15,4 +15,4 @@ export const hr: RawTheme['elements']['hr'] = {
             color: 'var(--border-top-color)'
         }
     }
-} as RawThemeElement;
+});

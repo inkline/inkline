@@ -43,7 +43,7 @@ export default defineComponent({
          * The size of the button group
          * @type String
          * @default
-         * @name size
+         * @name sizeMultiplier
          */
         size: {
             type: String,

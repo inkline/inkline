@@ -1,10 +1,8 @@
-import glob from 'fast-glob';
-import { basename, dirname, resolve } from 'path';
-import { readFile, writeFile } from 'fs/promises';
+import { resolve } from 'path';
+import { generateExports } from '@inkline/build';
 
 const baseDir = resolve(__dirname, '..', '..');
 const srcDir = resolve(baseDir, 'src');
-const packageJSONPath = resolve(baseDir, 'package.json');
 
 const packageExports = new Map<
     string,
@@ -13,64 +11,28 @@ const packageExports = new Map<
     [
         '.',
         {
-            require: './inkline.js',
-            import: './inkline.mjs',
-            types: './inkline.d.ts'
+            require: './lib/inkline.js',
+            import: './lib/inkline.mjs',
+            types: './lib/inkline.d.ts'
         }
     ],
     [
         './types',
         {
-            types: './types/index.d.ts'
+            types: './lib/types/index.d.ts'
         }
     ],
-    ['./*', './*']
+    [
+        './css/*',
+        {
+            types: './lib/css/*'
+        }
+    ]
 ]);
 
-const defaultIgnore = [
-    resolve(srcDir, '__storybook__', '**'),
-    resolve(srcDir, '__mocks__', '**'),
-    resolve(srcDir, 'playground', '**')
-];
-
 (async () => {
-    const packageJSON = JSON.parse(await readFile(packageJSONPath, 'utf-8'));
-    const tsFiles = await glob(resolve(srcDir, '**', '*.ts'), {
-        cwd: __dirname,
-        ignore: [
-            ...defaultIgnore,
-            resolve(srcDir, '**', '*.{d,spec,stories}.ts'),
-            resolve(srcDir, 'main.ts')
-        ]
+    await generateExports(baseDir, {
+        exports: packageExports,
+        ignore: [resolve(srcDir, '**', '*.{d,spec,stories}.ts'), resolve(srcDir, 'main.ts')]
     });
-
-    tsFiles.forEach((file) => {
-        const exportFile = basename(file, '.ts');
-        const exportDir = dirname(file).replace(srcDir, '');
-        const importPath = `.${exportDir}/${exportFile}`;
-        const exportPath = importPath.replace(/\/index$/, '');
-
-        packageExports.set(exportPath, {
-            require: `${importPath}.js`,
-            import: `${importPath}.mjs`,
-            types: `${importPath}.d.ts`
-        });
-    });
-
-    packageJSON.exports = packageExports;
-
-    await writeFile(
-        packageJSONPath,
-        JSON.stringify(
-            packageJSON,
-            (key, value) => {
-                if (value instanceof Map) {
-                    return Object.fromEntries(new Map([...value].sort()));
-                } else {
-                    return value;
-                }
-            },
-            4
-        ) + '\n'
-    );
 })();

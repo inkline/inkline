@@ -122,7 +122,7 @@ export default defineComponent({
         },
         /**
          * The size variant of the tooltip
-         * @name size
+         * @name sizeMultiplier
          * @type sm | md | lg
          * @default
          */

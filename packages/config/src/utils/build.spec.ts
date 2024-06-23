@@ -1,4 +1,5 @@
 import { extractIndexFiles } from './build';
+import { BuildChunk } from '../types';
 
 describe('extractIndexFiles', () => {
     it('should correctly extract index files from single level paths', () => {
@@ -28,7 +29,7 @@ describe('extractIndexFiles', () => {
     });
 
     it('should handle empty input array', () => {
-        const input = [];
+        const input: BuildChunk[] = [];
         const output = extractIndexFiles(input);
         expect(output).toEqual([]);
     });

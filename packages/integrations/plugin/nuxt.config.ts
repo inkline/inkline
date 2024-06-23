@@ -1,13 +1,13 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-import { resolve } from "pathe";
-import { UserOptions } from "./src/plugin/types";
+import { resolve } from "path";
+import type { UserOptions } from "./src/plugin/types";
 
 const inklineConfig: UserOptions = {
-    outputDir: resolve(__dirname, "src/playground/nuxt/css"),
+    outputDir: resolve(__dirname, "playground/nuxt/css"),
 };
 
 export default defineNuxtConfig({
-    rootDir: resolve(__dirname, "src/playground/nuxt"),
+    rootDir: resolve(__dirname, "playground/nuxt"),
     devServer: {
         port: 8080,
     },

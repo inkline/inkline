@@ -43,7 +43,7 @@ export default defineComponent({
          * The size variant of the progress component
          * @type sm | md | lg
          * @default
-         * @name size
+         * @name sizeMultiplier
          */
         size: {
             type: String,

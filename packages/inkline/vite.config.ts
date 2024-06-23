@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'pathe';
+import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 
 /**

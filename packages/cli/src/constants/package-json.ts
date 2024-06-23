@@ -8,3 +8,14 @@ export const packageJsonExtension = {
         sass: '^1.77.1'
     }
 };
+
+export const packageJsonDevelopmentExtension = {
+    dependencies: {
+        '@inkline/inkline': 'workspace:^'
+    },
+    devDependencies: {
+        '@inkline/plugin': 'workspace:^',
+        '@inkline/config': 'workspace:^',
+        sass: '^1.77.1'
+    }
+};

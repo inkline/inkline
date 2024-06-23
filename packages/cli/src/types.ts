@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-namespace */
+
 import { JSONSchemaForNPMPackageJsonFiles } from '@schemastore/package';
 
 export namespace Commands {
@@ -12,6 +14,7 @@ export namespace Commands {
             manual?: boolean;
             typescript?: boolean;
             type?: DevEnvType;
+            dev?: boolean;
         }
     }
 

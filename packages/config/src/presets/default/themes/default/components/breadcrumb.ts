@@ -1,7 +1,7 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const breadcrumb: RawTheme['components']['breadcrumb'] = {
-    default: {
+export const breadcrumb = defineComponent(
+    {
         color: 'var(--text-color-dark)',
         fontSize: 'var(--font-size)',
         margin: {
@@ -24,37 +24,39 @@ export const breadcrumb: RawTheme['components']['breadcrumb'] = {
             color: 'var(--color-gray-500)'
         }
     },
-    light: {
-        color: 'var(--contrast-text-color-light)'
-    },
-    dark: {
-        color: 'var(--contrast-text-color-dark)'
-    },
-    sm: {
-        fontSize: 'var(--font-size-sm)',
-        padding: {
-            top: 0,
-            right: 'var(--padding-right-sm)',
-            bottom: 0,
-            left: 'var(--padding-left-sm)'
-        }
-    },
-    md: {
-        fontSize: 'var(--font-size-md)',
-        padding: {
-            top: 0,
-            right: 'var(--padding-right-md)',
-            bottom: 0,
-            left: 'var(--padding-left-md)'
-        }
-    },
-    lg: {
-        fontSize: 'var(--font-size-lg)',
-        padding: {
-            top: 0,
-            right: 'var(--padding-right-lg)',
-            bottom: 0,
-            left: 'var(--padding-left-lg)'
+    {
+        light: {
+            color: 'var(--contrast-text-color-light)'
+        },
+        dark: {
+            color: 'var(--contrast-text-color-dark)'
+        },
+        sm: {
+            fontSize: 'calc(var(--breadcrumb--font-size) * var(--size-multiplier-sm))',
+            padding: {
+                top: 0,
+                right: 'calc(var(--breadcrumb--padding-right) * var(--size-multiplier-sm))',
+                bottom: 0,
+                left: 'calc(var(--breadcrumb--padding-left) * var(--size-multiplier-sm))'
+            }
+        },
+        md: {
+            fontSize: 'calc(var(--breadcrumb--font-size) * var(--size-multiplier-md))',
+            padding: {
+                top: 0,
+                right: 'calc(var(--breadcrumb--padding-right) * var(--size-multiplier-md))',
+                bottom: 0,
+                left: 'calc(var(--breadcrumb--padding-left) * var(--size-multiplier-md))'
+            }
+        },
+        lg: {
+            fontSize: 'calc(var(--breadcrumb--font-size) * var(--size-multiplier-lg))',
+            padding: {
+                top: 0,
+                right: 'calc(var(--breadcrumb--padding-right) * var(--size-multiplier-lg))',
+                bottom: 0,
+                left: 'calc(var(--breadcrumb--padding-left) * var(--size-multiplier-lg))'
+            }
         }
     }
-};
+);

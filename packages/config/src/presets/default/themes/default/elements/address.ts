@@ -1,10 +1,10 @@
-import type { RawTheme } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-export const address: RawTheme['elements']['address'] = {
+export const address = defineElement({
     margin: {
         top: 0,
         bottom: 'var(--margin-bottom)',
         left: 0,
         right: 0
     }
-};
+});

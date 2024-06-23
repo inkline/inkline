@@ -67,7 +67,6 @@ describe('Components', () => {
                         },
                         props: {
                             modelValue: true,
-                            collapsible: true,
                             collapse: true,
                             ...props
                         },

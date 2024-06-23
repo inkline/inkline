@@ -1,2 +1,6 @@
 node_modules/
 .turbo
+
+# E2E Generated packages
+packages/e2e/nuxt
+packages/e2e/vite

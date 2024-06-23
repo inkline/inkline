@@ -22,7 +22,7 @@ export default defineComponent({
          * The size variant of the loader
          * @type sm | md | lg | auto
          * @default
-         * @name size
+         * @name sizeMultiplier
          */
         size: {
             type: String,

@@ -1,7 +1,7 @@
-import type { RawTheme } from '../../../../../types';
+import { defineComponent } from '../../../../../utils';
 
-export const tooltip: RawTheme['components']['tooltip'] = {
-    default: {
+export const tooltip = defineComponent(
+    {
         background: 'var(--color-white)',
         boxShadow: {
             offsetX: 'var(--box-shadow-offset-x)',
@@ -57,63 +57,74 @@ export const tooltip: RawTheme['components']['tooltip'] = {
             size: '6px'
         }
     },
-    light: {
-        background: 'var(--color-white)',
-        border: {
-            color: 'var(--color-light-shade-50)'
+    {
+        light: {
+            background: 'var(--color-white)',
+            border: {
+                color: 'var(--color-light-shade-50)'
+            },
+            color: 'var(--contrast-text-color-light)'
         },
-        color: 'var(--contrast-text-color-light)'
-    },
-    dark: {
-        background: 'var(--color-dark)',
-        border: {
-            color: 'var(--color-dark-tint-50)'
+        dark: {
+            background: 'var(--color-dark)',
+            border: {
+                color: 'var(--color-dark-tint-50)'
+            },
+            color: 'var(--contrast-text-color-dark)'
         },
-        color: 'var(--contrast-text-color-dark)'
-    },
-    sm: {
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-sm)',
-            topRight: 'var(--border-top-right-radius-sm)',
-            bottomRight: 'var(--border-bottom-right-radius-sm)',
-            bottomLeft: 'var(--border-bottom-left-radius-sm)'
+        sm: {
+            borderRadius: {
+                topLeft: 'calc(var(--tooltip--border-top-left-radius) * var(--size-multiplier-sm))',
+                topRight:
+                    'calc(var(--tooltip--border-top-right-radius) * var(--size-multiplier-sm))',
+                bottomRight:
+                    'calc(var(--tooltip--border-bottom-right-radius) * var(--size-multiplier-sm))',
+                bottomLeft:
+                    'calc(var(--tooltip--border-bottom-left-radius) * var(--size-multiplier-sm))'
+            },
+            fontSize: 'calc(var(--tooltip--font-size) * var(--size-multiplier-sm))',
+            padding: {
+                top: 'calc(var(--tooltip--padding-top) * var(--size-multiplier-sm))',
+                right: 'calc(var(--tooltip--padding-right) * var(--size-multiplier-sm))',
+                bottom: 'calc(var(--tooltip--padding-bottom) * var(--size-multiplier-sm))',
+                left: 'calc(var(--tooltip--padding-left) * var(--size-multiplier-sm))'
+            }
         },
-        fontSize: 'var(--font-size-sm)',
-        padding: {
-            top: 'var(--padding-top-sm)',
-            right: 'var(--padding-right-sm)',
-            bottom: 'var(--padding-bottom-sm)',
-            left: 'var(--padding-left-sm)'
-        }
-    },
-    md: {
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-md)',
-            topRight: 'var(--border-top-right-radius-md)',
-            bottomRight: 'var(--border-bottom-right-radius-md)',
-            bottomLeft: 'var(--border-bottom-left-radius-md)'
+        md: {
+            borderRadius: {
+                topLeft: 'calc(var(--tooltip--border-top-left-radius) * var(--size-multiplier-md))',
+                topRight:
+                    'calc(var(--tooltip--border-top-right-radius) * var(--size-multiplier-md))',
+                bottomRight:
+                    'calc(var(--tooltip--border-bottom-right-radius) * var(--size-multiplier-md))',
+                bottomLeft:
+                    'calc(var(--tooltip--border-bottom-left-radius) * var(--size-multiplier-md))'
+            },
+            fontSize: 'calc(var(--tooltip--font-size) * var(--size-multiplier-md))',
+            padding: {
+                top: 'calc(var(--tooltip--padding-top) * var(--size-multiplier-md))',
+                right: 'calc(var(--tooltip--padding-right) * var(--size-multiplier-md))',
+                bottom: 'calc(var(--tooltip--padding-bottom) * var(--size-multiplier-md))',
+                left: 'calc(var(--tooltip--padding-left) * var(--size-multiplier-md))'
+            }
         },
-        fontSize: 'var(--font-size-md)',
-        padding: {
-            top: 'var(--padding-top-md)',
-            right: 'var(--padding-right-md)',
-            bottom: 'var(--padding-bottom-md)',
-            left: 'var(--padding-left-md)'
-        }
-    },
-    lg: {
-        borderRadius: {
-            topLeft: 'var(--border-top-left-radius-lg)',
-            topRight: 'var(--border-top-right-radius-lg)',
-            bottomRight: 'var(--border-bottom-right-radius-lg)',
-            bottomLeft: 'var(--border-bottom-left-radius-lg)'
-        },
-        fontSize: 'var(--font-size-lg)',
-        padding: {
-            top: 'var(--padding-top-lg)',
-            right: 'var(--padding-right-lg)',
-            bottom: 'var(--padding-bottom-lg)',
-            left: 'var(--padding-left-lg)'
+        lg: {
+            borderRadius: {
+                topLeft: 'calc(var(--tooltip--border-top-left-radius) * var(--size-multiplier-lg))',
+                topRight:
+                    'calc(var(--tooltip--border-top-right-radius) * var(--size-multiplier-lg))',
+                bottomRight:
+                    'calc(var(--tooltip--border-bottom-right-radius) * var(--size-multiplier-lg))',
+                bottomLeft:
+                    'calc(var(--tooltip--border-bottom-left-radius) * var(--size-multiplier-lg))'
+            },
+            fontSize: 'calc(var(--tooltip--font-size) * var(--size-multiplier-lg))',
+            padding: {
+                top: 'calc(var(--tooltip--padding-top) * var(--size-multiplier-lg))',
+                right: 'calc(var(--tooltip--padding-right) * var(--size-multiplier-lg))',
+                bottom: 'calc(var(--tooltip--padding-bottom) * var(--size-multiplier-lg))',
+                left: 'calc(var(--tooltip--padding-left) * var(--size-multiplier-lg))'
+            }
         }
     }
-};
+);

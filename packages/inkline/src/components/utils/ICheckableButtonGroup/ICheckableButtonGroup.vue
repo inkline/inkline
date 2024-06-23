@@ -26,7 +26,7 @@ export default defineComponent({
          * The size variant of the checkable buttons
          * @type sm | md | lg
          * @default
-         * @name size
+         * @name sizeMultiplier
          */
         size: {
             type: String,
@@ -36,7 +36,7 @@ export default defineComponent({
          * The type of the checkable buttons
          * @type sm | md | lg
          * @default
-         * @name size
+         * @name sizeMultiplier
          */
         type: {
             type: String as PropType<'checkbox' | 'radio'>,

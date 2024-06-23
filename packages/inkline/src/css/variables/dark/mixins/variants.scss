@@ -554,6 +554,10 @@
   );
 }
 
+@mixin gap($component, $variant, $elementOrState: null) {
+  @include _generic-property($component, $variant, "gap", $elementOrState);
+}
+
 @mixin margin-top($component, $variant, $elementOrState: null) {
   @include _spacing-property-side(
     $component,
@@ -646,8 +650,26 @@
   @include _generic-property($component, $variant, "width", $elementOrState);
 }
 
+@mixin min-width($component, $variant, $elementOrState: null) {
+  @include _generic-property(
+    $component,
+    $variant,
+    "min-width",
+    $elementOrState
+  );
+}
+
 @mixin height($component, $variant, $elementOrState: null) {
   @include _generic-property($component, $variant, "height", $elementOrState);
+}
+
+@mixin min-height($component, $variant, $elementOrState: null) {
+  @include _generic-property(
+    $component,
+    $variant,
+    "min-height",
+    $elementOrState
+  );
 }
 
 @mixin size($component, $variant, $elementOrState: null) {

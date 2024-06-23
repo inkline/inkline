@@ -88,6 +88,7 @@ export default defineComponent({
          * @name modelValue
          */
         modelValue: {
+            type: [String, Number, Boolean] as PropType<string | number | boolean>,
             default: undefined
         },
         /**
@@ -126,7 +127,7 @@ export default defineComponent({
          * The size variant of the radio group
          * @type sm | md | lg
          * @default
-         * @name size
+         * @name sizeMultiplier
          */
         size: {
             type: String,

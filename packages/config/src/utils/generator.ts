@@ -8,21 +8,12 @@ import {
 } from './codegen';
 import { toKebabCase } from './string';
 import { getResolvedPath, shouldGenerateAggregateValue } from './meta';
-
-export function defineGenerator<Resolved>(generator: Generator<Resolved>): Generator<Resolved> {
-    return generator;
-}
-
-export function defineGeneratorValueFn<ResolvedValue>(
-    fn: GenerateValueFn<ResolvedValue>
-): GenerateValueFn<ResolvedValue> {
-    return fn;
-}
+import { isInternalKey } from './matchKey';
 
 export const getSortedVariantsFieldKeys = <Value extends Record<string, unknown>>(
     variants: Value
 ): string[] => {
-    const sortedKeys = Object.keys(variants);
+    const sortedKeys = Object.keys(variants).filter((key) => !isInternalKey(key));
 
     sortedKeys.sort((variantName) => {
         const variant = variants[variantName];
@@ -39,13 +30,7 @@ export const getSortedVariantsFieldKeys = <Value extends Record<string, unknown>
     return sortedKeys;
 };
 
-export const createGenerateFn =
-    <ResolvedValue>(generateValue: GenerateValueFn<ResolvedValue>) =>
-    (value: ResolvedValue, meta: GeneratorMeta): string[] => {
-        return generateValue(value, meta);
-    };
-
-export const createGenericDesignTokenVariantGenerateFn =
+export const createGenericVariantGenerateFn =
     <ResolvedValue extends Record<string, any> | string | number>(options?: {
         aggregate?: string[];
         replacePath?: (path: string[]) => string[];
@@ -75,11 +60,11 @@ export const createGenericDesignTokenVariantGenerateFn =
 
         const sortedKeys = getSortedVariantsFieldKeys(value);
         const lines = sortedKeys.reduce<string[]>((acc, key) => {
-            if (key.startsWith('$')) {
+            if (isInternalKey(key)) {
                 return acc;
             }
 
-            const cssVariableValue = value[key];
+            const cssVariableValue = value[key] as string;
             const cssVariableName = `${variablePreamble}${propertyName}-${toKebabCase(key)}${variantName === 'default' ? '' : `-${variantName}`}`;
 
             if (typeof cssVariableValue !== 'undefined') {

@@ -1,5 +1,3 @@
-import type { RawTheme } from '../../../../../types';
+import { defineElement } from '../../../../../utils';
 
-export const samp: RawTheme['elements']['samp'] = {
-    fontFamily: 'var(--font-family-monospace)'
-};
+export const samp = defineElement({ fontFamily: 'var(--font-family-monospace)' });

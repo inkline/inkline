@@ -31,7 +31,7 @@ export default defineComponent({
          * The size variant of the icon
          * @type xs | sm | md | lg | xl | xxl
          * @default
-         * @name size
+         * @name sizeMultiplier
          */
         size: {
             type: String,
