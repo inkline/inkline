@@ -22,6 +22,9 @@ import { Commands, DevEnvType, PackageJsonSchema } from '../types';
 import prettier from 'prettier';
 import { capitalizeFirst } from '@grozav/utils';
 
+/**
+ * Create the inkline.config.ts file
+ */
 async function createConfigFile(env: InitEnv) {
     const outputFilePath = resolve(env.cwd, `inkline.config.${env.isTypescript ? 'ts' : 'js'}`);
     const formattedCode = await prettier.format(defaultConfigFileContents, defaultPrettierConfig);
@@ -31,6 +34,9 @@ async function createConfigFile(env: InitEnv) {
     Logger.default(`Created ${outputFilePath}`);
 }
 
+/**
+ * Initialize Inkline
+ */
 export async function init(options: Commands.Init.Options) {
     try {
         Logger.info('Initializing Inkline');
@@ -73,8 +79,14 @@ export async function init(options: Commands.Init.Options) {
                 }
             }
 
+            /**
+             * Add Inkline plugin to the development environment config file
+             */
             await addPluginToDevEnvConfigFile(devEnv, initEnv);
 
+            /**
+             * Add Inkline plugin to the main.ts entry file
+             */
             if (devEnv.type !== DevEnvType.Nuxt) {
                 const entryFile = detectEntryFile(initEnv);
                 if (entryFile) {
@@ -92,6 +104,9 @@ export async function init(options: Commands.Init.Options) {
             }
         }
 
+        /**
+         * Create the inkline.config.ts file
+         */
         await createConfigFile(initEnv);
 
         if (initSuccessful) {

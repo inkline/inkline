@@ -18,10 +18,7 @@ export default {
         <ILayout vertical class="_padding-top:1/2">
             <ISidebar v-model="open">
                 <INav vertical>
-                    <INavItem
-                        :to="{ path: '/docs/components/sidebar' }"
-                        exact-active-class="-active"
-                    >
+                    <INavItem :to="{ path: '/' }" exact-active-class="-active">
                         Active Router Link
                     </INavItem>
                     <INavItem active> Active Item </INavItem>

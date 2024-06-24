@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useForm } from '@inkline/inkline/composables';
+import { useForm } from '@inkline/inkline';
 import { computed } from 'vue';
 import { createFormFieldSchema } from '@inkline/inkline';
 

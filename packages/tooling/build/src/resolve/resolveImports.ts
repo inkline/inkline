@@ -23,7 +23,7 @@ export function resolveImportPath(
     let resolvedPath = importPath;
 
     const { compilerOptions, dirname: tsconfigDir } = tsconfig;
-    const { baseUrl, paths, rootDir } = compilerOptions;
+    const { baseUrl, paths, rootDir, outDir } = compilerOptions;
 
     // Resolve the base directory
     const baseDir = path.resolve(tsconfigDir, baseUrl);
@@ -34,7 +34,11 @@ export function resolveImportPath(
             const regexAlias = new RegExp(`^${alias.replace('*', '(.*)')}$`);
             const match = resolvedPath.match(regexAlias);
             if (match) {
-                resolvedPath = path.resolve(baseDir, aliasTarget.replace('*', ''), match[1]);
+                resolvedPath = path.resolve(
+                    baseDir,
+                    aliasTarget.replace(rootDir, outDir).replace('*', ''),
+                    match[1] ?? ''
+                );
                 break;
             }
         }
@@ -42,27 +46,29 @@ export function resolveImportPath(
 
     // Resolve relative to baseDir
     if (resolvedPath.startsWith('.')) {
-        resolvedPath = path.resolve(baseDir, rootDir, importPath);
+        resolvedPath = path.resolve(baseDir, outDir, importPath);
     }
 
-    // Make the path relative to the file's directory
-    const fileDir = path.dirname(path.resolve(baseDir, filePath));
-    resolvedPath = path.relative(fileDir, resolvedPath);
+    if (resolvedPath.startsWith('/')) {
+        // Check if resolvedPath is directory or file
+        const isDirectory = fs.existsSync(`${resolvedPath}/index.${extname}`);
+        if (isDirectory) {
+            resolvedPath += `/index`;
+        }
 
-    // Check if resolvedPath is directory or file
-    const isDirectory = fs.existsSync(`${resolvedPath}/index.${extname}`);
-    if (isDirectory) {
-        resolvedPath += `/index`;
-    }
+        // Make the path relative to the file's directory
+        const fileDir = path.dirname(path.resolve(baseDir, filePath));
+        resolvedPath = path.relative(fileDir, resolvedPath);
 
-    // Add the extension name
-    if (addExtname) {
-        resolvedPath += `.${extname}`;
-    }
+        // Ensure the path starts with './'
+        if (!resolvedPath.startsWith('.')) {
+            resolvedPath = `./${resolvedPath}`;
+        }
 
-    // Ensure the path starts with './'
-    if (!resolvedPath.startsWith('.')) {
-        resolvedPath = `./${resolvedPath}`;
+        // Add the extension name
+        if (addExtname && !path.extname(resolvedPath)) {
+            resolvedPath += `.${extname}`;
+        }
     }
 
     return resolvedPath;
@@ -74,13 +80,13 @@ export function resolveImportPath(
 export async function resolveFileImportPaths(
     filePath: string,
     options: {
-        esm: boolean;
+        isEsm: boolean;
         tsconfig: TsConfig;
         extname: string;
         addExtname: boolean;
     }
 ) {
-    const importRegEx = options.esm
+    const importRegEx = options.isEsm
         ? /(from ['"])([^'"]+)(['"])/g
         : /(require\(['"])([^'"]+)(['"]\))/g;
 
@@ -104,19 +110,22 @@ export async function resolveFileImportPaths(
  *
  */
 export async function resolveImports(baseDir: string, tsconfig: TsConfig) {
-    const files = await glob('**/*.{js,cjs,mjs,vue}', { cwd: baseDir });
+    const { outDir } = tsconfig.compilerOptions;
+    const files = await glob(`${outDir}/**/*.{js,ts,cjs,cts,mjs,mts,vue}`, {
+        cwd: baseDir
+    });
 
     for (const file of files) {
         const filePath = path.resolve(baseDir, file);
-        const extname = path.extname(filePath).slice(1);
-        const isModule = extname === 'mjs';
-        const addExtname = true;
+        const fileExtname = path.extname(filePath).slice(1);
+        const isEsm = ['ts', 'mjs', 'mts', 'vue'].includes(fileExtname);
+        const isDts = filePath.endsWith('.d.ts');
 
         await resolveFileImportPaths(filePath, {
-            esm: isModule,
+            isEsm,
             tsconfig,
-            extname,
-            addExtname
+            extname: isDts ? 'd.ts' : isEsm ? 'mjs' : 'js',
+            addExtname: true
         });
     }
 }

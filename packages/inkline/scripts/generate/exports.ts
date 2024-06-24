@@ -17,6 +17,14 @@ const packageExports = new Map<
         }
     ],
     [
+        './dist',
+        {
+            require: './dist/inkline.umd.js',
+            import: './dist/inkline.es.mjs',
+            types: './lib/inkline.d.ts'
+        }
+    ],
+    [
         './types',
         {
             types: './lib/types/index.d.ts'

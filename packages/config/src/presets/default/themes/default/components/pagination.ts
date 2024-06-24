@@ -109,19 +109,19 @@ export const pagination = defineComponent(
             item: {
                 borderRadius: {
                     topLeft:
-                        'calc(var(--pagination--border-top-left-radius) * var(--size-multiplier-sm))',
+                        'calc(var(--pagination--item--border-top-left-radius) * var(--size-multiplier-sm))',
                     topRight:
-                        'calc(var(--pagination--border-top-right-radius) * var(--size-multiplier-sm))',
+                        'calc(var(--pagination--item--border-top-right-radius) * var(--size-multiplier-sm))',
                     bottomRight:
-                        'calc(var(--pagination--border-bottom-right-radius) * var(--size-multiplier-sm))',
+                        'calc(var(--pagination--item--border-bottom-right-radius) * var(--size-multiplier-sm))',
                     bottomLeft:
-                        'calc(var(--pagination--border-bottom-left-radius) * var(--size-multiplier-sm))'
+                        'calc(var(--pagination--item--border-bottom-left-radius) * var(--size-multiplier-sm))'
                 },
                 padding: {
-                    top: 'calc(var(--pagination--padding-top) * var(--size-multiplier-sm))',
-                    right: 'calc(var(--pagination--padding-right) * var(--size-multiplier-sm))',
-                    bottom: 'calc(var(--pagination--padding-bottom) * var(--size-multiplier-sm))',
-                    left: 'calc(var(--pagination--padding-left) * var(--size-multiplier-sm))'
+                    top: 'calc(var(--pagination--item--padding-top) * var(--size-multiplier-sm))',
+                    right: 'calc(var(--pagination--item--padding-right) * var(--size-multiplier-sm))',
+                    bottom: 'calc(var(--pagination--item--padding-bottom) * var(--size-multiplier-sm))',
+                    left: 'calc(var(--pagination--item--padding-left) * var(--size-multiplier-sm))'
                 },
                 minWidth: '32px'
             }
@@ -131,19 +131,19 @@ export const pagination = defineComponent(
             item: {
                 borderRadius: {
                     topLeft:
-                        'calc(var(--pagination--border-top-left-radius) * var(--size-multiplier-md))',
+                        'calc(var(--pagination--item--border-top-left-radius) * var(--size-multiplier-md))',
                     topRight:
-                        'calc(var(--pagination--border-top-right-radius) * var(--size-multiplier-md))',
+                        'calc(var(--pagination--item--border-top-right-radius) * var(--size-multiplier-md))',
                     bottomRight:
-                        'calc(var(--pagination--border-bottom-right-radius) * var(--size-multiplier-md))',
+                        'calc(var(--pagination--item--border-bottom-right-radius) * var(--size-multiplier-md))',
                     bottomLeft:
-                        'calc(var(--pagination--border-bottom-left-radius) * var(--size-multiplier-md))'
+                        'calc(var(--pagination--item--border-bottom-left-radius) * var(--size-multiplier-md))'
                 },
                 padding: {
-                    top: 'calc(var(--pagination--padding-top) * var(--size-multiplier-md))',
-                    right: 'calc(var(--pagination--padding-right) * var(--size-multiplier-md))',
-                    bottom: 'calc(var(--pagination--padding-bottom) * var(--size-multiplier-md))',
-                    left: 'calc(var(--pagination--padding-left) * var(--size-multiplier-md))'
+                    top: 'calc(var(--pagination--item--padding-top) * var(--size-multiplier-md))',
+                    right: 'calc(var(--pagination--item--padding-right) * var(--size-multiplier-md))',
+                    bottom: 'calc(var(--pagination--item--padding-bottom) * var(--size-multiplier-md))',
+                    left: 'calc(var(--pagination--item--padding-left) * var(--size-multiplier-md))'
                 },
                 minWidth: '40px'
             }
@@ -153,19 +153,19 @@ export const pagination = defineComponent(
             item: {
                 borderRadius: {
                     topLeft:
-                        'calc(var(--pagination--border-top-left-radius) * var(--size-multiplier-lg))',
+                        'calc(var(--pagination--item--border-top-left-radius) * var(--size-multiplier-lg))',
                     topRight:
-                        'calc(var(--pagination--border-top-right-radius) * var(--size-multiplier-lg))',
+                        'calc(var(--pagination--item--border-top-right-radius) * var(--size-multiplier-lg))',
                     bottomRight:
-                        'calc(var(--pagination--border-bottom-right-radius) * var(--size-multiplier-lg))',
+                        'calc(var(--pagination--item--border-bottom-right-radius) * var(--size-multiplier-lg))',
                     bottomLeft:
-                        'calc(var(--pagination--border-bottom-left-radius) * var(--size-multiplier-lg))'
+                        'calc(var(--pagination--item--border-bottom-left-radius) * var(--size-multiplier-lg))'
                 },
                 padding: {
-                    top: 'calc(var(--pagination--padding-top) * var(--size-multiplier-lg))',
-                    right: 'calc(var(--pagination--padding-right) * var(--size-multiplier-lg))',
-                    bottom: 'calc(var(--pagination--padding-bottom) * var(--size-multiplier-lg))',
-                    left: 'calc(var(--pagination--padding-left) * var(--size-multiplier-lg))'
+                    top: 'calc(var(--pagination--item--padding-top) * var(--size-multiplier-lg))',
+                    right: 'calc(var(--pagination--item--padding-right) * var(--size-multiplier-lg))',
+                    bottom: 'calc(var(--pagination--item--padding-bottom) * var(--size-multiplier-lg))',
+                    left: 'calc(var(--pagination--item--padding-left) * var(--size-multiplier-lg))'
                 },
                 minWidth: '48px'
             }

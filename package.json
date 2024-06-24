@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "turbo run build --filter !@inkline/e2e*",
-    "dev": "turbo run dev --filter !@inkline/e2e* --filter !@inkline/build",
+    "dev": "turbo run dev --filter !@inkline/e2e*",
     "test": "turbo run test",
     "lint": "turbo run lint"
   },

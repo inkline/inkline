@@ -20,7 +20,7 @@ describe('resolveImportPath', () => {
 
     it('should resolve relative file imports', () => {
         const result = resolveImportPath('./utils', {
-            filePath: path.resolve(tsconfigDir, './src/index.ts'),
+            filePath: path.resolve(tsconfigDir, './lib/index.ts'),
             tsconfig,
             extname
         });
@@ -30,7 +30,7 @@ describe('resolveImportPath', () => {
     it('should resolve relative directory imports', () => {
         vi.spyOn(fs, 'existsSync').mockReturnValueOnce(true);
         const result = resolveImportPath('./utils', {
-            filePath: './src/index.ts',
+            filePath: path.resolve(tsconfigDir, './lib/index.ts'),
             tsconfig,
             extname
         });
@@ -39,7 +39,7 @@ describe('resolveImportPath', () => {
 
     it('should resolve tsconfig paths aliases for files', () => {
         const result = resolveImportPath('@alias/utils', {
-            filePath: './src/index.ts',
+            filePath: path.resolve(tsconfigDir, './lib/index.ts'),
             tsconfig,
             extname
         });
@@ -49,7 +49,7 @@ describe('resolveImportPath', () => {
     it('should resolve tsconfig paths aliases for directories', () => {
         vi.spyOn(fs, 'existsSync').mockReturnValueOnce(true);
         const result = resolveImportPath('@alias/utils', {
-            filePath: './src/index.ts',
+            filePath: path.resolve(tsconfigDir, './lib/index.ts'),
             tsconfig,
             extname
         });
@@ -58,7 +58,7 @@ describe('resolveImportPath', () => {
 
     it('should resolve tsconfig paths aliases for directories with overlapping path', () => {
         const result = resolveImportPath('@alias/components/alert', {
-            filePath: path.resolve(tsconfigDir, './src/components/index.ts'),
+            filePath: path.resolve(tsconfigDir, './lib/components/index.ts'),
             tsconfig,
             extname
         });
@@ -67,7 +67,7 @@ describe('resolveImportPath', () => {
 
     it('should resolve tsconfig paths aliases for relative nested imports', () => {
         const result = resolveImportPath('@alias/components/alert/component', {
-            filePath: path.resolve(tsconfigDir, './src/components/modal/utils/popup.ts'),
+            filePath: path.resolve(tsconfigDir, './lib/components/modal/utils/popup.ts'),
             tsconfig,
             extname
         });
@@ -76,10 +76,37 @@ describe('resolveImportPath', () => {
 
     it('should resolve tsconfig paths aliases for relative nested imports with overlapping path', () => {
         const result = resolveImportPath('@alias/components/alert/component', {
-            filePath: path.resolve(tsconfigDir, './src/components/alert/index.ts'),
+            filePath: path.resolve(tsconfigDir, './lib/components/alert/index.ts'),
             tsconfig,
             extname
         });
         expect(result).toBe('./component.ts');
+    });
+
+    it('should not add extension if it already exists', () => {
+        const result = resolveImportPath('./utils.ts', {
+            filePath: './lib/index.ts',
+            tsconfig,
+            extname
+        });
+        expect(result).toBe('./utils.ts');
+    });
+
+    it('should not resolve package imports', () => {
+        const result = resolveImportPath('package', {
+            filePath: path.resolve(tsconfigDir, './lib/index.ts'),
+            tsconfig,
+            extname
+        });
+        expect(result).toBe('package');
+    });
+
+    it('should not resolve scoped package imports', () => {
+        const result = resolveImportPath('@scope/package', {
+            filePath: path.resolve(tsconfigDir, './lib/index.ts'),
+            tsconfig,
+            extname
+        });
+        expect(result).toBe('@scope/package');
     });
 });

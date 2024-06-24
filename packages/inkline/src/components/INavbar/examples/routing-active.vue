@@ -1,9 +1,9 @@
 <template>
     <INavbar>
-        <INavbarBrand :to="{ path: '/docs/components/navbar' }">Navbar</INavbarBrand>
+        <INavbarBrand :to="{ path: '/' }">Navbar</INavbarBrand>
         <INavbarCollapsible>
             <INav>
-                <INavItem :to="{ path: '/docs/components/navbar' }" exact-active-class="-active">
+                <INavItem :to="{ path: '/' }" exact-active-class="-active">
                     Active Router Link
                 </INavItem>
                 <INavItem active> Active Item </INavItem>

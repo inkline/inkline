@@ -2792,10 +2792,10 @@
                 "__selector": ".button-group",
                 "default": {
                     "borderRadius": {
-                        "topLeft": "var(--button--border-top-left-radius)",
-                        "topRight": "var(--button--border-top-right-radius)",
-                        "bottomRight": "var(--button--border-bottom-right-radius)",
-                        "bottomLeft": "var(--button--border-bottom-left-radius)"
+                        "topLeft": "var(--border-top-left-radius)",
+                        "topRight": "var(--border-top-right-radius)",
+                        "bottomRight": "var(--border-bottom-right-radius)",
+                        "bottomLeft": "var(--border-bottom-left-radius)"
                     }
                 }
             },
@@ -7008,16 +7008,16 @@
                         "__type": "child-element",
                         "__name": "item",
                         "borderRadius": {
-                            "topLeft": "calc(var(--pagination--border-top-left-radius) * var(--size-multiplier-sm))",
-                            "topRight": "calc(var(--pagination--border-top-right-radius) * var(--size-multiplier-sm))",
-                            "bottomRight": "calc(var(--pagination--border-bottom-right-radius) * var(--size-multiplier-sm))",
-                            "bottomLeft": "calc(var(--pagination--border-bottom-left-radius) * var(--size-multiplier-sm))"
+                            "topLeft": "calc(var(--pagination--item--border-top-left-radius) * var(--size-multiplier-sm))",
+                            "topRight": "calc(var(--pagination--item--border-top-right-radius) * var(--size-multiplier-sm))",
+                            "bottomRight": "calc(var(--pagination--item--border-bottom-right-radius) * var(--size-multiplier-sm))",
+                            "bottomLeft": "calc(var(--pagination--item--border-bottom-left-radius) * var(--size-multiplier-sm))"
                         },
                         "padding": {
-                            "top": "calc(var(--pagination--padding-top) * var(--size-multiplier-sm))",
-                            "right": "calc(var(--pagination--padding-right) * var(--size-multiplier-sm))",
-                            "bottom": "calc(var(--pagination--padding-bottom) * var(--size-multiplier-sm))",
-                            "left": "calc(var(--pagination--padding-left) * var(--size-multiplier-sm))"
+                            "top": "calc(var(--pagination--item--padding-top) * var(--size-multiplier-sm))",
+                            "right": "calc(var(--pagination--item--padding-right) * var(--size-multiplier-sm))",
+                            "bottom": "calc(var(--pagination--item--padding-bottom) * var(--size-multiplier-sm))",
+                            "left": "calc(var(--pagination--item--padding-left) * var(--size-multiplier-sm))"
                         },
                         "minWidth": "32px"
                     }
@@ -7028,16 +7028,16 @@
                         "__type": "child-element",
                         "__name": "item",
                         "borderRadius": {
-                            "topLeft": "calc(var(--pagination--border-top-left-radius) * var(--size-multiplier-md))",
-                            "topRight": "calc(var(--pagination--border-top-right-radius) * var(--size-multiplier-md))",
-                            "bottomRight": "calc(var(--pagination--border-bottom-right-radius) * var(--size-multiplier-md))",
-                            "bottomLeft": "calc(var(--pagination--border-bottom-left-radius) * var(--size-multiplier-md))"
+                            "topLeft": "calc(var(--pagination--item--border-top-left-radius) * var(--size-multiplier-md))",
+                            "topRight": "calc(var(--pagination--item--border-top-right-radius) * var(--size-multiplier-md))",
+                            "bottomRight": "calc(var(--pagination--item--border-bottom-right-radius) * var(--size-multiplier-md))",
+                            "bottomLeft": "calc(var(--pagination--item--border-bottom-left-radius) * var(--size-multiplier-md))"
                         },
                         "padding": {
-                            "top": "calc(var(--pagination--padding-top) * var(--size-multiplier-md))",
-                            "right": "calc(var(--pagination--padding-right) * var(--size-multiplier-md))",
-                            "bottom": "calc(var(--pagination--padding-bottom) * var(--size-multiplier-md))",
-                            "left": "calc(var(--pagination--padding-left) * var(--size-multiplier-md))"
+                            "top": "calc(var(--pagination--item--padding-top) * var(--size-multiplier-md))",
+                            "right": "calc(var(--pagination--item--padding-right) * var(--size-multiplier-md))",
+                            "bottom": "calc(var(--pagination--item--padding-bottom) * var(--size-multiplier-md))",
+                            "left": "calc(var(--pagination--item--padding-left) * var(--size-multiplier-md))"
                         },
                         "minWidth": "40px"
                     }
@@ -7048,16 +7048,16 @@
                         "__type": "child-element",
                         "__name": "item",
                         "borderRadius": {
-                            "topLeft": "calc(var(--pagination--border-top-left-radius) * var(--size-multiplier-lg))",
-                            "topRight": "calc(var(--pagination--border-top-right-radius) * var(--size-multiplier-lg))",
-                            "bottomRight": "calc(var(--pagination--border-bottom-right-radius) * var(--size-multiplier-lg))",
-                            "bottomLeft": "calc(var(--pagination--border-bottom-left-radius) * var(--size-multiplier-lg))"
+                            "topLeft": "calc(var(--pagination--item--border-top-left-radius) * var(--size-multiplier-lg))",
+                            "topRight": "calc(var(--pagination--item--border-top-right-radius) * var(--size-multiplier-lg))",
+                            "bottomRight": "calc(var(--pagination--item--border-bottom-right-radius) * var(--size-multiplier-lg))",
+                            "bottomLeft": "calc(var(--pagination--item--border-bottom-left-radius) * var(--size-multiplier-lg))"
                         },
                         "padding": {
-                            "top": "calc(var(--pagination--padding-top) * var(--size-multiplier-lg))",
-                            "right": "calc(var(--pagination--padding-right) * var(--size-multiplier-lg))",
-                            "bottom": "calc(var(--pagination--padding-bottom) * var(--size-multiplier-lg))",
-                            "left": "calc(var(--pagination--padding-left) * var(--size-multiplier-lg))"
+                            "top": "calc(var(--pagination--item--padding-top) * var(--size-multiplier-lg))",
+                            "right": "calc(var(--pagination--item--padding-right) * var(--size-multiplier-lg))",
+                            "bottom": "calc(var(--pagination--item--padding-bottom) * var(--size-multiplier-lg))",
+                            "left": "calc(var(--pagination--item--padding-left) * var(--size-multiplier-lg))"
                         },
                         "minWidth": "48px"
                     }

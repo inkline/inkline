@@ -4,6 +4,7 @@
         "../../tooling/typescript-config/tsconfig.json",
     ],
     "compilerOptions": {
+        "composite": true,
         "moduleResolution": "node"
     },
     "include": [

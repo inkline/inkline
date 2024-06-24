@@ -4,8 +4,7 @@ import chalk from 'chalk';
 import { program } from 'commander';
 import { watch } from './watch';
 import { generateExports } from './generate';
-import { loadTsconfig } from './paths/loadTsconfig';
-import { resolveImportPath } from './paths/resolveImports';
+import { loadTsconfig, resolveImports } from './resolve';
 
 program.name(chalk.blue('@inkline/build'));
 
@@ -31,7 +30,10 @@ program
     .command('resolve:imports')
     .description('Resolve imports for the package.')
     .action(async () => {
-        const tsconfig = loadTsconfig(process.cwd(), 'tsconfig.json');
+        const baseDir = process.cwd();
+        const tsconfig = loadTsconfig(baseDir, 'tsconfig.json');
+
+        await resolveImports(baseDir, tsconfig);
     });
 
 program.parse();

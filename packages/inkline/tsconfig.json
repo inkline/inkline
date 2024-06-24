@@ -10,7 +10,7 @@
         ],
         "paths": {
             "@inkline/inkline/*": ["./src/*"],
-            "@inkline/inkline": ["./src/inkline.ts"]
+            "@inkline/inkline": ["./src/inkline"]
         }
     },
     "include": [

@@ -195,84 +195,90 @@
     var(--pagination--font-size) * var(--size-multiplier-sm)
   );
   --pagination--sm--item--border-top-left-radius: calc(
-    var(--pagination--border-top-left-radius) * var(--size-multiplier-sm)
+    var(--pagination--item--border-top-left-radius) * var(--size-multiplier-sm)
   );
   --pagination--sm--item--border-top-right-radius: calc(
-    var(--pagination--border-top-right-radius) * var(--size-multiplier-sm)
+    var(--pagination--item--border-top-right-radius) * var(--size-multiplier-sm)
   );
   --pagination--sm--item--border-bottom-right-radius: calc(
-    var(--pagination--border-bottom-right-radius) * var(--size-multiplier-sm)
+    var(--pagination--item--border-bottom-right-radius) *
+      var(--size-multiplier-sm)
   );
   --pagination--sm--item--border-bottom-left-radius: calc(
-    var(--pagination--border-bottom-left-radius) * var(--size-multiplier-sm)
+    var(--pagination--item--border-bottom-left-radius) *
+      var(--size-multiplier-sm)
   );
   --pagination--sm--item--padding-top: calc(
-    var(--pagination--padding-top) * var(--size-multiplier-sm)
+    var(--pagination--item--padding-top) * var(--size-multiplier-sm)
   );
   --pagination--sm--item--padding-right: calc(
-    var(--pagination--padding-right) * var(--size-multiplier-sm)
+    var(--pagination--item--padding-right) * var(--size-multiplier-sm)
   );
   --pagination--sm--item--padding-bottom: calc(
-    var(--pagination--padding-bottom) * var(--size-multiplier-sm)
+    var(--pagination--item--padding-bottom) * var(--size-multiplier-sm)
   );
   --pagination--sm--item--padding-left: calc(
-    var(--pagination--padding-left) * var(--size-multiplier-sm)
+    var(--pagination--item--padding-left) * var(--size-multiplier-sm)
   );
   --pagination--sm--item--min-width: 32px;
   --pagination--md--font-size: calc(
     var(--pagination--font-size) * var(--size-multiplier-md)
   );
   --pagination--md--item--border-top-left-radius: calc(
-    var(--pagination--border-top-left-radius) * var(--size-multiplier-md)
+    var(--pagination--item--border-top-left-radius) * var(--size-multiplier-md)
   );
   --pagination--md--item--border-top-right-radius: calc(
-    var(--pagination--border-top-right-radius) * var(--size-multiplier-md)
+    var(--pagination--item--border-top-right-radius) * var(--size-multiplier-md)
   );
   --pagination--md--item--border-bottom-right-radius: calc(
-    var(--pagination--border-bottom-right-radius) * var(--size-multiplier-md)
+    var(--pagination--item--border-bottom-right-radius) *
+      var(--size-multiplier-md)
   );
   --pagination--md--item--border-bottom-left-radius: calc(
-    var(--pagination--border-bottom-left-radius) * var(--size-multiplier-md)
+    var(--pagination--item--border-bottom-left-radius) *
+      var(--size-multiplier-md)
   );
   --pagination--md--item--padding-top: calc(
-    var(--pagination--padding-top) * var(--size-multiplier-md)
+    var(--pagination--item--padding-top) * var(--size-multiplier-md)
   );
   --pagination--md--item--padding-right: calc(
-    var(--pagination--padding-right) * var(--size-multiplier-md)
+    var(--pagination--item--padding-right) * var(--size-multiplier-md)
   );
   --pagination--md--item--padding-bottom: calc(
-    var(--pagination--padding-bottom) * var(--size-multiplier-md)
+    var(--pagination--item--padding-bottom) * var(--size-multiplier-md)
   );
   --pagination--md--item--padding-left: calc(
-    var(--pagination--padding-left) * var(--size-multiplier-md)
+    var(--pagination--item--padding-left) * var(--size-multiplier-md)
   );
   --pagination--md--item--min-width: 40px;
   --pagination--lg--font-size: calc(
     var(--pagination--font-size) * var(--size-multiplier-lg)
   );
   --pagination--lg--item--border-top-left-radius: calc(
-    var(--pagination--border-top-left-radius) * var(--size-multiplier-lg)
+    var(--pagination--item--border-top-left-radius) * var(--size-multiplier-lg)
   );
   --pagination--lg--item--border-top-right-radius: calc(
-    var(--pagination--border-top-right-radius) * var(--size-multiplier-lg)
+    var(--pagination--item--border-top-right-radius) * var(--size-multiplier-lg)
   );
   --pagination--lg--item--border-bottom-right-radius: calc(
-    var(--pagination--border-bottom-right-radius) * var(--size-multiplier-lg)
+    var(--pagination--item--border-bottom-right-radius) *
+      var(--size-multiplier-lg)
   );
   --pagination--lg--item--border-bottom-left-radius: calc(
-    var(--pagination--border-bottom-left-radius) * var(--size-multiplier-lg)
+    var(--pagination--item--border-bottom-left-radius) *
+      var(--size-multiplier-lg)
   );
   --pagination--lg--item--padding-top: calc(
-    var(--pagination--padding-top) * var(--size-multiplier-lg)
+    var(--pagination--item--padding-top) * var(--size-multiplier-lg)
   );
   --pagination--lg--item--padding-right: calc(
-    var(--pagination--padding-right) * var(--size-multiplier-lg)
+    var(--pagination--item--padding-right) * var(--size-multiplier-lg)
   );
   --pagination--lg--item--padding-bottom: calc(
-    var(--pagination--padding-bottom) * var(--size-multiplier-lg)
+    var(--pagination--item--padding-bottom) * var(--size-multiplier-lg)
   );
   --pagination--lg--item--padding-left: calc(
-    var(--pagination--padding-left) * var(--size-multiplier-lg)
+    var(--pagination--item--padding-left) * var(--size-multiplier-lg)
   );
   --pagination--lg--item--min-width: 48px;
 }

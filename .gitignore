@@ -1,5 +1,7 @@
 node_modules/
+lib/
 .turbo
+
 
 # E2E Generated packages
 packages/e2e/nuxt

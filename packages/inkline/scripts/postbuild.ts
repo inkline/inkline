@@ -17,7 +17,6 @@ import { postbuild } from '@inkline/build';
     const storiesFiles = await glob(path.resolve(srcDir, 'stories/**/*.vue'));
     [...storiesFiles, ...exampleFiles].forEach((file) => {
         const destFile = file.replace('src', 'lib').replace('.vue', '.raw.vue');
-
         shell.cp(file, destFile);
     });
 
@@ -34,7 +33,5 @@ import { postbuild } from '@inkline/build';
      * Copy dist files
      */
 
-    shell.cp('./dist/inkline.umd.js', './lib/inkline.js');
-    shell.cp('./dist/style.css', './lib/inkline.css');
     shell.cp('-R', './src/assets', './lib/assets');
 })();

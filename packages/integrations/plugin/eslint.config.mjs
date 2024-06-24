@@ -8,7 +8,8 @@ export default [
                 project: [
                     "tsconfig.json",
                     "tsconfig.vite.json",
-                    "tsconfig.nuxt.json"
+                    "tsconfig.nuxt.json",
+                    "tsconfig.node.json"
                 ]
             }
         }

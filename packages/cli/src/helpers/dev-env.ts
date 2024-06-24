@@ -16,6 +16,9 @@ import prettier from 'prettier';
 import { addAfterImports, addAfterRequires } from './insert';
 import { addFieldToDefaultExport, addImport } from './import';
 
+/**
+ * Initialize the development environment configuration file
+ */
 export async function initDevEnvConfigFile(
     devEnv: DevEnv,
     { isTypescript }: InitEnv
@@ -44,6 +47,9 @@ export async function initDevEnvConfigFile(
     return false;
 }
 
+/**
+ * Detect the development environment based on the package.json file
+ */
 export async function detectDevEnv(
     packageJson: PackageJsonSchema,
     { cwd, isTypescript }: InitEnv
@@ -133,15 +139,28 @@ export async function detectDevEnv(
     return inferredDevEnvironment || unknownDevEnvironment;
 }
 
+/**
+ * Add the inkline plugin to the development environment configuration file
+ */
 export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) {
     if (!devEnv.configFile) {
         return;
     }
 
+    /**
+     * Read the config file
+     */
     let configFile = await readFile(devEnv.configFile, 'utf-8');
+
     if (devEnv.type === DevEnvType.Nuxt) {
+        /**
+         * Add the inkline plugin to the nuxt config
+         */
         configFile = addFieldToDefaultExport(configFile, 'modules', ["'@inkline/plugin/nuxt'"]);
     } else if (devEnv.type === DevEnvType.Vite) {
+        /**
+         * Add the inkline plugin to the vite config
+         */
         configFile = addImport(configFile, {
             name: 'inkline',
             from: '@inkline/plugin/vite'
@@ -149,6 +168,9 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
         configFile = addAfterImports(configFile, getPluginPreamble(configFile, devEnv, env));
         configFile = addFieldToDefaultExport(configFile, 'plugins', ['inkline(inklineConfig)']);
     } else if (devEnv.type === DevEnvType.Webpack) {
+        /**
+         * Add the inkline plugin to the webpack config
+         */
         if (env.isTypescript && devEnv.configFile.endsWith('.ts')) {
             configFile = addImport(configFile, {
                 name: 'inkline',
@@ -165,8 +187,11 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
         configFile = addFieldToDefaultExport(configFile, 'plugins', ['inkline(inklineConfig)']);
     }
 
-    const formattedCode = await prettier.format(configFile, defaultPrettierConfig);
+    /**
+     * Format the code using prettier and write it back to the file
+     */
 
+    const formattedCode = await prettier.format(configFile, defaultPrettierConfig);
     await writeFile(devEnv.configFile, formattedCode, 'utf-8');
 
     Logger.default(`Updated ${devEnv.configFile}`);
