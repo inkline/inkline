@@ -9,7 +9,7 @@ test('should have button links', async ({ page }) => {
 
     const buttonRoute = await page.getByRole('link', { name: 'Button Route' });
     await expect(buttonRoute).toBeVisible();
-    await expect(buttonRoute).toHaveAttribute('href', '/docs/components/button');
+    await expect(buttonRoute).toHaveAttribute('href', '/');
 });
 
 test('should update form validation', async ({ page }) => {

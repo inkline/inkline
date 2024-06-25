@@ -1,8 +1,18 @@
+# Node Modules
 node_modules/
+
+# Build Files
 lib/
-.turbo
+dist/
+.turbo/
 
+# Test Files
+test-results/
+coverage/
 
-# E2E Generated packages
+# E2E Generated Packages
 packages/e2e/nuxt
 packages/e2e/vite
+
+# OS Files
+.DS_Store

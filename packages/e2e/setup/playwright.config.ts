@@ -6,14 +6,20 @@ import { defineConfig, devices } from '@playwright/test';
  */
 // require('dotenv').config();
 
-const DEV = process.env.DEV === 'true';
-const DEFAULT_PORT = {
-    vite: DEV ? 5173 : 4173,
-    nuxt: 3030
-};
+const integrationType: 'vite' | 'nuxt' | string = process.env.INTEGRATION || 'vite';
 
-const INTEGRATION: 'vite' | 'nuxt' | string = process.env.INTEGRATION || 'vite';
-const PORT: number = process.env.PORT ? parseInt(process.env.PORT, 10) : DEFAULT_PORT[INTEGRATION];
+const integration = {
+    vite: {
+        name: 'vite',
+        port: 5173,
+        command: 'pnpm run build && pnpm run dev'
+    },
+    nuxt: {
+        name: 'nuxt',
+        port: 3000,
+        command: 'pnpm run generate && pnpm run preview'
+    }
+}[integrationType];
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -33,7 +39,7 @@ export default defineConfig({
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
     use: {
         /* Base URL to use in actions like `await page.goto('/')`. */
-        baseURL: `http://localhost:${PORT}`,
+        baseURL: `http://localhost:${integration.port}`,
 
         /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
         trace: 'on-first-retry'
@@ -79,8 +85,8 @@ export default defineConfig({
 
     /* Run your local dev server before starting the tests */
     webServer: {
-        command: `cd ../${INTEGRATION} && pnpm run build && pnpm run dev`,
-        url: `http://localhost:${PORT}`,
+        command: `cd ../${integration.name} && ${integration.command}`,
+        url: `http://localhost:${integration.port}`,
         reuseExistingServer: !process.env.CI,
         stdout: 'pipe'
     }
