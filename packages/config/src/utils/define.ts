@@ -331,7 +331,7 @@ export function defineTransitionVariable(
 }
 
 export function defineTextColorVariable(
-    value: RawThemeTypographyColor,
+    value?: RawThemeTypographyColor,
     variants?: Record<string, RawThemeTypographyColor>
 ) {
     return defineVariable(value, variants, { name: 'textColor' });

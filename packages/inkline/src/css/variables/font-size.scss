@@ -1,8 +1,8 @@
 :root {
   --font-size: 1rem;
-  --font-size-multiply-xs: var(--size-multiplier-xs);
-  --font-size-multiply-sm: var(--size-multiplier-sm);
-  --font-size-multiply-md: var(--size-multiplier-md);
-  --font-size-multiply-lg: var(--size-multiplier-lg);
-  --font-size-multiply-xl: var(--size-multiplier-xl);
+  --font-size-xs: calc(var(--font-size) * var(--size-multiplier-xs));
+  --font-size-sm: calc(var(--font-size) * var(--size-multiplier-sm));
+  --font-size-md: calc(var(--font-size) * var(--size-multiplier-md));
+  --font-size-lg: calc(var(--font-size) * var(--size-multiplier-lg));
+  --font-size-xl: calc(var(--font-size) * var(--size-multiplier-xl));
 }

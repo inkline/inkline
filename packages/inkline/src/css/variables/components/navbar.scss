@@ -334,10 +334,16 @@
   --navbar--item--active--background-s: var(--color-light-shade-50-s);
   --navbar--item--active--background-l: var(--color-light-shade-50-l);
   --navbar--item--active--background-a: var(--color-light-shade-50-a);
+  --navbar--brand--margin-top: var(--margin-top);
   --navbar--brand--margin-right: var(--margin-right);
+  --navbar--brand--margin-bottom: var(--margin-bottom);
+  --navbar--brand--margin-left: var(--margin-left);
   --navbar--collapsible--transition-property: height, background-color, color,
     border-color;
   --navbar--collapsed--margin-top: var(--margin-top);
+  --navbar--collapsed--margin-right: var(--margin-right);
+  --navbar--collapsed--margin-bottom: var(--margin-bottom);
+  --navbar--collapsed--margin-left: var(--margin-left);
   --navbar--light--background-h: var(--color-white-h);
   --navbar--light--background-s: var(--color-white-s);
   --navbar--light--background-l: var(--color-white-l);
