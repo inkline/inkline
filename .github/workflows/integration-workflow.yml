@@ -19,19 +19,19 @@ jobs:
                 with:
                     path: '**/node_modules'
                     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-            -   name: Install npm dependencies
+            -   name: Install dependencies
                 if: steps.npm-cache.outputs.cache-hit != 'true'
-                run: npm install
+                run: pnpm install
             -   name: Install Playwright Browsers
-                run: npx playwright install --with-deps
+                run: pnpx playwright install --with-deps
             -   name: Create Inkline + Nuxt app
-                run: npm run integration:nuxt:create
+                run: pnpm run integration:nuxt:create
             -   name: Build Nuxt app
                 run: |
                     cd inkline-nuxt
-                    npm run build
+                    pnpm run build
             -   name: Run Playwright tests
-                run: npm run e2e:nuxt
+                run: pnpm run e2e:nuxt
             -   uses: actions/upload-artifact@v3
                 if: always()
                 with:
@@ -57,19 +57,19 @@ jobs:
                 with:
                     path: '**/node_modules'
                     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-            -   name: Install npm dependencies
+            -   name: Install dependencies
                 if: steps.npm-cache.outputs.cache-hit != 'true'
-                run: npm install
+                run: pnpm install
             -   name: Install Playwright Browsers
-                run: npx playwright install --with-deps
+                run: pnpx playwright install --with-deps
             -   name: Create Inkline + Vite.js app
-                run: npm run integration:vite:create
+                run: pnpm run integration:vite:create
             -   name: Build Nuxt app
                 run: |
                     cd inkline-vite
-                    npm run build
+                    pnpm run build
             -   name: Run Playwright tests
-                run: npm run e2e:vite
+                run: pnpm run e2e:vite
             -   uses: actions/upload-artifact@v3
                 if: always()
                 with:
