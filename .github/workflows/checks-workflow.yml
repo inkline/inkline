@@ -13,7 +13,7 @@ jobs:
                     node-version: 18
             -   uses: pnpm/action-setup@v4
                 with:
-                    version: 9
+                    version: 9.2.0
             -   name: Cache node_modules
                 uses: actions/cache@v2
                 with:
@@ -37,7 +37,7 @@ jobs:
                     node-version: 18
             -   uses: pnpm/action-setup@v4
                 with:
-                    version: 9
+                    version: 9.2.0
             -   name: Cache node_modules
                 uses: actions/cache@v2
                 with:
@@ -62,7 +62,7 @@ jobs:
                     node-version: 18
             -   uses: pnpm/action-setup@v4
                 with:
-                    version: 9
+                    version: 9.2.0
             -   name: Cache node_modules
                 uses: actions/cache@v2
                 with:
