@@ -19,7 +19,7 @@ import {
     lineHeight,
     textAlign,
     textColor,
-    textContrastColor
+    contrastTextColor
 } from './typography';
 import { defineTheme } from '../../../../utils';
 
@@ -42,7 +42,7 @@ export const defaultTheme = defineTheme({
     padding,
     percentages,
     textColor,
-    textContrastColor,
+    contrastTextColor,
     textAlign,
     transition,
     components,

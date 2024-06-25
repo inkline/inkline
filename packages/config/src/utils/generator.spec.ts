@@ -1,16 +1,14 @@
 import { createGenericVariantGenerateFn, getSortedVariantsFieldKeys } from './generator';
-import { ClassificationType, GeneratorOutput, ResolvedTheme, Transition } from '../types';
+import { GeneratorOutput } from '../types';
 import { createTestingGeneratorMeta } from '../__tests__/utils';
-import { RawThemeTransition, ResolvedThemeColor, ResolvedThemeTransition } from '../modules';
+import { ResolvedThemeColor, ResolvedThemeTransition } from '../modules';
 import {
     defineComponent,
     defineComponentsGroup,
     defineGenerator,
     defineGeneratorValueFn,
     defineTheme,
-    defineThemes,
-    defineTransitionVariable,
-    defineVariable
+    defineTransitionVariable
 } from './define';
 
 describe('defineGenerator', () => {
@@ -59,20 +57,20 @@ describe('getSortedVariantsFieldKeys', () => {
 
 describe('createGenericDesignTokenVariantGenerateFn', () => {
     it('should generate correct CSS variables for primitive value', () => {
-        const theme = defineTheme('default', {
+        const theme = defineTheme({
             transition: defineTransitionVariable({
                 property: 'all',
                 duration: 100,
                 timingFunction: 'ease'
             })
-        }) as unknown as ResolvedTheme;
+        });
         const meta = createTestingGeneratorMeta({
             path: ['transition', 'default'],
             theme
         });
 
         const generateFn = createGenericVariantGenerateFn<ResolvedThemeTransition>();
-        expect(generateFn(theme.transition.default, meta)).toEqual([
+        expect(generateFn(theme.transition?.default as ResolvedThemeTransition, meta)).toEqual([
             '--transition-property: all;',
             '--transition-duration: 100;',
             '--transition-timing-function: ease;'
@@ -80,13 +78,13 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
     });
 
     it('should generate correct CSS variables and aggregate primitive value', () => {
-        const theme = defineTheme('default', {
+        const theme = defineTheme({
             transition: defineTransitionVariable({
                 property: 'all',
                 duration: 100,
                 timingFunction: 'ease'
             })
-        }) as unknown as ResolvedTheme;
+        });
         const meta = createTestingGeneratorMeta({
             path: ['transition', 'default'],
             theme
@@ -95,7 +93,7 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
         const generateFn = createGenericVariantGenerateFn<ResolvedThemeTransition>({
             aggregate: ['property', 'duration', 'timingFunction']
         });
-        expect(generateFn(theme.transition.default, meta)).toEqual([
+        expect(generateFn(theme.transition?.default as ResolvedThemeTransition, meta)).toEqual([
             '--transition-property: all;',
             '--transition-duration: 100;',
             '--transition-timing-function: ease;',
@@ -104,7 +102,7 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
     });
 
     it('should generate correct CSS variables for value in "default" entity variant', () => {
-        const theme = defineTheme('default', {
+        const theme = defineTheme({
             components: defineComponentsGroup({
                 button: defineComponent({
                     transition: {
@@ -117,7 +115,7 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
         });
         const meta = createTestingGeneratorMeta({
             path: ['components', 'button', 'default', 'transition'],
-            theme: theme as unknown as ResolvedTheme
+            theme: theme
         });
 
         const generateFn = createGenericVariantGenerateFn<ResolvedThemeTransition>();
@@ -134,7 +132,7 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
     });
 
     it('should generate correct CSS variables for nested value in "default" entity variant', () => {
-        const theme = defineTheme('default', {
+        const theme = defineTheme({
             components: defineComponentsGroup({
                 button: defineComponent({
                     icon: {
@@ -146,7 +144,7 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
                     }
                 })
             })
-        }) as unknown as ResolvedTheme;
+        });
         const meta = createTestingGeneratorMeta({
             path: ['components', 'button', 'default', 'icon', 'transition'],
             theme
@@ -155,7 +153,7 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
         const generateFn = createGenericVariantGenerateFn<ResolvedThemeTransition>();
         expect(
             generateFn(
-                (theme.components.button.default.icon as Record<string, ResolvedThemeTransition>)
+                (theme.components?.button?.default?.icon as Record<string, ResolvedThemeTransition>)
                     .transition,
                 meta
             )
@@ -167,7 +165,7 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
     });
 
     it('should generate correct CSS variables for value in non-default entity variant', () => {
-        const theme = defineTheme('default', {
+        const theme = defineTheme({
             components: defineComponentsGroup({
                 button: defineComponent(
                     {},
@@ -183,7 +181,7 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
                     }
                 )
             })
-        }) as unknown as ResolvedTheme;
+        });
         const meta = createTestingGeneratorMeta({
             path: ['components', 'button', 'primary', 'background'],
             theme
@@ -191,7 +189,7 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
 
         const generateFn = createGenericVariantGenerateFn<ResolvedThemeColor>();
         expect(
-            generateFn(theme.components.button.primary.background as ResolvedThemeColor, meta)
+            generateFn(theme.components?.button?.primary?.background as ResolvedThemeColor, meta)
         ).toEqual([
             '--button--primary--background-h: 240;',
             '--button--primary--background-s: 100;',
@@ -201,26 +199,25 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
     });
 
     it('should generate correct CSS variables for nested value in non-default entity variant', () => {
-        const theme = {
-            components: {
-                __type: ClassificationType.Group,
-                button: {
-                    __type: ClassificationType.Element,
-                    primary: {
-                        __type: ClassificationType.Group,
-                        icon: {
-                            __type: ClassificationType.Group,
-                            background: {
-                                h: 240,
-                                s: 100,
-                                l: 50,
-                                a: 1
+        const theme = defineTheme({
+            components: defineComponentsGroup({
+                button: defineComponent(
+                    {},
+                    {
+                        primary: {
+                            icon: {
+                                background: {
+                                    h: 240,
+                                    s: 100,
+                                    l: 50,
+                                    a: 1
+                                }
                             }
                         }
                     }
-                }
-            }
-        } as unknown as ResolvedTheme;
+                )
+            })
+        });
         const meta = createTestingGeneratorMeta({
             path: ['components', 'button', 'primary', 'icon', 'background'],
             theme
@@ -229,7 +226,7 @@ describe('createGenericDesignTokenVariantGenerateFn', () => {
         const generateFn = createGenericVariantGenerateFn<ResolvedThemeColor>();
         expect(
             generateFn(
-                (theme.components.button.primary.icon as Record<string, ResolvedThemeColor>)
+                (theme.components?.button?.primary?.icon as Record<string, ResolvedThemeColor>)
                     .background,
                 meta
             )

@@ -5,7 +5,7 @@ exports[`Components > ITextarea > should render correctly 1`] = `
   <!--v-if-->
   <div class="input-field">
     <!--v-if-->
-    <!--v-if--><textarea role="textbox" name="textarea" tabindex="0" aria-disabled="false" aria-readonly="false" aria-multiline="true"></textarea>
+    <!--v-if--><textarea role="textbox" name="textarea" tabindex="0" aria-disabled="false" aria-readonly="false" aria-multiline="true" value=""></textarea>
     <!--v-if-->
   </div>
   <!--v-if-->

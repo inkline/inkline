@@ -43,11 +43,11 @@ describe('resolveSizeMultiplierVariant', () => {
 describe('sizeMultiplierResolver', () => {
     describe('match', () => {
         it.each([
-            ['size.multiplier', false],
-            ['size.multiplier.default', true],
-            ['size.multiplier.default.mobile', false],
-            ['components.button.default.size.multiplier', false],
-            ['other.size.multiplier.value', false]
+            ['sizeMultiplier', false],
+            ['sizeMultiplier.default', true],
+            ['sizeMultiplier.default.mobile', false],
+            ['components.button.default.sizeMultiplier', false],
+            ['other.sizeMultiplier.value', false]
         ])('should match "%s" path', (path, result) => {
             const match = matchKey(path, sizeMultiplierResolver.key as RegExp);
             expect(match).toBe(result);
@@ -57,7 +57,7 @@ describe('sizeMultiplierResolver', () => {
 
 describe('generateSizeMultiplier', () => {
     it('should generate css variables for size multiplier', () => {
-        const meta = createTestingGeneratorMeta({ path: ['size', 'multiplier', 'md'] });
+        const meta = createTestingGeneratorMeta({ path: ['sizeMultiplier', 'md'] });
         const result = generateSizeMultiplier(1.5, meta);
         expect(result).toEqual(['--size-multiplier-md: 1.5;']);
     });
@@ -67,11 +67,11 @@ describe('sizeMultiplierGenerator', () => {
     describe('match', () => {
         it.each([
             ['size', false],
-            ['size.multiplier', false],
-            ['size.multiplier.default', true],
-            ['size.multiplier.md', true],
-            ['components.button.size.multiplier.md', false],
-            ['other.size.multiplier.md.value', false]
+            ['sizeMultiplier', false],
+            ['sizeMultiplier.default', true],
+            ['sizeMultiplier.md', true],
+            ['components.button.sizeMultiplier.md', false],
+            ['other.sizeMultiplier.md.value', false]
         ])('should match "%s" path => %s', (path, result) => {
             const match = matchKey(path, sizeMultiplierGenerator.key as string);
             expect(match).toBe(result);

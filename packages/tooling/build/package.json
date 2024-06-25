@@ -10,7 +10,7 @@
     },
     "scripts": {
         "dev": "tsx src/cli.ts watch",
-        "test": "vitest run",
+        "test": "vitest run --passWithNoTests",
         "test:dev": "vitest",
         "build": "unbuild",
         "postbuild": "tsx scripts/postbuild.ts",

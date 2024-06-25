@@ -35,7 +35,7 @@ export const resolveTypographyColor = defineResolverValueFn(resolveColor);
 export const resolveTypographyColorVariant = defineResolverVariantFn(resolveColorVariant);
 
 export const typographyColorResolver = defineResolver({
-    key: /^typography\.color\.[^.]+\.[^.]+$/,
+    key: /^textColor\.[^.]+$/,
     resolve: createGenericVariantResolveFn(resolveTypographyColor, resolveTypographyColorVariant)
 });
 
@@ -61,16 +61,16 @@ export const resolveTypographyContrastColor = defineResolverValueFn(resolveColor
 
 export const resolveTypographyContrastColorVariant = defineResolverVariantFn(resolveColorVariant);
 
-export const typographyContrastColorResolver = defineResolver({
-    key: /^typography\.contrastColor\.[^.]+\.[^.]+$/,
+export const typographyContrastTextColorResolver = defineResolver({
+    key: /^contrastTextColor\.[^.]+$/,
     resolve: createGenericVariantResolveFn(
         resolveTypographyContrastColor,
         resolveTypographyContrastColorVariant
     )
 });
 
-export const typographyContrastColorGenerator = defineGenerator({
-    key: [/^textContrastColor\.[^.]+$/],
+export const typographyContrastTextColorGenerator = defineGenerator({
+    key: [/^contrastTextColor\.[^.]+$/],
     output: GeneratorOutput.CssVariables,
     generate: defineGeneratorValueFn<ResolvedThemeTypographyContrastColor>((value, meta) => {
         const variantName = meta.path[meta.path.length - 1];
@@ -106,7 +106,7 @@ export const resolveTypographyFontFamilyVariant = defineResolverVariantFn<
 >(resolveTypographyFontFamily);
 
 export const typographyFontFamilyResolver = defineResolver({
-    key: /^typography\.fontFamily\.[^.]+$/,
+    key: /^fontFamily\.[^.]+$/,
     resolve: createGenericVariantResolveFn(
         resolveTypographyFontFamily,
         resolveTypographyFontFamilyVariant
@@ -127,13 +127,15 @@ export const typographyFontFamilyGenerator = defineGenerator({
 
 export type RawThemeTypographyFontSize = string;
 
-export type RawThemeTypographyFontSizeVariant = {
-    multiply?: string | number;
-    divide?: string | number;
-    add?: string | number;
-    subtract?: string | number;
-    [key: string]: string | number | undefined;
-};
+export type RawThemeTypographyFontSizeVariant =
+    | RawThemeTypographyFontSize
+    | {
+          multiply?: string | number;
+          divide?: string | number;
+          add?: string | number;
+          subtract?: string | number;
+          [key: string]: string | number | undefined;
+      };
 
 export type ResolvedThemeTypographyFontSize = RawThemeTypographyFontSize;
 
@@ -172,7 +174,7 @@ export const resolveTypographyFontSizeVariant = defineResolverVariantFn<
 });
 
 export const typographyFontSizeResolver = defineResolver({
-    key: /^typography\.fontSize\.[^.]+$/,
+    key: /^fontSize\.[^.]+$/,
     resolve: createGenericVariantResolveFn(
         resolveTypographyFontSize,
         resolveTypographyFontSizeVariant
@@ -206,7 +208,7 @@ export const resolveTypographyFontWeightVariant = defineResolverVariantFn<
 >(resolveTypographyFontWeight);
 
 export const typographyFontWeightResolver = defineResolver({
-    key: /^typography\.fontWeight\.[^.]+$/,
+    key: /^fontWeight\.[^.]+$/,
     resolve: createGenericVariantResolveFn(
         resolveTypographyFontWeight,
         resolveTypographyFontWeightVariant
@@ -239,7 +241,7 @@ export const resolveTypographyLetterSpacingVariant = defineResolverVariantFn<
 >(resolveTypographyLetterSpacing);
 
 export const typographyLetterSpacingResolver = defineResolver({
-    key: /^typography\.letterSpacing\.[^.]+$/,
+    key: /^letterSpacing\.[^.]+$/,
     resolve: createGenericVariantResolveFn(
         resolveTypographyLetterSpacing,
         resolveTypographyLetterSpacingVariant
@@ -274,7 +276,7 @@ export const resolveTypographyLineHeightVariant = defineResolverVariantFn<
 >(resolveTypographyLineHeight);
 
 export const typographyLineHeightResolver = defineResolver({
-    key: /^typography\.lineHeight\.[^.]+$/,
+    key: /^lineHeight\.[^.]+$/,
     resolve: createGenericVariantResolveFn(
         resolveTypographyLineHeight,
         resolveTypographyLineHeightVariant
@@ -307,7 +309,7 @@ export const resolveTypographyTextAlignmentVariant = defineResolverVariantFn<
 >(resolveTypographyTextAlignment);
 
 export const typographyTextAlignmentResolver = defineResolver({
-    key: /^typography\.textAlign\.[^.]+$/,
+    key: /^textAlign\.[^.]+$/,
     resolve: createGenericVariantResolveFn(
         resolveTypographyTextAlignment,
         resolveTypographyTextAlignmentVariant
@@ -329,8 +331,8 @@ export const typography = defineModule(({ registerGenerator, registerResolver })
     registerResolver(typographyColorResolver);
     registerGenerator(typographyColorGenerator);
 
-    registerResolver(typographyContrastColorResolver);
-    registerGenerator(typographyContrastColorGenerator);
+    registerResolver(typographyContrastTextColorResolver);
+    registerGenerator(typographyContrastTextColorGenerator);
 
     registerResolver(typographyFontFamilyResolver);
     registerGenerator(typographyFontFamilyGenerator);

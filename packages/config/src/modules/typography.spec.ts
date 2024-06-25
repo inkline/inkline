@@ -15,7 +15,7 @@ import {
     typographyLineHeightResolver,
     typographyTextAlignmentResolver,
     typographyColorGenerator,
-    typographyContrastColorGenerator,
+    typographyContrastTextColorGenerator,
     typographyFontFamilyGenerator,
     typographyFontSizeGenerator,
     typographyFontWeightGenerator,
@@ -24,11 +24,21 @@ import {
     typographyTextAlignmentGenerator
 } from './typography';
 import { createTestingResolverMeta, createTestingGeneratorMeta } from '../__tests__/utils';
-import { matchKey } from '../utils';
+import {
+    defineFontFamilyVariable,
+    defineFontSizeVariable,
+    defineFontWeightVariable,
+    defineTextAlignmentVariable,
+    defineTextColorVariable,
+    defineTheme,
+    defineThemes,
+    defineVariable,
+    matchKey
+} from '../utils';
 import { ClassificationType, ResolvedTheme } from '../types';
 
 describe('resolveTypographyColor', () => {
-    const meta = createTestingResolverMeta({ path: ['typography', 'color', 'default'] });
+    const meta = createTestingResolverMeta({ path: ['color', 'default'] });
 
     it('should return the same color when color is a string', () => {
         const color = '#ff0000';
@@ -49,7 +59,7 @@ describe('resolveTypographyColor', () => {
 });
 
 describe('resolveTypographyColorVariant', () => {
-    const meta = createTestingResolverMeta({ path: ['typography', 'color', 'variant'] });
+    const meta = createTestingResolverMeta({ path: ['color', 'variant'] });
 
     it('should return the same color when variant is a string', () => {
         const variant = '#00ff00';
@@ -70,7 +80,7 @@ describe('resolveTypographyColorVariant', () => {
 });
 
 describe('resolveTypographyFontFamily', () => {
-    const meta = createTestingResolverMeta({ path: ['typography', 'fontFamily', 'default'] });
+    const meta = createTestingResolverMeta({ path: ['fontFamily', 'default'] });
 
     it('should return the same fontFamily when fontFamily is a string', () => {
         const fontFamily = {
@@ -94,7 +104,7 @@ describe('resolveTypographyFontFamily', () => {
 });
 
 describe('resolveTypographyFontSize', () => {
-    const meta = createTestingResolverMeta({ path: ['typography', 'fontSize', 'default'] });
+    const meta = createTestingResolverMeta({ path: ['fontSize', 'default'] });
 
     it('should return the same fontSize when fontSize is a string', () => {
         const fontSize = '16px';
@@ -110,7 +120,7 @@ describe('resolveTypographyFontSize', () => {
 });
 
 describe('resolveTypographyFontWeight', () => {
-    const meta = createTestingResolverMeta({ path: ['typography', 'fontWeight', 'default'] });
+    const meta = createTestingResolverMeta({ path: ['fontWeight', 'default'] });
 
     it('should return the same fontWeight when fontWeight is a string', () => {
         const fontWeight = 'bold';
@@ -126,7 +136,7 @@ describe('resolveTypographyFontWeight', () => {
 });
 
 describe('resolveTypographyLetterSpacing', () => {
-    const meta = createTestingResolverMeta({ path: ['typography', 'letterSpacing', 'default'] });
+    const meta = createTestingResolverMeta({ path: ['letterSpacing', 'default'] });
 
     it('should return the same letterSpacing when letterSpacing is a string', () => {
         const letterSpacing = '0.5em';
@@ -142,7 +152,7 @@ describe('resolveTypographyLetterSpacing', () => {
 });
 
 describe('resolveTypographyLineHeight', () => {
-    const meta = createTestingResolverMeta({ path: ['typography', 'lineHeight', 'default'] });
+    const meta = createTestingResolverMeta({ path: ['lineHeight', 'default'] });
 
     it('should return the same lineHeight when lineHeight is a string', () => {
         const lineHeight = '1.5';
@@ -158,7 +168,7 @@ describe('resolveTypographyLineHeight', () => {
 });
 
 describe('resolveTypographyTextAlignment', () => {
-    const meta = createTestingResolverMeta({ path: ['typography', 'textAlign', 'default'] });
+    const meta = createTestingResolverMeta({ path: ['textAlign', 'default'] });
 
     it('should return the same textAlign when textAlign is a string', () => {
         const textAlign = 'center';
@@ -176,12 +186,11 @@ describe('resolveTypographyTextAlignment', () => {
 describe('typographyColorResolver', () => {
     describe('match', () => {
         it.each([
-            ['typography.color', false],
-            ['typography.color.base', false],
-            ['typography.color.base.default', true],
-            ['typography.color.base.default.h', false],
-            ['components.button.default.typography.color', false],
-            ['other.typography.color.value', false]
+            ['textColor', false],
+            ['textColor.base', true],
+            ['textColor.base.h', false],
+            ['components.button.default.textColor', false],
+            ['other.textColor.value', false]
         ])('should match "%s" path => %s', (path, result) => {
             const match = matchKey(path, typographyColorResolver.key as RegExp);
             expect(match).toBe(result);
@@ -192,11 +201,11 @@ describe('typographyColorResolver', () => {
 describe('typographyFontFamilyResolver', () => {
     describe('match', () => {
         it.each([
-            ['typography.fontFamily', false],
-            ['typography.fontFamily.default', true],
-            ['typography.fontFamily.default.base', false],
-            ['components.button.default.typography.fontFamily', false],
-            ['other.typography.fontFamily.value', false]
+            ['fontFamily', false],
+            ['fontFamily.default', true],
+            ['fontFamily.default.base', false],
+            ['components.button.default.fontFamily', false],
+            ['other.fontFamily.value', false]
         ])('should match "%s" path => %s', (path, result) => {
             const match = matchKey(path, typographyFontFamilyResolver.key as RegExp);
             expect(match).toBe(result);
@@ -207,10 +216,10 @@ describe('typographyFontFamilyResolver', () => {
 describe('typographyFontSizeResolver', () => {
     describe('match', () => {
         it.each([
-            ['typography.fontSize', false],
-            ['typography.fontSize.default', true],
-            ['components.button.default.typography.fontSize', false],
-            ['other.typography.fontSize.value', false]
+            ['fontSize', false],
+            ['fontSize.default', true],
+            ['components.button.default.fontSize', false],
+            ['other.fontSize.value', false]
         ])('should match "%s" path => %s', (path, result) => {
             const match = matchKey(path, typographyFontSizeResolver.key as RegExp);
             expect(match).toBe(result);
@@ -221,10 +230,10 @@ describe('typographyFontSizeResolver', () => {
 describe('typographyFontWeightResolver', () => {
     describe('match', () => {
         it.each([
-            ['typography.fontWeight', false],
-            ['typography.fontWeight.default', true],
-            ['components.button.default.typography.fontWeight', false],
-            ['other.typography.fontWeight.value', false]
+            ['fontWeight', false],
+            ['fontWeight.default', true],
+            ['components.button.default.fontWeight', false],
+            ['other.fontWeight.value', false]
         ])('should match "%s" path => %s', (path, result) => {
             const match = matchKey(path, typographyFontWeightResolver.key as RegExp);
             expect(match).toBe(result);
@@ -235,10 +244,10 @@ describe('typographyFontWeightResolver', () => {
 describe('typographyLetterSpacingResolver', () => {
     describe('match', () => {
         it.each([
-            ['typography.letterSpacing', false],
-            ['typography.letterSpacing.default', true],
-            ['components.button.default.typography.letterSpacing', false],
-            ['other.typography.letterSpacing.value', false]
+            ['letterSpacing', false],
+            ['letterSpacing.default', true],
+            ['components.button.default.letterSpacing', false],
+            ['other.letterSpacing.value', false]
         ])('should match "%s" path', (path, result) => {
             const match = matchKey(path, typographyLetterSpacingResolver.key as RegExp);
             expect(match).toBe(result);
@@ -249,10 +258,10 @@ describe('typographyLetterSpacingResolver', () => {
 describe('typographyLineHeightResolver', () => {
     describe('match', () => {
         it.each([
-            ['typography.lineHeight', false],
-            ['typography.lineHeight.default', true],
-            ['components.button.default.typography.lineHeight', false],
-            ['other.typography.lineHeight.value', false]
+            ['lineHeight', false],
+            ['lineHeight.default', true],
+            ['components.button.default.lineHeight', false],
+            ['other.lineHeight.value', false]
         ])('should match "%s" path => %s', (path, result) => {
             const match = matchKey(path, typographyLineHeightResolver.key as RegExp);
             expect(match).toBe(result);
@@ -263,10 +272,10 @@ describe('typographyLineHeightResolver', () => {
 describe('typographyTextAlignmentResolver', () => {
     describe('match', () => {
         it.each([
-            ['typography.textAlign', false],
-            ['typography.textAlign.default', true],
-            ['components.button.default.typography.textAlign', false],
-            ['other.typography.textAlign.value', false]
+            ['textAlign', false],
+            ['textAlign.default', true],
+            ['components.button.default.textAlign', false],
+            ['other.textAlign.value', false]
         ])('should match "%s" path => %s', (path, result) => {
             const match = matchKey(path, typographyTextAlignmentResolver.key as RegExp);
             expect(match).toBe(result);
@@ -280,18 +289,29 @@ describe('typographyColorGenerator', () => {
             const color = { h: '0', s: '0%', l: '0%', a: '1' };
             const meta = createTestingGeneratorMeta({
                 theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        color: {
-                            __type: ClassificationType.Group,
-                            primary: {
-                                __type: ClassificationType.Variable,
-                                default: color
-                            }
-                        }
-                    }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'color', 'primary', 'default']
+                    textColor: defineTextColorVariable(color)
+                },
+                path: ['textColor', 'default']
+            });
+            const result = typographyColorGenerator.generate(color, meta);
+            expect(result).toEqual([
+                '--text-color-h: 0;',
+                '--text-color-s: 0%;',
+                '--text-color-l: 0%;',
+                '--text-color-a: 1;',
+                '--text-color: hsla(var(--text-color-h) var(--text-color-s) var(--text-color-l) / var(--text-color-a));'
+            ]);
+        });
+
+        it('should generate css variables for typography color non-default variant', () => {
+            const color = { h: '0', s: '0%', l: '0%', a: '1' };
+            const meta = createTestingGeneratorMeta({
+                theme: {
+                    textColor: defineTextColorVariable('', {
+                        primary: color
+                    })
+                },
+                path: ['color', 'primary']
             });
             const result = typographyColorGenerator.generate(color, meta);
             expect(result).toEqual([
@@ -302,44 +322,15 @@ describe('typographyColorGenerator', () => {
                 '--text-color-primary: hsla(var(--text-color-primary-h) var(--text-color-primary-s) var(--text-color-primary-l) / var(--text-color-primary-a));'
             ]);
         });
-
-        it('should generate css variables for typography color non-default variant', () => {
-            const color = { h: '0', s: '0%', l: '0%', a: '1' };
-            const meta = createTestingGeneratorMeta({
-                theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        color: {
-                            __type: ClassificationType.Group,
-                            primary: {
-                                __type: ClassificationType.Variable,
-                                'shade-100': color
-                            }
-                        }
-                    }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'color', 'primary', 'shade-100']
-            });
-            const result = typographyColorGenerator.generate(color, meta);
-            expect(result).toEqual([
-                '--text-color-primary-shade-100-h: 0;',
-                '--text-color-primary-shade-100-s: 0%;',
-                '--text-color-primary-shade-100-l: 0%;',
-                '--text-color-primary-shade-100-a: 1;',
-                '--text-color-primary-shade-100: hsla(var(--text-color-primary-shade-100-h) var(--text-color-primary-shade-100-s) var(--text-color-primary-shade-100-l) / var(--text-color-primary-shade-100-a));'
-            ]);
-        });
     });
 
     describe('match', () => {
         it.each([
-            ['typography', false],
-            ['typography.color', false],
-            ['typography.color.primary', false],
-            ['typography.color.primary.default', true],
-            ['typography.color.primary.other', true],
-            ['other.typography.color.primary', false],
-            ['other.typography.color.primary.path', false]
+            ['textColor', false],
+            ['textColor.primary', true],
+            ['textColor.default', true],
+            ['other.textColor.primary', false],
+            ['other.textColor.primary.path', false]
         ])('should match "%s" path', (path, result) => {
             const match = (typographyColorGenerator.key as RegExp[]).some((key) =>
                 matchKey(path, key)
@@ -355,20 +346,31 @@ describe('typographyContrastColorGenerator', () => {
             const color = { h: '0', s: '0%', l: '100%', a: '1' };
             const meta = createTestingGeneratorMeta({
                 theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        contrastColor: {
-                            __type: ClassificationType.Group,
-                            primary: {
-                                __type: ClassificationType.Variable,
-                                default: color
-                            }
-                        }
-                    }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'contrastColor', 'primary', 'default']
+                    contrastTextColor: defineTextColorVariable(color)
+                },
+                path: ['contrastTextColor', 'default']
             });
-            const result = typographyContrastColorGenerator.generate(color, meta);
+            const result = typographyContrastTextColorGenerator.generate(color, meta);
+            expect(result).toEqual([
+                '--contrast-text-color-h: 0;',
+                '--contrast-text-color-s: 0%;',
+                '--contrast-text-color-l: 100%;',
+                '--contrast-text-color-a: 1;',
+                '--contrast-text-color: hsla(var(--contrast-text-color-h) var(--contrast-text-color-s) var(--contrast-text-color-l) / var(--contrast-text-color-a));'
+            ]);
+        });
+
+        it('should generate css variables for typography contrast color for non-default variant', () => {
+            const color = { h: '0', s: '0%', l: '100%', a: '1' };
+            const meta = createTestingGeneratorMeta({
+                theme: {
+                    contrastTextColor: defineTextColorVariable('', {
+                        primary: color
+                    })
+                },
+                path: ['contrastTextColor', 'primary']
+            });
+            const result = typographyContrastTextColorGenerator.generate(color, meta);
             expect(result).toEqual([
                 '--contrast-text-color-primary-h: 0;',
                 '--contrast-text-color-primary-s: 0%;',
@@ -377,46 +379,18 @@ describe('typographyContrastColorGenerator', () => {
                 '--contrast-text-color-primary: hsla(var(--contrast-text-color-primary-h) var(--contrast-text-color-primary-s) var(--contrast-text-color-primary-l) / var(--contrast-text-color-primary-a));'
             ]);
         });
-
-        it('should generate css variables for typography contrast color for non-default variant', () => {
-            const color = { h: '0', s: '0%', l: '100%', a: '1' };
-            const meta = createTestingGeneratorMeta({
-                theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        contrastColor: {
-                            __type: ClassificationType.Group,
-                            primary: {
-                                __type: ClassificationType.Variable,
-                                'shade-100': color
-                            }
-                        }
-                    }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'contrastColor', 'primary', 'shade-100']
-            });
-            const result = typographyContrastColorGenerator.generate(color, meta);
-            expect(result).toEqual([
-                '--contrast-text-color-primary-shade-100-h: 0;',
-                '--contrast-text-color-primary-shade-100-s: 0%;',
-                '--contrast-text-color-primary-shade-100-l: 100%;',
-                '--contrast-text-color-primary-shade-100-a: 1;',
-                '--contrast-text-color-primary-shade-100: hsla(var(--contrast-text-color-primary-shade-100-h) var(--contrast-text-color-primary-shade-100-s) var(--contrast-text-color-primary-shade-100-l) / var(--contrast-text-color-primary-shade-100-a));'
-            ]);
-        });
     });
 
     describe('match', () => {
         it.each([
-            ['typography', false],
-            ['typography.contrastColor', false],
-            ['typography.contrastColor.primary', false],
-            ['typography.contrastColor.primary.default', true],
-            ['typography.contrastColor.primary.other', true],
-            ['other.typography.contrastColor.primary', false],
-            ['other.typography.contrastColor.primary.path', false]
+            ['contrastTextColor', false],
+            ['contrastTextColor.default', true],
+            ['contrastTextColor.primary', true],
+            ['contrastTextColor.primary.other', false],
+            ['other.contrastTextColor.primary', false],
+            ['other.contrastTextColor.primary.path', false]
         ])('should match "%s" path', (path, result) => {
-            const match = (typographyContrastColorGenerator.key as RegExp[]).some((key) =>
+            const match = (typographyContrastTextColorGenerator.key as RegExp[]).some((key) =>
                 matchKey(path, key)
             );
             expect(match).toBe(result);
@@ -433,16 +407,12 @@ describe('typographyFontFamilyGenerator', () => {
                 print: 'serif'
             };
             const meta = createTestingGeneratorMeta({
-                theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        fontFamily: {
-                            __type: ClassificationType.Variable,
-                            primary: fontFamily
-                        }
-                    }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'fontFamily', 'primary']
+                theme: defineTheme({
+                    fontFamily: defineFontFamilyVariable(fontFamily, {
+                        primary: fontFamily
+                    })
+                }),
+                path: ['fontFamily', 'primary']
             });
             const result = typographyFontFamilyGenerator.generate(fontFamily, meta);
             expect(result).toEqual([
@@ -460,16 +430,10 @@ describe('typographyFontFamilyGenerator', () => {
                 print: 'serif'
             };
             const meta = createTestingGeneratorMeta({
-                theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        fontFamily: {
-                            __type: ClassificationType.Variable,
-                            default: fontFamily
-                        }
-                    }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'fontFamily', 'default']
+                theme: defineTheme({
+                    fontFamily: defineFontFamilyVariable(fontFamily)
+                }),
+                path: ['fontFamily', 'default']
             });
             const result = typographyFontFamilyGenerator.generate(fontFamily, meta);
             expect(result).toEqual([
@@ -483,12 +447,11 @@ describe('typographyFontFamilyGenerator', () => {
 
     describe('match', () => {
         it.each([
-            ['typography', false],
-            ['typography.fontFamily', false],
-            ['typography.fontFamily.default', true],
-            ['typography.fontFamily.primary', true],
-            ['other.typography.fontFamily.primary', false],
-            ['other.typography.fontFamily.primary.path', false]
+            ['fontFamily', false],
+            ['fontFamily.default', true],
+            ['fontFamily.primary', true],
+            ['other.fontFamily.primary', false],
+            ['other.fontFamily.primary.path', false]
         ])('should match "%s" path', (path, result) => {
             const match = (typographyFontFamilyGenerator.key as RegExp[]).some((key) =>
                 matchKey(path, key)
@@ -503,16 +466,12 @@ describe('typographyFontSizeGenerator', () => {
         it('should generate css variables for typography font size for non-default variant', () => {
             const fontSize = '1rem';
             const meta = createTestingGeneratorMeta({
-                theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        fontSize: {
-                            __type: ClassificationType.Variable,
-                            md: fontSize
-                        }
-                    }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'fontSize', 'md']
+                theme: defineTheme({
+                    fontSize: defineFontSizeVariable(fontSize, {
+                        md: fontSize
+                    })
+                }),
+                path: ['fontSize', 'md']
             });
             const result = typographyFontSizeGenerator.generate(fontSize, meta);
             expect(result).toEqual(['--font-size-md: 1rem;']);
@@ -521,16 +480,10 @@ describe('typographyFontSizeGenerator', () => {
         it('should generate css variables for typography font size for default variant', () => {
             const fontSize = '1rem';
             const meta = createTestingGeneratorMeta({
-                theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        fontSize: {
-                            __type: ClassificationType.Variable,
-                            default: fontSize
-                        }
-                    }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'fontSize', 'default']
+                theme: defineTheme({
+                    fontSize: defineFontSizeVariable(fontSize)
+                }),
+                path: ['fontSize', 'default']
             });
             const result = typographyFontSizeGenerator.generate(fontSize, meta);
             expect(result).toEqual(['--font-size: 1rem;']);
@@ -539,12 +492,11 @@ describe('typographyFontSizeGenerator', () => {
 
     describe('match', () => {
         it.each([
-            ['typography', false],
-            ['typography.fontSize', false],
-            ['typography.fontSize.default', true],
-            ['typography.fontSize.primary', true],
-            ['other.typography.fontSize.primary', false],
-            ['other.typography.fontSize.primary.path', false]
+            ['fontSize', false],
+            ['fontSize.default', true],
+            ['fontSize.primary', true],
+            ['other.fontSize.primary', false],
+            ['other.fontSize.primary.path', false]
         ])('should match "%s" path', (path, result) => {
             const match = (typographyFontSizeGenerator.key as RegExp[]).some((key) =>
                 matchKey(path, key)
@@ -559,16 +511,10 @@ describe('typographyFontWeightGenerator', () => {
         it('should generate css variables for typography font weight for non-default variant', () => {
             const fontWeight = '700';
             const meta = createTestingGeneratorMeta({
-                theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        fontWeight: {
-                            __type: ClassificationType.Variable,
-                            bold: fontWeight
-                        }
-                    }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'fontWeight', 'bold']
+                theme: defineTheme({
+                    fontWeight: defineFontWeightVariable('normal', { bold: fontWeight })
+                }),
+                path: ['fontWeight', 'bold']
             });
             const result = typographyFontWeightGenerator.generate(fontWeight, meta);
             expect(result).toEqual(['--font-weight-bold: 700;']);
@@ -577,16 +523,10 @@ describe('typographyFontWeightGenerator', () => {
         it('should generate css variables for typography font weight for default variant', () => {
             const fontWeight = '700';
             const meta = createTestingGeneratorMeta({
-                theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        fontWeight: {
-                            __type: ClassificationType.Variable,
-                            default: fontWeight
-                        }
-                    }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'fontWeight', 'default']
+                theme: defineTheme({
+                    fontWeight: defineFontWeightVariable(fontWeight)
+                }),
+                path: ['fontWeight', 'default']
             });
             const result = typographyFontWeightGenerator.generate(fontWeight, meta);
             expect(result).toEqual(['--font-weight: 700;']);
@@ -595,12 +535,11 @@ describe('typographyFontWeightGenerator', () => {
 
     describe('match', () => {
         it.each([
-            ['typography', false],
-            ['typography.fontWeight', false],
-            ['typography.fontWeight.default', true],
-            ['typography.fontWeight.primary', true],
-            ['other.typography.fontWeight.primary', false],
-            ['other.typography.fontWeight.primary.path', false]
+            ['fontWeight', false],
+            ['fontWeight.default', true],
+            ['fontWeight.primary', true],
+            ['other.fontWeight.primary', false],
+            ['other.fontWeight.primary.path', false]
         ])('should match "%s" path', (path, result) => {
             const match = (typographyFontWeightGenerator.key as RegExp[]).some((key) =>
                 matchKey(path, key)
@@ -616,15 +555,12 @@ describe('typographyLineHeightGenerator', () => {
             const lineHeight = '1.5';
             const meta = createTestingGeneratorMeta({
                 theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        lineHeight: {
-                            __type: ClassificationType.Variable,
-                            md: lineHeight
-                        }
+                    lineHeight: {
+                        __type: ClassificationType.Variable,
+                        md: lineHeight
                     }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'lineHeight', 'md']
+                },
+                path: ['lineHeight', 'md']
             });
             const result = typographyLineHeightGenerator.generate(lineHeight, meta);
             expect(result).toEqual(['--line-height-md: 1.5;']);
@@ -634,15 +570,12 @@ describe('typographyLineHeightGenerator', () => {
             const lineHeight = '1.5';
             const meta = createTestingGeneratorMeta({
                 theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        lineHeight: {
-                            __type: ClassificationType.Variable,
-                            default: lineHeight
-                        }
+                    lineHeight: {
+                        __type: ClassificationType.Variable,
+                        default: lineHeight
                     }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'lineHeight', 'default']
+                },
+                path: ['lineHeight', 'default']
             });
             const result = typographyLineHeightGenerator.generate(lineHeight, meta);
             expect(result).toEqual(['--line-height: 1.5;']);
@@ -651,12 +584,11 @@ describe('typographyLineHeightGenerator', () => {
 
     describe('match', () => {
         it.each([
-            ['typography', false],
-            ['typography.lineHeight', false],
-            ['typography.lineHeight.default', true],
-            ['typography.lineHeight.primary', true],
-            ['other.typography.lineHeight.primary', false],
-            ['other.typography.lineHeight.primary.path', false]
+            ['lineHeight', false],
+            ['lineHeight.default', true],
+            ['lineHeight.primary', true],
+            ['other.lineHeight.primary', false],
+            ['other.lineHeight.primary.path', false]
         ])('should match "%s" path', (path, result) => {
             const match = (typographyLineHeightGenerator.key as RegExp[]).some((key) =>
                 matchKey(path, key)
@@ -672,15 +604,12 @@ describe('typographyLetterSpacingGenerator', () => {
             const letterSpacing = '0.1em';
             const meta = createTestingGeneratorMeta({
                 theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        letterSpacing: {
-                            __type: ClassificationType.Variable,
-                            md: letterSpacing
-                        }
+                    letterSpacing: {
+                        __type: ClassificationType.Variable,
+                        md: letterSpacing
                     }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'letterSpacing', 'md']
+                },
+                path: ['letterSpacing', 'md']
             });
             const result = typographyLetterSpacingGenerator.generate(letterSpacing, meta);
             expect(result).toEqual(['--letter-spacing-md: 0.1em;']);
@@ -690,15 +619,12 @@ describe('typographyLetterSpacingGenerator', () => {
             const letterSpacing = '0.1em';
             const meta = createTestingGeneratorMeta({
                 theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        letterSpacing: {
-                            __type: ClassificationType.Variable,
-                            default: letterSpacing
-                        }
+                    letterSpacing: {
+                        __type: ClassificationType.Variable,
+                        default: letterSpacing
                     }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'letterSpacing', 'default']
+                },
+                path: ['letterSpacing', 'default']
             });
             const result = typographyLetterSpacingGenerator.generate(letterSpacing, meta);
             expect(result).toEqual(['--letter-spacing: 0.1em;']);
@@ -707,12 +633,11 @@ describe('typographyLetterSpacingGenerator', () => {
 
     describe('match', () => {
         it.each([
-            ['typography', false],
-            ['typography.letterSpacing', false],
-            ['typography.letterSpacing.default', true],
-            ['typography.letterSpacing.primary', true],
-            ['other.typography.letterSpacing.primary', false],
-            ['other.typography.letterSpacing.primary.path', false]
+            ['letterSpacing', false],
+            ['letterSpacing.default', true],
+            ['letterSpacing.primary', true],
+            ['other.letterSpacing.primary', false],
+            ['other.letterSpacing.primary.path', false]
         ])('should match "%s" path', (path, result) => {
             const match = (typographyLetterSpacingGenerator.key as RegExp[]).some((key) =>
                 matchKey(path, key)
@@ -728,15 +653,9 @@ describe('typographyTextAlignmentGenerator', () => {
             const textAlign = 'center';
             const meta = createTestingGeneratorMeta({
                 theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        textAlign: {
-                            __type: ClassificationType.Variable,
-                            center: textAlign
-                        }
-                    }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'textAlign', 'center']
+                    textAlign: defineTextAlignmentVariable('left', { center: textAlign })
+                },
+                path: ['textAlign', 'center']
             });
             const result = typographyTextAlignmentGenerator.generate(textAlign, meta);
             expect(result).toEqual(['--text-align-center: center;']);
@@ -746,15 +665,12 @@ describe('typographyTextAlignmentGenerator', () => {
             const textAlign = 'center';
             const meta = createTestingGeneratorMeta({
                 theme: {
-                    typography: {
-                        __type: ClassificationType.Group,
-                        textAlign: {
-                            __type: ClassificationType.Variable,
-                            default: textAlign
-                        }
+                    textAlign: {
+                        __type: ClassificationType.Variable,
+                        default: textAlign
                     }
-                } as unknown as ResolvedTheme,
-                path: ['typography', 'textAlign', 'default']
+                },
+                path: ['textAlign', 'default']
             });
             const result = typographyTextAlignmentGenerator.generate(textAlign, meta);
             expect(result).toEqual(['--text-align: center;']);
@@ -763,12 +679,11 @@ describe('typographyTextAlignmentGenerator', () => {
 
     describe('match', () => {
         it.each([
-            ['typography', false],
-            ['typography.textAlign', false],
-            ['typography.textAlign.default', true],
-            ['typography.textAlign.primary', true],
-            ['other.typography.textAlign.primary', false],
-            ['other.typography.textAlign.primary.path', false]
+            ['textAlign', false],
+            ['textAlign.default', true],
+            ['textAlign.primary', true],
+            ['other.textAlign.primary', false],
+            ['other.textAlign.primary.path', false]
         ])('should match "%s" path', (path, result) => {
             const match = (typographyTextAlignmentGenerator.key as RegExp[]).some((key) =>
                 matchKey(path, key)

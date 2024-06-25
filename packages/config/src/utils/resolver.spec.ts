@@ -1,6 +1,6 @@
 import { createGenericVariantResolveFn } from './resolver';
 import { createTestingResolverMeta } from '../__tests__/utils';
-import { defineComponent, defineComponentsGroup } from './define';
+import { defineComponent, defineComponentsGroup, defineTheme } from './define';
 
 describe('createResolveFn', () => {
     it('should use "resolveValue" when last path is "default"', () => {
@@ -28,15 +28,18 @@ describe('createResolveFn', () => {
         const resolve = createGenericVariantResolveFn(resolveValue, resolveVariant);
         const meta = createTestingResolverMeta({
             path: ['components', 'path', 'notDefault'],
-            theme: {
+            theme: defineTheme({
                 components: defineComponentsGroup({
-                    path: defineComponent({
-                        nonDefault: 'value'
-                    })
+                    path: defineComponent(
+                        { example: 'value' },
+                        {
+                            nonDefault: { example: 'value' }
+                        }
+                    )
                 })
-            }
+            })
         });
-        resolve('variant', meta);
+        resolve({ example: 'value' }, meta);
         expect(resolveVariant).toHaveBeenCalled();
         expect(resolveValue).not.toHaveBeenCalled();
     });

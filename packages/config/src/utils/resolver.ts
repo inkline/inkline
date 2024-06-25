@@ -1,11 +1,4 @@
-import {
-    ClassificationType,
-    Resolver,
-    ResolverMeta,
-    ResolveValueFn,
-    ResolveVariantFn
-} from '../types';
-import { traversePathByClassification } from './meta';
+import { ResolverMeta, ResolveValueFn, ResolveVariantFn } from '../types';
 
 export const createGenericVariantResolveFn =
     <RawValue, ResolvedValue>(
@@ -13,12 +6,7 @@ export const createGenericVariantResolveFn =
         resolveVariant: ResolveVariantFn<RawValue, ResolvedValue> = resolveValue
     ) =>
     (value: RawValue, meta: ResolverMeta) => {
-        const isEntityVariantsPath =
-            traversePathByClassification(meta, (path, part, ctx) =>
-                [ClassificationType.Element].includes(ctx.type)
-            ).length > 0;
-
-        if (meta.path[meta.path.length - 1] === 'default' || isEntityVariantsPath) {
+        if (meta.path[meta.path.length - 1] === 'default') {
             return resolveValue(value, meta);
         } else {
             return resolveVariant(value, meta);

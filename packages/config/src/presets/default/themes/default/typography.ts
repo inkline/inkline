@@ -17,7 +17,7 @@ export const textColor = defineTextColorVariable('var(--color-dark)', {
     light: 'var(--color-light)'
 });
 
-export const textContrastColor = defineTextColorVariable('var(--color-white)', {
+export const contrastTextColor = defineTextColorVariable('var(--color-white)', {
     light: 'var(--color-gray-900)',
     dark: 'var(--color-white)'
 });

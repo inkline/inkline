@@ -55,7 +55,7 @@ export const generatePercentage = defineGeneratorValueFn<ResolvedThemePercentage
             ? []
             : [
                   codegenCssVariables.set(
-                      `size-percentage${resolvedVariantName}`,
+                      `percentage${resolvedVariantName}`,
                       `${percentage}${typeof percentage === 'number' ? '%' : ''}`
                   )
               ];

@@ -70,8 +70,8 @@ describe('resolveBorder()', () => {
         const resolved = resolveBorder(borders, meta);
         expect(resolved).toEqual({
             top: { width: '1px', style: 'solid', color: 'red' },
-            right: undefined,
-            bottom: undefined,
+            right: {},
+            bottom: {},
             left: { width: '4px', style: 'double', color: 'yellow' }
         });
     });

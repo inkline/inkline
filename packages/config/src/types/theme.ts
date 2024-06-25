@@ -84,7 +84,7 @@ export type RawTheme = {
     padding: ThemeVariable<RawThemePadding, RawThemePaddingVariant>;
     transition: ThemeVariable<RawThemeTransition>;
     textColor: ThemeVariable<RawThemeTypographyColor>;
-    textContrastColor: ThemeVariable<RawThemeTypographyContrastColor>;
+    contrastTextColor: ThemeVariable<RawThemeTypographyContrastColor>;
     fontFamily: ThemeVariable<RawThemeTypographyFontFamily>;
     fontSize: ThemeVariable<RawThemeTypographyFontSize, RawThemeTypographyFontSizeVariant>;
     fontWeight: ThemeVariable<RawThemeTypographyFontWeight>;
@@ -118,7 +118,7 @@ export type ResolvedTheme = {
     padding: ThemeVariable<ResolvedThemePadding>;
     transition: ThemeVariable<ResolvedThemeTransition>;
     textColor: ThemeVariable<ResolvedThemeTypographyColor>;
-    textContrastColor: ThemeVariable<ResolvedThemeTypographyContrastColor>;
+    contrastTextColor: ThemeVariable<ResolvedThemeTypographyContrastColor>;
     fontFamily: ThemeVariable<ResolvedThemeTypographyFontFamily>;
     fontSize: ThemeVariable<ResolvedThemeTypographyFontSize>;
     fontWeight: ThemeVariable<ResolvedThemeTypographyFontWeight>;

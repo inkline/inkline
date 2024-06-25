@@ -140,7 +140,8 @@ describe('gridColumnsGenerator', () => {
     describe('match', () => {
         it.each([
             ['grid', false],
-            ['grid.columns', true],
+            ['grid.columns', false],
+            ['grid.columns.default', true],
             ['components.button.grid.columns', false],
             ['other.grid.columns.value', false]
         ])('should match "%s" path => %s', (path, result) => {
@@ -162,7 +163,8 @@ describe('gridColumnsMixinsGenerator', () => {
     describe('match', () => {
         it.each([
             ['grid', false],
-            ['grid.columns', true],
+            ['grid.columns', false],
+            ['grid.columns.default', true],
             ['components.button.grid.columns', false],
             ['other.grid.columns.value', false]
         ])('should match "%s" path => %s', (path, result) => {

@@ -6,7 +6,8 @@ import {
     traversePathByClassification
 } from './meta';
 import { createTestingGeneratorMeta } from '../__tests__/utils';
-import { ClassificationType, ResolvedTheme } from '../types';
+import { ClassificationType } from '../types';
+import { defineComponent, defineComponentsGroup, defineTheme } from './define';
 
 describe('shouldGenerateAggregateValue', () => {
     it('should return true for default theme and entity path', () => {
@@ -83,23 +84,18 @@ describe('isEntityPath', () => {
 describe('getResolvedPath', () => {
     it('should return path without offset for entity variants', () => {
         const meta = createTestingGeneratorMeta({
-            theme: {
-                components: {
-                    __type: ClassificationType.Group,
-                    button: {
-                        __type: ClassificationType.Element,
-                        default: {
-                            __type: ClassificationType.Group,
-                            color: {
-                                h: 0,
-                                s: 0,
-                                l: 0,
-                                a: 1
-                            }
+            theme: defineTheme({
+                components: defineComponentsGroup({
+                    button: defineComponent({
+                        color: {
+                            h: 0,
+                            s: 0,
+                            l: 0,
+                            a: 1
                         }
-                    }
-                }
-            } as unknown as ResolvedTheme,
+                    })
+                })
+            }),
             path: ['components', 'button', 'default', 'color']
         });
         const result = getResolvedPath(meta);
@@ -110,13 +106,13 @@ describe('getResolvedPath', () => {
 describe('traversePathByClassification', () => {
     it('should traverse path and return kebab-case chunks', () => {
         const meta = createTestingGeneratorMeta({
-            theme: {
-                components: {
-                    buttonGroup: {
+            theme: defineTheme({
+                components: defineComponentsGroup({
+                    buttonGroup: defineComponent({
                         color: 'red'
-                    }
-                }
-            } as unknown as ResolvedTheme,
+                    })
+                })
+            }),
             path: ['components', 'buttonGroup', 'color']
         });
         const result = traversePathByClassification(meta, () => true);
@@ -125,13 +121,13 @@ describe('traversePathByClassification', () => {
 
     it('should ignore chunks when function returns false', () => {
         const meta = createTestingGeneratorMeta({
-            theme: {
-                components: {
-                    button: {
+            theme: defineTheme({
+                components: defineComponentsGroup({
+                    button: defineComponent({
                         color: 'red'
-                    }
-                }
-            } as unknown as ResolvedTheme,
+                    })
+                })
+            }),
             path: ['components', 'button', 'color']
         });
         const result = traversePathByClassification(meta, () => false);
@@ -140,7 +136,7 @@ describe('traversePathByClassification', () => {
 
     it('should handle empty path', () => {
         const meta = createTestingGeneratorMeta({
-            theme: {},
+            theme: defineTheme({}),
             path: []
         });
         const result = traversePathByClassification(meta, () => true);
@@ -149,16 +145,20 @@ describe('traversePathByClassification', () => {
 
     it('should handle path with ignored keys', () => {
         const meta = createTestingGeneratorMeta({
-            theme: {
-                components: {
-                    button: {
+            theme: defineTheme({
+                components: defineComponentsGroup({
+                    button: defineComponent({
                         color: 'red'
-                    }
-                }
-            } as unknown as ResolvedTheme,
+                    })
+                })
+            }),
             path: ['components', 'button', 'color']
         });
-        const result = traversePathByClassification(meta, (path, part, ctx) => !ctx.consume);
+
+        const result = traversePathByClassification(
+            meta,
+            (path, part, ctx) => !ctx.consume && ctx.type !== ClassificationType.Group
+        );
         expect(result).toEqual(['button', 'color']);
     });
 });

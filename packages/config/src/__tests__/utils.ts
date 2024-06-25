@@ -10,12 +10,13 @@ import type {
 import { defaultModules, defaultThemes } from '../presets';
 import { applyResolvers } from '../apply';
 import { loadModules } from '../load';
+import { PartialDeep } from 'type-fest';
 
 const { resolvers, generators } = loadModules(defaultModules);
 
 export function createTestingResolverMeta(options?: {
     path?: string[];
-    theme?: Partial<RawTheme>;
+    theme?: Partial<RawTheme> | ThemeGroup<Partial<RawTheme>> | ThemeGroup<PartialDeep<RawTheme>>;
     resolvers?: Resolver<any, any>[];
 }): ResolverMeta {
     return {
@@ -27,7 +28,7 @@ export function createTestingResolverMeta(options?: {
 
 export function createTestingGeneratorMeta(options?: {
     path?: string[];
-    theme?: Partial<ResolvedTheme>;
+    theme?: Partial<RawTheme> | ThemeGroup<Partial<RawTheme>> | ThemeGroup<PartialDeep<RawTheme>>;
     themeName?: string;
     generators?: Generator<any>[];
 }): GeneratorMeta {

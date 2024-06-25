@@ -6,7 +6,7 @@ exports[`Components > ISelect > props > options > should render correctly withou
     <!--v-if-->
     <div class="input-field">
       <!--v-if-->
-      <!--v-if--><input autocomplete="off" aria-autocomplete="none" aria-controls="select-options" placeholder="" name="select-input" type="text" tabindex="0" aria-disabled="false" readonly="" aria-readonly="true"><span class="input-suffix"><!-- @slot password-toggle Slot for the password toggle button --><!--v-if--><!-- @slot clearable Slot for the clearable button --><!--v-if--><!-- @slot suffix Slot for the input suffix content --><!-- @slot suffix Slot for the select suffix content --><button class="select-caret" aria-hidden="true" role="button"></button></span>
+      <!--v-if--><input autocomplete="off" aria-autocomplete="none" aria-controls="select-options" placeholder="" name="select-input" type="text" tabindex="0" aria-disabled="false" readonly="" aria-readonly="true" value=""><span class="input-suffix"><!-- @slot password-toggle Slot for the password toggle button --><!--v-if--><!-- @slot clearable Slot for the clearable button --><!--v-if--><!-- @slot suffix Slot for the input suffix content --><!-- @slot suffix Slot for the select suffix content --><button class="select-caret" aria-hidden="true" role="button"></button></span>
     </div>
     <!--v-if-->
   </div>
@@ -31,7 +31,7 @@ exports[`Components > ISelect > should render correctly 1`] = `
     <!--v-if-->
     <div class="input-field">
       <!--v-if-->
-      <!--v-if--><input autocomplete="off" aria-autocomplete="none" aria-controls="select-options" placeholder="Option 1" name="select-input" type="text" tabindex="0" aria-disabled="false" readonly="" aria-readonly="true"><span class="input-suffix"><!-- @slot password-toggle Slot for the password toggle button --><!--v-if--><!-- @slot clearable Slot for the clearable button --><!--v-if--><!-- @slot suffix Slot for the input suffix content --><!-- @slot suffix Slot for the select suffix content --><button class="select-caret" aria-hidden="true" role="button"></button></span>
+      <!--v-if--><input autocomplete="off" aria-autocomplete="none" aria-controls="select-options" placeholder="Option 1" name="select-input" type="text" tabindex="0" aria-disabled="false" readonly="" aria-readonly="true" value="Option 1"><span class="input-suffix"><!-- @slot password-toggle Slot for the password toggle button --><!--v-if--><!-- @slot clearable Slot for the clearable button --><!--v-if--><!-- @slot suffix Slot for the input suffix content --><!-- @slot suffix Slot for the select suffix content --><button class="select-caret" aria-hidden="true" role="button"></button></span>
     </div>
     <!--v-if-->
   </div>

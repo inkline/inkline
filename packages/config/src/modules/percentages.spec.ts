@@ -43,11 +43,11 @@ describe('resolveSizePercentageVariant', () => {
 describe('sizePercentagesResolver', () => {
     describe('match', () => {
         it.each([
-            ['size.percentages', false],
-            ['size.percentages.default', true],
-            ['size.percentages.default.mobile', false],
-            ['components.button.default.size.percentages', false],
-            ['other.size.percentages.value', false]
+            ['percentages', false],
+            ['percentages.default', true],
+            ['percentages.default.mobile', false],
+            ['components.button.default.percentages', false],
+            ['other.percentages.value', false]
         ])('should match "%s" path => %s', (path, result) => {
             const match = matchKey(path, sizePercentagesResolver.key as RegExp);
             expect(match).toBe(result);
@@ -57,21 +57,20 @@ describe('sizePercentagesResolver', () => {
 
 describe('generatePercentage', () => {
     it('should generate css variables for size percentage', () => {
-        const meta = createTestingGeneratorMeta({ path: ['size', 'percentages', 'half'] });
+        const meta = createTestingGeneratorMeta({ path: ['percentages', 'half'] });
         const result = generatePercentage(50, meta);
-        expect(result).toEqual(['--size-percentage-half: 50%;']);
+        expect(result).toEqual(['--percentage-half: 50%;']);
     });
 });
 
 describe('sizePercentagesGenerator', () => {
     describe('match', () => {
         it.each([
-            ['size', false],
-            ['size.percentages', false],
-            ['size.percentages.default', true],
-            ['size.percentages.md', true],
-            ['components.button.size.percentages.md', false],
-            ['other.size.percentages.md.value', false]
+            ['percentages', false],
+            ['percentages.default', true],
+            ['percentages.md', true],
+            ['components.button.percentages.md', false],
+            ['other.percentages.md.value', false]
         ])('should match "%s" path => %s', (path, result) => {
             const match = matchKey(path, sizePercentagesGenerator.key as string);
             expect(match).toBe(result);
