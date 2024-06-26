@@ -23,7 +23,7 @@ jobs:
                 if: steps.npm-cache.outputs.cache-hit != 'true'
                 run: pnpm install
             -   name: Install Playwright Browsers
-                run: pnpx playwright install --with-deps
+                run: pnpm exec playwright install
             -   name: Run build
                 run: pnpm run build
             -   name: Create Inkline + Nuxt app
@@ -64,7 +64,7 @@ jobs:
                 if: steps.npm-cache.outputs.cache-hit != 'true'
                 run: pnpm install
             -   name: Install Playwright Browsers
-                run: pnpx playwright install --with-deps
+                run: pnpm exec playwright install
             -   name: Run build
                 run: pnpm run build
             -   name: Create Inkline + Vite.js app
