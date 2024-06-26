@@ -220,7 +220,7 @@ export default defineComponent({
                 return radioGroup.value.value === value.value;
             }
 
-            return props.modelValue;
+            return !!props.modelValue;
         });
 
         function onChange(event: Event) {
