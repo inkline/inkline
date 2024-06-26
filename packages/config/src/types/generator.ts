@@ -1,6 +1,5 @@
 import type { ResolvedTheme } from './theme';
 import { ClassificationType } from './classifier';
-import { BuildFile } from './build';
 
 export enum GeneratorOutput {
     CssVariables = 'css-variables',

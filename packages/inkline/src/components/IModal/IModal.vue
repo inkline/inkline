@@ -193,12 +193,12 @@ export default defineComponent({
         'closed'
     ],
     setup(props, { emit }) {
-        const visible = ref(props.modelValue); // eslint-disable-line vue/no-setup-props-destructure
+        const visible = ref(props.modelValue);
 
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const classes = computed(() => ({
             [`-${color.value}`]: true,
@@ -329,7 +329,7 @@ export default defineComponent({
             :name="name"
             :aria-labelledby="`${name}-header`"
         >
-            <transition :name="transition" @afterEnter="onAfterEnter" @afterLeave="onAfterLeave">
+            <transition :name="transition" @after-enter="onAfterEnter" @after-leave="onAfterLeave">
                 <div v-show="visible" ref="modalRef" class="modal" :class="classes">
                     <div v-if="header || $slots.header" :id="`${name}-header`" class="modal-header">
                         <!-- @slot footer Slot for modal header content -->

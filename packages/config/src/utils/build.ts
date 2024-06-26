@@ -13,8 +13,7 @@ import {
     GeneratorMeta,
     GeneratorPriority,
     IndexFile,
-    ResolvedBuildOptions,
-    GeneratorOutput
+    ResolvedBuildOptions
 } from '../types';
 import { existsSync } from 'fs';
 import { traversePathByClassification } from './meta';

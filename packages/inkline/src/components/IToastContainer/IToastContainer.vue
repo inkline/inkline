@@ -173,7 +173,7 @@ export default defineComponent({
                     v-for="toast in toastPositions[position]"
                     :key="toast.id"
                     v-bind="toast"
-                    @update:modelValue="hideToast(toast)"
+                    @update:model-value="hideToast(toast)"
                 />
             </TransitionGroup>
         </div>

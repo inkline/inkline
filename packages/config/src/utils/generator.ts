@@ -1,4 +1,4 @@
-import type { GenerateValueFn, Generator, GeneratorMeta } from '../types';
+import type { GeneratorMeta } from '../types';
 import {
     codegenCssVariables,
     getCssVariablePreamblePath,

@@ -78,7 +78,7 @@ export default defineComponent({
          * The size variant of the form group
          * @type sm | md | lg
          * @default
-         * @name sizeMultiplier
+         * @name size
          */
         size: {
             type: String,
@@ -108,45 +108,43 @@ export default defineComponent({
             error
         });
 
-        const currentColor = computed(
-            () => props.color || formGroup?.color.value || form?.color.value
-        );
-        const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const color = computed(() => props.color || formGroup?.color.value || form?.color.value);
+        const size = computed(() => props.size || formGroup?.size.value || form?.size.value);
+        const { color: resolvedColor } = useComponentColor({ componentName, color });
+        const { size: resolvedSize } = useComponentSize({ componentName, size });
 
-        const disabled = computed(
+        const isDisabled = computed(
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
         );
-        const readonly = computed(
+        const isReadonly = computed(
             () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
 
         const classes = computed(() => ({
-            [`-${size.value}`]: true,
-            [`-${color.value}`]: true,
-            '-disabled': disabled.value,
-            '-readonly': readonly.value,
+            [`-${resolvedSize.value}`]: true,
+            [`-${resolvedColor.value}`]: true,
+            '-disabled': isDisabled.value,
+            '-readonly': isReadonly.value,
             '-inline': props.inline,
             '-error': hasError.value,
             '-required': props.required // @TODO Add required state based on required validator this.input.schema?.validators.some(v => v.name === 'required')
         }));
 
         provide(FormGroupKey, {
-            disabled,
-            readonly,
-            size,
-            color,
+            disabled: isDisabled,
+            readonly: isReadonly,
+            size: resolvedSize,
+            color: resolvedColor,
             onBlur,
             onInput
         });
 
         return {
             classes,
-            disabled,
-            readonly,
-            size,
-            color,
+            isDisabled,
+            isReadonly,
+            resolvedSize,
+            resolvedColor,
             onBlur,
             onInput
         };

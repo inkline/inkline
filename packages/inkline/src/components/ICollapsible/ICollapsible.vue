@@ -61,15 +61,15 @@ export default defineComponent({
     setup(props, { emit }) {
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const classes = computed(() => ({
             [`-${color.value}`]: Boolean(color.value),
             [`-${size.value}`]: Boolean(size.value)
         }));
 
-        const activeItems = ref(([] as string[]).concat(props.modelValue)); // eslint-disable-line vue/no-setup-props-destructure
+        const activeItems = ref(([] as string[]).concat(props.modelValue));
 
         watch(
             () => props.modelValue,

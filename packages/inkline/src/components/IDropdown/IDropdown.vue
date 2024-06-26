@@ -204,8 +204,8 @@ export default defineComponent({
 
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const componentProps = computed(() => ({
             disabled: props.disabled,
@@ -217,14 +217,21 @@ export default defineComponent({
             hoverHideDelay: props.hoverHideDelay,
             offset: props.offset
         }));
-        const { visible, hide, show, onKeyEscape, focusTrigger, onClick, onClickOutside } =
-            usePopupControl({
-                triggerRef,
-                popupRef,
-                arrowRef,
-                componentProps,
-                emit
-            });
+        const {
+            visible: isVisible,
+            hide,
+            show,
+            onKeyEscape,
+            focusTrigger,
+            onClick,
+            onClickOutside
+        } = usePopupControl({
+            triggerRef,
+            popupRef,
+            arrowRef,
+            componentProps,
+            emit
+        });
 
         const slots = useSlots();
 
@@ -304,7 +311,7 @@ export default defineComponent({
                         () => {
                             focusTarget.focus();
                         },
-                        visible.value ? 0 : props.animationDuration
+                        isVisible.value ? 0 : props.animationDuration
                     );
 
                     event.preventDefault();
@@ -315,7 +322,7 @@ export default defineComponent({
                 case isKey('space', event) && props.triggerKeyBindings.includes('space'):
                     onClick();
 
-                    if (!visible.value) {
+                    if (!isVisible.value) {
                         setTimeout(() => {
                             focusTarget.focus();
                         }, props.animationDuration);
@@ -338,7 +345,7 @@ export default defineComponent({
 
             switch (true) {
                 case isKey('up', event) && props.itemKeyBindings.includes('up'):
-                case isKey('down', event) && props.itemKeyBindings.includes('down'):
+                case isKey('down', event) && props.itemKeyBindings.includes('down'): {
                     const focusableItems = getFocusableItems();
 
                     const currentIndex = focusableItems.findIndex((item) => item === event.target);
@@ -356,9 +363,9 @@ export default defineComponent({
                     event.preventDefault();
                     event.stopPropagation();
                     break;
-
+                }
                 case isKey('enter', event) && props.itemKeyBindings.includes('enter'):
-                case isKey('space', event) && props.itemKeyBindings.includes('space'):
+                case isKey('space', event) && props.itemKeyBindings.includes('space'): {
                     (event as any).target.click();
 
                     if (props.hideOnItemClick) {
@@ -368,14 +375,15 @@ export default defineComponent({
 
                     event.preventDefault();
                     break;
-
+                }
                 case isKey('tab', event) && props.itemKeyBindings.includes('tab'):
-                case isKey('esc', event) && props.itemKeyBindings.includes('esc'):
+                case isKey('esc', event) && props.itemKeyBindings.includes('esc'): {
                     hide();
                     focusTrigger();
 
                     event.preventDefault();
                     break;
+                }
             }
         }
 
@@ -395,7 +403,7 @@ export default defineComponent({
             popupRef,
             bodyRef,
             arrowRef,
-            visible,
+            isVisible,
             hide,
             show,
             onKeyEscape,
@@ -423,12 +431,12 @@ export default defineComponent({
 
         <transition name="zoom-in-top-transition">
             <div
-                v-show="visible"
+                v-show="isVisible"
                 ref="popupRef"
                 class="dropdown"
                 :class="classes"
                 role="menu"
-                :aria-hidden="visible ? 'false' : 'true'"
+                :aria-hidden="isVisible ? 'false' : 'true'"
             >
                 <span v-if="arrow" ref="arrowRef" class="arrow" />
                 <div v-if="$slots.header" class="dropdown-header">

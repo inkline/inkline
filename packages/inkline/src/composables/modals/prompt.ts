@@ -1,4 +1,3 @@
-/* eslint-disable vue/one-component-per-file */
 import { IButton } from '@inkline/inkline/components/IButton';
 import { IInput } from '@inkline/inkline/components/IInput';
 import { translate } from '@inkline/inkline/i18n';

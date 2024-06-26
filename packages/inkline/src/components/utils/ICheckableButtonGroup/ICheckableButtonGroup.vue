@@ -56,8 +56,8 @@ export default defineComponent({
     setup(props) {
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const classes = computed(() => ({
             'checkable-button-group': true,

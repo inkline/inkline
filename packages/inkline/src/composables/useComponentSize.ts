@@ -4,15 +4,15 @@ import { useInkline } from '@inkline/inkline/composables/useInkline';
 
 export interface ComponentSizeProps {
     componentName: string;
-    currentSize: Ref<string | undefined>;
+    size: Ref<string | undefined>;
 }
 
 export function useComponentSize(props: ComponentSizeProps) {
     const inkline = useInkline();
     const size = computed(() => {
-        let sizeClass = props.currentSize.value || 'md';
+        let sizeClass = props.size.value || 'md';
 
-        if (!props.currentSize.value && inkline?.options) {
+        if (!props.size.value && inkline?.options) {
             if (inkline.options.componentOptions[props.componentName]?.size) {
                 sizeClass = inkline.options.componentOptions[props.componentName]?.size;
             } else if (inkline.options.size) {

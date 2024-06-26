@@ -3,11 +3,7 @@ import type { Form, FormField, FormSchema } from '@inkline/inkline';
 export function isFormField<T extends Form>(
     schema: FormSchema<T[keyof T]> | FormField<T[keyof T]>
 ): schema is FormField<T[keyof T]> {
-    return (
-        Object.keys(schema).length === 0 ||
-        'value' in schema ||
-        'validators' in schema
-    );
+    return Object.keys(schema).length === 0 || 'value' in schema || 'validators' in schema;
 }
 
 export function isFormFieldArray<T extends Form>(

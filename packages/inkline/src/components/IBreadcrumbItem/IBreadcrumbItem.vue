@@ -72,8 +72,8 @@ export default defineComponent({
     setup(props) {
         const to = toRef(props, 'to');
         const href = toRef(props, 'href');
-        const currentTag = toRef(props, 'tag');
-        const { tag } = useLinkable({ to, href, tag: currentTag });
+        const tag = toRef(props, 'tag');
+        const { tag: renderTag } = useLinkable({ to, href, tag });
 
         const classes = computed(() => ({
             '-active': props.active,
@@ -92,8 +92,7 @@ export default defineComponent({
         return {
             bindings,
             classes,
-            currentTag,
-            tag
+            renderTag
         };
     }
 });
@@ -101,7 +100,7 @@ export default defineComponent({
 
 <template>
     <li v-bind="$attrs" class="breadcrumb-item" :class="classes" role="menuitem">
-        <component v-bind="bindings" :is="tag" :tag="currentTag">
+        <component v-bind="bindings" :is="renderTag" :tag="tag">
             <!-- @slot default Slot for default breadcrumb item content -->
             <slot />
         </component>

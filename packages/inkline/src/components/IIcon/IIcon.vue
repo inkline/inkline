@@ -44,7 +44,7 @@ export default defineComponent({
         const icon = computed(() => icons[iconName.value]);
 
         const currentSize = computed(() => props.size);
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const classes = computed(() => ({
             'inkline-icon': true,

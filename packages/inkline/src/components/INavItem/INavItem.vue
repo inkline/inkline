@@ -85,8 +85,8 @@ export default defineComponent({
 
         const to = toRef(props, 'to');
         const href = toRef(props, 'href');
-        const currentTag = toRef(props, 'tag');
-        const { tag } = useLinkable({ to, href, tag: currentTag });
+        const tag = toRef(props, 'tag');
+        const { tag: renderTag } = useLinkable({ to, href, tag: tag });
 
         const disabled = computed(() => props.disabled);
         const ariaDisabled = computed(() => {
@@ -125,8 +125,7 @@ export default defineComponent({
         return {
             bindings,
             classes,
-            tag,
-            currentTag,
+            renderTag,
             onClick
         };
     }
@@ -136,8 +135,8 @@ export default defineComponent({
 <template>
     <component
         v-bind="bindings"
-        :is="tag"
-        :tag="currentTag"
+        :is="renderTag"
+        :tag="tag"
         class="nav-item"
         :class="classes"
         @click="onClick"

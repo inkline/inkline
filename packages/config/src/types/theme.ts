@@ -57,8 +57,7 @@ import {
     RawThemeLayers,
     ResolvedThemeLayers,
     RawThemeMarginVariant,
-    RawThemePaddingVariant,
-    RawThemeElementDefinition
+    RawThemePaddingVariant
 } from '../modules';
 import { ThemeElement, ThemeGroup, ThemeVariable } from './classifier';
 

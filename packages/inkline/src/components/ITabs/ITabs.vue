@@ -66,13 +66,13 @@ export default defineComponent({
     ],
     setup(props, { emit, slots }) {
         const tabsRef = ref<HTMLElement | null>(null);
-        const tabs = ref<Array<Tab>>([]);
-        const active = ref(props.modelValue); // eslint-disable-line vue/no-setup-props-destructure
+        const tabs = ref<Tab[]>([]);
+        const active = ref(props.modelValue);
 
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const classes = computed(() => ({
             [`-${color.value}`]: true,

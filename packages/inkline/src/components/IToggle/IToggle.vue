@@ -156,13 +156,13 @@ export default defineComponent({
             () => props.color || formGroup?.color.value || form?.color.value
         );
         const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
-        const disabled = computed(
+        const isDisabled = computed(
             () => props.disabled || formGroup?.disabled.value || form?.disabled.value
         );
-        const readonly = computed(
+        const isReadonly = computed(
             () => props.readonly || formGroup?.readonly.value || form?.readonly.value
         );
 
@@ -185,8 +185,8 @@ export default defineComponent({
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            '-disabled': disabled.value,
-            '-readonly': readonly.value,
+            '-disabled': isDisabled.value,
+            '-readonly': isReadonly.value,
             '-native': props.native,
             '-error': hasError.value
         }));
@@ -199,8 +199,8 @@ export default defineComponent({
             return props.modelValue;
         });
 
-        const tabindex = computed(() => {
-            return disabled.value ? -1 : props.tabindex;
+        const tabIndex = computed(() => {
+            return isDisabled.value ? -1 : props.tabindex;
         });
 
         function onChange(event: Event) {
@@ -215,7 +215,7 @@ export default defineComponent({
         }
 
         function labelOnClick(event: MouseEvent) {
-            if (readonly.value) {
+            if (isReadonly.value) {
                 return;
             }
 
@@ -231,9 +231,9 @@ export default defineComponent({
             inputRef,
             classes,
             checked,
-            disabled,
-            readonly,
-            tabindex,
+            isDisabled,
+            isReadonly,
+            tabIndex,
             onChange,
             labelOnBlur,
             labelOnClick,
@@ -249,25 +249,25 @@ export default defineComponent({
         class="toggle"
         :class="classes"
         :aria-checked="checked"
-        :aria-disabled="disabled"
-        :aria-readonly="readonly"
+        :aria-disabled="isDisabled"
+        :aria-readonly="isReadonly"
         role="checkbox"
     >
         <input
             ref="inputRef"
             type="checkbox"
             :checked="checked"
-            :disabled="disabled"
-            :readonly="readonly"
+            :disabled="isDisabled"
+            :readonly="isReadonly"
             :aria-checked="checked"
-            :aria-disabled="disabled"
-            :aria-readonly="readonly"
+            :aria-disabled="isDisabled"
+            :aria-readonly="isReadonly"
             :name="name"
             @change="onChange"
         />
         <label
             class="toggle-label"
-            :tabindex="tabindex"
+            :tabindex="tabIndex"
             @click="labelOnClick"
             @blur="labelOnBlur"
             @keydown.space.stop.prevent="labelOnKeydown"

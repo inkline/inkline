@@ -1,2 +1,2 @@
-declare module "*.md";
-declare module "*.html";
+declare module '*.md';
+declare module '*.html';

@@ -81,7 +81,7 @@ export default defineComponent({
     },
     setup(props) {
         const currentColor = computed(() => props.color);
-        const { color } = useComponentColor({ componentName, currentColor });
+        const { color } = useComponentColor({ componentName, color: currentColor });
 
         const classes = computed(() => ({
             [`-${color.value}`]: true,

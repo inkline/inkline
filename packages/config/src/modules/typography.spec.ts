@@ -31,11 +31,9 @@ import {
     defineTextAlignmentVariable,
     defineTextColorVariable,
     defineTheme,
-    defineThemes,
-    defineVariable,
     matchKey
 } from '../utils';
-import { ClassificationType, ResolvedTheme } from '../types';
+import { ClassificationType } from '../types';
 
 describe('resolveTypographyColor', () => {
     const meta = createTestingResolverMeta({ path: ['color', 'default'] });

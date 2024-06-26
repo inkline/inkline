@@ -41,21 +41,21 @@ export default defineComponent({
             return schema.value.errors || [];
         });
 
-        const visible = computed(() => {
-            let isVisible = true;
+        const isVisible = computed(() => {
+            let visible = true;
 
             if (schema.value && props.visible) {
                 ([] as string[]).concat(props.visible as string[]).forEach((status) => {
-                    isVisible = isVisible && schema.value[status];
+                    visible = visible && schema.value[status];
                 });
             }
 
-            return isVisible;
+            return visible;
         });
 
         return {
             errors,
-            visible,
+            isVisible,
             schema
         };
     }
@@ -66,7 +66,7 @@ export default defineComponent({
     <transition v-if="schema" name="fade-in-transition">
         <ul
             v-if="errors.length > 0"
-            v-show="visible"
+            v-show="isVisible"
             v-bind="$attrs"
             class="form-error"
             aria-live="polite"

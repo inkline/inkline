@@ -121,8 +121,8 @@ export default defineComponent({
     setup(props, { emit }) {
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
-        const { size } = useComponentSize({ componentName, currentSize });
-        const { color } = useComponentColor({ componentName, currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
 
         const disabled = computed(() => props.disabled);
         const readonly = computed(() => props.readonly);

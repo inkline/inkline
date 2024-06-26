@@ -45,9 +45,10 @@ export default defineComponent({
                     return (props.render as LabelRenderFunction)(props.ctx);
                 case typeof props.render === 'object':
                     return h(props.render as Component, { ctx: props.ctx });
-                case typeof props.render === 'string':
+                case typeof props.render === 'string': {
                     const children = interpolate(props.render as string, props.ctx);
                     return props.tag ? h(props.tag, children) : h(Text, children);
+                }
                 default:
                     return props.tag
                         ? h(props.tag, props.render as number | boolean)

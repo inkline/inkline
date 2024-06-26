@@ -7,12 +7,7 @@ import {
     isReservedChildElementKey,
     toKebabCase
 } from '../utils';
-import {
-    GeneratorPriority,
-    GeneratorOutput,
-    ThemePropertyMetadata,
-    ClassificationType
-} from '../types';
+import { GeneratorPriority, GeneratorOutput } from '../types';
 import { RawThemeColor, ResolvedThemeColor } from './colors';
 import { RawThemeBorder, ResolvedThemeBorder } from './border';
 import { RawThemeBorderRadius, ResolvedThemeBorderRadius } from './borderRadius';
@@ -25,7 +20,6 @@ import {
     ResolvedThemePadding
 } from './spacing';
 import { RawThemeTransition, ResolvedThemeTransition } from './transition';
-import { PartialDeep } from 'type-fest';
 
 /**
  * Types

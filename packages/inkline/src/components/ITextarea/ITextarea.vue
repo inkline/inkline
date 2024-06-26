@@ -43,7 +43,7 @@ export default defineComponent({
     <IInput
         v-bind="{ ...$attrs, ...$props }"
         type="textarea"
-        @update:modelValue="onUpdateModelValue"
+        @update:model-value="onUpdateModelValue"
     >
         <template v-if="$slots.prepend" #prepend>
             <slot name="prepend" />

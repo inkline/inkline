@@ -171,8 +171,8 @@ export default defineComponent({
 
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const componentProps = computed(() => ({
             disabled: props.disabled,
@@ -184,7 +184,11 @@ export default defineComponent({
             hoverHideDelay: props.hoverHideDelay,
             offset: props.offset
         }));
-        const { visible, onKeyEscape, onClickOutside } = usePopupControl({
+        const {
+            visible: isVisible,
+            onKeyEscape,
+            onClickOutside
+        } = usePopupControl({
             triggerRef,
             popupRef,
             arrowRef,
@@ -206,7 +210,7 @@ export default defineComponent({
             triggerRef,
             popupRef,
             arrowRef,
-            visible,
+            isVisible,
             onKeyEscape,
             classes
         };
@@ -227,7 +231,7 @@ export default defineComponent({
             class="tooltip-trigger"
             :aria-describedby="`${name}-popup`"
             :aria-disabled="disabled"
-            :aria-expanded="visible ? 'true' : 'false'"
+            :aria-expanded="isVisible ? 'true' : 'false'"
         >
             <!-- @slot default Slot for tooltip trigger -->
             <slot />
@@ -235,14 +239,14 @@ export default defineComponent({
 
         <transition name="zoom-in-top-transition">
             <div
-                v-show="visible"
+                v-show="isVisible"
                 :id="`${name}-popup`"
                 ref="popupRef"
                 class="tooltip"
                 :class="classes"
                 role="tooltip"
                 aria-live="polite"
-                :aria-hidden="visible ? 'false' : 'true'"
+                :aria-hidden="isVisible ? 'false' : 'true'"
             >
                 <span v-if="arrow" ref="arrowRef" class="arrow" />
                 <!-- @slot body Slot for tooltip body content -->

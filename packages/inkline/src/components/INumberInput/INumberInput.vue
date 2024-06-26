@@ -88,8 +88,8 @@ export default defineComponent({
 
         const currentColor = toRef(props, 'color');
         const currentSize = toRef(props, 'size');
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const disabled = computed(
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
@@ -208,9 +208,9 @@ export default defineComponent({
 <template>
     <IInput
         v-bind="{ ...$attrs, ...$props }"
-        :modelValue="value"
+        :model-value="value"
         type="text"
-        @update:modelValue="onUpdateModelValue"
+        @update:model-value="onUpdateModelValue"
     >
         <template #prepend>
             <IButton

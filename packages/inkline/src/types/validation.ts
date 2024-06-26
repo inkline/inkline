@@ -44,11 +44,11 @@ export type FormSchema<T extends Form> = {
             ? U extends FormField<V[]>
                 ? FormField<V[]>
                 : V extends object
-                ? FormSchema<V>[]
-                : FormField<U[number]>[] | FormField<U>
+                  ? FormSchema<V>[]
+                  : FormField<U[number]>[] | FormField<U>
             : U extends object
-            ? FormSchema<U>
-            : FormField<U>
+              ? FormSchema<U>
+              : FormField<U>
         : never;
 };
 
@@ -83,6 +83,6 @@ export type ResolvedFormSchema<T extends Form> = {
             ? ResolvedFormSchema<V>[]
             : ResolvedFormField<T[K][number]>[]
         : T[K] extends object
-        ? ResolvedFormSchema<T[K]>
-        : ResolvedFormField<T[K]>;
+          ? ResolvedFormSchema<T[K]>
+          : ResolvedFormField<T[K]>;
 } & FormState;

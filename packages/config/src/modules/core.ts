@@ -20,7 +20,7 @@ const aggregatorOutputModifier = defineOutputModifier({
 
         return resolvedPath;
     },
-    content: ({ content, output, path }, meta) => {
+    content: ({ content, output }, meta) => {
         let resolvedContent = content;
         switch (output) {
             case GeneratorOutput.CssVariables:

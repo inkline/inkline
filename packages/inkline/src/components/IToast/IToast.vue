@@ -141,8 +141,8 @@ export default defineComponent({
     setup(props, { emit, slots }) {
         const currentColor = computed(() => props.color);
         const currentSize = computed(() => props.size);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const slotsClasses = ref(getSlotsClasses());
         const classes = computed(() => ({
@@ -156,7 +156,7 @@ export default defineComponent({
             '--toast--duration': `${props.duration}ms`
         }));
 
-        const icon = computed(() =>
+        const resolvedIcon = computed(() =>
             typeof props.icon !== 'undefined' ? props.icon : iconByType[color.value]
         );
 
@@ -165,7 +165,7 @@ export default defineComponent({
         );
 
         const isVNode = computed(() => ({
-            icon: typeof icon.value === 'object',
+            icon: typeof resolvedIcon.value === 'object',
             title: typeof props.title === 'object',
             message: typeof props.message === 'object'
         }));
@@ -195,7 +195,7 @@ export default defineComponent({
         return {
             classes,
             styles,
-            icon,
+            resolvedIcon,
             isVNode,
             progressVisible,
             dismiss
@@ -206,10 +206,10 @@ export default defineComponent({
 
 <template>
     <div v-bind="$attrs" class="toast" :class="classes" :style="styles">
-        <span v-if="icon || $slots.icon" class="toast-icon" role="img" aria-hidden="true">
+        <span v-if="resolvedIcon || $slots.icon" class="toast-icon" role="img" aria-hidden="true">
             <!-- @slot icon Slot for toast icon -->
             <slot name="icon">
-                <component :is="icon" v-if="isVNode.icon" />
+                <component :is="resolvedIcon" v-if="isVNode.icon" />
             </slot>
         </span>
         <div class="toast-content">

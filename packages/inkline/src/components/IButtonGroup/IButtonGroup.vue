@@ -65,10 +65,10 @@ export default defineComponent({
 
         const currentColor = computed(() => props.color || buttonGroup?.color.value);
         const currentSize = computed(() => props.size || buttonGroup?.size.value);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
-        const disabled = computed((): boolean => {
+        const isDisabled = computed((): boolean => {
             return !!(props.disabled || buttonGroup?.disabled.value);
         });
 
@@ -77,18 +77,18 @@ export default defineComponent({
             [`-${color.value}`]: true,
             '-vertical': props.vertical,
             '-block': props.block,
-            '-disabled': disabled.value
+            '-disabled': isDisabled.value
         }));
 
         provide(ButtonGroupKey, {
-            disabled,
+            disabled: isDisabled,
             size,
             color
         });
 
         return {
             classes,
-            disabled
+            isDisabled
         };
     }
 });
@@ -100,7 +100,7 @@ export default defineComponent({
         role="group"
         class="button-group"
         :class="classes"
-        :aria-disabled="disabled ? 'true' : undefined"
+        :aria-disabled="isDisabled ? 'true' : undefined"
     >
         <!-- @slot default Slot for default button group content -->
         <slot />

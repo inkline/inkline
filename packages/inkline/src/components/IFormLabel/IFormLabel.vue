@@ -49,7 +49,7 @@ export default defineComponent({
         const currentFor = toRef(props, 'for');
 
         const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const classes = computed(() => ({
             [`-${size.value}`]: true,

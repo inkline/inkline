@@ -85,8 +85,8 @@ export default defineComponent({
 
         const to = toRef(props, 'to');
         const href = toRef(props, 'href');
-        const currentTag = toRef(props, 'tag');
-        const { tag } = useLinkable({ to, href, tag: currentTag });
+        const tag = toRef(props, 'tag');
+        const { tag: renderTag } = useLinkable({ to, href, tag });
 
         const classes = computed(() => ({
             '-active': props.active,
@@ -124,8 +124,7 @@ export default defineComponent({
         return {
             bindings,
             classes,
-            currentTag,
-            tag,
+            renderTag,
             onClick
         };
     }
@@ -135,8 +134,8 @@ export default defineComponent({
 <template>
     <component
         v-bind="bindings"
-        :is="tag"
-        :tag="currentTag"
+        :is="renderTag"
+        :tag="tag"
         class="dropdown-item"
         :class="classes"
         @click="onClick"

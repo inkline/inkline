@@ -1,6 +1,9 @@
 import eslint from "@eslint/js";
 import tslint from "typescript-eslint";
 import pluginVue from "eslint-plugin-vue";
+import pluginPrettier from "eslint-plugin-prettier/recommended";
+import tsParser from "@typescript-eslint/parser";
+import vueParser from "vue-eslint-parser";
 
 const overrides = {
     rules: {
@@ -18,6 +21,7 @@ const overrides = {
         // '@typescript-eslint/ban-ts-comment': 'off',
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-redundant-type-constituents": "off",
+        "@typescript-eslint/no-duplicate-type-constituents": "off",
         "@typescript-eslint/no-unused-vars": [
             "warn", // or "error"
             {
@@ -56,7 +60,21 @@ export default {
             ...tslint.configs.recommended,
             ...pluginVue.configs["flat/recommended"],
             overrides,
-            vueOverrides
+            vueOverrides,
+            pluginPrettier,
+            {
+                languageOptions: {
+                    parser: vueParser,
+                    parserOptions: {
+                        parser: tsParser,
+                        extraFileExtensions: [".vue"],
+                        project: [
+                            "tsconfig.json"
+                        ],
+                        tsconfigRootDir: import.meta.dirname
+                    }
+                }
+            }
         ],
         "default": tslint.config(
             eslint.configs.recommended,

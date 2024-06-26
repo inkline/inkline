@@ -391,23 +391,23 @@ export default defineComponent({
             return props.options.find((option) => option[props.idField] === value.value);
         });
 
-        const disabled = computed(
+        const isDisabled = computed(
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
         );
-        const readonly = computed(
+        const isReadonly = computed(
             () => !!(props.readonly || formGroup?.readonly.value || form?.readonly.value)
         );
-        const tabindex = computed(() => (disabled.value ? -1 : props.tabindex));
+        const tabIndex = computed(() => (isDisabled.value ? -1 : props.tabindex));
 
         const currentColor = computed(
             () => props.color || formGroup?.color.value || form?.color.value
         );
         const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
-        const clearable = computed(() => {
-            return props.clearable && !disabled.value && !readonly.value && value.value !== '';
+        const isClearable = computed(() => {
+            return props.clearable && !isDisabled.value && !isReadonly.value && value.value !== '';
         });
 
         const componentProps = computed(() => ({
@@ -422,7 +422,13 @@ export default defineComponent({
             offset: props.offset,
             popupOptions: props.popupOptions
         }));
-        const { visible, hide, show, createPopup, onClickOutside } = usePopupControl({
+        const {
+            visible: isVisible,
+            hide,
+            show,
+            createPopup,
+            onClickOutside
+        } = usePopupControl({
             triggerRef,
             popupRef,
             arrowRef,
@@ -433,8 +439,8 @@ export default defineComponent({
         const wrapperClasses = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            '-disabled': disabled.value,
-            '-readonly': readonly.value,
+            '-disabled': isDisabled.value,
+            '-readonly': isReadonly.value,
             '-error': hasError.value
         }));
 
@@ -464,7 +470,7 @@ export default defineComponent({
         watch(
             () => props.options,
             () => {
-                if (visible.value) {
+                if (isVisible.value) {
                     createPopup();
                 }
             }
@@ -476,7 +482,7 @@ export default defineComponent({
         provide(SelectKey, {
             value,
             idField,
-            disabled,
+            disabled: isDisabled,
             onInput
         } as SelectInjection);
 
@@ -488,7 +494,7 @@ export default defineComponent({
          */
 
         function onInput(option: SelectOption) {
-            if (disabled.value || option.disabled) {
+            if (isDisabled.value || option.disabled) {
                 return;
             }
 
@@ -508,7 +514,7 @@ export default defineComponent({
         }
 
         function onClickCaret(event: MouseEvent) {
-            if (visible.value) {
+            if (isVisible.value) {
                 hide();
             } else {
                 show();
@@ -545,7 +551,7 @@ export default defineComponent({
                         () => {
                             focusTarget.focus();
                         },
-                        visible.value ? 0 : props.animationDuration
+                        isVisible.value ? 0 : props.animationDuration
                     );
 
                     event.preventDefault();
@@ -554,7 +560,7 @@ export default defineComponent({
 
                 case isKey('enter', event) && props.triggerKeyBindings.includes('enter'):
                 case isKey('space', event) && props.triggerKeyBindings.includes('space'):
-                    if (!visible.value) {
+                    if (!isVisible.value) {
                         show();
                         setTimeout(() => {
                             focusTarget.focus();
@@ -578,7 +584,7 @@ export default defineComponent({
 
             switch (true) {
                 case isKey('up', event) && props.itemKeyBindings.includes('up'):
-                case isKey('down', event) && props.itemKeyBindings.includes('down'):
+                case isKey('down', event) && props.itemKeyBindings.includes('down'): {
                     const focusableItems = getFocusableItems();
 
                     const currentIndex = focusableItems.findIndex((item) => item === event.target);
@@ -596,9 +602,10 @@ export default defineComponent({
                     event.preventDefault();
                     event.stopPropagation();
                     break;
+                }
 
                 case isKey('enter', event) && props.itemKeyBindings.includes('enter'):
-                case isKey('space', event) && props.itemKeyBindings.includes('space'):
+                case isKey('space', event) && props.itemKeyBindings.includes('space'): {
                     const target = event.target as HTMLElement;
 
                     target.click();
@@ -608,9 +615,10 @@ export default defineComponent({
 
                     event.preventDefault();
                     break;
+                }
 
                 case isKey('tab', event) && props.itemKeyBindings.includes('tab'):
-                case isKey('esc', event) && props.itemKeyBindings.includes('esc'):
+                case isKey('esc', event) && props.itemKeyBindings.includes('esc'): {
                     hide();
                     setTimeout(() => {
                         focusInput();
@@ -618,6 +626,7 @@ export default defineComponent({
 
                     event.preventDefault();
                     break;
+                }
             }
         }
 
@@ -665,10 +674,10 @@ export default defineComponent({
 
         return {
             value,
-            disabled,
-            readonly,
-            clearable,
-            tabindex,
+            isDisabled,
+            isReadonly,
+            isClearable,
+            tabIndex,
             wrapperClasses,
             inputLabel,
             arrowRef,
@@ -677,7 +686,7 @@ export default defineComponent({
             bodyRef,
             optionsRef,
             popupRef,
-            visible,
+            isVisible,
             inputPlaceholder,
             selectedOption,
             focusInput,
@@ -704,21 +713,21 @@ export default defineComponent({
         role="combobox"
         aria-haspopup="listbox"
         :aria-owns="`${name}-options`"
-        :aria-expanded="visible ? 'true' : 'false'"
+        :aria-expanded="isVisible ? 'true' : 'false'"
         @keyup.esc="onEscape"
     >
         <IInput
             ref="triggerRef"
-            :modelValue="inputLabel"
+            :model-value="inputLabel"
             plaintext
             autocomplete="off"
             aria-autocomplete="none"
             :aria-controls="`${name}-options`"
             :placeholder="inputPlaceholder"
-            :disabled="disabled"
-            :readonly="readonly"
-            :tabindex="tabindex"
-            :clearable="clearable"
+            :disabled="isDisabled"
+            :readonly="isReadonly"
+            :tabindex="tabIndex"
+            :clearable="isClearable"
             :color="color"
             :size="size"
             :name="`${name}-input`"
@@ -769,12 +778,12 @@ export default defineComponent({
 
         <transition name="zoom-in-top-transition">
             <div
-                v-show="visible"
+                v-show="isVisible"
                 :id="`${name}-options`"
                 ref="popupRef"
                 class="select-popup"
                 role="listbox"
-                :aria-hidden="visible ? 'false' : 'true'"
+                :aria-hidden="isVisible ? 'false' : 'true'"
             >
                 <span v-if="arrow" ref="arrowRef" class="arrow" />
                 <div v-if="$slots.header" class="select-header">

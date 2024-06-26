@@ -189,13 +189,13 @@ export default defineComponent({
 
         const currentColor = computed(() => props.color || buttonGroup?.color.value);
         const currentSize = computed(() => props.size || buttonGroup?.size.value);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const to = toRef(props, 'to');
         const href = toRef(props, 'href');
-        const currentTag = toRef(props, 'tag');
-        const { tag, isLink } = useLinkable({ to, href, tag: currentTag });
+        const tag = toRef(props, 'tag');
+        const { tag: renderTag, isLink } = useLinkable({ to, href, tag });
 
         const disabled = computed(() => {
             return (
@@ -270,15 +270,14 @@ export default defineComponent({
         return {
             bindings,
             classes,
-            currentTag,
-            tag
+            renderTag
         };
     }
 });
 </script>
 
 <template>
-    <component v-bind="bindings" :is="tag" :tag="currentTag" class="button" :class="classes">
+    <component v-bind="bindings" :is="renderTag" :tag="tag" class="button" :class="classes">
         <template v-if="loading">
             <ILoader v-if="showLoadingIcon" class="button-icon" />
             <span v-if="$slots.loading" class="button-content">

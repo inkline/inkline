@@ -220,8 +220,8 @@ export default defineComponent({
             () => props.color || formGroup?.color.value || form?.color.value
         );
         const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const disabled = computed(
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)
@@ -402,7 +402,7 @@ export default defineComponent({
                 <slot
                     v-if="showPasswordToggle && type === 'password'"
                     name="password-toggle"
-                    :onTogglePassword="onTogglePassword"
+                    :on-toggle-password="onTogglePassword"
                 >
                     <IIcon
                         v-show="isPasswordToggleable"
@@ -416,7 +416,7 @@ export default defineComponent({
                 </slot>
 
                 <!-- @slot clearable Slot for the clearable button -->
-                <slot v-if="clearable" name="clearable" :onClear="onClear">
+                <slot v-if="clearable" name="clearable" :on-clear="onClear">
                     <IIcon
                         v-show="isClearable"
                         name="ink-clear"

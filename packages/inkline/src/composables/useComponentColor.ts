@@ -4,15 +4,15 @@ import { useInkline } from '@inkline/inkline/composables/useInkline';
 
 export interface ComponentColorProps {
     componentName: string;
-    currentColor: Ref<string | undefined>;
+    color: Ref<string | undefined>;
 }
 
 export function useComponentColor(props: ComponentColorProps) {
     const inkline = useInkline();
     const color = computed(() => {
-        let colorClass = props.currentColor.value || 'light';
+        let colorClass = props.color.value || 'light';
 
-        if (!props.currentColor.value && inkline?.options) {
+        if (!props.color.value && inkline?.options) {
             if (inkline.options.componentOptions[props.componentName]?.color) {
                 colorClass = inkline.options.componentOptions[props.componentName]?.color;
             } else if (inkline.options.color) {

@@ -66,6 +66,7 @@ export default defineComponent({
          * @name modelValue
          */
         modelValue: {
+            type: [String, Number, Boolean, Object] as PropType<string | number | boolean | object>,
             default: false
         },
         /**
@@ -168,17 +169,17 @@ export default defineComponent({
         const currentSize = computed(
             () => props.size || radioGroup?.size.value || formGroup?.size.value || form?.size.value
         );
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
-        const disabled = computed(
+        const isDisabled = computed(
             () =>
                 props.disabled ||
                 radioGroup?.disabled.value ||
                 formGroup?.disabled.value ||
                 form?.disabled.value
         );
-        const readonly = computed(
+        const isReadonly = computed(
             () =>
                 props.readonly ||
                 radioGroup?.readonly.value ||
@@ -203,18 +204,18 @@ export default defineComponent({
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            '-disabled': disabled.value,
-            '-readonly': readonly.value,
+            '-disabled': isDisabled.value,
+            '-readonly': isReadonly.value,
             '-native': props.native,
             '-error': hasError.value
         }));
 
-        const tabindex = computed(() => {
-            return disabled.value ? -1 : props.tabindex;
+        const tabIndex = computed(() => {
+            return isDisabled.value ? -1 : props.tabindex;
         });
 
         const value = computed(() => props.option?.id ?? props.value);
-        const checked = computed(() => {
+        const isChecked = computed(() => {
             if (radioGroup?.value) {
                 return radioGroup.value.value === value.value;
             }
@@ -243,7 +244,7 @@ export default defineComponent({
         }
 
         function labelOnClick(event: MouseEvent) {
-            if (readonly.value) {
+            if (isReadonly.value) {
                 return;
             }
 
@@ -257,10 +258,10 @@ export default defineComponent({
 
         return {
             classes,
-            checked,
-            disabled,
-            readonly,
-            tabindex,
+            isChecked,
+            isDisabled,
+            isReadonly,
+            tabIndex,
             inputRef,
             onChange,
             labelOnBlur,
@@ -277,23 +278,23 @@ export default defineComponent({
         class="radio"
         :class="classes"
         role="radio"
-        :aria-checked="checked ? 'true' : 'false'"
-        :aria-disabled="disabled ? 'true' : undefined"
-        :aria-readonly="readonly ? 'true' : undefined"
+        :aria-checked="isChecked ? 'true' : 'false'"
+        :aria-disabled="isDisabled ? 'true' : undefined"
+        :aria-readonly="isReadonly ? 'true' : undefined"
     >
         <input
             ref="inputRef"
-            :checked="checked"
+            :checked="isChecked"
             type="radio"
             :name="name"
-            :disabled="disabled"
-            :readonly="readonly"
+            :disabled="isDisabled"
+            :readonly="isReadonly"
             @change="onChange"
             @blur="labelOnBlur"
         />
         <label
             class="radio-label"
-            :tabindex="tabindex"
+            :tabindex="tabIndex"
             @blur="labelOnBlur"
             @click="labelOnClick"
             @keydown.space.stop.prevent="labelOnKeydown"

@@ -190,17 +190,17 @@ export default defineComponent({
             () =>
                 props.size || checkboxGroup?.size.value || formGroup?.size.value || form?.size.value
         );
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
-        const disabled = computed(
+        const isDisabled = computed(
             () =>
                 props.disabled ||
                 checkboxGroup?.disabled.value ||
                 formGroup?.disabled.value ||
                 form?.disabled.value
         );
-        const readonly = computed(
+        const isReadonly = computed(
             () =>
                 props.readonly ||
                 checkboxGroup?.readonly.value ||
@@ -227,8 +227,8 @@ export default defineComponent({
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            '-disabled': disabled.value,
-            '-readonly': readonly.value,
+            '-disabled': isDisabled.value,
+            '-readonly': isReadonly.value,
             '-native': props.native,
             '-error': hasError.value
         }));
@@ -244,8 +244,8 @@ export default defineComponent({
             return props.modelValue;
         });
 
-        const tabindex = computed(() => {
-            return disabled.value ? -1 : props.tabindex;
+        const tabIndex = computed(() => {
+            return isDisabled.value ? -1 : props.tabindex;
         });
 
         function onChange(event: Event) {
@@ -269,7 +269,7 @@ export default defineComponent({
         }
 
         function labelOnClick(event: MouseEvent) {
-            if (readonly.value) {
+            if (isReadonly.value) {
                 return;
             }
 
@@ -284,9 +284,9 @@ export default defineComponent({
         return {
             classes,
             checked,
-            disabled,
-            readonly,
-            tabindex,
+            isDisabled,
+            isReadonly,
+            tabIndex,
             inputRef,
             onChange,
             labelOnBlur,
@@ -303,8 +303,8 @@ export default defineComponent({
         class="checkbox"
         :class="classes"
         :aria-checked="checked ? 'true' : 'false'"
-        :aria-disabled="disabled ? 'true' : undefined"
-        :aria-readonly="readonly ? 'true' : undefined"
+        :aria-disabled="isDisabled ? 'true' : undefined"
+        :aria-readonly="isReadonly ? 'true' : undefined"
         role="checkbox"
     >
         <input
@@ -312,18 +312,18 @@ export default defineComponent({
             type="checkbox"
             :checked="checked"
             :name="name"
-            :disabled="disabled"
-            :readonly="readonly"
+            :disabled="isDisabled"
+            :readonly="isReadonly"
             :indeterminate.prop="indeterminate"
             aria-hidden="true"
             :aria-checked="checked"
-            :aria-readonly="readonly"
+            :aria-readonly="isReadonly"
             @change="onChange"
             @blur="labelOnBlur"
         />
         <label
             class="checkbox-label"
-            :tabindex="tabindex"
+            :tabindex="tabIndex"
             @blur="labelOnBlur"
             @click="labelOnClick"
             @keydown.space.stop.prevent="labelOnKeydown"

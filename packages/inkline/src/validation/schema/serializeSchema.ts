@@ -6,7 +6,10 @@ export function serializeSchema<T extends Form>(schema: FormSchema<T> | Resolved
     const serializedSchema = {} as T;
 
     Object.keys(schema).forEach((key: keyof T) => {
-        if (!Object.prototype.hasOwnProperty.call(schema, key) || reservedValidationFields.includes(key as string)) {
+        if (
+            !Object.prototype.hasOwnProperty.call(schema, key) ||
+            reservedValidationFields.includes(key as string)
+        ) {
             return;
         }
         const schemaField = schema[key];

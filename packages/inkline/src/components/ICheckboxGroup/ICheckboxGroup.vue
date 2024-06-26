@@ -169,8 +169,8 @@ export default defineComponent({
             () => props.color || formGroup?.color.value || form?.color.value
         );
         const currentSize = computed(() => props.size || formGroup?.size.value || form?.size.value);
-        const { color } = useComponentColor({ componentName, currentColor });
-        const { size } = useComponentSize({ componentName, currentSize });
+        const { color } = useComponentColor({ componentName, color: currentColor });
+        const { size } = useComponentSize({ componentName, size: currentSize });
 
         const disabled = computed(
             () => !!(props.disabled || formGroup?.disabled.value || form?.disabled.value)

@@ -1,7 +1,7 @@
 declare type EventValueMapFn = (e: any) => string;
 declare type EventValueMapKey = 'input' | 'blur' | 'focus' | 'mouseenter' | 'mouseleave';
 declare type EventValueMap = {
-    [key in EventValueMapKey]: EventValueMapFn; // eslint-disable-line no-unused-vars
+    [key in EventValueMapKey]: EventValueMapFn;
 };
 
 export const eventValueMap: EventValueMap = {
