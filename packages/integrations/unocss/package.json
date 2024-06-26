@@ -13,7 +13,7 @@
         "typecheck": "tsc --noEmit -p tsconfig.json",
         "build:vite": "pnpm run prepare:build && vite build",
         "postbuild": "tsx scripts/postbuild.ts",
-        "lint": "eslint --ext .vue,.ts,.tsx,.js,.jsx src",
+        "lint": "eslint",
         "preview": "vite preview",
         "test": "vitest run --passWithNoTests",
         "test:ci": "vitest run --coverage --passWithNoTests",
