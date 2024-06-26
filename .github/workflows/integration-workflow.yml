@@ -28,7 +28,7 @@ jobs:
                 run: pnpm run integration:nuxt:create
             -   name: Build Nuxt app
                 run: |
-                    cd inkline-nuxt
+                    cd packages/e2e/nuxt
                     pnpm run build
             -   name: Run Playwright tests
                 run: pnpm run e2e:nuxt
@@ -66,7 +66,7 @@ jobs:
                 run: pnpm run integration:vite:create
             -   name: Build Nuxt app
                 run: |
-                    cd inkline-vite
+                    cd packages/e2e/vite
                     pnpm run build
             -   name: Run Playwright tests
                 run: pnpm run e2e:vite
