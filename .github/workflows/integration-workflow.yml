@@ -26,12 +26,13 @@ jobs:
                 run: pnpx playwright install --with-deps
             -   name: Create Inkline + Nuxt app
                 run: pnpm run e2e:create:nuxt
+                working-directory: packages/e2e/setup
             -   name: Build Nuxt app
-                run: |
-                    cd packages/e2e/nuxt
-                    pnpm run build
+                run: pnpm run build
+                working-directory: packages/e2e/nuxt
             -   name: Run Playwright tests
                 run: pnpm run e2e:nuxt
+                working-directory: packages/e2e/setup
             -   uses: actions/upload-artifact@v3
                 if: always()
                 with:
@@ -64,12 +65,13 @@ jobs:
                 run: pnpx playwright install --with-deps
             -   name: Create Inkline + Vite.js app
                 run: pnpm run e2e:create:vite
-            -   name: Build Nuxt app
-                run: |
-                    cd packages/e2e/vite
-                    pnpm run build
+                working-directory: packages/e2e/setup
+            -   name: Build Vite app
+                run: pnpm run build
+                working-directory: packages/e2e/vite
             -   name: Run Playwright tests
                 run: pnpm run e2e:vite
+                working-directory: packages/e2e/setup
             -   uses: actions/upload-artifact@v3
                 if: always()
                 with:
