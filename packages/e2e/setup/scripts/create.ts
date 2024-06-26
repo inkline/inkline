@@ -2,6 +2,8 @@ import * as shelljs from 'shelljs';
 import { resolve } from 'path';
 import * as fs from 'fs/promises';
 
+const integration = process.argv[2] || '*';
+
 const setupDir = resolve(__dirname, '..');
 const templatesDir = resolve(setupDir, 'templates');
 const rootDir = resolve(setupDir, '..', '..', '..');
@@ -24,58 +26,62 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
      * Create Vite project
      */
 
-    shelljs.exec(
-        'pnpm create vue@latest --ts --router --pinia --jsx --force vite',
-        {
-            cwd: e2eDir,
-            async: true
-        },
-        async () => {
-            const packageJsonPath = resolve(e2eViteDir, 'package.json');
-            const packageJson = require(packageJsonPath);
-            packageJson.name = '@inkline/e2e-vite';
-            packageJson.dependencies['inkline'] = 'workspace:*';
-            packageJson.scripts['init'] = 'inkline init --dev';
-            packageJson.scripts['type-check'] = "echo 'Typecheck'";
-            await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
+    if (integration === 'vite' || integration === '*') {
+        shelljs.exec(
+            'pnpm create vue@latest --ts --router --pinia --jsx --force vite',
+            {
+                cwd: e2eDir,
+                async: true
+            },
+            async () => {
+                const packageJsonPath = resolve(e2eViteDir, 'package.json');
+                const packageJson = require(packageJsonPath);
+                packageJson.name = '@inkline/e2e-vite';
+                packageJson.dependencies['inkline'] = 'workspace:*';
+                packageJson.scripts['init'] = 'inkline init --dev';
+                packageJson.scripts['type-check'] = "echo 'Typecheck'";
+                await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-            shelljs.exec('pnpm install', { cwd: e2eViteDir });
-            setTimeout(() => {
-                shelljs.exec('pnpm run init', { cwd: e2eViteDir });
                 shelljs.exec('pnpm install', { cwd: e2eViteDir });
-            }, 1000);
+                setTimeout(() => {
+                    shelljs.exec('pnpm run init', { cwd: e2eViteDir });
+                    shelljs.exec('pnpm install', { cwd: e2eViteDir });
+                }, 1000);
 
-            shelljs.cp('-r', resolve(templatesDir, 'common', '*'), resolve(e2eViteDir, 'src'));
-            shelljs.cp('-r', resolve(templatesDir, 'vite', '*'), resolve(e2eViteDir, 'src'));
-        }
-    );
+                shelljs.cp('-r', resolve(templatesDir, 'common', '*'), resolve(e2eViteDir, 'src'));
+                shelljs.cp('-r', resolve(templatesDir, 'vite', '*'), resolve(e2eViteDir, 'src'));
+            }
+        );
+    }
 
     /**
      * Create Nuxt project
      */
 
-    shelljs.exec(
-        'pnpm dlx nuxi@latest init --force --git-init false --package-manager pnpm nuxt',
-        {
-            cwd: e2eDir,
-            async: true
-        },
-        async () => {
-            const packageJsonPath = resolve(e2eNuxtDir, 'package.json');
-            const packageJson = require(packageJsonPath);
-            packageJson.name = '@inkline/e2e-nuxt';
-            packageJson.dependencies['inkline'] = 'workspace:*';
-            packageJson.scripts['init'] = 'inkline init --dev';
-            await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
+    if (integration === 'nuxt' || integration === '*') {
+        shelljs.exec(
+            'pnpm dlx nuxi@latest init --force --git-init false --package-manager pnpm nuxt',
+            {
+                cwd: e2eDir,
+                async: true
+            },
+            async () => {
+                const packageJsonPath = resolve(e2eNuxtDir, 'package.json');
+                const packageJson = require(packageJsonPath);
+                packageJson.name = '@inkline/e2e-nuxt';
+                packageJson.dependencies['inkline'] = 'workspace:*';
+                packageJson.scripts['init'] = 'inkline init --dev';
+                await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-            shelljs.exec('pnpm install', { cwd: e2eNuxtDir });
-            setTimeout(() => {
-                shelljs.exec('pnpm run init', { cwd: e2eNuxtDir });
                 shelljs.exec('pnpm install', { cwd: e2eNuxtDir });
-            }, 1000);
+                setTimeout(() => {
+                    shelljs.exec('pnpm run init', { cwd: e2eNuxtDir });
+                    shelljs.exec('pnpm install', { cwd: e2eNuxtDir });
+                }, 1000);
 
-            shelljs.cp('-r', resolve(templatesDir, 'common', '*'), resolve(e2eNuxtDir));
-            shelljs.cp('-r', resolve(templatesDir, 'nuxt', '*'), resolve(e2eNuxtDir));
-        }
-    );
+                shelljs.cp('-r', resolve(templatesDir, 'common', '*'), resolve(e2eNuxtDir));
+                shelljs.cp('-r', resolve(templatesDir, 'nuxt', '*'), resolve(e2eNuxtDir));
+            }
+        );
+    }
 })();

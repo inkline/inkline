@@ -4,7 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "create": "tsx scripts/create.ts",
+        "e2e:create": "tsx scripts/create.ts",
+        "e2e:create:vite": "tsx scripts/create.ts vite",
+        "e2e:create:nuxt": "tsx scripts/create.ts nuxt",
         "e2e:vite": "INTEGRATION=vite playwright test",
         "e2e:nuxt": "INTEGRATION=nuxt NITRO_PORT=3030 playwright test",
         "e2e": "pnpm run e2e:vite && pnpm run e2e:nuxt",
