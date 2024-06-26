@@ -42,10 +42,10 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
                 packageJson.scripts['type-check'] = "echo 'Typecheck'";
                 await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-                shelljs.exec('pnpm install', { cwd: e2eViteDir });
+                shelljs.exec('pnpm install --no-frozen-lockfile', { cwd: e2eViteDir });
                 setTimeout(() => {
                     shelljs.exec('pnpm run init', { cwd: e2eViteDir });
-                    shelljs.exec('pnpm install', { cwd: e2eViteDir });
+                    shelljs.exec('pnpm install --no-frozen-lockfile', { cwd: e2eViteDir });
                 }, 1000);
 
                 shelljs.cp('-r', resolve(templatesDir, 'common', '*'), resolve(e2eViteDir, 'src'));
@@ -73,10 +73,10 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
                 packageJson.scripts['init'] = 'inkline init --dev';
                 await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-                shelljs.exec('pnpm install', { cwd: e2eNuxtDir });
+                shelljs.exec('pnpm install --no-frozen-lockfile', { cwd: e2eNuxtDir });
                 setTimeout(() => {
                     shelljs.exec('pnpm run init', { cwd: e2eNuxtDir });
-                    shelljs.exec('pnpm install', { cwd: e2eNuxtDir });
+                    shelljs.exec('pnpm install --no-frozen-lockfile', { cwd: e2eNuxtDir });
                 }, 1000);
 
                 shelljs.cp('-r', resolve(templatesDir, 'common', '*'), resolve(e2eNuxtDir));
