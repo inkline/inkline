@@ -16,3 +16,7 @@ packages/e2e/vite
 
 # OS Files
 .DS_Store
+
+# IDE
+.idea/
+.vscode/
