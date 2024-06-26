@@ -24,6 +24,8 @@ jobs:
                 run: pnpm install
             -   name: Install Playwright Browsers
                 run: pnpx playwright install --with-deps
+            -   name: Run build
+                run: pnpm run build
             -   name: Create Inkline + Nuxt app
                 run: pnpm run e2e:create:nuxt
                 working-directory: packages/e2e/setup
@@ -63,6 +65,8 @@ jobs:
                 run: pnpm install
             -   name: Install Playwright Browsers
                 run: pnpx playwright install --with-deps
+            -   name: Run build
+                run: pnpm run build
             -   name: Create Inkline + Vite.js app
                 run: pnpm run e2e:create:vite
                 working-directory: packages/e2e/setup
