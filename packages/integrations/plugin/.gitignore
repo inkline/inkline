@@ -27,7 +27,7 @@ dist-ssr
 .nuxt
 .inkline
 
-src/playground/css/config
-src/playground/vite/css
-src/playground/webpack/css
-src/playground/nuxt/css
+playground/css/config
+playground/vite/css
+playground/webpack/css
+playground/nuxt/css

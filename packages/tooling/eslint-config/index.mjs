@@ -53,7 +53,7 @@ const vueOverrides = {
     }
 };
 
-export default {
+export default (baseDir) => ({
     configs: {
         "vue": [
             eslint.configs.recommended,
@@ -69,9 +69,9 @@ export default {
                         parser: tsParser,
                         extraFileExtensions: [".vue"],
                         project: [
-                            "tsconfig.json"
+                            "./tsconfig.json"
                         ],
-                        tsconfigRootDir: import.meta.dirname
+                        tsconfigRootDir: baseDir
                     }
                 }
             }
@@ -82,16 +82,15 @@ export default {
             {
                 languageOptions: {
                     parserOptions: {
-                        extraFileExtensions: [".vue"],
                         project: [
-                            "tsconfig.json"
+                            "./tsconfig.json"
                         ],
-                        tsconfigRootDir: import.meta.dirname
+                        tsconfigRootDir: baseDir
                     }
                 }
             },
             overrides
         )
     }
-};
+});
 

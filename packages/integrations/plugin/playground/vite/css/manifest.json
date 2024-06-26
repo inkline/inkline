@@ -1027,21 +1027,11 @@
             "__type": "variable",
             "__name": "fontSize",
             "default": "1rem",
-            "xs": {
-                "multiply": "var(--size-multiplier-xs)"
-            },
-            "sm": {
-                "multiply": "var(--size-multiplier-sm)"
-            },
-            "md": {
-                "multiply": "var(--size-multiplier-md)"
-            },
-            "lg": {
-                "multiply": "var(--size-multiplier-lg)"
-            },
-            "xl": {
-                "multiply": "var(--size-multiplier-xl)"
-            }
+            "xs": "calc(var(--font-size) * var(--size-multiplier-xs))",
+            "sm": "calc(var(--font-size) * var(--size-multiplier-sm))",
+            "md": "calc(var(--font-size) * var(--size-multiplier-md))",
+            "lg": "calc(var(--font-size) * var(--size-multiplier-lg))",
+            "xl": "calc(var(--font-size) * var(--size-multiplier-xl))"
         },
         "fontWeight": {
             "__type": "variable",
@@ -1354,19 +1344,64 @@
         "textColor": {
             "__type": "variable",
             "__name": "textColor",
-            "default": "var(--color-dark)",
-            "dark": "var(--color-dark)",
-            "weak": "var(--color-gray-700)",
-            "weaker": "var(--color-gray-500)",
-            "weakest": "var(--color-gray-300)",
-            "light": "var(--color-light)"
+            "default": {
+                "h": "var(--color-dark-h)",
+                "s": "var(--color-dark-s)",
+                "l": "var(--color-dark-l)",
+                "a": "var(--color-dark-a)"
+            },
+            "dark": {
+                "h": "var(--color-dark-h)",
+                "s": "var(--color-dark-s)",
+                "l": "var(--color-dark-l)",
+                "a": "var(--color-dark-a)"
+            },
+            "weak": {
+                "h": "var(--color-gray-700-h)",
+                "s": "var(--color-gray-700-s)",
+                "l": "var(--color-gray-700-l)",
+                "a": "var(--color-gray-700-a)"
+            },
+            "weaker": {
+                "h": "var(--color-gray-500-h)",
+                "s": "var(--color-gray-500-s)",
+                "l": "var(--color-gray-500-l)",
+                "a": "var(--color-gray-500-a)"
+            },
+            "weakest": {
+                "h": "var(--color-gray-300-h)",
+                "s": "var(--color-gray-300-s)",
+                "l": "var(--color-gray-300-l)",
+                "a": "var(--color-gray-300-a)"
+            },
+            "light": {
+                "h": "var(--color-light-h)",
+                "s": "var(--color-light-s)",
+                "l": "var(--color-light-l)",
+                "a": "var(--color-light-a)"
+            }
         },
-        "textContrastColor": {
+        "contrastTextColor": {
             "__type": "variable",
             "__name": "textColor",
-            "default": "var(--color-white)",
-            "light": "var(--color-gray-900)",
-            "dark": "var(--color-white)"
+            "default": {
+                "h": "var(--color-white-h)",
+                "s": "var(--color-white-s)",
+                "l": "var(--color-white-l)",
+                "a": "var(--color-white-a)"
+            },
+            "light": {
+                "h": "var(--color-gray-900-h)",
+                "s": "var(--color-gray-900-s)",
+                "l": "var(--color-gray-900-l)",
+                "a": "var(--color-gray-900-a)"
+            },
+            "dark": {
+                "h": "var(--color-white-h)",
+                "s": "var(--color-white-s)",
+                "l": "var(--color-white-l)",
+                "a": "var(--color-white-a)"
+            }
         },
         "textAlign": {
             "__type": "variable",
@@ -4483,7 +4518,9 @@
                 "sm": {
                     "fontSize": "calc(var(--dropdown-item--font-size) * var(--size-multiplier-sm))",
                     "margin": {
+                        "top": "var(--margin-top)",
                         "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-sm) * -1)",
+                        "bottom": "var(--margin-bottom)",
                         "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-sm) * -1)"
                     },
                     "padding": {
@@ -4496,7 +4533,9 @@
                 "md": {
                     "fontSize": "calc(var(--dropdown-item--font-size) * var(--size-multiplier-md))",
                     "margin": {
+                        "top": "var(--margin-top)",
                         "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-md) * -1)",
+                        "bottom": "var(--margin-bottom)",
                         "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-md) * -1)"
                     },
                     "padding": {
@@ -4509,7 +4548,9 @@
                 "lg": {
                     "fontSize": "calc(var(--dropdown-item--font-size) * var(--size-multiplier-lg))",
                     "margin": {
+                        "top": "var(--margin-top)",
                         "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-lg) * -1)",
+                        "bottom": "var(--margin-bottom)",
                         "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-lg) * -1)"
                     },
                     "padding": {
@@ -4596,7 +4637,9 @@
                         "__type": "child-element",
                         "__name": "inline",
                         "margin": {
+                            "top": "var(--margin-top)",
                             "right": "var(--margin-right)",
+                            "bottom": "var(--margin-bottom)",
                             "left": "var(--margin-left)"
                         }
                     },
@@ -6417,7 +6460,10 @@
                         "__type": "child-element",
                         "__name": "brand",
                         "margin": {
-                            "right": "var(--margin-right)"
+                            "top": "var(--margin-top)",
+                            "right": "var(--margin-right)",
+                            "bottom": "var(--margin-bottom)",
+                            "left": "var(--margin-left)"
                         }
                     },
                     "collapsible": {
@@ -6431,7 +6477,10 @@
                         "__type": "child-element",
                         "__name": "collapsed",
                         "margin": {
-                            "top": "var(--margin-top)"
+                            "top": "var(--margin-top)",
+                            "right": "var(--margin-right)",
+                            "bottom": "var(--margin-bottom)",
+                            "left": "var(--margin-left)"
                         }
                     }
                 },
@@ -7840,8 +7889,10 @@
                     },
                     "fontSize": "calc(var(--radio--font-size) * var(--size-multiplier-sm))",
                     "margin": {
+                        "top": "var(--margin-top)",
                         "right": "calc(var(--radio--margin-right) * var(--size-multiplier-sm) / 2)",
-                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-sm) / 2)"
+                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-sm) / 2)",
+                        "left": "var(--margin-left)"
                     },
                     "width": "calc(var(--radio--width) * var(--size-multiplier-sm))",
                     "height": "calc(var(--radio--height) * var(--size-multiplier-sm))",
@@ -7861,8 +7912,10 @@
                     },
                     "fontSize": "calc(var(--radio--font-size) * var(--size-multiplier-md))",
                     "margin": {
+                        "top": "var(--margin-top)",
                         "right": "calc(var(--radio--margin-right) * var(--size-multiplier-md) / 2)",
-                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-md) / 2)"
+                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-md) / 2)",
+                        "left": "var(--margin-left)"
                     },
                     "width": "calc(var(--radio--width) * var(--size-multiplier-md))",
                     "height": "calc(var(--radio--height) * var(--size-multiplier-md))",
@@ -7882,8 +7935,10 @@
                     },
                     "fontSize": "calc(var(--radio--font-size) * var(--size-multiplier-lg))",
                     "margin": {
+                        "top": "var(--margin-top)",
                         "right": "calc(var(--radio--margin-right) * var(--size-multiplier-lg) / 2)",
-                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-lg) / 2)"
+                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-lg) / 2)",
+                        "left": "var(--margin-left)"
                     },
                     "width": "calc(var(--radio--width) * var(--size-multiplier-lg))",
                     "height": "calc(var(--radio--height) * var(--size-multiplier-lg))",
@@ -8015,7 +8070,9 @@
                         "__type": "child-element",
                         "__name": "body",
                         "padding": {
+                            "top": "var(--padding-top)",
                             "right": 0,
+                            "bottom": "var(--padding-bottom)",
                             "left": 0
                         }
                     },
@@ -8234,7 +8291,9 @@
                         "__name": "header",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-sm) * 3 / 4)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)"
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)",
+                            "left": "var(--padding-left)"
                         }
                     },
                     "option": {
@@ -8242,7 +8301,9 @@
                         "__name": "option",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-sm) * 0.5)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 0.5)"
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 0.5)",
+                            "left": "var(--padding-left)"
                         }
                     },
                     "footer": {
@@ -8250,7 +8311,9 @@
                         "__name": "footer",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-sm) * 3 / 4)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)"
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)",
+                            "left": "var(--padding-left)"
                         }
                     }
                 },
@@ -8278,7 +8341,9 @@
                         "__name": "header",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-md))",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-md))"
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-md))",
+                            "left": "var(--padding-left)"
                         }
                     },
                     "option": {
@@ -8286,7 +8351,9 @@
                         "__name": "option",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-md) * 0.5)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-md) * 0.5)"
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-md) * 0.5)",
+                            "left": "var(--padding-left)"
                         }
                     },
                     "footer": {
@@ -8294,7 +8361,9 @@
                         "__name": "footer",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-md))",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-md))"
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-md))",
+                            "left": "var(--padding-left)"
                         }
                     }
                 },
@@ -8322,7 +8391,9 @@
                         "__name": "header",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-lg))",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-lg))"
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-lg))",
+                            "left": "var(--padding-left)"
                         }
                     },
                     "option": {
@@ -8330,7 +8401,9 @@
                         "__name": "option",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-lg) * 0.5)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-lg) * 0.5)"
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-lg) * 0.5)",
+                            "left": "var(--padding-left)"
                         }
                     },
                     "footer": {
@@ -8338,7 +8411,9 @@
                         "__name": "footer",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-lg))",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-lg))"
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-lg))",
+                            "left": "var(--padding-left)"
                         }
                     }
                 }
@@ -9917,7 +9992,10 @@
                         "__type": "child-element",
                         "__name": "toast",
                         "margin": {
-                            "bottom": "var(--margin-bottom)"
+                            "top": "var(--margin-top)",
+                            "right": "var(--margin-right)",
+                            "bottom": "var(--margin-bottom)",
+                            "left": "var(--margin-left)"
                         },
                         "transition": {
                             "property": "transform, opacity",
@@ -10674,6 +10752,9 @@
                                 }
                             },
                             "padding": {
+                                "top": "var(--padding-top)",
+                                "right": "var(--padding-right)",
+                                "bottom": "var(--padding-bottom)",
                                 "left": "var(--padding-left)"
                             }
                         },
@@ -10689,7 +10770,10 @@
                                 "left": {}
                             },
                             "padding": {
-                                "right": "var(--padding-right)"
+                                "top": "var(--padding-top)",
+                                "right": "var(--padding-right)",
+                                "bottom": "var(--padding-bottom)",
+                                "left": "var(--padding-left)"
                             }
                         }
                     },
@@ -11389,10 +11473,24 @@
         "textColor": {
             "__type": "variable",
             "__name": "textColor",
-            "default": "",
-            "weak": "var(--color-gray-300)",
-            "weaker": "var(--color-gray-500)",
-            "weakest": "var(--color-gray-700)"
+            "weak": {
+                "h": "var(--color-gray-300-h)",
+                "s": "var(--color-gray-300-s)",
+                "l": "var(--color-gray-300-l)",
+                "a": "var(--color-gray-300-a)"
+            },
+            "weaker": {
+                "h": "var(--color-gray-500-h)",
+                "s": "var(--color-gray-500-s)",
+                "l": "var(--color-gray-500-l)",
+                "a": "var(--color-gray-500-a)"
+            },
+            "weakest": {
+                "h": "var(--color-gray-700-h)",
+                "s": "var(--color-gray-700-s)",
+                "l": "var(--color-gray-700-l)",
+                "a": "var(--color-gray-700-a)"
+            }
         },
         "elements": {
             "__type": "group",

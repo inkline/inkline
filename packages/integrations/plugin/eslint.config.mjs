@@ -1,17 +1,7 @@
 import pluginInkline from "@inkline/eslint-config";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-export default [
-    ...pluginInkline.configs["default"],
-    {
-        languageOptions: {
-            parserOptions: {
-                project: [
-                    "tsconfig.json",
-                    "tsconfig.vite.json",
-                    "tsconfig.nuxt.json",
-                    "tsconfig.node.json"
-                ]
-            }
-        }
-    }
-];
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default pluginInkline(__dirname).configs["default"];

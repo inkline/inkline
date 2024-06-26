@@ -8,15 +8,14 @@
             "vitest/globals"
         ]
     },
-    "references": [
-        {
-            "path": "./tsconfig.nuxt.json"
-        },
-        {
-            "path": "./tsconfig.vite.json"
-        },
-        {
-            "path": "./tsconfig.node.json"
-        }
+    "include": [
+        "./src/**/*.ts",
+        "./src/**/*.d.ts",
+        "./src/**/*.tsx"
+    ],
+    "exclude": [
+        "playground/*",
+        "nuxt.config.ts",
+        "vite.config.ts"
     ]
 }
