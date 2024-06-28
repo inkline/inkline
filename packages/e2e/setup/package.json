@@ -15,7 +15,7 @@
         "e2e:setup": "pnpm run integration:create"
     },
     "dependencies": {
-        "@playwright/test": "^1.37.1"
+        "@playwright/test": "1.44.1"
     },
     "keywords": [],
     "author": "",
