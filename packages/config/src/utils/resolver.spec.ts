@@ -22,7 +22,7 @@ describe('createResolveFn', () => {
         expect(resolveVariant).not.toHaveBeenCalled();
     });
 
-    it('should use "resolveVariant" when last path is not "default"', () => {
+    it('should use "resolveValue" when last path is not "default" and is element child path', () => {
         const resolveValue = vi.fn();
         const resolveVariant = vi.fn();
         const resolve = createGenericVariantResolveFn(resolveValue, resolveVariant);
@@ -37,6 +37,23 @@ describe('createResolveFn', () => {
                         }
                     )
                 })
+            })
+        });
+        resolve({ example: 'value' }, meta);
+        expect(resolveValue).toHaveBeenCalled();
+        expect(resolveVariant).not.toHaveBeenCalled();
+    });
+
+    it('should use "resolveVariant" when last path is not "default" and not element child path', () => {
+        const resolveValue = vi.fn();
+        const resolveVariant = vi.fn();
+        const resolve = createGenericVariantResolveFn(resolveValue, resolveVariant);
+        const meta = createTestingResolverMeta({
+            path: ['example', 'value'],
+            theme: defineTheme({
+                example: {
+                    value: 'value'
+                }
             })
         });
         resolve({ example: 'value' }, meta);
