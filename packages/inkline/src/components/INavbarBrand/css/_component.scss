@@ -7,7 +7,7 @@
 .navbar-brand {
     @include components.color('navbar', 'brand', true);
     @include components.font-size('navbar', 'brand', true);
-    @include components.margin('navbar', 'brand', true);
+    @include components.margin('navbar', 'brand');
     @include components.transition('navbar', 'brand', true);
     @include components.padding('navbar', 'brand', true);
 

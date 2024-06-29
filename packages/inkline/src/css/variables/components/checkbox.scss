@@ -320,10 +320,10 @@
   );
   --checkbox--sm--margin-top: 0;
   --checkbox--sm--margin-right: calc(
-    var(--checkbox--margin-right) * var(--size-multiplier-sm) / 2
+    var(--checkbox--margin-right) * var(--size-multiplier-sm)
   );
   --checkbox--sm--margin-bottom: calc(
-    var(--checkbox--margin-bottom) * var(--size-multiplier-sm) / 2
+    var(--checkbox--margin-bottom) * var(--size-multiplier-sm)
   );
   --checkbox--sm--margin-left: 0;
   --checkbox--sm--width: calc(1rem * var(--size-multiplier-sm));
@@ -347,10 +347,10 @@
   );
   --checkbox--md--margin-top: 0;
   --checkbox--md--margin-right: calc(
-    var(--checkbox--margin-right) * var(--size-multiplier-md) / 2
+    var(--checkbox--margin-right) * var(--size-multiplier-md)
   );
   --checkbox--md--margin-bottom: calc(
-    var(--checkbox--margin-bottom) * var(--size-multiplier-md) / 2
+    var(--checkbox--margin-bottom) * var(--size-multiplier-md)
   );
   --checkbox--md--margin-left: 0;
   --checkbox--md--width: calc(1rem * var(--size-multiplier-md));
@@ -374,10 +374,10 @@
   );
   --checkbox--lg--margin-top: 0;
   --checkbox--lg--margin-right: calc(
-    var(--checkbox--margin-right) * var(--size-multiplier-lg) / 2
+    var(--checkbox--margin-right) * var(--size-multiplier-lg)
   );
   --checkbox--lg--margin-bottom: calc(
-    var(--checkbox--margin-bottom) * var(--size-multiplier-lg) / 2
+    var(--checkbox--margin-bottom) * var(--size-multiplier-lg)
   );
   --checkbox--lg--margin-left: 0;
   --checkbox--lg--width: calc(1rem * var(--size-multiplier-lg));

@@ -104,6 +104,9 @@ export const tabs = defineComponent(
             color: 'var(--contrast-text-color-light)',
             title: {
                 background: 'var(--color-white)',
+                border: {
+                    color: 'var(--color-light-shade-50)'
+                },
                 focus: {
                     background: 'var(--color-light)'
                 },
@@ -123,6 +126,9 @@ export const tabs = defineComponent(
             color: 'var(--contrast-text-color-dark)',
             title: {
                 background: 'var(--color-dark)',
+                border: {
+                    color: 'var(--color-dark-tint-50)'
+                },
                 hover: {
                     background: 'var(--color-dark-tint-50)'
                 },

@@ -130,8 +130,8 @@ export const checkbox = defineComponent(
             fontSize: 'calc(var(--checkbox--font-size) * var(--size-multiplier-sm))',
             margin: {
                 top: 0,
-                right: 'calc(var(--checkbox--margin-right) * var(--size-multiplier-sm) / 2)',
-                bottom: 'calc(var(--checkbox--margin-bottom) * var(--size-multiplier-sm) / 2)',
+                right: 'calc(var(--checkbox--margin-right) * var(--size-multiplier-sm))',
+                bottom: 'calc(var(--checkbox--margin-bottom) * var(--size-multiplier-sm))',
                 left: 0
             },
             width: 'calc(1rem * var(--size-multiplier-sm))',
@@ -155,8 +155,8 @@ export const checkbox = defineComponent(
             fontSize: 'calc(var(--checkbox--font-size) * var(--size-multiplier-md))',
             margin: {
                 top: 0,
-                right: 'calc(var(--checkbox--margin-right) * var(--size-multiplier-md) / 2)',
-                bottom: 'calc(var(--checkbox--margin-bottom) * var(--size-multiplier-md) / 2)',
+                right: 'calc(var(--checkbox--margin-right) * var(--size-multiplier-md))',
+                bottom: 'calc(var(--checkbox--margin-bottom) * var(--size-multiplier-md))',
                 left: 0
             },
             width: 'calc(1rem * var(--size-multiplier-md))',
@@ -180,8 +180,8 @@ export const checkbox = defineComponent(
             fontSize: 'calc(var(--checkbox--font-size) * var(--size-multiplier-lg))',
             margin: {
                 top: 0,
-                right: 'calc(var(--checkbox--margin-right) * var(--size-multiplier-lg) / 2)',
-                bottom: 'calc(var(--checkbox--margin-bottom) * var(--size-multiplier-lg) / 2)',
+                right: 'calc(var(--checkbox--margin-right) * var(--size-multiplier-lg))',
+                bottom: 'calc(var(--checkbox--margin-bottom) * var(--size-multiplier-lg))',
                 left: 0
             },
             width: 'calc(1rem * var(--size-multiplier-lg))',

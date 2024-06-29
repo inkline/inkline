@@ -199,84 +199,96 @@
     --color-dark-tint-100-a
   );
   --checkable-button-group--sm--border-top-left-radius: calc(
-    var(--checkable--border-top-left-radius) * var(--size-multiplier-sm)
+    var(--checkable-button-group--border-top-left-radius) *
+      var(--size-multiplier-sm)
   );
   --checkable-button-group--sm--border-top-right-radius: calc(
-    var(--checkable--border-top-right-radius) * var(--size-multiplier-sm)
+    var(--checkable-button-group--border-top-right-radius) *
+      var(--size-multiplier-sm)
   );
   --checkable-button-group--sm--border-bottom-right-radius: calc(
-    var(--checkable--border-bottom-right-radius) * var(--size-multiplier-sm)
+    var(--checkable-button-group--border-bottom-right-radius) *
+      var(--size-multiplier-sm)
   );
   --checkable-button-group--sm--border-bottom-left-radius: calc(
-    var(--checkable--border-bottom-left-radius) * var(--size-multiplier-sm)
+    var(--checkable-button-group--border-bottom-left-radius) *
+      var(--size-multiplier-sm)
   );
   --checkable-button-group--sm--gap: calc(
-    var(--checkable--margin-right) * var(--size-multiplier-sm) * 0.5
+    var(--checkable-button-group--margin-right) * var(--size-multiplier-sm)
   );
   --checkable-button-group--sm--padding-top: calc(
-    var(--checkable--padding-top) * var(--size-multiplier-sm) * 0.5
+    var(--checkable-button-group--padding-top) * var(--size-multiplier-sm)
   );
   --checkable-button-group--sm--padding-right: calc(
-    var(--checkable--padding-right) * var(--size-multiplier-sm) * 0.5
+    var(--checkable-button-group--padding-right) * var(--size-multiplier-sm)
   );
   --checkable-button-group--sm--padding-bottom: calc(
-    var(--checkable--padding-bottom) * var(--size-multiplier-sm) * 0.5
+    var(--checkable-button-group--padding-bottom) * var(--size-multiplier-sm)
   );
   --checkable-button-group--sm--padding-left: calc(
-    var(--checkable--padding-left) * var(--size-multiplier-sm) * 0.5
+    var(--checkable-button-group--padding-left) * var(--size-multiplier-sm)
   );
   --checkable-button-group--md--border-top-left-radius: calc(
-    var(--checkable--border-top-left-radius) * var(--size-multiplier-md)
+    var(--checkable-button-group--border-top-left-radius) *
+      var(--size-multiplier-md)
   );
   --checkable-button-group--md--border-top-right-radius: calc(
-    var(--checkable--border-top-right-radius) * var(--size-multiplier-md)
+    var(--checkable-button-group--border-top-right-radius) *
+      var(--size-multiplier-md)
   );
   --checkable-button-group--md--border-bottom-right-radius: calc(
-    var(--checkable--border-bottom-right-radius) * var(--size-multiplier-md)
+    var(--checkable-button-group--border-bottom-right-radius) *
+      var(--size-multiplier-md)
   );
   --checkable-button-group--md--border-bottom-left-radius: calc(
-    var(--checkable--border-bottom-left-radius) * var(--size-multiplier-md)
+    var(--checkable-button-group--border-bottom-left-radius) *
+      var(--size-multiplier-md)
   );
   --checkable-button-group--md--gap: calc(
-    var(--checkable--margin-right) * var(--size-multiplier-md) * 0.5
+    var(--checkable-button-group--margin-right) * var(--size-multiplier-md)
   );
   --checkable-button-group--md--padding-top: calc(
-    var(--checkable--padding-top) * var(--size-multiplier-md) * 0.5
+    var(--checkable-button-group--padding-top) * var(--size-multiplier-md)
   );
   --checkable-button-group--md--padding-right: calc(
-    var(--checkable--padding-right) * var(--size-multiplier-md) * 0.5
+    var(--checkable-button-group--padding-right) * var(--size-multiplier-md)
   );
   --checkable-button-group--md--padding-bottom: calc(
-    var(--checkable--padding-bottom) * var(--size-multiplier-md) * 0.5
+    var(--checkable-button-group--padding-bottom) * var(--size-multiplier-md)
   );
   --checkable-button-group--md--padding-left: calc(
-    var(--checkable--padding-left) * var(--size-multiplier-md) * 0.5
+    var(--checkable-button-group--padding-left) * var(--size-multiplier-md)
   );
   --checkable-button-group--lg--border-top-left-radius: calc(
-    var(--checkable--border-top-left-radius) * var(--size-multiplier-lg)
+    var(--checkable-button-group--border-top-left-radius) *
+      var(--size-multiplier-lg)
   );
   --checkable-button-group--lg--border-top-right-radius: calc(
-    var(--checkable--border-top-right-radius) * var(--size-multiplier-lg)
+    var(--checkable-button-group--border-top-right-radius) *
+      var(--size-multiplier-lg)
   );
   --checkable-button-group--lg--border-bottom-right-radius: calc(
-    var(--checkable--border-bottom-right-radius) * var(--size-multiplier-lg)
+    var(--checkable-button-group--border-bottom-right-radius) *
+      var(--size-multiplier-lg)
   );
   --checkable-button-group--lg--border-bottom-left-radius: calc(
-    var(--checkable--border-bottom-left-radius) * var(--size-multiplier-lg)
+    var(--checkable-button-group--border-bottom-left-radius) *
+      var(--size-multiplier-lg)
   );
   --checkable-button-group--lg--gap: calc(
-    var(--checkable--margin-right) * var(--size-multiplier-lg) * 0.5
+    var(--checkable-button-group--margin-right) * var(--size-multiplier-lg)
   );
   --checkable-button-group--lg--padding-top: calc(
-    var(--checkable--padding-top) * var(--size-multiplier-lg) * 0.5
+    var(--checkable-button-group--padding-top) * var(--size-multiplier-lg)
   );
   --checkable-button-group--lg--padding-right: calc(
-    var(--checkable--padding-right) * var(--size-multiplier-lg) * 0.5
+    var(--checkable-button-group--padding-right) * var(--size-multiplier-lg)
   );
   --checkable-button-group--lg--padding-bottom: calc(
-    var(--checkable--padding-bottom) * var(--size-multiplier-lg) * 0.5
+    var(--checkable-button-group--padding-bottom) * var(--size-multiplier-lg)
   );
   --checkable-button-group--lg--padding-left: calc(
-    var(--checkable--padding-left) * var(--size-multiplier-lg) * 0.5
+    var(--checkable-button-group--padding-left) * var(--size-multiplier-lg)
   );
 }

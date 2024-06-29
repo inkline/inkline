@@ -91,10 +91,10 @@
   --pagination--transition-property: background-color, color, border-color;
   --pagination--transition-duration: var(--transition-duration);
   --pagination--transition-timing-function: var(--transition-timing-function);
-  --pagination--margin-top: var(--margin-top-1-4);
-  --pagination--margin-right: var(--margin-right-1-4);
-  --pagination--margin-bottom: var(--margin-bottom-1-4);
-  --pagination--margin-left: var(--margin-left-1-4);
+  --pagination--margin-top: calc(var(--margin-top) * 0.25);
+  --pagination--margin-right: calc(var(--margin-right) * 0.25);
+  --pagination--margin-bottom: calc(var(--margin-bottom) * 0.25);
+  --pagination--margin-left: calc(var(--margin-left) * 0.25);
   --pagination--item--background-h: var(--color-white-h);
   --pagination--item--background-s: var(--color-white-s);
   --pagination--item--background-l: var(--color-white-l);

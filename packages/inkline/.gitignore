@@ -13,13 +13,3 @@ dist-ssr
 *.local
 build-storybook.log
 inkline-inkline-*.tgz
-
-# CI
-/inkline-vite
-/inkline-nuxt
-
-# E2E
-/test-results/
-/playwright-report/
-/playwright/.cache/
-

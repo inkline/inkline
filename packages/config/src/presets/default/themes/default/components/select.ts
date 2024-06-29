@@ -47,9 +47,9 @@ export const select = defineComponent(
             timingFunction: 'var(--transition-timing-function)'
         },
         padding: {
-            top: 'var(--padding-top)',
+            top: 'calc(var(--padding-top) * 3 / 4)',
             right: 'var(--padding-right)',
-            bottom: 'var(--padding-bottom)',
+            bottom: 'calc(var(--padding-bottom) * 3 / 4)',
             left: 'var(--padding-left)'
         },
         minWidth: '240px',
@@ -93,7 +93,14 @@ export const select = defineComponent(
         divider: {
             background: 'var(--text-color-weaker)'
         },
-        option: {}
+        option: {
+            padding: {
+                top: 'calc(var(--padding-top) * 1 / 2)',
+                right: 'var(--padding-right)',
+                bottom: 'calc(var(--padding-bottom) * 1 / 2)',
+                left: 'var(--padding-left)'
+            }
+        }
     },
     {
         light: {
@@ -156,9 +163,9 @@ export const select = defineComponent(
             },
             fontSize: 'calc(var(--select--font-size) * var(--size-multiplier-sm))',
             padding: {
-                top: 'calc(var(--select--padding-top) * var(--size-multiplier-sm) * 3 / 4)',
+                top: 'calc(var(--select--padding-top) * var(--size-multiplier-sm))',
                 right: 'calc(var(--select--padding-right) * var(--size-multiplier-sm))',
-                bottom: 'calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)',
+                bottom: 'calc(var(--select--padding-bottom) * var(--size-multiplier-sm))',
                 left: 'calc(var(--select--padding-left) * var(--size-multiplier-sm))'
             },
             caret: {
@@ -166,20 +173,22 @@ export const select = defineComponent(
             },
             header: {
                 padding: {
-                    top: 'calc(var(--select--padding-top) * var(--size-multiplier-sm) * 3 / 4)',
-                    bottom: 'calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)'
+                    top: 'calc(var(--select--padding-top) * var(--size-multiplier-sm))',
+                    bottom: 'calc(var(--select--padding-bottom) * var(--size-multiplier-sm))'
                 }
             },
             option: {
                 padding: {
-                    top: 'calc(var(--select--padding-top) * var(--size-multiplier-sm) * 0.5)',
-                    bottom: 'calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 0.5)'
+                    top: 'calc(var(--select--option--padding-top) * var(--size-multiplier-sm))',
+                    right: 'calc(var(--select--option--padding-right) * var(--size-multiplier-sm))',
+                    bottom: 'calc(var(--select--option--padding-bottom) * var(--size-multiplier-sm))',
+                    left: 'calc(var(--select--option--padding-left) * var(--size-multiplier-sm))'
                 }
             },
             footer: {
                 padding: {
-                    top: 'calc(var(--select--padding-top) * var(--size-multiplier-sm) * 3 / 4)',
-                    bottom: 'calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)'
+                    top: 'calc(var(--select--padding-top) * var(--size-multiplier-sm))',
+                    bottom: 'calc(var(--select--padding-bottom) * var(--size-multiplier-sm))'
                 }
             }
         },
@@ -211,8 +220,10 @@ export const select = defineComponent(
             },
             option: {
                 padding: {
-                    top: 'calc(var(--select--padding-top) * var(--size-multiplier-md) * 0.5)',
-                    bottom: 'calc(var(--select--padding-bottom) * var(--size-multiplier-md) * 0.5)'
+                    top: 'calc(var(--select--option--padding-top) * var(--size-multiplier-md))',
+                    right: 'calc(var(--select--padding-right) * var(--size-multiplier-md))',
+                    bottom: 'calc(var(--select--option--padding-bottom) * var(--size-multiplier-md))',
+                    left: 'calc(var(--select--padding-left) * var(--size-multiplier-md))'
                 }
             },
             footer: {
@@ -250,8 +261,10 @@ export const select = defineComponent(
             },
             option: {
                 padding: {
-                    top: 'calc(var(--select--padding-top) * var(--size-multiplier-lg) * 0.5)',
-                    bottom: 'calc(var(--select--padding-bottom) * var(--size-multiplier-lg) * 0.5)'
+                    top: 'calc(var(--select--option--padding-top) * var(--size-multiplier-lg))',
+                    right: 'calc(var(--select--option--padding-right) * var(--size-multiplier-lg))',
+                    bottom: 'calc(var(--select--option--padding-bottom) * var(--size-multiplier-lg))',
+                    left: 'calc(var(--select--option--padding-left) * var(--size-multiplier-lg))'
                 }
             },
             footer: {

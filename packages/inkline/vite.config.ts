@@ -48,7 +48,7 @@ export default defineConfig({
     test: {
         globals: true,
         environment: 'jsdom',
-        setupFiles: ['./vitest.setup.js'],
+        setupFiles: ['./src/__tests__/setup.ts'],
         include: ['src/**/*.spec.ts', 'scripts/**/*.spec.ts'],
         coverage: {
             provider: 'v8',

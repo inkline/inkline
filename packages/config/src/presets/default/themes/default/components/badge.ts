@@ -121,10 +121,10 @@ export const badge = defineComponent(
         sm: {
             fontSize: '75%',
             padding: {
-                top: 'calc(var(--badge--padding-top) * var(--size-multiplier-sm) * 0.25)',
-                right: 'calc(var(--badge--padding-right) * var(--size-multiplier-sm) * 0.5)',
-                bottom: 'calc(var(--badge--padding-bottom) * var(--size-multiplier-sm) * 0.25)',
-                left: 'calc(var(--badge--padding-left) * var(--size-multiplier-sm) * 0.5)'
+                top: 'calc(var(--badge--padding-top) * var(--size-multiplier-sm))',
+                right: 'calc(var(--badge--padding-right) * var(--size-multiplier-sm))',
+                bottom: 'calc(var(--badge--padding-bottom) * var(--size-multiplier-sm))',
+                left: 'calc(var(--badge--padding-left) * var(--size-multiplier-sm))'
             },
             borderRadius: {
                 topLeft: 'calc(var(--badge--border-top-left-radius) * var(--size-multiplier-sm))',
@@ -138,10 +138,10 @@ export const badge = defineComponent(
         md: {
             fontSize: '80%',
             padding: {
-                top: 'calc(var(--badge--padding-top) * var(--size-multiplier-md) * 0.25)',
-                right: 'calc(var(--badge--padding-right) * var(--size-multiplier-md) * 0.5)',
-                bottom: 'calc(var(--badge--padding-bottom) * var(--size-multiplier-md) * 0.25)',
-                left: 'calc(var(--badge--padding-left) * var(--size-multiplier-md) * 0.5)'
+                top: 'calc(var(--badge--padding-top) * var(--size-multiplier-md))',
+                right: 'calc(var(--badge--padding-right) * var(--size-multiplier-md))',
+                bottom: 'calc(var(--badge--padding-bottom) * var(--size-multiplier-md))',
+                left: 'calc(var(--badge--padding-left) * var(--size-multiplier-md))'
             },
             borderRadius: {
                 topLeft: 'calc(var(--badge--border-top-left-radius) * var(--size-multiplier-md))',
@@ -155,10 +155,10 @@ export const badge = defineComponent(
         lg: {
             fontSize: '85%',
             padding: {
-                top: 'calc(var(--badge--padding-top) * var(--size-multiplier-lg) * 0.25)',
-                right: 'calc(var(--badge--padding-right) * var(--size-multiplier-lg) * 0.5)',
-                bottom: 'calc(var(--badge--padding-bottom) * var(--size-multiplier-lg) * 0.25)',
-                left: 'calc(var(--badge--padding-left) * var(--size-multiplier-lg) * 0.5)'
+                top: 'calc(var(--badge--padding-top) * var(--size-multiplier-lg))',
+                right: 'calc(var(--badge--padding-right) * var(--size-multiplier-lg))',
+                bottom: 'calc(var(--badge--padding-bottom) * var(--size-multiplier-lg))',
+                left: 'calc(var(--badge--padding-left) * var(--size-multiplier-lg))'
             },
             borderRadius: {
                 topLeft: 'calc(var(--badge--border-top-left-radius) * var(--size-multiplier-lg))',

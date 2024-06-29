@@ -61,11 +61,23 @@ export const navbar = defineComponent(
             },
             active: {
                 background: 'var(--color-light-shade-50)'
+            },
+            padding: {
+                top: 'calc(var(--padding-top) * 0.5)',
+                right: 'var(--padding-right)',
+                bottom: 'calc(var(--padding-bottom) * 0.5)',
+                left: 'var(--padding-left)'
             }
         },
         brand: {
             margin: {
                 right: 'var(--margin-right)'
+            },
+            padding: {
+                top: 'calc(var(--padding-top) * 0.5)',
+                right: 'var(--padding-right)',
+                bottom: 'calc(var(--padding-bottom) * 0.5)',
+                left: 'var(--padding-left)'
             }
         },
         collapsible: {
@@ -167,18 +179,18 @@ export const navbar = defineComponent(
             },
             brand: {
                 padding: {
-                    top: 'calc(var(--navbar--padding-top) * var(--size-multiplier-sm) * 0.5)',
-                    right: 'calc(var(--navbar--padding-right) * var(--size-multiplier-sm))',
-                    bottom: 'calc(var(--navbar--padding-bottom) * var(--size-multiplier-sm) * 0.5)',
-                    left: 'calc(var(--navbar--padding-left) * var(--size-multiplier-sm))'
+                    top: 'calc(var(--navbar--brand--padding-top) * var(--size-multiplier-sm))',
+                    right: 'calc(var(--navbar--brand--padding-right) * var(--size-multiplier-sm))',
+                    bottom: 'calc(var(--navbar--brand--padding-bottom) * var(--size-multiplier-sm))',
+                    left: 'calc(var(--navbar--brand--padding-left) * var(--size-multiplier-sm))'
                 }
             },
             item: {
                 padding: {
-                    top: 'calc(var(--navbar--padding-top) * var(--size-multiplier-sm) * 0.5)',
-                    right: 'calc(var(--navbar--padding-right) * var(--size-multiplier-sm))',
-                    bottom: 'calc(var(--navbar--padding-bottom) * var(--size-multiplier-sm) * 0.5)',
-                    left: 'calc(var(--navbar--padding-left) * var(--size-multiplier-sm))'
+                    top: 'calc(var(--navbar--item--padding-top) * var(--size-multiplier-sm))',
+                    right: 'calc(var(--navbar--item--padding-right) * var(--size-multiplier-sm))',
+                    bottom: 'calc(var(--navbar--item--padding-bottom) * var(--size-multiplier-sm))',
+                    left: 'calc(var(--navbar--item--padding-left) * var(--size-multiplier-sm))'
                 }
             }
         },
@@ -201,18 +213,18 @@ export const navbar = defineComponent(
             },
             brand: {
                 padding: {
-                    top: 'calc(var(--navbar--padding-top) * var(--size-multiplier-md) * 0.5)',
-                    right: 'calc(var(--navbar--padding-right) * var(--size-multiplier-md))',
-                    bottom: 'calc(var(--navbar--padding-bottom) * var(--size-multiplier-md) * 0.5)',
-                    left: 'calc(var(--navbar--padding-left) * var(--size-multiplier-md))'
+                    top: 'calc(var(--navbar--brand--padding-top) * var(--size-multiplier-md))',
+                    right: 'calc(var(--navbar--brand--padding-right) * var(--size-multiplier-md))',
+                    bottom: 'calc(var(--navbar--brand--padding-bottom) * var(--size-multiplier-md))',
+                    left: 'calc(var(--navbar--brand--padding-left) * var(--size-multiplier-md))'
                 }
             },
             item: {
                 padding: {
-                    top: 'calc(var(--navbar--padding-top) * var(--size-multiplier-md) * 0.5)',
-                    right: 'calc(var(--navbar--padding-right) * var(--size-multiplier-md))',
-                    bottom: 'calc(var(--navbar--padding-bottom) * var(--size-multiplier-md) * 0.5)',
-                    left: 'calc(var(--navbar--padding-left) * var(--size-multiplier-md))'
+                    top: 'calc(var(--navbar--item--padding-top) * var(--size-multiplier-md))',
+                    right: 'calc(var(--navbar--item--padding-right) * var(--size-multiplier-md))',
+                    bottom: 'calc(var(--navbar--item--padding-bottom) * var(--size-multiplier-md))',
+                    left: 'calc(var(--navbar--item--padding-left) * var(--size-multiplier-md))'
                 }
             }
         },
@@ -235,18 +247,18 @@ export const navbar = defineComponent(
             },
             brand: {
                 padding: {
-                    top: 'calc(var(--navbar--padding-top) * var(--size-multiplier-lg) * 0.5)',
-                    right: 'calc(var(--navbar--padding-right) * var(--size-multiplier-lg))',
-                    bottom: 'calc(var(--navbar--padding-bottom) * var(--size-multiplier-lg) * 0.5)',
-                    left: 'calc(var(--navbar--padding-left) * var(--size-multiplier-lg))'
+                    top: 'calc(var(--navbar--brand--padding-top) * var(--size-multiplier-lg))',
+                    right: 'calc(var(--navbar--brand--padding-right) * var(--size-multiplier-lg))',
+                    bottom: 'calc(var(--navbar--brand--padding-bottom) * var(--size-multiplier-lg))',
+                    left: 'calc(var(--navbar--brand--padding-left) * var(--size-multiplier-lg))'
                 }
             },
             item: {
                 padding: {
-                    top: 'calc(var(--navbar--padding-top) * var(--size-multiplier-lg) * 0.5)',
-                    right: 'calc(var(--navbar--padding-right) * var(--size-multiplier-lg))',
-                    bottom: 'calc(var(--navbar--padding-bottom) * var(--size-multiplier-lg) * 0.5)',
-                    left: 'calc(var(--navbar--padding-left) * var(--size-multiplier-lg))'
+                    top: 'calc(var(--navbar--item--padding-top) * var(--size-multiplier-lg))',
+                    right: 'calc(var(--navbar--item--padding-right) * var(--size-multiplier-lg))',
+                    bottom: 'calc(var(--navbar--item--padding-bottom) * var(--size-multiplier-lg))',
+                    left: 'calc(var(--navbar--item--padding-left) * var(--size-multiplier-lg))'
                 }
             }
         }

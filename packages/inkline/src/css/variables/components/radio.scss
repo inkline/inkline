@@ -83,10 +83,8 @@
     @include variants.border-bottom-right-radius("radio", "sm");
     @include variants.border-bottom-left-radius("radio", "sm");
     @include variants.font-size("radio", "sm");
-    @include variants.margin-top("radio", "sm");
     @include variants.margin-right("radio", "sm");
     @include variants.margin-bottom("radio", "sm");
-    @include variants.margin-left("radio", "sm");
     @include variants.width("radio", "sm");
     @include variants.height("radio", "sm");
 
@@ -99,10 +97,8 @@
     @include variants.border-bottom-right-radius("radio", "md");
     @include variants.border-bottom-left-radius("radio", "md");
     @include variants.font-size("radio", "md");
-    @include variants.margin-top("radio", "md");
     @include variants.margin-right("radio", "md");
     @include variants.margin-bottom("radio", "md");
-    @include variants.margin-left("radio", "md");
     @include variants.width("radio", "md");
     @include variants.height("radio", "md");
 
@@ -115,10 +111,8 @@
     @include variants.border-bottom-right-radius("radio", "lg");
     @include variants.border-bottom-left-radius("radio", "lg");
     @include variants.font-size("radio", "lg");
-    @include variants.margin-top("radio", "lg");
     @include variants.margin-right("radio", "lg");
     @include variants.margin-bottom("radio", "lg");
-    @include variants.margin-left("radio", "lg");
     @include variants.width("radio", "lg");
     @include variants.height("radio", "lg");
 
@@ -285,14 +279,12 @@
   --radio--sm--font-size: calc(
     var(--radio--font-size) * var(--size-multiplier-sm)
   );
-  --radio--sm--margin-top: var(--margin-top);
   --radio--sm--margin-right: calc(
-    var(--radio--margin-right) * var(--size-multiplier-sm) / 2
+    var(--radio--margin-right) * var(--size-multiplier-sm)
   );
   --radio--sm--margin-bottom: calc(
-    var(--radio--margin-bottom) * var(--size-multiplier-sm) / 2
+    var(--radio--margin-bottom) * var(--size-multiplier-sm)
   );
-  --radio--sm--margin-left: var(--margin-left);
   --radio--sm--width: calc(var(--radio--width) * var(--size-multiplier-sm));
   --radio--sm--height: calc(var(--radio--height) * var(--size-multiplier-sm));
   --radio--sm--checkmark--width: calc(
@@ -316,14 +308,12 @@
   --radio--md--font-size: calc(
     var(--radio--font-size) * var(--size-multiplier-md)
   );
-  --radio--md--margin-top: var(--margin-top);
   --radio--md--margin-right: calc(
-    var(--radio--margin-right) * var(--size-multiplier-md) / 2
+    var(--radio--margin-right) * var(--size-multiplier-md)
   );
   --radio--md--margin-bottom: calc(
-    var(--radio--margin-bottom) * var(--size-multiplier-md) / 2
+    var(--radio--margin-bottom) * var(--size-multiplier-md)
   );
-  --radio--md--margin-left: var(--margin-left);
   --radio--md--width: calc(var(--radio--width) * var(--size-multiplier-md));
   --radio--md--height: calc(var(--radio--height) * var(--size-multiplier-md));
   --radio--md--checkmark--width: calc(
@@ -347,14 +337,12 @@
   --radio--lg--font-size: calc(
     var(--radio--font-size) * var(--size-multiplier-lg)
   );
-  --radio--lg--margin-top: var(--margin-top);
   --radio--lg--margin-right: calc(
-    var(--radio--margin-right) * var(--size-multiplier-lg) / 2
+    var(--radio--margin-right) * var(--size-multiplier-lg)
   );
   --radio--lg--margin-bottom: calc(
-    var(--radio--margin-bottom) * var(--size-multiplier-lg) / 2
+    var(--radio--margin-bottom) * var(--size-multiplier-lg)
   );
-  --radio--lg--margin-left: var(--margin-left);
   --radio--lg--width: calc(var(--radio--width) * var(--size-multiplier-lg));
   --radio--lg--height: calc(var(--radio--height) * var(--size-multiplier-lg));
   --radio--lg--checkmark--width: calc(

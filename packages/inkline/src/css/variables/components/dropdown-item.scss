@@ -35,9 +35,7 @@
   }
   @include variants.selector("sm") {
     @include variants.font-size("dropdown-item", "sm");
-    @include variants.margin-top("dropdown-item", "sm");
     @include variants.margin-right("dropdown-item", "sm");
-    @include variants.margin-bottom("dropdown-item", "sm");
     @include variants.margin-left("dropdown-item", "sm");
     @include variants.padding-top("dropdown-item", "sm");
     @include variants.padding-right("dropdown-item", "sm");
@@ -46,9 +44,7 @@
   }
   @include variants.selector("md") {
     @include variants.font-size("dropdown-item", "md");
-    @include variants.margin-top("dropdown-item", "md");
     @include variants.margin-right("dropdown-item", "md");
-    @include variants.margin-bottom("dropdown-item", "md");
     @include variants.margin-left("dropdown-item", "md");
     @include variants.padding-top("dropdown-item", "md");
     @include variants.padding-right("dropdown-item", "md");
@@ -57,9 +53,7 @@
   }
   @include variants.selector("lg") {
     @include variants.font-size("dropdown-item", "lg");
-    @include variants.margin-top("dropdown-item", "lg");
     @include variants.margin-right("dropdown-item", "lg");
-    @include variants.margin-bottom("dropdown-item", "lg");
     @include variants.margin-left("dropdown-item", "lg");
     @include variants.padding-top("dropdown-item", "lg");
     @include variants.padding-right("dropdown-item", "lg");
@@ -136,22 +130,20 @@
   --dropdown-item--sm--font-size: calc(
     var(--dropdown-item--font-size) * var(--size-multiplier-sm)
   );
-  --dropdown-item--sm--margin-top: var(--margin-top);
   --dropdown-item--sm--margin-right: calc(
-    var(--dropdown-item--padding-right) * var(--size-multiplier-sm) * -1
+    var(--dropdown-item--padding-right) * var(--size-multiplier-sm)
   );
-  --dropdown-item--sm--margin-bottom: var(--margin-bottom);
   --dropdown-item--sm--margin-left: calc(
-    var(--dropdown-item--padding-left) * var(--size-multiplier-sm) * -1
+    var(--dropdown-item--padding-left) * var(--size-multiplier-sm)
   );
   --dropdown-item--sm--padding-top: calc(
-    var(--dropdown-item--padding-top) * var(--size-multiplier-sm) * 0.5
+    var(--dropdown-item--padding-top) * var(--size-multiplier-sm)
   );
   --dropdown-item--sm--padding-right: calc(
     var(--dropdown-item--padding-right) * var(--size-multiplier-sm)
   );
   --dropdown-item--sm--padding-bottom: calc(
-    var(--dropdown-item--padding-bottom) * var(--size-multiplier-sm) * 0.5
+    var(--dropdown-item--padding-bottom) * var(--size-multiplier-sm)
   );
   --dropdown-item--sm--padding-left: calc(
     var(--dropdown-item--padding-left) * var(--size-multiplier-sm)
@@ -159,22 +151,20 @@
   --dropdown-item--md--font-size: calc(
     var(--dropdown-item--font-size) * var(--size-multiplier-md)
   );
-  --dropdown-item--md--margin-top: var(--margin-top);
   --dropdown-item--md--margin-right: calc(
-    var(--dropdown-item--padding-right) * var(--size-multiplier-md) * -1
+    var(--dropdown-item--padding-right) * var(--size-multiplier-md)
   );
-  --dropdown-item--md--margin-bottom: var(--margin-bottom);
   --dropdown-item--md--margin-left: calc(
-    var(--dropdown-item--padding-left) * var(--size-multiplier-md) * -1
+    var(--dropdown-item--padding-left) * var(--size-multiplier-md)
   );
   --dropdown-item--md--padding-top: calc(
-    var(--dropdown-item--padding-top) * var(--size-multiplier-md) * 0.5
+    var(--dropdown-item--padding-top) * var(--size-multiplier-md)
   );
   --dropdown-item--md--padding-right: calc(
     var(--dropdown-item--padding-right) * var(--size-multiplier-md)
   );
   --dropdown-item--md--padding-bottom: calc(
-    var(--dropdown-item--padding-bottom) * var(--size-multiplier-md) * 0.5
+    var(--dropdown-item--padding-bottom) * var(--size-multiplier-md)
   );
   --dropdown-item--md--padding-left: calc(
     var(--dropdown-item--padding-left) * var(--size-multiplier-md)
@@ -182,22 +172,20 @@
   --dropdown-item--lg--font-size: calc(
     var(--dropdown-item--font-size) * var(--size-multiplier-lg)
   );
-  --dropdown-item--lg--margin-top: var(--margin-top);
   --dropdown-item--lg--margin-right: calc(
-    var(--dropdown-item--padding-right) * var(--size-multiplier-lg) * -1
+    var(--dropdown-item--padding-right) * var(--size-multiplier-lg)
   );
-  --dropdown-item--lg--margin-bottom: var(--margin-bottom);
   --dropdown-item--lg--margin-left: calc(
-    var(--dropdown-item--padding-left) * var(--size-multiplier-lg) * -1
+    var(--dropdown-item--padding-left) * var(--size-multiplier-lg)
   );
   --dropdown-item--lg--padding-top: calc(
-    var(--dropdown-item--padding-top) * var(--size-multiplier-lg) * 0.5
+    var(--dropdown-item--padding-top) * var(--size-multiplier-lg)
   );
   --dropdown-item--lg--padding-right: calc(
     var(--dropdown-item--padding-right) * var(--size-multiplier-lg)
   );
   --dropdown-item--lg--padding-bottom: calc(
-    var(--dropdown-item--padding-bottom) * var(--size-multiplier-lg) * 0.5
+    var(--dropdown-item--padding-bottom) * var(--size-multiplier-lg)
   );
   --dropdown-item--lg--padding-left: calc(
     var(--dropdown-item--padding-left) * var(--size-multiplier-lg)

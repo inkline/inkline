@@ -21,7 +21,7 @@ export function isEntityPath(path: string[]) {
 }
 
 export function getResolvedPath(meta: GeneratorMeta) {
-    const indexOffset = traversePathByClassification(meta, (path, part, ctx) => {
+    const indexOffset = filterPathByClassification(meta, (path, part, ctx) => {
         return ![ClassificationType.Element, ClassificationType.Variable].some(
             (type) => ctx.typePath.includes(type) || ctx.type === type
         );
@@ -42,7 +42,7 @@ export type TraversePathByClassificationFn = (
     ctx: TraversePathByClassificationFnContext
 ) => boolean;
 
-export function traversePathByClassification(
+export function filterPathByClassification(
     meta: GeneratorMeta | ResolverMeta,
     fn: TraversePathByClassificationFn
 ): BuildChunk['path'] {

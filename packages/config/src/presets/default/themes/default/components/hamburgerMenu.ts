@@ -17,6 +17,8 @@ export const hamburgerMenu = defineComponent(
         hover: {
             opacity: 1
         },
+        width: 'var(--hamburger-menu--bar--width)',
+        height: 'calc(var(--hamburger-menu--bar--height) * 3 + var(--hamburger-menu--bar--spacing) * 2)',
         bar: {
             borderRadius: {
                 topLeft: 'calc(var(--border-top-left-radius) * var(--size-multiplier-sm))',

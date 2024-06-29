@@ -334,16 +334,18 @@
   --navbar--item--active--background-s: var(--color-light-shade-50-s);
   --navbar--item--active--background-l: var(--color-light-shade-50-l);
   --navbar--item--active--background-a: var(--color-light-shade-50-a);
-  --navbar--brand--margin-top: var(--margin-top);
+  --navbar--item--padding-top: calc(var(--padding-top) * 0.5);
+  --navbar--item--padding-right: var(--padding-right);
+  --navbar--item--padding-bottom: calc(var(--padding-bottom) * 0.5);
+  --navbar--item--padding-left: var(--padding-left);
   --navbar--brand--margin-right: var(--margin-right);
-  --navbar--brand--margin-bottom: var(--margin-bottom);
-  --navbar--brand--margin-left: var(--margin-left);
+  --navbar--brand--padding-top: calc(var(--padding-top) * 0.5);
+  --navbar--brand--padding-right: var(--padding-right);
+  --navbar--brand--padding-bottom: calc(var(--padding-bottom) * 0.5);
+  --navbar--brand--padding-left: var(--padding-left);
   --navbar--collapsible--transition-property: height, background-color, color,
     border-color;
   --navbar--collapsed--margin-top: var(--margin-top);
-  --navbar--collapsed--margin-right: var(--margin-right);
-  --navbar--collapsed--margin-bottom: var(--margin-bottom);
-  --navbar--collapsed--margin-left: var(--margin-left);
   --navbar--light--background-h: var(--color-white-h);
   --navbar--light--background-s: var(--color-white-s);
   --navbar--light--background-l: var(--color-white-l);
@@ -500,28 +502,28 @@
     var(--navbar--padding-left) * var(--size-multiplier-sm)
   );
   --navbar--sm--brand--padding-top: calc(
-    var(--navbar--padding-top) * var(--size-multiplier-sm) * 0.5
+    var(--navbar--brand--padding-top) * var(--size-multiplier-sm)
   );
   --navbar--sm--brand--padding-right: calc(
-    var(--navbar--padding-right) * var(--size-multiplier-sm)
+    var(--navbar--brand--padding-right) * var(--size-multiplier-sm)
   );
   --navbar--sm--brand--padding-bottom: calc(
-    var(--navbar--padding-bottom) * var(--size-multiplier-sm) * 0.5
+    var(--navbar--brand--padding-bottom) * var(--size-multiplier-sm)
   );
   --navbar--sm--brand--padding-left: calc(
-    var(--navbar--padding-left) * var(--size-multiplier-sm)
+    var(--navbar--brand--padding-left) * var(--size-multiplier-sm)
   );
   --navbar--sm--item--padding-top: calc(
-    var(--navbar--padding-top) * var(--size-multiplier-sm) * 0.5
+    var(--navbar--item--padding-top) * var(--size-multiplier-sm)
   );
   --navbar--sm--item--padding-right: calc(
-    var(--navbar--padding-right) * var(--size-multiplier-sm)
+    var(--navbar--item--padding-right) * var(--size-multiplier-sm)
   );
   --navbar--sm--item--padding-bottom: calc(
-    var(--navbar--padding-bottom) * var(--size-multiplier-sm) * 0.5
+    var(--navbar--item--padding-bottom) * var(--size-multiplier-sm)
   );
   --navbar--sm--item--padding-left: calc(
-    var(--navbar--padding-left) * var(--size-multiplier-sm)
+    var(--navbar--item--padding-left) * var(--size-multiplier-sm)
   );
   --navbar--md--border-top-left-radius: calc(
     var(--navbar--border-top-left-radius) * var(--size-multiplier-md)
@@ -551,28 +553,28 @@
     var(--navbar--padding-left) * var(--size-multiplier-md)
   );
   --navbar--md--brand--padding-top: calc(
-    var(--navbar--padding-top) * var(--size-multiplier-md) * 0.5
+    var(--navbar--brand--padding-top) * var(--size-multiplier-md)
   );
   --navbar--md--brand--padding-right: calc(
-    var(--navbar--padding-right) * var(--size-multiplier-md)
+    var(--navbar--brand--padding-right) * var(--size-multiplier-md)
   );
   --navbar--md--brand--padding-bottom: calc(
-    var(--navbar--padding-bottom) * var(--size-multiplier-md) * 0.5
+    var(--navbar--brand--padding-bottom) * var(--size-multiplier-md)
   );
   --navbar--md--brand--padding-left: calc(
-    var(--navbar--padding-left) * var(--size-multiplier-md)
+    var(--navbar--brand--padding-left) * var(--size-multiplier-md)
   );
   --navbar--md--item--padding-top: calc(
-    var(--navbar--padding-top) * var(--size-multiplier-md) * 0.5
+    var(--navbar--item--padding-top) * var(--size-multiplier-md)
   );
   --navbar--md--item--padding-right: calc(
-    var(--navbar--padding-right) * var(--size-multiplier-md)
+    var(--navbar--item--padding-right) * var(--size-multiplier-md)
   );
   --navbar--md--item--padding-bottom: calc(
-    var(--navbar--padding-bottom) * var(--size-multiplier-md) * 0.5
+    var(--navbar--item--padding-bottom) * var(--size-multiplier-md)
   );
   --navbar--md--item--padding-left: calc(
-    var(--navbar--padding-left) * var(--size-multiplier-md)
+    var(--navbar--item--padding-left) * var(--size-multiplier-md)
   );
   --navbar--lg--border-top-left-radius: calc(
     var(--navbar--border-top-left-radius) * var(--size-multiplier-lg)
@@ -602,27 +604,27 @@
     var(--navbar--padding-left) * var(--size-multiplier-lg)
   );
   --navbar--lg--brand--padding-top: calc(
-    var(--navbar--padding-top) * var(--size-multiplier-lg) * 0.5
+    var(--navbar--brand--padding-top) * var(--size-multiplier-lg)
   );
   --navbar--lg--brand--padding-right: calc(
-    var(--navbar--padding-right) * var(--size-multiplier-lg)
+    var(--navbar--brand--padding-right) * var(--size-multiplier-lg)
   );
   --navbar--lg--brand--padding-bottom: calc(
-    var(--navbar--padding-bottom) * var(--size-multiplier-lg) * 0.5
+    var(--navbar--brand--padding-bottom) * var(--size-multiplier-lg)
   );
   --navbar--lg--brand--padding-left: calc(
-    var(--navbar--padding-left) * var(--size-multiplier-lg)
+    var(--navbar--brand--padding-left) * var(--size-multiplier-lg)
   );
   --navbar--lg--item--padding-top: calc(
-    var(--navbar--padding-top) * var(--size-multiplier-lg) * 0.5
+    var(--navbar--item--padding-top) * var(--size-multiplier-lg)
   );
   --navbar--lg--item--padding-right: calc(
-    var(--navbar--padding-right) * var(--size-multiplier-lg)
+    var(--navbar--item--padding-right) * var(--size-multiplier-lg)
   );
   --navbar--lg--item--padding-bottom: calc(
-    var(--navbar--padding-bottom) * var(--size-multiplier-lg) * 0.5
+    var(--navbar--item--padding-bottom) * var(--size-multiplier-lg)
   );
   --navbar--lg--item--padding-left: calc(
-    var(--navbar--padding-left) * var(--size-multiplier-lg)
+    var(--navbar--item--padding-left) * var(--size-multiplier-lg)
   );
 }

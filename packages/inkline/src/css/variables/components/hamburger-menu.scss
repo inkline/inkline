@@ -63,6 +63,11 @@
   );
   --hamburger-menu--opacity: 0.75;
   --hamburger-menu--hover--opacity: 1;
+  --hamburger-menu--width: var(--hamburger-menu--bar--width);
+  --hamburger-menu--height: calc(
+    var(--hamburger-menu--bar--height) * 3 + var(--hamburger-menu--bar--spacing) *
+      2
+  );
   --hamburger-menu--bar--border-top-left-radius: calc(
     var(--border-top-left-radius) * var(--size-multiplier-sm)
   );

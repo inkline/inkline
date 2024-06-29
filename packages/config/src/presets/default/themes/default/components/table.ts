@@ -50,22 +50,6 @@ export const table = defineComponent(
                 }
             }
         },
-        bordered: {
-            border: {
-                top: {
-                    width: 'var(--border-top-width)'
-                },
-                right: {
-                    width: 'var(--border-right-width)'
-                },
-                bottom: {
-                    width: 'var(--border-bottom-width)'
-                },
-                left: {
-                    width: 'var(--border-left-width)'
-                }
-            }
-        },
         striped: {
             background: 'var(--color-gray-100)'
         },
@@ -80,16 +64,16 @@ export const table = defineComponent(
         bordered: {
             border: {
                 top: {
-                    width: 'var(--table--border-top-width)'
+                    width: 'var(--border-top-width)'
                 },
                 right: {
-                    width: 'var(--table--border-right-width)'
+                    width: 'var(--border-right-width)'
                 },
                 bottom: {
-                    width: 'var(--table--border-bottom-width)'
+                    width: 'var(--border-bottom-width)'
                 },
                 left: {
-                    width: 'var(--table--border-left-width)'
+                    width: 'var(--border-left-width)'
                 }
             }
         },

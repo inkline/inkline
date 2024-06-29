@@ -91,9 +91,7 @@
     @include variants.padding-left("select", "sm");
 
     @include variants.padding-top("select", "sm", "header");
-    @include variants.padding-right("select", "sm", "header");
     @include variants.padding-bottom("select", "sm", "header");
-    @include variants.padding-left("select", "sm", "header");
 
     @include variants.padding-top("select", "sm", "option");
     @include variants.padding-right("select", "sm", "option");
@@ -101,9 +99,7 @@
     @include variants.padding-left("select", "sm", "option");
 
     @include variants.padding-top("select", "sm", "footer");
-    @include variants.padding-right("select", "sm", "footer");
     @include variants.padding-bottom("select", "sm", "footer");
-    @include variants.padding-left("select", "sm", "footer");
   }
   @include variants.selector("md") {
     @include variants.border-top-left-radius("select", "md");
@@ -117,9 +113,7 @@
     @include variants.padding-left("select", "md");
 
     @include variants.padding-top("select", "md", "header");
-    @include variants.padding-right("select", "md", "header");
     @include variants.padding-bottom("select", "md", "header");
-    @include variants.padding-left("select", "md", "header");
 
     @include variants.padding-top("select", "md", "option");
     @include variants.padding-right("select", "md", "option");
@@ -127,9 +121,7 @@
     @include variants.padding-left("select", "md", "option");
 
     @include variants.padding-top("select", "md", "footer");
-    @include variants.padding-right("select", "md", "footer");
     @include variants.padding-bottom("select", "md", "footer");
-    @include variants.padding-left("select", "md", "footer");
   }
   @include variants.selector("lg") {
     @include variants.border-top-left-radius("select", "lg");
@@ -143,9 +135,7 @@
     @include variants.padding-left("select", "lg");
 
     @include variants.padding-top("select", "lg", "header");
-    @include variants.padding-right("select", "lg", "header");
     @include variants.padding-bottom("select", "lg", "header");
-    @include variants.padding-left("select", "lg", "header");
 
     @include variants.padding-top("select", "lg", "option");
     @include variants.padding-right("select", "lg", "option");
@@ -153,9 +143,7 @@
     @include variants.padding-left("select", "lg", "option");
 
     @include variants.padding-top("select", "lg", "footer");
-    @include variants.padding-right("select", "lg", "footer");
     @include variants.padding-bottom("select", "lg", "footer");
-    @include variants.padding-left("select", "lg", "footer");
   }
 }
 
@@ -194,9 +182,9 @@
   --select--transition-property: background-color, color, border-color;
   --select--transition-duration: var(--transition-duration);
   --select--transition-timing-function: var(--transition-timing-function);
-  --select--padding-top: var(--padding-top);
+  --select--padding-top: calc(var(--padding-top) * 3 / 4);
   --select--padding-right: var(--padding-right);
-  --select--padding-bottom: var(--padding-bottom);
+  --select--padding-bottom: calc(var(--padding-bottom) * 3 / 4);
   --select--padding-left: var(--padding-left);
   --select--min-width: 240px;
   --select--max-width: 90vw;
@@ -215,15 +203,17 @@
   --select--error--border-bottom-color: var(--color-danger);
   --select--error--border-left-color: var(--color-danger);
   --select--header--border-bottom-width: 0;
-  --select--body--padding-top: var(--padding-top);
   --select--body--padding-right: 0;
-  --select--body--padding-bottom: var(--padding-bottom);
   --select--body--padding-left: 0;
   --select--footer--border-top-width: 0;
   --select--divider--background-h: var(--text-color-weaker-h);
   --select--divider--background-s: var(--text-color-weaker-s);
   --select--divider--background-l: var(--text-color-weaker-l);
   --select--divider--background-a: var(--text-color-weaker-a);
+  --select--option--padding-top: calc(var(--padding-top) * 1 / 2);
+  --select--option--padding-right: var(--padding-right);
+  --select--option--padding-bottom: calc(var(--padding-bottom) * 1 / 2);
+  --select--option--padding-left: var(--padding-left);
   --select--light--background-h: var(--color-white-h);
   --select--light--background-s: var(--color-white-s);
   --select--light--background-l: var(--color-white-l);
@@ -304,13 +294,13 @@
     var(--select--font-size) * var(--size-multiplier-sm)
   );
   --select--sm--padding-top: calc(
-    var(--select--padding-top) * var(--size-multiplier-sm) * 3 / 4
+    var(--select--padding-top) * var(--size-multiplier-sm)
   );
   --select--sm--padding-right: calc(
     var(--select--padding-right) * var(--size-multiplier-sm)
   );
   --select--sm--padding-bottom: calc(
-    var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4
+    var(--select--padding-bottom) * var(--size-multiplier-sm)
   );
   --select--sm--padding-left: calc(
     var(--select--padding-left) * var(--size-multiplier-sm)
@@ -319,29 +309,29 @@
     var(--select--margin-right) * var(--size-multiplier-sm)
   );
   --select--sm--header--padding-top: calc(
-    var(--select--padding-top) * var(--size-multiplier-sm) * 3 / 4
+    var(--select--padding-top) * var(--size-multiplier-sm)
   );
-  --select--sm--header--padding-right: var(--padding-right);
   --select--sm--header--padding-bottom: calc(
-    var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4
+    var(--select--padding-bottom) * var(--size-multiplier-sm)
   );
-  --select--sm--header--padding-left: var(--padding-left);
   --select--sm--option--padding-top: calc(
-    var(--select--padding-top) * var(--size-multiplier-sm) * 0.5
+    var(--select--option--padding-top) * var(--size-multiplier-sm)
   );
-  --select--sm--option--padding-right: var(--padding-right);
+  --select--sm--option--padding-right: calc(
+    var(--select--option--padding-right) * var(--size-multiplier-sm)
+  );
   --select--sm--option--padding-bottom: calc(
-    var(--select--padding-bottom) * var(--size-multiplier-sm) * 0.5
+    var(--select--option--padding-bottom) * var(--size-multiplier-sm)
   );
-  --select--sm--option--padding-left: var(--padding-left);
+  --select--sm--option--padding-left: calc(
+    var(--select--option--padding-left) * var(--size-multiplier-sm)
+  );
   --select--sm--footer--padding-top: calc(
-    var(--select--padding-top) * var(--size-multiplier-sm) * 3 / 4
+    var(--select--padding-top) * var(--size-multiplier-sm)
   );
-  --select--sm--footer--padding-right: var(--padding-right);
   --select--sm--footer--padding-bottom: calc(
-    var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4
+    var(--select--padding-bottom) * var(--size-multiplier-sm)
   );
-  --select--sm--footer--padding-left: var(--padding-left);
   --select--md--border-top-left-radius: calc(
     var(--select--border-top-left-radius) * var(--size-multiplier-md)
   );
@@ -375,27 +365,27 @@
   --select--md--header--padding-top: calc(
     var(--select--padding-top) * var(--size-multiplier-md)
   );
-  --select--md--header--padding-right: var(--padding-right);
   --select--md--header--padding-bottom: calc(
     var(--select--padding-bottom) * var(--size-multiplier-md)
   );
-  --select--md--header--padding-left: var(--padding-left);
   --select--md--option--padding-top: calc(
-    var(--select--padding-top) * var(--size-multiplier-md) * 0.5
+    var(--select--option--padding-top) * var(--size-multiplier-md)
   );
-  --select--md--option--padding-right: var(--padding-right);
+  --select--md--option--padding-right: calc(
+    var(--select--padding-right) * var(--size-multiplier-md)
+  );
   --select--md--option--padding-bottom: calc(
-    var(--select--padding-bottom) * var(--size-multiplier-md) * 0.5
+    var(--select--option--padding-bottom) * var(--size-multiplier-md)
   );
-  --select--md--option--padding-left: var(--padding-left);
+  --select--md--option--padding-left: calc(
+    var(--select--padding-left) * var(--size-multiplier-md)
+  );
   --select--md--footer--padding-top: calc(
     var(--select--padding-top) * var(--size-multiplier-md)
   );
-  --select--md--footer--padding-right: var(--padding-right);
   --select--md--footer--padding-bottom: calc(
     var(--select--padding-bottom) * var(--size-multiplier-md)
   );
-  --select--md--footer--padding-left: var(--padding-left);
   --select--lg--border-top-left-radius: calc(
     var(--select--border-top-left-radius) * var(--size-multiplier-lg)
   );
@@ -429,25 +419,25 @@
   --select--lg--header--padding-top: calc(
     var(--select--padding-top) * var(--size-multiplier-lg)
   );
-  --select--lg--header--padding-right: var(--padding-right);
   --select--lg--header--padding-bottom: calc(
     var(--select--padding-bottom) * var(--size-multiplier-lg)
   );
-  --select--lg--header--padding-left: var(--padding-left);
   --select--lg--option--padding-top: calc(
-    var(--select--padding-top) * var(--size-multiplier-lg) * 0.5
+    var(--select--option--padding-top) * var(--size-multiplier-lg)
   );
-  --select--lg--option--padding-right: var(--padding-right);
+  --select--lg--option--padding-right: calc(
+    var(--select--option--padding-right) * var(--size-multiplier-lg)
+  );
   --select--lg--option--padding-bottom: calc(
-    var(--select--padding-bottom) * var(--size-multiplier-lg) * 0.5
+    var(--select--option--padding-bottom) * var(--size-multiplier-lg)
   );
-  --select--lg--option--padding-left: var(--padding-left);
+  --select--lg--option--padding-left: calc(
+    var(--select--option--padding-left) * var(--size-multiplier-lg)
+  );
   --select--lg--footer--padding-top: calc(
     var(--select--padding-top) * var(--size-multiplier-lg)
   );
-  --select--lg--footer--padding-right: var(--padding-right);
   --select--lg--footer--padding-bottom: calc(
     var(--select--padding-bottom) * var(--size-multiplier-lg)
   );
-  --select--lg--footer--padding-left: var(--padding-left);
 }

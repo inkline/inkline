@@ -1,4 +1,5 @@
-import { ResolverMeta, ResolveValueFn, ResolveVariantFn } from '../types';
+import { ClassificationType, ResolverMeta, ResolveValueFn, ResolveVariantFn } from '../types';
+import { filterPathByClassification } from './meta';
 
 export const createGenericVariantResolveFn =
     <RawValue, ResolvedValue>(
@@ -6,7 +7,13 @@ export const createGenericVariantResolveFn =
         resolveVariant: ResolveVariantFn<RawValue, ResolvedValue> = resolveValue
     ) =>
     (value: RawValue, meta: ResolverMeta) => {
-        if (meta.path[meta.path.length - 1] === 'default') {
+        const isElementValue =
+            filterPathByClassification(
+                meta,
+                (_path, _part, { type }) => type === ClassificationType.Element
+            ).length > 0;
+
+        if (meta.path[meta.path.length - 1] === 'default' || isElementValue) {
             return resolveValue(value, meta);
         } else {
             return resolveVariant(value, meta);

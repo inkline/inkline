@@ -1,5 +1,5 @@
 import { ClassificationType, GeneratorMeta } from '../../types';
-import { traversePathByClassification } from '../meta';
+import { filterPathByClassification } from '../meta';
 import { toKebabCase } from '../string';
 
 export const codegenCssVariables = {
@@ -8,7 +8,7 @@ export const codegenCssVariables = {
 };
 
 export function getCssVariablePreamblePath(meta: GeneratorMeta): string[] {
-    return traversePathByClassification(meta, (path, part, { type, typePath, consume }) => {
+    return filterPathByClassification(meta, (path, part, { type, typePath, consume }) => {
         const isElementVariant =
             [ClassificationType.Element].includes(typePath[typePath.length - 1]) &&
             part !== 'default';

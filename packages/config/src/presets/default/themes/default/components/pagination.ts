@@ -10,10 +10,10 @@ export const pagination = defineComponent(
             timingFunction: 'var(--transition-timing-function)'
         },
         margin: {
-            top: 'var(--margin-top-1-4)',
-            right: 'var(--margin-right-1-4)',
-            bottom: 'var(--margin-bottom-1-4)',
-            left: 'var(--margin-left-1-4)'
+            top: 'calc(var(--margin-top) * 0.25)',
+            right: 'calc(var(--margin-right) * 0.25)',
+            bottom: 'calc(var(--margin-bottom) * 0.25)',
+            left: 'calc(var(--margin-left) * 0.25)'
         },
         item: {
             background: 'var(--color-white)',

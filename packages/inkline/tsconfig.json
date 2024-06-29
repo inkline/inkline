@@ -23,10 +23,5 @@
         {
             "path": "./tsconfig.node.json"
         }
-    ],
-    "tsc-alias": {
-        "fileExtensions": {
-            "inputGlob": "{mjs,cjs,js,jsx,vue,d.{mts,cts,ts,tsx}}"
-        }
-    }
+    ]
 }

@@ -13,8 +13,6 @@ dist
 dist-ssr
 *.local
 .inkline
-srcx
-srcx2
 
 # Editor directories and files
 .vscode/*

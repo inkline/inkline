@@ -60,9 +60,9 @@ export const dropdown = defineComponent(
         },
         divider: {
             margin: {
-                top: 'var(--margin-top-1-2)',
+                top: 'calc(var(--margin-top) * 1 / 2)',
                 right: 'calc(var(--padding-right) * -1)',
-                bottom: 'var(--margin-bottom-1-2)',
+                bottom: 'calc(var(--margin-bottom) * 1 / 2)',
                 left: 'calc(var(--padding-left) * -1)'
             },
             background: 'var(--text-color-weaker)'
@@ -237,39 +237,39 @@ export const dropdownItem = defineComponent(
         sm: {
             fontSize: 'calc(var(--dropdown-item--font-size) * var(--size-multiplier-sm))',
             margin: {
-                right: 'calc(var(--dropdown-item--padding-right) * var(--size-multiplier-sm) * -1)',
-                left: 'calc(var(--dropdown-item--padding-left) * var(--size-multiplier-sm) * -1)'
+                right: 'calc(var(--dropdown-item--padding-right) * var(--size-multiplier-sm))',
+                left: 'calc(var(--dropdown-item--padding-left) * var(--size-multiplier-sm))'
             },
             padding: {
-                top: 'calc(var(--dropdown-item--padding-top) * var(--size-multiplier-sm) * 0.5)',
+                top: 'calc(var(--dropdown-item--padding-top) * var(--size-multiplier-sm))',
                 right: 'calc(var(--dropdown-item--padding-right) * var(--size-multiplier-sm))',
-                bottom: 'calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-sm) * 0.5)',
+                bottom: 'calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-sm))',
                 left: 'calc(var(--dropdown-item--padding-left) * var(--size-multiplier-sm))'
             }
         },
         md: {
             fontSize: 'calc(var(--dropdown-item--font-size) * var(--size-multiplier-md))',
             margin: {
-                right: 'calc(var(--dropdown-item--padding-right) * var(--size-multiplier-md) * -1)',
-                left: 'calc(var(--dropdown-item--padding-left) * var(--size-multiplier-md) * -1)'
+                right: 'calc(var(--dropdown-item--padding-right) * var(--size-multiplier-md))',
+                left: 'calc(var(--dropdown-item--padding-left) * var(--size-multiplier-md))'
             },
             padding: {
-                top: 'calc(var(--dropdown-item--padding-top) * var(--size-multiplier-md) * 0.5)',
+                top: 'calc(var(--dropdown-item--padding-top) * var(--size-multiplier-md))',
                 right: 'calc(var(--dropdown-item--padding-right) * var(--size-multiplier-md))',
-                bottom: 'calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-md) * 0.5)',
+                bottom: 'calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-md))',
                 left: 'calc(var(--dropdown-item--padding-left) * var(--size-multiplier-md))'
             }
         },
         lg: {
             fontSize: 'calc(var(--dropdown-item--font-size) * var(--size-multiplier-lg))',
             margin: {
-                right: 'calc(var(--dropdown-item--padding-right) * var(--size-multiplier-lg) * -1)',
-                left: 'calc(var(--dropdown-item--padding-left) * var(--size-multiplier-lg) * -1)'
+                right: 'calc(var(--dropdown-item--padding-right) * var(--size-multiplier-lg))',
+                left: 'calc(var(--dropdown-item--padding-left) * var(--size-multiplier-lg))'
             },
             padding: {
-                top: 'calc(var(--dropdown-item--padding-top) * var(--size-multiplier-lg) * 0.5)',
+                top: 'calc(var(--dropdown-item--padding-top) * var(--size-multiplier-lg))',
                 right: 'calc(var(--dropdown-item--padding-right) * var(--size-multiplier-lg))',
-                bottom: 'calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-lg) * 0.5)',
+                bottom: 'calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-lg))',
                 left: 'calc(var(--dropdown-item--padding-left) * var(--size-multiplier-lg))'
             }
         }

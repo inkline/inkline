@@ -42,7 +42,7 @@ export const colors = defineColorsGroup({
         ...colorLightnessVariants,
         ...colorShadeAndTintVariants
     }),
-    warning: defineColorVariable('var(--color-orange)', {
+    warning: defineColorVariable('var(--color-yellow)', {
         ...colorLightnessVariants,
         ...colorShadeAndTintVariants
     }),

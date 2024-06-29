@@ -847,10 +847,10 @@
     var(--color-success-tint-150-h) var(--color-success-tint-150-s)
       var(--color-success-tint-150-l) / var(--color-success-tint-150-a)
   );
-  --color-warning-h: var(--color-orange-h);
-  --color-warning-s: var(--color-orange-s);
-  --color-warning-l: var(--color-orange-l);
-  --color-warning-a: var(--color-orange-a);
+  --color-warning-h: var(--color-yellow-h);
+  --color-warning-s: var(--color-yellow-s);
+  --color-warning-l: var(--color-yellow-l);
+  --color-warning-a: var(--color-yellow-a);
   --color-warning: hsla(
     var(--color-warning-h) var(--color-warning-s) var(--color-warning-l) /
       var(--color-warning-a)

@@ -240,10 +240,6 @@
   --table--margin-bottom: var(--margin-bottom);
   --table--margin-left: 0;
   --table--adjacent--border-top-color: transparent;
-  --table--bordered--border-top-width: var(--border-top-width);
-  --table--bordered--border-right-width: var(--border-right-width);
-  --table--bordered--border-bottom-width: var(--border-bottom-width);
-  --table--bordered--border-left-width: var(--border-left-width);
   --table--striped--background-h: var(--color-gray-100-h);
   --table--striped--background-s: var(--color-gray-100-s);
   --table--striped--background-l: var(--color-gray-100-l);
@@ -253,10 +249,10 @@
   --table--hover--background-l: var(--color-light-l);
   --table--hover--background-a: var(--color-light-a);
   --table--th--font-weight: var(--font-weight-bold);
-  --table--bordered--border-top-width: var(--table--border-top-width);
-  --table--bordered--border-right-width: var(--table--border-right-width);
-  --table--bordered--border-bottom-width: var(--table--border-bottom-width);
-  --table--bordered--border-left-width: var(--table--border-left-width);
+  --table--bordered--border-top-width: var(--border-top-width);
+  --table--bordered--border-right-width: var(--border-right-width);
+  --table--bordered--border-bottom-width: var(--border-bottom-width);
+  --table--bordered--border-left-width: var(--border-left-width);
   --table--condensed--padding-top: calc(var(--table--padding-top) * 0.5);
   --table--condensed--padding-right: calc(var(--table--padding-right) * 0.5);
   --table--condensed--padding-bottom: calc(var(--table--padding-bottom) * 0.5);

@@ -860,10 +860,10 @@
                 "__type": "variable",
                 "__name": "color",
                 "default": {
-                    "h": "var(--color-orange-h)",
-                    "s": "var(--color-orange-s)",
-                    "l": "var(--color-orange-l)",
-                    "a": "var(--color-orange-a)"
+                    "h": "var(--color-yellow-h)",
+                    "s": "var(--color-yellow-s)",
+                    "l": "var(--color-yellow-l)",
+                    "a": "var(--color-yellow-a)"
                 },
                 "shade-150": {
                     "h": "var(--color-warning-h)",
@@ -2017,10 +2017,10 @@
                 "sm": {
                     "fontSize": "75%",
                     "padding": {
-                        "top": "calc(var(--badge--padding-top) * var(--size-multiplier-sm) * 0.25)",
-                        "right": "calc(var(--badge--padding-right) * var(--size-multiplier-sm) * 0.5)",
-                        "bottom": "calc(var(--badge--padding-bottom) * var(--size-multiplier-sm) * 0.25)",
-                        "left": "calc(var(--badge--padding-left) * var(--size-multiplier-sm) * 0.5)"
+                        "top": "calc(var(--badge--padding-top) * var(--size-multiplier-sm))",
+                        "right": "calc(var(--badge--padding-right) * var(--size-multiplier-sm))",
+                        "bottom": "calc(var(--badge--padding-bottom) * var(--size-multiplier-sm))",
+                        "left": "calc(var(--badge--padding-left) * var(--size-multiplier-sm))"
                     },
                     "borderRadius": {
                         "topLeft": "calc(var(--badge--border-top-left-radius) * var(--size-multiplier-sm))",
@@ -2032,10 +2032,10 @@
                 "md": {
                     "fontSize": "80%",
                     "padding": {
-                        "top": "calc(var(--badge--padding-top) * var(--size-multiplier-md) * 0.25)",
-                        "right": "calc(var(--badge--padding-right) * var(--size-multiplier-md) * 0.5)",
-                        "bottom": "calc(var(--badge--padding-bottom) * var(--size-multiplier-md) * 0.25)",
-                        "left": "calc(var(--badge--padding-left) * var(--size-multiplier-md) * 0.5)"
+                        "top": "calc(var(--badge--padding-top) * var(--size-multiplier-md))",
+                        "right": "calc(var(--badge--padding-right) * var(--size-multiplier-md))",
+                        "bottom": "calc(var(--badge--padding-bottom) * var(--size-multiplier-md))",
+                        "left": "calc(var(--badge--padding-left) * var(--size-multiplier-md))"
                     },
                     "borderRadius": {
                         "topLeft": "calc(var(--badge--border-top-left-radius) * var(--size-multiplier-md))",
@@ -2047,10 +2047,10 @@
                 "lg": {
                     "fontSize": "85%",
                     "padding": {
-                        "top": "calc(var(--badge--padding-top) * var(--size-multiplier-lg) * 0.25)",
-                        "right": "calc(var(--badge--padding-right) * var(--size-multiplier-lg) * 0.5)",
-                        "bottom": "calc(var(--badge--padding-bottom) * var(--size-multiplier-lg) * 0.25)",
-                        "left": "calc(var(--badge--padding-left) * var(--size-multiplier-lg) * 0.5)"
+                        "top": "calc(var(--badge--padding-top) * var(--size-multiplier-lg))",
+                        "right": "calc(var(--badge--padding-right) * var(--size-multiplier-lg))",
+                        "bottom": "calc(var(--badge--padding-bottom) * var(--size-multiplier-lg))",
+                        "left": "calc(var(--badge--padding-left) * var(--size-multiplier-lg))"
                     },
                     "borderRadius": {
                         "topLeft": "calc(var(--badge--border-top-left-radius) * var(--size-multiplier-lg))",
@@ -3643,8 +3643,8 @@
                     "fontSize": "calc(var(--checkbox--font-size) * var(--size-multiplier-sm))",
                     "margin": {
                         "top": 0,
-                        "right": "calc(var(--checkbox--margin-right) * var(--size-multiplier-sm) / 2)",
-                        "bottom": "calc(var(--checkbox--margin-bottom) * var(--size-multiplier-sm) / 2)",
+                        "right": "calc(var(--checkbox--margin-right) * var(--size-multiplier-sm))",
+                        "bottom": "calc(var(--checkbox--margin-bottom) * var(--size-multiplier-sm))",
                         "left": 0
                     },
                     "width": "calc(1rem * var(--size-multiplier-sm))",
@@ -3666,8 +3666,8 @@
                     "fontSize": "calc(var(--checkbox--font-size) * var(--size-multiplier-md))",
                     "margin": {
                         "top": 0,
-                        "right": "calc(var(--checkbox--margin-right) * var(--size-multiplier-md) / 2)",
-                        "bottom": "calc(var(--checkbox--margin-bottom) * var(--size-multiplier-md) / 2)",
+                        "right": "calc(var(--checkbox--margin-right) * var(--size-multiplier-md))",
+                        "bottom": "calc(var(--checkbox--margin-bottom) * var(--size-multiplier-md))",
                         "left": 0
                     },
                     "width": "calc(1rem * var(--size-multiplier-md))",
@@ -3689,8 +3689,8 @@
                     "fontSize": "calc(var(--checkbox--font-size) * var(--size-multiplier-lg))",
                     "margin": {
                         "top": 0,
-                        "right": "calc(var(--checkbox--margin-right) * var(--size-multiplier-lg) / 2)",
-                        "bottom": "calc(var(--checkbox--margin-bottom) * var(--size-multiplier-lg) / 2)",
+                        "right": "calc(var(--checkbox--margin-right) * var(--size-multiplier-lg))",
+                        "bottom": "calc(var(--checkbox--margin-bottom) * var(--size-multiplier-lg))",
                         "left": 0
                     },
                     "width": "calc(1rem * var(--size-multiplier-lg))",
@@ -3858,47 +3858,47 @@
                 },
                 "sm": {
                     "borderRadius": {
-                        "topLeft": "calc(var(--checkable--border-top-left-radius) * var(--size-multiplier-sm))",
-                        "topRight": "calc(var(--checkable--border-top-right-radius) * var(--size-multiplier-sm))",
-                        "bottomRight": "calc(var(--checkable--border-bottom-right-radius) * var(--size-multiplier-sm))",
-                        "bottomLeft": "calc(var(--checkable--border-bottom-left-radius) * var(--size-multiplier-sm))"
+                        "topLeft": "calc(var(--checkable-button-group--border-top-left-radius) * var(--size-multiplier-sm))",
+                        "topRight": "calc(var(--checkable-button-group--border-top-right-radius) * var(--size-multiplier-sm))",
+                        "bottomRight": "calc(var(--checkable-button-group--border-bottom-right-radius) * var(--size-multiplier-sm))",
+                        "bottomLeft": "calc(var(--checkable-button-group--border-bottom-left-radius) * var(--size-multiplier-sm))"
                     },
-                    "gap": "calc(var(--checkable--margin-right) * var(--size-multiplier-sm) * 0.5)",
+                    "gap": "calc(var(--checkable-button-group--margin-right) * var(--size-multiplier-sm))",
                     "padding": {
-                        "top": "calc(var(--checkable--padding-top) * var(--size-multiplier-sm) * 0.5)",
-                        "right": "calc(var(--checkable--padding-right) * var(--size-multiplier-sm) * 0.5)",
-                        "bottom": "calc(var(--checkable--padding-bottom) * var(--size-multiplier-sm) * 0.5)",
-                        "left": "calc(var(--checkable--padding-left) * var(--size-multiplier-sm) * 0.5)"
+                        "top": "calc(var(--checkable-button-group--padding-top) * var(--size-multiplier-sm))",
+                        "right": "calc(var(--checkable-button-group--padding-right) * var(--size-multiplier-sm))",
+                        "bottom": "calc(var(--checkable-button-group--padding-bottom) * var(--size-multiplier-sm))",
+                        "left": "calc(var(--checkable-button-group--padding-left) * var(--size-multiplier-sm))"
                     }
                 },
                 "md": {
                     "borderRadius": {
-                        "topLeft": "calc(var(--checkable--border-top-left-radius) * var(--size-multiplier-md))",
-                        "topRight": "calc(var(--checkable--border-top-right-radius) * var(--size-multiplier-md))",
-                        "bottomRight": "calc(var(--checkable--border-bottom-right-radius) * var(--size-multiplier-md))",
-                        "bottomLeft": "calc(var(--checkable--border-bottom-left-radius) * var(--size-multiplier-md))"
+                        "topLeft": "calc(var(--checkable-button-group--border-top-left-radius) * var(--size-multiplier-md))",
+                        "topRight": "calc(var(--checkable-button-group--border-top-right-radius) * var(--size-multiplier-md))",
+                        "bottomRight": "calc(var(--checkable-button-group--border-bottom-right-radius) * var(--size-multiplier-md))",
+                        "bottomLeft": "calc(var(--checkable-button-group--border-bottom-left-radius) * var(--size-multiplier-md))"
                     },
-                    "gap": "calc(var(--checkable--margin-right) * var(--size-multiplier-md) * 0.5)",
+                    "gap": "calc(var(--checkable-button-group--margin-right) * var(--size-multiplier-md))",
                     "padding": {
-                        "top": "calc(var(--checkable--padding-top) * var(--size-multiplier-md) * 0.5)",
-                        "right": "calc(var(--checkable--padding-right) * var(--size-multiplier-md) * 0.5)",
-                        "bottom": "calc(var(--checkable--padding-bottom) * var(--size-multiplier-md) * 0.5)",
-                        "left": "calc(var(--checkable--padding-left) * var(--size-multiplier-md) * 0.5)"
+                        "top": "calc(var(--checkable-button-group--padding-top) * var(--size-multiplier-md))",
+                        "right": "calc(var(--checkable-button-group--padding-right) * var(--size-multiplier-md))",
+                        "bottom": "calc(var(--checkable-button-group--padding-bottom) * var(--size-multiplier-md))",
+                        "left": "calc(var(--checkable-button-group--padding-left) * var(--size-multiplier-md))"
                     }
                 },
                 "lg": {
                     "borderRadius": {
-                        "topLeft": "calc(var(--checkable--border-top-left-radius) * var(--size-multiplier-lg))",
-                        "topRight": "calc(var(--checkable--border-top-right-radius) * var(--size-multiplier-lg))",
-                        "bottomRight": "calc(var(--checkable--border-bottom-right-radius) * var(--size-multiplier-lg))",
-                        "bottomLeft": "calc(var(--checkable--border-bottom-left-radius) * var(--size-multiplier-lg))"
+                        "topLeft": "calc(var(--checkable-button-group--border-top-left-radius) * var(--size-multiplier-lg))",
+                        "topRight": "calc(var(--checkable-button-group--border-top-right-radius) * var(--size-multiplier-lg))",
+                        "bottomRight": "calc(var(--checkable-button-group--border-bottom-right-radius) * var(--size-multiplier-lg))",
+                        "bottomLeft": "calc(var(--checkable-button-group--border-bottom-left-radius) * var(--size-multiplier-lg))"
                     },
-                    "gap": "calc(var(--checkable--margin-right) * var(--size-multiplier-lg) * 0.5)",
+                    "gap": "calc(var(--checkable-button-group--margin-right) * var(--size-multiplier-lg))",
                     "padding": {
-                        "top": "calc(var(--checkable--padding-top) * var(--size-multiplier-lg) * 0.5)",
-                        "right": "calc(var(--checkable--padding-right) * var(--size-multiplier-lg) * 0.5)",
-                        "bottom": "calc(var(--checkable--padding-bottom) * var(--size-multiplier-lg) * 0.5)",
-                        "left": "calc(var(--checkable--padding-left) * var(--size-multiplier-lg) * 0.5)"
+                        "top": "calc(var(--checkable-button-group--padding-top) * var(--size-multiplier-lg))",
+                        "right": "calc(var(--checkable-button-group--padding-right) * var(--size-multiplier-lg))",
+                        "bottom": "calc(var(--checkable-button-group--padding-bottom) * var(--size-multiplier-lg))",
+                        "left": "calc(var(--checkable-button-group--padding-left) * var(--size-multiplier-lg))"
                     }
                 }
             },
@@ -4215,9 +4215,9 @@
                         "__type": "child-element",
                         "__name": "divider",
                         "margin": {
-                            "top": "var(--margin-top-1-2)",
+                            "top": "calc(var(--margin-top) * 1 / 2)",
                             "right": "calc(var(--padding-right) * -1)",
-                            "bottom": "var(--margin-bottom-1-2)",
+                            "bottom": "calc(var(--margin-bottom) * 1 / 2)",
                             "left": "calc(var(--padding-left) * -1)"
                         },
                         "background": {
@@ -4518,45 +4518,39 @@
                 "sm": {
                     "fontSize": "calc(var(--dropdown-item--font-size) * var(--size-multiplier-sm))",
                     "margin": {
-                        "top": "var(--margin-top)",
-                        "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-sm) * -1)",
-                        "bottom": "var(--margin-bottom)",
-                        "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-sm) * -1)"
+                        "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-sm))",
+                        "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-sm))"
                     },
                     "padding": {
-                        "top": "calc(var(--dropdown-item--padding-top) * var(--size-multiplier-sm) * 0.5)",
+                        "top": "calc(var(--dropdown-item--padding-top) * var(--size-multiplier-sm))",
                         "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-sm))",
-                        "bottom": "calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-sm) * 0.5)",
+                        "bottom": "calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-sm))",
                         "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-sm))"
                     }
                 },
                 "md": {
                     "fontSize": "calc(var(--dropdown-item--font-size) * var(--size-multiplier-md))",
                     "margin": {
-                        "top": "var(--margin-top)",
-                        "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-md) * -1)",
-                        "bottom": "var(--margin-bottom)",
-                        "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-md) * -1)"
+                        "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-md))",
+                        "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-md))"
                     },
                     "padding": {
-                        "top": "calc(var(--dropdown-item--padding-top) * var(--size-multiplier-md) * 0.5)",
+                        "top": "calc(var(--dropdown-item--padding-top) * var(--size-multiplier-md))",
                         "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-md))",
-                        "bottom": "calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-md) * 0.5)",
+                        "bottom": "calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-md))",
                         "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-md))"
                     }
                 },
                 "lg": {
                     "fontSize": "calc(var(--dropdown-item--font-size) * var(--size-multiplier-lg))",
                     "margin": {
-                        "top": "var(--margin-top)",
-                        "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-lg) * -1)",
-                        "bottom": "var(--margin-bottom)",
-                        "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-lg) * -1)"
+                        "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-lg))",
+                        "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-lg))"
                     },
                     "padding": {
-                        "top": "calc(var(--dropdown-item--padding-top) * var(--size-multiplier-lg) * 0.5)",
+                        "top": "calc(var(--dropdown-item--padding-top) * var(--size-multiplier-lg))",
                         "right": "calc(var(--dropdown-item--padding-right) * var(--size-multiplier-lg))",
-                        "bottom": "calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-lg) * 0.5)",
+                        "bottom": "calc(var(--dropdown-item--padding-bottom) * var(--size-multiplier-lg))",
                         "left": "calc(var(--dropdown-item--padding-left) * var(--size-multiplier-lg))"
                     }
                 }
@@ -4637,9 +4631,7 @@
                         "__type": "child-element",
                         "__name": "inline",
                         "margin": {
-                            "top": "var(--margin-top)",
                             "right": "var(--margin-right)",
-                            "bottom": "var(--margin-bottom)",
                             "left": "var(--margin-left)"
                         }
                     },
@@ -4685,6 +4677,8 @@
                         "__name": "hover",
                         "opacity": 1
                     },
+                    "width": "var(--hamburger-menu--bar--width)",
+                    "height": "calc(var(--hamburger-menu--bar--height) * 3 + var(--hamburger-menu--bar--spacing) * 2)",
                     "bar": {
                         "__type": "child-element",
                         "__name": "bar",
@@ -4950,9 +4944,9 @@
                         "timingFunction": "var(--transition-timing-function)"
                     },
                     "padding": {
-                        "top": "var(--padding-top-3-4)",
+                        "top": "calc(var(--padding-top) * 3 / 4)",
                         "right": "var(--padding-right)",
-                        "bottom": "var(--padding-bottom-3-4)",
+                        "bottom": "calc(var(--padding-bottom) * 3 / 4)",
                         "left": "var(--padding-left)"
                     },
                     "placeholder": {
@@ -5205,9 +5199,9 @@
                     },
                     "fontSize": "calc(var(--input--font-size) * var(--size-multiplier-sm))",
                     "padding": {
-                        "top": "calc(var(--input--padding-top) * var(--size-multiplier-sm) * 3 / 4)",
+                        "top": "calc(var(--input--padding-top) * var(--size-multiplier-sm))",
                         "right": "calc(var(--input--padding-right) * var(--size-multiplier-sm))",
-                        "bottom": "calc(var(--input--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)",
+                        "bottom": "calc(var(--input--padding-bottom) * var(--size-multiplier-sm))",
                         "left": "calc(var(--input--padding-left) * var(--size-multiplier-sm))"
                     },
                     "icon": {
@@ -5225,9 +5219,9 @@
                     },
                     "fontSize": "calc(var(--input--font-size) * var(--size-multiplier-md))",
                     "padding": {
-                        "top": "calc(var(--input--padding-top) * var(--size-multiplier-md) * 3 / 4)",
+                        "top": "calc(var(--input--padding-top) * var(--size-multiplier-md))",
                         "right": "calc(var(--input--padding-right) * var(--size-multiplier-md))",
-                        "bottom": "calc(var(--input--padding-bottom) * var(--size-multiplier-md) * 3 / 4)",
+                        "bottom": "calc(var(--input--padding-bottom) * var(--size-multiplier-md))",
                         "left": "calc(var(--input--padding-left) * var(--size-multiplier-md))"
                     },
                     "icon": {
@@ -5245,9 +5239,9 @@
                     },
                     "fontSize": "calc(var(--input--font-size) * var(--size-multiplier-lg))",
                     "padding": {
-                        "top": "calc(var(--input--padding-top) * var(--size-multiplier-lg) * 3 / 4)",
+                        "top": "calc(var(--input--padding-top) * var(--size-multiplier-lg))",
                         "right": "calc(var(--input--padding-right) * var(--size-multiplier-lg))",
-                        "bottom": "calc(var(--input--padding-bottom) * var(--size-multiplier-lg) * 3 / 4)",
+                        "bottom": "calc(var(--input--padding-bottom) * var(--size-multiplier-lg))",
                         "left": "calc(var(--input--padding-left) * var(--size-multiplier-lg))"
                     },
                     "icon": {
@@ -6454,16 +6448,25 @@
                                 "l": "var(--color-light-shade-50-l)",
                                 "a": "var(--color-light-shade-50-a)"
                             }
+                        },
+                        "padding": {
+                            "top": "calc(var(--padding-top) * 0.5)",
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--padding-bottom) * 0.5)",
+                            "left": "var(--padding-left)"
                         }
                     },
                     "brand": {
                         "__type": "child-element",
                         "__name": "brand",
                         "margin": {
-                            "top": "var(--margin-top)",
-                            "right": "var(--margin-right)",
-                            "bottom": "var(--margin-bottom)",
-                            "left": "var(--margin-left)"
+                            "right": "var(--margin-right)"
+                        },
+                        "padding": {
+                            "top": "calc(var(--padding-top) * 0.5)",
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--padding-bottom) * 0.5)",
+                            "left": "var(--padding-left)"
                         }
                     },
                     "collapsible": {
@@ -6477,10 +6480,7 @@
                         "__type": "child-element",
                         "__name": "collapsed",
                         "margin": {
-                            "top": "var(--margin-top)",
-                            "right": "var(--margin-right)",
-                            "bottom": "var(--margin-bottom)",
-                            "left": "var(--margin-left)"
+                            "top": "var(--margin-top)"
                         }
                     }
                 },
@@ -6738,20 +6738,20 @@
                         "__type": "child-element",
                         "__name": "brand",
                         "padding": {
-                            "top": "calc(var(--navbar--padding-top) * var(--size-multiplier-sm) * 0.5)",
-                            "right": "calc(var(--navbar--padding-right) * var(--size-multiplier-sm))",
-                            "bottom": "calc(var(--navbar--padding-bottom) * var(--size-multiplier-sm) * 0.5)",
-                            "left": "calc(var(--navbar--padding-left) * var(--size-multiplier-sm))"
+                            "top": "calc(var(--navbar--brand--padding-top) * var(--size-multiplier-sm))",
+                            "right": "calc(var(--navbar--brand--padding-right) * var(--size-multiplier-sm))",
+                            "bottom": "calc(var(--navbar--brand--padding-bottom) * var(--size-multiplier-sm))",
+                            "left": "calc(var(--navbar--brand--padding-left) * var(--size-multiplier-sm))"
                         }
                     },
                     "item": {
                         "__type": "child-element",
                         "__name": "item",
                         "padding": {
-                            "top": "calc(var(--navbar--padding-top) * var(--size-multiplier-sm) * 0.5)",
-                            "right": "calc(var(--navbar--padding-right) * var(--size-multiplier-sm))",
-                            "bottom": "calc(var(--navbar--padding-bottom) * var(--size-multiplier-sm) * 0.5)",
-                            "left": "calc(var(--navbar--padding-left) * var(--size-multiplier-sm))"
+                            "top": "calc(var(--navbar--item--padding-top) * var(--size-multiplier-sm))",
+                            "right": "calc(var(--navbar--item--padding-right) * var(--size-multiplier-sm))",
+                            "bottom": "calc(var(--navbar--item--padding-bottom) * var(--size-multiplier-sm))",
+                            "left": "calc(var(--navbar--item--padding-left) * var(--size-multiplier-sm))"
                         }
                     }
                 },
@@ -6773,20 +6773,20 @@
                         "__type": "child-element",
                         "__name": "brand",
                         "padding": {
-                            "top": "calc(var(--navbar--padding-top) * var(--size-multiplier-md) * 0.5)",
-                            "right": "calc(var(--navbar--padding-right) * var(--size-multiplier-md))",
-                            "bottom": "calc(var(--navbar--padding-bottom) * var(--size-multiplier-md) * 0.5)",
-                            "left": "calc(var(--navbar--padding-left) * var(--size-multiplier-md))"
+                            "top": "calc(var(--navbar--brand--padding-top) * var(--size-multiplier-md))",
+                            "right": "calc(var(--navbar--brand--padding-right) * var(--size-multiplier-md))",
+                            "bottom": "calc(var(--navbar--brand--padding-bottom) * var(--size-multiplier-md))",
+                            "left": "calc(var(--navbar--brand--padding-left) * var(--size-multiplier-md))"
                         }
                     },
                     "item": {
                         "__type": "child-element",
                         "__name": "item",
                         "padding": {
-                            "top": "calc(var(--navbar--padding-top) * var(--size-multiplier-md) * 0.5)",
-                            "right": "calc(var(--navbar--padding-right) * var(--size-multiplier-md))",
-                            "bottom": "calc(var(--navbar--padding-bottom) * var(--size-multiplier-md) * 0.5)",
-                            "left": "calc(var(--navbar--padding-left) * var(--size-multiplier-md))"
+                            "top": "calc(var(--navbar--item--padding-top) * var(--size-multiplier-md))",
+                            "right": "calc(var(--navbar--item--padding-right) * var(--size-multiplier-md))",
+                            "bottom": "calc(var(--navbar--item--padding-bottom) * var(--size-multiplier-md))",
+                            "left": "calc(var(--navbar--item--padding-left) * var(--size-multiplier-md))"
                         }
                     }
                 },
@@ -6808,20 +6808,20 @@
                         "__type": "child-element",
                         "__name": "brand",
                         "padding": {
-                            "top": "calc(var(--navbar--padding-top) * var(--size-multiplier-lg) * 0.5)",
-                            "right": "calc(var(--navbar--padding-right) * var(--size-multiplier-lg))",
-                            "bottom": "calc(var(--navbar--padding-bottom) * var(--size-multiplier-lg) * 0.5)",
-                            "left": "calc(var(--navbar--padding-left) * var(--size-multiplier-lg))"
+                            "top": "calc(var(--navbar--brand--padding-top) * var(--size-multiplier-lg))",
+                            "right": "calc(var(--navbar--brand--padding-right) * var(--size-multiplier-lg))",
+                            "bottom": "calc(var(--navbar--brand--padding-bottom) * var(--size-multiplier-lg))",
+                            "left": "calc(var(--navbar--brand--padding-left) * var(--size-multiplier-lg))"
                         }
                     },
                     "item": {
                         "__type": "child-element",
                         "__name": "item",
                         "padding": {
-                            "top": "calc(var(--navbar--padding-top) * var(--size-multiplier-lg) * 0.5)",
-                            "right": "calc(var(--navbar--padding-right) * var(--size-multiplier-lg))",
-                            "bottom": "calc(var(--navbar--padding-bottom) * var(--size-multiplier-lg) * 0.5)",
-                            "left": "calc(var(--navbar--padding-left) * var(--size-multiplier-lg))"
+                            "top": "calc(var(--navbar--item--padding-top) * var(--size-multiplier-lg))",
+                            "right": "calc(var(--navbar--item--padding-right) * var(--size-multiplier-lg))",
+                            "bottom": "calc(var(--navbar--item--padding-bottom) * var(--size-multiplier-lg))",
+                            "left": "calc(var(--navbar--item--padding-left) * var(--size-multiplier-lg))"
                         }
                     }
                 }
@@ -6843,10 +6843,10 @@
                         "timingFunction": "var(--transition-timing-function)"
                     },
                     "margin": {
-                        "top": "var(--margin-top-1-4)",
-                        "right": "var(--margin-right-1-4)",
-                        "bottom": "var(--margin-bottom-1-4)",
-                        "left": "var(--margin-left-1-4)"
+                        "top": "calc(var(--margin-top) * 0.25)",
+                        "right": "calc(var(--margin-right) * 0.25)",
+                        "bottom": "calc(var(--margin-bottom) * 0.25)",
+                        "left": "calc(var(--margin-left) * 0.25)"
                     },
                     "item": {
                         "__type": "child-element",
@@ -7430,7 +7430,7 @@
                         "bottomRight": "calc(var(--progress--border-bottom-right-radius) * var(--size-multiplier-sm))",
                         "bottomLeft": "calc(var(--progress--border-bottom-left-radius) * var(--size-multiplier-sm))"
                     },
-                    "height": "calc(var(--progress-height) * var(--size-multiplier-sm))"
+                    "height": "calc(var(--progress--height) * var(--size-multiplier-sm))"
                 },
                 "md": {
                     "borderRadius": {
@@ -7439,7 +7439,7 @@
                         "bottomRight": "calc(var(--progress--border-bottom-right-radius) * var(--size-multiplier-md))",
                         "bottomLeft": "calc(var(--progress--border-bottom-left-radius) * var(--size-multiplier-md))"
                     },
-                    "height": "calc(var(--progress-height) * var(--size-multiplier-md))"
+                    "height": "calc(var(--progress--height) * var(--size-multiplier-md))"
                 },
                 "lg": {
                     "borderRadius": {
@@ -7448,7 +7448,7 @@
                         "bottomRight": "calc(var(--progress--border-bottom-right-radius) * var(--size-multiplier-lg))",
                         "bottomLeft": "calc(var(--progress--border-bottom-left-radius) * var(--size-multiplier-lg))"
                     },
-                    "height": "calc(var(--progress-height) * var(--size-multiplier-lg))"
+                    "height": "calc(var(--progress--height) * var(--size-multiplier-lg))"
                 }
             },
             "progressBar": {
@@ -7889,10 +7889,8 @@
                     },
                     "fontSize": "calc(var(--radio--font-size) * var(--size-multiplier-sm))",
                     "margin": {
-                        "top": "var(--margin-top)",
-                        "right": "calc(var(--radio--margin-right) * var(--size-multiplier-sm) / 2)",
-                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-sm) / 2)",
-                        "left": "var(--margin-left)"
+                        "right": "calc(var(--radio--margin-right) * var(--size-multiplier-sm))",
+                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-sm))"
                     },
                     "width": "calc(var(--radio--width) * var(--size-multiplier-sm))",
                     "height": "calc(var(--radio--height) * var(--size-multiplier-sm))",
@@ -7912,10 +7910,8 @@
                     },
                     "fontSize": "calc(var(--radio--font-size) * var(--size-multiplier-md))",
                     "margin": {
-                        "top": "var(--margin-top)",
-                        "right": "calc(var(--radio--margin-right) * var(--size-multiplier-md) / 2)",
-                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-md) / 2)",
-                        "left": "var(--margin-left)"
+                        "right": "calc(var(--radio--margin-right) * var(--size-multiplier-md))",
+                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-md))"
                     },
                     "width": "calc(var(--radio--width) * var(--size-multiplier-md))",
                     "height": "calc(var(--radio--height) * var(--size-multiplier-md))",
@@ -7935,10 +7931,8 @@
                     },
                     "fontSize": "calc(var(--radio--font-size) * var(--size-multiplier-lg))",
                     "margin": {
-                        "top": "var(--margin-top)",
-                        "right": "calc(var(--radio--margin-right) * var(--size-multiplier-lg) / 2)",
-                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-lg) / 2)",
-                        "left": "var(--margin-left)"
+                        "right": "calc(var(--radio--margin-right) * var(--size-multiplier-lg))",
+                        "bottom": "calc(var(--radio--margin-bottom) * var(--size-multiplier-lg))"
                     },
                     "width": "calc(var(--radio--width) * var(--size-multiplier-lg))",
                     "height": "calc(var(--radio--height) * var(--size-multiplier-lg))",
@@ -8009,9 +8003,9 @@
                         "timingFunction": "var(--transition-timing-function)"
                     },
                     "padding": {
-                        "top": "var(--padding-top)",
+                        "top": "calc(var(--padding-top) * 3 / 4)",
                         "right": "var(--padding-right)",
-                        "bottom": "var(--padding-bottom)",
+                        "bottom": "calc(var(--padding-bottom) * 3 / 4)",
                         "left": "var(--padding-left)"
                     },
                     "minWidth": "240px",
@@ -8070,9 +8064,7 @@
                         "__type": "child-element",
                         "__name": "body",
                         "padding": {
-                            "top": "var(--padding-top)",
                             "right": 0,
-                            "bottom": "var(--padding-bottom)",
                             "left": 0
                         }
                     },
@@ -8100,7 +8092,13 @@
                     },
                     "option": {
                         "__type": "child-element",
-                        "__name": "option"
+                        "__name": "option",
+                        "padding": {
+                            "top": "calc(var(--padding-top) * 1 / 2)",
+                            "right": "var(--padding-right)",
+                            "bottom": "calc(var(--padding-bottom) * 1 / 2)",
+                            "left": "var(--padding-left)"
+                        }
                     }
                 },
                 "light": {
@@ -8276,9 +8274,9 @@
                     },
                     "fontSize": "calc(var(--select--font-size) * var(--size-multiplier-sm))",
                     "padding": {
-                        "top": "calc(var(--select--padding-top) * var(--size-multiplier-sm) * 3 / 4)",
+                        "top": "calc(var(--select--padding-top) * var(--size-multiplier-sm))",
                         "right": "calc(var(--select--padding-right) * var(--size-multiplier-sm))",
-                        "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)",
+                        "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm))",
                         "left": "calc(var(--select--padding-left) * var(--size-multiplier-sm))"
                     },
                     "caret": {
@@ -8290,30 +8288,26 @@
                         "__type": "child-element",
                         "__name": "header",
                         "padding": {
-                            "top": "calc(var(--select--padding-top) * var(--size-multiplier-sm) * 3 / 4)",
-                            "right": "var(--padding-right)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)",
-                            "left": "var(--padding-left)"
+                            "top": "calc(var(--select--padding-top) * var(--size-multiplier-sm))",
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm))"
                         }
                     },
                     "option": {
                         "__type": "child-element",
                         "__name": "option",
                         "padding": {
-                            "top": "calc(var(--select--padding-top) * var(--size-multiplier-sm) * 0.5)",
-                            "right": "var(--padding-right)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 0.5)",
-                            "left": "var(--padding-left)"
+                            "top": "calc(var(--select--option--padding-top) * var(--size-multiplier-sm))",
+                            "right": "calc(var(--select--option--padding-right) * var(--size-multiplier-sm))",
+                            "bottom": "calc(var(--select--option--padding-bottom) * var(--size-multiplier-sm))",
+                            "left": "calc(var(--select--option--padding-left) * var(--size-multiplier-sm))"
                         }
                     },
                     "footer": {
                         "__type": "child-element",
                         "__name": "footer",
                         "padding": {
-                            "top": "calc(var(--select--padding-top) * var(--size-multiplier-sm) * 3 / 4)",
-                            "right": "var(--padding-right)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)",
-                            "left": "var(--padding-left)"
+                            "top": "calc(var(--select--padding-top) * var(--size-multiplier-sm))",
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-sm))"
                         }
                     }
                 },
@@ -8341,19 +8335,17 @@
                         "__name": "header",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-md))",
-                            "right": "var(--padding-right)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-md))",
-                            "left": "var(--padding-left)"
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-md))"
                         }
                     },
                     "option": {
                         "__type": "child-element",
                         "__name": "option",
                         "padding": {
-                            "top": "calc(var(--select--padding-top) * var(--size-multiplier-md) * 0.5)",
-                            "right": "var(--padding-right)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-md) * 0.5)",
-                            "left": "var(--padding-left)"
+                            "top": "calc(var(--select--option--padding-top) * var(--size-multiplier-md))",
+                            "right": "calc(var(--select--padding-right) * var(--size-multiplier-md))",
+                            "bottom": "calc(var(--select--option--padding-bottom) * var(--size-multiplier-md))",
+                            "left": "calc(var(--select--padding-left) * var(--size-multiplier-md))"
                         }
                     },
                     "footer": {
@@ -8361,9 +8353,7 @@
                         "__name": "footer",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-md))",
-                            "right": "var(--padding-right)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-md))",
-                            "left": "var(--padding-left)"
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-md))"
                         }
                     }
                 },
@@ -8391,19 +8381,17 @@
                         "__name": "header",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-lg))",
-                            "right": "var(--padding-right)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-lg))",
-                            "left": "var(--padding-left)"
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-lg))"
                         }
                     },
                     "option": {
                         "__type": "child-element",
                         "__name": "option",
                         "padding": {
-                            "top": "calc(var(--select--padding-top) * var(--size-multiplier-lg) * 0.5)",
-                            "right": "var(--padding-right)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-lg) * 0.5)",
-                            "left": "var(--padding-left)"
+                            "top": "calc(var(--select--option--padding-top) * var(--size-multiplier-lg))",
+                            "right": "calc(var(--select--option--padding-right) * var(--size-multiplier-lg))",
+                            "bottom": "calc(var(--select--option--padding-bottom) * var(--size-multiplier-lg))",
+                            "left": "calc(var(--select--option--padding-left) * var(--size-multiplier-lg))"
                         }
                     },
                     "footer": {
@@ -8411,9 +8399,7 @@
                         "__name": "footer",
                         "padding": {
                             "top": "calc(var(--select--padding-top) * var(--size-multiplier-lg))",
-                            "right": "var(--padding-right)",
-                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-lg))",
-                            "left": "var(--padding-left)"
+                            "bottom": "calc(var(--select--padding-bottom) * var(--size-multiplier-lg))"
                         }
                     }
                 }
@@ -8813,24 +8799,6 @@
                             "left": {}
                         }
                     },
-                    "bordered": {
-                        "__type": "child-element",
-                        "__name": "bordered",
-                        "border": {
-                            "top": {
-                                "width": "var(--border-top-width)"
-                            },
-                            "right": {
-                                "width": "var(--border-right-width)"
-                            },
-                            "bottom": {
-                                "width": "var(--border-bottom-width)"
-                            },
-                            "left": {
-                                "width": "var(--border-left-width)"
-                            }
-                        }
-                    },
                     "striped": {
                         "__type": "child-element",
                         "__name": "striped",
@@ -8860,16 +8828,16 @@
                 "bordered": {
                     "border": {
                         "top": {
-                            "width": "var(--table--border-top-width)"
+                            "width": "var(--border-top-width)"
                         },
                         "right": {
-                            "width": "var(--table--border-right-width)"
+                            "width": "var(--border-right-width)"
                         },
                         "bottom": {
-                            "width": "var(--table--border-bottom-width)"
+                            "width": "var(--border-bottom-width)"
                         },
                         "left": {
-                            "width": "var(--table--border-left-width)"
+                            "width": "var(--border-left-width)"
                         }
                     }
                 },
@@ -9439,6 +9407,20 @@
                             "l": "var(--color-white-l)",
                             "a": "var(--color-white-a)"
                         },
+                        "border": {
+                            "top": {
+                                "color": "var(--color-light-shade-50)"
+                            },
+                            "right": {
+                                "color": "var(--color-light-shade-50)"
+                            },
+                            "bottom": {
+                                "color": "var(--color-light-shade-50)"
+                            },
+                            "left": {
+                                "color": "var(--color-light-shade-50)"
+                            }
+                        },
                         "focus": {
                             "__type": "child-element",
                             "__name": "focus",
@@ -9506,6 +9488,20 @@
                             "s": "var(--color-dark-s)",
                             "l": "var(--color-dark-l)",
                             "a": "var(--color-dark-a)"
+                        },
+                        "border": {
+                            "top": {
+                                "color": "var(--color-dark-tint-50)"
+                            },
+                            "right": {
+                                "color": "var(--color-dark-tint-50)"
+                            },
+                            "bottom": {
+                                "color": "var(--color-dark-tint-50)"
+                            },
+                            "left": {
+                                "color": "var(--color-dark-tint-50)"
+                            }
                         },
                         "hover": {
                             "__type": "child-element",
@@ -9992,10 +9988,7 @@
                         "__type": "child-element",
                         "__name": "toast",
                         "margin": {
-                            "top": "var(--margin-top)",
-                            "right": "var(--margin-right)",
-                            "bottom": "var(--margin-bottom)",
-                            "left": "var(--margin-left)"
+                            "bottom": "var(--margin-bottom)"
                         },
                         "transition": {
                             "property": "transform, opacity",
@@ -10752,9 +10745,6 @@
                                 }
                             },
                             "padding": {
-                                "top": "var(--padding-top)",
-                                "right": "var(--padding-right)",
-                                "bottom": "var(--padding-bottom)",
                                 "left": "var(--padding-left)"
                             }
                         },
@@ -10770,10 +10760,7 @@
                                 "left": {}
                             },
                             "padding": {
-                                "top": "var(--padding-top)",
-                                "right": "var(--padding-right)",
-                                "bottom": "var(--padding-bottom)",
-                                "left": "var(--padding-left)"
+                                "right": "var(--padding-right)"
                             }
                         }
                     },

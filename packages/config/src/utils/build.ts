@@ -16,7 +16,7 @@ import {
     ResolvedBuildOptions
 } from '../types';
 import { existsSync } from 'fs';
-import { traversePathByClassification } from './meta';
+import { filterPathByClassification } from './meta';
 
 export function getResolvedBuildOptions(options: BuildOptions): ResolvedBuildOptions {
     const resolvedOptions: ResolvedBuildOptions = {
@@ -50,7 +50,7 @@ export function getResolvedBuildOptions(options: BuildOptions): ResolvedBuildOpt
 export const chunkToFilePathAllowlist = ['generic', 'mixins', 'layers', 'columns'];
 
 export function convertChunkPathToFilePath(meta: GeneratorMeta): BuildChunk['path'] {
-    return traversePathByClassification(meta, (path, part, ctx) => {
+    return filterPathByClassification(meta, (path, part, ctx) => {
         return (
             [
                 ClassificationType.Group,

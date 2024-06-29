@@ -47,9 +47,9 @@ export const input = defineComponent(
             timingFunction: 'var(--transition-timing-function)'
         },
         padding: {
-            top: 'var(--padding-top-3-4)',
+            top: 'calc(var(--padding-top) * 3 / 4)',
             right: 'var(--padding-right)',
-            bottom: 'var(--padding-bottom-3-4)',
+            bottom: 'calc(var(--padding-bottom) * 3 / 4)',
             left: 'var(--padding-left)'
         },
         placeholder: {
@@ -134,9 +134,9 @@ export const input = defineComponent(
             },
             fontSize: 'calc(var(--input--font-size) * var(--size-multiplier-sm))',
             padding: {
-                top: 'calc(var(--input--padding-top) * var(--size-multiplier-sm) * 3 / 4)',
+                top: 'calc(var(--input--padding-top) * var(--size-multiplier-sm))',
                 right: 'calc(var(--input--padding-right) * var(--size-multiplier-sm))',
-                bottom: 'calc(var(--input--padding-bottom) * var(--size-multiplier-sm) * 3 / 4)',
+                bottom: 'calc(var(--input--padding-bottom) * var(--size-multiplier-sm))',
                 left: 'calc(var(--input--padding-left) * var(--size-multiplier-sm))'
             },
             icon: {
@@ -154,9 +154,9 @@ export const input = defineComponent(
             },
             fontSize: 'calc(var(--input--font-size) * var(--size-multiplier-md))',
             padding: {
-                top: 'calc(var(--input--padding-top) * var(--size-multiplier-md) * 3 / 4)',
+                top: 'calc(var(--input--padding-top) * var(--size-multiplier-md))',
                 right: 'calc(var(--input--padding-right) * var(--size-multiplier-md))',
-                bottom: 'calc(var(--input--padding-bottom) * var(--size-multiplier-md) * 3 / 4)',
+                bottom: 'calc(var(--input--padding-bottom) * var(--size-multiplier-md))',
                 left: 'calc(var(--input--padding-left) * var(--size-multiplier-md))'
             },
             icon: {
@@ -174,9 +174,9 @@ export const input = defineComponent(
             },
             fontSize: 'calc(var(--input--font-size) * var(--size-multiplier-lg))',
             padding: {
-                top: 'calc(var(--input--padding-top) * var(--size-multiplier-lg) * 3 / 4)',
+                top: 'calc(var(--input--padding-top) * var(--size-multiplier-lg))',
                 right: 'calc(var(--input--padding-right) * var(--size-multiplier-lg))',
-                bottom: 'calc(var(--input--padding-bottom) * var(--size-multiplier-lg) * 3 / 4)',
+                bottom: 'calc(var(--input--padding-bottom) * var(--size-multiplier-lg))',
                 left: 'calc(var(--input--padding-left) * var(--size-multiplier-lg))'
             },
             icon: {

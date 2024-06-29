@@ -1,5 +1,14 @@
+License
+Copyright © 2022 - Present by Alex Grozav
+
+Each package provided by this repository has its own license. Please check the packages inside the packages folder for more information.
+
+The following is the license for the monorepo itself:
+
+----
+
 ISC License (ISC)
-Copyright © 2022-Present by Alex Grozav
+Copyright © 2024-Present by Alex Grozav
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 

@@ -145,9 +145,9 @@
   --input--transition-property: background-color, color, border-color;
   --input--transition-duration: var(--transition-duration);
   --input--transition-timing-function: var(--transition-timing-function);
-  --input--padding-top: var(--padding-top-3-4);
+  --input--padding-top: calc(var(--padding-top) * 3 / 4);
   --input--padding-right: var(--padding-right);
-  --input--padding-bottom: var(--padding-bottom-3-4);
+  --input--padding-bottom: calc(var(--padding-bottom) * 3 / 4);
   --input--padding-left: var(--padding-left);
   --input--placeholder--color-h: var(--text-color-weaker-h);
   --input--placeholder--color-s: var(--text-color-weaker-s);
@@ -251,13 +251,13 @@
     var(--input--font-size) * var(--size-multiplier-sm)
   );
   --input--sm--padding-top: calc(
-    var(--input--padding-top) * var(--size-multiplier-sm) * 3 / 4
+    var(--input--padding-top) * var(--size-multiplier-sm)
   );
   --input--sm--padding-right: calc(
     var(--input--padding-right) * var(--size-multiplier-sm)
   );
   --input--sm--padding-bottom: calc(
-    var(--input--padding-bottom) * var(--size-multiplier-sm) * 3 / 4
+    var(--input--padding-bottom) * var(--size-multiplier-sm)
   );
   --input--sm--padding-left: calc(
     var(--input--padding-left) * var(--size-multiplier-sm)
@@ -279,13 +279,13 @@
     var(--input--font-size) * var(--size-multiplier-md)
   );
   --input--md--padding-top: calc(
-    var(--input--padding-top) * var(--size-multiplier-md) * 3 / 4
+    var(--input--padding-top) * var(--size-multiplier-md)
   );
   --input--md--padding-right: calc(
     var(--input--padding-right) * var(--size-multiplier-md)
   );
   --input--md--padding-bottom: calc(
-    var(--input--padding-bottom) * var(--size-multiplier-md) * 3 / 4
+    var(--input--padding-bottom) * var(--size-multiplier-md)
   );
   --input--md--padding-left: calc(
     var(--input--padding-left) * var(--size-multiplier-md)
@@ -307,13 +307,13 @@
     var(--input--font-size) * var(--size-multiplier-lg)
   );
   --input--lg--padding-top: calc(
-    var(--input--padding-top) * var(--size-multiplier-lg) * 3 / 4
+    var(--input--padding-top) * var(--size-multiplier-lg)
   );
   --input--lg--padding-right: calc(
     var(--input--padding-right) * var(--size-multiplier-lg)
   );
   --input--lg--padding-bottom: calc(
-    var(--input--padding-bottom) * var(--size-multiplier-lg) * 3 / 4
+    var(--input--padding-bottom) * var(--size-multiplier-lg)
   );
   --input--lg--padding-left: calc(
     var(--input--padding-left) * var(--size-multiplier-lg)

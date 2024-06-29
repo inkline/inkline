@@ -3,7 +3,7 @@ import {
     isDefaultTheme,
     isEntityPath,
     shouldGenerateAggregateValue,
-    traversePathByClassification
+    filterPathByClassification
 } from './meta';
 import { createTestingGeneratorMeta } from '../__tests__/utils';
 import { ClassificationType } from '../types';
@@ -115,7 +115,7 @@ describe('traversePathByClassification', () => {
             }),
             path: ['components', 'buttonGroup', 'color']
         });
-        const result = traversePathByClassification(meta, () => true);
+        const result = filterPathByClassification(meta, () => true);
         expect(result).toEqual(['components', 'button-group', 'color']);
     });
 
@@ -130,7 +130,7 @@ describe('traversePathByClassification', () => {
             }),
             path: ['components', 'button', 'color']
         });
-        const result = traversePathByClassification(meta, () => false);
+        const result = filterPathByClassification(meta, () => false);
         expect(result).toEqual([]);
     });
 
@@ -139,7 +139,7 @@ describe('traversePathByClassification', () => {
             theme: defineTheme({}),
             path: []
         });
-        const result = traversePathByClassification(meta, () => true);
+        const result = filterPathByClassification(meta, () => true);
         expect(result).toEqual([]);
     });
 
@@ -155,7 +155,7 @@ describe('traversePathByClassification', () => {
             path: ['components', 'button', 'color']
         });
 
-        const result = traversePathByClassification(
+        const result = filterPathByClassification(
             meta,
             (path, part, ctx) => !ctx.consume && ctx.type !== ClassificationType.Group
         );

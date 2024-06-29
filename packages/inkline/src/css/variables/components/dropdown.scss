@@ -131,9 +131,9 @@
   --dropdown--footer--color-s: var(--dropdown--color-s);
   --dropdown--footer--color-l: var(--dropdown--color-l);
   --dropdown--footer--color-a: var(--dropdown--color-a);
-  --dropdown--divider--margin-top: var(--margin-top-1-2);
+  --dropdown--divider--margin-top: calc(var(--margin-top) * 1 / 2);
   --dropdown--divider--margin-right: calc(var(--padding-right) * -1);
-  --dropdown--divider--margin-bottom: var(--margin-bottom-1-2);
+  --dropdown--divider--margin-bottom: calc(var(--margin-bottom) * 1 / 2);
   --dropdown--divider--margin-left: calc(var(--padding-left) * -1);
   --dropdown--divider--background-h: var(--text-color-weaker-h);
   --dropdown--divider--background-s: var(--text-color-weaker-s);

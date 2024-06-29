@@ -131,8 +131,8 @@ export const radio = defineComponent(
             },
             fontSize: 'calc(var(--radio--font-size) * var(--size-multiplier-sm))',
             margin: {
-                right: 'calc(var(--radio--margin-right) * var(--size-multiplier-sm) / 2)',
-                bottom: 'calc(var(--radio--margin-bottom) * var(--size-multiplier-sm) / 2)'
+                right: 'calc(var(--radio--margin-right) * var(--size-multiplier-sm))',
+                bottom: 'calc(var(--radio--margin-bottom) * var(--size-multiplier-sm))'
             },
             width: 'calc(var(--radio--width) * var(--size-multiplier-sm))',
             height: 'calc(var(--radio--height) * var(--size-multiplier-sm))',
@@ -152,8 +152,8 @@ export const radio = defineComponent(
             },
             fontSize: 'calc(var(--radio--font-size) * var(--size-multiplier-md))',
             margin: {
-                right: 'calc(var(--radio--margin-right) * var(--size-multiplier-md) / 2)',
-                bottom: 'calc(var(--radio--margin-bottom) * var(--size-multiplier-md) / 2)'
+                right: 'calc(var(--radio--margin-right) * var(--size-multiplier-md))',
+                bottom: 'calc(var(--radio--margin-bottom) * var(--size-multiplier-md))'
             },
             width: 'calc(var(--radio--width) * var(--size-multiplier-md))',
             height: 'calc(var(--radio--height) * var(--size-multiplier-md))',
@@ -173,8 +173,8 @@ export const radio = defineComponent(
             },
             fontSize: 'calc(var(--radio--font-size) * var(--size-multiplier-lg))',
             margin: {
-                right: 'calc(var(--radio--margin-right) * var(--size-multiplier-lg) / 2)',
-                bottom: 'calc(var(--radio--margin-bottom) * var(--size-multiplier-lg) / 2)'
+                right: 'calc(var(--radio--margin-right) * var(--size-multiplier-lg))',
+                bottom: 'calc(var(--radio--margin-bottom) * var(--size-multiplier-lg))'
             },
             width: 'calc(var(--radio--width) * var(--size-multiplier-lg))',
             height: 'calc(var(--radio--height) * var(--size-multiplier-lg))',

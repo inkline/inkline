@@ -69,7 +69,7 @@ export const progress = defineComponent(
                 bottomLeft:
                     'calc(var(--progress--border-bottom-left-radius) * var(--size-multiplier-sm))'
             },
-            height: 'calc(var(--progress-height) * var(--size-multiplier-sm))'
+            height: 'calc(var(--progress--height) * var(--size-multiplier-sm))'
         },
         md: {
             borderRadius: {
@@ -82,7 +82,7 @@ export const progress = defineComponent(
                 bottomLeft:
                     'calc(var(--progress--border-bottom-left-radius) * var(--size-multiplier-md))'
             },
-            height: 'calc(var(--progress-height) * var(--size-multiplier-md))'
+            height: 'calc(var(--progress--height) * var(--size-multiplier-md))'
         },
         lg: {
             borderRadius: {
@@ -95,7 +95,7 @@ export const progress = defineComponent(
                 bottomLeft:
                     'calc(var(--progress--border-bottom-left-radius) * var(--size-multiplier-lg))'
             },
-            height: 'calc(var(--progress-height) * var(--size-multiplier-lg))'
+            height: 'calc(var(--progress--height) * var(--size-multiplier-lg))'
         }
     }
 );

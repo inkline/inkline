@@ -103,7 +103,7 @@
     var(--progress--border-bottom-left-radius) * var(--size-multiplier-sm)
   );
   --progress--sm--height: calc(
-    var(--progress-height) * var(--size-multiplier-sm)
+    var(--progress--height) * var(--size-multiplier-sm)
   );
   --progress--md--border-top-left-radius: calc(
     var(--progress--border-top-left-radius) * var(--size-multiplier-md)
@@ -118,7 +118,7 @@
     var(--progress--border-bottom-left-radius) * var(--size-multiplier-md)
   );
   --progress--md--height: calc(
-    var(--progress-height) * var(--size-multiplier-md)
+    var(--progress--height) * var(--size-multiplier-md)
   );
   --progress--lg--border-top-left-radius: calc(
     var(--progress--border-top-left-radius) * var(--size-multiplier-lg)
@@ -133,6 +133,6 @@
     var(--progress--border-bottom-left-radius) * var(--size-multiplier-lg)
   );
   --progress--lg--height: calc(
-    var(--progress-height) * var(--size-multiplier-lg)
+    var(--progress--height) * var(--size-multiplier-lg)
   );
 }
