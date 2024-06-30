@@ -1,0 +1,14 @@
+@use '../functions/properties';
+
+.expand-enter-active,
+.expand-leave-active {
+    transition-property: properties.generic('transition-property-expand');
+    transition-duration: properties.generic('transition-duration-expand');
+    transition-timing-function: properties.generic('transition-timing-function-expand');
+    overflow: hidden;
+}
+
+.expand-enter-from,
+.expand-leave-to {
+    height: 0;
+}

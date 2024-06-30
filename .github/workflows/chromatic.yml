@@ -1,0 +1,36 @@
+name: "Chromatic"
+
+on:
+    pull_request_review:
+        types: [ submitted ]
+        branch:
+            - main
+
+jobs:
+    chromatic:
+        if: ${{ github.event.review.state == 'approved' }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+            -   name: Set up node
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 18
+            -   uses: pnpm/action-setup@v4
+                with:
+                    version: 9.2.0
+
+            - name: Install dependencies
+              run: pnpm install
+
+            - name: Run Chromatic
+              uses: chromaui/action@latest
+              with:
+                  buildScriptName: storybook:build
+                  projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+                  onlyChanged: true
+                  exitZeroOnChanges: true
+                  workingDir: packages/inkline

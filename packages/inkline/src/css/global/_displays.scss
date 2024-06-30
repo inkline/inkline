@@ -1,0 +1,17 @@
+@use '../mixins/components';
+
+/**
+ * Displays
+ */
+
+@for $i from 1 through 6 {
+    .d#{$i} {
+        @include components.color('d#{$i}');
+        @include components.font-size('d#{$i}');
+        @include components.font-family('d#{$i}');
+        @include components.font-style('d#{$i}');
+        @include components.font-weight('d#{$i}');
+        @include components.line-height('d#{$i}');
+        @include components.margin('d#{$i}');
+    }
+}

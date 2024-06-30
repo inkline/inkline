@@ -1,0 +1,59 @@
+:root {
+  --transition-property: color, background-color, border-color;
+  --transition-duration: 300ms;
+  --transition-timing-function: ease;
+  --transition: var(--transition-property) var(--transition-duration)
+    var(--transition-timing-function);
+  --transition-property-expand: height;
+  --transition-duration-expand: var(--transition-duration);
+  --transition-timing-function-expand: var(--transition-timing-function);
+  --transition-expand: var(--transition-property-expand)
+    var(--transition-duration-expand) var(--transition-timing-function-expand);
+  --transition-property-fade-in: opacity;
+  --transition-duration-fade-in: var(--transition-duration);
+  --transition-timing-function-fade-in: cubic-bezier(0.55, 0, 0.1, 1);
+  --transition-fade-in: var(--transition-property-fade-in)
+    var(--transition-duration-fade-in) var(--transition-timing-function-fade-in);
+  --transition-property-fade-in-linear: opacity;
+  --transition-duration-fade-in-linear: var(--transition-duration);
+  --transition-timing-function-fade-in-linear: cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-fade-in-linear: var(--transition-property-fade-in-linear)
+    var(--transition-duration-fade-in-linear)
+    var(--transition-timing-function-fade-in-linear);
+  --transition-property-slide-in-right: transform;
+  --transition-duration-slide-in-right: var(--transition-duration);
+  --transition-timing-function-slide-in-right: ease;
+  --transition-slide-in-right: var(--transition-property-slide-in-right)
+    var(--transition-duration-slide-in-right)
+    var(--transition-timing-function-slide-in-right);
+  --transition-property-zoom-in-center: transform, opacity;
+  --transition-duration-zoom-in-center: var(--transition-duration);
+  --transition-timing-function-zoom-in-center: cubic-bezier(0.55, 0, 0.1, 1);
+  --transition-zoom-in-center: var(--transition-property-zoom-in-center)
+    var(--transition-duration-zoom-in-center)
+    var(--transition-timing-function-zoom-in-center);
+  --transition-property-zoom-in-top: transform, opacity;
+  --transition-duration-zoom-in-top: var(--transition-duration);
+  --transition-timing-function-zoom-in-top: cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-zoom-in-top: var(--transition-property-zoom-in-top)
+    var(--transition-duration-zoom-in-top)
+    var(--transition-timing-function-zoom-in-top);
+  --transition-property-zoom-in-right: transform, opacity;
+  --transition-duration-zoom-in-right: var(--transition-duration);
+  --transition-timing-function-zoom-in-right: cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-zoom-in-right: var(--transition-property-zoom-in-right)
+    var(--transition-duration-zoom-in-right)
+    var(--transition-timing-function-zoom-in-right);
+  --transition-property-zoom-in-bottom: transform, opacity;
+  --transition-duration-zoom-in-bottom: var(--transition-duration);
+  --transition-timing-function-zoom-in-bottom: cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-zoom-in-bottom: var(--transition-property-zoom-in-bottom)
+    var(--transition-duration-zoom-in-bottom)
+    var(--transition-timing-function-zoom-in-bottom);
+  --transition-property-zoom-in-left: transform, opacity;
+  --transition-duration-zoom-in-left: var(--transition-duration);
+  --transition-timing-function-zoom-in-left: cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-zoom-in-left: var(--transition-property-zoom-in-left)
+    var(--transition-duration-zoom-in-left)
+    var(--transition-timing-function-zoom-in-left);
+}

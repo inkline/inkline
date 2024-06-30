@@ -1,0 +1,26 @@
+@use '../../../css/mixins/components';
+
+/**
+ * Tab
+ */
+
+.tab {
+    @include components.background('tabs', 'tab', true);
+    @include components.border-radius('tabs', 'tab', true);
+    @include components.border-width('tabs', 'tab', true);
+    @include components.border-style('tabs', 'tab', true);
+    @include components.border-color('tabs', 'tab', true);
+    @include components.color('tabs', 'tab', true);
+    @include components.transition('tabs', 'tab', true);
+
+    position: relative;
+    display: block;
+
+    > .tab-body {
+        @include components.font-size('tabs', 'tab', true);
+        @include components.padding('tabs', 'tab', true);
+
+        display: block;
+        position: relative;
+    }
+}

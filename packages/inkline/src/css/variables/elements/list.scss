@@ -1,0 +1,18 @@
+:root {
+  --list--padding-top: 0;
+  --list--padding-right: 0;
+  --list--padding-bottom: 0;
+  --list--padding-left: calc(var(--padding-left) * var(--size-multiplier-lg));
+  --list--margin-top: 0;
+  --list--margin-right: 0;
+  --list--margin-bottom: var(--margin-bottom);
+  --list--margin-left: 0;
+  --list--item--margin-top: 0;
+  --list--item--margin-right: 0;
+  --list--item--margin-bottom: var(--margin-bottom-1-2);
+  --list--item--margin-left: 0;
+  --list--inline--item--margin-top: 0;
+  --list--inline--item--margin-right: var(--margin-right);
+  --list--inline--item--margin-bottom: 0;
+  --list--inline--item--margin-left: 0;
+}

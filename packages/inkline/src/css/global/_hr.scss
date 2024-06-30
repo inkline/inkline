@@ -1,0 +1,13 @@
+/**
+ * Horizontal rule
+ */
+
+@use '../mixins/components';
+
+hr {
+    @include components.margin('hr');
+    @include components.color('hr');
+    @include components.border-top-color('hr');
+    @include components.border-top-style('hr');
+    @include components.border-top-width('hr');
+}

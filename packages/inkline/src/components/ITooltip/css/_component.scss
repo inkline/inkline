@@ -1,0 +1,47 @@
+/**
+ * Tooltip
+ */
+
+@use '../../../css/mixins/components';
+@use '../../../css/mixins/popup';
+@use '../../../css/functions/properties';
+
+.tooltip-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.tooltip {
+    @include components.background('tooltip');
+    @include components.border-style('tooltip');
+    @include components.border-width('tooltip');
+    @include components.border-color('tooltip');
+    @include components.border-radius('tooltip');
+    @include components.box-shadow('tooltip');
+    @include components.color('tooltip');
+    @include components.font-size('tooltip');
+    @include components.line-height('tooltip');
+    @include components.padding('tooltip');
+
+    @include popup.popup(properties.z-index('tooltip'));
+    @include popup.popup-arrow;
+    @include popup.popup-arrow-size-variant(properties.size('tooltip', 'arrow'));
+
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    background-clip: padding-box;
+    display: inline-block;
+    white-space: nowrap;
+
+    @include popup.popup-arrow-color-variant(
+        (
+            'background': properties.background('tooltip'),
+            'border-color': (
+                'top': properties.border-top-color('tooltip'),
+                'right': properties.border-right-color('tooltip'),
+                'bottom': properties.border-bottom-color('tooltip'),
+                'left': properties.border-left-color('tooltip')
+            )
+        )
+    );
+}

@@ -1,0 +1,151 @@
+@use "../mixins/variants";
+
+.dropdown-item {
+  @include variants.selector("light") {
+    @include variants.background-h("dropdown-item", "light", "hover");
+    @include variants.background-s("dropdown-item", "light", "hover");
+    @include variants.background-l("dropdown-item", "light", "hover");
+    @include variants.background-a("dropdown-item", "light", "hover");
+
+    @include variants.background-h("dropdown-item", "light", "focus");
+    @include variants.background-s("dropdown-item", "light", "focus");
+    @include variants.background-l("dropdown-item", "light", "focus");
+    @include variants.background-a("dropdown-item", "light", "focus");
+
+    @include variants.background-h("dropdown-item", "light", "active");
+    @include variants.background-s("dropdown-item", "light", "active");
+    @include variants.background-l("dropdown-item", "light", "active");
+    @include variants.background-a("dropdown-item", "light", "active");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("dropdown-item", "dark", "hover");
+    @include variants.background-s("dropdown-item", "dark", "hover");
+    @include variants.background-l("dropdown-item", "dark", "hover");
+    @include variants.background-a("dropdown-item", "dark", "hover");
+
+    @include variants.background-h("dropdown-item", "dark", "focus");
+    @include variants.background-s("dropdown-item", "dark", "focus");
+    @include variants.background-l("dropdown-item", "dark", "focus");
+    @include variants.background-a("dropdown-item", "dark", "focus");
+
+    @include variants.background-h("dropdown-item", "dark", "active");
+    @include variants.background-s("dropdown-item", "dark", "active");
+    @include variants.background-l("dropdown-item", "dark", "active");
+    @include variants.background-a("dropdown-item", "dark", "active");
+  }
+  @include variants.selector("sm") {
+    @include variants.font-size("dropdown-item", "sm");
+    @include variants.margin-right("dropdown-item", "sm");
+    @include variants.margin-left("dropdown-item", "sm");
+    @include variants.padding-top("dropdown-item", "sm");
+    @include variants.padding-right("dropdown-item", "sm");
+    @include variants.padding-bottom("dropdown-item", "sm");
+    @include variants.padding-left("dropdown-item", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.font-size("dropdown-item", "md");
+    @include variants.margin-right("dropdown-item", "md");
+    @include variants.margin-left("dropdown-item", "md");
+    @include variants.padding-top("dropdown-item", "md");
+    @include variants.padding-right("dropdown-item", "md");
+    @include variants.padding-bottom("dropdown-item", "md");
+    @include variants.padding-left("dropdown-item", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.font-size("dropdown-item", "lg");
+    @include variants.margin-right("dropdown-item", "lg");
+    @include variants.margin-left("dropdown-item", "lg");
+    @include variants.padding-top("dropdown-item", "lg");
+    @include variants.padding-right("dropdown-item", "lg");
+    @include variants.padding-bottom("dropdown-item", "lg");
+    @include variants.padding-left("dropdown-item", "lg");
+  }
+}
+
+:root {
+  --dropdown-item--background: transparent;
+  --dropdown-item--border-top-width: 0;
+  --dropdown-item--border-top-style: var(--border-top-style);
+  --dropdown-item--border-top-color: var(--border-top-color);
+  --dropdown-item--border-right-width: 0;
+  --dropdown-item--border-right-style: var(--border-right-style);
+  --dropdown-item--border-right-color: var(--border-right-color);
+  --dropdown-item--border-bottom-width: 0;
+  --dropdown-item--border-bottom-style: var(--border-bottom-style);
+  --dropdown-item--border-bottom-color: var(--border-bottom-color);
+  --dropdown-item--border-left-width: 0;
+  --dropdown-item--border-left-style: var(--border-left-style);
+  --dropdown-item--border-left-color: var(--border-left-color);
+  --dropdown-item--color: inherit;
+  --dropdown-item--margin-top: 0;
+  --dropdown-item--margin-right: calc(var(--padding-right) * -1);
+  --dropdown-item--margin-bottom: 0;
+  --dropdown-item--margin-left: calc(var(--padding-left) * -1);
+  --dropdown-item--padding-top: calc(var(--padding-top) * 0.5);
+  --dropdown-item--padding-right: var(--padding-right);
+  --dropdown-item--padding-bottom: calc(var(--padding-bottom) * 0.5);
+  --dropdown-item--padding-left: var(--padding-left);
+  --dropdown-item--transition-property: background-color, color, border-color;
+  --dropdown-item--transition-duration: var(--transition-duration);
+  --dropdown-item--transition-timing-function: var(
+    --transition-timing-function
+  );
+  --dropdown-item--active--font-weight: var(--font-weight-semibold);
+  --dropdown-item--disabled--color-h: var(--text-color-weaker-h);
+  --dropdown-item--disabled--color-s: var(--text-color-weaker-s);
+  --dropdown-item--disabled--color-l: var(--text-color-weaker-l);
+  --dropdown-item--disabled--color-a: var(--text-color-weaker-a);
+  --dropdown-item--hover--background-h: var(--color-light-h);
+  --dropdown-item--hover--background-s: var(--color-light-s);
+  --dropdown-item--hover--background-l: var(--color-light-l);
+  --dropdown-item--hover--background-a: var(--color-light-a);
+  --dropdown-item--focus--background-h: var(--color-light-h);
+  --dropdown-item--focus--background-s: var(--color-light-s);
+  --dropdown-item--focus--background-l: var(--color-light-l);
+  --dropdown-item--focus--background-a: var(--color-light-a);
+  --dropdown-item--light--hover--background-h: var(--color-light-h);
+  --dropdown-item--light--hover--background-s: var(--color-light-s);
+  --dropdown-item--light--hover--background-l: var(--color-light-l);
+  --dropdown-item--light--hover--background-a: var(--color-light-a);
+  --dropdown-item--light--focus--background-h: var(--color-light-h);
+  --dropdown-item--light--focus--background-s: var(--color-light-s);
+  --dropdown-item--light--focus--background-l: var(--color-light-l);
+  --dropdown-item--light--focus--background-a: var(--color-light-a);
+  --dropdown-item--light--active--background-h: var(--color-light-shade-50-h);
+  --dropdown-item--light--active--background-s: var(--color-light-shade-50-s);
+  --dropdown-item--light--active--background-l: var(--color-light-shade-50-l);
+  --dropdown-item--light--active--background-a: var(--color-light-shade-50-a);
+  --dropdown-item--dark--hover--background-h: var(--color-dark-tint-50-h);
+  --dropdown-item--dark--hover--background-s: var(--color-dark-tint-50-s);
+  --dropdown-item--dark--hover--background-l: var(--color-dark-tint-50-l);
+  --dropdown-item--dark--hover--background-a: var(--color-dark-tint-50-a);
+  --dropdown-item--dark--focus--background-h: var(--color-dark-tint-50-h);
+  --dropdown-item--dark--focus--background-s: var(--color-dark-tint-50-s);
+  --dropdown-item--dark--focus--background-l: var(--color-dark-tint-50-l);
+  --dropdown-item--dark--focus--background-a: var(--color-dark-tint-50-a);
+  --dropdown-item--dark--active--background-h: var(--color-dark-tint-100-h);
+  --dropdown-item--dark--active--background-s: var(--color-dark-tint-100-s);
+  --dropdown-item--dark--active--background-l: var(--color-dark-tint-100-l);
+  --dropdown-item--dark--active--background-a: var(--color-dark-tint-100-a);
+  --dropdown-item--sm--font-size: var(--font-size-sm);
+  --dropdown-item--sm--margin-right: calc(var(--padding-right-sm) * -1);
+  --dropdown-item--sm--margin-left: calc(var(--padding-left-sm) * -1);
+  --dropdown-item--sm--padding-top: calc(var(--padding-top-sm) * 0.5);
+  --dropdown-item--sm--padding-right: var(--padding-right-sm);
+  --dropdown-item--sm--padding-bottom: calc(var(--padding-bottom-sm) * 0.5);
+  --dropdown-item--sm--padding-left: var(--padding-left-sm);
+  --dropdown-item--md--font-size: var(--font-size-md);
+  --dropdown-item--md--margin-right: calc(var(--padding-right-md) * -1);
+  --dropdown-item--md--margin-left: calc(var(--padding-left-md) * -1);
+  --dropdown-item--md--padding-top: calc(var(--padding-top-md) * 0.5);
+  --dropdown-item--md--padding-right: var(--padding-right-md);
+  --dropdown-item--md--padding-bottom: calc(var(--padding-bottom-md) * 0.5);
+  --dropdown-item--md--padding-left: var(--padding-left-md);
+  --dropdown-item--lg--font-size: var(--font-size-lg);
+  --dropdown-item--lg--margin-right: calc(var(--padding-right-lg) * -1);
+  --dropdown-item--lg--margin-left: calc(var(--padding-left-lg) * -1);
+  --dropdown-item--lg--padding-top: calc(var(--padding-top-lg) * 0.5);
+  --dropdown-item--lg--padding-right: var(--padding-right-lg);
+  --dropdown-item--lg--padding-bottom: calc(var(--padding-bottom-lg) * 0.5);
+  --dropdown-item--lg--padding-left: var(--padding-left-lg);
+}

@@ -1,0 +1,12 @@
+:root {
+  --d6--margin-top: 0;
+  --d6--margin-right: 0;
+  --d6--margin-bottom: var(--margin-bottom);
+  --d6--margin-left: 0;
+  --d6--font-family: var(--font-family-base-secondary);
+  --d6--font-style: var(--font-style-normal);
+  --d6--font-weight: var(--font-weight-bold);
+  --d6--color: inherit;
+  --d6--line-height: 1.2;
+  --d6--font-size: calc(var(--font-size) * var(--scale-ratio-pow-5));
+}

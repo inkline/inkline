@@ -1,0 +1,10 @@
+/**
+ * Mark
+ */
+
+@use '../mixins/components';
+
+mark {
+    @include components.background('mark');
+    @include components.padding('mark');
+}

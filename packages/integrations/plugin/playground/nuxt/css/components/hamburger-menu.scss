@@ -1,0 +1,129 @@
+@use "../mixins/variants";
+
+.hamburger-menu {
+  @include variants.selector("light") {
+    @include variants.background-h("hamburger-menu", "light");
+    @include variants.background-s("hamburger-menu", "light");
+    @include variants.background-l("hamburger-menu", "light");
+    @include variants.background-a("hamburger-menu", "light");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("hamburger-menu", "dark");
+    @include variants.background-s("hamburger-menu", "dark");
+    @include variants.background-l("hamburger-menu", "dark");
+    @include variants.background-a("hamburger-menu", "dark");
+  }
+  @include variants.selector("sm") {
+    @include variants.width("hamburger-menu", "sm");
+    @include variants.height("hamburger-menu", "sm");
+
+    @include variants.width("hamburger-menu", "sm", "bar");
+    @include variants.height("hamburger-menu", "sm", "bar");
+
+    @include variants.border-top-left-radius("hamburger-menu", "sm", "bar");
+    @include variants.border-top-right-radius("hamburger-menu", "sm", "bar");
+    @include variants.border-bottom-right-radius("hamburger-menu", "sm", "bar");
+    @include variants.border-bottom-left-radius("hamburger-menu", "sm", "bar");
+  }
+  @include variants.selector("md") {
+    @include variants.width("hamburger-menu", "md");
+    @include variants.height("hamburger-menu", "md");
+
+    @include variants.width("hamburger-menu", "md", "bar");
+    @include variants.height("hamburger-menu", "md", "bar");
+
+    @include variants.border-top-left-radius("hamburger-menu", "md", "bar");
+    @include variants.border-top-right-radius("hamburger-menu", "md", "bar");
+    @include variants.border-bottom-right-radius("hamburger-menu", "md", "bar");
+    @include variants.border-bottom-left-radius("hamburger-menu", "md", "bar");
+  }
+  @include variants.selector("lg") {
+    @include variants.width("hamburger-menu", "lg");
+    @include variants.height("hamburger-menu", "lg");
+
+    @include variants.width("hamburger-menu", "lg", "bar");
+    @include variants.height("hamburger-menu", "lg", "bar");
+
+    @include variants.border-top-left-radius("hamburger-menu", "lg", "bar");
+    @include variants.border-top-right-radius("hamburger-menu", "lg", "bar");
+    @include variants.border-bottom-right-radius("hamburger-menu", "lg", "bar");
+    @include variants.border-bottom-left-radius("hamburger-menu", "lg", "bar");
+  }
+}
+
+:root {
+  --hamburger-menu--padding-top: 0;
+  --hamburger-menu--padding-right: 0;
+  --hamburger-menu--padding-bottom: 0;
+  --hamburger-menu--padding-left: 0;
+  --hamburger-menu--transition-property: background-color, color, border-color;
+  --hamburger-menu--transition-duration: var(--transition-duration);
+  --hamburger-menu--transition-timing-function: var(
+    --transition-timing-function
+  );
+  --hamburger-menu--opacity: 0.75;
+  --hamburger-menu--hover--opacity: 1;
+  --hamburger-menu--bar--border-top-left-radius: var(
+    --border-top-left-radius-sm
+  );
+  --hamburger-menu--bar--border-top-right-radius: var(
+    --border-top-right-radius-sm
+  );
+  --hamburger-menu--bar--border-bottom-right-radius: var(
+    --border-bottom-right-radius-sm
+  );
+  --hamburger-menu--bar--border-bottom-left-radius: var(
+    --border-bottom-left-radius-sm
+  );
+  --hamburger-menu--bar--height: 2px;
+  --hamburger-menu--bar--spacing: 4px;
+  --hamburger-menu--bar--transition-property: background, transform;
+  --hamburger-menu--bar--transition-duration: 175ms;
+  --hamburger-menu--bar--transition-timing-function: var(
+    --transition-timing-function
+  );
+  --hamburger-menu--light--background-h: var(--color-dark-h);
+  --hamburger-menu--light--background-s: var(--color-dark-s);
+  --hamburger-menu--light--background-l: var(--color-dark-l);
+  --hamburger-menu--light--background-a: var(--color-dark-a);
+  --hamburger-menu--dark--background-h: var(--color-light-h);
+  --hamburger-menu--dark--background-s: var(--color-light-s);
+  --hamburger-menu--dark--background-l: var(--color-light-l);
+  --hamburger-menu--dark--background-a: var(--color-light-a);
+  --hamburger-menu--sm--width: var(--hamburger-menu--sm--bar--width);
+  --hamburger-menu--sm--height: calc(
+    var(--hamburger-menu--sm--bar--height) * 3 +
+      var(--hamburger-menu--sm--bar--spacing) * 2
+  );
+  --hamburger-menu--sm--bar--width: calc(30px * var(--size-multiplier-sm));
+  --hamburger-menu--sm--bar--height: 2px;
+  --hamburger-menu--sm--bar--spacing: 4px;
+  --hamburger-menu--sm--bar--border-top-left-radius: 1px;
+  --hamburger-menu--sm--bar--border-top-right-radius: 1px;
+  --hamburger-menu--sm--bar--border-bottom-right-radius: 1px;
+  --hamburger-menu--sm--bar--border-bottom-left-radius: 1px;
+  --hamburger-menu--md--width: var(--hamburger-menu--md--bar--width);
+  --hamburger-menu--md--height: calc(
+    var(--hamburger-menu--md--bar--height) * 3 +
+      var(--hamburger-menu--md--bar--spacing) * 2
+  );
+  --hamburger-menu--md--bar--width: calc(30px * var(--size-multiplier-md));
+  --hamburger-menu--md--bar--height: 3px;
+  --hamburger-menu--md--bar--spacing: 5px;
+  --hamburger-menu--md--bar--border-top-left-radius: 2px;
+  --hamburger-menu--md--bar--border-top-right-radius: 2px;
+  --hamburger-menu--md--bar--border-bottom-right-radius: 2px;
+  --hamburger-menu--md--bar--border-bottom-left-radius: 2px;
+  --hamburger-menu--lg--width: var(--hamburger-menu--lg--bar--width);
+  --hamburger-menu--lg--height: calc(
+    var(--hamburger-menu--lg--bar--height) * 3 +
+      var(--hamburger-menu--lg--bar--spacing) * 2
+  );
+  --hamburger-menu--lg--bar--width: calc(30px * var(--size-multiplier-lg));
+  --hamburger-menu--lg--bar--height: 4px;
+  --hamburger-menu--lg--bar--spacing: 6px;
+  --hamburger-menu--lg--bar--border-top-left-radius: 3px;
+  --hamburger-menu--lg--bar--border-top-right-radius: 3px;
+  --hamburger-menu--lg--bar--border-bottom-right-radius: 3px;
+  --hamburger-menu--lg--bar--border-bottom-left-radius: 3px;
+}

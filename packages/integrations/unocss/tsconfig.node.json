@@ -1,0 +1,11 @@
+{
+    "extends": "../../tooling/typescript-config/tsconfig.node.json",
+    "compilerOptions": {
+        "types": [
+            "vite/client"
+        ]
+    },
+    "include": [
+        "vite.config.ts"
+    ]
+}

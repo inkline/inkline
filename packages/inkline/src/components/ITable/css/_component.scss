@@ -1,0 +1,133 @@
+/**
+ * Table
+ */
+
+@use '../../../css/mixins/components';
+@use '../../../css/mixins/breakpoints';
+@use '../../../css/mixins/config';
+
+// Responsive tables
+//
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your table will overflow.
+//
+.table {
+    display: block;
+    position: relative;
+
+    &.-responsive {
+        @each $breakpoint-key in config.$breakpoint-keys {
+            $infix: breakpoints.breakpoint-infix($breakpoint-key);
+
+            &#{$infix} {
+                @include config.breakpoint-down($breakpoint-key) {
+                    display: block;
+                    width: 100%;
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                    -ms-overflow-style: -ms-autohiding-scrollbar;
+                }
+            }
+        }
+    }
+
+    table {
+        @include components.border-top-color('table');
+        @include components.color('table');
+        @include components.margin('table');
+
+        width: 100%;
+        max-width: 100%;
+
+        th {
+            @include components.font-weight('table', 'th');
+        }
+
+        th,
+        td {
+            @include components.background('table');
+            @include components.border-width('table');
+            @include components.border-style('table');
+            @include components.border-color('table');
+            @include components.padding('table');
+            @include components.transition('table');
+
+            vertical-align: top;
+        }
+
+        tbody + tbody {
+            @include components.border-top-width('table', 'adjacent', true);
+            @include components.border-top-style('table', 'adjacent', true);
+            @include components.border-top-color('table', 'adjacent', true);
+        }
+
+        thead th {
+            @include components.border-bottom-width('table', 'thead' 'th', true);
+
+            vertical-align: bottom;
+        }
+    }
+
+    // Condensed table w/ half padding
+    //
+    &.-condensed {
+        th,
+        td {
+            @include components.padding('table', 'condensed', true);
+        }
+    }
+
+    // Border version
+    //
+    // Add borders all around the table and between all the columns.
+    //
+    &.-bordered {
+        table,
+        table th,
+        table td {
+            @include components.border-color('table', 'border', true);
+            @include components.border-style('table', 'border', true);
+            @include components.border-width('table', 'border', true);
+        }
+    }
+
+    // No wrap
+    //
+    // Set table cell white-space to nowrap
+    //
+    &.-nowrap {
+        th,
+        td {
+            white-space: nowrap;
+        }
+    }
+
+    // Striped Table
+    //
+    // Default zebra-stripe styles (alternating gray and transparent backgrounds)
+    //
+    &.-striped {
+        table > tr:nth-of-type(odd),
+        table tbody > tr:nth-of-type(odd) {
+            th,
+            td {
+                @include components.background('table', 'striped', true);
+            }
+        }
+    }
+
+    // Hoverable table
+    //
+    // Placed here since it has to come after the potential zebra striping
+    //
+    &.-hoverable {
+        tbody tr {
+            &:hover {
+                th,
+                td {
+                    @include components.background('table', 'hover', true);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+@use "../mixins/variants";
+
+.form-error {
+}
+
+:root {
+  --form-error--color-h: var(--color-danger-h);
+  --form-error--color-s: var(--color-danger-s);
+  --form-error--color-l: var(--color-danger-l);
+  --form-error--color-a: var(--color-danger-a);
+  --form-error--font-size: calc(var(--font-size) * var(--size-multiplier-sm));
+  --form-error--margin-top: var(--margin-top-1-4);
+  --form-error--margin-right: 0;
+  --form-error--margin-bottom: 0;
+  --form-error--margin-left: 0;
+}

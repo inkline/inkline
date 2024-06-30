@@ -1,0 +1,108 @@
+@use "../mixins/variants";
+
+.nav {
+  @include variants.selector("light") {
+    @include variants.color-h("nav", "light");
+    @include variants.color-s("nav", "light");
+    @include variants.color-l("nav", "light");
+    @include variants.color-a("nav", "light");
+  }
+  @include variants.selector("dark") {
+    @include variants.color-h("nav", "dark");
+    @include variants.color-s("nav", "dark");
+    @include variants.color-l("nav", "dark");
+    @include variants.color-a("nav", "dark");
+  }
+  @include variants.selector("sm") {
+    @include variants.font-size("nav", "sm");
+    @include variants.padding-top("nav", "sm");
+    @include variants.padding-right("nav", "sm");
+    @include variants.padding-bottom("nav", "sm");
+    @include variants.padding-left("nav", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.font-size("nav", "md");
+    @include variants.padding-top("nav", "md");
+    @include variants.padding-right("nav", "md");
+    @include variants.padding-bottom("nav", "md");
+    @include variants.padding-left("nav", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.font-size("nav", "lg");
+    @include variants.padding-top("nav", "lg");
+    @include variants.padding-right("nav", "lg");
+    @include variants.padding-bottom("nav", "lg");
+    @include variants.padding-left("nav", "lg");
+  }
+}
+
+:root {
+  --nav--color-h: var(--contrast-text-color-light-h);
+  --nav--color-s: var(--contrast-text-color-light-s);
+  --nav--color-l: var(--contrast-text-color-light-l);
+  --nav--color-a: var(--contrast-text-color-light-a);
+  --nav--font-size: var(--font-size);
+  --nav--transition-property: color;
+  --nav--transition-duration: var(--transition-duration);
+  --nav--transition-timing-function: var(--transition-timing-function);
+  --nav--padding-top: var(--padding-top);
+  --nav--padding-right: var(--padding-right);
+  --nav--padding-bottom: var(--padding-bottom);
+  --nav--padding-left: var(--padding-left);
+  --nav--item--active--color-h: var(--color-primary-h);
+  --nav--item--active--color-s: var(--color-primary-s);
+  --nav--item--active--color-l: var(--color-primary-l);
+  --nav--item--active--color-a: var(--color-primary-a);
+  --nav--item--active--font-weight: var(--font-weight-semibold);
+  --nav--item--disabled--color-h: var(--text-color-weaker-h);
+  --nav--item--disabled--color-s: var(--text-color-weaker-s);
+  --nav--item--disabled--color-l: var(--text-color-weaker-l);
+  --nav--item--disabled--color-a: var(--text-color-weaker-a);
+  --nav--light--color-h: var(--contrast-text-color-light-h);
+  --nav--light--color-s: var(--contrast-text-color-light-s);
+  --nav--light--color-l: var(--contrast-text-color-light-l);
+  --nav--light--color-a: var(--contrast-text-color-light-a);
+  --nav--dark--color-h: var(--contrast-text-color-dark-h);
+  --nav--dark--color-s: var(--contrast-text-color-dark-s);
+  --nav--dark--color-l: var(--contrast-text-color-dark-l);
+  --nav--dark--color-a: var(--contrast-text-color-dark-a);
+  --nav--sm--font-size: calc(var(--nav--font-size) * var(--size-multiplier-sm));
+  --nav--sm--padding-top: calc(
+    var(--nav--padding-top) * var(--size-multiplier-sm)
+  );
+  --nav--sm--padding-right: calc(
+    var(--nav--padding-right) * var(--size-multiplier-sm)
+  );
+  --nav--sm--padding-bottom: calc(
+    var(--nav--padding-bottom) * var(--size-multiplier-sm)
+  );
+  --nav--sm--padding-left: calc(
+    var(--nav--padding-left) * var(--size-multiplier-sm)
+  );
+  --nav--md--font-size: calc(var(--nav--font-size) * var(--size-multiplier-md));
+  --nav--md--padding-top: calc(
+    var(--nav--padding-top) * var(--size-multiplier-md)
+  );
+  --nav--md--padding-right: calc(
+    var(--nav--padding-right) * var(--size-multiplier-md)
+  );
+  --nav--md--padding-bottom: calc(
+    var(--nav--padding-bottom) * var(--size-multiplier-md)
+  );
+  --nav--md--padding-left: calc(
+    var(--nav--padding-left) * var(--size-multiplier-md)
+  );
+  --nav--lg--font-size: calc(var(--nav--font-size) * var(--size-multiplier-lg));
+  --nav--lg--padding-top: calc(
+    var(--nav--padding-top) * var(--size-multiplier-lg)
+  );
+  --nav--lg--padding-right: calc(
+    var(--nav--padding-right) * var(--size-multiplier-lg)
+  );
+  --nav--lg--padding-bottom: calc(
+    var(--nav--padding-bottom) * var(--size-multiplier-lg)
+  );
+  --nav--lg--padding-left: calc(
+    var(--nav--padding-left) * var(--size-multiplier-lg)
+  );
+}

@@ -1,0 +1,171 @@
+/**
+ * Checkbox
+ */
+
+@use '../../../css/functions/properties';
+@use '../../../css/mixins/components';
+@import '../../../css/icons';
+
+.checkbox {
+    @include components.margin('checkbox');
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    outline: none;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    .checkbox-label {
+        @include components.transition('checkbox', 'label', true);
+        @include components.color('checkbox', 'label', true);
+        @include components.font-size('checkbox', 'label', true);
+
+        cursor: pointer;
+        margin-bottom: 0;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        padding-left: calc(
+            #{properties.width('checkbox')} + #{properties.margin-right('checkbox')}
+        );
+
+        &::before,
+        &::after {
+            @include components.width('checkbox');
+            @include components.height('checkbox');
+
+            display: inline-flex;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 0;
+        }
+
+        &::before {
+            @include components.background('checkbox');
+            @include components.border-width('checkbox');
+            @include components.border-style('checkbox');
+            @include components.border-color('checkbox');
+            @include components.border-radius('checkbox');
+            @include components.box-shadow('checkbox');
+            @include components.transition('checkbox');
+
+            content: '';
+            user-select: none;
+            transform: translate(0, -50%);
+        }
+
+        &::after {
+            @include components.transition('checkbox', 'checkmark', true);
+
+            background: properties.color('checkbox', 'checkmark');
+            mask-image: url($ink-check);
+            mask-size: #{properties.width('checkbox', 'checkmark')} #{properties.height(
+                    'checkbox',
+                    'checkmark'
+                )};
+            z-index: 1;
+            text-align: center;
+            transform: scale(0) translate(0, -50%);
+            transform-origin: center top;
+        }
+    }
+
+    input {
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 0; // Put the input behind the label so it doesn't overlay text
+        opacity: 0;
+        height: 0;
+        width: 0;
+        outline: 0;
+
+        &:focus,
+        &:active {
+            outline: none;
+        }
+
+        &:checked ~ .checkbox-label,
+        &[type='checkbox']:indeterminate ~ .checkbox-label {
+            &::before {
+                @include components.border-color('checkbox', 'checked', true);
+                @include components.background('checkbox', 'checked', true);
+            }
+
+            &::after {
+                content: '';
+                mask-position: center center;
+                mask-repeat: no-repeat;
+                transform: scale(1) translate(0, -50%);
+            }
+        }
+
+        &:disabled,
+        &[readonly] {
+            ~ .checkbox-label {
+                @include components.color('checkbox' 'label', 'disabled', true);
+
+                cursor: default;
+
+                &::before {
+                    @include components.border-color('checkbox', 'disabled', true);
+                    @include components.background('checkbox', 'disabled', true);
+
+                    cursor: not-allowed;
+                }
+            }
+
+            &:checked ~ .checkbox-label {
+                &::before {
+                    @include components.border-color('checkbox' 'checked', 'disabled', true);
+                    @include components.background('checkbox' 'checked', 'disabled', true);
+                }
+
+                &::after {
+                    background: properties.color('checkbox' 'checkmark', 'disabled', true);
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        &:indeterminate ~ .checkbox-label::after {
+            mask-image: url($ink-minus);
+        }
+    }
+
+    &.-disabled {
+        cursor: default;
+
+        .checkbox-label {
+            &::before,
+            &::after {
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    &.-native {
+        input {
+            top: auto;
+            left: auto;
+            position: relative;
+            opacity: 1;
+            height: auto;
+            width: auto;
+        }
+
+        .checkbox-label {
+            padding-left: #{properties.margin-right('checkbox')};
+
+            &::after,
+            &::before {
+                display: none;
+            }
+        }
+    }
+}

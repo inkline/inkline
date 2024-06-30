@@ -1,0 +1,9 @@
+@use '../../../css/functions/properties';
+
+/**
+ * Icon
+ */
+
+.icon {
+    height: properties.font-size('icon');
+}

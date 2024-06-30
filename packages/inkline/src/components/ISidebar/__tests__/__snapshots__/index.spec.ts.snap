@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > ISidebar > should render correctly 1`] = `
+"<transition-stub name="sidebar-wrapper-none-transition" appear="false" persisted="true" css="true">
+  <aside role="complementary" class="sidebar-wrapper -collapse-md -collapse-absolute -placement-left" aria-label="Sidebar">
+    <transition-stub name="sidebar-transition" appear="false" persisted="true" css="true">
+      <div class="sidebar -light -md">
+        <div class="sidebar-content">
+          <!-- @slot default Slot for sidebar content -->
+          <nav class="nav -light -md" role="menubar">
+            <!-- @slot default Slot for default nav content -->
+            <div role="menuitem" tabindex="0" tag="div" class="nav-item">
+              <!-- @slot default Slot for default nav item content -->Item 1
+            </div>
+            <div role="menuitem" tabindex="0" tag="div" class="nav-item">
+              <!-- @slot default Slot for default nav item content -->Item 2
+            </div>
+            <div role="menuitem" tabindex="0" tag="div" class="nav-item">
+              <!-- @slot default Slot for default nav item content -->Item 3
+            </div>
+          </nav>
+        </div>
+      </div>
+    </transition-stub>
+    <transition-stub name="sidebar-overlay-transition" appear="false" persisted="false" css="true">
+      <div class="sidebar-overlay" style="display: none;"></div>
+    </transition-stub>
+  </aside>
+</transition-stub>"
+`;

@@ -1,0 +1,236 @@
+@use '../../../css/mixins/components';
+@use '../../../css/functions/properties';
+
+/**
+ * Button
+ */
+
+.button {
+    @include components.background('button');
+    @include components.color('button');
+    @include components.border-width('button');
+    @include components.border-style('button');
+    @include components.border-color('button');
+    @include components.border-radius('button');
+    @include components.box-shadow('button');
+    @include components.font-size('button');
+    @include components.font-weight('button');
+    @include components.line-height('button');
+    @include components.padding('button');
+    @include components.transition('button');
+
+    display: inline-flex;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+
+    // Disabled state
+    // Disabled state comes first so active can properly restyle
+    &.-disabled,
+    &:disabled {
+        @include components.opacity('button', 'disabled');
+
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+
+    // Target non disabled buttons
+    &:not(:disabled, .-disabled, .-link, .-outline) {
+        // Add "hand" cursor to non-disabled .button elements
+        cursor: pointer;
+
+        &:not(:active, .-active) {
+            // Focus and hover state
+            &:hover,
+            &.-hover,
+            &:focus,
+            &.-focus {
+                text-decoration: none;
+                outline: 0;
+            }
+
+            &:hover,
+            &.-hover {
+                @include components.background('button', 'hover', true);
+                @include components.border-color('button', 'hover', true);
+                @include components.color('button', 'hover', true);
+            }
+
+            &:focus,
+            &.-focus {
+                @include components.background('button', 'focus', true);
+                @include components.border-color('button', 'focus', true);
+                @include components.color('button', 'focus', true);
+            }
+        }
+
+        &:active,
+        &.-active {
+            @include components.background('button', 'active', true);
+            @include components.border-color('button', 'active', true);
+            @include components.color('button', 'active', true);
+        }
+    }
+
+    // Block buttons
+    // Make buttons span the whole parent width
+    &.-block {
+        display: flex;
+        width: 100%;
+
+        + .button.-block {
+            @include components.margin('button', 'block');
+        }
+    }
+
+    // Link buttons
+    // Make a button look and behave like a link
+    &.-link {
+        @include components.color(
+            'button',
+            'link',
+            properties.background-h('button') properties.background-s('button')
+                properties.background-l('button') properties.background-a('button')
+        );
+
+        box-shadow: none;
+        background-color: transparent;
+        border-color: transparent;
+
+        &:not(:disabled, .-disabled) {
+            &:hover,
+            &.-hover,
+            &:focus,
+            &.-focus,
+            &:active,
+            &.-active {
+                background: transparent;
+                border-color: transparent;
+                box-shadow: none;
+                text-decoration: underline;
+            }
+
+            &:hover,
+            &.-hover {
+                @include components.color(
+                    'button' 'link',
+                    'hover',
+                    properties.background-h('button', 'hover')
+                        properties.background-s('button', 'hover')
+                        properties.background-l('button', 'hover')
+                        properties.background-a('button', 'hover')
+                );
+            }
+
+            &:focus,
+            &.-focus {
+                @include components.color(
+                    'button' 'link',
+                    'focus',
+                    properties.background-h('button', 'focus')
+                        properties.background-s('button', 'focus')
+                        properties.background-l('button', 'focus')
+                        properties.background-a('button', 'focus')
+                );
+            }
+
+            &:active,
+            &.-active {
+                @include components.color(
+                    'button' 'link',
+                    'active',
+                    properties.background-h('button', 'active')
+                        properties.background-s('button', 'active')
+                        properties.background-l('button', 'active')
+                        properties.background-a('button', 'active')
+                );
+            }
+        }
+
+        &:disabled,
+        &.-disabled {
+            pointer-events: none;
+        }
+    }
+
+    // Outline buttons
+    // Remove button background and add a beautiful transition on hover
+    &.-outline {
+        &:not(:hover, &.-hover, :focus, &.-focus) {
+            background: transparent;
+            color: properties.background('button');
+        }
+    }
+
+    // Circle button
+    &.-circle {
+        @include components.size('button', 'circle');
+
+        border-radius: 50%;
+        padding: 0;
+    }
+
+    // Square button
+    &.-square {
+        @include components.size('button', 'square');
+
+        padding: 0;
+    }
+
+    &.-loading {
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .loader {
+        @include components.size('button', 'loader');
+
+        > svg > circle {
+            stroke: properties.color('button') !important;
+        }
+    }
+
+    .button-icon,
+    .button-content {
+        line-height: 1;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button-icon {
+        + .button-content {
+            @include components.margin('button', 'icon');
+        }
+    }
+
+    //
+    // Button group border accent
+    //
+
+    .button-group:not(.-vertical) > &:not(:first-of-type) {
+        @include components.border-left-color('button');
+    }
+
+    .button-group.-vertical > &:not(:first-of-type) {
+        @include components.border-top-color('button');
+    }
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.button.-disabled,
+*:disabled a.button {
+    pointer-events: none;
+}
+
+// Specificity overrides
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
+    &.-block {
+        width: 100%;
+    }
+}

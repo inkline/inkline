@@ -1,0 +1,26 @@
+:root {
+  --blockquote--font-size: var(--font-size);
+  --blockquote--margin-top: 0;
+  --blockquote--margin-right: 0;
+  --blockquote--margin-bottom: var(--margin-bottom);
+  --blockquote--margin-left: 0;
+  --blockquote--bordered--border-left-width: 5px;
+  --blockquote--bordered--border-left-style: var(--border-style);
+  --blockquote--bordered--border-left-color: var(--border-color);
+  --blockquote--bordered--padding-top: var(--padding-top);
+  --blockquote--bordered--padding-right: var(--padding-right);
+  --blockquote--bordered--padding-bottom: var(--padding-bottom);
+  --blockquote--bordered--padding-left: var(--padding-left);
+  --blockquote--bordered--border-right-width: 5px;
+  --blockquote--bordered--border-right-style: var(--border-style);
+  --blockquote--bordered--border-right-color: var(--border-color);
+  --blockquote--bordered--padding-top: var(--padding-top);
+  --blockquote--bordered--padding-right: var(--padding-right);
+  --blockquote--bordered--padding-bottom: var(--padding-bottom);
+  --blockquote--bordered--padding-left: var(--padding-left);
+  --blockquote--footer--color-h: var(--text-color-weak-h);
+  --blockquote--footer--color-s: var(--text-color-weak-s);
+  --blockquote--footer--color-l: var(--text-color-weak-l);
+  --blockquote--footer--color-a: var(--text-color-weak-a);
+  --blockquote--footer--font-size: 80%;
+}

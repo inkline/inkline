@@ -1,0 +1,17 @@
+@use '../functions/properties';
+
+.zoom-in-top-transition-enter-active,
+.zoom-in-top-transition-leave-active {
+    transition-property: properties.generic('transition-property-zoom-in-top');
+    transition-duration: properties.generic('transition-duration-zoom-in-top');
+    transition-timing-function: properties.generic('transition-timing-function-zoom-in-top');
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: center top;
+}
+
+.zoom-in-top-transition-enter-from,
+.zoom-in-top-transition-leave-active {
+    opacity: 0;
+    transform: scaleY(0);
+}

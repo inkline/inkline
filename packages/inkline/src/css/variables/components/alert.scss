@@ -1,0 +1,270 @@
+@use "../mixins/variants";
+
+.alert {
+  @include variants.selector("info") {
+    @include variants.background-h("alert", "info");
+    @include variants.background-s("alert", "info");
+    @include variants.background-l("alert", "info");
+    @include variants.background-a("alert", "info");
+    @include variants.border-top-color("alert", "info");
+    @include variants.border-right-color("alert", "info");
+    @include variants.border-bottom-color("alert", "info");
+    @include variants.border-left-color("alert", "info");
+    @include variants.color-h("alert", "info");
+    @include variants.color-s("alert", "info");
+    @include variants.color-l("alert", "info");
+    @include variants.color-a("alert", "info");
+  }
+  @include variants.selector("success") {
+    @include variants.background-h("alert", "success");
+    @include variants.background-s("alert", "success");
+    @include variants.background-l("alert", "success");
+    @include variants.background-a("alert", "success");
+    @include variants.border-top-color("alert", "success");
+    @include variants.border-right-color("alert", "success");
+    @include variants.border-bottom-color("alert", "success");
+    @include variants.border-left-color("alert", "success");
+    @include variants.color-h("alert", "success");
+    @include variants.color-s("alert", "success");
+    @include variants.color-l("alert", "success");
+    @include variants.color-a("alert", "success");
+  }
+  @include variants.selector("warning") {
+    @include variants.background-h("alert", "warning");
+    @include variants.background-s("alert", "warning");
+    @include variants.background-l("alert", "warning");
+    @include variants.background-a("alert", "warning");
+    @include variants.border-top-color("alert", "warning");
+    @include variants.border-right-color("alert", "warning");
+    @include variants.border-bottom-color("alert", "warning");
+    @include variants.border-left-color("alert", "warning");
+    @include variants.color-h("alert", "warning");
+    @include variants.color-s("alert", "warning");
+    @include variants.color-l("alert", "warning");
+    @include variants.color-a("alert", "warning");
+  }
+  @include variants.selector("danger") {
+    @include variants.background-h("alert", "danger");
+    @include variants.background-s("alert", "danger");
+    @include variants.background-l("alert", "danger");
+    @include variants.background-a("alert", "danger");
+    @include variants.border-top-color("alert", "danger");
+    @include variants.border-right-color("alert", "danger");
+    @include variants.border-bottom-color("alert", "danger");
+    @include variants.border-left-color("alert", "danger");
+    @include variants.color-h("alert", "danger");
+    @include variants.color-s("alert", "danger");
+    @include variants.color-l("alert", "danger");
+    @include variants.color-a("alert", "danger");
+  }
+  @include variants.selector("sm") {
+    @include variants.font-size("alert", "sm");
+    @include variants.padding-top("alert", "sm");
+    @include variants.padding-right("alert", "sm");
+    @include variants.padding-bottom("alert", "sm");
+    @include variants.padding-left("alert", "sm");
+    @include variants.border-top-left-radius("alert", "sm");
+    @include variants.border-top-right-radius("alert", "sm");
+    @include variants.border-bottom-right-radius("alert", "sm");
+    @include variants.border-bottom-left-radius("alert", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.font-size("alert", "md");
+    @include variants.padding-top("alert", "md");
+    @include variants.padding-right("alert", "md");
+    @include variants.padding-bottom("alert", "md");
+    @include variants.padding-left("alert", "md");
+    @include variants.border-top-left-radius("alert", "md");
+    @include variants.border-top-right-radius("alert", "md");
+    @include variants.border-bottom-right-radius("alert", "md");
+    @include variants.border-bottom-left-radius("alert", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.font-size("alert", "lg");
+    @include variants.padding-top("alert", "lg");
+    @include variants.padding-right("alert", "lg");
+    @include variants.padding-bottom("alert", "lg");
+    @include variants.padding-left("alert", "lg");
+    @include variants.border-top-left-radius("alert", "lg");
+    @include variants.border-top-right-radius("alert", "lg");
+    @include variants.border-bottom-right-radius("alert", "lg");
+    @include variants.border-bottom-left-radius("alert", "lg");
+  }
+}
+
+:root {
+  --alert--background-h: var(--color-info-100-h);
+  --alert--background-s: var(--color-info-100-s);
+  --alert--background-l: var(--color-info-100-l);
+  --alert--background-a: var(--color-info-100-a);
+  --alert--box-shadow-offset-x: var(--box-shadow-offset-x);
+  --alert--box-shadow-offset-y: var(--box-shadow-offset-y);
+  --alert--box-shadow-blur-radius: var(--box-shadow-blur-radius);
+  --alert--box-shadow-spread-radius: var(--box-shadow-spread-radius);
+  --alert--box-shadow-color: var(--box-shadow-color);
+  --alert--border-top-width: var(--border-top-width);
+  --alert--border-top-style: var(--border-top-style);
+  --alert--border-top-color: var(--border-top-color);
+  --alert--border-right-width: var(--border-right-width);
+  --alert--border-right-style: var(--border-right-style);
+  --alert--border-right-color: var(--border-right-color);
+  --alert--border-bottom-width: var(--border-bottom-width);
+  --alert--border-bottom-style: var(--border-bottom-style);
+  --alert--border-bottom-color: var(--border-bottom-color);
+  --alert--border-left-width: var(--border-left-width);
+  --alert--border-left-style: var(--border-left-style);
+  --alert--border-left-color: var(--border-left-color);
+  --alert--border-top-left-radius: var(--border-top-left-radius);
+  --alert--border-top-right-radius: var(--border-top-right-radius);
+  --alert--border-bottom-right-radius: var(--border-bottom-right-radius);
+  --alert--border-bottom-left-radius: var(--border-bottom-left-radius);
+  --alert--color-h: var(--color-info-800-h);
+  --alert--color-s: var(--color-info-800-s);
+  --alert--color-l: var(--color-info-800-l);
+  --alert--color-a: var(--color-info-800-a);
+  --alert--font-size: var(--font-size);
+  --alert--font-weight: var(--font-weight-normal);
+  --alert--transition-property: background-color, color, border-color;
+  --alert--transition-duration: var(--transition-duration);
+  --alert--transition-timing-function: var(--transition-timing-function);
+  --alert--padding-top: var(--padding-top);
+  --alert--padding-right: var(--padding-right);
+  --alert--padding-bottom: var(--padding-bottom);
+  --alert--padding-left: var(--padding-left);
+  --alert--title--font-weight: var(--font-weight-semibold);
+  --alert--link--font-weight: var(--font-weight-semibold);
+  --alert--link--transition-property: color;
+  --alert--code--background-h: 0;
+  --alert--code--background-s: 0%;
+  --alert--code--background-l: 0%;
+  --alert--code--background-a: 0.05;
+  --alert--info--background-h: var(--color-info-100-h);
+  --alert--info--background-s: var(--color-info-100-s);
+  --alert--info--background-l: var(--color-info-100-l);
+  --alert--info--background-a: var(--color-info-100-a);
+  --alert--info--border-top-color: var(--color-info-shade-50);
+  --alert--info--border-right-color: var(--color-info-shade-50);
+  --alert--info--border-bottom-color: var(--color-info-shade-50);
+  --alert--info--border-left-color: var(--color-info-shade-50);
+  --alert--info--color-h: var(--color-info-800-h);
+  --alert--info--color-s: var(--color-info-800-s);
+  --alert--info--color-l: var(--color-info-800-l);
+  --alert--info--color-a: var(--color-info-800-a);
+  --alert--success--background-h: var(--color-success-100-h);
+  --alert--success--background-s: var(--color-success-100-s);
+  --alert--success--background-l: var(--color-success-100-l);
+  --alert--success--background-a: var(--color-success-100-a);
+  --alert--success--border-top-color: var(--color-success-shade-50);
+  --alert--success--border-right-color: var(--color-success-shade-50);
+  --alert--success--border-bottom-color: var(--color-success-shade-50);
+  --alert--success--border-left-color: var(--color-success-shade-50);
+  --alert--success--color-h: var(--color-success-800-h);
+  --alert--success--color-s: var(--color-success-800-s);
+  --alert--success--color-l: var(--color-success-800-l);
+  --alert--success--color-a: var(--color-success-800-a);
+  --alert--warning--background-h: var(--color-warning-100-h);
+  --alert--warning--background-s: var(--color-warning-100-s);
+  --alert--warning--background-l: var(--color-warning-100-l);
+  --alert--warning--background-a: var(--color-warning-100-a);
+  --alert--warning--border-top-color: var(--color-warning-shade-50);
+  --alert--warning--border-right-color: var(--color-warning-shade-50);
+  --alert--warning--border-bottom-color: var(--color-warning-shade-50);
+  --alert--warning--border-left-color: var(--color-warning-shade-50);
+  --alert--warning--color-h: var(--color-warning-800-h);
+  --alert--warning--color-s: var(--color-warning-800-s);
+  --alert--warning--color-l: var(--color-warning-800-l);
+  --alert--warning--color-a: var(--color-warning-800-a);
+  --alert--danger--background-h: var(--color-danger-100-h);
+  --alert--danger--background-s: var(--color-danger-100-s);
+  --alert--danger--background-l: var(--color-danger-100-l);
+  --alert--danger--background-a: var(--color-danger-100-a);
+  --alert--danger--border-top-color: var(--color-danger-shade-50);
+  --alert--danger--border-right-color: var(--color-danger-shade-50);
+  --alert--danger--border-bottom-color: var(--color-danger-shade-50);
+  --alert--danger--border-left-color: var(--color-danger-shade-50);
+  --alert--danger--color-h: var(--color-danger-800-h);
+  --alert--danger--color-s: var(--color-danger-800-s);
+  --alert--danger--color-l: var(--color-danger-800-l);
+  --alert--danger--color-a: var(--color-danger-800-a);
+  --alert--sm--font-size: calc(
+    var(--alert--font-size) * var(--size-multiplier-sm)
+  );
+  --alert--sm--padding-top: calc(
+    var(--alert--padding-top) * var(--size-multiplier-sm)
+  );
+  --alert--sm--padding-right: calc(
+    var(--alert--padding-right) * var(--size-multiplier-sm)
+  );
+  --alert--sm--padding-bottom: calc(
+    var(--alert--padding-bottom) * var(--size-multiplier-sm)
+  );
+  --alert--sm--padding-left: calc(
+    var(--alert--padding-left) * var(--size-multiplier-sm)
+  );
+  --alert--sm--border-top-left-radius: calc(
+    var(--alert--border-top-left-radius) * var(--size-multiplier-sm)
+  );
+  --alert--sm--border-top-right-radius: calc(
+    var(--alert--border-top-right-radius) * var(--size-multiplier-sm)
+  );
+  --alert--sm--border-bottom-right-radius: calc(
+    var(--alert--border-bottom-right-radius) * var(--size-multiplier-sm)
+  );
+  --alert--sm--border-bottom-left-radius: calc(
+    var(--alert--border-bottom-left-radius) * var(--size-multiplier-sm)
+  );
+  --alert--md--font-size: calc(
+    var(--alert--font-size) * var(--size-multiplier-md)
+  );
+  --alert--md--padding-top: calc(
+    var(--alert--padding-top) * var(--size-multiplier-md)
+  );
+  --alert--md--padding-right: calc(
+    var(--alert--padding-right) * var(--size-multiplier-md)
+  );
+  --alert--md--padding-bottom: calc(
+    var(--alert--padding-bottom) * var(--size-multiplier-md)
+  );
+  --alert--md--padding-left: calc(
+    var(--alert--padding-left) * var(--size-multiplier-md)
+  );
+  --alert--md--border-top-left-radius: calc(
+    var(--alert--border-top-left-radius) * var(--size-multiplier-md)
+  );
+  --alert--md--border-top-right-radius: calc(
+    var(--alert--border-top-right-radius) * var(--size-multiplier-md)
+  );
+  --alert--md--border-bottom-right-radius: calc(
+    var(--alert--border-bottom-right-radius) * var(--size-multiplier-md)
+  );
+  --alert--md--border-bottom-left-radius: calc(
+    var(--alert--border-bottom-left-radius) * var(--size-multiplier-md)
+  );
+  --alert--lg--font-size: calc(
+    var(--alert--font-size) * var(--size-multiplier-lg)
+  );
+  --alert--lg--padding-top: calc(
+    var(--alert--padding-top) * var(--size-multiplier-lg)
+  );
+  --alert--lg--padding-right: calc(
+    var(--alert--padding-right) * var(--size-multiplier-lg)
+  );
+  --alert--lg--padding-bottom: calc(
+    var(--alert--padding-bottom) * var(--size-multiplier-lg)
+  );
+  --alert--lg--padding-left: calc(
+    var(--alert--padding-left) * var(--size-multiplier-lg)
+  );
+  --alert--lg--border-top-left-radius: calc(
+    var(--alert--border-top-left-radius) * var(--size-multiplier-lg)
+  );
+  --alert--lg--border-top-right-radius: calc(
+    var(--alert--border-top-right-radius) * var(--size-multiplier-lg)
+  );
+  --alert--lg--border-bottom-right-radius: calc(
+    var(--alert--border-bottom-right-radius) * var(--size-multiplier-lg)
+  );
+  --alert--lg--border-bottom-left-radius: calc(
+    var(--alert--border-bottom-left-radius) * var(--size-multiplier-lg)
+  );
+}

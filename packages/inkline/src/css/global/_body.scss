@@ -1,0 +1,39 @@
+@use '../../css/mixins/components';
+
+/**
+ * Body
+ *
+ * As a best practice, apply a default `background-color`.
+ * Prevent adjustments of font size after orientation changes in iOS.
+ * Change the default tap highlight to be completely transparent in iOS.
+ */
+
+////
+/// The color of the body element
+/// @name body--color
+/// @type color
+////
+
+////
+/// The background of the body element
+/// @name body--background
+/// @type background
+////
+
+////
+/// The text-align of the body element
+/// @name body--text-align
+/// @type text-align
+////
+
+body {
+    @include components.color('body');
+    @include components.background('body');
+    @include components.font-size('body');
+    @include components.font-family('body');
+    @include components.line-height('body');
+    @include components.text-align('body');
+    @include components.transition('body');
+
+    text-size-adjust: 100%;
+}

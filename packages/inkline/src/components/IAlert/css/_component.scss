@@ -1,0 +1,87 @@
+@use '../../../css/mixins/components';
+@use '../../../css/functions/properties';
+
+/**
+ * Alert
+ */
+
+.alert {
+    @include components.background('alert');
+    @include components.border-style('alert');
+    @include components.border-width('alert');
+    @include components.border-color('alert');
+    @include components.border-radius('alert');
+    @include components.box-shadow('alert');
+    @include components.color('alert');
+    @include components.font-size('alert');
+    @include components.font-weight('alert');
+    @include components.transition('alert');
+
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    align-items: center;
+
+    a {
+        @include components.color('alert', 'link', true);
+        @include components.font-weight('alert', 'link', true);
+        @include components.transition('alert', 'link', true);
+
+        &:hover,
+        &.-hover {
+            @include components.color('alert' 'link', 'hover', true);
+        }
+
+        &:focus,
+        &.-focus {
+            @include components.color('alert' 'link', 'focus', true);
+        }
+    }
+
+    code {
+        @include components.background('alert', 'code');
+        @include components.color('alert', 'code', true);
+    }
+
+    > .alert-content {
+        @include components.padding('alert');
+
+        > .alert-title {
+            @include components.font-size('alert', 'title', true);
+            @include components.font-weight('alert', 'title', true);
+
+            > * {
+                margin-top: 0;
+            }
+        }
+    }
+
+    > .alert-icon {
+        margin-left: properties.padding-left('alert', 'icon', true);
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    > .alert-dismiss {
+        margin-right: properties.padding-right('alert', 'dismiss', true);
+        flex: 0 0 auto;
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+    }
+
+    &,
+    > .alert-content {
+        flex: 0 1 100%;
+
+        > hr {
+            margin-right: 0;
+            margin-left: 0;
+        }
+    }
+}

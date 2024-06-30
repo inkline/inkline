@@ -1,0 +1,55 @@
+@use '../mixins/components';
+
+/**
+ * Blockquote
+ */
+
+blockquote {
+    @include components.margin-bottom('blockquote');
+}
+
+.blockquote {
+    @include components.font-size('blockquote');
+
+    &.-left {
+        text-align: left;
+
+        &.-bordered {
+            @include components.padding-left('blockquote', 'bordered' 'left');
+            @include components.border-left-width('blockquote', 'bordered' 'left');
+            @include components.border-left-style('blockquote', 'bordered' 'left');
+            @include components.border-left-color('blockquote', 'bordered' 'left');
+        }
+    }
+
+    &.-center {
+        text-align: center;
+    }
+
+    &.-right {
+        text-align: right;
+
+        &.-bordered {
+            @include components.padding-right('blockquote', 'bordered' 'left');
+            @include components.border-right-width('blockquote', 'bordered' 'left');
+            @include components.border-right-style('blockquote', 'bordered' 'left');
+            @include components.border-right-color('blockquote', 'bordered' 'left');
+        }
+    }
+
+    > p {
+        margin-bottom: 0;
+    }
+
+    > footer,
+    > .footer {
+        @include components.color('blockquote', 'footer');
+        @include components.font-size('blockquote', 'footer');
+
+        display: block;
+
+        &::before {
+            content: '\2014 \00A0'; // em dash, nbsp
+        }
+    }
+}

@@ -1,5 +1,1 @@
-const baseConfig = require('@grozav/eslint-config/.prettierrc.js');
-
-module.exports = {
-    ...baseConfig
-};
+module.exports = require('./packages/tooling/eslint-config/.prettierrc.js');

@@ -1,0 +1,118 @@
+@use "../mixins/variants";
+
+.header {
+  @include variants.selector("primary") {
+    @include variants.background-h("header", "primary");
+    @include variants.background-s("header", "primary");
+    @include variants.background-l("header", "primary");
+    @include variants.background-a("header", "primary");
+    @include variants.color-h("header", "primary");
+    @include variants.color-s("header", "primary");
+    @include variants.color-l("header", "primary");
+    @include variants.color-a("header", "primary");
+  }
+  @include variants.selector("light") {
+    @include variants.background-h("header", "light");
+    @include variants.background-s("header", "light");
+    @include variants.background-l("header", "light");
+    @include variants.background-a("header", "light");
+    @include variants.color-h("header", "light");
+    @include variants.color-s("header", "light");
+    @include variants.color-l("header", "light");
+    @include variants.color-a("header", "light");
+  }
+  @include variants.selector("dark") {
+    @include variants.background-h("header", "dark");
+    @include variants.background-s("header", "dark");
+    @include variants.background-l("header", "dark");
+    @include variants.background-a("header", "dark");
+    @include variants.color-h("header", "dark");
+    @include variants.color-s("header", "dark");
+    @include variants.color-l("header", "dark");
+    @include variants.color-a("header", "dark");
+  }
+  @include variants.selector("sm") {
+    @include variants.padding-top("header", "sm");
+    @include variants.padding-right("header", "sm");
+    @include variants.padding-bottom("header", "sm");
+    @include variants.padding-left("header", "sm");
+  }
+  @include variants.selector("md") {
+    @include variants.padding-top("header", "md");
+    @include variants.padding-right("header", "md");
+    @include variants.padding-bottom("header", "md");
+    @include variants.padding-left("header", "md");
+  }
+  @include variants.selector("lg") {
+    @include variants.padding-top("header", "lg");
+    @include variants.padding-right("header", "lg");
+    @include variants.padding-bottom("header", "lg");
+    @include variants.padding-left("header", "lg");
+  }
+}
+
+:root {
+  --header--background-h: var(--color-white-h);
+  --header--background-s: var(--color-white-s);
+  --header--background-l: var(--color-white-l);
+  --header--background-a: var(--color-white-a);
+  --header--color-h: var(--contrast-text-color-light-h);
+  --header--color-s: var(--contrast-text-color-light-s);
+  --header--color-l: var(--contrast-text-color-light-l);
+  --header--color-a: var(--contrast-text-color-light-a);
+  --header--padding-top: 10rem;
+  --header--padding-right: 0;
+  --header--padding-bottom: 10rem;
+  --header--padding-left: 0;
+  --header--transition-property: background-color, color;
+  --header--transition-duration: var(--transition-duration);
+  --header--transition-timing-function: var(--transition-timing-function);
+  --header--primary--background-h: var(--color-primary-h);
+  --header--primary--background-s: var(--color-primary-s);
+  --header--primary--background-l: var(--color-primary-l);
+  --header--primary--background-a: var(--color-primary-a);
+  --header--primary--color-h: var(--contrast-text-color-dark-h);
+  --header--primary--color-s: var(--contrast-text-color-dark-s);
+  --header--primary--color-l: var(--contrast-text-color-dark-l);
+  --header--primary--color-a: var(--contrast-text-color-dark-a);
+  --header--light--background-h: var(--color-light-h);
+  --header--light--background-s: var(--color-light-s);
+  --header--light--background-l: var(--color-light-l);
+  --header--light--background-a: var(--color-light-a);
+  --header--light--color-h: var(--contrast-text-color-light-h);
+  --header--light--color-s: var(--contrast-text-color-light-s);
+  --header--light--color-l: var(--contrast-text-color-light-l);
+  --header--light--color-a: var(--contrast-text-color-light-a);
+  --header--dark--background-h: var(--color-dark-h);
+  --header--dark--background-s: var(--color-dark-s);
+  --header--dark--background-l: var(--color-dark-l);
+  --header--dark--background-a: var(--color-dark-a);
+  --header--dark--color-h: var(--contrast-text-color-dark-h);
+  --header--dark--color-s: var(--contrast-text-color-dark-s);
+  --header--dark--color-l: var(--contrast-text-color-dark-l);
+  --header--dark--color-a: var(--contrast-text-color-dark-a);
+  --header--sm--padding-top: calc(
+    var(--header--padding-top) * var(--size-multiplier-sm)
+  );
+  --header--sm--padding-right: 0;
+  --header--sm--padding-bottom: calc(
+    var(--header--padding-bottom) * var(--size-multiplier-sm)
+  );
+  --header--sm--padding-left: 0;
+  --header--md--padding-top: calc(
+    var(--header--padding-top) * var(--size-multiplier-md)
+  );
+  --header--md--padding-right: 0;
+  --header--md--padding-bottom: calc(
+    var(--header--padding-bottom) * var(--size-multiplier-md)
+  );
+  --header--md--padding-left: 0;
+  --header--lg--padding-top: calc(
+    var(--header--padding-top) * var(--size-multiplier-lg)
+  );
+  --header--lg--padding-right: 0;
+  --header--lg--padding-bottom: calc(
+    var(--header--padding-bottom) * var(--size-multiplier-lg)
+  );
+  --header--lg--padding-left: 0;
+}

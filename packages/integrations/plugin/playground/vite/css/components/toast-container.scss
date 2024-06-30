@@ -1,0 +1,25 @@
+@use "../mixins/variants";
+
+.toast-container {
+}
+
+:root {
+  --toast-container--margin-top: var(--margin-top);
+  --toast-container--margin-right: var(--margin-right);
+  --toast-container--margin-bottom: var(--margin-bottom);
+  --toast-container--margin-left: var(--margin-left);
+  --toast-container--top: 0;
+  --toast-container--right: 0;
+  --toast-container--bottom: 0;
+  --toast-container--left: 0;
+  --toast-container--z-index: 2010;
+  --toast-container--toast--margin-top: var(--margin-top);
+  --toast-container--toast--margin-right: var(--margin-right);
+  --toast-container--toast--margin-bottom: var(--margin-bottom);
+  --toast-container--toast--margin-left: var(--margin-left);
+  --toast-container--toast--transition-property: transform, opacity;
+  --toast-container--toast--transition-duration: var(--transition-duration);
+  --toast-container--toast--transition-timing-function: var(
+    --transition-timing-function
+  );
+}

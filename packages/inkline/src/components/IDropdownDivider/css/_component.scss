@@ -1,0 +1,15 @@
+/*
+ * Dropdown Divider
+ */
+
+@use '../../../css/mixins/components';
+@use '../../../css/functions/properties';
+
+.dropdown-divider {
+    @include components.margin('dropdown', 'divider');
+    @include components.background('dropdown', 'divider');
+
+    display: block;
+    height: 1px;
+    clear: both;
+}

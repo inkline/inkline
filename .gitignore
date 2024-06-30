@@ -1,22 +1,22 @@
-node_modules
-dist
-lib
-tmp
-lib-cjs
-lib-esm
-storybook-static
-package
-coverage
-.idea
+# Node Modules
+node_modules/
+
+# Build Files
+lib/
+dist/
+.turbo/
+
+# Test Files
+test-results/
+coverage/
+
+# E2E Generated Packages
+packages/e2e/nuxt
+packages/e2e/vite
+
+# OS Files
 .DS_Store
-dist-ssr
-*.local
 
-# CI
-/inkline-vite
-/inkline-nuxt
-
-# E2E
-/test-results/
-/playwright-report/
-/playwright/.cache/
+# IDE
+.idea/
+.vscode/

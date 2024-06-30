@@ -1,0 +1,229 @@
+@use '../../../css/functions/properties';
+@use '../../../css/mixins/components';
+
+/**
+ * Hamburger menu
+ */
+
+.hamburger-menu {
+    @include components.width('hamburger-menu');
+    @include components.height('hamburger-menu');
+    @include components.opacity('hamburger-menu');
+    @include components.padding('hamburger-menu');
+    @include components.transition('hamburger-menu');
+
+    display: inline-flex;
+    position: relative;
+    box-sizing: content-box;
+    cursor: pointer;
+
+    &:hover {
+        @include components.opacity('hamburger-menu', 'hover');
+    }
+
+    > .hamburger-menu-bars {
+        margin-top: calc(#{properties.height('hamburger-menu', 'bar')} / -2);
+
+        display: block;
+        top: 50%;
+
+        &,
+        &::before,
+        &::after {
+            @include components.border-radius('hamburger-menu', 'bar');
+            @include components.background('hamburger-menu', 'bar', true);
+            @include components.width('hamburger-menu', 'bar');
+            @include components.height('hamburger-menu', 'bar');
+            @include components.transition('hamburger-menu', 'bar');
+
+            position: absolute;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+        }
+
+        &::before {
+            top: calc(
+                #{properties.spacing('hamburger-menu', 'bar')} * -1 + #{properties.height(
+                        'hamburger-menu',
+                        'bar'
+                    )} * -1
+            );
+        }
+
+        &::after {
+            bottom: calc(
+                #{properties.spacing('hamburger-menu', 'bar')} * -1 + #{properties.height(
+                        'hamburger-menu',
+                        'bar'
+                    )} * -1
+            );
+        }
+    }
+
+    &.-close {
+        > .hamburger-menu-bars {
+            transition:
+                transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+                background #{properties.transition-duration('hamburger-menu', 'bar')} #{properties.transition-timing-function(
+                        'hamburger-menu',
+                        'bar'
+                    )};
+
+            &::before {
+                transition:
+                    top 0.1s 0.25s ease-in,
+                    opacity 0.1s ease-in,
+                    background #{properties.transition-duration('hamburger-menu', 'bar')} #{properties.transition-timing-function(
+                            'hamburger-menu',
+                            'bar'
+                        )};
+            }
+
+            &::after {
+                transition:
+                    bottom 0.1s 0.25s ease-in,
+                    transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+                    background #{properties.transition-duration('hamburger-menu', 'bar')} #{properties.transition-timing-function(
+                            'hamburger-menu',
+                            'bar'
+                        )};
+            }
+        }
+
+        &.-active {
+            > .hamburger-menu-bars {
+                transform: rotate(225deg);
+                transition: transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+                &::before {
+                    top: 0;
+                    opacity: 0;
+                    transition:
+                        top 0.1s ease-out,
+                        opacity 0.1s 0.12s ease-out;
+                }
+
+                &::after {
+                    bottom: 0;
+                    transform: rotate(-90deg);
+                    transition:
+                        bottom 0.1s ease-out,
+                        transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+                }
+            }
+        }
+    }
+
+    &.-arrow-left.-active > .hamburger-menu-bars {
+        &::before {
+            transform: translate3d(calc(#{properties.width('hamburger-menu', 'bar')} * -0.2), 0, 0)
+                rotate(-45deg) scale(0.7, 1);
+        }
+
+        &::after {
+            transform: translate3d(calc(#{properties.width('hamburger-menu', 'bar')} * -0.2), 0, 0)
+                rotate(45deg) scale(0.7, 1);
+        }
+    }
+
+    &.-arrow-right.-active > .hamburger-menu-bars {
+        &::before {
+            transform: translate3d(calc(#{properties.width('hamburger-menu', 'bar')} * 0.2), 0, 0)
+                rotate(45deg) scale(0.7, 1);
+        }
+
+        &::after {
+            transform: translate3d(calc(#{properties.width('hamburger-menu', 'bar')} * 0.2), 0, 0)
+                rotate(-45deg) scale(0.7, 1);
+        }
+    }
+
+    &.-arrow-up.-active > .hamburger-menu-bars {
+        transform: rotate(-90deg);
+
+        &::before {
+            transform: translate3d(calc(#{properties.width('hamburger-menu', 'bar')} * 0.2), 0, 0)
+                rotate(45deg) scale(0.7, 1);
+        }
+
+        &::after {
+            transform: translate3d(calc(#{properties.width('hamburger-menu', 'bar')} * 0.2), 0, 0)
+                rotate(-45deg) scale(0.7, 1);
+        }
+    }
+
+    &.-arrow-down.-active > .hamburger-menu-bars {
+        transform: rotate(90deg);
+
+        &::before {
+            transform: translate3d(calc(#{properties.width('hamburger-menu', 'bar')} * 0.2), 0, 0)
+                rotate(45deg) scale(0.7, 1);
+        }
+
+        &::after {
+            transform: translate3d(calc(#{properties.width('hamburger-menu', 'bar')} * 0.2), 0, 0)
+                rotate(-45deg) scale(0.7, 1);
+        }
+    }
+
+    &.-minus.-active > .hamburger-menu-bars {
+        &::before {
+            transform: translate3d(
+                0,
+                calc(
+                    #{properties.spacing('hamburger-menu', 'bar')} + #{properties.height(
+                            'hamburger-menu',
+                            'bar'
+                        )}
+                ),
+                0
+            );
+        }
+
+        &::after {
+            transform: translate3d(
+                0,
+                calc(
+                    #{properties.spacing('hamburger-menu', 'bar')} * -1 + #{properties.height(
+                            'hamburger-menu',
+                            'bar'
+                        )} * -1
+                ),
+                0
+            );
+        }
+    }
+
+    &.-plus.-active > .hamburger-menu-bars {
+        &::before {
+            transform: translate3d(
+                0,
+                calc(
+                    #{properties.spacing('hamburger-menu', 'bar')} + #{properties.height(
+                            'hamburger-menu',
+                            'bar'
+                        )}
+                ),
+                0
+            );
+        }
+
+        &::after {
+            transform: translate3d(
+                    0,
+                    calc(
+                        #{properties.spacing('hamburger-menu', 'bar')} * -1 + #{properties.height(
+                                'hamburger-menu',
+                                'bar'
+                            )} * -1
+                    ),
+                    0
+                )
+                rotate(90deg);
+        }
+    }
+}

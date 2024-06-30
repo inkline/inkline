@@ -1,0 +1,92 @@
+@use '../../../css/mixins/popup';
+@use '../../../css/mixins/components';
+@use '../../../css/functions/properties';
+
+/**
+ * Popover
+ */
+
+.popover-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.popover {
+    @include popup.popup(properties.z-index('popover'));
+    @include popup.popup-arrow;
+    @include popup.popup-arrow-size-variant(properties.size('popover', 'arrow'));
+
+    @include components.line-height('popover');
+    @include components.box-shadow('popover');
+    @include components.color('popover');
+    @include components.font-size('popover');
+    @include components.width('popover');
+    @include components.max-width('popover');
+
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    background-clip: padding-box;
+    display: inline-block;
+    white-space: normal;
+
+    > .popover-header {
+        @include components.background('popover', 'header', true);
+        @include components.border-width('popover', 'header', true);
+        @include components.border-style('popover', 'header', true);
+        @include components.border-color('popover', 'header', true);
+        @include components.padding('popover', 'header', true);
+        @include components.background('popover', 'header', true);
+        @include components.transition('popover', 'header', true);
+
+        border-bottom-width: 0;
+    }
+
+    > .popover-body {
+        @include components.background('popover', 'body', true);
+        @include components.border-width('popover', 'body', true);
+        @include components.border-style('popover', 'body', true);
+        @include components.border-color('popover', 'body', true);
+        @include components.padding('popover', 'body', true);
+    }
+
+    > .popover-footer {
+        @include components.background('popover', 'footer', true);
+        @include components.border-width('popover', 'footer', true);
+        @include components.border-style('popover', 'footer', true);
+        @include components.border-color('popover', 'footer', true);
+        @include components.padding('popover', 'footer', true);
+
+        border-top-width: 0;
+    }
+
+    > div:first-of-type {
+        @include components.border-top-left-radius('popover');
+        @include components.border-top-right-radius('popover');
+    }
+
+    > div:last-of-type {
+        @include components.border-bottom-left-radius('popover');
+        @include components.border-bottom-right-radius('popover');
+    }
+
+    @include popup.popup-arrow-color-variant-for-side(
+        'top',
+        properties.background('popover'),
+        properties.border-bottom-color('popover')
+    );
+    @include popup.popup-arrow-color-variant-for-side(
+        'right',
+        properties.background('popover'),
+        properties.border-left-color('popover')
+    );
+    @include popup.popup-arrow-color-variant-for-side(
+        'bottom',
+        properties.background('popover'),
+        properties.border-top-color('popover')
+    );
+    @include popup.popup-arrow-color-variant-for-side(
+        'left',
+        properties.background('popover'),
+        properties.border-right-color('popover')
+    );
+}

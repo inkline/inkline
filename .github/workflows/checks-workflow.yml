@@ -10,17 +10,20 @@ jobs:
             -   name: Set up node
                 uses: actions/setup-node@v1
                 with:
-                    node-version: 16
+                    node-version: 18
+            -   uses: pnpm/action-setup@v4
+                with:
+                    version: 9.2.0
             -   name: Cache node_modules
                 uses: actions/cache@v2
                 with:
                     path: '**/node_modules'
                     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-            -   name: Install npm dependencies
+            -   name: Install dependencies
                 if: steps.npm-cache.outputs.cache-hit != 'true'
-                run: npm install
+                run: pnpm install
             -   name: Run build
-                run: npm run build
+                run: pnpm run build
 
     linting:
         name: Lint
@@ -31,17 +34,22 @@ jobs:
             -   name: Set up node
                 uses: actions/setup-node@v1
                 with:
-                    node-version: 16
+                    node-version: 18
+            -   uses: pnpm/action-setup@v4
+                with:
+                    version: 9.2.0
             -   name: Cache node_modules
                 uses: actions/cache@v2
                 with:
                     path: '**/node_modules'
                     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-            -   name: Install npm dependencies
+            -   name: Install dependencies
                 if: steps.npm-cache.outputs.cache-hit != 'true'
-                run: npm install
+                run: pnpm install
+            -   name: Run build
+                run: pnpm run build
             -   name: Run linting
-                run: npm run lint
+                run: pnpm run lint
 
 
     testing:
@@ -53,19 +61,24 @@ jobs:
             -   name: Set up node
                 uses: actions/setup-node@v1
                 with:
-                    node-version: 16
+                    node-version: 18
+            -   uses: pnpm/action-setup@v4
+                with:
+                    version: 9.2.0
             -   name: Cache node_modules
                 uses: actions/cache@v2
                 with:
                     path: '**/node_modules'
                     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-            -   name: Install npm
+            -   name: Install dependencies
                 if: steps.npm-cache.outputs.cache-hit != 'true'
-                run: npm install
+                run: pnpm install
+            -   name: Run build
+                run: pnpm run build
             -   name: Run testing
-                run: npm run test
+                run: pnpm run test
             -   name: Coveralls
                 uses: coverallsapp/github-action@master
                 with:
-                    path-to-lcov: coverage/lcov.info
+                    path-to-lcov: packages/inkline/coverage/lcov.info
                     github-token: ${{ secrets.GITHUB_TOKEN }}

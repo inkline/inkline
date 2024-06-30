@@ -1,0 +1,86 @@
+/**
+ * Images
+ */
+
+@use '../mixins/components';
+
+img,
+svg {
+    vertical-align: middle;
+}
+
+// Fluid images
+//
+.image.-fluid,
+._image\:fluid {
+    // Override the height to auto, otherwise images will be stretched
+    // when setting a width and height attribute on the img element.
+    height: auto;
+
+    // Set the width to always be container width
+    width: 100%;
+}
+
+// Responsive images
+//
+// Ensure images don't scale beyond their parents. This is purposefully opt-in
+// via an explicit class rather than being the default for all `<img>` because
+// it can break third-party widgets (including Google Maps) which weren't
+// expecting the images within themselves to be involuntarily resized.
+//
+.image.-responsive,
+._image\:responsive,
+.image.-thumbnail,
+._image\:thumbnail,
+.image.-polaroid,
+._image\:polaroid {
+    // Override the height to auto, otherwise images will be stretched
+    // when setting a width and height attribute on the img element.
+    height: auto;
+    max-width: 100%;
+}
+
+// Image thumbnails
+//
+.image.-thumbnail,
+._image\:thumbnail,
+.image.-polaroid,
+._image\:polaroid {
+    @include components.background('thumbnail');
+    @include components.border-width('thumbnail');
+    @include components.border-style('thumbnail');
+    @include components.border-color('thumbnail');
+    @include components.border-radius('thumbnail');
+    @include components.box-shadow('thumbnail');
+    @include components.margin('thumbnail');
+    @include components.padding('thumbnail');
+    @include components.transition('thumbnail');
+}
+
+// In Internet Explorer 10, SVG images with .-responsive are
+// disproportionately sized. This fix improperly sizes other image formats,
+// so Inkline will only apply it to svg extensions
+//
+.image[src$='.svg'] {
+    width: 100% \9;
+}
+
+figure {
+    @include components.margin('figure');
+}
+
+.figure {
+    display: inline-block; // Ensures the caption's text aligns with the image.
+
+    > .image,
+    > img {
+        @include components.margin('figure', 'image');
+
+        line-height: 1;
+    }
+
+    > .caption {
+        @include components.color('figure', 'caption');
+        @include components.font-size('figure', 'caption');
+    }
+}
