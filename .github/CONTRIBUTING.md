@@ -34,14 +34,19 @@ restrictions:
 
 Our bug tracker utilizes several labels to help organize and identify issues. Here's what they represent and how we use them:
 
-- `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
-- `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Inkline.
-- `css` - Issues due to our compiled CSS or source Sass files.
-- `js` - Issues stemming from our compiled or source JavaScript files.
-- `docs` - Issues for improving or updating our documentation.
+- `bug` - Issues that are bugs within Inkline.
+- `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Inkline or features that are planned to be implemented.
+- `discussion` - Issues that are used to discuss a topic rather than suggest a feature or report a bug.
+- `documentation` - Issues for improving or updating our documentation.
+- `duplicate` - Issues that are duplicates of other issues. We close these with a reference to the duplicated issue.
+- `invalid` - Issues that are invalid or do not contain enough information for us to reproduce the bug or implement the feature.
 - `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v1.0.0` to `v1.1.0`).
+- `good first issue` - Issues that are ideal for people who are new to the project and want to contribute.
 - `help wanted` - Issues where we need or would love help from the community to resolve.
 - `meta` - Issues with the project itself or our GitHub repository.
+- `package` - Issues stemming from our compiled files or package distribution.
+- `question` - Issues that are related to questions rather than bugs or feature requests.
+- `wontfix` - Issues that will not be fixed. These issues are closed with a comment explaining why.
 
 For a complete look at our labels, see the [project labels page](https://github.com/inkline/inkline/labels).
 

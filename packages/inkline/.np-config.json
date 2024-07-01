@@ -1,5 +1,3 @@
 {
-    "yarn": false,
-    "tests": false,
-    "contents": "./lib"
+    "yarn": false
 }
