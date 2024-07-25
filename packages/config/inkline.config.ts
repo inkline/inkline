@@ -1,5 +1,5 @@
-export default {
-    theme: {
-        default: {}
-    }
-};
+import { defineConfig, useTheme } from './src';
+
+export default defineConfig(() => {
+    useTheme();
+});

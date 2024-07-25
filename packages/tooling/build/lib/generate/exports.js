@@ -39,13 +39,15 @@ async function generateExports(baseDir, options = {}) {
     const exportDir = (0, _path.dirname)(file).replace(srcDir, "");
     const importDir = (0, _path.dirname)(file).replace(srcDir, "/lib");
     const importPath = `.${importDir}/${fileName}`;
-    const exportPath = `.${exportDir}/${fileName}`.replace(/\/index$/, "");
-    packageExports.set(exportPath, {
+    const exportPath = `.${exportDir}/${fileName.replace("_", "")}`.replace(/\/index$/, "");
+    const scssExportPath = exportDir.includes("css") ? exportPath.replace(".scss", "") : exportPath;
+    const cssExportPath = exportPath.replace(".scss", ".css");
+    packageExports.set(scssExportPath, {
       require: importPath,
       import: importPath
     });
     if (!fileName.startsWith("_")) {
-      packageExports.set(exportPath.replace("scss", "css"), {
+      packageExports.set(cssExportPath, {
         require: importPath.replace("scss", "css"),
         import: importPath.replace("scss", "css")
       });

@@ -1,7 +1,8 @@
 import { setup } from '@storybook/vue3';
 import { markRaw, watch, ref } from 'vue';
 import { light, dark } from './theme';
-import { Inkline, components } from '../src/inkline';
+import { Inkline } from '../src/plugin';
+import * as components from '../src/components';
 import '../src/inkline.scss';
 import './preview.scss';
 import { DecoratorHelpers } from '@storybook/addon-themes';

@@ -118,7 +118,7 @@ export const Inkline: Plugin = {
              * Add inkline class to document body and initialize color mode
              */
 
-            addClass(document.body, 'inkline');
+            addClass(document.documentElement, 'inkline');
         }
 
         /**

@@ -48,7 +48,6 @@ export default defineComponent({
 
         const classes = computed(() => ({
             'inkline-icon': true,
-            icon: true,
             [`-${size.value}`]: true
         }));
 

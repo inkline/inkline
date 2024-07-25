@@ -28,7 +28,7 @@
 
     a:hover &,
     a:focus & {
-        @include components.background('badge', 'link' 'hover');
+        @include components.background('badge', 'link' 'hover', true);
 
         text-decoration: none;
     }

@@ -25,7 +25,7 @@ export const manifest: ComponentManifest = {
     events: [],
     slots: [],
     css: {
-        selector: '.icon',
+        selector: '.inkline-icon',
         variables: [
             {
                 name: '--icon--font-size',

@@ -1,3 +1,5 @@
-import { defineConfig } from '@inkline/config';
+import { defineConfig, useTheme } from '@inkline/config';
 
-export default defineConfig({});
+export default defineConfig(() => {
+    useTheme();
+});

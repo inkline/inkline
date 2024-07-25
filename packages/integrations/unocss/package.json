@@ -8,7 +8,7 @@
         "start": "pnpm run build",
         "dev": "inkline-build watch",
         "playground": "pnpm run prepare:playground && vite",
-        "build": "pnpm run build:vite && unbuild",
+        "build": "echo 'TODO'",
         "build:local": "pnpm run build && cd lib && cp ../package.json . && pnpm pack",
         "typecheck": "tsc --noEmit -p tsconfig.json",
         "build:vite": "pnpm run prepare:build && vite build",

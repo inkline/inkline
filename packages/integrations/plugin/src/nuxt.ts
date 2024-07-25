@@ -95,8 +95,6 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
             });
         }
 
-        console.log(inklineRequire.resolve("@inkline/inkline"));
-
         // Add dynamic component imports
         await addComponentsDir({
             path: join(

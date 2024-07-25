@@ -191,9 +191,6 @@ importers:
       '@floating-ui/dom':
         specifier: ^1.6.5
         version: 1.6.6
-      '@storybook/test':
-        specifier: ^8.1.10
-        version: 8.1.11(vitest@1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(jsdom@24.1.0)(sass@1.77.6)(terser@5.31.1))
       micromustache:
         specifier: ^8.0.3
         version: 8.0.3
@@ -246,6 +243,9 @@ importers:
       '@storybook/manager-api':
         specifier: ^8.0.0
         version: 8.1.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@storybook/test':
+        specifier: ^8.1.10
+        version: 8.1.11(vitest@1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(jsdom@24.1.0)(sass@1.77.6)(terser@5.31.1))
       '@storybook/theming':
         specifier: ^8.0.0
         version: 8.1.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -9853,6 +9853,9 @@ packages:
   vue-component-type-helpers@2.0.22:
     resolution: {integrity: sha512-gPr2Ba7efUwy/Vfbuf735bHSVdN4ycoZUCHfypkI33M9DUH+ieRblLLVM2eImccFYaWNWwEzURx02EgoXDBmaQ==}
 
+  vue-component-type-helpers@2.0.28:
+    resolution: {integrity: sha512-hoK0UsKXrXDY9zdpdk+drqOqYHpPhbmfQUJ2mFYK57+l73mQxcYyCteQsolllwGaxhWihT077+OA/FR5ZPTceg==}
+
   vue-devtools-stub@0.1.0:
     resolution: {integrity: sha512-RutnB7X8c5hjq39NceArgXg28WZtZpGc3+J16ljMiYnFhKvd8hITxSWQSQ5bvldxMDU6gG5mkxl1MTQLXckVSQ==}
 
@@ -13177,7 +13180,7 @@ snapshots:
       ts-dedent: 2.2.0
       type-fest: 2.19.0
       vue: 3.4.31(typescript@5.5.2)
-      vue-component-type-helpers: 2.0.22
+      vue-component-type-helpers: 2.0.28
     transitivePeerDependencies:
       - encoding
       - prettier
@@ -13917,7 +13920,7 @@ snapshots:
       pathe: 1.1.2
       picocolors: 1.0.1
       sirv: 2.0.4
-      vitest: 1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(jsdom@24.0.0)(sass@1.77.6)(terser@5.31.1)
+      vitest: 1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(jsdom@24.1.0)(sass@1.77.6)(terser@5.31.1)
 
   '@vitest/utils@1.6.0':
     dependencies:
@@ -21218,6 +21221,8 @@ snapshots:
       typescript: 5.5.2
 
   vue-component-type-helpers@2.0.22: {}
+
+  vue-component-type-helpers@2.0.28: {}
 
   vue-devtools-stub@0.1.0: {}
 

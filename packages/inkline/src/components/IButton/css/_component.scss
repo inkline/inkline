@@ -42,13 +42,21 @@
         // Add "hand" cursor to non-disabled .button elements
         cursor: pointer;
 
+        &:active,
+        &.-active,
+        &:hover,
+        &.-hover,
+        &:focus,
+        &.-focus {
+            text-decoration: none;
+        }
+
         &:not(:active, .-active) {
             // Focus and hover state
             &:hover,
             &.-hover,
             &:focus,
             &.-focus {
-                text-decoration: none;
                 outline: 0;
             }
 

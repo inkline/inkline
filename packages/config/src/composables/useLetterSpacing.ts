@@ -1,0 +1,19 @@
+import { defaultDefinitionOptions } from '../constants';
+import { variable } from '../tokens';
+
+export function useLetterSpacing(options = defaultDefinitionOptions) {
+    const letterSpacing = variable('letter-spacing', 'normal', options);
+
+    const letterSpacingNone = variable('letter-spacing-none', '0', options);
+    const letterSpacingTight = variable('letter-spacing-tight', '-0.05em', options);
+    const letterSpacingNormal = variable('letter-spacing-normal', '0.05em', options);
+    const letterSpacingWide = variable('letter-spacing-wide', '0.1em', options);
+
+    return {
+        letterSpacing,
+        letterSpacingNone,
+        letterSpacingTight,
+        letterSpacingNormal,
+        letterSpacingWide
+    };
+}
