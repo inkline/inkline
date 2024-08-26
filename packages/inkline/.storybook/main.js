@@ -1,21 +1,21 @@
+import { dirname, join } from "path";
 const { mergeConfig } = require('vite');
 const { resolve } = require('path');
 
 module.exports = {
     stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
     addons: [
-        '@storybook/addon-themes',
-        '@storybook/addon-links',
-        '@storybook/addon-essentials',
-        '@storybook/addon-a11y',
-        // Disabled until this is actually used rather otherwise its a blank tab
-        // '@storybook/addon-interactions',
-        'storybook-dark-mode',
-        '@chromatic-com/storybook'
+        getAbsolutePath("@storybook/addon-themes"),
+        getAbsolutePath("@storybook/addon-links"),
+        getAbsolutePath("@storybook/addon-essentials"),
+        getAbsolutePath("@storybook/addon-a11y"),
+        getAbsolutePath("storybook-dark-mode"),
+        getAbsolutePath("@chromatic-com/storybook"),
+        "@storybook/experimental-addon-vitest"
     ],
     staticDirs: ['../public'],
     framework: {
-        name: '@storybook/vue3-vite',
+        name: getAbsolutePath("@storybook/vue3-vite"),
         options: {}
     },
     disableTelemetry: true,
@@ -36,3 +36,7 @@ module.exports = {
     },
     docs: {}
 };
+
+function getAbsolutePath(value) {
+    return dirname(require.resolve(join(value, "package.json")));
+}
