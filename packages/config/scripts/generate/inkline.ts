@@ -5,7 +5,7 @@ import { rm, cp } from 'node:fs/promises';
 (async () => {
     const outputDir = resolve(__dirname, '..', '..', '.inkline/css');
     const configFile = resolve(__dirname, '..', '..', 'inkline.config.ts');
-    const variablesDir = resolve(__dirname, '..', '..', '..', 'inkline/src/css/variables');
+    const variablesDir = resolve(__dirname, '..', '..', '..', 'inkline/src/themes');
 
     await rm(outputDir, { recursive: true, force: true });
     await build({

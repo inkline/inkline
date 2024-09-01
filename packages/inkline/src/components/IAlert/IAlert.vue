@@ -123,10 +123,6 @@ export default defineComponent({
             <slot name="icon" />
         </span>
         <div class="alert-content">
-            <div v-if="$slots.title" class="alert-title">
-                <!-- @slot title Slot for alert title -->
-                <slot name="title" />
-            </div>
             <!-- @slot default Slot for default alert content -->
             <slot />
         </div>

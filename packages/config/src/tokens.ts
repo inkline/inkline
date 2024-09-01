@@ -2,15 +2,19 @@ import {
     Calc,
     ComponentValue,
     DefinitionOptions,
+    Color,
+    HSLAColorInlineProperty,
     Reference,
     Selector,
     Theme,
     TokenType,
     TokenValue,
-    Variable
+    Variable,
+    NamespacedKey,
+    NamespaceType
 } from './types';
-import { isVariable } from './typeGuards';
-import { insertInBetweenElements } from './utils';
+import { isRef, isVariable } from './typeGuards';
+import { insertInBetweenElements, createNamespacedTokenName } from './utils';
 import { addSelectorToTheme, addVariableToTheme, themes } from './themes';
 import { defaultThemeName } from './constants';
 
@@ -22,12 +26,12 @@ import { defaultThemeName } from './constants';
  * Variables automatically get added to the theme when created.
  * Using the variable function will override the stored value unless `options.default` is specified.
  */
-export function variable<Value extends TokenValue = TokenValue, Name extends string = string>(
+export function variable<Name extends string = string>(
     name: Name,
-    value: Value,
+    value: TokenValue,
     options?: DefinitionOptions
-): Variable<Value, Name> {
-    const instance: Variable<Value, Name> = {
+): Variable<Name> {
+    const instance: Variable<Name> = {
         __type: TokenType.Variable,
         __name: name,
         __value: value
@@ -60,6 +64,18 @@ export function calc(...args: TokenValue[]): Calc {
     return {
         __type: TokenType.Calc,
         __value: args.map((arg) => (isVariable(arg) ? ref(arg) : arg))
+    };
+}
+
+/**
+ * Creates a `hsla` token
+ * This token is used to define a HSLA color.
+ */
+
+export function hsla(value: HSLAColorInlineProperty): Color {
+    return {
+        __type: TokenType.HSLAColor,
+        __value: value
     };
 }
 
@@ -133,4 +149,52 @@ export function theme(name: string = defaultThemeName): Theme {
     themes[name] = instance;
 
     return instance;
+}
+
+/**
+ * Creates a namespace for a variable.
+ *
+ * This function is used to create a namespaced variable from an existing variable.
+ * Namespaced variables are used to group related variables together.
+ */
+export function namespace<Namespace extends NamespaceType, Name extends string>(
+    ns: Namespace,
+    instance: Variable<Name>,
+    options?: DefinitionOptions
+) {
+    const namespacedValue = Array.isArray(instance.__value)
+        ? instance.__value.map((value) =>
+              isRef(value)
+                  ? ref(createNamespacedTokenName(ns, value.__name), value.__fallback)
+                  : value
+          )
+        : ref(instance);
+
+    return nsvariable(ns, instance.__name, namespacedValue, options);
+}
+
+/**
+ * Creates a namespaced variable token.
+ *
+ * This token is used to define a namespaced variable.
+ * Namespaced variables are used to group related variables together.
+ * Namespaced variables automatically get added to the theme when created.
+ * Using the nsvariable function will override the stored value unless `options.default` is specified.
+ */
+export function nsvariable<Namespace extends NamespaceType, Name extends string>(
+    ns: Namespace,
+    nameOrInstance: Variable<Name> | Name,
+    value: TokenValue,
+    options?: DefinitionOptions
+): Variable<NamespacedKey<Namespace, Name>> {
+    const name = isVariable(nameOrInstance) ? nameOrInstance.__name : nameOrInstance;
+
+    return variable(createNamespacedTokenName(ns, name), value, options);
+}
+
+/**
+ * Sets a variable or reference value
+ */
+export function set<Name extends string>(instance: Variable<Name>, value: TokenValue) {
+    instance.__value = value;
 }

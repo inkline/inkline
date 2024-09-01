@@ -1,18 +1,23 @@
-import { DefinitionOptions, Reference, RenameFn, TokenValue, Variable } from '../types';
+import {
+    DefinitionOptions,
+    ExportedName,
+    Reference,
+    RenameFn,
+    TokenValue,
+    Variable
+} from '../types';
 import { ref, variable } from '../tokens';
 import { toCamelCase } from '../utils';
-import type { CamelCase, Replace } from 'type-fest';
 import { defaultDefinitionOptions, defaultRenameFn } from '../constants';
 
 /**
  * Types
  */
 
-export type VariantsReturnKey<RootKeys extends string, VariantKeys extends string> = Replace<
-    CamelCase<`${RootKeys}-${VariantKeys}`>,
-    '.',
-    ''
->;
+export type VariantsReturnKey<
+    RootKeys extends string,
+    VariantKeys extends string
+> = ExportedName<`${RootKeys}-${VariantKeys}`>;
 
 export type ApplyVariantFn = (current: Reference) => TokenValue;
 

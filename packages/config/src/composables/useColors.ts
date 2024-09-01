@@ -1,7 +1,14 @@
-import { add, ref, subtract, variable } from '../tokens';
-import Color from 'color';
-import { Reference, TokenValue, Variable } from '../types';
-import { toCamelCase } from '../utils';
+import { add, hsla, ref, subtract, variable } from '../tokens';
+import parseColor from 'color';
+import {
+    HSLAColorProperty,
+    HSLAColorInlineProperty,
+    Variable,
+    Color,
+    ExportedName,
+    NamespaceType
+} from '../types';
+import { createNamespacedTokenName, normalizePercentageValue, toExportedName } from '../utils';
 import type { CamelCase } from 'type-fest';
 import { defaultDefinitionOptions } from '../constants';
 import {
@@ -11,51 +18,121 @@ import {
 } from './useComposedVariantsFactory';
 
 /**
- * Types
+ * Token
  */
 
-export interface HSLAColor<T = TokenValue> {
-    h: T;
-    s: T;
-    l: T;
-    a: T;
-}
-
-export type HSLAColorInline<T = TokenValue> = [h: T, s: T, l: T, a: T];
+export type ColorComposedReturnKey<RootKey extends string> = ExportedName<RootKey>;
 
 export type ColorPartsReturnKeys<RootKey extends string> =
-    `${CamelCase<RootKey>}${'H' | 'S' | 'L' | 'A'}`;
+    `${ColorComposedReturnKey<RootKey>}${'H' | 'S' | 'L' | 'A'}`;
 
 export type ColorVariantKeys<VariantKeys extends string> =
     | CamelCase<VariantKeys>
     | ColorPartsReturnKeys<VariantKeys>;
 
 /**
+ * Creates a `color` token.
+ * This is a special token that allows you to define a color with the given name and value.
+ * The value can be a string or HSLA color object.
+ * It sets and returns the composed color, as well as h, s, l, a parts.
+ */
+export function color<Name extends string>(
+    name: Name,
+    value: string | HSLAColorInlineProperty,
+    options = defaultDefinitionOptions
+) {
+    type ComposedReturnKey = ColorComposedReturnKey<Name>;
+    type PartsReturnKey = ColorPartsReturnKeys<Name>;
+    type PartsReturnType = {
+        [key in PartsReturnKey]: Variable;
+    };
+    type ComposedReturnType = {
+        [key in ComposedReturnKey]: Variable<Name>;
+    };
+    type ReturnType = PartsReturnType & ComposedReturnType;
+
+    const colorVariables: ReturnType = {} as ReturnType;
+
+    let parsedColor: HSLAColorProperty;
+    if (typeof value === 'string') {
+        const { h, s, l, alpha: a } = parseColor(value).hsl().object();
+        parsedColor = {
+            h,
+            s: normalizePercentageValue(s),
+            l: normalizePercentageValue(l),
+            a: a ?? 1
+        };
+    } else {
+        parsedColor = {
+            h: value[0],
+            s: normalizePercentageValue(value[1]),
+            l: normalizePercentageValue(value[2]),
+            a: value[3]
+        };
+    }
+
+    const composedParts: Variable[] = [];
+    Object.keys(parsedColor).forEach((key) => {
+        const variableName = `${name}-${key}`;
+        const colorVariable = variable(variableName, parsedColor[key as keyof typeof parsedColor], {
+            default: options?.default
+        });
+
+        (colorVariables as PartsReturnType)[toExportedName(variableName) as PartsReturnKey] =
+            colorVariable;
+        composedParts.push(colorVariable);
+    });
+
+    (colorVariables as ComposedReturnType)[toExportedName(name)] = variable(
+        name,
+        hsla(composedParts.map((part) => ref(part)) as HSLAColorInlineProperty)
+    );
+
+    return colorVariables;
+}
+
+/**
+ * Creates a namespaced `color` token.
+ * This is a special token that allows you to define a color with the given namespace, name and value.
+ * The value can be a string or HSLA color object.
+ */
+export function nscolor<Namespace extends NamespaceType, Name extends string>(
+    ns: Namespace,
+    name: Name,
+    value: string | HSLAColorInlineProperty,
+    options = defaultDefinitionOptions
+) {
+    return color(createNamespacedTokenName(ns, name), value, options);
+}
+
+/**
  * Constants
  */
 
 export const defaultColorLightnessValues = {
-    '100': 10,
-    '200': 20,
-    '300': 30,
-    '400': 40,
-    '500': 50,
-    '600': 60,
-    '700': 70,
-    '800': 80,
-    '900': 90
+    '50': '95%',
+    '100': '90%',
+    '200': '80%',
+    '300': '70%',
+    '400': '60%',
+    '500': '50%',
+    '600': '40%',
+    '700': '30%',
+    '800': '20%',
+    '900': '10%',
+    '950': '5%'
 };
 
 export const defaultColorTintValues = {
-    'tint-50': 5,
-    'tint-100': 10,
-    'tint-150': 15
+    'tint-50': '5%',
+    'tint-100': '10%',
+    'tint-150': '15%'
 };
 
 export const defaultColorShadeValues = {
-    'shade-50': 5,
-    'shade-100': 10,
-    'shade-150': 15
+    'shade-50': '5%',
+    'shade-100': '10%',
+    'shade-150': '15%'
 };
 
 /**
@@ -63,9 +140,8 @@ export const defaultColorShadeValues = {
  */
 
 const defaultColorFactoryOptions = {
-    ...defaultDefinitionOptions,
     rename: {
-        part: (name: string) => name.replace(/(-[hsla])(-\w+)$/, '$2$1')
+        part: (name: string) => name.replace(/(-[hsla])((-\w+)+)/, '$2$1')
     }
 };
 
@@ -73,30 +149,29 @@ const defaultColorFactoryOptions = {
  * Creates color lightness variants for the given color
  */
 export function useColorLightnessVariantsFactory<RootKey extends string>(
-    composed: Variable<Reference[], RootKey>,
+    composed: Variable<RootKey>,
     options = defaultDefinitionOptions
 ) {
     type VariantKeys = keyof typeof defaultColorLightnessValues;
 
     const keys = Object.keys(defaultColorLightnessValues) as VariantKeys[];
     const variants = keys.reduce<Record<string, ApplyComposedVariantFn>>((acc, key) => {
-        const l = defaultColorLightnessValues[key];
+        const l = normalizePercentageValue(defaultColorLightnessValues[key]);
         acc[key] = createComposedVariantFactoryFn(([h, s, _, a]) => [h, s, l, a]);
         return acc;
     }, {});
 
-    return useComposedVariantsFactory<RootKey, ColorVariantKeys<VariantKeys>>(
-        composed,
-        variants,
-        defaultColorFactoryOptions
-    );
+    return useComposedVariantsFactory<RootKey, ColorVariantKeys<VariantKeys>>(composed, variants, {
+        ...defaultColorFactoryOptions,
+        ...options
+    });
 }
 
 /**
  * Creates color tint variants for the given color
  */
 export function useColorTintVariantsFactory<RootKey extends string>(
-    composed: Variable<Reference[], RootKey>,
+    composed: Variable<RootKey>,
     options = defaultDefinitionOptions
 ) {
     type VariantKeys = keyof typeof defaultColorTintValues;
@@ -113,18 +188,17 @@ export function useColorTintVariantsFactory<RootKey extends string>(
         return acc;
     }, {});
 
-    return useComposedVariantsFactory<RootKey, ColorVariantKeys<VariantKeys>>(
-        composed,
-        variants,
-        defaultColorFactoryOptions
-    );
+    return useComposedVariantsFactory<RootKey, ColorVariantKeys<VariantKeys>>(composed, variants, {
+        ...defaultColorFactoryOptions,
+        ...options
+    });
 }
 
 /**
  * Creates color shade variants for the given color
  */
 export function useColorShadeVariantsFactory<RootKey extends string>(
-    composed: Variable<Reference[], RootKey>,
+    composed: Variable<RootKey>,
     options = defaultDefinitionOptions
 ) {
     type VariantKeys = keyof typeof defaultColorShadeValues;
@@ -141,65 +215,10 @@ export function useColorShadeVariantsFactory<RootKey extends string>(
         return acc;
     }, {});
 
-    return useComposedVariantsFactory<RootKey, ColorVariantKeys<VariantKeys>>(
-        composed,
-        variants,
-        defaultColorFactoryOptions
-    );
-}
-
-/**
- * Creates a color variable with the given name and value. The value can be a string or HSLA color object.
- * It sets and returns the composed color, as well as h, s, l, a parts.
- */
-export function color<RootKey extends string>(
-    name: RootKey,
-    value: string | HSLAColorInline,
-    options = defaultDefinitionOptions
-) {
-    type ComposedReturnKey = CamelCase<RootKey>;
-    type PartsReturnKey = ColorPartsReturnKeys<RootKey>;
-    type PartsReturnType = {
-        [key in PartsReturnKey]: Variable;
-    };
-    type ComposedReturnType = {
-        [key in ComposedReturnKey]: Variable<Reference[]>;
-    };
-    type ReturnType = PartsReturnType & ComposedReturnType;
-
-    const colorVariables: ReturnType = {} as ReturnType;
-
-    let parsedColor: HSLAColor;
-    if (typeof value === 'string') {
-        const { h, s, l, alpha: a } = Color(value).hsl().object();
-        parsedColor = { h, s, l, a: a ?? 1 };
-    } else {
-        parsedColor = {
-            h: value[0],
-            s: value[1],
-            l: value[2],
-            a: value[3]
-        };
-    }
-
-    const composedParts: Variable[] = [];
-    Object.keys(parsedColor).forEach((key) => {
-        const variableName = `${name}-${key}`;
-        const colorVariable = variable(variableName, parsedColor[key as keyof typeof parsedColor], {
-            default: options?.default
-        });
-
-        (colorVariables as PartsReturnType)[toCamelCase(variableName) as PartsReturnKey] =
-            colorVariable;
-        composedParts.push(colorVariable);
+    return useComposedVariantsFactory<RootKey, ColorVariantKeys<VariantKeys>>(composed, variants, {
+        ...defaultColorFactoryOptions,
+        ...options
     });
-
-    (colorVariables as ComposedReturnType)[toCamelCase(name) as ComposedReturnKey] = variable(
-        name,
-        composedParts.map((part) => ref(part))
-    );
-
-    return colorVariables;
 }
 
 /**
@@ -235,6 +254,11 @@ export function useBaseColors(options = defaultDefinitionOptions) {
     const { colorBlueH, colorBlueS, colorBlueL, colorBlueA, colorBlue } = color(
         'color-blue',
         '#178bb2',
+        options
+    );
+    const { colorIndigoH, colorIndigoS, colorIndigoL, colorIndigoA, colorIndigo } = color(
+        'color-indigo',
+        '#4c6ef5',
         options
     );
     const { colorPurpleH, colorPurpleS, colorPurpleL, colorPurpleA, colorPurple } = color(
@@ -279,6 +303,11 @@ export function useBaseColors(options = defaultDefinitionOptions) {
         colorBlueL,
         colorBlueA,
         colorBlue,
+        colorIndigoH,
+        colorIndigoS,
+        colorIndigoL,
+        colorIndigoA,
+        colorIndigo,
         colorPurpleH,
         colorPurpleS,
         colorPurpleL,
@@ -451,10 +480,10 @@ export function useBrandColors(options = defaultDefinitionOptions) {
     } = useBaseColors();
 
     const {
-        colorGray500H,
-        colorGray500S,
-        colorGray500L,
-        colorGray500A,
+        colorGray200H,
+        colorGray200S,
+        colorGray200L,
+        colorGray200A,
         colorGray800H,
         colorGray800S,
         colorGray800L,
@@ -500,7 +529,7 @@ export function useBrandColors(options = defaultDefinitionOptions) {
 
     const { colorLightH, colorLightS, colorLightL, colorLightA, colorLight } = color(
         'color-light',
-        [ref(colorGray500H), ref(colorGray500S), ref(colorGray500L), ref(colorGray500A)],
+        [ref(colorGray200H), ref(colorGray200S), ref(colorGray200L), ref(colorGray200A)],
         options
     );
 
@@ -1089,6 +1118,24 @@ export function useBrandColorVariants(options = defaultDefinitionOptions) {
     } = useColorShadeVariantsFactory(colorLight, options);
 
     const {
+        colorLightTint50H,
+        colorLightTint50S,
+        colorLightTint50L,
+        colorLightTint50A,
+        colorLightTint50,
+        colorLightTint100H,
+        colorLightTint100S,
+        colorLightTint100L,
+        colorLightTint100A,
+        colorLightTint100,
+        colorLightTint150H,
+        colorLightTint150S,
+        colorLightTint150L,
+        colorLightTint150A,
+        colorLightTint150
+    } = useColorTintVariantsFactory(colorLight, options);
+
+    const {
         colorDarkTint50H,
         colorDarkTint50S,
         colorDarkTint50L,
@@ -1105,6 +1152,24 @@ export function useBrandColorVariants(options = defaultDefinitionOptions) {
         colorDarkTint150A,
         colorDarkTint150
     } = useColorTintVariantsFactory(colorDark, options);
+
+    const {
+        colorDarkShade50H,
+        colorDarkShade50S,
+        colorDarkShade50L,
+        colorDarkShade50A,
+        colorDarkShade50,
+        colorDarkShade100H,
+        colorDarkShade100S,
+        colorDarkShade100L,
+        colorDarkShade100A,
+        colorDarkShade100,
+        colorDarkShade150H,
+        colorDarkShade150S,
+        colorDarkShade150L,
+        colorDarkShade150A,
+        colorDarkShade150
+    } = useColorShadeVariantsFactory(colorDark, options);
 
     return {
         colorPrimary100H,
@@ -1557,6 +1622,21 @@ export function useBrandColorVariants(options = defaultDefinitionOptions) {
         colorDangerShade150L,
         colorDangerShade150A,
         colorDangerShade150,
+        colorLightTint50H,
+        colorLightTint50S,
+        colorLightTint50L,
+        colorLightTint50A,
+        colorLightTint50,
+        colorLightTint100H,
+        colorLightTint100S,
+        colorLightTint100L,
+        colorLightTint100A,
+        colorLightTint100,
+        colorLightTint150H,
+        colorLightTint150S,
+        colorLightTint150L,
+        colorLightTint150A,
+        colorLightTint150,
         colorLightShade50H,
         colorLightShade50S,
         colorLightShade50L,
@@ -1586,7 +1666,22 @@ export function useBrandColorVariants(options = defaultDefinitionOptions) {
         colorDarkTint150S,
         colorDarkTint150L,
         colorDarkTint150A,
-        colorDarkTint150
+        colorDarkTint150,
+        colorDarkShade50H,
+        colorDarkShade50S,
+        colorDarkShade50L,
+        colorDarkShade50A,
+        colorDarkShade50,
+        colorDarkShade100H,
+        colorDarkShade100S,
+        colorDarkShade100L,
+        colorDarkShade100A,
+        colorDarkShade100,
+        colorDarkShade150H,
+        colorDarkShade150S,
+        colorDarkShade150L,
+        colorDarkShade150A,
+        colorDarkShade150
     };
 }
 

@@ -5,6 +5,7 @@ import { program } from 'commander';
 import { watch } from './watch';
 import { generateExports } from './generate';
 import { loadTsconfig, resolveImports } from './resolve';
+import path from 'path';
 
 program.name(chalk.blue('@inkline/build'));
 
@@ -14,9 +15,12 @@ program
         '-s, --script <script>',
         'The script to run when changes are detected. Defaults to "build"'
     )
+    .option('-p, --pattern <pattern...>', 'The pattern to be used', ['src'])
     .description('Watch for changes in the configuration file and generate files accordingly.')
-    .action(async (options: { script: string }) => {
-        await watch(process.cwd(), options.script);
+    .action(async (options: { script: string; pattern: string[] }) => {
+        const patterns = options.pattern.map((pattern) => path.resolve(process.cwd(), pattern));
+
+        await watch(patterns, options.script ? `pnpm run ${options.script}` : '');
     });
 
 program

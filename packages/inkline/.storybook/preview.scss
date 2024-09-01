@@ -1,4 +1,3 @@
-@import '../src/css/global/preview';
 @import '../src/components/IAlert/css/preview';
 @import '../src/components/IBadge/css/preview';
 @import '../src/components/IButton/css/preview';
@@ -52,6 +51,7 @@
 #storybook-root,
 .sb-story > div,
 .storybook-example {
+    @extend %global-preview;
     @extend %alert-preview;
     @extend %badge-preview;
     @extend %button-preview;

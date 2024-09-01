@@ -14,7 +14,7 @@ export type PaddingProperties =
     | 'padding-left'
     | 'padding';
 
-export function usePadding(options = defaultDefinitionOptions) {
+export function usePaddingBase(options = defaultDefinitionOptions) {
     const { spacing } = useSpacing();
 
     const paddingTop = variable('padding-top', ref(spacing), options);
@@ -36,8 +36,8 @@ export function usePadding(options = defaultDefinitionOptions) {
     };
 }
 
-export function usePaddingVariants(options = defaultDefinitionOptions) {
-    const { padding } = usePadding();
+export function usePaddingSizeVariants(options = defaultDefinitionOptions) {
+    const { padding } = usePaddingBase();
 
     const {
         paddingTopXs,
@@ -65,7 +65,39 @@ export function usePaddingVariants(options = defaultDefinitionOptions) {
         paddingBottomXl,
         paddingLeftXl,
         paddingXl
-    } = useComposedSizeMultiplierVariantsFactory<PaddingProperties>(padding, options);
+    } = useComposedSizeMultiplierVariantsFactory<PaddingProperties, 'padding'>(padding, options);
+
+    return {
+        paddingTopXs,
+        paddingRightXs,
+        paddingLeftXs,
+        paddingBottomXs,
+        paddingXs,
+        paddingTopSm,
+        paddingRightSm,
+        paddingBottomSm,
+        paddingLeftSm,
+        paddingSm,
+        paddingTopMd,
+        paddingRightMd,
+        paddingBottomMd,
+        paddingLeftMd,
+        paddingMd,
+        paddingTopLg,
+        paddingRightLg,
+        paddingBottomLg,
+        paddingLeftLg,
+        paddingLg,
+        paddingTopXl,
+        paddingRightXl,
+        paddingBottomXl,
+        paddingLeftXl,
+        paddingXl
+    };
+}
+
+export function usePaddingVariants(options = defaultDefinitionOptions) {
+    const { padding } = usePaddingBase();
 
     const variants = {
         '0.2': createComposedVariantFactoryFn((values) => values.map((value) => divide(value, 5))),
@@ -79,26 +111,26 @@ export function usePaddingVariants(options = defaultDefinitionOptions) {
     };
 
     const {
-        paddingTop02,
-        paddingRight02,
-        paddingBottom02,
-        paddingLeft02,
-        padding02,
-        paddingTop025,
-        paddingRight025,
-        paddingBottom025,
-        paddingLeft025,
-        padding025,
-        paddingTop033,
-        paddingRight033,
-        paddingBottom033,
-        paddingLeft033,
-        padding033,
-        paddingTop05,
-        paddingRight05,
-        paddingBottom05,
-        paddingLeft05,
-        padding05,
+        paddingTop0_2,
+        paddingRight0_2,
+        paddingBottom0_2,
+        paddingLeft0_2,
+        padding0_2,
+        paddingTop0_25,
+        paddingRight0_25,
+        paddingBottom0_25,
+        paddingLeft0_25,
+        padding0_25,
+        paddingTop0_33,
+        paddingRight0_33,
+        paddingBottom0_33,
+        paddingLeft0_33,
+        padding0_33,
+        paddingTop0_5,
+        paddingRight0_5,
+        paddingBottom0_5,
+        paddingLeft0_5,
+        padding0_5,
         paddingTop2,
         paddingRight2,
         paddingBottom2,
@@ -126,51 +158,26 @@ export function usePaddingVariants(options = defaultDefinitionOptions) {
     );
 
     return {
-        paddingTopXs,
-        paddingRightXs,
-        paddingLeftXs,
-        paddingBottomXs,
-        paddingXs,
-        paddingTopSm,
-        paddingRightSm,
-        paddingBottomSm,
-        paddingLeftSm,
-        paddingSm,
-        paddingTopMd,
-        paddingRightMd,
-        paddingBottomMd,
-        paddingLeftMd,
-        paddingMd,
-        paddingTopLg,
-        paddingRightLg,
-        paddingBottomLg,
-        paddingLeftLg,
-        paddingLg,
-        paddingTopXl,
-        paddingRightXl,
-        paddingBottomXl,
-        paddingLeftXl,
-        paddingXl,
-        paddingTop02,
-        paddingRight02,
-        paddingBottom02,
-        paddingLeft02,
-        padding02,
-        paddingTop025,
-        paddingRight025,
-        paddingBottom025,
-        paddingLeft025,
-        padding025,
-        paddingTop033,
-        paddingRight033,
-        paddingBottom033,
-        paddingLeft033,
-        padding033,
-        paddingTop05,
-        paddingRight05,
-        paddingBottom05,
-        paddingLeft05,
-        padding05,
+        paddingTop0_2,
+        paddingRight0_2,
+        paddingBottom0_2,
+        paddingLeft0_2,
+        padding0_2,
+        paddingTop0_25,
+        paddingRight0_25,
+        paddingBottom0_25,
+        paddingLeft0_25,
+        padding0_25,
+        paddingTop0_33,
+        paddingRight0_33,
+        paddingBottom0_33,
+        paddingLeft0_33,
+        padding0_33,
+        paddingTop0_5,
+        paddingRight0_5,
+        paddingBottom0_5,
+        paddingLeft0_5,
+        padding0_5,
         paddingTop2,
         paddingRight2,
         paddingBottom2,
@@ -191,5 +198,13 @@ export function usePaddingVariants(options = defaultDefinitionOptions) {
         paddingBottom5,
         paddingLeft5,
         padding5
+    };
+}
+
+export function usePadding(options = defaultDefinitionOptions) {
+    return {
+        ...usePaddingBase(options),
+        ...usePaddingSizeVariants(options),
+        ...usePaddingVariants(options)
     };
 }

@@ -65,6 +65,7 @@ export async function build(userOptions: UserBuildOptions = {}) {
         cwd: options.configDir,
         configFile: `${options.configFile}${options.configExtName}`
     });
+    configuration.options = options;
 
     // Create output directory
     if (!(await exists(options.outputDir))) {
@@ -72,9 +73,7 @@ export async function build(userOptions: UserBuildOptions = {}) {
     }
 
     // Generate output files data
-    const generator = scssGenerator;
-    const generatorOptions = options;
-    const outputFiles = generator(configuration.themes, generatorOptions);
+    const outputFiles = scssGenerator(configuration);
 
     // Write output files
     const outputFilePromises: Promise<void>[] = [];

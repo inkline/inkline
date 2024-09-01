@@ -1,5 +1,2 @@
-import { useAlertTheme } from '@inkline/inkline';
-
-export function useComponentThemes() {
-    useAlertTheme();
-}
+export * from '@inkline/inkline/global/theme';
+export * from '@inkline/inkline/components/theme';

@@ -14,7 +14,7 @@ export type MarginProperties =
     | 'margin-left'
     | 'margin';
 
-export function useMargin(options = defaultDefinitionOptions) {
+export function useMarginBase(options = defaultDefinitionOptions) {
     const { spacing } = useSpacing();
 
     const marginTop = variable('margin-top', ref(spacing), options);
@@ -36,8 +36,8 @@ export function useMargin(options = defaultDefinitionOptions) {
     };
 }
 
-export function useMarginVariants(options = defaultDefinitionOptions) {
-    const { margin } = useMargin();
+export function useMarginSizeVariants(options = defaultDefinitionOptions) {
+    const { margin } = useMarginBase();
 
     const {
         marginTopXs,
@@ -65,7 +65,39 @@ export function useMarginVariants(options = defaultDefinitionOptions) {
         marginBottomXl,
         marginLeftXl,
         marginXl
-    } = useComposedSizeMultiplierVariantsFactory<MarginProperties>(margin, options);
+    } = useComposedSizeMultiplierVariantsFactory<MarginProperties, 'margin'>(margin, options);
+
+    return {
+        marginTopXs,
+        marginRightXs,
+        marginLeftXs,
+        marginBottomXs,
+        marginXs,
+        marginTopSm,
+        marginRightSm,
+        marginBottomSm,
+        marginLeftSm,
+        marginSm,
+        marginTopMd,
+        marginRightMd,
+        marginBottomMd,
+        marginLeftMd,
+        marginMd,
+        marginTopLg,
+        marginRightLg,
+        marginBottomLg,
+        marginLeftLg,
+        marginLg,
+        marginTopXl,
+        marginRightXl,
+        marginBottomXl,
+        marginLeftXl,
+        marginXl
+    };
+}
+
+export function useMarginVariants(options = defaultDefinitionOptions) {
+    const { margin } = useMarginBase();
 
     const variants = {
         '0.2': createComposedVariantFactoryFn((parts) => parts.map((part) => divide(part, 5))),
@@ -79,26 +111,26 @@ export function useMarginVariants(options = defaultDefinitionOptions) {
     };
 
     const {
-        marginTop02,
-        marginRight02,
-        marginBottom02,
-        marginLeft02,
-        margin02,
-        marginTop025,
-        marginRight025,
-        marginBottom025,
-        marginLeft025,
-        margin025,
-        marginTop033,
-        marginRight033,
-        marginBottom033,
-        marginLeft033,
-        margin033,
-        marginTop05,
-        marginRight05,
-        marginBottom05,
-        marginLeft05,
-        margin05,
+        marginTop0_2,
+        marginRight0_2,
+        marginBottom0_2,
+        marginLeft0_2,
+        margin0_2,
+        marginTop0_25,
+        marginRight0_25,
+        marginBottom0_25,
+        marginLeft0_25,
+        margin0_25,
+        marginTop0_33,
+        marginRight0_33,
+        marginBottom0_33,
+        marginLeft0_33,
+        margin0_33,
+        marginTop0_5,
+        marginRight0_5,
+        marginBottom0_5,
+        marginLeft0_5,
+        margin0_5,
         marginTop2,
         marginRight2,
         marginBottom2,
@@ -126,51 +158,26 @@ export function useMarginVariants(options = defaultDefinitionOptions) {
     );
 
     return {
-        marginTopXs,
-        marginRightXs,
-        marginLeftXs,
-        marginBottomXs,
-        marginXs,
-        marginTopSm,
-        marginRightSm,
-        marginBottomSm,
-        marginLeftSm,
-        marginSm,
-        marginTopMd,
-        marginRightMd,
-        marginBottomMd,
-        marginLeftMd,
-        marginMd,
-        marginTopLg,
-        marginRightLg,
-        marginBottomLg,
-        marginLeftLg,
-        marginLg,
-        marginTopXl,
-        marginRightXl,
-        marginBottomXl,
-        marginLeftXl,
-        marginXl,
-        marginTop02,
-        marginRight02,
-        marginBottom02,
-        marginLeft02,
-        margin02,
-        marginTop025,
-        marginRight025,
-        marginBottom025,
-        marginLeft025,
-        margin025,
-        marginTop033,
-        marginRight033,
-        marginBottom033,
-        marginLeft033,
-        margin033,
-        marginTop05,
-        marginRight05,
-        marginBottom05,
-        marginLeft05,
-        margin05,
+        marginTop0_2,
+        marginRight0_2,
+        marginBottom0_2,
+        marginLeft0_2,
+        margin0_2,
+        marginTop0_25,
+        marginRight0_25,
+        marginBottom0_25,
+        marginLeft0_25,
+        margin0_25,
+        marginTop0_33,
+        marginRight0_33,
+        marginBottom0_33,
+        marginLeft0_33,
+        margin0_33,
+        marginTop0_5,
+        marginRight0_5,
+        marginBottom0_5,
+        marginLeft0_5,
+        margin0_5,
         marginTop2,
         marginRight2,
         marginBottom2,
@@ -191,5 +198,13 @@ export function useMarginVariants(options = defaultDefinitionOptions) {
         marginBottom5,
         marginLeft5,
         margin5
+    };
+}
+
+export function useMargin(options = defaultDefinitionOptions) {
+    return {
+        ...useMarginBase(options),
+        ...useMarginSizeVariants(options),
+        ...useMarginVariants(options)
     };
 }

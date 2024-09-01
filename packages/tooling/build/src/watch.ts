@@ -2,13 +2,13 @@ import nodemon from 'nodemon';
 import path from 'path';
 import * as process from 'node:process';
 
-export async function watch(baseDir: string, command: string = 'build') {
+export async function watch(baseDir: string[], command: string = 'pnpm run build') {
     await new Promise<void>((resolve) => {
         nodemon({
-            watch: [path.resolve(baseDir, 'src')],
-            ext: '*',
+            watch: baseDir,
+            ext: '.ts',
             script: '',
-            exec: `pnpm run ${command}`,
+            exec: command,
             runOnChangeOnly: true
         }).on('quit', function () {
             resolve();

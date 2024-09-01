@@ -58,30 +58,4 @@
             }
         }
     }
-
-    > .alert-icon {
-        margin-left: properties.padding-left('alert', 'icon', true);
-        flex: 1;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    > .alert-dismiss {
-        margin-right: properties.padding-right('alert', 'dismiss', true);
-        flex: 0 0 auto;
-        cursor: pointer;
-        display: inline-block;
-        text-align: center;
-    }
-
-    &,
-    > .alert-content {
-        flex: 0 1 100%;
-
-        > hr {
-            margin-right: 0;
-            margin-left: 0;
-        }
-    }
 }

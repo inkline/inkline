@@ -63,7 +63,10 @@ export function useBorderRadiusVariants(options = defaultDefinitionOptions) {
         borderBottomRightRadiusXl,
         borderBottomLeftRadiusXl,
         borderRadiusXl
-    } = useComposedSizeMultiplierVariantsFactory<BorderRadiusProperties>(borderRadius, options);
+    } = useComposedSizeMultiplierVariantsFactory<BorderRadiusProperties, 'border-radius'>(
+        borderRadius,
+        options
+    );
 
     return {
         borderTopLeftRadiusXs,

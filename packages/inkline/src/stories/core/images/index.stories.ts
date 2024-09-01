@@ -5,9 +5,7 @@ import {
     ImagesAlignmentRightExample,
     ImagesFluidExample,
     ImagesPictureExample,
-    ImagesPolaroidExample,
-    ImagesResponsiveExample,
-    ImagesThumbnailExample
+    ImagesResponsiveExample
 } from '@inkline/inkline/stories/core/images/index';
 
 export default {
@@ -20,6 +18,4 @@ export const AlignmentMarginAuto = () => ImagesAlignmentMarginAutoExample;
 export const AlignmentRight = () => ImagesAlignmentRightExample;
 export const Fluid = () => ImagesFluidExample;
 export const Picture = () => ImagesPictureExample;
-export const Polaroid = () => ImagesPolaroidExample;
 export const Responsive = () => ImagesResponsiveExample;
-export const Thumbnail = () => ImagesThumbnailExample;

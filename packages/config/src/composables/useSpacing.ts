@@ -20,15 +20,23 @@ export function useSpacing(options = defaultDefinitionOptions) {
         '5': createVariantFactoryFn((value) => multiply(value, 5))
     };
 
-    const { spacing02, spacing025, spacing033, spacing05, spacing2, spacing3, spacing4, spacing5 } =
-        useVariantsFactory<'spacing', keyof typeof variants>(spacing, variants, options);
+    const {
+        spacing0_2,
+        spacing0_25,
+        spacing0_33,
+        spacing0_5,
+        spacing2,
+        spacing3,
+        spacing4,
+        spacing5
+    } = useVariantsFactory<'spacing', keyof typeof variants>(spacing, variants, options);
 
     return {
         spacing,
-        spacing02,
-        spacing025,
-        spacing033,
-        spacing05,
+        spacing0_2,
+        spacing0_25,
+        spacing0_33,
+        spacing0_5,
         spacing2,
         spacing3,
         spacing4,

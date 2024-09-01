@@ -1,4 +1,15 @@
-import { add, calc, divide, multiply, ref, selector, subtract, theme, variable } from './tokens';
+import {
+    add,
+    calc,
+    divide,
+    multiply,
+    namespace,
+    ref,
+    selector,
+    subtract,
+    theme,
+    variable
+} from './tokens';
 import { TokenType } from './types';
 import { themes } from './themes';
 
@@ -143,6 +154,85 @@ describe('tokens', () => {
             const themeInstance = theme(themeName);
             expect(Object.keys(themeInstance.variables)).toHaveLength(0);
             expect(Object.keys(themeInstance.selectors)).toHaveLength(0);
+        });
+    });
+
+    describe('namespace', () => {
+        it('should create a namespaced variable for a primitive value', () => {
+            const namespaceString = 'ns';
+            const variableName = 'originalName';
+            const variableInstance = variable('originalName', 'originalValue');
+            const namespacedVariableInstance = namespace(namespaceString, variableInstance);
+
+            expect(namespacedVariableInstance.__name).toBe(`${namespaceString}--${variableName}`);
+            expect(namespacedVariableInstance.__value).toEqual(ref(variableInstance));
+        });
+
+        it('should create a namespaced variable for a ref value', () => {
+            const namespaceString = 'ns';
+            const referenceInstance = ref('refName');
+            const variableName = 'originalName';
+            const variableInstance = variable('originalName', referenceInstance);
+            const namespacedVariableInstance = namespace(namespaceString, variableInstance);
+
+            expect(namespacedVariableInstance.__name).toBe(`${namespaceString}--${variableName}`);
+            expect(namespacedVariableInstance.__value).toEqual(ref(variableInstance));
+        });
+
+        it('should create a namespaced variable for a composed value', () => {
+            const namespaceString = 'ns';
+            const referenceInstance1 = ref('refName1');
+            const referenceInstance2 = ref('refName2');
+            const variableName = 'originalName';
+            const variableInstance = variable(variableName, [
+                referenceInstance1,
+                referenceInstance2
+            ]);
+            const namespacedVariableInstance = namespace(namespaceString, variableInstance);
+
+            expect(namespacedVariableInstance.__name).toBe(`${namespaceString}--${variableName}`);
+            expect(namespacedVariableInstance.__value).toEqual([
+                ref(`${namespaceString}--${referenceInstance1.__name}`),
+                ref(`${namespaceString}--${referenceInstance2.__name}`)
+            ]);
+        });
+
+        it('should create a namespaced variable for a composed value with fallback', () => {
+            const namespaceString = 'ns';
+            const referenceInstance1 = ref('refName1', 'fallback1');
+            const referenceInstance2 = ref('refName2', 'fallback2');
+            const variableName = 'originalName';
+            const variableInstance = variable(variableName, [
+                referenceInstance1,
+                referenceInstance2
+            ]);
+            const namespacedVariableInstance = namespace(namespaceString, variableInstance);
+
+            expect(namespacedVariableInstance.__name).toBe(`${namespaceString}--${variableName}`);
+            expect(namespacedVariableInstance.__value).toEqual([
+                ref(
+                    `${namespaceString}--${referenceInstance1.__name}`,
+                    referenceInstance1.__fallback
+                ),
+                ref(
+                    `${namespaceString}--${referenceInstance2.__name}`,
+                    referenceInstance2.__fallback
+                )
+            ]);
+        });
+
+        it('should not modify non-ref values in a composed variable', () => {
+            const namespaceString = 'ns';
+            const referenceInstance = ref('refName');
+            const variableName = 'originalName';
+            const variableInstance = variable(variableName, [referenceInstance, 'simpleValue']);
+            const namespacedVariableInstance = namespace(namespaceString, variableInstance);
+
+            expect(namespacedVariableInstance.__name).toBe(`${namespaceString}--${variableName}`);
+            expect(namespacedVariableInstance.__value).toEqual([
+                ref(`${namespaceString}--${referenceInstance.__name}`),
+                'simpleValue'
+            ]);
         });
     });
 });

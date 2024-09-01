@@ -2,13 +2,14 @@ import {
     consume,
     consumeArray,
     consumeCalc,
+    consumeColor,
     consumeRef,
     consumeSelector,
     consumeSelectorProperty,
     consumeTheme,
     consumeVariable
 } from './scss';
-import { calc, ref, selector, theme, variable } from '../tokens';
+import { calc, hsla, ref, selector, theme, variable } from '../tokens';
 import { defaultIndent } from '../constants';
 import { themes } from '../themes';
 
@@ -109,6 +110,45 @@ describe('consumeCalc', () => {
     it('should process nested calc instance correctly', () => {
         const calcInstance = calc('100%', '-', calc('10px', '+', '5px'));
         expect(consumeCalc(calcInstance)).toBe('calc(100% - calc(10px + 5px))');
+    });
+});
+
+describe('consumeColor', () => {
+    it('should return correct CSS for color instance with all values provided', () => {
+        const colorInstance = hsla([210, 50, 50, 0.5]);
+        expect(consumeColor(colorInstance)).toBe('hsla(210 50% 50% / 0.5)');
+    });
+
+    it('should return correct CSS for color instance with integer values', () => {
+        const colorInstance = hsla([210, 50, 50, 1]);
+        expect(consumeColor(colorInstance)).toBe('hsla(210 50% 50% / 1)');
+    });
+
+    it('should return correct CSS for color instance with string values', () => {
+        const colorInstance = hsla(['210', '50', '50', '0.5']);
+        expect(consumeColor(colorInstance)).toBe('hsla(210 50% 50% / 0.5)');
+    });
+
+    it('should return correct CSS for color instance with mixed values', () => {
+        const colorInstance = hsla([210, '50', 50, '0.5']);
+        expect(consumeColor(colorInstance)).toBe('hsla(210 50% 50% / 0.5)');
+    });
+
+    it('should return correct CSS for color instance with percentage values', () => {
+        const colorInstance = hsla([210, '50%', '50%', '0.5']);
+        expect(consumeColor(colorInstance)).toBe('hsla(210 50% 50% / 0.5)');
+    });
+
+    it('should return correct CSS for color instance with ref values', () => {
+        const colorHRef = ref('colorH');
+        const colorSRef = ref('colorS');
+        const colorLRef = ref('colorL');
+        const colorARef = ref('colorA');
+
+        const colorInstance = hsla([colorHRef, colorSRef, colorLRef, colorARef]);
+        expect(consumeColor(colorInstance)).toBe(
+            'hsla(var(--colorH) var(--colorS) var(--colorL) / var(--colorA))'
+        );
     });
 });
 

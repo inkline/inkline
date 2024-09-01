@@ -172,3 +172,14 @@
         flex-direction: row;
     }
 }
+
+///
+/// Global
+///
+%global-preview {
+    .blockquote {
+        + .blockquote {
+            margin-top: var(--margin-top-2);
+        }
+    }
+}

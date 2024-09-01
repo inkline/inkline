@@ -1,7 +1,7 @@
-import { defaultDefinitionOptions, defaultThemeName } from './constants';
-import { Selector, Theme, Themes, Variable } from './types';
-import { theme } from './tokens';
+import { DefinitionOptions, Selector, SelectorOptions, Themes, Variable } from './types';
 import { isTheme } from './typeGuards';
+import { theme } from './tokens';
+import { defaultThemeName } from './constants';
 
 /**
  * Themes
@@ -10,16 +10,12 @@ import { isTheme } from './typeGuards';
  */
 export const themes: Themes = {};
 
-export function defineThemes(): Themes {
-    return themes;
-}
-
 /**
  * Adds a variable to a theme.
  *
  * If `options.default` is `true`, the variable will only be added if it does not already exist in the theme.
  */
-export function addVariableToTheme(variable: Variable, options = defaultDefinitionOptions) {
+export function addVariableToTheme(variable: Variable, options?: DefinitionOptions) {
     const themeInstance = isTheme(options?.theme)
         ? options.theme
         : theme(options?.theme ?? defaultThemeName);
@@ -37,7 +33,7 @@ export function addVariableToTheme(variable: Variable, options = defaultDefiniti
  *
  * If `options.default` is `true`, the selector will only be added if it does not already exist in the theme.
  */
-export function addSelectorToTheme(selector: Selector, options = defaultDefinitionOptions) {
+export function addSelectorToTheme(selector: Selector, options?: SelectorOptions) {
     const themeInstance = isTheme(options?.theme)
         ? options.theme
         : theme(options?.theme ?? defaultThemeName);
@@ -46,6 +42,17 @@ export function addSelectorToTheme(selector: Selector, options = defaultDefiniti
         return;
     }
 
-    themeInstance.selectors[selector.__name] = selector;
+    if (options?.replace) {
+        themeInstance.selectors[selector.__name] = selector;
+    } else {
+        themeInstance.selectors[selector.__name] = {
+            ...selector,
+            __value: {
+                ...themeInstance.selectors[selector.__name]?.__value,
+                ...selector.__value
+            }
+        };
+    }
+
     themeInstance.__keys.selectors.add(selector.__name);
 }

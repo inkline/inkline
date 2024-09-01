@@ -1,4 +1,4 @@
-import { insertInBetweenElements, toCamelCase, toKebabCase } from './utils';
+import { insertInBetweenElements, toCamelCase, toCssName } from './utils';
 
 describe('insertInBetweenElements', () => {
     it('should insert value between each element of the array', () => {
@@ -46,30 +46,30 @@ describe('toCamelCase', () => {
 
 describe('toKebabCase', () => {
     it('should convert camelCase to kebab-case', () => {
-        expect(toKebabCase('backgroundColor')).toBe('background-color');
+        expect(toCssName('backgroundColor')).toBe('background-color');
     });
 
     it('should handle strings starting with uppercase letters', () => {
-        expect(toKebabCase('BackgroundColor')).toBe('background-color');
+        expect(toCssName('BackgroundColor')).toBe('background-color');
     });
 
     it('should not modify already kebab-case strings', () => {
-        expect(toKebabCase('background-color')).toBe('background-color');
+        expect(toCssName('background-color')).toBe('background-color');
     });
 
     it('should convert snake_case to kebab-case', () => {
-        expect(toKebabCase('background_color')).toBe('background-color');
+        expect(toCssName('background_color')).toBe('background-color');
     });
 
     it('should handle empty strings correctly', () => {
-        expect(toKebabCase('')).toBe('');
+        expect(toCssName('')).toBe('');
     });
 
     it('should process strings with numbers correctly', () => {
-        expect(toKebabCase('fontSize12px')).toBe('font-size12px');
+        expect(toCssName('fontSize12px')).toBe('font-size12px');
     });
 
     it('should handle strings with multiple uppercase letters correctly', () => {
-        expect(toKebabCase('URLForAPI')).toBe('url-for-api');
+        expect(toCssName('URLForAPI')).toBe('url-for-api');
     });
 });

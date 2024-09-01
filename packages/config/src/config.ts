@@ -1,7 +1,7 @@
 import { loadConfig as c12, LoadConfigOptions } from 'c12';
 import { Configuration, ConfigurationOptions, ModuleOptions, SetupFunction } from './types';
-import { ScssGeneratorOptions } from './generators';
 import { themes } from './themes';
+import { files } from './imports';
 
 export const defaultOutputDir = './src/theme';
 export const defaultConfigFileNamespace = 'inkline';
@@ -10,7 +10,8 @@ export const defaultConfigFileExtName = '.ts';
 export const defaultConsumerModule = 'scss';
 
 export const defaultConfig: Configuration = {
-    themes,
+    themes: {},
+    files: [],
     options: {}
 };
 
@@ -22,6 +23,7 @@ export function defineConfig(
 
     return {
         themes,
+        files,
         options
     };
 }

@@ -32,6 +32,27 @@ export function useBorder(options = defaultDefinitionOptions) {
         options
     );
 
+    const borderTop = variable(
+        'border-top',
+        [ref(borderTopWidth), ref(borderTopStyle), ref(borderTopColor)],
+        options
+    );
+    const borderRight = variable(
+        'border-right',
+        [ref(borderRightWidth), ref(borderRightStyle), ref(borderRightColor)],
+        options
+    );
+    const borderBottom = variable(
+        'border-bottom',
+        [ref(borderBottomWidth), ref(borderBottomStyle), ref(borderBottomColor)],
+        options
+    );
+    const borderLeft = variable(
+        'border-left',
+        [ref(borderLeftWidth), ref(borderLeftStyle), ref(borderLeftColor)],
+        options
+    );
+
     const border = variable(
         'border',
         [ref(borderWidth), ref(borderStyle), ref(borderColor)],
@@ -54,6 +75,10 @@ export function useBorder(options = defaultDefinitionOptions) {
         borderBottomColor,
         borderLeftColor,
         borderColor,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
         border
     };
 }

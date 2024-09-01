@@ -106,10 +106,10 @@ export function useSizeMultiplierVariantsFactory<RootKey extends string>(
     });
 }
 
-export function useComposedSizeMultiplierVariantsFactory<RootKey extends string>(
-    composed: Variable<Reference[]>,
-    options?: { keys?: SizeMultiplierKeys[] } & DefinitionOptions
-) {
+export function useComposedSizeMultiplierVariantsFactory<
+    RootKey extends string,
+    Name extends string
+>(composed: Variable<Name>, options?: { keys?: SizeMultiplierKeys[] } & DefinitionOptions) {
     const keys = options?.keys ?? defaultSizeMultiplierKeys;
     const sizeMultipliersKeyMap = useKeyMappedSizeMultiplier();
     const variants = keys.reduce<Record<string, ReturnType<typeof createComposedVariantFactoryFn>>>(

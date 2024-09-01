@@ -1,8 +1,0 @@
-@use '../mixins/components';
-
-address {
-    @include components.margin-bottom('address');
-
-    font-style: normal;
-    line-height: inherit;
-}

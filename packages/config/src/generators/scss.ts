@@ -1,9 +1,15 @@
-import { isCalc, isRef, isSelector, isTheme, isVariable } from '../typeGuards';
-import { Calc, OutputFile, Reference, Selector, Theme, Variable } from '../types';
+import { isCalc, isColor, isRef, isSelector, isTheme, isVariable } from '../typeGuards';
+import { Calc, Color, OutputFile, Reference, Selector, Theme, Variable } from '../types';
 import { defaultThemeName } from '../constants';
-import { addDefaultIndentToLine, normalizeTokenName, toKebabCase } from '../utils';
+import {
+    addDefaultIndentToLine,
+    normalizePercentageValue,
+    normalizeTokenName,
+    toCssName
+} from '../utils';
 import { defaultThemeTemplate, themeTemplate } from '../templates';
 import { defineGenerator } from './define';
+import { applyConfigurationFiles } from '../imports';
 
 /**
  * Consumes each item in an array and joins the result
@@ -29,15 +35,27 @@ export function consumeRef(instance: Reference): string {
 /**
  * Consumes a calc instance, equivalent to setting a CSS calc value
  */
-export function consumeCalc(instance: Calc) {
+export function consumeCalc(instance: Calc): string {
     return `calc(${consume(instance.__value)})`;
+}
+
+/**
+ * Consumes a color instance, equivalent to setting a CSS color value
+ */
+export function consumeColor(instance: Color): string {
+    const h = consume(instance.__value[0]);
+    const s = normalizePercentageValue(consume(instance.__value[1]));
+    const l = normalizePercentageValue(consume(instance.__value[2]));
+    const a = consume(instance.__value[3]);
+
+    return `hsla(${h} ${s} ${l} / ${a})`;
 }
 
 /**
  * Consumes a selector property, equivalent to setting a CSS property
  */
 export function consumeSelectorProperty(key: string, value: unknown): string {
-    const resolvedKey = toKebabCase(key);
+    const resolvedKey = toCssName(key);
     return `${resolvedKey}: ${consume(value)};`;
 }
 
@@ -86,6 +104,8 @@ export function consume(instance: unknown): string {
             return consumeRef(instance);
         case isCalc(instance):
             return consumeCalc(instance);
+        case isColor(instance):
+            return consumeColor(instance);
         case isSelector(instance):
             return consumeSelector(instance);
         case isTheme(instance):
@@ -99,18 +119,48 @@ export function consume(instance: unknown): string {
  * SCSS Consumer
  */
 
-export const scssGenerator = defineGenerator((themes) => {
-    const themeFiles: OutputFile[] = Object.values(themes).map((theme) => ({
-        path: `${theme.__name}.scss`,
-        content: consume(theme)
-    }));
+export const scssGenerator = defineGenerator((configuration) => {
+    const outputFiles: OutputFile[] = [];
+
+    const themeFiles: OutputFile[] = Object.values(configuration.themes).flatMap((theme) => {
+        const { variables, selectors, ...common } = theme;
+        const themeOutputFiles: OutputFile[] = [];
+        const themeOutputImports: string[] = [];
+
+        if (Object.keys(variables).length) {
+            themeOutputImports.push('@import "variables";');
+            themeOutputFiles.push({
+                path: `${theme.__name}/_variables.scss`,
+                content: consume({ variables, selectors: {}, ...common })
+            });
+        }
+
+        if (Object.keys(selectors).length) {
+            themeOutputImports.push('@import "selectors";');
+            themeOutputFiles.push({
+                path: `${theme.__name}/_selectors.scss`,
+                content: consume({ variables: {}, selectors, ...common })
+            });
+        }
+
+        themeOutputFiles.push({
+            path: `${theme.__name}/index.scss`,
+            content: themeOutputImports.join('\n')
+        });
+
+        return themeOutputFiles;
+    });
 
     const indexFile: OutputFile = {
         path: 'index.scss',
-        content: Object.values(themes)
+        content: Object.values(configuration.themes)
             .map((theme) => `@import '${theme.__name}';`)
             .join('\n')
     };
 
-    return [...themeFiles, indexFile];
+    outputFiles.push(...themeFiles, indexFile);
+
+    applyConfigurationFiles(outputFiles, configuration.files);
+
+    return outputFiles;
 });

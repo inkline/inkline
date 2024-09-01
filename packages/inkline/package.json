@@ -7,8 +7,10 @@
         "email": "alex@grozav.com"
     },
     "scripts": {
-        "predev": "pnpm run prebuild",
-        "dev": "pnpm run storybook",
+        "predev": "pnpm run generate:config",
+        "dev": "run-p storybook watch",
+        "watch": "run-p watch:*",
+        "watch:theme": "inkline-build watch --pattern 'src/**/theme.ts' inkline.config.ts --script generate:config",
         "prebuild": "pnpm run generate:config",
         "build": "run-p build:*",
         "build:tsc": "pnpm run typecheck",
