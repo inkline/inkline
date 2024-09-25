@@ -1,0 +1,15 @@
+{
+    "extends": "../tooling/typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "lib",
+        "baseUrl": ".",
+        "types": [
+            "vitest/globals"
+        ]
+    },
+    "include": [
+        "src/**/*.test.ts",
+        "src/**/*.spec.ts",
+    ]
+}

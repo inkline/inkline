@@ -1,33 +1,24 @@
-import { defineConfig } from 'vite';
-import { resolve } from 'path';
-import { configDefaults } from 'vitest/config';
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
+import { configDefaults as vitestConfig } from 'vitest/config';
+import dts from "vite-plugin-dts";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-    resolve: {
-        alias: [
-            {
-                find: /^@inkline\/config\//,
-                replacement: `${resolve(__dirname)}/src/`
-            }
-        ]
-    },
+    plugins: [
+        dts({ rollupTypes: true }),
+    ],
     build: {
+        ssr: true,
         lib: {
             entry: resolve(__dirname, 'src', 'index.ts'),
             name: 'InklineConfig',
-            fileName: (format) => `config.${format}.js`
+            formats: ['es', 'cjs'],
+            fileName: 'config',
         },
-        rollupOptions: {
-            output: {
-                exports: 'named'
-            }
-        }
     },
     test: {
         globals: true,
-        include: ['src/**/*.spec.{ts,tsx}', 'src/**/*.test.{ts,tsx}'],
-        environment: 'jsdom',
-        exclude: [...configDefaults.exclude, 'lib/**']
+        include: ['src/**/*.spec.{ts,tsx}'],
+        exclude: vitestConfig.exclude
     }
-});
+})

@@ -1,0 +1,33 @@
+{
+    "name": "@inkline/logger",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools watch",
+        "build": "devtools build",
+        "postbuild": "mv dist/main.js dist/logger.js && mv dist/main.cjs dist/logger.cjs",
+        "lint": "devtools eslint"
+    },
+    "dependencies": {
+        "chalk": "^4.1.2"
+    },
+    "devDependencies": {
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@types/node": "catalog:",
+        "eslint": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:"
+    },
+    "files": [
+        "dist"
+    ],
+    "main": "./dist/logger.js",
+    "module": "./dist/logger.cjs",
+    "exports": {
+        ".": {
+            "import": "./dist/logger.js",
+            "require": "./dist/logger.cjs"
+        }
+    }
+}

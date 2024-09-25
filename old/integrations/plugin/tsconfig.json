@@ -1,0 +1,21 @@
+{
+    "extends": "../../tooling/typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "lib",
+        "baseUrl": ".",
+        "types": [
+            "vitest/globals"
+        ]
+    },
+    "include": [
+        "./src/**/*.ts",
+        "./src/**/*.d.ts",
+        "./src/**/*.tsx"
+    ],
+    "exclude": [
+        "playground/*",
+        "nuxt.config.ts",
+        "vite.config.ts"
+    ]
+}

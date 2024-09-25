@@ -1,144 +1,51 @@
 {
     "name": "@inkline/plugin",
-    "version": "1.5.2",
+    "version": "1.0.0",
+    "type": "module",
     "scripts": {
-        "start": "npm run build",
-        "dev": "inkline-build watch",
-        "dev:vite": "vite",
-        "dev:vite:build": "vite build",
-        "dev:webpack": "webpack serve",
-        "dev:nuxt": "nuxt dev",
-        "build": "unbuild",
-        "postbuild": "tsx scripts/postbuild.ts",
-        "lint": "eslint -c eslint.config.mjs src",
-        "preview": "vite preview",
-        "test": "vitest run --passWithNoTests",
-        "test:ci": "vitest run --coverage",
-        "test:dev": "vitest",
-        "prerelease": "npm-run-all test build",
-        "release": "np",
-        "postrelease": "tsx scripts/postrelease.ts",
-        "postversion": "tsx scripts/postversion.ts",
-        "playground": "tsx scripts/playground.ts"
+        "dev": "devtools watch",
+        "build": "devtools build",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage"
     },
     "devDependencies": {
-        "@inkline/build": "workspace:^",
-        "@inkline/config": "workspace:^",
-        "@inkline/eslint-config": "workspace:^",
-        "@inkline/inkline": "workspace:^",
-        "@nuxt/module-builder": "^0.8.0",
-        "@nuxt/schema": "^3.12.2",
-        "@nuxtjs/eslint-config-typescript": "^12.1.0",
-        "@types/node": "^20.14.8",
-        "@types/shelljs": "0.8.15",
-        "@vitejs/plugin-vue": "^5.0.5",
-        "chokidar": "^3.6.0",
-        "css-loader": "^7.1.2",
-        "eslint": "^9.5.0",
-        "html-webpack-plugin": "^5.6.0",
-        "jsdom": "^24.1.0",
-        "np": "^10.0.6",
-        "npm-run-all": "4.1.5",
-        "nuxt": "^3.12.2",
-        "pathe": "^1.1.2",
-        "sass": "^1.77.6",
-        "sass-loader": "^14.2.1",
-        "shelljs": "0.8.5",
-        "style-loader": "^4.0.0",
-        "tsx": "^4.15.7",
-        "typescript": "^5.5.2",
-        "unbuild": "^2.0.0",
-        "unplugin": "^1.10.1",
-        "vite": "^5.3.1",
-        "vite-plugin-html": "^3.2.2",
-        "vite-plugin-inspect": "^0.8.4",
-        "vitest": "^1.6.0",
-        "vue": "^3.4.30",
-        "webpack": "^5.92.1",
-        "webpack-cli": "^5.1.4",
-        "webpack-dev-server": "^5.0.4"
+        "@inkline/config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@vitejs/plugin-vue": "catalog:",
+        "@vitest/coverage-v8": "catalog:",
+        "@nuxt/module-builder": "catalog:",
+        "@nuxt/schema": "catalog:",
+        "chokidar": "catalog:",
+        "eslint": "catalog:",
+        "typescript": "catalog:",
+        "nuxt": "catalog:",
+        "vite": "catalog:",
+        "vite-plugin-dts": "catalog:",
+        "vite-plugin-inspect": "catalog:",
+        "vitest": "catalog:"
     },
     "dependencies": {
-        "@grozav/logger": "^1.0.1",
-        "@grozav/utils": "^1.3.2",
-        "@nuxt/kit": "^3.12.2"
+        "@inkline/logger": "workspace:*",
+        "@nuxt/kit": "catalog:",
+        "unplugin": "catalog:"
     },
     "peerDependencies": {
-        "@inkline/config": "workspace:^",
-        "@inkline/inkline": "workspace:^"
+        "@inkline/config": "workspace:^"
     },
-    "main": "lib/index.js",
-    "module": "lib/index.mjs",
-    "jsdelivr": "lib/index.js",
-    "unpkg": "lib/index.js",
-    "types": "lib/index.d.ts",
     "files": [
-        "lib/**/*",
-        "LICENSE",
-        "README.md"
+        "dist"
     ],
+    "main": "./dist/plugin.cjs",
+    "module": "./dist/plugin.js",
+    "types": "./dist/plugin.d.ts",
     "exports": {
         ".": {
-            "require": "./lib/index.js",
-            "import": "./lib/index.mjs",
-            "types": "./lib/index.d.ts"
-        },
-        "./esbuild": {
-            "require": "./lib/esbuild.js",
-            "import": "./lib/esbuild.mjs",
-            "types": "./lib/esbuild.d.ts"
-        },
-        "./nuxt": {
-            "require": "./lib/nuxt.js",
-            "import": "./lib/nuxt.mjs",
-            "types": "./lib/nuxt.d.ts"
-        },
-        "./rollup": {
-            "require": "./lib/rollup.js",
-            "import": "./lib/rollup.mjs",
-            "types": "./lib/rollup.d.ts"
-        },
-        "./vite": {
-            "require": "./lib/vite.js",
-            "import": "./lib/vite.mjs",
-            "types": "./lib/vite.d.ts"
-        },
-        "./webpack": {
-            "require": "./lib/webpack.js",
-            "import": "./lib/webpack.mjs",
-            "types": "./lib/webpack.d.ts"
-        },
-        "./*": "./lib/*"
-    },
-    "publishConfig": {
-        "access": "public"
-    },
-    "funding": {
-        "type": "github",
-        "url": "https://github.com/sponsors/alexgrozav"
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not ie <= 8"
-    ],
-    "bugs": {
-        "url": "https://github.com/inkline/inkline/issues"
-    },
-    "homepage": "https://inkline.io",
-    "keywords": [
-        "inkline",
-        "vue",
-        "vuejs",
-        "plugin",
-        "nuxt",
-        "nuxtjs",
-        "webpack",
-        "vite"
-    ],
-    "license": "ISC",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/inkline/plugin.git"
+            "import": "./dist/plugin.js",
+            "require": "./dist/plugin.cjs",
+            "types": "./dist/plugin.d.ts"
+        }
     }
 }

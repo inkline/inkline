@@ -1,16 +1,14 @@
-# @grozav/eslint-preset
+# @grozav/stylelint-preset
 
-- Typescript ready
 - Extends standard
 - Single quotes, semi
 - Sensible defaults, best practices
-- One-line of config
 
 ## Usage
 
 1. Install dependencies.
     ~~~bash
-    npm i -DE eslint @grozav/stylelint-preset
+    npm i -D stylelint @grozav/stylelint-preset
     ~~~
 2. Create a new `.stylelintrc.js` file and add the following:
     ~~~js

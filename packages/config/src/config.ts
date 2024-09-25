@@ -1,7 +1,6 @@
 import { loadConfig as c12, LoadConfigOptions } from 'c12';
 import { Configuration, ConfigurationOptions, ModuleOptions, SetupFunction } from './types';
-import { themes } from './themes';
-import { files } from './imports';
+import { themes, files } from '@inkline/core';
 
 export const defaultOutputDir = './src/theme';
 export const defaultConfigFileNamespace = 'inkline';

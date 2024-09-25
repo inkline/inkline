@@ -1,0 +1,40 @@
+{
+    "name": "@inkline/devtools",
+    "version": "1.0.0",
+    "type": "module",
+    "bin": {
+        "devtools": "dist/devtools.js"
+    },
+    "scripts": {
+        "dev": "tsx src/main.ts watch",
+        "build": "tsx src/main.ts build",
+        "postbuild": "mv dist/main.js dist/devtools.js && mv dist/main.cjs dist/devtools.cjs",
+        "lint": "tsx src/main.ts eslint"
+    },
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "commander": "^12.0.0",
+        "nodemon": "^3.1.4",
+        "shelljs": "^0.8.5"
+    },
+    "devDependencies": {
+        "@inkline/eslint-config": "workspace:*",
+        "@types/node": "catalog:",
+        "@types/shelljs": "^0.8.15",
+        "eslint": "catalog:",
+        "tsx": "^4.19.1",
+        "typescript": "catalog:",
+        "vite": "catalog:"
+    },
+    "files": [
+        "dist"
+    ],
+    "main": "./dist/devtools.js",
+    "module": "./dist/devtools.cjs",
+    "exports": {
+        ".": {
+            "import": "./dist/devtools.js",
+            "require": "./dist/devtools.cjs"
+        }
+    }
+}

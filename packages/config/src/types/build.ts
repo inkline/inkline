@@ -1,5 +1,5 @@
-import { OutputFile } from './generators';
-import { Themes } from './tokens';
+import type { OutputFile } from '@inkline/core';
+import type { Themes } from '@inkline/core';
 
 export type ModuleOptions = object;
 

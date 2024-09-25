@@ -1,0 +1,37 @@
+{
+    "name": "@inkline/theme",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "devtools build",
+        "lint": "devtools eslint"
+    },
+    "devDependencies": {
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "eslint": "catalog:",
+        "typescript": "catalog:",
+        "type-fest": "catalog:",
+        "vite": "catalog:",
+        "vite-plugin-dts": "catalog:",
+        "vitest": "catalog:"
+    },
+    "dependencies": {
+        "@inkline/core": "workspace:*"
+    },
+    "files": [
+        "dist"
+    ],
+    "main": "./dist/theme.umd.cjs",
+    "module": "./dist/theme.js",
+    "types": "./dist/theme.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/theme.js",
+            "require": "./dist/theme.umd.cjs",
+            "types": "./dist/theme.d.ts"
+        }
+    }
+}

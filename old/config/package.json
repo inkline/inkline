@@ -1,0 +1,731 @@
+{
+    "name": "@inkline/config",
+    "version": "2.0.0-rc.1",
+    "scripts": {
+        "start": "pnpm run build && node lib/playground.mjs",
+        "dev": "inkline-build watch --script build:dev",
+        "build": "unbuild && pnpm run generate",
+        "build:local": "pnpm run build && cd lib && cp ../package.json . && pnpm pack",
+        "build:dev": "pnpm run build && pnpm run generate:inkline",
+        "generate": "pnpm run generate:defaults",
+        "generate:defaults": "tsx scripts/generate/defaults.ts",
+        "generate:exports": "inkline-build generate:exports",
+        "generate:inkline": "tsx scripts/generate/inkline.ts",
+        "postbuild": "tsx scripts/postbuild.ts",
+        "lint": "eslint -c eslint.config.mjs src",
+        "preview": "vite preview",
+        "test": "vitest run",
+        "test:ci": "vitest run --coverage",
+        "test:dev": "vitest",
+        "typecheck": "tsc --noEmit",
+        "prerelease": "npm-run-all test build",
+        "release": "np",
+        "postrelease": "tsx scripts/postrelease.ts",
+        "postversion": "tsx scripts/postversion.ts"
+    },
+    "devDependencies": {
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/build": "workspace:*",
+        "@types/color": "3.0.6",
+        "@types/prettier": "3.0.0",
+        "@types/shelljs": "0.8.15",
+        "eslint": "^9.3.0",
+        "jsdom": "24.0.0",
+        "np": "10.0.5",
+        "npm-run-all": "4.1.5",
+        "shelljs": "0.8.5",
+        "tsx": "4.10.2",
+        "type-fest": "4.18.2",
+        "typescript": "5.4.5",
+        "unbuild": "2.0.0",
+        "vite": "5.2.11",
+        "vitest": "1.6.0"
+    },
+    "dependencies": {
+        "@grozav/utils": "^1.3.1",
+        "c12": "^1.1.0",
+        "color": "4.2.3",
+        "micromustache": "8.0.3",
+        "pathe": "^1.0.0",
+        "prettier": "^3.2.5"
+    },
+    "main": "lib/index.js",
+    "module": "lib/index.mjs",
+    "jsdelivr": "lib/index.js",
+    "unpkg": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "files": [
+        "lib/**/*",
+        "LICENSE",
+        "README.md"
+    ],
+    "exports": {
+        ".": {
+            "require": "./lib/index.js",
+            "import": "./lib/index.mjs",
+            "types": "./lib/index.d.ts"
+        },
+        "./*": "./*",
+        "./apply": {
+            "require": "./lib/apply.js",
+            "import": "./lib/apply.mjs",
+            "types": "./lib/apply.d.ts"
+        },
+        "./build": {
+            "require": "./lib/build.js",
+            "import": "./lib/build.mjs",
+            "types": "./lib/build.d.ts"
+        },
+        "./constants": {
+            "require": "./lib/constants/index.js",
+            "import": "./lib/constants/index.mjs",
+            "types": "./lib/constants/index.d.ts"
+        },
+        "./constants/build": {
+            "require": "./lib/constants/build.js",
+            "import": "./lib/constants/build.mjs",
+            "types": "./lib/constants/build.d.ts"
+        },
+        "./constants/properties": {
+            "require": "./lib/constants/properties.js",
+            "import": "./lib/constants/properties.mjs",
+            "types": "./lib/constants/properties.d.ts"
+        },
+        "./load": {
+            "require": "./lib/load.js",
+            "import": "./lib/load.mjs",
+            "types": "./lib/load.d.ts"
+        },
+        "./modules": {
+            "require": "./lib/modules/index.js",
+            "import": "./lib/modules/index.mjs",
+            "types": "./lib/modules/index.d.ts"
+        },
+        "./modules/animation": {
+            "require": "./lib/modules/animation.js",
+            "import": "./lib/modules/animation.mjs",
+            "types": "./lib/modules/animation.d.ts"
+        },
+        "./modules/border": {
+            "require": "./lib/modules/border.js",
+            "import": "./lib/modules/border.mjs",
+            "types": "./lib/modules/border.d.ts"
+        },
+        "./modules/borderRadius": {
+            "require": "./lib/modules/borderRadius.js",
+            "import": "./lib/modules/borderRadius.mjs",
+            "types": "./lib/modules/borderRadius.d.ts"
+        },
+        "./modules/boxShadow": {
+            "require": "./lib/modules/boxShadow.js",
+            "import": "./lib/modules/boxShadow.mjs",
+            "types": "./lib/modules/boxShadow.d.ts"
+        },
+        "./modules/breakpoints": {
+            "require": "./lib/modules/breakpoints.js",
+            "import": "./lib/modules/breakpoints.mjs",
+            "types": "./lib/modules/breakpoints.d.ts"
+        },
+        "./modules/colors": {
+            "require": "./lib/modules/colors.js",
+            "import": "./lib/modules/colors.mjs",
+            "types": "./lib/modules/colors.d.ts"
+        },
+        "./modules/components": {
+            "require": "./lib/modules/components.js",
+            "import": "./lib/modules/components.mjs",
+            "types": "./lib/modules/components.d.ts"
+        },
+        "./modules/core": {
+            "require": "./lib/modules/core.js",
+            "import": "./lib/modules/core.mjs",
+            "types": "./lib/modules/core.d.ts"
+        },
+        "./modules/generic": {
+            "require": "./lib/modules/generic.js",
+            "import": "./lib/modules/generic.mjs",
+            "types": "./lib/modules/generic.d.ts"
+        },
+        "./modules/grid": {
+            "require": "./lib/modules/grid.js",
+            "import": "./lib/modules/grid.mjs",
+            "types": "./lib/modules/grid.d.ts"
+        },
+        "./modules/layers": {
+            "require": "./lib/modules/layers.js",
+            "import": "./lib/modules/layers.mjs",
+            "types": "./lib/modules/layers.d.ts"
+        },
+        "./modules/percentages": {
+            "require": "./lib/modules/percentages.js",
+            "import": "./lib/modules/percentages.mjs",
+            "types": "./lib/modules/percentages.d.ts"
+        },
+        "./modules/scaleRatios": {
+            "require": "./lib/modules/scaleRatios.js",
+            "import": "./lib/modules/scaleRatios.mjs",
+            "types": "./lib/modules/scaleRatios.d.ts"
+        },
+        "./modules/sizeMultiplier": {
+            "require": "./lib/modules/sizeMultiplier.js",
+            "import": "./lib/modules/sizeMultiplier.mjs",
+            "types": "./lib/modules/sizeMultiplier.d.ts"
+        },
+        "./modules/spacing": {
+            "require": "./lib/modules/spacing.js",
+            "import": "./lib/modules/spacing.mjs",
+            "types": "./lib/modules/spacing.d.ts"
+        },
+        "./modules/transition": {
+            "require": "./lib/modules/transition.js",
+            "import": "./lib/modules/transition.mjs",
+            "types": "./lib/modules/transition.d.ts"
+        },
+        "./modules/typography": {
+            "require": "./lib/modules/typography.js",
+            "import": "./lib/modules/typography.mjs",
+            "types": "./lib/modules/typography.d.ts"
+        },
+        "./presets": {
+            "require": "./lib/presets/index.js",
+            "import": "./lib/presets/index.mjs",
+            "types": "./lib/presets/index.d.ts"
+        },
+        "./presets/common": {
+            "require": "./lib/presets/common.js",
+            "import": "./lib/presets/common.mjs",
+            "types": "./lib/presets/common.d.ts"
+        },
+        "./presets/default": {
+            "require": "./lib/presets/default/index.js",
+            "import": "./lib/presets/default/index.mjs",
+            "types": "./lib/presets/default/index.d.ts"
+        },
+        "./presets/default/modules": {
+            "require": "./lib/presets/default/modules.js",
+            "import": "./lib/presets/default/modules.mjs",
+            "types": "./lib/presets/default/modules.d.ts"
+        },
+        "./presets/default/themes": {
+            "require": "./lib/presets/default/themes/index.js",
+            "import": "./lib/presets/default/themes/index.mjs",
+            "types": "./lib/presets/default/themes/index.d.ts"
+        },
+        "./presets/default/themes/dark": {
+            "require": "./lib/presets/default/themes/dark/index.js",
+            "import": "./lib/presets/default/themes/dark/index.mjs",
+            "types": "./lib/presets/default/themes/dark/index.d.ts"
+        },
+        "./presets/default/themes/dark/border": {
+            "require": "./lib/presets/default/themes/dark/border.js",
+            "import": "./lib/presets/default/themes/dark/border.mjs",
+            "types": "./lib/presets/default/themes/dark/border.d.ts"
+        },
+        "./presets/default/themes/dark/elements": {
+            "require": "./lib/presets/default/themes/dark/elements/index.js",
+            "import": "./lib/presets/default/themes/dark/elements/index.mjs",
+            "types": "./lib/presets/default/themes/dark/elements/index.d.ts"
+        },
+        "./presets/default/themes/dark/elements/body": {
+            "require": "./lib/presets/default/themes/dark/elements/body.js",
+            "import": "./lib/presets/default/themes/dark/elements/body.mjs",
+            "types": "./lib/presets/default/themes/dark/elements/body.d.ts"
+        },
+        "./presets/default/themes/dark/elements/code": {
+            "require": "./lib/presets/default/themes/dark/elements/code.js",
+            "import": "./lib/presets/default/themes/dark/elements/code.mjs",
+            "types": "./lib/presets/default/themes/dark/elements/code.d.ts"
+        },
+        "./presets/default/themes/dark/elements/kbd": {
+            "require": "./lib/presets/default/themes/dark/elements/kbd.js",
+            "import": "./lib/presets/default/themes/dark/elements/kbd.mjs",
+            "types": "./lib/presets/default/themes/dark/elements/kbd.d.ts"
+        },
+        "./presets/default/themes/dark/typography": {
+            "require": "./lib/presets/default/themes/dark/typography.js",
+            "import": "./lib/presets/default/themes/dark/typography.mjs",
+            "types": "./lib/presets/default/themes/dark/typography.d.ts"
+        },
+        "./presets/default/themes/default": {
+            "require": "./lib/presets/default/themes/default/index.js",
+            "import": "./lib/presets/default/themes/default/index.mjs",
+            "types": "./lib/presets/default/themes/default/index.d.ts"
+        },
+        "./presets/default/themes/default/border": {
+            "require": "./lib/presets/default/themes/default/border.js",
+            "import": "./lib/presets/default/themes/default/border.mjs",
+            "types": "./lib/presets/default/themes/default/border.d.ts"
+        },
+        "./presets/default/themes/default/borderRadius": {
+            "require": "./lib/presets/default/themes/default/borderRadius.js",
+            "import": "./lib/presets/default/themes/default/borderRadius.mjs",
+            "types": "./lib/presets/default/themes/default/borderRadius.d.ts"
+        },
+        "./presets/default/themes/default/boxShadow": {
+            "require": "./lib/presets/default/themes/default/boxShadow.js",
+            "import": "./lib/presets/default/themes/default/boxShadow.mjs",
+            "types": "./lib/presets/default/themes/default/boxShadow.d.ts"
+        },
+        "./presets/default/themes/default/breakpoints": {
+            "require": "./lib/presets/default/themes/default/breakpoints.js",
+            "import": "./lib/presets/default/themes/default/breakpoints.mjs",
+            "types": "./lib/presets/default/themes/default/breakpoints.d.ts"
+        },
+        "./presets/default/themes/default/colors": {
+            "require": "./lib/presets/default/themes/default/colors.js",
+            "import": "./lib/presets/default/themes/default/colors.mjs",
+            "types": "./lib/presets/default/themes/default/colors.d.ts"
+        },
+        "./presets/default/themes/default/components": {
+            "require": "./lib/presets/default/themes/default/components/index.js",
+            "import": "./lib/presets/default/themes/default/components/index.mjs",
+            "types": "./lib/presets/default/themes/default/components/index.d.ts"
+        },
+        "./presets/default/themes/default/components/alert": {
+            "require": "./lib/presets/default/themes/default/components/alert.js",
+            "import": "./lib/presets/default/themes/default/components/alert.mjs",
+            "types": "./lib/presets/default/themes/default/components/alert.d.ts"
+        },
+        "./presets/default/themes/default/components/badge": {
+            "require": "./lib/presets/default/themes/default/components/badge.js",
+            "import": "./lib/presets/default/themes/default/components/badge.mjs",
+            "types": "./lib/presets/default/themes/default/components/badge.d.ts"
+        },
+        "./presets/default/themes/default/components/breadcrumb": {
+            "require": "./lib/presets/default/themes/default/components/breadcrumb.js",
+            "import": "./lib/presets/default/themes/default/components/breadcrumb.mjs",
+            "types": "./lib/presets/default/themes/default/components/breadcrumb.d.ts"
+        },
+        "./presets/default/themes/default/components/button": {
+            "require": "./lib/presets/default/themes/default/components/button.js",
+            "import": "./lib/presets/default/themes/default/components/button.mjs",
+            "types": "./lib/presets/default/themes/default/components/button.d.ts"
+        },
+        "./presets/default/themes/default/components/buttonGroup": {
+            "require": "./lib/presets/default/themes/default/components/buttonGroup.js",
+            "import": "./lib/presets/default/themes/default/components/buttonGroup.mjs",
+            "types": "./lib/presets/default/themes/default/components/buttonGroup.d.ts"
+        },
+        "./presets/default/themes/default/components/card": {
+            "require": "./lib/presets/default/themes/default/components/card.js",
+            "import": "./lib/presets/default/themes/default/components/card.mjs",
+            "types": "./lib/presets/default/themes/default/components/card.d.ts"
+        },
+        "./presets/default/themes/default/components/checkable-button-group": {
+            "require": "./lib/presets/default/themes/default/components/checkable-button-group.js",
+            "import": "./lib/presets/default/themes/default/components/checkable-button-group.mjs",
+            "types": "./lib/presets/default/themes/default/components/checkable-button-group.d.ts"
+        },
+        "./presets/default/themes/default/components/checkbox": {
+            "require": "./lib/presets/default/themes/default/components/checkbox.js",
+            "import": "./lib/presets/default/themes/default/components/checkbox.mjs",
+            "types": "./lib/presets/default/themes/default/components/checkbox.d.ts"
+        },
+        "./presets/default/themes/default/components/collapsible": {
+            "require": "./lib/presets/default/themes/default/components/collapsible.js",
+            "import": "./lib/presets/default/themes/default/components/collapsible.mjs",
+            "types": "./lib/presets/default/themes/default/components/collapsible.d.ts"
+        },
+        "./presets/default/themes/default/components/dropdown": {
+            "require": "./lib/presets/default/themes/default/components/dropdown.js",
+            "import": "./lib/presets/default/themes/default/components/dropdown.mjs",
+            "types": "./lib/presets/default/themes/default/components/dropdown.d.ts"
+        },
+        "./presets/default/themes/default/components/expandTransition": {
+            "require": "./lib/presets/default/themes/default/components/expandTransition.js",
+            "import": "./lib/presets/default/themes/default/components/expandTransition.mjs",
+            "types": "./lib/presets/default/themes/default/components/expandTransition.d.ts"
+        },
+        "./presets/default/themes/default/components/formError": {
+            "require": "./lib/presets/default/themes/default/components/formError.js",
+            "import": "./lib/presets/default/themes/default/components/formError.mjs",
+            "types": "./lib/presets/default/themes/default/components/formError.d.ts"
+        },
+        "./presets/default/themes/default/components/formGroup": {
+            "require": "./lib/presets/default/themes/default/components/formGroup.js",
+            "import": "./lib/presets/default/themes/default/components/formGroup.mjs",
+            "types": "./lib/presets/default/themes/default/components/formGroup.d.ts"
+        },
+        "./presets/default/themes/default/components/formLabel": {
+            "require": "./lib/presets/default/themes/default/components/formLabel.js",
+            "import": "./lib/presets/default/themes/default/components/formLabel.mjs",
+            "types": "./lib/presets/default/themes/default/components/formLabel.d.ts"
+        },
+        "./presets/default/themes/default/components/hamburgerMenu": {
+            "require": "./lib/presets/default/themes/default/components/hamburgerMenu.js",
+            "import": "./lib/presets/default/themes/default/components/hamburgerMenu.mjs",
+            "types": "./lib/presets/default/themes/default/components/hamburgerMenu.d.ts"
+        },
+        "./presets/default/themes/default/components/header": {
+            "require": "./lib/presets/default/themes/default/components/header.js",
+            "import": "./lib/presets/default/themes/default/components/header.mjs",
+            "types": "./lib/presets/default/themes/default/components/header.d.ts"
+        },
+        "./presets/default/themes/default/components/icon": {
+            "require": "./lib/presets/default/themes/default/components/icon.js",
+            "import": "./lib/presets/default/themes/default/components/icon.mjs",
+            "types": "./lib/presets/default/themes/default/components/icon.d.ts"
+        },
+        "./presets/default/themes/default/components/input": {
+            "require": "./lib/presets/default/themes/default/components/input.js",
+            "import": "./lib/presets/default/themes/default/components/input.mjs",
+            "types": "./lib/presets/default/themes/default/components/input.d.ts"
+        },
+        "./presets/default/themes/default/components/layout": {
+            "require": "./lib/presets/default/themes/default/components/layout.js",
+            "import": "./lib/presets/default/themes/default/components/layout.mjs",
+            "types": "./lib/presets/default/themes/default/components/layout.d.ts"
+        },
+        "./presets/default/themes/default/components/listGroup": {
+            "require": "./lib/presets/default/themes/default/components/listGroup.js",
+            "import": "./lib/presets/default/themes/default/components/listGroup.mjs",
+            "types": "./lib/presets/default/themes/default/components/listGroup.d.ts"
+        },
+        "./presets/default/themes/default/components/loader": {
+            "require": "./lib/presets/default/themes/default/components/loader.js",
+            "import": "./lib/presets/default/themes/default/components/loader.mjs",
+            "types": "./lib/presets/default/themes/default/components/loader.d.ts"
+        },
+        "./presets/default/themes/default/components/media": {
+            "require": "./lib/presets/default/themes/default/components/media.js",
+            "import": "./lib/presets/default/themes/default/components/media.mjs",
+            "types": "./lib/presets/default/themes/default/components/media.d.ts"
+        },
+        "./presets/default/themes/default/components/modal": {
+            "require": "./lib/presets/default/themes/default/components/modal.js",
+            "import": "./lib/presets/default/themes/default/components/modal.mjs",
+            "types": "./lib/presets/default/themes/default/components/modal.d.ts"
+        },
+        "./presets/default/themes/default/components/nav": {
+            "require": "./lib/presets/default/themes/default/components/nav.js",
+            "import": "./lib/presets/default/themes/default/components/nav.mjs",
+            "types": "./lib/presets/default/themes/default/components/nav.d.ts"
+        },
+        "./presets/default/themes/default/components/navbar": {
+            "require": "./lib/presets/default/themes/default/components/navbar.js",
+            "import": "./lib/presets/default/themes/default/components/navbar.mjs",
+            "types": "./lib/presets/default/themes/default/components/navbar.d.ts"
+        },
+        "./presets/default/themes/default/components/pagination": {
+            "require": "./lib/presets/default/themes/default/components/pagination.js",
+            "import": "./lib/presets/default/themes/default/components/pagination.mjs",
+            "types": "./lib/presets/default/themes/default/components/pagination.d.ts"
+        },
+        "./presets/default/themes/default/components/popover": {
+            "require": "./lib/presets/default/themes/default/components/popover.js",
+            "import": "./lib/presets/default/themes/default/components/popover.mjs",
+            "types": "./lib/presets/default/themes/default/components/popover.d.ts"
+        },
+        "./presets/default/themes/default/components/progress": {
+            "require": "./lib/presets/default/themes/default/components/progress.js",
+            "import": "./lib/presets/default/themes/default/components/progress.mjs",
+            "types": "./lib/presets/default/themes/default/components/progress.d.ts"
+        },
+        "./presets/default/themes/default/components/radio": {
+            "require": "./lib/presets/default/themes/default/components/radio.js",
+            "import": "./lib/presets/default/themes/default/components/radio.mjs",
+            "types": "./lib/presets/default/themes/default/components/radio.d.ts"
+        },
+        "./presets/default/themes/default/components/select": {
+            "require": "./lib/presets/default/themes/default/components/select.js",
+            "import": "./lib/presets/default/themes/default/components/select.mjs",
+            "types": "./lib/presets/default/themes/default/components/select.d.ts"
+        },
+        "./presets/default/themes/default/components/sidebar": {
+            "require": "./lib/presets/default/themes/default/components/sidebar.js",
+            "import": "./lib/presets/default/themes/default/components/sidebar.mjs",
+            "types": "./lib/presets/default/themes/default/components/sidebar.d.ts"
+        },
+        "./presets/default/themes/default/components/table": {
+            "require": "./lib/presets/default/themes/default/components/table.js",
+            "import": "./lib/presets/default/themes/default/components/table.mjs",
+            "types": "./lib/presets/default/themes/default/components/table.d.ts"
+        },
+        "./presets/default/themes/default/components/tabs": {
+            "require": "./lib/presets/default/themes/default/components/tabs.js",
+            "import": "./lib/presets/default/themes/default/components/tabs.mjs",
+            "types": "./lib/presets/default/themes/default/components/tabs.d.ts"
+        },
+        "./presets/default/themes/default/components/toast": {
+            "require": "./lib/presets/default/themes/default/components/toast.js",
+            "import": "./lib/presets/default/themes/default/components/toast.mjs",
+            "types": "./lib/presets/default/themes/default/components/toast.d.ts"
+        },
+        "./presets/default/themes/default/components/toastContainer": {
+            "require": "./lib/presets/default/themes/default/components/toastContainer.js",
+            "import": "./lib/presets/default/themes/default/components/toastContainer.mjs",
+            "types": "./lib/presets/default/themes/default/components/toastContainer.d.ts"
+        },
+        "./presets/default/themes/default/components/toggle": {
+            "require": "./lib/presets/default/themes/default/components/toggle.js",
+            "import": "./lib/presets/default/themes/default/components/toggle.mjs",
+            "types": "./lib/presets/default/themes/default/components/toggle.d.ts"
+        },
+        "./presets/default/themes/default/components/tooltip": {
+            "require": "./lib/presets/default/themes/default/components/tooltip.js",
+            "import": "./lib/presets/default/themes/default/components/tooltip.mjs",
+            "types": "./lib/presets/default/themes/default/components/tooltip.d.ts"
+        },
+        "./presets/default/themes/default/elements": {
+            "require": "./lib/presets/default/themes/default/elements/index.js",
+            "import": "./lib/presets/default/themes/default/elements/index.mjs",
+            "types": "./lib/presets/default/themes/default/elements/index.d.ts"
+        },
+        "./presets/default/themes/default/elements/address": {
+            "require": "./lib/presets/default/themes/default/elements/address.js",
+            "import": "./lib/presets/default/themes/default/elements/address.mjs",
+            "types": "./lib/presets/default/themes/default/elements/address.d.ts"
+        },
+        "./presets/default/themes/default/elements/blockquote": {
+            "require": "./lib/presets/default/themes/default/elements/blockquote.js",
+            "import": "./lib/presets/default/themes/default/elements/blockquote.mjs",
+            "types": "./lib/presets/default/themes/default/elements/blockquote.d.ts"
+        },
+        "./presets/default/themes/default/elements/body": {
+            "require": "./lib/presets/default/themes/default/elements/body.js",
+            "import": "./lib/presets/default/themes/default/elements/body.mjs",
+            "types": "./lib/presets/default/themes/default/elements/body.d.ts"
+        },
+        "./presets/default/themes/default/elements/caption": {
+            "require": "./lib/presets/default/themes/default/elements/caption.js",
+            "import": "./lib/presets/default/themes/default/elements/caption.mjs",
+            "types": "./lib/presets/default/themes/default/elements/caption.d.ts"
+        },
+        "./presets/default/themes/default/elements/code": {
+            "require": "./lib/presets/default/themes/default/elements/code.js",
+            "import": "./lib/presets/default/themes/default/elements/code.mjs",
+            "types": "./lib/presets/default/themes/default/elements/code.d.ts"
+        },
+        "./presets/default/themes/default/elements/display": {
+            "require": "./lib/presets/default/themes/default/elements/display.js",
+            "import": "./lib/presets/default/themes/default/elements/display.mjs",
+            "types": "./lib/presets/default/themes/default/elements/display.d.ts"
+        },
+        "./presets/default/themes/default/elements/heading": {
+            "require": "./lib/presets/default/themes/default/elements/heading.js",
+            "import": "./lib/presets/default/themes/default/elements/heading.mjs",
+            "types": "./lib/presets/default/themes/default/elements/heading.d.ts"
+        },
+        "./presets/default/themes/default/elements/hr": {
+            "require": "./lib/presets/default/themes/default/elements/hr.js",
+            "import": "./lib/presets/default/themes/default/elements/hr.mjs",
+            "types": "./lib/presets/default/themes/default/elements/hr.d.ts"
+        },
+        "./presets/default/themes/default/elements/images": {
+            "require": "./lib/presets/default/themes/default/elements/images.js",
+            "import": "./lib/presets/default/themes/default/elements/images.mjs",
+            "types": "./lib/presets/default/themes/default/elements/images.d.ts"
+        },
+        "./presets/default/themes/default/elements/kbd": {
+            "require": "./lib/presets/default/themes/default/elements/kbd.js",
+            "import": "./lib/presets/default/themes/default/elements/kbd.mjs",
+            "types": "./lib/presets/default/themes/default/elements/kbd.d.ts"
+        },
+        "./presets/default/themes/default/elements/link": {
+            "require": "./lib/presets/default/themes/default/elements/link.js",
+            "import": "./lib/presets/default/themes/default/elements/link.mjs",
+            "types": "./lib/presets/default/themes/default/elements/link.d.ts"
+        },
+        "./presets/default/themes/default/elements/lists": {
+            "require": "./lib/presets/default/themes/default/elements/lists.js",
+            "import": "./lib/presets/default/themes/default/elements/lists.mjs",
+            "types": "./lib/presets/default/themes/default/elements/lists.d.ts"
+        },
+        "./presets/default/themes/default/elements/mark": {
+            "require": "./lib/presets/default/themes/default/elements/mark.js",
+            "import": "./lib/presets/default/themes/default/elements/mark.mjs",
+            "types": "./lib/presets/default/themes/default/elements/mark.d.ts"
+        },
+        "./presets/default/themes/default/elements/paragraphs": {
+            "require": "./lib/presets/default/themes/default/elements/paragraphs.js",
+            "import": "./lib/presets/default/themes/default/elements/paragraphs.mjs",
+            "types": "./lib/presets/default/themes/default/elements/paragraphs.d.ts"
+        },
+        "./presets/default/themes/default/elements/pre": {
+            "require": "./lib/presets/default/themes/default/elements/pre.js",
+            "import": "./lib/presets/default/themes/default/elements/pre.mjs",
+            "types": "./lib/presets/default/themes/default/elements/pre.d.ts"
+        },
+        "./presets/default/themes/default/elements/samp": {
+            "require": "./lib/presets/default/themes/default/elements/samp.js",
+            "import": "./lib/presets/default/themes/default/elements/samp.mjs",
+            "types": "./lib/presets/default/themes/default/elements/samp.d.ts"
+        },
+        "./presets/default/themes/default/grid": {
+            "require": "./lib/presets/default/themes/default/grid.js",
+            "import": "./lib/presets/default/themes/default/grid.mjs",
+            "types": "./lib/presets/default/themes/default/grid.d.ts"
+        },
+        "./presets/default/themes/default/percentages": {
+            "require": "./lib/presets/default/themes/default/percentages.js",
+            "import": "./lib/presets/default/themes/default/percentages.mjs",
+            "types": "./lib/presets/default/themes/default/percentages.d.ts"
+        },
+        "./presets/default/themes/default/scaleRatios": {
+            "require": "./lib/presets/default/themes/default/scaleRatios.js",
+            "import": "./lib/presets/default/themes/default/scaleRatios.mjs",
+            "types": "./lib/presets/default/themes/default/scaleRatios.d.ts"
+        },
+        "./presets/default/themes/default/sizeMultiplier": {
+            "require": "./lib/presets/default/themes/default/sizeMultiplier.js",
+            "import": "./lib/presets/default/themes/default/sizeMultiplier.mjs",
+            "types": "./lib/presets/default/themes/default/sizeMultiplier.d.ts"
+        },
+        "./presets/default/themes/default/spacing": {
+            "require": "./lib/presets/default/themes/default/spacing.js",
+            "import": "./lib/presets/default/themes/default/spacing.mjs",
+            "types": "./lib/presets/default/themes/default/spacing.d.ts"
+        },
+        "./presets/default/themes/default/transition": {
+            "require": "./lib/presets/default/themes/default/transition.js",
+            "import": "./lib/presets/default/themes/default/transition.mjs",
+            "types": "./lib/presets/default/themes/default/transition.d.ts"
+        },
+        "./presets/default/themes/default/typography": {
+            "require": "./lib/presets/default/themes/default/typography.js",
+            "import": "./lib/presets/default/themes/default/typography.mjs",
+            "types": "./lib/presets/default/themes/default/typography.d.ts"
+        },
+        "./types": {
+            "require": "./lib/types/index.js",
+            "import": "./lib/types/index.mjs",
+            "types": "./lib/types/index.d.ts"
+        },
+        "./types/build": {
+            "require": "./lib/types/build.js",
+            "import": "./lib/types/build.mjs",
+            "types": "./lib/types/build.d.ts"
+        },
+        "./types/classifier": {
+            "require": "./lib/types/classifier.js",
+            "import": "./lib/types/classifier.mjs",
+            "types": "./lib/types/classifier.d.ts"
+        },
+        "./types/config": {
+            "require": "./lib/types/config.js",
+            "import": "./lib/types/config.mjs",
+            "types": "./lib/types/config.d.ts"
+        },
+        "./types/generator": {
+            "require": "./lib/types/generator.js",
+            "import": "./lib/types/generator.mjs",
+            "types": "./lib/types/generator.d.ts"
+        },
+        "./types/modules": {
+            "require": "./lib/types/modules.js",
+            "import": "./lib/types/modules.mjs",
+            "types": "./lib/types/modules.d.ts"
+        },
+        "./types/properties": {
+            "require": "./lib/types/properties.js",
+            "import": "./lib/types/properties.mjs",
+            "types": "./lib/types/properties.d.ts"
+        },
+        "./types/resolver": {
+            "require": "./lib/types/resolver.js",
+            "import": "./lib/types/resolver.mjs",
+            "types": "./lib/types/resolver.d.ts"
+        },
+        "./types/theme": {
+            "require": "./lib/types/theme.js",
+            "import": "./lib/types/theme.mjs",
+            "types": "./lib/types/theme.d.ts"
+        },
+        "./utils": {
+            "require": "./lib/utils/index.js",
+            "import": "./lib/utils/index.mjs",
+            "types": "./lib/utils/index.d.ts"
+        },
+        "./utils/build": {
+            "require": "./lib/utils/build.js",
+            "import": "./lib/utils/build.mjs",
+            "types": "./lib/utils/build.d.ts"
+        },
+        "./utils/codegen": {
+            "require": "./lib/utils/codegen/index.js",
+            "import": "./lib/utils/codegen/index.mjs",
+            "types": "./lib/utils/codegen/index.d.ts"
+        },
+        "./utils/codegen/cssVariables": {
+            "require": "./lib/utils/codegen/cssVariables.js",
+            "import": "./lib/utils/codegen/cssVariables.mjs",
+            "types": "./lib/utils/codegen/cssVariables.d.ts"
+        },
+        "./utils/codegen/scssVariables": {
+            "require": "./lib/utils/codegen/scssVariables.js",
+            "import": "./lib/utils/codegen/scssVariables.mjs",
+            "types": "./lib/utils/codegen/scssVariables.d.ts"
+        },
+        "./utils/codegen/unitValue": {
+            "require": "./lib/utils/codegen/unitValue.js",
+            "import": "./lib/utils/codegen/unitValue.mjs",
+            "types": "./lib/utils/codegen/unitValue.d.ts"
+        },
+        "./utils/define": {
+            "require": "./lib/utils/define.js",
+            "import": "./lib/utils/define.mjs",
+            "types": "./lib/utils/define.d.ts"
+        },
+        "./utils/file": {
+            "require": "./lib/utils/file.js",
+            "import": "./lib/utils/file.mjs",
+            "types": "./lib/utils/file.d.ts"
+        },
+        "./utils/generator": {
+            "require": "./lib/utils/generator.js",
+            "import": "./lib/utils/generator.mjs",
+            "types": "./lib/utils/generator.d.ts"
+        },
+        "./utils/load": {
+            "require": "./lib/utils/load.js",
+            "import": "./lib/utils/load.mjs",
+            "types": "./lib/utils/load.d.ts"
+        },
+        "./utils/matchKey": {
+            "require": "./lib/utils/matchKey.js",
+            "import": "./lib/utils/matchKey.mjs",
+            "types": "./lib/utils/matchKey.d.ts"
+        },
+        "./utils/meta": {
+            "require": "./lib/utils/meta.js",
+            "import": "./lib/utils/meta.mjs",
+            "types": "./lib/utils/meta.d.ts"
+        },
+        "./utils/properties": {
+            "require": "./lib/utils/properties.js",
+            "import": "./lib/utils/properties.mjs",
+            "types": "./lib/utils/properties.d.ts"
+        },
+        "./utils/resolver": {
+            "require": "./lib/utils/resolver.js",
+            "import": "./lib/utils/resolver.mjs",
+            "types": "./lib/utils/resolver.d.ts"
+        },
+        "./utils/string": {
+            "require": "./lib/utils/string.js",
+            "import": "./lib/utils/string.mjs",
+            "types": "./lib/utils/string.d.ts"
+        },
+        "./utils/typeGuards": {
+            "require": "./lib/utils/typeGuards.js",
+            "import": "./lib/utils/typeGuards.mjs",
+            "types": "./lib/utils/typeGuards.d.ts"
+        }
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/config.git"
+    },
+    "license": "ISC"
+}

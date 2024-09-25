@@ -1,0 +1,42 @@
+{
+    "name": "@inkline/core",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools watch",
+        "build": "devtools build",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage"
+    },
+    "devDependencies": {
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@types/color": "^3.0.6",
+        "@types/node": "^20.14.5",
+        "@vitest/coverage-v8": "catalog:",
+        "eslint": "catalog:",
+        "type-fest": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vite-plugin-dts": "catalog:",
+        "vitest": "catalog:"
+    },
+    "files": [
+        "dist"
+    ],
+    "main": "./dist/core.umd.cjs",
+    "module": "./dist/core.js",
+    "types": "./dist/core.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/core.js",
+            "require": "./dist/core.umd.cjs",
+            "types": "./dist/core.d.ts"
+        }
+    },
+    "dependencies": {
+        "color": "^4.2.3"
+    }
+}

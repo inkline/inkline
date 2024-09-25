@@ -1,0 +1,36 @@
+{
+    "name": "@inkline/template",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools watch",
+        "build": "devtools build",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage"
+    },
+    "devDependencies": {
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "@vitest/coverage-v8": "catalog:",
+        "eslint": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vite-plugin-dts": "catalog:",
+        "vitest": "catalog:"
+    },
+    "files": [
+        "dist"
+    ],
+    "main": "./dist/template.umd.cjs",
+    "module": "./dist/template.js",
+    "types": "./dist/template.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/template.js",
+            "require": "./dist/template.umd.cjs",
+            "types": "./dist/template.d.ts"
+        }
+    }
+}

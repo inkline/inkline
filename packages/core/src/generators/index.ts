@@ -1,0 +1,1 @@
+export { scssGenerator } from './scss';

@@ -1,25 +1,16 @@
-import { defineConfig } from "vite";
-import { configDefaults } from "vitest/config";
-import inspect from "vite-plugin-inspect";
-import { inkline } from "./src/vite";
-import { resolve } from "path";
-import type { UserOptions } from "./src/plugin/types";
-import vue from "@vitejs/plugin-vue";
+import { resolve } from 'path';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
-const inklineConfig: UserOptions = {
-    outputDir: resolve(__dirname, "playground/vite/css"),
-};
-
-// https://vitejs.dev/config/
 export default defineConfig({
-    root: resolve(__dirname, "playground/vite"),
-    server: {
-        port: 8080,
-    },
-    plugins: [inspect(), vue(), inkline(inklineConfig)],
-    test: {
-        globals: true,
-        environment: "jsdom",
-        exclude: [...configDefaults.exclude, "lib/**"],
-    },
+    plugins: [dts({ rollupTypes: true })],
+    build: {
+        ssr: true,
+        lib: {
+            entry: [resolve(__dirname, 'src', 'index.ts'), resolve(__dirname, 'src', 'nuxt.ts')],
+            name: 'InklinePlugin',
+            formats: ['es', 'cjs'],
+            fileName: 'plugin'
+        }
+    }
 });

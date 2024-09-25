@@ -11,11 +11,11 @@ import {
     defaultOutputDir,
     loadConfigFromFile
 } from './config';
-import { basename, dirname, extname, resolve } from 'pathe';
+import { basename, dirname, extname, resolve } from 'node:path';
 import { existsSync } from 'fs';
-import { scssGenerator } from './generators';
 import { writeFile, mkdir } from 'fs/promises';
 import { exists } from './utils';
+import { scssGenerator } from '@inkline/core';
 
 type UserBuildOptions = ConfigurationOptions & {
     configFile?: string;
