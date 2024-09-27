@@ -1,0 +1,123 @@
+@use '../../../css/mixins/components';
+
+/**
+ * Button Group
+ */
+
+.button-group {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    box-sizing: border-box;
+
+    > .button,
+    > .button-group > .button,
+    > [class$='-wrapper'] .button {
+        border-radius: 0;
+    }
+
+    .button {
+        position: relative;
+        flex: 0 1 auto;
+        z-index: 0;
+        margin-right: 0;
+
+        &:hover,
+        &:focus,
+        &:active,
+        &.-active {
+            z-index: 1;
+        }
+
+        &.-circle {
+            border-radius: 100%;
+            padding: 0;
+        }
+    }
+
+    > .button:first-child {
+        margin-left: 0;
+    }
+
+    &.-block {
+        display: flex;
+        flex-basis: 100%;
+
+        > .button {
+            flex-basis: 100%;
+        }
+    }
+
+    &.-vertical {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        .button,
+        .button-group,
+        [class$='-wrapper'] {
+            width: 100%;
+        }
+
+        > .button:last-child,
+        > [class$='-wrapper']:last-child > * > .button:last-child {
+            @include components.border-bottom-left-radius('button-group');
+            @include components.border-bottom-right-radius('button-group');
+        }
+
+        > .button:first-child,
+        > [class$='-wrapper']:first-child > * > .button:first-child {
+            @include components.border-top-left-radius('button-group');
+            @include components.border-top-right-radius('button-group');
+        }
+
+        > .button:not(:last-child),
+        > .button-group:not(:last-child) .button,
+        > [class$='-wrapper']:not(:last-child) > * > .button,
+        > .button-group:not(:last-child) [class$='-wrapper'] > * > .button {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom: 0;
+        }
+
+        > .button:not(:first-child),
+        > .button-group:not(:first-child) .button,
+        > [class$='-wrapper']:not(:first-child) > * > .button,
+        > .button-group:not(:first-child) [class$='-wrapper'] > * > .button {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+
+    // Reset rounded corners
+    &:not(.-vertical) {
+        > .button:last-child,
+        > [class$='-wrapper']:last-child > * > .button:last-child {
+            @include components.border-top-right-radius('button-group');
+            @include components.border-bottom-right-radius('button-group');
+        }
+
+        > .button:first-child,
+        > [class$='-wrapper']:first-child > * > .button:first-child {
+            @include components.border-top-left-radius('button-group');
+            @include components.border-bottom-left-radius('button-group');
+        }
+
+        > .button:not(:last-child),
+        > .button-group:not(:last-child) .button,
+        > [class$='-wrapper']:not(:last-child) > * > .button,
+        > .button-group:not(:last-child) [class$='-wrapper'] > * > .button {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: 0;
+        }
+
+        > .button:not(:first-child),
+        > .button-group:not(:first-child) .button,
+        > [class$='-wrapper']:not(:first-child) > * > .button,
+        > .button-group:not(:first-child) [class$='-wrapper'] > * > .button {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > IForm > should render correctly 1`] = `
+"<form class="form -md -light" role="form" name="form" disabled="false">
+  <!-- @slot default Slot for form content -->
+  <div class="input -light -md">
+    <!--v-if-->
+    <div class="input-field">
+      <!--v-if-->
+      <!--v-if--><input name="input" type="text" tabindex="0" aria-disabled="false" aria-readonly="false" value="">
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+</form>"
+`;

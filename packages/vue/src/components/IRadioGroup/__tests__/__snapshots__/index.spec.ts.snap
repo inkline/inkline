@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > IRadioGroup > should render correctly 1`] = `
+"<div class="form-group radio-group -light -md" name="radio-group" role="radiogroup">
+  <div class="radio -light -md" role="radio" aria-checked="false"><input type="radio" name="radio-group-1"><label class="radio-label" tabindex="0">
+      <!-- @slot default Slot for default radio label -->Option 1
+    </label></div>
+  <div class="radio -light -md" role="radio" aria-checked="false"><input type="radio" name="radio-group-2"><label class="radio-label" tabindex="0">
+      <!-- @slot default Slot for default radio label -->Option 2
+    </label></div>
+  <div class="radio -light -md" role="radio" aria-checked="false"><input type="radio" name="radio-group-3"><label class="radio-label" tabindex="0">
+      <!-- @slot default Slot for default radio label -->Option 3
+    </label></div><!-- @slot default Slot for default radio group options -->
+</div>"
+`;

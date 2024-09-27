@@ -6,8 +6,8 @@
         "devtools": "dist/devtools.js"
     },
     "scripts": {
-        "dev": "tsx src/main.ts watch",
-        "build": "tsx src/main.ts build",
+        "dev": "tsx src/main.ts vite watch",
+        "build": "tsx src/main.ts vite build",
         "postbuild": "mv dist/main.js dist/devtools.js && mv dist/main.cjs dist/devtools.cjs",
         "lint": "tsx src/main.ts eslint"
     },
@@ -27,7 +27,8 @@
         "vite": "catalog:"
     },
     "files": [
-        "dist"
+        "dist",
+        "LICENSE"
     ],
     "main": "./dist/devtools.js",
     "module": "./dist/devtools.cjs",
@@ -35,6 +36,33 @@
         ".": {
             "import": "./dist/devtools.js",
             "require": "./dist/devtools.cjs"
-        }
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
     }
 }

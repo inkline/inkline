@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > ILayoutAside > should render correctly 1`] = `
+"<aside class="layout-aside">
+  <div class="layout-aside-children">
+    <!-- @slot default Slot for default layout aside content -->
+  </div>
+</aside>"
+`;

@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > IDropdownItem > should render correctly 1`] = `
+"<div role="menuitem" tabindex="0" tag="div" class="dropdown-item">
+  <!-- @slot default Slot for default dropdown item content -->
+</div>"
+`;

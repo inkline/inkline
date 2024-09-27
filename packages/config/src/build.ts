@@ -10,7 +10,7 @@ import {
     defaultConsumerModule,
     defaultOutputDir,
     loadConfigFromFile
-} from './config';
+} from './load';
 import { basename, dirname, extname, resolve } from 'node:path';
 import { existsSync } from 'fs';
 import { writeFile, mkdir } from 'fs/promises';

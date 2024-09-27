@@ -1,8 +1,5 @@
 {
-    "extends": "../typescript-config/tsconfig.node.json",
-    "compilerOptions": {
-        "skipLibCheck": true
-    },
+    "extends": "../typescript-config/tsconfig.json",
     "include": [
         "src"
     ]

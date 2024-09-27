@@ -1,41 +1,54 @@
 #! /usr/bin/env node
 
-import chalk from 'chalk';
-import path from 'path';
-import { program } from 'commander';
-import { build, eslint, test, watch } from "./commands";
+import chalk from "chalk";
+import path from "path";
+import { program } from "commander";
+import { eslint, test, tsupBuild, tsupWatch, viteBuild, viteWatch } from "./commands";
 import type { WatchCommandOptions } from "./types";
 
-program.name(chalk.blue('@inkline/devtools'));
+program.name(chalk.blue("@inkline/devtools"));
 
 program
-    .command('build')
-    .description('Build the package.')
-    .action(build);
-
-program
-    .command('eslint')
-    .description('Run eslint on the package.')
+    .command("eslint")
+    .description("Run eslint on the package.")
     .action(eslint);
 
-program
-    .command('watch')
+const vite = program
+    .command("vite");
+vite
+    .command("build")
+    .description("Build the package.")
+    .action(viteBuild);
+vite
+    .command("watch")
     .option(
-        '-s, --script <script>',
-        'The script to run when changes are detected. Defaults to "build"'
+        "-s, --script <script>",
+        "The script to run when changes are detected. Defaults to \"build\""
     )
-    .option('-p, --pattern <pattern...>', 'The pattern to be used', ['src'])
-    .description('Watch for changes in the configuration file and generate files accordingly.')
+    .option("-p, --pattern <pattern...>", "The pattern to be used", ["src"])
+    .description("Watch for changes in the configuration file and generate files accordingly.")
     .action(async (options: WatchCommandOptions) => {
         const patterns = options.pattern.map((pattern) => path.resolve(process.cwd(), pattern));
-        await watch(patterns, options.script);
+        await viteWatch(patterns, options.script);
     });
 
+const tsup = program
+    .command("tsup");
+tsup
+    .command("build")
+    .description("Build the package.")
+    .action(tsupBuild);
+tsup
+    .command("watch")
+    .description("Watch for changes in the configuration file and generate files accordingly.")
+    .action(tsupWatch);
+
+
 program
-    .command('test')
-    .option('--watch', 'Watch for changes.')
-    .option('--coverage', 'Generate coverage report.')
-    .description('Run tests on the package.')
+    .command("test")
+    .option("--watch", "Watch for changes.")
+    .option("--coverage", "Generate coverage report.")
+    .description("Run tests on the package.")
     .action(test);
 
 // program

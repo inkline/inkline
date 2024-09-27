@@ -1,11 +1,10 @@
 {
     "name": "@inkline/config",
-    "private": true,
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "devtools watch",
-        "build": "devtools build",
+        "dev": "devtools vite watch",
+        "build": "devtools vite build",
         "postbuild": "mv dist/index.js dist/config.js && mv dist/index.cjs dist/config.cjs",
         "lint": "devtools eslint",
         "test": "devtools test",
@@ -25,7 +24,8 @@
         "vitest": "catalog:"
     },
     "files": [
-        "dist"
+        "dist",
+        "LICENSE"
     ],
     "main": "./dist/config.cjs",
     "module": "./dist/config.js",
@@ -35,10 +35,37 @@
             "import": "./dist/config.js",
             "require": "./dist/config.cjs",
             "types": "./dist/config.d.ts"
-        }
+        },
+        "./*": "./*"
     },
     "dependencies": {
         "@inkline/core": "workspace:*",
         "c12": "^1.11.2"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
     }
 }

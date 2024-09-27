@@ -1,0 +1,63 @@
+{
+    "name": "@inkline/storybook",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools vite watch",
+        "build": "devtools vite build",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage"
+    },
+    "devDependencies": {
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "@vitest/coverage-v8": "catalog:",
+        "eslint": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vite-plugin-dts": "catalog:",
+        "vitest": "catalog:"
+    },
+    "files": [
+        "dist"
+    ],
+    "main": "./dist/storybook.umd.cjs",
+    "module": "./dist/storybook.js",
+    "types": "./dist/storybook.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/storybook.js",
+            "require": "./dist/storybook.umd.cjs",
+            "types": "./dist/storybook.d.ts"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

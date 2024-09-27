@@ -1,0 +1,7 @@
+%card-preview {
+    > .card {
+        margin-right: var(--margin-right);
+        margin-bottom: var(--margin-bottom);
+        max-width: 360px;
+    }
+}

@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "devtools watch",
-        "build": "devtools build",
+        "dev": "devtools vite watch",
+        "build": "devtools vite build",
         "lint": "devtools eslint",
         "test": "devtools test",
         "test:dev": "devtools test --watch",
@@ -24,7 +24,8 @@
         "vitest": "catalog:"
     },
     "files": [
-        "dist"
+        "dist",
+        "LICENSE"
     ],
     "main": "./dist/core.umd.cjs",
     "module": "./dist/core.js",
@@ -34,9 +35,36 @@
             "import": "./dist/core.js",
             "require": "./dist/core.umd.cjs",
             "types": "./dist/core.d.ts"
-        }
+        },
+        "./*": "./*"
     },
     "dependencies": {
         "color": "^4.2.3"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
     }
 }

@@ -1,0 +1,100 @@
+/**
+ * Dropdown
+ */
+
+@use '../../../css/mixins/popup';
+@use '../../../css/mixins/components';
+@use '../../../css/functions/properties';
+
+.dropdown-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-trigger {
+    cursor: pointer;
+}
+
+.dropdown {
+    @include popup.popup(var(--dropdown--z-index, 2000));
+    @include popup.popup-arrow;
+    @include popup.popup-arrow-size-variant(var(--dropdown--arrow--size, 6px));
+
+    @include components.box-shadow('dropdown');
+    @include components.font-size('dropdown');
+    @include components.line-height('dropdown');
+    @include components.color('dropdown');
+    @include components.min-width('dropdown');
+    @include components.max-width('dropdown');
+
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    background-clip: padding-box;
+    display: inline-block;
+    white-space: normal;
+
+    > .dropdown-header {
+        @include components.border-width('dropdown', 'header', true);
+        @include components.border-style('dropdown', 'header', true);
+        @include components.border-color('dropdown', 'header', true);
+        @include components.background('dropdown', 'header', true);
+        @include components.padding('dropdown', 'header', true);
+        @include components.transition('dropdown', 'header', true);
+    }
+
+    > .dropdown-body {
+        @include components.border-width('dropdown', 'body', true);
+        @include components.border-style('dropdown', 'body', true);
+        @include components.border-color('dropdown', 'body', true);
+        @include components.background('dropdown', 'body', true);
+        @include components.padding('dropdown', 'body', true);
+        @include components.transition('dropdown', 'body', true);
+
+        display: flex;
+        flex-direction: column;
+
+        .dropdown-wrapper {
+            width: 100%;
+        }
+    }
+
+    > .dropdown-footer {
+        @include components.border-width('dropdown', 'footer', true);
+        @include components.border-style('dropdown', 'footer', true);
+        @include components.border-color('dropdown', 'footer', true);
+        @include components.background('dropdown', 'footer', true);
+        @include components.padding('dropdown', 'footer', true);
+        @include components.transition('dropdown', 'footer', true);
+    }
+
+    > div:first-of-type {
+        @include components.border-top-left-radius('dropdown');
+        @include components.border-top-right-radius('dropdown');
+    }
+
+    > div:last-of-type {
+        @include components.border-bottom-left-radius('dropdown');
+        @include components.border-bottom-right-radius('dropdown');
+    }
+
+    @include popup.popup-arrow-color-variant-for-side(
+        'top',
+        properties.background('dropdown'),
+        properties.border-bottom-color('dropdown')
+    );
+    @include popup.popup-arrow-color-variant-for-side(
+        'right',
+        properties.background('dropdown'),
+        properties.border-left-color('dropdown')
+    );
+    @include popup.popup-arrow-color-variant-for-side(
+        'bottom',
+        properties.background('dropdown'),
+        properties.border-top-color('dropdown')
+    );
+    @include popup.popup-arrow-color-variant-for-side(
+        'left',
+        properties.background('dropdown'),
+        properties.border-right-color('dropdown')
+    );
+}

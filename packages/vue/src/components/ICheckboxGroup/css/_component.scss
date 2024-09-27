@@ -1,0 +1,12 @@
+/**
+ * Checkbox Group
+ */
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+
+    &.-inline {
+        flex-direction: row;
+    }
+}

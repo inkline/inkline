@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "devtools watch",
-        "build": "devtools build",
+        "dev": "devtools tsup watch",
+        "build": "devtools tsup build",
         "lint": "devtools eslint",
         "test": "devtools test",
         "test:dev": "devtools test --watch",
@@ -21,6 +21,7 @@
         "chokidar": "catalog:",
         "eslint": "catalog:",
         "typescript": "catalog:",
+        "tsup": "catalog:",
         "nuxt": "catalog:",
         "vite": "catalog:",
         "vite-plugin-dts": "catalog:",
@@ -28,7 +29,7 @@
         "vitest": "catalog:"
     },
     "dependencies": {
-        "@inkline/logger": "workspace:*",
+        "@inkline/utils": "workspace:*",
         "@nuxt/kit": "catalog:",
         "unplugin": "catalog:"
     },
@@ -36,16 +37,84 @@
         "@inkline/config": "workspace:^"
     },
     "files": [
-        "dist"
+        "dist",
+        "LICENSE"
     ],
-    "main": "./dist/plugin.cjs",
-    "module": "./dist/plugin.js",
-    "types": "./dist/plugin.d.ts",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/plugin.js",
-            "require": "./dist/plugin.cjs",
-            "types": "./dist/plugin.d.ts"
-        }
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        },
+        "./astro": {
+            "import": "./dist/astro.js",
+            "require": "./dist/astro.cjs"
+        },
+        "./rspack": {
+            "import": "./dist/rspack.js",
+            "require": "./dist/rspack.cjs"
+        },
+        "./vite": {
+            "import": "./dist/vite.js",
+            "require": "./dist/vite.cjs"
+        },
+        "./webpack": {
+            "import": "./dist/webpack.js",
+            "require": "./dist/webpack.cjs"
+        },
+        "./rollup": {
+            "import": "./dist/rollup.js",
+            "require": "./dist/rollup.cjs"
+        },
+        "./esbuild": {
+            "import": "./dist/esbuild.js",
+            "require": "./dist/esbuild.cjs"
+        },
+        "./nuxt": {
+            "import": "./dist/nuxt.js",
+            "require": "./dist/nuxt.cjs"
+        },
+        "./farm": {
+            "import": "./dist/farm.js",
+            "require": "./dist/farm.cjs"
+        },
+        "./types": {
+            "import": "./dist/types.js",
+            "require": "./dist/types.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript",
+        "unplugin",
+        "vite",
+        "webpack",
+        "rollup",
+        "transform"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
     }
 }

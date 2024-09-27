@@ -1,111 +1,93 @@
-import {
-    defineNuxtModule,
-    addPluginTemplate,
-    addComponentsDir,
-} from "@nuxt/kit";
-import { join, resolve, dirname } from "path";
-import { fileURLToPath } from "url";
-import { createRequire } from "module";
-import type { InklinePluginOptions } from "@inkline/inkline";
-import type { NuxtModule } from "@nuxt/schema";
-import type { UserOptions } from "./plugin/types";
-import { watch } from "./plugin/watch";
-import { build } from "./plugin/build";
-import { getResolvedBuildOptions } from "@inkline/config";
+import { defineNuxtModule, addPluginTemplate, addComponentsDir } from '@nuxt/kit';
+import { join, resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
+import type { UserOptions } from './plugin/types';
+import { watch } from './plugin/watch';
+import { build } from './plugin/build';
+import { getResolvedBuildOptions } from '@inkline/config';
 
 interface ModuleConfig {
     import?: {
-        mode?: "global" | "auto";
+        mode?: 'global' | 'auto';
         styles?: boolean;
         scripts?: boolean;
         utilities?: boolean;
     };
 }
 
-const defaultImportOptions: ModuleConfig["import"] = {
-    mode: "auto",
+const defaultImportOptions: ModuleConfig['import'] = {
+    mode: 'auto',
     styles: true,
     scripts: true,
-    utilities: true,
+    utilities: true
 };
 
-export type InklineModule = {
-    globals: Partial<InklinePluginOptions>;
+export type InklineModuleOptions = {
+    globals: Record<string, unknown>;
 } & ModuleConfig &
     UserOptions;
 
-export const module: NuxtModule<InklineModule> = defineNuxtModule({
+export const module = defineNuxtModule<InklineModuleOptions>({
     meta: {
-        name: "@inkline/nuxt",
-        version: "3",
-        configKey: "inkline",
+        name: '@inkline/nuxt',
+        version: '3',
+        configKey: 'inkline',
         compatibility: {
-            nuxt: ">=2.0.0",
-            bridge: true,
-        },
+            nuxt: '>=2.0.0',
+            bridge: true
+        }
     },
-    async setup(
-        { import: importOptions, configFile, outputDir, extName, globals },
-        nuxt,
-    ) {
+    async setup({ import: importOptions, configFile, outputDir, extName, globals }, nuxt) {
         importOptions = {
             ...defaultImportOptions,
-            ...importOptions,
+            ...importOptions
         };
 
         const pluginOptions: UserOptions = {
             configFile,
             outputDir,
-            extName,
+            extName
         };
         const resolvedPluginOptions = getResolvedBuildOptions(pluginOptions);
 
-        const templatesDir = fileURLToPath(
-            new URL("./templates", import.meta.url),
-        );
+        const templatesDir = fileURLToPath(new URL('./templates', import.meta.url));
         const inklineRequire = createRequire(import.meta.url);
 
         // Add CSS imports
         if (importOptions.styles !== false) {
             nuxt.options.css = nuxt.options.css || [];
 
-            nuxt.options.css.unshift(
-                `${resolvedPluginOptions.outputDir}/index.scss`,
-            );
-            nuxt.options.css.unshift("@inkline/inkline/lib/css/index.scss");
+            nuxt.options.css.unshift(`${resolvedPluginOptions.outputDir}/index.scss`);
+            nuxt.options.css.unshift('@inkline/inkline/lib/css/index.scss');
 
             if (importOptions.utilities !== false) {
-                nuxt.options.css.push(
-                    "@inkline/inkline/lib/css/utilities.scss",
-                );
+                nuxt.options.css.push('@inkline/inkline/lib/css/utilities.scss');
             }
         }
 
         // Add to transpile
-        nuxt.options.build.transpile.push("@inkline/inkline");
+        nuxt.options.build.transpile.push('@inkline/inkline');
 
         if (importOptions.scripts !== false) {
             // Add plugin template
             addPluginTemplate({
-                mode: "all",
-                src: resolve(templatesDir, "nuxt.ejs"),
+                mode: 'all',
+                src: resolve(templatesDir, 'nuxt.ejs'),
                 write: true,
-                filename: "inkline.mjs",
-                options: globals || {},
+                filename: 'inkline.mjs',
+                options: globals || {}
             });
         }
 
         // Add dynamic component imports
         await addComponentsDir({
-            path: join(
-                dirname(inklineRequire.resolve("@inkline/inkline")),
-                "components",
-            ),
+            path: join(dirname(inklineRequire.resolve('@inkline/inkline')), 'components'),
             pathPrefix: false,
-            pattern: "**/*.vue",
-            ignore: ["**/examples/*.vue"],
+            pattern: '**/*.vue',
+            ignore: ['**/examples/*.vue'],
             transpile: true,
-            global: importOptions.mode === "global",
+            global: importOptions.mode === 'global'
         });
 
         if (nuxt.options.dev) {
@@ -113,7 +95,7 @@ export const module: NuxtModule<InklineModule> = defineNuxtModule({
         } else {
             void build(pluginOptions);
         }
-    },
+    }
 });
 
 export default module;

@@ -1,0 +1,59 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > ISelect > props > options > should render correctly without options 1`] = `
+"<div id="select" class="select -primary -md" name="select" role="combobox" aria-haspopup="listbox" aria-owns="select-options" aria-expanded="false">
+  <div class="input -primary -md -suffixed">
+    <!--v-if-->
+    <div class="input-field">
+      <!--v-if-->
+      <!--v-if--><input autocomplete="off" aria-autocomplete="none" aria-controls="select-options" placeholder="" name="select-input" type="text" tabindex="0" aria-disabled="false" readonly="" aria-readonly="true" value=""><span class="input-suffix"><!-- @slot password-toggle Slot for the password toggle button --><!--v-if--><!-- @slot clearable Slot for the clearable button --><!--v-if--><!-- @slot suffix Slot for the input suffix content --><!-- @slot suffix Slot for the select suffix content --><button class="select-caret" aria-hidden="true" role="button"></button></span>
+    </div>
+    <!--v-if-->
+  </div>
+  <transition-stub name="zoom-in-top-transition" appear="false" persisted="true" css="true">
+    <div id="select-options" class="select-popup" role="listbox" aria-hidden="true" style="display: none;"><span class="arrow"></span>
+      <!--v-if-->
+      <div class="select-body">
+        <div class="select-no-results">
+          <!-- @slot no-results Slot for showing no options message --> There are no options.
+        </div>
+        <div class="select-options"></div>
+      </div>
+      <!--v-if-->
+    </div>
+  </transition-stub>
+</div>"
+`;
+
+exports[`Components > ISelect > should render correctly 1`] = `
+"<div id="select" class="select -primary -md" name="select" role="combobox" aria-haspopup="listbox" aria-owns="select-options" aria-expanded="false">
+  <div class="input -primary -md -suffixed">
+    <!--v-if-->
+    <div class="input-field">
+      <!--v-if-->
+      <!--v-if--><input autocomplete="off" aria-autocomplete="none" aria-controls="select-options" placeholder="Option 1" name="select-input" type="text" tabindex="0" aria-disabled="false" readonly="" aria-readonly="true" value="Option 1"><span class="input-suffix"><!-- @slot password-toggle Slot for the password toggle button --><!--v-if--><!-- @slot clearable Slot for the clearable button --><!--v-if--><!-- @slot suffix Slot for the input suffix content --><!-- @slot suffix Slot for the select suffix content --><button class="select-caret" aria-hidden="true" role="button"></button></span>
+    </div>
+    <!--v-if-->
+  </div>
+  <transition-stub name="zoom-in-top-transition" appear="false" persisted="true" css="true">
+    <div id="select-options" class="select-popup" role="listbox" aria-hidden="true" style="display: none;"><span class="arrow"></span>
+      <!--v-if-->
+      <div class="select-body">
+        <!--v-if-->
+        <div class="select-options">
+          <div active="true" class="select-option -active" role="option" tabindex="0" aria-selected="true">
+            <!-- @slot default Slot for select option label -->Option 1
+          </div>
+          <div active="false" class="select-option" role="option" tabindex="0">
+            <!-- @slot default Slot for select option label -->Option 2
+          </div>
+          <div active="false" class="select-option" role="option" tabindex="0">
+            <!-- @slot default Slot for select option label -->Option 3
+          </div>
+        </div>
+      </div>
+      <!--v-if-->
+    </div>
+  </transition-stub>
+</div>"
+`;

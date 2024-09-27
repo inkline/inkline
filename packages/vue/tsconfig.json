@@ -1,0 +1,28 @@
+{
+    "extends": "../tooling/typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "lib",
+        "baseUrl": ".",
+        "types": [
+            "@testing-library/jest-dom",
+            "vitest/globals"
+        ],
+        "paths": {
+            "@inkline/inkline/*": ["./src/*"],
+            "@inkline/inkline": ["./src/inkline"]
+        }
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "src/**/*.test.ts",
+        "src/**/*.spec.ts",
+    ],
+    "references": [
+        {
+            "path": "./tsconfig.test.json"
+        }
+    ]
+}

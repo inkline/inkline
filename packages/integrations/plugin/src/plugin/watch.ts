@@ -3,7 +3,7 @@ import * as chokidar from 'chokidar';
 import { build } from './build';
 import { getResolvedBuildOptions } from '@inkline/config';
 import { resolve } from 'path';
-import { Logger } from '@inkline/logger';
+import { Logger } from '@inkline/utils';
 
 /**
  * Watch config file for changes and rebuild

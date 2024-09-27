@@ -69,7 +69,8 @@ export default (baseDir) => ({
                         parser: tsParser,
                         extraFileExtensions: [".vue"],
                         project: [
-                            "./tsconfig.json"
+                            "./tsconfig.json",
+                            "./tsconfig.test.json"
                         ],
                         tsconfigRootDir: baseDir
                     }
@@ -83,7 +84,8 @@ export default (baseDir) => ({
                 languageOptions: {
                     parserOptions: {
                         project: [
-                            "./tsconfig.json"
+                            "./tsconfig.json",
+                            "./tsconfig.test.json"
                         ],
                         tsconfigRootDir: baseDir
                     }

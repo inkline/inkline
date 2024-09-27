@@ -1,6 +1,6 @@
 {
-    "extends": "../tooling/typescript-config/tsconfig.json",
     "compilerOptions": {
+        "composite": true,
         "rootDir": "src",
         "outDir": "lib",
         "baseUrl": ".",
