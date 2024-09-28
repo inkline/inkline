@@ -1,14 +1,9 @@
-import { DefinitionOptions, Selector, SelectorOptions, Themes, Variable } from './types';
+import { DefinitionOptions, Selector, SelectorOptions, Variable } from './types';
 import { isTheme } from './typeGuards';
 import { theme } from './tokens';
 import { defaultThemeName } from './constants';
 
-/**
- * Themes
- *
- * Each key represents a theme. The default theme is 'default'.
- */
-export const themes: Themes = {};
+
 
 /**
  * Adds a variable to a theme.

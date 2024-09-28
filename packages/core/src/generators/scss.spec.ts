@@ -11,7 +11,7 @@ import {
 } from './scss';
 import { calc, hsla, ref, selector, theme, variable } from '../tokens';
 import { defaultIndent } from '../constants';
-import { themes } from '../themes';
+import { themes } from '../globals';
 
 afterEach(() => {
     Object.keys(themes).forEach((key) => delete themes[key]);

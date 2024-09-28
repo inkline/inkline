@@ -15,7 +15,8 @@ import {
 } from "./types";
 import { isRef, isVariable } from './typeGuards';
 import { insertInBetweenElements, createNamespacedTokenName, normalizePercentageValue, toExportedName } from "./utils";
-import { addSelectorToTheme, addVariableToTheme, themes } from './themes';
+import { addSelectorToTheme, addVariableToTheme } from './themes';
+import { themes } from './globals';
 import { defaultThemeName, defaultDefinitionOptions } from './constants';
 import parseColor from 'color';
 

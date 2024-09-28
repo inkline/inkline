@@ -8,10 +8,10 @@ export type ConfigurationOptions<T = unknown> = {
     module?: 'scss';
 } & T;
 
-export type SetupFunction = () => void;
-
 export type Configuration<T = unknown> = {
     themes: Themes;
     files: OutputFile[];
     options: ConfigurationOptions<T>;
 };
+
+export type SetupFunction = () => Omit<Configuration, "options">;

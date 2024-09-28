@@ -1,11 +1,5 @@
 import { OutputFile } from './types';
-
-/**
- * Output files
- *
- * Each entry represents a file that will be generated.
- */
-export const files: OutputFile[] = [];
+import { files } from "./globals";
 
 /**
  * Adds a variable to a theme.

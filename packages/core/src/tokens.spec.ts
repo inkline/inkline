@@ -11,7 +11,7 @@ import {
     variable
 } from './tokens';
 import { TokenType } from './types';
-import { themes } from './themes';
+import { themes } from './globals';
 
 describe('tokens', () => {
     describe('variable', () => {
