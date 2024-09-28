@@ -21,40 +21,40 @@ import type {
  * Plugins
  */
 
-export const InklineKey = 'inkline' as unknown as InjectionKey<InklineService>;
+export const InklineKey = Symbol('inkline') as InjectionKey<InklineService>;
 
-export const InklineIconsKey = 'inklineIcons' as unknown as InjectionKey<Record<string, SvgNode>>;
+export const InklineIconsKey = Symbol('inklineIcons') as InjectionKey<Record<string, SvgNode>>;
 
-export const InklineModalKey = 'inklineModal' as unknown as InjectionKey<ModalService>;
+export const InklineModalKey = Symbol('inklineModal') as InjectionKey<ModalService>;
 
-export const InklineToastKey = 'inklineToast' as unknown as InjectionKey<ToastService>;
+export const InklineToastKey = Symbol('inklineToast') as InjectionKey<ToastService>;
 
 /**
  * Components
  */
 
-export const ButtonGroupKey = 'ButtonGroup' as unknown as InjectionKey<ButtonGroupInjection>;
+export const ButtonGroupKey = Symbol('ButtonGroup') as InjectionKey<ButtonGroupInjection>;
 
-export const CheckboxGroupKey = 'CheckboxGroup' as unknown as InjectionKey<CheckboxGroupInjection>;
+export const CheckboxGroupKey = Symbol('CheckboxGroup') as InjectionKey<CheckboxGroupInjection>;
 
-export const CollapsibleKey = 'Collapsible' as unknown as InjectionKey<CollapsibleInjection>;
+export const CollapsibleKey = Symbol('Collapsible') as InjectionKey<CollapsibleInjection>;
 
-export const DropdownKey = 'Dropdown' as unknown as InjectionKey<DropdownInjection>;
+export const DropdownKey = Symbol('Dropdown') as InjectionKey<DropdownInjection>;
 
-export const FormKey = 'Form' as unknown as InjectionKey<FormInjection>;
+export const FormKey = Symbol('Form') as InjectionKey<FormInjection>;
 
-export const FormGroupKey = 'FormGroup' as unknown as InjectionKey<FormGroupInjection>;
+export const FormGroupKey = Symbol('FormGroup') as InjectionKey<FormGroupInjection>;
 
-export const NavKey = 'Nav' as unknown as InjectionKey<NavInjection>;
+export const NavKey = Symbol('Nav') as InjectionKey<NavInjection>;
 
-export const NavbarKey = 'Navbar' as unknown as InjectionKey<NavbarInjection>;
+export const NavbarKey = Symbol('Navbar') as InjectionKey<NavbarInjection>;
 
-export const ProgressKey = 'Progress' as unknown as InjectionKey<ProgressInjection>;
+export const ProgressKey = Symbol('Progress') as InjectionKey<ProgressInjection>;
 
-export const RadioGroupKey = 'RadioGroup' as unknown as InjectionKey<RadioGroupInjection>;
+export const RadioGroupKey = Symbol('RadioGroup') as InjectionKey<RadioGroupInjection>;
 
-export const SelectKey = 'Select' as unknown as InjectionKey<SelectInjection>;
+export const SelectKey = Symbol('Select') as InjectionKey<SelectInjection>;
 
-export const SidebarKey = 'Sidebar' as unknown as InjectionKey<SidebarInjection>;
+export const SidebarKey = Symbol('Sidebar') as InjectionKey<SidebarInjection>;
 
-export const TabsKey = 'Tabs' as unknown as InjectionKey<TabsInjection>;
+export const TabsKey = Symbol('Tabs') as InjectionKey<TabsInjection>;

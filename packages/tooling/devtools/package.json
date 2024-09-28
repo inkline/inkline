@@ -3,12 +3,11 @@
     "version": "1.0.0",
     "type": "module",
     "bin": {
-        "devtools": "dist/devtools.js"
+        "devtools": "dist/main.js"
     },
     "scripts": {
-        "dev": "tsx src/main.ts vite watch",
-        "build": "tsx src/main.ts vite build",
-        "postbuild": "mv dist/main.js dist/devtools.js && mv dist/main.cjs dist/devtools.cjs",
+        "dev": "tsx src/main.ts tsup watch",
+        "build": "tsx src/main.ts tsup build",
         "lint": "tsx src/main.ts eslint"
     },
     "dependencies": {
@@ -22,20 +21,22 @@
         "@types/node": "catalog:",
         "@types/shelljs": "^0.8.15",
         "eslint": "catalog:",
-        "tsx": "^4.19.1",
-        "typescript": "catalog:",
-        "vite": "catalog:"
+        "tsx": "catalog:",
+        "tsup": "catalog:",
+        "typescript": "catalog:"
     },
     "files": [
         "dist",
         "LICENSE"
     ],
-    "main": "./dist/devtools.js",
-    "module": "./dist/devtools.cjs",
+    "types": "./dist/main.d.ts",
+    "main": "./dist/main.js",
+    "module": "./dist/main.cjs",
     "exports": {
         ".": {
-            "import": "./dist/devtools.js",
-            "require": "./dist/devtools.cjs"
+            "types": "./dist/main.d.ts",
+            "import": "./dist/main.js",
+            "require": "./dist/main.cjs"
         },
         "./*": "./*"
     },

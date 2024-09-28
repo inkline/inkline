@@ -1,126 +1,89 @@
 import { triggerEvent } from './triggerEvent';
 
 describe('Helpers', () => {
-    describe('triggerEvent()', () => {
-        const windowSpy = vi.spyOn(global as any, 'window', 'get');
+    describe('triggerEvent', () => {
         let element: HTMLElement;
 
         beforeEach(() => {
-            element = document.createElement('a');
+            element = document.createElement('div');
+            document.body.appendChild(element);
         });
 
-        describe('dispatchEvent', () => {
-            it('should trigger an event of type MouseEvents', () => {
-                const eventName = 'mousemove';
-                const eventType = 'MouseEvents';
-                const spy = vi.spyOn(element, 'dispatchEvent');
-
-                const event = document.createEvent(eventType);
-                event.initEvent(eventName);
-
-                triggerEvent(element, eventName);
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith(event);
-            });
-
-            it('should trigger an event of type KeyboardEvent', () => {
-                const eventName = 'keypress';
-                const eventType = 'KeyboardEvent';
-                const spy = vi.spyOn(element, 'dispatchEvent');
-
-                const event = document.createEvent(eventType);
-                event.initEvent(eventName);
-
-                triggerEvent(element, eventName);
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith(event);
-            });
-
-            it('should trigger an event of type HTMLEvents', () => {
-                const eventName = 'other';
-                const eventType = 'HTMLEvents';
-                const spy = vi.spyOn(element, 'dispatchEvent');
-
-                const event = document.createEvent(eventType);
-                event.initEvent(eventName);
-
-                triggerEvent(element, eventName);
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith(event);
-            });
-
-            it('should set event options', () => {
-                const eventName = 'mousemove';
-                const eventType = 'MouseEvents';
-                const spy = vi.spyOn(element, 'dispatchEvent');
-
-                const event = document.createEvent(eventType);
-                event.initEvent(eventName);
-
-                triggerEvent(element, 'eventName', { cancelable: true, custom: true });
-
-                expect(spy).toHaveBeenCalled();
-            });
+        afterEach(() => {
+            document.body.removeChild(element);
         });
 
-        describe('fireEvent', () => {
-            beforeEach(() => {
-                (element as any).dispatchEvent = false;
-                (element as any).fireEvent = () => {};
-            });
+        it('should trigger a click event on the element', () => {
+            const clickHandler = vi.fn();
+            element.addEventListener('click', clickHandler);
 
-            it('should trigger an event of type MouseEvents', () => {
-                const eventName = 'mousemove';
-                const eventType = 'MouseEvents';
-                const spy = vi.spyOn(element as any, 'fireEvent');
+            triggerEvent(element, 'click');
 
-                const event = document.createEvent(eventType);
-                event.initEvent(eventName);
-
-                triggerEvent(element, eventName);
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('on' + eventName, event);
-            });
-
-            it('should trigger an event of type KeyboardEvent', () => {
-                const eventName = 'keypress';
-                const eventType = 'KeyboardEvent';
-                const spy = vi.spyOn(element as any, 'fireEvent');
-
-                const event = document.createEvent(eventType);
-                event.initEvent(eventName);
-
-                triggerEvent(element, eventName);
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('on' + eventName, event);
-            });
-
-            it('should trigger an event of type HTMLEvents', () => {
-                const eventName = 'other';
-                const eventType = 'HTMLEvents';
-                const spy = vi.spyOn(element as any, 'fireEvent');
-
-                const event = document.createEvent(eventType);
-                event.initEvent(eventName);
-
-                triggerEvent(element, eventName);
-
-                expect(spy).toHaveBeenCalled();
-                expect(spy).toHaveBeenCalledWith('on' + eventName, event);
-            });
+            expect(clickHandler).toHaveBeenCalled();
         });
 
-        it('should return if isServer', () => {
-            windowSpy.mockImplementation(() => undefined);
+        it('should trigger a mouseover event with custom options', () => {
+            const mouseoverHandler = vi.fn();
+            element.addEventListener('mouseover', mouseoverHandler);
 
-            expect(triggerEvent(element, 'eventName')).not.toBeDefined();
+            triggerEvent(element, 'mouseover', { bubbles: true });
 
-            vi.clearAllMocks();
+            expect(mouseoverHandler).toHaveBeenCalled();
+        });
+
+        it('should trigger a keyup event on the element', () => {
+            const keyupHandler = vi.fn();
+            element.addEventListener('keyup', keyupHandler);
+
+            triggerEvent(element, 'keyup');
+
+            expect(keyupHandler).toHaveBeenCalled();
+        });
+
+        it('should trigger a custom event with additional options', () => {
+            const customEventHandler = vi.fn();
+            element.addEventListener('customEvent', customEventHandler);
+
+            triggerEvent(element, 'customEvent', { bubbles: true, cancelable: true, detail: 123 });
+
+            expect(customEventHandler).toHaveBeenCalled();
+        });
+
+        it('should handle events on the document object', () => {
+            const docHandler = vi.fn();
+            document.addEventListener('click', docHandler);
+
+            triggerEvent(document, 'click');
+
+            expect(docHandler).toHaveBeenCalled();
+        });
+
+        it('should handle events on the window object', () => {
+            const windowHandler = vi.fn();
+            window.addEventListener('resize', windowHandler);
+
+            triggerEvent(window, 'resize');
+
+            expect(windowHandler).toHaveBeenCalled();
+        });
+
+        it('should set custom properties on the event object', () => {
+            const customEventHandler = vi.fn();
+            element.addEventListener('customEvent', customEventHandler);
+
+            const options = { bubbles: true, cancelable: true, detail: 42 };
+            triggerEvent(element, 'customEvent', options);
+
+            const event = customEventHandler.mock.calls[0][0] as Record<string, unknown>;
+            expect(event.bubbles).toBe(true);
+            expect(event.cancelable).toBe(true);
+            expect(event.detail).toBe(42);
+        });
+
+        it('should return the element after triggering the event', () => {
+            const result = triggerEvent(element, 'click');
+            expect(result).toBe(element);
         });
     });
+
 });

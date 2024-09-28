@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useForm } from '@inkline/inkline';
+import { useForm } from '@inkline/inkline/composables';
 
 const { schema } = useForm<{
     input: string;

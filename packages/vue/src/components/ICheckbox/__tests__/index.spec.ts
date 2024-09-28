@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { ICheckbox, InklineKey, CheckboxGroupKey, FormKey, FormGroupKey } from '@inkline/inkline';
+import { ICheckbox } from '../index';
+import { InklineKey, CheckboxGroupKey, FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import { ref } from 'vue';
 
 describe('Components', () => {

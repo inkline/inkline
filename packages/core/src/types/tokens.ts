@@ -1,5 +1,5 @@
 import { HSLAColorInlineProperty } from './properties';
-import { ExportedName } from "./namespaces.ts";
+import { ExportedName } from "./namespaces";
 import { CamelCase } from "type-fest";
 
 export const enum TokenType {

@@ -5,17 +5,16 @@
         "outDir": "lib",
         "baseUrl": ".",
         "types": [
-            "vitest/globals"
+            "vitest/globals",
+            "vite/client",
+            "node"
         ]
     },
     "include": [
         "src/**/*.ts",
         "src/**/*.d.ts",
         "src/**/*.tsx",
-    ],
-    "references": [
-        {
-            "path": "./tsconfig.node.json"
-        }
+        "vite.config.ts",
+        "playwright.config.ts"
     ]
 }

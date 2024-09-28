@@ -7,137 +7,136 @@ import {
     defaultValidationFieldValues,
     defaultValidationStateValues
 } from '@inkline/inkline/constants';
-import type { FormSchema, ResolvedFormSchema } from '@inkline/inkline';
 
 type FormType = { field: string };
 
-const formValues = {
-    field: 'value',
-    group: {
-        field: 'value'
-    },
-    array: [1, 2, 3],
-    groupArray: [{ test: 1 }]
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const schemaValues = {
-    field: {
-        value: 'value'
-    },
-    group: {
-        field: {
-            value: 'value'
-        }
-    },
-    array: [{ value: 1 }, { value: 2 }, { value: 3 }],
-    groupArray: [
-        {
-            test: {
-                value: 1
-            }
-        }
-    ]
-} satisfies FormSchema<typeof formValues>;
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const resolvedSchemaValues = {
-    field: {
-        value: 'value',
-        validators: [],
-        valid: true,
-        invalid: false,
-        untouched: true,
-        touched: false,
-        pristine: true,
-        dirty: false,
-        errors: []
-    },
-    group: {
-        field: {
-            value: 'value',
-            validators: [],
-            valid: true,
-            invalid: false,
-            untouched: true,
-            touched: false,
-            pristine: true,
-            dirty: false,
-            errors: []
-        },
-        valid: true,
-        invalid: false,
-        untouched: true,
-        touched: false,
-        pristine: true,
-        dirty: false,
-        errors: []
-    },
-    array: [
-        {
-            value: 1,
-            validators: [],
-            valid: true,
-            invalid: false,
-            untouched: true,
-            touched: false,
-            pristine: true,
-            dirty: false,
-            errors: []
-        },
-        {
-            value: 2,
-            validators: [],
-            valid: true,
-            invalid: false,
-            untouched: true,
-            touched: false,
-            pristine: true,
-            dirty: false,
-            errors: []
-        },
-        {
-            value: 3,
-            validators: [],
-            valid: true,
-            invalid: false,
-            untouched: true,
-            touched: false,
-            pristine: true,
-            dirty: false,
-            errors: []
-        }
-    ],
-    groupArray: [
-        {
-            test: {
-                value: 1,
-                validators: [],
-                valid: true,
-                invalid: false,
-                untouched: true,
-                touched: false,
-                pristine: true,
-                dirty: false,
-                errors: []
-            },
-            valid: true,
-            invalid: false,
-            untouched: true,
-            touched: false,
-            pristine: true,
-            dirty: false,
-            errors: []
-        }
-    ],
-    valid: true,
-    invalid: false,
-    untouched: true,
-    touched: false,
-    pristine: true,
-    dirty: false,
-    errors: []
-} satisfies ResolvedFormSchema<typeof formValues>;
+// const formValues = {
+//     field: 'value',
+//     group: {
+//         field: 'value'
+//     },
+//     array: [1, 2, 3],
+//     groupArray: [{ test: 1 }]
+// };
+//
+// // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// const schemaValues = {
+//     field: {
+//         value: 'value'
+//     },
+//     group: {
+//         field: {
+//             value: 'value'
+//         }
+//     },
+//     array: [{ value: 1 }, { value: 2 }, { value: 3 }],
+//     groupArray: [
+//         {
+//             test: {
+//                 value: 1
+//             }
+//         }
+//     ]
+// } satisfies FormSchema<typeof formValues>;
+//
+// // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// const resolvedSchemaValues = {
+//     field: {
+//         value: 'value',
+//         validators: [],
+//         valid: true,
+//         invalid: false,
+//         untouched: true,
+//         touched: false,
+//         pristine: true,
+//         dirty: false,
+//         errors: []
+//     },
+//     group: {
+//         field: {
+//             value: 'value',
+//             validators: [],
+//             valid: true,
+//             invalid: false,
+//             untouched: true,
+//             touched: false,
+//             pristine: true,
+//             dirty: false,
+//             errors: []
+//         },
+//         valid: true,
+//         invalid: false,
+//         untouched: true,
+//         touched: false,
+//         pristine: true,
+//         dirty: false,
+//         errors: []
+//     },
+//     array: [
+//         {
+//             value: 1,
+//             validators: [],
+//             valid: true,
+//             invalid: false,
+//             untouched: true,
+//             touched: false,
+//             pristine: true,
+//             dirty: false,
+//             errors: []
+//         },
+//         {
+//             value: 2,
+//             validators: [],
+//             valid: true,
+//             invalid: false,
+//             untouched: true,
+//             touched: false,
+//             pristine: true,
+//             dirty: false,
+//             errors: []
+//         },
+//         {
+//             value: 3,
+//             validators: [],
+//             valid: true,
+//             invalid: false,
+//             untouched: true,
+//             touched: false,
+//             pristine: true,
+//             dirty: false,
+//             errors: []
+//         }
+//     ],
+//     groupArray: [
+//         {
+//             test: {
+//                 value: 1,
+//                 validators: [],
+//                 valid: true,
+//                 invalid: false,
+//                 untouched: true,
+//                 touched: false,
+//                 pristine: true,
+//                 dirty: false,
+//                 errors: []
+//             },
+//             valid: true,
+//             invalid: false,
+//             untouched: true,
+//             touched: false,
+//             pristine: true,
+//             dirty: false,
+//             errors: []
+//         }
+//     ],
+//     valid: true,
+//     invalid: false,
+//     untouched: true,
+//     touched: false,
+//     pristine: true,
+//     dirty: false,
+//     errors: []
+// } satisfies ResolvedFormSchema<typeof formValues>;
 
 describe('validation', () => {
     describe('resolveFormField()', () => {
@@ -149,7 +148,7 @@ describe('validation', () => {
             ['string', 'value'],
             ['object', { key: 'value' }],
             ['array', ['value']]
-        ])('should return resolved form field with %s value', (type, value) => {
+        ])('should return resolved form field with %s value', (_type, value) => {
             const field = { value };
             const resolvedField = createFormFieldSchema(field);
 

@@ -14,19 +14,13 @@
         "@inkline/config": "workspace:*",
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
-        "@vitejs/plugin-vue": "catalog:",
-        "@vitest/coverage-v8": "catalog:",
         "@nuxt/module-builder": "catalog:",
         "@nuxt/schema": "catalog:",
         "chokidar": "catalog:",
         "eslint": "catalog:",
         "typescript": "catalog:",
         "tsup": "catalog:",
-        "nuxt": "catalog:",
-        "vite": "catalog:",
-        "vite-plugin-dts": "catalog:",
-        "vite-plugin-inspect": "catalog:",
-        "vitest": "catalog:"
+        "nuxt": "catalog:"
     },
     "dependencies": {
         "@inkline/utils": "workspace:*",
@@ -40,49 +34,54 @@
         "dist",
         "LICENSE"
     ],
+    "types": "./dist/index.d.ts",
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
-    "types": "./dist/index.d.ts",
     "exports": {
         ".": {
+            "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
             "require": "./dist/index.cjs"
         },
         "./astro": {
+            "types": "./dist/astro.d.ts",
             "import": "./dist/astro.js",
             "require": "./dist/astro.cjs"
         },
         "./rspack": {
+            "types": "./dist/rspack.d.ts",
             "import": "./dist/rspack.js",
             "require": "./dist/rspack.cjs"
         },
         "./vite": {
+            "types": "./dist/vite.d.ts",
             "import": "./dist/vite.js",
             "require": "./dist/vite.cjs"
         },
         "./webpack": {
+            "types": "./dist/webpack.d.ts",
             "import": "./dist/webpack.js",
             "require": "./dist/webpack.cjs"
         },
         "./rollup": {
+            "types": "./dist/rollup.d.ts",
             "import": "./dist/rollup.js",
             "require": "./dist/rollup.cjs"
         },
         "./esbuild": {
+            "types": "./dist/esbuild.d.ts",
             "import": "./dist/esbuild.js",
             "require": "./dist/esbuild.cjs"
         },
         "./nuxt": {
+            "types": "./dist/nuxt.d.ts",
             "import": "./dist/nuxt.js",
             "require": "./dist/nuxt.cjs"
         },
         "./farm": {
+            "types": "./dist/farm.d.ts",
             "import": "./dist/farm.js",
             "require": "./dist/farm.cjs"
-        },
-        "./types": {
-            "import": "./dist/types.js",
-            "require": "./dist/types.cjs"
         },
         "./*": "./*"
     },

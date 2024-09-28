@@ -1,13 +1,6 @@
 {
     "extends": "../../tooling/typescript-config/tsconfig.json",
     "include": [
-        "./src/**/*.ts",
-        "./src/**/*.d.ts",
-        "./src/**/*.tsx"
-    ],
-    "exclude": [
-        "playground/*",
-        "nuxt.config.ts",
-        "vite.config.ts"
+        "src"
     ]
 }

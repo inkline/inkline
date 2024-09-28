@@ -1,4 +1,4 @@
-import { querySelector, querySelectorAll } from './querySelector, querySelectorAll';
+import { querySelector, querySelectorAll } from './query';
 
 describe('Helpers', () => {
     describe('querySelector()', () => {
@@ -15,7 +15,7 @@ describe('Helpers', () => {
         ];
 
         it('should return undefined if no items in array', () => {
-            expect((querySelector as any)([])).toEqual(undefined);
+            expect(querySelector([], undefined)).toEqual(undefined);
         });
 
         it('should return item if $options.name matches given name', () => {

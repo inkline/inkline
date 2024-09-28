@@ -5,44 +5,43 @@
  *
  * @param {Element} element
  * @param {String} name
- * @param rawOptions
+ * @param {EventInit} rawOptions
  */
 export function triggerEvent(
     element: HTMLElement | Document | Window,
     name: string,
-    rawOptions?: any
+    rawOptions: EventInit & Record<string, unknown> = {}
 ) {
-    if (typeof window === 'undefined') {
-        return;
+    if (typeof window === "undefined") {
+        return element;
     }
 
-    let eventName;
+    // Determine the event type based on the event name
+    let eventType: string;
+    if (/^mouse|click/.test(name)) {
+        eventType = "MouseEvent";
+    } else if (/^key/.test(name)) {
+        eventType = "KeyboardEvent";
+    } else {
+        eventType = "Event";
+    }
 
-    const options = {
-        bubbles: false,
-        cancelable: true,
-        ...rawOptions
+    const evt = document.createEvent(eventType);
+
+    const { bubbles = false, cancelable = true, composed, ...customEventOptions } = rawOptions;
+
+    const options: EventInit = {
+        bubbles,
+        cancelable,
+        composed
     };
 
-    if (/^mouse|click/.test(name)) {
-        eventName = 'MouseEvents';
-    } else if (/^key/.test(name)) {
-        eventName = 'KeyboardEvent';
-    } else {
-        eventName = 'HTMLEvents';
-    }
-
-    const evt = document.createEvent(eventName);
     evt.initEvent(name, options.bubbles, options.cancelable);
-
-    Object.keys(options).forEach((optionName) => {
-        if (optionName !== 'bubbles' && optionName !== 'cancelable') {
-            (evt as any)[optionName] = options[optionName];
-        }
-    });
+    Object.assign(evt, customEventOptions);
 
     element.dispatchEvent
         ? element.dispatchEvent(evt)
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         : (element as any).fireEvent('on' + name, evt);
 
     return element;

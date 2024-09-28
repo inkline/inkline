@@ -25,14 +25,14 @@
         "LICENSE",
         "README.md"
     ],
+    "types": "./dist/template.d.ts",
     "main": "./dist/template.umd.cjs",
     "module": "./dist/template.js",
-    "types": "./dist/template.d.ts",
     "exports": {
         ".": {
+            "types": "./dist/template.d.ts",
             "import": "./dist/template.js",
-            "require": "./dist/template.umd.cjs",
-            "types": "./dist/template.d.ts"
+            "require": "./dist/template.umd.cjs"
         },
         "./*": "./*"
     },

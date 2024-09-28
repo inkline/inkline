@@ -4,10 +4,10 @@ import { useComponentColor, useComponentSize } from '@inkline/inkline/composable
 import { TabsKey } from '@inkline/inkline/constants';
 import { ITabTitle } from '@inkline/inkline/components/ITabTitle';
 
-interface TabItem {
+type InklineTab = {
     name: string;
     title: string;
-}
+};
 
 const componentName = 'ITabs';
 
@@ -66,7 +66,7 @@ export default defineComponent({
     ],
     setup(props, { emit, slots }) {
         const tabsRef = ref<HTMLElement | null>(null);
-        const tabs = ref<TabItem[]>([]);
+        const tabs = ref<InklineTab[]>([]);
         const active = ref(props.modelValue);
 
         const currentColor = computed(() => props.color);
@@ -106,7 +106,7 @@ export default defineComponent({
 
         function synchronize() {
             if (tabsRef.value && !slots.header) {
-                const currentTabs: TabItem[] = [];
+                const currentTabs: InklineTab[] = [];
                 const tabNodes = tabsRef.value.querySelectorAll('.tab');
 
                 for (const tabNode of tabNodes) {

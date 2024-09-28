@@ -9,6 +9,7 @@ catalog:
     '@vitejs/plugin-vue': ^5.1.4
     '@vitest/coverage-v8': ^2.1.1
     '@vue/runtime-core': ^3.5.8
+    '@vue/test-utils': ^2.4.6
     '@nuxt/kit': ^3.13.2
     '@nuxt/module-builder': ^0.8.4
     '@nuxt/schema': ^3.13.2
@@ -16,6 +17,7 @@ catalog:
     '@testing-library/vue': ^8.1.0
     chokidar: ^3.6.0
     eslint: ^9.3.0
+    jsdom: ^25.0.1
     np: ^10.0.1
     nuxt: ^3.13.2
     prettier: ^3.2.5

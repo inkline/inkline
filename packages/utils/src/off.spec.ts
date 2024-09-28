@@ -1,4 +1,4 @@
-import { off, removeEventListenerBinding, detachEventBinding, _off } from './off, removeEventListenerBinding, detachEventBinding, _off';
+import { off, removeEventListenerBinding, detachEventBinding, _off } from './off';
 
 describe('Helpers', () => {
     describe('off()', () => {

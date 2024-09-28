@@ -27,14 +27,14 @@
         "dist",
         "LICENSE"
     ],
+    "types": "./dist/core.d.ts",
     "main": "./dist/core.umd.cjs",
     "module": "./dist/core.js",
-    "types": "./dist/core.d.ts",
     "exports": {
         ".": {
+            "types": "./dist/core.d.ts",
             "import": "./dist/core.js",
-            "require": "./dist/core.umd.cjs",
-            "types": "./dist/core.d.ts"
+            "require": "./dist/core.umd.cjs"
         },
         "./*": "./*"
     },

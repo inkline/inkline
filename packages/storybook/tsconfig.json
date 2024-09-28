@@ -1,15 +1,11 @@
 {
     "extends": "../tooling/typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "types": [
+            "vitest/globals"
+        ]
+    },
     "include": [
-        "src"
-    ],
-    "exclude": [
-        "src/**/*.test.ts",
-        "src/**/*.spec.ts",
-    ],
-    "references": [
-        {
-            "path": "./tsconfig.test.json"
-        }
+        "src/**/*.ts"
     ]
 }

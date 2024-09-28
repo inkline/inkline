@@ -1,5 +1,5 @@
 import * as micromustache from 'micromustache';
-import { interpolate } from '@inkline/inkline';
+import { interpolate } from '@inkline/inkline/utils';
 
 describe('Utils', () => {
     describe('interpolate()', () => {

@@ -3,10 +3,11 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "devtools vite watch",
-        "build": "devtools vite build",
-        "postbuild": "mv dist/index.js dist/utils.js && mv dist/index.cjs dist/utils.cjs",
-        "lint": "devtools eslint"
+        "dev": "devtools tsup watch",
+        "build": "devtools tsup build",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch"
     },
     "dependencies": {
         "chalk": "^4.1.2"
@@ -16,6 +17,8 @@
         "@inkline/eslint-config": "workspace:*",
         "@types/node": "catalog:",
         "eslint": "catalog:",
+        "jsdom": "catalog:",
+        "tsup": "catalog:",
         "typescript": "catalog:",
         "vite": "catalog:",
         "vite-plugin-dts": "catalog:",
@@ -25,14 +28,14 @@
         "dist",
         "LICENSE"
     ],
-    "main": "./dist/utils.js",
-    "module": "./dist/utils.cjs",
-    "types": "./dist/utils.d.ts",
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.js",
+    "module": "./dist/index.cjs",
     "exports": {
         ".": {
-            "import": "./dist/utils.js",
-            "require": "./dist/utils.cjs",
-            "types": "./dist/utils.d.ts"
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
         },
         "./*": "./*"
     },

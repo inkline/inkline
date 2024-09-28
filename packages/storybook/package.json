@@ -23,14 +23,14 @@
     "files": [
         "dist"
     ],
+    "types": "./dist/storybook.d.ts",
     "main": "./dist/storybook.umd.cjs",
     "module": "./dist/storybook.js",
-    "types": "./dist/storybook.d.ts",
     "exports": {
         ".": {
+            "types": "./dist/storybook.d.ts",
             "import": "./dist/storybook.js",
-            "require": "./dist/storybook.umd.cjs",
-            "types": "./dist/storybook.d.ts"
+            "require": "./dist/storybook.umd.cjs"
         },
         "./*": "./*"
     },

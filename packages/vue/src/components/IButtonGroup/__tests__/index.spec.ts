@@ -1,8 +1,7 @@
 import { render } from '@testing-library/vue';
 import { IButtonGroup } from '@inkline/inkline/components';
-import { InklineKey } from '@inkline/inkline/constants';
+import { InklineKey, ButtonGroupKey } from '@inkline/inkline/constants';
 import { createInkline } from '@inkline/inkline/__tests__/utils';
-import { ButtonGroupKey } from '@inkline/inkline';
 import { ref } from 'vue';
 
 describe('Components', () => {

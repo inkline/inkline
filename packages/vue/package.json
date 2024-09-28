@@ -24,7 +24,9 @@
         "@testing-library/jest-dom": "catalog:",
         "@testing-library/vue": "catalog:",
         "@vitest/coverage-v8": "catalog:",
+        "@vitejs/plugin-vue": "catalog:",
         "@vue/runtime-core": "catalog:",
+        "@vue/test-utils": "catalog:",
         "eslint": "catalog:",
         "micromustache": "^8.0.3",
         "miragejs": "0.2.0-alpha.3",
@@ -46,16 +48,16 @@
         "LICENSE",
         "README.md"
     ],
+    "types": "./dist/vue.d.ts",
     "main": "./dist/vue.umd.cjs",
     "module": "./dist/vue.js",
-    "types": "./dist/vue.d.ts",
     "jsdelivr": "dist/vue.umd.js",
     "unpkg": "dist/vue.umd.js",
     "exports": {
         ".": {
+            "types": "./dist/vue.d.ts",
             "import": "./dist/vue.js",
-            "require": "./dist/vue.umd.cjs",
-            "types": "./dist/vue.d.ts"
+            "require": "./dist/vue.umd.cjs"
         },
         "./*": "./*"
     },

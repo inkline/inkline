@@ -7,9 +7,9 @@ export default defineComponent({
     setup() {
         function onEnter(componentElement: Element) {
             const element = componentElement as HTMLElement;
-            const width = getStyleProperty(element, 'width');
+            const width = getStyleProperty(element, 'width') ?? '';
 
-            element.style.width = width;
+            element.style.width = typeof width === 'number' ? `${width}px` : width;
             element.style.position = 'absolute';
             element.style.visibility = 'hidden';
             element.style.height = 'auto';

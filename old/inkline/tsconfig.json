@@ -6,6 +6,7 @@
         "baseUrl": ".",
         "types": [
             "@testing-library/jest-dom",
+            "vite/client",
             "vitest/globals"
         ],
         "paths": {
@@ -17,11 +18,7 @@
         "src/**/*.vue",
         "src/**/*.ts",
         "src/**/*.d.ts",
-        "src/**/*.tsx"
-    ],
-    "references": [
-        {
-            "path": "./tsconfig.node.json"
-        }
+        "src/**/*.tsx",
+        "vite.config.ts"
     ]
 }

@@ -1,5 +1,5 @@
 import { registerValidator, unregisterValidator, validators } from '@inkline/inkline/validation';
-import type { FormValidatorFn } from '@inkline/inkline';
+import type { FormValidatorFn } from '@inkline/inkline/types';
 
 describe('Validators', () => {
     describe('registerValidator()', () => {

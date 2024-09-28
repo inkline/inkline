@@ -25,14 +25,14 @@
         "dist",
         "LICENSE"
     ],
+    "types": "./dist/theme.d.ts",
     "main": "./dist/theme.umd.cjs",
     "module": "./dist/theme.js",
-    "types": "./dist/theme.d.ts",
     "exports": {
         ".": {
+            "types": "./dist/theme.d.ts",
             "import": "./dist/theme.js",
-            "require": "./dist/theme.umd.cjs",
-            "types": "./dist/theme.d.ts"
+            "require": "./dist/theme.umd.cjs"
         },
         "./*": "./*"
     },

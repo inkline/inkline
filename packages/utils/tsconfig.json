@@ -1,18 +1,13 @@
 {
     "extends": "../tooling/typescript-config/tsconfig.json",
     "compilerOptions": {
-        "skipLibCheck": true
+        "types": [
+            "vite/client",
+            "vitest/globals"
+        ]
     },
     "include": [
-        "src"
-    ],
-    "exclude": [
-        "src/**/*.test.ts",
-        "src/**/*.spec.ts",
-    ],
-    "references": [
-        {
-            "path": "./tsconfig.test.json"
-        }
+        "src/**/*.ts",
+        "vite.config.ts"
     ]
 }

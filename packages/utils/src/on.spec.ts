@@ -1,4 +1,4 @@
-import { on, addEventListenerBinding, attachEventBinding, _on } from './on, addEventListenerBinding, attachEventBinding, _on';
+import { on, addEventListenerBinding, attachEventBinding, _on } from './on';
 
 describe('Helpers', () => {
     describe('on()', () => {

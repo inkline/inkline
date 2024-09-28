@@ -1,7 +1,7 @@
 {
     "extends": "../tooling/typescript-config/tsconfig.json",
     "compilerOptions": {
-        "rootDir": "src",
+        "rootDir": ".",
         "outDir": "lib",
         "baseUrl": ".",
         "types": [
@@ -9,20 +9,14 @@
             "vitest/globals"
         ],
         "paths": {
-            "@inkline/inkline/*": ["./src/*"],
-            "@inkline/inkline": ["./src/inkline"]
+            "@inkline/inkline": ["./src/index"],
+            "@inkline/inkline/*": ["./src/*"]
         }
     },
     "include": [
-        "src"
-    ],
-    "exclude": [
-        "src/**/*.test.ts",
-        "src/**/*.spec.ts",
-    ],
-    "references": [
-        {
-            "path": "./tsconfig.test.json"
-        }
+        "src/**/*.vue",
+        "src/**/*.ts",
+        "vite.config.ts",
+        "inkline.config.ts"
     ]
 }
