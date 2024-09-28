@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "devtools vite watch",
+        "dev": "devtools vite watch -p src/**/*.ts -p src/**/*.vue",
         "build": "devtools vite build",
         "lint": "devtools eslint",
         "test": "devtools test",
