@@ -22,7 +22,7 @@ import {
     IButton,
     ICheckbox,
     ILayout
-} from '@inkline/inkline';
+} from '@inkline/vue';
 
 createApp(App)
   .mount('#app');`;
@@ -57,7 +57,7 @@ describe('importFromExists', () => {
 
     it('should return true if the multi line import exists', () => {
         const result = importFromExists(exampleMultiLineImportCode, {
-            from: '@inkline/inkline'
+            from: '@inkline/vue'
         });
         expect(result).toBe(true);
     });
@@ -104,10 +104,10 @@ describe('insertImport', () => {
     it('should insert a import when there are no other imports', () => {
         const result = insertImport(`const a = 1;`, {
             name: ['Inkline'],
-            from: '@inkline/inkline'
+            from: '@inkline/vue'
         });
 
-        expect(result).toContain(`import { Inkline } from '@inkline/inkline';`);
+        expect(result).toContain(`import { Inkline } from '@inkline/vue';`);
         expect(result).toMatchSnapshot();
     });
 });
@@ -124,48 +124,48 @@ describe('updateExistingImport', () => {
 
     it('should update a multi line named import', () => {
         const result = updateExistingImport(
-            `import {\n  IButton,\n  ICheckbox,\n  ILayout\n} from '@inkline/inkline';`,
+            `import {\n  IButton,\n  ICheckbox,\n  ILayout\n} from '@inkline/vue';`,
             {
                 name: ['IColumn'],
-                from: '@inkline/inkline'
+                from: '@inkline/vue'
             }
         );
 
         expect(result).toEqual(
-            `import { IButton, ICheckbox, ILayout, IColumn } from '@inkline/inkline';`
+            `import { IButton, ICheckbox, ILayout, IColumn } from '@inkline/vue';`
         );
     });
 
     it('should update a default and named import', () => {
         const result = updateExistingImport(
-            `import Inkline, {\n  IButton,\n  ICheckbox,\n  ILayout\n} from '@inkline/inkline';`,
+            `import Inkline, {\n  IButton,\n  ICheckbox,\n  ILayout\n} from '@inkline/vue';`,
             {
                 name: ['IColumn'],
-                from: '@inkline/inkline'
+                from: '@inkline/vue'
             }
         );
 
         expect(result).toEqual(
-            `import Inkline, { IButton, ICheckbox, ILayout, IColumn } from '@inkline/inkline';`
+            `import Inkline, { IButton, ICheckbox, ILayout, IColumn } from '@inkline/vue';`
         );
     });
 
     it('should add named imports to default import', () => {
-        const result = updateExistingImport(`import Inkline from '@inkline/inkline';`, {
+        const result = updateExistingImport(`import Inkline from '@inkline/vue';`, {
             name: ['IColumn'],
-            from: '@inkline/inkline'
+            from: '@inkline/vue'
         });
 
-        expect(result).toEqual(`import Inkline, { IColumn } from '@inkline/inkline';`);
+        expect(result).toEqual(`import Inkline, { IColumn } from '@inkline/vue';`);
     });
 
     it('should add default import to named imports', () => {
-        const result = updateExistingImport(`import { IColumn } from '@inkline/inkline';`, {
+        const result = updateExistingImport(`import { IColumn } from '@inkline/vue';`, {
             name: 'Inkline',
-            from: '@inkline/inkline'
+            from: '@inkline/vue'
         });
 
-        expect(result).toEqual(`import Inkline, { IColumn } from '@inkline/inkline';`);
+        expect(result).toEqual(`import Inkline, { IColumn } from '@inkline/vue';`);
     });
 });
 
@@ -183,10 +183,10 @@ describe('addImport', () => {
     it('should insert a named import', () => {
         const result = addImport(exampleSingleLineImportCode, {
             name: ['Inkline'],
-            from: '@inkline/inkline'
+            from: '@inkline/vue'
         });
 
-        expect(result).toContain(`import { Inkline } from '@inkline/inkline';`);
+        expect(result).toContain(`import { Inkline } from '@inkline/vue';`);
         expect(result).toMatchSnapshot();
     });
 
@@ -203,11 +203,11 @@ describe('addImport', () => {
     it('should update a named multi line import', () => {
         const result = addImport(exampleMultiLineImportCode, {
             name: ['IContainer'],
-            from: '@inkline/inkline'
+            from: '@inkline/vue'
         });
 
         expect(result).toContain(
-            `import { IButton, ICheckbox, ILayout, IContainer } from '@inkline/inkline';`
+            `import { IButton, ICheckbox, ILayout, IContainer } from '@inkline/vue';`
         );
         expect(result).toMatchSnapshot();
     });
@@ -215,11 +215,11 @@ describe('addImport', () => {
     it('should add a default import to a named multi line import', () => {
         const result = addImport(exampleMultiLineImportCode, {
             name: 'Inkline',
-            from: '@inkline/inkline'
+            from: '@inkline/vue'
         });
 
         expect(result).toContain(
-            `import Inkline, { IButton, ICheckbox, ILayout } from '@inkline/inkline';`
+            `import Inkline, { IButton, ICheckbox, ILayout } from '@inkline/vue';`
         );
         expect(result).toMatchSnapshot();
     });

@@ -16,7 +16,7 @@ import {
     IButton,
     ICheckbox,
     ILayout
-} from '@inkline/inkline';
+} from '@inkline/vue';
 
 createApp(App)
   .mount('#app');`;

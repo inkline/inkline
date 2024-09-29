@@ -59,15 +59,15 @@ export const module = defineNuxtModule<InklineModuleOptions>({
             nuxt.options.css = nuxt.options.css || [];
 
             nuxt.options.css.unshift(`${resolvedPluginOptions.outputDir}/index.scss`);
-            nuxt.options.css.unshift('@inkline/inkline/lib/css/index.scss');
+            nuxt.options.css.unshift('@inkline/vue/lib/css/index.scss');
 
             if (importOptions.utilities !== false) {
-                nuxt.options.css.push('@inkline/inkline/lib/css/utilities.scss');
+                nuxt.options.css.push('@inkline/vue/lib/css/utilities.scss');
             }
         }
 
         // Add to transpile
-        nuxt.options.build.transpile.push('@inkline/inkline');
+        nuxt.options.build.transpile.push('@inkline/vue');
 
         if (importOptions.scripts !== false) {
             // Add plugin template
@@ -82,7 +82,7 @@ export const module = defineNuxtModule<InklineModuleOptions>({
 
         // Add dynamic component imports
         await addComponentsDir({
-            path: join(dirname(inklineRequire.resolve('@inkline/inkline')), 'components'),
+            path: join(dirname(inklineRequire.resolve('@inkline/vue')), 'components'),
             pathPrefix: false,
             pattern: '**/*.vue',
             ignore: ['**/examples/*.vue'],

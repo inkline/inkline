@@ -1,4 +1,4 @@
-import { DevEnv, DevEnvType, DevLibraryType, InitEnv, PackageJsonSchema } from '../types';
+import { DevEnv, DevEnvType, DevLibraryType, InitEnv } from '../types';
 import { getPluginCjsPreamble, getPluginPreamble } from './preamble';
 import { resolve } from 'node:path';
 import { existsSync } from 'fs';
@@ -15,6 +15,7 @@ import { Logger } from '@inkline/utils';
 import prettier from 'prettier';
 import { addAfterImports, addAfterRequires } from './insert';
 import { addFieldToDefaultExport, addImport } from './import';
+import { PackageJson } from "type-fest";
 
 /**
  * Initialize the development environment configuration file
@@ -51,7 +52,7 @@ export async function initDevEnvConfigFile(
  * Detect the development environment based on the package.json file
  */
 export async function detectDevEnv(
-    packageJson: PackageJsonSchema,
+    _packageJson: PackageJson,
     { cwd, isTypescript }: InitEnv
 ): Promise<DevEnv> {
     const nuxtTs: DevEnv = {
@@ -112,10 +113,10 @@ export async function detectDevEnv(
 
     if (!inferredDevEnvironment) {
         const packageJsonPath = resolve(cwd, 'package.json');
-        let packageJson: PackageJsonSchema = {};
+        let packageJson: PackageJson = {};
         if (existsSync(packageJsonPath)) {
             const packageJsonContents = await readFile(packageJsonPath, 'utf-8');
-            packageJson = JSON.parse(packageJsonContents) as PackageJsonSchema;
+            packageJson = JSON.parse(packageJsonContents) as PackageJson;
 
             if (packageJson.dependencies?.nuxt || packageJson.devDependencies?.nuxt) {
                 inferredDevEnvironment = {

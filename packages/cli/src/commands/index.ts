@@ -1,2 +1,2 @@
-export * from './generate-scss';
+export * from './generate';
 export * from './init';

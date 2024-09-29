@@ -8,7 +8,9 @@
     "scripts": {
         "dev": "devtools tsup watch",
         "build": "devtools tsup build",
-        "lint": "devtools eslint"
+        "lint": "devtools eslint",
+        "test": "devtools vitest",
+        "test:dev": "devtools vitest --watch"
     },
     "dependencies": {
         "@inkline/config": "workspace:*",
@@ -27,7 +29,10 @@
         "eslint": "catalog:",
         "tsx": "catalog:",
         "tsup": "catalog:",
-        "typescript": "catalog:"
+        "typescript": "catalog:",
+        "type-fest": "catalog:",
+        "vite": "catalog:",
+        "vitest": "catalog:"
     },
     "files": [
         "dist",

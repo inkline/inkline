@@ -1,6 +1,6 @@
 export const packageJsonExtension = {
     dependencies: {
-        '@inkline/inkline': '^5.0.0'
+        '@inkline/vue': '^5.0.0'
     },
     devDependencies: {
         '@inkline/plugin': '^2.0.0',
@@ -11,7 +11,7 @@ export const packageJsonExtension = {
 
 export const packageJsonDevelopmentExtension = {
     dependencies: {
-        '@inkline/inkline': 'workspace:^'
+        '@inkline/vue': 'workspace:^'
     },
     devDependencies: {
         '@inkline/plugin': 'workspace:^',

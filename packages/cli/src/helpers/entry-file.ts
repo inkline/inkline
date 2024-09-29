@@ -40,10 +40,10 @@ export async function addPluginToEntryFile(entryFile: string, _: InitEnv): Promi
             entryFileContents,
             [
                 '',
-                `import { Inkline, components } from '@inkline/inkline';`,
+                `import { Inkline, components } from '@inkline/vue';`,
                 `import './css/variables/index.scss';`,
-                `import '@inkline/inkline/css/index.scss';`,
-                `import '@inkline/inkline/css/utilities.scss';`
+                `import '@inkline/vue/css/index.scss';`,
+                `import '@inkline/vue/css/utilities.scss';`
             ].join('\n')
         );
 
