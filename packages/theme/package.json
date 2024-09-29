@@ -17,7 +17,6 @@
         "type-fest": "catalog:",
         "tsup": "catalog:",
         "vite": "catalog:",
-        "vite-plugin-dts": "catalog:",
         "vitest": "catalog:"
     },
     "dependencies": {

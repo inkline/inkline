@@ -1,46 +1,29 @@
 {
-    "name": "@inkline/config",
+    "name": "@inkline/e2e",
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "devtools tsup watch",
-        "build": "devtools tsup build",
         "lint": "devtools eslint",
-        "test": "devtools test",
-        "test:dev": "devtools test --watch",
-        "test:ci": "devtools test --coverage"
+        "e2e:create": "tsx scripts/create.ts",
+        "e2e:create:vite": "tsx scripts/create.ts vite",
+        "e2e:create:nuxt": "tsx scripts/create.ts nuxt",
+        "e2e:vite": "INTEGRATION=vite playwright test",
+        "e2e:nuxt": "INTEGRATION=nuxt NITRO_PORT=3030 playwright test",
+        "e2e": "pnpm run e2e:vite && pnpm run e2e:nuxt",
+        "e2e:dev": "DEV=true playwright test --ui",
+        "e2e:ui": "playwright test --ui",
+        "e2e:setup": "pnpm run integration:create"
     },
     "devDependencies": {
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
         "@types/node": "catalog:",
-        "@vitest/coverage-v8": "catalog:",
         "eslint": "catalog:",
         "prettier": "catalog:",
-        "type-fest": "catalog:",
-        "typescript": "catalog:",
-        "tsup": "catalog:",
-        "vite": "catalog:",
-        "vitest": "catalog:"
-    },
-    "files": [
-        "dist",
-        "LICENSE"
-    ],
-    "types": "./dist/index.d.ts",
-    "module": "./dist/index.js",
-    "main": "./dist/index.cjs",
-    "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/index.js",
-            "require": "./dist/index.cjs"
-        },
-        "./*": "./*"
+        "typescript": "catalog:"
     },
     "dependencies": {
-        "@inkline/core": "workspace:*",
-        "c12": "^2.0.0"
+        "@playwright/test": "^1.47.2"
     },
     "funding": {
         "type": "github",

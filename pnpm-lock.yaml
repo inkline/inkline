@@ -141,9 +141,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -184,12 +181,34 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
+
+  packages/e2e/setup:
+    dependencies:
+      '@playwright/test':
+        specifier: ^1.47.2
+        version: 1.47.2
+    devDependencies:
+      '@inkline/devtools':
+        specifier: workspace:*
+        version: link:../../tooling/devtools
+      '@inkline/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@types/node':
+        specifier: 'catalog:'
+        version: 20.14.9
+      eslint:
+        specifier: 'catalog:'
+        version: 9.11.1(jiti@2.0.0)
+      prettier:
+        specifier: 'catalog:'
+        version: 3.3.2
+      typescript:
+        specifier: 'catalog:'
+        version: 5.6.2
 
   packages/integrations/plugin:
     dependencies:
@@ -205,7 +224,7 @@ importers:
     devDependencies:
       '@inkline/config':
         specifier: workspace:*
-        version: link:../../config
+        version: link:../../e2e/setup
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../tooling/devtools
@@ -254,9 +273,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -288,9 +304,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -448,9 +461,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -465,7 +475,7 @@ importers:
         version: 1.6.11
       '@inkline/config':
         specifier: workspace:*
-        version: link:../config
+        version: link:../e2e/setup
       '@inkline/core':
         specifier: workspace:*
         version: link:../core
@@ -1561,6 +1571,11 @@ packages:
   '@pkgr/core@0.1.1':
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+
+  '@playwright/test@1.47.2':
+    resolution: {integrity: sha512-jTXRsoSPONAs8Za9QEQdyjFn+0ZQFjCiIztAIF6bi1HqhBzG9Ma7g1WotyiGqFSBRZjIEqMdT8RUlbk1QVhzCQ==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   '@pnpm/config.env-replace@1.1.0':
     resolution: {integrity: sha512-htyl8TWnKL7K/ESFa1oW2UB5lVDxuF5DpM7tBi6Hu2LNL3mWkIzNLG6N4zoCUP1lCKNxWy/3iu8mS8MvToGd6w==}
@@ -3251,6 +3266,11 @@ packages:
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
+  fsevents@2.3.2:
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -4634,6 +4654,16 @@ packages:
 
   pkg-types@1.2.0:
     resolution: {integrity: sha512-+ifYuSSqOQ8CqP4MbZA5hDpb97n3E8SVWdJe+Wms9kj745lmd3b7EZJiqvmLwAlmRfjrI7Hi5z3kdBJ93lFNPA==}
+
+  playwright-core@1.47.2:
+    resolution: {integrity: sha512-3JvMfF+9LJfe16l7AbSmU555PaTl2tPyQsVInqm3id16pdDfvZ8TTZ/pyzmkbDrZTQefyzU7AIHlZqQnxpqHVQ==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  playwright@1.47.2:
+    resolution: {integrity: sha512-nx1cLMmQWqmA3UsnjaaokyoUpdVaaDhJhMoxX2qj3McpjnsqFHs516QAKYhqHAgOP+oCFTEOCOAaD1RgD/RQfA==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}
@@ -7261,6 +7291,10 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
+  '@playwright/test@1.47.2':
+    dependencies:
+      playwright: 1.47.2
+
   '@pnpm/config.env-replace@1.1.0': {}
 
   '@pnpm/network.ca-file@1.0.2':
@@ -9212,6 +9246,9 @@ snapshots:
 
   fs.realpath@1.0.0: {}
 
+  fsevents@2.3.2:
+    optional: true
+
   fsevents@2.3.3:
     optional: true
 
@@ -10830,6 +10867,14 @@ snapshots:
       confbox: 0.1.7
       mlly: 1.7.1
       pathe: 1.1.2
+
+  playwright-core@1.47.2: {}
+
+  playwright@1.47.2:
+    dependencies:
+      playwright-core: 1.47.2
+    optionalDependencies:
+      fsevents: 2.3.2
 
   possible-typed-array-names@1.0.0: {}
 
