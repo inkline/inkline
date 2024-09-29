@@ -6,6 +6,8 @@
         ]
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "tsup.config.ts",
+        "vitest.config.ts"
     ]
 }

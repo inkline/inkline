@@ -24,8 +24,8 @@
     },
     "homepage": "https://github.com/inkline/inkline#readme",
     "devDependencies": {
-        "prettier": "^3.2.5",
-        "turbo": "^1.13.3"
+        "prettier": "catalog:",
+        "turbo": "catalog:"
     },
     "packageManager": "pnpm@9.2.0"
 }

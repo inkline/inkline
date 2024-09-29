@@ -1,4 +1,5 @@
 import { loadConfig as c12, LoadConfigOptions } from "c12";
+import { files, themes } from "@inkline/core";
 import { Configuration, ConfigurationOptions, ModuleOptions, SetupFunction } from "./types";
 
 export const defaultOutputDir = "./src/theme";
@@ -17,7 +18,7 @@ export function defineConfig(
     setup: SetupFunction,
     options: ConfigurationOptions<ModuleOptions> = {}
 ): Configuration {
-    const { themes, files } = setup();
+    setup();
 
     console.log(JSON.stringify(themes, null, 2));
 

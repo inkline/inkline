@@ -3,9 +3,8 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "devtools vite watch",
-        "build": "devtools vite build",
-        "postbuild": "mv dist/index.js dist/config.js && mv dist/index.cjs dist/config.cjs",
+        "dev": "devtools tsup watch",
+        "build": "devtools tsup build",
         "lint": "devtools eslint",
         "test": "devtools test",
         "test:dev": "devtools test --watch",
@@ -17,8 +16,10 @@
         "@types/node": "catalog:",
         "@vitest/coverage-v8": "catalog:",
         "eslint": "catalog:",
+        "prettier": "catalog:",
         "type-fest": "catalog:",
         "typescript": "catalog:",
+        "tsup": "catalog:",
         "vite": "catalog:",
         "vite-plugin-dts": "catalog:",
         "vitest": "catalog:"
@@ -27,14 +28,14 @@
         "dist",
         "LICENSE"
     ],
-    "types": "./dist/config.d.ts",
-    "main": "./dist/config.cjs",
-    "module": "./dist/config.js",
+    "types": "./dist/index.d.ts",
+    "module": "./dist/index.js",
+    "main": "./dist/index.cjs",
     "exports": {
         ".": {
-            "types": "./dist/config.d.ts",
-            "import": "./dist/config.js",
-            "require": "./dist/config.cjs"
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
         },
         "./*": "./*"
     },

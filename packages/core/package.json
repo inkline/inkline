@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "devtools vite watch",
-        "build": "devtools vite build",
+        "dev": "devtools tsup watch",
+        "build": "devtools tsup build",
         "lint": "devtools eslint",
         "test": "devtools test",
         "test:dev": "devtools test --watch",
@@ -19,6 +19,7 @@
         "eslint": "catalog:",
         "type-fest": "catalog:",
         "typescript": "catalog:",
+        "tsup": "catalog:",
         "vite": "catalog:",
         "vite-plugin-dts": "catalog:",
         "vitest": "catalog:"
@@ -27,14 +28,14 @@
         "dist",
         "LICENSE"
     ],
-    "types": "./dist/core.d.ts",
-    "main": "./dist/core.umd.cjs",
-    "module": "./dist/core.js",
+    "types": "./dist/index.d.ts",
+    "module": "./dist/index.js",
+    "main": "./dist/index.cjs",
     "exports": {
         ".": {
-            "types": "./dist/core.d.ts",
-            "import": "./dist/core.js",
-            "require": "./dist/core.umd.cjs"
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
         },
         "./*": "./*"
     },

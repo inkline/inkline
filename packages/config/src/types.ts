@@ -14,4 +14,4 @@ export type Configuration<T = unknown> = {
     options: ConfigurationOptions<T>;
 };
 
-export type SetupFunction = () => Omit<Configuration, "options">;
+export type SetupFunction = () => void;

@@ -4,9 +4,10 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "devtools vite build",
-        "lint": "devtools eslint"
+        "dev": "devtools tsup dev",
+        "build": "devtools tsup build",
+        "lint": "devtools eslint",
+        "test": "devtools test"
     },
     "devDependencies": {
         "@inkline/eslint-config": "workspace:*",
@@ -14,6 +15,7 @@
         "eslint": "catalog:",
         "typescript": "catalog:",
         "type-fest": "catalog:",
+        "tsup": "catalog:",
         "vite": "catalog:",
         "vite-plugin-dts": "catalog:",
         "vitest": "catalog:"
@@ -25,14 +27,14 @@
         "dist",
         "LICENSE"
     ],
-    "types": "./dist/theme.d.ts",
-    "main": "./dist/theme.umd.cjs",
-    "module": "./dist/theme.js",
+    "types": "./dist/index.d.ts",
+    "module": "./dist/index.js",
+    "main": "./dist/index.cjs",
     "exports": {
         ".": {
-            "types": "./dist/theme.d.ts",
-            "import": "./dist/theme.js",
-            "require": "./dist/theme.umd.cjs"
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
         },
         "./*": "./*"
     },

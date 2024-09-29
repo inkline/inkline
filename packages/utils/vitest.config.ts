@@ -1,5 +1,4 @@
-import { defineConfig } from "vite";
-import { configDefaults as vitestConfig } from 'vitest/config';
+import { defineConfig, configDefaults as vitestConfig } from "vitest/config";
 
 export default defineConfig({
     test: {
