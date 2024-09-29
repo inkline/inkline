@@ -18,9 +18,13 @@
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
         "@types/node": "catalog:",
+        "@types/shelljs": "catalog:",
         "eslint": "catalog:",
         "prettier": "catalog:",
-        "typescript": "catalog:"
+        "shelljs": "catalog:",
+        "typescript": "catalog:",
+        "type-fest": "catalog:",
+        "tsx": "catalog:"
     },
     "dependencies": {
         "@playwright/test": "^1.47.2"

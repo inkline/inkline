@@ -6,8 +6,9 @@ import { defineConfig, devices } from '@playwright/test';
  */
 // require('dotenv').config();
 
-const integrationType: 'vite' | 'nuxt' | string = process.env.INTEGRATION || 'vite';
+type IntegrationEnvironment = 'vite' | 'nuxt';
 
+const integrationType = (process.env.INTEGRATION || 'vite') as IntegrationEnvironment;
 const integration = {
     vite: {
         name: 'vite',

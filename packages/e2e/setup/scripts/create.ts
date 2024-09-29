@@ -1,8 +1,11 @@
-import * as shelljs from 'shelljs';
-import { resolve } from 'path';
-import * as fs from 'fs/promises';
+import shelljs from 'shelljs';
+import fs from 'node:fs/promises';
+import { resolve } from 'node:path';
+import type { PackageJson } from "type-fest";
 
 const integration = process.argv[2] || '*';
+
+const __dirname = new URL('.', import.meta.url).pathname;
 
 const setupDir = resolve(__dirname, '..');
 const templatesDir = resolve(setupDir, 'templates');
@@ -12,9 +15,9 @@ const e2eDir = resolve(packagesDir, 'e2e');
 const e2eViteDir = resolve(e2eDir, 'vite');
 const e2eNuxtDir = resolve(e2eDir, 'nuxt');
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+type PackageJSONImport = { default: Required<PackageJson> };
 
-(async () => {
+(() => {
     /**
      * Cleanup
      */
@@ -35,9 +38,9 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
             },
             async () => {
                 const packageJsonPath = resolve(e2eViteDir, 'package.json');
-                const packageJson = require(packageJsonPath);
+                const { default: packageJson } = (await import(packageJsonPath)) as PackageJSONImport;
                 packageJson.name = '@inkline/e2e-vite';
-                packageJson.dependencies['inkline'] = 'workspace:*';
+                packageJson.dependencies['@inkline/cli'] = 'workspace:*';
                 packageJson.scripts['init'] = 'inkline init --dev';
                 packageJson.scripts['type-check'] = "echo 'Typecheck'";
                 await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
@@ -67,9 +70,9 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
             },
             async () => {
                 const packageJsonPath = resolve(e2eNuxtDir, 'package.json');
-                const packageJson = require(packageJsonPath);
+                const { default: packageJson } = await import(packageJsonPath) as PackageJSONImport;
                 packageJson.name = '@inkline/e2e-nuxt';
-                packageJson.dependencies['inkline'] = 'workspace:*';
+                packageJson.dependencies['@inkline/cli'] = 'workspace:*';
                 packageJson.scripts['init'] = 'inkline init --dev';
                 await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
 

@@ -1,9 +1,9 @@
 {
-    "name": "@inkline/devtools",
+    "name": "@inkline/cli",
     "version": "1.0.0",
     "type": "module",
     "bin": {
-        "devtools": "dist/main.js"
+        "inkline": "dist/main.js"
     },
     "scripts": {
         "dev": "tsx src/main.ts tsup watch",
