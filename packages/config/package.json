@@ -40,7 +40,7 @@
     },
     "dependencies": {
         "@inkline/core": "workspace:*",
-        "c12": "^1.11.2"
+        "c12": "^2.0.0"
     },
     "funding": {
         "type": "github",
