@@ -1,9 +1,9 @@
 import { InitEnv } from '../types';
-import { resolve } from 'pathe';
+import { resolve } from 'node:path';
 import { existsSync } from 'fs';
 import { readFile, writeFile } from 'fs/promises';
 import { addAfterImports } from './insert';
-import { Logger } from '@grozav/logger';
+import { Logger } from '@inkline/utils';
 import { createAppRegEx, defaultPrettierConfig } from '../constants';
 import prettier from 'prettier';
 

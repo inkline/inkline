@@ -6,17 +6,21 @@
         "inkline": "dist/main.js"
     },
     "scripts": {
-        "dev": "tsx src/main.ts tsup watch",
-        "build": "tsx src/main.ts tsup build",
-        "lint": "tsx src/main.ts eslint"
+        "dev": "devtools tsup watch",
+        "build": "devtools tsup build",
+        "lint": "devtools eslint"
     },
     "dependencies": {
+        "@inkline/config": "workspace:*",
+        "@inkline/utils": "workspace:*",
         "chalk": "catalog:",
         "commander": "catalog:",
         "nodemon": "catalog:",
+        "prettier": "catalog:",
         "shelljs": "catalog:"
     },
     "devDependencies": {
+        "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
         "@types/node": "catalog:",
         "@types/shelljs": "catalog:",

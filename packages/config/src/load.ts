@@ -20,8 +20,6 @@ export function defineConfig(
 ): Configuration {
     setup();
 
-    console.log(JSON.stringify(themes, null, 2));
-
     return {
         themes,
         files,

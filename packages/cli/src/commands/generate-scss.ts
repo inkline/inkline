@@ -1,6 +1,6 @@
 import { build } from '@inkline/config';
+import { Logger } from '@inkline/utils';
 import { Commands } from '../types';
-import { Logger } from '@grozav/logger';
 
 export async function generateScss(options: Commands.Generate.Scss.Options) {
     try {

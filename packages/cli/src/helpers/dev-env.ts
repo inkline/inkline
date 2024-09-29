@@ -1,6 +1,6 @@
 import { DevEnv, DevEnvType, DevLibraryType, InitEnv, PackageJsonSchema } from '../types';
 import { getPluginCjsPreamble, getPluginPreamble } from './preamble';
-import { resolve } from 'pathe';
+import { resolve } from 'node:path';
 import { existsSync } from 'fs';
 import { readFile, writeFile } from 'fs/promises';
 import {
@@ -11,7 +11,7 @@ import {
     defaultWebpackTsDevEnvConfigFileContents,
     unknownDevEnvironment
 } from '../constants';
-import { Logger } from '@grozav/logger';
+import { Logger } from '@inkline/utils';
 import prettier from 'prettier';
 import { addAfterImports, addAfterRequires } from './insert';
 import { addFieldToDefaultExport, addImport } from './import';

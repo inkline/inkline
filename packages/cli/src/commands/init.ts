@@ -1,7 +1,7 @@
 import { existsSync } from 'fs';
 import { writeFile } from 'fs/promises';
-import { resolve } from 'pathe';
-import { Logger } from '@grozav/logger';
+import { resolve } from 'node:path';
+import { Logger } from '@inkline/utils';
 import chalk from 'chalk';
 import {
     defaultConfigFileContents,
@@ -20,7 +20,7 @@ import {
 import type { InitEnv } from '../types';
 import { Commands, DevEnvType, PackageJsonSchema } from '../types';
 import prettier from 'prettier';
-import { capitalizeFirst } from '@grozav/utils';
+import { capitalizeFirst } from '@inkline/utils';
 
 /**
  * Create the inkline.config.ts file
