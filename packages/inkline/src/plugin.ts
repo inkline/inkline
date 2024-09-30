@@ -133,7 +133,7 @@ export const Inkline: Plugin = {
     }
 };
 
-declare module '@vue/runtime-core' {
+declare module 'vue' {
     interface ComponentCustomProperties {
         $inkline: InklineService;
     }
