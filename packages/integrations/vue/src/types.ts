@@ -1,4 +1,5 @@
 import type { RequiredDeep } from 'type-fest';
+import { Component } from 'vue';
 
 export type ComponentProps = {
     color?: string;
@@ -25,6 +26,11 @@ export type UserOptions = {
         strategy?: ColorModeStrategy;
         renderMode?: RenderMode;
     };
+
+    /**
+     * Routing
+     */
+    routerComponent?: Component | string;
 };
 
 export type InklineOptions = RequiredDeep<UserOptions>;

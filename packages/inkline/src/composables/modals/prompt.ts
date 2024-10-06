@@ -1,12 +1,12 @@
 import { IButton } from '@inkline/inkline/components/IButton';
 import { IInput } from '@inkline/inkline/components/IInput';
-import { translate } from '@inkline/inkline/i18n';
+import { translate } from '@inkline/i18n';
 import type { ModalOptions, Form, FormSchema, ResolvedFormSchema } from '@inkline/inkline/types';
 import { uid } from '@inkline/utils';
 import type { VNode } from 'vue';
 import { computed, defineComponent, h, markRaw } from 'vue';
 import { useModalBuilder } from '@inkline/inkline/composables/modals/builder';
-import { useForm } from '@inkline/inkline/composables';
+import { useForm } from '@inkline/composables';
 import { IForm } from '@inkline/inkline/components/IForm';
 import { IFormGroup } from '@inkline/inkline/components/IFormGroup';
 import { IFormError } from '@inkline/inkline/components/IFormError';

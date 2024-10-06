@@ -39,6 +39,9 @@ catalogs:
     '@vue/runtime-core':
       specifier: ^3.5.8
       version: 3.5.8
+    '@vue/shared':
+      specifier: ^3.5.8
+      version: 3.5.10
     '@vue/test-utils':
       specifier: ^2.4.6
       version: 2.4.6
@@ -186,9 +189,6 @@ importers:
       '@inkline/core':
         specifier: workspace:*
         version: link:../../core
-      '@inkline/inkline':
-        specifier: workspace:*
-        version: link:../../inkline
       '@inkline/theme':
         specifier: workspace:*
         version: link:../../theme
@@ -257,6 +257,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 20.14.9
+      '@vue/shared':
+        specifier: 'catalog:'
+        version: 3.5.10
       '@vue/test-utils':
         specifier: 'catalog:'
         version: 2.4.6
@@ -617,6 +620,10 @@ importers:
         version: 3.5.8(typescript@5.6.2)
 
   packages/storybook:
+    dependencies:
+      '@inkline/vue':
+        specifier: workspace:*
+        version: link:../integrations/vue
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^1.9.0
@@ -12660,7 +12667,7 @@ snapshots:
       '@unhead/shared': 1.11.6
       '@unhead/ssr': 1.11.6
       '@unhead/vue': 1.11.6(vue@3.5.10(typescript@5.6.2))
-      '@vue/shared': 3.5.8
+      '@vue/shared': 3.5.10
       acorn: 8.12.1
       c12: 1.11.2(magicast@0.3.5)
       chokidar: 3.6.0

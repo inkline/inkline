@@ -12,6 +12,9 @@
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build"
     },
+    "dependencies": {
+        "@inkline/vue": "workspace:*"
+    },
     "devDependencies": {
         "@chromatic-com/storybook": "^1.9.0",
         "@inkline/devtools": "workspace:*",

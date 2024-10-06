@@ -1,5 +1,5 @@
 import type { Form, FormField, FormSchema, FormValue, ResolvedFormSchema } from "../types";
-import { isFormField, isFormGroup } from '../typeGuards';
+import { isFormField, isFormGroup } from '../guards';
 import { reservedValidationFields } from '../constants';
 
 export function serializeSchema<T extends Form>(schema: FormSchema<T> | ResolvedFormSchema<T>): T {

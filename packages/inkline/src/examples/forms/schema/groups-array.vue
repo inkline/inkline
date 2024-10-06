@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useForm } from '@inkline/inkline';
+import { useForm } from '@inkline/composables';
 
 const { schema } = useForm<{
     group: string[];

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { createFormFieldSchema, useForm } from '@inkline/inkline';
+import { useForm } from '@inkline/composables';
+import { createFormFieldSchema } from '@inkline/validation';
 
 const { schema } = useForm<{
     group: {

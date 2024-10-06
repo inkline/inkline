@@ -14,6 +14,7 @@
         "@inkline/utils": "workspace:*"
     },
     "devDependencies": {
+        "@vue/shared": "catalog:",
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
         "@types/node": "catalog:",

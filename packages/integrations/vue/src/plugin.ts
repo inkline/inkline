@@ -14,14 +14,15 @@ export const defaultOptions: InklineOptions = {
         preference: 'system',
         strategy: 'localStorage',
         renderMode: 'client'
-    }
+    },
+    routerComponent: 'RouterLink'
 };
 
 export function resolveOptions(userOptions: UserOptions): InklineOptions {
     return defu(userOptions, defaultOptions) as InklineOptions;
 }
 
-export default {
+export const Inkline = {
     install: (app, options: UserOptions) => {
         const resolvedOptions = ref(resolveOptions(options));
 

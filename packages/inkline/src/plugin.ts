@@ -1,8 +1,8 @@
 import type { Plugin } from 'vue';
 import { reactive } from 'vue';
 import { addClass } from '@inkline/utils';
-import { createSchema } from '@inkline/inkline/validation';
-import { setLocale } from '@inkline/inkline/i18n';
+import { createSchema } from '@inkline/validation';
+import { setLocale } from '@inkline/i18n';
 import {
     ColorModePlugin,
     IconsPlugin,
@@ -17,7 +17,7 @@ import type {
     InklineIconsPluginOptions
 } from '@inkline/inkline/plugins';
 import { InklineKey, InklineOptionsKey } from '@inkline/inkline/constants';
-import type { Form, FormSchema } from '@inkline/inkline/types';
+import type { Form, FormSchema } from '@inkline/validation';
 
 export interface InklineOptions
     extends InklineColorModeOptions,

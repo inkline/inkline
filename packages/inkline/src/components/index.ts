@@ -1,4 +1,3 @@
-export * from '@inkline/component-alert';
 // export * from '@inkline/component-badge';
 // export * from '@inkline/component-breadcrumb';
 // export * from '@inkline/component-button';

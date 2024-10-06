@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { useForm } from '@inkline/inkline';
-import type { SelectOption, FormOption } from '@inkline/inkline';
+import { useForm } from '@inkline/composables';
+import type { SelectOption, FormOption } from '@inkline/inkline/types';
 
 const { form, schema, validate } = useForm<{
     input: string;

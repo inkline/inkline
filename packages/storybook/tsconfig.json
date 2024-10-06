@@ -5,8 +5,8 @@
             "vitest/globals"
         ],
         "paths": {
-            "@inkline/inkline": ["../vue/src/main"],
-            "@inkline/inkline/*": ["../vue/src/*"]
+            "@inkline/inkline": ["../inkline/src/main"],
+            "@inkline/inkline/*": ["../inkline/src/*"]
         }
     },
     "include": [

@@ -3,12 +3,12 @@ import vue from '@vitejs/plugin-vue';
 import inkline from '@inkline/plugin/vite';
 import { resolve } from 'path';
 
-const vueDir = resolve(__dirname, '..', 'vue');
+const inklineDir = resolve(__dirname, '..', 'inkline');
 
 export default defineConfig({
     plugins: [
         inkline({
-            configFile: resolve(vueDir, 'inkline.config.ts'),
+            configFile: resolve(inklineDir, 'inkline.config.ts'),
             outputDir: resolve(__dirname, 'src', 'theme')
         }),
         vue()
@@ -17,11 +17,11 @@ export default defineConfig({
         alias: [
             {
                 find: /^@inkline\/inkline$/,
-                replacement: resolve(vueDir, 'src', 'main.ts')
+                replacement: resolve(inklineDir, 'src', 'main.ts')
             },
             {
                 find: /^@inkline\/inkline\//,
-                replacement: resolve(vueDir, 'src') + '/'
+                replacement: resolve(inklineDir, 'src') + '/'
             }
         ]
     }

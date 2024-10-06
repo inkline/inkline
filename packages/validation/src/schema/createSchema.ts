@@ -9,7 +9,7 @@ import {
     defaultValidationFieldValues,
     defaultValidationStateValues
 } from '../constants';
-import { isFormField, isFormGroup } from '../typeGuards';
+import { isFormField, isFormGroup } from '../guards';
 
 /**
  * Create form field schema

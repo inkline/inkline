@@ -2,7 +2,7 @@ import type { InklineOptions, InklinePluginOptions } from '@inkline/inkline/plug
 import { createInklineService, Inkline } from '@inkline/inkline/plugin';
 import { InklineKey } from '@inkline/inkline/constants';
 import { IButton } from '@inkline/inkline/components';
-import { i18n } from '@inkline/inkline/i18n';
+import { i18n } from '@inkline/i18n';
 
 describe('Plugin', () => {
     describe('createInklineGlobals()', () => {

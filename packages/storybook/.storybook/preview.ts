@@ -5,10 +5,10 @@ import { markRaw, watch, ref } from 'vue';
 import { light, dark } from './theme';
 
 import '../src/theme/index.scss';
-import '@inkline/inkline/src/index.scss';
-import '@inkline/inkline/src/preview.scss';
+import '@inkline/inkline/index.scss';
+import '@inkline/inkline/preview.scss';
 
-import { Inkline, components, useInkline } from '@inkline/inkline';
+import { Inkline, useOptions } from '@inkline/vue';
 import { RouterLink } from './mocks';
 
 export const withInklineTheme = ({
@@ -32,11 +32,11 @@ export const withInklineTheme = ({
         return {
             components: { story },
             setup() {
-                const inkline = useInkline();
+                const { options } = useOptions();
 
-                inkline.options.colorMode = currentTheme.value;
+                options.value.colorMode.preference = currentTheme.value;
                 watch(currentTheme, (theme) => {
-                    inkline.options.colorMode = theme;
+                    options.value.colorMode.preference = theme;
                 });
 
                 return {};
@@ -50,7 +50,6 @@ export const withInklineTheme = ({
 
 setup((app) => {
     app.use(Inkline, {
-        components,
         routerComponent: markRaw(RouterLink)
     });
 });
