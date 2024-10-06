@@ -3,21 +3,40 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "devtools vite watch",
+        "dev": "pnpm run storybook",
         "build": "devtools vite build",
         "lint": "devtools eslint",
         "test": "devtools test",
         "test:dev": "devtools test --watch",
-        "test:ci": "devtools test --coverage"
+        "test:ci": "devtools test --coverage",
+        "storybook": "storybook dev -p 6006",
+        "build-storybook": "storybook build"
     },
     "devDependencies": {
-        "@inkline/eslint-config": "workspace:*",
+        "@chromatic-com/storybook": "^1.9.0",
         "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/plugin": "workspace:*",
+        "@storybook/addon-essentials": "^8.3.4",
+        "@storybook/addon-interactions": "^8.3.4",
+        "@storybook/addon-links": "^8.3.4",
+        "@storybook/addon-onboarding": "^8.3.4",
+        "@storybook/addon-themes": "^8.3.4",
+        "@storybook/blocks": "^8.3.4",
+        "@storybook/test": "^8.3.4",
+        "@storybook/theming": "^8.3.4",
+        "@storybook/vue3": "^8.3.4",
+        "@storybook/vue3-vite": "^8.3.4",
+        "@vitejs/plugin-vue": "^5.1.4",
         "@vitest/coverage-v8": "catalog:",
         "eslint": "catalog:",
+        "eslint-plugin-storybook": "^0.9.0",
+        "normalize.css": "catalog:",
+        "storybook": "^8.3.4",
         "typescript": "catalog:",
         "vite": "catalog:",
-        "vitest": "catalog:"
+        "vitest": "catalog:",
+        "vue": "catalog:"
     },
     "files": [
         "dist"
@@ -58,5 +77,10 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/inkline/inkline.git"
+    },
+    "eslintConfig": {
+        "extends": [
+            "plugin:storybook/recommended"
+        ]
     }
 }

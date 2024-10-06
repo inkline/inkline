@@ -1,0 +1,79 @@
+{
+    "name": "@inkline/component-alert",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools vite watch",
+        "build": "devtools vite build --vue",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage"
+    },
+    "dependencies": {
+        "@inkline/inkline": "workspace:*",
+        "@inkline/core": "workspace:*",
+        "@inkline/theme": "workspace:*",
+        "@inkline/vue": "workspace:*"
+    },
+    "devDependencies": {
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "@testing-library/vue": "catalog:",
+        "@testing-library/jest-dom": "catalog:",
+        "@vitest/coverage-v8": "catalog:",
+        "@vitejs/plugin-vue": "catalog:",
+        "eslint": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vite-plugin-dts": "catalog:",
+        "vitest": "catalog:",
+        "vue": "catalog:",
+        "vue-tsc": "catalog:"
+    },
+    "peerDependencies": {
+        "vue": ">=3.0.0"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "types": "./dist/alert.d.ts",
+    "main": "./dist/alert.umd.cjs",
+    "module": "./dist/alert.js",
+    "exports": {
+        ".": {
+            "types": "./dist/alert.d.ts",
+            "import": "./dist/alert.js",
+            "require": "./dist/alert.umd.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

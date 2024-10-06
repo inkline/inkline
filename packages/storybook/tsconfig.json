@@ -3,9 +3,15 @@
     "compilerOptions": {
         "types": [
             "vitest/globals"
-        ]
+        ],
+        "paths": {
+            "@inkline/inkline": ["../vue/src/main"],
+            "@inkline/inkline/*": ["../vue/src/*"]
+        }
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        ".storybook/**/*.ts",
+        "vite.config.ts"
     ]
 }

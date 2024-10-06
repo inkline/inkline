@@ -4,18 +4,33 @@ import { build } from './build';
 import { getResolvedBuildOptions } from '@inkline/config';
 import { resolve } from 'path';
 import { Logger } from '@inkline/utils';
+import dependencyTree from 'dependency-tree';
 
 /**
  * Watch config file for changes and rebuild
  */
 export async function watch(options: UserOptions) {
-    const { configDir, configFile, configExtName } = getResolvedBuildOptions(options);
+    const {
+        configDir,
+        configFile: configBaseName,
+        configExtName
+    } = getResolvedBuildOptions(options);
+
+    const configFile = `${configBaseName}${configExtName}`;
+    const configFilePath = resolve(configDir, configFile);
 
     if (!options.silent) {
-        Logger.info(`Watching ${configFile}${configExtName} for changes...`);
+        Logger.info(`Watching ${configFile} for changes...`);
     }
 
-    const watcher = chokidar.watch(resolve(configDir, `${configFile}${configExtName}`), {
+    const watchList = dependencyTree.toList({
+        filename: configFilePath,
+        directory: configDir,
+        noTypeDefinitions: true,
+        filter: (path) => path.indexOf('node_modules') === -1
+    });
+
+    const watcher = chokidar.watch(watchList, {
         persistent: true
     });
 

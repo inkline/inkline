@@ -6,7 +6,7 @@ import { getValueByPath } from './valueByPath';
  * @param path
  * @returns {function(*=, *=): number}
  */
-export function sortByPath<T>(path: string): (a: T, b: T) => number {
+export function sortByPath<T extends Record<string, any>>(path: string): (a: T, b: T) => number {
     return (a, b) => {
         return getValueByPath(a, path) > getValueByPath(b, path)
             ? 1

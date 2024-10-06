@@ -10,7 +10,8 @@
         "test:dev": "devtools test --watch"
     },
     "dependencies": {
-        "chalk": "^4.1.2"
+        "chalk": "^4.1.2",
+        "micromustache": "^8.0.3"
     },
     "devDependencies": {
         "@inkline/devtools": "workspace:*",

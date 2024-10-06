@@ -3,12 +3,12 @@
  *
  * @param object
  * @param path
- * @returns {T}
+ * @returns {ReturnType}
  */
-export function getValueByPath(object: any, path: string): any {
-    return path.split('.').reduce((acc, part) => {
-        return acc && acc[part];
-    }, object);
+export function getValueByPath<ReturnType = any, SourceType extends Record<string, any> = Record<string, any>>(object: SourceType, path: string): ReturnType {
+    return path.split(".").reduce<Record<string, any>>((acc, part) => {
+        return (acc && acc[part]) as Record<string, any>;
+    }, object) as ReturnType;
 }
 
 /**
@@ -18,24 +18,24 @@ export function getValueByPath(object: any, path: string): any {
  * @param path
  * @param value
  * @param initialize
- * @returns {T}
+ * @returns {SourceType}
  */
-export function setValueByPath(
-    object: Record<string, any>,
+export function setValueByPath<ValueType = any, SourceType extends Record<string, any> = Record<string, any>>(
+    object: SourceType,
     path: string,
-    value: any,
+    value: ValueType,
     initialize = true
 ): Record<string, any> {
-    const parts = path.split('.');
+    const parts = path.split(".");
     const key = parts.pop();
 
-    let target = object;
+    let target = object as Record<string, any>;
     parts.forEach((part) => {
-        if (!target.hasOwnProperty(part) && initialize) {
+        if (!(part in target) && initialize) {
             target[part] = {};
         }
 
-        target = target[part];
+        target = target[part] as Record<string, any>;
     });
 
     if (target && key) {
@@ -51,17 +51,17 @@ export function setValueByPath(
  * @param object
  * @param path
  * @param values
- * @returns {T}
+ * @returns {SourceType}
  */
-export function setValuesAlongPath<T = Record<string, any>>(
-    object: T,
+export function setValuesAlongPath<ValuesType extends Record<string, any> = Record<string, any>, SourceType = Record<string, any>>(
+    object: SourceType,
     path: string,
-    values: any
-): T {
+    values: ValuesType
+): SourceType {
     if (path) {
-        path.split('.').reduce((acc, part) => {
+        path.split(".").reduce<Record<string, Record<string, any>>>((acc, part) => {
             Object.keys(values).forEach((key) => {
-                acc[part][key] = values[key];
+                acc[part][key] = values[key] as ValuesType[keyof ValuesType];
             });
 
             return acc && acc[part];
@@ -69,7 +69,7 @@ export function setValuesAlongPath<T = Record<string, any>>(
     }
 
     Object.keys(values).forEach((key) => {
-        (object as Record<string, any>)[key] = values[key];
+        (object as Record<string, any>)[key] = values[key] as ValuesType[keyof ValuesType];
     });
 
     return object;

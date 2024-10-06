@@ -1,0 +1,79 @@
+@import './components/IAlert/css/preview';
+@import './components/IBadge/css/preview';
+@import './components/IButton/css/preview';
+@import './components/IButtonGroup/css/preview';
+@import './components/ICard/css/preview';
+@import './components/ICard/css/preview';
+@import './components/IContainer/css/preview';
+@import './components/ICollapsible/css/preview';
+@import './components/IDropdown/css/preview';
+@import './components/IHamburgerMenu/css/preview';
+@import './components/IHeader/css/preview';
+@import './components/IInput/css/preview';
+@import './components/ILayout/css/preview';
+@import './components/IListGroup/css/preview';
+@import './components/INav/css/preview';
+@import './components/INavbar/css/preview';
+@import './components/IPagination/css/preview';
+@import './components/IPopover/css/preview';
+@import './components/IProgress/css/preview';
+@import './components/ISelect/css/preview';
+@import './components/ISidebar/css/preview';
+@import './components/ITable/css/preview';
+@import './components/ITabs/css/preview';
+@import './components/IToast/css/preview';
+@import './components/ITooltip/css/preview';
+@import './components/utils/ICheckableButtonGroup/css/preview';
+@import './css/preview';
+
+.dark-theme .sbdocs .docs-story {
+    background: var(--color-dark);
+}
+
+#storybook-root {
+    min-height: calc(100vh - 2rem);
+}
+
+.storybook-example {
+    @extend %layout-local-preview;
+
+    @extend %border-utilities-preview;
+    @extend %color-utilities-preview;
+    @extend %flex-utilities-preview;
+    @extend %spacing-utilities-preview;
+    @extend %sizing-utilities-preview;
+
+    > hr {
+        margin-bottom: var(--margin-bottom-2);
+    }
+}
+
+#storybook-root,
+.sb-story > div,
+.storybook-example {
+    @extend %alert-preview;
+    @extend %badge-preview;
+    @extend %button-preview;
+    @extend %button-group-preview;
+    @extend %card-preview;
+    @extend %checkable-button-group-preview;
+    @extend %collapsible-preview;
+    @extend %dropdown-preview;
+    @extend %hamburger-menu-preview;
+    @extend %header-preview;
+    @extend %grid-preview;
+    @extend %input-preview;
+    @extend %layout-preview;
+    @extend %list-group-preview;
+    @extend %nav-preview;
+    @extend %navbar-preview;
+    @extend %pagination-preview;
+    @extend %popover-preview;
+    @extend %progress-preview;
+    @extend %select-preview;
+    @extend %tooltip-preview;
+    @extend %sidebar-preview;
+    @extend %table-preview;
+    @extend %tabs-preview;
+    @extend %toast-preview;
+}

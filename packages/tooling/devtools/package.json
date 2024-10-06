@@ -3,12 +3,12 @@
     "version": "1.0.0",
     "type": "module",
     "bin": {
-        "devtools": "dist/main.js"
+        "devtools": "dist/cli/main.js"
     },
     "scripts": {
-        "dev": "tsx src/main.ts tsup watch",
-        "build": "tsx src/main.ts tsup build",
-        "lint": "tsx src/main.ts eslint"
+        "dev": "tsx src/cli/main.ts tsup watch",
+        "build": "tsx src/cli/main.ts tsup build",
+        "lint": "tsx src/cli/main.ts eslint"
     },
     "dependencies": {
         "chalk": "catalog:",
@@ -23,20 +23,24 @@
         "eslint": "catalog:",
         "tsx": "catalog:",
         "tsup": "catalog:",
-        "typescript": "catalog:"
+        "typescript": "catalog:",
+        "type-fest": "catalog:"
+    },
+    "peerDependencies": {
+        "@inkline/vue": "workspace:*"
     },
     "files": [
         "dist",
         "LICENSE"
     ],
-    "types": "./dist/main.d.ts",
-    "main": "./dist/main.js",
-    "module": "./dist/main.cjs",
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.js",
+    "module": "./dist/index.cjs",
     "exports": {
         ".": {
-            "types": "./dist/main.d.ts",
-            "import": "./dist/main.js",
-            "require": "./dist/main.cjs"
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
         },
         "./*": "./*"
     },

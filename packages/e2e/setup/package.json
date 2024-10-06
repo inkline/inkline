@@ -20,7 +20,6 @@
         "@types/node": "catalog:",
         "@types/shelljs": "catalog:",
         "eslint": "catalog:",
-        "prettier": "catalog:",
         "shelljs": "catalog:",
         "typescript": "catalog:",
         "type-fest": "catalog:",

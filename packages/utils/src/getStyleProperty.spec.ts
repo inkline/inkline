@@ -35,7 +35,7 @@ describe("Helpers", () => {
         });
 
         it("should return if isServer", () => {
-            windowSpy.mockImplementation(() => undefined);
+            windowSpy.mockImplementation(() => undefined as unknown as Window & typeof globalThis);
 
             expect(getStyleProperty(element, "property")).toEqual(undefined);
 

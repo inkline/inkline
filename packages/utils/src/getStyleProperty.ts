@@ -1,4 +1,4 @@
-export function getStyleProperty(element: HTMLElement, property: string): string | number | null | undefined {
+export function getStyleProperty(element?: HTMLElement, property?: string): string | number | null | undefined {
     if (!element || !property || typeof window === 'undefined') {
         return;
     }
