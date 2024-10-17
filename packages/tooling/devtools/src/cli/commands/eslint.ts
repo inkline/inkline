@@ -1,5 +1,5 @@
-import { exec } from "../utils";
+import { exec } from '../utils';
 
-export function eslint() {
-    exec("eslint -c eslint.config.mjs src");
+export async function eslint() {
+    await exec('eslint -c eslint.config.mjs src');
 }

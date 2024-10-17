@@ -10,13 +10,8 @@ import type {
     FormSchema,
     FormField,
     FormValidator
-} from '../types';
-import {
-    isFormFieldArray,
-    isFormGroupArray,
-    isFormField,
-    isFormGroup
-} from '../guards';
+} from '@inkline/types';
+import { isFormFieldArray, isFormGroupArray, isFormField, isFormGroup } from '../guards';
 
 /**
  * Apply validators to the form input schema and set the value for the valid and invalid fields

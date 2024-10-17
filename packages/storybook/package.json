@@ -3,23 +3,25 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
+        "start": "pnpm run storybook",
         "dev": "pnpm run storybook",
-        "build": "devtools vite build",
+        "build": "storybook build",
         "lint": "devtools eslint",
         "test": "devtools test",
         "test:dev": "devtools test --watch",
         "test:ci": "devtools test --coverage",
-        "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build"
+        "storybook": "storybook dev -p 6006"
     },
     "dependencies": {
         "@inkline/vue": "workspace:*"
     },
     "devDependencies": {
         "@chromatic-com/storybook": "^1.9.0",
+        "@inkline/config": "workspace:*",
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
-        "@inkline/plugin": "workspace:*",
+        "@inkline/vite": "workspace:*",
+        "@inkline/theme": "workspace:*",
         "@storybook/addon-essentials": "^8.3.4",
         "@storybook/addon-interactions": "^8.3.4",
         "@storybook/addon-links": "^8.3.4",
@@ -34,8 +36,10 @@
         "@vitest/coverage-v8": "catalog:",
         "eslint": "catalog:",
         "eslint-plugin-storybook": "^0.9.0",
+        "fast-glob": "^3.3.2",
         "normalize.css": "catalog:",
         "storybook": "^8.3.4",
+        "storybook-dark-mode": "^4.0.2",
         "typescript": "catalog:",
         "vite": "catalog:",
         "vitest": "catalog:",

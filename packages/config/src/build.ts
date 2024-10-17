@@ -15,7 +15,7 @@ import { basename, dirname, extname, resolve } from 'node:path';
 import { existsSync } from 'fs';
 import { writeFile, mkdir } from 'fs/promises';
 import { exists } from './utils';
-import { scssGenerator } from '@inkline/core';
+import { cssGenerator } from '@inkline/core';
 
 type UserBuildOptions = ConfigurationOptions & {
     configFile?: string;
@@ -73,7 +73,7 @@ export async function build(userOptions: UserBuildOptions = {}) {
     }
 
     // Generate output files data
-    const outputFiles = scssGenerator(configuration);
+    const outputFiles = cssGenerator(configuration);
 
     // Write output files
     const outputFilePromises: Promise<void>[] = [];

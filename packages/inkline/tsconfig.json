@@ -1,22 +1,14 @@
 {
     "extends": "../tooling/typescript-config/tsconfig.json",
     "compilerOptions": {
-        "rootDir": ".",
-        "outDir": "lib",
-        "baseUrl": ".",
         "types": [
-            "@testing-library/jest-dom",
+            "vite/client",
             "vitest/globals"
-        ],
-        "paths": {
-            "@inkline/inkline": ["./src/index"],
-            "@inkline/inkline/*": ["./src/*"]
-        }
+        ]
     },
     "include": [
-        "src/**/*.vue",
         "src/**/*.ts",
-        "vite.config.ts",
-        "inkline.config.ts"
+        "tsup.config.ts",
+        "vite.config.ts"
     ]
 }

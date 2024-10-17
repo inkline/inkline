@@ -1,55 +1,58 @@
 #! /usr/bin/env node
 
-import chalk from "chalk";
-import path from "path";
-import { program } from "commander";
-import { eslint, test, tsupBuild, tsupWatch, viteBuild, viteWatch } from "./commands";
-import type { WatchCommandOptions } from "./types";
+import chalk from 'chalk';
+import { program } from 'commander';
+import {
+    componentBuild,
+    componentWatch,
+    eslint,
+    test,
+    tsupBuild,
+    tsupWatch,
+    viteBuild,
+    viteWatch
+} from './commands';
 
-program.name(chalk.blue("@inkline/devtools"));
+program.name(chalk.blue('@inkline/devtools'));
 
-program
-    .command("eslint")
-    .description("Run eslint on the package.")
-    .action(eslint);
+program.command('eslint').description('Run eslint on the package.').action(eslint);
 
-const vite = program
-    .command("vite");
-vite
-    .command("build")
-    .option("--vue", "Build a Vue package.")
-    .description("Build the package.")
+const vite = program.command('vite');
+vite.command('build')
+    .description('Build the package.')
+    .option('--vue', 'Build a Vue package.')
     .action(viteBuild);
-vite
-    .command("watch")
+vite.command('watch')
+    .description('Watch for changes in the configuration file and generate files accordingly.')
     .option(
-        "-s, --script <script>",
-        "The script to run when changes are detected. Defaults to \"build\""
+        '-s, --script <script>',
+        'The script to run when changes are detected. Defaults to "build"'
     )
-    .option("-p, --pattern <pattern...>", "The pattern to be used", ["src"])
-    .description("Watch for changes in the configuration file and generate files accordingly.")
-    .action(async (options: WatchCommandOptions) => {
-        const patterns = options.pattern.map((pattern) => path.resolve(process.cwd(), pattern));
-        await viteWatch(patterns, options.script);
-    });
+    .option('-p, --pattern <pattern...>', 'The pattern to be used', ['src'])
+    .action(viteWatch);
 
-const tsup = program
-    .command("tsup");
-tsup
-    .command("build")
-    .description("Build the package.")
+const tsup = program.command('tsup');
+tsup.command('build')
+    .description('Build the package.')
+    .option('--vue', 'Build a Vue package.')
     .action(tsupBuild);
-tsup
-    .command("watch")
-    .description("Watch for changes in the configuration file and generate files accordingly.")
+tsup.command('watch')
+    .description('Watch for changes in the configuration file and generate files accordingly.')
     .action(tsupWatch);
 
+const component = program.command('component');
+component.command('build').description('Build the component package.').action(componentBuild);
+component
+    .command('watch')
+    .description('Watch for changes in the component files and generate files accordingly.')
+    .option('-p, --pattern <pattern...>', 'The pattern to be used', ['src'])
+    .action(componentWatch);
 
 program
-    .command("test")
-    .option("--watch", "Watch for changes.")
-    .option("--coverage", "Generate coverage report.")
-    .description("Run tests on the package.")
+    .command('test')
+    .description('Run tests on the package.')
+    .option('--watch', 'Watch for changes.')
+    .option('--coverage', 'Generate coverage report.')
     .action(test);
 
 // program

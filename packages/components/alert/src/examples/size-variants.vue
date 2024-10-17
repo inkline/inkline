@@ -1,26 +1,26 @@
 <template>
-    <IAlert size="sm">
+    <Alert size="sm">
         <strong>Alert Title</strong>
         <p>
             Some quick example text to build on the alert title and make up the bulk of the alert's
             content.
         </p>
-    </IAlert>
+    </Alert>
 
-    <IAlert size="md">
+    <Alert size="md">
         <strong>Alert Title</strong>
         <p>
             Some quick example text to build on the alert title and make up the bulk of the alert's
             content.
         </p>
-    </IAlert>
+    </Alert>
 
-    <IAlert size="lg">
+    <Alert size="lg">
         <strong>Alert Title</strong>
         <p>
             Some quick example text to build on the alert title and make up the bulk of the alert's
             content.
         </p>
-    </IAlert>
+    </Alert>
 </template>
 <script setup lang="ts"></script>

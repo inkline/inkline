@@ -1,0 +1,100 @@
+.loader {
+    display: inline-block;
+    position: relative;
+    width: var(--loader--width);
+    height: var(--loader--height);
+}
+
+.loader::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.loader-text, .loader > svg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    margin: auto;
+}
+
+.loader-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader.-auto {
+    width: 100%;
+    height: 100%;
+}
+
+.loader > svg {
+    animation-name: loader-rotate;
+    animation-duration: var(--loader--animation-duration);
+    animation-direction: var(--loader--animation-direction);
+    animation-iteration-count: var(--loader--animation-iteration-count);
+    transform-origin: center center;
+}
+
+.loader > svg > circle {
+    stroke: var(--loader--color);
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+    animation-name: loader-dash;
+    animation-duration: var(--loader--animation-duration);
+    animation-direction: var(--loader--animation-direction);
+    animation-iteration-count: var(--loader--animation-iteration-count);
+    stroke-linecap: round;
+}
+
+@keyframes loader-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+    
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+.loader.-sm {
+    width: var(--loader--sm--width);
+    height: var(--loader--sm--height);
+}
+
+.loader.-md {
+    width: var(--loader--md--width);
+    height: var(--loader--md--height);
+}
+
+.loader.-lg {
+    width: var(--loader--lg--width);
+    height: var(--loader--lg--height);
+}
+
+.loader.-primary > svg > circle {
+    stroke: var(--loader--primary--color);
+}
+
+.loader.-light > svg > circle {
+    stroke: var(--loader--light--color);
+}
+
+.loader.-dark > svg > circle {
+    stroke: var(--loader--dark--color);
+}

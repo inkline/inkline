@@ -1,10 +1,4 @@
-import {
-    NamespacedKey,
-    TokenValue,
-    Variable,
-    DefinitionOptions,
-    NamespaceType
-} from '../types';
+import { NamespacedKey, TokenValue, Variable, DefinitionOptions, NamespaceType } from '../types';
 import { nsvariable } from '../tokens';
 import { toExportedVariable } from '../utils';
 

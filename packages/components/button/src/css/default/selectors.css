@@ -1,0 +1,519 @@
+.button {
+    display: inline-flex;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    outline: 0;
+}
+
+.button.-disabled, .button:disabled {
+    cursor: not-allowed;
+}
+
+.button.-loading {
+    cursor: default;
+}
+
+.button-icon, button-content {
+    line-height: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a.button.-disabled, *:disabled a.button {
+    pointer-events: none;
+}
+
+.button {
+    border-width: var(--button--border-width);
+    border-style: var(--button--border-style);
+    border-color: var(--button--border-color);
+    border-radius: var(--button--border-radius);
+    color: var(--button--color);
+    background: var(--button--background);
+    box-shadow: var(--button--boxShadow);
+    font-size: var(--button--font-size);
+    padding: var(--button--padding);
+    transition-property: var(--button--transition-property);
+    transition-duration: var(--button--transition-duration);
+    transition-timing-function: var(--button--transition-timing-function);
+}
+
+.button:hover, .button.-hover {
+    background: var(--button--hover--background);
+}
+
+.button:focus, .button.-focus {
+    background: var(--button--focus--background);
+}
+
+.button:active, .button.-active {
+    background: var(--button--active--background);
+}
+
+.button:disabled, .button.-disabled {
+    background: var(--button--background);
+    opacity: var(--button--disabled--opacity);
+    box-shadow: none;
+}
+
+.button-icon + .button-content {
+    margin-left: var(--button--icon--margin-left);
+}
+
+.button .loader, .button .loader.-md {
+    width: var(--button--loader--width);
+    height: var(--button--loader--height);
+}
+
+.button .loader svg circle {
+    stroke: var(--button--color);
+}
+
+.button.-sm {
+    border-radius: var(--button--sm--border-top-left-radius) var(--button--sm--border-top-right-radius) var(--button--sm--border-bottom-right-radius) var(--button--sm--border-bottom-left-radius);
+    font-size: var(--button--sm--font-size);
+    padding: var(--button--sm--padding-top) var(--button--sm--padding-right) var(--button--sm--padding-bottom) var(--button--sm--padding-left);
+}
+
+.button.-circle.-sm {
+    width: var(--button--sm--circle--width);
+    height: var(--button--sm--circle--height);
+}
+
+.button.-square.-sm {
+    width: var(--button--sm--square--width);
+    height: var(--button--sm--square--height);
+}
+
+.button.-md {
+    border-radius: var(--button--md--border-top-left-radius) var(--button--md--border-top-right-radius) var(--button--md--border-bottom-right-radius) var(--button--md--border-bottom-left-radius);
+    font-size: var(--button--md--font-size);
+    padding: var(--button--md--padding-top) var(--button--md--padding-right) var(--button--md--padding-bottom) var(--button--md--padding-left);
+}
+
+.button.-circle.-md {
+    width: var(--button--md--circle--width);
+    height: var(--button--md--circle--height);
+}
+
+.button.-square.-md {
+    width: var(--button--md--square--width);
+    height: var(--button--md--square--height);
+}
+
+.button.-lg {
+    border-radius: var(--button--lg--border-top-left-radius) var(--button--lg--border-top-right-radius) var(--button--lg--border-bottom-right-radius) var(--button--lg--border-bottom-left-radius);
+    font-size: var(--button--lg--font-size);
+    padding: var(--button--lg--padding-top) var(--button--lg--padding-right) var(--button--lg--padding-bottom) var(--button--lg--padding-left);
+}
+
+.button.-circle.-lg {
+    width: var(--button--lg--circle--width);
+    height: var(--button--lg--circle--height);
+}
+
+.button.-square.-lg {
+    width: var(--button--lg--square--width);
+    height: var(--button--lg--square--height);
+}
+
+.button.-primary {
+    border-color: var(--button--primary--border-color);
+    background: var(--button--primary--background);
+    color: var(--button--primary--color);
+}
+
+.button.-primary:hover, .button.-primary.-hover {
+    border-color: var(--button--primary--hover--border-color);
+    background: var(--button--primary--hover--background);
+    color: var(--button--primary--hover--color);
+}
+
+.button.-primary:focus, .button.-primary.-focus {
+    border-color: var(--button--primary--focus--border-color);
+    background: var(--button--primary--focus--background);
+    color: var(--button--primary--focus--color);
+}
+
+.button.-primary:active, .button.-primary.-active {
+    border-color: var(--button--primary--active--border-color);
+    background: var(--button--primary--active--background);
+    color: var(--button--primary--active--color);
+}
+
+.button.-primary:disabled, .button.-primary.-disabled {
+    border-color: var(--button--primary--border-color);
+    background: var(--button--primary--background);
+    color: var(--button--primary--color);
+}
+
+.button.-primary.-outline {
+    border-color: var(--button--primary--outline--border-color);
+    color: var(--button--primary--outline--color);
+}
+
+.button.-primary.-outline:hover, .button.-primary.-outline.-hover {
+    color: var(--button--primary--color);
+}
+
+.button.-primary.-link {
+    color: var(--button--primary--link--color);
+}
+
+.button.-secondary {
+    border-color: var(--button--secondary--border-color);
+    background: var(--button--secondary--background);
+    color: var(--button--secondary--color);
+}
+
+.button.-secondary:hover, .button.-secondary.-hover {
+    border-color: var(--button--secondary--hover--border-color);
+    background: var(--button--secondary--hover--background);
+    color: var(--button--secondary--hover--color);
+}
+
+.button.-secondary:focus, .button.-secondary.-focus {
+    border-color: var(--button--secondary--focus--border-color);
+    background: var(--button--secondary--focus--background);
+    color: var(--button--secondary--focus--color);
+}
+
+.button.-secondary:active, .button.-secondary.-active {
+    border-color: var(--button--secondary--active--border-color);
+    background: var(--button--secondary--active--background);
+    color: var(--button--secondary--active--color);
+}
+
+.button.-secondary:disabled, .button.-secondary.-disabled {
+    border-color: var(--button--secondary--border-color);
+    background: var(--button--secondary--background);
+    color: var(--button--secondary--color);
+}
+
+.button.-secondary.-outline {
+    border-color: var(--button--secondary--outline--border-color);
+    color: var(--button--secondary--outline--color);
+}
+
+.button.-secondary.-outline:hover, .button.-secondary.-outline.-hover {
+    color: var(--button--secondary--color);
+}
+
+.button.-secondary.-link {
+    color: var(--button--secondary--link--color);
+}
+
+.button.-light {
+    border-color: var(--button--light--border-color);
+    background: var(--button--light--background);
+    color: var(--button--light--color);
+}
+
+.button.-light:hover, .button.-light.-hover {
+    border-color: var(--button--light--hover--border-color);
+    background: var(--button--light--hover--background);
+    color: var(--button--light--hover--color);
+}
+
+.button.-light:focus, .button.-light.-focus {
+    border-color: var(--button--light--focus--border-color);
+    background: var(--button--light--focus--background);
+    color: var(--button--light--focus--color);
+}
+
+.button.-light:active, .button.-light.-active {
+    border-color: var(--button--light--active--border-color);
+    background: var(--button--light--active--background);
+    color: var(--button--light--active--color);
+}
+
+.button.-light:disabled, .button.-light.-disabled {
+    border-color: var(--button--light--border-color);
+    background: var(--button--light--background);
+    color: var(--button--light--color);
+}
+
+.button.-light.-outline {
+    border-color: var(--button--light--outline--border-color);
+    color: var(--button--light--outline--color);
+}
+
+.button.-light.-outline:hover, .button.-light.-outline.-hover {
+    color: var(--button--light--color);
+}
+
+.button.-light.-link {
+    color: var(--button--light--link--color);
+}
+
+.button.-dark {
+    border-color: var(--button--dark--border-color);
+    background: var(--button--dark--background);
+    color: var(--button--dark--color);
+}
+
+.button.-dark:hover, .button.-dark.-hover {
+    border-color: var(--button--dark--hover--border-color);
+    background: var(--button--dark--hover--background);
+    color: var(--button--dark--hover--color);
+}
+
+.button.-dark:focus, .button.-dark.-focus {
+    border-color: var(--button--dark--focus--border-color);
+    background: var(--button--dark--focus--background);
+    color: var(--button--dark--focus--color);
+}
+
+.button.-dark:active, .button.-dark.-active {
+    border-color: var(--button--dark--active--border-color);
+    background: var(--button--dark--active--background);
+    color: var(--button--dark--active--color);
+}
+
+.button.-dark:disabled, .button.-dark.-disabled {
+    border-color: var(--button--dark--border-color);
+    background: var(--button--dark--background);
+    color: var(--button--dark--color);
+}
+
+.button.-dark.-outline {
+    border-color: var(--button--dark--outline--border-color);
+    color: var(--button--dark--outline--color);
+}
+
+.button.-dark.-outline:hover, .button.-dark.-outline.-hover {
+    color: var(--button--dark--color);
+}
+
+.button.-dark.-link {
+    color: var(--button--dark--link--color);
+}
+
+.button.-info {
+    border-color: var(--button--info--border-color);
+    background: var(--button--info--background);
+    color: var(--button--info--color);
+}
+
+.button.-info:hover, .button.-info.-hover {
+    border-color: var(--button--info--hover--border-color);
+    background: var(--button--info--hover--background);
+    color: var(--button--info--hover--color);
+}
+
+.button.-info:focus, .button.-info.-focus {
+    border-color: var(--button--info--focus--border-color);
+    background: var(--button--info--focus--background);
+    color: var(--button--info--focus--color);
+}
+
+.button.-info:active, .button.-info.-active {
+    border-color: var(--button--info--active--border-color);
+    background: var(--button--info--active--background);
+    color: var(--button--info--active--color);
+}
+
+.button.-info:disabled, .button.-info.-disabled {
+    border-color: var(--button--info--border-color);
+    background: var(--button--info--background);
+    color: var(--button--info--color);
+}
+
+.button.-info.-outline {
+    border-color: var(--button--info--outline--border-color);
+    color: var(--button--info--outline--color);
+}
+
+.button.-info.-outline:hover, .button.-info.-outline.-hover {
+    color: var(--button--info--color);
+}
+
+.button.-info.-link {
+    color: var(--button--info--link--color);
+}
+
+.button.-success {
+    border-color: var(--button--success--border-color);
+    background: var(--button--success--background);
+    color: var(--button--success--color);
+}
+
+.button.-success:hover, .button.-success.-hover {
+    border-color: var(--button--success--hover--border-color);
+    background: var(--button--success--hover--background);
+    color: var(--button--success--hover--color);
+}
+
+.button.-success:focus, .button.-success.-focus {
+    border-color: var(--button--success--focus--border-color);
+    background: var(--button--success--focus--background);
+    color: var(--button--success--focus--color);
+}
+
+.button.-success:active, .button.-success.-active {
+    border-color: var(--button--success--active--border-color);
+    background: var(--button--success--active--background);
+    color: var(--button--success--active--color);
+}
+
+.button.-success:disabled, .button.-success.-disabled {
+    border-color: var(--button--success--border-color);
+    background: var(--button--success--background);
+    color: var(--button--success--color);
+}
+
+.button.-success.-outline {
+    border-color: var(--button--success--outline--border-color);
+    color: var(--button--success--outline--color);
+}
+
+.button.-success.-outline:hover, .button.-success.-outline.-hover {
+    color: var(--button--success--color);
+}
+
+.button.-success.-link {
+    color: var(--button--success--link--color);
+}
+
+.button.-warning {
+    border-color: var(--button--warning--border-color);
+    background: var(--button--warning--background);
+    color: var(--button--warning--color);
+}
+
+.button.-warning:hover, .button.-warning.-hover {
+    border-color: var(--button--warning--hover--border-color);
+    background: var(--button--warning--hover--background);
+    color: var(--button--warning--hover--color);
+}
+
+.button.-warning:focus, .button.-warning.-focus {
+    border-color: var(--button--warning--focus--border-color);
+    background: var(--button--warning--focus--background);
+    color: var(--button--warning--focus--color);
+}
+
+.button.-warning:active, .button.-warning.-active {
+    border-color: var(--button--warning--active--border-color);
+    background: var(--button--warning--active--background);
+    color: var(--button--warning--active--color);
+}
+
+.button.-warning:disabled, .button.-warning.-disabled {
+    border-color: var(--button--warning--border-color);
+    background: var(--button--warning--background);
+    color: var(--button--warning--color);
+}
+
+.button.-warning.-outline {
+    border-color: var(--button--warning--outline--border-color);
+    color: var(--button--warning--outline--color);
+}
+
+.button.-warning.-outline:hover, .button.-warning.-outline.-hover {
+    color: var(--button--warning--color);
+}
+
+.button.-warning.-link {
+    color: var(--button--warning--link--color);
+}
+
+.button.-danger {
+    border-color: var(--button--danger--border-color);
+    background: var(--button--danger--background);
+    color: var(--button--danger--color);
+}
+
+.button.-danger:hover, .button.-danger.-hover {
+    border-color: var(--button--danger--hover--border-color);
+    background: var(--button--danger--hover--background);
+    color: var(--button--danger--hover--color);
+}
+
+.button.-danger:focus, .button.-danger.-focus {
+    border-color: var(--button--danger--focus--border-color);
+    background: var(--button--danger--focus--background);
+    color: var(--button--danger--focus--color);
+}
+
+.button.-danger:active, .button.-danger.-active {
+    border-color: var(--button--danger--active--border-color);
+    background: var(--button--danger--active--background);
+    color: var(--button--danger--active--color);
+}
+
+.button.-danger:disabled, .button.-danger.-disabled {
+    border-color: var(--button--danger--border-color);
+    background: var(--button--danger--background);
+    color: var(--button--danger--color);
+}
+
+.button.-danger.-outline {
+    border-color: var(--button--danger--outline--border-color);
+    color: var(--button--danger--outline--color);
+}
+
+.button.-danger.-outline:hover, .button.-danger.-outline.-hover {
+    color: var(--button--danger--color);
+}
+
+.button.-danger.-link {
+    color: var(--button--danger--link--color);
+}
+
+.button.-block {
+    display: flex;
+    width: 100%;
+}
+
+.button.-block + .button.-block {
+    margin-top: var(--button--block--margin-top);
+}
+
+input[type="submit"].button.-block, input[type="reset"].button.-block, input[type="button"].button.-block {
+    width: 100%;
+}
+
+.button.-outline {
+    background: transparent;
+    border-color: var(--button--background);
+    color: var(--button--background);
+    box-shadow: none;
+}
+
+.button.-link {
+    box-shadow: none;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.button.-link {
+    cursor: pointer;
+}
+
+.button.-link:active, .button.-link.-active, .button.-link:hover, .button.-link.-hover, .button.-link:focus, .button.-link.-focus {
+    box-shadow: none;
+    background-color: transparent;
+    border-color: transparent;
+    text-decoration: underline;
+}
+
+.button.-circle {
+    width: var(--button--circle--width);
+    height: var(--button--circle--height);
+    border-radius: 50%;
+    padding: 0;
+}
+
+.button.-square {
+    padding: 0;
+    width: var(--button--square--width);
+    height: var(--button--square--height);
+}

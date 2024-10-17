@@ -1,4 +1,4 @@
-import type { Form, FormField, FormSchema, FormValue, ResolvedFormSchema } from "../types";
+import type { Form, FormField, FormSchema, FormValue, ResolvedFormSchema } from '@inkline/types';
 import { isFormField, isFormGroup } from '../guards';
 import { reservedValidationFields } from '../constants';
 
@@ -27,9 +27,7 @@ export function serializeSchema<T extends Form>(schema: FormSchema<T> | Resolved
                 }
             ) as T[keyof T];
         } else if (isFormGroup(schemaField as FormSchema<T[keyof T]> | FormField<T[keyof T]>)) {
-            serializedSchema[key] = serializeSchema(
-                schemaField as FormSchema<T[keyof T]>
-            );
+            serializedSchema[key] = serializeSchema(schemaField as FormSchema<T[keyof T]>);
         } else if (isFormField(schemaField as FormSchema<T[keyof T]> | FormField<T[keyof T]>)) {
             serializedSchema[key] = schemaField.value as T[keyof T];
         }

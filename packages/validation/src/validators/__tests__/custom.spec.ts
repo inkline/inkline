@@ -1,5 +1,5 @@
 import { custom } from '../index';
-import type { FormValidatorFn, FormValue } from '../../types';
+import type { FormValidatorFn, FormValue } from '@inkline/types';
 
 describe('Validators', () => {
     describe('custom()', () => {

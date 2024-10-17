@@ -1,8 +1,19 @@
-// export * from './components/IAlert/theme';
-export * from './components/IBadge/theme';
-export * from './components/IBreadcrumb/theme';
-export * from './components/IBreadcrumbItem/theme';
-export * from './components/IButton/theme';
-export * from './components/IButtonGroup/theme';
-export * from './components/ICard/theme';
-export * from './components/theme';
+import { useAlertTheme } from '@inkline/component-alert';
+import { useBadgeTheme } from '@inkline/component-badge';
+import { useBreadcrumbTheme } from '@inkline/component-breadcrumb';
+import { useButtonTheme } from '@inkline/component-button';
+import { useLoaderTheme } from '@inkline/component-loader';
+
+export function useThemeComponents() {
+    useAlertTheme();
+    useBadgeTheme();
+    useBreadcrumbTheme();
+    useButtonTheme();
+    // useBadgeTheme();
+    // useBreadcrumbTheme();
+    // useBreadcrumbItemTheme();
+    // useButtonTheme();
+    // useButtonGroupTheme();
+    // useCardTheme();
+    useLoaderTheme();
+}

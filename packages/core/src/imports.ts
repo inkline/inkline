@@ -1,5 +1,6 @@
 import { OutputFile } from './types';
-import { files } from "./globals";
+import { state } from './globals';
+import { hash } from './utils';
 
 /**
  * Adds a variable to a theme.
@@ -11,7 +12,11 @@ export function file(
     content: string,
     options?: { append?: boolean; prepend?: boolean }
 ) {
-    files.push({ path, content, options });
+    const id = hash(content);
+
+    if (state.files.find((file) => file.id === id)) return;
+
+    state.files.push({ id, path, content, options });
 }
 
 export function applyConfigurationFiles(

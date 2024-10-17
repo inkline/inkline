@@ -1,29 +1,29 @@
 <template>
-    <IAlert color="info">
+    <Alert color="info">
         <template #icon>
-            <IIcon name="ink-info" />
+            <Icon name="ink-info" />
         </template>
         Heads up! This alert needs your attention, but it's not super important.
-    </IAlert>
+    </Alert>
 
-    <IAlert color="success">
+    <Alert color="success">
         <template #icon>
-            <IIcon name="ink-check" />
+            <Icon name="ink-check" />
         </template>
         Well done! You successfully read this important alert message.
-    </IAlert>
+    </Alert>
 
-    <IAlert color="warning">
+    <Alert color="warning">
         <template #icon>
-            <IIcon name="ink-warning" />
+            <Icon name="ink-warning" />
         </template>
         Warning! Better check yourself, you're not looking too good.
-    </IAlert>
+    </Alert>
 
-    <IAlert color="danger">
+    <Alert color="danger">
         <template #icon>
-            <IIcon name="ink-danger" />
+            <Icon name="ink-danger" />
         </template>
         Oh snap! Change a few things up and try submitting again.
-    </IAlert>
+    </Alert>
 </template>

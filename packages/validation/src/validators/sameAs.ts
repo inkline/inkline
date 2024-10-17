@@ -1,5 +1,5 @@
 import { getValueByPath } from '@inkline/utils';
-import { FormValidatorFn, FormValue, ResolvedFormField, ResolvedFormSchema } from "../types";
+import { FormValidatorFn, FormValue, ResolvedFormField, ResolvedFormSchema } from '@inkline/types';
 
 export const sameAs: FormValidatorFn<{
     target?: string;
@@ -9,7 +9,10 @@ export const sameAs: FormValidatorFn<{
         return false;
     }
 
-    const targetSchema = getValueByPath<ResolvedFormField<unknown>>(options.schema as ResolvedFormSchema<Record<string, unknown>>, options.target);
+    const targetSchema = getValueByPath<ResolvedFormField<unknown>>(
+        options.schema as ResolvedFormSchema<Record<string, unknown>>,
+        options.target
+    );
     if (!targetSchema) {
         throw new Error(
             `Could not find target with name '${options.target}' in 'sameAs' validator.`

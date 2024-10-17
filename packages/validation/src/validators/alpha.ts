@@ -1,5 +1,5 @@
 import { alpha as validators } from './constants';
-import type { FormValidatorFn, FormValue } from '../types';
+import type { FormValidatorFn, FormValue } from '@inkline/types';
 
 export const alpha: FormValidatorFn<{
     locale?: string;

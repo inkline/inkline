@@ -17,9 +17,9 @@
         "@types/node": "^20.14.5",
         "@vitest/coverage-v8": "catalog:",
         "eslint": "catalog:",
+        "tsup": "catalog:",
         "type-fest": "catalog:",
         "typescript": "catalog:",
-        "tsup": "catalog:",
         "vite": "catalog:",
         "vitest": "catalog:"
     },
@@ -39,7 +39,8 @@
         "./*": "./*"
     },
     "dependencies": {
-        "color": "^4.2.3"
+        "color": "^4.2.3",
+        "nanoid": "^5.0.7"
     },
     "funding": {
         "type": "github",

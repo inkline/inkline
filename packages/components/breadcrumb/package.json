@@ -1,0 +1,85 @@
+{
+    "name": "@inkline/component-breadcrumb",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools component watch",
+        "build": "devtools component build",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage"
+    },
+    "dependencies": {
+        "@inkline/component-linkable": "workspace:*",
+        "@inkline/core": "workspace:*",
+        "@inkline/theme": "workspace:*",
+        "@inkline/vue": "workspace:*"
+    },
+    "devDependencies": {
+        "@inkline/config": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "@inkline/postcss-config": "workspace:*",
+        "@inkline/vite": "workspace:*",
+        "@inkline/test-utils": "workspace:*",
+        "@inkline/types": "workspace:*",
+        "@testing-library/vue": "catalog:",
+        "@testing-library/jest-dom": "catalog:",
+        "@vitest/coverage-v8": "catalog:",
+        "@vitejs/plugin-vue": "catalog:",
+        "eslint": "catalog:",
+        "typescript": "catalog:",
+        "tsup": "catalog:",
+        "vite": "catalog:",
+        "vite-plugin-dts": "catalog:",
+        "vitest": "catalog:",
+        "vue": "catalog:",
+        "vue-tsc": "catalog:"
+    },
+    "peerDependencies": {
+        "vue": ">=3.0.0"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "types": "./dist/breadcrumb.d.ts",
+    "main": "./dist/breadcrumb.umd.cjs",
+    "module": "./dist/breadcrumb.js",
+    "exports": {
+        ".": {
+            "types": "./dist/breadcrumb.d.ts",
+            "import": "./dist/breadcrumb.js",
+            "require": "./dist/breadcrumb.umd.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

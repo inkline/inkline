@@ -1,20 +1,20 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { IAlert } from '../index';
-import { createTestingInklineOptionsProvide } from '@inkline/devtools';
+import { Alert } from '../index';
+import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
 
 describe('Components', () => {
-    describe('IAlert', () => {
+    describe('Alert', () => {
         const props = {
             color: 'primary',
             size: 'md'
         };
 
         it('should be named correctly', () => {
-            expect(IAlert.name).toEqual('IAlert');
+            expect(Alert.name).toEqual('Alert');
         });
 
         it('should render correctly', () => {
-            const wrapper = render(IAlert, {
+            const wrapper = render(Alert, {
                 props,
                 global: {
                     provide: {
@@ -28,7 +28,7 @@ describe('Components', () => {
         describe('computed', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
-                    const wrapper = render(IAlert, {
+                    const wrapper = render(Alert, {
                         slots: {
                             icon: '<span />'
                         },
@@ -56,7 +56,7 @@ describe('Components', () => {
         describe('methods', () => {
             describe('dismiss()', () => {
                 it('should hide the alert when clicking the dismiss button', async () => {
-                    const wrapper = render(IAlert, {
+                    const wrapper = render(Alert, {
                         props: {
                             dismissible: true,
                             modelValue: true,

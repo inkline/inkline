@@ -1,5 +1,5 @@
 import { alphanumeric as validators } from './constants';
-import type { FormValue, FormValidatorFn } from '../types';
+import type { FormValue, FormValidatorFn } from '@inkline/types';
 
 export const alphanumeric: FormValidatorFn<{
     locale?: string;

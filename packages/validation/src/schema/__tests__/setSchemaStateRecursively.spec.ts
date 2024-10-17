@@ -1,5 +1,5 @@
 import { createSchema, setSchemaStateRecursively } from '../index';
-import type { FormState } from '../../types';
+import type { FormState } from '@inkline/types';
 
 describe('validation', () => {
     describe('setSchemaStateRecursively()', () => {

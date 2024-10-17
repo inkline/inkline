@@ -1,13 +1,13 @@
 <template>
-    <IAlert>
+    <Alert>
         <template #icon>
-            <IIcon name="ink-info" size="lg" />
+            <Icon name="ink-info" size="lg" />
         </template>
         <strong>Alert Title</strong>
         <p>
             Some quick example text and an <a href="https://inkline.io">example link</a> to build on
             the alert and make up the bulk of the alert's content.
         </p>
-    </IAlert>
+    </Alert>
 </template>
 <script setup lang="ts"></script>

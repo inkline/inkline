@@ -1,6 +1,6 @@
 import { HSLAColorInlineProperty } from './properties';
-import { ExportedName } from "./namespaces";
-import { CamelCase } from "type-fest";
+import { ExportedName } from './namespaces';
+import { CamelCase } from 'type-fest';
 
 export const enum TokenType {
     Variable = 'variable',
@@ -8,6 +8,8 @@ export const enum TokenType {
     Reference = 'reference',
     HSLAColor = 'hsla',
     Selector = 'selector',
+    Keyframes = 'keyframes',
+    AtRule = 'media',
     Theme = 'theme'
 }
 
@@ -40,9 +42,22 @@ export type Color = {
 export type ComponentValue = Record<string, TokenValue>;
 
 export type Selector = {
+    __id: string;
     __type: TokenType.Selector;
     __name: string;
     __value: ComponentValue;
+};
+
+export type AtRules = 'media' | 'supports' | 'keyframes';
+
+export type AtRuleValue = ComponentValue | Selector | Selector[];
+
+export type AtRule = {
+    __id: string;
+    __type: TokenType.AtRule;
+    __name: AtRules;
+    __identifier: string;
+    __value: AtRuleValue;
 };
 
 export type Theme = {
@@ -53,7 +68,7 @@ export type Theme = {
         selectors: Set<string>;
     };
     variables: Record<string, Variable>;
-    selectors: Record<string, Selector>;
+    selectors: Array<Selector | AtRule>;
 };
 
 export type Themes = Record<string, Theme>;

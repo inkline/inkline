@@ -3,15 +3,17 @@ packages:
     - packages/components/*
     - packages/e2e/*
     - packages/integrations/*
+    - packages/plugin/*
+    - packages/plugin/addons/*
     - packages/tooling/*
 catalog:
     '@types/node': ^20.14.5
     '@types/shelljs': ^0.8.15
     '@eslint/js': ^9.3.0
+    '@fullhuman/postcss-purgecss': ^6.0.0
     '@vitejs/plugin-vue': ^5.1.4
     '@vitest/coverage-v8': ^2.1.1
     '@vue/runtime-core': ^3.5.8
-    '@vue/shared': ^3.5.8
     '@vue/test-utils': ^2.4.6
     '@nuxt/kit': ^3.13.2
     '@nuxt/module-builder': ^0.8.4

@@ -11,7 +11,8 @@ import {
     Variable,
     TransitionProperty,
     BoxShadowProperty,
-    HSLAColorProperty
+    HSLAColorProperty,
+    AtRule
 } from './types';
 import { TokenType } from './types';
 
@@ -43,6 +44,10 @@ export function isColor(value: unknown): value is Color {
 
 export function isSelector(value: unknown): value is Selector {
     return isToken(value, TokenType.Selector);
+}
+
+export function isAtRule(value: unknown): value is AtRule {
+    return isToken(value, TokenType.AtRule);
 }
 
 export function isTheme(value: unknown): value is Theme {

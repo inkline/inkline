@@ -11,7 +11,7 @@ import {
     required,
     sameAs
 } from './validators';
-import type { FormValidatorFn } from './types';
+import type { FormValidatorFn } from '@inkline/types';
 
 export const validators: {
     [key: string]: FormValidatorFn;

@@ -1,6 +1,7 @@
 import { Configuration } from './build';
 
 export type OutputFile = {
+    id?: string;
     path: string;
     content: string;
     options?: {

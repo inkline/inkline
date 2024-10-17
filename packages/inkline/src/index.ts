@@ -1,10 +1,6 @@
-export * from '@inkline/inkline/components';
-export * from '@inkline/inkline/composables';
-export * from '@inkline/inkline/constants';
-export * from '@inkline/inkline/controllers';
-export * from '@inkline/inkline/plugins';
-export * from '@inkline/inkline/plugin';
-export * from '@inkline/inkline/types';
-export * from '@inkline/inkline/utils';
 export * from '@inkline/i18n';
+export * from '@inkline/utils';
 export * from '@inkline/validation';
+export * from '@inkline/vue';
+
+export * from './components';

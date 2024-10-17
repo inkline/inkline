@@ -11,14 +11,27 @@ import {
     TokenValue,
     Variable,
     NamespacedKey,
-    NamespaceType, ColorComposedReturnKey, ColorPartsReturnKeys, HSLAColorProperty
-} from "./types";
-import { isRef, isVariable } from './typeGuards';
-import { insertInBetweenElements, createNamespacedTokenName, normalizePercentageValue, toExportedName } from "./utils";
-import { addSelectorToTheme, addVariableToTheme } from './themes';
-import { themes } from './globals';
+    NamespaceType,
+    ColorComposedReturnKey,
+    ColorPartsReturnKeys,
+    HSLAColorProperty,
+    AtRule,
+    SelectorOptions,
+    AtRules,
+    AtRuleValue
+} from './types';
+import { isAtRule, isRef, isSelector, isVariable } from './typeGuards';
+import {
+    insertInBetweenElements,
+    createNamespacedTokenName,
+    normalizePercentageValue,
+    toExportedName
+} from './utils';
+import { addSelectorToTheme, addVariableToTheme, removeSelectorFromTheme } from './themes';
+import { state } from './globals';
 import { defaultThemeName, defaultDefinitionOptions } from './constants';
 import parseColor from 'color';
+import { nanoid } from 'nanoid';
 
 /**
  * Creates a variable token.
@@ -111,10 +124,11 @@ export function subtract(...args: TokenValue[]): Calc {
 export function selector(
     name: string | string[],
     value: ComponentValue,
-    options?: DefinitionOptions
+    options?: SelectorOptions
 ): Selector {
     const resolvedName = Array.isArray(name) ? name.join(', ') : name;
     const instance: Selector = {
+        __id: nanoid(),
         __type: TokenType.Selector,
         __name: resolvedName,
         __value: value
@@ -126,32 +140,66 @@ export function selector(
 }
 
 /**
- * Creates a theme token.
+ * Creates a media token
  *
- * This token is used to define a theme.
- * Themes can be used to store variables and selectors.
- * Themes are automatically created when variables and selectors are added.
- * Themes are used to generate CSS.
+ * This token is used to define a CSS media query.
+ * Media queries can be used to store one or more selectors.
+ * Media queries automatically get added to the theme when created.
  */
-export function theme(name: string = defaultThemeName): Theme {
-    if (themes[name]) {
-        return themes[name];
-    }
-
-    const instance: Theme = {
-        __type: TokenType.Theme,
+export function atRule(
+    name: AtRules,
+    identifier: string,
+    value: AtRuleValue,
+    options?: DefinitionOptions
+): AtRule {
+    const instance: AtRule = {
+        __id: nanoid(),
+        __type: TokenType.AtRule,
         __name: name,
-        __keys: {
-            variables: new Set(),
-            selectors: new Set()
-        },
-        variables: {},
-        selectors: {}
+        __identifier: identifier,
+        __value: value
     };
 
-    themes[name] = instance;
+    if (Array.isArray(value)) {
+        value.forEach((v) => nested(v, options));
+    } else {
+        nested(value, options);
+    }
+
+    addSelectorToTheme(instance, options);
 
     return instance;
+}
+
+/**
+ * Creates a media token
+ *
+ * This token is used to define a CSS media query.
+ * Media queries can be used to store one or more selectors.
+ * Media queries automatically get added to the theme when created.
+ */
+export function media(
+    identifier: string,
+    value: Selector | Selector[],
+    options?: DefinitionOptions
+) {
+    return atRule('media', identifier, value, options);
+}
+
+/**
+ * Creates a keyframes token.
+ *
+ * This token is used to define a CSS keyframes animation.
+ * Keyframes can be used to store one or more keyframe selectors in key-value format.
+ * Keyframes automatically get added to the theme when created.
+ */
+export function keyframes(
+    identifier: string,
+    value: Record<string, ComponentValue>,
+    options?: DefinitionOptions
+) {
+    const keyframesValue = Object.entries(value).map(([key, value]) => selector(key, value));
+    return atRule('keyframes', identifier, keyframesValue, options);
 }
 
 /**
@@ -193,13 +241,6 @@ export function nsvariable<Namespace extends NamespaceType, Name extends string>
     const name = isVariable(nameOrInstance) ? nameOrInstance.__name : nameOrInstance;
 
     return variable(createNamespacedTokenName(ns, name), value, options);
-}
-
-/**
- * Sets a variable or reference value
- */
-export function set<Name extends string>(instance: Variable<Name>, value: TokenValue) {
-    instance.__value = value;
 }
 
 /**
@@ -275,4 +316,49 @@ export function nscolor<Namespace extends NamespaceType, Name extends string>(
     options = defaultDefinitionOptions
 ) {
     return color(createNamespacedTokenName(ns, name), value, options);
+}
+
+/**
+ * Sets a variable or reference value
+ */
+export function set<Name extends string>(instance: Variable<Name>, value: TokenValue) {
+    instance.__value = value;
+}
+
+/**
+ * Sets a selector type as nested
+ */
+export function nested(instance: unknown, options?: SelectorOptions) {
+    if (!isSelector(instance) && !isAtRule(instance)) return;
+
+    removeSelectorFromTheme(instance.__id, options);
+}
+
+/**
+ * Creates a theme token.
+ *
+ * This token is used to define a theme.
+ * Themes can be used to store variables and selectors.
+ * Themes are automatically created when variables and selectors are added.
+ * Themes are used to generate CSS.
+ */
+export function theme(name: string = defaultThemeName): Theme {
+    if (state.themes[name]) {
+        return state.themes[name];
+    }
+
+    const instance: Theme = {
+        __type: TokenType.Theme,
+        __name: name,
+        __keys: {
+            variables: new Set(),
+            selectors: new Set()
+        },
+        variables: {},
+        selectors: []
+    };
+
+    state.themes[name] = instance;
+
+    return instance;
 }

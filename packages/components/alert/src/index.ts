@@ -1,1 +1,3 @@
-export { default as IAlert } from './IAlert.vue';
+import './index.css';
+export { default as Alert } from './Alert.vue';
+export * from './theme';

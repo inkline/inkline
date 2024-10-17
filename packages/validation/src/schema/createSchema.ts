@@ -4,11 +4,8 @@ import type {
     FormSchema,
     ResolvedFormField,
     ResolvedFormSchema
-} from '../types';
-import {
-    defaultValidationFieldValues,
-    defaultValidationStateValues
-} from '../constants';
+} from '@inkline/types';
+import { defaultValidationFieldValues, defaultValidationStateValues } from '../constants';
 import { isFormField, isFormGroup } from '../guards';
 
 /**

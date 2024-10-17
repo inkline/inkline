@@ -1,4 +1,4 @@
-import type { FormValue, FormValidatorFn } from '../types';
+import type { FormValue, FormValidatorFn } from '@inkline/types';
 
 export const min: FormValidatorFn<{ value?: number }> = (value: FormValue, options) => {
     if (typeof options.value === 'undefined') {

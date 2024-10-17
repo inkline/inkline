@@ -1,4 +1,4 @@
-import type { FormValidatorFn, FormValue } from '../types';
+import type { FormValidatorFn, FormValue } from '@inkline/types';
 
 export const maxLength: FormValidatorFn<{ value?: number }> = (value: FormValue, options) => {
     if (typeof options.value === 'undefined') {

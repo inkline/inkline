@@ -34,7 +34,7 @@ export function updateExistingImport(code: string, importMeta: ImportFileMeta) {
         'g'
     );
 
-    return code.replace(importMatch, (match, defaultImport: string, namedImportsGroup, namedImports: string) => {
+    return code.replace(importMatch, (_match, defaultImport: string, _namedImportsGroup, namedImports: string) => {
         const isImportMetaDefaultImport = !Array.isArray(importMeta.name);
         const existingNamedImports: string[] = namedImports
             ? namedImports.split(',').map((name: string) => name.trim())

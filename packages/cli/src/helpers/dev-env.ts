@@ -164,7 +164,7 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
          */
         configFile = addImport(configFile, {
             name: 'inkline',
-            from: '@inkline/plugin/vite'
+            from: '@inkline/vite'
         });
         configFile = addAfterImports(configFile, getPluginPreamble(configFile, devEnv, env));
         configFile = addFieldToDefaultExport(configFile, 'plugins', ['inkline(inklineConfig)']);

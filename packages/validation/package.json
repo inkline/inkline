@@ -16,13 +16,18 @@
     "devDependencies": {
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
+        "@inkline/types": "workspace:*",
         "@types/node": "catalog:",
         "eslint": "catalog:",
         "jsdom": "catalog:",
         "tsup": "catalog:",
         "typescript": "catalog:",
+        "vue": "catalog:",
         "vite": "catalog:",
         "vitest": "catalog:"
+    },
+    "peerDependencies": {
+        "vue": ">=3.0.0"
     },
     "files": [
         "dist",

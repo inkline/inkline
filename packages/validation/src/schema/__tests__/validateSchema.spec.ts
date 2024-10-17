@@ -4,10 +4,15 @@ import {
     validateForm,
     validateFormArray,
     validateFormField,
-    validateFormFieldArray,
+    validateFormFieldArray
 } from '../index';
 import { required } from '../../validators';
-import { FormValidator, FormValidatorMessageFn, ResolvedFormField, ResolvedFormSchema } from "../../types";
+import {
+    FormValidator,
+    FormValidatorMessageFn,
+    ResolvedFormField,
+    ResolvedFormSchema
+} from '@inkline/types';
 import { defaultValidationFieldValues, defaultValidationStateValues } from '../../constants';
 
 vi.mock('../../validators', async () => {

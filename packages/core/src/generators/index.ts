@@ -1,1 +1,1 @@
-export { scssGenerator } from './scss';
+export { cssGenerator } from './css';

@@ -1,7 +1,4 @@
-import {
-    DefinitionOptions,
-    SelectorOptions
-} from './types';
+import { DefinitionOptions, SelectorOptions } from './types';
 
 /**
  * Themes
@@ -21,14 +18,12 @@ export const defaultDefinitionOptions: DefinitionOptions = {
 
 export const defaultSelectorOptions: SelectorOptions = {
     ...defaultDefinitionOptions,
-    replace: false,
     default: false
 };
 
 /**
  * Generator options
  */
-
 
 export const defaultIndent = '    ';
 

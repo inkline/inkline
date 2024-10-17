@@ -9,6 +9,7 @@ import { defineBoxShadow, SourceMapBoxShadow } from './boxShadow';
 import { defineGeneric, SourceMapGeneric } from './generic';
 import { defineBackground, defineColor, SourceMapBackground, SourceMapColor } from './color';
 import { PartialDeep } from 'type-fest';
+import { toCssName } from '../utils';
 
 export function nsdefine<
     Namespace extends NamespaceType,
@@ -79,7 +80,7 @@ export function nsdefine<
             default:
                 results = {
                     ...results,
-                    ...defineGeneric(ns, name, value as SourceMapGeneric, options)
+                    ...defineGeneric(ns, toCssName(name), value as SourceMapGeneric, options)
                 };
         }
     });

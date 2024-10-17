@@ -144,7 +144,7 @@ export function useRebootTheme() {
 }
 
 export function useNormalizeTheme() {
-    file('index.scss', `@import 'normalize.css';\n`, {
+    file('index.css', `@import 'normalize.css';\n`, {
         prepend: true
     });
 

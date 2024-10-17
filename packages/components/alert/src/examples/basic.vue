@@ -1,8 +1,8 @@
 <template>
-    <IAlert>
+    <Alert>
         <template #icon>
-            <IIcon name="ink-circle" />
+            <Icon name="ink-circle" />
         </template>
         Heads up! This alert needs your attention, and it might be <a href="">important</a>.
-    </IAlert>
+    </Alert>
 </template>

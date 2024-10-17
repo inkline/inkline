@@ -10,19 +10,19 @@ function getAbsolutePath(value: string): any {
     return dirname(require.resolve(join(value, 'package.json')));
 }
 
-const srcDir = '../../vue/src';
-
 const config: StorybookConfig = {
-    stories: [`${srcDir}/**/*.mdx`, `${srcDir}/**/*.stories.@(js|jsx|mjs|ts|tsx)`],
+    stories: ['../src/**/*.stories.ts'],
+    staticDirs: ['../public'],
     addons: [
-        getAbsolutePath('@storybook/addon-onboarding'),
+        getAbsolutePath('storybook-dark-mode'),
+        getAbsolutePath('@storybook/addon-themes'),
         getAbsolutePath('@storybook/addon-links'),
         getAbsolutePath('@storybook/addon-essentials'),
-        getAbsolutePath('@chromatic-com/storybook'),
-        getAbsolutePath('@storybook/addon-interactions')
+        getAbsolutePath('@storybook/addon-interactions'),
+        getAbsolutePath('@chromatic-com/storybook')
     ],
     framework: {
-        name: getAbsolutePath('@storybook/vue3-vite'),
+        name: getAbsolutePath('@storybook/vue3-vite') as '@storybook/vue3-vite',
         options: {}
     }
 };

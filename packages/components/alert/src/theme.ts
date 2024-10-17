@@ -284,7 +284,11 @@ export function useAlertThemeSizeFactory(size: ComponentSize) {
         multiply(ref(alertBorderBottomLeftRadius), sizeMultiplierRef)
     );
 
-    const variantFontSize = nsvariable([ns, size], 'font-size', ref(alertFontSize));
+    const variantFontSize = nsvariable(
+        [ns, size],
+        'font-size',
+        multiply(ref(alertFontSize), sizeMultiplierRef)
+    );
 
     selector(`.alert.-${size}`, {
         borderRadius: [

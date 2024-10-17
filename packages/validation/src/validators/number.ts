@@ -1,4 +1,4 @@
-import type { FormValidatorFn, FormValue } from '../types';
+import type { FormValidatorFn, FormValue } from '@inkline/types';
 
 export const number: FormValidatorFn<{ allowNegative?: boolean; allowDecimal?: boolean }> = (
     value: FormValue,

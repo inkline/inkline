@@ -1,0 +1,37 @@
+<template>
+    <Container>
+        <Row>
+            <Column></Column>
+        </Row>
+        <Row>
+            <Column></Column>
+            <Column></Column>
+        </Row>
+        <Row>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
+        </Row>
+        <Row>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
+        </Row>
+        <Row>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
+        </Row>
+        <Row>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
+        </Row>
+    </Container>
+</template>

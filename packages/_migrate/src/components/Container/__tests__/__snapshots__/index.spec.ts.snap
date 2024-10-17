@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Container > should render correctly 1`] = `
+"<div class="container">
+  <!-- @slot default Slot for default container content -->
+</div>"
+`;

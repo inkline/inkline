@@ -1,69 +1,56 @@
 {
-    "name": "@inkline/inkline",
-    "description": "Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
+    "name": "inkline",
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "devtools vite watch",
-        "build": "devtools vite build --vue",
+        "dev": "devtools tsup watch",
+        "build": "devtools tsup build",
         "lint": "devtools eslint",
         "test": "devtools test",
-        "test:dev": "devtools test --watch",
-        "test:ci": "devtools test --coverage"
+        "test:dev": "devtools test --watch"
     },
     "dependencies": {
-        "@inkline/config": "workspace:*",
-        "@inkline/core": "workspace:*",
-        "@inkline/theme": "workspace:*",
         "@inkline/i18n": "workspace:*",
+        "@inkline/utils": "workspace:*",
         "@inkline/validation": "workspace:*",
-        "@inkline/utils": "workspace:*"
+        "@inkline/vue": "workspace:*",
+        "@inkline/component-alert": "workspace:*",
+        "@inkline/component-badge": "workspace:*",
+        "@inkline/component-breadcrumb": "workspace:*",
+        "@inkline/component-button": "workspace:*",
+        "@inkline/component-loader": "workspace:*"
     },
     "devDependencies": {
-        "@floating-ui/core": "^1.6.2",
-        "@floating-ui/dom": "^1.6.5",
-        "@inkline/composables": "workspace:*",
-        "@inkline/config": "workspace:*",
-        "@inkline/core": "workspace:*",
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
-        "@inkline/plugin": "workspace:*",
-        "@inkline/theme": "workspace:*",
-        "@testing-library/jest-dom": "catalog:",
+        "@inkline/types": "workspace:*",
         "@testing-library/vue": "catalog:",
-        "@vitejs/plugin-vue": "catalog:",
-        "@vitest/coverage-v8": "catalog:",
-        "@vue/runtime-core": "catalog:",
+        "@types/node": "catalog:",
         "@vue/test-utils": "catalog:",
         "eslint": "catalog:",
-        "micromustache": "^8.0.3",
-        "miragejs": "0.2.0-alpha.3",
-        "normalize.css": "catalog:",
+        "jsdom": "catalog:",
+        "tsup": "catalog:",
+        "type-fest": "catalog:",
         "typescript": "catalog:",
         "vite": "catalog:",
-        "vite-plugin-dts": "catalog:",
         "vitest": "catalog:",
-        "vue": "catalog:",
-        "vue-tsc": "catalog:"
+        "vue": "catalog:"
     },
     "peerDependencies": {
         "vue": ">=3.0.0"
     },
     "files": [
         "dist",
-        "LICENSE",
-        "README.md"
+        "LICENSE"
     ],
-    "types": "./dist/vue.d.ts",
-    "main": "./dist/vue.umd.cjs",
-    "module": "./dist/vue.js",
-    "jsdelivr": "dist/vue.umd.js",
-    "unpkg": "dist/vue.umd.js",
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.js",
+    "module": "./dist/index.cjs",
     "exports": {
         ".": {
-            "types": "./dist/vue.d.ts",
-            "import": "./dist/vue.js",
-            "require": "./dist/vue.umd.cjs"
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
         },
         "./*": "./*"
     },

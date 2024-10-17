@@ -1,6 +1,7 @@
-import { exec } from "../../utils";
+import { exec } from '../../utils';
+import { BuildCommandOptions } from '../../types';
 
-export function tsupBuild() {
-    exec("tsc --noEmit");
-    exec("tsup");
+export async function tsupBuild(options: BuildCommandOptions) {
+    await exec(options.vue ? 'vue-tsc --noEmit' : 'tsc --noEmit');
+    await exec('tsup');
 }

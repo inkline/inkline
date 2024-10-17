@@ -1,12 +1,12 @@
-import { loadConfig as c12, LoadConfigOptions } from "c12";
-import { files, themes } from "@inkline/core";
-import { Configuration, ConfigurationOptions, ModuleOptions, SetupFunction } from "./types";
+import { loadConfig as c12, LoadConfigOptions } from 'c12';
+import { state } from '@inkline/core';
+import { Configuration, ConfigurationOptions, ModuleOptions, SetupFunction } from './types';
 
-export const defaultOutputDir = "./src/theme";
-export const defaultConfigFileNamespace = "inkline";
+export const defaultOutputDir = './src/theme';
+export const defaultConfigFileNamespace = 'inkline';
 export const defaultConfigFileBasename = `${defaultConfigFileNamespace}.config`;
-export const defaultConfigFileExtName = ".ts";
-export const defaultConsumerModule = "scss";
+export const defaultConfigFileExtName = '.ts';
+export const defaultConsumerModule = 'scss';
 
 export const defaultConfig: Configuration = {
     themes: {},
@@ -18,11 +18,13 @@ export function defineConfig(
     setup: SetupFunction,
     options: ConfigurationOptions<ModuleOptions> = {}
 ): Configuration {
+    state.themes = {};
+    state.files = [];
+
     setup();
 
     return {
-        themes,
-        files,
+        ...state,
         options
     };
 }
@@ -43,7 +45,7 @@ export async function loadConfig(
     });
 
     if (!config) {
-        throw new Error("Could not load configuration.");
+        throw new Error('Could not load configuration.');
     }
 
     return config;

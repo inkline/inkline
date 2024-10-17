@@ -1,9 +1,7 @@
-import { DefinitionOptions, Selector, SelectorOptions, Variable } from './types';
+import { DefinitionOptions, AtRule, Selector, SelectorOptions, Variable } from './types';
 import { isTheme } from './typeGuards';
 import { theme } from './tokens';
 import { defaultThemeName } from './constants';
-
-
 
 /**
  * Adds a variable to a theme.
@@ -25,29 +23,26 @@ export function addVariableToTheme(variable: Variable, options?: DefinitionOptio
 
 /**
  * Adds a selector to a theme.
- *
- * If `options.default` is `true`, the selector will only be added if it does not already exist in the theme.
  */
-export function addSelectorToTheme(selector: Selector, options?: SelectorOptions) {
+export function addSelectorToTheme(selector: Selector | AtRule, options?: SelectorOptions) {
     const themeInstance = isTheme(options?.theme)
         ? options.theme
         : theme(options?.theme ?? defaultThemeName);
 
-    if (options?.default && themeInstance.selectors[selector.__name]) {
+    themeInstance.selectors.push(selector);
+    themeInstance.__keys.selectors.add(selector.__id);
+}
+
+export function removeSelectorFromTheme(id: string, options?: SelectorOptions) {
+    const themeInstance = isTheme(options?.theme)
+        ? options.theme
+        : theme(options?.theme ?? defaultThemeName);
+
+    const selectorIndex = themeInstance.selectors.findIndex((selector) => selector.__id === id);
+    if (selectorIndex === -1) {
         return;
     }
 
-    if (options?.replace) {
-        themeInstance.selectors[selector.__name] = selector;
-    } else {
-        themeInstance.selectors[selector.__name] = {
-            ...selector,
-            __value: {
-                ...themeInstance.selectors[selector.__name]?.__value,
-                ...selector.__value
-            }
-        };
-    }
-
-    themeInstance.__keys.selectors.add(selector.__name);
+    themeInstance.selectors.splice(selectorIndex, 1);
+    themeInstance.__keys.selectors.delete(id);
 }

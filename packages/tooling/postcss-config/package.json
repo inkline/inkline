@@ -1,0 +1,43 @@
+{
+    "name": "@inkline/postcss-config",
+    "version": "1.0.0",
+    "main": "index.mjs",
+    "scripts": {
+        "release": "np",
+        "test": "echo 'All tests passed!'"
+    },
+    "dependencies": {
+        "@fullhuman/postcss-purgecss": "catalog:"
+    },
+    "files": [
+        "index.mjs",
+        "README.md",
+        "LICENSE"
+    ],
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

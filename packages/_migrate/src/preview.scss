@@ -1,0 +1,77 @@
+@import './components/Badge/css/preview';
+@import './components/Button/css/preview';
+@import './components/ButtonGroup/css/preview';
+@import './components/Card/css/preview';
+@import './components/Card/css/preview';
+@import './components/Container/css/preview';
+@import './components/Collapsible/css/preview';
+@import './components/Dropdown/css/preview';
+@import './components/HamburgerMenu/css/preview';
+@import './components/Header/css/preview';
+@import './components/Input/css/preview';
+@import './components/Layout/css/preview';
+@import './components/ListGroup/css/preview';
+@import './components/Nav/css/preview';
+@import './components/Navbar/css/preview';
+@import './components/Pagination/css/preview';
+@import './components/Popover/css/preview';
+@import './components/Progress/css/preview';
+@import './components/Select/css/preview';
+@import './components/Sidebar/css/preview';
+@import './components/Table/css/preview';
+@import './components/Tabs/css/preview';
+@import './components/Toast/css/preview';
+@import './components/Tooltip/css/preview';
+@import './components/utils/CheckableButtonGroup/css/preview';
+@import './css/preview';
+
+.dark-theme .sbdocs .docs-story {
+    background: var(--color-dark);
+}
+
+#storybook-root {
+    min-height: calc(100vh - 2rem);
+}
+
+.storybook-example {
+    @extend %layout-local-preview;
+
+    @extend %border-utilities-preview;
+    @extend %color-utilities-preview;
+    @extend %flex-utilities-preview;
+    @extend %spacing-utilities-preview;
+    @extend %sizing-utilities-preview;
+
+    > hr {
+        margin-bottom: var(--margin-bottom-2);
+    }
+}
+
+#storybook-root,
+.sb-story > div,
+.storybook-example {
+    @extend %badge-preview;
+    @extend %button-preview;
+    @extend %button-group-preview;
+    @extend %card-preview;
+    @extend %checkable-button-group-preview;
+    @extend %collapsible-preview;
+    @extend %dropdown-preview;
+    @extend %hamburger-menu-preview;
+    @extend %header-preview;
+    @extend %grid-preview;
+    @extend %input-preview;
+    @extend %layout-preview;
+    @extend %list-group-preview;
+    @extend %nav-preview;
+    @extend %navbar-preview;
+    @extend %pagination-preview;
+    @extend %popover-preview;
+    @extend %progress-preview;
+    @extend %select-preview;
+    @extend %tooltip-preview;
+    @extend %sidebar-preview;
+    @extend %table-preview;
+    @extend %tabs-preview;
+    @extend %toast-preview;
+}

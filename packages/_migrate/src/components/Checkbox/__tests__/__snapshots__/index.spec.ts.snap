@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Checkbox > should render correctly 1`] = `
+"<div class="checkbox -light -md" aria-checked="false" role="checkbox"><input type="checkbox" name="checkbox" aria-hidden="true" aria-checked="false"><label class="checkbox-label" tabindex="0">
+    <!-- @slot default Slot for default checkbox label -->
+  </label></div>"
+`;

@@ -1,6 +1,6 @@
 import { DevEnv, InitEnv } from '../types';
 
-export function getPluginCjsPreamble(code: string, devEnv: DevEnv, env: InitEnv) {
+export function getPluginCjsPreamble(_code: string, _devEnv: DevEnv, env: InitEnv) {
     const outputDir = `${env.hasSrcDir ? 'src/' : ''}css/variables`;
 
     return `
@@ -10,7 +10,7 @@ const inklineConfig = {
 `;
 }
 
-export function getPluginPreamble(code: string, devEnv: DevEnv, env: InitEnv) {
+export function getPluginPreamble(_code: string, devEnv: DevEnv, env: InitEnv) {
     const outputDir = `${env.hasSrcDir ? 'src/' : ''}css/variables`;
     const isTypescript = devEnv.configFile.endsWith('.ts');
 

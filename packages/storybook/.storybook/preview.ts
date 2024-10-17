@@ -1,14 +1,12 @@
+import '../src/index.css';
+
 import { Decorator, setup } from '@storybook/vue3';
 import { DecoratorHelpers } from '@storybook/addon-themes';
 
 import { markRaw, watch, ref } from 'vue';
 import { light, dark } from './theme';
 
-import '../src/theme/index.scss';
-import '@inkline/inkline/index.scss';
-import '@inkline/inkline/preview.scss';
-
-import { Inkline, useOptions } from '@inkline/vue';
+import { Inkline, useOptions, components } from 'inkline';
 import { RouterLink } from './mocks';
 
 export const withInklineTheme = ({
@@ -50,6 +48,7 @@ export const withInklineTheme = ({
 
 setup((app) => {
     app.use(Inkline, {
+        components,
         routerComponent: markRaw(RouterLink)
     });
 });
@@ -82,4 +81,5 @@ export const parameters = {
         }
     }
 };
+
 export const tags = ['autodocs'];

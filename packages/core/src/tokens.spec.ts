@@ -2,16 +2,19 @@ import {
     add,
     calc,
     divide,
+    atRule,
     multiply,
     namespace,
     ref,
     selector,
     subtract,
     theme,
-    variable
+    variable,
+    keyframes
 } from './tokens';
 import { TokenType } from './types';
-import { themes } from './globals';
+import { state } from './globals';
+import { expect } from 'vitest';
 
 describe('tokens', () => {
     describe('variable', () => {
@@ -33,7 +36,7 @@ describe('tokens', () => {
             const variableValue = 10;
             const variableInstance = variable(variableName, variableValue, { theme: themeName });
 
-            expect(themes[themeName].variables[variableName]).toEqual(variableInstance);
+            expect(state.themes[themeName].variables[variableName]).toEqual(variableInstance);
         });
     });
 
@@ -127,9 +130,77 @@ describe('tokens', () => {
             const selectorInstance = selector(selectorName, selectorValue);
 
             expect(selectorInstance).toEqual({
+                __id: expect.any(String) as string,
                 __type: TokenType.Selector,
                 __name: selectorName,
                 __value: selectorValue
+            });
+        });
+
+        it('should automatically get added to a theme', () => {
+            const themeName = 'test';
+            const selectorName = '.button';
+            const selectorValue = {
+                background: 'red',
+                padding: '10px'
+            };
+            const selectorInstance = selector(selectorName, selectorValue, { theme: themeName });
+
+            expect(
+                state.themes[themeName].selectors[state.themes[themeName].selectors.length - 1]
+            ).toEqual(selectorInstance);
+        });
+    });
+
+    describe('atRule', () => {
+        it('should create a media query with a selector', () => {
+            const background = variable('background', 'red');
+            const padding = variable('padding', '10px');
+
+            const selectorName = '.button';
+            const selectorInstance = selector(selectorName, {
+                background: ref(background),
+                padding: ref(padding)
+            });
+
+            const mediaInstance = atRule('media', 'min-width: 600px', selectorInstance);
+
+            expect(mediaInstance).toEqual({
+                __id: expect.any(String) as string,
+                __type: TokenType.AtRule,
+                __name: 'media',
+                __identifier: 'min-width: 600px',
+                __value: selectorInstance
+            });
+        });
+    });
+
+    describe('keyframes', () => {
+        it('should create a keyframes token with name and value', () => {
+            const keyframesName = 'loader-rotate';
+            const keyframesValue = {
+                '0%': {
+                    transform: 'rotate(360deg)'
+                },
+                '100%': {
+                    transform: 'rotate(360deg)'
+                }
+            };
+
+            const keyframesInstance = keyframes(keyframesName, keyframesValue);
+
+            expect(keyframesInstance).toEqual({
+                __id: expect.any(String) as string,
+                __type: TokenType.AtRule,
+                __name: 'keyframes',
+                __identifier: keyframesName,
+                __value: [
+                    { ...selector('0%', keyframesValue['0%']), __id: expect.any(String) as string },
+                    {
+                        ...selector('100%', keyframesValue['100%']),
+                        __id: expect.any(String) as string
+                    }
+                ]
             });
         });
     });
