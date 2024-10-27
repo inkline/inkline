@@ -1,6 +1,6 @@
 <script lang="ts">
 import { ref, computed, watch, defineComponent, onBeforeUpdate, toRef } from 'vue';
-import { useComponentColor, useComponentSize } from '@inkline/vue';
+import { useComponentColor, useComponentSize } from '@inkline/composables';
 
 const componentName = 'Alert';
 

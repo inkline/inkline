@@ -13,5 +13,3 @@ export type Configuration<T = unknown> = {
     files: OutputFile[];
     options: ConfigurationOptions<T>;
 };
-
-export type SetupFunction = () => void;

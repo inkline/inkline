@@ -1,4 +1,4 @@
-import './alert.preview.scss';
+import './alert.preview.css';
 import { Alert } from '@inkline/component-alert';
 import {
     AlertBasicExample,

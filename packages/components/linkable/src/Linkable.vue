@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Component, PropType, resolveComponent } from 'vue';
 import { computed, defineComponent } from 'vue';
-import { useOptions } from '@inkline/vue';
+import { useOptions } from '@inkline/composables';
 
 const componentName = 'Linkable';
 

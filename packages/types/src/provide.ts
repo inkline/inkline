@@ -3,8 +3,8 @@ import type { SelectOption } from './components';
 
 export interface ButtonGroupInjection {
     disabled: ComputedRef<boolean>;
-    size: Ref<string>;
-    color: Ref<string>;
+    size: ComputedRef<string>;
+    color: ComputedRef<string>;
 }
 
 export interface CheckboxGroupInjection {

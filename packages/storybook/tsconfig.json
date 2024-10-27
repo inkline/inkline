@@ -8,19 +8,17 @@
         "paths": {
             "inkline": ["../inkline/src/index.ts"],
             "inkline/*": ["../inkline/src/*"],
-            "@inkline/component-alert": ["../components/alert/src/index.ts"],
+            "@inkline/component-*": ["../components/*/src/index.ts"],
             "@inkline/component-alert/*": ["../components/alert/src/*"],
-            "@inkline/component-badge": ["../components/badge/src/index.ts"],
             "@inkline/component-badge/*": ["../components/badge/src/*"],
-            "@inkline/component-breadcrumb": ["../components/breadcrumb/src/index.ts"],
             "@inkline/component-breadcrumb/*": ["../components/breadcrumb/src/*"],
-            "@inkline/component-button": ["../components/button/src/index.ts"],
             "@inkline/component-button/*": ["../components/button/src/*"],
-            "@inkline/component-card": ["../components/card/src/index.ts"],
+            "@inkline/component-button-group/*": ["../components/button-group/src/*"],
             "@inkline/component-card/*": ["../components/card/src/*"],
-            "@inkline/component-loader": ["../components/loader/src/index.ts"],
             "@inkline/component-loader/*": ["../components/loader/src/*"],
-
+            "@inkline/component-popup/*": ["../components/popup/src/*"],
+            "@inkline/component-tooltip/*": ["../components/tooltip/src/*"],
+            "@inkline/component-popover/*": ["../components/popover/src/*"],
         }
     },
     "include": [

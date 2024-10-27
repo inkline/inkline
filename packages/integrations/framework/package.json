@@ -23,6 +23,7 @@
         "typescript": "catalog:"
     },
     "dependencies": {
+        "@inkline/logger": "workspace:*",
         "@inkline/utils": "workspace:*",
         "@nuxt/kit": "catalog:",
         "dependency-tree": "^11.0.1",

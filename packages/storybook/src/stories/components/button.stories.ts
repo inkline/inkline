@@ -1,4 +1,4 @@
-import './button.preview.scss';
+import './button.preview.css';
 import { Button } from '@inkline/component-button';
 import {
     ButtonBasicExample,

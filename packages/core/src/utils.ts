@@ -1,5 +1,4 @@
-import { defaultIndent } from './constants';
-import type { CamelCase, KebabCase } from 'type-fest';
+import type { KebabCase } from 'type-fest';
 import {
     CornersPropertyKeys,
     ExportedName,
@@ -12,6 +11,7 @@ import {
 } from './types';
 import { isNumberOrNumberString } from './typeGuards';
 import parseColor from 'color';
+import { toCamelCase } from '@inkline/utils';
 
 /**
  * Arrays
@@ -30,12 +30,13 @@ export function insertInBetweenElements<T>(array: T[], value: T): T[] {
  * Strings
  */
 
-export function toCamelCase<T extends string>(string: T): CamelCase<T> {
-    return string.replace(/-([a-zA-Z0-9])/g, (g) => g[1].toUpperCase()) as CamelCase<T>;
-}
-
-export function toKebabCase<T extends string>(string: T): KebabCase<T> {
-    return string.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase() as KebabCase<T>;
+export function toCssName<T extends string>(string: T): KebabCase<T> {
+    return string
+        .replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? '-' : '') + $.toLowerCase())
+        .replace(
+            /(_([a-z]))/g,
+            (_, p0: string | null, p1: string | null) => '-' + (p1 ?? p0 ?? '')
+        ) as KebabCase<T>;
 }
 
 export function toExportedName<T extends string>(name: T): ExportedName<T> {
@@ -46,27 +47,6 @@ export function toExportedVariable<Name extends string>(variable: Variable<Name>
     return {
         [toExportedName(variable.__name)]: variable
     };
-}
-
-export function toCssName<T extends string>(string: T): KebabCase<T> {
-    return string
-        .replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? '-' : '') + $.toLowerCase())
-        .replace(
-            /(_([a-z]))/g,
-            (_, p0: string | null, p1: string | null) => '-' + (p1 ?? p0 ?? '')
-        ) as KebabCase<T>;
-}
-
-export function capitalize<T extends string>(value: T): Capitalize<T> {
-    return (value.charAt(0).toUpperCase() + value.slice(1)) as Capitalize<T>;
-}
-
-export function addDefaultIndentToLine(string: string): string {
-    return `${defaultIndent}${string}`;
-}
-
-export function indentLines(string: string): string {
-    return string.split('\n').map(addDefaultIndentToLine).join('\n');
 }
 
 export function resolveStringPropertyValue<Keys extends string, T extends Record<Keys, TokenValue>>(

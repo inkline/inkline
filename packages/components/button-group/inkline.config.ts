@@ -1,6 +1,6 @@
 import { defineConfig } from '@inkline/config';
-import { useLoaderTheme } from './src/theme';
+import { useButtonGroupTheme } from './src/theme';
 
 export default defineConfig(() => {
-    useLoaderTheme();
+    useButtonGroupTheme();
 });

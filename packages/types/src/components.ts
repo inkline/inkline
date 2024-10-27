@@ -9,3 +9,5 @@ export interface CheckboxGroupOption extends FormOption {
 }
 
 export type RadioGroupOption = FormOption;
+
+export type PopupTriggerListener = 'hover' | 'click' | 'focus' | 'manual';

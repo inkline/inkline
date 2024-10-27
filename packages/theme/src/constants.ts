@@ -5,13 +5,6 @@ import {
 } from './types';
 
 /**
- * Themes
- */
-
-export const defaultThemeName = 'default';
-export const darkThemeName = 'dark';
-
-/**
  * Usage options
  */
 

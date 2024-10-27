@@ -1,8 +1,8 @@
-export interface Keymap {
-    [key: string]: Array<number | string>;
-}
+export const defaultIndent = '    ';
 
-export const keymap: Keymap = {
+export const keymap: {
+    [key: string]: Array<number | string>;
+} = {
     tab: ['Tab', 9],
     enter: ['Enter', 13],
     esc: ['Escape', 27],

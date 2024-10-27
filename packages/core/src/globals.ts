@@ -1,5 +1,4 @@
-import type { OutputFile, Themes } from "./types";
-
+import type { OutputFile, SetupFunction, Themes } from './types';
 
 /**
  * Themes
@@ -18,9 +17,14 @@ export const themes: Themes = {};
 export const files: OutputFile[] = [];
 
 export const state: {
-    themes: Themes,
-    files: OutputFile[]
+    themes: Themes;
+    files: OutputFile[];
 } = {
     themes,
     files
 };
+
+export function setState(setup: SetupFunction, newState: typeof state) {
+    Object.assign(state, newState);
+    setup();
+}

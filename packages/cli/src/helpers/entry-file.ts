@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { existsSync } from 'fs';
 import { readFile, writeFile } from 'fs/promises';
 import { addAfterImports } from './insert';
-import { Logger } from '@inkline/utils';
+import { Logger } from '@inkline/logger';
 import { createAppRegEx, defaultPrettierConfig } from '../constants';
 import prettier from 'prettier';
 

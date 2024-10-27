@@ -10615,7 +10615,7 @@
         },
         "selectors": [
             {
-                "__id": "a_O7pJkHVGPQnMrS9877R",
+                "__id": "_0YHyrJYxoPWU1yobvMvP",
                 "__type": "selector",
                 "__name": ".badge",
                 "__value": {
@@ -10625,7 +10625,7 @@
                 }
             },
             {
-                "__id": "hX5B3OFMsPQpmFNPOXyb-",
+                "__id": "f3GJUBiVDvltHl_Fesubc",
                 "__type": "selector",
                 "__name": "a:hover .badge, a:focus .badge",
                 "__value": {
@@ -10633,7 +10633,7 @@
                 }
             },
             {
-                "__id": "VC51YCehOQRsNgl3s6yR1",
+                "__id": "fdDO3SaNG4wUWnQfOS81h",
                 "__type": "selector",
                 "__name": ".badge",
                 "__value": {
@@ -10692,7 +10692,7 @@
                 }
             },
             {
-                "__id": "3HjLEk3P0E6r8QILqarC-",
+                "__id": "QQhj2_CeYbWJg-xPtYlXS",
                 "__type": "selector",
                 "__name": ".badge.-sm",
                 "__value": {
@@ -10739,7 +10739,7 @@
                 }
             },
             {
-                "__id": "UJW5bUPYjGTzctG0GvWab",
+                "__id": "vsF9hgu_uL0S2klX0miac",
                 "__type": "selector",
                 "__name": ".badge.-md",
                 "__value": {
@@ -10786,7 +10786,7 @@
                 }
             },
             {
-                "__id": "L3_5CRtSYr7jHiOPAdxRk",
+                "__id": "CXz3dM2QpbrSjQmwBq_G7",
                 "__type": "selector",
                 "__name": ".badge.-lg",
                 "__value": {
@@ -10833,7 +10833,7 @@
                 }
             },
             {
-                "__id": "yWJ8LGhe7a9dhzYo85Bqe",
+                "__id": "sUZP0X1EBIA0_80h2IEZT",
                 "__type": "selector",
                 "__name": ".badge.-primary",
                 "__value": {
@@ -10852,7 +10852,7 @@
                 }
             },
             {
-                "__id": "uoLV8Y3TxL6IolHNP4PeU",
+                "__id": "GS-FjU4NdoaF7AGToX2ts",
                 "__type": "selector",
                 "__name": ".badge.-secondary",
                 "__value": {
@@ -10871,7 +10871,7 @@
                 }
             },
             {
-                "__id": "AjGDS6HHK3J6bwMbXFJlH",
+                "__id": "ANHjpZBzSkzgJE_2W81Ma",
                 "__type": "selector",
                 "__name": ".badge.-light",
                 "__value": {
@@ -10890,7 +10890,7 @@
                 }
             },
             {
-                "__id": "ZyNcSZ7yVG42psnGkq_Zq",
+                "__id": "GIDAOXh-GCGbEmpDkII4c",
                 "__type": "selector",
                 "__name": ".badge.-dark",
                 "__value": {
@@ -10909,7 +10909,7 @@
                 }
             },
             {
-                "__id": "Sk5d_5_zZ7TwOWnk8X3kF",
+                "__id": "xcg5mpXFe4TrV3xmnjhYF",
                 "__type": "selector",
                 "__name": ".badge.-info",
                 "__value": {
@@ -10928,7 +10928,7 @@
                 }
             },
             {
-                "__id": "1K8DmaFLJUwXCM-TNOd7-",
+                "__id": "tkmFz9a6YduLpgMetzjQ8",
                 "__type": "selector",
                 "__name": ".badge.-success",
                 "__value": {
@@ -10947,7 +10947,7 @@
                 }
             },
             {
-                "__id": "jGkx7B1aWJKXd71aYhouw",
+                "__id": "TQlsae9_cdTczFVaIzXG1",
                 "__type": "selector",
                 "__name": ".badge.-warning",
                 "__value": {
@@ -10966,7 +10966,7 @@
                 }
             },
             {
-                "__id": "OB4t9L7fuAXDoXBYlymtb",
+                "__id": "ZDxA0CCXLAjZ5pwQozZ7J",
                 "__type": "selector",
                 "__name": ".badge.-danger",
                 "__value": {
@@ -10985,7 +10985,7 @@
                 }
             },
             {
-                "__id": "aVy8bI-DKTg-FzXDlr9ZJ",
+                "__id": "43bn4uWVm_VUUmRk6-wBc",
                 "__type": "selector",
                 "__name": ".badge.-pill",
                 "__value": {

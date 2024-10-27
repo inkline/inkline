@@ -1,13 +1,27 @@
-import { toCamelCase } from './toCamelCase';
+import { toCamelCase } from "./toCamelCase";
 
-describe('Helpers', () => {
-    describe('toCamelCase()', () => {
-        it('should convert string from kebab case to camel case', () => {
-            expect(toCamelCase('example-kebab-case')).toEqual('exampleKebabCase');
-        });
+describe('toCamelCase', () => {
+    it('should convert hyphenated text to camelCase', () => {
+        expect(toCamelCase('text-align-center')).toBe('textAlignCenter');
+    });
 
-        it('should convert string from snake case to camel case', () => {
-            expect(toCamelCase('example_snake_case')).toEqual('exampleSnakeCase');
-        });
+    it('should return the same string if there are no hyphens', () => {
+        expect(toCamelCase('text')).toBe('text');
+    });
+
+    it('should handle empty strings correctly', () => {
+        expect(toCamelCase('')).toBe('');
+    });
+
+    it('should modify uppercase letters following hyphens', () => {
+        expect(toCamelCase('text-Align-Center')).toBe('textAlignCenter');
+    });
+
+    it('should handle strings starting with a hyphen', () => {
+        expect(toCamelCase('-webkit-transition')).toBe('WebkitTransition');
+    });
+
+    it('should handle strings containing numbers', () => {
+        expect(toCamelCase('text-2-center')).toBe('text2Center');
     });
 });

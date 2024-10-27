@@ -5,9 +5,9 @@ import {
     nsdefine,
     defaultDefinitionOptions,
     multiply,
-    capitalize,
     keyframes
 } from '@inkline/core';
+import { capitalize } from '@inkline/utils';
 import {
     useKeyMappedSizeMultiplier,
     defaultComponentSizes,

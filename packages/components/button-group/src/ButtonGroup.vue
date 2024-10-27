@@ -1,60 +1,109 @@
 <script lang="ts">
-import { computed, defineComponent, toRef } from 'vue';
-import { useComponentColor, useComponentSize } from '@inkline/vue';
+import { computed, defineComponent, inject, provide } from 'vue';
+import { ButtonGroupKey } from '@inkline/vue';
+import { useComponentColor, useComponentSize } from '@inkline/composables';
 
-const componentName = 'Loader';
+const componentName = 'ButtonGroup';
 
 export default defineComponent({
     name: componentName,
     inheritAttrs: false,
     props: {
         /**
-         * The color variant of the loader
-         * @type primary | light | dark
-         * @default
-         * @name color
+         * Display the button group with vertical orientation
+         * @type Boolean
+         * @default false
+         * @name vertical
          */
-        color: {
-            type: String,
-            default: undefined
+        vertical: {
+            type: Boolean,
+            default: false
         },
         /**
-         * The size variant of the loader
-         * @type sm | md | lg | auto
+         * Display the button group as a block, spanning the full container width
+         * @type Boolean
+         * @default false
+         * @name block
+         */
+        block: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * The disabled state of the button group
+         * @type Boolean
+         * @default false
+         * @name disabled
+         */
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        /**
+         * The size of the button group
+         * @type String
          * @default
          * @name sizeMultiplier
          */
         size: {
             type: String,
             default: undefined
+        },
+        /**
+         * The color of the button group
+         * @type String
+         * @default
+         * @name color
+         */
+        color: {
+            type: String,
+            default: undefined
         }
     },
     setup(props) {
-        const rawColor = toRef(props, 'color');
-        const rawSize = toRef(props, 'size');
+        const buttonGroup = inject(ButtonGroupKey, null);
+
+        const rawColor = computed(() => props.color || buttonGroup?.color.value);
+        const rawSize = computed(() => props.size || buttonGroup?.size.value);
         const { color } = useComponentColor(componentName, rawColor);
         const { size } = useComponentSize(componentName, rawSize);
 
+        const isDisabled = computed((): boolean => {
+            return !!(props.disabled || buttonGroup?.disabled.value);
+        });
+
         const classes = computed(() => ({
+            [`-${size.value}`]: true,
             [`-${color.value}`]: true,
-            [`-${size.value}`]: true
+            '-horizontal': !props.vertical,
+            '-vertical': props.vertical,
+            '-block': props.block,
+            '-disabled': isDisabled.value
         }));
 
+        provide(ButtonGroupKey, {
+            disabled: isDisabled,
+            size,
+            color
+        });
+
         return {
-            classes
+            classes,
+            isDisabled
         };
     }
 });
 </script>
 
 <template>
-    <div v-bind="$attrs" class="loader" :class="classes" role="img" aria-hidden="true">
-        <span v-if="$slots.default" class="loader-text">
-            <!-- @slot default Slot for default loader content -->
-            <slot />
-        </span>
-        <svg viewBox="25 25 50 50">
-            <circle cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10" />
-        </svg>
+    <div
+        v-bind="$attrs"
+        role="group"
+        class="button-group"
+        :class="classes"
+        :aria-disabled="isDisabled ? 'true' : undefined"
+    >
+        <!-- @slot default Slot for default button group content -->
+        <slot />
     </div>
 </template>

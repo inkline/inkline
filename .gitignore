@@ -5,6 +5,7 @@ node_modules/
 lib/
 dist/
 .turbo/
+vite.config.ts.timestamp*
 
 # Test Files
 test-results/

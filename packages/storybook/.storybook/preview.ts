@@ -6,7 +6,7 @@ import { DecoratorHelpers } from '@storybook/addon-themes';
 import { markRaw, watch, ref } from 'vue';
 import { light, dark } from './theme';
 
-import { Inkline, useOptions, components } from 'inkline';
+import { Inkline, components, useOptions, globalComponentsAddon, colorModeAddon } from 'inkline';
 import { RouterLink } from './mocks';
 
 export const withInklineTheme = ({
@@ -48,7 +48,7 @@ export const withInklineTheme = ({
 
 setup((app) => {
     app.use(Inkline, {
-        components,
+        addons: [colorModeAddon(), globalComponentsAddon(components)],
         routerComponent: markRaw(RouterLink)
     });
 });

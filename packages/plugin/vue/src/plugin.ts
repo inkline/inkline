@@ -5,16 +5,16 @@ import defu from 'defu';
 
 export const defaultOptions: InklineOptions = {
     components: {},
-    props: {
-        color: '',
-        size: ''
-    },
-    propsByComponentName: {},
     colorMode: {
         preference: 'system',
         strategy: 'localStorage',
         renderMode: 'client'
     },
+    props: {
+        color: '',
+        size: ''
+    },
+    propsByComponentName: {},
     routerComponent: 'RouterLink',
     addons: []
 };

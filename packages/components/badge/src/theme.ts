@@ -17,7 +17,6 @@ import {
     useBrandColors
 } from '@inkline/theme';
 import {
-    capitalize,
     multiply,
     ref,
     selector,
@@ -25,6 +24,7 @@ import {
     nsdefine,
     defaultDefinitionOptions
 } from '@inkline/core';
+import { capitalize } from '@inkline/utils';
 
 const ns = 'badge';
 

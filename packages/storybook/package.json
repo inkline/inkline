@@ -10,10 +10,10 @@
         "test": "devtools test",
         "test:dev": "devtools test --watch",
         "test:ci": "devtools test --coverage",
-        "storybook": "storybook dev -p 6006"
+        "storybook": "storybook dev -p 6006 --no-open"
     },
     "dependencies": {
-        "@inkline/vue": "workspace:*"
+        "inkline": "workspace:*"
     },
     "devDependencies": {
         "@chromatic-com/storybook": "^1.9.0",

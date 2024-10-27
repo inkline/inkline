@@ -1,6 +1,5 @@
 import { loadConfig as c12, LoadConfigOptions } from 'c12';
-import { state } from '@inkline/core';
-import { Configuration, ConfigurationOptions, ModuleOptions, SetupFunction } from './types';
+import { Configuration } from './types';
 
 export const defaultOutputDir = './src/theme';
 export const defaultConfigFileNamespace = 'inkline';
@@ -13,21 +12,6 @@ export const defaultConfig: Configuration = {
     files: [],
     options: {}
 };
-
-export function defineConfig(
-    setup: SetupFunction,
-    options: ConfigurationOptions<ModuleOptions> = {}
-): Configuration {
-    state.themes = {};
-    state.files = [];
-
-    setup();
-
-    return {
-        ...state,
-        options
-    };
-}
 
 export async function loadConfigFromFile(
     options: LoadConfigOptions<Configuration> = {}

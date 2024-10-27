@@ -1,6 +1,6 @@
 export * from './addClass';
 export * from './breakpointClass';
-export * from './capitalizeFirst';
+export * from './capitalize';
 export * from './clone';
 export * from './constants';
 export * from './debounce';
@@ -18,7 +18,7 @@ export * from './isFunction';
 export * from './isKey';
 export * from './isMobile';
 export * from './isVisible';
-export * from './logger';
+export * from './indent';
 export * from './markSearchString';
 export * from './memoize';
 export * from './off';

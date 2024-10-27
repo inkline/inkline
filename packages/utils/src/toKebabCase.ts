@@ -1,6 +1,5 @@
-export function toKebabCase(string: string): string {
-    return string.replace(
-        /(_([a-zA-Z])|[A-Z])/g,
-        (_, p0: string, p1: string) => '-' + (p1 || p0).toLowerCase()
-    );
+import type { KebabCase } from "type-fest";
+
+export function toKebabCase<T extends string>(string: T): KebabCase<T> {
+    return string.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase() as KebabCase<T>;
 }

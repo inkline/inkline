@@ -11,6 +11,8 @@ const componentDirs = glob.sync('**', {
     onlyDirectories: true
 });
 
+componentDirs.sort((a, b) => (a.includes(b) ? -1 : a.localeCompare(b)));
+
 export default defineConfig({
     plugins: [
         ignoreComponentsCss(),

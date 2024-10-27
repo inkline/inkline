@@ -6,7 +6,8 @@ import type {
     TokenValue,
     Variable
 } from "@inkline/core";
-import { ref, variable, toCamelCase, defaultRenameFn, defaultDefinitionOptions } from "@inkline/core";
+import { ref, variable, defaultRenameFn, defaultDefinitionOptions } from "@inkline/core";
+import { toCamelCase } from "@inkline/utils";
 
 /**
  * Types

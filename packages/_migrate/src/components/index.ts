@@ -6,8 +6,6 @@ export * from '@inkline/component-breadcrumb';
 export * from '@inkline/component-button';
 export * from '@inkline/component-loader';
 
-export * from '@inkline/inkline/components/ButtonGroup';
-export * from '@inkline/inkline/components/Card';
 export * from '@inkline/inkline/components/Checkbox';
 export * from '@inkline/inkline/components/CheckboxButtons';
 export * from '@inkline/inkline/components/CheckboxGroup';
@@ -53,7 +51,6 @@ export * from '@inkline/inkline/components/RadioButtons';
 export * from '@inkline/inkline/components/RadioGroup';
 export * from '@inkline/inkline/components/Row';
 export * from '@inkline/inkline/components/Select';
-export * from '@inkline/inkline/components/SelectOption';
 export * from '@inkline/inkline/components/Sidebar';
 export * from '@inkline/inkline/components/Table';
 export * from '@inkline/inkline/components/Tabs';

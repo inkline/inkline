@@ -12,9 +12,10 @@
     },
     "dependencies": {
         "@inkline/core": "workspace:*",
+        "@inkline/composables": "workspace:*",
         "@inkline/theme": "workspace:*",
-        "@inkline/vue": "workspace:*",
-        "@inkline/addon-modal-manager": "workspace:*"
+        "@inkline/utils": "workspace:*",
+        "@inkline/vue": "workspace:*"
     },
     "devDependencies": {
         "@inkline/config": "workspace:*",

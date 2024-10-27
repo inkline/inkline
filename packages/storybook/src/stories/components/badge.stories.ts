@@ -1,4 +1,4 @@
-import './badge.preview.scss';
+import './badge.preview.css';
 import { Badge } from '@inkline/component-badge';
 import {
     BadgeBasicExample,

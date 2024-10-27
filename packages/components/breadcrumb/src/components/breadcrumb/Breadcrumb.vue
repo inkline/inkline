@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed, defineComponent, toRef } from 'vue';
-import { useComponentColor, useComponentSize } from '@inkline/vue';
+import { useComponentColor, useComponentSize } from '@inkline/composables';
 
 const componentName = 'Breadcrumb';
 

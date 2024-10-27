@@ -39,7 +39,8 @@
     },
     "dependencies": {
         "@inkline/core": "workspace:*",
-        "c12": "^2.0.0"
+        "@inkline/generator-css": "workspace:*",
+        "c12": "^2.0.1"
     },
     "funding": {
         "type": "github",

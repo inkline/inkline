@@ -1,7 +1,7 @@
 import { existsSync } from 'fs';
 import { writeFile } from 'fs/promises';
 import { resolve } from 'node:path';
-import { Logger } from '@inkline/utils';
+import { Logger } from '@inkline/logger';
 import chalk from 'chalk';
 import {
     defaultConfigFileContents,
@@ -20,7 +20,7 @@ import {
 import type { InitCommandOptions, InitEnv } from "../types";
 import { DevEnvType } from '../types';
 import prettier from 'prettier';
-import { capitalizeFirst } from '@inkline/utils';
+import { capitalize } from '@inkline/utils';
 import { PackageJson } from "type-fest";
 
 /**
@@ -69,7 +69,7 @@ export async function init(options: InitCommandOptions) {
                 initSuccessful = false;
             } else {
                 Logger.success(
-                    `Detected ${capitalizeFirst(devEnv.type)}.js development environment`
+                    `Detected ${capitalize(devEnv.type)}.js development environment`
                 );
             }
 

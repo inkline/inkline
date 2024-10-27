@@ -1,9 +1,11 @@
-import { InklineAddon } from '@inkline/types';
+import type { InklineAddon, InklineOptions } from '@inkline/types';
 
-export const globalComponentsAddon: InklineAddon = (app, options) => {
-    for (const componentIndex in options.value.components) {
-        app.component(componentIndex, options.value.components[componentIndex]);
-    }
-};
+export function globalComponentsAddon(components: InklineOptions['components']): InklineAddon {
+    return (app) => {
+        for (const componentIndex in components) {
+            app.component(componentIndex, components[componentIndex]);
+        }
+    };
+}
 
 export default globalComponentsAddon;

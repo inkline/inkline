@@ -2,6 +2,7 @@ packages:
     - packages/*
     - packages/components/*
     - packages/e2e/*
+    - packages/generators/*
     - packages/integrations/*
     - packages/plugin/*
     - packages/plugin/addons/*

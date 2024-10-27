@@ -1,6 +1,6 @@
 import { UserOptions } from './types';
 import { build as buildConfig, getResolvedBuildOptions } from '@inkline/config';
-import { Logger } from '@inkline/utils';
+import { Logger } from '@inkline/logger';
 
 export async function build(options: UserOptions, watch: boolean = false) {
     const { configFile, configExtName } = getResolvedBuildOptions(options);

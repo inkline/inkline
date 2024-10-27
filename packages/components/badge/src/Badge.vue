@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useComponentColor, useComponentSize } from '@inkline/vue';
+import { useComponentColor, useComponentSize } from '@inkline/composables';
 import { computed, defineComponent, toRef } from 'vue';
 
 const componentName = 'Badge';

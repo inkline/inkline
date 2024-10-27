@@ -11,11 +11,13 @@
     },
     "dependencies": {
         "@inkline/validation": "workspace:*",
+        "@inkline/vue": "workspace:*",
         "@inkline/utils": "workspace:*"
     },
     "devDependencies": {
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
+        "@inkline/types": "workspace:*",
         "@types/node": "catalog:",
         "@vue/test-utils": "catalog:",
         "@testing-library/vue": "catalog:",

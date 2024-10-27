@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "devtools tsup dev",
+        "dev": "devtools tsup watch",
         "build": "devtools tsup build",
         "lint": "devtools eslint",
         "test": "devtools test"
@@ -20,7 +20,8 @@
         "vitest": "catalog:"
     },
     "dependencies": {
-        "@inkline/core": "workspace:*"
+        "@inkline/core": "workspace:*",
+        "@inkline/utils": "workspace:*"
     },
     "files": [
         "dist",

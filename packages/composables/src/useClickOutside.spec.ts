@@ -1,5 +1,5 @@
 import { useClickOutside } from './useClickOutside';
-import { onBeforeUnmount, onMounted, PropType } from 'vue';
+import { onBeforeUnmount, PropType } from 'vue';
 import { defineComponent, toRef } from 'vue';
 import { mount } from '@vue/test-utils';
 import { fireEvent } from '@testing-library/vue';
@@ -19,15 +19,7 @@ const TestComponent = defineComponent({
         const elementRef = toRef(props, 'element');
         const fn = toRef(props, 'fn');
 
-        const { addOnClickOutsideEventBindings, removeOnClickOutsideEventBindings } =
-            useClickOutside({
-                elementRef,
-                fn
-            });
-
-        onMounted(() => {
-            addOnClickOutsideEventBindings();
-        });
+        const removeOnClickOutsideEventBindings = useClickOutside(elementRef, fn);
 
         onBeforeUnmount(() => {
             removeOnClickOutsideEventBindings();
@@ -63,7 +55,7 @@ describe('Composables', () => {
         });
 
         describe('binding()', () => {
-            it('should call bound function', () => {
+            it('should call bound function', async () => {
                 const fn = vi.fn();
                 const element = {
                     offsetWidth: true,
@@ -77,12 +69,12 @@ describe('Composables', () => {
                     }
                 });
 
-                fireEvent.mouseDown(document.body);
+                await fireEvent.mouseDown(document.body);
 
                 expect(fn).toHaveBeenCalledWith(expect.any(Event));
             });
 
-            it('should not call bound function if element is target', () => {
+            it('should not call bound function if element is target', async () => {
                 const fn = vi.fn();
 
                 mount(TestComponent, {
@@ -92,12 +84,12 @@ describe('Composables', () => {
                     }
                 });
 
-                fireEvent.mouseDown(document.body);
+                await fireEvent.mouseDown(document.body);
 
                 expect(fn).not.toHaveBeenCalled();
             });
 
-            it('should not call bound function if element contains target', () => {
+            it('should not call bound function if element contains target', async () => {
                 const fn = vi.fn();
                 const element = {
                     offsetWidth: true,
@@ -111,12 +103,12 @@ describe('Composables', () => {
                     }
                 });
 
-                fireEvent.mouseDown(document.body);
+                await fireEvent.mouseDown(document.body);
 
                 expect(fn).not.toHaveBeenCalled();
             });
 
-            it('should not call bound function if element is not visible', () => {
+            it('should not call bound function if element is not visible', async () => {
                 const fn = vi.fn();
                 const element = {
                     getClientRects: () => [],
@@ -130,7 +122,7 @@ describe('Composables', () => {
                     }
                 });
 
-                fireEvent.mouseDown(document.body);
+                await fireEvent.mouseDown(document.body);
 
                 expect(fn).not.toHaveBeenCalled();
             });

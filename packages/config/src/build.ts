@@ -15,7 +15,7 @@ import { basename, dirname, extname, resolve } from 'node:path';
 import { existsSync } from 'fs';
 import { writeFile, mkdir } from 'fs/promises';
 import { exists } from './utils';
-import { cssGenerator } from '@inkline/core';
+import { cssGenerator } from '@inkline/generator-css';
 
 type UserBuildOptions = ConfigurationOptions & {
     configFile?: string;

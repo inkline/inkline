@@ -1,5 +1,5 @@
 import { build } from '@inkline/config';
-import { Logger } from '@inkline/utils';
+import { Logger } from '@inkline/logger';
 import { GenerateCommandOptions } from "../types";
 
 export async function generate(options: GenerateCommandOptions) {

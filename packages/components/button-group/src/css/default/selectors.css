@@ -1,100 +1,55 @@
-.loader {
-    display: inline-block;
+.button-group {
     position: relative;
-    width: var(--loader--width);
-    height: var(--loader--height);
+    display: inline-flex;
+    vertical-align: middle;
+    box-sizing: border-box;
 }
 
-.loader::before {
-    content: "";
-    display: block;
-    padding-top: 100%;
+.button-group .button, .button-group .button-group {
+    box-shadow: none;
 }
 
-.loader-text, .loader > svg {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    inset: 0;
-    margin: auto;
+.button-group.-horizontal > .button:not(:last-child), .button-group.-horizontal > .button-group:has(+ .button-group) .button:last-child, .button-group.-horizontal > .button-group:has(+ .button) .button:last-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-width: 0;
 }
 
-.loader-text {
+.button-group.-horizontal > .button:not(:first-child), .button-group.-horizontal > .button-group + .button-group .button:first-child, .button-group.-horizontal > .button + .button-group .button:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.button-group.-vertical > .button:not(:last-child), .button-group.-vertical > .button-group:has(+ .button-group) .button:last-child, .button-group.-vertical > .button-group:has(+ .button) .button:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-width: 0;
+}
+
+.button-group.-vertical > .button:not(:first-child), .button-group.-vertical > .button-group + .button-group .button:first-child, .button-group.-vertical > .button + .button-group .button:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.button-group.-block {
     display: flex;
+    flex-basis: 100%;
+}
+
+.button-group.-block > .button {
+    flex-basis: 100%;
+}
+
+.button-group.-vertical {
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
-    align-items: center;
 }
 
-.loader.-auto {
+.button-group.-vertical .button, .button-group.-vertical .button-group, .button-group.-vertical [class$="-wrapper"] {
     width: 100%;
-    height: 100%;
 }
 
-.loader > svg {
-    animation-name: loader-rotate;
-    animation-duration: var(--loader--animation-duration);
-    animation-direction: var(--loader--animation-direction);
-    animation-iteration-count: var(--loader--animation-iteration-count);
-    transform-origin: center center;
-}
-
-.loader > svg > circle {
-    stroke: var(--loader--color);
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35px;
-    animation-name: loader-dash;
-    animation-duration: var(--loader--animation-duration);
-    animation-direction: var(--loader--animation-direction);
-    animation-iteration-count: var(--loader--animation-iteration-count);
-    stroke-linecap: round;
-}
-
-@keyframes loader-rotate {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes loader-dash {
-    0% {
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0;
-    }
-    
-    50% {
-        stroke-dasharray: 89, 200;
-        stroke-dashoffset: -35px;
-    }
-    
-    100% {
-        stroke-dasharray: 89, 200;
-        stroke-dashoffset: -124px;
-    }
-}
-
-.loader.-sm {
-    width: var(--loader--sm--width);
-    height: var(--loader--sm--height);
-}
-
-.loader.-md {
-    width: var(--loader--md--width);
-    height: var(--loader--md--height);
-}
-
-.loader.-lg {
-    width: var(--loader--lg--width);
-    height: var(--loader--lg--height);
-}
-
-.loader.-primary > svg > circle {
-    stroke: var(--loader--primary--color);
-}
-
-.loader.-light > svg > circle {
-    stroke: var(--loader--light--color);
-}
-
-.loader.-dark > svg > circle {
-    stroke: var(--loader--dark--color);
+.button-group {
+    box-shadow: var(--button-group--boxShadow);
 }

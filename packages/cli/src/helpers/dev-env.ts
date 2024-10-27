@@ -11,7 +11,7 @@ import {
     defaultWebpackTsDevEnvConfigFileContents,
     unknownDevEnvironment
 } from '../constants';
-import { Logger } from '@inkline/utils';
+import { Logger } from '@inkline/logger';
 import prettier from 'prettier';
 import { addAfterImports, addAfterRequires } from './insert';
 import { addFieldToDefaultExport, addImport } from './import';

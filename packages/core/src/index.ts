@@ -1,3 +1,4 @@
+export * from './config';
 export * from './constants';
 export * from './generators';
 export * from './globals';

@@ -12,7 +12,7 @@ import {
 import type { Placement } from '@floating-ui/dom';
 import type { ComputePositionConfig } from '@floating-ui/core';
 
-const componentName = 'Tooltip';
+const componentName = 'Popup';
 
 export default defineComponent({
     name: componentName,

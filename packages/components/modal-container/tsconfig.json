@@ -11,6 +11,7 @@
         "src/**/*.ts",
         "src/**/*.vue",
         "vite.config.ts",
+        "tsup.config.ts",
         "inkline.config.ts"
     ]
 }

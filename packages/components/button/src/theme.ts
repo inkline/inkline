@@ -1,5 +1,4 @@
 import {
-    capitalize,
     defaultDefinitionOptions,
     multiply,
     nsdefine,
@@ -7,6 +6,7 @@ import {
     ref,
     selector
 } from '@inkline/core';
+import { capitalize } from '@inkline/utils';
 import {
     ComponentBrandColor,
     ComponentSize,

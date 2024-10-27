@@ -1,3 +1,4 @@
+import './loader.preview.css';
 import { Loader } from '@inkline/component-loader';
 import {
     LoaderBasicExample,

@@ -12,7 +12,9 @@
     },
     "dependencies": {
         "@inkline/core": "workspace:*",
+        "@inkline/composables": "workspace:*",
         "@inkline/theme": "workspace:*",
+        "@inkline/utils": "workspace:*",
         "@inkline/vue": "workspace:*"
     },
     "devDependencies": {

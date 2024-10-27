@@ -25,6 +25,4 @@ export const defaultSelectorOptions: SelectorOptions = {
  * Generator options
  */
 
-export const defaultIndent = '    ';
-
 export const defaultRenameFn = (name: string) => name;
