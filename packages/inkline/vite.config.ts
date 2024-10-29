@@ -45,25 +45,6 @@ export default defineConfig({
             }
         }
     },
-    test: {
-        globals: true,
-        environment: 'jsdom',
-        setupFiles: ['./src/__tests__/setup.ts'],
-        include: ['src/**/*.spec.ts', 'scripts/**/*.spec.ts'],
-        coverage: {
-            provider: 'v8',
-            include: ['src/**/*.ts', 'src/**/*.vue'],
-            exclude: [
-                '**/__mocks__/*',
-                '**/__tests__/*',
-                '**/stories/*',
-                '**/examples/*',
-                '**/manifest.ts',
-                '**/__storybook__'
-            ],
-            reporter: ['text', 'json', 'html', 'lcov']
-        }
-    },
     optimizeDeps: {
         exclude: ['coverage', 'dist', 'lib', 'package', 'scripts']
     }

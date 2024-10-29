@@ -11,7 +11,7 @@ module.exports = {
         getAbsolutePath("@storybook/addon-a11y"),
         getAbsolutePath("storybook-dark-mode"),
         getAbsolutePath("@chromatic-com/storybook"),
-        "@storybook/experimental-addon-vitest"
+        getAbsolutePath("@storybook/experimental-addon-test")
     ],
     staticDirs: ['../public'],
     framework: {
