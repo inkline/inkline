@@ -1,10 +1,13 @@
 /// <reference types="type-fest" />
 
 import { InklineOptionsKey, resolveOptions } from '@inkline/vue';
-import type { UserOptions } from '@inkline/types';
+import { InklineOptions, UserOptions } from '@inkline/types';
+import { Ref, ref } from 'vue';
 
-export function createTestingInklineOptionsProvide(userOptions: UserOptions = {}) {
+export function createTestingInklineOptionsProvide(
+    userOptions: UserOptions = {}
+): Record<string, Ref<InklineOptions>> {
     return {
-        [InklineOptionsKey]: resolveOptions(userOptions)
+        [InklineOptionsKey]: ref(resolveOptions(userOptions))
     };
 }

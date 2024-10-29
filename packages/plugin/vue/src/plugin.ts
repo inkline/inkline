@@ -1,5 +1,6 @@
 import { Plugin, ref } from 'vue';
 import { InklineOptionsKey } from './symbols';
+import { defaultIconDefinitions } from './defaults';
 import { InklineOptions, UserOptions } from '@inkline/types';
 import defu from 'defu';
 
@@ -10,12 +11,17 @@ export const defaultOptions: InklineOptions = {
         strategy: 'localStorage',
         renderMode: 'client'
     },
+    icons: {
+        definitions: defaultIconDefinitions
+    },
+    router: {
+        component: 'RouterLink'
+    },
     props: {
         color: '',
         size: ''
     },
     propsByComponentName: {},
-    routerComponent: 'RouterLink',
     addons: []
 };
 

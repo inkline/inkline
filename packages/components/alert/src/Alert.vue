@@ -1,8 +1,27 @@
 <script lang="ts">
-import { ref, computed, watch, defineComponent, onBeforeUpdate, toRef } from 'vue';
+import {
+    ref,
+    computed,
+    watch,
+    defineComponent,
+    onBeforeUpdate,
+    toRef,
+    type VNode,
+    h,
+    type PropType
+} from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/composables';
+import { Icon } from '@inkline/component-icon';
+import type { StringOrRenderableType } from '@inkline/types';
 
 const componentName = 'Alert';
+
+const iconByType: Record<string, VNode> = {
+    info: h(Icon, { name: 'ink:info' }),
+    success: h(Icon, { name: 'ink:check' }),
+    warning: h(Icon, { name: 'ink:warning' }),
+    danger: h(Icon, { name: 'ink:danger' })
+};
 
 export default defineComponent({
     name: componentName,
@@ -57,6 +76,16 @@ export default defineComponent({
         dismissAriaLabel: {
             type: String,
             default: 'Dismiss'
+        },
+        /**
+         * The icon to be rendered in the toast
+         * @type string | VNode | VNode[]
+         * @default undefined
+         * @name icon
+         */
+        icon: {
+            type: [String, Object] as PropType<StringOrRenderableType>,
+            default: undefined
         }
     },
     emits: [
@@ -84,6 +113,12 @@ export default defineComponent({
             ...slotsClasses.value
         }));
 
+        const resolvedIcon = computed(() =>
+            typeof props.icon !== 'undefined' ? props.icon : iconByType[color.value]
+        );
+
+        const isVNodeIcon = computed(() => typeof resolvedIcon.value === 'object');
+
         onBeforeUpdate(() => {
             slotsClasses.value = getSlotsClasses();
         });
@@ -109,6 +144,8 @@ export default defineComponent({
         return {
             classes,
             visible,
+            resolvedIcon,
+            isVNodeIcon,
             dismiss
         };
     }
@@ -117,9 +154,12 @@ export default defineComponent({
 
 <template>
     <div v-show="visible" v-bind="$attrs" class="alert" role="alert" :class="classes">
-        <span v-if="$slots.icon" class="alert-icon" role="img" aria-hidden="true">
+        <span v-if="resolvedIcon || $slots.icon" class="alert-icon" role="img" aria-hidden="true">
             <!-- @slot icon Slot for alert icon -->
-            <slot name="icon" />
+            <slot name="icon">
+                <component :is="resolvedIcon" v-if="isVNodeIcon" />
+                <span v-else>{{ resolvedIcon }}</span>
+            </slot>
         </span>
         <div class="alert-content">
             <!-- @slot default Slot for default alert content -->

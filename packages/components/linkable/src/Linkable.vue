@@ -69,7 +69,7 @@ export default defineComponent({
         });
 
         const renderComponent = computed(() => {
-            const routerComponent = options.value.routerComponent;
+            const routerComponent = options.value.router?.component;
             if (props.to && routerComponent) {
                 if (typeof routerComponent === 'string') {
                     return resolveComponent(routerComponent) as Component;

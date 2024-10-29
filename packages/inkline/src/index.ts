@@ -26,6 +26,7 @@ export * from '@inkline/utils';
 export * from '@inkline/vue';
 export * from '@inkline/addon-color-mode';
 export * from '@inkline/addon-global-components';
+export * from '@inkline/addon-icons';
 
 /**
  * Components

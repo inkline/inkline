@@ -1,0 +1,5 @@
+#storybook-root {
+    > .toast + .toast {
+        margin-top: var(--spacing);
+    }
+}

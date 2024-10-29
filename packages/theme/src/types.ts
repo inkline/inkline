@@ -11,6 +11,7 @@ export type ComponentBaseColor =
     | 'purple'
     | 'pink';
 export type ComponentStateColor = 'info' | 'success' | 'warning' | 'danger';
-export type ComponentBrandColor = 'primary' | 'secondary' | 'light' | 'dark' | ComponentStateColor;
+export type ComponentBrandNeutralColor = 'light' | 'dark';
+export type ComponentBrandColor = 'primary' | 'secondary' | ComponentBrandNeutralColor | ComponentStateColor;
 export type ComponentNeutralColor = 'white' | 'black' | 'gray';
 export type ComponentColor = ComponentBrandColor | ComponentBaseColor | ComponentNeutralColor;

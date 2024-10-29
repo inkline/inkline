@@ -1,4 +1,5 @@
 import type { App, Component, Ref } from 'vue';
+import { IconDefinition } from './components';
 
 export type ComponentProps = {
     color?: string;
@@ -32,9 +33,19 @@ export type UserOptions = {
     };
 
     /**
+     * Icons
+     */
+    icons?: {
+        component?: Component | string;
+        definitions: Record<string, IconDefinition>;
+    };
+
+    /**
      * Routing
      */
-    routerComponent?: Component | string;
+    router?: {
+        component?: Component | string;
+    };
 
     /**
      * Addons

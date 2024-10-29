@@ -1,7 +1,7 @@
 <template>
     <Alert>
         <template #icon>
-            <Icon name="ink-info" size="lg" />
+            <Icon name="ink:info" size="lg" />
         </template>
         <strong>Alert Title</strong>
         <p>

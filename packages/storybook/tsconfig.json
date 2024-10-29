@@ -15,10 +15,12 @@
             "@inkline/component-button/*": ["../components/button/src/*"],
             "@inkline/component-button-group/*": ["../components/button-group/src/*"],
             "@inkline/component-card/*": ["../components/card/src/*"],
+            "@inkline/component-icon/*": ["../components/icon/src/*"],
             "@inkline/component-loader/*": ["../components/loader/src/*"],
-            "@inkline/component-popup/*": ["../components/popup/src/*"],
-            "@inkline/component-tooltip/*": ["../components/tooltip/src/*"],
             "@inkline/component-popover/*": ["../components/popover/src/*"],
+            "@inkline/component-popup/*": ["../components/popup/src/*"],
+            "@inkline/component-toast/*": ["../components/toast/src/*"],
+            "@inkline/component-tooltip/*": ["../components/tooltip/src/*"]
         }
     },
     "include": [

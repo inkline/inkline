@@ -73,6 +73,7 @@ export type SourceMap = {
     placeItems: TokenValue;
     position: TokenValue;
     right: TokenValue;
+    size: TokenValue;
     textAlign: TokenValue;
     textDecoration: TokenValue;
     textTransform: TokenValue;

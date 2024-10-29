@@ -5,9 +5,11 @@ import { Breadcrumb, BreadcrumbItem } from '@inkline/component-breadcrumb';
 import { Button } from '@inkline/component-button';
 import { ButtonGroup } from '@inkline/component-button-group';
 import { Card } from '@inkline/component-card';
+import { Icon } from '@inkline/component-icon';
 import { Loader } from '@inkline/component-loader';
 import { Popover } from '@inkline/component-popover';
 import { Popup } from '@inkline/component-popup';
+import { Toast } from '@inkline/component-toast';
 import { Tooltip } from '@inkline/component-tooltip';
 
 export const components: Record<string, Component> = {
@@ -18,8 +20,10 @@ export const components: Record<string, Component> = {
     Button,
     ButtonGroup,
     Card,
+    Icon,
     Loader,
     Popover,
     Popup,
+    Toast,
     Tooltip
 };

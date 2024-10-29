@@ -23,4 +23,3 @@
         </p>
     </Alert>
 </template>
-<script setup lang="ts"></script>

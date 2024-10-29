@@ -20,15 +20,18 @@
         "@inkline/vue": "workspace:*",
         "@inkline/addon-color-mode": "workspace:*",
         "@inkline/addon-global-components": "workspace:*",
+        "@inkline/addon-icons": "workspace:*",
         "@inkline/component-alert": "workspace:*",
         "@inkline/component-badge": "workspace:*",
         "@inkline/component-breadcrumb": "workspace:*",
         "@inkline/component-button": "workspace:*",
         "@inkline/component-button-group": "workspace:*",
         "@inkline/component-card": "workspace:*",
+        "@inkline/component-icon": "workspace:*",
         "@inkline/component-loader": "workspace:*",
         "@inkline/component-popover": "workspace:*",
         "@inkline/component-popup": "workspace:*",
+        "@inkline/component-toast": "workspace:*",
         "@inkline/component-tooltip": "workspace:*"
     },
     "devDependencies": {

@@ -1,8 +1,8 @@
 import {
-    ComponentBrandColor,
+    ComponentBrandColor, ComponentBrandNeutralColor,
     ComponentSize,
-    ComponentStateColor,
-} from './types';
+    ComponentStateColor
+} from "./types";
 
 /**
  * Usage options
@@ -17,7 +17,7 @@ export const defaultComponentStateColors: ComponentStateColor[] = [
     'danger'
 ];
 
-export const defaultComponentNeutralColors: ComponentBrandColor[] = ['light', 'dark'];
+export const defaultComponentNeutralColors: ComponentBrandNeutralColor[] = ['light', 'dark'];
 
 export const defaultComponentBrandColors: ComponentBrandColor[] = [
     'primary',
