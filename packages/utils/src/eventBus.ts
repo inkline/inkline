@@ -1,10 +1,10 @@
 export type CallbackFn = (...args: any[]) => any;
 
 type EventPayloadMap<EventMap> = {
-    [EventName in keyof EventMap]: unknown;
+    [EventName in keyof EventMap]: unknown[];
 };
 
-type Listener<Payload> = (payload: Payload) => void;
+type Listener<Payload extends unknown[]> = (...payload: Payload) => void;
 
 export interface EventBus<EventMap extends EventPayloadMap<EventMap> = Record<string, any>> {
     on<EventName extends keyof EventMap & string>(
@@ -24,7 +24,7 @@ export interface EventBus<EventMap extends EventPayloadMap<EventMap> = Record<st
 
     emit<EventName extends keyof EventMap & string>(
         eventName: EventName,
-        event?: EventMap[EventName],
+        ...args: EventMap[EventName]
     ): void;
 }
 
@@ -47,10 +47,11 @@ export function createEventBus<
         },
 
         once(eventName, fn) {
-            const handler: typeof fn = (payload) => {
+            const handler: typeof fn = (...payload) => {
                 this.off(eventName, handler);
-                fn(payload);
+                fn(...payload);
             };
+
             this.on(eventName, handler);
         },
 
@@ -61,11 +62,11 @@ export function createEventBus<
             }
         },
 
-        emit(eventName, event) {
+        emit(eventName, ...args) {
             const eventFns = handlers.get(eventName);
             if (eventFns) {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-                eventFns.slice().forEach((handler) => handler(event));
+                eventFns.slice().forEach((handler) => handler(...args));
             }
         },
     };

@@ -7,7 +7,7 @@
             "vitest/globals"
         ],
         "paths": {
-            "inkline": ["./src/__build__/inkline.ts"],
+            "inkline": ["./src/__stubs__/inkline.ts"],
         }
     },
     "include": [

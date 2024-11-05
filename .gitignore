@@ -4,6 +4,7 @@ node_modules/
 # Build Files
 lib/
 dist/
+storybook-static/
 .turbo/
 vite.config.ts.timestamp*
 

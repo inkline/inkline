@@ -1,5 +1,6 @@
 import type { ComputedRef, Ref } from 'vue';
 import type { SelectOption } from './components';
+import { FormErrorCondition, ResolvedFormSchema } from './forms';
 
 export interface ButtonGroupInjection {
     disabled: ComputedRef<boolean>;
@@ -31,13 +32,14 @@ export interface DropdownInjection {
 }
 
 export interface FormInjection {
-    schema?: Ref;
+    schema: Ref<ResolvedFormSchema<any> | undefined>;
     size: Ref<string>;
     color: Ref<string>;
     disabled: Ref<boolean>;
     readonly: Ref<boolean>;
-    onInput: (name: any, value: any) => void;
-    onBlur: (name: any, event: any) => void;
+    errorCondition: Ref<FormErrorCondition | undefined>;
+    onInput: (name: string, value: any) => void;
+    onBlur: (name: string, event: any) => void;
 }
 
 export interface FormGroupInjection {
@@ -45,6 +47,7 @@ export interface FormGroupInjection {
     color: Ref<string>;
     disabled: Ref<boolean>;
     readonly: Ref<boolean>;
+    errorCondition: Ref<FormErrorCondition | undefined>;
     onInput: (name: any, value: any) => void;
     onBlur: (name: any, event: any) => void;
 }

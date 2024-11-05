@@ -3,20 +3,16 @@
  */
 import { Renderable } from './renderable';
 
-export type ReservedFormStateKeys =
-    | 'valid'
-    | 'invalid'
-    | 'untouched'
-    | 'touched'
-    | 'pristine'
-    | 'dirty';
-export type ReservedFormFieldKeys = 'value' | 'validators';
-export type ReservedFormKeys = ReservedFormFieldKeys | ReservedFormStateKeys | 'errors';
+export type FormStateKeys = 'valid' | 'invalid' | 'untouched' | 'touched' | 'pristine' | 'dirty';
+export type FormFieldKeys = 'value' | 'validators';
+export type ReservedFormKeys = FormFieldKeys | FormStateKeys | 'errors';
 export type AllowedFormKeys = Exclude<string, ReservedFormKeys>;
 
 export type ValidateOnEvent = 'blur' | 'change' | 'input' | 'submit';
 
 export type FormValue = FormValue[] | object | string | number | boolean | null | undefined;
+
+export type FormErrorCondition = boolean | FormStateKeys[];
 
 export type FormValidatorFn<T = Record<string, any>, S extends Form = Form> = (
     value: FormValue,

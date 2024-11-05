@@ -1,7 +1,13 @@
 .toast {
+    position: relative;
     display: flex;
     flex-direction: row;
+    flex: 1 1 auto;
     align-items: center;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow: hidden;
+    background-clip: border-box;
 }
 
 .toast-content {
@@ -22,6 +28,28 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    height: var(--toast--progress--height);
+}
+
+.toast-progress-bar {
+    animation: toast-duration var(--toast--duration) forwards;
+    transform-origin: left center;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes toast-duration {
+    to {
+        transform: scaleX(0);
+    }
 }
 
 .toast {
@@ -46,6 +74,11 @@
     margin-top: 0;
 }
 
+.toast-content > .toast-title {
+    font-weight: var(--toast--title--font-weight);
+    font-size: var(--toast--title--font-size);
+}
+
 .toast-content *:last-child {
     margin-bottom: 0;
 }
@@ -64,6 +97,14 @@
 
 .toast a {
     font-weight: var(--toast--link--font-weight);
+}
+
+.toast-progress {
+    background: var(--toast--progress--background);
+}
+
+.toast-progress-bar {
+    background: var(--toast--progress--bar--background);
 }
 
 .toast.-sm {
@@ -127,6 +168,14 @@
     color: var(--toast--light--color);
 }
 
+.toast.-light .toast-progress {
+    background: var(--toast--light--progress--background);
+}
+
+.toast.-light .toast-progress-bar {
+    background: var(--toast--light--progress--bar--background);
+}
+
 .toast.-dark {
     border-color: var(--toast--dark--border-color);
     background: var(--toast--dark--background);
@@ -135,6 +184,14 @@
 
 .toast.-dark a {
     color: var(--toast--dark--color);
+}
+
+.toast.-dark .toast-progress {
+    background: var(--toast--dark--progress--background);
+}
+
+.toast.-dark .toast-progress-bar {
+    background: var(--toast--dark--progress--bar--background);
 }
 
 .toast.-info {
@@ -147,6 +204,14 @@
     color: var(--toast--info--color);
 }
 
+.toast.-info .toast-progress {
+    background: var(--toast--info--progress--background);
+}
+
+.toast.-info .toast-progress-bar {
+    background: var(--toast--info--progress--bar--background);
+}
+
 .toast.-success {
     border-color: var(--toast--success--border-color);
     background: var(--toast--success--background);
@@ -155,6 +220,14 @@
 
 .toast.-success a {
     color: var(--toast--success--color);
+}
+
+.toast.-success .toast-progress {
+    background: var(--toast--success--progress--background);
+}
+
+.toast.-success .toast-progress-bar {
+    background: var(--toast--success--progress--bar--background);
 }
 
 .toast.-warning {
@@ -167,6 +240,14 @@
     color: var(--toast--warning--color);
 }
 
+.toast.-warning .toast-progress {
+    background: var(--toast--warning--progress--background);
+}
+
+.toast.-warning .toast-progress-bar {
+    background: var(--toast--warning--progress--bar--background);
+}
+
 .toast.-danger {
     border-color: var(--toast--danger--border-color);
     background: var(--toast--danger--background);
@@ -175,4 +256,12 @@
 
 .toast.-danger a {
     color: var(--toast--danger--color);
+}
+
+.toast.-danger .toast-progress {
+    background: var(--toast--danger--progress--background);
+}
+
+.toast.-danger .toast-progress-bar {
+    background: var(--toast--danger--progress--bar--background);
 }

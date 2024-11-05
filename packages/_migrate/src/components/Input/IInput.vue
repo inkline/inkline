@@ -11,6 +11,7 @@ import {
 } from '@inkline/inkline/composables';
 import { FormKey, FormGroupKey } from '@inkline/inkline/constants';
 import { Icon } from '@inkline/inkline/components/Icon';
+import type { FormStateKeys } from '@inkline/types';
 
 const componentName = 'Input';
 
@@ -58,8 +59,8 @@ export default defineComponent({
          * @TODO use propDefaultValue to set default value
          * @name error
          */
-        error: {
-            type: [Array, Boolean] as PropType<boolean | string[]>,
+        errorState: {
+            type: [Array, Boolean] as PropType<boolean | FormStateKeys[]>,
             default: () => ['touched', 'dirty', 'invalid']
         },
         /**
@@ -190,7 +191,7 @@ export default defineComponent({
          * @default true
          * @name validateSchema
          */
-        validate: {
+        shouldValidate: {
             type: Boolean,
             default: true
         }

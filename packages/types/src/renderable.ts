@@ -9,3 +9,9 @@ export type NumberOrRenderable = PrimitiveOrRenderable<number>;
 export type LabelRenderFunction<T = object> = (ctx: T) => VNodeChild;
 
 export type Renderable = string | number | boolean | LabelRenderFunction | Raw<Component>;
+
+export interface DOMNode {
+    type: string;
+    props?: Record<string, string>;
+    children?: DOMNode[];
+}

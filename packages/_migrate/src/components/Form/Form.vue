@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, provide, ref, toRef } from 'vue';
+import { computed, defineComponent, type PropType, provide, ref, toRef } from 'vue';
 import {
     useComponentColor,
     useComponentSize,
@@ -8,6 +8,7 @@ import {
 } from '@inkline/inkline/composables';
 import { uid } from '@inkline/utils';
 import { FormKey } from '@inkline/inkline/constants';
+import { FormStateKeys } from '@inkline/types';
 
 const componentName = 'Form';
 
@@ -104,6 +105,16 @@ export default defineComponent({
         validate: {
             type: Boolean,
             default: true
+        },
+        /**
+         * The error state of the input, computed based on schema by default.
+         * @type Boolean | Array
+         * @default ['touched', 'dirty', 'invalid']
+         * @name errorCondition
+         */
+        errorCondition: {
+            type: [Boolean, Array] as PropType<boolean | FormStateKeys[]>,
+            default: () => ['touched', 'dirty', 'invalid']
         }
     },
     emits: [
@@ -127,6 +138,7 @@ export default defineComponent({
         const disabled = computed(() => props.disabled);
         const readonly = computed(() => props.readonly);
 
+        const errorCondition = toRef(props, 'errorCondition');
         const validate = toRef(props, 'validate');
         const modelValue = toRef(props, 'modelValue');
         const {
@@ -173,6 +185,7 @@ export default defineComponent({
             schema,
             disabled,
             readonly,
+            errorCondition,
             size,
             color,
             onBlur,

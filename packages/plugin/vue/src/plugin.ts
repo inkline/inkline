@@ -14,8 +14,12 @@ export const defaultOptions: InklineOptions = {
     icons: {
         definitions: defaultIconDefinitions
     },
+    toast: {},
     router: {
         component: 'RouterLink'
+    },
+    validation: {
+        validateOn: ['input', 'blur']
     },
     props: {
         color: '',

@@ -1,5 +1,6 @@
 import type { App, Component, Ref } from 'vue';
-import { IconDefinition } from './components';
+import type { IconDefinition, ToastPosition } from './components';
+import type { ValidateOnEvent } from './forms';
 
 export type ComponentProps = {
     color?: string;
@@ -18,7 +19,7 @@ export type UserOptions = {
     components?: Record<string, Component>;
 
     /**
-     * Global props options for all components
+     * Global props override for all components
      */
     props?: ComponentProps;
     propsByComponentName?: Record<string, ComponentProps>;
@@ -41,10 +42,28 @@ export type UserOptions = {
     };
 
     /**
+     * Toast
+     */
+    toast?: {
+        color?: string;
+        size?: string;
+        duration?: number;
+        position?: ToastPosition;
+    };
+
+    /**
      * Routing
      */
     router?: {
         component?: Component | string;
+    };
+
+    /**
+     * Validation
+     */
+
+    validation?: {
+        validateOn?: ValidateOnEvent[];
     };
 
     /**

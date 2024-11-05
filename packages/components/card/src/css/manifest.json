@@ -10489,7 +10489,7 @@
         },
         "selectors": [
             {
-                "__id": "7dyr2CYt3hcbBsk0-hyRP",
+                "__id": "DuIJMOsaUbzwTw4kBIek3",
                 "__type": "selector",
                 "__name": ".card",
                 "__value": {
@@ -10502,7 +10502,7 @@
                 }
             },
             {
-                "__id": "skO7b1_k063QMqJnTCP9r",
+                "__id": "kp8dfEp_43wrFZNXOZezQ",
                 "__type": "selector",
                 "__name": ".card",
                 "__value": {
@@ -10521,7 +10521,7 @@
                 }
             },
             {
-                "__id": "DXlDhaAWRNPfbiHhFllAm",
+                "__id": "hIrCW9ZN6d3bTxDbG6PzA",
                 "__type": "selector",
                 "__name": ".card-header, .card-body, .card-footer",
                 "__value": {
@@ -10560,7 +10560,7 @@
                 }
             },
             {
-                "__id": "YK1OQMP7s1bDE1eqPwm6U",
+                "__id": "2Jx7Sx6t1y20AR32tLJGk",
                 "__type": "selector",
                 "__name": ".card-header + .card-body",
                 "__value": {
@@ -10568,7 +10568,7 @@
                 }
             },
             {
-                "__id": "GCC2I3BZjfYLDVNsMs9vs",
+                "__id": "jbPmRcEyOeLMNtVlRhlwI",
                 "__type": "selector",
                 "__name": ".card-body:has(+ .card-footer)",
                 "__value": {
@@ -10576,7 +10576,7 @@
                 }
             },
             {
-                "__id": "x4XBbub-zWl4ePcBozV02",
+                "__id": "IbJ_g8XStvWo3pJdif5bP",
                 "__type": "selector",
                 "__name": ".card > *:first-child",
                 "__value": {
@@ -10591,7 +10591,7 @@
                 }
             },
             {
-                "__id": "DUm1i3HLaReeJgeYPKAj1",
+                "__id": "SVIHTsMwh-60KPfzkSAKw",
                 "__type": "selector",
                 "__name": ".card > *:last-child",
                 "__value": {
@@ -10606,7 +10606,7 @@
                 }
             },
             {
-                "__id": "VsjcYQtSrfBL1-EsjL3qp",
+                "__id": "fKbw7z5XvK3bEdylhG9mz",
                 "__type": "selector",
                 "__name": ".card.-sm",
                 "__value": {
@@ -10617,7 +10617,7 @@
                 }
             },
             {
-                "__id": "onYKjdOus-WB_2G9EKxkD",
+                "__id": "A47UUnKYdMlvEG8B7P4RK",
                 "__type": "selector",
                 "__name": ".card.-sm .card-header, .card.-sm .card-body, .card.-sm .card-footer",
                 "__value": {
@@ -10646,7 +10646,7 @@
                 }
             },
             {
-                "__id": "iazuRprS3eQXJMwaUckYw",
+                "__id": "cxY1c1yC81nU2SuPsoqxy",
                 "__type": "selector",
                 "__name": ".card.-sm > *:first-child",
                 "__value": {
@@ -10661,7 +10661,7 @@
                 }
             },
             {
-                "__id": "Hp6xctWJw43rpbh7ygmbL",
+                "__id": "zwfGZfq3wuYwDp4U6IGqx",
                 "__type": "selector",
                 "__name": ".card.-sm > *:last-child",
                 "__value": {
@@ -10676,7 +10676,7 @@
                 }
             },
             {
-                "__id": "u4yln3vDMGxx5HdQTx3fx",
+                "__id": "-kEDQDfzeRaHd4VwiT9Uf",
                 "__type": "selector",
                 "__name": ".card.-md",
                 "__value": {
@@ -10687,7 +10687,7 @@
                 }
             },
             {
-                "__id": "a1164XGh1kgIs-uwLG36-",
+                "__id": "19a4lNEz_xd275jXMDWiA",
                 "__type": "selector",
                 "__name": ".card.-md .card-header, .card.-md .card-body, .card.-md .card-footer",
                 "__value": {
@@ -10716,7 +10716,7 @@
                 }
             },
             {
-                "__id": "8RiaNpsmXoH5Bq3ARHAIV",
+                "__id": "QU_dvs2pel-BV5UMSgQA6",
                 "__type": "selector",
                 "__name": ".card.-md > *:first-child",
                 "__value": {
@@ -10731,7 +10731,7 @@
                 }
             },
             {
-                "__id": "UXg_C1ArXDhb2gia_IITn",
+                "__id": "9-Ioq7Rfc7oxv6nREARqS",
                 "__type": "selector",
                 "__name": ".card.-md > *:last-child",
                 "__value": {
@@ -10746,7 +10746,7 @@
                 }
             },
             {
-                "__id": "5IIi1gxdKxdPTf2E9ESAN",
+                "__id": "Nnx4KUBME4wJg0xeZGPYW",
                 "__type": "selector",
                 "__name": ".card.-lg",
                 "__value": {
@@ -10757,7 +10757,7 @@
                 }
             },
             {
-                "__id": "PfmW2OHV34Iv22Cx6JKcm",
+                "__id": "2_xp3CzlsL69IqF2KZwUC",
                 "__type": "selector",
                 "__name": ".card.-lg .card-header, .card.-lg .card-body, .card.-lg .card-footer",
                 "__value": {
@@ -10786,7 +10786,7 @@
                 }
             },
             {
-                "__id": "Seeyq_fdNaYfxHb0umvGG",
+                "__id": "nCnNOMc-FP3aF4bRZjdMj",
                 "__type": "selector",
                 "__name": ".card.-lg > *:first-child",
                 "__value": {
@@ -10801,7 +10801,7 @@
                 }
             },
             {
-                "__id": "QK7CkJ_FTUwqY9VNAmzTp",
+                "__id": "u_mBy8Qt02lGHv5U8adh3",
                 "__type": "selector",
                 "__name": ".card.-lg > *:last-child",
                 "__value": {
@@ -10816,7 +10816,7 @@
                 }
             },
             {
-                "__id": "JXxDct3weccfvg6JR5HUw",
+                "__id": "XgfwNCCIc8cJR2FUpxsID",
                 "__type": "selector",
                 "__name": ".card.-primary .card-header, .card.-primary .card-body, .card.-primary .card-footer",
                 "__value": {
@@ -10835,7 +10835,7 @@
                 }
             },
             {
-                "__id": "XDJeDUExImD9l3IXRnhvR",
+                "__id": "Ykc-JC9byVEtbkn6cj7JE",
                 "__type": "selector",
                 "__name": ".card.-secondary .card-header, .card.-secondary .card-body, .card.-secondary .card-footer",
                 "__value": {
@@ -10854,7 +10854,7 @@
                 }
             },
             {
-                "__id": "NERaVAWBxHEp6wdg_KH3n",
+                "__id": "qEuFF91FHIpghC4_Ya5Q7",
                 "__type": "selector",
                 "__name": ".card.-light .card-header, .card.-light .card-body, .card.-light .card-footer",
                 "__value": {
@@ -10873,7 +10873,7 @@
                 }
             },
             {
-                "__id": "h5AvuxJHHNZXIZGs-vvP4",
+                "__id": "NDFHjXcZlT07uvEDO_Ke-",
                 "__type": "selector",
                 "__name": ".card.-dark .card-header, .card.-dark .card-body, .card.-dark .card-footer",
                 "__value": {
@@ -10892,7 +10892,7 @@
                 }
             },
             {
-                "__id": "8mG3XnSqRTgyn1l-FyeSt",
+                "__id": "vwisad8AgwP2XVB9qalsl",
                 "__type": "selector",
                 "__name": ".card.-info .card-header, .card.-info .card-body, .card.-info .card-footer",
                 "__value": {
@@ -10911,7 +10911,7 @@
                 }
             },
             {
-                "__id": "vLtZaI-ASFyFiq82wOwh-",
+                "__id": "slgV0btatBeUulfoOgeyV",
                 "__type": "selector",
                 "__name": ".card.-success .card-header, .card.-success .card-body, .card.-success .card-footer",
                 "__value": {
@@ -10930,7 +10930,7 @@
                 }
             },
             {
-                "__id": "uZZIXDCscSqDoekPRcivU",
+                "__id": "Vk2UZ50_R7IcM6HdCVlmK",
                 "__type": "selector",
                 "__name": ".card.-warning .card-header, .card.-warning .card-body, .card.-warning .card-footer",
                 "__value": {
@@ -10949,7 +10949,7 @@
                 }
             },
             {
-                "__id": "UxlUTY9F9a95jcUBCSmEo",
+                "__id": "ml3OgxlsSnHLuW6xLOGyU",
                 "__type": "selector",
                 "__name": ".card.-danger .card-header, .card.-danger .card-body, .card.-danger .card-footer",
                 "__value": {

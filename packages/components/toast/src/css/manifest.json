@@ -9864,6 +9864,117 @@
                     "__name": "font-weight-semibold"
                 }
             },
+            "toast--title--font-weight": {
+                "__type": "variable",
+                "__name": "toast--title--font-weight",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-weight-semibold"
+                }
+            },
+            "toast--title--font-size": {
+                "__type": "variable",
+                "__name": "toast--title--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size"
+                }
+            },
+            "toast--progress--height": {
+                "__type": "variable",
+                "__name": "toast--progress--height",
+                "__value": "4px"
+            },
+            "toast--progress--background-h": {
+                "__type": "variable",
+                "__name": "toast--progress--background-h",
+                "__value": 0
+            },
+            "toast--progress--background-s": {
+                "__type": "variable",
+                "__name": "toast--progress--background-s",
+                "__value": "0%"
+            },
+            "toast--progress--background-l": {
+                "__type": "variable",
+                "__name": "toast--progress--background-l",
+                "__value": "0%"
+            },
+            "toast--progress--background-a": {
+                "__type": "variable",
+                "__name": "toast--progress--background-a",
+                "__value": 0.05
+            },
+            "toast--progress--background": {
+                "__type": "variable",
+                "__name": "toast--progress--background",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--progress--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--progress--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--progress--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--progress--background-a"
+                        }
+                    ]
+                }
+            },
+            "toast--progress--bar--background-h": {
+                "__type": "variable",
+                "__name": "toast--progress--bar--background-h",
+                "__value": 0
+            },
+            "toast--progress--bar--background-s": {
+                "__type": "variable",
+                "__name": "toast--progress--bar--background-s",
+                "__value": "0%"
+            },
+            "toast--progress--bar--background-l": {
+                "__type": "variable",
+                "__name": "toast--progress--bar--background-l",
+                "__value": "0%"
+            },
+            "toast--progress--bar--background-a": {
+                "__type": "variable",
+                "__name": "toast--progress--bar--background-a",
+                "__value": 0.15
+            },
+            "toast--progress--bar--background": {
+                "__type": "variable",
+                "__name": "toast--progress--bar--background",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--progress--bar--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--progress--bar--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--progress--bar--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--progress--bar--background-a"
+                        }
+                    ]
+                }
+            },
             "toast--sm--padding-top": {
                 "__type": "variable",
                 "__name": "toast--sm--padding-top",
@@ -10374,6 +10485,16 @@
                     "__name": "contrast-text-color-light"
                 }
             },
+            "toast--light--progress--background": {
+                "__type": "variable",
+                "__name": "toast--light--progress--background",
+                "__value": "rgba(0, 0, 0, 0.05)"
+            },
+            "toast--light--progress--bar--background": {
+                "__type": "variable",
+                "__name": "toast--light--progress--bar--background",
+                "__value": "rgba(0, 0, 0, 0.15)"
+            },
             "toast--dark--border-color": {
                 "__type": "variable",
                 "__name": "toast--dark--border-color",
@@ -10397,6 +10518,16 @@
                     "__type": "reference",
                     "__name": "contrast-text-color-dark"
                 }
+            },
+            "toast--dark--progress--background": {
+                "__type": "variable",
+                "__name": "toast--dark--progress--background",
+                "__value": "rgba(255, 255, 255, 0.05)"
+            },
+            "toast--dark--progress--bar--background": {
+                "__type": "variable",
+                "__name": "toast--dark--progress--bar--background",
+                "__value": "rgba(255, 255, 255, 0.15)"
             },
             "toast--info--border-color": {
                 "__type": "variable",
@@ -10422,6 +10553,16 @@
                     "__name": "color-info-800"
                 }
             },
+            "toast--info--progress--background": {
+                "__type": "variable",
+                "__name": "toast--info--progress--background",
+                "__value": "rgba(0, 0, 0, 0.05)"
+            },
+            "toast--info--progress--bar--background": {
+                "__type": "variable",
+                "__name": "toast--info--progress--bar--background",
+                "__value": "rgba(0, 0, 0, 0.15)"
+            },
             "toast--success--border-color": {
                 "__type": "variable",
                 "__name": "toast--success--border-color",
@@ -10445,6 +10586,16 @@
                     "__type": "reference",
                     "__name": "color-success-800"
                 }
+            },
+            "toast--success--progress--background": {
+                "__type": "variable",
+                "__name": "toast--success--progress--background",
+                "__value": "rgba(0, 0, 0, 0.05)"
+            },
+            "toast--success--progress--bar--background": {
+                "__type": "variable",
+                "__name": "toast--success--progress--bar--background",
+                "__value": "rgba(0, 0, 0, 0.15)"
             },
             "toast--warning--border-color": {
                 "__type": "variable",
@@ -10470,6 +10621,16 @@
                     "__name": "color-warning-800"
                 }
             },
+            "toast--warning--progress--background": {
+                "__type": "variable",
+                "__name": "toast--warning--progress--background",
+                "__value": "rgba(0, 0, 0, 0.05)"
+            },
+            "toast--warning--progress--bar--background": {
+                "__type": "variable",
+                "__name": "toast--warning--progress--bar--background",
+                "__value": "rgba(0, 0, 0, 0.15)"
+            },
             "toast--danger--border-color": {
                 "__type": "variable",
                 "__name": "toast--danger--border-color",
@@ -10493,21 +10654,37 @@
                     "__type": "reference",
                     "__name": "color-danger-800"
                 }
+            },
+            "toast--danger--progress--background": {
+                "__type": "variable",
+                "__name": "toast--danger--progress--background",
+                "__value": "rgba(0, 0, 0, 0.05)"
+            },
+            "toast--danger--progress--bar--background": {
+                "__type": "variable",
+                "__name": "toast--danger--progress--bar--background",
+                "__value": "rgba(0, 0, 0, 0.15)"
             }
         },
         "selectors": [
             {
-                "__id": "800nskH7hi40djfD9pZ88",
+                "__id": "5pXVFODwHEuV-8NtmN0XT",
                 "__type": "selector",
                 "__name": ".toast",
                 "__value": {
+                    "position": "relative",
                     "display": "flex",
                     "flexDirection": "row",
-                    "alignItems": "center"
+                    "flex": "1 1 auto",
+                    "alignItems": "center",
+                    "minWidth": 0,
+                    "wordWrap": "break-word",
+                    "overflow": "hidden",
+                    "backgroundClip": "border-box"
                 }
             },
             {
-                "__id": "wC5W7ThpCYFpHP0BlR3kW",
+                "__id": "HrCs__9mPlS1Ji93gOQr5",
                 "__type": "selector",
                 "__name": ".toast-content",
                 "__value": {
@@ -10515,7 +10692,7 @@
                 }
             },
             {
-                "__id": "sngJbXDIEsFbDRCLGc4mu",
+                "__id": "9UHGUOHZMcbLt1UsyK1GA",
                 "__type": "selector",
                 "__name": ".toast-icon",
                 "__value": {
@@ -10527,7 +10704,7 @@
                 }
             },
             {
-                "__id": "RcRVG0hyIkHU8Dtkt1Cp3",
+                "__id": "eDJRQWX71Zf5-xhNO67Qy",
                 "__type": "selector",
                 "__name": ".toast-dismiss",
                 "__value": {
@@ -10539,7 +10716,50 @@
                 }
             },
             {
-                "__id": "_wHbxA7km79W61aW7X7I3",
+                "__id": "y1lyC1sxTQ4uEHHbWmrjH",
+                "__type": "selector",
+                "__name": ".toast-progress",
+                "__value": {
+                    "position": "absolute",
+                    "bottom": 0,
+                    "left": 0,
+                    "width": "100%",
+                    "zIndex": 1,
+                    "height": {
+                        "__type": "reference",
+                        "__name": "toast--progress--height"
+                    }
+                }
+            },
+            {
+                "__id": "qwmnDl2jxx83tz4PTXUdF",
+                "__type": "selector",
+                "__name": ".toast-progress-bar",
+                "__value": {
+                    "animation": "toast-duration var(--toast--duration) forwards",
+                    "transformOrigin": "left center",
+                    "width": "100%",
+                    "height": "100%"
+                }
+            },
+            {
+                "__id": "Nxc9QjqEyVgH3S26xItMX",
+                "__type": "media",
+                "__name": "keyframes",
+                "__identifier": "toast-duration",
+                "__value": [
+                    {
+                        "__id": "SJyGQ4Ht4_78ITNZi0y5G",
+                        "__type": "selector",
+                        "__name": "to",
+                        "__value": {
+                            "transform": "scaleX(0)"
+                        }
+                    }
+                ]
+            },
+            {
+                "__id": "eOkCkOWN0fD4tLwl1Sx38",
                 "__type": "selector",
                 "__name": ".toast",
                 "__value": {
@@ -10590,7 +10810,7 @@
                 }
             },
             {
-                "__id": "Hu6YVJUqa1zXR2hAqK7k1",
+                "__id": "KOxJG2qakc2cAZdWWOJPw",
                 "__type": "selector",
                 "__name": ".toast-content",
                 "__value": {
@@ -10601,7 +10821,7 @@
                 }
             },
             {
-                "__id": "gejmDxz4ZqZwKOEgTHTaJ",
+                "__id": "Isi4hmhr8lizogExTbog8",
                 "__type": "selector",
                 "__name": ".toast-content *:first-child",
                 "__value": {
@@ -10609,7 +10829,22 @@
                 }
             },
             {
-                "__id": "eAuCNxfvreI3JMV9G-Cvt",
+                "__id": "P-BuUQrvqRymR9egfXq_U",
+                "__type": "selector",
+                "__name": ".toast-content > .toast-title",
+                "__value": {
+                    "fontWeight": {
+                        "__type": "reference",
+                        "__name": "toast--title--font-weight"
+                    },
+                    "fontSize": {
+                        "__type": "reference",
+                        "__name": "toast--title--font-size"
+                    }
+                }
+            },
+            {
+                "__id": "rcH0M2gvDM_KPaUyExZBc",
                 "__type": "selector",
                 "__name": ".toast-content *:last-child",
                 "__value": {
@@ -10617,7 +10852,7 @@
                 }
             },
             {
-                "__id": "qX0NrgrYRUB6vFXHYN2sf",
+                "__id": "fWH4vgp4JXLu6ynUh1KmW",
                 "__type": "selector",
                 "__name": ".toast-icon",
                 "__value": {
@@ -10628,7 +10863,7 @@
                 }
             },
             {
-                "__id": "olG_IbE92J9hDeLVDHtfy",
+                "__id": "dQdhqaN8SSLSWkVwViI09",
                 "__type": "selector",
                 "__name": ".toast-dismiss",
                 "__value": {
@@ -10639,7 +10874,7 @@
                 }
             },
             {
-                "__id": "ehsfIaJA5xdGV-8VglIBs",
+                "__id": "YWEl4HHUW_8zh_3TKmItS",
                 "__type": "selector",
                 "__name": ".toast code",
                 "__value": {
@@ -10647,7 +10882,7 @@
                 }
             },
             {
-                "__id": "o5U8yRy45kESs3FkOioUS",
+                "__id": "qfdXAScSyzZL7PefwuIMB",
                 "__type": "selector",
                 "__name": ".toast a",
                 "__value": {
@@ -10658,7 +10893,29 @@
                 }
             },
             {
-                "__id": "wdyoHeESCFsFbWEZM0yLv",
+                "__id": "EK553GLME46BGiJt6OsNC",
+                "__type": "selector",
+                "__name": ".toast-progress",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--progress--background"
+                    }
+                }
+            },
+            {
+                "__id": "1ie15FUcNzWDgYNnUG7ra",
+                "__type": "selector",
+                "__name": ".toast-progress-bar",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--progress--bar--background"
+                    }
+                }
+            },
+            {
+                "__id": "4siY3hyH0vqE3hmR1W4Bv",
                 "__type": "selector",
                 "__name": ".toast.-sm",
                 "__value": {
@@ -10687,7 +10944,7 @@
                 }
             },
             {
-                "__id": "wh6puPj9-iEr4TpvYbekf",
+                "__id": "LoicsaWFp8HW1PgE7zIKu",
                 "__type": "selector",
                 "__name": ".toast.-sm .toast-content",
                 "__value": {
@@ -10712,7 +10969,7 @@
                 }
             },
             {
-                "__id": "cjfgVzNvySpvxiWAg-und",
+                "__id": "VYzXQBOfJ_AgcMqjSDPDU",
                 "__type": "selector",
                 "__name": ".toast.-sm .toast-icon",
                 "__value": {
@@ -10723,7 +10980,7 @@
                 }
             },
             {
-                "__id": "6i1c9IO1NlgPyEB7iZtEN",
+                "__id": "TBKS9C83Txw4IGC60z1A5",
                 "__type": "selector",
                 "__name": ".toast.-sm .toast-dismiss",
                 "__value": {
@@ -10734,7 +10991,7 @@
                 }
             },
             {
-                "__id": "4T39mR1_vC7fROXTTkGJ0",
+                "__id": "-7HC0Dz2LHYzwsqSfxE0O",
                 "__type": "selector",
                 "__name": ".toast.-md",
                 "__value": {
@@ -10763,7 +11020,7 @@
                 }
             },
             {
-                "__id": "Voze2xXvpu4uBPMV0gFa-",
+                "__id": "ngPmMPRYaK4A4USA3pup9",
                 "__type": "selector",
                 "__name": ".toast.-md .toast-content",
                 "__value": {
@@ -10788,7 +11045,7 @@
                 }
             },
             {
-                "__id": "55wRQdjURpKSoPRPoBtLH",
+                "__id": "tYZ0gGHIjlFfjZHdz8rH7",
                 "__type": "selector",
                 "__name": ".toast.-md .toast-icon",
                 "__value": {
@@ -10799,7 +11056,7 @@
                 }
             },
             {
-                "__id": "XoU8lvw2q75ylVofscuqC",
+                "__id": "-n7aIR0rMdMeVKATXFMPi",
                 "__type": "selector",
                 "__name": ".toast.-md .toast-dismiss",
                 "__value": {
@@ -10810,7 +11067,7 @@
                 }
             },
             {
-                "__id": "bUqnZCYYMkDZVLU1RsHST",
+                "__id": "jf0ddEeoRxfncGkNnQToJ",
                 "__type": "selector",
                 "__name": ".toast.-lg",
                 "__value": {
@@ -10839,7 +11096,7 @@
                 }
             },
             {
-                "__id": "TwWRmssCcuC2Xt9k7RU8o",
+                "__id": "Oc4QnqSpEEaPkvq0n4wW4",
                 "__type": "selector",
                 "__name": ".toast.-lg .toast-content",
                 "__value": {
@@ -10864,7 +11121,7 @@
                 }
             },
             {
-                "__id": "bKVzsRjTbx6LVKawRNOnd",
+                "__id": "HzQlWkmppz6YbzpocsvYs",
                 "__type": "selector",
                 "__name": ".toast.-lg .toast-icon",
                 "__value": {
@@ -10875,7 +11132,7 @@
                 }
             },
             {
-                "__id": "npPHu9HJl_ujqboks3-BL",
+                "__id": "ofzZG86x_WNHaxt1jJW4v",
                 "__type": "selector",
                 "__name": ".toast.-lg .toast-dismiss",
                 "__value": {
@@ -10886,7 +11143,7 @@
                 }
             },
             {
-                "__id": "9PKL3DD2XMeHDCYwmHIFh",
+                "__id": "RsXQ4iqfv0dOwQdszokTf",
                 "__type": "selector",
                 "__name": ".toast.-light",
                 "__value": {
@@ -10905,7 +11162,7 @@
                 }
             },
             {
-                "__id": "rzEo2IBEvw85phDsVLHx1",
+                "__id": "2LIy29CksoFw1FU-TmxLW",
                 "__type": "selector",
                 "__name": ".toast.-light a",
                 "__value": {
@@ -10916,7 +11173,29 @@
                 }
             },
             {
-                "__id": "9nLE3EvXdJ-7cS_MXKTNE",
+                "__id": "bGQ_gqTQQph67-MmGrEBM",
+                "__type": "selector",
+                "__name": ".toast.-light .toast-progress",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--light--progress--background"
+                    }
+                }
+            },
+            {
+                "__id": "KNAfUtRl3Y3yWoNCY3OZP",
+                "__type": "selector",
+                "__name": ".toast.-light .toast-progress-bar",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--light--progress--bar--background"
+                    }
+                }
+            },
+            {
+                "__id": "6gkyCzSTBKPmO6BsAHBij",
                 "__type": "selector",
                 "__name": ".toast.-dark",
                 "__value": {
@@ -10935,7 +11214,7 @@
                 }
             },
             {
-                "__id": "YK4Q0TB5w2wYSBPmrN4Y1",
+                "__id": "7SlOHNK4Ul_f2v50vaiWG",
                 "__type": "selector",
                 "__name": ".toast.-dark a",
                 "__value": {
@@ -10946,7 +11225,29 @@
                 }
             },
             {
-                "__id": "mbcrpo_BOudANP8L3HELi",
+                "__id": "D6V10XPvnfGBxL_UHtxT5",
+                "__type": "selector",
+                "__name": ".toast.-dark .toast-progress",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--dark--progress--background"
+                    }
+                }
+            },
+            {
+                "__id": "guMy8O9_GJQrhFCucUfL8",
+                "__type": "selector",
+                "__name": ".toast.-dark .toast-progress-bar",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--dark--progress--bar--background"
+                    }
+                }
+            },
+            {
+                "__id": "ge1loaULMmZ70Wbt9aPA4",
                 "__type": "selector",
                 "__name": ".toast.-info",
                 "__value": {
@@ -10965,7 +11266,7 @@
                 }
             },
             {
-                "__id": "8CaxRcH7_JlzWXs0h-KhP",
+                "__id": "87c33n57M2AP3yyuv_qtn",
                 "__type": "selector",
                 "__name": ".toast.-info a",
                 "__value": {
@@ -10976,7 +11277,29 @@
                 }
             },
             {
-                "__id": "z8Zda8hOQ19uxvIx2wTvq",
+                "__id": "xoXI6toGMEf9IZsL404f0",
+                "__type": "selector",
+                "__name": ".toast.-info .toast-progress",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--info--progress--background"
+                    }
+                }
+            },
+            {
+                "__id": "_WdWvk8Ev9Ri8A1YDb5Yb",
+                "__type": "selector",
+                "__name": ".toast.-info .toast-progress-bar",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--info--progress--bar--background"
+                    }
+                }
+            },
+            {
+                "__id": "zwfy4v4O3l3aDkgj99jQe",
                 "__type": "selector",
                 "__name": ".toast.-success",
                 "__value": {
@@ -10995,7 +11318,7 @@
                 }
             },
             {
-                "__id": "U2DUbAZF-f_B8f69pXTEV",
+                "__id": "C5J1RoKh8xFup5gK55QSW",
                 "__type": "selector",
                 "__name": ".toast.-success a",
                 "__value": {
@@ -11006,7 +11329,29 @@
                 }
             },
             {
-                "__id": "sE2XXjMCkHJdM2DMqosVE",
+                "__id": "ymUQHk5VSzfzvC33HcpgT",
+                "__type": "selector",
+                "__name": ".toast.-success .toast-progress",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--success--progress--background"
+                    }
+                }
+            },
+            {
+                "__id": "eqemZ68xi2PQF-e18y2ZG",
+                "__type": "selector",
+                "__name": ".toast.-success .toast-progress-bar",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--success--progress--bar--background"
+                    }
+                }
+            },
+            {
+                "__id": "iynmkdqK5p1zUI_tWMtR_",
                 "__type": "selector",
                 "__name": ".toast.-warning",
                 "__value": {
@@ -11025,7 +11370,7 @@
                 }
             },
             {
-                "__id": "Ihi-2bMQFly1PIZU3YNL_",
+                "__id": "losEhCbTzVt6s4ORrvqsB",
                 "__type": "selector",
                 "__name": ".toast.-warning a",
                 "__value": {
@@ -11036,7 +11381,29 @@
                 }
             },
             {
-                "__id": "53eJi7K77tb-uz0qHz4pj",
+                "__id": "EXw7tr3eEp9G9aNosxWpN",
+                "__type": "selector",
+                "__name": ".toast.-warning .toast-progress",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--warning--progress--background"
+                    }
+                }
+            },
+            {
+                "__id": "TemphlQ_4xIPmAjvrVmFV",
+                "__type": "selector",
+                "__name": ".toast.-warning .toast-progress-bar",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--warning--progress--bar--background"
+                    }
+                }
+            },
+            {
+                "__id": "cCsmlGSwNt57BdkXk0htG",
                 "__type": "selector",
                 "__name": ".toast.-danger",
                 "__value": {
@@ -11055,13 +11422,35 @@
                 }
             },
             {
-                "__id": "wP17Kbglb-Inos8thp6eI",
+                "__id": "vqEWI9T-3KIDrDeu8RQMe",
                 "__type": "selector",
                 "__name": ".toast.-danger a",
                 "__value": {
                     "color": {
                         "__type": "reference",
                         "__name": "toast--danger--color"
+                    }
+                }
+            },
+            {
+                "__id": "4Ddo1IjSR1gtyiPnfRjlk",
+                "__type": "selector",
+                "__name": ".toast.-danger .toast-progress",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--danger--progress--background"
+                    }
+                }
+            },
+            {
+                "__id": "Vu_-qLdj0vtv_Whsm0q7R",
+                "__type": "selector",
+                "__name": ".toast.-danger .toast-progress-bar",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "toast--danger--progress--bar--background"
                     }
                 }
             }
