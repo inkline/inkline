@@ -751,6 +751,7 @@ export default defineComponent({
                 <!-- @slot suffix Slot for the select suffix content -->
                 <slot name="suffix" />
                 <button
+                    type="button"
                     class="select-caret"
                     aria-hidden="true"
                     role="button"
