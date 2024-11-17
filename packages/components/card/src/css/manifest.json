@@ -9880,6 +9880,28 @@
                     ]
                 }
             },
+            "card--sm--padding": {
+                "__type": "variable",
+                "__name": "card--sm--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "card--sm--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--sm--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--sm--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--sm--padding-left"
+                    }
+                ]
+            },
             "card--sm--border-top-left-radius": {
                 "__type": "variable",
                 "__name": "card--sm--border-top-left-radius",
@@ -9951,6 +9973,28 @@
                         }
                     ]
                 }
+            },
+            "card--sm--border-radius": {
+                "__type": "variable",
+                "__name": "card--sm--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "card--sm--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--sm--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--sm--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--sm--border-bottom-left-radius"
+                    }
+                ]
             },
             "card--sm--font-size": {
                 "__type": "variable",
@@ -10042,6 +10086,28 @@
                     ]
                 }
             },
+            "card--md--padding": {
+                "__type": "variable",
+                "__name": "card--md--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "card--md--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--md--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--md--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--md--padding-left"
+                    }
+                ]
+            },
             "card--md--border-top-left-radius": {
                 "__type": "variable",
                 "__name": "card--md--border-top-left-radius",
@@ -10113,6 +10179,28 @@
                         }
                     ]
                 }
+            },
+            "card--md--border-radius": {
+                "__type": "variable",
+                "__name": "card--md--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "card--md--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--md--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--md--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--md--border-bottom-left-radius"
+                    }
+                ]
             },
             "card--md--font-size": {
                 "__type": "variable",
@@ -10204,6 +10292,28 @@
                     ]
                 }
             },
+            "card--lg--padding": {
+                "__type": "variable",
+                "__name": "card--lg--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "card--lg--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--lg--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--lg--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--lg--padding-left"
+                    }
+                ]
+            },
             "card--lg--border-top-left-radius": {
                 "__type": "variable",
                 "__name": "card--lg--border-top-left-radius",
@@ -10276,6 +10386,28 @@
                     ]
                 }
             },
+            "card--lg--border-radius": {
+                "__type": "variable",
+                "__name": "card--lg--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "card--lg--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--lg--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--lg--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "card--lg--border-bottom-left-radius"
+                    }
+                ]
+            },
             "card--lg--font-size": {
                 "__type": "variable",
                 "__name": "card--lg--font-size",
@@ -10302,6 +10434,26 @@
                     "__name": "color-primary-shade-50"
                 }
             },
+            "card--primary--background-h": {
+                "__type": "variable",
+                "__name": "card--primary--background-h",
+                "__value": 0
+            },
+            "card--primary--background-s": {
+                "__type": "variable",
+                "__name": "card--primary--background-s",
+                "__value": "0%"
+            },
+            "card--primary--background-l": {
+                "__type": "variable",
+                "__name": "card--primary--background-l",
+                "__value": "0%"
+            },
+            "card--primary--background-a": {
+                "__type": "variable",
+                "__name": "card--primary--background-a",
+                "__value": 1
+            },
             "card--primary--background": {
                 "__type": "variable",
                 "__name": "card--primary--background",
@@ -10309,6 +10461,26 @@
                     "__type": "reference",
                     "__name": "color-primary"
                 }
+            },
+            "card--primary--color-h": {
+                "__type": "variable",
+                "__name": "card--primary--color-h",
+                "__value": 0
+            },
+            "card--primary--color-s": {
+                "__type": "variable",
+                "__name": "card--primary--color-s",
+                "__value": "0%"
+            },
+            "card--primary--color-l": {
+                "__type": "variable",
+                "__name": "card--primary--color-l",
+                "__value": "0%"
+            },
+            "card--primary--color-a": {
+                "__type": "variable",
+                "__name": "card--primary--color-a",
+                "__value": 1
             },
             "card--primary--color": {
                 "__type": "variable",
@@ -10326,6 +10498,26 @@
                     "__name": "color-secondary-shade-50"
                 }
             },
+            "card--secondary--background-h": {
+                "__type": "variable",
+                "__name": "card--secondary--background-h",
+                "__value": 0
+            },
+            "card--secondary--background-s": {
+                "__type": "variable",
+                "__name": "card--secondary--background-s",
+                "__value": "0%"
+            },
+            "card--secondary--background-l": {
+                "__type": "variable",
+                "__name": "card--secondary--background-l",
+                "__value": "0%"
+            },
+            "card--secondary--background-a": {
+                "__type": "variable",
+                "__name": "card--secondary--background-a",
+                "__value": 1
+            },
             "card--secondary--background": {
                 "__type": "variable",
                 "__name": "card--secondary--background",
@@ -10333,6 +10525,26 @@
                     "__type": "reference",
                     "__name": "color-secondary"
                 }
+            },
+            "card--secondary--color-h": {
+                "__type": "variable",
+                "__name": "card--secondary--color-h",
+                "__value": 0
+            },
+            "card--secondary--color-s": {
+                "__type": "variable",
+                "__name": "card--secondary--color-s",
+                "__value": "0%"
+            },
+            "card--secondary--color-l": {
+                "__type": "variable",
+                "__name": "card--secondary--color-l",
+                "__value": "0%"
+            },
+            "card--secondary--color-a": {
+                "__type": "variable",
+                "__name": "card--secondary--color-a",
+                "__value": 1
             },
             "card--secondary--color": {
                 "__type": "variable",
@@ -10350,6 +10562,26 @@
                     "__name": "color-light-shade-50"
                 }
             },
+            "card--light--background-h": {
+                "__type": "variable",
+                "__name": "card--light--background-h",
+                "__value": 0
+            },
+            "card--light--background-s": {
+                "__type": "variable",
+                "__name": "card--light--background-s",
+                "__value": "0%"
+            },
+            "card--light--background-l": {
+                "__type": "variable",
+                "__name": "card--light--background-l",
+                "__value": "0%"
+            },
+            "card--light--background-a": {
+                "__type": "variable",
+                "__name": "card--light--background-a",
+                "__value": 1
+            },
             "card--light--background": {
                 "__type": "variable",
                 "__name": "card--light--background",
@@ -10357,6 +10589,26 @@
                     "__type": "reference",
                     "__name": "color-white"
                 }
+            },
+            "card--light--color-h": {
+                "__type": "variable",
+                "__name": "card--light--color-h",
+                "__value": 0
+            },
+            "card--light--color-s": {
+                "__type": "variable",
+                "__name": "card--light--color-s",
+                "__value": "0%"
+            },
+            "card--light--color-l": {
+                "__type": "variable",
+                "__name": "card--light--color-l",
+                "__value": "0%"
+            },
+            "card--light--color-a": {
+                "__type": "variable",
+                "__name": "card--light--color-a",
+                "__value": 1
             },
             "card--light--color": {
                 "__type": "variable",
@@ -10374,6 +10626,26 @@
                     "__name": "color-dark-tint-50"
                 }
             },
+            "card--dark--background-h": {
+                "__type": "variable",
+                "__name": "card--dark--background-h",
+                "__value": 0
+            },
+            "card--dark--background-s": {
+                "__type": "variable",
+                "__name": "card--dark--background-s",
+                "__value": "0%"
+            },
+            "card--dark--background-l": {
+                "__type": "variable",
+                "__name": "card--dark--background-l",
+                "__value": "0%"
+            },
+            "card--dark--background-a": {
+                "__type": "variable",
+                "__name": "card--dark--background-a",
+                "__value": 1
+            },
             "card--dark--background": {
                 "__type": "variable",
                 "__name": "card--dark--background",
@@ -10381,6 +10653,26 @@
                     "__type": "reference",
                     "__name": "color-dark"
                 }
+            },
+            "card--dark--color-h": {
+                "__type": "variable",
+                "__name": "card--dark--color-h",
+                "__value": 0
+            },
+            "card--dark--color-s": {
+                "__type": "variable",
+                "__name": "card--dark--color-s",
+                "__value": "0%"
+            },
+            "card--dark--color-l": {
+                "__type": "variable",
+                "__name": "card--dark--color-l",
+                "__value": "0%"
+            },
+            "card--dark--color-a": {
+                "__type": "variable",
+                "__name": "card--dark--color-a",
+                "__value": 1
             },
             "card--dark--color": {
                 "__type": "variable",
@@ -10398,6 +10690,26 @@
                     "__name": "color-info-shade-50"
                 }
             },
+            "card--info--background-h": {
+                "__type": "variable",
+                "__name": "card--info--background-h",
+                "__value": 0
+            },
+            "card--info--background-s": {
+                "__type": "variable",
+                "__name": "card--info--background-s",
+                "__value": "0%"
+            },
+            "card--info--background-l": {
+                "__type": "variable",
+                "__name": "card--info--background-l",
+                "__value": "0%"
+            },
+            "card--info--background-a": {
+                "__type": "variable",
+                "__name": "card--info--background-a",
+                "__value": 1
+            },
             "card--info--background": {
                 "__type": "variable",
                 "__name": "card--info--background",
@@ -10405,6 +10717,26 @@
                     "__type": "reference",
                     "__name": "color-info"
                 }
+            },
+            "card--info--color-h": {
+                "__type": "variable",
+                "__name": "card--info--color-h",
+                "__value": 0
+            },
+            "card--info--color-s": {
+                "__type": "variable",
+                "__name": "card--info--color-s",
+                "__value": "0%"
+            },
+            "card--info--color-l": {
+                "__type": "variable",
+                "__name": "card--info--color-l",
+                "__value": "0%"
+            },
+            "card--info--color-a": {
+                "__type": "variable",
+                "__name": "card--info--color-a",
+                "__value": 1
             },
             "card--info--color": {
                 "__type": "variable",
@@ -10422,6 +10754,26 @@
                     "__name": "color-success-shade-50"
                 }
             },
+            "card--success--background-h": {
+                "__type": "variable",
+                "__name": "card--success--background-h",
+                "__value": 0
+            },
+            "card--success--background-s": {
+                "__type": "variable",
+                "__name": "card--success--background-s",
+                "__value": "0%"
+            },
+            "card--success--background-l": {
+                "__type": "variable",
+                "__name": "card--success--background-l",
+                "__value": "0%"
+            },
+            "card--success--background-a": {
+                "__type": "variable",
+                "__name": "card--success--background-a",
+                "__value": 1
+            },
             "card--success--background": {
                 "__type": "variable",
                 "__name": "card--success--background",
@@ -10429,6 +10781,26 @@
                     "__type": "reference",
                     "__name": "color-success"
                 }
+            },
+            "card--success--color-h": {
+                "__type": "variable",
+                "__name": "card--success--color-h",
+                "__value": 0
+            },
+            "card--success--color-s": {
+                "__type": "variable",
+                "__name": "card--success--color-s",
+                "__value": "0%"
+            },
+            "card--success--color-l": {
+                "__type": "variable",
+                "__name": "card--success--color-l",
+                "__value": "0%"
+            },
+            "card--success--color-a": {
+                "__type": "variable",
+                "__name": "card--success--color-a",
+                "__value": 1
             },
             "card--success--color": {
                 "__type": "variable",
@@ -10446,6 +10818,26 @@
                     "__name": "color-warning-shade-50"
                 }
             },
+            "card--warning--background-h": {
+                "__type": "variable",
+                "__name": "card--warning--background-h",
+                "__value": 0
+            },
+            "card--warning--background-s": {
+                "__type": "variable",
+                "__name": "card--warning--background-s",
+                "__value": "0%"
+            },
+            "card--warning--background-l": {
+                "__type": "variable",
+                "__name": "card--warning--background-l",
+                "__value": "0%"
+            },
+            "card--warning--background-a": {
+                "__type": "variable",
+                "__name": "card--warning--background-a",
+                "__value": 1
+            },
             "card--warning--background": {
                 "__type": "variable",
                 "__name": "card--warning--background",
@@ -10453,6 +10845,26 @@
                     "__type": "reference",
                     "__name": "color-warning"
                 }
+            },
+            "card--warning--color-h": {
+                "__type": "variable",
+                "__name": "card--warning--color-h",
+                "__value": 0
+            },
+            "card--warning--color-s": {
+                "__type": "variable",
+                "__name": "card--warning--color-s",
+                "__value": "0%"
+            },
+            "card--warning--color-l": {
+                "__type": "variable",
+                "__name": "card--warning--color-l",
+                "__value": "0%"
+            },
+            "card--warning--color-a": {
+                "__type": "variable",
+                "__name": "card--warning--color-a",
+                "__value": 1
             },
             "card--warning--color": {
                 "__type": "variable",
@@ -10470,6 +10882,26 @@
                     "__name": "color-danger-shade-50"
                 }
             },
+            "card--danger--background-h": {
+                "__type": "variable",
+                "__name": "card--danger--background-h",
+                "__value": 0
+            },
+            "card--danger--background-s": {
+                "__type": "variable",
+                "__name": "card--danger--background-s",
+                "__value": "0%"
+            },
+            "card--danger--background-l": {
+                "__type": "variable",
+                "__name": "card--danger--background-l",
+                "__value": "0%"
+            },
+            "card--danger--background-a": {
+                "__type": "variable",
+                "__name": "card--danger--background-a",
+                "__value": 1
+            },
             "card--danger--background": {
                 "__type": "variable",
                 "__name": "card--danger--background",
@@ -10477,6 +10909,26 @@
                     "__type": "reference",
                     "__name": "color-danger"
                 }
+            },
+            "card--danger--color-h": {
+                "__type": "variable",
+                "__name": "card--danger--color-h",
+                "__value": 0
+            },
+            "card--danger--color-s": {
+                "__type": "variable",
+                "__name": "card--danger--color-s",
+                "__value": "0%"
+            },
+            "card--danger--color-l": {
+                "__type": "variable",
+                "__name": "card--danger--color-l",
+                "__value": "0%"
+            },
+            "card--danger--color-a": {
+                "__type": "variable",
+                "__name": "card--danger--color-a",
+                "__value": 1
             },
             "card--danger--color": {
                 "__type": "variable",
@@ -10489,7 +10941,7 @@
         },
         "selectors": [
             {
-                "__id": "DuIJMOsaUbzwTw4kBIek3",
+                "__id": "LPLyzU4gzxpNW4wHMKyFn",
                 "__type": "selector",
                 "__name": ".card",
                 "__value": {
@@ -10502,7 +10954,7 @@
                 }
             },
             {
-                "__id": "kp8dfEp_43wrFZNXOZezQ",
+                "__id": "QQop1hiX2MpumcmByu2t2",
                 "__type": "selector",
                 "__name": ".card",
                 "__value": {
@@ -10521,7 +10973,7 @@
                 }
             },
             {
-                "__id": "hIrCW9ZN6d3bTxDbG6PzA",
+                "__id": "2qIF0zdeadYyRfYUOgB5L",
                 "__type": "selector",
                 "__name": ".card-header, .card-body, .card-footer",
                 "__value": {
@@ -10560,7 +11012,7 @@
                 }
             },
             {
-                "__id": "2Jx7Sx6t1y20AR32tLJGk",
+                "__id": "YtqOzb5OL7u9lbjCqVoH-",
                 "__type": "selector",
                 "__name": ".card-header + .card-body",
                 "__value": {
@@ -10568,7 +11020,7 @@
                 }
             },
             {
-                "__id": "jbPmRcEyOeLMNtVlRhlwI",
+                "__id": "S1lAFL7rASYhu13jdHnE7",
                 "__type": "selector",
                 "__name": ".card-body:has(+ .card-footer)",
                 "__value": {
@@ -10576,7 +11028,7 @@
                 }
             },
             {
-                "__id": "IbJ_g8XStvWo3pJdif5bP",
+                "__id": "vP_S0ao5mPExUD14OGYLy",
                 "__type": "selector",
                 "__name": ".card > *:first-child",
                 "__value": {
@@ -10591,7 +11043,7 @@
                 }
             },
             {
-                "__id": "SVIHTsMwh-60KPfzkSAKw",
+                "__id": "2GrRV6QJiH-PPp4SYF8lK",
                 "__type": "selector",
                 "__name": ".card > *:last-child",
                 "__value": {
@@ -10606,7 +11058,7 @@
                 }
             },
             {
-                "__id": "fKbw7z5XvK3bEdylhG9mz",
+                "__id": "lBlZ9SijstehM834IcbpR",
                 "__type": "selector",
                 "__name": ".card.-sm",
                 "__value": {
@@ -10617,7 +11069,7 @@
                 }
             },
             {
-                "__id": "A47UUnKYdMlvEG8B7P4RK",
+                "__id": "gqDQA--QOcVJ8ZtFnS8lE",
                 "__type": "selector",
                 "__name": ".card.-sm .card-header, .card.-sm .card-body, .card.-sm .card-footer",
                 "__value": {
@@ -10646,7 +11098,7 @@
                 }
             },
             {
-                "__id": "cxY1c1yC81nU2SuPsoqxy",
+                "__id": "-Vis1JmeuMyLl-Y6JVMPd",
                 "__type": "selector",
                 "__name": ".card.-sm > *:first-child",
                 "__value": {
@@ -10661,7 +11113,7 @@
                 }
             },
             {
-                "__id": "zwfGZfq3wuYwDp4U6IGqx",
+                "__id": "TO7onpEYd1UbP5kcia2NG",
                 "__type": "selector",
                 "__name": ".card.-sm > *:last-child",
                 "__value": {
@@ -10676,7 +11128,7 @@
                 }
             },
             {
-                "__id": "-kEDQDfzeRaHd4VwiT9Uf",
+                "__id": "zwBy2e8OiSRidt9XJ2TO3",
                 "__type": "selector",
                 "__name": ".card.-md",
                 "__value": {
@@ -10687,7 +11139,7 @@
                 }
             },
             {
-                "__id": "19a4lNEz_xd275jXMDWiA",
+                "__id": "blWnoHYAniYfGSmTC4wOH",
                 "__type": "selector",
                 "__name": ".card.-md .card-header, .card.-md .card-body, .card.-md .card-footer",
                 "__value": {
@@ -10716,7 +11168,7 @@
                 }
             },
             {
-                "__id": "QU_dvs2pel-BV5UMSgQA6",
+                "__id": "eW_kYGCVxng53_nu_9S5A",
                 "__type": "selector",
                 "__name": ".card.-md > *:first-child",
                 "__value": {
@@ -10731,7 +11183,7 @@
                 }
             },
             {
-                "__id": "9-Ioq7Rfc7oxv6nREARqS",
+                "__id": "0d3HQlO1AlImcMxu3DAvm",
                 "__type": "selector",
                 "__name": ".card.-md > *:last-child",
                 "__value": {
@@ -10746,7 +11198,7 @@
                 }
             },
             {
-                "__id": "Nnx4KUBME4wJg0xeZGPYW",
+                "__id": "oVsgBdgMTeVUki25cnJbA",
                 "__type": "selector",
                 "__name": ".card.-lg",
                 "__value": {
@@ -10757,7 +11209,7 @@
                 }
             },
             {
-                "__id": "2_xp3CzlsL69IqF2KZwUC",
+                "__id": "ksm8G-8NPT4ORtBnkuewT",
                 "__type": "selector",
                 "__name": ".card.-lg .card-header, .card.-lg .card-body, .card.-lg .card-footer",
                 "__value": {
@@ -10786,7 +11238,7 @@
                 }
             },
             {
-                "__id": "nCnNOMc-FP3aF4bRZjdMj",
+                "__id": "xhZwvFJNo-XNAcYvl7YTK",
                 "__type": "selector",
                 "__name": ".card.-lg > *:first-child",
                 "__value": {
@@ -10801,7 +11253,7 @@
                 }
             },
             {
-                "__id": "u_mBy8Qt02lGHv5U8adh3",
+                "__id": "K2Bso-ThLJvgbFLoB08Od",
                 "__type": "selector",
                 "__name": ".card.-lg > *:last-child",
                 "__value": {
@@ -10816,7 +11268,7 @@
                 }
             },
             {
-                "__id": "XgfwNCCIc8cJR2FUpxsID",
+                "__id": "2G3q2HvmCrQPGDwzctDf8",
                 "__type": "selector",
                 "__name": ".card.-primary .card-header, .card.-primary .card-body, .card.-primary .card-footer",
                 "__value": {
@@ -10835,7 +11287,7 @@
                 }
             },
             {
-                "__id": "Ykc-JC9byVEtbkn6cj7JE",
+                "__id": "roMwNC9bylu6MKIX7KVkI",
                 "__type": "selector",
                 "__name": ".card.-secondary .card-header, .card.-secondary .card-body, .card.-secondary .card-footer",
                 "__value": {
@@ -10854,7 +11306,7 @@
                 }
             },
             {
-                "__id": "qEuFF91FHIpghC4_Ya5Q7",
+                "__id": "5H2WrMjA0dQOfMKfmHZtM",
                 "__type": "selector",
                 "__name": ".card.-light .card-header, .card.-light .card-body, .card.-light .card-footer",
                 "__value": {
@@ -10873,7 +11325,7 @@
                 }
             },
             {
-                "__id": "NDFHjXcZlT07uvEDO_Ke-",
+                "__id": "FM0KHwn7ie1JzWWahNmBD",
                 "__type": "selector",
                 "__name": ".card.-dark .card-header, .card.-dark .card-body, .card.-dark .card-footer",
                 "__value": {
@@ -10892,7 +11344,7 @@
                 }
             },
             {
-                "__id": "vwisad8AgwP2XVB9qalsl",
+                "__id": "Ipx4gtaGz3DvmKNZwIaqB",
                 "__type": "selector",
                 "__name": ".card.-info .card-header, .card.-info .card-body, .card.-info .card-footer",
                 "__value": {
@@ -10911,7 +11363,7 @@
                 }
             },
             {
-                "__id": "slgV0btatBeUulfoOgeyV",
+                "__id": "7CUssxU9EraU4KOOA_2bF",
                 "__type": "selector",
                 "__name": ".card.-success .card-header, .card.-success .card-body, .card.-success .card-footer",
                 "__value": {
@@ -10930,7 +11382,7 @@
                 }
             },
             {
-                "__id": "Vk2UZ50_R7IcM6HdCVlmK",
+                "__id": "LQ1iYyHv1yH0ugkSja1zH",
                 "__type": "selector",
                 "__name": ".card.-warning .card-header, .card.-warning .card-body, .card.-warning .card-footer",
                 "__value": {
@@ -10949,7 +11401,7 @@
                 }
             },
             {
-                "__id": "ml3OgxlsSnHLuW6xLOGyU",
+                "__id": "o0T8lqwuAUgPKzkPodSf8",
                 "__type": "selector",
                 "__name": ".card.-danger .card-header, .card.-danger .card-body, .card.-danger .card-footer",
                 "__value": {

@@ -1,9 +1,9 @@
-import { inject, MaybeRef, Ref, unref } from 'vue';
-import { FormGroupKey, FormKey } from '@inkline/vue';
+import { MaybeRef, Ref, unref } from 'vue';
 import { useFormElementSchema } from './useFormElementSchema';
 import type { UseFormElementSchemaOptions } from './useFormElementSchema';
 import type { UseFormValidationErrorOptions } from './useFormValidationState';
 import { useFormValidationState } from './useFormValidationState';
+import { useInjectForm } from './useInjectForm';
 
 export type UseFormGroupValidationOptions = UseFormElementSchemaOptions &
     Omit<UseFormValidationErrorOptions, 'schema'> & {
@@ -17,8 +17,7 @@ export function useFormGroupValidation({
     errorCondition,
     shouldValidate
 }: UseFormGroupValidationOptions) {
-    const form = inject(FormKey);
-    const formGroup = inject(FormGroupKey);
+    const { form, formGroup } = useInjectForm();
 
     const { schema } = useFormElementSchema({ name });
     const { isDisabled, isReadonly, hasError } = useFormValidationState({

@@ -2,9 +2,9 @@ import {
     multiply,
     ref,
     selector,
-    nsvariable,
     defaultDefinitionOptions,
-    nsdefine
+    nsvariables,
+    stripExportsNamespace
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
@@ -59,7 +59,7 @@ export function useTooltipThemeVariables(options = defaultDefinitionOptions) {
     const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
 
     return {
-        ...nsdefine(
+        ...nsvariables(
             ns,
             {
                 border: {
@@ -120,7 +120,7 @@ export function useTooltipThemeVariables(options = defaultDefinitionOptions) {
             },
             options
         ),
-        ...nsdefine(
+        ...nsvariables(
             [ns, 'arrow'] as const,
             {
                 size: '6px'
@@ -309,7 +309,7 @@ export function useTooltipThemeBase() {
     });
 }
 
-export function useTooltipThemeSizeFactory(size: ComponentSize) {
+export function useTooltipThemeSizeFactory(variant: ComponentSize) {
     const {
         tooltipPaddingTop,
         tooltipPaddingRight,
@@ -322,71 +322,47 @@ export function useTooltipThemeSizeFactory(size: ComponentSize) {
         tooltipFontSize
     } = useTooltipThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
-    const variantPaddingTop = nsvariable(
-        [ns, size],
-        'padding-top',
-        multiply(ref(tooltipPaddingTop), sizeMultiplierRef)
-    );
-    const variantPaddingRight = nsvariable(
-        [ns, size],
-        `padding-right`,
-        multiply(ref(tooltipPaddingRight), sizeMultiplierRef)
-    );
-    const variantPaddingBottom = nsvariable(
-        [ns, size],
-        `padding-bottom`,
-        multiply(ref(tooltipPaddingBottom), sizeMultiplierRef)
-    );
-    const variantPaddingLeft = nsvariable(
-        [ns, size],
-        `padding-left`,
-        multiply(ref(tooltipPaddingLeft), sizeMultiplierRef)
-    );
-
-    const variantBorderTopLeftRadius = nsvariable(
-        [ns, size],
-        'border-top-left-radius',
-        multiply(ref(tooltipBorderTopLeftRadius), sizeMultiplierRef)
-    );
-    const variantBorderTopRightRadius = nsvariable(
-        [ns, size],
-        'border-top-right-radius',
-        multiply(ref(tooltipBorderTopRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomRightRadius = nsvariable(
-        [ns, size],
-        'border-bottom-right-radius',
-        multiply(ref(tooltipBorderBottomRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomLeftRadius = nsvariable(
-        [ns, size],
-        'border-bottom-left-radius',
-        multiply(ref(tooltipBorderBottomLeftRadius), sizeMultiplierRef)
+    const {
+        borderTopLeftRadius,
+        borderTopRightRadius,
+        borderBottomRightRadius,
+        borderBottomLeftRadius,
+        fontSize,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft
+    } = stripExportsNamespace(
+        nsvariables(sizeNs, {
+            padding: {
+                top: multiply(ref(tooltipPaddingTop), sizeMultiplierRef),
+                right: multiply(ref(tooltipPaddingRight), sizeMultiplierRef),
+                bottom: multiply(ref(tooltipPaddingBottom), sizeMultiplierRef),
+                left: multiply(ref(tooltipPaddingLeft), sizeMultiplierRef)
+            },
+            borderRadius: {
+                topLeft: multiply(ref(tooltipBorderTopLeftRadius), sizeMultiplierRef),
+                topRight: multiply(ref(tooltipBorderTopRightRadius), sizeMultiplierRef),
+                bottomRight: multiply(ref(tooltipBorderBottomRightRadius), sizeMultiplierRef),
+                bottomLeft: multiply(ref(tooltipBorderBottomLeftRadius), sizeMultiplierRef)
+            },
+            fontSize: multiply(ref(tooltipFontSize), sizeMultiplierRef)
+        })
     );
 
-    const variantFontSize = nsvariable(
-        [ns, size],
-        'font-size',
-        multiply(ref(tooltipFontSize), sizeMultiplierRef)
-    );
-
-    selector(`.tooltip.-${size}`, {
-        fontSize: ref(variantFontSize)
+    selector(`.tooltip.-${variant}`, {
+        fontSize: ref(fontSize)
     });
 
-    selector(`.tooltip.-${size} .tooltip-content`, {
-        borderTopLeftRadius: ref(variantBorderTopLeftRadius),
-        borderTopRightRadius: ref(variantBorderTopRightRadius),
-        borderBottomRightRadius: ref(variantBorderBottomRightRadius),
-        borderBottomLeftRadius: ref(variantBorderBottomLeftRadius),
-        padding: [
-            ref(variantPaddingTop),
-            ref(variantPaddingRight),
-            ref(variantPaddingBottom),
-            ref(variantPaddingLeft)
-        ]
+    selector(`.tooltip.-${variant} .tooltip-content`, {
+        borderTopLeftRadius: ref(borderTopLeftRadius),
+        borderTopRightRadius: ref(borderTopRightRadius),
+        borderBottomRightRadius: ref(borderBottomRightRadius),
+        borderBottomLeftRadius: ref(borderBottomLeftRadius),
+        padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
     });
 }
 
@@ -394,65 +370,58 @@ export function useTooltipThemeSizes({ sizes = defaultComponentSizes } = {}) {
     sizes.forEach(useTooltipThemeSizeFactory);
 }
 
-export function useTooltipThemeColorFactory(color: ComponentBrandColor) {
-    const colorKey = capitalize(color);
-    const shadeOrTint = color === 'dark' ? 'Tint' : 'Shade';
+export function useTooltipThemeColorFactory(variant: ComponentBrandColor) {
+    const colorKey = capitalize(variant);
+    const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
+    const colorNs = [ns, variant] as const;
 
     const colors = useColors();
     const contrastTextColors = useContrastTextColor();
 
-    const variantBorderColor = nsvariable(
-        [ns, color],
-        `border-color`,
-        ref(colors[`color${colorKey}${shadeOrTint}50`])
-    );
-    const variantBackground = nsvariable(
-        [ns, color],
-        `background`,
-        ref(color === 'light' ? colors.colorWhite : colors[`color${colorKey}`])
-    );
-    const variantColor = nsvariable(
-        [ns, color],
-        `color`,
-        ref(contrastTextColors[`contrastTextColor${colorKey}`])
+    const { borderColor, background, color } = stripExportsNamespace(
+        nsvariables(colorNs, {
+            borderColor: ref(colors[`color${colorKey}${shadeOrTint}50`]),
+            background: ref(variant === 'light' ? colors.colorWhite : colors[`color${colorKey}`]),
+            color: ref(contrastTextColors[`contrastTextColor${colorKey}`])
+        })
     );
 
-    selector(`.tooltip.-${color} .tooltip-content`, {
-        borderColor: ref(variantBorderColor),
-        background: ref(variantBackground),
-        color: ref(variantColor)
+    selector(`.tooltip.-${variant} .tooltip-content`, {
+        borderColor: ref(borderColor),
+        background: ref(background),
+        color: ref(color)
     });
 
-    selector(`.tooltip.-${color}[data-popup-placement^="top"] .tooltip-arrow`, {
-        borderTopColor: ref(variantBorderColor)
+    selector(`.tooltip.-${variant}[data-popup-placement^="top"] .tooltip-arrow`, {
+        borderTopColor: ref(borderColor)
     });
 
-    selector(`.tooltip.-${color}[data-popup-placement^="top"] .tooltip-arrow::after`, {
-        borderTopColor: ref(variantBackground)
+    selector(`.tooltip.-${variant}[data-popup-placement^="top"] .tooltip-arrow::after`, {
+        borderTopColor: ref(background)
     });
 
-    selector(`.tooltip.-${color}[data-popup-placement^="right"] .tooltip-arrow`, {
-        borderRightColor: ref(variantBorderColor)
+    selector(`.tooltip.-${variant}[data-popup-placement^="right"] .tooltip-arrow`, {
+        borderRightColor: ref(borderColor)
     });
 
-    selector(`.tooltip.-${color}[data-popup-placement^="right"] .tooltip-arrow::after`, {
-        borderRightColor: ref(variantBackground)
+    selector(`.tooltip.-${variant}[data-popup-placement^="right"] .tooltip-arrow::after`, {
+        borderRightColor: ref(background)
     });
 
-    selector(`.tooltip.-${color}[data-popup-placement^="bottom"] .tooltip-arrow`, {
-        borderBottomColor: ref(variantBorderColor)
+    selector(`.tooltip.-${variant}[data-popup-placement^="bottom"] .tooltip-arrow`, {
+        borderBottomColor: ref(borderColor)
     });
 
-    selector(`.tooltip.-${color}[data-popup-placement^="bottom"] .tooltip-arrow::after`, {
-        borderBottomColor: ref(variantBackground)
+    selector(`.tooltip.-${variant}[data-popup-placement^="bottom"] .tooltip-arrow::after`, {
+        borderBottomColor: ref(background)
     });
 
-    selector(`.tooltip.-${color}[data-popup-placement^="left"] .tooltip-arrow`, {
-        borderLeftColor: ref(variantBorderColor)
+    selector(`.tooltip.-${variant}[data-popup-placement^="left"] .tooltip-arrow`, {
+        borderLeftColor: ref(borderColor)
     });
 
-    selector(`.tooltip.-${color}[data-popup-placement^="left"] .tooltip-arrow::after`, {
-        borderLeftColor: ref(variantBackground)
+    selector(`.tooltip.-${variant}[data-popup-placement^="left"] .tooltip-arrow::after`, {
+        borderLeftColor: ref(background)
     });
 }
 

@@ -2,9 +2,9 @@ import {
     multiply,
     ref,
     selector,
-    nsvariable,
     defaultDefinitionOptions,
-    nsdefine
+    nsvariables,
+    stripExportsNamespace
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
@@ -59,7 +59,7 @@ export function usePopoverThemeVariables(options = defaultDefinitionOptions) {
     const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
 
     return {
-        ...nsdefine(
+        ...nsvariables(
             ns,
             {
                 border: {
@@ -122,7 +122,7 @@ export function usePopoverThemeVariables(options = defaultDefinitionOptions) {
             },
             options
         ),
-        ...nsdefine(
+        ...nsvariables(
             [ns, 'arrow'] as const,
             {
                 size: '6px'
@@ -327,7 +327,7 @@ export function usePopoverThemeBase() {
     });
 }
 
-export function usePopoverThemeSizeFactory(size: ComponentSize) {
+export function usePopoverThemeSizeFactory(variant: ComponentSize) {
     const {
         popoverPaddingTop,
         popoverPaddingRight,
@@ -340,91 +340,67 @@ export function usePopoverThemeSizeFactory(size: ComponentSize) {
         popoverFontSize
     } = usePopoverThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
-    const variantPaddingTop = nsvariable(
-        [ns, size],
-        'padding-top',
-        multiply(ref(popoverPaddingTop), sizeMultiplierRef)
-    );
-    const variantPaddingRight = nsvariable(
-        [ns, size],
-        `padding-right`,
-        multiply(ref(popoverPaddingRight), sizeMultiplierRef)
-    );
-    const variantPaddingBottom = nsvariable(
-        [ns, size],
-        `padding-bottom`,
-        multiply(ref(popoverPaddingBottom), sizeMultiplierRef)
-    );
-    const variantPaddingLeft = nsvariable(
-        [ns, size],
-        `padding-left`,
-        multiply(ref(popoverPaddingLeft), sizeMultiplierRef)
-    );
-
-    const variantBorderTopLeftRadius = nsvariable(
-        [ns, size],
-        'border-top-left-radius',
-        multiply(ref(popoverBorderTopLeftRadius), sizeMultiplierRef)
-    );
-    const variantBorderTopRightRadius = nsvariable(
-        [ns, size],
-        'border-top-right-radius',
-        multiply(ref(popoverBorderTopRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomRightRadius = nsvariable(
-        [ns, size],
-        'border-bottom-right-radius',
-        multiply(ref(popoverBorderBottomRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomLeftRadius = nsvariable(
-        [ns, size],
-        'border-bottom-left-radius',
-        multiply(ref(popoverBorderBottomLeftRadius), sizeMultiplierRef)
+    const {
+        borderTopLeftRadius,
+        borderTopRightRadius,
+        borderBottomRightRadius,
+        borderBottomLeftRadius,
+        fontSize,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft
+    } = stripExportsNamespace(
+        nsvariables(sizeNs, {
+            padding: {
+                top: multiply(ref(popoverPaddingTop), sizeMultiplierRef),
+                right: multiply(ref(popoverPaddingRight), sizeMultiplierRef),
+                bottom: multiply(ref(popoverPaddingBottom), sizeMultiplierRef),
+                left: multiply(ref(popoverPaddingLeft), sizeMultiplierRef)
+            },
+            borderRadius: {
+                topLeft: multiply(ref(popoverBorderTopLeftRadius), sizeMultiplierRef),
+                topRight: multiply(ref(popoverBorderTopRightRadius), sizeMultiplierRef),
+                bottomRight: multiply(ref(popoverBorderBottomRightRadius), sizeMultiplierRef),
+                bottomLeft: multiply(ref(popoverBorderBottomLeftRadius), sizeMultiplierRef)
+            },
+            fontSize: multiply(ref(popoverFontSize), sizeMultiplierRef)
+        })
     );
 
-    const variantFontSize = nsvariable(
-        [ns, size],
-        'font-size',
-        multiply(ref(popoverFontSize), sizeMultiplierRef)
-    );
-
-    selector(`.popover.-${size}`, {
-        fontSize: ref(variantFontSize)
+    selector(`.popover.-${variant}`, {
+        fontSize: ref(fontSize)
     });
 
     selector(
         [
-            `.popover.-${size} .popover-header`,
-            `.popover.-${size} .popover-body`,
-            `.popover.-${size} .popover-footer`
+            `.popover.-${variant} .popover-header`,
+            `.popover.-${variant} .popover-body`,
+            `.popover.-${variant} .popover-footer`
         ],
         {
-            fontSize: ref(variantFontSize),
-            padding: [
-                ref(variantPaddingTop),
-                ref(variantPaddingRight),
-                ref(variantPaddingBottom),
-                ref(variantPaddingLeft)
-            ]
+            fontSize: ref(fontSize),
+            padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
         }
     );
 
     selector(
         [
-            `.popover.-${size} > *:first-child:not(.popover-arrow)`,
-            `.popover.-${size} > .popover-arrow + *`
+            `.popover.-${variant} > *:first-child:not(.popover-arrow)`,
+            `.popover.-${variant} > .popover-arrow + *`
         ],
         {
-            borderTopLeftRadius: ref(variantBorderTopLeftRadius),
-            borderTopRightRadius: ref(variantBorderTopRightRadius)
+            borderTopLeftRadius: ref(borderTopLeftRadius),
+            borderTopRightRadius: ref(borderTopRightRadius)
         }
     );
 
-    selector([`.popover.-${size} > *:last-child`], {
-        borderBottomRightRadius: ref(variantBorderBottomRightRadius),
-        borderBottomLeftRadius: ref(variantBorderBottomLeftRadius)
+    selector([`.popover.-${variant} > *:last-child`], {
+        borderBottomRightRadius: ref(borderBottomRightRadius),
+        borderBottomLeftRadius: ref(borderBottomLeftRadius)
     });
 }
 
@@ -432,72 +408,65 @@ export function usePopoverThemeSizes({ sizes = defaultComponentSizes } = {}) {
     sizes.forEach(usePopoverThemeSizeFactory);
 }
 
-export function usePopoverThemeColorFactory(color: ComponentBrandColor) {
-    const colorKey = capitalize(color);
-    const shadeOrTint = color === 'dark' ? 'Tint' : 'Shade';
+export function usePopoverThemeColorFactory(variant: ComponentBrandColor) {
+    const colorKey = capitalize(variant);
+    const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
+    const colorNs = [ns, variant] as const;
 
     const colors = useColors();
     const contrastTextColors = useContrastTextColor();
 
-    const variantBorderColor = nsvariable(
-        [ns, color],
-        `border-color`,
-        ref(colors[`color${colorKey}${shadeOrTint}50`])
-    );
-    const variantBackground = nsvariable(
-        [ns, color],
-        `background`,
-        ref(color === 'light' ? colors.colorWhite : colors[`color${colorKey}`])
-    );
-    const variantColor = nsvariable(
-        [ns, color],
-        `color`,
-        ref(contrastTextColors[`contrastTextColor${colorKey}`])
+    const { borderColor, background, color } = stripExportsNamespace(
+        nsvariables(colorNs, {
+            borderColor: ref(colors[`color${colorKey}${shadeOrTint}50`]),
+            background: ref(variant === 'light' ? colors.colorWhite : colors[`color${colorKey}`]),
+            color: ref(contrastTextColors[`contrastTextColor${colorKey}`])
+        })
     );
 
     selector(
         [
-            `.popover.-${color} .popover-header`,
-            `.popover.-${color} .popover-body`,
-            `.popover.-${color} .popover-footer`
+            `.popover.-${variant} .popover-header`,
+            `.popover.-${variant} .popover-body`,
+            `.popover.-${variant} .popover-footer`
         ],
         {
-            borderColor: ref(variantBorderColor),
-            background: ref(variantBackground),
-            color: ref(variantColor)
+            borderColor: ref(borderColor),
+            background: ref(background),
+            color: ref(color)
         }
     );
 
-    selector(`.popover.-${color}[data-popup-placement^="top"] .popover-arrow`, {
-        borderTopColor: ref(variantBorderColor)
+    selector(`.popover.-${variant}[data-popup-placement^="top"] .popover-arrow`, {
+        borderTopColor: ref(borderColor)
     });
 
-    selector(`.popover.-${color}[data-popup-placement^="top"] .popover-arrow::after`, {
-        borderTopColor: ref(variantBackground)
+    selector(`.popover.-${variant}[data-popup-placement^="top"] .popover-arrow::after`, {
+        borderTopColor: ref(background)
     });
 
-    selector(`.popover.-${color}[data-popup-placement^="right"] .popover-arrow`, {
-        borderRightColor: ref(variantBorderColor)
+    selector(`.popover.-${variant}[data-popup-placement^="right"] .popover-arrow`, {
+        borderRightColor: ref(borderColor)
     });
 
-    selector(`.popover.-${color}[data-popup-placement^="right"] .popover-arrow::after`, {
-        borderRightColor: ref(variantBackground)
+    selector(`.popover.-${variant}[data-popup-placement^="right"] .popover-arrow::after`, {
+        borderRightColor: ref(background)
     });
 
-    selector(`.popover.-${color}[data-popup-placement^="bottom"] .popover-arrow`, {
-        borderBottomColor: ref(variantBorderColor)
+    selector(`.popover.-${variant}[data-popup-placement^="bottom"] .popover-arrow`, {
+        borderBottomColor: ref(borderColor)
     });
 
-    selector(`.popover.-${color}[data-popup-placement^="bottom"] .popover-arrow::after`, {
-        borderBottomColor: ref(variantBackground)
+    selector(`.popover.-${variant}[data-popup-placement^="bottom"] .popover-arrow::after`, {
+        borderBottomColor: ref(background)
     });
 
-    selector(`.popover.-${color}[data-popup-placement^="left"] .popover-arrow`, {
-        borderLeftColor: ref(variantBorderColor)
+    selector(`.popover.-${variant}[data-popup-placement^="left"] .popover-arrow`, {
+        borderLeftColor: ref(borderColor)
     });
 
-    selector(`.popover.-${color}[data-popup-placement^="left"] .popover-arrow::after`, {
-        borderLeftColor: ref(variantBackground)
+    selector(`.popover.-${variant}[data-popup-placement^="left"] .popover-arrow::after`, {
+        borderLeftColor: ref(background)
     });
 }
 

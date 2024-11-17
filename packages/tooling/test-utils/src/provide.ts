@@ -1,7 +1,7 @@
 /// <reference types="type-fest" />
 
-import { InklineOptionsKey, resolveOptions } from '@inkline/vue';
-import { InklineOptions, UserOptions } from '@inkline/types';
+import { resolveOptions } from '@inkline/vue';
+import { InklineOptionsKey, InklineOptions, UserOptions } from '@inkline/types';
 import { Ref, ref } from 'vue';
 
 export function createTestingInklineOptionsProvide(

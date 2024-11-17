@@ -1,10 +1,10 @@
 #storybook-root {
-    > .button {
-        display: inline-flex;
-        margin: 50px;
+    > .button[data-popup-type="popover"] {
+        display: flex;
+        margin: 200px auto;
     }
 
     > .popover-trigger {
-        margin: 50px;
+        margin: 200px auto;
     }
 }

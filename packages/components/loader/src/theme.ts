@@ -1,11 +1,11 @@
 import {
     ref,
     selector,
-    nsvariable,
-    nsdefine,
+    nsvariables,
     defaultDefinitionOptions,
     multiply,
-    keyframes
+    keyframes,
+    stripExportsNamespace
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
@@ -21,7 +21,7 @@ export function useLoaderThemeVariables(options = defaultDefinitionOptions) {
     const { colorPrimary } = useBrandColors();
 
     return {
-        ...nsdefine(
+        ...nsvariables(
             ns,
             {
                 animation: {
@@ -123,26 +123,22 @@ export function useLoaderThemeBase() {
     });
 }
 
-export function useLoaderThemeSizeFactory(size: ComponentSize) {
+export function useLoaderThemeSizeFactory(variant: ComponentSize) {
     const { loaderWidth, loaderHeight } = useLoaderThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
-    const variantWidth = nsvariable(
-        [ns, size] as const,
-        'width',
-        multiply(ref(loaderWidth), sizeMultiplierRef)
+    const { width, height } = stripExportsNamespace(
+        nsvariables(sizeNs, {
+            width: multiply(ref(loaderWidth), sizeMultiplierRef),
+            height: multiply(ref(loaderHeight), sizeMultiplierRef)
+        })
     );
 
-    const variantHeight = nsvariable(
-        [ns, size] as const,
-        'height',
-        multiply(ref(loaderHeight), sizeMultiplierRef)
-    );
-
-    selector(`.loader.-${size}`, {
-        width: ref(variantWidth),
-        height: ref(variantHeight)
+    selector(`.loader.-${variant}`, {
+        width: ref(width),
+        height: ref(height)
     });
 }
 
@@ -150,19 +146,20 @@ export function useLoaderThemeSizes({ sizes = defaultComponentSizes } = {}) {
     sizes.forEach(useLoaderThemeSizeFactory);
 }
 
-export function useLoaderThemeColorFactory(color: 'primary' | 'light' | 'dark') {
-    const invertedColor = color === 'light' ? 'dark' : color === 'dark' ? 'light' : color;
+export function useLoaderThemeColorFactory(variant: 'primary' | 'light' | 'dark') {
+    const invertedColor = variant === 'light' ? 'dark' : variant === 'dark' ? 'light' : variant;
     const colorKey = capitalize(invertedColor);
     const brandColors = useBrandColors();
+    const colorNs = [ns, variant] as const;
 
-    const variantColor = nsvariable(
-        [ns, color] as const,
-        `color`,
-        ref(brandColors[`color${colorKey}`])
+    const { color } = stripExportsNamespace(
+        nsvariables(colorNs, {
+            color: ref(brandColors[`color${colorKey}`])
+        })
     );
 
-    selector(`.loader.-${color} > svg > circle`, {
-        stroke: ref(variantColor)
+    selector(`.loader.-${variant} > svg > circle`, {
+        stroke: ref(color)
     });
 }
 

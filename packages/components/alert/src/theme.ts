@@ -2,9 +2,9 @@ import {
     multiply,
     ref,
     selector,
-    nsvariable,
-    nsdefine,
-    defaultDefinitionOptions
+    nsvariables,
+    defaultDefinitionOptions,
+    stripExportsNamespace
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
@@ -66,7 +66,7 @@ export function useAlertThemeVariables(options = defaultDefinitionOptions) {
     const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
 
     return {
-        ...nsdefine(
+        ...nsvariables(
             ns,
             {
                 border: {
@@ -131,7 +131,7 @@ export function useAlertThemeVariables(options = defaultDefinitionOptions) {
             },
             options
         ),
-        ...nsdefine([ns, 'link'] as const, {
+        ...nsvariables([ns, 'link'] as const, {
             fontWeight: ref(fontWeightSemibold)
         })
     };
@@ -241,80 +241,56 @@ export function useAlertThemeSizeFactory(size: ComponentSize) {
     } = useAlertThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
+    const sizeNs = [ns, size] as const;
 
-    const variantPaddingTop = nsvariable(
-        [ns, size],
-        'padding-top',
-        multiply(ref(alertPaddingTop), sizeMultiplierRef)
-    );
-    const variantPaddingRight = nsvariable(
-        [ns, size],
-        `padding-right`,
-        multiply(ref(alertPaddingRight), sizeMultiplierRef)
-    );
-    const variantPaddingBottom = nsvariable(
-        [ns, size],
-        `padding-bottom`,
-        multiply(ref(alertPaddingBottom), sizeMultiplierRef)
-    );
-    const variantPaddingLeft = nsvariable(
-        [ns, size],
-        `padding-left`,
-        multiply(ref(alertPaddingLeft), sizeMultiplierRef)
-    );
-
-    const variantBorderTopLeftRadius = nsvariable(
-        [ns, size],
-        'border-top-left-radius',
-        multiply(ref(alertBorderTopLeftRadius), sizeMultiplierRef)
-    );
-    const variantBorderTopRightRadius = nsvariable(
-        [ns, size],
-        'border-top-right-radius',
-        multiply(ref(alertBorderTopRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomRightRadius = nsvariable(
-        [ns, size],
-        'border-bottom-right-radius',
-        multiply(ref(alertBorderBottomRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomLeftRadius = nsvariable(
-        [ns, size],
-        'border-bottom-left-radius',
-        multiply(ref(alertBorderBottomLeftRadius), sizeMultiplierRef)
-    );
-
-    const variantFontSize = nsvariable(
-        [ns, size],
-        'font-size',
-        multiply(ref(alertFontSize), sizeMultiplierRef)
+    const {
+        borderTopLeftRadius,
+        borderTopRightRadius,
+        borderBottomRightRadius,
+        borderBottomLeftRadius,
+        fontSize,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft
+    } = stripExportsNamespace(
+        nsvariables(sizeNs, {
+            borderRadius: {
+                topLeft: multiply(ref(alertBorderTopLeftRadius), sizeMultiplierRef),
+                topRight: multiply(ref(alertBorderTopRightRadius), sizeMultiplierRef),
+                bottomRight: multiply(ref(alertBorderBottomRightRadius), sizeMultiplierRef),
+                bottomLeft: multiply(ref(alertBorderBottomLeftRadius), sizeMultiplierRef)
+            },
+            fontSize: multiply(ref(alertFontSize), sizeMultiplierRef),
+            padding: {
+                top: multiply(ref(alertPaddingTop), sizeMultiplierRef),
+                right: multiply(ref(alertPaddingRight), sizeMultiplierRef),
+                bottom: multiply(ref(alertPaddingBottom), sizeMultiplierRef),
+                left: multiply(ref(alertPaddingLeft), sizeMultiplierRef)
+            }
+        })
     );
 
     selector(`.alert.-${size}`, {
         borderRadius: [
-            ref(variantBorderTopLeftRadius),
-            ref(variantBorderTopRightRadius),
-            ref(variantBorderBottomRightRadius),
-            ref(variantBorderBottomLeftRadius)
+            ref(borderTopLeftRadius),
+            ref(borderTopRightRadius),
+            ref(borderBottomRightRadius),
+            ref(borderBottomLeftRadius)
         ],
-        fontSize: ref(variantFontSize)
+        fontSize: ref(fontSize)
     });
 
     selector(`.alert.-${size} .alert-content`, {
-        padding: [
-            ref(variantPaddingTop),
-            ref(variantPaddingRight),
-            ref(variantPaddingBottom),
-            ref(variantPaddingLeft)
-        ]
+        padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
     });
 
     selector(`.alert.-${size} .alert-icon`, {
-        marginLeft: ref(variantPaddingLeft)
+        marginLeft: ref(paddingLeft)
     });
 
     selector(`.alert.-${size} .alert-dismiss`, {
-        marginRight: ref(variantPaddingRight)
+        marginRight: ref(paddingRight)
     });
 }
 
@@ -322,34 +298,27 @@ export function useAlertThemeSizes({ sizes = defaultComponentSizes } = {}) {
     sizes.forEach(useAlertThemeSizeFactory);
 }
 
-export function useAlertThemeColorFactory(color: ComponentStateColor) {
-    const colorKey = capitalize(color);
+export function useAlertThemeColorFactory(variant: ComponentStateColor) {
+    const colorKey = capitalize(variant);
     const brandColorVariants = useBrandColorVariants();
+    const colorNs = [ns, variant] as const;
 
-    const variantBorderColor = nsvariable(
-        [ns, color],
-        `border-color`,
-        ref(brandColorVariants[`color${colorKey}Shade50`])
-    );
-    const variantBackground = nsvariable(
-        [ns, color],
-        `background`,
-        ref(brandColorVariants[`color${colorKey}100`])
-    );
-    const variantColor = nsvariable(
-        [ns, color],
-        `color`,
-        ref(brandColorVariants[`color${colorKey}800`])
+    const { borderColor, background, color } = stripExportsNamespace(
+        nsvariables(colorNs, {
+            borderColor: ref(brandColorVariants[`color${colorKey}Shade50`]),
+            background: ref(brandColorVariants[`color${colorKey}100`]),
+            color: ref(brandColorVariants[`color${colorKey}800`])
+        })
     );
 
-    selector(`.alert.-${color}`, {
-        borderColor: ref(variantBorderColor),
-        background: ref(variantBackground),
-        color: ref(variantColor)
+    selector(`.alert.-${variant}`, {
+        borderColor: ref(borderColor),
+        background: ref(background),
+        color: ref(color)
     });
 
-    selector(`.alert.-${color} a`, {
-        color: ref(variantColor)
+    selector(`.alert.-${variant} a`, {
+        color: ref(color)
     });
 }
 

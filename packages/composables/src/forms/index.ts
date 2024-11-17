@@ -1,3 +1,4 @@
+export * from './useForm';
 export * from './useFormComponentColor';
 export * from './useFormComponentSize';
 export * from './useFormElementSchema';

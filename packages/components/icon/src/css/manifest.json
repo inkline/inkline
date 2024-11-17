@@ -453,7 +453,7 @@
         },
         "selectors": [
             {
-                "__id": "xP7bhSVMn0feDqLUFJKNa",
+                "__id": "WypDUd3ZROlxd7rmda22r",
                 "__type": "selector",
                 "__name": ".icon",
                 "__value": {
@@ -464,7 +464,7 @@
                 }
             },
             {
-                "__id": "9KYKEgdgX22TqmTflPxyk",
+                "__id": "UM8mi2RIPc21PykJ0Dw7n",
                 "__type": "selector",
                 "__name": ".icon.-sm",
                 "__value": {
@@ -475,7 +475,7 @@
                 }
             },
             {
-                "__id": "vSIn9lFKjR_xPzZqodwhD",
+                "__id": "qcfbBGkVuxTTR8hsctLKS",
                 "__type": "selector",
                 "__name": ".icon.-md",
                 "__value": {
@@ -486,7 +486,7 @@
                 }
             },
             {
-                "__id": "2lGU0QGLHx7llnzZsmB7d",
+                "__id": "2ipdv1HvfcqFT1Ac9bMUZ",
                 "__type": "selector",
                 "__name": ".icon.-lg",
                 "__value": {

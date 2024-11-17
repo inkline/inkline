@@ -15,7 +15,7 @@ export const enum TokenType {
 
 export type PrimitiveTokenValue = number | string | boolean;
 
-export type TokenValue = Calc | Reference | Color | PrimitiveTokenValue | TokenValue[];
+export type TokenValue = Calc | Variable | Reference | Color | PrimitiveTokenValue | TokenValue[];
 
 export type Variable<Name extends string = string> = {
     __type: TokenType.Variable;

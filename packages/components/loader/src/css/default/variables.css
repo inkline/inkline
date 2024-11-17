@@ -194,7 +194,19 @@
     --loader--md--height: calc(var(--loader--height) * var(--size-multiplier-md));
     --loader--lg--width: calc(var(--loader--width) * var(--size-multiplier-lg));
     --loader--lg--height: calc(var(--loader--height) * var(--size-multiplier-lg));
+    --loader--primary--color-h: 0;
+    --loader--primary--color-s: 0%;
+    --loader--primary--color-l: 0%;
+    --loader--primary--color-a: 1;
     --loader--primary--color: var(--color-primary);
+    --loader--light--color-h: 0;
+    --loader--light--color-s: 0%;
+    --loader--light--color-l: 0%;
+    --loader--light--color-a: 1;
     --loader--light--color: var(--color-dark);
+    --loader--dark--color-h: 0;
+    --loader--dark--color-s: 0%;
+    --loader--dark--color-l: 0%;
+    --loader--dark--color-a: 1;
     --loader--dark--color: var(--color-light);
 }

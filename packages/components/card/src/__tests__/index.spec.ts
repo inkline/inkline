@@ -60,7 +60,7 @@ describe('Components', () => {
                     }
                 });
 
-                expect(wrapper.container.firstChild!.nodeName).toBe('ARTCLE');
+                expect(wrapper.container.firstChild!.nodeName).toBe('ARTICLE');
             });
         });
     });

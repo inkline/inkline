@@ -1,7 +1,7 @@
 import {
     defaultDefinitionOptions,
     multiply,
-    namespace,
+    addVariableNamespace,
     nsvariable,
     ref,
     selector
@@ -27,7 +27,7 @@ export function useHeadingThemeVariables(options = defaultDefinitionOptions) {
     const { scaleRatioPow1, scaleRatioPow2, scaleRatioPow3, scaleRatioPow4, scaleRatioPow5 } =
         useScaleRatio();
 
-    const headingMarginBottom = namespace(ns, marginBottom, options);
+    const headingMarginBottom = addVariableNamespace(ns, marginBottom, options);
     const headingFontFamily = nsvariable(ns, 'font-family', ref(fontFamilyBaseSecondary), options);
     const headingFontStyle = nsvariable(ns, 'font-style', ref(fontStyleNormal), options);
     const headingFontWeight = nsvariable(ns, 'font-weight', ref(fontWeightBold), options);

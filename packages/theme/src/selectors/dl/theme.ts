@@ -1,7 +1,7 @@
 import {
     defaultDefinitionOptions,
     multiply,
-    namespace,
+    addVariableNamespace,
     nsvariable,
     ref,
     selector
@@ -14,7 +14,7 @@ export function useDlVariables(options = defaultDefinitionOptions) {
     const { marginBottom } = useMarginBase();
     const { fontWeightBold } = useFontWeight();
 
-    const dlMarginBottom = namespace(ns, marginBottom, options);
+    const dlMarginBottom = addVariableNamespace(ns, marginBottom, options);
 
     const dlDtFontWeight = nsvariable([ns, 'dt'], 'font-weight', ref(fontWeightBold), options);
 

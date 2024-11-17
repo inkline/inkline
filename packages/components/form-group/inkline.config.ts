@@ -1,6 +1,6 @@
 import { defineConfig } from '@inkline/config';
-import { useAlertTheme } from './src/theme';
+import { useFormGroupTheme } from './src/theme';
 
 export default defineConfig(() => {
-    useAlertTheme();
+    useFormGroupTheme();
 });

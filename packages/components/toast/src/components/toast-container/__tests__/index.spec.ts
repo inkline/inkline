@@ -3,9 +3,14 @@ import { ToastContainer } from '../index';
 import { createEventBus } from '@inkline/utils';
 import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
 
+vi.mock('@inkline/component-icon', () => ({
+    Icon: 'Icon'
+}));
+
 describe('Components', () => {
     describe('ToastContainer', () => {
         const props = {};
+        const stubs = {};
 
         it('should be named correctly', () => {
             expect(ToastContainer.name).toEqual('ToastContainer');
@@ -15,6 +20,7 @@ describe('Components', () => {
             const wrapper = render(ToastContainer, {
                 props,
                 global: {
+                    stubs,
                     provide: {
                         ...createTestingInklineOptionsProvide()
                     }
@@ -33,6 +39,7 @@ describe('Components', () => {
                             ...props
                         },
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide()
                             }
@@ -50,8 +57,9 @@ describe('Components', () => {
 
                     await waitFor(() => {
                         expect(wrapper.container.querySelectorAll('.toast').length).toEqual(8);
-                        expect(wrapper.html()).toMatchSnapshot();
                     });
+
+                    expect(wrapper.html()).toMatchSnapshot();
                 });
             });
 
@@ -64,6 +72,7 @@ describe('Components', () => {
                             ...props
                         },
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide()
                             }
@@ -93,6 +102,7 @@ describe('Components', () => {
                             ...props
                         },
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide()
                             }
@@ -112,7 +122,7 @@ describe('Components', () => {
                         expect(wrapper.container.querySelectorAll('.toast').length).toEqual(8);
                     });
 
-                    eventBus.emit('hideAll', {});
+                    eventBus.emit('hideAll');
 
                     await waitFor(() => {
                         expect(wrapper.container.querySelectorAll('.toast').length).toEqual(0);

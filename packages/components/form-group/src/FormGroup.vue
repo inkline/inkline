@@ -1,13 +1,12 @@
 <script lang="ts">
-import { computed, defineComponent, inject, provide, toRef } from 'vue';
+import { computed, defineComponent, provide, toRef } from 'vue';
 import type { PropType } from 'vue';
 import {
     useFormComponentColor,
     useFormComponentSize,
     useFormGroupValidation
 } from '@inkline/composables';
-import { FormKey, FormGroupKey } from '@inkline/vue';
-import { FormStateKeys } from '@inkline/types';
+import { FormGroupKey, FormStateKeys } from '@inkline/types';
 
 const componentName = 'FormGroup';
 
@@ -122,12 +121,12 @@ export default defineComponent({
 
         const rawColor = toRef(props, 'color');
         const rawSize = toRef(props, 'size');
-        const { color: resolvedColor } = useFormComponentColor(componentName, rawColor);
-        const { size: resolvedSize } = useFormComponentSize(componentName, rawSize);
+        const { color } = useFormComponentColor(componentName, rawColor);
+        const { size } = useFormComponentSize(componentName, rawSize);
 
         const classes = computed(() => ({
-            [`-${resolvedSize.value}`]: true,
-            [`-${resolvedColor.value}`]: true,
+            [`-${color.value}`]: true,
+            [`-${size.value}`]: true,
             '-disabled': isDisabled.value,
             '-readonly': isReadonly.value,
             '-inline': props.inline,
@@ -138,21 +137,15 @@ export default defineComponent({
         provide(FormGroupKey, {
             disabled: isDisabled,
             readonly: isReadonly,
-            size: resolvedSize,
-            color: resolvedColor,
+            size,
+            color,
             errorCondition,
             onBlur,
             onInput
         });
 
         return {
-            classes,
-            isDisabled,
-            isReadonly,
-            resolvedSize,
-            resolvedColor,
-            onBlur,
-            onInput
+            classes
         };
     }
 });

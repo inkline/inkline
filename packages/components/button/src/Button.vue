@@ -2,7 +2,7 @@
 import type { PropType } from 'vue';
 import { computed, defineComponent, inject } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/composables';
-import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/vue';
+import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/types';
 import { Linkable } from '@inkline/component-linkable';
 import { Loader } from '@inkline/component-loader';
 

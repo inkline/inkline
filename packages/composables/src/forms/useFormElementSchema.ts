@@ -1,14 +1,14 @@
-import { computed, inject, MaybeRef, unref } from 'vue';
-import { FormKey } from '@inkline/vue';
+import { computed, MaybeRef, unref } from 'vue';
 import { getValueByPath } from '@inkline/utils';
 import type { ResolvedFormField, ResolvedFormSchema } from '@inkline/types';
+import { useInjectForm } from './useInjectForm';
 
 export type UseFormElementSchemaOptions = {
     name: MaybeRef<string | undefined>;
 };
 
 export function useFormElementSchema({ name }: UseFormElementSchemaOptions) {
-    const form = inject(FormKey);
+    const { form } = useInjectForm();
 
     /**
      * Get the schema for the current input element by name.

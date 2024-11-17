@@ -2,11 +2,12 @@ import {
     multiply,
     ref,
     selector,
-    nsvariable,
-    nsdefine,
+    nsvariables,
     defaultDefinitionOptions,
     Variable,
-    keyframes
+    keyframes,
+    stripExportsNamespace,
+    setExportsNamespace
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
@@ -65,7 +66,7 @@ export function useToastThemeVariables(options = defaultDefinitionOptions) {
     const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
 
     return {
-        ...nsdefine(
+        ...nsvariables(
             ns,
             {
                 border: {
@@ -125,18 +126,18 @@ export function useToastThemeVariables(options = defaultDefinitionOptions) {
             },
             options
         ),
-        ...nsdefine([ns, 'link'] as const, {
+        ...nsvariables([ns, 'link'] as const, {
             fontWeight: ref(fontWeightSemibold)
         }),
-        ...nsdefine([ns, 'title'] as const, {
+        ...nsvariables([ns, 'title'] as const, {
             fontWeight: ref(fontWeightSemibold),
             fontSize: ref(fontSize)
         }),
-        ...nsdefine([ns, 'progress'] as const, {
+        ...nsvariables([ns, 'progress'] as const, {
             height: '4px',
             background: 'rgba(0, 0, 0, 0.05)'
         }),
-        ...nsdefine([ns, 'progress', 'bar'] as const, {
+        ...nsvariables([ns, 'progress', 'bar'] as const, {
             background: 'rgba(0, 0, 0, 0.15)'
         })
     };
@@ -279,7 +280,7 @@ export function useToastThemeBase() {
     });
 }
 
-export function useToastThemeSizeFactory(size: ComponentSize) {
+export function useToastThemeSizeFactory(variant: ComponentSize) {
     const {
         toastPaddingTop,
         toastPaddingRight,
@@ -292,81 +293,57 @@ export function useToastThemeSizeFactory(size: ComponentSize) {
         toastFontSize
     } = useToastThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
-    const variantPaddingTop = nsvariable(
-        [ns, size],
-        'padding-top',
-        multiply(ref(toastPaddingTop), sizeMultiplierRef)
-    );
-    const variantPaddingRight = nsvariable(
-        [ns, size],
-        `padding-right`,
-        multiply(ref(toastPaddingRight), sizeMultiplierRef)
-    );
-    const variantPaddingBottom = nsvariable(
-        [ns, size],
-        `padding-bottom`,
-        multiply(ref(toastPaddingBottom), sizeMultiplierRef)
-    );
-    const variantPaddingLeft = nsvariable(
-        [ns, size],
-        `padding-left`,
-        multiply(ref(toastPaddingLeft), sizeMultiplierRef)
-    );
-
-    const variantBorderTopLeftRadius = nsvariable(
-        [ns, size],
-        'border-top-left-radius',
-        multiply(ref(toastBorderTopLeftRadius), sizeMultiplierRef)
-    );
-    const variantBorderTopRightRadius = nsvariable(
-        [ns, size],
-        'border-top-right-radius',
-        multiply(ref(toastBorderTopRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomRightRadius = nsvariable(
-        [ns, size],
-        'border-bottom-right-radius',
-        multiply(ref(toastBorderBottomRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomLeftRadius = nsvariable(
-        [ns, size],
-        'border-bottom-left-radius',
-        multiply(ref(toastBorderBottomLeftRadius), sizeMultiplierRef)
+    const {
+        borderTopLeftRadius,
+        borderTopRightRadius,
+        borderBottomRightRadius,
+        borderBottomLeftRadius,
+        fontSize,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft
+    } = stripExportsNamespace(
+        nsvariables(sizeNs, {
+            padding: {
+                top: multiply(ref(toastPaddingTop), sizeMultiplierRef),
+                right: multiply(ref(toastPaddingRight), sizeMultiplierRef),
+                bottom: multiply(ref(toastPaddingBottom), sizeMultiplierRef),
+                left: multiply(ref(toastPaddingLeft), sizeMultiplierRef)
+            },
+            borderRadius: {
+                topLeft: multiply(ref(toastBorderTopLeftRadius), sizeMultiplierRef),
+                topRight: multiply(ref(toastBorderTopRightRadius), sizeMultiplierRef),
+                bottomRight: multiply(ref(toastBorderBottomRightRadius), sizeMultiplierRef),
+                bottomLeft: multiply(ref(toastBorderBottomLeftRadius), sizeMultiplierRef)
+            },
+            fontSize: multiply(ref(toastFontSize), sizeMultiplierRef)
+        })
     );
 
-    const variantFontSize = nsvariable(
-        [ns, size],
-        'font-size',
-        multiply(ref(toastFontSize), sizeMultiplierRef)
-    );
-
-    selector(`.toast.-${size}`, {
+    selector(`.toast.-${variant}`, {
         borderRadius: [
-            ref(variantBorderTopLeftRadius),
-            ref(variantBorderTopRightRadius),
-            ref(variantBorderBottomRightRadius),
-            ref(variantBorderBottomLeftRadius)
+            ref(borderTopLeftRadius),
+            ref(borderTopRightRadius),
+            ref(borderBottomRightRadius),
+            ref(borderBottomLeftRadius)
         ],
-        fontSize: ref(variantFontSize)
+        fontSize: ref(fontSize)
     });
 
-    selector(`.toast.-${size} .toast-content`, {
-        padding: [
-            ref(variantPaddingTop),
-            ref(variantPaddingRight),
-            ref(variantPaddingBottom),
-            ref(variantPaddingLeft)
-        ]
+    selector(`.toast.-${variant} .toast-content`, {
+        padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
     });
 
-    selector(`.toast.-${size} .toast-icon`, {
-        marginLeft: ref(variantPaddingLeft)
+    selector(`.toast.-${variant} .toast-icon`, {
+        marginLeft: ref(paddingLeft)
     });
 
-    selector(`.toast.-${size} .toast-dismiss`, {
-        marginRight: ref(variantPaddingRight)
+    selector(`.toast.-${variant} .toast-dismiss`, {
+        marginRight: ref(paddingRight)
     });
 }
 
@@ -374,85 +351,74 @@ export function useToastThemeSizes({ sizes = defaultComponentSizes } = {}) {
     sizes.forEach(useToastThemeSizeFactory);
 }
 
-export function useToastThemeColorFactory(color: ComponentStateColor | ComponentBrandNeutralColor) {
-    const colorKey = capitalize(color);
+export function useToastThemeColorFactory(
+    variant: ComponentStateColor | ComponentBrandNeutralColor
+) {
+    const colorKey = capitalize(variant);
+    const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
+    const colorNs = [ns, variant] as const;
+
     const neutralColors = useNeutralColors();
     const brandColors = useBrandColors();
     const brandColorVariants = useBrandColorVariants();
     const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor();
 
-    let variantBorderColorValue: Variable;
-    if (colorKey === 'Dark') {
-        variantBorderColorValue = brandColorVariants[`color${colorKey}Tint50`];
-    } else {
-        variantBorderColorValue = brandColorVariants[`color${colorKey}Shade50`];
-    }
-    const variantBorderColor = nsvariable(
-        [ns, color],
-        `border-color`,
-        ref(variantBorderColorValue)
-    );
-
-    let variantBackgroundValue: Variable;
+    let backgroundValue: Variable;
     if (colorKey === 'Light') {
-        variantBackgroundValue = neutralColors.colorWhite;
+        backgroundValue = neutralColors.colorWhite;
     } else if (colorKey === 'Dark') {
-        variantBackgroundValue = brandColors.colorDark;
+        backgroundValue = brandColors.colorDark;
     } else {
-        variantBackgroundValue = brandColorVariants[`color${colorKey}100`];
+        backgroundValue = brandColorVariants[`color${colorKey}100`];
     }
-    const variantBackground = nsvariable([ns, color], `background`, ref(variantBackgroundValue));
 
-    let variantColorValue: Variable;
+    let colorValue: Variable;
     if (colorKey === 'Light') {
-        variantColorValue = contrastTextColorLight;
+        colorValue = contrastTextColorLight;
     } else if (colorKey === 'Dark') {
-        variantColorValue = contrastTextColorDark;
+        colorValue = contrastTextColorDark;
     } else {
-        variantColorValue = brandColorVariants[`color${colorKey}800`];
+        colorValue = brandColorVariants[`color${colorKey}800`];
     }
-    const variantColor = nsvariable([ns, color], `color`, ref(variantColorValue));
 
-    let variantProgressBackgroundValue: string;
-    if (colorKey === 'Dark') {
-        variantProgressBackgroundValue = 'rgba(255, 255, 255, 0.05)';
-    } else {
-        variantProgressBackgroundValue = 'rgba(0, 0, 0, 0.05)';
-    }
-    const variantProgressBackground = nsvariable(
-        [ns, color, 'progress'],
-        `background`,
-        variantProgressBackgroundValue
+    const { borderColor, background, color } = stripExportsNamespace(
+        nsvariables(colorNs, {
+            borderColor: ref(brandColorVariants[`color${colorKey}${shadeOrTint}50`]),
+            background: ref(backgroundValue),
+            color: ref(colorValue)
+        })
     );
 
-    let variantProgressBarBackgroundValue: string;
-    if (colorKey === 'Dark') {
-        variantProgressBarBackgroundValue = 'rgba(255, 255, 255, 0.15)';
-    } else {
-        variantProgressBarBackgroundValue = 'rgba(0, 0, 0, 0.15)';
-    }
-    const variantProgressBarBackground = nsvariable(
-        [ns, color, 'progress', 'bar'],
-        `background`,
-        variantProgressBarBackgroundValue
+    const { progressBackground } = setExportsNamespace(
+        nsvariables([ns, variant, 'progress'] as const, {
+            background: variant === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'
+        }),
+        'progress'
     );
 
-    selector(`.toast.-${color}`, {
-        borderColor: ref(variantBorderColor),
-        background: ref(variantBackground),
-        color: ref(variantColor)
+    const { progressBarBackground } = setExportsNamespace(
+        nsvariables([ns, variant, 'progress', 'bar'] as const, {
+            background: variant === 'dark' ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.15)'
+        }),
+        ['progress', 'bar'] as const
+    );
+
+    selector(`.toast.-${variant}`, {
+        borderColor: ref(borderColor),
+        background: ref(background),
+        color: ref(color)
     });
 
-    selector(`.toast.-${color} a`, {
-        color: ref(variantColor)
+    selector(`.toast.-${variant} a`, {
+        color: ref(color)
     });
 
-    selector(`.toast.-${color} .toast-progress`, {
-        background: ref(variantProgressBackground)
+    selector(`.toast.-${variant} .toast-progress`, {
+        background: ref(progressBackground)
     });
 
-    selector(`.toast.-${color} .toast-progress-bar`, {
-        background: ref(variantProgressBarBackground)
+    selector(`.toast.-${variant} .toast-progress-bar`, {
+        background: ref(progressBarBackground)
     });
 }
 

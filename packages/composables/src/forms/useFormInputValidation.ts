@@ -1,20 +1,31 @@
 import type { MaybeRef } from 'vue';
-import { inject, unref } from 'vue';
-import { FormGroupKey, FormKey } from '@inkline/vue';
+import { unref } from 'vue';
 import { useFormElementSchema, UseFormElementSchemaOptions } from './useFormElementSchema';
 import { FormValue } from '@inkline/types';
-import type { UseFormValidationErrorOptions } from './useFormValidationState';
+import { UseFormValidationErrorOptions, useFormValidationState } from './useFormValidationState';
+import { useInjectForm } from './useInjectForm';
 
 export type UseFormInputValidationOptions = UseFormElementSchemaOptions &
     Omit<UseFormValidationErrorOptions, 'schema'> & {
         shouldValidate: MaybeRef<boolean>;
     };
 
-export function useFormInputValidation({ name, shouldValidate }: UseFormInputValidationOptions) {
-    const form = inject(FormKey);
-    const formGroup = inject(FormGroupKey);
+export function useFormInputValidation({
+    name,
+    disabled,
+    readonly,
+    errorCondition,
+    shouldValidate
+}: UseFormInputValidationOptions) {
+    const { form, formGroup } = useInjectForm();
 
     const { schema } = useFormElementSchema({ name });
+    const { isDisabled, isReadonly, hasError } = useFormValidationState({
+        schema,
+        disabled,
+        readonly,
+        errorCondition
+    });
 
     /**
      * Recursively preform onInput callback for form group or form that the element
@@ -60,6 +71,9 @@ export function useFormInputValidation({ name, shouldValidate }: UseFormInputVal
 
     return {
         schema,
+        isDisabled,
+        isReadonly,
+        hasError,
         onInput,
         onBlur
     };

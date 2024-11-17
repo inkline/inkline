@@ -22,12 +22,8 @@
         "jsdom": "catalog:",
         "tsup": "catalog:",
         "typescript": "catalog:",
-        "vue": "catalog:",
         "vite": "catalog:",
         "vitest": "catalog:"
-    },
-    "peerDependencies": {
-        "vue": ">=3.0.0"
     },
     "files": [
         "dist",

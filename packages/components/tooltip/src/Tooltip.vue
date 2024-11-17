@@ -192,9 +192,10 @@ export default defineComponent({
         );
 
         const triggerProps = computed(() => ({
-            ariaDescribedby: `${props.name}-tooltip`,
-            ariaDisabled: props.disabled,
-            ariaExpanded: isVisible.value ? 'true' : 'false'
+            'aria-describedby': `${props.name}-tooltip`,
+            'aria-disabled': props.disabled,
+            'aria-expanded': isVisible.value ? 'true' : 'false',
+            'data-popup-type': 'tooltip'
         }));
 
         function onUpdateVisible(visible: boolean) {
@@ -221,7 +222,7 @@ export default defineComponent({
         <template #trigger="{ props }">
             <!-- @slot default Slot for tooltip trigger -->
             <slot name="trigger" :props="{ ...props, ...triggerProps }">
-                <div v-bind="{ ...props, ...triggerProps }" class="tooltip-trigger">
+                <div v-bind="{ ...props, ...triggerProps }" class="tooltip-trigger" role="button">
                     <slot />
                 </div>
             </slot>

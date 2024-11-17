@@ -1,4 +1,4 @@
-import { defaultDefinitionOptions, namespace, nsvariable, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
 import { useBorder, useMarginBase } from '../../variables';
 
 const ns = 'hr';
@@ -7,16 +7,16 @@ export function useHrThemeVariables(options = defaultDefinitionOptions) {
     const { marginTop, marginBottom, margin } = useMarginBase();
     const { borderTopWidth, borderTopStyle, borderTopColor, borderTop } = useBorder();
 
-    const hrBorderTopWidth = namespace(ns, borderTopWidth, options);
-    const hrBorderTopStyle = namespace(ns, borderTopStyle, options);
-    const hrBorderTopColor = namespace(ns, borderTopColor, options);
-    const hrBorderTop = namespace(ns, borderTop, options);
+    const hrBorderTopWidth = addVariableNamespace(ns, borderTopWidth, options);
+    const hrBorderTopStyle = addVariableNamespace(ns, borderTopStyle, options);
+    const hrBorderTopColor = addVariableNamespace(ns, borderTopColor, options);
+    const hrBorderTop = addVariableNamespace(ns, borderTop, options);
 
-    const hrMarginTop = namespace(ns, marginTop, options);
+    const hrMarginTop = addVariableNamespace(ns, marginTop, options);
     const hrMarginRight = nsvariable(ns, 'margin-right', 0, options);
-    const hrMarginBottom = namespace(ns, marginBottom, options);
+    const hrMarginBottom = addVariableNamespace(ns, marginBottom, options);
     const hrMarginLeft = nsvariable(ns, 'margin-left', 0, options);
-    const hrMargin = namespace(ns, margin, options);
+    const hrMargin = addVariableNamespace(ns, margin, options);
 
     return {
         hrBorderTopWidth,

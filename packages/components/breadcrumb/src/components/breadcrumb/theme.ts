@@ -2,9 +2,9 @@ import {
     multiply,
     ref,
     selector,
-    nsvariable,
     defaultDefinitionOptions,
-    nsdefine
+    nsvariables,
+    stripExportsNamespace
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
@@ -29,7 +29,7 @@ export function useBreadcrumbThemeVariables(options = defaultDefinitionOptions) 
     const { textColorWeaker } = useTextColor();
 
     return {
-        ...nsdefine(
+        ...nsvariables(
             ns,
             {
                 fontSize: ref(fontSize),
@@ -46,7 +46,7 @@ export function useBreadcrumbThemeVariables(options = defaultDefinitionOptions) 
             },
             options
         ),
-        ...nsdefine([ns, 'active'] as const, {
+        ...nsvariables([ns, 'active'] as const, {
             color: ref(textColorWeaker)
         })
     };
@@ -76,8 +76,7 @@ export function useBreadcrumbThemeBase() {
     });
 }
 
-export function useBreadcrumbThemeSizeFactory(size: ComponentSize) {
-    const sizeNamespace = [ns, size] as const;
+export function useBreadcrumbThemeSizeFactory(variant: ComponentSize) {
     const {
         breadcrumbPaddingTop,
         breadcrumbPaddingRight,
@@ -86,43 +85,25 @@ export function useBreadcrumbThemeSizeFactory(size: ComponentSize) {
         breadcrumbFontSize
     } = useBreadcrumbThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
-    const variantPaddingTop = nsvariable(
-        sizeNamespace,
-        'padding-top',
-        multiply(ref(breadcrumbPaddingTop), sizeMultiplierRef)
-    );
-    const variantPaddingRight = nsvariable(
-        sizeNamespace,
-        `padding-right`,
-        multiply(ref(breadcrumbPaddingRight), sizeMultiplierRef)
-    );
-    const variantPaddingBottom = nsvariable(
-        sizeNamespace,
-        `padding-bottom`,
-        multiply(ref(breadcrumbPaddingBottom), sizeMultiplierRef)
-    );
-    const variantPaddingLeft = nsvariable(
-        sizeNamespace,
-        `padding-left`,
-        multiply(ref(breadcrumbPaddingLeft), sizeMultiplierRef)
-    );
+    const { fontSize, paddingTop, paddingRight, paddingBottom, paddingLeft } =
+        stripExportsNamespace(
+            nsvariables(sizeNs, {
+                fontSize: multiply(ref(breadcrumbFontSize), sizeMultiplierRef),
+                padding: {
+                    top: multiply(ref(breadcrumbPaddingTop), sizeMultiplierRef),
+                    right: multiply(ref(breadcrumbPaddingRight), sizeMultiplierRef),
+                    bottom: multiply(ref(breadcrumbPaddingBottom), sizeMultiplierRef),
+                    left: multiply(ref(breadcrumbPaddingLeft), sizeMultiplierRef)
+                }
+            })
+        );
 
-    const variantFontSize = nsvariable(
-        sizeNamespace,
-        'font-size',
-        multiply(ref(breadcrumbFontSize), sizeMultiplierRef)
-    );
-
-    selector(`.breadcrumb.-${size}`, {
-        fontSize: ref(variantFontSize),
-        padding: [
-            ref(variantPaddingTop),
-            ref(variantPaddingRight),
-            ref(variantPaddingBottom),
-            ref(variantPaddingLeft)
-        ]
+    selector(`.breadcrumb.-${variant}`, {
+        fontSize: ref(fontSize),
+        padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
     });
 }
 
@@ -130,19 +111,19 @@ export function useBreadcrumbThemeSizes({ sizes = defaultComponentSizes } = {}) 
     sizes.forEach(useBreadcrumbThemeSizeFactory);
 }
 
-export function useBreadcrumbThemeColorFactory(color: ComponentBrandColor) {
-    const colorNamespace = [ns, color] as const;
-    const colorKey = capitalize(color);
+export function useBreadcrumbThemeColorFactory(variant: ComponentBrandColor) {
+    const colorKey = capitalize(variant);
     const contrastTextColors = useContrastTextColor();
+    const colorNs = [ns, variant] as const;
 
-    const variantColor = nsvariable(
-        colorNamespace,
-        `color`,
-        ref(contrastTextColors[`contrastTextColor${colorKey}`])
+    const { color } = stripExportsNamespace(
+        nsvariables(colorNs, {
+            color: ref(contrastTextColors[`contrastTextColor${colorKey}`])
+        })
     );
 
-    selector(`.breadcrumb.-${color}`, {
-        color: ref(variantColor)
+    selector(`.breadcrumb.-${variant}`, {
+        color: ref(color)
     });
 }
 

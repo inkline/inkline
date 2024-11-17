@@ -2,10 +2,14 @@ import { render } from '@testing-library/vue';
 import { ref } from 'vue';
 import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
 import { Button } from '../index';
-import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/vue';
+import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/types';
 
 describe('Components', () => {
     describe('Button', () => {
+        const stubs = {
+            Linkable: true
+        };
+
         const props = {
             color: 'light',
             size: 'md'
@@ -19,6 +23,7 @@ describe('Components', () => {
             const wrapper = render(Button, {
                 props,
                 global: {
+                    stubs,
                     provide: {
                         ...createTestingInklineOptionsProvide()
                     }
@@ -41,6 +46,7 @@ describe('Components', () => {
                         ...props
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }
@@ -67,6 +73,7 @@ describe('Components', () => {
                             ...props
                         },
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide()
                             }
@@ -80,6 +87,7 @@ describe('Components', () => {
                     const wrapper = render(Button, {
                         props,
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide()
                             }
@@ -98,6 +106,7 @@ describe('Components', () => {
                             ...props
                         },
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide()
                             }
@@ -110,6 +119,7 @@ describe('Components', () => {
                 it('should be disabled if buttonGroup is disabled', () => {
                     const wrapper = render(Button, {
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide(),
                                 [ButtonGroupKey as symbol]: {
@@ -126,6 +136,7 @@ describe('Components', () => {
                 it('should be disabled if form is disabled', () => {
                     const wrapper = render(Button, {
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide(),
                                 [FormKey as symbol]: {
@@ -142,6 +153,7 @@ describe('Components', () => {
                 it('should be disabled if formGroup is disabled', () => {
                     const wrapper = render(Button, {
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide(),
                                 [FormGroupKey as symbol]: {
@@ -164,6 +176,7 @@ describe('Components', () => {
                         tag: 'button'
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }
@@ -178,6 +191,7 @@ describe('Components', () => {
                         tag: 'input'
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }
@@ -192,6 +206,7 @@ describe('Components', () => {
                         tag: 'a'
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }
@@ -208,6 +223,7 @@ describe('Components', () => {
                         tag: 'button'
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }
@@ -223,6 +239,7 @@ describe('Components', () => {
                         type: 'button'
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }
@@ -238,6 +255,7 @@ describe('Components', () => {
                         type: 'submit'
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }
@@ -253,6 +271,7 @@ describe('Components', () => {
                         type: 'reset'
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }
@@ -268,6 +287,7 @@ describe('Components', () => {
                         type: 'button'
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }
@@ -283,6 +303,7 @@ describe('Components', () => {
                         type: 'submit'
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }
@@ -298,6 +319,7 @@ describe('Components', () => {
                         type: 'reset'
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }
@@ -313,6 +335,7 @@ describe('Components', () => {
                         type: 'button'
                     },
                     global: {
+                        stubs,
                         provide: {
                             ...createTestingInklineOptionsProvide()
                         }

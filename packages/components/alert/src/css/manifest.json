@@ -9829,78 +9829,6 @@
                     "__name": "font-weight-semibold"
                 }
             },
-            "alert--sm--padding-top": {
-                "__type": "variable",
-                "__name": "alert--sm--padding-top",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "alert--padding-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "alert--sm--padding-right": {
-                "__type": "variable",
-                "__name": "alert--sm--padding-right",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "alert--padding-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "alert--sm--padding-bottom": {
-                "__type": "variable",
-                "__name": "alert--sm--padding-bottom",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "alert--padding-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "alert--sm--padding-left": {
-                "__type": "variable",
-                "__name": "alert--sm--padding-left",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "alert--padding-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
             "alert--sm--border-top-left-radius": {
                 "__type": "variable",
                 "__name": "alert--sm--border-top-left-radius",
@@ -9973,6 +9901,28 @@
                     ]
                 }
             },
+            "alert--sm--border-radius": {
+                "__type": "variable",
+                "__name": "alert--sm--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "alert--sm--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--sm--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--sm--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--sm--border-bottom-left-radius"
+                    }
+                ]
+            },
             "alert--sm--font-size": {
                 "__type": "variable",
                 "__name": "alert--sm--font-size",
@@ -9987,6 +9937,212 @@
                         {
                             "__type": "reference",
                             "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "alert--sm--padding-top": {
+                "__type": "variable",
+                "__name": "alert--sm--padding-top",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "alert--padding-top"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "alert--sm--padding-right": {
+                "__type": "variable",
+                "__name": "alert--sm--padding-right",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "alert--padding-right"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "alert--sm--padding-bottom": {
+                "__type": "variable",
+                "__name": "alert--sm--padding-bottom",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "alert--padding-bottom"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "alert--sm--padding-left": {
+                "__type": "variable",
+                "__name": "alert--sm--padding-left",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "alert--padding-left"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "alert--sm--padding": {
+                "__type": "variable",
+                "__name": "alert--sm--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "alert--sm--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--sm--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--sm--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--sm--padding-left"
+                    }
+                ]
+            },
+            "alert--md--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "alert--md--border-top-left-radius",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "alert--border-top-left-radius"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "alert--md--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "alert--md--border-top-right-radius",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "alert--border-top-right-radius"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "alert--md--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "alert--md--border-bottom-right-radius",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "alert--border-bottom-right-radius"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "alert--md--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "alert--md--border-bottom-left-radius",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "alert--border-bottom-left-radius"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "alert--md--border-radius": {
+                "__type": "variable",
+                "__name": "alert--md--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "alert--md--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--md--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--md--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--md--border-bottom-left-radius"
+                    }
+                ]
+            },
+            "alert--md--font-size": {
+                "__type": "variable",
+                "__name": "alert--md--font-size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "alert--font-size"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
                         }
                     ]
                 }
@@ -10063,9 +10219,31 @@
                     ]
                 }
             },
-            "alert--md--border-top-left-radius": {
+            "alert--md--padding": {
                 "__type": "variable",
-                "__name": "alert--md--border-top-left-radius",
+                "__name": "alert--md--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "alert--md--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--md--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--md--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--md--padding-left"
+                    }
+                ]
+            },
+            "alert--lg--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "alert--lg--border-top-left-radius",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -10076,14 +10254,14 @@
                         "*",
                         {
                             "__type": "reference",
-                            "__name": "size-multiplier-md"
+                            "__name": "size-multiplier-lg"
                         }
                     ]
                 }
             },
-            "alert--md--border-top-right-radius": {
+            "alert--lg--border-top-right-radius": {
                 "__type": "variable",
-                "__name": "alert--md--border-top-right-radius",
+                "__name": "alert--lg--border-top-right-radius",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -10094,14 +10272,14 @@
                         "*",
                         {
                             "__type": "reference",
-                            "__name": "size-multiplier-md"
+                            "__name": "size-multiplier-lg"
                         }
                     ]
                 }
             },
-            "alert--md--border-bottom-right-radius": {
+            "alert--lg--border-bottom-right-radius": {
                 "__type": "variable",
-                "__name": "alert--md--border-bottom-right-radius",
+                "__name": "alert--lg--border-bottom-right-radius",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -10112,14 +10290,14 @@
                         "*",
                         {
                             "__type": "reference",
-                            "__name": "size-multiplier-md"
+                            "__name": "size-multiplier-lg"
                         }
                     ]
                 }
             },
-            "alert--md--border-bottom-left-radius": {
+            "alert--lg--border-bottom-left-radius": {
                 "__type": "variable",
-                "__name": "alert--md--border-bottom-left-radius",
+                "__name": "alert--lg--border-bottom-left-radius",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -10130,14 +10308,36 @@
                         "*",
                         {
                             "__type": "reference",
-                            "__name": "size-multiplier-md"
+                            "__name": "size-multiplier-lg"
                         }
                     ]
                 }
             },
-            "alert--md--font-size": {
+            "alert--lg--border-radius": {
                 "__type": "variable",
-                "__name": "alert--md--font-size",
+                "__name": "alert--lg--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "alert--lg--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--lg--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--lg--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--lg--border-bottom-left-radius"
+                    }
+                ]
+            },
+            "alert--lg--font-size": {
+                "__type": "variable",
+                "__name": "alert--lg--font-size",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -10148,7 +10348,7 @@
                         "*",
                         {
                             "__type": "reference",
-                            "__name": "size-multiplier-md"
+                            "__name": "size-multiplier-lg"
                         }
                     ]
                 }
@@ -10225,95 +10425,27 @@
                     ]
                 }
             },
-            "alert--lg--border-top-left-radius": {
+            "alert--lg--padding": {
                 "__type": "variable",
-                "__name": "alert--lg--border-top-left-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "alert--border-top-left-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "alert--lg--border-top-right-radius": {
-                "__type": "variable",
-                "__name": "alert--lg--border-top-right-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "alert--border-top-right-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "alert--lg--border-bottom-right-radius": {
-                "__type": "variable",
-                "__name": "alert--lg--border-bottom-right-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "alert--border-bottom-right-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "alert--lg--border-bottom-left-radius": {
-                "__type": "variable",
-                "__name": "alert--lg--border-bottom-left-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "alert--border-bottom-left-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "alert--lg--font-size": {
-                "__type": "variable",
-                "__name": "alert--lg--font-size",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "alert--font-size"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
+                "__name": "alert--lg--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "alert--lg--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--lg--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--lg--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "alert--lg--padding-left"
+                    }
+                ]
             },
             "alert--info--border-color": {
                 "__type": "variable",
@@ -10323,6 +10455,26 @@
                     "__name": "color-info-shade-50"
                 }
             },
+            "alert--info--background-h": {
+                "__type": "variable",
+                "__name": "alert--info--background-h",
+                "__value": 0
+            },
+            "alert--info--background-s": {
+                "__type": "variable",
+                "__name": "alert--info--background-s",
+                "__value": "0%"
+            },
+            "alert--info--background-l": {
+                "__type": "variable",
+                "__name": "alert--info--background-l",
+                "__value": "0%"
+            },
+            "alert--info--background-a": {
+                "__type": "variable",
+                "__name": "alert--info--background-a",
+                "__value": 1
+            },
             "alert--info--background": {
                 "__type": "variable",
                 "__name": "alert--info--background",
@@ -10330,6 +10482,26 @@
                     "__type": "reference",
                     "__name": "color-info-100"
                 }
+            },
+            "alert--info--color-h": {
+                "__type": "variable",
+                "__name": "alert--info--color-h",
+                "__value": 0
+            },
+            "alert--info--color-s": {
+                "__type": "variable",
+                "__name": "alert--info--color-s",
+                "__value": "0%"
+            },
+            "alert--info--color-l": {
+                "__type": "variable",
+                "__name": "alert--info--color-l",
+                "__value": "0%"
+            },
+            "alert--info--color-a": {
+                "__type": "variable",
+                "__name": "alert--info--color-a",
+                "__value": 1
             },
             "alert--info--color": {
                 "__type": "variable",
@@ -10347,6 +10519,26 @@
                     "__name": "color-success-shade-50"
                 }
             },
+            "alert--success--background-h": {
+                "__type": "variable",
+                "__name": "alert--success--background-h",
+                "__value": 0
+            },
+            "alert--success--background-s": {
+                "__type": "variable",
+                "__name": "alert--success--background-s",
+                "__value": "0%"
+            },
+            "alert--success--background-l": {
+                "__type": "variable",
+                "__name": "alert--success--background-l",
+                "__value": "0%"
+            },
+            "alert--success--background-a": {
+                "__type": "variable",
+                "__name": "alert--success--background-a",
+                "__value": 1
+            },
             "alert--success--background": {
                 "__type": "variable",
                 "__name": "alert--success--background",
@@ -10354,6 +10546,26 @@
                     "__type": "reference",
                     "__name": "color-success-100"
                 }
+            },
+            "alert--success--color-h": {
+                "__type": "variable",
+                "__name": "alert--success--color-h",
+                "__value": 0
+            },
+            "alert--success--color-s": {
+                "__type": "variable",
+                "__name": "alert--success--color-s",
+                "__value": "0%"
+            },
+            "alert--success--color-l": {
+                "__type": "variable",
+                "__name": "alert--success--color-l",
+                "__value": "0%"
+            },
+            "alert--success--color-a": {
+                "__type": "variable",
+                "__name": "alert--success--color-a",
+                "__value": 1
             },
             "alert--success--color": {
                 "__type": "variable",
@@ -10371,6 +10583,26 @@
                     "__name": "color-warning-shade-50"
                 }
             },
+            "alert--warning--background-h": {
+                "__type": "variable",
+                "__name": "alert--warning--background-h",
+                "__value": 0
+            },
+            "alert--warning--background-s": {
+                "__type": "variable",
+                "__name": "alert--warning--background-s",
+                "__value": "0%"
+            },
+            "alert--warning--background-l": {
+                "__type": "variable",
+                "__name": "alert--warning--background-l",
+                "__value": "0%"
+            },
+            "alert--warning--background-a": {
+                "__type": "variable",
+                "__name": "alert--warning--background-a",
+                "__value": 1
+            },
             "alert--warning--background": {
                 "__type": "variable",
                 "__name": "alert--warning--background",
@@ -10378,6 +10610,26 @@
                     "__type": "reference",
                     "__name": "color-warning-100"
                 }
+            },
+            "alert--warning--color-h": {
+                "__type": "variable",
+                "__name": "alert--warning--color-h",
+                "__value": 0
+            },
+            "alert--warning--color-s": {
+                "__type": "variable",
+                "__name": "alert--warning--color-s",
+                "__value": "0%"
+            },
+            "alert--warning--color-l": {
+                "__type": "variable",
+                "__name": "alert--warning--color-l",
+                "__value": "0%"
+            },
+            "alert--warning--color-a": {
+                "__type": "variable",
+                "__name": "alert--warning--color-a",
+                "__value": 1
             },
             "alert--warning--color": {
                 "__type": "variable",
@@ -10395,6 +10647,26 @@
                     "__name": "color-danger-shade-50"
                 }
             },
+            "alert--danger--background-h": {
+                "__type": "variable",
+                "__name": "alert--danger--background-h",
+                "__value": 0
+            },
+            "alert--danger--background-s": {
+                "__type": "variable",
+                "__name": "alert--danger--background-s",
+                "__value": "0%"
+            },
+            "alert--danger--background-l": {
+                "__type": "variable",
+                "__name": "alert--danger--background-l",
+                "__value": "0%"
+            },
+            "alert--danger--background-a": {
+                "__type": "variable",
+                "__name": "alert--danger--background-a",
+                "__value": 1
+            },
             "alert--danger--background": {
                 "__type": "variable",
                 "__name": "alert--danger--background",
@@ -10402,6 +10674,26 @@
                     "__type": "reference",
                     "__name": "color-danger-100"
                 }
+            },
+            "alert--danger--color-h": {
+                "__type": "variable",
+                "__name": "alert--danger--color-h",
+                "__value": 0
+            },
+            "alert--danger--color-s": {
+                "__type": "variable",
+                "__name": "alert--danger--color-s",
+                "__value": "0%"
+            },
+            "alert--danger--color-l": {
+                "__type": "variable",
+                "__name": "alert--danger--color-l",
+                "__value": "0%"
+            },
+            "alert--danger--color-a": {
+                "__type": "variable",
+                "__name": "alert--danger--color-a",
+                "__value": 1
             },
             "alert--danger--color": {
                 "__type": "variable",
@@ -10414,7 +10706,7 @@
         },
         "selectors": [
             {
-                "__id": "cs_GAlq4UlL__uPqLsREL",
+                "__id": "XRL_iPopWNs07sta4K0sp",
                 "__type": "selector",
                 "__name": ".alert",
                 "__value": {
@@ -10424,7 +10716,7 @@
                 }
             },
             {
-                "__id": "MT1G7TQbFda1XOd3y0viS",
+                "__id": "ghtKga_PD4sjOtXKr_kEQ",
                 "__type": "selector",
                 "__name": ".alert-content",
                 "__value": {
@@ -10432,7 +10724,7 @@
                 }
             },
             {
-                "__id": "imTqedogttev_a5xGpTFE",
+                "__id": "xoQFZjtIcYrOhetA0Lwbu",
                 "__type": "selector",
                 "__name": ".alert-icon",
                 "__value": {
@@ -10444,7 +10736,7 @@
                 }
             },
             {
-                "__id": "nleoPYcBOWFSxDsApHfs3",
+                "__id": "LSk02VlHX4hF0uyVevUlF",
                 "__type": "selector",
                 "__name": ".alert-dismiss",
                 "__value": {
@@ -10456,7 +10748,7 @@
                 }
             },
             {
-                "__id": "c0Q1PwjZEG0Ys9oP4rnNe",
+                "__id": "nVdpdKQ3byfkzaStHyrnN",
                 "__type": "selector",
                 "__name": ".alert",
                 "__value": {
@@ -10507,7 +10799,7 @@
                 }
             },
             {
-                "__id": "LLNV64skEhu2JYuClFc1-",
+                "__id": "E9QdvZSAVTYnuGOjfTO5f",
                 "__type": "selector",
                 "__name": ".alert-content",
                 "__value": {
@@ -10518,7 +10810,7 @@
                 }
             },
             {
-                "__id": "AwIWUmh1JimXLRlMKGSDa",
+                "__id": "-V9wOGZaPWlEBgjxqE48J",
                 "__type": "selector",
                 "__name": ".alert-content *:first-child",
                 "__value": {
@@ -10526,7 +10818,7 @@
                 }
             },
             {
-                "__id": "53IKhSzDW3mZmHAZaMPeN",
+                "__id": "oQhRVb5juhwPqo-BO4KSB",
                 "__type": "selector",
                 "__name": ".alert-content *:last-child",
                 "__value": {
@@ -10534,7 +10826,7 @@
                 }
             },
             {
-                "__id": "AkWrHwuLv_3Hsg5UwwZhF",
+                "__id": "gfYBQYXZHIZFc7-p6TcwI",
                 "__type": "selector",
                 "__name": ".alert-icon",
                 "__value": {
@@ -10545,7 +10837,7 @@
                 }
             },
             {
-                "__id": "8l1lYTxMVPYA-t1g_itJ7",
+                "__id": "hAySD24Pd6nqoSwJ7YKY_",
                 "__type": "selector",
                 "__name": ".alert-dismiss",
                 "__value": {
@@ -10556,7 +10848,7 @@
                 }
             },
             {
-                "__id": "qvDIlTT1HzNTL2lv_E8xv",
+                "__id": "PCcnT37qISoqFcRw8hpo8",
                 "__type": "selector",
                 "__name": ".alert code",
                 "__value": {
@@ -10564,7 +10856,7 @@
                 }
             },
             {
-                "__id": "G9L1OlMS8KUVto0hFYhpp",
+                "__id": "T-z3KnWR-1ks1H_xWRh1O",
                 "__type": "selector",
                 "__name": ".alert a",
                 "__value": {
@@ -10575,7 +10867,7 @@
                 }
             },
             {
-                "__id": "jgaFGmul5Dni9iWjKEZ-E",
+                "__id": "40yiknEWdQTQCl9qaBxni",
                 "__type": "selector",
                 "__name": ".alert.-sm",
                 "__value": {
@@ -10604,7 +10896,7 @@
                 }
             },
             {
-                "__id": "1kjvydgJNmmg5RUlKNgxp",
+                "__id": "ugFB1F6QJ5krEVi8nxgXh",
                 "__type": "selector",
                 "__name": ".alert.-sm .alert-content",
                 "__value": {
@@ -10629,7 +10921,7 @@
                 }
             },
             {
-                "__id": "p9pkUT1xgODKIrWujPtXa",
+                "__id": "SAjsghmZdffamzmJi7WUh",
                 "__type": "selector",
                 "__name": ".alert.-sm .alert-icon",
                 "__value": {
@@ -10640,7 +10932,7 @@
                 }
             },
             {
-                "__id": "s06n7bmoFnDlmyvNHr9Z9",
+                "__id": "tQ7aegWxQj7s4NTqXxfu3",
                 "__type": "selector",
                 "__name": ".alert.-sm .alert-dismiss",
                 "__value": {
@@ -10651,7 +10943,7 @@
                 }
             },
             {
-                "__id": "JqZj-UPw-wL_2dJyKVdy1",
+                "__id": "Tq3kOx7E97EzyYh9V-nNR",
                 "__type": "selector",
                 "__name": ".alert.-md",
                 "__value": {
@@ -10680,7 +10972,7 @@
                 }
             },
             {
-                "__id": "TKnA3POzh5RiPfoZBtB6x",
+                "__id": "Q02cRyT_dzE_ybcZGjmvA",
                 "__type": "selector",
                 "__name": ".alert.-md .alert-content",
                 "__value": {
@@ -10705,7 +10997,7 @@
                 }
             },
             {
-                "__id": "Zd7odED7kE1Edarpm1qwA",
+                "__id": "h10qkdzW4mukSnI57iAgf",
                 "__type": "selector",
                 "__name": ".alert.-md .alert-icon",
                 "__value": {
@@ -10716,7 +11008,7 @@
                 }
             },
             {
-                "__id": "dRKr6cRZFq9YpsB6JDrX_",
+                "__id": "mZMf9vjLjsCBIPHNASbUS",
                 "__type": "selector",
                 "__name": ".alert.-md .alert-dismiss",
                 "__value": {
@@ -10727,7 +11019,7 @@
                 }
             },
             {
-                "__id": "TR8Cx0UlXvuV18ez5bkDE",
+                "__id": "nyFLg0G7O0EJ2GX8DKbHH",
                 "__type": "selector",
                 "__name": ".alert.-lg",
                 "__value": {
@@ -10756,7 +11048,7 @@
                 }
             },
             {
-                "__id": "WgJYkFT5TQQnDt5Q2uJS9",
+                "__id": "Hrk47eyrBMAyqxlOhxmG-",
                 "__type": "selector",
                 "__name": ".alert.-lg .alert-content",
                 "__value": {
@@ -10781,7 +11073,7 @@
                 }
             },
             {
-                "__id": "UjgiwmrK6iEAWjhA4H2rM",
+                "__id": "3nqqQh_M7KEbt8mooVZfi",
                 "__type": "selector",
                 "__name": ".alert.-lg .alert-icon",
                 "__value": {
@@ -10792,7 +11084,7 @@
                 }
             },
             {
-                "__id": "wOSftJHlJG0csTjOtM9Pj",
+                "__id": "YVHrYmKVJdbGgKy1SQMl9",
                 "__type": "selector",
                 "__name": ".alert.-lg .alert-dismiss",
                 "__value": {
@@ -10803,7 +11095,7 @@
                 }
             },
             {
-                "__id": "6NZio3QWW0dZChiLuWxDM",
+                "__id": "DD51fhZyGEQJadmmxaqvi",
                 "__type": "selector",
                 "__name": ".alert.-info",
                 "__value": {
@@ -10822,7 +11114,7 @@
                 }
             },
             {
-                "__id": "LnelA0Es0VBDHGJG3Ju7W",
+                "__id": "t5StQnCv3DuZkyJS2ZVYE",
                 "__type": "selector",
                 "__name": ".alert.-info a",
                 "__value": {
@@ -10833,7 +11125,7 @@
                 }
             },
             {
-                "__id": "vnXbl_gvo4CAbJi453GOI",
+                "__id": "xC2FUssE-LUz9HFULUapr",
                 "__type": "selector",
                 "__name": ".alert.-success",
                 "__value": {
@@ -10852,7 +11144,7 @@
                 }
             },
             {
-                "__id": "RtDF0kllrt5oNOjCT_OGf",
+                "__id": "QGdV_nfih2Mx91d72Csn2",
                 "__type": "selector",
                 "__name": ".alert.-success a",
                 "__value": {
@@ -10863,7 +11155,7 @@
                 }
             },
             {
-                "__id": "1ntWjdW-voUquRK7R2Hit",
+                "__id": "yU57pSCQu0Ugm6B_WNBBR",
                 "__type": "selector",
                 "__name": ".alert.-warning",
                 "__value": {
@@ -10882,7 +11174,7 @@
                 }
             },
             {
-                "__id": "kRdFVn5Q-Skt6vkjFZeg8",
+                "__id": "_3nm5rpspgDNTIOhcgPsX",
                 "__type": "selector",
                 "__name": ".alert.-warning a",
                 "__value": {
@@ -10893,7 +11185,7 @@
                 }
             },
             {
-                "__id": "aMjM18ocbKXC8aOZxgYJn",
+                "__id": "NSemm01vlyhLgm0T4Sxfn",
                 "__type": "selector",
                 "__name": ".alert.-danger",
                 "__value": {
@@ -10912,7 +11204,7 @@
                 }
             },
             {
-                "__id": "Jut8EmLcufOk-mn2eLT5a",
+                "__id": "iKcOavZUxtEowlotkiclC",
                 "__type": "selector",
                 "__name": ".alert.-danger a",
                 "__value": {

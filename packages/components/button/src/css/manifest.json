@@ -10092,78 +10092,6 @@
                     }
                 ]
             },
-            "button--sm--padding-top": {
-                "__type": "variable",
-                "__name": "button--sm--padding-top",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "button--sm--padding-right": {
-                "__type": "variable",
-                "__name": "button--sm--padding-right",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "button--sm--padding-bottom": {
-                "__type": "variable",
-                "__name": "button--sm--padding-bottom",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "button--sm--padding-left": {
-                "__type": "variable",
-                "__name": "button--sm--padding-left",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
             "button--sm--border-top-left-radius": {
                 "__type": "variable",
                 "__name": "button--sm--border-top-left-radius",
@@ -10236,6 +10164,28 @@
                     ]
                 }
             },
+            "button--sm--border-radius": {
+                "__type": "variable",
+                "__name": "button--sm--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "button--sm--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--sm--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--sm--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--sm--border-bottom-left-radius"
+                    }
+                ]
+            },
             "button--sm--font-size": {
                 "__type": "variable",
                 "__name": "button--sm--font-size",
@@ -10253,6 +10203,100 @@
                         }
                     ]
                 }
+            },
+            "button--sm--padding-top": {
+                "__type": "variable",
+                "__name": "button--sm--padding-top",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-top"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "button--sm--padding-right": {
+                "__type": "variable",
+                "__name": "button--sm--padding-right",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-right"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "button--sm--padding-bottom": {
+                "__type": "variable",
+                "__name": "button--sm--padding-bottom",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-bottom"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "button--sm--padding-left": {
+                "__type": "variable",
+                "__name": "button--sm--padding-left",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-left"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "button--sm--padding": {
+                "__type": "variable",
+                "__name": "button--sm--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "button--sm--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--sm--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--sm--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--sm--padding-left"
+                    }
+                ]
             },
             "button--sm--circle--width": {
                 "__type": "variable",
@@ -10322,78 +10366,6 @@
                         {
                             "__type": "reference",
                             "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "button--md--padding-top": {
-                "__type": "variable",
-                "__name": "button--md--padding-top",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "button--md--padding-right": {
-                "__type": "variable",
-                "__name": "button--md--padding-right",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "button--md--padding-bottom": {
-                "__type": "variable",
-                "__name": "button--md--padding-bottom",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "button--md--padding-left": {
-                "__type": "variable",
-                "__name": "button--md--padding-left",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
                         }
                     ]
                 }
@@ -10470,6 +10442,28 @@
                     ]
                 }
             },
+            "button--md--border-radius": {
+                "__type": "variable",
+                "__name": "button--md--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "button--md--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--md--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--md--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--md--border-bottom-left-radius"
+                    }
+                ]
+            },
             "button--md--font-size": {
                 "__type": "variable",
                 "__name": "button--md--font-size",
@@ -10487,6 +10481,100 @@
                         }
                     ]
                 }
+            },
+            "button--md--padding-top": {
+                "__type": "variable",
+                "__name": "button--md--padding-top",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-top"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "button--md--padding-right": {
+                "__type": "variable",
+                "__name": "button--md--padding-right",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-right"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "button--md--padding-bottom": {
+                "__type": "variable",
+                "__name": "button--md--padding-bottom",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-bottom"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "button--md--padding-left": {
+                "__type": "variable",
+                "__name": "button--md--padding-left",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-left"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "button--md--padding": {
+                "__type": "variable",
+                "__name": "button--md--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "button--md--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--md--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--md--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--md--padding-left"
+                    }
+                ]
             },
             "button--md--circle--width": {
                 "__type": "variable",
@@ -10556,78 +10644,6 @@
                         {
                             "__type": "reference",
                             "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "button--lg--padding-top": {
-                "__type": "variable",
-                "__name": "button--lg--padding-top",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "button--lg--padding-right": {
-                "__type": "variable",
-                "__name": "button--lg--padding-right",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "button--lg--padding-bottom": {
-                "__type": "variable",
-                "__name": "button--lg--padding-bottom",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "button--lg--padding-left": {
-                "__type": "variable",
-                "__name": "button--lg--padding-left",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "button--padding-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
                         }
                     ]
                 }
@@ -10704,6 +10720,28 @@
                     ]
                 }
             },
+            "button--lg--border-radius": {
+                "__type": "variable",
+                "__name": "button--lg--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "button--lg--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--lg--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--lg--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--lg--border-bottom-left-radius"
+                    }
+                ]
+            },
             "button--lg--font-size": {
                 "__type": "variable",
                 "__name": "button--lg--font-size",
@@ -10721,6 +10759,100 @@
                         }
                     ]
                 }
+            },
+            "button--lg--padding-top": {
+                "__type": "variable",
+                "__name": "button--lg--padding-top",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-top"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-lg"
+                        }
+                    ]
+                }
+            },
+            "button--lg--padding-right": {
+                "__type": "variable",
+                "__name": "button--lg--padding-right",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-right"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-lg"
+                        }
+                    ]
+                }
+            },
+            "button--lg--padding-bottom": {
+                "__type": "variable",
+                "__name": "button--lg--padding-bottom",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-bottom"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-lg"
+                        }
+                    ]
+                }
+            },
+            "button--lg--padding-left": {
+                "__type": "variable",
+                "__name": "button--lg--padding-left",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "button--padding-left"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-lg"
+                        }
+                    ]
+                }
+            },
+            "button--lg--padding": {
+                "__type": "variable",
+                "__name": "button--lg--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "button--lg--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--lg--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--lg--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "button--lg--padding-left"
+                    }
+                ]
             },
             "button--lg--circle--width": {
                 "__type": "variable",
@@ -10802,6 +10934,26 @@
                     "__name": "color-primary-shade-50"
                 }
             },
+            "button--primary--background-h": {
+                "__type": "variable",
+                "__name": "button--primary--background-h",
+                "__value": 0
+            },
+            "button--primary--background-s": {
+                "__type": "variable",
+                "__name": "button--primary--background-s",
+                "__value": "0%"
+            },
+            "button--primary--background-l": {
+                "__type": "variable",
+                "__name": "button--primary--background-l",
+                "__value": "0%"
+            },
+            "button--primary--background-a": {
+                "__type": "variable",
+                "__name": "button--primary--background-a",
+                "__value": 1
+            },
             "button--primary--background": {
                 "__type": "variable",
                 "__name": "button--primary--background",
@@ -10809,6 +10961,26 @@
                     "__type": "reference",
                     "__name": "color-primary"
                 }
+            },
+            "button--primary--color-h": {
+                "__type": "variable",
+                "__name": "button--primary--color-h",
+                "__value": 0
+            },
+            "button--primary--color-s": {
+                "__type": "variable",
+                "__name": "button--primary--color-s",
+                "__value": "0%"
+            },
+            "button--primary--color-l": {
+                "__type": "variable",
+                "__name": "button--primary--color-l",
+                "__value": "0%"
+            },
+            "button--primary--color-a": {
+                "__type": "variable",
+                "__name": "button--primary--color-a",
+                "__value": 1
             },
             "button--primary--color": {
                 "__type": "variable",
@@ -10826,6 +10998,26 @@
                     "__name": "color-primary-shade-100"
                 }
             },
+            "button--primary--hover--background-h": {
+                "__type": "variable",
+                "__name": "button--primary--hover--background-h",
+                "__value": 0
+            },
+            "button--primary--hover--background-s": {
+                "__type": "variable",
+                "__name": "button--primary--hover--background-s",
+                "__value": "0%"
+            },
+            "button--primary--hover--background-l": {
+                "__type": "variable",
+                "__name": "button--primary--hover--background-l",
+                "__value": "0%"
+            },
+            "button--primary--hover--background-a": {
+                "__type": "variable",
+                "__name": "button--primary--hover--background-a",
+                "__value": 1
+            },
             "button--primary--hover--background": {
                 "__type": "variable",
                 "__name": "button--primary--hover--background",
@@ -10833,6 +11025,26 @@
                     "__type": "reference",
                     "__name": "color-primary-shade-50"
                 }
+            },
+            "button--primary--hover--color-h": {
+                "__type": "variable",
+                "__name": "button--primary--hover--color-h",
+                "__value": 0
+            },
+            "button--primary--hover--color-s": {
+                "__type": "variable",
+                "__name": "button--primary--hover--color-s",
+                "__value": "0%"
+            },
+            "button--primary--hover--color-l": {
+                "__type": "variable",
+                "__name": "button--primary--hover--color-l",
+                "__value": "0%"
+            },
+            "button--primary--hover--color-a": {
+                "__type": "variable",
+                "__name": "button--primary--hover--color-a",
+                "__value": 1
             },
             "button--primary--hover--color": {
                 "__type": "variable",
@@ -10850,6 +11062,26 @@
                     "__name": "color-primary-shade-100"
                 }
             },
+            "button--primary--focus--background-h": {
+                "__type": "variable",
+                "__name": "button--primary--focus--background-h",
+                "__value": 0
+            },
+            "button--primary--focus--background-s": {
+                "__type": "variable",
+                "__name": "button--primary--focus--background-s",
+                "__value": "0%"
+            },
+            "button--primary--focus--background-l": {
+                "__type": "variable",
+                "__name": "button--primary--focus--background-l",
+                "__value": "0%"
+            },
+            "button--primary--focus--background-a": {
+                "__type": "variable",
+                "__name": "button--primary--focus--background-a",
+                "__value": 1
+            },
             "button--primary--focus--background": {
                 "__type": "variable",
                 "__name": "button--primary--focus--background",
@@ -10857,6 +11089,26 @@
                     "__type": "reference",
                     "__name": "color-primary-shade-50"
                 }
+            },
+            "button--primary--focus--color-h": {
+                "__type": "variable",
+                "__name": "button--primary--focus--color-h",
+                "__value": 0
+            },
+            "button--primary--focus--color-s": {
+                "__type": "variable",
+                "__name": "button--primary--focus--color-s",
+                "__value": "0%"
+            },
+            "button--primary--focus--color-l": {
+                "__type": "variable",
+                "__name": "button--primary--focus--color-l",
+                "__value": "0%"
+            },
+            "button--primary--focus--color-a": {
+                "__type": "variable",
+                "__name": "button--primary--focus--color-a",
+                "__value": 1
             },
             "button--primary--focus--color": {
                 "__type": "variable",
@@ -10874,6 +11126,26 @@
                     "__name": "color-primary-shade-100"
                 }
             },
+            "button--primary--active--background-h": {
+                "__type": "variable",
+                "__name": "button--primary--active--background-h",
+                "__value": 0
+            },
+            "button--primary--active--background-s": {
+                "__type": "variable",
+                "__name": "button--primary--active--background-s",
+                "__value": "0%"
+            },
+            "button--primary--active--background-l": {
+                "__type": "variable",
+                "__name": "button--primary--active--background-l",
+                "__value": "0%"
+            },
+            "button--primary--active--background-a": {
+                "__type": "variable",
+                "__name": "button--primary--active--background-a",
+                "__value": 1
+            },
             "button--primary--active--background": {
                 "__type": "variable",
                 "__name": "button--primary--active--background",
@@ -10881,6 +11153,26 @@
                     "__type": "reference",
                     "__name": "color-primary-shade-100"
                 }
+            },
+            "button--primary--active--color-h": {
+                "__type": "variable",
+                "__name": "button--primary--active--color-h",
+                "__value": 0
+            },
+            "button--primary--active--color-s": {
+                "__type": "variable",
+                "__name": "button--primary--active--color-s",
+                "__value": "0%"
+            },
+            "button--primary--active--color-l": {
+                "__type": "variable",
+                "__name": "button--primary--active--color-l",
+                "__value": "0%"
+            },
+            "button--primary--active--color-a": {
+                "__type": "variable",
+                "__name": "button--primary--active--color-a",
+                "__value": 1
             },
             "button--primary--active--color": {
                 "__type": "variable",
@@ -10898,6 +11190,26 @@
                     "__name": "color-primary"
                 }
             },
+            "button--primary--outline--color-h": {
+                "__type": "variable",
+                "__name": "button--primary--outline--color-h",
+                "__value": 0
+            },
+            "button--primary--outline--color-s": {
+                "__type": "variable",
+                "__name": "button--primary--outline--color-s",
+                "__value": "0%"
+            },
+            "button--primary--outline--color-l": {
+                "__type": "variable",
+                "__name": "button--primary--outline--color-l",
+                "__value": "0%"
+            },
+            "button--primary--outline--color-a": {
+                "__type": "variable",
+                "__name": "button--primary--outline--color-a",
+                "__value": 1
+            },
             "button--primary--outline--color": {
                 "__type": "variable",
                 "__name": "button--primary--outline--color",
@@ -10905,6 +11217,26 @@
                     "__type": "reference",
                     "__name": "color-primary"
                 }
+            },
+            "button--primary--link--color-h": {
+                "__type": "variable",
+                "__name": "button--primary--link--color-h",
+                "__value": 0
+            },
+            "button--primary--link--color-s": {
+                "__type": "variable",
+                "__name": "button--primary--link--color-s",
+                "__value": "0%"
+            },
+            "button--primary--link--color-l": {
+                "__type": "variable",
+                "__name": "button--primary--link--color-l",
+                "__value": "0%"
+            },
+            "button--primary--link--color-a": {
+                "__type": "variable",
+                "__name": "button--primary--link--color-a",
+                "__value": 1
             },
             "button--primary--link--color": {
                 "__type": "variable",
@@ -10922,6 +11254,26 @@
                     "__name": "color-secondary-shade-50"
                 }
             },
+            "button--secondary--background-h": {
+                "__type": "variable",
+                "__name": "button--secondary--background-h",
+                "__value": 0
+            },
+            "button--secondary--background-s": {
+                "__type": "variable",
+                "__name": "button--secondary--background-s",
+                "__value": "0%"
+            },
+            "button--secondary--background-l": {
+                "__type": "variable",
+                "__name": "button--secondary--background-l",
+                "__value": "0%"
+            },
+            "button--secondary--background-a": {
+                "__type": "variable",
+                "__name": "button--secondary--background-a",
+                "__value": 1
+            },
             "button--secondary--background": {
                 "__type": "variable",
                 "__name": "button--secondary--background",
@@ -10929,6 +11281,26 @@
                     "__type": "reference",
                     "__name": "color-secondary"
                 }
+            },
+            "button--secondary--color-h": {
+                "__type": "variable",
+                "__name": "button--secondary--color-h",
+                "__value": 0
+            },
+            "button--secondary--color-s": {
+                "__type": "variable",
+                "__name": "button--secondary--color-s",
+                "__value": "0%"
+            },
+            "button--secondary--color-l": {
+                "__type": "variable",
+                "__name": "button--secondary--color-l",
+                "__value": "0%"
+            },
+            "button--secondary--color-a": {
+                "__type": "variable",
+                "__name": "button--secondary--color-a",
+                "__value": 1
             },
             "button--secondary--color": {
                 "__type": "variable",
@@ -10946,6 +11318,26 @@
                     "__name": "color-secondary-shade-100"
                 }
             },
+            "button--secondary--hover--background-h": {
+                "__type": "variable",
+                "__name": "button--secondary--hover--background-h",
+                "__value": 0
+            },
+            "button--secondary--hover--background-s": {
+                "__type": "variable",
+                "__name": "button--secondary--hover--background-s",
+                "__value": "0%"
+            },
+            "button--secondary--hover--background-l": {
+                "__type": "variable",
+                "__name": "button--secondary--hover--background-l",
+                "__value": "0%"
+            },
+            "button--secondary--hover--background-a": {
+                "__type": "variable",
+                "__name": "button--secondary--hover--background-a",
+                "__value": 1
+            },
             "button--secondary--hover--background": {
                 "__type": "variable",
                 "__name": "button--secondary--hover--background",
@@ -10953,6 +11345,26 @@
                     "__type": "reference",
                     "__name": "color-secondary-shade-50"
                 }
+            },
+            "button--secondary--hover--color-h": {
+                "__type": "variable",
+                "__name": "button--secondary--hover--color-h",
+                "__value": 0
+            },
+            "button--secondary--hover--color-s": {
+                "__type": "variable",
+                "__name": "button--secondary--hover--color-s",
+                "__value": "0%"
+            },
+            "button--secondary--hover--color-l": {
+                "__type": "variable",
+                "__name": "button--secondary--hover--color-l",
+                "__value": "0%"
+            },
+            "button--secondary--hover--color-a": {
+                "__type": "variable",
+                "__name": "button--secondary--hover--color-a",
+                "__value": 1
             },
             "button--secondary--hover--color": {
                 "__type": "variable",
@@ -10970,6 +11382,26 @@
                     "__name": "color-secondary-shade-100"
                 }
             },
+            "button--secondary--focus--background-h": {
+                "__type": "variable",
+                "__name": "button--secondary--focus--background-h",
+                "__value": 0
+            },
+            "button--secondary--focus--background-s": {
+                "__type": "variable",
+                "__name": "button--secondary--focus--background-s",
+                "__value": "0%"
+            },
+            "button--secondary--focus--background-l": {
+                "__type": "variable",
+                "__name": "button--secondary--focus--background-l",
+                "__value": "0%"
+            },
+            "button--secondary--focus--background-a": {
+                "__type": "variable",
+                "__name": "button--secondary--focus--background-a",
+                "__value": 1
+            },
             "button--secondary--focus--background": {
                 "__type": "variable",
                 "__name": "button--secondary--focus--background",
@@ -10977,6 +11409,26 @@
                     "__type": "reference",
                     "__name": "color-secondary-shade-50"
                 }
+            },
+            "button--secondary--focus--color-h": {
+                "__type": "variable",
+                "__name": "button--secondary--focus--color-h",
+                "__value": 0
+            },
+            "button--secondary--focus--color-s": {
+                "__type": "variable",
+                "__name": "button--secondary--focus--color-s",
+                "__value": "0%"
+            },
+            "button--secondary--focus--color-l": {
+                "__type": "variable",
+                "__name": "button--secondary--focus--color-l",
+                "__value": "0%"
+            },
+            "button--secondary--focus--color-a": {
+                "__type": "variable",
+                "__name": "button--secondary--focus--color-a",
+                "__value": 1
             },
             "button--secondary--focus--color": {
                 "__type": "variable",
@@ -10994,6 +11446,26 @@
                     "__name": "color-secondary-shade-100"
                 }
             },
+            "button--secondary--active--background-h": {
+                "__type": "variable",
+                "__name": "button--secondary--active--background-h",
+                "__value": 0
+            },
+            "button--secondary--active--background-s": {
+                "__type": "variable",
+                "__name": "button--secondary--active--background-s",
+                "__value": "0%"
+            },
+            "button--secondary--active--background-l": {
+                "__type": "variable",
+                "__name": "button--secondary--active--background-l",
+                "__value": "0%"
+            },
+            "button--secondary--active--background-a": {
+                "__type": "variable",
+                "__name": "button--secondary--active--background-a",
+                "__value": 1
+            },
             "button--secondary--active--background": {
                 "__type": "variable",
                 "__name": "button--secondary--active--background",
@@ -11001,6 +11473,26 @@
                     "__type": "reference",
                     "__name": "color-secondary-shade-100"
                 }
+            },
+            "button--secondary--active--color-h": {
+                "__type": "variable",
+                "__name": "button--secondary--active--color-h",
+                "__value": 0
+            },
+            "button--secondary--active--color-s": {
+                "__type": "variable",
+                "__name": "button--secondary--active--color-s",
+                "__value": "0%"
+            },
+            "button--secondary--active--color-l": {
+                "__type": "variable",
+                "__name": "button--secondary--active--color-l",
+                "__value": "0%"
+            },
+            "button--secondary--active--color-a": {
+                "__type": "variable",
+                "__name": "button--secondary--active--color-a",
+                "__value": 1
             },
             "button--secondary--active--color": {
                 "__type": "variable",
@@ -11018,6 +11510,26 @@
                     "__name": "color-secondary"
                 }
             },
+            "button--secondary--outline--color-h": {
+                "__type": "variable",
+                "__name": "button--secondary--outline--color-h",
+                "__value": 0
+            },
+            "button--secondary--outline--color-s": {
+                "__type": "variable",
+                "__name": "button--secondary--outline--color-s",
+                "__value": "0%"
+            },
+            "button--secondary--outline--color-l": {
+                "__type": "variable",
+                "__name": "button--secondary--outline--color-l",
+                "__value": "0%"
+            },
+            "button--secondary--outline--color-a": {
+                "__type": "variable",
+                "__name": "button--secondary--outline--color-a",
+                "__value": 1
+            },
             "button--secondary--outline--color": {
                 "__type": "variable",
                 "__name": "button--secondary--outline--color",
@@ -11025,6 +11537,26 @@
                     "__type": "reference",
                     "__name": "color-secondary"
                 }
+            },
+            "button--secondary--link--color-h": {
+                "__type": "variable",
+                "__name": "button--secondary--link--color-h",
+                "__value": 0
+            },
+            "button--secondary--link--color-s": {
+                "__type": "variable",
+                "__name": "button--secondary--link--color-s",
+                "__value": "0%"
+            },
+            "button--secondary--link--color-l": {
+                "__type": "variable",
+                "__name": "button--secondary--link--color-l",
+                "__value": "0%"
+            },
+            "button--secondary--link--color-a": {
+                "__type": "variable",
+                "__name": "button--secondary--link--color-a",
+                "__value": 1
             },
             "button--secondary--link--color": {
                 "__type": "variable",
@@ -11042,6 +11574,26 @@
                     "__name": "color-light-shade-50"
                 }
             },
+            "button--light--background-h": {
+                "__type": "variable",
+                "__name": "button--light--background-h",
+                "__value": 0
+            },
+            "button--light--background-s": {
+                "__type": "variable",
+                "__name": "button--light--background-s",
+                "__value": "0%"
+            },
+            "button--light--background-l": {
+                "__type": "variable",
+                "__name": "button--light--background-l",
+                "__value": "0%"
+            },
+            "button--light--background-a": {
+                "__type": "variable",
+                "__name": "button--light--background-a",
+                "__value": 1
+            },
             "button--light--background": {
                 "__type": "variable",
                 "__name": "button--light--background",
@@ -11049,6 +11601,26 @@
                     "__type": "reference",
                     "__name": "color-light"
                 }
+            },
+            "button--light--color-h": {
+                "__type": "variable",
+                "__name": "button--light--color-h",
+                "__value": 0
+            },
+            "button--light--color-s": {
+                "__type": "variable",
+                "__name": "button--light--color-s",
+                "__value": "0%"
+            },
+            "button--light--color-l": {
+                "__type": "variable",
+                "__name": "button--light--color-l",
+                "__value": "0%"
+            },
+            "button--light--color-a": {
+                "__type": "variable",
+                "__name": "button--light--color-a",
+                "__value": 1
             },
             "button--light--color": {
                 "__type": "variable",
@@ -11066,6 +11638,26 @@
                     "__name": "color-light-shade-100"
                 }
             },
+            "button--light--hover--background-h": {
+                "__type": "variable",
+                "__name": "button--light--hover--background-h",
+                "__value": 0
+            },
+            "button--light--hover--background-s": {
+                "__type": "variable",
+                "__name": "button--light--hover--background-s",
+                "__value": "0%"
+            },
+            "button--light--hover--background-l": {
+                "__type": "variable",
+                "__name": "button--light--hover--background-l",
+                "__value": "0%"
+            },
+            "button--light--hover--background-a": {
+                "__type": "variable",
+                "__name": "button--light--hover--background-a",
+                "__value": 1
+            },
             "button--light--hover--background": {
                 "__type": "variable",
                 "__name": "button--light--hover--background",
@@ -11073,6 +11665,26 @@
                     "__type": "reference",
                     "__name": "color-light-shade-50"
                 }
+            },
+            "button--light--hover--color-h": {
+                "__type": "variable",
+                "__name": "button--light--hover--color-h",
+                "__value": 0
+            },
+            "button--light--hover--color-s": {
+                "__type": "variable",
+                "__name": "button--light--hover--color-s",
+                "__value": "0%"
+            },
+            "button--light--hover--color-l": {
+                "__type": "variable",
+                "__name": "button--light--hover--color-l",
+                "__value": "0%"
+            },
+            "button--light--hover--color-a": {
+                "__type": "variable",
+                "__name": "button--light--hover--color-a",
+                "__value": 1
             },
             "button--light--hover--color": {
                 "__type": "variable",
@@ -11090,6 +11702,26 @@
                     "__name": "color-light-shade-100"
                 }
             },
+            "button--light--focus--background-h": {
+                "__type": "variable",
+                "__name": "button--light--focus--background-h",
+                "__value": 0
+            },
+            "button--light--focus--background-s": {
+                "__type": "variable",
+                "__name": "button--light--focus--background-s",
+                "__value": "0%"
+            },
+            "button--light--focus--background-l": {
+                "__type": "variable",
+                "__name": "button--light--focus--background-l",
+                "__value": "0%"
+            },
+            "button--light--focus--background-a": {
+                "__type": "variable",
+                "__name": "button--light--focus--background-a",
+                "__value": 1
+            },
             "button--light--focus--background": {
                 "__type": "variable",
                 "__name": "button--light--focus--background",
@@ -11097,6 +11729,26 @@
                     "__type": "reference",
                     "__name": "color-light-shade-50"
                 }
+            },
+            "button--light--focus--color-h": {
+                "__type": "variable",
+                "__name": "button--light--focus--color-h",
+                "__value": 0
+            },
+            "button--light--focus--color-s": {
+                "__type": "variable",
+                "__name": "button--light--focus--color-s",
+                "__value": "0%"
+            },
+            "button--light--focus--color-l": {
+                "__type": "variable",
+                "__name": "button--light--focus--color-l",
+                "__value": "0%"
+            },
+            "button--light--focus--color-a": {
+                "__type": "variable",
+                "__name": "button--light--focus--color-a",
+                "__value": 1
             },
             "button--light--focus--color": {
                 "__type": "variable",
@@ -11114,6 +11766,26 @@
                     "__name": "color-light-shade-100"
                 }
             },
+            "button--light--active--background-h": {
+                "__type": "variable",
+                "__name": "button--light--active--background-h",
+                "__value": 0
+            },
+            "button--light--active--background-s": {
+                "__type": "variable",
+                "__name": "button--light--active--background-s",
+                "__value": "0%"
+            },
+            "button--light--active--background-l": {
+                "__type": "variable",
+                "__name": "button--light--active--background-l",
+                "__value": "0%"
+            },
+            "button--light--active--background-a": {
+                "__type": "variable",
+                "__name": "button--light--active--background-a",
+                "__value": 1
+            },
             "button--light--active--background": {
                 "__type": "variable",
                 "__name": "button--light--active--background",
@@ -11121,6 +11793,26 @@
                     "__type": "reference",
                     "__name": "color-light-shade-100"
                 }
+            },
+            "button--light--active--color-h": {
+                "__type": "variable",
+                "__name": "button--light--active--color-h",
+                "__value": 0
+            },
+            "button--light--active--color-s": {
+                "__type": "variable",
+                "__name": "button--light--active--color-s",
+                "__value": "0%"
+            },
+            "button--light--active--color-l": {
+                "__type": "variable",
+                "__name": "button--light--active--color-l",
+                "__value": "0%"
+            },
+            "button--light--active--color-a": {
+                "__type": "variable",
+                "__name": "button--light--active--color-a",
+                "__value": 1
             },
             "button--light--active--color": {
                 "__type": "variable",
@@ -11138,6 +11830,26 @@
                     "__name": "color-light"
                 }
             },
+            "button--light--outline--color-h": {
+                "__type": "variable",
+                "__name": "button--light--outline--color-h",
+                "__value": 0
+            },
+            "button--light--outline--color-s": {
+                "__type": "variable",
+                "__name": "button--light--outline--color-s",
+                "__value": "0%"
+            },
+            "button--light--outline--color-l": {
+                "__type": "variable",
+                "__name": "button--light--outline--color-l",
+                "__value": "0%"
+            },
+            "button--light--outline--color-a": {
+                "__type": "variable",
+                "__name": "button--light--outline--color-a",
+                "__value": 1
+            },
             "button--light--outline--color": {
                 "__type": "variable",
                 "__name": "button--light--outline--color",
@@ -11145,6 +11857,26 @@
                     "__type": "reference",
                     "__name": "color-light"
                 }
+            },
+            "button--light--link--color-h": {
+                "__type": "variable",
+                "__name": "button--light--link--color-h",
+                "__value": 0
+            },
+            "button--light--link--color-s": {
+                "__type": "variable",
+                "__name": "button--light--link--color-s",
+                "__value": "0%"
+            },
+            "button--light--link--color-l": {
+                "__type": "variable",
+                "__name": "button--light--link--color-l",
+                "__value": "0%"
+            },
+            "button--light--link--color-a": {
+                "__type": "variable",
+                "__name": "button--light--link--color-a",
+                "__value": 1
             },
             "button--light--link--color": {
                 "__type": "variable",
@@ -11162,6 +11894,26 @@
                     "__name": "color-dark-tint-50"
                 }
             },
+            "button--dark--background-h": {
+                "__type": "variable",
+                "__name": "button--dark--background-h",
+                "__value": 0
+            },
+            "button--dark--background-s": {
+                "__type": "variable",
+                "__name": "button--dark--background-s",
+                "__value": "0%"
+            },
+            "button--dark--background-l": {
+                "__type": "variable",
+                "__name": "button--dark--background-l",
+                "__value": "0%"
+            },
+            "button--dark--background-a": {
+                "__type": "variable",
+                "__name": "button--dark--background-a",
+                "__value": 1
+            },
             "button--dark--background": {
                 "__type": "variable",
                 "__name": "button--dark--background",
@@ -11169,6 +11921,26 @@
                     "__type": "reference",
                     "__name": "color-dark"
                 }
+            },
+            "button--dark--color-h": {
+                "__type": "variable",
+                "__name": "button--dark--color-h",
+                "__value": 0
+            },
+            "button--dark--color-s": {
+                "__type": "variable",
+                "__name": "button--dark--color-s",
+                "__value": "0%"
+            },
+            "button--dark--color-l": {
+                "__type": "variable",
+                "__name": "button--dark--color-l",
+                "__value": "0%"
+            },
+            "button--dark--color-a": {
+                "__type": "variable",
+                "__name": "button--dark--color-a",
+                "__value": 1
             },
             "button--dark--color": {
                 "__type": "variable",
@@ -11186,6 +11958,26 @@
                     "__name": "color-dark-tint-100"
                 }
             },
+            "button--dark--hover--background-h": {
+                "__type": "variable",
+                "__name": "button--dark--hover--background-h",
+                "__value": 0
+            },
+            "button--dark--hover--background-s": {
+                "__type": "variable",
+                "__name": "button--dark--hover--background-s",
+                "__value": "0%"
+            },
+            "button--dark--hover--background-l": {
+                "__type": "variable",
+                "__name": "button--dark--hover--background-l",
+                "__value": "0%"
+            },
+            "button--dark--hover--background-a": {
+                "__type": "variable",
+                "__name": "button--dark--hover--background-a",
+                "__value": 1
+            },
             "button--dark--hover--background": {
                 "__type": "variable",
                 "__name": "button--dark--hover--background",
@@ -11193,6 +11985,26 @@
                     "__type": "reference",
                     "__name": "color-dark-tint-50"
                 }
+            },
+            "button--dark--hover--color-h": {
+                "__type": "variable",
+                "__name": "button--dark--hover--color-h",
+                "__value": 0
+            },
+            "button--dark--hover--color-s": {
+                "__type": "variable",
+                "__name": "button--dark--hover--color-s",
+                "__value": "0%"
+            },
+            "button--dark--hover--color-l": {
+                "__type": "variable",
+                "__name": "button--dark--hover--color-l",
+                "__value": "0%"
+            },
+            "button--dark--hover--color-a": {
+                "__type": "variable",
+                "__name": "button--dark--hover--color-a",
+                "__value": 1
             },
             "button--dark--hover--color": {
                 "__type": "variable",
@@ -11210,6 +12022,26 @@
                     "__name": "color-dark-tint-100"
                 }
             },
+            "button--dark--focus--background-h": {
+                "__type": "variable",
+                "__name": "button--dark--focus--background-h",
+                "__value": 0
+            },
+            "button--dark--focus--background-s": {
+                "__type": "variable",
+                "__name": "button--dark--focus--background-s",
+                "__value": "0%"
+            },
+            "button--dark--focus--background-l": {
+                "__type": "variable",
+                "__name": "button--dark--focus--background-l",
+                "__value": "0%"
+            },
+            "button--dark--focus--background-a": {
+                "__type": "variable",
+                "__name": "button--dark--focus--background-a",
+                "__value": 1
+            },
             "button--dark--focus--background": {
                 "__type": "variable",
                 "__name": "button--dark--focus--background",
@@ -11217,6 +12049,26 @@
                     "__type": "reference",
                     "__name": "color-dark-tint-50"
                 }
+            },
+            "button--dark--focus--color-h": {
+                "__type": "variable",
+                "__name": "button--dark--focus--color-h",
+                "__value": 0
+            },
+            "button--dark--focus--color-s": {
+                "__type": "variable",
+                "__name": "button--dark--focus--color-s",
+                "__value": "0%"
+            },
+            "button--dark--focus--color-l": {
+                "__type": "variable",
+                "__name": "button--dark--focus--color-l",
+                "__value": "0%"
+            },
+            "button--dark--focus--color-a": {
+                "__type": "variable",
+                "__name": "button--dark--focus--color-a",
+                "__value": 1
             },
             "button--dark--focus--color": {
                 "__type": "variable",
@@ -11234,6 +12086,26 @@
                     "__name": "color-dark-tint-100"
                 }
             },
+            "button--dark--active--background-h": {
+                "__type": "variable",
+                "__name": "button--dark--active--background-h",
+                "__value": 0
+            },
+            "button--dark--active--background-s": {
+                "__type": "variable",
+                "__name": "button--dark--active--background-s",
+                "__value": "0%"
+            },
+            "button--dark--active--background-l": {
+                "__type": "variable",
+                "__name": "button--dark--active--background-l",
+                "__value": "0%"
+            },
+            "button--dark--active--background-a": {
+                "__type": "variable",
+                "__name": "button--dark--active--background-a",
+                "__value": 1
+            },
             "button--dark--active--background": {
                 "__type": "variable",
                 "__name": "button--dark--active--background",
@@ -11241,6 +12113,26 @@
                     "__type": "reference",
                     "__name": "color-dark-tint-100"
                 }
+            },
+            "button--dark--active--color-h": {
+                "__type": "variable",
+                "__name": "button--dark--active--color-h",
+                "__value": 0
+            },
+            "button--dark--active--color-s": {
+                "__type": "variable",
+                "__name": "button--dark--active--color-s",
+                "__value": "0%"
+            },
+            "button--dark--active--color-l": {
+                "__type": "variable",
+                "__name": "button--dark--active--color-l",
+                "__value": "0%"
+            },
+            "button--dark--active--color-a": {
+                "__type": "variable",
+                "__name": "button--dark--active--color-a",
+                "__value": 1
             },
             "button--dark--active--color": {
                 "__type": "variable",
@@ -11258,6 +12150,26 @@
                     "__name": "color-dark"
                 }
             },
+            "button--dark--outline--color-h": {
+                "__type": "variable",
+                "__name": "button--dark--outline--color-h",
+                "__value": 0
+            },
+            "button--dark--outline--color-s": {
+                "__type": "variable",
+                "__name": "button--dark--outline--color-s",
+                "__value": "0%"
+            },
+            "button--dark--outline--color-l": {
+                "__type": "variable",
+                "__name": "button--dark--outline--color-l",
+                "__value": "0%"
+            },
+            "button--dark--outline--color-a": {
+                "__type": "variable",
+                "__name": "button--dark--outline--color-a",
+                "__value": 1
+            },
             "button--dark--outline--color": {
                 "__type": "variable",
                 "__name": "button--dark--outline--color",
@@ -11265,6 +12177,26 @@
                     "__type": "reference",
                     "__name": "color-dark"
                 }
+            },
+            "button--dark--link--color-h": {
+                "__type": "variable",
+                "__name": "button--dark--link--color-h",
+                "__value": 0
+            },
+            "button--dark--link--color-s": {
+                "__type": "variable",
+                "__name": "button--dark--link--color-s",
+                "__value": "0%"
+            },
+            "button--dark--link--color-l": {
+                "__type": "variable",
+                "__name": "button--dark--link--color-l",
+                "__value": "0%"
+            },
+            "button--dark--link--color-a": {
+                "__type": "variable",
+                "__name": "button--dark--link--color-a",
+                "__value": 1
             },
             "button--dark--link--color": {
                 "__type": "variable",
@@ -11282,6 +12214,26 @@
                     "__name": "color-info-shade-50"
                 }
             },
+            "button--info--background-h": {
+                "__type": "variable",
+                "__name": "button--info--background-h",
+                "__value": 0
+            },
+            "button--info--background-s": {
+                "__type": "variable",
+                "__name": "button--info--background-s",
+                "__value": "0%"
+            },
+            "button--info--background-l": {
+                "__type": "variable",
+                "__name": "button--info--background-l",
+                "__value": "0%"
+            },
+            "button--info--background-a": {
+                "__type": "variable",
+                "__name": "button--info--background-a",
+                "__value": 1
+            },
             "button--info--background": {
                 "__type": "variable",
                 "__name": "button--info--background",
@@ -11289,6 +12241,26 @@
                     "__type": "reference",
                     "__name": "color-info"
                 }
+            },
+            "button--info--color-h": {
+                "__type": "variable",
+                "__name": "button--info--color-h",
+                "__value": 0
+            },
+            "button--info--color-s": {
+                "__type": "variable",
+                "__name": "button--info--color-s",
+                "__value": "0%"
+            },
+            "button--info--color-l": {
+                "__type": "variable",
+                "__name": "button--info--color-l",
+                "__value": "0%"
+            },
+            "button--info--color-a": {
+                "__type": "variable",
+                "__name": "button--info--color-a",
+                "__value": 1
             },
             "button--info--color": {
                 "__type": "variable",
@@ -11306,6 +12278,26 @@
                     "__name": "color-info-shade-100"
                 }
             },
+            "button--info--hover--background-h": {
+                "__type": "variable",
+                "__name": "button--info--hover--background-h",
+                "__value": 0
+            },
+            "button--info--hover--background-s": {
+                "__type": "variable",
+                "__name": "button--info--hover--background-s",
+                "__value": "0%"
+            },
+            "button--info--hover--background-l": {
+                "__type": "variable",
+                "__name": "button--info--hover--background-l",
+                "__value": "0%"
+            },
+            "button--info--hover--background-a": {
+                "__type": "variable",
+                "__name": "button--info--hover--background-a",
+                "__value": 1
+            },
             "button--info--hover--background": {
                 "__type": "variable",
                 "__name": "button--info--hover--background",
@@ -11313,6 +12305,26 @@
                     "__type": "reference",
                     "__name": "color-info-shade-50"
                 }
+            },
+            "button--info--hover--color-h": {
+                "__type": "variable",
+                "__name": "button--info--hover--color-h",
+                "__value": 0
+            },
+            "button--info--hover--color-s": {
+                "__type": "variable",
+                "__name": "button--info--hover--color-s",
+                "__value": "0%"
+            },
+            "button--info--hover--color-l": {
+                "__type": "variable",
+                "__name": "button--info--hover--color-l",
+                "__value": "0%"
+            },
+            "button--info--hover--color-a": {
+                "__type": "variable",
+                "__name": "button--info--hover--color-a",
+                "__value": 1
             },
             "button--info--hover--color": {
                 "__type": "variable",
@@ -11330,6 +12342,26 @@
                     "__name": "color-info-shade-100"
                 }
             },
+            "button--info--focus--background-h": {
+                "__type": "variable",
+                "__name": "button--info--focus--background-h",
+                "__value": 0
+            },
+            "button--info--focus--background-s": {
+                "__type": "variable",
+                "__name": "button--info--focus--background-s",
+                "__value": "0%"
+            },
+            "button--info--focus--background-l": {
+                "__type": "variable",
+                "__name": "button--info--focus--background-l",
+                "__value": "0%"
+            },
+            "button--info--focus--background-a": {
+                "__type": "variable",
+                "__name": "button--info--focus--background-a",
+                "__value": 1
+            },
             "button--info--focus--background": {
                 "__type": "variable",
                 "__name": "button--info--focus--background",
@@ -11337,6 +12369,26 @@
                     "__type": "reference",
                     "__name": "color-info-shade-50"
                 }
+            },
+            "button--info--focus--color-h": {
+                "__type": "variable",
+                "__name": "button--info--focus--color-h",
+                "__value": 0
+            },
+            "button--info--focus--color-s": {
+                "__type": "variable",
+                "__name": "button--info--focus--color-s",
+                "__value": "0%"
+            },
+            "button--info--focus--color-l": {
+                "__type": "variable",
+                "__name": "button--info--focus--color-l",
+                "__value": "0%"
+            },
+            "button--info--focus--color-a": {
+                "__type": "variable",
+                "__name": "button--info--focus--color-a",
+                "__value": 1
             },
             "button--info--focus--color": {
                 "__type": "variable",
@@ -11354,6 +12406,26 @@
                     "__name": "color-info-shade-100"
                 }
             },
+            "button--info--active--background-h": {
+                "__type": "variable",
+                "__name": "button--info--active--background-h",
+                "__value": 0
+            },
+            "button--info--active--background-s": {
+                "__type": "variable",
+                "__name": "button--info--active--background-s",
+                "__value": "0%"
+            },
+            "button--info--active--background-l": {
+                "__type": "variable",
+                "__name": "button--info--active--background-l",
+                "__value": "0%"
+            },
+            "button--info--active--background-a": {
+                "__type": "variable",
+                "__name": "button--info--active--background-a",
+                "__value": 1
+            },
             "button--info--active--background": {
                 "__type": "variable",
                 "__name": "button--info--active--background",
@@ -11361,6 +12433,26 @@
                     "__type": "reference",
                     "__name": "color-info-shade-100"
                 }
+            },
+            "button--info--active--color-h": {
+                "__type": "variable",
+                "__name": "button--info--active--color-h",
+                "__value": 0
+            },
+            "button--info--active--color-s": {
+                "__type": "variable",
+                "__name": "button--info--active--color-s",
+                "__value": "0%"
+            },
+            "button--info--active--color-l": {
+                "__type": "variable",
+                "__name": "button--info--active--color-l",
+                "__value": "0%"
+            },
+            "button--info--active--color-a": {
+                "__type": "variable",
+                "__name": "button--info--active--color-a",
+                "__value": 1
             },
             "button--info--active--color": {
                 "__type": "variable",
@@ -11378,6 +12470,26 @@
                     "__name": "color-info"
                 }
             },
+            "button--info--outline--color-h": {
+                "__type": "variable",
+                "__name": "button--info--outline--color-h",
+                "__value": 0
+            },
+            "button--info--outline--color-s": {
+                "__type": "variable",
+                "__name": "button--info--outline--color-s",
+                "__value": "0%"
+            },
+            "button--info--outline--color-l": {
+                "__type": "variable",
+                "__name": "button--info--outline--color-l",
+                "__value": "0%"
+            },
+            "button--info--outline--color-a": {
+                "__type": "variable",
+                "__name": "button--info--outline--color-a",
+                "__value": 1
+            },
             "button--info--outline--color": {
                 "__type": "variable",
                 "__name": "button--info--outline--color",
@@ -11385,6 +12497,26 @@
                     "__type": "reference",
                     "__name": "color-info"
                 }
+            },
+            "button--info--link--color-h": {
+                "__type": "variable",
+                "__name": "button--info--link--color-h",
+                "__value": 0
+            },
+            "button--info--link--color-s": {
+                "__type": "variable",
+                "__name": "button--info--link--color-s",
+                "__value": "0%"
+            },
+            "button--info--link--color-l": {
+                "__type": "variable",
+                "__name": "button--info--link--color-l",
+                "__value": "0%"
+            },
+            "button--info--link--color-a": {
+                "__type": "variable",
+                "__name": "button--info--link--color-a",
+                "__value": 1
             },
             "button--info--link--color": {
                 "__type": "variable",
@@ -11402,6 +12534,26 @@
                     "__name": "color-success-shade-50"
                 }
             },
+            "button--success--background-h": {
+                "__type": "variable",
+                "__name": "button--success--background-h",
+                "__value": 0
+            },
+            "button--success--background-s": {
+                "__type": "variable",
+                "__name": "button--success--background-s",
+                "__value": "0%"
+            },
+            "button--success--background-l": {
+                "__type": "variable",
+                "__name": "button--success--background-l",
+                "__value": "0%"
+            },
+            "button--success--background-a": {
+                "__type": "variable",
+                "__name": "button--success--background-a",
+                "__value": 1
+            },
             "button--success--background": {
                 "__type": "variable",
                 "__name": "button--success--background",
@@ -11409,6 +12561,26 @@
                     "__type": "reference",
                     "__name": "color-success"
                 }
+            },
+            "button--success--color-h": {
+                "__type": "variable",
+                "__name": "button--success--color-h",
+                "__value": 0
+            },
+            "button--success--color-s": {
+                "__type": "variable",
+                "__name": "button--success--color-s",
+                "__value": "0%"
+            },
+            "button--success--color-l": {
+                "__type": "variable",
+                "__name": "button--success--color-l",
+                "__value": "0%"
+            },
+            "button--success--color-a": {
+                "__type": "variable",
+                "__name": "button--success--color-a",
+                "__value": 1
             },
             "button--success--color": {
                 "__type": "variable",
@@ -11426,6 +12598,26 @@
                     "__name": "color-success-shade-100"
                 }
             },
+            "button--success--hover--background-h": {
+                "__type": "variable",
+                "__name": "button--success--hover--background-h",
+                "__value": 0
+            },
+            "button--success--hover--background-s": {
+                "__type": "variable",
+                "__name": "button--success--hover--background-s",
+                "__value": "0%"
+            },
+            "button--success--hover--background-l": {
+                "__type": "variable",
+                "__name": "button--success--hover--background-l",
+                "__value": "0%"
+            },
+            "button--success--hover--background-a": {
+                "__type": "variable",
+                "__name": "button--success--hover--background-a",
+                "__value": 1
+            },
             "button--success--hover--background": {
                 "__type": "variable",
                 "__name": "button--success--hover--background",
@@ -11433,6 +12625,26 @@
                     "__type": "reference",
                     "__name": "color-success-shade-50"
                 }
+            },
+            "button--success--hover--color-h": {
+                "__type": "variable",
+                "__name": "button--success--hover--color-h",
+                "__value": 0
+            },
+            "button--success--hover--color-s": {
+                "__type": "variable",
+                "__name": "button--success--hover--color-s",
+                "__value": "0%"
+            },
+            "button--success--hover--color-l": {
+                "__type": "variable",
+                "__name": "button--success--hover--color-l",
+                "__value": "0%"
+            },
+            "button--success--hover--color-a": {
+                "__type": "variable",
+                "__name": "button--success--hover--color-a",
+                "__value": 1
             },
             "button--success--hover--color": {
                 "__type": "variable",
@@ -11450,6 +12662,26 @@
                     "__name": "color-success-shade-100"
                 }
             },
+            "button--success--focus--background-h": {
+                "__type": "variable",
+                "__name": "button--success--focus--background-h",
+                "__value": 0
+            },
+            "button--success--focus--background-s": {
+                "__type": "variable",
+                "__name": "button--success--focus--background-s",
+                "__value": "0%"
+            },
+            "button--success--focus--background-l": {
+                "__type": "variable",
+                "__name": "button--success--focus--background-l",
+                "__value": "0%"
+            },
+            "button--success--focus--background-a": {
+                "__type": "variable",
+                "__name": "button--success--focus--background-a",
+                "__value": 1
+            },
             "button--success--focus--background": {
                 "__type": "variable",
                 "__name": "button--success--focus--background",
@@ -11457,6 +12689,26 @@
                     "__type": "reference",
                     "__name": "color-success-shade-50"
                 }
+            },
+            "button--success--focus--color-h": {
+                "__type": "variable",
+                "__name": "button--success--focus--color-h",
+                "__value": 0
+            },
+            "button--success--focus--color-s": {
+                "__type": "variable",
+                "__name": "button--success--focus--color-s",
+                "__value": "0%"
+            },
+            "button--success--focus--color-l": {
+                "__type": "variable",
+                "__name": "button--success--focus--color-l",
+                "__value": "0%"
+            },
+            "button--success--focus--color-a": {
+                "__type": "variable",
+                "__name": "button--success--focus--color-a",
+                "__value": 1
             },
             "button--success--focus--color": {
                 "__type": "variable",
@@ -11474,6 +12726,26 @@
                     "__name": "color-success-shade-100"
                 }
             },
+            "button--success--active--background-h": {
+                "__type": "variable",
+                "__name": "button--success--active--background-h",
+                "__value": 0
+            },
+            "button--success--active--background-s": {
+                "__type": "variable",
+                "__name": "button--success--active--background-s",
+                "__value": "0%"
+            },
+            "button--success--active--background-l": {
+                "__type": "variable",
+                "__name": "button--success--active--background-l",
+                "__value": "0%"
+            },
+            "button--success--active--background-a": {
+                "__type": "variable",
+                "__name": "button--success--active--background-a",
+                "__value": 1
+            },
             "button--success--active--background": {
                 "__type": "variable",
                 "__name": "button--success--active--background",
@@ -11481,6 +12753,26 @@
                     "__type": "reference",
                     "__name": "color-success-shade-100"
                 }
+            },
+            "button--success--active--color-h": {
+                "__type": "variable",
+                "__name": "button--success--active--color-h",
+                "__value": 0
+            },
+            "button--success--active--color-s": {
+                "__type": "variable",
+                "__name": "button--success--active--color-s",
+                "__value": "0%"
+            },
+            "button--success--active--color-l": {
+                "__type": "variable",
+                "__name": "button--success--active--color-l",
+                "__value": "0%"
+            },
+            "button--success--active--color-a": {
+                "__type": "variable",
+                "__name": "button--success--active--color-a",
+                "__value": 1
             },
             "button--success--active--color": {
                 "__type": "variable",
@@ -11498,6 +12790,26 @@
                     "__name": "color-success"
                 }
             },
+            "button--success--outline--color-h": {
+                "__type": "variable",
+                "__name": "button--success--outline--color-h",
+                "__value": 0
+            },
+            "button--success--outline--color-s": {
+                "__type": "variable",
+                "__name": "button--success--outline--color-s",
+                "__value": "0%"
+            },
+            "button--success--outline--color-l": {
+                "__type": "variable",
+                "__name": "button--success--outline--color-l",
+                "__value": "0%"
+            },
+            "button--success--outline--color-a": {
+                "__type": "variable",
+                "__name": "button--success--outline--color-a",
+                "__value": 1
+            },
             "button--success--outline--color": {
                 "__type": "variable",
                 "__name": "button--success--outline--color",
@@ -11505,6 +12817,26 @@
                     "__type": "reference",
                     "__name": "color-success"
                 }
+            },
+            "button--success--link--color-h": {
+                "__type": "variable",
+                "__name": "button--success--link--color-h",
+                "__value": 0
+            },
+            "button--success--link--color-s": {
+                "__type": "variable",
+                "__name": "button--success--link--color-s",
+                "__value": "0%"
+            },
+            "button--success--link--color-l": {
+                "__type": "variable",
+                "__name": "button--success--link--color-l",
+                "__value": "0%"
+            },
+            "button--success--link--color-a": {
+                "__type": "variable",
+                "__name": "button--success--link--color-a",
+                "__value": 1
             },
             "button--success--link--color": {
                 "__type": "variable",
@@ -11522,6 +12854,26 @@
                     "__name": "color-warning-shade-50"
                 }
             },
+            "button--warning--background-h": {
+                "__type": "variable",
+                "__name": "button--warning--background-h",
+                "__value": 0
+            },
+            "button--warning--background-s": {
+                "__type": "variable",
+                "__name": "button--warning--background-s",
+                "__value": "0%"
+            },
+            "button--warning--background-l": {
+                "__type": "variable",
+                "__name": "button--warning--background-l",
+                "__value": "0%"
+            },
+            "button--warning--background-a": {
+                "__type": "variable",
+                "__name": "button--warning--background-a",
+                "__value": 1
+            },
             "button--warning--background": {
                 "__type": "variable",
                 "__name": "button--warning--background",
@@ -11529,6 +12881,26 @@
                     "__type": "reference",
                     "__name": "color-warning"
                 }
+            },
+            "button--warning--color-h": {
+                "__type": "variable",
+                "__name": "button--warning--color-h",
+                "__value": 0
+            },
+            "button--warning--color-s": {
+                "__type": "variable",
+                "__name": "button--warning--color-s",
+                "__value": "0%"
+            },
+            "button--warning--color-l": {
+                "__type": "variable",
+                "__name": "button--warning--color-l",
+                "__value": "0%"
+            },
+            "button--warning--color-a": {
+                "__type": "variable",
+                "__name": "button--warning--color-a",
+                "__value": 1
             },
             "button--warning--color": {
                 "__type": "variable",
@@ -11546,6 +12918,26 @@
                     "__name": "color-warning-shade-100"
                 }
             },
+            "button--warning--hover--background-h": {
+                "__type": "variable",
+                "__name": "button--warning--hover--background-h",
+                "__value": 0
+            },
+            "button--warning--hover--background-s": {
+                "__type": "variable",
+                "__name": "button--warning--hover--background-s",
+                "__value": "0%"
+            },
+            "button--warning--hover--background-l": {
+                "__type": "variable",
+                "__name": "button--warning--hover--background-l",
+                "__value": "0%"
+            },
+            "button--warning--hover--background-a": {
+                "__type": "variable",
+                "__name": "button--warning--hover--background-a",
+                "__value": 1
+            },
             "button--warning--hover--background": {
                 "__type": "variable",
                 "__name": "button--warning--hover--background",
@@ -11553,6 +12945,26 @@
                     "__type": "reference",
                     "__name": "color-warning-shade-50"
                 }
+            },
+            "button--warning--hover--color-h": {
+                "__type": "variable",
+                "__name": "button--warning--hover--color-h",
+                "__value": 0
+            },
+            "button--warning--hover--color-s": {
+                "__type": "variable",
+                "__name": "button--warning--hover--color-s",
+                "__value": "0%"
+            },
+            "button--warning--hover--color-l": {
+                "__type": "variable",
+                "__name": "button--warning--hover--color-l",
+                "__value": "0%"
+            },
+            "button--warning--hover--color-a": {
+                "__type": "variable",
+                "__name": "button--warning--hover--color-a",
+                "__value": 1
             },
             "button--warning--hover--color": {
                 "__type": "variable",
@@ -11570,6 +12982,26 @@
                     "__name": "color-warning-shade-100"
                 }
             },
+            "button--warning--focus--background-h": {
+                "__type": "variable",
+                "__name": "button--warning--focus--background-h",
+                "__value": 0
+            },
+            "button--warning--focus--background-s": {
+                "__type": "variable",
+                "__name": "button--warning--focus--background-s",
+                "__value": "0%"
+            },
+            "button--warning--focus--background-l": {
+                "__type": "variable",
+                "__name": "button--warning--focus--background-l",
+                "__value": "0%"
+            },
+            "button--warning--focus--background-a": {
+                "__type": "variable",
+                "__name": "button--warning--focus--background-a",
+                "__value": 1
+            },
             "button--warning--focus--background": {
                 "__type": "variable",
                 "__name": "button--warning--focus--background",
@@ -11577,6 +13009,26 @@
                     "__type": "reference",
                     "__name": "color-warning-shade-50"
                 }
+            },
+            "button--warning--focus--color-h": {
+                "__type": "variable",
+                "__name": "button--warning--focus--color-h",
+                "__value": 0
+            },
+            "button--warning--focus--color-s": {
+                "__type": "variable",
+                "__name": "button--warning--focus--color-s",
+                "__value": "0%"
+            },
+            "button--warning--focus--color-l": {
+                "__type": "variable",
+                "__name": "button--warning--focus--color-l",
+                "__value": "0%"
+            },
+            "button--warning--focus--color-a": {
+                "__type": "variable",
+                "__name": "button--warning--focus--color-a",
+                "__value": 1
             },
             "button--warning--focus--color": {
                 "__type": "variable",
@@ -11594,6 +13046,26 @@
                     "__name": "color-warning-shade-100"
                 }
             },
+            "button--warning--active--background-h": {
+                "__type": "variable",
+                "__name": "button--warning--active--background-h",
+                "__value": 0
+            },
+            "button--warning--active--background-s": {
+                "__type": "variable",
+                "__name": "button--warning--active--background-s",
+                "__value": "0%"
+            },
+            "button--warning--active--background-l": {
+                "__type": "variable",
+                "__name": "button--warning--active--background-l",
+                "__value": "0%"
+            },
+            "button--warning--active--background-a": {
+                "__type": "variable",
+                "__name": "button--warning--active--background-a",
+                "__value": 1
+            },
             "button--warning--active--background": {
                 "__type": "variable",
                 "__name": "button--warning--active--background",
@@ -11601,6 +13073,26 @@
                     "__type": "reference",
                     "__name": "color-warning-shade-100"
                 }
+            },
+            "button--warning--active--color-h": {
+                "__type": "variable",
+                "__name": "button--warning--active--color-h",
+                "__value": 0
+            },
+            "button--warning--active--color-s": {
+                "__type": "variable",
+                "__name": "button--warning--active--color-s",
+                "__value": "0%"
+            },
+            "button--warning--active--color-l": {
+                "__type": "variable",
+                "__name": "button--warning--active--color-l",
+                "__value": "0%"
+            },
+            "button--warning--active--color-a": {
+                "__type": "variable",
+                "__name": "button--warning--active--color-a",
+                "__value": 1
             },
             "button--warning--active--color": {
                 "__type": "variable",
@@ -11618,6 +13110,26 @@
                     "__name": "color-warning"
                 }
             },
+            "button--warning--outline--color-h": {
+                "__type": "variable",
+                "__name": "button--warning--outline--color-h",
+                "__value": 0
+            },
+            "button--warning--outline--color-s": {
+                "__type": "variable",
+                "__name": "button--warning--outline--color-s",
+                "__value": "0%"
+            },
+            "button--warning--outline--color-l": {
+                "__type": "variable",
+                "__name": "button--warning--outline--color-l",
+                "__value": "0%"
+            },
+            "button--warning--outline--color-a": {
+                "__type": "variable",
+                "__name": "button--warning--outline--color-a",
+                "__value": 1
+            },
             "button--warning--outline--color": {
                 "__type": "variable",
                 "__name": "button--warning--outline--color",
@@ -11625,6 +13137,26 @@
                     "__type": "reference",
                     "__name": "color-warning"
                 }
+            },
+            "button--warning--link--color-h": {
+                "__type": "variable",
+                "__name": "button--warning--link--color-h",
+                "__value": 0
+            },
+            "button--warning--link--color-s": {
+                "__type": "variable",
+                "__name": "button--warning--link--color-s",
+                "__value": "0%"
+            },
+            "button--warning--link--color-l": {
+                "__type": "variable",
+                "__name": "button--warning--link--color-l",
+                "__value": "0%"
+            },
+            "button--warning--link--color-a": {
+                "__type": "variable",
+                "__name": "button--warning--link--color-a",
+                "__value": 1
             },
             "button--warning--link--color": {
                 "__type": "variable",
@@ -11642,6 +13174,26 @@
                     "__name": "color-danger-shade-50"
                 }
             },
+            "button--danger--background-h": {
+                "__type": "variable",
+                "__name": "button--danger--background-h",
+                "__value": 0
+            },
+            "button--danger--background-s": {
+                "__type": "variable",
+                "__name": "button--danger--background-s",
+                "__value": "0%"
+            },
+            "button--danger--background-l": {
+                "__type": "variable",
+                "__name": "button--danger--background-l",
+                "__value": "0%"
+            },
+            "button--danger--background-a": {
+                "__type": "variable",
+                "__name": "button--danger--background-a",
+                "__value": 1
+            },
             "button--danger--background": {
                 "__type": "variable",
                 "__name": "button--danger--background",
@@ -11649,6 +13201,26 @@
                     "__type": "reference",
                     "__name": "color-danger"
                 }
+            },
+            "button--danger--color-h": {
+                "__type": "variable",
+                "__name": "button--danger--color-h",
+                "__value": 0
+            },
+            "button--danger--color-s": {
+                "__type": "variable",
+                "__name": "button--danger--color-s",
+                "__value": "0%"
+            },
+            "button--danger--color-l": {
+                "__type": "variable",
+                "__name": "button--danger--color-l",
+                "__value": "0%"
+            },
+            "button--danger--color-a": {
+                "__type": "variable",
+                "__name": "button--danger--color-a",
+                "__value": 1
             },
             "button--danger--color": {
                 "__type": "variable",
@@ -11666,6 +13238,26 @@
                     "__name": "color-danger-shade-100"
                 }
             },
+            "button--danger--hover--background-h": {
+                "__type": "variable",
+                "__name": "button--danger--hover--background-h",
+                "__value": 0
+            },
+            "button--danger--hover--background-s": {
+                "__type": "variable",
+                "__name": "button--danger--hover--background-s",
+                "__value": "0%"
+            },
+            "button--danger--hover--background-l": {
+                "__type": "variable",
+                "__name": "button--danger--hover--background-l",
+                "__value": "0%"
+            },
+            "button--danger--hover--background-a": {
+                "__type": "variable",
+                "__name": "button--danger--hover--background-a",
+                "__value": 1
+            },
             "button--danger--hover--background": {
                 "__type": "variable",
                 "__name": "button--danger--hover--background",
@@ -11673,6 +13265,26 @@
                     "__type": "reference",
                     "__name": "color-danger-shade-50"
                 }
+            },
+            "button--danger--hover--color-h": {
+                "__type": "variable",
+                "__name": "button--danger--hover--color-h",
+                "__value": 0
+            },
+            "button--danger--hover--color-s": {
+                "__type": "variable",
+                "__name": "button--danger--hover--color-s",
+                "__value": "0%"
+            },
+            "button--danger--hover--color-l": {
+                "__type": "variable",
+                "__name": "button--danger--hover--color-l",
+                "__value": "0%"
+            },
+            "button--danger--hover--color-a": {
+                "__type": "variable",
+                "__name": "button--danger--hover--color-a",
+                "__value": 1
             },
             "button--danger--hover--color": {
                 "__type": "variable",
@@ -11690,6 +13302,26 @@
                     "__name": "color-danger-shade-100"
                 }
             },
+            "button--danger--focus--background-h": {
+                "__type": "variable",
+                "__name": "button--danger--focus--background-h",
+                "__value": 0
+            },
+            "button--danger--focus--background-s": {
+                "__type": "variable",
+                "__name": "button--danger--focus--background-s",
+                "__value": "0%"
+            },
+            "button--danger--focus--background-l": {
+                "__type": "variable",
+                "__name": "button--danger--focus--background-l",
+                "__value": "0%"
+            },
+            "button--danger--focus--background-a": {
+                "__type": "variable",
+                "__name": "button--danger--focus--background-a",
+                "__value": 1
+            },
             "button--danger--focus--background": {
                 "__type": "variable",
                 "__name": "button--danger--focus--background",
@@ -11697,6 +13329,26 @@
                     "__type": "reference",
                     "__name": "color-danger-shade-50"
                 }
+            },
+            "button--danger--focus--color-h": {
+                "__type": "variable",
+                "__name": "button--danger--focus--color-h",
+                "__value": 0
+            },
+            "button--danger--focus--color-s": {
+                "__type": "variable",
+                "__name": "button--danger--focus--color-s",
+                "__value": "0%"
+            },
+            "button--danger--focus--color-l": {
+                "__type": "variable",
+                "__name": "button--danger--focus--color-l",
+                "__value": "0%"
+            },
+            "button--danger--focus--color-a": {
+                "__type": "variable",
+                "__name": "button--danger--focus--color-a",
+                "__value": 1
             },
             "button--danger--focus--color": {
                 "__type": "variable",
@@ -11714,6 +13366,26 @@
                     "__name": "color-danger-shade-100"
                 }
             },
+            "button--danger--active--background-h": {
+                "__type": "variable",
+                "__name": "button--danger--active--background-h",
+                "__value": 0
+            },
+            "button--danger--active--background-s": {
+                "__type": "variable",
+                "__name": "button--danger--active--background-s",
+                "__value": "0%"
+            },
+            "button--danger--active--background-l": {
+                "__type": "variable",
+                "__name": "button--danger--active--background-l",
+                "__value": "0%"
+            },
+            "button--danger--active--background-a": {
+                "__type": "variable",
+                "__name": "button--danger--active--background-a",
+                "__value": 1
+            },
             "button--danger--active--background": {
                 "__type": "variable",
                 "__name": "button--danger--active--background",
@@ -11721,6 +13393,26 @@
                     "__type": "reference",
                     "__name": "color-danger-shade-100"
                 }
+            },
+            "button--danger--active--color-h": {
+                "__type": "variable",
+                "__name": "button--danger--active--color-h",
+                "__value": 0
+            },
+            "button--danger--active--color-s": {
+                "__type": "variable",
+                "__name": "button--danger--active--color-s",
+                "__value": "0%"
+            },
+            "button--danger--active--color-l": {
+                "__type": "variable",
+                "__name": "button--danger--active--color-l",
+                "__value": "0%"
+            },
+            "button--danger--active--color-a": {
+                "__type": "variable",
+                "__name": "button--danger--active--color-a",
+                "__value": 1
             },
             "button--danger--active--color": {
                 "__type": "variable",
@@ -11738,6 +13430,26 @@
                     "__name": "color-danger"
                 }
             },
+            "button--danger--outline--color-h": {
+                "__type": "variable",
+                "__name": "button--danger--outline--color-h",
+                "__value": 0
+            },
+            "button--danger--outline--color-s": {
+                "__type": "variable",
+                "__name": "button--danger--outline--color-s",
+                "__value": "0%"
+            },
+            "button--danger--outline--color-l": {
+                "__type": "variable",
+                "__name": "button--danger--outline--color-l",
+                "__value": "0%"
+            },
+            "button--danger--outline--color-a": {
+                "__type": "variable",
+                "__name": "button--danger--outline--color-a",
+                "__value": 1
+            },
             "button--danger--outline--color": {
                 "__type": "variable",
                 "__name": "button--danger--outline--color",
@@ -11745,6 +13457,26 @@
                     "__type": "reference",
                     "__name": "color-danger"
                 }
+            },
+            "button--danger--link--color-h": {
+                "__type": "variable",
+                "__name": "button--danger--link--color-h",
+                "__value": 0
+            },
+            "button--danger--link--color-s": {
+                "__type": "variable",
+                "__name": "button--danger--link--color-s",
+                "__value": "0%"
+            },
+            "button--danger--link--color-l": {
+                "__type": "variable",
+                "__name": "button--danger--link--color-l",
+                "__value": "0%"
+            },
+            "button--danger--link--color-a": {
+                "__type": "variable",
+                "__name": "button--danger--link--color-a",
+                "__value": 1
             },
             "button--danger--link--color": {
                 "__type": "variable",
@@ -11757,7 +13489,7 @@
         },
         "selectors": [
             {
-                "__id": "2Darbmr7a2dG-YXN4kOOM",
+                "__id": "7ZTS6Y0ytLVEgqDA4fyTz",
                 "__type": "selector",
                 "__name": ".button",
                 "__value": {
@@ -11774,7 +13506,7 @@
                 }
             },
             {
-                "__id": "9wGJd3T0c2G2YkMV0lfOm",
+                "__id": "-mWVahjNzLinFy9iCAd6R",
                 "__type": "selector",
                 "__name": ".button.-disabled, .button:disabled",
                 "__value": {
@@ -11782,7 +13514,7 @@
                 }
             },
             {
-                "__id": "cJqfneuYn6-K928_Gb5F1",
+                "__id": "QeG5zJybwKKAG2_SKOLPE",
                 "__type": "selector",
                 "__name": ".button.-loading",
                 "__value": {
@@ -11790,7 +13522,7 @@
                 }
             },
             {
-                "__id": "OjTpZqXxBj8Bh4j0LeW-C",
+                "__id": "xNGT7W2Ned8JsaiKH2suO",
                 "__type": "selector",
                 "__name": ".button-icon, button-content",
                 "__value": {
@@ -11801,7 +13533,7 @@
                 }
             },
             {
-                "__id": "wJfFBIAzzGw5XlDIA6NLV",
+                "__id": "iFbAu7QFpsCkrWklbXhoR",
                 "__type": "selector",
                 "__name": "a.button.-disabled, *:disabled a.button",
                 "__value": {
@@ -11809,7 +13541,7 @@
                 }
             },
             {
-                "__id": "YA2ekokskeq7lxcXzIdPt",
+                "__id": "QCMPBn1LNhNl4MVjoa_NQ",
                 "__type": "selector",
                 "__name": ".button",
                 "__value": {
@@ -11864,7 +13596,7 @@
                 }
             },
             {
-                "__id": "UX5PdjxKCuy9OWdmNNSTp",
+                "__id": "YV2GByXAk6oi7HiPR0pUK",
                 "__type": "selector",
                 "__name": ".button:hover, .button.-hover",
                 "__value": {
@@ -11875,7 +13607,7 @@
                 }
             },
             {
-                "__id": "dqXQ-RcZF2gOWzOjXljN2",
+                "__id": "NiQagBGB3SRx8-IKfcyhH",
                 "__type": "selector",
                 "__name": ".button:focus, .button.-focus",
                 "__value": {
@@ -11886,7 +13618,7 @@
                 }
             },
             {
-                "__id": "8dcpzpwMZRioNFYze77QV",
+                "__id": "i4gbgMgAFXU0Gjpdqr_Z8",
                 "__type": "selector",
                 "__name": ".button:active, .button.-active",
                 "__value": {
@@ -11897,7 +13629,7 @@
                 }
             },
             {
-                "__id": "2Vlp-219BaQMzsj8UK64V",
+                "__id": "9IkOFoHD1Bq_o0sRRv4Jz",
                 "__type": "selector",
                 "__name": ".button:disabled, .button.-disabled",
                 "__value": {
@@ -11913,7 +13645,7 @@
                 }
             },
             {
-                "__id": "C5etj-Sj5dnW-gJ0QLkic",
+                "__id": "bRWH7tiKalkGfHTQLne95",
                 "__type": "selector",
                 "__name": ".button-icon + .button-content",
                 "__value": {
@@ -11924,7 +13656,7 @@
                 }
             },
             {
-                "__id": "Yp2pMR74lpOHSmMIpgPLW",
+                "__id": "OOh0EksO9GtkHwzNgikHf",
                 "__type": "selector",
                 "__name": ".button .loader, .button .loader.-md",
                 "__value": {
@@ -11939,7 +13671,7 @@
                 }
             },
             {
-                "__id": "noWtzRhb_bdYLEbWHANPD",
+                "__id": "622MRPgeHUVtHhJLU2Luu",
                 "__type": "selector",
                 "__name": ".button .loader svg circle",
                 "__value": {
@@ -11950,7 +13682,7 @@
                 }
             },
             {
-                "__id": "1PwwC_0uMp-tbjYWWkEs9",
+                "__id": "yxBIBCA51LCDMf8GZa2-G",
                 "__type": "selector",
                 "__name": ".button.-sm",
                 "__value": {
@@ -11997,7 +13729,7 @@
                 }
             },
             {
-                "__id": "pewyqpKzm9Q64nL2H3lDR",
+                "__id": "gsbiuFXOC5vWb1b3DhRQ6",
                 "__type": "selector",
                 "__name": ".button.-circle.-sm",
                 "__value": {
@@ -12012,7 +13744,7 @@
                 }
             },
             {
-                "__id": "1KreNBEIIjml-a0VjmPOI",
+                "__id": "3ASIijq6pKwf0UNAvbWi0",
                 "__type": "selector",
                 "__name": ".button.-square.-sm",
                 "__value": {
@@ -12027,7 +13759,7 @@
                 }
             },
             {
-                "__id": "lamkty--bOnum-ZvEQlEy",
+                "__id": "O8xqv7vxBPZgE8vsO6PiY",
                 "__type": "selector",
                 "__name": ".button.-md",
                 "__value": {
@@ -12074,7 +13806,7 @@
                 }
             },
             {
-                "__id": "7OrD8G942wYQ80Rd21q6c",
+                "__id": "5UMTLaaXISPpm6deAtqrz",
                 "__type": "selector",
                 "__name": ".button.-circle.-md",
                 "__value": {
@@ -12089,7 +13821,7 @@
                 }
             },
             {
-                "__id": "OmND1KzPCreV7JmzbcALz",
+                "__id": "6VABbpoZlzky3Yp_omaaD",
                 "__type": "selector",
                 "__name": ".button.-square.-md",
                 "__value": {
@@ -12104,7 +13836,7 @@
                 }
             },
             {
-                "__id": "6z3AMTAp3-dMOl8LsUJ7b",
+                "__id": "I5b8rUnLaW968nSdJKCBq",
                 "__type": "selector",
                 "__name": ".button.-lg",
                 "__value": {
@@ -12151,7 +13883,7 @@
                 }
             },
             {
-                "__id": "tswMhySFdNWIbTtqnD8Q_",
+                "__id": "WjAn8Hc4vKuRApgQgq-8H",
                 "__type": "selector",
                 "__name": ".button.-circle.-lg",
                 "__value": {
@@ -12166,7 +13898,7 @@
                 }
             },
             {
-                "__id": "UjWT6IgenVRHFLj5eSRFg",
+                "__id": "JLs3oJt7Poq00DXLBSdBN",
                 "__type": "selector",
                 "__name": ".button.-square.-lg",
                 "__value": {
@@ -12181,7 +13913,7 @@
                 }
             },
             {
-                "__id": "BXt8Ezg_Q84pG39I4zKT7",
+                "__id": "5XjdCtERIcFWsaQ5gMRX2",
                 "__type": "selector",
                 "__name": ".button.-primary",
                 "__value": {
@@ -12200,7 +13932,7 @@
                 }
             },
             {
-                "__id": "bXrNQcCsA3TvBPZVH53e2",
+                "__id": "MOGH8tpkCrhqSvnEbwhEu",
                 "__type": "selector",
                 "__name": ".button.-primary:hover, .button.-primary.-hover",
                 "__value": {
@@ -12219,7 +13951,7 @@
                 }
             },
             {
-                "__id": "oR3_aA2XNQhNynMicx7g9",
+                "__id": "y0_rzAw2AjAsvukE1KeT5",
                 "__type": "selector",
                 "__name": ".button.-primary:focus, .button.-primary.-focus",
                 "__value": {
@@ -12238,7 +13970,7 @@
                 }
             },
             {
-                "__id": "XHZw7yKoJelV_XdJtQF7o",
+                "__id": "jCCHH77Gxmw4dV401huUH",
                 "__type": "selector",
                 "__name": ".button.-primary:active, .button.-primary.-active",
                 "__value": {
@@ -12257,7 +13989,7 @@
                 }
             },
             {
-                "__id": "oAyCrR6nPo_UvzL8jvhTE",
+                "__id": "LifevtQmcacisqcKzEtUv",
                 "__type": "selector",
                 "__name": ".button.-primary:disabled, .button.-primary.-disabled",
                 "__value": {
@@ -12276,7 +14008,7 @@
                 }
             },
             {
-                "__id": "YIZsj3X4eWdFHw5qHv1A7",
+                "__id": "irLJu4N56enRdizlAK6J3",
                 "__type": "selector",
                 "__name": ".button.-primary.-outline",
                 "__value": {
@@ -12291,7 +14023,7 @@
                 }
             },
             {
-                "__id": "yauzkNiFPpwKmQLyblYWF",
+                "__id": "vV7bkwkGnGn9JDH_05PgM",
                 "__type": "selector",
                 "__name": ".button.-primary.-outline:hover, .button.-primary.-outline.-hover",
                 "__value": {
@@ -12302,7 +14034,7 @@
                 }
             },
             {
-                "__id": "5_Sso9UubIwiHZybT0sjV",
+                "__id": "4FThQqA3zzRPI5-vjO0s2",
                 "__type": "selector",
                 "__name": ".button.-primary.-link",
                 "__value": {
@@ -12313,7 +14045,7 @@
                 }
             },
             {
-                "__id": "cdYdtD_tIV1pgUil0mErU",
+                "__id": "Cs-NBEgArqk7PcWoMVm9c",
                 "__type": "selector",
                 "__name": ".button.-secondary",
                 "__value": {
@@ -12332,7 +14064,7 @@
                 }
             },
             {
-                "__id": "qYm3dDsvNkmCFXb30K9Wc",
+                "__id": "3wr5mCL9TJT0AW6-WfCfV",
                 "__type": "selector",
                 "__name": ".button.-secondary:hover, .button.-secondary.-hover",
                 "__value": {
@@ -12351,7 +14083,7 @@
                 }
             },
             {
-                "__id": "EAlih3codI4iDCs8Tf9xY",
+                "__id": "n02mEbE6TH-JOBsZ0mJu1",
                 "__type": "selector",
                 "__name": ".button.-secondary:focus, .button.-secondary.-focus",
                 "__value": {
@@ -12370,7 +14102,7 @@
                 }
             },
             {
-                "__id": "EfQZFRflBjkCP3AOVgQlW",
+                "__id": "2YlOceRpQpapoAiIjVl9z",
                 "__type": "selector",
                 "__name": ".button.-secondary:active, .button.-secondary.-active",
                 "__value": {
@@ -12389,7 +14121,7 @@
                 }
             },
             {
-                "__id": "vHrjQEAPorzD94WAkdl7F",
+                "__id": "LVq7luVUOHrcz-2HigGiO",
                 "__type": "selector",
                 "__name": ".button.-secondary:disabled, .button.-secondary.-disabled",
                 "__value": {
@@ -12408,7 +14140,7 @@
                 }
             },
             {
-                "__id": "4QcnzzMjO92x3uhw1kNh_",
+                "__id": "sXyRvu99h_hPxuHKkwEM-",
                 "__type": "selector",
                 "__name": ".button.-secondary.-outline",
                 "__value": {
@@ -12423,7 +14155,7 @@
                 }
             },
             {
-                "__id": "d8y-aty5cS1iqKN8MyKrp",
+                "__id": "ZqfpVoP0asPVf--7eBqMb",
                 "__type": "selector",
                 "__name": ".button.-secondary.-outline:hover, .button.-secondary.-outline.-hover",
                 "__value": {
@@ -12434,7 +14166,7 @@
                 }
             },
             {
-                "__id": "Qv9kXRdiXE888CLE-1WRv",
+                "__id": "lumVGD354iGcj5Ib8kg5V",
                 "__type": "selector",
                 "__name": ".button.-secondary.-link",
                 "__value": {
@@ -12445,7 +14177,7 @@
                 }
             },
             {
-                "__id": "k3pjq12m-ERgmgZXvCYg4",
+                "__id": "Ezj23FCw812IWoWizcT5A",
                 "__type": "selector",
                 "__name": ".button.-light",
                 "__value": {
@@ -12464,7 +14196,7 @@
                 }
             },
             {
-                "__id": "WdPWsaMm1nMSh6gK4ChA5",
+                "__id": "d8ZrCYa5k8ckr7a1IT4aO",
                 "__type": "selector",
                 "__name": ".button.-light:hover, .button.-light.-hover",
                 "__value": {
@@ -12483,7 +14215,7 @@
                 }
             },
             {
-                "__id": "9GYjqwSOLUNvGNBSoTUCf",
+                "__id": "NiebLJVmPvB7AIYdLXXDY",
                 "__type": "selector",
                 "__name": ".button.-light:focus, .button.-light.-focus",
                 "__value": {
@@ -12502,7 +14234,7 @@
                 }
             },
             {
-                "__id": "yM2CK-LD_oQob0uRXFgyG",
+                "__id": "FdqzztUA533uPtPs9-hLI",
                 "__type": "selector",
                 "__name": ".button.-light:active, .button.-light.-active",
                 "__value": {
@@ -12521,7 +14253,7 @@
                 }
             },
             {
-                "__id": "D8BQMeuXTkLpjPL31uKUC",
+                "__id": "bTDT67cqO3YEvTwJx2dvQ",
                 "__type": "selector",
                 "__name": ".button.-light:disabled, .button.-light.-disabled",
                 "__value": {
@@ -12540,7 +14272,7 @@
                 }
             },
             {
-                "__id": "damXv0c_Ar_XUi5kBFNRa",
+                "__id": "A4Sap26tv2nLKO8a-0FpM",
                 "__type": "selector",
                 "__name": ".button.-light.-outline",
                 "__value": {
@@ -12555,7 +14287,7 @@
                 }
             },
             {
-                "__id": "S39dteltSeBbg0h6l9svc",
+                "__id": "9serVqSr6mNgMGJtWQ5cG",
                 "__type": "selector",
                 "__name": ".button.-light.-outline:hover, .button.-light.-outline.-hover",
                 "__value": {
@@ -12566,7 +14298,7 @@
                 }
             },
             {
-                "__id": "xkIqGiFsrxfyiKdwjnerP",
+                "__id": "iQ9DhYJUqnw0SxvCHmKJZ",
                 "__type": "selector",
                 "__name": ".button.-light.-link",
                 "__value": {
@@ -12577,7 +14309,7 @@
                 }
             },
             {
-                "__id": "AI6CRw9aZjBbWjkPSY2zC",
+                "__id": "czNoMmR5zc2uflRNwSqko",
                 "__type": "selector",
                 "__name": ".button.-dark",
                 "__value": {
@@ -12596,7 +14328,7 @@
                 }
             },
             {
-                "__id": "4Cv8D5kC6uu0ltqwKNNNM",
+                "__id": "B9LMWdz2ro6xDtZ-Oo4ry",
                 "__type": "selector",
                 "__name": ".button.-dark:hover, .button.-dark.-hover",
                 "__value": {
@@ -12615,7 +14347,7 @@
                 }
             },
             {
-                "__id": "Y-URT3Huc1sZT1uL9HY_0",
+                "__id": "emvUQMylUBnw1T-2jCvVP",
                 "__type": "selector",
                 "__name": ".button.-dark:focus, .button.-dark.-focus",
                 "__value": {
@@ -12634,7 +14366,7 @@
                 }
             },
             {
-                "__id": "yMIlDWY_fRW1z3ljCS31A",
+                "__id": "ocLMNqdKLySBFtsb-nUN-",
                 "__type": "selector",
                 "__name": ".button.-dark:active, .button.-dark.-active",
                 "__value": {
@@ -12653,7 +14385,7 @@
                 }
             },
             {
-                "__id": "ZEaXFjJ67IF87DOez4xHV",
+                "__id": "s-MWQJs6ELUlm6KcmVST0",
                 "__type": "selector",
                 "__name": ".button.-dark:disabled, .button.-dark.-disabled",
                 "__value": {
@@ -12672,7 +14404,7 @@
                 }
             },
             {
-                "__id": "Uxlhmi1U_qpkBXAFgnnXn",
+                "__id": "meR0F3IWF5XrMMQuybHvw",
                 "__type": "selector",
                 "__name": ".button.-dark.-outline",
                 "__value": {
@@ -12687,7 +14419,7 @@
                 }
             },
             {
-                "__id": "vYmGJNE-6fcTnRTiSL6DB",
+                "__id": "zSYwAwoo-Z4VzoG_ENQTR",
                 "__type": "selector",
                 "__name": ".button.-dark.-outline:hover, .button.-dark.-outline.-hover",
                 "__value": {
@@ -12698,7 +14430,7 @@
                 }
             },
             {
-                "__id": "91BCTyvAQCHsEBXafNoMB",
+                "__id": "3lIJ_RUq0fQFc8zANtRJ0",
                 "__type": "selector",
                 "__name": ".button.-dark.-link",
                 "__value": {
@@ -12709,7 +14441,7 @@
                 }
             },
             {
-                "__id": "AnkE3SdDbnIITvYzb34jT",
+                "__id": "ndMAwTCk34hr5hBVbP1b6",
                 "__type": "selector",
                 "__name": ".button.-info",
                 "__value": {
@@ -12728,7 +14460,7 @@
                 }
             },
             {
-                "__id": "S4P-btjlWNA82mBbHwFln",
+                "__id": "U8HXVrb_vneLWAwQireS7",
                 "__type": "selector",
                 "__name": ".button.-info:hover, .button.-info.-hover",
                 "__value": {
@@ -12747,7 +14479,7 @@
                 }
             },
             {
-                "__id": "G4V74M9mKIHe8ttm7SPoe",
+                "__id": "qwQueE4ThOu4PeSSvbVmy",
                 "__type": "selector",
                 "__name": ".button.-info:focus, .button.-info.-focus",
                 "__value": {
@@ -12766,7 +14498,7 @@
                 }
             },
             {
-                "__id": "v5yNbnx6xaLXmmrPPz1cf",
+                "__id": "oMdiGFlwp2f0vmr-2G027",
                 "__type": "selector",
                 "__name": ".button.-info:active, .button.-info.-active",
                 "__value": {
@@ -12785,7 +14517,7 @@
                 }
             },
             {
-                "__id": "id-Tl_OxCwpOmBUDsNA38",
+                "__id": "SMw6pf8bYK55RcuR2hEqT",
                 "__type": "selector",
                 "__name": ".button.-info:disabled, .button.-info.-disabled",
                 "__value": {
@@ -12804,7 +14536,7 @@
                 }
             },
             {
-                "__id": "Pwk9FhUgMwnioGbjNVSnV",
+                "__id": "Ne_VUjkPWWpNdAQQAmOwW",
                 "__type": "selector",
                 "__name": ".button.-info.-outline",
                 "__value": {
@@ -12819,7 +14551,7 @@
                 }
             },
             {
-                "__id": "xGHBB87KZsSnhA_BZL3K5",
+                "__id": "m3vQcmltFQ8yT5v_DJWkv",
                 "__type": "selector",
                 "__name": ".button.-info.-outline:hover, .button.-info.-outline.-hover",
                 "__value": {
@@ -12830,7 +14562,7 @@
                 }
             },
             {
-                "__id": "_vcl0iVqLnaCIKD7DdtDc",
+                "__id": "rKoBo5cErhIOiGov_3AHq",
                 "__type": "selector",
                 "__name": ".button.-info.-link",
                 "__value": {
@@ -12841,7 +14573,7 @@
                 }
             },
             {
-                "__id": "IhincxL3Mj4cY7LGIL-L1",
+                "__id": "3LHlh1LekpJRQLNqpxuun",
                 "__type": "selector",
                 "__name": ".button.-success",
                 "__value": {
@@ -12860,7 +14592,7 @@
                 }
             },
             {
-                "__id": "Ikyxt-F9Y444HzSRLmigc",
+                "__id": "rfT2YSD1fSUrhPPcs-G7f",
                 "__type": "selector",
                 "__name": ".button.-success:hover, .button.-success.-hover",
                 "__value": {
@@ -12879,7 +14611,7 @@
                 }
             },
             {
-                "__id": "Kqtmq-EhD6rHn_snS8ai9",
+                "__id": "naq3F3W3JS3AezzGpSI8a",
                 "__type": "selector",
                 "__name": ".button.-success:focus, .button.-success.-focus",
                 "__value": {
@@ -12898,7 +14630,7 @@
                 }
             },
             {
-                "__id": "_0NbUh2IC9tV_ko8oj7F3",
+                "__id": "ltxRVIZMgJDpaWvQDjeP6",
                 "__type": "selector",
                 "__name": ".button.-success:active, .button.-success.-active",
                 "__value": {
@@ -12917,7 +14649,7 @@
                 }
             },
             {
-                "__id": "G8SUNrF3t_tE0SLMz9Lh0",
+                "__id": "zzAf-f7coWp5O5OtOvhQo",
                 "__type": "selector",
                 "__name": ".button.-success:disabled, .button.-success.-disabled",
                 "__value": {
@@ -12936,7 +14668,7 @@
                 }
             },
             {
-                "__id": "YzrAYSstmpkQqi5y236DS",
+                "__id": "T_u87C4qayCMl34RxlGuy",
                 "__type": "selector",
                 "__name": ".button.-success.-outline",
                 "__value": {
@@ -12951,7 +14683,7 @@
                 }
             },
             {
-                "__id": "LeSGeeRSR8pR8XtkzOTzX",
+                "__id": "0ieSu0f1p0KUCesF2sgfI",
                 "__type": "selector",
                 "__name": ".button.-success.-outline:hover, .button.-success.-outline.-hover",
                 "__value": {
@@ -12962,7 +14694,7 @@
                 }
             },
             {
-                "__id": "1CsmmH5Z3s-bhGm1NcLUM",
+                "__id": "gZoNaRvdSXI2RBrlMi7W7",
                 "__type": "selector",
                 "__name": ".button.-success.-link",
                 "__value": {
@@ -12973,7 +14705,7 @@
                 }
             },
             {
-                "__id": "2D9M648D2BRw9kqxIIeqz",
+                "__id": "4mRkhW0yQKB4x_A4RckWC",
                 "__type": "selector",
                 "__name": ".button.-warning",
                 "__value": {
@@ -12992,7 +14724,7 @@
                 }
             },
             {
-                "__id": "YjpeL9fdvtQ-7eflE3haw",
+                "__id": "L9mwYzpnTj_MIO25ZDzDg",
                 "__type": "selector",
                 "__name": ".button.-warning:hover, .button.-warning.-hover",
                 "__value": {
@@ -13011,7 +14743,7 @@
                 }
             },
             {
-                "__id": "mvWlZnhSdEme55AuCNS0E",
+                "__id": "y2KRAoMrMLWEPwDEHN8rJ",
                 "__type": "selector",
                 "__name": ".button.-warning:focus, .button.-warning.-focus",
                 "__value": {
@@ -13030,7 +14762,7 @@
                 }
             },
             {
-                "__id": "p_e9ZlhrmPNbg4877DrK8",
+                "__id": "E7wwusFqtL01g23s7P_bU",
                 "__type": "selector",
                 "__name": ".button.-warning:active, .button.-warning.-active",
                 "__value": {
@@ -13049,7 +14781,7 @@
                 }
             },
             {
-                "__id": "YD6WgfGQPePq9pmc5x8hs",
+                "__id": "Qm_ngKlP6sE6441jq2J9T",
                 "__type": "selector",
                 "__name": ".button.-warning:disabled, .button.-warning.-disabled",
                 "__value": {
@@ -13068,7 +14800,7 @@
                 }
             },
             {
-                "__id": "aIDvzX_u8KouV3JnPidR3",
+                "__id": "kyhrzz7ceHPAcvkA7hQTM",
                 "__type": "selector",
                 "__name": ".button.-warning.-outline",
                 "__value": {
@@ -13083,7 +14815,7 @@
                 }
             },
             {
-                "__id": "Qsj0tua3Yn7IstPMfQW3q",
+                "__id": "OPYVVWg2URdcpcIX2kp-_",
                 "__type": "selector",
                 "__name": ".button.-warning.-outline:hover, .button.-warning.-outline.-hover",
                 "__value": {
@@ -13094,7 +14826,7 @@
                 }
             },
             {
-                "__id": "CCKbvoD54Ywy0Hu1VZ-0P",
+                "__id": "dUnJslHGlnGj0j-7kebF5",
                 "__type": "selector",
                 "__name": ".button.-warning.-link",
                 "__value": {
@@ -13105,7 +14837,7 @@
                 }
             },
             {
-                "__id": "FLRqINPpBkR-0PpfVCOkG",
+                "__id": "xGmKQ01ftQc9KSCrj0GR3",
                 "__type": "selector",
                 "__name": ".button.-danger",
                 "__value": {
@@ -13124,7 +14856,7 @@
                 }
             },
             {
-                "__id": "mnfnaQhwGbd46R8DEFEr8",
+                "__id": "O4dOMraBXOVnxc6bV9dSV",
                 "__type": "selector",
                 "__name": ".button.-danger:hover, .button.-danger.-hover",
                 "__value": {
@@ -13143,7 +14875,7 @@
                 }
             },
             {
-                "__id": "Ncu40KWWdjkWqwGHlEIWR",
+                "__id": "zCGocNp0LQE7wLSAECbrI",
                 "__type": "selector",
                 "__name": ".button.-danger:focus, .button.-danger.-focus",
                 "__value": {
@@ -13162,7 +14894,7 @@
                 }
             },
             {
-                "__id": "eX1Ekqp_G51mS09JzW06X",
+                "__id": "AI_kCvzj55BjNTCktRxGJ",
                 "__type": "selector",
                 "__name": ".button.-danger:active, .button.-danger.-active",
                 "__value": {
@@ -13181,7 +14913,7 @@
                 }
             },
             {
-                "__id": "FOl0gooPOITBG-ms2NT6j",
+                "__id": "FQXe3QH8aLuY01qK1nuB1",
                 "__type": "selector",
                 "__name": ".button.-danger:disabled, .button.-danger.-disabled",
                 "__value": {
@@ -13200,7 +14932,7 @@
                 }
             },
             {
-                "__id": "IIY8i6yEgrJp1h3mOvy7J",
+                "__id": "2kesfq4ay9mACB_Hf13l4",
                 "__type": "selector",
                 "__name": ".button.-danger.-outline",
                 "__value": {
@@ -13215,7 +14947,7 @@
                 }
             },
             {
-                "__id": "1DEEaAbRNUIAa4qws0qn2",
+                "__id": "ZbDJEyZxMQF0dOGsYGdSO",
                 "__type": "selector",
                 "__name": ".button.-danger.-outline:hover, .button.-danger.-outline.-hover",
                 "__value": {
@@ -13226,7 +14958,7 @@
                 }
             },
             {
-                "__id": "TbJFuO_BnUFpyPRu0UmAA",
+                "__id": "2JH7qT75mcXo0AJrWVlhc",
                 "__type": "selector",
                 "__name": ".button.-danger.-link",
                 "__value": {
@@ -13237,7 +14969,7 @@
                 }
             },
             {
-                "__id": "JXROxTZ4Lq1bzk-8cE9me",
+                "__id": "HJTNk-BE3f-392lkJsrQe",
                 "__type": "selector",
                 "__name": ".button.-block",
                 "__value": {
@@ -13246,7 +14978,7 @@
                 }
             },
             {
-                "__id": "tuXprgmYgsm3hBpm_rbVF",
+                "__id": "8JWsCeqpgtF8WHFEQfu27",
                 "__type": "selector",
                 "__name": ".button.-block + .button.-block",
                 "__value": {
@@ -13257,7 +14989,7 @@
                 }
             },
             {
-                "__id": "X4aZNNw9p5apnfTT_0EYr",
+                "__id": "jiZYUmUoO3nyL7C-IKsQo",
                 "__type": "selector",
                 "__name": "input[type=\"submit\"].button.-block, input[type=\"reset\"].button.-block, input[type=\"button\"].button.-block",
                 "__value": {
@@ -13265,7 +14997,7 @@
                 }
             },
             {
-                "__id": "dpJJb3JdVNPhKfHjVV_aD",
+                "__id": "u5tHkTyyNvsD0lsbXHRUf",
                 "__type": "selector",
                 "__name": ".button.-outline",
                 "__value": {
@@ -13282,7 +15014,7 @@
                 }
             },
             {
-                "__id": "e-edMCd8yP_W9XKVL8kaU",
+                "__id": "c4bmWmR_2WokePl0EFTdy",
                 "__type": "selector",
                 "__name": ".button.-link",
                 "__value": {
@@ -13292,7 +15024,7 @@
                 }
             },
             {
-                "__id": "z3DqFpvwdzkdLYIczqElu",
+                "__id": "yKDQdVZxWcNmUpWi7m4Am",
                 "__type": "selector",
                 "__name": ".button.-link",
                 "__value": {
@@ -13300,7 +15032,7 @@
                 }
             },
             {
-                "__id": "dmAkoIElQZZEvafagxVcj",
+                "__id": "EYzN8F6eRpKeC634UJ0VC",
                 "__type": "selector",
                 "__name": ".button.-link:active, .button.-link.-active, .button.-link:hover, .button.-link.-hover, .button.-link:focus, .button.-link.-focus",
                 "__value": {
@@ -13311,7 +15043,7 @@
                 }
             },
             {
-                "__id": "o0NeYjYEiTrOdtT3em1u1",
+                "__id": "aqerDn1_3clW94ialw1Ye",
                 "__type": "selector",
                 "__name": ".button.-circle",
                 "__value": {
@@ -13328,7 +15060,7 @@
                 }
             },
             {
-                "__id": "nQuVcRjTa22d0o9K63BvN",
+                "__id": "cUnk_2j5iRcrGahxt3vYb",
                 "__type": "selector",
                 "__name": ".button.-square",
                 "__value": {

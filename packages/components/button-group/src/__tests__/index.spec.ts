@@ -1,6 +1,6 @@
 import { render } from '@testing-library/vue';
 import { ButtonGroup } from '../index';
-import { ButtonGroupKey } from '@inkline/vue';
+import { ButtonGroupKey } from '@inkline/types';
 import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
 import { ref } from 'vue';
 

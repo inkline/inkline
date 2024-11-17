@@ -1,6 +1,8 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
-import { FormGroup, Input, FormKey } from '@inkline/inkline';
+import { FormKey } from '@inkline/types';
+import { Input } from '@inkline/component-input';
+import { FormGroup } from '../index';
 import { ref } from 'vue';
 
 describe('Components', () => {
@@ -12,11 +14,11 @@ describe('Components', () => {
         };
 
         const slots = {
-            default: ['<i-input name="input" color="light" size="md" />']
+            default: ['<Input name="input" color="light" size="md" />']
         };
 
         const stubs = {
-            'i-input': Input
+            Input
         };
 
         it('should be named correctly', () => {
@@ -72,7 +74,7 @@ describe('Components', () => {
 
         describe('methods', () => {
             describe('onBlur', () => {
-                it('should not call onBlur if not parent', () => {
+                it('should not call onBlur if not parent', async () => {
                     const onBlur = vi.fn();
                     const wrapper = render(FormGroup, {
                         global: {
@@ -86,12 +88,12 @@ describe('Components', () => {
                     });
                     const input = wrapper.container.querySelector('input') as HTMLInputElement;
 
-                    fireEvent.blur(input);
+                    await fireEvent.blur(input);
 
                     expect(onBlur).not.toHaveBeenCalled();
                 });
 
-                it('should call onBlur if parent with onBlur', () => {
+                it('should call onBlur if parent with onBlur', async () => {
                     const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(FormGroup, {
@@ -112,14 +114,14 @@ describe('Components', () => {
                     });
                     const input = wrapper.container.querySelector('input') as HTMLInputElement;
 
-                    fireEvent.blur(input);
+                    await fireEvent.blur(input);
 
                     expect(onBlur).toHaveBeenCalled();
                 });
             });
 
             describe('onInput', () => {
-                it('should not call onInput if not parent', () => {
+                it('should not call onInput if not parent', async () => {
                     const onInput = vi.fn();
                     const wrapper = render(FormGroup, {
                         global: {
@@ -133,12 +135,12 @@ describe('Components', () => {
                     });
                     const input = wrapper.container.querySelector('input') as HTMLInputElement;
 
-                    fireEvent.update(input, 'abc');
+                    await fireEvent.update(input, 'abc');
 
                     expect(onInput).not.toHaveBeenCalled();
                 });
 
-                it('should call onInput if parent with onInput', () => {
+                it('should call onInput if parent with onInput', async () => {
                     const onBlur = vi.fn();
                     const onInput = vi.fn();
                     const wrapper = render(FormGroup, {
@@ -159,7 +161,7 @@ describe('Components', () => {
                     });
                     const input = wrapper.container.querySelector('input') as HTMLInputElement;
 
-                    fireEvent.update(input, 'abc');
+                    await fireEvent.update(input, 'abc');
 
                     expect(onInput).toHaveBeenCalled();
                 });

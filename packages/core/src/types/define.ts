@@ -13,15 +13,13 @@ import {
     SourceMapBoxShadow,
     SourceMapMargin,
     SourceMapPadding,
-    SourceMapTransition
-} from '../define';
-import { TokenValue, Variable } from './tokens';
-import {
+    SourceMapTransition,
     OutputMapBackground,
     OutputMapColor,
     SourceMapBackground,
     SourceMapColor
-} from '../define/color';
+} from '../tokens';
+import { TokenValue, Variable } from './tokens';
 import { KebabCase, PartialDeep } from 'type-fest';
 
 export type SourceMap = {
@@ -29,9 +27,33 @@ export type SourceMap = {
     alignItems: TokenValue;
     alignSelf: TokenValue;
     animation: SourceMapAnimation;
+    animationName: TokenValue;
+    animationDuration: TokenValue;
+    animationIterationCount: TokenValue;
+    animationDirection: TokenValue;
     background: SourceMapBackground;
+    backgroundColor: SourceMapBackground;
     border: SourceMapBorder;
+    borderWidth: TokenValue;
+    borderStyle: TokenValue;
+    borderColor: TokenValue;
+    borderTopWidth: TokenValue;
+    borderTopStyle: TokenValue;
+    borderTopColor: TokenValue;
+    borderRightWidth: TokenValue;
+    borderRightStyle: TokenValue;
+    borderRightColor: TokenValue;
+    borderBottomWidth: TokenValue;
+    borderBottomStyle: TokenValue;
+    borderBottomColor: TokenValue;
+    borderLeftWidth: TokenValue;
+    borderLeftStyle: TokenValue;
+    borderLeftColor: TokenValue;
     borderRadius: SourceMapBorderRadius;
+    borderTopLeftRadius: TokenValue;
+    borderTopRightRadius: TokenValue;
+    borderBottomRightRadius: TokenValue;
+    borderBottomLeftRadius: TokenValue;
     bottom: TokenValue;
     boxShadow: SourceMapBoxShadow;
     color: SourceMapColor;
@@ -88,6 +110,7 @@ export type SourceMap = {
 export type OutputMap<Namespace extends NamespaceType> = {
     animation: OutputMapAnimation<Namespace>;
     background: OutputMapBackground<Namespace>;
+    backgroundColor: OutputMapBackground<Namespace>;
     border: OutputMapBorder<Namespace>;
     borderRadius: OutputMapBorderRadius<Namespace>;
     boxShadow: OutputMapBoxShadow<Namespace>;

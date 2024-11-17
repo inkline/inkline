@@ -1,4 +1,4 @@
-import { defaultDefinitionOptions, namespace, nsvariable, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
 import {
     useBorderRadiusBase,
     useBrandColors,
@@ -26,11 +26,11 @@ export function useKbdVariables(options = defaultDefinitionOptions) {
 
     const kbdBackground = nsvariable(ns, 'background', ref(colorDark), options);
 
-    const kbdBorderTopLeftRadius = namespace(ns, borderTopLeftRadius, options);
-    const kbdBorderTopRightRadius = namespace(ns, borderTopRightRadius, options);
-    const kbdBorderBottomRightRadius = namespace(ns, borderBottomRightRadius, options);
-    const kbdBorderBottomLeftRadius = namespace(ns, borderBottomLeftRadius, options);
-    const kbdBorderRadius = namespace(ns, borderRadius, options);
+    const kbdBorderTopLeftRadius = addVariableNamespace(ns, borderTopLeftRadius, options);
+    const kbdBorderTopRightRadius = addVariableNamespace(ns, borderTopRightRadius, options);
+    const kbdBorderBottomRightRadius = addVariableNamespace(ns, borderBottomRightRadius, options);
+    const kbdBorderBottomLeftRadius = addVariableNamespace(ns, borderBottomLeftRadius, options);
+    const kbdBorderRadius = addVariableNamespace(ns, borderRadius, options);
 
     const kbdColor = nsvariable(ns, 'color', ref(contrastTextColorDark), options);
 
@@ -41,7 +41,7 @@ export function useKbdVariables(options = defaultDefinitionOptions) {
     const kbdPaddingRight = nsvariable(ns, 'padding-right', '0.375rem', options);
     const kbdPaddingBottom = nsvariable(ns, 'padding-bottom', '0.1875rem', options);
     const kbdPaddingLeft = nsvariable(ns, 'padding-left', '0.375rem', options);
-    const kbdPadding = namespace(ns, padding, options);
+    const kbdPadding = addVariableNamespace(ns, padding, options);
 
     return {
         kbdBackground,

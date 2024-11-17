@@ -2071,6 +2071,26 @@
                     ]
                 }
             },
+            "loader--primary--color-h": {
+                "__type": "variable",
+                "__name": "loader--primary--color-h",
+                "__value": 0
+            },
+            "loader--primary--color-s": {
+                "__type": "variable",
+                "__name": "loader--primary--color-s",
+                "__value": "0%"
+            },
+            "loader--primary--color-l": {
+                "__type": "variable",
+                "__name": "loader--primary--color-l",
+                "__value": "0%"
+            },
+            "loader--primary--color-a": {
+                "__type": "variable",
+                "__name": "loader--primary--color-a",
+                "__value": 1
+            },
             "loader--primary--color": {
                 "__type": "variable",
                 "__name": "loader--primary--color",
@@ -2079,6 +2099,26 @@
                     "__name": "color-primary"
                 }
             },
+            "loader--light--color-h": {
+                "__type": "variable",
+                "__name": "loader--light--color-h",
+                "__value": 0
+            },
+            "loader--light--color-s": {
+                "__type": "variable",
+                "__name": "loader--light--color-s",
+                "__value": "0%"
+            },
+            "loader--light--color-l": {
+                "__type": "variable",
+                "__name": "loader--light--color-l",
+                "__value": "0%"
+            },
+            "loader--light--color-a": {
+                "__type": "variable",
+                "__name": "loader--light--color-a",
+                "__value": 1
+            },
             "loader--light--color": {
                 "__type": "variable",
                 "__name": "loader--light--color",
@@ -2086,6 +2126,26 @@
                     "__type": "reference",
                     "__name": "color-dark"
                 }
+            },
+            "loader--dark--color-h": {
+                "__type": "variable",
+                "__name": "loader--dark--color-h",
+                "__value": 0
+            },
+            "loader--dark--color-s": {
+                "__type": "variable",
+                "__name": "loader--dark--color-s",
+                "__value": "0%"
+            },
+            "loader--dark--color-l": {
+                "__type": "variable",
+                "__name": "loader--dark--color-l",
+                "__value": "0%"
+            },
+            "loader--dark--color-a": {
+                "__type": "variable",
+                "__name": "loader--dark--color-a",
+                "__value": 1
             },
             "loader--dark--color": {
                 "__type": "variable",
@@ -2098,7 +2158,7 @@
         },
         "selectors": [
             {
-                "__id": "MyhwU1sesF1izfBYPI5gS",
+                "__id": "UyFhBC7wvpS-ZtJS96Hm9",
                 "__type": "selector",
                 "__name": ".loader",
                 "__value": {
@@ -2115,7 +2175,7 @@
                 }
             },
             {
-                "__id": "oUDZVEnupH8dLrgoxJhXr",
+                "__id": "P6VE-U0VkmVzc0X4DadkU",
                 "__type": "selector",
                 "__name": ".loader::before",
                 "__value": {
@@ -2125,7 +2185,7 @@
                 }
             },
             {
-                "__id": "7jodZAQEDR9f4hV7Kk-7R",
+                "__id": "WFdmb_nZCKrVSdXP2-1Ky",
                 "__type": "selector",
                 "__name": ".loader-text, .loader > svg",
                 "__value": {
@@ -2137,7 +2197,7 @@
                 }
             },
             {
-                "__id": "NzkAJm89ZjuMvfuETqyqR",
+                "__id": "Tf9d54hi4Yqf8Ji_lWSal",
                 "__type": "selector",
                 "__name": ".loader-text",
                 "__value": {
@@ -2147,7 +2207,7 @@
                 }
             },
             {
-                "__id": "QPP4uTSfkvOFwCVXEeN8N",
+                "__id": "Op29-fXSJ-4wlLaXH_uH7",
                 "__type": "selector",
                 "__name": ".loader.-auto",
                 "__value": {
@@ -2156,7 +2216,7 @@
                 }
             },
             {
-                "__id": "SNfVnZQ4mNV2h5oyndneG",
+                "__id": "QrpMUbvaWx8l_iw-kB5jx",
                 "__type": "selector",
                 "__name": ".loader > svg",
                 "__value": {
@@ -2177,7 +2237,7 @@
                 }
             },
             {
-                "__id": "wXumaZfhPqh_4j3SPVqKg",
+                "__id": "gmKPjewH2gKC2Q2koDd9g",
                 "__type": "selector",
                 "__name": ".loader > svg > circle",
                 "__value": {
@@ -2204,13 +2264,13 @@
                 }
             },
             {
-                "__id": "E-vgt_I-aBm7V5KP4cNcn",
+                "__id": "CgrZ7LtWchdrdgnAgp-Oh",
                 "__type": "media",
                 "__name": "keyframes",
                 "__identifier": "loader-rotate",
                 "__value": [
                     {
-                        "__id": "Q9-dkEhLVdpRzI78QL4ix",
+                        "__id": "Q8-wyD4uiYGkEDEjqe2My",
                         "__type": "selector",
                         "__name": "100%",
                         "__value": {
@@ -2220,13 +2280,13 @@
                 ]
             },
             {
-                "__id": "rcuADZOW5SoiQXKKuuZVz",
+                "__id": "87lVqXpBr18D1jT-QYQom",
                 "__type": "media",
                 "__name": "keyframes",
                 "__identifier": "loader-dash",
                 "__value": [
                     {
-                        "__id": "GlUL7zWY1tsWmj1R0k_Zx",
+                        "__id": "7ezsuM1tG2ur7ZKYgTMmG",
                         "__type": "selector",
                         "__name": "0%",
                         "__value": {
@@ -2235,7 +2295,7 @@
                         }
                     },
                     {
-                        "__id": "dPYn6yNz_bjOV_O-quTTA",
+                        "__id": "uO4EZ5ylc3tr-vc2aZbMR",
                         "__type": "selector",
                         "__name": "50%",
                         "__value": {
@@ -2244,7 +2304,7 @@
                         }
                     },
                     {
-                        "__id": "hhWeCQ4xBniOUd9gyKXeG",
+                        "__id": "yMeK6BOqyKbsEPyReYX3a",
                         "__type": "selector",
                         "__name": "100%",
                         "__value": {
@@ -2255,7 +2315,7 @@
                 ]
             },
             {
-                "__id": "aXFf7djc0CHaP0bGe3oTr",
+                "__id": "2WkdXF_QQHgCtft4BKvm2",
                 "__type": "selector",
                 "__name": ".loader.-sm",
                 "__value": {
@@ -2270,7 +2330,7 @@
                 }
             },
             {
-                "__id": "dQjXa3KLyIDC3ZKAYQ9ff",
+                "__id": "JSap31oFDjqbKNpJizY5D",
                 "__type": "selector",
                 "__name": ".loader.-md",
                 "__value": {
@@ -2285,7 +2345,7 @@
                 }
             },
             {
-                "__id": "nvglg8WjYzD8sj6pfeD0Z",
+                "__id": "23ullxn6-UWuvCfYHTjWR",
                 "__type": "selector",
                 "__name": ".loader.-lg",
                 "__value": {
@@ -2300,7 +2360,7 @@
                 }
             },
             {
-                "__id": "0cfSXEWZoZOVd0l1gUnnJ",
+                "__id": "_Hi0owmbbJvPrGTFHXbRE",
                 "__type": "selector",
                 "__name": ".loader.-primary > svg > circle",
                 "__value": {
@@ -2311,7 +2371,7 @@
                 }
             },
             {
-                "__id": "O9ah8ZlTH2z91_IVzTYrU",
+                "__id": "qLVuVU85UpStUs4qxW50I",
                 "__type": "selector",
                 "__name": ".loader.-light > svg > circle",
                 "__value": {
@@ -2322,7 +2382,7 @@
                 }
             },
             {
-                "__id": "gK1fzwdc7q-ojaL3aY46C",
+                "__id": "UQjV65lBqMQJQOGZJ_j8Q",
                 "__type": "selector",
                 "__name": ".loader.-dark > svg > circle",
                 "__value": {

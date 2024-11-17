@@ -10,6 +10,7 @@
         "test:dev": "devtools test --watch"
     },
     "dependencies": {
+        "@inkline/component-toast": "workspace:*",
         "@inkline/utils": "workspace:*",
         "@inkline/validation": "workspace:*",
         "defu": "^6.1.4"

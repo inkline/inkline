@@ -182,9 +182,10 @@ export default defineComponent({
         );
 
         const triggerProps = computed(() => ({
-            ariaDescribedby: `${props.name}-popover`,
-            ariaDisabled: props.disabled,
-            ariaExpanded: isVisible.value ? 'true' : 'false'
+            'aria-describedby': `${props.name}-popover`,
+            'aria-disabled': props.disabled,
+            'aria-expanded': isVisible.value ? 'true' : 'false',
+            'data-popup-type': 'popover'
         }));
 
         function onUpdateVisible(visible: boolean) {
@@ -211,7 +212,7 @@ export default defineComponent({
         <template #trigger="{ props }">
             <!-- @slot default Slot for popover trigger -->
             <slot name="trigger" :props="{ ...props, ...triggerProps }">
-                <div v-bind="{ ...props, ...triggerProps }" class="popover-trigger">
+                <div v-bind="{ ...props, ...triggerProps }" class="popover-trigger" role="button">
                     <slot />
                 </div>
             </slot>

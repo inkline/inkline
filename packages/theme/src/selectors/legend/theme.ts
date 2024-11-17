@@ -1,4 +1,4 @@
-import { defaultDefinitionOptions, namespace, nsvariable, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
 import { useFontSize, useMarginBase } from '../../variables';
 
 const ns = 'legend';
@@ -7,7 +7,7 @@ export function useLegendThemeVariables(options = defaultDefinitionOptions) {
     const { marginBottom } = useMarginBase();
     const { fontSizeLg } = useFontSize();
 
-    const legendMarginBottom = namespace(ns, marginBottom, options);
+    const legendMarginBottom = addVariableNamespace(ns, marginBottom, options);
     const legendFontSize = nsvariable(ns, 'font-size', ref(fontSizeLg), options);
 
     return {

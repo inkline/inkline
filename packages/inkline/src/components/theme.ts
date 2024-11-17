@@ -4,10 +4,12 @@ import { useBreadcrumbTheme, useBreadcrumbItemTheme } from '@inkline/component-b
 import { useButtonTheme } from '@inkline/component-button';
 import { useButtonGroupTheme } from '@inkline/component-button-group';
 import { useCardTheme } from '@inkline/component-card';
+import { useFormGroupTheme } from '@inkline/component-form-group';
 import { useIconTheme } from '@inkline/component-icon';
+import { useInputTheme } from '@inkline/component-input';
 import { useLoaderTheme } from '@inkline/component-loader';
 import { usePopoverTheme } from '@inkline/component-popover';
-import { useToastTheme } from '@inkline/component-toast';
+import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast';
 import { useTooltipTheme } from '@inkline/component-tooltip';
 
 export function useComponentsTheme() {
@@ -19,9 +21,12 @@ export function useComponentsTheme() {
     useButtonTheme();
     useButtonGroupTheme();
     useCardTheme();
+    useFormGroupTheme();
     useIconTheme();
+    useInputTheme();
     useLoaderTheme();
     usePopoverTheme();
     useToastTheme();
+    useToastContainerTheme();
     useTooltipTheme();
 }

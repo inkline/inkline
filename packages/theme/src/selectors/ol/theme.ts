@@ -1,7 +1,7 @@
 import {
     defaultDefinitionOptions,
     multiply,
-    namespace,
+    addVariableNamespace,
     nsvariable,
     ref,
     selector
@@ -14,7 +14,7 @@ export function useOlVariables(options = defaultDefinitionOptions) {
     const { marginBottom } = useMarginBase();
     const { paddingLeft } = usePaddingBase();
 
-    const olMarginBottom = namespace(ns, marginBottom, options);
+    const olMarginBottom = addVariableNamespace(ns, marginBottom, options);
     const olPaddingLeft = nsvariable(ns, 'padding-left', multiply(ref(paddingLeft), 2), options);
 
     return {

@@ -214,27 +214,21 @@ importers:
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint-config
-      '@inkline/postcss-config':
-        specifier: workspace:*
-        version: link:../../tooling/postcss-config
       '@inkline/test-utils':
         specifier: workspace:*
         version: link:../../tooling/test-utils
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -250,9 +244,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -293,27 +284,21 @@ importers:
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint-config
-      '@inkline/postcss-config':
-        specifier: workspace:*
-        version: link:../../tooling/postcss-config
       '@inkline/test-utils':
         specifier: workspace:*
         version: link:../../tooling/test-utils
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -329,9 +314,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -372,27 +354,21 @@ importers:
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint-config
-      '@inkline/postcss-config':
-        specifier: workspace:*
-        version: link:../../tooling/postcss-config
       '@inkline/test-utils':
         specifier: workspace:*
         version: link:../../tooling/test-utils
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -408,9 +384,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -463,18 +436,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -490,9 +460,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -539,18 +506,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -566,9 +530,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -615,18 +576,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -642,9 +600,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -657,9 +612,6 @@ importers:
 
   packages/components/form-group:
     dependencies:
-      '@inkline/component-icon':
-        specifier: workspace:*
-        version: link:../icon
       '@inkline/composables':
         specifier: workspace:*
         version: link:../../composables
@@ -679,6 +631,9 @@ importers:
         specifier: workspace:*
         version: link:../../plugin/vue
     devDependencies:
+      '@inkline/component-input':
+        specifier: workspace:*
+        version: link:../input
       '@inkline/config':
         specifier: workspace:*
         version: link:../../config
@@ -697,18 +652,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -724,9 +676,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -776,18 +725,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -803,9 +749,82 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
+      vitest:
         specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
+        version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.8(typescript@5.6.2)
+      vue-tsc:
+        specifier: 'catalog:'
+        version: 2.1.6(typescript@5.6.2)
+
+  packages/components/input:
+    dependencies:
+      '@inkline/component-icon':
+        specifier: workspace:*
+        version: link:../icon
+      '@inkline/composables':
+        specifier: workspace:*
+        version: link:../../composables
+      '@inkline/core':
+        specifier: workspace:*
+        version: link:../../core
+      '@inkline/theme':
+        specifier: workspace:*
+        version: link:../../theme
+      '@inkline/utils':
+        specifier: workspace:*
+        version: link:../../utils
+      '@inkline/validation':
+        specifier: workspace:*
+        version: link:../../validation
+      '@inkline/vue':
+        specifier: workspace:*
+        version: link:../../plugin/vue
+    devDependencies:
+      '@inkline/config':
+        specifier: workspace:*
+        version: link:../../config
+      '@inkline/devtools':
+        specifier: workspace:*
+        version: link:../../tooling/devtools
+      '@inkline/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@inkline/postcss-config':
+        specifier: workspace:*
+        version: link:../../tooling/postcss-config
+      '@inkline/test-utils':
+        specifier: workspace:*
+        version: link:../../tooling/test-utils
+      '@inkline/types':
+        specifier: workspace:*
+        version: link:../../types
+      '@inkline/vite-component-config':
+        specifier: workspace:*
+        version: link:../../tooling/vite-component-config
+      '@testing-library/jest-dom':
+        specifier: 'catalog:'
+        version: 6.5.0
+      '@testing-library/vue':
+        specifier: 'catalog:'
+        version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
+      eslint:
+        specifier: 'catalog:'
+        version: 9.11.1(jiti@2.3.3)
+      tsup:
+        specifier: 'catalog:'
+        version: 8.3.0(@microsoft/api-extractor@7.47.7(@types/node@20.14.9))(jiti@2.3.3)(postcss@8.4.47)(tsx@4.19.1)(typescript@5.6.2)(yaml@2.5.1)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.6.2
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -855,18 +874,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -882,9 +898,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -931,18 +944,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -958,9 +968,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -1007,18 +1014,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -1034,9 +1038,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -1083,18 +1084,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -1110,9 +1108,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -1162,18 +1157,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -1189,9 +1181,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -1244,18 +1233,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -1271,9 +1257,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -1323,18 +1306,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -1350,9 +1330,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -1402,18 +1379,15 @@ importers:
       '@inkline/types':
         specifier: workspace:*
         version: link:../../types
-      '@inkline/vite':
+      '@inkline/vite-component-config':
         specifier: workspace:*
-        version: link:../../integrations/vite
+        version: link:../../tooling/vite-component-config
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.5.0
       '@testing-library/vue':
         specifier: 'catalog:'
         version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
@@ -1429,9 +1403,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vite-plugin-dts:
-        specifier: 'catalog:'
-        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
@@ -1711,6 +1682,9 @@ importers:
       '@inkline/addon-icons':
         specifier: workspace:*
         version: link:../plugin/addons/icons
+      '@inkline/addon-toast-manager':
+        specifier: workspace:*
+        version: link:../plugin/addons/toast-manager
       '@inkline/component-alert':
         specifier: workspace:*
         version: link:../components/alert
@@ -1729,9 +1703,15 @@ importers:
       '@inkline/component-card':
         specifier: workspace:*
         version: link:../components/card
+      '@inkline/component-form-group':
+        specifier: workspace:*
+        version: link:../components/form-group
       '@inkline/component-icon':
         specifier: workspace:*
         version: link:../components/icon
+      '@inkline/component-input':
+        specifier: workspace:*
+        version: link:../components/input
       '@inkline/component-loader':
         specifier: workspace:*
         version: link:../components/loader
@@ -2105,6 +2085,9 @@ importers:
 
   packages/plugin/addons/toast-manager:
     dependencies:
+      '@inkline/component-toast':
+        specifier: workspace:*
+        version: link:../../../components/toast
       '@inkline/utils':
         specifier: workspace:*
         version: link:../../../utils
@@ -2519,6 +2502,27 @@ importers:
       vue:
         specifier: 'catalog:'
         version: 3.5.8(typescript@5.6.2)
+
+  packages/tooling/vite-component-config:
+    dependencies:
+      '@inkline/postcss-config':
+        specifier: workspace:*
+        version: link:../postcss-config
+      '@inkline/vite':
+        specifier: workspace:*
+        version: link:../../integrations/vite
+      '@vitejs/plugin-vue':
+        specifier: 'catalog:'
+        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
+      vite-plugin-dts:
+        specifier: 'catalog:'
+        version: 4.2.2(@types/node@20.14.9)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))
+      vitest:
+        specifier: 'catalog:'
+        version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
 
   packages/types:
     devDependencies:
@@ -10205,7 +10209,7 @@ snapshots:
     dependencies:
       '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.22.4)
       '@rollup/plugin-replace': 5.0.7(rollup@4.22.4)
-      '@vitejs/plugin-vue': 5.1.4(vite@5.4.7(@types/node@20.14.9)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))
+      '@vitejs/plugin-vue': 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))
       '@vitejs/plugin-vue-jsx': 4.0.1(vite@5.4.7(@types/node@20.14.9)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))
       autoprefixer: 10.4.20(postcss@8.4.47)
       clear: 0.1.0
@@ -11162,15 +11166,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@vitejs/plugin-vue@5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))':
+    dependencies:
+      vite: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
+      vue: 3.5.10(typescript@5.6.2)
+
   '@vitejs/plugin-vue@5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))':
     dependencies:
       vite: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
       vue: 3.5.8(typescript@5.6.2)
-
-  '@vitejs/plugin-vue@5.1.4(vite@5.4.7(@types/node@20.14.9)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))':
-    dependencies:
-      vite: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vue: 3.5.10(typescript@5.6.2)
 
   '@vitest/coverage-v8@2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))':
     dependencies:

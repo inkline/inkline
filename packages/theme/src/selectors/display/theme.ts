@@ -1,7 +1,7 @@
 import {
     defaultDefinitionOptions,
     multiply,
-    namespace,
+    addVariableNamespace,
     nsvariable,
     ref,
     selector
@@ -27,7 +27,7 @@ export function useDisplayThemeVariables(options = defaultDefinitionOptions) {
     const { scaleRatioPow1, scaleRatioPow2, scaleRatioPow3, scaleRatioPow4, scaleRatioPow5 } =
         useScaleRatio();
 
-    const displayMarginBottom = namespace(ns, marginBottom, options);
+    const displayMarginBottom = addVariableNamespace(ns, marginBottom, options);
     const displayFontFamily = nsvariable(ns, 'font-family', ref(fontFamilyBaseSecondary), options);
     const displayFontStyle = nsvariable(ns, 'font-style', ref(fontStyleNormal), options);
     const displayFontWeight = nsvariable(ns, 'font-weight', ref(fontWeightBold), options);

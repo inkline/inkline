@@ -33,4 +33,5 @@ export * from './toSnakeCase';
 export * from './triggerEvent';
 export * from './trim';
 export * from './uid';
+export * from './uncapitalize';
 export * from './valueByPath';

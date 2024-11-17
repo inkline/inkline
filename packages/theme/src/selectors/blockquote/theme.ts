@@ -1,4 +1,4 @@
-import { defaultDefinitionOptions, namespace, nsvariable, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
 import {
     useBorder,
     useFontSize,
@@ -16,9 +16,9 @@ export function useBlockquoteVariables(options = defaultDefinitionOptions) {
     const { borderLeftWidth, borderLeftStyle, borderLeftColor } = useBorder();
     const { textColorWeak } = useTextColor();
 
-    const blockquoteFontSize = namespace(ns, fontSize, options);
+    const blockquoteFontSize = addVariableNamespace(ns, fontSize, options);
 
-    const blockquoteMarginBottom = namespace(ns, marginBottom, options);
+    const blockquoteMarginBottom = addVariableNamespace(ns, marginBottom, options);
 
     const blockquoteBorderedPadding = nsvariable(
         [ns, 'bordered'],

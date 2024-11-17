@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, defineComponent, onMounted, ref, TransitionGroup } from 'vue';
+import { defineComponent, onMounted, ref, TransitionGroup } from 'vue';
 import { useOptions } from '@inkline/composables';
 import { uid } from '@inkline/utils';
 import type { EventBus } from '@inkline/utils';
@@ -80,8 +80,6 @@ export default defineComponent({
         });
         const toastPositionKeys = ref<ToastPosition[]>(Object.keys(toastPositions.value));
 
-        const classes = computed(() => ({}));
-
         onMounted(() => {
             addEventListeners();
         });
@@ -158,7 +156,6 @@ export default defineComponent({
         return {
             toastPositions,
             toastPositionKeys,
-            classes,
             hideToast
         };
     }
@@ -166,20 +163,18 @@ export default defineComponent({
 </script>
 
 <template>
-    <div v-bind="$attrs" class="toast-container" :class="classes">
-        <div
-            v-for="position in toastPositionKeys"
-            :key="position"
-            :class="`toast-position -${position}`"
-        >
-            <TransitionGroup name="toast-transition">
-                <Toast
-                    v-for="toast in toastPositions[position]"
-                    :key="toast.id"
-                    v-bind="toast"
-                    @update:model-value="hideToast(toast)"
-                />
-            </TransitionGroup>
-        </div>
+    <div
+        v-for="position in toastPositionKeys"
+        :key="position"
+        :class="`toast-container -${position}`"
+    >
+        <TransitionGroup name="toast-transition">
+            <Toast
+                v-for="toast in toastPositions[position]"
+                :key="toast.id"
+                v-bind="toast"
+                @update:model-value="hideToast(toast)"
+            />
+        </TransitionGroup>
     </div>
 </template>

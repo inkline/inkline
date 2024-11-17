@@ -1,16 +1,11 @@
 import { Plugin, ref } from 'vue';
-import { InklineOptionsKey } from './symbols';
 import { defaultIconDefinitions } from './defaults';
-import { InklineOptions, UserOptions } from '@inkline/types';
+import { InklineOptionsKey, InklineOptions, UserOptions } from '@inkline/types';
 import defu from 'defu';
 
 export const defaultOptions: InklineOptions = {
     components: {},
-    colorMode: {
-        preference: 'system',
-        strategy: 'localStorage',
-        renderMode: 'client'
-    },
+    colorMode: {},
     icons: {
         definitions: defaultIconDefinitions
     },

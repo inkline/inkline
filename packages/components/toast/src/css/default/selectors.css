@@ -265,3 +265,80 @@
 .toast.-danger .toast-progress-bar {
     background: var(--toast--danger--progress--bar--background);
 }
+
+.toast-container {
+    margin: var(--toast-container--margin);
+    width: var(--toast-container--width);
+    position: fixed;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: visible;
+    z-index: var(--toast-container--z-index);
+}
+
+.toast-container.-top-left {
+    top: 0;
+    left: 0;
+}
+
+.toast-container.-top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.toast-container.-top-right {
+    top: 0;
+    right: 0;
+}
+
+.toast-container.-right {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.toast-container.-bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.toast-container.-bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.toast-container.-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.toast-container.-left {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.toast-container > .toast {
+    margin: var(--toast-container--toast--margin);
+    width: var(--toast-container--width);
+    max-width: 100%;
+    position: relative;
+}
+
+.toast-container > .toast:last-of-type {
+    margin-bottom: 0;
+}
+
+.toast-transition-move, .toast-transition-enter-active, .toast-transition-leave-active {
+    transition: var(--toast-container--toast--transition);
+}
+
+.toast-transition-enter-from, .toast-transition-leave-to {
+    opacity: 0;
+}
+
+.toast-transition-leave-active {
+    position: absolute;
+}

@@ -10047,6 +10047,28 @@
                     ]
                 }
             },
+            "toast--sm--padding": {
+                "__type": "variable",
+                "__name": "toast--sm--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "toast--sm--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--sm--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--sm--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--sm--padding-left"
+                    }
+                ]
+            },
             "toast--sm--border-top-left-radius": {
                 "__type": "variable",
                 "__name": "toast--sm--border-top-left-radius",
@@ -10118,6 +10140,28 @@
                         }
                     ]
                 }
+            },
+            "toast--sm--border-radius": {
+                "__type": "variable",
+                "__name": "toast--sm--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "toast--sm--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--sm--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--sm--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--sm--border-bottom-left-radius"
+                    }
+                ]
             },
             "toast--sm--font-size": {
                 "__type": "variable",
@@ -10209,6 +10253,28 @@
                     ]
                 }
             },
+            "toast--md--padding": {
+                "__type": "variable",
+                "__name": "toast--md--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "toast--md--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--md--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--md--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--md--padding-left"
+                    }
+                ]
+            },
             "toast--md--border-top-left-radius": {
                 "__type": "variable",
                 "__name": "toast--md--border-top-left-radius",
@@ -10280,6 +10346,28 @@
                         }
                     ]
                 }
+            },
+            "toast--md--border-radius": {
+                "__type": "variable",
+                "__name": "toast--md--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "toast--md--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--md--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--md--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--md--border-bottom-left-radius"
+                    }
+                ]
             },
             "toast--md--font-size": {
                 "__type": "variable",
@@ -10371,6 +10459,28 @@
                     ]
                 }
             },
+            "toast--lg--padding": {
+                "__type": "variable",
+                "__name": "toast--lg--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "toast--lg--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--lg--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--lg--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--lg--padding-left"
+                    }
+                ]
+            },
             "toast--lg--border-top-left-radius": {
                 "__type": "variable",
                 "__name": "toast--lg--border-top-left-radius",
@@ -10443,6 +10553,28 @@
                     ]
                 }
             },
+            "toast--lg--border-radius": {
+                "__type": "variable",
+                "__name": "toast--lg--border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "toast--lg--border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--lg--border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--lg--border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast--lg--border-bottom-left-radius"
+                    }
+                ]
+            },
             "toast--lg--font-size": {
                 "__type": "variable",
                 "__name": "toast--lg--font-size",
@@ -10469,6 +10601,26 @@
                     "__name": "color-light-shade-50"
                 }
             },
+            "toast--light--background-h": {
+                "__type": "variable",
+                "__name": "toast--light--background-h",
+                "__value": 0
+            },
+            "toast--light--background-s": {
+                "__type": "variable",
+                "__name": "toast--light--background-s",
+                "__value": "0%"
+            },
+            "toast--light--background-l": {
+                "__type": "variable",
+                "__name": "toast--light--background-l",
+                "__value": "0%"
+            },
+            "toast--light--background-a": {
+                "__type": "variable",
+                "__name": "toast--light--background-a",
+                "__value": 1
+            },
             "toast--light--background": {
                 "__type": "variable",
                 "__name": "toast--light--background",
@@ -10476,6 +10628,26 @@
                     "__type": "reference",
                     "__name": "color-white"
                 }
+            },
+            "toast--light--color-h": {
+                "__type": "variable",
+                "__name": "toast--light--color-h",
+                "__value": 0
+            },
+            "toast--light--color-s": {
+                "__type": "variable",
+                "__name": "toast--light--color-s",
+                "__value": "0%"
+            },
+            "toast--light--color-l": {
+                "__type": "variable",
+                "__name": "toast--light--color-l",
+                "__value": "0%"
+            },
+            "toast--light--color-a": {
+                "__type": "variable",
+                "__name": "toast--light--color-a",
+                "__value": 1
             },
             "toast--light--color": {
                 "__type": "variable",
@@ -10485,15 +10657,95 @@
                     "__name": "contrast-text-color-light"
                 }
             },
+            "toast--light--progress--background-h": {
+                "__type": "variable",
+                "__name": "toast--light--progress--background-h",
+                "__value": 0
+            },
+            "toast--light--progress--background-s": {
+                "__type": "variable",
+                "__name": "toast--light--progress--background-s",
+                "__value": "0%"
+            },
+            "toast--light--progress--background-l": {
+                "__type": "variable",
+                "__name": "toast--light--progress--background-l",
+                "__value": "0%"
+            },
+            "toast--light--progress--background-a": {
+                "__type": "variable",
+                "__name": "toast--light--progress--background-a",
+                "__value": 0.05
+            },
             "toast--light--progress--background": {
                 "__type": "variable",
                 "__name": "toast--light--progress--background",
-                "__value": "rgba(0, 0, 0, 0.05)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--light--progress--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--light--progress--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--light--progress--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--light--progress--background-a"
+                        }
+                    ]
+                }
+            },
+            "toast--light--progress--bar--background-h": {
+                "__type": "variable",
+                "__name": "toast--light--progress--bar--background-h",
+                "__value": 0
+            },
+            "toast--light--progress--bar--background-s": {
+                "__type": "variable",
+                "__name": "toast--light--progress--bar--background-s",
+                "__value": "0%"
+            },
+            "toast--light--progress--bar--background-l": {
+                "__type": "variable",
+                "__name": "toast--light--progress--bar--background-l",
+                "__value": "0%"
+            },
+            "toast--light--progress--bar--background-a": {
+                "__type": "variable",
+                "__name": "toast--light--progress--bar--background-a",
+                "__value": 0.15
             },
             "toast--light--progress--bar--background": {
                 "__type": "variable",
                 "__name": "toast--light--progress--bar--background",
-                "__value": "rgba(0, 0, 0, 0.15)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--light--progress--bar--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--light--progress--bar--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--light--progress--bar--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--light--progress--bar--background-a"
+                        }
+                    ]
+                }
             },
             "toast--dark--border-color": {
                 "__type": "variable",
@@ -10503,6 +10755,26 @@
                     "__name": "color-dark-tint-50"
                 }
             },
+            "toast--dark--background-h": {
+                "__type": "variable",
+                "__name": "toast--dark--background-h",
+                "__value": 0
+            },
+            "toast--dark--background-s": {
+                "__type": "variable",
+                "__name": "toast--dark--background-s",
+                "__value": "0%"
+            },
+            "toast--dark--background-l": {
+                "__type": "variable",
+                "__name": "toast--dark--background-l",
+                "__value": "0%"
+            },
+            "toast--dark--background-a": {
+                "__type": "variable",
+                "__name": "toast--dark--background-a",
+                "__value": 1
+            },
             "toast--dark--background": {
                 "__type": "variable",
                 "__name": "toast--dark--background",
@@ -10510,6 +10782,26 @@
                     "__type": "reference",
                     "__name": "color-dark"
                 }
+            },
+            "toast--dark--color-h": {
+                "__type": "variable",
+                "__name": "toast--dark--color-h",
+                "__value": 0
+            },
+            "toast--dark--color-s": {
+                "__type": "variable",
+                "__name": "toast--dark--color-s",
+                "__value": "0%"
+            },
+            "toast--dark--color-l": {
+                "__type": "variable",
+                "__name": "toast--dark--color-l",
+                "__value": "0%"
+            },
+            "toast--dark--color-a": {
+                "__type": "variable",
+                "__name": "toast--dark--color-a",
+                "__value": 1
             },
             "toast--dark--color": {
                 "__type": "variable",
@@ -10519,15 +10811,95 @@
                     "__name": "contrast-text-color-dark"
                 }
             },
+            "toast--dark--progress--background-h": {
+                "__type": "variable",
+                "__name": "toast--dark--progress--background-h",
+                "__value": 0
+            },
+            "toast--dark--progress--background-s": {
+                "__type": "variable",
+                "__name": "toast--dark--progress--background-s",
+                "__value": "0%"
+            },
+            "toast--dark--progress--background-l": {
+                "__type": "variable",
+                "__name": "toast--dark--progress--background-l",
+                "__value": "100%"
+            },
+            "toast--dark--progress--background-a": {
+                "__type": "variable",
+                "__name": "toast--dark--progress--background-a",
+                "__value": 0.05
+            },
             "toast--dark--progress--background": {
                 "__type": "variable",
                 "__name": "toast--dark--progress--background",
-                "__value": "rgba(255, 255, 255, 0.05)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--dark--progress--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--dark--progress--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--dark--progress--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--dark--progress--background-a"
+                        }
+                    ]
+                }
+            },
+            "toast--dark--progress--bar--background-h": {
+                "__type": "variable",
+                "__name": "toast--dark--progress--bar--background-h",
+                "__value": 0
+            },
+            "toast--dark--progress--bar--background-s": {
+                "__type": "variable",
+                "__name": "toast--dark--progress--bar--background-s",
+                "__value": "0%"
+            },
+            "toast--dark--progress--bar--background-l": {
+                "__type": "variable",
+                "__name": "toast--dark--progress--bar--background-l",
+                "__value": "100%"
+            },
+            "toast--dark--progress--bar--background-a": {
+                "__type": "variable",
+                "__name": "toast--dark--progress--bar--background-a",
+                "__value": 0.15
             },
             "toast--dark--progress--bar--background": {
                 "__type": "variable",
                 "__name": "toast--dark--progress--bar--background",
-                "__value": "rgba(255, 255, 255, 0.15)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--dark--progress--bar--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--dark--progress--bar--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--dark--progress--bar--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--dark--progress--bar--background-a"
+                        }
+                    ]
+                }
             },
             "toast--info--border-color": {
                 "__type": "variable",
@@ -10537,6 +10909,26 @@
                     "__name": "color-info-shade-50"
                 }
             },
+            "toast--info--background-h": {
+                "__type": "variable",
+                "__name": "toast--info--background-h",
+                "__value": 0
+            },
+            "toast--info--background-s": {
+                "__type": "variable",
+                "__name": "toast--info--background-s",
+                "__value": "0%"
+            },
+            "toast--info--background-l": {
+                "__type": "variable",
+                "__name": "toast--info--background-l",
+                "__value": "0%"
+            },
+            "toast--info--background-a": {
+                "__type": "variable",
+                "__name": "toast--info--background-a",
+                "__value": 1
+            },
             "toast--info--background": {
                 "__type": "variable",
                 "__name": "toast--info--background",
@@ -10544,6 +10936,26 @@
                     "__type": "reference",
                     "__name": "color-info-100"
                 }
+            },
+            "toast--info--color-h": {
+                "__type": "variable",
+                "__name": "toast--info--color-h",
+                "__value": 0
+            },
+            "toast--info--color-s": {
+                "__type": "variable",
+                "__name": "toast--info--color-s",
+                "__value": "0%"
+            },
+            "toast--info--color-l": {
+                "__type": "variable",
+                "__name": "toast--info--color-l",
+                "__value": "0%"
+            },
+            "toast--info--color-a": {
+                "__type": "variable",
+                "__name": "toast--info--color-a",
+                "__value": 1
             },
             "toast--info--color": {
                 "__type": "variable",
@@ -10553,15 +10965,95 @@
                     "__name": "color-info-800"
                 }
             },
+            "toast--info--progress--background-h": {
+                "__type": "variable",
+                "__name": "toast--info--progress--background-h",
+                "__value": 0
+            },
+            "toast--info--progress--background-s": {
+                "__type": "variable",
+                "__name": "toast--info--progress--background-s",
+                "__value": "0%"
+            },
+            "toast--info--progress--background-l": {
+                "__type": "variable",
+                "__name": "toast--info--progress--background-l",
+                "__value": "0%"
+            },
+            "toast--info--progress--background-a": {
+                "__type": "variable",
+                "__name": "toast--info--progress--background-a",
+                "__value": 0.05
+            },
             "toast--info--progress--background": {
                 "__type": "variable",
                 "__name": "toast--info--progress--background",
-                "__value": "rgba(0, 0, 0, 0.05)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--info--progress--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--info--progress--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--info--progress--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--info--progress--background-a"
+                        }
+                    ]
+                }
+            },
+            "toast--info--progress--bar--background-h": {
+                "__type": "variable",
+                "__name": "toast--info--progress--bar--background-h",
+                "__value": 0
+            },
+            "toast--info--progress--bar--background-s": {
+                "__type": "variable",
+                "__name": "toast--info--progress--bar--background-s",
+                "__value": "0%"
+            },
+            "toast--info--progress--bar--background-l": {
+                "__type": "variable",
+                "__name": "toast--info--progress--bar--background-l",
+                "__value": "0%"
+            },
+            "toast--info--progress--bar--background-a": {
+                "__type": "variable",
+                "__name": "toast--info--progress--bar--background-a",
+                "__value": 0.15
             },
             "toast--info--progress--bar--background": {
                 "__type": "variable",
                 "__name": "toast--info--progress--bar--background",
-                "__value": "rgba(0, 0, 0, 0.15)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--info--progress--bar--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--info--progress--bar--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--info--progress--bar--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--info--progress--bar--background-a"
+                        }
+                    ]
+                }
             },
             "toast--success--border-color": {
                 "__type": "variable",
@@ -10571,6 +11063,26 @@
                     "__name": "color-success-shade-50"
                 }
             },
+            "toast--success--background-h": {
+                "__type": "variable",
+                "__name": "toast--success--background-h",
+                "__value": 0
+            },
+            "toast--success--background-s": {
+                "__type": "variable",
+                "__name": "toast--success--background-s",
+                "__value": "0%"
+            },
+            "toast--success--background-l": {
+                "__type": "variable",
+                "__name": "toast--success--background-l",
+                "__value": "0%"
+            },
+            "toast--success--background-a": {
+                "__type": "variable",
+                "__name": "toast--success--background-a",
+                "__value": 1
+            },
             "toast--success--background": {
                 "__type": "variable",
                 "__name": "toast--success--background",
@@ -10578,6 +11090,26 @@
                     "__type": "reference",
                     "__name": "color-success-100"
                 }
+            },
+            "toast--success--color-h": {
+                "__type": "variable",
+                "__name": "toast--success--color-h",
+                "__value": 0
+            },
+            "toast--success--color-s": {
+                "__type": "variable",
+                "__name": "toast--success--color-s",
+                "__value": "0%"
+            },
+            "toast--success--color-l": {
+                "__type": "variable",
+                "__name": "toast--success--color-l",
+                "__value": "0%"
+            },
+            "toast--success--color-a": {
+                "__type": "variable",
+                "__name": "toast--success--color-a",
+                "__value": 1
             },
             "toast--success--color": {
                 "__type": "variable",
@@ -10587,15 +11119,95 @@
                     "__name": "color-success-800"
                 }
             },
+            "toast--success--progress--background-h": {
+                "__type": "variable",
+                "__name": "toast--success--progress--background-h",
+                "__value": 0
+            },
+            "toast--success--progress--background-s": {
+                "__type": "variable",
+                "__name": "toast--success--progress--background-s",
+                "__value": "0%"
+            },
+            "toast--success--progress--background-l": {
+                "__type": "variable",
+                "__name": "toast--success--progress--background-l",
+                "__value": "0%"
+            },
+            "toast--success--progress--background-a": {
+                "__type": "variable",
+                "__name": "toast--success--progress--background-a",
+                "__value": 0.05
+            },
             "toast--success--progress--background": {
                 "__type": "variable",
                 "__name": "toast--success--progress--background",
-                "__value": "rgba(0, 0, 0, 0.05)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--success--progress--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--success--progress--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--success--progress--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--success--progress--background-a"
+                        }
+                    ]
+                }
+            },
+            "toast--success--progress--bar--background-h": {
+                "__type": "variable",
+                "__name": "toast--success--progress--bar--background-h",
+                "__value": 0
+            },
+            "toast--success--progress--bar--background-s": {
+                "__type": "variable",
+                "__name": "toast--success--progress--bar--background-s",
+                "__value": "0%"
+            },
+            "toast--success--progress--bar--background-l": {
+                "__type": "variable",
+                "__name": "toast--success--progress--bar--background-l",
+                "__value": "0%"
+            },
+            "toast--success--progress--bar--background-a": {
+                "__type": "variable",
+                "__name": "toast--success--progress--bar--background-a",
+                "__value": 0.15
             },
             "toast--success--progress--bar--background": {
                 "__type": "variable",
                 "__name": "toast--success--progress--bar--background",
-                "__value": "rgba(0, 0, 0, 0.15)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--success--progress--bar--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--success--progress--bar--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--success--progress--bar--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--success--progress--bar--background-a"
+                        }
+                    ]
+                }
             },
             "toast--warning--border-color": {
                 "__type": "variable",
@@ -10605,6 +11217,26 @@
                     "__name": "color-warning-shade-50"
                 }
             },
+            "toast--warning--background-h": {
+                "__type": "variable",
+                "__name": "toast--warning--background-h",
+                "__value": 0
+            },
+            "toast--warning--background-s": {
+                "__type": "variable",
+                "__name": "toast--warning--background-s",
+                "__value": "0%"
+            },
+            "toast--warning--background-l": {
+                "__type": "variable",
+                "__name": "toast--warning--background-l",
+                "__value": "0%"
+            },
+            "toast--warning--background-a": {
+                "__type": "variable",
+                "__name": "toast--warning--background-a",
+                "__value": 1
+            },
             "toast--warning--background": {
                 "__type": "variable",
                 "__name": "toast--warning--background",
@@ -10612,6 +11244,26 @@
                     "__type": "reference",
                     "__name": "color-warning-100"
                 }
+            },
+            "toast--warning--color-h": {
+                "__type": "variable",
+                "__name": "toast--warning--color-h",
+                "__value": 0
+            },
+            "toast--warning--color-s": {
+                "__type": "variable",
+                "__name": "toast--warning--color-s",
+                "__value": "0%"
+            },
+            "toast--warning--color-l": {
+                "__type": "variable",
+                "__name": "toast--warning--color-l",
+                "__value": "0%"
+            },
+            "toast--warning--color-a": {
+                "__type": "variable",
+                "__name": "toast--warning--color-a",
+                "__value": 1
             },
             "toast--warning--color": {
                 "__type": "variable",
@@ -10621,15 +11273,95 @@
                     "__name": "color-warning-800"
                 }
             },
+            "toast--warning--progress--background-h": {
+                "__type": "variable",
+                "__name": "toast--warning--progress--background-h",
+                "__value": 0
+            },
+            "toast--warning--progress--background-s": {
+                "__type": "variable",
+                "__name": "toast--warning--progress--background-s",
+                "__value": "0%"
+            },
+            "toast--warning--progress--background-l": {
+                "__type": "variable",
+                "__name": "toast--warning--progress--background-l",
+                "__value": "0%"
+            },
+            "toast--warning--progress--background-a": {
+                "__type": "variable",
+                "__name": "toast--warning--progress--background-a",
+                "__value": 0.05
+            },
             "toast--warning--progress--background": {
                 "__type": "variable",
                 "__name": "toast--warning--progress--background",
-                "__value": "rgba(0, 0, 0, 0.05)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--warning--progress--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--warning--progress--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--warning--progress--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--warning--progress--background-a"
+                        }
+                    ]
+                }
+            },
+            "toast--warning--progress--bar--background-h": {
+                "__type": "variable",
+                "__name": "toast--warning--progress--bar--background-h",
+                "__value": 0
+            },
+            "toast--warning--progress--bar--background-s": {
+                "__type": "variable",
+                "__name": "toast--warning--progress--bar--background-s",
+                "__value": "0%"
+            },
+            "toast--warning--progress--bar--background-l": {
+                "__type": "variable",
+                "__name": "toast--warning--progress--bar--background-l",
+                "__value": "0%"
+            },
+            "toast--warning--progress--bar--background-a": {
+                "__type": "variable",
+                "__name": "toast--warning--progress--bar--background-a",
+                "__value": 0.15
             },
             "toast--warning--progress--bar--background": {
                 "__type": "variable",
                 "__name": "toast--warning--progress--bar--background",
-                "__value": "rgba(0, 0, 0, 0.15)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--warning--progress--bar--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--warning--progress--bar--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--warning--progress--bar--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--warning--progress--bar--background-a"
+                        }
+                    ]
+                }
             },
             "toast--danger--border-color": {
                 "__type": "variable",
@@ -10639,6 +11371,26 @@
                     "__name": "color-danger-shade-50"
                 }
             },
+            "toast--danger--background-h": {
+                "__type": "variable",
+                "__name": "toast--danger--background-h",
+                "__value": 0
+            },
+            "toast--danger--background-s": {
+                "__type": "variable",
+                "__name": "toast--danger--background-s",
+                "__value": "0%"
+            },
+            "toast--danger--background-l": {
+                "__type": "variable",
+                "__name": "toast--danger--background-l",
+                "__value": "0%"
+            },
+            "toast--danger--background-a": {
+                "__type": "variable",
+                "__name": "toast--danger--background-a",
+                "__value": 1
+            },
             "toast--danger--background": {
                 "__type": "variable",
                 "__name": "toast--danger--background",
@@ -10646,6 +11398,26 @@
                     "__type": "reference",
                     "__name": "color-danger-100"
                 }
+            },
+            "toast--danger--color-h": {
+                "__type": "variable",
+                "__name": "toast--danger--color-h",
+                "__value": 0
+            },
+            "toast--danger--color-s": {
+                "__type": "variable",
+                "__name": "toast--danger--color-s",
+                "__value": "0%"
+            },
+            "toast--danger--color-l": {
+                "__type": "variable",
+                "__name": "toast--danger--color-l",
+                "__value": "0%"
+            },
+            "toast--danger--color-a": {
+                "__type": "variable",
+                "__name": "toast--danger--color-a",
+                "__value": 1
             },
             "toast--danger--color": {
                 "__type": "variable",
@@ -10655,20 +11427,302 @@
                     "__name": "color-danger-800"
                 }
             },
+            "toast--danger--progress--background-h": {
+                "__type": "variable",
+                "__name": "toast--danger--progress--background-h",
+                "__value": 0
+            },
+            "toast--danger--progress--background-s": {
+                "__type": "variable",
+                "__name": "toast--danger--progress--background-s",
+                "__value": "0%"
+            },
+            "toast--danger--progress--background-l": {
+                "__type": "variable",
+                "__name": "toast--danger--progress--background-l",
+                "__value": "0%"
+            },
+            "toast--danger--progress--background-a": {
+                "__type": "variable",
+                "__name": "toast--danger--progress--background-a",
+                "__value": 0.05
+            },
             "toast--danger--progress--background": {
                 "__type": "variable",
                 "__name": "toast--danger--progress--background",
-                "__value": "rgba(0, 0, 0, 0.05)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--danger--progress--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--danger--progress--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--danger--progress--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--danger--progress--background-a"
+                        }
+                    ]
+                }
+            },
+            "toast--danger--progress--bar--background-h": {
+                "__type": "variable",
+                "__name": "toast--danger--progress--bar--background-h",
+                "__value": 0
+            },
+            "toast--danger--progress--bar--background-s": {
+                "__type": "variable",
+                "__name": "toast--danger--progress--bar--background-s",
+                "__value": "0%"
+            },
+            "toast--danger--progress--bar--background-l": {
+                "__type": "variable",
+                "__name": "toast--danger--progress--bar--background-l",
+                "__value": "0%"
+            },
+            "toast--danger--progress--bar--background-a": {
+                "__type": "variable",
+                "__name": "toast--danger--progress--bar--background-a",
+                "__value": 0.15
             },
             "toast--danger--progress--bar--background": {
                 "__type": "variable",
                 "__name": "toast--danger--progress--bar--background",
-                "__value": "rgba(0, 0, 0, 0.15)"
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "toast--danger--progress--bar--background-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--danger--progress--bar--background-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--danger--progress--bar--background-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "toast--danger--progress--bar--background-a"
+                        }
+                    ]
+                }
+            },
+            "margin-top": {
+                "__type": "variable",
+                "__name": "margin-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin-right": {
+                "__type": "variable",
+                "__name": "margin-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin-bottom": {
+                "__type": "variable",
+                "__name": "margin-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin-left": {
+                "__type": "variable",
+                "__name": "margin-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin": {
+                "__type": "variable",
+                "__name": "margin",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "margin-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "margin-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "margin-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "margin-left"
+                    }
+                ]
+            },
+            "toast-container--margin-top": {
+                "__type": "variable",
+                "__name": "toast-container--margin-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "margin-top"
+                }
+            },
+            "toast-container--margin-right": {
+                "__type": "variable",
+                "__name": "toast-container--margin-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "margin-right"
+                }
+            },
+            "toast-container--margin-bottom": {
+                "__type": "variable",
+                "__name": "toast-container--margin-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "margin-bottom"
+                }
+            },
+            "toast-container--margin-left": {
+                "__type": "variable",
+                "__name": "toast-container--margin-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "margin-left"
+                }
+            },
+            "toast-container--margin": {
+                "__type": "variable",
+                "__name": "toast-container--margin",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "toast-container--margin-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast-container--margin-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast-container--margin-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast-container--margin-left"
+                    }
+                ]
+            },
+            "toast-container--width": {
+                "__type": "variable",
+                "__name": "toast-container--width",
+                "__value": "320px"
+            },
+            "toast-container--z-index": {
+                "__type": "variable",
+                "__name": "toast-container--z-index",
+                "__value": 2010
+            },
+            "toast-container--toast--margin-top": {
+                "__type": "variable",
+                "__name": "toast-container--toast--margin-top",
+                "__value": 0
+            },
+            "toast-container--toast--margin-right": {
+                "__type": "variable",
+                "__name": "toast-container--toast--margin-right",
+                "__value": 0
+            },
+            "toast-container--toast--margin-bottom": {
+                "__type": "variable",
+                "__name": "toast-container--toast--margin-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "margin-bottom"
+                }
+            },
+            "toast-container--toast--margin-left": {
+                "__type": "variable",
+                "__name": "toast-container--toast--margin-left",
+                "__value": 0
+            },
+            "toast-container--toast--margin": {
+                "__type": "variable",
+                "__name": "toast-container--toast--margin",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "toast-container--toast--margin-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast-container--toast--margin-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast-container--toast--margin-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast-container--toast--margin-left"
+                    }
+                ]
+            },
+            "toast-container--toast--transition-duration": {
+                "__type": "variable",
+                "__name": "toast-container--toast--transition-duration",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-duration"
+                }
+            },
+            "toast-container--toast--transition-property": {
+                "__type": "variable",
+                "__name": "toast-container--toast--transition-property",
+                "__value": "transform, opacity"
+            },
+            "toast-container--toast--transition-timing-function": {
+                "__type": "variable",
+                "__name": "toast-container--toast--transition-timing-function",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-timing-function"
+                }
+            },
+            "toast-container--toast--transition": {
+                "__type": "variable",
+                "__name": "toast-container--toast--transition",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "toast-container--toast--transition-duration"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast-container--toast--transition-property"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "toast-container--toast--transition-timing-function"
+                    }
+                ]
             }
         },
         "selectors": [
             {
-                "__id": "5pXVFODwHEuV-8NtmN0XT",
+                "__id": "AnayBx8qHH-a7wbiiyo8J",
                 "__type": "selector",
                 "__name": ".toast",
                 "__value": {
@@ -10684,7 +11738,7 @@
                 }
             },
             {
-                "__id": "HrCs__9mPlS1Ji93gOQr5",
+                "__id": "ujNiDe4OKyxyZqB9CierU",
                 "__type": "selector",
                 "__name": ".toast-content",
                 "__value": {
@@ -10692,7 +11746,7 @@
                 }
             },
             {
-                "__id": "9UHGUOHZMcbLt1UsyK1GA",
+                "__id": "LOIeGciV2_7j7dSqvIwCG",
                 "__type": "selector",
                 "__name": ".toast-icon",
                 "__value": {
@@ -10704,7 +11758,7 @@
                 }
             },
             {
-                "__id": "eDJRQWX71Zf5-xhNO67Qy",
+                "__id": "vOFwksvKO3hu1jBLZkylF",
                 "__type": "selector",
                 "__name": ".toast-dismiss",
                 "__value": {
@@ -10716,7 +11770,7 @@
                 }
             },
             {
-                "__id": "y1lyC1sxTQ4uEHHbWmrjH",
+                "__id": "90XKi3dIwrdC9ywVJQTsM",
                 "__type": "selector",
                 "__name": ".toast-progress",
                 "__value": {
@@ -10732,7 +11786,7 @@
                 }
             },
             {
-                "__id": "qwmnDl2jxx83tz4PTXUdF",
+                "__id": "FXGBNvwPjYxgI0RxLSURq",
                 "__type": "selector",
                 "__name": ".toast-progress-bar",
                 "__value": {
@@ -10743,13 +11797,13 @@
                 }
             },
             {
-                "__id": "Nxc9QjqEyVgH3S26xItMX",
+                "__id": "ouIus1SaCTaAZHWj0t4h8",
                 "__type": "media",
                 "__name": "keyframes",
                 "__identifier": "toast-duration",
                 "__value": [
                     {
-                        "__id": "SJyGQ4Ht4_78ITNZi0y5G",
+                        "__id": "J6cfBM4G5mLjQJlmJ66tf",
                         "__type": "selector",
                         "__name": "to",
                         "__value": {
@@ -10759,7 +11813,7 @@
                 ]
             },
             {
-                "__id": "eOkCkOWN0fD4tLwl1Sx38",
+                "__id": "DecsI89cR95IHuX56M0eD",
                 "__type": "selector",
                 "__name": ".toast",
                 "__value": {
@@ -10810,7 +11864,7 @@
                 }
             },
             {
-                "__id": "KOxJG2qakc2cAZdWWOJPw",
+                "__id": "LVCTYwmQouJF4QunCSxp3",
                 "__type": "selector",
                 "__name": ".toast-content",
                 "__value": {
@@ -10821,7 +11875,7 @@
                 }
             },
             {
-                "__id": "Isi4hmhr8lizogExTbog8",
+                "__id": "_TCV2tNRfmJ88aDPtqaYH",
                 "__type": "selector",
                 "__name": ".toast-content *:first-child",
                 "__value": {
@@ -10829,7 +11883,7 @@
                 }
             },
             {
-                "__id": "P-BuUQrvqRymR9egfXq_U",
+                "__id": "yQlPFOBzW9XztrFzi9WJO",
                 "__type": "selector",
                 "__name": ".toast-content > .toast-title",
                 "__value": {
@@ -10844,7 +11898,7 @@
                 }
             },
             {
-                "__id": "rcH0M2gvDM_KPaUyExZBc",
+                "__id": "FpG3QOJgPp3X-xU9Cp6jd",
                 "__type": "selector",
                 "__name": ".toast-content *:last-child",
                 "__value": {
@@ -10852,7 +11906,7 @@
                 }
             },
             {
-                "__id": "fWH4vgp4JXLu6ynUh1KmW",
+                "__id": "oKF9tcsKasgvdpIZTMnkZ",
                 "__type": "selector",
                 "__name": ".toast-icon",
                 "__value": {
@@ -10863,7 +11917,7 @@
                 }
             },
             {
-                "__id": "dQdhqaN8SSLSWkVwViI09",
+                "__id": "ZcalnvyNx3d261iKtyDjO",
                 "__type": "selector",
                 "__name": ".toast-dismiss",
                 "__value": {
@@ -10874,7 +11928,7 @@
                 }
             },
             {
-                "__id": "YWEl4HHUW_8zh_3TKmItS",
+                "__id": "dDI-1wK8dYCxM26exisBb",
                 "__type": "selector",
                 "__name": ".toast code",
                 "__value": {
@@ -10882,7 +11936,7 @@
                 }
             },
             {
-                "__id": "qfdXAScSyzZL7PefwuIMB",
+                "__id": "gkJYa7cYiQNzbFUmBszcv",
                 "__type": "selector",
                 "__name": ".toast a",
                 "__value": {
@@ -10893,7 +11947,7 @@
                 }
             },
             {
-                "__id": "EK553GLME46BGiJt6OsNC",
+                "__id": "GqdWkwPBvX_xuCG5N68Ga",
                 "__type": "selector",
                 "__name": ".toast-progress",
                 "__value": {
@@ -10904,7 +11958,7 @@
                 }
             },
             {
-                "__id": "1ie15FUcNzWDgYNnUG7ra",
+                "__id": "npM0gLH3Bwzefx54QecKX",
                 "__type": "selector",
                 "__name": ".toast-progress-bar",
                 "__value": {
@@ -10915,7 +11969,7 @@
                 }
             },
             {
-                "__id": "4siY3hyH0vqE3hmR1W4Bv",
+                "__id": "8Ztf01E63GY6NCg1_x7W5",
                 "__type": "selector",
                 "__name": ".toast.-sm",
                 "__value": {
@@ -10944,7 +11998,7 @@
                 }
             },
             {
-                "__id": "LoicsaWFp8HW1PgE7zIKu",
+                "__id": "PpuuitWRpBJcolKb-xDsZ",
                 "__type": "selector",
                 "__name": ".toast.-sm .toast-content",
                 "__value": {
@@ -10969,7 +12023,7 @@
                 }
             },
             {
-                "__id": "VYzXQBOfJ_AgcMqjSDPDU",
+                "__id": "Q6v4uzemsgA2XNF74D3dC",
                 "__type": "selector",
                 "__name": ".toast.-sm .toast-icon",
                 "__value": {
@@ -10980,7 +12034,7 @@
                 }
             },
             {
-                "__id": "TBKS9C83Txw4IGC60z1A5",
+                "__id": "TLbpUCSM_b0oVm-uG5VTS",
                 "__type": "selector",
                 "__name": ".toast.-sm .toast-dismiss",
                 "__value": {
@@ -10991,7 +12045,7 @@
                 }
             },
             {
-                "__id": "-7HC0Dz2LHYzwsqSfxE0O",
+                "__id": "vGULADmzaqf3qwObdeozT",
                 "__type": "selector",
                 "__name": ".toast.-md",
                 "__value": {
@@ -11020,7 +12074,7 @@
                 }
             },
             {
-                "__id": "ngPmMPRYaK4A4USA3pup9",
+                "__id": "6Ko1ByWs5ze1tie6t1ygF",
                 "__type": "selector",
                 "__name": ".toast.-md .toast-content",
                 "__value": {
@@ -11045,7 +12099,7 @@
                 }
             },
             {
-                "__id": "tYZ0gGHIjlFfjZHdz8rH7",
+                "__id": "i2qTLd5xO-I5VFWx6L-5B",
                 "__type": "selector",
                 "__name": ".toast.-md .toast-icon",
                 "__value": {
@@ -11056,7 +12110,7 @@
                 }
             },
             {
-                "__id": "-n7aIR0rMdMeVKATXFMPi",
+                "__id": "gDojPs_ZBVy5Sne_PCqUt",
                 "__type": "selector",
                 "__name": ".toast.-md .toast-dismiss",
                 "__value": {
@@ -11067,7 +12121,7 @@
                 }
             },
             {
-                "__id": "jf0ddEeoRxfncGkNnQToJ",
+                "__id": "6zIXfJB4i9j1GEYzstqf2",
                 "__type": "selector",
                 "__name": ".toast.-lg",
                 "__value": {
@@ -11096,7 +12150,7 @@
                 }
             },
             {
-                "__id": "Oc4QnqSpEEaPkvq0n4wW4",
+                "__id": "mX2oKygxT_q8YURR7QMpD",
                 "__type": "selector",
                 "__name": ".toast.-lg .toast-content",
                 "__value": {
@@ -11121,7 +12175,7 @@
                 }
             },
             {
-                "__id": "HzQlWkmppz6YbzpocsvYs",
+                "__id": "c2W8zRGnrnJNC92Ou1Dax",
                 "__type": "selector",
                 "__name": ".toast.-lg .toast-icon",
                 "__value": {
@@ -11132,7 +12186,7 @@
                 }
             },
             {
-                "__id": "ofzZG86x_WNHaxt1jJW4v",
+                "__id": "gDklxapPqLIZ4X-1HbMYF",
                 "__type": "selector",
                 "__name": ".toast.-lg .toast-dismiss",
                 "__value": {
@@ -11143,7 +12197,7 @@
                 }
             },
             {
-                "__id": "RsXQ4iqfv0dOwQdszokTf",
+                "__id": "iylu7OfMH87-o2IOlCElp",
                 "__type": "selector",
                 "__name": ".toast.-light",
                 "__value": {
@@ -11162,7 +12216,7 @@
                 }
             },
             {
-                "__id": "2LIy29CksoFw1FU-TmxLW",
+                "__id": "XNuZ92N9AN_xv5E756dGX",
                 "__type": "selector",
                 "__name": ".toast.-light a",
                 "__value": {
@@ -11173,7 +12227,7 @@
                 }
             },
             {
-                "__id": "bGQ_gqTQQph67-MmGrEBM",
+                "__id": "9oMnd30moAAKbL7tviUQh",
                 "__type": "selector",
                 "__name": ".toast.-light .toast-progress",
                 "__value": {
@@ -11184,7 +12238,7 @@
                 }
             },
             {
-                "__id": "KNAfUtRl3Y3yWoNCY3OZP",
+                "__id": "E6OVqz4cHo54mHbeYKmEc",
                 "__type": "selector",
                 "__name": ".toast.-light .toast-progress-bar",
                 "__value": {
@@ -11195,7 +12249,7 @@
                 }
             },
             {
-                "__id": "6gkyCzSTBKPmO6BsAHBij",
+                "__id": "94wGr0In62IPhVfmLo172",
                 "__type": "selector",
                 "__name": ".toast.-dark",
                 "__value": {
@@ -11214,7 +12268,7 @@
                 }
             },
             {
-                "__id": "7SlOHNK4Ul_f2v50vaiWG",
+                "__id": "yyXy-m_lujd2v7ZoiIDst",
                 "__type": "selector",
                 "__name": ".toast.-dark a",
                 "__value": {
@@ -11225,7 +12279,7 @@
                 }
             },
             {
-                "__id": "D6V10XPvnfGBxL_UHtxT5",
+                "__id": "m2kRpQYtomanjY9EujO41",
                 "__type": "selector",
                 "__name": ".toast.-dark .toast-progress",
                 "__value": {
@@ -11236,7 +12290,7 @@
                 }
             },
             {
-                "__id": "guMy8O9_GJQrhFCucUfL8",
+                "__id": "x41pwUBWU2eFtehZRrwG5",
                 "__type": "selector",
                 "__name": ".toast.-dark .toast-progress-bar",
                 "__value": {
@@ -11247,7 +12301,7 @@
                 }
             },
             {
-                "__id": "ge1loaULMmZ70Wbt9aPA4",
+                "__id": "lFQn8z4pFA0yTVj2422gV",
                 "__type": "selector",
                 "__name": ".toast.-info",
                 "__value": {
@@ -11266,7 +12320,7 @@
                 }
             },
             {
-                "__id": "87c33n57M2AP3yyuv_qtn",
+                "__id": "XISzDqAYl6CQjTNOvOdmJ",
                 "__type": "selector",
                 "__name": ".toast.-info a",
                 "__value": {
@@ -11277,7 +12331,7 @@
                 }
             },
             {
-                "__id": "xoXI6toGMEf9IZsL404f0",
+                "__id": "PHQTEXguVZXZ2NpnqqOVs",
                 "__type": "selector",
                 "__name": ".toast.-info .toast-progress",
                 "__value": {
@@ -11288,7 +12342,7 @@
                 }
             },
             {
-                "__id": "_WdWvk8Ev9Ri8A1YDb5Yb",
+                "__id": "Y7_iPDX3lIZp68qRPKiyO",
                 "__type": "selector",
                 "__name": ".toast.-info .toast-progress-bar",
                 "__value": {
@@ -11299,7 +12353,7 @@
                 }
             },
             {
-                "__id": "zwfy4v4O3l3aDkgj99jQe",
+                "__id": "21LzrvgfjuM3nWYkQMWPx",
                 "__type": "selector",
                 "__name": ".toast.-success",
                 "__value": {
@@ -11318,7 +12372,7 @@
                 }
             },
             {
-                "__id": "C5J1RoKh8xFup5gK55QSW",
+                "__id": "UUbPR7dUNYHVcRw9IFhqT",
                 "__type": "selector",
                 "__name": ".toast.-success a",
                 "__value": {
@@ -11329,7 +12383,7 @@
                 }
             },
             {
-                "__id": "ymUQHk5VSzfzvC33HcpgT",
+                "__id": "w7qAcbHlNe9a6zY04wCpW",
                 "__type": "selector",
                 "__name": ".toast.-success .toast-progress",
                 "__value": {
@@ -11340,7 +12394,7 @@
                 }
             },
             {
-                "__id": "eqemZ68xi2PQF-e18y2ZG",
+                "__id": "m4g4-SssCILzxmSOAVoKQ",
                 "__type": "selector",
                 "__name": ".toast.-success .toast-progress-bar",
                 "__value": {
@@ -11351,7 +12405,7 @@
                 }
             },
             {
-                "__id": "iynmkdqK5p1zUI_tWMtR_",
+                "__id": "QKbP27Xgw_cjdPzFi3oUw",
                 "__type": "selector",
                 "__name": ".toast.-warning",
                 "__value": {
@@ -11370,7 +12424,7 @@
                 }
             },
             {
-                "__id": "losEhCbTzVt6s4ORrvqsB",
+                "__id": "aWHqoMgWQ_rFHsoW2yHai",
                 "__type": "selector",
                 "__name": ".toast.-warning a",
                 "__value": {
@@ -11381,7 +12435,7 @@
                 }
             },
             {
-                "__id": "EXw7tr3eEp9G9aNosxWpN",
+                "__id": "HqudZC5alieUsrY-qm-Kl",
                 "__type": "selector",
                 "__name": ".toast.-warning .toast-progress",
                 "__value": {
@@ -11392,7 +12446,7 @@
                 }
             },
             {
-                "__id": "TemphlQ_4xIPmAjvrVmFV",
+                "__id": "NvsFtCW2RlpI1jguZzn4C",
                 "__type": "selector",
                 "__name": ".toast.-warning .toast-progress-bar",
                 "__value": {
@@ -11403,7 +12457,7 @@
                 }
             },
             {
-                "__id": "cCsmlGSwNt57BdkXk0htG",
+                "__id": "xNj9ZCVBz3PQ8bQf-vyVK",
                 "__type": "selector",
                 "__name": ".toast.-danger",
                 "__value": {
@@ -11422,7 +12476,7 @@
                 }
             },
             {
-                "__id": "vqEWI9T-3KIDrDeu8RQMe",
+                "__id": "7Jc8NWv7d_40cah8MN_BW",
                 "__type": "selector",
                 "__name": ".toast.-danger a",
                 "__value": {
@@ -11433,7 +12487,7 @@
                 }
             },
             {
-                "__id": "4Ddo1IjSR1gtyiPnfRjlk",
+                "__id": "d3eS4f37PCtBIX8h9Y7Hk",
                 "__type": "selector",
                 "__name": ".toast.-danger .toast-progress",
                 "__value": {
@@ -11444,7 +12498,7 @@
                 }
             },
             {
-                "__id": "Vu_-qLdj0vtv_Whsm0q7R",
+                "__id": "Ztzon35Te1rFSUytgAY9O",
                 "__type": "selector",
                 "__name": ".toast.-danger .toast-progress-bar",
                 "__value": {
@@ -11452,6 +12506,157 @@
                         "__type": "reference",
                         "__name": "toast--danger--progress--bar--background"
                     }
+                }
+            },
+            {
+                "__id": "DTwS86z6CuZvFRJ2ob9vZ",
+                "__type": "selector",
+                "__name": ".toast-container",
+                "__value": {
+                    "margin": {
+                        "__type": "reference",
+                        "__name": "toast-container--margin"
+                    },
+                    "width": {
+                        "__type": "reference",
+                        "__name": "toast-container--width"
+                    },
+                    "position": "fixed",
+                    "maxWidth": "100%",
+                    "maxHeight": "100%",
+                    "overflow": "visible",
+                    "zIndex": {
+                        "__type": "reference",
+                        "__name": "toast-container--z-index"
+                    }
+                }
+            },
+            {
+                "__id": "jft0Zqd0570Uonu3snPo4",
+                "__type": "selector",
+                "__name": ".toast-container.-top-left",
+                "__value": {
+                    "top": 0,
+                    "left": 0
+                }
+            },
+            {
+                "__id": "dQnseoHrf8ZbNGjXzJ7Eu",
+                "__type": "selector",
+                "__name": ".toast-container.-top",
+                "__value": {
+                    "top": 0,
+                    "left": "50%",
+                    "transform": "translateX(-50%)"
+                }
+            },
+            {
+                "__id": "AkrMJu8In1vA9x6gEdX7q",
+                "__type": "selector",
+                "__name": ".toast-container.-top-right",
+                "__value": {
+                    "top": 0,
+                    "right": 0
+                }
+            },
+            {
+                "__id": "vslxHeH11i1-Dm8mgcrfS",
+                "__type": "selector",
+                "__name": ".toast-container.-right",
+                "__value": {
+                    "top": "50%",
+                    "right": 0,
+                    "transform": "translateY(-50%)"
+                }
+            },
+            {
+                "__id": "Baho7vzVfaR4kxCuKp1JQ",
+                "__type": "selector",
+                "__name": ".toast-container.-bottom-right",
+                "__value": {
+                    "bottom": 0,
+                    "right": 0
+                }
+            },
+            {
+                "__id": "Skk4tAw9hdOSiYpYJNT_o",
+                "__type": "selector",
+                "__name": ".toast-container.-bottom",
+                "__value": {
+                    "bottom": 0,
+                    "left": "50%",
+                    "transform": "translateX(-50%)"
+                }
+            },
+            {
+                "__id": "RCSqr-C8Lz5kOTKwVeEHv",
+                "__type": "selector",
+                "__name": ".toast-container.-bottom-left",
+                "__value": {
+                    "bottom": 0,
+                    "left": 0
+                }
+            },
+            {
+                "__id": "wF7-lrnobax3nHyQrl5-0",
+                "__type": "selector",
+                "__name": ".toast-container.-left",
+                "__value": {
+                    "top": "50%",
+                    "left": 0,
+                    "transform": "translateY(-50%)"
+                }
+            },
+            {
+                "__id": "6pWjxuuKVMwsf0z29Prvy",
+                "__type": "selector",
+                "__name": ".toast-container > .toast",
+                "__value": {
+                    "margin": {
+                        "__type": "reference",
+                        "__name": "toast-container--toast--margin"
+                    },
+                    "width": {
+                        "__type": "reference",
+                        "__name": "toast-container--width"
+                    },
+                    "maxWidth": "100%",
+                    "position": "relative"
+                }
+            },
+            {
+                "__id": "cqweDtvnutnCUXml1A2qO",
+                "__type": "selector",
+                "__name": ".toast-container > .toast:last-of-type",
+                "__value": {
+                    "marginBottom": 0
+                }
+            },
+            {
+                "__id": "QwCOwwfgHAi5BmghtNesL",
+                "__type": "selector",
+                "__name": ".toast-transition-move, .toast-transition-enter-active, .toast-transition-leave-active",
+                "__value": {
+                    "transition": {
+                        "__type": "reference",
+                        "__name": "toast-container--toast--transition"
+                    }
+                }
+            },
+            {
+                "__id": "vNeuq4Xc5EZoQF1an4keY",
+                "__type": "selector",
+                "__name": ".toast-transition-enter-from, .toast-transition-leave-to",
+                "__value": {
+                    "opacity": 0
+                }
+            },
+            {
+                "__id": "ULFEL2OhMjvJ0v1D8C2EG",
+                "__type": "selector",
+                "__name": ".toast-transition-leave-active",
+                "__value": {
+                    "position": "absolute"
                 }
             }
         ]

@@ -1,4 +1,4 @@
-import { defaultDefinitionOptions, namespace, nsvariable, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
 import { useFontSize, useFontWeight, useMarginBase } from '../../variables';
 
 export function useParagraphThemeVariables(options = defaultDefinitionOptions) {
@@ -10,7 +10,7 @@ export function useParagraphThemeVariables(options = defaultDefinitionOptions) {
     const paragraphMarginRight = nsvariable('p', 'margin-right', 0, options);
     const paragraphMarginBottom = nsvariable('p', 'margin-bottom', ref(marginBottom), options);
     const paragraphMarginLeft = nsvariable('p', 'margin-left', 0, options);
-    const paragraphMargin = namespace('p', margin, options);
+    const paragraphMargin = addVariableNamespace('p', margin, options);
 
     const leadFontSize = nsvariable('lead', 'font-size', ref(fontSizeLg), options);
     const leadFontWeight = nsvariable('lead', 'font-weight', ref(fontWeightLight), options);

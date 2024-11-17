@@ -1,4 +1,4 @@
-import { defaultDefinitionOptions, namespace, nsvariable, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
 import { useFontFamily, useFontSize, useMarginBase } from '../../variables';
 
 const ns = 'pre';
@@ -10,7 +10,7 @@ export function usePreVariables(options = defaultDefinitionOptions) {
 
     const preFontSize = nsvariable(ns, 'font-size', ref(fontSizeSm), options);
     const preFontFamily = nsvariable(ns, 'font-family', ref(fontFamilyMonospace), options);
-    const preMarginBottom = namespace(ns, marginBottom, options);
+    const preMarginBottom = addVariableNamespace(ns, marginBottom, options);
 
     return {
         preFontSize,

@@ -3,7 +3,6 @@ export * from './constants';
 export * from './generators';
 export * from './globals';
 export * from './imports';
-export * from './define';
 export * from './themes';
 export * from './tokens';
 export * from './types';

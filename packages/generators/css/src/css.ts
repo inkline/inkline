@@ -1,5 +1,5 @@
 import {
-    normalizePercentageValue,
+    resolvePercentagePropertyValue,
     normalizeTokenName,
     toCssName,
     defaultThemeName,
@@ -60,8 +60,8 @@ export function consumeCalc(instance: Calc): string {
  */
 export function consumeColor(instance: Color): string {
     const h = consume(instance.__value[0]);
-    const s = normalizePercentageValue(consume(instance.__value[1]));
-    const l = normalizePercentageValue(consume(instance.__value[2]));
+    const s = resolvePercentagePropertyValue(consume(instance.__value[1]));
+    const l = resolvePercentagePropertyValue(consume(instance.__value[2]));
     const a = consume(instance.__value[3]);
 
     return `hsla(${h} ${s} ${l} / ${a})`;
@@ -73,6 +73,13 @@ export function consumeColor(instance: Color): string {
 export function consumeSelectorProperty(key: string, value: unknown): string {
     const resolvedKey = toCssName(key);
     return `${resolvedKey}: ${consume(value)};`;
+}
+
+/**
+ * Consumes a selector variable, equivalent to setting a CSS variable within a selector
+ */
+export function consumeSelectorVariables(value: Variable[]): string {
+    return value.map(consumeVariable).join('\n');
 }
 
 /**
@@ -90,7 +97,9 @@ ${indentLines(consumeComponentValue(instance.__value))}
 export function consumeComponentValue(instance: ComponentValue): string {
     return Object.entries(instance)
         .map(([propertyName, propertyValue]) =>
-            consumeSelectorProperty(propertyName, propertyValue)
+            propertyName === 'variables'
+                ? consumeSelectorVariables(propertyValue as Variable[])
+                : consumeSelectorProperty(propertyName, propertyValue)
         )
         .join('\n');
 }

@@ -9,16 +9,6 @@ export default defineComponent({
     name: componentName,
     props: {
         /**
-         * The active state of the button
-         * @type Boolean
-         * @default false
-         * @name active
-         */
-        active: {
-            type: Boolean,
-            default: false
-        },
-        /**
          * Renders the component as an anchor link with a `href` attribute
          * @type String
          * @default undefined
@@ -29,14 +19,14 @@ export default defineComponent({
             default: undefined
         },
         /**
-         * Set the HTML tag to be used for rendering the button
+         * Set the HTML tag to be used for rendering the linkable
          * @type String
          * @default button
          * @name tag
          */
         tag: {
             type: String,
-            default: 'button'
+            default: 'a'
         },
         /**
          * Renders the component as a Router Link component with a `to` attribute
@@ -90,16 +80,24 @@ export default defineComponent({
 </script>
 
 <template>
-    <Component v-if="isRouterLink" v-bind="$attrs" :is="renderComponent" :tag="renderTag" :to="to">
+    <Component
+        v-if="isRouterLink"
+        v-bind="$attrs"
+        :is="renderComponent"
+        :tag="renderTag"
+        :to="to"
+        role="link"
+    >
         <slot />
     </Component>
-    <a v-else-if="isLink" v-bind="$attrs" :href="href">
+    <a v-else-if="isLink" v-bind="$attrs" :href="href" role="link">
         <slot />
     </a>
-    <button v-else-if="renderTag === 'button'" v-bind="$attrs">
+    <button v-else-if="renderTag === 'button'" v-bind="$attrs" role="link">
         <slot />
     </button>
-    <Component v-else v-bind="$attrs" :is="renderTag">
+    <input v-else-if="renderTag === 'input'" v-bind="$attrs" type="button" role="link" />
+    <Component v-else v-bind="$attrs" :is="renderTag" role="link">
         <slot />
     </Component>
 </template>

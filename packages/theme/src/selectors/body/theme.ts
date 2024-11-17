@@ -1,6 +1,6 @@
 import {
     defaultDefinitionOptions,
-    namespace,
+    addVariableNamespace,
     nsvariable,
     ref,
     selector,
@@ -30,7 +30,7 @@ export function useBodyThemeVariables(options = defaultDefinitionOptions) {
         useTransition();
     const { lineHeight } = useLineHeight();
 
-    const bodyColor = namespace(ns, textColor, options);
+    const bodyColor = addVariableNamespace(ns, textColor, options);
 
     const bodyBackground = nsvariable(ns, "background", ref(colorWhite), options);
     nsvariable(ns, "background", ref(colorDark), {
@@ -38,16 +38,16 @@ export function useBodyThemeVariables(options = defaultDefinitionOptions) {
         theme: darkThemeName
     });
 
-    const bodyFontSize = namespace(ns, fontSize, options);
+    const bodyFontSize = addVariableNamespace(ns, fontSize, options);
     const bodyFontFamily = nsvariable(ns, "font-family", ref(fontFamilyBase), options);
 
-    const bodyLineHeight = namespace(ns, lineHeight, options);
+    const bodyLineHeight = addVariableNamespace(ns, lineHeight, options);
     const bodyTextAlign = nsvariable(ns, "text-align", ref(textAlignLeft), options);
 
-    const bodyTransitionProperty = namespace(ns, transitionProperty, options);
-    const bodyTransitionDuration = namespace(ns, transitionDuration, options);
-    const bodyTransitionTimingFunction = namespace(ns, transitionTimingFunction, options);
-    const bodyTransition = namespace(ns, transition, options);
+    const bodyTransitionProperty = addVariableNamespace(ns, transitionProperty, options);
+    const bodyTransitionDuration = addVariableNamespace(ns, transitionDuration, options);
+    const bodyTransitionTimingFunction = addVariableNamespace(ns, transitionTimingFunction, options);
+    const bodyTransition = addVariableNamespace(ns, transition, options);
 
     return {
         bodyColor,

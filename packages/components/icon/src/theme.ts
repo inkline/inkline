@@ -8,9 +8,9 @@ import {
     multiply,
     ref,
     selector,
-    nsvariable,
-    nsdefine,
-    defaultDefinitionOptions
+    nsvariables,
+    defaultDefinitionOptions,
+    stripExportsNamespace
 } from '@inkline/core';
 
 const ns = 'icon';
@@ -19,7 +19,7 @@ export function useIconThemeVariables(options = defaultDefinitionOptions) {
     const { fontSize } = useFontSize();
 
     return {
-        ...nsdefine(
+        ...nsvariables(
             ns,
             {
                 fontSize: ref(fontSize)
@@ -36,20 +36,20 @@ export function useIconThemeBase() {
     });
 }
 
-export function useIconThemeSizeFactory(size: ComponentSize) {
-    const sizeNamespace = [ns, size] as const;
+export function useIconThemeSizeFactory(variant: ComponentSize) {
     const { iconFontSize } = useIconThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
-    const variantFontSize = nsvariable(
-        sizeNamespace,
-        'font-size',
-        multiply(ref(iconFontSize), sizeMultiplierRef)
+    const { fontSize } = stripExportsNamespace(
+        nsvariables(sizeNs, {
+            fontSize: multiply(ref(iconFontSize), sizeMultiplierRef)
+        })
     );
 
-    selector(`.icon.-${size}`, {
-        fontSize: ref(variantFontSize)
+    selector(`.icon.-${variant}`, {
+        fontSize: ref(fontSize)
     });
 }
 

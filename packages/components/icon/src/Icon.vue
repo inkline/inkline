@@ -57,7 +57,6 @@ export default defineComponent({
         const icon = computed(() => options.value.icons?.definitions[props.name]);
 
         onMounted(() => {
-            console.log(options, useOptions());
             if (props.name && !options.value.icons?.definitions[props.name]) {
                 console.error(`The icon ${props.name} is not registered.`);
             }
@@ -73,7 +72,7 @@ export default defineComponent({
                 ? h(
                       rootNode.type,
                       {
-                          class: 'icon',
+                          class: `icon ${props.name}`,
                           ...rootNode.props,
                           ...(props.width ? { width: props.width } : {}),
                           ...(props.height ? { height: props.height } : {})

@@ -1,4 +1,4 @@
-import { defaultDefinitionOptions, namespace, nsvariable, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
 import { usePaddingBase, useTextColor } from '../../variables';
 
 const ns = 'caption';
@@ -9,11 +9,11 @@ export function useCaptionThemeVariables(options = defaultDefinitionOptions) {
 
     const captionColor = nsvariable(ns, 'color', ref(textColorWeaker), options);
 
-    const captionPaddingTop = namespace(ns, paddingTop, options);
+    const captionPaddingTop = addVariableNamespace(ns, paddingTop, options);
     const captionPaddingRight = nsvariable(ns, 'padding-right', '0', options);
-    const captionPaddingBottom = namespace(ns, paddingBottom, options);
+    const captionPaddingBottom = addVariableNamespace(ns, paddingBottom, options);
     const captionPaddingLeft = nsvariable(ns, 'padding-left', '0', options);
-    const captionPadding = namespace(ns, padding, options);
+    const captionPadding = addVariableNamespace(ns, padding, options);
 
     return {
         captionColor,

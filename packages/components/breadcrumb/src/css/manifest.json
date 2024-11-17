@@ -1606,6 +1606,24 @@
                     "__name": "text-color-weaker"
                 }
             },
+            "breadcrumb--sm--font-size": {
+                "__type": "variable",
+                "__name": "breadcrumb--sm--font-size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--font-size"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
             "breadcrumb--sm--padding-top": {
                 "__type": "variable",
                 "__name": "breadcrumb--sm--padding-top",
@@ -1678,9 +1696,31 @@
                     ]
                 }
             },
-            "breadcrumb--sm--font-size": {
+            "breadcrumb--sm--padding": {
                 "__type": "variable",
-                "__name": "breadcrumb--sm--font-size",
+                "__name": "breadcrumb--sm--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--sm--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--sm--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--sm--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--sm--padding-left"
+                    }
+                ]
+            },
+            "breadcrumb--md--font-size": {
+                "__type": "variable",
+                "__name": "breadcrumb--md--font-size",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -1691,7 +1731,7 @@
                         "*",
                         {
                             "__type": "reference",
-                            "__name": "size-multiplier-sm"
+                            "__name": "size-multiplier-md"
                         }
                     ]
                 }
@@ -1768,9 +1808,31 @@
                     ]
                 }
             },
-            "breadcrumb--md--font-size": {
+            "breadcrumb--md--padding": {
                 "__type": "variable",
-                "__name": "breadcrumb--md--font-size",
+                "__name": "breadcrumb--md--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--md--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--md--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--md--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--md--padding-left"
+                    }
+                ]
+            },
+            "breadcrumb--lg--font-size": {
+                "__type": "variable",
+                "__name": "breadcrumb--lg--font-size",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -1781,7 +1843,7 @@
                         "*",
                         {
                             "__type": "reference",
-                            "__name": "size-multiplier-md"
+                            "__name": "size-multiplier-lg"
                         }
                     ]
                 }
@@ -1858,23 +1920,27 @@
                     ]
                 }
             },
-            "breadcrumb--lg--font-size": {
+            "breadcrumb--lg--padding": {
                 "__type": "variable",
-                "__name": "breadcrumb--lg--font-size",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "breadcrumb--font-size"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
+                "__name": "breadcrumb--lg--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--lg--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--lg--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--lg--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--lg--padding-left"
+                    }
+                ]
             },
             "contrast-text-color-light": {
                 "__type": "variable",
@@ -1940,6 +2006,26 @@
                     "__name": "contrast-text-color-dark"
                 }
             },
+            "breadcrumb--light--color-h": {
+                "__type": "variable",
+                "__name": "breadcrumb--light--color-h",
+                "__value": 0
+            },
+            "breadcrumb--light--color-s": {
+                "__type": "variable",
+                "__name": "breadcrumb--light--color-s",
+                "__value": "0%"
+            },
+            "breadcrumb--light--color-l": {
+                "__type": "variable",
+                "__name": "breadcrumb--light--color-l",
+                "__value": "0%"
+            },
+            "breadcrumb--light--color-a": {
+                "__type": "variable",
+                "__name": "breadcrumb--light--color-a",
+                "__value": 1
+            },
             "breadcrumb--light--color": {
                 "__type": "variable",
                 "__name": "breadcrumb--light--color",
@@ -1947,6 +2033,26 @@
                     "__type": "reference",
                     "__name": "contrast-text-color-light"
                 }
+            },
+            "breadcrumb--dark--color-h": {
+                "__type": "variable",
+                "__name": "breadcrumb--dark--color-h",
+                "__value": 0
+            },
+            "breadcrumb--dark--color-s": {
+                "__type": "variable",
+                "__name": "breadcrumb--dark--color-s",
+                "__value": "0%"
+            },
+            "breadcrumb--dark--color-l": {
+                "__type": "variable",
+                "__name": "breadcrumb--dark--color-l",
+                "__value": "0%"
+            },
+            "breadcrumb--dark--color-a": {
+                "__type": "variable",
+                "__name": "breadcrumb--dark--color-a",
+                "__value": 1
             },
             "breadcrumb--dark--color": {
                 "__type": "variable",
@@ -1959,7 +2065,7 @@
         },
         "selectors": [
             {
-                "__id": "wDX7sMAtHUl7MX2ve-Q5h",
+                "__id": "aIrDLsPaW2NMOOIhAWKtm",
                 "__type": "selector",
                 "__name": ".breadcrumb",
                 "__value": {
@@ -1967,7 +2073,7 @@
                 }
             },
             {
-                "__id": "01R1Wcd6OKusRqK5W42n5",
+                "__id": "9ikgnB60staTk2cAs_R1x",
                 "__type": "selector",
                 "__name": ".breadcrumb ol",
                 "__value": {
@@ -1978,7 +2084,7 @@
                 }
             },
             {
-                "__id": "S0E_AFdqw2XLQhA78n1DQ",
+                "__id": "YjZoMxjk3WO0yxd4eUIQ7",
                 "__type": "selector",
                 "__name": ".breadcrumb",
                 "__value": {
@@ -1997,7 +2103,7 @@
                 }
             },
             {
-                "__id": "LYDqKZ7Bm1J2vQRWda18V",
+                "__id": "bhoLPjSbPOw1jZ9vUC1jA",
                 "__type": "selector",
                 "__name": ".breadcrumb.-sm",
                 "__value": {
@@ -2026,7 +2132,7 @@
                 }
             },
             {
-                "__id": "AXrWR6Dk3acfZzKImm3Li",
+                "__id": "Qe5zORTzKMIqHY_7pzflp",
                 "__type": "selector",
                 "__name": ".breadcrumb.-md",
                 "__value": {
@@ -2055,7 +2161,7 @@
                 }
             },
             {
-                "__id": "h4GBgzLlmV-ds9TWPThO4",
+                "__id": "Twpzvq8FedrHaRNEEmbOP",
                 "__type": "selector",
                 "__name": ".breadcrumb.-lg",
                 "__value": {
@@ -2084,7 +2190,7 @@
                 }
             },
             {
-                "__id": "qWsr51ViPEMyAHbmOfBkL",
+                "__id": "v59HRVgOFeXetrzU_Q1x9",
                 "__type": "selector",
                 "__name": ".breadcrumb.-light",
                 "__value": {
@@ -2095,7 +2201,7 @@
                 }
             },
             {
-                "__id": "hVBwkw-N9zAJHsnhO6J_J",
+                "__id": "m1CExGVgRLybJnHeGE4A9",
                 "__type": "selector",
                 "__name": ".breadcrumb.-dark",
                 "__value": {

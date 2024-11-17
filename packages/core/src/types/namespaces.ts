@@ -1,6 +1,8 @@
 import type { CamelCase, Replace } from 'type-fest';
 
-export type NamespaceType = string | readonly string[];
+export type NamespaceStringType = string;
+export type NamespaceArrayStringType = readonly string[];
+export type NamespaceType = NamespaceStringType | NamespaceArrayStringType;
 
 export type ExportedName<T extends string> = Replace<
     CamelCase<Replace<T, '--', '-', { all: true }>>,
@@ -8,7 +10,7 @@ export type ExportedName<T extends string> = Replace<
     '_'
 >;
 
-type JoinNamespaceKeys<Parts extends readonly string[]> = Parts extends []
+export type JoinNamespaceKeys<Parts extends readonly string[]> = Parts extends []
     ? ''
     : Parts extends readonly [string]
       ? Parts[0]

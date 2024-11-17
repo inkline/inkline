@@ -1,7 +1,7 @@
-import { computed, inject, unref } from 'vue';
+import { computed, unref } from 'vue';
 import type { MaybeRef } from 'vue';
 import type { FormState, ResolvedFormField, ResolvedFormSchema } from '@inkline/types';
-import { FormGroupKey, FormKey } from '@inkline/vue';
+import { useInjectForm } from './useInjectForm';
 
 export type UseFormValidationErrorOptions = {
     schema: MaybeRef<ResolvedFormSchema<any> | ResolvedFormField<any> | undefined>;
@@ -16,8 +16,7 @@ export function useFormValidationState({
     readonly,
     errorCondition
 }: UseFormValidationErrorOptions) {
-    const form = inject(FormKey, null);
-    const formGroup = inject(FormGroupKey, null);
+    const { form, formGroup } = useInjectForm();
 
     const hasError = computed(() => {
         const currentSchema = unref(schema);

@@ -1,4 +1,4 @@
-import { add, ref, subtract, normalizePercentageValue, defaultDefinitionOptions, color } from "@inkline/core";
+import { add, ref, subtract, resolvePercentagePropertyValue, defaultDefinitionOptions, color } from "@inkline/core";
 import type {
     ColorVariantKeys,
     Variable
@@ -61,7 +61,7 @@ export function useColorLightnessVariantsFactory<RootKey extends string>(
 
     const keys = Object.keys(defaultColorLightnessValues) as VariantKeys[];
     const variants = keys.reduce<Record<string, ApplyComposedVariantFn>>((acc, key) => {
-        const l = normalizePercentageValue(defaultColorLightnessValues[key]);
+        const l = resolvePercentagePropertyValue(defaultColorLightnessValues[key]);
         acc[key] = createComposedVariantFactoryFn(([h, s, _, a]) => [h, s, l, a]);
         return acc;
     }, {});

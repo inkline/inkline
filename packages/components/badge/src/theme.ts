@@ -20,9 +20,9 @@ import {
     multiply,
     ref,
     selector,
-    nsvariable,
-    nsdefine,
-    defaultDefinitionOptions
+    nsvariables,
+    defaultDefinitionOptions,
+    stripExportsNamespace
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 
@@ -61,7 +61,7 @@ export function useBadgeThemeVariables(options = defaultDefinitionOptions) {
     const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
 
     return {
-        ...nsdefine(
+        ...nsvariables(
             ns,
             {
                 border: {
@@ -122,7 +122,7 @@ export function useBadgeThemeVariables(options = defaultDefinitionOptions) {
             },
             options
         ),
-        ...nsdefine(
+        ...nsvariables(
             [ns, 'pill'] as const,
             {
                 borderRadius: {
@@ -191,8 +191,7 @@ export function useBadgeThemeVariants() {
     });
 }
 
-export function useBadgeThemeSizeFactory(size: ComponentSize) {
-    const sizeNamespace = [ns, size] as const;
+export function useBadgeThemeSizeFactory(variant: ComponentSize) {
     const {
         badgePaddingTop,
         badgePaddingRight,
@@ -205,70 +204,46 @@ export function useBadgeThemeSizeFactory(size: ComponentSize) {
         badgeFontSize
     } = useBadgeThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
-    const variantPaddingTop = nsvariable(
-        sizeNamespace,
-        'padding-top',
-        multiply(ref(badgePaddingTop), sizeMultiplierRef)
-    );
-    const variantPaddingRight = nsvariable(
-        sizeNamespace,
-        `padding-right`,
-        multiply(ref(badgePaddingRight), sizeMultiplierRef)
-    );
-    const variantPaddingBottom = nsvariable(
-        sizeNamespace,
-        `padding-bottom`,
-        multiply(ref(badgePaddingBottom), sizeMultiplierRef)
-    );
-    const variantPaddingLeft = nsvariable(
-        sizeNamespace,
-        `padding-left`,
-        multiply(ref(badgePaddingLeft), sizeMultiplierRef)
-    );
-
-    const variantBorderTopLeftRadius = nsvariable(
-        sizeNamespace,
-        'border-top-left-radius',
-        multiply(ref(badgeBorderTopLeftRadius), sizeMultiplierRef)
-    );
-    const variantBorderTopRightRadius = nsvariable(
-        sizeNamespace,
-        'border-top-right-radius',
-        multiply(ref(badgeBorderTopRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomRightRadius = nsvariable(
-        sizeNamespace,
-        'border-bottom-right-radius',
-        multiply(ref(badgeBorderBottomRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomLeftRadius = nsvariable(
-        sizeNamespace,
-        'border-bottom-left-radius',
-        multiply(ref(badgeBorderBottomLeftRadius), sizeMultiplierRef)
+    const {
+        borderTopLeftRadius,
+        borderTopRightRadius,
+        borderBottomRightRadius,
+        borderBottomLeftRadius,
+        fontSize,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft
+    } = stripExportsNamespace(
+        nsvariables(sizeNs, {
+            borderRadius: {
+                topLeft: multiply(ref(badgeBorderTopLeftRadius), sizeMultiplierRef),
+                topRight: multiply(ref(badgeBorderTopRightRadius), sizeMultiplierRef),
+                bottomRight: multiply(ref(badgeBorderBottomRightRadius), sizeMultiplierRef),
+                bottomLeft: multiply(ref(badgeBorderBottomLeftRadius), sizeMultiplierRef)
+            },
+            fontSize: multiply(ref(badgeFontSize), sizeMultiplierRef),
+            padding: {
+                top: multiply(ref(badgePaddingTop), sizeMultiplierRef),
+                right: multiply(ref(badgePaddingRight), sizeMultiplierRef),
+                bottom: multiply(ref(badgePaddingBottom), sizeMultiplierRef),
+                left: multiply(ref(badgePaddingLeft), sizeMultiplierRef)
+            }
+        })
     );
 
-    const variantFontSize = nsvariable(
-        sizeNamespace,
-        'font-size',
-        multiply(ref(badgeFontSize), sizeMultiplierRef)
-    );
-
-    selector(`.badge.-${size}`, {
+    selector(`.badge.-${variant}`, {
         borderRadius: [
-            ref(variantBorderTopLeftRadius),
-            ref(variantBorderTopRightRadius),
-            ref(variantBorderBottomRightRadius),
-            ref(variantBorderBottomLeftRadius)
+            ref(borderTopLeftRadius),
+            ref(borderTopRightRadius),
+            ref(borderBottomRightRadius),
+            ref(borderBottomLeftRadius)
         ],
-        fontSize: ref(variantFontSize),
-        padding: [
-            ref(variantPaddingTop),
-            ref(variantPaddingRight),
-            ref(variantPaddingBottom),
-            ref(variantPaddingLeft)
-        ]
+        fontSize: ref(fontSize),
+        padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
     });
 }
 
@@ -276,34 +251,26 @@ export function useBadgeThemeSizes({ sizes = defaultComponentSizes } = {}) {
     sizes.forEach(useBadgeThemeSizeFactory);
 }
 
-export function useBadgeThemeColorFactory(color: ComponentBrandColor) {
-    const colorNamespace = [ns, color] as const;
-    const colorKey = capitalize(color);
-    const shadeOrTint = color === 'dark' ? 'Tint' : 'Shade';
+export function useBadgeThemeColorFactory(variant: ComponentBrandColor) {
+    const colorKey = capitalize(variant);
+    const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
+    const colorNs = [ns, variant] as const;
 
     const colors = useColors();
     const contrastTextColors = useContrastTextColor();
 
-    const variantBorderColor = nsvariable(
-        colorNamespace,
-        `border-color`,
-        ref(colors[`color${colorKey}${shadeOrTint}50`])
-    );
-    const variantBackground = nsvariable(
-        colorNamespace,
-        `background`,
-        ref(colors[`color${colorKey}`])
-    );
-    const variantColor = nsvariable(
-        colorNamespace,
-        `color`,
-        ref(contrastTextColors[`contrastTextColor${colorKey}`])
+    const { borderColor, background, color } = stripExportsNamespace(
+        nsvariables(colorNs, {
+            borderColor: ref(colors[`color${colorKey}${shadeOrTint}50`]),
+            background: ref(colors[`color${colorKey}`]),
+            color: ref(contrastTextColors[`contrastTextColor${colorKey}`])
+        })
     );
 
-    selector(`.badge.-${color}`, {
-        borderColor: ref(variantBorderColor),
-        background: ref(variantBackground),
-        color: ref(variantColor)
+    selector(`.badge.-${variant}`, {
+        borderColor: ref(borderColor),
+        background: ref(background),
+        color: ref(color)
     });
 }
 

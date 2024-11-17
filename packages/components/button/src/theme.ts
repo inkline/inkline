@@ -1,10 +1,11 @@
 import {
     defaultDefinitionOptions,
     multiply,
-    nsdefine,
-    nsvariable,
+    nsvariables,
     ref,
-    selector
+    selector,
+    stripExportsNamespace,
+    setExportsNamespace
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
@@ -61,7 +62,7 @@ export function useButtonThemeVariables(options = defaultDefinitionOptions) {
     const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
 
     return {
-        ...nsdefine(
+        ...nsvariables(
             ns,
             {
                 color: ref(contrastTextColorLight),
@@ -121,17 +122,17 @@ export function useButtonThemeVariables(options = defaultDefinitionOptions) {
             },
             options
         ),
-        ...nsdefine(
+        ...nsvariables(
             [ns, 'active'] as const,
             {
                 background: ref(colorLightShade100)
             },
             options
         ),
-        ...nsdefine([ns, 'hover'] as const, { background: ref(colorLightShade50) }, options),
-        ...nsdefine([ns, 'focus'] as const, { background: ref(colorLightShade50) }, options),
-        ...nsdefine([ns, 'disabled'] as const, { opacity: '0.8' }, options),
-        ...nsdefine(
+        ...nsvariables([ns, 'hover'] as const, { background: ref(colorLightShade50) }, options),
+        ...nsvariables([ns, 'focus'] as const, { background: ref(colorLightShade50) }, options),
+        ...nsvariables([ns, 'disabled'] as const, { opacity: '0.8' }, options),
+        ...nsvariables(
             [ns, 'circle'] as const,
             {
                 width: '40px',
@@ -139,7 +140,7 @@ export function useButtonThemeVariables(options = defaultDefinitionOptions) {
             },
             options
         ),
-        ...nsdefine(
+        ...nsvariables(
             [ns, 'square'] as const,
             {
                 width: '40px',
@@ -147,15 +148,15 @@ export function useButtonThemeVariables(options = defaultDefinitionOptions) {
             },
             options
         ),
-        ...nsdefine(
+        ...nsvariables(
             [ns, 'block'] as const,
             {
                 margin: { top: ref(marginTop) }
             },
             options
         ),
-        ...nsdefine([ns, 'loader'] as const, { width: '1rem', height: '1rem' }, options),
-        ...nsdefine(
+        ...nsvariables([ns, 'loader'] as const, { width: '1rem', height: '1rem' }, options),
+        ...nsvariables(
             [ns, 'icon'] as const,
             { margin: { left: multiply(ref(marginLeft), 0.5) } },
             options
@@ -369,7 +370,7 @@ export function useButtonThemeVariants() {
     });
 }
 
-export function useButtonThemeSizeFactory(size: ComponentSize) {
+export function useButtonThemeSizeFactory(variant: ComponentSize) {
     const {
         buttonPaddingTop,
         buttonPaddingRight,
@@ -386,102 +387,72 @@ export function useButtonThemeSizeFactory(size: ComponentSize) {
         buttonSquareHeight
     } = useButtonThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
-    const variantPaddingTop = nsvariable(
-        [ns, size],
-        'padding-top',
-        multiply(ref(buttonPaddingTop), sizeMultiplierRef)
-    );
-    const variantPaddingRight = nsvariable(
-        [ns, size],
-        `padding-right`,
-        multiply(ref(buttonPaddingRight), sizeMultiplierRef)
-    );
-    const variantPaddingBottom = nsvariable(
-        [ns, size],
-        `padding-bottom`,
-        multiply(ref(buttonPaddingBottom), sizeMultiplierRef)
-    );
-    const variantPaddingLeft = nsvariable(
-        [ns, size],
-        `padding-left`,
-        multiply(ref(buttonPaddingLeft), sizeMultiplierRef)
-    );
-
-    const variantBorderTopLeftRadius = nsvariable(
-        [ns, size],
-        'border-top-left-radius',
-        multiply(ref(buttonBorderTopLeftRadius), sizeMultiplierRef)
-    );
-    const variantBorderTopRightRadius = nsvariable(
-        [ns, size],
-        'border-top-right-radius',
-        multiply(ref(buttonBorderTopRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomRightRadius = nsvariable(
-        [ns, size],
-        'border-bottom-right-radius',
-        multiply(ref(buttonBorderBottomRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomLeftRadius = nsvariable(
-        [ns, size],
-        'border-bottom-left-radius',
-        multiply(ref(buttonBorderBottomLeftRadius), sizeMultiplierRef)
+    const {
+        borderTopLeftRadius,
+        borderTopRightRadius,
+        borderBottomRightRadius,
+        borderBottomLeftRadius,
+        fontSize,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft
+    } = stripExportsNamespace(
+        nsvariables(sizeNs, {
+            borderRadius: {
+                topLeft: multiply(ref(buttonBorderTopLeftRadius), sizeMultiplierRef),
+                topRight: multiply(ref(buttonBorderTopRightRadius), sizeMultiplierRef),
+                bottomRight: multiply(ref(buttonBorderBottomRightRadius), sizeMultiplierRef),
+                bottomLeft: multiply(ref(buttonBorderBottomLeftRadius), sizeMultiplierRef)
+            },
+            fontSize: multiply(ref(buttonFontSize), sizeMultiplierRef),
+            padding: {
+                top: multiply(ref(buttonPaddingTop), sizeMultiplierRef),
+                right: multiply(ref(buttonPaddingRight), sizeMultiplierRef),
+                bottom: multiply(ref(buttonPaddingBottom), sizeMultiplierRef),
+                left: multiply(ref(buttonPaddingLeft), sizeMultiplierRef)
+            }
+        })
     );
 
-    const variantFontSize = nsvariable(
-        [ns, size],
-        'font-size',
-        multiply(ref(buttonFontSize), sizeMultiplierRef)
+    const { circleWidth, circleHeight } = setExportsNamespace(
+        nsvariables([...sizeNs, 'circle'] as const, {
+            width: multiply(ref(buttonCircleWidth), sizeMultiplierRef),
+            height: multiply(ref(buttonCircleHeight), sizeMultiplierRef)
+        }),
+        'circle'
     );
 
-    const variantCircleWidth = nsvariable(
-        [ns, size, 'circle'],
-        'width',
-        multiply(ref(buttonCircleWidth), sizeMultiplierRef)
-    );
-    const variantCircleHeight = nsvariable(
-        [ns, size, 'circle'],
-        'height',
-        multiply(ref(buttonCircleHeight), sizeMultiplierRef)
+    const { squareWidth, squareHeight } = setExportsNamespace(
+        nsvariables([...sizeNs, 'square'] as const, {
+            width: multiply(ref(buttonSquareWidth), sizeMultiplierRef),
+            height: multiply(ref(buttonSquareHeight), sizeMultiplierRef)
+        }),
+        'square'
     );
 
-    const variantSquareWidth = nsvariable(
-        [ns, size, 'square'],
-        'width',
-        multiply(ref(buttonSquareWidth), sizeMultiplierRef)
-    );
-    const variantSquareHeight = nsvariable(
-        [ns, size, 'square'],
-        'height',
-        multiply(ref(buttonSquareHeight), sizeMultiplierRef)
-    );
-
-    selector(`.button.-${size}`, {
+    selector(`.button.-${variant}`, {
         borderRadius: [
-            ref(variantBorderTopLeftRadius),
-            ref(variantBorderTopRightRadius),
-            ref(variantBorderBottomRightRadius),
-            ref(variantBorderBottomLeftRadius)
+            ref(borderTopLeftRadius),
+            ref(borderTopRightRadius),
+            ref(borderBottomRightRadius),
+            ref(borderBottomLeftRadius)
         ],
-        fontSize: ref(variantFontSize),
-        padding: [
-            ref(variantPaddingTop),
-            ref(variantPaddingRight),
-            ref(variantPaddingBottom),
-            ref(variantPaddingLeft)
-        ]
+        fontSize: ref(fontSize),
+        padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
     });
 
-    selector(`.button.-circle.-${size}`, {
-        width: ref(variantCircleWidth),
-        height: ref(variantCircleHeight)
+    selector(`.button.-circle.-${variant}`, {
+        width: ref(circleWidth),
+        height: ref(circleHeight)
     });
 
-    selector(`.button.-square.-${size}`, {
-        width: ref(variantSquareWidth),
-        height: ref(variantSquareHeight)
+    selector(`.button.-square.-${variant}`, {
+        width: ref(squareWidth),
+        height: ref(squareHeight)
     });
 }
 
@@ -489,135 +460,116 @@ export function useButtonThemeSizes(sizes = defaultComponentSizes) {
     sizes.forEach(useButtonThemeSizeFactory);
 }
 
-export function useButtonThemeColorFactory(color: ComponentBrandColor) {
-    const colorKey = capitalize(color);
-    const shadeOrTint = color === 'dark' ? 'Tint' : 'Shade';
-
+export function useButtonThemeColorFactory(variant: ComponentBrandColor) {
+    const colorKey = capitalize(variant);
+    const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colors = useColors();
     const contrastTextColors = useContrastTextColor();
+    const colorNs = [ns, variant] as const;
 
-    const variantBorderColor = nsvariable(
-        [ns, color],
-        `border-color`,
-        ref(colors[`color${colorKey}${shadeOrTint}50`])
-    );
-    const variantBackground = nsvariable(
-        [ns, color],
-        `background`,
-        ref(colors[`color${colorKey}`])
-    );
-    const variantColor = nsvariable(
-        [ns, color],
-        `color`,
-        ref(contrastTextColors[`contrastTextColor${colorKey}`])
+    const { borderColor, background, color } = stripExportsNamespace(
+        nsvariables(colorNs, {
+            borderColor: ref(colors[`color${colorKey}${shadeOrTint}50`]),
+            background: ref(colors[`color${colorKey}`]),
+            color: ref(contrastTextColors[`contrastTextColor${colorKey}`])
+        })
     );
 
-    selector(`.button.-${color}`, {
-        borderColor: ref(variantBorderColor),
-        background: ref(variantBackground),
-        color: ref(variantColor)
+    const { hoverBorderColor, hoverBackground, hoverColor } = setExportsNamespace(
+        nsvariables([...colorNs, 'hover'], {
+            borderColor: ref(colors[`color${colorKey}${shadeOrTint}100`]),
+            background: ref(colors[`color${colorKey}${shadeOrTint}50`]),
+            color: ref(color)
+        }),
+        'hover'
+    );
+
+    const { focusBorderColor, focusBackground, focusColor } = setExportsNamespace(
+        nsvariables([...colorNs, 'focus'], {
+            borderColor: ref(colors[`color${colorKey}${shadeOrTint}100`]),
+            background: ref(colors[`color${colorKey}${shadeOrTint}50`]),
+            color: ref(color)
+        }),
+        'focus'
+    );
+
+    const { activeBorderColor, activeBackground, activeColor } = setExportsNamespace(
+        nsvariables([...colorNs, 'active'], {
+            borderColor: ref(colors[`color${colorKey}${shadeOrTint}100`]),
+            background: ref(colors[`color${colorKey}${shadeOrTint}100`]),
+            color: ref(color)
+        }),
+        'active'
+    );
+
+    const { outlineBorderColor, outlineColor } = setExportsNamespace(
+        nsvariables([...colorNs, 'outline'], {
+            borderColor: ref(colors[`color${colorKey}`]),
+            color: ref(colors[`color${colorKey}`])
+        }),
+        'outline'
+    );
+
+    const { linkColor } = setExportsNamespace(
+        nsvariables([...colorNs, 'link'], {
+            color: ref(colors[`color${colorKey}`])
+        }),
+        'link'
+    );
+
+    selector(`.button.-${variant}`, {
+        borderColor: ref(borderColor),
+        background: ref(background),
+        color: ref(color)
     });
 
     // Button hover state
 
-    const variantHoverBorderColor = nsvariable(
-        [ns, color, 'hover'],
-        `border-color`,
-        ref(colors[`color${colorKey}${shadeOrTint}100`])
-    );
-    const variantHoverBackground = nsvariable(
-        [ns, color, 'hover'],
-        `background`,
-        ref(colors[`color${colorKey}${shadeOrTint}50`])
-    );
-    const variantHoverColor = nsvariable([ns, color, 'hover'], `color`, ref(variantColor));
-
-    selector([`.button.-${color}:hover`, `.button.-${color}.-hover`], {
-        borderColor: ref(variantHoverBorderColor),
-        background: ref(variantHoverBackground),
-        color: ref(variantHoverColor)
+    selector([`.button.-${variant}:hover`, `.button.-${variant}.-hover`], {
+        borderColor: ref(hoverBorderColor),
+        background: ref(hoverBackground),
+        color: ref(hoverColor)
     });
 
     // Button focus state
 
-    const variantFocusBorderColor = nsvariable(
-        [ns, color, 'focus'],
-        `border-color`,
-        ref(colors[`color${colorKey}${shadeOrTint}100`])
-    );
-    const variantFocusBackground = nsvariable(
-        [ns, color, 'focus'],
-        `background`,
-        ref(colors[`color${colorKey}${shadeOrTint}50`])
-    );
-    const variantFocusColor = nsvariable([ns, color, 'focus'], `color`, ref(variantColor));
-
-    selector([`.button.-${color}:focus`, `.button.-${color}.-focus`], {
-        borderColor: ref(variantFocusBorderColor),
-        background: ref(variantFocusBackground),
-        color: ref(variantFocusColor)
+    selector([`.button.-${variant}:focus`, `.button.-${variant}.-focus`], {
+        borderColor: ref(focusBorderColor),
+        background: ref(focusBackground),
+        color: ref(focusColor)
     });
 
     // Button active state
 
-    const variantActiveBorderColor = nsvariable(
-        [ns, color, 'active'],
-        `border-color`,
-        ref(colors[`color${colorKey}${shadeOrTint}100`])
-    );
-    const variantActiveBackground = nsvariable(
-        [ns, color, 'active'],
-        `background`,
-        ref(colors[`color${colorKey}${shadeOrTint}100`])
-    );
-    const variantActiveColor = nsvariable([ns, color, 'active'], `color`, ref(variantColor));
-
-    selector([`.button.-${color}:active`, `.button.-${color}.-active`], {
-        borderColor: ref(variantActiveBorderColor),
-        background: ref(variantActiveBackground),
-        color: ref(variantActiveColor)
+    selector([`.button.-${variant}:active`, `.button.-${variant}.-active`], {
+        borderColor: ref(activeBorderColor),
+        background: ref(activeBackground),
+        color: ref(activeColor)
     });
 
     // Button disabled state
 
-    selector([`.button.-${color}:disabled`, `.button.-${color}.-disabled`], {
-        borderColor: ref(variantBorderColor),
-        background: ref(variantBackground),
-        color: ref(variantColor)
+    selector([`.button.-${variant}:disabled`, `.button.-${variant}.-disabled`], {
+        borderColor: ref(borderColor),
+        background: ref(background),
+        color: ref(color)
     });
 
     // Outline button
 
-    const variantOutlineBorderColor = nsvariable(
-        [ns, color, 'outline'],
-        `border-color`,
-        ref(colors[`color${colorKey}`])
-    );
-    const variantOutlineColor = nsvariable(
-        [ns, color, 'outline'],
-        `color`,
-        ref(colors[`color${colorKey}`])
-    );
-
-    selector(`.button.-${color}.-outline`, {
-        borderColor: ref(variantOutlineBorderColor),
-        color: ref(variantOutlineColor)
+    selector(`.button.-${variant}.-outline`, {
+        borderColor: ref(outlineBorderColor),
+        color: ref(outlineColor)
     });
 
-    selector([`.button.-${color}.-outline:hover`, `.button.-${color}.-outline.-hover`], {
-        color: ref(variantColor)
+    selector([`.button.-${variant}.-outline:hover`, `.button.-${variant}.-outline.-hover`], {
+        color: ref(color)
     });
 
     // Link button
 
-    const variantLinkColor = nsvariable(
-        [ns, color, 'link'],
-        `color`,
-        ref(colors[`color${colorKey}`])
-    );
-
-    selector(`.button.-${color}.-link`, {
-        color: ref(variantLinkColor)
+    selector(`.button.-${variant}.-link`, {
+        color: ref(linkColor)
     });
 }
 

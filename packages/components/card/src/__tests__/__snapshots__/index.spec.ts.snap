@@ -3,8 +3,9 @@
 exports[`Components > Card > should render correctly 1`] = `
 "<div class="card -light -md">
   <!--v-if-->
-  <!-- @slot image Slot for card image -->
+  <!-- @slot body:before Slot for content between header and body  -->
   <!--v-if-->
+  <!-- @slot body:after Slot for content between body and footer -->
   <!--v-if-->
 </div>"
 `;

@@ -1328,6 +1328,62 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     height: var(--button--square--height);
 }
 
+.button-group {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.button-group .button, .button-group .button-group {
+    box-shadow: none;
+}
+
+.button-group.-horizontal > .button:not(:last-child), .button-group.-horizontal > .button-group:has(+ .button-group) .button:last-child, .button-group.-horizontal > .button-group:has(+ .button) .button:last-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-width: 0;
+}
+
+.button-group.-horizontal > .button:not(:first-child), .button-group.-horizontal > .button-group + .button-group .button:first-child, .button-group.-horizontal > .button + .button-group .button:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.button-group.-vertical > .button:not(:last-child), .button-group.-vertical > .button-group:has(+ .button-group) .button:last-child, .button-group.-vertical > .button-group:has(+ .button) .button:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-width: 0;
+}
+
+.button-group.-vertical > .button:not(:first-child), .button-group.-vertical > .button-group + .button-group .button:first-child, .button-group.-vertical > .button + .button-group .button:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.button-group.-block {
+    display: flex;
+    flex-basis: 100%;
+}
+
+.button-group.-block > .button {
+    flex-basis: 100%;
+}
+
+.button-group.-vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.button-group.-vertical .button, .button-group.-vertical .button-group, .button-group.-vertical [class$="-wrapper"] {
+    width: 100%;
+}
+
+.button-group {
+    box-shadow: var(--button-group--boxShadow);
+}
+
 .card {
     position: relative;
     display: flex;
@@ -1477,6 +1533,40 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     color: var(--card--danger--color);
 }
 
+.form-group {
+    display: block;
+    vertical-align: middle;
+    position: relative;
+    padding: 0;
+}
+
+.form-group.-inline {
+    display: flex;
+}
+
+.form-group.-inline > .form-input-group {
+    flex-basis: 100%;
+}
+
+.form-group.-inline > .form-label {
+    display: flex;
+    flex: 0 0 auto;
+    align-self: center;
+    margin-bottom: 0;
+}
+
+.form-group.-inline > .form-label.-right {
+    margin-right: 0;
+}
+
+.form-group {
+    margin: var(--form-group--margin);
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
 .icon {
     font-size: var(--icon--font-size);
 }
@@ -1491,6 +1581,652 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 
 .icon.-lg {
     font-size: var(--icon--lg--font-size);
+}
+
+.input {
+    display: block;
+    vertical-align: middle;
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.input .input-field {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    flex-direction: row;
+    background-clip: padding-box;
+}
+
+.input .input-field > input, .input .input-field > select, .input .input-field > textarea {
+    position: relative;
+    flex: 1 0 auto;
+    width: 1%;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    outline: 0;
+}
+
+.input .input-field > select::-ms-expand {
+    background-color: transparent;
+    border: 0;
+}
+
+.input .input-field > input::placeholder, .input .input-field > select::placeholder, .input .input-field > textarea::placeholder {
+    opacity: 1;
+}
+
+.input .input-field > input:disabled, .input .input-field > select:disabled, .input .input-field > textarea:disabled, .input .input-field > input[readonly], .input .input-field > select[readonly], .input .input-field > textarea[readonly] {
+    opacity: 1;
+    cursor: default;
+}
+
+.input .input-field > input:disabled, .input .input-field > select:disabled, .input .input-field > textarea:disabled {
+    cursor: not-allowed;
+}
+
+.input .input-field > input[readonly], .input .input-field > select[readonly], .input .input-field > textarea[readonly] {
+    outline: 0;
+}
+
+.input .input-field .input-prefix, .input .input-field .input-suffix {
+    display: inline-flex;
+    align-items: center;
+    z-index: 1;
+    font-style: normal;
+}
+
+.input .input-field .input-prefix > button:not(.button, .select-caret), .input .input-field .input-suffix > button:not(.button, .select-caret) {
+    background: transparent;
+    border: 0;
+    color: inherit;
+}
+
+.input .input-field .input-icon {
+    width: auto;
+    cursor: pointer;
+}
+
+.input .input-value-overlay {
+    position: absolute;
+    cursor: default;
+}
+
+.input.-prepended, .input.-appended {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 0;
+}
+
+.input.-prepended, .input.-appended {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.input.-prepended .input-field, .input.-appended .input-field {
+    flex-shrink: 1;
+}
+
+.input .input-field {
+    background: var(--input--background);
+    border-style: var(--input--border-style);
+    border-color: var(--input--border-color);
+    border-width: var(--input--border-width);
+    border-radius: var(--input--border-radius);
+    box-shadow: var(--input--boxShadow);
+    font-size: var(--input--font-size);
+    transition-property: var(--input--transition-property);
+    transition-duration: var(--input--transition-duration);
+    transition-timing-function: var(--input--transition-timing-function);
+}
+
+.input .input-field > input, .input .input-field > select, .input .input-field > textarea {
+    color: var(--input--color);
+    line-height: var(--input--line-height);
+    padding: var(--input--padding);
+}
+
+.input .input-field > input::placeholder, .input .input-field > select::placeholder, .input .input-field > textarea::placeholder {
+    color: var(--input--placeholder--color);
+}
+
+.input .input-field .input-prefix, .input .input-field .input-suffix {
+    border-color: var(--input--border-color);
+    padding-left: var(--input--padding);
+    padding-right: var(--input--padding);
+    transition-property: var(--input--transition-property);
+    transition-duration: var(--input--transition-duration);
+    transition-timing-function: var(--input--transition-timing-function);
+}
+
+.input .input-field .input-prefix {
+    border-right-width: var(--input--border-width);
+    border-right-style: var(--input--border-style);
+    color: var(--input--prefix--color);
+}
+
+.input .input-field .input-suffix {
+    border-left-width: var(--input--border-width);
+    border-left-style: var(--input--border-style);
+    color: var(--input--suffix--color);
+}
+
+.input .input-field .input-icon {
+    color: var(--input--icon--color);
+    width: var(--input--icon--width);
+    height: var(--input--icon--height);
+    transition-property: var(--input--transition-property);
+    transition-duration: var(--input--transition-duration);
+    transition-timing-function: var(--input--transition-timing-function);
+}
+
+.input.-hover .input-field, .input:hover .input-field {
+    border-color: var(--input--hover--border-color);
+}
+
+.input.-focus .input-field, .input:focus-within .input-field {
+    border-color: var(--input--focus--border-color);
+    outline: 0;
+}
+
+.input.-error .input-field {
+    border-color: var(--input--error--border-color);
+}
+
+.input.-readonly .input-field:focus-within {
+    border-color: var(--input--focus--border-color);
+    outline: 0;
+}
+
+.input.-disabled .input-field {
+    background: var(--input--disabled--background);
+}
+
+.input.-readonly .input-field {
+    background: var(--input--readonly--background);
+}
+
+.input .input-prepend, .input .input-append {
+    background: var(--input--background);
+    border-style: var(--input--border-style);
+    border-color: var(--input--border-color);
+    border-width: var(--input--border-width);
+    font-size: var(--input--font-size);
+    line-height: var(--input--line-height);
+    transition-property: var(--input--transition-property);
+    transition-duration: var(--input--transition-duration);
+    transition-timing-function: var(--input--transition-timing-function);
+}
+
+.input .input-prepend {
+    border-right-width: 0;
+    border-top-left-radius: var(--input--border-top-left-radius);
+    border-bottom-left-radius: var(--input--border-bottom-left-radius);
+}
+
+.input .input-append {
+    border-left-width: 0;
+    border-top-right-radius: var(--input--border-top-right-radius);
+    border-bottom-right-radius: var(--input--border-bottom-right-radius);
+}
+
+.input.-sm {
+    font-size: var(--input--sm--font-size);
+}
+
+.input.-sm .input-header, .input.-sm .input-body, .input.-sm .input-footer {
+    font-size: var(--input--sm--font-size);
+    padding: var(--input--sm--padding-top) var(--input--sm--padding-right) var(--input--sm--padding-bottom) var(--input--sm--padding-left);
+}
+
+.input.-sm .input-field {
+    border-top-left-radius: var(--input--sm--border-top-left-radius);
+    border-top-right-radius: var(--input--sm--border-top-right-radius);
+    border-bottom-right-radius: var(--input--sm--border-bottom-right-radius);
+    border-bottom-left-radius: var(--input--sm--border-bottom-left-radius);
+    font-size: var(--input--sm--font-size);
+}
+
+.input.-sm .input-field > input, .input.-sm .input-field > select, .input.-sm .input-field > textarea {
+    padding-top: var(--input--sm--padding-top);
+    padding-right: var(--input--sm--padding-right);
+    padding-bottom: var(--input--sm--padding-bottom);
+    padding-left: var(--input--sm--padding-left);
+}
+
+.input.-sm .input-prepend, .input.-sm .input-append {
+    font-size: var(--input--sm--font-size);
+}
+
+.input.-sm .input-prepend {
+    border-top-left-radius: var(--input--sm--border-top-left-radius);
+    border-bottom-left-radius: var(--input--sm--border-bottom-left-radius);
+}
+
+.input.-sm .input-append {
+    border-top-right-radius: var(--input--sm--border-top-right-radius);
+    border-bottom-right-radius: var(--input--sm--border-bottom-right-radius);
+}
+
+.input .input-field .input-prefix, .input .input-field .input-suffix {
+    padding-left: var(--input--sm--padding-left);
+    padding-right: var(--input--sm--padding-right);
+}
+
+.input.-md {
+    font-size: var(--input--md--font-size);
+}
+
+.input.-md .input-header, .input.-md .input-body, .input.-md .input-footer {
+    font-size: var(--input--md--font-size);
+    padding: var(--input--md--padding-top) var(--input--md--padding-right) var(--input--md--padding-bottom) var(--input--md--padding-left);
+}
+
+.input.-md .input-field {
+    border-top-left-radius: var(--input--md--border-top-left-radius);
+    border-top-right-radius: var(--input--md--border-top-right-radius);
+    border-bottom-right-radius: var(--input--md--border-bottom-right-radius);
+    border-bottom-left-radius: var(--input--md--border-bottom-left-radius);
+    font-size: var(--input--md--font-size);
+}
+
+.input.-md .input-field > input, .input.-md .input-field > select, .input.-md .input-field > textarea {
+    padding-top: var(--input--md--padding-top);
+    padding-right: var(--input--md--padding-right);
+    padding-bottom: var(--input--md--padding-bottom);
+    padding-left: var(--input--md--padding-left);
+}
+
+.input.-md .input-prepend, .input.-md .input-append {
+    font-size: var(--input--md--font-size);
+}
+
+.input.-md .input-prepend {
+    border-top-left-radius: var(--input--md--border-top-left-radius);
+    border-bottom-left-radius: var(--input--md--border-bottom-left-radius);
+}
+
+.input.-md .input-append {
+    border-top-right-radius: var(--input--md--border-top-right-radius);
+    border-bottom-right-radius: var(--input--md--border-bottom-right-radius);
+}
+
+.input .input-field .input-prefix, .input .input-field .input-suffix {
+    padding-left: var(--input--md--padding-left);
+    padding-right: var(--input--md--padding-right);
+}
+
+.input.-lg {
+    font-size: var(--input--lg--font-size);
+}
+
+.input.-lg .input-header, .input.-lg .input-body, .input.-lg .input-footer {
+    font-size: var(--input--lg--font-size);
+    padding: var(--input--lg--padding-top) var(--input--lg--padding-right) var(--input--lg--padding-bottom) var(--input--lg--padding-left);
+}
+
+.input.-lg .input-field {
+    border-top-left-radius: var(--input--lg--border-top-left-radius);
+    border-top-right-radius: var(--input--lg--border-top-right-radius);
+    border-bottom-right-radius: var(--input--lg--border-bottom-right-radius);
+    border-bottom-left-radius: var(--input--lg--border-bottom-left-radius);
+    font-size: var(--input--lg--font-size);
+}
+
+.input.-lg .input-field > input, .input.-lg .input-field > select, .input.-lg .input-field > textarea {
+    padding-top: var(--input--lg--padding-top);
+    padding-right: var(--input--lg--padding-right);
+    padding-bottom: var(--input--lg--padding-bottom);
+    padding-left: var(--input--lg--padding-left);
+}
+
+.input.-lg .input-prepend, .input.-lg .input-append {
+    font-size: var(--input--lg--font-size);
+}
+
+.input.-lg .input-prepend {
+    border-top-left-radius: var(--input--lg--border-top-left-radius);
+    border-bottom-left-radius: var(--input--lg--border-bottom-left-radius);
+}
+
+.input.-lg .input-append {
+    border-top-right-radius: var(--input--lg--border-top-right-radius);
+    border-bottom-right-radius: var(--input--lg--border-bottom-right-radius);
+}
+
+.input .input-field .input-prefix, .input .input-field .input-suffix {
+    padding-left: var(--input--lg--padding-left);
+    padding-right: var(--input--lg--padding-right);
+}
+
+.input.-primary .input-field {
+    background: var(--input--primary--background);
+    border-color: var(--input--primary--border-color);
+}
+
+.input.-primary .input-field > input, .input.-primary .input-field > select, .input.-primary .input-field > textarea {
+    color: var(--input--primary--color);
+}
+
+.input.-primary.-hover .input-field, .input.-primary:hover .input-field {
+    border-color: var(--input--primary--hover--border-color);
+}
+
+.input.-primary.-disabled .input-field {
+    background: var(--input--primary--disabled--background);
+}
+
+.input.-primary.-readonly .input-field {
+    background: var(--input--primary--readonly--background);
+}
+
+.input.-primary.-focus .input-field, .input.-primary:focus-within .input-field {
+    border-color: var(--input--primary--focus--border-color);
+}
+
+.input.-primary .input-prepend, .input.-primary .input-append {
+    background: var(--input--primary--background);
+    border-color: var(--input--primary--border-color);
+}
+
+.input.-primary .input-field .input-prefix {
+    border-color: var(--input--primary--border-color);
+}
+
+.input.-primary .input-field .input-suffix {
+    border-color: var(--input--primary--border-color);
+}
+
+.input.-secondary .input-field {
+    background: var(--input--secondary--background);
+    border-color: var(--input--secondary--border-color);
+}
+
+.input.-secondary .input-field > input, .input.-secondary .input-field > select, .input.-secondary .input-field > textarea {
+    color: var(--input--secondary--color);
+}
+
+.input.-secondary.-hover .input-field, .input.-secondary:hover .input-field {
+    border-color: var(--input--secondary--hover--border-color);
+}
+
+.input.-secondary.-disabled .input-field {
+    background: var(--input--secondary--disabled--background);
+}
+
+.input.-secondary.-readonly .input-field {
+    background: var(--input--secondary--readonly--background);
+}
+
+.input.-secondary.-focus .input-field, .input.-secondary:focus-within .input-field {
+    border-color: var(--input--secondary--focus--border-color);
+}
+
+.input.-secondary .input-prepend, .input.-secondary .input-append {
+    background: var(--input--secondary--background);
+    border-color: var(--input--secondary--border-color);
+}
+
+.input.-secondary .input-field .input-prefix {
+    border-color: var(--input--secondary--border-color);
+}
+
+.input.-secondary .input-field .input-suffix {
+    border-color: var(--input--secondary--border-color);
+}
+
+.input.-light .input-field {
+    background: var(--input--light--background);
+    border-color: var(--input--light--border-color);
+}
+
+.input.-light .input-field > input, .input.-light .input-field > select, .input.-light .input-field > textarea {
+    color: var(--input--light--color);
+}
+
+.input.-light.-hover .input-field, .input.-light:hover .input-field {
+    border-color: var(--input--light--hover--border-color);
+}
+
+.input.-light.-disabled .input-field {
+    background: var(--input--light--disabled--background);
+}
+
+.input.-light.-readonly .input-field {
+    background: var(--input--light--readonly--background);
+}
+
+.input.-light.-focus .input-field, .input.-light:focus-within .input-field {
+    border-color: var(--input--light--focus--border-color);
+}
+
+.input.-light .input-prepend, .input.-light .input-append {
+    background: var(--input--light--background);
+    border-color: var(--input--light--border-color);
+}
+
+.input.-light .input-field .input-prefix {
+    border-color: var(--input--light--border-color);
+}
+
+.input.-light .input-field .input-suffix {
+    border-color: var(--input--light--border-color);
+}
+
+.input.-dark .input-field {
+    background: var(--input--dark--background);
+    border-color: var(--input--dark--border-color);
+}
+
+.input.-dark .input-field > input, .input.-dark .input-field > select, .input.-dark .input-field > textarea {
+    color: var(--input--dark--color);
+}
+
+.input.-dark.-hover .input-field, .input.-dark:hover .input-field {
+    border-color: var(--input--dark--hover--border-color);
+}
+
+.input.-dark.-disabled .input-field {
+    background: var(--input--dark--disabled--background);
+}
+
+.input.-dark.-readonly .input-field {
+    background: var(--input--dark--readonly--background);
+}
+
+.input.-dark.-focus .input-field, .input.-dark:focus-within .input-field {
+    border-color: var(--input--dark--focus--border-color);
+}
+
+.input.-dark .input-prepend, .input.-dark .input-append {
+    background: var(--input--dark--background);
+    border-color: var(--input--dark--border-color);
+}
+
+.input.-dark .input-field .input-prefix {
+    border-color: var(--input--dark--border-color);
+}
+
+.input.-dark .input-field .input-suffix {
+    border-color: var(--input--dark--border-color);
+}
+
+.input.-info .input-field {
+    background: var(--input--info--background);
+    border-color: var(--input--info--border-color);
+}
+
+.input.-info .input-field > input, .input.-info .input-field > select, .input.-info .input-field > textarea {
+    color: var(--input--info--color);
+}
+
+.input.-info.-hover .input-field, .input.-info:hover .input-field {
+    border-color: var(--input--info--hover--border-color);
+}
+
+.input.-info.-disabled .input-field {
+    background: var(--input--info--disabled--background);
+}
+
+.input.-info.-readonly .input-field {
+    background: var(--input--info--readonly--background);
+}
+
+.input.-info.-focus .input-field, .input.-info:focus-within .input-field {
+    border-color: var(--input--info--focus--border-color);
+}
+
+.input.-info .input-prepend, .input.-info .input-append {
+    background: var(--input--info--background);
+    border-color: var(--input--info--border-color);
+}
+
+.input.-info .input-field .input-prefix {
+    border-color: var(--input--info--border-color);
+}
+
+.input.-info .input-field .input-suffix {
+    border-color: var(--input--info--border-color);
+}
+
+.input.-success .input-field {
+    background: var(--input--success--background);
+    border-color: var(--input--success--border-color);
+}
+
+.input.-success .input-field > input, .input.-success .input-field > select, .input.-success .input-field > textarea {
+    color: var(--input--success--color);
+}
+
+.input.-success.-hover .input-field, .input.-success:hover .input-field {
+    border-color: var(--input--success--hover--border-color);
+}
+
+.input.-success.-disabled .input-field {
+    background: var(--input--success--disabled--background);
+}
+
+.input.-success.-readonly .input-field {
+    background: var(--input--success--readonly--background);
+}
+
+.input.-success.-focus .input-field, .input.-success:focus-within .input-field {
+    border-color: var(--input--success--focus--border-color);
+}
+
+.input.-success .input-prepend, .input.-success .input-append {
+    background: var(--input--success--background);
+    border-color: var(--input--success--border-color);
+}
+
+.input.-success .input-field .input-prefix {
+    border-color: var(--input--success--border-color);
+}
+
+.input.-success .input-field .input-suffix {
+    border-color: var(--input--success--border-color);
+}
+
+.input.-warning .input-field {
+    background: var(--input--warning--background);
+    border-color: var(--input--warning--border-color);
+}
+
+.input.-warning .input-field > input, .input.-warning .input-field > select, .input.-warning .input-field > textarea {
+    color: var(--input--warning--color);
+}
+
+.input.-warning.-hover .input-field, .input.-warning:hover .input-field {
+    border-color: var(--input--warning--hover--border-color);
+}
+
+.input.-warning.-disabled .input-field {
+    background: var(--input--warning--disabled--background);
+}
+
+.input.-warning.-readonly .input-field {
+    background: var(--input--warning--readonly--background);
+}
+
+.input.-warning.-focus .input-field, .input.-warning:focus-within .input-field {
+    border-color: var(--input--warning--focus--border-color);
+}
+
+.input.-warning .input-prepend, .input.-warning .input-append {
+    background: var(--input--warning--background);
+    border-color: var(--input--warning--border-color);
+}
+
+.input.-warning .input-field .input-prefix {
+    border-color: var(--input--warning--border-color);
+}
+
+.input.-warning .input-field .input-suffix {
+    border-color: var(--input--warning--border-color);
+}
+
+.input.-danger .input-field {
+    background: var(--input--danger--background);
+    border-color: var(--input--danger--border-color);
+}
+
+.input.-danger .input-field > input, .input.-danger .input-field > select, .input.-danger .input-field > textarea {
+    color: var(--input--danger--color);
+}
+
+.input.-danger.-hover .input-field, .input.-danger:hover .input-field {
+    border-color: var(--input--danger--hover--border-color);
+}
+
+.input.-danger.-disabled .input-field {
+    background: var(--input--danger--disabled--background);
+}
+
+.input.-danger.-readonly .input-field {
+    background: var(--input--danger--readonly--background);
+}
+
+.input.-danger.-focus .input-field, .input.-danger:focus-within .input-field {
+    border-color: var(--input--danger--focus--border-color);
+}
+
+.input.-danger .input-prepend, .input.-danger .input-append {
+    background: var(--input--danger--background);
+    border-color: var(--input--danger--border-color);
+}
+
+.input.-danger .input-field .input-prefix {
+    border-color: var(--input--danger--border-color);
+}
+
+.input.-danger .input-field .input-suffix {
+    border-color: var(--input--danger--border-color);
+}
+
+.input.-prepended .input-field {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input.-appended .input-field {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input .input-prepend > *, .input .input-append > * {
+    display: flex;
+    flex: 1 1 auto ;
+    align-self: stretch !important;
+    align-items: center !important;
+    justify-self: stretch !important;
+    border-radius: 0 !important;
+    border: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .loader {
@@ -2355,6 +3091,83 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 
 .toast.-danger .toast-progress-bar {
     background: var(--toast--danger--progress--bar--background);
+}
+
+.toast-container {
+    margin: var(--toast-container--margin);
+    width: var(--toast-container--width);
+    position: fixed;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: visible;
+    z-index: var(--toast-container--z-index);
+}
+
+.toast-container.-top-left {
+    top: 0;
+    left: 0;
+}
+
+.toast-container.-top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.toast-container.-top-right {
+    top: 0;
+    right: 0;
+}
+
+.toast-container.-right {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.toast-container.-bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.toast-container.-bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.toast-container.-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.toast-container.-left {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.toast-container > .toast {
+    margin: var(--toast-container--toast--margin);
+    width: var(--toast-container--width);
+    max-width: 100%;
+    position: relative;
+}
+
+.toast-container > .toast:last-of-type {
+    margin-bottom: 0;
+}
+
+.toast-transition-move, .toast-transition-enter-active, .toast-transition-leave-active {
+    transition: var(--toast-container--toast--transition);
+}
+
+.toast-transition-enter-from, .toast-transition-leave-to {
+    opacity: 0;
+}
+
+.toast-transition-leave-active {
+    position: absolute;
 }
 
 .tooltip {

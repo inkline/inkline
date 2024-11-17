@@ -1,13 +1,23 @@
 import { createUnplugin, UnpluginFactory } from 'unplugin';
+import { sep } from 'node:path';
 import { UserOptions } from './types';
 import { watch } from './watch';
 import { build } from './build';
 
+const blockListedEnvironments = ['vitest', 'jest'];
+
 export const unpluginFactory: UnpluginFactory<UserOptions | undefined> = (options = {}, meta) => ({
     name: 'inkline',
     buildStart: async () => {
+        const isBlockListedCommand = process.argv
+            .map((arg) => arg.split(sep).pop() ?? '')
+            .some((arg) => blockListedEnvironments.find((command) => arg.includes(command)));
+        if (isBlockListedCommand) {
+            return;
+        }
+
         let isDevMode = options.watch || false;
-        if (!isDevMode && meta.framework === 'vite') {
+        if (meta.framework === 'vite' && !isDevMode) {
             isDevMode = !process.argv.includes('build');
         }
 

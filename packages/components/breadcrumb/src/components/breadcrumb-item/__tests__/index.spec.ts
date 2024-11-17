@@ -3,6 +3,10 @@ import { BreadcrumbItem } from '../index';
 
 import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
 
+const stubs = {
+    Linkable: true
+};
+
 describe('Components', () => {
     describe('BreadcrumbItem', () => {
         it('should be named correctly', () => {
@@ -12,6 +16,7 @@ describe('Components', () => {
         it('should render correctly', () => {
             const wrapper = render(BreadcrumbItem, {
                 global: {
+                    stubs,
                     provide: {
                         ...createTestingInklineOptionsProvide()
                     }
@@ -24,12 +29,13 @@ describe('Components', () => {
         describe('computed', () => {
             describe('classes', () => {
                 it('should add classes based on props', () => {
-                    const wrapper: any = render(BreadcrumbItem, {
+                    const wrapper = render(BreadcrumbItem, {
                         props: {
                             active: true,
                             disabled: true
                         },
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide()
                             }
@@ -47,12 +53,13 @@ describe('Components', () => {
                             disabled: true
                         },
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide()
                             }
                         }
                     });
-                    const link = wrapper.container.querySelector('a');
+                    const link = wrapper.container.querySelector('linkable-stub');
 
                     expect(link).toHaveAttribute('tabindex', '-1');
                 });
@@ -63,12 +70,13 @@ describe('Components', () => {
                             active: true
                         },
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide()
                             }
                         }
                     });
-                    const link = wrapper.container.querySelector('a');
+                    const link = wrapper.container.querySelector('linkable-stub');
 
                     expect(link).toHaveAttribute('tabindex', '-1');
                 });
@@ -76,12 +84,13 @@ describe('Components', () => {
                 it('should be 0 otherwise', () => {
                     const wrapper = render(BreadcrumbItem, {
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide()
                             }
                         }
                     });
-                    const link = wrapper.container.querySelector('a');
+                    const link = wrapper.container.querySelector('linkable-stub');
 
                     expect(link).toHaveAttribute('tabindex', '0');
                 });
@@ -89,17 +98,18 @@ describe('Components', () => {
 
             describe('aria-current', () => {
                 it('should be location if active', () => {
-                    const wrapper: any = render(BreadcrumbItem, {
+                    const wrapper = render(BreadcrumbItem, {
                         props: {
                             active: true
                         },
                         global: {
+                            stubs,
                             provide: {
                                 ...createTestingInklineOptionsProvide()
                             }
                         }
                     });
-                    const link = wrapper.container.querySelector('a');
+                    const link = wrapper.container.querySelector('linkable-stub');
 
                     expect(link).toHaveAttribute('aria-current', 'location');
                 });

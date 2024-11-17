@@ -27,6 +27,10 @@ export default defineConfig({
                 find: /^inkline/,
                 replacement: resolve(__dirname, '..', 'inkline', 'src')
             },
+            {
+                find: /^@inkline\/vue/,
+                replacement: resolve(__dirname, '..', 'plugin', 'vue', 'src')
+            },
             ...componentDirs.flatMap((component) => [
                 {
                     find: new RegExp(`^@inkline/component-${component}`),

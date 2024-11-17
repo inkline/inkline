@@ -31,7 +31,7 @@ export type UsePopupOptions = {
 };
 
 export type UsePopupProps = HTMLAttributes & {
-    dataPopupPlacement: Placement;
+    'data-popup-placement': Placement;
     ref: Ref<HTMLElement | null>;
 };
 
@@ -107,7 +107,7 @@ export function usePopup({
                 return acc;
             },
             {
-                dataPopupPlacement: placement.value,
+                'data-popup-placement': placement.value,
                 ref: triggerRef
             }
         )
@@ -130,7 +130,7 @@ export function usePopup({
                 return acc;
             },
             {
-                dataPopupPlacement: placement.value,
+                'data-popup-placement': placement.value,
                 ref: popupRef,
                 style: popupStyles.value
             }

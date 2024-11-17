@@ -1,10 +1,10 @@
 import {
-    multiply,
     ref,
     selector,
-    nsvariable,
     defaultDefinitionOptions,
-    nsdefine
+    nsvariables,
+    multiply,
+    stripExportsNamespace
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
@@ -59,7 +59,7 @@ export function useCardThemeVariables(options = defaultDefinitionOptions) {
     const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
 
     return {
-        ...nsdefine(
+        ...nsvariables(
             ns,
             {
                 border: {
@@ -188,7 +188,7 @@ export function useCardThemeBase() {
     });
 }
 
-export function useCardThemeSizeFactory(size: ComponentSize) {
+export function useCardThemeSizeFactory(variant: ComponentSize) {
     const {
         cardPaddingTop,
         cardPaddingRight,
@@ -201,81 +201,61 @@ export function useCardThemeSizeFactory(size: ComponentSize) {
         cardFontSize
     } = useCardThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
-    const variantPaddingTop = nsvariable(
-        [ns, size],
-        'padding-top',
-        multiply(ref(cardPaddingTop), sizeMultiplierRef)
-    );
-    const variantPaddingRight = nsvariable(
-        [ns, size],
-        `padding-right`,
-        multiply(ref(cardPaddingRight), sizeMultiplierRef)
-    );
-    const variantPaddingBottom = nsvariable(
-        [ns, size],
-        `padding-bottom`,
-        multiply(ref(cardPaddingBottom), sizeMultiplierRef)
-    );
-    const variantPaddingLeft = nsvariable(
-        [ns, size],
-        `padding-left`,
-        multiply(ref(cardPaddingLeft), sizeMultiplierRef)
-    );
-
-    const variantBorderTopLeftRadius = nsvariable(
-        [ns, size],
-        'border-top-left-radius',
-        multiply(ref(cardBorderTopLeftRadius), sizeMultiplierRef)
-    );
-    const variantBorderTopRightRadius = nsvariable(
-        [ns, size],
-        'border-top-right-radius',
-        multiply(ref(cardBorderTopRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomRightRadius = nsvariable(
-        [ns, size],
-        'border-bottom-right-radius',
-        multiply(ref(cardBorderBottomRightRadius), sizeMultiplierRef)
-    );
-    const variantBorderBottomLeftRadius = nsvariable(
-        [ns, size],
-        'border-bottom-left-radius',
-        multiply(ref(cardBorderBottomLeftRadius), sizeMultiplierRef)
+    const {
+        borderTopLeftRadius,
+        borderTopRightRadius,
+        borderBottomRightRadius,
+        borderBottomLeftRadius,
+        fontSize,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft
+    } = stripExportsNamespace(
+        nsvariables(sizeNs, {
+            padding: {
+                top: multiply(ref(cardPaddingTop), sizeMultiplierRef),
+                right: multiply(ref(cardPaddingRight), sizeMultiplierRef),
+                bottom: multiply(ref(cardPaddingBottom), sizeMultiplierRef),
+                left: multiply(ref(cardPaddingLeft), sizeMultiplierRef)
+            },
+            borderRadius: {
+                topLeft: multiply(ref(cardBorderTopLeftRadius), sizeMultiplierRef),
+                topRight: multiply(ref(cardBorderTopRightRadius), sizeMultiplierRef),
+                bottomRight: multiply(ref(cardBorderBottomRightRadius), sizeMultiplierRef),
+                bottomLeft: multiply(ref(cardBorderBottomLeftRadius), sizeMultiplierRef)
+            },
+            fontSize: multiply(ref(cardFontSize), sizeMultiplierRef)
+        })
     );
 
-    const variantFontSize = nsvariable(
-        [ns, size],
-        'font-size',
-        multiply(ref(cardFontSize), sizeMultiplierRef)
-    );
-
-    selector(`.card.-${size}`, {
-        fontSize: ref(variantFontSize)
+    selector(`.card.-${variant}`, {
+        fontSize: ref(fontSize)
     });
 
     selector(
-        [`.card.-${size} .card-header`, `.card.-${size} .card-body`, `.card.-${size} .card-footer`],
+        [
+            `.card.-${variant} .card-header`,
+            `.card.-${variant} .card-body`,
+            `.card.-${variant} .card-footer`
+        ],
         {
-            fontSize: ref(variantFontSize),
-            padding: [
-                ref(variantPaddingTop),
-                ref(variantPaddingRight),
-                ref(variantPaddingBottom),
-                ref(variantPaddingLeft)
-            ]
+            fontSize: ref(fontSize),
+            padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
         }
     );
 
-    selector([`.card.-${size} > *:first-child`], {
-        borderTopLeftRadius: ref(variantBorderTopLeftRadius),
-        borderTopRightRadius: ref(variantBorderTopRightRadius)
+    selector([`.card.-${variant} > *:first-child`], {
+        borderTopLeftRadius: ref(borderTopLeftRadius),
+        borderTopRightRadius: ref(borderTopRightRadius)
     });
 
-    selector([`.card.-${size} > *:last-child`], {
-        borderBottomRightRadius: ref(variantBorderBottomRightRadius),
-        borderBottomLeftRadius: ref(variantBorderBottomLeftRadius)
+    selector([`.card.-${variant} > *:last-child`], {
+        borderBottomRightRadius: ref(borderBottomRightRadius),
+        borderBottomLeftRadius: ref(borderBottomLeftRadius)
     });
 }
 
@@ -283,39 +263,32 @@ export function useCardThemeSizes({ sizes = defaultComponentSizes } = {}) {
     sizes.forEach(useCardThemeSizeFactory);
 }
 
-export function useCardThemeColorFactory(color: ComponentBrandColor) {
-    const colorKey = capitalize(color);
-    const shadeOrTint = color === 'dark' ? 'Tint' : 'Shade';
+export function useCardThemeColorFactory(variant: ComponentBrandColor) {
+    const colorKey = capitalize(variant);
+    const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
+    const colorNs = [ns, variant] as const;
 
     const colors = useColors();
     const contrastTextColors = useContrastTextColor();
 
-    const variantBorderColor = nsvariable(
-        [ns, color],
-        `border-color`,
-        ref(colors[`color${colorKey}${shadeOrTint}50`])
-    );
-    const variantBackground = nsvariable(
-        [ns, color],
-        `background`,
-        ref(color === 'light' ? colors.colorWhite : colors[`color${colorKey}`])
-    );
-    const variantColor = nsvariable(
-        [ns, color],
-        `color`,
-        ref(contrastTextColors[`contrastTextColor${colorKey}`])
+    const { borderColor, background, color } = stripExportsNamespace(
+        nsvariables(colorNs, {
+            borderColor: ref(colors[`color${colorKey}${shadeOrTint}50`]),
+            background: ref(variant === 'light' ? colors.colorWhite : colors[`color${colorKey}`]),
+            color: ref(contrastTextColors[`contrastTextColor${colorKey}`])
+        })
     );
 
     selector(
         [
-            `.card.-${color} .card-header`,
-            `.card.-${color} .card-body`,
-            `.card.-${color} .card-footer`
+            `.card.-${variant} .card-header`,
+            `.card.-${variant} .card-body`,
+            `.card.-${variant} .card-footer`
         ],
         {
-            borderColor: ref(variantBorderColor),
-            background: ref(variantBackground),
-            color: ref(variantColor)
+            borderColor: ref(borderColor),
+            background: ref(background),
+            color: ref(color)
         }
     );
 }

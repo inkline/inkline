@@ -1,4 +1,4 @@
-import { defaultDefinitionOptions, namespace, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, addVariableNamespace, ref, selector } from '@inkline/core';
 import { useMarginBase } from '../../variables';
 
 const ns = 'address';
@@ -6,7 +6,7 @@ const ns = 'address';
 export function useAddressThemeVariables(options = defaultDefinitionOptions) {
     const { marginBottom } = useMarginBase();
 
-    const addressMarginBottom = namespace(ns, marginBottom, options);
+    const addressMarginBottom = addVariableNamespace(ns, marginBottom, options);
 
     return {
         addressMarginBottom

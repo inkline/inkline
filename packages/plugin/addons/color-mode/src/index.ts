@@ -1,6 +1,7 @@
 import { watch } from 'vue';
 import { addClass, removeClass } from '@inkline/utils';
 import { InklineAddon, InklineOptions } from '@inkline/types';
+import { defaultColorModeAddonOptions } from './constants';
 
 /**
  * Color mode change handler
@@ -27,6 +28,7 @@ export function colorModeAddon(addonOptions?: InklineOptions['colorMode']): Inkl
         if (typeof window === 'undefined') return;
 
         options.value.colorMode = {
+            ...defaultColorModeAddonOptions,
             ...options.value.colorMode,
             ...addonOptions
         };

@@ -1,0 +1,33 @@
+.form-group {
+    display: block;
+    vertical-align: middle;
+    position: relative;
+    padding: 0;
+}
+
+.form-group.-inline {
+    display: flex;
+}
+
+.form-group.-inline > .form-input-group {
+    flex-basis: 100%;
+}
+
+.form-group.-inline > .form-label {
+    display: flex;
+    flex: 0 0 auto;
+    align-self: center;
+    margin-bottom: 0;
+}
+
+.form-group.-inline > .form-label.-right {
+    margin-right: 0;
+}
+
+.form-group {
+    margin: var(--form-group--margin);
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}

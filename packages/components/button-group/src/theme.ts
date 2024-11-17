@@ -1,4 +1,4 @@
-import { defaultDefinitionOptions, nsdefine, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, nsvariables, ref, selector } from '@inkline/core';
 import { useBoxShadow } from '@inkline/theme';
 
 const ns = 'button-group';
@@ -12,7 +12,7 @@ export function useButtonGroupThemeVariables(options = defaultDefinitionOptions)
         boxShadowColor
     } = useBoxShadow();
 
-    return nsdefine(
+    return nsvariables(
         ns,
         {
             boxShadow: {

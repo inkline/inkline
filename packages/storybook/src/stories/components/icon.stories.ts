@@ -4,7 +4,7 @@ import {
     IconBasicExample,
     IconIconsExample,
     IconColorVariantsExample,
-    IconSizeVariantsExample
+    IconSizeExample
 } from '@inkline/component-icon/examples';
 import { Meta, StoryFn } from '@storybook/vue3';
 import { markRaw } from 'vue';
@@ -28,4 +28,4 @@ export default meta;
 export const Basic: StoryFn = () => IconBasicExample;
 export const Icons: StoryFn = () => IconIconsExample;
 export const ColorVariants: StoryFn = () => IconColorVariantsExample;
-export const SizeVariants: StoryFn = () => IconSizeVariantsExample;
+export const Size: StoryFn = () => IconSizeExample;

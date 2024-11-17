@@ -1,8 +1,9 @@
 import { Ref } from 'vue';
 import { ResolvedFormSchema, ValidateOnEvent } from '@inkline/types';
 // import { useOptions } from '../useOptions';
-// import { FormGroupKey, FormKey } from '@inkline/vue';
+// import { FormGroupKey, FormKey } from '@inkline/types';
 import { UseFormGroupValidationOptions } from './useFormGroupValidation';
+// import { useInjectForm } from "./useInjectForm";
 // import { useFormValidationEnabled } from './useFormValidationEnabled';
 
 export type UseFormValidationOptions = UseFormGroupValidationOptions & {
@@ -21,9 +22,7 @@ export function useValidation(
         // onSubmit
     }: UseFormValidationOptions
 ) {
-    // const form = inject(FormKey, null);
-    // const formGroup = inject(FormGroupKey, null);
-    //
+    // const { form, formGroup } = useInjectForm();
     // const { options } = useOptions();
     // const { shouldValidate } = useFormValidationEnabled({
     //     validateOn,

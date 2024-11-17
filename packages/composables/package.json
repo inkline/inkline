@@ -11,7 +11,6 @@
     },
     "dependencies": {
         "@inkline/validation": "workspace:*",
-        "@inkline/vue": "workspace:*",
         "@inkline/utils": "workspace:*"
     },
     "devDependencies": {
