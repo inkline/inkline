@@ -19,7 +19,7 @@
         "prerelease:checks": "npm run lint && npm run test && npm run e2e",
         "prerelease:build": "npm run build && npm run generate",
         "prerelease": "run-p prerelease:*",
-        "release": "np",
+        "release": "np --branch 'inkline@4'",
         "postrelease": "ts-node scripts/postrelease.ts",
         "postversion": "ts-node scripts/postversion.ts",
         "test": "vitest run --coverage",
