@@ -27,7 +27,7 @@ export function defineBoxShadow<Namespace extends NamespaceType>(
     const boxShadowColor = nsvariable(ns, 'box-shadow-color', 'transparent', options);
     const boxShadow = nsvariable(
         ns,
-        'boxShadow',
+        'box-shadow',
         [
             ref(boxShadowOffsetX),
             ref(boxShadowOffsetY),

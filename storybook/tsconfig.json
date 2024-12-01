@@ -63,6 +63,9 @@
             "@inkline/component-radio/*": [
                 "../packages/components/radio/src/*"
             ],
+            "@inkline/component-textarea/*": [
+                "../packages/components/textarea/src/*"
+            ],
             "@inkline/component-toast/*": [
                 "../packages/components/toast/src/*"
             ],

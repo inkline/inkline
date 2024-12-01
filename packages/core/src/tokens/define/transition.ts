@@ -18,37 +18,37 @@ export function defineTransition<Namespace extends NamespaceType>(
     value: SourceMapTransition,
     options?: DefineOptions
 ): OutputMapTransition<Namespace> {
-    const transitionDuration = nsvariable(ns, 'transition-duration', 0, options);
     const transitionProperty = nsvariable(ns, 'transition-property', 'none', options);
+    const transitionDuration = nsvariable(ns, 'transition-duration', 0, options);
     const transitionTimingFunction = nsvariable(ns, 'transition-timing-function', 'ease', options);
     const transition = nsvariable(
         ns,
         'transition',
-        [ref(transitionDuration), ref(transitionProperty), ref(transitionTimingFunction)],
+        [ref(transitionProperty), ref(transitionDuration), ref(transitionTimingFunction)],
         options
     );
 
     if (isTransitionProperty(value)) {
-        if (value.duration) set(transitionDuration, value.duration);
         if (value.property) set(transitionProperty, value.property);
+        if (value.duration) set(transitionDuration, value.duration);
         if (value.timingFunction) set(transitionTimingFunction, value.timingFunction);
     } else if (typeof value === 'string') {
-        const { duration, property, timingFunction } = resolveStringPropertyValue(value, [
-            'duration',
+        const { property, duration, timingFunction } = resolveStringPropertyValue(value, [
             'property',
+            'duration',
             'timingFunction'
         ]);
 
-        set(transitionDuration, duration);
         set(transitionProperty, property);
+        set(transitionDuration, duration);
         set(transitionTimingFunction, timingFunction);
     } else {
         set(transition, value);
     }
 
     return {
-        ...toExportedVariable(transitionDuration),
         ...toExportedVariable(transitionProperty),
+        ...toExportedVariable(transitionDuration),
         ...toExportedVariable(transitionTimingFunction),
         ...toExportedVariable(transition)
     } as OutputMapTransition<Namespace>;

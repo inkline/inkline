@@ -13,6 +13,7 @@ import { useMediaTheme } from '@inkline/component-media';
 import { useModalTheme, useModalContainerTheme } from '@inkline/component-modal';
 import { usePopoverTheme } from '@inkline/component-popover';
 import { useRadioTheme, useRadioGroupTheme } from '@inkline/component-radio';
+import { useTextareaTheme } from '@inkline/component-textarea';
 import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast';
 import { useTooltipTheme } from '@inkline/component-tooltip';
 
@@ -37,6 +38,7 @@ export function useComponentsTheme() {
     usePopoverTheme();
     useRadioTheme();
     useRadioGroupTheme();
+    useTextareaTheme();
     useToastTheme();
     useToastContainerTheme();
     useTooltipTheme();

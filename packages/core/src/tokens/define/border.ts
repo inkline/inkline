@@ -41,58 +41,58 @@ export function defineBorder<Namespace extends NamespaceType>(
     value: SourceMapBorder,
     options?: DefineOptions
 ): OutputMapBorder<Namespace> {
-    const borderTopColor = nsvariable(ns, 'border-top-color', 'inherit', options);
-    const borderTopStyle = nsvariable(ns, 'border-top-style', 'none', options);
     const borderTopWidth = nsvariable(ns, 'border-top-width', 0, options);
-    const borderRightColor = nsvariable(ns, 'border-right-color', 'inherit', options);
-    const borderRightStyle = nsvariable(ns, 'border-right-style', 'none', options);
+    const borderTopStyle = nsvariable(ns, 'border-top-style', 'none', options);
+    const borderTopColor = nsvariable(ns, 'border-top-color', 'inherit', options);
     const borderRightWidth = nsvariable(ns, 'border-right-width', 0, options);
-    const borderBottomColor = nsvariable(ns, 'border-bottom-color', 'inherit', options);
-    const borderBottomStyle = nsvariable(ns, 'border-bottom-style', 'none', options);
+    const borderRightStyle = nsvariable(ns, 'border-right-style', 'none', options);
+    const borderRightColor = nsvariable(ns, 'border-right-color', 'inherit', options);
     const borderBottomWidth = nsvariable(ns, 'border-bottom-width', 0, options);
-    const borderLeftColor = nsvariable(ns, 'border-left-color', 'inherit', options);
-    const borderLeftStyle = nsvariable(ns, 'border-left-style', 'none', options);
+    const borderBottomStyle = nsvariable(ns, 'border-bottom-style', 'none', options);
+    const borderBottomColor = nsvariable(ns, 'border-bottom-color', 'inherit', options);
     const borderLeftWidth = nsvariable(ns, 'border-left-width', 0, options);
-    const borderColor = nsvariable(ns, 'border-color', ref(borderTopColor), options);
-    const borderStyle = nsvariable(ns, 'border-style', ref(borderTopStyle), options);
+    const borderLeftStyle = nsvariable(ns, 'border-left-style', 'none', options);
+    const borderLeftColor = nsvariable(ns, 'border-left-color', 'inherit', options);
     const borderWidth = nsvariable(ns, 'border-width', ref(borderTopWidth), options);
+    const borderStyle = nsvariable(ns, 'border-style', ref(borderTopStyle), options);
+    const borderColor = nsvariable(ns, 'border-color', ref(borderTopColor), options);
     const borderTop = nsvariable(
         ns,
         'border-top',
-        [ref(borderTopColor), ref(borderTopStyle), ref(borderTopWidth)],
+        [ref(borderTopWidth), ref(borderTopStyle), ref(borderTopColor)],
         options
     );
     const borderRight = nsvariable(
         ns,
         'border-right',
-        [ref(borderRightColor), ref(borderRightStyle), ref(borderRightWidth)],
+        [ref(borderRightWidth), ref(borderRightStyle), ref(borderRightColor)],
         options
     );
     const borderBottom = nsvariable(
         ns,
         'border-bottom',
-        [ref(borderBottomColor), ref(borderBottomStyle), ref(borderBottomWidth)],
+        [ref(borderBottomWidth), ref(borderBottomStyle), ref(borderBottomColor)],
         options
     );
     const borderLeft = nsvariable(
         ns,
         'border-left',
-        [ref(borderLeftColor), ref(borderLeftStyle), ref(borderLeftWidth)],
+        [ref(borderLeftWidth), ref(borderLeftStyle), ref(borderLeftColor)],
         options
     );
     const border = nsvariable(
         ns,
         'border',
-        [ref(borderTopColor), ref(borderTopStyle), ref(borderTopWidth)],
+        [ref(borderTopWidth), ref(borderTopStyle), ref(borderTopColor)],
         options
     );
 
     if (isBorderProperty(value)) {
-        if (value.color) {
-            set(borderTopColor, value.color);
-            set(borderRightColor, value.color);
-            set(borderBottomColor, value.color);
-            set(borderLeftColor, value.color);
+        if (value.width) {
+            set(borderTopWidth, value.width);
+            set(borderRightWidth, value.width);
+            set(borderBottomWidth, value.width);
+            set(borderLeftWidth, value.width);
         }
 
         if (value.style) {
@@ -102,48 +102,48 @@ export function defineBorder<Namespace extends NamespaceType>(
             set(borderLeftStyle, value.style);
         }
 
-        if (value.width) {
-            set(borderTopWidth, value.width);
-            set(borderRightWidth, value.width);
-            set(borderBottomWidth, value.width);
-            set(borderLeftWidth, value.width);
+        if (value.color) {
+            set(borderTopColor, value.color);
+            set(borderRightColor, value.color);
+            set(borderBottomColor, value.color);
+            set(borderLeftColor, value.color);
         }
     } else if (isSidesProperty(value)) {
         if (isBorderProperty(value.top)) {
-            if (value.top.color) set(borderTopColor, value.top.color);
-            if (value.top.style) set(borderTopStyle, value.top.style);
             if (value.top.width) set(borderTopWidth, value.top.width);
+            if (value.top.style) set(borderTopStyle, value.top.style);
+            if (value.top.color) set(borderTopColor, value.top.color);
         }
 
         if (isBorderProperty(value.right)) {
-            if (value.right.color) set(borderRightColor, value.right.color);
-            if (value.right.style) set(borderRightStyle, value.right.style);
             if (value.right.width) set(borderRightWidth, value.right.width);
+            if (value.right.style) set(borderRightStyle, value.right.style);
+            if (value.right.color) set(borderRightColor, value.right.color);
         }
 
         if (isBorderProperty(value.bottom)) {
-            if (value.bottom.color) set(borderBottomColor, value.bottom.color);
-            if (value.bottom.style) set(borderBottomStyle, value.bottom.style);
             if (value.bottom.width) set(borderBottomWidth, value.bottom.width);
+            if (value.bottom.style) set(borderBottomStyle, value.bottom.style);
+            if (value.bottom.color) set(borderBottomColor, value.bottom.color);
         }
 
         if (isBorderProperty(value.left)) {
-            if (value.left.color) set(borderLeftColor, value.left.color);
-            if (value.left.style) set(borderLeftStyle, value.left.style);
             if (value.left.width) set(borderLeftWidth, value.left.width);
+            if (value.left.style) set(borderLeftStyle, value.left.style);
+            if (value.left.color) set(borderLeftColor, value.left.color);
         }
     } else if (typeof value === 'string') {
-        const { color, style, width } = resolveStringPropertyValue(value, [
-            'color',
+        const { style, width, color } = resolveStringPropertyValue(value, [
+            'width',
             'style',
-            'width'
+            'color'
         ]);
 
-        if (color) {
-            set(borderTopColor, color);
-            set(borderRightColor, color);
-            set(borderBottomColor, color);
-            set(borderLeftColor, color);
+        if (width) {
+            set(borderTopWidth, width);
+            set(borderRightWidth, width);
+            set(borderBottomWidth, width);
+            set(borderLeftWidth, width);
         }
 
         if (style) {
@@ -153,11 +153,11 @@ export function defineBorder<Namespace extends NamespaceType>(
             set(borderLeftStyle, style);
         }
 
-        if (width) {
-            set(borderTopWidth, width);
-            set(borderRightWidth, width);
-            set(borderBottomWidth, width);
-            set(borderLeftWidth, width);
+        if (color) {
+            set(borderTopColor, color);
+            set(borderRightColor, color);
+            set(borderBottomColor, color);
+            set(borderLeftColor, color);
         }
     } else {
         set(border, value);

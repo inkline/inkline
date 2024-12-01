@@ -5,6 +5,7 @@ import { CamelCase } from 'type-fest';
 export const enum TokenType {
     Variable = 'variable',
     Calc = 'calc',
+    Transform = 'transform',
     Reference = 'reference',
     HSLAColor = 'hsla',
     Selector = 'selector',
@@ -15,7 +16,14 @@ export const enum TokenType {
 
 export type PrimitiveTokenValue = number | string | boolean;
 
-export type TokenValue = Calc | Variable | Reference | Color | PrimitiveTokenValue | TokenValue[];
+export type TokenValue =
+    | Calc
+    | Variable
+    | Reference
+    | Transform
+    | Color
+    | PrimitiveTokenValue
+    | TokenValue[];
 
 export type Variable<Name extends string = string> = {
     __type: TokenType.Variable;
@@ -25,6 +33,12 @@ export type Variable<Name extends string = string> = {
 
 export type Calc = {
     __type: TokenType.Calc;
+    __value: any[];
+};
+
+export type Transform = {
+    __type: TokenType.Transform;
+    __name: 'translate' | 'scale' | 'rotate' | 'skew' | 'matrix' | string;
     __value: any[];
 };
 

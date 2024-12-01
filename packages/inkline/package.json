@@ -39,6 +39,7 @@
         "@inkline/component-popover": "workspace:*",
         "@inkline/component-popup": "workspace:*",
         "@inkline/component-radio": "workspace:*",
+        "@inkline/component-textarea": "workspace:*",
         "@inkline/component-toast": "workspace:*",
         "@inkline/component-tooltip": "workspace:*"
     },

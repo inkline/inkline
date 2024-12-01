@@ -14,6 +14,7 @@ export * from '@inkline/component-modal';
 export * from '@inkline/component-popover';
 export * from '@inkline/component-popup';
 export * from '@inkline/component-radio';
+export * from '@inkline/component-textarea';
 export * from '@inkline/component-toast';
 export * from '@inkline/component-tooltip';
 

@@ -105,6 +105,17 @@ export type SourceMap = {
     whiteSpace: TokenValue;
     width: TokenValue;
     zIndex: TokenValue;
+    [key: string]:
+        | TokenValue
+        | SourceMapAnimation
+        | SourceMapBackground
+        | SourceMapBorder
+        | SourceMapBorderRadius
+        | SourceMapBoxShadow
+        | SourceMapMargin
+        | SourceMapPadding
+        | SourceMapTransition
+        | SourceMap;
 };
 
 export type OutputMap<Namespace extends NamespaceType> = {

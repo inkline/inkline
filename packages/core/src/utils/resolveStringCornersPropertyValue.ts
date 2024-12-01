@@ -8,7 +8,7 @@ export function resolveStringCornersPropertyValue(
 
     return keys.reduce(
         (acc, key, index) => {
-            (acc as Record<string, string>)[key] = parts[index];
+            (acc as Record<string, string>)[key] = parts[index % 4] || parts[index % 2] || parts[0];
             return acc;
         },
         {} as Record<CornersPropertyKeys, TokenValue>

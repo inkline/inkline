@@ -5,5 +5,6 @@ export * from './define';
 export * from './ref';
 export * from './selector';
 export * from './theme';
+export * from './transform';
 export * from './variable';
 export * from './variables';
