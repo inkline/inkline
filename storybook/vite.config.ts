@@ -6,7 +6,7 @@ import { resolve } from 'path';
 import glob from 'fast-glob';
 
 const componentDirs = glob.sync('**', {
-    cwd: resolve(__dirname, '..', 'components'),
+    cwd: resolve(__dirname, '..', 'packages', 'components'),
     deep: 1,
     onlyDirectories: true
 });
@@ -25,16 +25,23 @@ export default defineConfig({
         alias: [
             {
                 find: /^inkline/,
-                replacement: resolve(__dirname, '..', 'inkline', 'src')
+                replacement: resolve(__dirname, '..', 'packages', 'inkline', 'src')
             },
             {
                 find: /^@inkline\/vue/,
-                replacement: resolve(__dirname, '..', 'plugin', 'vue', 'src')
+                replacement: resolve(__dirname, '..', 'packages', 'plugin', 'vue', 'src')
             },
             ...componentDirs.flatMap((component) => [
                 {
                     find: new RegExp(`^@inkline/component-${component}`),
-                    replacement: resolve(__dirname, '..', 'components', component, 'src')
+                    replacement: resolve(
+                        __dirname,
+                        '..',
+                        'packages',
+                        'components',
+                        component,
+                        'src'
+                    )
                 }
             ])
         ]

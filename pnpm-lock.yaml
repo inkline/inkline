@@ -2664,97 +2664,6 @@ importers:
         specifier: 'catalog:'
         version: 3.5.8(typescript@5.6.2)
 
-  packages/storybook:
-    dependencies:
-      inkline:
-        specifier: workspace:*
-        version: link:../inkline
-    devDependencies:
-      '@chromatic-com/storybook':
-        specifier: ^1.9.0
-        version: 1.9.0(react@18.3.1)
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../config
-      '@inkline/devtools':
-        specifier: workspace:*
-        version: link:../tooling/devtools
-      '@inkline/eslint-config':
-        specifier: workspace:*
-        version: link:../tooling/eslint-config
-      '@inkline/theme':
-        specifier: workspace:*
-        version: link:../theme
-      '@inkline/vite':
-        specifier: workspace:*
-        version: link:../integrations/vite
-      '@storybook/addon-essentials':
-        specifier: ^8.3.4
-        version: 8.3.4(storybook@8.3.4)
-      '@storybook/addon-interactions':
-        specifier: ^8.3.4
-        version: 8.3.4(storybook@8.3.4)
-      '@storybook/addon-links':
-        specifier: ^8.3.4
-        version: 8.3.4(react@18.3.1)(storybook@8.3.4)
-      '@storybook/addon-onboarding':
-        specifier: ^8.3.4
-        version: 8.3.4(react@18.3.1)(storybook@8.3.4)
-      '@storybook/addon-themes':
-        specifier: ^8.3.4
-        version: 8.3.4(storybook@8.3.4)
-      '@storybook/blocks':
-        specifier: ^8.3.4
-        version: 8.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.4)
-      '@storybook/test':
-        specifier: ^8.3.4
-        version: 8.3.4(storybook@8.3.4)
-      '@storybook/theming':
-        specifier: ^8.3.4
-        version: 8.3.4(storybook@8.3.4)
-      '@storybook/vue3':
-        specifier: ^8.3.4
-        version: 8.3.4(storybook@8.3.4)(vue@3.5.8(typescript@5.6.2))
-      '@storybook/vue3-vite':
-        specifier: ^8.3.4
-        version: 8.3.4(storybook@8.3.4)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
-      '@vitejs/plugin-vue':
-        specifier: ^5.1.4
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
-      '@vitest/coverage-v8':
-        specifier: 'catalog:'
-        version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
-      eslint:
-        specifier: 'catalog:'
-        version: 9.11.1(jiti@2.3.3)
-      eslint-plugin-storybook:
-        specifier: ^0.9.0
-        version: 0.9.0(eslint@9.11.1(jiti@2.3.3))(typescript@5.6.2)
-      fast-glob:
-        specifier: ^3.3.2
-        version: 3.3.2
-      normalize.css:
-        specifier: 'catalog:'
-        version: 8.0.1
-      storybook:
-        specifier: ^8.3.4
-        version: 8.3.4
-      storybook-dark-mode:
-        specifier: ^4.0.2
-        version: 4.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.4)
-      typescript:
-        specifier: 'catalog:'
-        version: 5.6.2
-      vite:
-        specifier: 'catalog:'
-        version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vitest:
-        specifier: 'catalog:'
-        version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
-      vue:
-        specifier: 'catalog:'
-        version: 3.5.8(typescript@5.6.2)
-
   packages/theme:
     dependencies:
       '@inkline/core':
@@ -2981,7 +2890,7 @@ importers:
         version: link:../../integrations/vite
       '@vitejs/plugin-vue':
         specifier: 'catalog:'
-        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))
+        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))
       vite:
         specifier: 'catalog:'
         version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
@@ -3104,6 +3013,97 @@ importers:
       vitest:
         specifier: 'catalog:'
         version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
+
+  storybook:
+    dependencies:
+      inkline:
+        specifier: workspace:*
+        version: link:../packages/inkline
+    devDependencies:
+      '@chromatic-com/storybook':
+        specifier: ^1.9.0
+        version: 1.9.0(react@18.3.1)
+      '@inkline/config':
+        specifier: workspace:*
+        version: link:../packages/config
+      '@inkline/devtools':
+        specifier: workspace:*
+        version: link:../packages/tooling/devtools
+      '@inkline/eslint-config':
+        specifier: workspace:*
+        version: link:../packages/tooling/eslint-config
+      '@inkline/theme':
+        specifier: workspace:*
+        version: link:../packages/theme
+      '@inkline/vite':
+        specifier: workspace:*
+        version: link:../packages/integrations/vite
+      '@storybook/addon-essentials':
+        specifier: ^8.3.4
+        version: 8.3.4(storybook@8.3.4)
+      '@storybook/addon-interactions':
+        specifier: ^8.3.4
+        version: 8.3.4(storybook@8.3.4)
+      '@storybook/addon-links':
+        specifier: ^8.3.4
+        version: 8.3.4(react@18.3.1)(storybook@8.3.4)
+      '@storybook/addon-onboarding':
+        specifier: ^8.3.4
+        version: 8.3.4(react@18.3.1)(storybook@8.3.4)
+      '@storybook/addon-themes':
+        specifier: ^8.3.4
+        version: 8.3.4(storybook@8.3.4)
+      '@storybook/blocks':
+        specifier: ^8.3.4
+        version: 8.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.4)
+      '@storybook/test':
+        specifier: ^8.3.4
+        version: 8.3.4(storybook@8.3.4)
+      '@storybook/theming':
+        specifier: ^8.3.4
+        version: 8.3.4(storybook@8.3.4)
+      '@storybook/vue3':
+        specifier: ^8.3.4
+        version: 8.3.4(storybook@8.3.4)(vue@3.5.8(typescript@5.6.2))
+      '@storybook/vue3-vite':
+        specifier: ^8.3.4
+        version: 8.3.4(storybook@8.3.4)(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
+      '@vitejs/plugin-vue':
+        specifier: ^5.1.4
+        version: 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
+      eslint:
+        specifier: 'catalog:'
+        version: 9.11.1(jiti@2.3.3)
+      eslint-plugin-storybook:
+        specifier: ^0.9.0
+        version: 0.9.0(eslint@9.11.1(jiti@2.3.3))(typescript@5.6.2)
+      fast-glob:
+        specifier: ^3.3.2
+        version: 3.3.2
+      normalize.css:
+        specifier: 'catalog:'
+        version: 8.0.1
+      storybook:
+        specifier: ^8.3.4
+        version: 8.3.4
+      storybook-dark-mode:
+        specifier: ^4.0.2
+        version: 4.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.4)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.6.2
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
+      vitest:
+        specifier: 'catalog:'
+        version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.8(typescript@5.6.2)
 
 packages:
 
@@ -10671,7 +10671,7 @@ snapshots:
     dependencies:
       '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.22.4)
       '@rollup/plugin-replace': 5.0.7(rollup@4.22.4)
-      '@vitejs/plugin-vue': 5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))
+      '@vitejs/plugin-vue': 5.1.4(vite@5.4.7(@types/node@20.14.9)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))
       '@vitejs/plugin-vue-jsx': 4.0.1(vite@5.4.7(@types/node@20.14.9)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))
       autoprefixer: 10.4.20(postcss@8.4.47)
       clear: 0.1.0
@@ -11628,15 +11628,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue@5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))':
-    dependencies:
-      vite: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vue: 3.5.10(typescript@5.6.2)
-
   '@vitejs/plugin-vue@5.1.4(vite@5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1))(vue@3.5.8(typescript@5.6.2))':
     dependencies:
       vite: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
       vue: 3.5.8(typescript@5.6.2)
+
+  '@vitejs/plugin-vue@5.1.4(vite@5.4.7(@types/node@20.14.9)(terser@5.31.1))(vue@3.5.10(typescript@5.6.2))':
+    dependencies:
+      vite: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
+      vue: 3.5.10(typescript@5.6.2)
 
   '@vitest/coverage-v8@2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))':
     dependencies:

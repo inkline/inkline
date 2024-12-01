@@ -1,5 +1,5 @@
 {
-    "extends": "../tooling/typescript-config/tsconfig.json",
+    "extends": "../packages/tooling/typescript-config/tsconfig.json",
     "compilerOptions": {
         "baseUrl": ".",
         "types": [
@@ -7,67 +7,67 @@
         ],
         "paths": {
             "inkline": [
-                "../inkline/src/index.ts"
+                "../packages/inkline/src/index.ts"
             ],
             "inkline/*": [
-                "../inkline/src/*"
+                "../packages/inkline/src/*"
             ],
             "@inkline/component-*": [
-                "../components/*/src/index.ts"
+                "../packages/components/*/src/index.ts"
             ],
             "@inkline/component-alert/*": [
-                "../components/alert/src/*"
+                "../packages/components/alert/src/*"
             ],
             "@inkline/component-badge/*": [
-                "../components/badge/src/*"
+                "../packages/components/badge/src/*"
             ],
             "@inkline/component-breadcrumb/*": [
-                "../components/breadcrumb/src/*"
+                "../packages/components/breadcrumb/src/*"
             ],
             "@inkline/component-button/*": [
-                "../components/button/src/*"
+                "../packages/components/button/src/*"
             ],
             "@inkline/component-button-group/*": [
-                "../components/button-group/src/*"
+                "../packages/components/button-group/src/*"
             ],
             "@inkline/component-card/*": [
-                "../components/card/src/*"
+                "../packages/components/card/src/*"
             ],
             "@inkline/component-checkbox/*": [
-                "../components/checkbox/src/*"
+                "../packages/components/checkbox/src/*"
             ],
             "@inkline/component-form-group/*": [
-                "../components/form-group/src/*"
+                "../packages/components/form-group/src/*"
             ],
             "@inkline/component-icon/*": [
-                "../components/icon/src/*"
+                "../packages/components/icon/src/*"
             ],
             "@inkline/component-input/*": [
-                "../components/input/src/*"
+                "../packages/components/input/src/*"
             ],
             "@inkline/component-loader/*": [
-                "../components/loader/src/*"
+                "../packages/components/loader/src/*"
             ],
             "@inkline/component-media/*": [
-                "../components/media/src/*"
+                "../packages/components/media/src/*"
             ],
             "@inkline/component-modal/*": [
-                "../components/modal/src/*"
+                "../packages/components/modal/src/*"
             ],
             "@inkline/component-popover/*": [
-                "../components/popover/src/*"
+                "../packages/components/popover/src/*"
             ],
             "@inkline/component-popup/*": [
-                "../components/popup/src/*"
+                "../packages/components/popup/src/*"
             ],
             "@inkline/component-radio/*": [
-                "../components/radio/src/*"
+                "../packages/components/radio/src/*"
             ],
             "@inkline/component-toast/*": [
-                "../components/toast/src/*"
+                "../packages/components/toast/src/*"
             ],
             "@inkline/component-tooltip/*": [
-                "../components/tooltip/src/*"
+                "../packages/components/tooltip/src/*"
             ]
         }
     },

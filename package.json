@@ -7,7 +7,7 @@
         "postinstall": "turbo run build --filter @inkline/devtools",
         "build": "turbo run build --filter !@inkline/e2e*",
         "dev": "turbo run dev --concurrency 16 --filter !@inkline/e2e* --filter !@inkline/component* --filter !@inkline/addon* --filter !@inkline/logger --filter !@inkline/nuxt --filter !@inkline/vite --filter !@inkline/storybook",
-        "storybook": "cd packages/storybook && pnpm run dev",
+        "storybook": "cd storybook && pnpm run dev",
         "test": "turbo run test",
         "lint": "turbo run lint"
     },
