@@ -3,6 +3,7 @@ import {
     CheckboxGroupBasicExample,
     CheckboxGroupColorVariantsExample,
     CheckboxGroupDisabledExample,
+    CheckboxGroupReadonlyExample,
     CheckboxGroupRenderComponentExample,
     CheckboxGroupRenderExpressionExample,
     CheckboxGroupRenderFunctionExample,
@@ -23,6 +24,7 @@ export default meta;
 export const Basic: StoryFn = () => CheckboxGroupBasicExample;
 export const ColorVariants: StoryFn = () => CheckboxGroupColorVariantsExample;
 export const Disabled: StoryFn = () => CheckboxGroupDisabledExample;
+export const Readonly: StoryFn = () => CheckboxGroupReadonlyExample;
 export const SizeVariants: StoryFn = () => CheckboxGroupSizeVariantsExample;
 export const RenderComponent: StoryFn = () => CheckboxGroupRenderComponentExample;
 export const RenderExpression: StoryFn = () => CheckboxGroupRenderExpressionExample;

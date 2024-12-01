@@ -33186,34 +33186,22 @@
             "radio--border-top-left-radius": {
                 "__type": "variable",
                 "__name": "radio--border-top-left-radius",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "border-top-left-radius"
-                }
+                "__value": "50%"
             },
             "radio--border-top-right-radius": {
                 "__type": "variable",
                 "__name": "radio--border-top-right-radius",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "border-top-right-radius"
-                }
+                "__value": "50%"
             },
             "radio--border-bottom-right-radius": {
                 "__type": "variable",
                 "__name": "radio--border-bottom-right-radius",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "border-bottom-right-radius"
-                }
+                "__value": "50%"
             },
             "radio--border-bottom-left-radius": {
                 "__type": "variable",
                 "__name": "radio--border-bottom-left-radius",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "border-bottom-left-radius"
-                }
+                "__value": "50%"
             },
             "radio--border-radius": {
                 "__type": "variable",
@@ -33450,42 +33438,42 @@
                     }
                 ]
             },
-            "radio--checkmark--color-h": {
+            "radio--circle--color-h": {
                 "__type": "variable",
-                "__name": "radio--checkmark--color-h",
+                "__name": "radio--circle--color-h",
                 "__value": 0
             },
-            "radio--checkmark--color-s": {
+            "radio--circle--color-s": {
                 "__type": "variable",
-                "__name": "radio--checkmark--color-s",
+                "__name": "radio--circle--color-s",
                 "__value": "0%"
             },
-            "radio--checkmark--color-l": {
+            "radio--circle--color-l": {
                 "__type": "variable",
-                "__name": "radio--checkmark--color-l",
+                "__name": "radio--circle--color-l",
                 "__value": "0%"
             },
-            "radio--checkmark--color-a": {
+            "radio--circle--color-a": {
                 "__type": "variable",
-                "__name": "radio--checkmark--color-a",
+                "__name": "radio--circle--color-a",
                 "__value": 1
             },
-            "radio--checkmark--color": {
+            "radio--circle--color": {
                 "__type": "variable",
-                "__name": "radio--checkmark--color",
+                "__name": "radio--circle--color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-white"
                 }
             },
-            "radio--checkmark--width": {
+            "radio--circle--width": {
                 "__type": "variable",
-                "__name": "radio--checkmark--width",
+                "__name": "radio--circle--width",
                 "__value": "0.5rem"
             },
-            "radio--checkmark--height": {
+            "radio--circle--height": {
                 "__type": "variable",
-                "__name": "radio--checkmark--height",
+                "__name": "radio--circle--height",
                 "__value": "0.5rem"
             },
             "radio--checked--background-h": {
@@ -34498,15 +34486,15 @@
                     ]
                 }
             },
-            "radio--sm--checkmark--width": {
+            "radio--sm--circle--width": {
                 "__type": "variable",
-                "__name": "radio--sm--checkmark--width",
+                "__name": "radio--sm--circle--width",
                 "__value": {
                     "__type": "calc",
                     "__value": [
                         {
                             "__type": "reference",
-                            "__name": "radio--checkmark--width"
+                            "__name": "radio--circle--width"
                         },
                         "*",
                         {
@@ -34516,15 +34504,15 @@
                     ]
                 }
             },
-            "radio--sm--checkmark--height": {
+            "radio--sm--circle--height": {
                 "__type": "variable",
-                "__name": "radio--sm--checkmark--height",
+                "__name": "radio--sm--circle--height",
                 "__value": {
                     "__type": "calc",
                     "__value": [
                         {
                             "__type": "reference",
-                            "__name": "radio--checkmark--height"
+                            "__name": "radio--circle--height"
                         },
                         "*",
                         {
@@ -34750,15 +34738,15 @@
                     ]
                 }
             },
-            "radio--md--checkmark--width": {
+            "radio--md--circle--width": {
                 "__type": "variable",
-                "__name": "radio--md--checkmark--width",
+                "__name": "radio--md--circle--width",
                 "__value": {
                     "__type": "calc",
                     "__value": [
                         {
                             "__type": "reference",
-                            "__name": "radio--checkmark--width"
+                            "__name": "radio--circle--width"
                         },
                         "*",
                         {
@@ -34768,15 +34756,15 @@
                     ]
                 }
             },
-            "radio--md--checkmark--height": {
+            "radio--md--circle--height": {
                 "__type": "variable",
-                "__name": "radio--md--checkmark--height",
+                "__name": "radio--md--circle--height",
                 "__value": {
                     "__type": "calc",
                     "__value": [
                         {
                             "__type": "reference",
-                            "__name": "radio--checkmark--height"
+                            "__name": "radio--circle--height"
                         },
                         "*",
                         {
@@ -35002,15 +34990,15 @@
                     ]
                 }
             },
-            "radio--lg--checkmark--width": {
+            "radio--lg--circle--width": {
                 "__type": "variable",
-                "__name": "radio--lg--checkmark--width",
+                "__name": "radio--lg--circle--width",
                 "__value": {
                     "__type": "calc",
                     "__value": [
                         {
                             "__type": "reference",
-                            "__name": "radio--checkmark--width"
+                            "__name": "radio--circle--width"
                         },
                         "*",
                         {
@@ -35020,15 +35008,15 @@
                     ]
                 }
             },
-            "radio--lg--checkmark--height": {
+            "radio--lg--circle--height": {
                 "__type": "variable",
-                "__name": "radio--lg--checkmark--height",
+                "__name": "radio--lg--circle--height",
                 "__value": {
                     "__type": "calc",
                     "__value": [
                         {
                             "__type": "reference",
-                            "__name": "radio--checkmark--height"
+                            "__name": "radio--circle--height"
                         },
                         "*",
                         {
@@ -48257,13 +48245,6 @@
             },
             {
                 "__type": "selector",
-                "__name": ".radio input:indeterminate ~ .radio-label::after",
-                "__value": {
-                    "maskImage": "url('data:image/svg+xml; utf8, <svg fill=\"currentColor\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"28\" height=\"28\" viewBox=\"0 0 28 28\"><title>minus</title><path d=\"M0 11.375v5.25c0 0.483 0.392 0.875 0.875 0.875h26.25c0.483 0 0.875-0.392 0.875-0.875v-5.25c0-0.483-0.392-0.875-0.875-0.875h-26.25c-0.483 0-0.875 0.392-0.875 0.875z\"></path></svg>')"
-                }
-            },
-            {
-                "__type": "selector",
                 "__name": ".radio .radio-label::after",
                 "__value": {
                     "content": "\"\"",
@@ -48272,15 +48253,15 @@
                     "transform": "scale(0) translate(0, -50%)",
                     "border": "1px solid transparent",
                     "transformOrigin": "center top",
-                    "maskImage": "url('data:image/svg+xml; utf8, <svg fill=\"currentColor\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"28\" height=\"28\" viewBox=\"0 0 28 28\"><title>check</title><path d=\"M23.625 3.5l-13.125 13.125-6.125-6.125-4.375 4.375 10.5 10.5 17.5-17.5z\"></path></svg>')",
+                    "maskImage": "url('data:image/svg+xml; utf8, <svg fill=\"currentColor\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"28\" height=\"28\" viewBox=\"0 0 28 28\"><title>check</title><circle cx=\"14\" cy=\"14\" r=\"12\"></circle></svg>')",
                     "maskSize": [
                         {
                             "__type": "reference",
-                            "__name": "radio--checkmark--width"
+                            "__name": "radio--circle--width"
                         },
                         {
                             "__type": "reference",
-                            "__name": "radio--checkmark--height"
+                            "__name": "radio--circle--height"
                         }
                     ],
                     "maskPosition": "center center",
@@ -48309,7 +48290,7 @@
             },
             {
                 "__type": "selector",
-                "__name": ".radio input:indeterminate ~ .radio-label::after, .radio input:checked ~ .radio-label::after",
+                "__name": ".radio input:checked ~ .radio-label::after",
                 "__value": {
                     "content": "\"\"",
                     "maskPosition": "center center",
@@ -48413,7 +48394,7 @@
                 "__value": {
                     "background": {
                         "__type": "reference",
-                        "__name": "radio--checkmark--color"
+                        "__name": "radio--circle--color"
                     },
                     "transitionDuration": {
                         "__type": "reference",
@@ -48437,7 +48418,7 @@
             },
             {
                 "__type": "selector",
-                "__name": ".radio input:checked ~ .radio-label::before, .radio input:indeterminate ~ .radio-label::before",
+                "__name": ".radio input:checked ~ .radio-label::before",
                 "__value": {
                     "background": {
                         "__type": "reference",
@@ -48587,11 +48568,11 @@
                     "maskSize": [
                         {
                             "__type": "reference",
-                            "__name": "radio--sm--checkmark--width"
+                            "__name": "radio--sm--circle--width"
                         },
                         {
                             "__type": "reference",
-                            "__name": "radio--sm--checkmark--height"
+                            "__name": "radio--sm--circle--height"
                         }
                     ]
                 }
@@ -48673,11 +48654,11 @@
                     "maskSize": [
                         {
                             "__type": "reference",
-                            "__name": "radio--md--checkmark--width"
+                            "__name": "radio--md--circle--width"
                         },
                         {
                             "__type": "reference",
-                            "__name": "radio--md--checkmark--height"
+                            "__name": "radio--md--circle--height"
                         }
                     ]
                 }
@@ -48759,11 +48740,11 @@
                     "maskSize": [
                         {
                             "__type": "reference",
-                            "__name": "radio--lg--checkmark--width"
+                            "__name": "radio--lg--circle--width"
                         },
                         {
                             "__type": "reference",
-                            "__name": "radio--lg--checkmark--height"
+                            "__name": "radio--lg--circle--height"
                         }
                     ]
                 }

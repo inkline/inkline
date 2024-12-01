@@ -3438,10 +3438,6 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     transform: translate(0, -50%);
 }
 
-.radio input:indeterminate ~ .radio-label::after {
-    mask-image: url('data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>minus</title><path d="M0 11.375v5.25c0 0.483 0.392 0.875 0.875 0.875h26.25c0.483 0 0.875-0.392 0.875-0.875v-5.25c0-0.483-0.392-0.875-0.875-0.875h-26.25c-0.483 0-0.875 0.392-0.875 0.875z"></path></svg>');
-}
-
 .radio .radio-label::after {
     content: "";
     z-index: 1;
@@ -3449,8 +3445,8 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     transform: scale(0) translate(0, -50%);
     border: 1px solid transparent;
     transform-origin: center top;
-    mask-image: url('data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>check</title><path d="M23.625 3.5l-13.125 13.125-6.125-6.125-4.375 4.375 10.5 10.5 17.5-17.5z"></path></svg>');
-    mask-size: var(--radio--checkmark--width) var(--radio--checkmark--height);
+    mask-image: url('data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>check</title><circle cx="14" cy="14" r="12"></circle></svg>');
+    mask-size: var(--radio--circle--width) var(--radio--circle--height);
     mask-position: center center;
     mask-repeat: no-repeat;
 }
@@ -3469,7 +3465,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     outline: 0;
 }
 
-.radio input:indeterminate ~ .radio-label::after, .radio input:checked ~ .radio-label::after {
+.radio input:checked ~ .radio-label::after {
     content: "";
     mask-position: center center;
     mask-repeat: no-repeat;
@@ -3506,7 +3502,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .radio .radio-label::after {
-    background: var(--radio--checkmark--color);
+    background: var(--radio--circle--color);
     transition-duration: var(--radio--transition-duration);
     transition-timing-function: var(--radio--transition-timing-function);
 }
@@ -3515,7 +3511,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     box-shadow: var(--radio--focus--boxShadow);
 }
 
-.radio input:checked ~ .radio-label::before, .radio input:indeterminate ~ .radio-label::before {
+.radio input:checked ~ .radio-label::before {
     background: var(--radio--checked--background);
     border-color: var(--radio--checked--border-color);
 }
@@ -3567,7 +3563,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .radio.-sm .radio-label::after {
-    mask-size: var(--radio--sm--checkmark--width) var(--radio--sm--checkmark--height);
+    mask-size: var(--radio--sm--circle--width) var(--radio--sm--circle--height);
 }
 
 .radio.-md {
@@ -3592,7 +3588,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .radio.-md .radio-label::after {
-    mask-size: var(--radio--md--checkmark--width) var(--radio--md--checkmark--height);
+    mask-size: var(--radio--md--circle--width) var(--radio--md--circle--height);
 }
 
 .radio.-lg {
@@ -3617,7 +3613,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .radio.-lg .radio-label::after {
-    mask-size: var(--radio--lg--checkmark--width) var(--radio--lg--checkmark--height);
+    mask-size: var(--radio--lg--circle--width) var(--radio--lg--circle--height);
 }
 
 .radio.-light .radio-label {

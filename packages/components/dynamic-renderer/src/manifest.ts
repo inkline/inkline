@@ -1,7 +1,7 @@
 import type { ComponentManifest } from '@inkline/devtools';
 
 export const manifest: ComponentManifest = {
-    name: 'RenderResolver',
+    name: 'DynamicRenderer',
     props: [
         {
             name: 'render',

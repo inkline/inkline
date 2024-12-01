@@ -13,7 +13,6 @@ import { capitalize } from '@inkline/utils';
 import {
     ComponentSize,
     useBorder,
-    useBorderRadiusBase,
     useBoxShadow,
     useFontSize,
     useKeyMappedSizeMultiplier,
@@ -32,10 +31,8 @@ import {
 
 const ns = 'radio';
 
-const checkmarkIconUrl =
-    'data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>check</title><path d="M23.625 3.5l-13.125 13.125-6.125-6.125-4.375 4.375 10.5 10.5 17.5-17.5z"></path></svg>';
-const minusIconUrl =
-    'data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>minus</title><path d="M0 11.375v5.25c0 0.483 0.392 0.875 0.875 0.875h26.25c0.483 0 0.875-0.392 0.875-0.875v-5.25c0-0.483-0.392-0.875-0.875-0.875h-26.25c-0.483 0-0.875 0.392-0.875 0.875z"></path></svg>';
+const circleIconUrl =
+    'data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>check</title><circle cx="14" cy="14" r="12"></circle></svg>';
 
 export function useRadioThemeVariables(options = defaultDefinitionOptions) {
     const { colorPrimary, colorPrimaryH, colorPrimaryS, colorPrimaryL } = useBrandColors();
@@ -57,12 +54,6 @@ export function useRadioThemeVariables(options = defaultDefinitionOptions) {
         borderLeftStyle,
         borderLeftWidth
     } = useBorder();
-    const {
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomRightRadius,
-        borderBottomLeftRadius
-    } = useBorderRadiusBase();
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -104,10 +95,10 @@ export function useRadioThemeVariables(options = defaultDefinitionOptions) {
                     }
                 },
                 borderRadius: {
-                    topLeft: ref(borderTopLeftRadius),
-                    topRight: ref(borderTopRightRadius),
-                    bottomRight: ref(borderBottomRightRadius),
-                    bottomLeft: ref(borderBottomLeftRadius)
+                    topLeft: '50%',
+                    topRight: '50%',
+                    bottomRight: '50%',
+                    bottomLeft: '50%'
                 },
                 boxShadow: {
                     offsetX: ref(boxShadowOffsetX),
@@ -135,7 +126,7 @@ export function useRadioThemeVariables(options = defaultDefinitionOptions) {
             options
         ),
         ...nsvariables(
-            [ns, 'checkmark'] as const,
+            [ns, 'circle'] as const,
             {
                 color: ref(colorWhite),
                 width: '0.5rem',
@@ -197,7 +188,7 @@ export function useRadioThemeVariables(options = defaultDefinitionOptions) {
 }
 
 export function useRadioThemeLayout() {
-    const { radioWidth, radioHeight, radioCheckmarkWidth, radioCheckmarkHeight } =
+    const { radioWidth, radioHeight, radioCircleWidth, radioCircleHeight } =
         useRadioThemeVariables();
 
     selector('.radio', {
@@ -236,10 +227,6 @@ export function useRadioThemeLayout() {
         transform: 'translate(0, -50%)'
     });
 
-    selector('.radio input:indeterminate ~ .radio-label::after', {
-        maskImage: `url('${minusIconUrl}')`
-    });
-
     selector('.radio .radio-label::after', {
         content: '""',
         zIndex: 1,
@@ -247,8 +234,8 @@ export function useRadioThemeLayout() {
         transform: 'scale(0) translate(0, -50%)',
         border: '1px solid transparent',
         transformOrigin: 'center top',
-        maskImage: `url('${checkmarkIconUrl}')`,
-        maskSize: [ref(radioCheckmarkWidth), ref(radioCheckmarkHeight)],
+        maskImage: `url('${circleIconUrl}')`,
+        maskSize: [ref(radioCircleWidth), ref(radioCircleHeight)],
         maskPosition: 'center center',
         maskRepeat: 'no-repeat'
     });
@@ -267,18 +254,12 @@ export function useRadioThemeLayout() {
         outline: 0
     });
 
-    selector(
-        [
-            '.radio input:indeterminate ~ .radio-label::after',
-            '.radio input:checked ~ .radio-label::after'
-        ],
-        {
-            content: '""',
-            maskPosition: 'center center',
-            maskRepeat: 'no-repeat',
-            transform: 'scale(1) translate(0, -50%)'
-        }
-    );
+    selector(['.radio input:checked ~ .radio-label::after'], {
+        content: '""',
+        maskPosition: 'center center',
+        maskRepeat: 'no-repeat',
+        transform: 'scale(1) translate(0, -50%)'
+    });
 
     selector(['.radio input:disabled ~ .radio-label', '.radio input[readonly] ~ .radio-label'], {
         cursor: 'default'
@@ -322,7 +303,7 @@ export function useRadioThemeBase() {
         radioDisabledColor,
         radioDisabledBackground,
         radioReadonlyBackground,
-        radioCheckmarkColor,
+        radioCircleColor,
         radioFocusBoxShadow
     } = useRadioThemeVariables();
 
@@ -348,7 +329,7 @@ export function useRadioThemeBase() {
     });
 
     selector('.radio .radio-label::after', {
-        background: ref(radioCheckmarkColor),
+        background: ref(radioCircleColor),
         transitionDuration: ref(radioTransitionDuration),
         transitionTimingFunction: ref(radioTransitionTimingFunction)
     });
@@ -357,16 +338,10 @@ export function useRadioThemeBase() {
         boxShadow: ref(radioFocusBoxShadow)
     });
 
-    selector(
-        [
-            '.radio input:checked ~ .radio-label::before',
-            '.radio input:indeterminate ~ .radio-label::before'
-        ],
-        {
-            background: ref(radioCheckedBackground),
-            borderColor: ref(radioCheckedBorderColor)
-        }
-    );
+    selector(['.radio input:checked ~ .radio-label::before'], {
+        background: ref(radioCheckedBackground),
+        borderColor: ref(radioCheckedBorderColor)
+    });
 
     selector('.radio input:disabled ~ .radio-label', {
         color: ref(radioDisabledColor),
@@ -405,8 +380,8 @@ export function useRadioThemeSizeFactory(size: ComponentSize) {
         radioFontSize,
         radioWidth,
         radioHeight,
-        radioCheckmarkWidth,
-        radioCheckmarkHeight
+        radioCircleWidth,
+        radioCircleHeight
     } = useRadioThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
@@ -440,13 +415,13 @@ export function useRadioThemeSizeFactory(size: ComponentSize) {
         })
     );
 
-    const { checkmarkWidth, checkmarkHeight } = replaceExportsNamespace(
-        nsvariables([...sizeNs, 'checkmark'] as const, {
-            width: multiply(ref(radioCheckmarkWidth), sizeMultiplierRef),
-            height: multiply(ref(radioCheckmarkHeight), sizeMultiplierRef)
+    const { circleWidth, circleHeight } = replaceExportsNamespace(
+        nsvariables([...sizeNs, 'circle'] as const, {
+            width: multiply(ref(radioCircleWidth), sizeMultiplierRef),
+            height: multiply(ref(radioCircleHeight), sizeMultiplierRef)
         }),
-        [...sizeNs, 'checkmark'] as const,
-        'checkmark'
+        [...sizeNs, 'circle'] as const,
+        'circle'
     );
 
     selector(`.radio.-${size}`, {
@@ -471,7 +446,7 @@ export function useRadioThemeSizeFactory(size: ComponentSize) {
     });
 
     selector(`.radio.-${size} .radio-label::after`, {
-        maskSize: [ref(checkmarkWidth), ref(checkmarkHeight)]
+        maskSize: [ref(circleWidth), ref(circleHeight)]
     });
 }
 

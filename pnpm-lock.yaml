@@ -612,9 +612,82 @@ importers:
 
   packages/components/checkbox:
     dependencies:
-      '@inkline/component-render-resolver':
+      '@inkline/component-dynamic-renderer':
         specifier: workspace:*
-        version: link:../render-resolver
+        version: link:../dynamic-renderer
+      '@inkline/composables':
+        specifier: workspace:*
+        version: link:../../composables
+      '@inkline/core':
+        specifier: workspace:*
+        version: link:../../core
+      '@inkline/theme':
+        specifier: workspace:*
+        version: link:../../theme
+      '@inkline/utils':
+        specifier: workspace:*
+        version: link:../../utils
+      '@inkline/validation':
+        specifier: workspace:*
+        version: link:../../validation
+      '@inkline/vue':
+        specifier: workspace:*
+        version: link:../../plugin/vue
+    devDependencies:
+      '@inkline/config':
+        specifier: workspace:*
+        version: link:../../config
+      '@inkline/devtools':
+        specifier: workspace:*
+        version: link:../../tooling/devtools
+      '@inkline/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@inkline/postcss-config':
+        specifier: workspace:*
+        version: link:../../tooling/postcss-config
+      '@inkline/test-utils':
+        specifier: workspace:*
+        version: link:../../tooling/test-utils
+      '@inkline/types':
+        specifier: workspace:*
+        version: link:../../types
+      '@inkline/vite-component-config':
+        specifier: workspace:*
+        version: link:../../tooling/vite-component-config
+      '@testing-library/jest-dom':
+        specifier: 'catalog:'
+        version: 6.5.0
+      '@testing-library/vue':
+        specifier: 'catalog:'
+        version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
+      eslint:
+        specifier: 'catalog:'
+        version: 9.11.1(jiti@2.3.3)
+      tsup:
+        specifier: 'catalog:'
+        version: 8.3.0(@microsoft/api-extractor@7.47.7(@types/node@20.14.9))(jiti@2.3.3)(postcss@8.4.47)(tsx@4.19.1)(typescript@5.6.2)(yaml@2.5.1)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.6.2
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
+      vitest:
+        specifier: 'catalog:'
+        version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.8(typescript@5.6.2)
+      vue-tsc:
+        specifier: 'catalog:'
+        version: 2.1.6(typescript@5.6.2)
+
+  packages/components/dynamic-renderer:
+    dependencies:
       '@inkline/composables':
         specifier: workspace:*
         version: link:../../composables
@@ -1518,82 +1591,9 @@ importers:
 
   packages/components/radio:
     dependencies:
-      '@inkline/component-render-resolver':
+      '@inkline/component-dynamic-renderer':
         specifier: workspace:*
-        version: link:../render-resolver
-      '@inkline/composables':
-        specifier: workspace:*
-        version: link:../../composables
-      '@inkline/core':
-        specifier: workspace:*
-        version: link:../../core
-      '@inkline/theme':
-        specifier: workspace:*
-        version: link:../../theme
-      '@inkline/utils':
-        specifier: workspace:*
-        version: link:../../utils
-      '@inkline/validation':
-        specifier: workspace:*
-        version: link:../../validation
-      '@inkline/vue':
-        specifier: workspace:*
-        version: link:../../plugin/vue
-    devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../config
-      '@inkline/devtools':
-        specifier: workspace:*
-        version: link:../../tooling/devtools
-      '@inkline/eslint-config':
-        specifier: workspace:*
-        version: link:../../tooling/eslint-config
-      '@inkline/postcss-config':
-        specifier: workspace:*
-        version: link:../../tooling/postcss-config
-      '@inkline/test-utils':
-        specifier: workspace:*
-        version: link:../../tooling/test-utils
-      '@inkline/types':
-        specifier: workspace:*
-        version: link:../../types
-      '@inkline/vite-component-config':
-        specifier: workspace:*
-        version: link:../../tooling/vite-component-config
-      '@testing-library/jest-dom':
-        specifier: 'catalog:'
-        version: 6.5.0
-      '@testing-library/vue':
-        specifier: 'catalog:'
-        version: 8.1.0(@vue/compiler-sfc@3.5.10)(vue@3.5.8(typescript@5.6.2))
-      '@vitest/coverage-v8':
-        specifier: 'catalog:'
-        version: 2.1.1(vitest@2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1))
-      eslint:
-        specifier: 'catalog:'
-        version: 9.11.1(jiti@2.3.3)
-      tsup:
-        specifier: 'catalog:'
-        version: 8.3.0(@microsoft/api-extractor@7.47.7(@types/node@20.14.9))(jiti@2.3.3)(postcss@8.4.47)(tsx@4.19.1)(typescript@5.6.2)(yaml@2.5.1)
-      typescript:
-        specifier: 'catalog:'
-        version: 5.6.2
-      vite:
-        specifier: 'catalog:'
-        version: 5.4.7(@types/node@20.14.9)(sass@1.77.6)(terser@5.31.1)
-      vitest:
-        specifier: 'catalog:'
-        version: 2.1.1(@types/node@20.14.9)(jsdom@25.0.1)(sass@1.77.6)(terser@5.31.1)
-      vue:
-        specifier: 'catalog:'
-        version: 3.5.8(typescript@5.6.2)
-      vue-tsc:
-        specifier: 'catalog:'
-        version: 2.1.6(typescript@5.6.2)
-
-  packages/components/render-resolver:
-    dependencies:
+        version: link:../dynamic-renderer
       '@inkline/composables':
         specifier: workspace:*
         version: link:../../composables

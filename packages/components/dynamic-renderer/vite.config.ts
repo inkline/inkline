@@ -1,3 +1,3 @@
 import { defineComponentConfig } from '@inkline/vite-component-config';
 
-export default defineComponentConfig('render-resolver');
+export default defineComponentConfig('dynamic-renderer');

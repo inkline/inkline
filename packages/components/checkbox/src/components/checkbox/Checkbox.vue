@@ -9,13 +9,13 @@ import {
 } from '@inkline/composables';
 import { CheckboxGroupKey, FormStateKeys } from '@inkline/types';
 import type { CheckboxGroupOption } from '@inkline/types';
-import { RenderResolver } from '@inkline/component-render-resolver';
+import { DynamicRenderer } from '@inkline/component-dynamic-renderer';
 
 const componentName = 'Checkbox';
 
 export default defineComponent({
     name: componentName,
-    components: { RenderResolver },
+    components: { DynamicRenderer },
     inheritAttrs: false,
     props: {
         /**
@@ -308,7 +308,7 @@ export default defineComponent({
         >
             <!-- @slot default Slot for default checkbox label -->
             <slot>
-                <RenderResolver :render="label" :ctx="option" />
+                <DynamicRenderer :render="label" :ctx="option" />
             </slot>
         </label>
     </div>

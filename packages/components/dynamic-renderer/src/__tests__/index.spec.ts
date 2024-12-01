@@ -1,15 +1,15 @@
 import { render } from '@testing-library/vue';
-import { RenderResolver } from '../index';
+import { DynamicRenderer } from '../index';
 import { h, defineComponent, markRaw } from 'vue';
 
-describe('RenderResolver', () => {
+describe('DynamicRenderer', () => {
     it('should handle render function', () => {
         const props = {
             render: (ctx: { text: string }) => h('div', ctx.text),
             ctx: { text: 'Hello, world!' }
         };
 
-        const wrapper = render(RenderResolver, {
+        const wrapper = render(DynamicRenderer, {
             props
         });
 
@@ -29,7 +29,7 @@ describe('RenderResolver', () => {
             }
         });
 
-        const wrapper = render(RenderResolver, {
+        const wrapper = render(DynamicRenderer, {
             props: {
                 render: markRaw(CustomComponent),
                 ctx: { text: 'Hello, object!' }
@@ -41,7 +41,7 @@ describe('RenderResolver', () => {
     });
 
     it('should handle rendering a string with interpolation', () => {
-        const wrapper = render(RenderResolver, {
+        const wrapper = render(DynamicRenderer, {
             props: {
                 render: 'Hello, {{name}}!',
                 ctx: { name: 'John' }
@@ -53,7 +53,7 @@ describe('RenderResolver', () => {
     });
 
     it('should handle rendering a number', () => {
-        const wrapper = render(RenderResolver, {
+        const wrapper = render(DynamicRenderer, {
             props: {
                 render: 42
             }
@@ -64,7 +64,7 @@ describe('RenderResolver', () => {
     });
 
     it('should handle rendering a boolean', () => {
-        const wrapper = render(RenderResolver, {
+        const wrapper = render(DynamicRenderer, {
             props: {
                 render: true
             }
@@ -75,7 +75,7 @@ describe('RenderResolver', () => {
     });
 
     it('should render inside specified tag', () => {
-        const { container } = render(RenderResolver, {
+        const { container } = render(DynamicRenderer, {
             props: {
                 tag: 'span',
                 render: 'Just a text'

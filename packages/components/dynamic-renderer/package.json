@@ -1,5 +1,5 @@
 {
-    "name": "@inkline/component-render-resolver",
+    "name": "@inkline/component-dynamic-renderer",
     "version": "1.0.0",
     "type": "module",
     "scripts": {
@@ -45,14 +45,14 @@
         "LICENSE",
         "README.md"
     ],
-    "types": "./dist/render-resolver.d.ts",
-    "main": "./dist/render-resolver.umd.cjs",
-    "module": "./dist/render-resolver.js",
+    "types": "./dist/dynamic-renderer.d.ts",
+    "main": "./dist/dynamic-renderer.umd.cjs",
+    "module": "./dist/dynamic-renderer.js",
     "exports": {
         ".": {
-            "types": "./dist/render-resolver.d.ts",
-            "import": "./dist/render-resolver.js",
-            "require": "./dist/render-resolver.umd.cjs"
+            "types": "./dist/dynamic-renderer.d.ts",
+            "import": "./dist/dynamic-renderer.js",
+            "require": "./dist/dynamic-renderer.umd.cjs"
         },
         "./*": "./*"
     },
