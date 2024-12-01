@@ -1,21 +1,21 @@
-export function clone(source: any): any {
+export function clone<T>(source: T): T {
     if (Array.isArray(source)) {
-        const target: any = source.slice().map(clone);
-        const targetKeys = Object.keys(target);
+        const target = source.slice().map(clone) as T;
+        const targetKeys = Object.keys(target as any[]);
 
         Object.keys(source)
             .filter((key) => !targetKeys.includes(key))
             .forEach((key) => {
-                target[key] = source[key as any];
+                target[key as keyof T] = source[key as keyof T];
             });
 
         return target;
-    } else if (typeof source === 'object') {
-        return Object.keys(source).reduce((acc: any, key) => {
-            acc[key] = clone(source[key]);
+    } else if (typeof source === 'object' && source !== null) {
+        return Object.keys(source).reduce<T>((acc, key) => {
+            acc[key as keyof T] = clone(source[key as keyof T]);
 
             return acc;
-        }, {});
+        }, {} as T);
     }
 
     return source;

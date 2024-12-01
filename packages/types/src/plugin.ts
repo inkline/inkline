@@ -52,6 +52,14 @@ export type UserOptions = {
     };
 
     /**
+     * Modal
+     */
+    modal?: {
+        color?: string;
+        size?: string;
+    };
+
+    /**
      * Routing
      */
     router?: {

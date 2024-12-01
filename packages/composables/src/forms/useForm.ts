@@ -1,10 +1,10 @@
 import { computed, Ref, ref } from 'vue';
 import { createSchema, serializeSchema, validateSchema } from '@inkline/validation';
-import { Form, FormSchema } from '@inkline/types';
+import { Form, FormSchema, ResolvedFormSchema } from '@inkline/types';
 
 export function useForm<T extends Form = Form>(formSchema: FormSchema<T>) {
     const resolvedSchema = createSchema<T>(formSchema);
-    const schema = ref(resolvedSchema) as Ref<typeof resolvedSchema>;
+    const schema = ref(resolvedSchema) as Ref<ResolvedFormSchema<T>>;
     const form = computed(() => serializeSchema<T>(schema.value));
 
     async function validate() {

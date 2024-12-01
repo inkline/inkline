@@ -9,6 +9,7 @@ import { FormGroup } from '@inkline/component-form-group';
 import { Icon } from '@inkline/component-icon';
 import { Input } from '@inkline/component-input';
 import { Loader } from '@inkline/component-loader';
+import { Modal, ModalContainer } from '@inkline/component-modal';
 import { Popover } from '@inkline/component-popover';
 import { Popup } from '@inkline/component-popup';
 import { Toast, ToastContainer } from '@inkline/component-toast';
@@ -26,6 +27,8 @@ export const components: Record<string, Component> = {
     Icon,
     Input,
     Loader,
+    Modal,
+    ModalContainer,
     Popover,
     Popup,
     Toast,

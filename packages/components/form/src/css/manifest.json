@@ -1,0 +1,20 @@
+{
+    "default": {
+        "__type": "theme",
+        "__name": "default",
+        "__keys": {
+            "variables": {},
+            "selectors": {}
+        },
+        "variables": {},
+        "selectors": [
+            {
+                "__type": "selector",
+                "__name": ".form",
+                "__value": {
+                    "position": "relative"
+                }
+            }
+        ]
+    }
+}

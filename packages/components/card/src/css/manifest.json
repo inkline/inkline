@@ -10941,7 +10941,6 @@
         },
         "selectors": [
             {
-                "__id": "LPLyzU4gzxpNW4wHMKyFn",
                 "__type": "selector",
                 "__name": ".card",
                 "__value": {
@@ -10954,7 +10953,6 @@
                 }
             },
             {
-                "__id": "QQop1hiX2MpumcmByu2t2",
                 "__type": "selector",
                 "__name": ".card",
                 "__value": {
@@ -10973,7 +10971,6 @@
                 }
             },
             {
-                "__id": "2qIF0zdeadYyRfYUOgB5L",
                 "__type": "selector",
                 "__name": ".card-header, .card-body, .card-footer",
                 "__value": {
@@ -11012,7 +11009,6 @@
                 }
             },
             {
-                "__id": "YtqOzb5OL7u9lbjCqVoH-",
                 "__type": "selector",
                 "__name": ".card-header + .card-body",
                 "__value": {
@@ -11020,7 +11016,6 @@
                 }
             },
             {
-                "__id": "S1lAFL7rASYhu13jdHnE7",
                 "__type": "selector",
                 "__name": ".card-body:has(+ .card-footer)",
                 "__value": {
@@ -11028,7 +11023,6 @@
                 }
             },
             {
-                "__id": "vP_S0ao5mPExUD14OGYLy",
                 "__type": "selector",
                 "__name": ".card > *:first-child",
                 "__value": {
@@ -11043,7 +11037,6 @@
                 }
             },
             {
-                "__id": "2GrRV6QJiH-PPp4SYF8lK",
                 "__type": "selector",
                 "__name": ".card > *:last-child",
                 "__value": {
@@ -11058,7 +11051,6 @@
                 }
             },
             {
-                "__id": "lBlZ9SijstehM834IcbpR",
                 "__type": "selector",
                 "__name": ".card.-sm",
                 "__value": {
@@ -11069,7 +11061,6 @@
                 }
             },
             {
-                "__id": "gqDQA--QOcVJ8ZtFnS8lE",
                 "__type": "selector",
                 "__name": ".card.-sm .card-header, .card.-sm .card-body, .card.-sm .card-footer",
                 "__value": {
@@ -11098,7 +11089,6 @@
                 }
             },
             {
-                "__id": "-Vis1JmeuMyLl-Y6JVMPd",
                 "__type": "selector",
                 "__name": ".card.-sm > *:first-child",
                 "__value": {
@@ -11113,7 +11103,6 @@
                 }
             },
             {
-                "__id": "TO7onpEYd1UbP5kcia2NG",
                 "__type": "selector",
                 "__name": ".card.-sm > *:last-child",
                 "__value": {
@@ -11128,7 +11117,6 @@
                 }
             },
             {
-                "__id": "zwBy2e8OiSRidt9XJ2TO3",
                 "__type": "selector",
                 "__name": ".card.-md",
                 "__value": {
@@ -11139,7 +11127,6 @@
                 }
             },
             {
-                "__id": "blWnoHYAniYfGSmTC4wOH",
                 "__type": "selector",
                 "__name": ".card.-md .card-header, .card.-md .card-body, .card.-md .card-footer",
                 "__value": {
@@ -11168,7 +11155,6 @@
                 }
             },
             {
-                "__id": "eW_kYGCVxng53_nu_9S5A",
                 "__type": "selector",
                 "__name": ".card.-md > *:first-child",
                 "__value": {
@@ -11183,7 +11169,6 @@
                 }
             },
             {
-                "__id": "0d3HQlO1AlImcMxu3DAvm",
                 "__type": "selector",
                 "__name": ".card.-md > *:last-child",
                 "__value": {
@@ -11198,7 +11183,6 @@
                 }
             },
             {
-                "__id": "oVsgBdgMTeVUki25cnJbA",
                 "__type": "selector",
                 "__name": ".card.-lg",
                 "__value": {
@@ -11209,7 +11193,6 @@
                 }
             },
             {
-                "__id": "ksm8G-8NPT4ORtBnkuewT",
                 "__type": "selector",
                 "__name": ".card.-lg .card-header, .card.-lg .card-body, .card.-lg .card-footer",
                 "__value": {
@@ -11238,7 +11221,6 @@
                 }
             },
             {
-                "__id": "xhZwvFJNo-XNAcYvl7YTK",
                 "__type": "selector",
                 "__name": ".card.-lg > *:first-child",
                 "__value": {
@@ -11253,7 +11235,6 @@
                 }
             },
             {
-                "__id": "K2Bso-ThLJvgbFLoB08Od",
                 "__type": "selector",
                 "__name": ".card.-lg > *:last-child",
                 "__value": {
@@ -11268,7 +11249,6 @@
                 }
             },
             {
-                "__id": "2G3q2HvmCrQPGDwzctDf8",
                 "__type": "selector",
                 "__name": ".card.-primary .card-header, .card.-primary .card-body, .card.-primary .card-footer",
                 "__value": {
@@ -11287,7 +11267,6 @@
                 }
             },
             {
-                "__id": "roMwNC9bylu6MKIX7KVkI",
                 "__type": "selector",
                 "__name": ".card.-secondary .card-header, .card.-secondary .card-body, .card.-secondary .card-footer",
                 "__value": {
@@ -11306,7 +11285,6 @@
                 }
             },
             {
-                "__id": "5H2WrMjA0dQOfMKfmHZtM",
                 "__type": "selector",
                 "__name": ".card.-light .card-header, .card.-light .card-body, .card.-light .card-footer",
                 "__value": {
@@ -11325,7 +11303,6 @@
                 }
             },
             {
-                "__id": "FM0KHwn7ie1JzWWahNmBD",
                 "__type": "selector",
                 "__name": ".card.-dark .card-header, .card.-dark .card-body, .card.-dark .card-footer",
                 "__value": {
@@ -11344,7 +11321,6 @@
                 }
             },
             {
-                "__id": "Ipx4gtaGz3DvmKNZwIaqB",
                 "__type": "selector",
                 "__name": ".card.-info .card-header, .card.-info .card-body, .card.-info .card-footer",
                 "__value": {
@@ -11363,7 +11339,6 @@
                 }
             },
             {
-                "__id": "7CUssxU9EraU4KOOA_2bF",
                 "__type": "selector",
                 "__name": ".card.-success .card-header, .card.-success .card-body, .card.-success .card-footer",
                 "__value": {
@@ -11382,7 +11357,6 @@
                 }
             },
             {
-                "__id": "LQ1iYyHv1yH0ugkSja1zH",
                 "__type": "selector",
                 "__name": ".card.-warning .card-header, .card.-warning .card-body, .card.-warning .card-footer",
                 "__value": {
@@ -11401,7 +11375,6 @@
                 }
             },
             {
-                "__id": "o0T8lqwuAUgPKzkPodSf8",
                 "__type": "selector",
                 "__name": ".card.-danger .card-header, .card.-danger .card-body, .card.-danger .card-footer",
                 "__value": {

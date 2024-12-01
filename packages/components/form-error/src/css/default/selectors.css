@@ -1,0 +1,15 @@
+.form-error {
+    position: relative;
+    padding: 0;
+    list-style: none;
+}
+
+.form-error li {
+    margin: 0;
+}
+
+.form-error {
+    color: var(--form-error--color);
+    font-size: var(--form-error--font-size);
+    margin: var(--form-error--margin);
+}

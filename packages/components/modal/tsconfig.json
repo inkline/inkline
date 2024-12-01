@@ -6,6 +6,9 @@
             "vite/client",
             "vitest/globals"
         ],
+        "paths": {
+            "inkline": ["./src/__stubs__/inkline.ts"],
+        }
     },
     "include": [
         "src/**/*.ts",

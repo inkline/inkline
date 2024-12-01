@@ -1,35 +1,35 @@
 import { ValidateOnEvent } from '@inkline/types';
-import { computed, Ref } from 'vue';
+import { computed, MaybeRef, unref } from 'vue';
 import { useOptions } from '../useOptions';
 
 export type UseFormValidationEnabledOptions = {
-    validateOn: Ref<ValidateOnEvent[] | ValidateOnEvent | undefined>;
-    shouldValidateOverride: Ref<boolean>;
+    validateOn: MaybeRef<ValidateOnEvent[] | ValidateOnEvent | undefined>;
+    shouldValidateOverride: MaybeRef<boolean>;
 };
 
 export const validateOnEvents: ValidateOnEvent[] = ['blur', 'input', 'change', 'submit'];
 
-export function useFormValidationEnabled({
-    validateOn,
-    shouldValidateOverride
-}: UseFormValidationEnabledOptions) {
+export function useFormValidationEnabled(formOptions: UseFormValidationEnabledOptions) {
     const { options } = useOptions();
 
     /**
      * Determines if form event should trigger validation
      */
     const shouldValidate = computed<Record<string, ValidateOnEvent>>(() => {
-        if (!shouldValidateOverride.value) {
+        const shouldValidateOverride = unref(formOptions.shouldValidateOverride);
+        const validateOn = unref(formOptions.validateOn);
+
+        if (!shouldValidateOverride) {
             return {};
         }
 
         const events: ValidateOnEvent[] = [];
 
-        if (validateOn.value) {
-            if (Array.isArray(validateOn.value)) {
-                events.push(...validateOn.value);
+        if (validateOn) {
+            if (Array.isArray(validateOn)) {
+                events.push(...validateOn);
             } else {
-                events.push(validateOn.value);
+                events.push(validateOn);
             }
         } else if (options.value.validation.validateOn) {
             events.push(...options.value.validation.validateOn);

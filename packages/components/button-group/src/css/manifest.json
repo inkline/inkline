@@ -127,7 +127,6 @@
         },
         "selectors": [
             {
-                "__id": "0jP_vRSYGCQiKMJ68lrGd",
                 "__type": "selector",
                 "__name": ".button-group",
                 "__value": {
@@ -138,7 +137,6 @@
                 }
             },
             {
-                "__id": "ckkS28pQZ-q719gdDMn2k",
                 "__type": "selector",
                 "__name": ".button-group .button, .button-group .button-group",
                 "__value": {
@@ -146,7 +144,6 @@
                 }
             },
             {
-                "__id": "o0QWdE0JI9A2Bn9e5am8a",
                 "__type": "selector",
                 "__name": ".button-group.-horizontal > .button:not(:last-child), .button-group.-horizontal > .button-group:has(+ .button-group) .button:last-child, .button-group.-horizontal > .button-group:has(+ .button) .button:last-child",
                 "__value": {
@@ -156,7 +153,6 @@
                 }
             },
             {
-                "__id": "l05J0hVq2RUHxdeWLkIG3",
                 "__type": "selector",
                 "__name": ".button-group.-horizontal > .button:not(:first-child), .button-group.-horizontal > .button-group + .button-group .button:first-child, .button-group.-horizontal > .button + .button-group .button:first-child",
                 "__value": {
@@ -165,7 +161,6 @@
                 }
             },
             {
-                "__id": "TNmBl-Wxi0zEdn2TcV61J",
                 "__type": "selector",
                 "__name": ".button-group.-vertical > .button:not(:last-child), .button-group.-vertical > .button-group:has(+ .button-group) .button:last-child, .button-group.-vertical > .button-group:has(+ .button) .button:last-child",
                 "__value": {
@@ -175,7 +170,6 @@
                 }
             },
             {
-                "__id": "keMz-0SWDskmogF9-65Vk",
                 "__type": "selector",
                 "__name": ".button-group.-vertical > .button:not(:first-child), .button-group.-vertical > .button-group + .button-group .button:first-child, .button-group.-vertical > .button + .button-group .button:first-child",
                 "__value": {
@@ -184,7 +178,6 @@
                 }
             },
             {
-                "__id": "A_UYsAgdCBcUgFhBEEbID",
                 "__type": "selector",
                 "__name": ".button-group.-block",
                 "__value": {
@@ -193,7 +186,6 @@
                 }
             },
             {
-                "__id": "B9NNY1-gcuozh2wlgQR8D",
                 "__type": "selector",
                 "__name": ".button-group.-block > .button",
                 "__value": {
@@ -201,7 +193,6 @@
                 }
             },
             {
-                "__id": "UC4MWsGfCJTeQtlNRSKgN",
                 "__type": "selector",
                 "__name": ".button-group.-vertical",
                 "__value": {
@@ -211,7 +202,6 @@
                 }
             },
             {
-                "__id": "ONXZWkGMLpoDL56MZDLGY",
                 "__type": "selector",
                 "__name": ".button-group.-vertical .button, .button-group.-vertical .button-group, .button-group.-vertical [class$=\"-wrapper\"]",
                 "__value": {
@@ -219,7 +209,6 @@
                 }
             },
             {
-                "__id": "y55PA10tVRq_vPLv_Jt46",
                 "__type": "selector",
                 "__name": ".button-group",
                 "__value": {

@@ -43,9 +43,9 @@ describe('Helpers', () => {
 
             it('should add array custom fields', () => {
                 const object: any[] = [];
-                (object as any).field = 'example';
+                (object as unknown as Record<string, unknown>).field = 'example';
                 const cloned = clone(object);
-                expect(cloned.field).toEqual((object as any).field);
+                expect((cloned as unknown as Record<string, unknown>).field).toEqual((object as unknown as Record<string, unknown>).field);
             });
         });
     });

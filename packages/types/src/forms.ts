@@ -28,12 +28,13 @@ export type FormValidatorMessage = string | FormValidatorMessageFn;
 export interface FormValidator {
     name: string;
     message?: FormValidatorMessage;
+
     [key: string]: any;
 }
 
 export type FormField<V> = {
     value?: V;
-    validateOn?: ValidateOnEvent;
+    validateOn?: ValidateOnEvent[] | ValidateOnEvent;
     validators?: Array<FormValidator | string>;
 };
 
@@ -98,5 +99,6 @@ export interface FormOption {
     value?: FormValue;
     disabled?: boolean;
     readonly?: boolean;
+
     [key: string]: any;
 }

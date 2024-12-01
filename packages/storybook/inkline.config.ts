@@ -9,6 +9,7 @@ import { useFormGroupTheme } from '@inkline/component-form-group/theme';
 import { useIconTheme } from '@inkline/component-icon/theme';
 import { useInputTheme } from '@inkline/component-input/theme';
 import { useLoaderTheme } from '@inkline/component-loader/theme';
+import { useModalTheme, useModalContainerTheme } from '@inkline/component-modal/theme';
 import { usePopoverTheme } from '@inkline/component-popover/theme';
 import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast/theme';
 import { useTooltipTheme } from '@inkline/component-tooltip/theme';
@@ -26,6 +27,8 @@ export default defineConfig(() => {
     useIconTheme();
     useInputTheme();
     useLoaderTheme();
+    useModalTheme();
+    useModalContainerTheme();
     usePopoverTheme();
     useToastTheme();
     useToastContainerTheme();

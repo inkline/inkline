@@ -19,6 +19,7 @@
             "@inkline/component-icon/*": ["../components/icon/src/*"],
             "@inkline/component-input/*": ["../components/input/src/*"],
             "@inkline/component-loader/*": ["../components/loader/src/*"],
+            "@inkline/component-modal/*": ["../components/modal/src/*"],
             "@inkline/component-popover/*": ["../components/popover/src/*"],
             "@inkline/component-popup/*": ["../components/popup/src/*"],
             "@inkline/component-toast/*": ["../components/toast/src/*"],

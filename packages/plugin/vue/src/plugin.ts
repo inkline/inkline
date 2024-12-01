@@ -10,6 +10,7 @@ export const defaultOptions: InklineOptions = {
         definitions: defaultIconDefinitions
     },
     toast: {},
+    modal: {},
     router: {
         component: 'RouterLink'
     },

@@ -12,6 +12,7 @@ import {
     useOptions,
     globalComponentsAddon,
     colorModeAddon,
+    modalAddon,
     toastAddon
 } from 'inkline';
 import { RouterLink } from './mocks';
@@ -46,7 +47,8 @@ export const withInklineTheme = ({
 
                 return {};
             },
-            template: `<story />`
+            template: `
+                <story />`
         };
     };
 
@@ -55,7 +57,7 @@ export const withInklineTheme = ({
 
 setup((app) => {
     app.use(Inkline, {
-        addons: [colorModeAddon(), globalComponentsAddon(components), toastAddon()],
+        addons: [colorModeAddon(), globalComponentsAddon(components), modalAddon(), toastAddon()],
         routerComponent: markRaw(RouterLink)
     });
 });

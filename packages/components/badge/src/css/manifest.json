@@ -11067,7 +11067,6 @@
         },
         "selectors": [
             {
-                "__id": "du-RQlOerKYPDbMf0JbHO",
                 "__type": "selector",
                 "__name": ".badge",
                 "__value": {
@@ -11077,7 +11076,6 @@
                 }
             },
             {
-                "__id": "vOV0X4Uj6QQIQfXVrWH8g",
                 "__type": "selector",
                 "__name": "a:hover .badge, a:focus .badge",
                 "__value": {
@@ -11085,7 +11083,6 @@
                 }
             },
             {
-                "__id": "M2WJRjhgyGarLgJlkaT1Z",
                 "__type": "selector",
                 "__name": ".badge",
                 "__value": {
@@ -11144,7 +11141,6 @@
                 }
             },
             {
-                "__id": "gmPGb9PyJubbaDHCXcBdU",
                 "__type": "selector",
                 "__name": ".badge.-sm",
                 "__value": {
@@ -11191,7 +11187,6 @@
                 }
             },
             {
-                "__id": "2os37g-TG1J2oNt5qtVVD",
                 "__type": "selector",
                 "__name": ".badge.-md",
                 "__value": {
@@ -11238,7 +11233,6 @@
                 }
             },
             {
-                "__id": "Fxzsmb7mvR0rPBg3Ius0H",
                 "__type": "selector",
                 "__name": ".badge.-lg",
                 "__value": {
@@ -11285,7 +11279,6 @@
                 }
             },
             {
-                "__id": "_iEFGFHyMzfw3V0pXPRO2",
                 "__type": "selector",
                 "__name": ".badge.-primary",
                 "__value": {
@@ -11304,7 +11297,6 @@
                 }
             },
             {
-                "__id": "BLd5GtjdPTaVYaRvaoEsn",
                 "__type": "selector",
                 "__name": ".badge.-secondary",
                 "__value": {
@@ -11323,7 +11315,6 @@
                 }
             },
             {
-                "__id": "z61rzgXZ08rpH9zJHFqgx",
                 "__type": "selector",
                 "__name": ".badge.-light",
                 "__value": {
@@ -11342,7 +11333,6 @@
                 }
             },
             {
-                "__id": "3WOTAReQpglJRP7GuKfgg",
                 "__type": "selector",
                 "__name": ".badge.-dark",
                 "__value": {
@@ -11361,7 +11351,6 @@
                 }
             },
             {
-                "__id": "97e7ZaBW7AgbZlsvG5AKG",
                 "__type": "selector",
                 "__name": ".badge.-info",
                 "__value": {
@@ -11380,7 +11369,6 @@
                 }
             },
             {
-                "__id": "U5Zpww0eMaNRpAjrOIJsv",
                 "__type": "selector",
                 "__name": ".badge.-success",
                 "__value": {
@@ -11399,7 +11387,6 @@
                 }
             },
             {
-                "__id": "8E9NAhvzP5s9RELzXDIlN",
                 "__type": "selector",
                 "__name": ".badge.-warning",
                 "__value": {
@@ -11418,7 +11405,6 @@
                 }
             },
             {
-                "__id": "jdPuFnG7Xc1mJ65wtZGwt",
                 "__type": "selector",
                 "__name": ".badge.-danger",
                 "__value": {
@@ -11437,7 +11423,6 @@
                 }
             },
             {
-                "__id": "NOja2X51MfUFuyHYJ599z",
                 "__type": "selector",
                 "__name": ".badge.-pill",
                 "__value": {

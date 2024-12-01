@@ -2158,7 +2158,6 @@
         },
         "selectors": [
             {
-                "__id": "UyFhBC7wvpS-ZtJS96Hm9",
                 "__type": "selector",
                 "__name": ".loader",
                 "__value": {
@@ -2175,7 +2174,6 @@
                 }
             },
             {
-                "__id": "P6VE-U0VkmVzc0X4DadkU",
                 "__type": "selector",
                 "__name": ".loader::before",
                 "__value": {
@@ -2185,7 +2183,6 @@
                 }
             },
             {
-                "__id": "WFdmb_nZCKrVSdXP2-1Ky",
                 "__type": "selector",
                 "__name": ".loader-text, .loader > svg",
                 "__value": {
@@ -2197,7 +2194,6 @@
                 }
             },
             {
-                "__id": "Tf9d54hi4Yqf8Ji_lWSal",
                 "__type": "selector",
                 "__name": ".loader-text",
                 "__value": {
@@ -2207,7 +2203,6 @@
                 }
             },
             {
-                "__id": "Op29-fXSJ-4wlLaXH_uH7",
                 "__type": "selector",
                 "__name": ".loader.-auto",
                 "__value": {
@@ -2216,7 +2211,6 @@
                 }
             },
             {
-                "__id": "QrpMUbvaWx8l_iw-kB5jx",
                 "__type": "selector",
                 "__name": ".loader > svg",
                 "__value": {
@@ -2237,7 +2231,6 @@
                 }
             },
             {
-                "__id": "gmKPjewH2gKC2Q2koDd9g",
                 "__type": "selector",
                 "__name": ".loader > svg > circle",
                 "__value": {
@@ -2264,13 +2257,11 @@
                 }
             },
             {
-                "__id": "CgrZ7LtWchdrdgnAgp-Oh",
                 "__type": "media",
                 "__name": "keyframes",
                 "__identifier": "loader-rotate",
                 "__value": [
                     {
-                        "__id": "Q8-wyD4uiYGkEDEjqe2My",
                         "__type": "selector",
                         "__name": "100%",
                         "__value": {
@@ -2280,13 +2271,11 @@
                 ]
             },
             {
-                "__id": "87lVqXpBr18D1jT-QYQom",
                 "__type": "media",
                 "__name": "keyframes",
                 "__identifier": "loader-dash",
                 "__value": [
                     {
-                        "__id": "7ezsuM1tG2ur7ZKYgTMmG",
                         "__type": "selector",
                         "__name": "0%",
                         "__value": {
@@ -2295,7 +2284,6 @@
                         }
                     },
                     {
-                        "__id": "uO4EZ5ylc3tr-vc2aZbMR",
                         "__type": "selector",
                         "__name": "50%",
                         "__value": {
@@ -2304,7 +2292,6 @@
                         }
                     },
                     {
-                        "__id": "yMeK6BOqyKbsEPyReYX3a",
                         "__type": "selector",
                         "__name": "100%",
                         "__value": {
@@ -2315,7 +2302,6 @@
                 ]
             },
             {
-                "__id": "2WkdXF_QQHgCtft4BKvm2",
                 "__type": "selector",
                 "__name": ".loader.-sm",
                 "__value": {
@@ -2330,7 +2316,6 @@
                 }
             },
             {
-                "__id": "JSap31oFDjqbKNpJizY5D",
                 "__type": "selector",
                 "__name": ".loader.-md",
                 "__value": {
@@ -2345,7 +2330,6 @@
                 }
             },
             {
-                "__id": "23ullxn6-UWuvCfYHTjWR",
                 "__type": "selector",
                 "__name": ".loader.-lg",
                 "__value": {
@@ -2360,7 +2344,6 @@
                 }
             },
             {
-                "__id": "_Hi0owmbbJvPrGTFHXbRE",
                 "__type": "selector",
                 "__name": ".loader.-primary > svg > circle",
                 "__value": {
@@ -2371,7 +2354,6 @@
                 }
             },
             {
-                "__id": "qLVuVU85UpStUs4qxW50I",
                 "__type": "selector",
                 "__name": ".loader.-light > svg > circle",
                 "__value": {
@@ -2382,7 +2364,6 @@
                 }
             },
             {
-                "__id": "UQjV65lBqMQJQOGZJ_j8Q",
                 "__type": "selector",
                 "__name": ".loader.-dark > svg > circle",
                 "__value": {

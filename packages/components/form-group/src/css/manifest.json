@@ -610,7 +610,6 @@
         },
         "selectors": [
             {
-                "__id": "LYPoomGd2oeXp5ArRSKZB",
                 "__type": "selector",
                 "__name": ".form-group",
                 "__value": {
@@ -621,7 +620,6 @@
                 }
             },
             {
-                "__id": "WFzU2CkXuMSdk80uboesO",
                 "__type": "selector",
                 "__name": ".form-group.-inline",
                 "__value": {
@@ -629,7 +627,6 @@
                 }
             },
             {
-                "__id": "UdSsEYa6F-af2j72AEeTb",
                 "__type": "selector",
                 "__name": ".form-group.-inline > .form-input-group",
                 "__value": {
@@ -637,7 +634,6 @@
                 }
             },
             {
-                "__id": "gpE1trmW3bnyb3qS1vWw1",
                 "__type": "selector",
                 "__name": ".form-group.-inline > .form-label",
                 "__value": {
@@ -648,7 +644,6 @@
                 }
             },
             {
-                "__id": "aWPGnoZyuHXzxphg2hRa-",
                 "__type": "selector",
                 "__name": ".form-group.-inline > .form-label.-right",
                 "__value": {
@@ -656,7 +651,6 @@
                 }
             },
             {
-                "__id": "AlVTnfLe8PsD5ZXBZIdnL",
                 "__type": "selector",
                 "__name": ".form-group",
                 "__value": {
@@ -667,7 +661,6 @@
                 }
             },
             {
-                "__id": "QC2IeYCfBkPEI-eKNbGPn",
                 "__type": "selector",
                 "__name": ".form-group:last-child",
                 "__value": {

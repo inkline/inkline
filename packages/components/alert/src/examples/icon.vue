@@ -3,12 +3,10 @@
         <template #icon>
             <Icon name="ink:circle" />
         </template>
-        Some quick example text to build on the alert title and make up the bulk of the alert's
-        content.
+        This alert has a custom icon. You can use any icon inside the icon slot.
     </Alert>
 
     <Alert color="info" :icon="false">
-        Some quick example text to build on the alert title and make up the bulk of the alert's
-        content.
+        This alert doesn't have an icon. You can disable the icon by passing false to the icon prop.
     </Alert>
 </template>

@@ -92,7 +92,7 @@ export async function build(userOptions: UserBuildOptions = {}) {
     outputFilePromises.push(
         writeFile(
             resolve(options.outputDir, 'manifest.json'),
-            JSON.stringify(configuration.themes, null, 4)
+            JSON.stringify(configuration.themes, (key, value: unknown) => key === '__id' ? undefined : value, 4)
         )
     );
 

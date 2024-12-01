@@ -8,6 +8,7 @@ import { useFormGroupTheme } from '@inkline/component-form-group';
 import { useIconTheme } from '@inkline/component-icon';
 import { useInputTheme } from '@inkline/component-input';
 import { useLoaderTheme } from '@inkline/component-loader';
+import { useModalTheme, useModalContainerTheme } from '@inkline/component-modal';
 import { usePopoverTheme } from '@inkline/component-popover';
 import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast';
 import { useTooltipTheme } from '@inkline/component-tooltip';
@@ -25,6 +26,8 @@ export function useComponentsTheme() {
     useIconTheme();
     useInputTheme();
     useLoaderTheme();
+    useModalTheme();
+    useModalContainerTheme();
     usePopoverTheme();
     useToastTheme();
     useToastContainerTheme();
