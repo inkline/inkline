@@ -4,12 +4,15 @@ import { useBreadcrumbTheme, useBreadcrumbItemTheme } from '@inkline/component-b
 import { useButtonTheme } from '@inkline/component-button';
 import { useButtonGroupTheme } from '@inkline/component-button-group';
 import { useCardTheme } from '@inkline/component-card';
+import { useCheckboxTheme, useCheckboxGroupTheme } from '@inkline/component-checkbox';
 import { useFormGroupTheme } from '@inkline/component-form-group';
 import { useIconTheme } from '@inkline/component-icon';
 import { useInputTheme } from '@inkline/component-input';
 import { useLoaderTheme } from '@inkline/component-loader';
+import { useMediaTheme } from '@inkline/component-media';
 import { useModalTheme, useModalContainerTheme } from '@inkline/component-modal';
 import { usePopoverTheme } from '@inkline/component-popover';
+import { useRadioTheme, useRadioGroupTheme } from '@inkline/component-radio';
 import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast';
 import { useTooltipTheme } from '@inkline/component-tooltip';
 
@@ -22,13 +25,18 @@ export function useComponentsTheme() {
     useButtonTheme();
     useButtonGroupTheme();
     useCardTheme();
+    useCheckboxTheme();
+    useCheckboxGroupTheme();
     useFormGroupTheme();
     useIconTheme();
     useInputTheme();
     useLoaderTheme();
+    useMediaTheme();
     useModalTheme();
     useModalContainerTheme();
     usePopoverTheme();
+    useRadioTheme();
+    useRadioGroupTheme();
     useToastTheme();
     useToastContainerTheme();
     useTooltipTheme();

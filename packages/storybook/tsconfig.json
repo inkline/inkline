@@ -6,24 +6,69 @@
             "vitest/globals"
         ],
         "paths": {
-            "inkline": ["../inkline/src/index.ts"],
-            "inkline/*": ["../inkline/src/*"],
-            "@inkline/component-*": ["../components/*/src/index.ts"],
-            "@inkline/component-alert/*": ["../components/alert/src/*"],
-            "@inkline/component-badge/*": ["../components/badge/src/*"],
-            "@inkline/component-breadcrumb/*": ["../components/breadcrumb/src/*"],
-            "@inkline/component-button/*": ["../components/button/src/*"],
-            "@inkline/component-button-group/*": ["../components/button-group/src/*"],
-            "@inkline/component-card/*": ["../components/card/src/*"],
-            "@inkline/component-form-group/*": ["../components/form-group/src/*"],
-            "@inkline/component-icon/*": ["../components/icon/src/*"],
-            "@inkline/component-input/*": ["../components/input/src/*"],
-            "@inkline/component-loader/*": ["../components/loader/src/*"],
-            "@inkline/component-modal/*": ["../components/modal/src/*"],
-            "@inkline/component-popover/*": ["../components/popover/src/*"],
-            "@inkline/component-popup/*": ["../components/popup/src/*"],
-            "@inkline/component-toast/*": ["../components/toast/src/*"],
-            "@inkline/component-tooltip/*": ["../components/tooltip/src/*"]
+            "inkline": [
+                "../inkline/src/index.ts"
+            ],
+            "inkline/*": [
+                "../inkline/src/*"
+            ],
+            "@inkline/component-*": [
+                "../components/*/src/index.ts"
+            ],
+            "@inkline/component-alert/*": [
+                "../components/alert/src/*"
+            ],
+            "@inkline/component-badge/*": [
+                "../components/badge/src/*"
+            ],
+            "@inkline/component-breadcrumb/*": [
+                "../components/breadcrumb/src/*"
+            ],
+            "@inkline/component-button/*": [
+                "../components/button/src/*"
+            ],
+            "@inkline/component-button-group/*": [
+                "../components/button-group/src/*"
+            ],
+            "@inkline/component-card/*": [
+                "../components/card/src/*"
+            ],
+            "@inkline/component-checkbox/*": [
+                "../components/checkbox/src/*"
+            ],
+            "@inkline/component-form-group/*": [
+                "../components/form-group/src/*"
+            ],
+            "@inkline/component-icon/*": [
+                "../components/icon/src/*"
+            ],
+            "@inkline/component-input/*": [
+                "../components/input/src/*"
+            ],
+            "@inkline/component-loader/*": [
+                "../components/loader/src/*"
+            ],
+            "@inkline/component-media/*": [
+                "../components/media/src/*"
+            ],
+            "@inkline/component-modal/*": [
+                "../components/modal/src/*"
+            ],
+            "@inkline/component-popover/*": [
+                "../components/popover/src/*"
+            ],
+            "@inkline/component-popup/*": [
+                "../components/popup/src/*"
+            ],
+            "@inkline/component-radio/*": [
+                "../components/radio/src/*"
+            ],
+            "@inkline/component-toast/*": [
+                "../components/toast/src/*"
+            ],
+            "@inkline/component-tooltip/*": [
+                "../components/tooltip/src/*"
+            ]
         }
     },
     "include": [

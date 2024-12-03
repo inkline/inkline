@@ -2,7 +2,7 @@ import { translate } from '@inkline/i18n';
 import type { Form as FormType, FormSchema, ResolvedFormSchema } from '@inkline/types';
 import { uid } from '@inkline/utils';
 import type { VNode } from 'vue';
-import { computed, defineComponent, h, markRaw, unref } from 'vue';
+import { computed, defineComponent, h, markRaw } from 'vue';
 import { useForm } from '@inkline/composables';
 import { useModalBuilder } from './useModalBuilder';
 import { ModalOptions } from '../types';
@@ -12,10 +12,15 @@ import { FormError } from '@inkline/component-form-error';
 import { Button } from '@inkline/component-button';
 import { Input } from '@inkline/component-input';
 
-export function usePrompt<S extends FormType = FormType>() {
+type DefaultPromptFormType = {
+    input: string;
+    [key: string]: string;
+};
+
+export function usePrompt<T extends FormType = DefaultPromptFormType>() {
     const modalService = useModalBuilder();
 
-    return <T extends FormType = S>(
+    return (
         options: {
             title?: string;
             message?: string;
@@ -38,7 +43,17 @@ export function usePrompt<S extends FormType = FormType>() {
                         }
                     } as FormSchema<T>)
             );
+
             const disabled = computed(() => schema.value.invalid || schema.value.pristine);
+
+            const onSubmit = async () => {
+                await validate();
+
+                if (schema.value.valid) {
+                    modalService.hide({ id });
+                    resolve(form.value);
+                }
+            };
 
             modalService.show({
                 id,
@@ -52,7 +67,7 @@ export function usePrompt<S extends FormType = FormType>() {
                         h(
                             Form,
                             {
-                                modelValue: unref(schema),
+                                modelValue: schema as unknown as ResolvedFormSchema<T>,
                                 'onUpdate:modelValue'(value: ResolvedFormSchema<T>) {
                                     schema.value = value;
                                 }
@@ -63,7 +78,12 @@ export function usePrompt<S extends FormType = FormType>() {
                                         h(Input, {
                                             name: 'input',
                                             placeholder: 'Enter a value...',
-                                            ...options.inputProps
+                                            ...options.inputProps,
+                                            onKeydown: async (e: KeyboardEvent) => {
+                                                if (e.key === 'Enter') {
+                                                    await onSubmit();
+                                                }
+                                            }
                                         }),
                                         h(FormError, {
                                             for: 'input'
@@ -96,14 +116,8 @@ export function usePrompt<S extends FormType = FormType>() {
                                         h(
                                             Button,
                                             {
-                                                onClick: async () => {
-                                                    await validate();
-
-                                                    if (schema.value.valid) {
-                                                        modalService.hide({ id });
-                                                        resolve(form.value);
-                                                    }
-                                                },
+                                                onClick: onSubmit,
+                                                type: 'submit',
                                                 disabled: disabled.value,
                                                 color: 'primary',
                                                 ...options.confirmButtonProps

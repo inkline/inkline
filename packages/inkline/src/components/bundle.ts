@@ -5,13 +5,16 @@ import { Breadcrumb, BreadcrumbItem } from '@inkline/component-breadcrumb';
 import { Button } from '@inkline/component-button';
 import { ButtonGroup } from '@inkline/component-button-group';
 import { Card } from '@inkline/component-card';
+import { Checkbox, CheckboxGroup } from '@inkline/component-checkbox';
 import { FormGroup } from '@inkline/component-form-group';
 import { Icon } from '@inkline/component-icon';
 import { Input } from '@inkline/component-input';
 import { Loader } from '@inkline/component-loader';
+import { Media } from '@inkline/component-media';
 import { Modal, ModalContainer } from '@inkline/component-modal';
 import { Popover } from '@inkline/component-popover';
 import { Popup } from '@inkline/component-popup';
+import { Radio, RadioGroup } from '@inkline/component-radio';
 import { Toast, ToastContainer } from '@inkline/component-toast';
 import { Tooltip } from '@inkline/component-tooltip';
 
@@ -23,14 +26,19 @@ export const components: Record<string, Component> = {
     Button,
     ButtonGroup,
     Card,
+    Checkbox,
+    CheckboxGroup,
     FormGroup,
     Icon,
     Input,
     Loader,
+    Media,
     Modal,
     ModalContainer,
     Popover,
     Popup,
+    Radio,
+    RadioGroup,
     Toast,
     ToastContainer,
     Tooltip
