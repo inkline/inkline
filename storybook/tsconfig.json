@@ -13,64 +13,67 @@
                 "../packages/inkline/src/*"
             ],
             "@inkline/component-*": [
-                "../packages/components/*/src/index.ts"
+                "../packages/ui/components/*/src/index.ts"
             ],
-            "@inkline/component-alert/*": [
-                "../packages/components/alert/src/*"
+            "@inkline/component-alert*": [
+                "../packages/ui/components/alert/src*"
             ],
-            "@inkline/component-badge/*": [
-                "../packages/components/badge/src/*"
+            "@inkline/component-badge*": [
+                "../packages/ui/components/badge/src*"
             ],
-            "@inkline/component-breadcrumb/*": [
-                "../packages/components/breadcrumb/src/*"
+            "@inkline/component-breadcrumb*": [
+                "../packages/ui/components/breadcrumb/src*"
             ],
-            "@inkline/component-button/*": [
-                "../packages/components/button/src/*"
+            "@inkline/component-button*": [
+                "../packages/ui/components/button/src*"
             ],
-            "@inkline/component-button-group/*": [
-                "../packages/components/button-group/src/*"
+            "@inkline/component-button-group*": [
+                "../packages/ui/components/button-group/src*"
             ],
-            "@inkline/component-card/*": [
-                "../packages/components/card/src/*"
+            "@inkline/component-card*": [
+                "../packages/ui/components/card/src*"
             ],
-            "@inkline/component-checkbox/*": [
-                "../packages/components/checkbox/src/*"
+            "@inkline/component-checkbox*": [
+                "../packages/ui/components/checkbox/src*"
             ],
-            "@inkline/component-form-group/*": [
-                "../packages/components/form-group/src/*"
+            "@inkline/component-form-group*": [
+                "../packages/ui/components/form-group/src*"
             ],
-            "@inkline/component-icon/*": [
-                "../packages/components/icon/src/*"
+            "@inkline/component-icon*": [
+                "../packages/ui/components/icon/src*"
             ],
-            "@inkline/component-input/*": [
-                "../packages/components/input/src/*"
+            "@inkline/component-input*": [
+                "../packages/ui/components/input/src*"
             ],
-            "@inkline/component-loader/*": [
-                "../packages/components/loader/src/*"
+            "@inkline/component-loader*": [
+                "../packages/ui/components/loader/src*"
             ],
-            "@inkline/component-media/*": [
-                "../packages/components/media/src/*"
+            "@inkline/component-media*": [
+                "../packages/ui/components/media/src*"
             ],
-            "@inkline/component-modal/*": [
-                "../packages/components/modal/src/*"
+            "@inkline/component-modal*": [
+                "../packages/ui/components/modal/src*"
             ],
-            "@inkline/component-popover/*": [
-                "../packages/components/popover/src/*"
+            "@inkline/component-popover*": [
+                "../packages/ui/components/popover/src*"
             ],
-            "@inkline/component-popup/*": [
-                "../packages/components/popup/src/*"
+            "@inkline/component-popup*": [
+                "../packages/ui/components/popup/src*"
             ],
-            "@inkline/component-radio/*": [
-                "../packages/components/radio/src/*"
+            "@inkline/component-radio*": [
+                "../packages/ui/components/radio/src*"
             ],
-            "@inkline/component-textarea/*": [
-                "../packages/components/textarea/src/*"
+            "@inkline/component-textarea*": [
+                "../packages/ui/components/textarea/src*"
             ],
-            "@inkline/component-toast/*": [
-                "../packages/components/toast/src/*"
+            "@inkline/component-toast*": [
+                "../packages/ui/components/toast/src*"
             ],
-            "@inkline/component-tooltip/*": [
-                "../packages/components/tooltip/src/*"
+            "@inkline/component-toggle*": [
+                "../packages/ui/components/toggle/src*"
+            ],
+            "@inkline/component-tooltip*": [
+                "../packages/ui/components/tooltip/src*"
             ]
         }
     },

@@ -1,3 +1,4 @@
+import './toggle.preview.css';
 import { Toggle } from '@inkline/component-toggle';
 import {
     ToggleBasicExample,

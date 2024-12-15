@@ -1,0 +1,279 @@
+.radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-group.-inline {
+    flex-direction: row;
+}
+
+.radio {
+    position: relative;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    outline: 0;
+}
+
+.radio:last-of-type {
+    margin-right: 0;
+}
+
+.radio .radio-label {
+    cursor: pointer;
+    margin-bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.radio .radio-label::before, .radio .radio-label::after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: inline-flex;
+    cursor: pointer;
+    width: var(--radio--width);
+    height: var(--radio--height);
+}
+
+.radio .radio-label::before {
+    content: "";
+    user-select: none;
+    transform: translate(0, -50%);
+}
+
+.radio .radio-label::after {
+    content: "";
+    z-index: 1;
+    text-align: center;
+    transform: scale(0) translate(0, -50%);
+    border: 1px solid transparent;
+    transform-origin: center top;
+    mask-image: url('data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>check</title><circle cx="14" cy="14" r="12"></circle></svg>');
+    mask-size: var(--radio--circle--width) var(--radio--circle--height);
+    mask-position: center center;
+    mask-repeat: no-repeat;
+}
+
+.radio input {
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 0;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.radio .radio-label, .radio input, .radio input:focus, .radio input:active {
+    outline: 0;
+}
+
+.radio input:checked ~ .radio-label::after {
+    content: "";
+    mask-position: center center;
+    mask-repeat: no-repeat;
+    transform: scale(1) translate(0, -50%);
+}
+
+.radio input:disabled ~ .radio-label, .radio input[readonly] ~ .radio-label {
+    cursor: default;
+}
+
+.radio input:disabled ~ .radio-label::after, .radio input[readonly] ~ .radio-label::after, .radio input:checked:disabled ~ .radio-label::after, .radio input:checked[readonly] ~ .radio-label::after {
+    cursor: not-allowed;
+}
+
+.radio {
+    margin: var(--radio--margin);
+}
+
+.radio .radio-label {
+    color: var(--radio--color);
+    font-size: var(--radio--font-size);
+    transition: var(--radio--transition);
+    padding-left: calc(var(--radio--width) + var(--radio--margin-right));
+}
+
+.radio .radio-label::before {
+    background: var(--radio--background);
+    border-color: var(--radio--border-color);
+    border-width: var(--radio--border-width);
+    border-style: var(--radio--border-style);
+    border-radius: var(--radio--border-radius);
+    box-shadow: var(--radio--box-shadow);
+    transition: var(--radio--transition);
+}
+
+.radio .radio-label::after {
+    background: var(--radio--circle--color);
+    transition-duration: var(--radio--transition-duration);
+    transition-timing-function: var(--radio--transition-timing-function);
+}
+
+.radio:not(.-disabled) .radio-label:focus::before {
+    box-shadow: var(--radio--focus--box-shadow);
+}
+
+.radio input:checked ~ .radio-label::before {
+    background: var(--radio--checked--background);
+    border-color: var(--radio--checked--border-color);
+}
+
+.radio input:disabled ~ .radio-label {
+    color: var(--radio--disabled--color);
+    cursor: default;
+}
+
+.radio input:disabled ~ .radio-label::before {
+    background: var(--radio--disabled--background);
+    cursor: not-allowed;
+}
+
+.radio input[readonly] ~ .radio-label::before {
+    background: var(--radio--readonly--background);
+    cursor: not-allowed;
+}
+
+.radio input:checked:disabled ~ .radio-label::before {
+    background: var(--radio--checked--disabled--background);
+    border-color: var(--radio--checked--disabled--border-color);
+}
+
+.radio input[readonly]:checked ~ .radio-label::before {
+    background: var(--radio--checked--readonly--background);
+    border-color: var(--radio--checked--readonly--border-color);
+}
+
+.radio.-sm {
+    font-size: var(--radio--sm--font-size);
+}
+
+.radio.-sm .radio-label {
+    font-size: var(--radio--font-size);
+    padding-left: calc(var(--radio--sm--width) + var(--radio--margin-right));
+}
+
+.radio.-sm .radio-label::before, .radio.-sm .radio-label::after {
+    width: var(--radio--sm--width);
+    height: var(--radio--sm--height);
+}
+
+.radio.-sm .radio-label::before {
+    border-top-left-radius: var(--radio--sm--border-top-left-radius);
+    border-top-right-radius: var(--radio--sm--border-top-right-radius);
+    border-bottom-right-radius: var(--radio--sm--border-bottom-right-radius);
+    border-bottom-left-radius: var(--radio--sm--border-bottom-left-radius);
+}
+
+.radio.-sm .radio-label::after {
+    mask-size: var(--radio--sm--circle--width) var(--radio--sm--circle--height);
+}
+
+.radio.-md {
+    font-size: var(--radio--md--font-size);
+}
+
+.radio.-md .radio-label {
+    font-size: var(--radio--font-size);
+    padding-left: calc(var(--radio--md--width) + var(--radio--margin-right));
+}
+
+.radio.-md .radio-label::before, .radio.-md .radio-label::after {
+    width: var(--radio--md--width);
+    height: var(--radio--md--height);
+}
+
+.radio.-md .radio-label::before {
+    border-top-left-radius: var(--radio--md--border-top-left-radius);
+    border-top-right-radius: var(--radio--md--border-top-right-radius);
+    border-bottom-right-radius: var(--radio--md--border-bottom-right-radius);
+    border-bottom-left-radius: var(--radio--md--border-bottom-left-radius);
+}
+
+.radio.-md .radio-label::after {
+    mask-size: var(--radio--md--circle--width) var(--radio--md--circle--height);
+}
+
+.radio.-lg {
+    font-size: var(--radio--lg--font-size);
+}
+
+.radio.-lg .radio-label {
+    font-size: var(--radio--font-size);
+    padding-left: calc(var(--radio--lg--width) + var(--radio--margin-right));
+}
+
+.radio.-lg .radio-label::before, .radio.-lg .radio-label::after {
+    width: var(--radio--lg--width);
+    height: var(--radio--lg--height);
+}
+
+.radio.-lg .radio-label::before {
+    border-top-left-radius: var(--radio--lg--border-top-left-radius);
+    border-top-right-radius: var(--radio--lg--border-top-right-radius);
+    border-bottom-right-radius: var(--radio--lg--border-bottom-right-radius);
+    border-bottom-left-radius: var(--radio--lg--border-bottom-left-radius);
+}
+
+.radio.-lg .radio-label::after {
+    mask-size: var(--radio--lg--circle--width) var(--radio--lg--circle--height);
+}
+
+.radio.-light .radio-label {
+    color: var(--radio--light--color);
+}
+
+.radio.-light .radio-label::before {
+    border-color: var(--radio--light--border-color);
+    background: var(--radio--light--background);
+    color: var(--radio--light--color);
+}
+
+.radio.-light input:disabled ~ .radio-label::before {
+    background: var(--radio--light--disabled--background);
+    border-color: var(--radio--light--disabled--border-color);
+}
+
+.radio.-light input:checked:disabled ~ .radio-label::before {
+    background: var(--radio--light--checked--disabled--background);
+    border-color: var(--radio--light--checked--disabled--border-color);
+}
+
+.radio.-dark .radio-label {
+    color: var(--radio--dark--color);
+}
+
+.radio.-dark .radio-label::before {
+    border-color: var(--radio--dark--border-color);
+    background: var(--radio--dark--background);
+    color: var(--radio--dark--color);
+}
+
+.radio.-dark input:disabled ~ .radio-label::before {
+    background: var(--radio--dark--disabled--background);
+    border-color: var(--radio--dark--disabled--border-color);
+}
+
+.radio.-dark input:checked:disabled ~ .radio-label::before {
+    background: var(--radio--dark--checked--disabled--background);
+    border-color: var(--radio--dark--checked--disabled--border-color);
+}
+
+.radio.-native input {
+    top: auto;
+    left: auto;
+    position: relative;
+    opacity: 1;
+    height: auto;
+    width: auto;
+}
+
+.radio.-native .radio-label {
+    padding-left: var(--radio--margin-right);
+}
+
+.radio.-native .radio-label::before, .radio.-native .radio-label::after {
+    display: none;
+}

@@ -17,6 +17,7 @@ import { Popup } from '@inkline/component-popup';
 import { Radio, RadioGroup } from '@inkline/component-radio';
 import { Textarea } from '@inkline/component-textarea';
 import { Toast, ToastContainer } from '@inkline/component-toast';
+import { Toggle } from '@inkline/component-toggle';
 import { Tooltip } from '@inkline/component-tooltip';
 
 export const components: Record<string, Component> = {
@@ -43,5 +44,6 @@ export const components: Record<string, Component> = {
     Textarea,
     Toast,
     ToastContainer,
+    Toggle,
     Tooltip
 };

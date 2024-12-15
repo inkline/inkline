@@ -1,12 +1,12 @@
 packages:
     - packages/*
-    - packages/components/*
-    - packages/e2e/*
-    - packages/generators/*
+    - packages/engine/*
+    - packages/ui/*
+    - packages/ui/components/*
+    - packages/ui/addons/*
     - packages/integrations/*
-    - packages/plugin/*
-    - packages/plugin/addons/*
     - packages/tooling/*
+    - e2e/*
     - storybook
 catalog:
     '@types/node': ^20.14.5

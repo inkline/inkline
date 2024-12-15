@@ -16,6 +16,7 @@ import { usePopoverTheme } from '@inkline/component-popover/theme';
 import { useRadioTheme, useRadioGroupTheme } from '@inkline/component-radio/theme';
 import { useTextareaTheme } from '@inkline/component-textarea/theme';
 import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast/theme';
+import { useToggleTheme } from '@inkline/component-toggle/theme';
 import { useTooltipTheme } from '@inkline/component-tooltip/theme';
 
 export default defineConfig(() => {
@@ -42,5 +43,6 @@ export default defineConfig(() => {
     useTextareaTheme();
     useToastTheme();
     useToastContainerTheme();
+    useToggleTheme();
     useTooltipTheme();
 });

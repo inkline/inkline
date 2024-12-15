@@ -41,6 +41,7 @@
         "@inkline/component-radio": "workspace:*",
         "@inkline/component-textarea": "workspace:*",
         "@inkline/component-toast": "workspace:*",
+        "@inkline/component-toggle": "workspace:*",
         "@inkline/component-tooltip": "workspace:*"
     },
     "devDependencies": {

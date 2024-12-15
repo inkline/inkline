@@ -87,6 +87,12 @@ a, area, button, [role="button"], input:not([type="range"]), label, select, summ
     touch-action: manipulation;
 }
 
+@media screen and (min-width: 1440px) {
+    :root {
+        --fluid--screen: calc(var(--fluid--max-width) * 1px);
+    }
+}
+
 a {
     color: var(--a--color);
     text-decoration: var(--a--text-decoration);
@@ -159,7 +165,7 @@ address {
 }
 
 body {
-    color: var(--body--text-color);
+    color: var(--body--color);
     background-color: var(--body--background);
     font-size: var(--body--font-size);
     font-family: var(--body--font-family);
@@ -515,7 +521,7 @@ ul ol, ul ul {
     border-color: var(--alert--border-color);
     border-width: var(--alert--border-width);
     border-radius: var(--alert--border-radius);
-    box-shadow: var(--alert--boxShadow);
+    box-shadow: var(--alert--box-shadow);
     background: var(--alert--background);
     color: var(--alert--color);
     font-size: var(--alert--font-size);
@@ -658,7 +664,7 @@ a:hover .badge, a:focus .badge {
     border-color: var(--badge--border-color);
     border-width: var(--badge--border-width);
     border-radius: var(--badge--border-radius);
-    box-shadow: var(--badge--boxShadow);
+    box-shadow: var(--badge--box-shadow);
     background: var(--badge--background);
     color: var(--badge--color);
     font-size: var(--badge--font-size);
@@ -847,7 +853,7 @@ a.button.-disabled, *:disabled a.button {
     border-radius: var(--button--border-radius);
     color: var(--button--color);
     background: var(--button--background);
-    box-shadow: var(--button--boxShadow);
+    box-shadow: var(--button--box-shadow);
     font-size: var(--button--font-size);
     padding: var(--button--padding);
     transition-property: var(--button--transition-property);
@@ -1381,7 +1387,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .button-group {
-    box-shadow: var(--button-group--boxShadow);
+    box-shadow: var(--button-group--box-shadow);
 }
 
 .card {
@@ -1394,7 +1400,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .card {
-    box-shadow: var(--card--boxShadow);
+    box-shadow: var(--card--box-shadow);
     color: var(--card--color);
     font-size: var(--card--font-size);
 }
@@ -1632,7 +1638,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     border-width: var(--checkbox--border-width);
     border-style: var(--checkbox--border-style);
     border-radius: var(--checkbox--border-radius);
-    box-shadow: var(--checkbox--boxShadow);
+    box-shadow: var(--checkbox--box-shadow);
     transition: var(--checkbox--transition);
 }
 
@@ -1643,7 +1649,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .checkbox:not(.-disabled) .checkbox-label:focus::before {
-    box-shadow: var(--checkbox--focus--boxShadow);
+    box-shadow: var(--checkbox--focus--box-shadow);
 }
 
 .checkbox input:checked ~ .checkbox-label::before, .checkbox input:indeterminate ~ .checkbox-label::before {
@@ -1961,7 +1967,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     border-color: var(--input--border-color);
     border-width: var(--input--border-width);
     border-radius: var(--input--border-radius);
-    box-shadow: var(--input--boxShadow);
+    box-shadow: var(--input--box-shadow);
     font-size: var(--input--font-size);
     transition-property: var(--input--transition-property);
     transition-duration: var(--input--transition-duration);
@@ -2703,7 +2709,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 .modal {
     max-width: var(--modal--max-width);
     width: var(--modal--width);
-    box-shadow: var(--modal--boxShadow);
+    box-shadow: var(--modal--box-shadow);
     color: var(--modal--color);
     font-size: var(--modal--font-size);
 }
@@ -2974,7 +2980,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .popover {
-    box-shadow: var(--popover--boxShadow);
+    box-shadow: var(--popover--box-shadow);
     color: var(--popover--color);
     font-size: var(--popover--font-size);
 }
@@ -3497,7 +3503,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     border-width: var(--radio--border-width);
     border-style: var(--radio--border-style);
     border-radius: var(--radio--border-radius);
-    box-shadow: var(--radio--boxShadow);
+    box-shadow: var(--radio--box-shadow);
     transition: var(--radio--transition);
 }
 
@@ -3508,7 +3514,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .radio:not(.-disabled) .radio-label:focus::before {
-    box-shadow: var(--radio--focus--boxShadow);
+    box-shadow: var(--radio--focus--box-shadow);
 }
 
 .radio input:checked ~ .radio-label::before {
@@ -3741,7 +3747,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     border-color: var(--toast--border-color);
     border-width: var(--toast--border-width);
     border-radius: var(--toast--border-radius);
-    box-shadow: var(--toast--boxShadow);
+    box-shadow: var(--toast--box-shadow);
     background: var(--toast--background);
     color: var(--toast--color);
     font-size: var(--toast--font-size);
@@ -4027,6 +4033,243 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     position: absolute;
 }
 
+.toggle {
+    position: relative;
+    margin-bottom: 0;
+    display: flex;
+}
+
+.toggle .toggle-label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+}
+
+.toggle .toggle-label::before {
+    content: "";
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.toggle .toggle-label::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    transform: translate(0, 0);
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.toggle input:disabled ~ .toggle-label::before, .toggle input:disabled ~ .toggle-label::after {
+    cursor: not-allowed;
+}
+
+.toggle input:disabled ~ .toggle-label, .toggle input[readonly] ~ .toggle-label {
+    cursor: not-allowed;
+}
+
+.toggle > .input:disabled ~ .toggle-label, .toggle > .input[readonly] ~ .toggle-label {
+    cursor: default;
+}
+
+.toggle .toggle-label {
+    color: var(--toggle--color);
+    font-size: var(--toggle--font-size);
+}
+
+.toggle .toggle-label::before {
+    background: var(--toggle--background);
+    box-shadow: var(--toggle--box-shadow);
+    border-width: var(--toggle--border-width);
+    border-style: var(--toggle--border-style);
+    border-color: var(--toggle--border-color);
+    border-radius: var(--toggle--border-radius);
+    width: var(--toggle--width);
+    height: var(--toggle--height);
+    margin: var(--toggle--margin);
+    transition-property: var(--toggle--transition-property);
+    transition-duration: var(--toggle--transition-duration);
+    transition-timing-function: var(--toggle--transition-timing-function);
+}
+
+.toggle .toggle-label::after {
+    background: var(--toggle--indicator--background);
+    border-radius: var(--toggle--indicator--border-radius);
+    width: var(--toggle--indicator--width);
+    height: var(--toggle--indicator--height);
+    margin: var(--toggle--indicator--margin);
+    transition-property: var(--toggle--indicator--transition-property);
+    transition-duration: var(--toggle--indicator--transition-duration);
+    transition-timing-function: var(--toggle--indicator--transition-timing-function);
+}
+
+.toggle input:checked ~ .toggle-label::before {
+    background: var(--toggle--checked--background);
+    border-color: var(--toggle--checked--border-color);
+}
+
+.toggle input:checked ~ .toggle-label::after {
+    background: var(--toggle--checked--indicator--background);
+    transform: translate(calc(calc(var(--toggle--width) - var(--toggle--indicator--margin-left)) * 0.5), 0);
+}
+
+.toggle input:focus ~ .toggle-label::before {
+    box-shadow-offset-x: 0;
+    box-shadow-offset-y: 0;
+    box-shadow-blur-radius: 1px;
+    box-shadow-color: var(--toggle--checked--background);
+}
+
+.toggle input:disabled ~ .toggle-label {
+    color: var(--toggle--disabled--color);
+}
+
+.toggle input:disabled ~ .toggle-label::before {
+    border-color: var(--toggle--disabled--border-color);
+    background: var(--toggle--disabled--background);
+}
+
+.toggle input:disabled ~ .toggle-label::after {
+    background: var(--toggle--disabled--indicator--background);
+}
+
+.toggle input[readonly] ~ .toggle-label {
+    color: var(--toggle--readonly--color);
+}
+
+.toggle input[readonly] ~ .toggle-label::before {
+    border-color: var(--toggle--readonly--border-color);
+    background: var(--toggle--readonly--background);
+}
+
+.toggle input[readonly] ~ .toggle-label::after {
+    background: var(--toggle--readonly--indicator--background);
+}
+
+.toggle input:checked:disabled ~ .toggle-label::before {
+    background: var(--toggle--checked--disabled--background);
+    border-color: var(--toggle--checked--disabled--border-color);
+}
+
+.toggle input:checked:disabled ~ .toggle-label::after {
+    background: var(--toggle--checked--disabled--indicator--background);
+}
+
+.toggle input:checked[readonly] ~ .toggle-label::before {
+    background: var(--toggle--checked--readonly--background);
+    border-color: var(--toggle--checked--readonly--border-color);
+}
+
+.toggle input:checked[readonly] ~ .toggle-label::after {
+    background: var(--toggle--checked--readonly--indicator--background);
+}
+
+.toggle.-rounded .toggle-label::before {
+    border-radius: var(--toggle--height);
+}
+
+.toggle.-rounded .toggle-label::after {
+    border-radius: var(--toggle--indicator--height);
+}
+
+.toggle.-sm .toggle-label {
+    font-size: var(--toggle--sm--font-size);
+}
+
+.toggle.-sm .toggle-label::before {
+    border-radius: var(--toggle--sm--border-radius);
+    width: var(--toggle--sm--width);
+    height: var(--toggle--sm--height);
+}
+
+.toggle.-sm .toggle-label::after {
+    width: var(--toggle--sm--indicator--width);
+    height: var(--toggle--sm--indicator--height);
+    margin: var(--toggle--sm--indicator--margin);
+}
+
+.toggle.-sm input:checked ~ .toggle-label::after {
+    transform: translate(calc(calc(var(--toggle--sm--width) - var(--toggle--sm--indicator--margin-left)) * 0.5), 0);
+}
+
+.toggle.-sm.-rounded .toggle-label::before {
+    border-radius: var(--toggle--sm--height);
+}
+
+.toggle.-sm.-rounded .toggle-label::after {
+    border-radius: var(--toggle--sm--indicator--height);
+}
+
+.toggle.-md .toggle-label {
+    font-size: var(--toggle--md--font-size);
+}
+
+.toggle.-md .toggle-label::before {
+    border-radius: var(--toggle--md--border-radius);
+    width: var(--toggle--md--width);
+    height: var(--toggle--md--height);
+}
+
+.toggle.-md .toggle-label::after {
+    width: var(--toggle--md--indicator--width);
+    height: var(--toggle--md--indicator--height);
+    margin: var(--toggle--md--indicator--margin);
+}
+
+.toggle.-md input:checked ~ .toggle-label::after {
+    transform: translate(calc(calc(var(--toggle--md--width) - var(--toggle--md--indicator--margin-left)) * 0.5), 0);
+}
+
+.toggle.-md.-rounded .toggle-label::before {
+    border-radius: var(--toggle--md--height);
+}
+
+.toggle.-md.-rounded .toggle-label::after {
+    border-radius: var(--toggle--md--indicator--height);
+}
+
+.toggle.-lg .toggle-label {
+    font-size: var(--toggle--lg--font-size);
+}
+
+.toggle.-lg .toggle-label::before {
+    border-radius: var(--toggle--lg--border-radius);
+    width: var(--toggle--lg--width);
+    height: var(--toggle--lg--height);
+}
+
+.toggle.-lg .toggle-label::after {
+    width: var(--toggle--lg--indicator--width);
+    height: var(--toggle--lg--indicator--height);
+    margin: var(--toggle--lg--indicator--margin);
+}
+
+.toggle.-lg input:checked ~ .toggle-label::after {
+    transform: translate(calc(calc(var(--toggle--lg--width) - var(--toggle--lg--indicator--margin-left)) * 0.5), 0);
+}
+
+.toggle.-lg.-rounded .toggle-label::before {
+    border-radius: var(--toggle--lg--height);
+}
+
+.toggle.-lg.-rounded .toggle-label::after {
+    border-radius: var(--toggle--lg--indicator--height);
+}
+
 .tooltip {
     position: absolute;
     display: flex;
@@ -4092,7 +4335,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .tooltip {
-    box-shadow: var(--tooltip--boxShadow);
+    box-shadow: var(--tooltip--box-shadow);
     color: var(--tooltip--color);
     font-size: var(--tooltip--font-size);
 }

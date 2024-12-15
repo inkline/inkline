@@ -1,0 +1,158 @@
+.alert {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.alert-content {
+    flex: 0 1 100%;
+}
+
+.alert-icon {
+    flex: 1;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-dismiss {
+    flex: 0 0 auto;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert {
+    border-style: var(--alert--border-style);
+    border-color: var(--alert--border-color);
+    border-width: var(--alert--border-width);
+    border-radius: var(--alert--border-radius);
+    box-shadow: var(--alert--box-shadow);
+    background: var(--alert--background);
+    color: var(--alert--color);
+    font-size: var(--alert--font-size);
+    transition-property: var(--alert--transition-property);
+    transition-duration: var(--alert--transition-duration);
+    transition-timing-function: var(--alert--transition-timing-function);
+}
+
+.alert-content {
+    padding: var(--alert--padding);
+}
+
+.alert-content *:first-child {
+    margin-top: 0;
+}
+
+.alert-content *:last-child {
+    margin-bottom: 0;
+}
+
+.alert-icon {
+    margin-left: var(--alert--padding-left);
+}
+
+.alert-dismiss {
+    margin-right: var(--alert--padding-right);
+}
+
+.alert code {
+    background: hsla(0, 0%, 0%, 0.05);
+}
+
+.alert a {
+    font-weight: var(--alert--link--font-weight);
+}
+
+.alert.-sm {
+    border-radius: var(--alert--sm--border-top-left-radius) var(--alert--sm--border-top-right-radius) var(--alert--sm--border-bottom-right-radius) var(--alert--sm--border-bottom-left-radius);
+    font-size: var(--alert--sm--font-size);
+}
+
+.alert.-sm .alert-content {
+    padding: var(--alert--sm--padding-top) var(--alert--sm--padding-right) var(--alert--sm--padding-bottom) var(--alert--sm--padding-left);
+}
+
+.alert.-sm .alert-icon {
+    margin-left: var(--alert--sm--padding-left);
+}
+
+.alert.-sm .alert-dismiss {
+    margin-right: var(--alert--sm--padding-right);
+}
+
+.alert.-md {
+    border-radius: var(--alert--md--border-top-left-radius) var(--alert--md--border-top-right-radius) var(--alert--md--border-bottom-right-radius) var(--alert--md--border-bottom-left-radius);
+    font-size: var(--alert--md--font-size);
+}
+
+.alert.-md .alert-content {
+    padding: var(--alert--md--padding-top) var(--alert--md--padding-right) var(--alert--md--padding-bottom) var(--alert--md--padding-left);
+}
+
+.alert.-md .alert-icon {
+    margin-left: var(--alert--md--padding-left);
+}
+
+.alert.-md .alert-dismiss {
+    margin-right: var(--alert--md--padding-right);
+}
+
+.alert.-lg {
+    border-radius: var(--alert--lg--border-top-left-radius) var(--alert--lg--border-top-right-radius) var(--alert--lg--border-bottom-right-radius) var(--alert--lg--border-bottom-left-radius);
+    font-size: var(--alert--lg--font-size);
+}
+
+.alert.-lg .alert-content {
+    padding: var(--alert--lg--padding-top) var(--alert--lg--padding-right) var(--alert--lg--padding-bottom) var(--alert--lg--padding-left);
+}
+
+.alert.-lg .alert-icon {
+    margin-left: var(--alert--lg--padding-left);
+}
+
+.alert.-lg .alert-dismiss {
+    margin-right: var(--alert--lg--padding-right);
+}
+
+.alert.-info {
+    border-color: var(--alert--info--border-color);
+    background: var(--alert--info--background);
+    color: var(--alert--info--color);
+}
+
+.alert.-info a {
+    color: var(--alert--info--color);
+}
+
+.alert.-success {
+    border-color: var(--alert--success--border-color);
+    background: var(--alert--success--background);
+    color: var(--alert--success--color);
+}
+
+.alert.-success a {
+    color: var(--alert--success--color);
+}
+
+.alert.-warning {
+    border-color: var(--alert--warning--border-color);
+    background: var(--alert--warning--background);
+    color: var(--alert--warning--color);
+}
+
+.alert.-warning a {
+    color: var(--alert--warning--color);
+}
+
+.alert.-danger {
+    border-color: var(--alert--danger--border-color);
+    background: var(--alert--danger--background);
+    color: var(--alert--danger--color);
+}
+
+.alert.-danger a {
+    color: var(--alert--danger--color);
+}

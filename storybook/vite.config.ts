@@ -5,13 +5,14 @@ import inkline from '@inkline/vite';
 import { resolve } from 'path';
 import glob from 'fast-glob';
 
-const componentDirs = glob.sync('**', {
-    cwd: resolve(__dirname, '..', 'packages', 'components'),
+const componentsDirPath = resolve(__dirname, '..', 'packages', 'ui', 'components');
+const individualComponentDirPaths = glob.sync('**', {
+    cwd: componentsDirPath,
     deep: 1,
     onlyDirectories: true
 });
 
-componentDirs.sort((a, b) => (a.includes(b) ? -1 : a.localeCompare(b)));
+individualComponentDirPaths.sort((a, b) => (a.includes(b) ? -1 : a.localeCompare(b)));
 
 export default defineConfig({
     plugins: [
@@ -27,21 +28,10 @@ export default defineConfig({
                 find: /^inkline/,
                 replacement: resolve(__dirname, '..', 'packages', 'inkline', 'src')
             },
-            {
-                find: /^@inkline\/vue/,
-                replacement: resolve(__dirname, '..', 'packages', 'plugin', 'vue', 'src')
-            },
-            ...componentDirs.flatMap((component) => [
+            ...individualComponentDirPaths.flatMap((component) => [
                 {
                     find: new RegExp(`^@inkline/component-${component}`),
-                    replacement: resolve(
-                        __dirname,
-                        '..',
-                        'packages',
-                        'components',
-                        component,
-                        'src'
-                    )
+                    replacement: resolve(componentsDirPath, component, 'src')
                 }
             ])
         ]
@@ -59,7 +49,7 @@ function ignoreComponentsCss(): PluginOption {
     return {
         name: 'ignore-components-css',
         transform(_code, id) {
-            if (/packages\/components\/.+\/src\/index.css/.test(id)) {
+            if (/packages\/ui\/components\/.+\/src\/index.css/.test(id)) {
                 return '.noop {}';
             }
         }
