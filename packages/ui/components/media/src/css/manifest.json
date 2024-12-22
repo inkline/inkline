@@ -7,10 +7,430 @@
             "selectors": {}
         },
         "variables": {
+            "fluid--min-width": {
+                "__type": "variable",
+                "__name": "fluid--min-width",
+                "__value": 320
+            },
+            "fluid--max-width": {
+                "__type": "variable",
+                "__name": "fluid--max-width",
+                "__value": 1440
+            },
+            "fluid--screen": {
+                "__type": "variable",
+                "__name": "fluid--screen",
+                "__value": "100vw"
+            },
+            "fluid--breakpoint": {
+                "__type": "variable",
+                "__name": "fluid--breakpoint",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--screen"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--min-width"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        ") / (",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--max-width"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--min-width"
+                        },
+                        "))"
+                    ]
+                }
+            },
+            "spacing-min": {
+                "__type": "variable",
+                "__name": "spacing-min",
+                "__value": 18
+            },
+            "spacing-max": {
+                "__type": "variable",
+                "__name": "spacing-max",
+                "__value": 20
+            },
+            "spacing-2xs": {
+                "__type": "variable",
+                "__name": "spacing-2xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        " + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ") ",
+                        " * 0.25",
+                        ")"
+                    ]
+                }
+            },
+            "spacing-xs": {
+                "__type": "variable",
+                "__name": "spacing-xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        " + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ") ",
+                        " * 0.5",
+                        ")"
+                    ]
+                }
+            },
+            "spacing-sm": {
+                "__type": "variable",
+                "__name": "spacing-sm",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        " + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ") ",
+                        " * 0.75",
+                        ")"
+                    ]
+                }
+            },
+            "spacing-md": {
+                "__type": "variable",
+                "__name": "spacing-md",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        " + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ") ",
+                        "",
+                        ")"
+                    ]
+                }
+            },
+            "spacing-lg": {
+                "__type": "variable",
+                "__name": "spacing-lg",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        " + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ") ",
+                        " * 1.5",
+                        ")"
+                    ]
+                }
+            },
+            "spacing-xl": {
+                "__type": "variable",
+                "__name": "spacing-xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        " + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ") ",
+                        " * 2",
+                        ")"
+                    ]
+                }
+            },
+            "spacing-2xl": {
+                "__type": "variable",
+                "__name": "spacing-2xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        " + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ") ",
+                        " * 4",
+                        ")"
+                    ]
+                }
+            },
+            "spacing-3xl": {
+                "__type": "variable",
+                "__name": "spacing-3xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        " + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ") ",
+                        " * 6",
+                        ")"
+                    ]
+                }
+            },
+            "spacing-4xl": {
+                "__type": "variable",
+                "__name": "spacing-4xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        " + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ") ",
+                        " * 8",
+                        ")"
+                    ]
+                }
+            },
             "spacing": {
                 "__type": "variable",
                 "__name": "spacing",
-                "__value": "1rem"
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "margin-top": {
+                "__type": "variable",
+                "__name": "margin-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin-right": {
+                "__type": "variable",
+                "__name": "margin-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin-bottom": {
+                "__type": "variable",
+                "__name": "margin-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin-left": {
+                "__type": "variable",
+                "__name": "margin-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin": {
+                "__type": "variable",
+                "__name": "margin",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "margin-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "margin-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "margin-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "margin-left"
+                    }
+                ]
             },
             "scale-minor-second": {
                 "__type": "variable",
@@ -338,270 +758,6 @@
                         }
                     ]
                 }
-            },
-            "spacing-xs": {
-                "__type": "variable",
-                "__name": "spacing-xs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xs"
-                        }
-                    ]
-                }
-            },
-            "spacing-sm": {
-                "__type": "variable",
-                "__name": "spacing-sm",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "spacing-md": {
-                "__type": "variable",
-                "__name": "spacing-md",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "spacing-lg": {
-                "__type": "variable",
-                "__name": "spacing-lg",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "spacing-xl": {
-                "__type": "variable",
-                "__name": "spacing-xl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xl"
-                        }
-                    ]
-                }
-            },
-            "spacing-2": {
-                "__type": "variable",
-                "__name": "spacing-2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        2
-                    ]
-                }
-            },
-            "spacing-3": {
-                "__type": "variable",
-                "__name": "spacing-3",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        3
-                    ]
-                }
-            },
-            "spacing-4": {
-                "__type": "variable",
-                "__name": "spacing-4",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        4
-                    ]
-                }
-            },
-            "spacing-5": {
-                "__type": "variable",
-                "__name": "spacing-5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        5
-                    ]
-                }
-            },
-            "spacing-0.2": {
-                "__type": "variable",
-                "__name": "spacing-0.2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "/",
-                        5
-                    ]
-                }
-            },
-            "spacing-0.25": {
-                "__type": "variable",
-                "__name": "spacing-0.25",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "/",
-                        4
-                    ]
-                }
-            },
-            "spacing-0.33": {
-                "__type": "variable",
-                "__name": "spacing-0.33",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "/",
-                        3
-                    ]
-                }
-            },
-            "spacing-0.5": {
-                "__type": "variable",
-                "__name": "spacing-0.5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "/",
-                        2
-                    ]
-                }
-            },
-            "margin-top": {
-                "__type": "variable",
-                "__name": "margin-top",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin-right": {
-                "__type": "variable",
-                "__name": "margin-right",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin-bottom": {
-                "__type": "variable",
-                "__name": "margin-bottom",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin-left": {
-                "__type": "variable",
-                "__name": "margin-left",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin": {
-                "__type": "variable",
-                "__name": "margin",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left"
-                    }
-                ]
             },
             "margin-top-xs": {
                 "__type": "variable",

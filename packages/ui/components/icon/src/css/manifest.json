@@ -276,6 +276,61 @@
                     "__name": "scale-perfect-fourth"
                 }
             },
+            "type-scale-min-pow-minus-4": {
+                "__type": "variable",
+                "__name": "type-scale-min-pow-minus-4",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        1,
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        }
+                    ]
+                }
+            },
+            "type-scale-min-pow-minus-3": {
+                "__type": "variable",
+                "__name": "type-scale-min-pow-minus-3",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        1,
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        }
+                    ]
+                }
+            },
             "type-scale-min-pow-minus-2": {
                 "__type": "variable",
                 "__name": "type-scale-min-pow-minus-2",
@@ -424,6 +479,61 @@
                         {
                             "__type": "reference",
                             "__name": "type-scale-min"
+                        }
+                    ]
+                }
+            },
+            "type-scale-max-pow-minus-4": {
+                "__type": "variable",
+                "__name": "type-scale-max-pow-minus-4",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        1,
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        }
+                    ]
+                }
+            },
+            "type-scale-max-pow-minus-3": {
+                "__type": "variable",
+                "__name": "type-scale-max-pow-minus-3",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        1,
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
                         }
                     ]
                 }
@@ -583,7 +693,7 @@
             "font-size-min": {
                 "__type": "variable",
                 "__name": "font-size-min",
-                "__value": 17
+                "__value": 18
             },
             "font-size-max": {
                 "__type": "variable",
@@ -601,10 +711,19 @@
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-minus-2"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-minus-2"
+                                },
+                                ""
+                            ]
                         },
                         " / 16 * ",
                         "1rem",
@@ -613,20 +732,38 @@
                             "__type": "reference",
                             "__name": "font-size-max"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-max-pow-minus-2"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-max-pow-minus-2"
+                                },
+                                ""
+                            ]
                         },
                         " - ",
                         {
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-minus-2"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-minus-2"
+                                },
+                                ""
+                            ]
                         },
                         ") * ",
                         {
@@ -648,10 +785,19 @@
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-minus-1"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-minus-1"
+                                },
+                                ""
+                            ]
                         },
                         " / 16 * ",
                         "1rem",
@@ -660,20 +806,38 @@
                             "__type": "reference",
                             "__name": "font-size-max"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-max-pow-minus-1"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-max-pow-minus-1"
+                                },
+                                ""
+                            ]
                         },
                         " - ",
                         {
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-minus-1"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-minus-1"
+                                },
+                                ""
+                            ]
                         },
                         ") * ",
                         {
@@ -695,6 +859,8 @@
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
+                        "",
+                        "",
                         " / 16 * ",
                         "1rem",
                         ") + (",
@@ -702,11 +868,15 @@
                             "__type": "reference",
                             "__name": "font-size-max"
                         },
+                        "",
+                        "",
                         " - ",
                         {
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
+                        "",
+                        "",
                         ") * ",
                         {
                             "__type": "reference",
@@ -727,10 +897,19 @@
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-1"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-1"
+                                },
+                                ""
+                            ]
                         },
                         " / 16 * ",
                         "1rem",
@@ -739,20 +918,38 @@
                             "__type": "reference",
                             "__name": "font-size-max"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-max-pow-1"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-max-pow-1"
+                                },
+                                ""
+                            ]
                         },
                         " - ",
                         {
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-1"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-1"
+                                },
+                                ""
+                            ]
                         },
                         ") * ",
                         {
@@ -774,10 +971,19 @@
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-2"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-2"
+                                },
+                                ""
+                            ]
                         },
                         " / 16 * ",
                         "1rem",
@@ -786,20 +992,38 @@
                             "__type": "reference",
                             "__name": "font-size-max"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-max-pow-2"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-max-pow-2"
+                                },
+                                ""
+                            ]
                         },
                         " - ",
                         {
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-2"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-2"
+                                },
+                                ""
+                            ]
                         },
                         ") * ",
                         {
@@ -821,10 +1045,19 @@
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-3"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-3"
+                                },
+                                ""
+                            ]
                         },
                         " / 16 * ",
                         "1rem",
@@ -833,20 +1066,38 @@
                             "__type": "reference",
                             "__name": "font-size-max"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-max-pow-3"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-max-pow-3"
+                                },
+                                ""
+                            ]
                         },
                         " - ",
                         {
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-3"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-3"
+                                },
+                                ""
+                            ]
                         },
                         ") * ",
                         {
@@ -868,10 +1119,19 @@
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-4"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-4"
+                                },
+                                ""
+                            ]
                         },
                         " / 16 * ",
                         "1rem",
@@ -880,20 +1140,38 @@
                             "__type": "reference",
                             "__name": "font-size-max"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-max-pow-4"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-max-pow-4"
+                                },
+                                ""
+                            ]
                         },
                         " - ",
                         {
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-4"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-4"
+                                },
+                                ""
+                            ]
                         },
                         ") * ",
                         {
@@ -915,10 +1193,19 @@
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-5"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-5"
+                                },
+                                ""
+                            ]
                         },
                         " / 16 * ",
                         "1rem",
@@ -927,20 +1214,38 @@
                             "__type": "reference",
                             "__name": "font-size-max"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-max-pow-5"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-max-pow-5"
+                                },
+                                ""
+                            ]
                         },
                         " - ",
                         {
                             "__type": "reference",
                             "__name": "font-size-min"
                         },
-                        " * ",
+                        "",
                         {
-                            "__type": "reference",
-                            "__name": "type-scale-min-pow-5"
+                            "__type": "css",
+                            "__value": [
+                                " *",
+                                " ",
+                                "",
+                                {
+                                    "__type": "reference",
+                                    "__name": "type-scale-min-pow-5"
+                                },
+                                ""
+                            ]
                         },
                         ") * ",
                         {

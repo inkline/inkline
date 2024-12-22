@@ -1,6 +1,9 @@
 # Node Modules
 node_modules/
 
+# Ignored Files
+tmp/
+
 # Build Files
 lib/
 dist/
