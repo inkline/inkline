@@ -8,8 +8,6 @@ import {
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
-    ComponentSize,
-    ComponentBrandColor,
     useBorder,
     useBorderRadiusBase,
     useBoxShadow,
@@ -20,12 +18,28 @@ import {
     useTransition,
     useColors,
     useContrastTextColor,
-    useNeutralColors,
-    defaultComponentSizes,
-    defaultComponentBrandColors
+    useNeutralColors
 } from '@inkline/theme';
 
 const ns = 'card';
+
+const defaultCardColor = 'light';
+const defaultCardColors = [
+    'light',
+    'dark',
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info'
+] as const;
+
+const defaultCardSize = 'md';
+const defaultCardSizes = ['sm', 'md', 'lg'] as const;
+
+type CardColorVariant = (typeof defaultCardColors)[number];
+type CardSizeVariant = (typeof defaultCardSizes)[number];
 
 export function useCardThemeVariables(options = defaultDefinitionOptions) {
     const {
@@ -188,7 +202,7 @@ export function useCardThemeBase() {
     });
 }
 
-export function useCardThemeSizeFactory(variant: ComponentSize) {
+export function useCardThemeSizeFactory(variant: CardSizeVariant) {
     const {
         cardPaddingTop,
         cardPaddingRight,
@@ -259,11 +273,11 @@ export function useCardThemeSizeFactory(variant: ComponentSize) {
     });
 }
 
-export function useCardThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function useCardThemeSizes({ sizes = defaultCardSizes } = {}) {
     sizes.forEach(useCardThemeSizeFactory);
 }
 
-export function useCardThemeColorFactory(variant: ComponentBrandColor) {
+export function useCardThemeColorFactory(variant: CardColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
@@ -293,7 +307,7 @@ export function useCardThemeColorFactory(variant: ComponentBrandColor) {
     );
 }
 
-export function useCardThemeColors({ colors = defaultComponentBrandColors } = {}) {
+export function useCardThemeColors({ colors = defaultCardColors } = {}) {
     colors.forEach(useCardThemeColorFactory);
 }
 
