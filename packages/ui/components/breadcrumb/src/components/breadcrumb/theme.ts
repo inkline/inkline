@@ -19,10 +19,7 @@ import {
 const ns = 'breadcrumb';
 
 const defaultBreadcrumbColor = 'light';
-const defaultBreadcrumbColors = [
-    'light',
-    'dark'
-] as const;
+const defaultBreadcrumbColors = ['light', 'dark'] as const;
 
 const defaultBreadcrumbSize = 'md';
 const defaultBreadcrumbSizes = ['sm', 'md', 'lg'] as const;
@@ -115,7 +112,7 @@ export function useBreadcrumbThemeSizeFactory(variant: BreadcrumbSizeVariant) {
     });
 }
 
-export function useBreadcrumbThemeSizes({ sizes = defaultBreadcrumbSizes } = {}) {
+export function useBreadcrumbThemeSizes(sizes = defaultBreadcrumbSizes) {
     sizes.forEach(useBreadcrumbThemeSizeFactory);
 }
 
@@ -135,7 +132,7 @@ export function useBreadcrumbThemeColorFactory(variant: BreadcrumbColorVariant) 
     });
 }
 
-export function useBreadcrumbThemeColors({ colors = defaultBreadcrumbColors } = {}) {
+export function useBreadcrumbThemeColors(colors = defaultBreadcrumbColors) {
     colors.forEach(useBreadcrumbThemeColorFactory);
 }
 

@@ -737,7 +737,7 @@ export function useInputThemeColorFactory(variant: InputColorVariant) {
     });
 }
 
-export function useInputThemeColors({ colors = defaultInputColors } = {}) {
+export function useInputThemeColors(colors = defaultInputColors) {
     colors.forEach(useInputThemeColorFactory);
 }
 

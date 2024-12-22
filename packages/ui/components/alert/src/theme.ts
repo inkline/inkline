@@ -22,12 +22,7 @@ import {
 const ns = 'alert';
 
 const defaultAlertColor = 'info';
-const defaultAlertColors = [
-    'info',
-    'success',
-    'warning',
-    'danger'
-] as const;
+const defaultAlertColors = ['info', 'success', 'warning', 'danger'] as const;
 
 const defaultAlertSize = 'md';
 const defaultAlertSizes = ['sm', 'md', 'lg'] as const;
@@ -304,7 +299,7 @@ export function useAlertThemeSizeFactory(variant: AlertSizeVariant) {
     });
 }
 
-export function useAlertThemeSizes({ sizes = defaultAlertSizes } = {}) {
+export function useAlertThemeSizes(sizes = defaultAlertSizes) {
     sizes.forEach(useAlertThemeSizeFactory);
 }
 
@@ -332,7 +327,7 @@ export function useAlertThemeColorFactory(variant: AlertColorVariant) {
     });
 }
 
-export function useAlertThemeColors({ colors = defaultAlertColors } = {}) {
+export function useAlertThemeColors(colors = defaultAlertColors) {
     colors.forEach(useAlertThemeColorFactory);
 }
 

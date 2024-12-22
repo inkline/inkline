@@ -28,6 +28,18 @@
 //     useTransition
 // } from '@inkline/theme';
 //
+
+const ns = 'toggle';
+
+const defaultToggleColor = 'light';
+const defaultToggleColors = ['light', 'dark'] as const;
+
+const defaultToggleSize = 'md';
+const defaultToggleSizes = ['sm', 'md', 'lg'] as const;
+
+type ToggleColorVariant = (typeof defaultToggleColors)[number];
+type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
+
 // // export const toggle = defineComponent(
 // //     {
 // //         background: 'var(--color-light-shade-50)',
@@ -773,7 +785,7 @@
 //     });
 // }
 //
-// export function useToggleThemeSizes({ sizes = defaultComponentSizes } = {}) {
+// export function useToggleThemeSizes(sizes = defaultComponentSizes) {
 //     sizes.forEach(useToggleThemeSizeFactory);
 // }
 //
@@ -971,7 +983,7 @@
 //     // // });
 // }
 //
-// export function useToggleThemeColors({ colors = defaultComponentNeutralColors } = {}) {
+// export function useToggleThemeColors(colors = defaultComponentNeutralColors) {
 //     colors.forEach(useToggleThemeColorFactory);
 // }
 //

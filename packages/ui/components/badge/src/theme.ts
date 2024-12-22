@@ -605,7 +605,7 @@ export function useBadgeThemeColorFactory(variant: BadgeColorVariant) {
     });
 }
 
-export function useBadgeThemeColors({ colors = defaultBadgeColors } = {}) {
+export function useBadgeThemeColors(colors = defaultBadgeColors) {
     colors.forEach(useBadgeThemeColorFactory);
 }
 
@@ -648,7 +648,7 @@ export function useBadgeThemeSizeFactory(variant: BadgeSizeVariant) {
     });
 }
 
-export function useBadgeThemeSizes({ sizes = defaultBadgeSizes } = {}) {
+export function useBadgeThemeSizes(sizes = defaultBadgeSizes) {
     sizes.forEach(useBadgeThemeSizeFactory);
 }
 

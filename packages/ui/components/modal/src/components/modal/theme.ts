@@ -459,7 +459,7 @@ export function useModalThemeSizeFactory(variant: ModalSizeVariant) {
     });
 }
 
-export function useModalThemeSizes({ sizes = defaultModalSizes } = {}) {
+export function useModalThemeSizes(sizes = defaultModalSizes) {
     sizes.forEach(useModalThemeSizeFactory);
 }
 
@@ -494,7 +494,7 @@ export function useModalThemeColorFactory(variant: ModalColorVariant) {
     );
 }
 
-export function useModalThemeColors({ colors = defaultModalColors } = {}) {
+export function useModalThemeColors(colors = defaultModalColors) {
     colors.forEach(useModalThemeColorFactory);
 }
 

@@ -500,7 +500,7 @@ export function useCheckboxThemeSizeFactory(variant: CheckboxSizeVariant) {
     });
 }
 
-export function useCheckboxThemeSizes({ sizes = defaultCheckboxSizes } = {}) {
+export function useCheckboxThemeSizes(sizes = defaultCheckboxSizes) {
     sizes.forEach(useCheckboxThemeSizeFactory);
 }
 
@@ -559,7 +559,7 @@ export function useCheckboxThemeColorFactory(variant: CheckboxColorVariant) {
     });
 }
 
-export function useCheckboxThemeColors({ colors = defaultCheckboxColors } = {}) {
+export function useCheckboxThemeColors(colors = defaultCheckboxColors) {
     colors.forEach(useCheckboxThemeColorFactory);
 }
 

@@ -458,7 +458,7 @@ export function useRadioThemeSizeFactory(variant: RadioSizeVariant) {
     });
 }
 
-export function useRadioThemeSizes({ sizes = defaultRadioSizes } = {}) {
+export function useRadioThemeSizes(sizes = defaultRadioSizes) {
     sizes.forEach(useRadioThemeSizeFactory);
 }
 
@@ -517,7 +517,7 @@ export function useRadioThemeColorFactory(variant: RadioColorVariant) {
     });
 }
 
-export function useRadioThemeColors({ colors = defaultRadioColors } = {}) {
+export function useRadioThemeColors(colors = defaultRadioColors) {
     colors.forEach(useRadioThemeColorFactory);
 }
 

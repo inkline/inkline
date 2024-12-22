@@ -28,6 +28,7 @@ export function useIconThemeVariables(options = defaultDefinitionOptions) {
         )
     };
 }
+
 export function useIconThemeBase() {
     const { iconFontSize } = useIconThemeVariables();
 
@@ -53,7 +54,7 @@ export function useIconThemeSizeFactory(variant: ComponentSize) {
     });
 }
 
-export function useIconThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function useIconThemeSizes(sizes = defaultComponentSizes) {
     sizes.forEach(useIconThemeSizeFactory);
 }
 

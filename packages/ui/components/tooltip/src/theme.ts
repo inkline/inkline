@@ -8,8 +8,6 @@ import {
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
-    ComponentSize,
-    ComponentBrandColor,
     useBorder,
     useBorderRadiusBase,
     useBoxShadow,
@@ -20,12 +18,28 @@ import {
     useTransition,
     useColors,
     useContrastTextColor,
-    useNeutralColors,
-    defaultComponentSizes,
-    defaultComponentBrandColors
+    useNeutralColors
 } from '@inkline/theme';
 
 const ns = 'tooltip';
+
+const defaultTooltipColor = 'light';
+const defaultTooltipColors = [
+    'light',
+    'dark',
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info'
+] as const;
+
+const defaultTooltipSize = 'md';
+const defaultTooltipSizes = ['sm', 'md', 'lg'] as const;
+
+type TooltipColorVariant = (typeof defaultTooltipColors)[number];
+type TooltipSizeVariant = (typeof defaultTooltipSizes)[number];
 
 export function useTooltipThemeVariables(options = defaultDefinitionOptions) {
     const {
@@ -309,7 +323,7 @@ export function useTooltipThemeBase() {
     });
 }
 
-export function useTooltipThemeSizeFactory(variant: ComponentSize) {
+export function useTooltipThemeSizeFactory(variant: TooltipSizeVariant) {
     const {
         tooltipPaddingTop,
         tooltipPaddingRight,
@@ -366,11 +380,11 @@ export function useTooltipThemeSizeFactory(variant: ComponentSize) {
     });
 }
 
-export function useTooltipThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function useTooltipThemeSizes(sizes = defaultTooltipSizes) {
     sizes.forEach(useTooltipThemeSizeFactory);
 }
 
-export function useTooltipThemeColorFactory(variant: ComponentBrandColor) {
+export function useTooltipThemeColorFactory(variant: TooltipColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
@@ -425,7 +439,7 @@ export function useTooltipThemeColorFactory(variant: ComponentBrandColor) {
     });
 }
 
-export function useTooltipThemeColors({ colors = defaultComponentBrandColors } = {}) {
+export function useTooltipThemeColors(colors = defaultTooltipColors) {
     colors.forEach(useTooltipThemeColorFactory);
 }
 

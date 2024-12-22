@@ -273,7 +273,7 @@ export function useCardThemeSizeFactory(variant: CardSizeVariant) {
     });
 }
 
-export function useCardThemeSizes({ sizes = defaultCardSizes } = {}) {
+export function useCardThemeSizes(sizes = defaultCardSizes) {
     sizes.forEach(useCardThemeSizeFactory);
 }
 
@@ -307,7 +307,7 @@ export function useCardThemeColorFactory(variant: CardColorVariant) {
     );
 }
 
-export function useCardThemeColors({ colors = defaultCardColors } = {}) {
+export function useCardThemeColors(colors = defaultCardColors) {
     colors.forEach(useCardThemeColorFactory);
 }
 

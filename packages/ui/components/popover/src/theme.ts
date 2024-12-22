@@ -409,7 +409,7 @@ export function usePopoverThemeSizeFactory(variant: PopoverSizeVariant) {
     });
 }
 
-export function usePopoverThemeSizes({ sizes = defaultPopoverSizes } = {}) {
+export function usePopoverThemeSizes(sizes = defaultPopoverSizes) {
     sizes.forEach(usePopoverThemeSizeFactory);
 }
 
@@ -475,7 +475,7 @@ export function usePopoverThemeColorFactory(variant: PopoverColorVariant) {
     });
 }
 
-export function usePopoverThemeColors({ colors = defaultPopoverColors } = {}) {
+export function usePopoverThemeColors(colors = defaultPopoverColors) {
     colors.forEach(usePopoverThemeColorFactory);
 }
 

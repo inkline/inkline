@@ -11,9 +11,6 @@ import {
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
-    ComponentSize,
-    ComponentStateColor,
-    ComponentBrandNeutralColor,
     useBorder,
     useBorderRadiusBase,
     useBoxShadow,
@@ -23,15 +20,30 @@ import {
     usePaddingBase,
     useTransition,
     useFontWeight,
-    defaultComponentSizes,
-    defaultComponentStateColors,
-    defaultComponentNeutralColors,
     useNeutralColors,
     useContrastTextColor,
     useBrandColors
 } from '@inkline/theme';
 
 const ns = 'toast';
+
+const defaultToastColor = 'light';
+const defaultToastColors = [
+    'light',
+    'dark',
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info'
+] as const;
+
+const defaultToastSize = 'md';
+const defaultToastSizes = ['sm', 'md', 'lg'] as const;
+
+type ToastColorVariant = (typeof defaultToastColors)[number];
+type ToastSizeVariant = (typeof defaultToastSizes)[number];
 
 export function useToastThemeVariables(options = defaultDefinitionOptions) {
     const {
@@ -280,7 +292,7 @@ export function useToastThemeBase() {
     });
 }
 
-export function useToastThemeSizeFactory(variant: ComponentSize) {
+export function useToastThemeSizeFactory(variant: ToastSizeVariant) {
     const {
         toastPaddingTop,
         toastPaddingRight,
@@ -347,13 +359,11 @@ export function useToastThemeSizeFactory(variant: ComponentSize) {
     });
 }
 
-export function useToastThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function useToastThemeSizes(sizes = defaultToastSizes) {
     sizes.forEach(useToastThemeSizeFactory);
 }
 
-export function useToastThemeColorFactory(
-    variant: ComponentStateColor | ComponentBrandNeutralColor
-) {
+export function useToastThemeColorFactory(variant: ToastColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
@@ -422,9 +432,7 @@ export function useToastThemeColorFactory(
     });
 }
 
-export function useToastThemeColors({
-    colors = [...defaultComponentNeutralColors, ...defaultComponentStateColors]
-} = {}) {
+export function useToastThemeColors(colors = defaultToastColors) {
     colors.forEach(useToastThemeColorFactory);
 }
 
