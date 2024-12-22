@@ -9,10 +9,6 @@ import {
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
-    ComponentBrandColor,
-    ComponentSize,
-    defaultComponentBrandColors,
-    defaultComponentSizes,
     useBorder,
     useBorderRadiusBase,
     useBoxShadow,
@@ -28,6 +24,24 @@ import {
 } from '@inkline/theme';
 
 const ns = 'button';
+
+const defaultButtonColor = 'light';
+const defaultButtonColors = [
+    'light',
+    'dark',
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info'
+] as const;
+
+const defaultButtonSize = 'md';
+const defaultButtonSizes = ['sm', 'md', 'lg'] as const;
+
+type ButtonColorVariant = (typeof defaultButtonColors)[number];
+type ButtonSizeVariant = (typeof defaultButtonSizes)[number];
 
 export function useButtonThemeVariables(options = defaultDefinitionOptions) {
     const {
@@ -370,7 +384,7 @@ export function useButtonThemeVariants() {
     });
 }
 
-export function useButtonThemeSizeFactory(variant: ComponentSize) {
+export function useButtonThemeSizeFactory(variant: ButtonSizeVariant) {
     const {
         buttonPaddingTop,
         buttonPaddingRight,
@@ -456,11 +470,11 @@ export function useButtonThemeSizeFactory(variant: ComponentSize) {
     });
 }
 
-export function useButtonThemeSizes(sizes = defaultComponentSizes) {
+export function useButtonThemeSizes(sizes = defaultButtonSizes) {
     sizes.forEach(useButtonThemeSizeFactory);
 }
 
-export function useButtonThemeColorFactory(variant: ComponentBrandColor) {
+export function useButtonThemeColorFactory(variant: ButtonColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colors = useColors();
@@ -573,7 +587,7 @@ export function useButtonThemeColorFactory(variant: ComponentBrandColor) {
     });
 }
 
-export function useButtonThemeColors(colors = defaultComponentBrandColors) {
+export function useButtonThemeColors(colors = defaultButtonColors) {
     colors.forEach(useButtonThemeColorFactory);
 }
 
