@@ -700,70 +700,296 @@
                 "__name": "font-size-max",
                 "__value": 20
             },
+            "font-size-min-xs": {
+                "__type": "variable",
+                "__name": "font-size-min-xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-minus-2"
+                        }
+                    ]
+                }
+            },
+            "font-size-min-sm": {
+                "__type": "variable",
+                "__name": "font-size-min-sm",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-minus-1"
+                        }
+                    ]
+                }
+            },
+            "font-size-min-md": {
+                "__type": "variable",
+                "__name": "font-size-min-md",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-min"
+                }
+            },
+            "font-size-min-lg": {
+                "__type": "variable",
+                "__name": "font-size-min-lg",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-1"
+                        }
+                    ]
+                }
+            },
+            "font-size-min-xl": {
+                "__type": "variable",
+                "__name": "font-size-min-xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-2"
+                        }
+                    ]
+                }
+            },
+            "font-size-min-2xl": {
+                "__type": "variable",
+                "__name": "font-size-min-2xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-3"
+                        }
+                    ]
+                }
+            },
+            "font-size-min-3xl": {
+                "__type": "variable",
+                "__name": "font-size-min-3xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-4"
+                        }
+                    ]
+                }
+            },
+            "font-size-min-4xl": {
+                "__type": "variable",
+                "__name": "font-size-min-4xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-5"
+                        }
+                    ]
+                }
+            },
+            "font-size-max-xs": {
+                "__type": "variable",
+                "__name": "font-size-max-xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-minus-2"
+                        }
+                    ]
+                }
+            },
+            "font-size-max-sm": {
+                "__type": "variable",
+                "__name": "font-size-max-sm",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-minus-1"
+                        }
+                    ]
+                }
+            },
+            "font-size-max-md": {
+                "__type": "variable",
+                "__name": "font-size-max-md",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-max"
+                }
+            },
+            "font-size-max-lg": {
+                "__type": "variable",
+                "__name": "font-size-max-lg",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-1"
+                        }
+                    ]
+                }
+            },
+            "font-size-max-xl": {
+                "__type": "variable",
+                "__name": "font-size-max-xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-2"
+                        }
+                    ]
+                }
+            },
+            "font-size-max-2xl": {
+                "__type": "variable",
+                "__name": "font-size-max-2xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-3"
+                        }
+                    ]
+                }
+            },
+            "font-size-max-3xl": {
+                "__type": "variable",
+                "__name": "font-size-max-3xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-4"
+                        }
+                    ]
+                }
+            },
+            "font-size-max-4xl": {
+                "__type": "variable",
+                "__name": "font-size-max-4xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-5"
+                        }
+                    ]
+                }
+            },
             "font-size-xs": {
                 "__type": "variable",
                 "__name": "font-size-xs",
                 "__value": {
                     "__type": "css",
                     "__value": [
-                        "calc((",
+                        "calc(((",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
+                            "__name": "font-size-min-xs"
                         },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-minus-2"
-                                },
-                                ""
-                            ]
-                        },
-                        " / 16 * ",
+                        " / 16) * ",
                         "1rem",
                         ") + (",
                         {
                             "__type": "reference",
-                            "__name": "font-size-max"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-max-pow-minus-2"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-max-xs"
                         },
                         " - ",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-minus-2"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-min-xs"
                         },
                         ") * ",
                         {
@@ -780,64 +1006,22 @@
                 "__value": {
                     "__type": "css",
                     "__value": [
-                        "calc((",
+                        "calc(((",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
+                            "__name": "font-size-min-sm"
                         },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-minus-1"
-                                },
-                                ""
-                            ]
-                        },
-                        " / 16 * ",
+                        " / 16) * ",
                         "1rem",
                         ") + (",
                         {
                             "__type": "reference",
-                            "__name": "font-size-max"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-max-pow-minus-1"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-max-sm"
                         },
                         " - ",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-minus-1"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-min-sm"
                         },
                         ") * ",
                         {
@@ -854,29 +1038,23 @@
                 "__value": {
                     "__type": "css",
                     "__value": [
-                        "calc((",
+                        "calc(((",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
+                            "__name": "font-size-min-md"
                         },
-                        "",
-                        "",
-                        " / 16 * ",
+                        " / 16) * ",
                         "1rem",
                         ") + (",
                         {
                             "__type": "reference",
-                            "__name": "font-size-max"
+                            "__name": "font-size-max-md"
                         },
-                        "",
-                        "",
                         " - ",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
+                            "__name": "font-size-min-md"
                         },
-                        "",
-                        "",
                         ") * ",
                         {
                             "__type": "reference",
@@ -892,64 +1070,22 @@
                 "__value": {
                     "__type": "css",
                     "__value": [
-                        "calc((",
+                        "calc(((",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
+                            "__name": "font-size-min-lg"
                         },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-1"
-                                },
-                                ""
-                            ]
-                        },
-                        " / 16 * ",
+                        " / 16) * ",
                         "1rem",
                         ") + (",
                         {
                             "__type": "reference",
-                            "__name": "font-size-max"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-max-pow-1"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-max-lg"
                         },
                         " - ",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-1"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-min-lg"
                         },
                         ") * ",
                         {
@@ -966,64 +1102,22 @@
                 "__value": {
                     "__type": "css",
                     "__value": [
-                        "calc((",
+                        "calc(((",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
+                            "__name": "font-size-min-xl"
                         },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-2"
-                                },
-                                ""
-                            ]
-                        },
-                        " / 16 * ",
+                        " / 16) * ",
                         "1rem",
                         ") + (",
                         {
                             "__type": "reference",
-                            "__name": "font-size-max"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-max-pow-2"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-max-xl"
                         },
                         " - ",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-2"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-min-xl"
                         },
                         ") * ",
                         {
@@ -1040,64 +1134,22 @@
                 "__value": {
                     "__type": "css",
                     "__value": [
-                        "calc((",
+                        "calc(((",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
+                            "__name": "font-size-min-2xl"
                         },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-3"
-                                },
-                                ""
-                            ]
-                        },
-                        " / 16 * ",
+                        " / 16) * ",
                         "1rem",
                         ") + (",
                         {
                             "__type": "reference",
-                            "__name": "font-size-max"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-max-pow-3"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-max-2xl"
                         },
                         " - ",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-3"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-min-2xl"
                         },
                         ") * ",
                         {
@@ -1114,64 +1166,22 @@
                 "__value": {
                     "__type": "css",
                     "__value": [
-                        "calc((",
+                        "calc(((",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
+                            "__name": "font-size-min-3xl"
                         },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-4"
-                                },
-                                ""
-                            ]
-                        },
-                        " / 16 * ",
+                        " / 16) * ",
                         "1rem",
                         ") + (",
                         {
                             "__type": "reference",
-                            "__name": "font-size-max"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-max-pow-4"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-max-3xl"
                         },
                         " - ",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-4"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-min-3xl"
                         },
                         ") * ",
                         {
@@ -1188,64 +1198,22 @@
                 "__value": {
                     "__type": "css",
                     "__value": [
-                        "calc((",
+                        "calc(((",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
+                            "__name": "font-size-min-4xl"
                         },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-5"
-                                },
-                                ""
-                            ]
-                        },
-                        " / 16 * ",
+                        " / 16) * ",
                         "1rem",
                         ") + (",
                         {
                             "__type": "reference",
-                            "__name": "font-size-max"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-max-pow-5"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-max-4xl"
                         },
                         " - ",
                         {
                             "__type": "reference",
-                            "__name": "font-size-min"
-                        },
-                        "",
-                        {
-                            "__type": "css",
-                            "__value": [
-                                " *",
-                                " ",
-                                "",
-                                {
-                                    "__type": "reference",
-                                    "__name": "type-scale-min-pow-5"
-                                },
-                                ""
-                            ]
+                            "__name": "font-size-min-4xl"
                         },
                         ") * ",
                         {

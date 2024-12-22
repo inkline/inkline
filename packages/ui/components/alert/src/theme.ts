@@ -8,8 +8,6 @@ import {
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
-    ComponentSize,
-    ComponentStateColor,
     useBorder,
     useBorderRadiusBase,
     useBoxShadow,
@@ -18,12 +16,24 @@ import {
     useKeyMappedSizeMultiplier,
     usePaddingBase,
     useTransition,
-    defaultComponentSizes,
-    defaultComponentStateColors,
     useFontWeight
 } from '@inkline/theme';
 
 const ns = 'alert';
+
+const defaultAlertColor = 'info';
+const defaultAlertColors = [
+    'info',
+    'success',
+    'warning',
+    'danger'
+] as const;
+
+const defaultAlertSize = 'md';
+const defaultAlertSizes = ['sm', 'md', 'lg'] as const;
+
+type AlertColorVariant = (typeof defaultAlertColors)[number];
+type AlertSizeVariant = (typeof defaultAlertSizes)[number];
 
 export function useAlertThemeVariables(options = defaultDefinitionOptions) {
     const {
@@ -227,7 +237,7 @@ export function useAlertThemeBase() {
     });
 }
 
-export function useAlertThemeSizeFactory(size: ComponentSize) {
+export function useAlertThemeSizeFactory(variant: AlertSizeVariant) {
     const {
         alertPaddingTop,
         alertPaddingRight,
@@ -240,8 +250,8 @@ export function useAlertThemeSizeFactory(size: ComponentSize) {
         alertFontSize
     } = useAlertThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
-    const sizeNs = [ns, size] as const;
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
     const {
         borderTopLeftRadius,
@@ -271,7 +281,7 @@ export function useAlertThemeSizeFactory(size: ComponentSize) {
         })
     );
 
-    selector(`.alert.-${size}`, {
+    selector(`.alert.-${variant}`, {
         borderRadius: [
             ref(borderTopLeftRadius),
             ref(borderTopRightRadius),
@@ -281,24 +291,24 @@ export function useAlertThemeSizeFactory(size: ComponentSize) {
         fontSize: ref(fontSize)
     });
 
-    selector(`.alert.-${size} .alert-content`, {
+    selector(`.alert.-${variant} .alert-content`, {
         padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
     });
 
-    selector(`.alert.-${size} .alert-icon`, {
+    selector(`.alert.-${variant} .alert-icon`, {
         marginLeft: ref(paddingLeft)
     });
 
-    selector(`.alert.-${size} .alert-dismiss`, {
+    selector(`.alert.-${variant} .alert-dismiss`, {
         marginRight: ref(paddingRight)
     });
 }
 
-export function useAlertThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function useAlertThemeSizes({ sizes = defaultAlertSizes } = {}) {
     sizes.forEach(useAlertThemeSizeFactory);
 }
 
-export function useAlertThemeColorFactory(variant: ComponentStateColor) {
+export function useAlertThemeColorFactory(variant: AlertColorVariant) {
     const colorKey = capitalize(variant);
     const brandColorVariants = useBrandColorVariants();
     const colorNs = [ns, variant] as const;
@@ -322,7 +332,7 @@ export function useAlertThemeColorFactory(variant: ComponentStateColor) {
     });
 }
 
-export function useAlertThemeColors({ colors = defaultComponentStateColors } = {}) {
+export function useAlertThemeColors({ colors = defaultAlertColors } = {}) {
     colors.forEach(useAlertThemeColorFactory);
 }
 
