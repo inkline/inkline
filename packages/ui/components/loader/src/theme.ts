@@ -8,14 +8,18 @@ import {
     stripExportsNamespace
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
-import {
-    useKeyMappedSizeMultiplier,
-    defaultComponentSizes,
-    ComponentSize,
-    useBrandColors
-} from '@inkline/theme';
+import { useKeyMappedSizeMultiplier, useBrandColors } from '@inkline/theme';
 
 const ns = 'loader';
+
+const defaultLoaderColor = 'primary';
+const defaultLoaderColors = ['primary', 'light', 'dark'] as const;
+
+const defaultLoaderSize = 'md';
+const defaultLoaderSizes = ['sm', 'md', 'lg'] as const;
+
+type LoaderColorVariant = (typeof defaultLoaderColors)[number];
+type LoaderSizeVariant = (typeof defaultLoaderSizes)[number];
 
 export function useLoaderThemeVariables(options = defaultDefinitionOptions) {
     const { colorPrimary } = useBrandColors();
@@ -123,7 +127,7 @@ export function useLoaderThemeBase() {
     });
 }
 
-export function useLoaderThemeSizeFactory(variant: ComponentSize) {
+export function useLoaderThemeSizeFactory(variant: LoaderSizeVariant) {
     const { loaderWidth, loaderHeight } = useLoaderThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
@@ -142,11 +146,11 @@ export function useLoaderThemeSizeFactory(variant: ComponentSize) {
     });
 }
 
-export function useLoaderThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function useLoaderThemeSizes(sizes = defaultLoaderSizes) {
     sizes.forEach(useLoaderThemeSizeFactory);
 }
 
-export function useLoaderThemeColorFactory(variant: 'primary' | 'light' | 'dark') {
+export function useLoaderThemeColorFactory(variant: LoaderColorVariant) {
     const invertedColor = variant === 'light' ? 'dark' : variant === 'dark' ? 'light' : variant;
     const colorKey = capitalize(invertedColor);
     const brandColors = useBrandColors();
@@ -163,7 +167,7 @@ export function useLoaderThemeColorFactory(variant: 'primary' | 'light' | 'dark'
     });
 }
 
-export function useLoaderThemeColors({ colors = ['primary', 'light', 'dark'] as const } = {}) {
+export function useLoaderThemeColors(colors = defaultLoaderColors) {
     colors.forEach(useLoaderThemeColorFactory);
 }
 
