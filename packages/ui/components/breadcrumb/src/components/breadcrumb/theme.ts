@@ -8,19 +8,27 @@ import {
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
-    ComponentSize,
-    ComponentBrandColor,
     useFontSize,
     useKeyMappedSizeMultiplier,
     usePaddingBase,
     useContrastTextColor,
     useMarginBase,
-    defaultComponentSizes,
-    defaultComponentNeutralColors,
     useTextColor
 } from '@inkline/theme';
 
 const ns = 'breadcrumb';
+
+const defaultBreadcrumbColor = 'light';
+const defaultBreadcrumbColors = [
+    'light',
+    'dark'
+] as const;
+
+const defaultBreadcrumbSize = 'md';
+const defaultBreadcrumbSizes = ['sm', 'md', 'lg'] as const;
+
+type BreadcrumbColorVariant = (typeof defaultBreadcrumbColors)[number];
+type BreadcrumbSizeVariant = (typeof defaultBreadcrumbSizes)[number];
 
 export function useBreadcrumbThemeVariables(options = defaultDefinitionOptions) {
     const { marginBottom } = useMarginBase();
@@ -76,7 +84,7 @@ export function useBreadcrumbThemeBase() {
     });
 }
 
-export function useBreadcrumbThemeSizeFactory(variant: ComponentSize) {
+export function useBreadcrumbThemeSizeFactory(variant: BreadcrumbSizeVariant) {
     const {
         breadcrumbPaddingTop,
         breadcrumbPaddingRight,
@@ -107,11 +115,11 @@ export function useBreadcrumbThemeSizeFactory(variant: ComponentSize) {
     });
 }
 
-export function useBreadcrumbThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function useBreadcrumbThemeSizes({ sizes = defaultBreadcrumbSizes } = {}) {
     sizes.forEach(useBreadcrumbThemeSizeFactory);
 }
 
-export function useBreadcrumbThemeColorFactory(variant: ComponentBrandColor) {
+export function useBreadcrumbThemeColorFactory(variant: BreadcrumbColorVariant) {
     const colorKey = capitalize(variant);
     const contrastTextColors = useContrastTextColor();
     const colorNs = [ns, variant] as const;
@@ -127,7 +135,7 @@ export function useBreadcrumbThemeColorFactory(variant: ComponentBrandColor) {
     });
 }
 
-export function useBreadcrumbThemeColors({ colors = defaultComponentNeutralColors } = {}) {
+export function useBreadcrumbThemeColors({ colors = defaultBreadcrumbColors } = {}) {
     colors.forEach(useBreadcrumbThemeColorFactory);
 }
 
