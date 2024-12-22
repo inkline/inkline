@@ -8,8 +8,6 @@ import {
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
-    ComponentSize,
-    ComponentBrandColor,
     useBorder,
     useBorderRadiusBase,
     useBoxShadow,
@@ -21,12 +19,28 @@ import {
     useColors,
     useContrastTextColor,
     useNeutralColors,
-    defaultComponentSizes,
-    defaultComponentBrandColors,
     useMarginBase
 } from '@inkline/theme';
 
 const ns = 'modal';
+
+const defaultModalColor = 'light';
+const defaultModalColors = [
+    'light',
+    'dark',
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info'
+] as const;
+
+const defaultModalSize = 'md';
+const defaultModalSizes = ['sm', 'md', 'lg'] as const;
+
+type ModalColorVariant = (typeof defaultModalColors)[number];
+type ModalSizeVariant = (typeof defaultModalSizes)[number];
 
 export function useModalThemeVariables(options = defaultDefinitionOptions) {
     const {
@@ -368,7 +382,7 @@ export function useModalThemeBase() {
     });
 }
 
-export function useModalThemeSizeFactory(variant: ComponentSize) {
+export function useModalThemeSizeFactory(variant: ModalSizeVariant) {
     const {
         modalPaddingTop,
         modalPaddingRight,
@@ -445,11 +459,11 @@ export function useModalThemeSizeFactory(variant: ComponentSize) {
     });
 }
 
-export function useModalThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function useModalThemeSizes({ sizes = defaultModalSizes } = {}) {
     sizes.forEach(useModalThemeSizeFactory);
 }
 
-export function useModalThemeColorFactory(variant: ComponentBrandColor) {
+export function useModalThemeColorFactory(variant: ModalColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
@@ -480,7 +494,7 @@ export function useModalThemeColorFactory(variant: ComponentBrandColor) {
     );
 }
 
-export function useModalThemeColors({ colors = defaultComponentBrandColors } = {}) {
+export function useModalThemeColors({ colors = defaultModalColors } = {}) {
     colors.forEach(useModalThemeColorFactory);
 }
 
