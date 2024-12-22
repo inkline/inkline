@@ -11,7 +11,6 @@ import {
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
-    ComponentSize,
     useBorder,
     useBorderRadiusBase,
     useBoxShadow,
@@ -19,18 +18,24 @@ import {
     useKeyMappedSizeMultiplier,
     useMargin,
     useTransition,
-    defaultComponentSizes,
     useTextColor,
     useBrandColors,
     useBrandColorVariants,
     useNeutralColors,
-    defaultComponentNeutralColors,
-    ComponentBrandColor,
     useColors,
     useContrastTextColor
 } from '@inkline/theme';
 
 const ns = 'checkbox';
+
+const defaultCheckboxColor = 'light';
+const defaultCheckboxColors = ['light', 'dark'] as const;
+
+const defaultCheckboxSize = 'md';
+const defaultCheckboxSizes = ['sm', 'md', 'lg'] as const;
+
+type CheckboxColorVariant = (typeof defaultCheckboxColors)[number];
+type CheckboxSizeVariant = (typeof defaultCheckboxSizes)[number];
 
 const checkmarkIconUrl =
     'data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>check</title><path d="M23.625 3.5l-13.125 13.125-6.125-6.125-4.375 4.375 10.5 10.5 17.5-17.5z"></path></svg>';
@@ -408,7 +413,7 @@ export function useCheckboxThemeBase() {
     });
 }
 
-export function useCheckboxThemeSizeFactory(size: ComponentSize) {
+export function useCheckboxThemeSizeFactory(variant: CheckboxSizeVariant) {
     const {
         checkboxMarginRight,
         checkboxMarginBottom,
@@ -423,8 +428,8 @@ export function useCheckboxThemeSizeFactory(size: ComponentSize) {
         checkboxCheckmarkHeight
     } = useCheckboxThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
-    const sizeNs = [ns, size] as const;
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
     const {
         borderTopLeftRadius,
@@ -463,40 +468,43 @@ export function useCheckboxThemeSizeFactory(size: ComponentSize) {
         'checkmark'
     );
 
-    selector(`.checkbox.-${size}`, {
+    selector(`.checkbox.-${variant}`, {
         fontSize: ref(fontSize)
     });
 
-    selector(`.checkbox.-${size} .checkbox-label`, {
+    selector(`.checkbox.-${variant} .checkbox-label`, {
         fontSize: ref(checkboxFontSize),
         paddingLeft: add(ref(width), ref(checkboxMarginRight))
     });
 
     selector(
-        [`.checkbox.-${size} .checkbox-label::before`, `.checkbox.-${size} .checkbox-label::after`],
+        [
+            `.checkbox.-${variant} .checkbox-label::before`,
+            `.checkbox.-${variant} .checkbox-label::after`
+        ],
         {
             width: ref(width),
             height: ref(height)
         }
     );
 
-    selector(`.checkbox.-${size} .checkbox-label::before`, {
+    selector(`.checkbox.-${variant} .checkbox-label::before`, {
         borderTopLeftRadius: ref(borderTopLeftRadius),
         borderTopRightRadius: ref(borderTopRightRadius),
         borderBottomRightRadius: ref(borderBottomRightRadius),
         borderBottomLeftRadius: ref(borderBottomLeftRadius)
     });
 
-    selector(`.checkbox.-${size} .checkbox-label::after`, {
+    selector(`.checkbox.-${variant} .checkbox-label::after`, {
         maskSize: [ref(checkmarkWidth), ref(checkmarkHeight)]
     });
 }
 
-export function useCheckboxThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function useCheckboxThemeSizes({ sizes = defaultCheckboxSizes } = {}) {
     sizes.forEach(useCheckboxThemeSizeFactory);
 }
 
-export function useCheckboxThemeColorFactory(variant: ComponentBrandColor) {
+export function useCheckboxThemeColorFactory(variant: CheckboxColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
@@ -551,7 +559,7 @@ export function useCheckboxThemeColorFactory(variant: ComponentBrandColor) {
     });
 }
 
-export function useCheckboxThemeColors({ colors = defaultComponentNeutralColors } = {}) {
+export function useCheckboxThemeColors({ colors = defaultCheckboxColors } = {}) {
     colors.forEach(useCheckboxThemeColorFactory);
 }
 
