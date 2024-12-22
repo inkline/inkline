@@ -1,6 +1,6 @@
 import {
     useBorder,
-    useBorderRadiusBase,
+    useBorderRadius,
     useBoxShadow,
     useFontSize,
     useTransition,
@@ -325,21 +325,29 @@ export function useBadgeThemeColorConfig(variant?: BadgeColorVariant) {
 
 export function useBadgeThemeSizeConfig(variant?: BadgeSizeVariant) {
     const {
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomRightRadius,
-        borderBottomLeftRadius
-    } = useBorderRadiusBase();
+        borderTopLeftRadiusSm,
+        borderTopRightRadiusSm,
+        borderBottomRightRadiusSm,
+        borderBottomLeftRadiusSm,
+        borderTopLeftRadiusMd,
+        borderTopRightRadiusMd,
+        borderBottomRightRadiusMd,
+        borderBottomLeftRadiusMd,
+        borderTopLeftRadiusLg,
+        borderTopRightRadiusLg,
+        borderBottomRightRadiusLg,
+        borderBottomLeftRadiusLg
+    } = useBorderRadius();
     const { fontSizeXs, fontSizeSm, fontSizeMd } = useFontSize();
     const { spacingSm, spacingMd, spacingLg } = useSpacing();
 
     return {
         sm: {
             borderRadius: {
-                topLeft: multiply(ref(borderTopLeftRadius)),
-                topRight: multiply(ref(borderTopRightRadius)),
-                bottomRight: multiply(ref(borderBottomRightRadius)),
-                bottomLeft: multiply(ref(borderBottomLeftRadius))
+                topLeft: ref(borderTopLeftRadiusSm),
+                topRight: ref(borderTopRightRadiusSm),
+                bottomRight: ref(borderBottomRightRadiusSm),
+                bottomLeft: ref(borderBottomLeftRadiusSm)
             },
             fontSize: ref(fontSizeXs),
             padding: {
@@ -351,10 +359,10 @@ export function useBadgeThemeSizeConfig(variant?: BadgeSizeVariant) {
         },
         md: {
             borderRadius: {
-                topLeft: ref(borderTopLeftRadius),
-                topRight: ref(borderTopRightRadius),
-                bottomRight: ref(borderBottomRightRadius),
-                bottomLeft: ref(borderBottomLeftRadius)
+                topLeft: ref(borderTopLeftRadiusMd),
+                topRight: ref(borderTopRightRadiusMd),
+                bottomRight: ref(borderBottomRightRadiusMd),
+                bottomLeft: ref(borderBottomLeftRadiusMd)
             },
             fontSize: ref(fontSizeSm),
             padding: {
@@ -366,10 +374,10 @@ export function useBadgeThemeSizeConfig(variant?: BadgeSizeVariant) {
         },
         lg: {
             borderRadius: {
-                topLeft: multiply(ref(borderTopLeftRadius)),
-                topRight: multiply(ref(borderTopRightRadius)),
-                bottomRight: multiply(ref(borderBottomRightRadius)),
-                bottomLeft: multiply(ref(borderBottomLeftRadius))
+                topLeft: ref(borderTopLeftRadiusLg),
+                topRight: ref(borderTopRightRadiusLg),
+                bottomRight: ref(borderBottomRightRadiusLg),
+                bottomLeft: ref(borderBottomLeftRadiusLg)
             },
             fontSize: ref(fontSizeMd),
             padding: {
