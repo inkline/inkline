@@ -11,25 +11,30 @@ import {
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
-    ComponentSize,
     useBorder,
     useBoxShadow,
     useFontSize,
     useKeyMappedSizeMultiplier,
     useMargin,
     useTransition,
-    defaultComponentSizes,
     useTextColor,
     useBrandColors,
     useBrandColorVariants,
     useNeutralColors,
-    defaultComponentNeutralColors,
-    ComponentBrandColor,
     useColors,
     useContrastTextColor
 } from '@inkline/theme';
 
 const ns = 'radio';
+
+const defaultRadioColor = 'light';
+const defaultRadioColors = ['light', 'dark'] as const;
+
+const defaultRadioSize = 'md';
+const defaultRadioSizes = ['sm', 'md', 'lg'] as const;
+
+type RadioColorVariant = (typeof defaultRadioColors)[number];
+type RadioSizeVariant = (typeof defaultRadioSizes)[number];
 
 const circleIconUrl =
     'data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>check</title><circle cx="14" cy="14" r="12"></circle></svg>';
@@ -369,7 +374,7 @@ export function useRadioThemeBase() {
     });
 }
 
-export function useRadioThemeSizeFactory(size: ComponentSize) {
+export function useRadioThemeSizeFactory(variant: RadioSizeVariant) {
     const {
         radioMarginRight,
         radioMarginBottom,
@@ -384,8 +389,8 @@ export function useRadioThemeSizeFactory(size: ComponentSize) {
         radioCircleHeight
     } = useRadioThemeVariables();
     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[size]);
-    const sizeNs = [ns, size] as const;
+    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
+    const sizeNs = [ns, variant] as const;
 
     const {
         borderTopLeftRadius,
@@ -424,37 +429,40 @@ export function useRadioThemeSizeFactory(size: ComponentSize) {
         'circle'
     );
 
-    selector(`.radio.-${size}`, {
+    selector(`.radio.-${variant}`, {
         fontSize: ref(fontSize)
     });
 
-    selector(`.radio.-${size} .radio-label`, {
+    selector(`.radio.-${variant} .radio-label`, {
         fontSize: ref(radioFontSize),
         paddingLeft: add(ref(width), ref(radioMarginRight))
     });
 
-    selector([`.radio.-${size} .radio-label::before`, `.radio.-${size} .radio-label::after`], {
-        width: ref(width),
-        height: ref(height)
-    });
+    selector(
+        [`.radio.-${variant} .radio-label::before`, `.radio.-${variant} .radio-label::after`],
+        {
+            width: ref(width),
+            height: ref(height)
+        }
+    );
 
-    selector(`.radio.-${size} .radio-label::before`, {
+    selector(`.radio.-${variant} .radio-label::before`, {
         borderTopLeftRadius: ref(borderTopLeftRadius),
         borderTopRightRadius: ref(borderTopRightRadius),
         borderBottomRightRadius: ref(borderBottomRightRadius),
         borderBottomLeftRadius: ref(borderBottomLeftRadius)
     });
 
-    selector(`.radio.-${size} .radio-label::after`, {
+    selector(`.radio.-${variant} .radio-label::after`, {
         maskSize: [ref(circleWidth), ref(circleHeight)]
     });
 }
 
-export function useRadioThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function useRadioThemeSizes({ sizes = defaultRadioSizes } = {}) {
     sizes.forEach(useRadioThemeSizeFactory);
 }
 
-export function useRadioThemeColorFactory(variant: ComponentBrandColor) {
+export function useRadioThemeColorFactory(variant: RadioColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
@@ -509,7 +517,7 @@ export function useRadioThemeColorFactory(variant: ComponentBrandColor) {
     });
 }
 
-export function useRadioThemeColors({ colors = defaultComponentNeutralColors } = {}) {
+export function useRadioThemeColors({ colors = defaultRadioColors } = {}) {
     colors.forEach(useRadioThemeColorFactory);
 }
 
