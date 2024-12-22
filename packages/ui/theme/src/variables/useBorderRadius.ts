@@ -1,19 +1,147 @@
-import { ref, variable } from '@inkline/core';
-import { useComposedSizeMultiplierVariantsFactory } from './useSizeMultiplier';
+import { css, multiply, ref, TokenValue, variable } from '@inkline/core';
 import { defaultDefinitionOptions } from '@inkline/core';
+import { useFluid } from './useFluid';
+import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 
-export type BorderRadiusProperties =
-    | 'border-top-left-radius'
-    | 'border-top-right-radius'
-    | 'border-bottom-right-radius'
-    | 'border-bottom-left-radius'
-    | 'border-radius';
+export function useBorderRadius(options = defaultDefinitionOptions) {
+    const { fluidBreakpoint } = useFluid();
 
-export function useBorderRadiusBase(options = defaultDefinitionOptions) {
-    const borderTopLeftRadius = variable('border-top-left-radius', '0.25rem', options);
-    const borderTopRightRadius = variable('border-top-right-radius', '0.25rem', options);
-    const borderBottomRightRadius = variable('border-bottom-right-radius', '0.25rem', options);
-    const borderBottomLeftRadius = variable('border-bottom-left-radius', '0.25rem', options);
+    const borderRadiusMin = variable('border-radius-min', 6, options);
+    const borderRadiusMax = variable('border-radius-max', 8, options);
+
+    const variantMultipliers = {
+        'xs': 0.25,
+        'sm': 0.5,
+        'md': 1,
+        'lg': 1.5,
+        'xl': 2
+    };
+
+    const borderRadiusMinMaxVariants = {
+        'xs': createVariantFactoryFn((value) => multiply(value, variantMultipliers['xs'])),
+        'sm': createVariantFactoryFn((value) => multiply(value, variantMultipliers['sm'])),
+        'md': createVariantFactoryFn((value) => value),
+        'lg': createVariantFactoryFn((value) => multiply(value, variantMultipliers['lg'])),
+        'xl': createVariantFactoryFn((value) => multiply(value, variantMultipliers['xl']))
+    };
+
+    const {
+        borderRadiusMinXs,
+        borderRadiusMinSm,
+        borderRadiusMinMd,
+        borderRadiusMinLg,
+        borderRadiusMinXl
+    } = useVariantsFactory<'border-radius-min', keyof typeof borderRadiusMinMaxVariants>(borderRadiusMin, borderRadiusMinMaxVariants, options);
+
+    const {
+        borderRadiusMaxXs,
+        borderRadiusMaxSm,
+        borderRadiusMaxMd,
+        borderRadiusMaxLg,
+        borderRadiusMaxXl
+    } = useVariantsFactory<'border-radius-max', keyof typeof borderRadiusMinMaxVariants>(borderRadiusMax, borderRadiusMinMaxVariants, options);
+
+    const createBorderRadiusVariant = (borderRadiusMin: TokenValue, borderRadiusMax: TokenValue) => createVariantFactoryFn(() => css`calc(((${borderRadiusMin} / 16) * 1 rem) + (${borderRadiusMax} - ${borderRadiusMin}) * ${ref(fluidBreakpoint)})`);
+    const variants = {
+        'xs': createBorderRadiusVariant(ref(borderRadiusMinXs), ref(borderRadiusMaxXs)),
+        'sm': createBorderRadiusVariant(ref(borderRadiusMinSm), ref(borderRadiusMaxSm)),
+        'md': createBorderRadiusVariant(ref(borderRadiusMinMd), ref(borderRadiusMaxMd)),
+        'lg': createBorderRadiusVariant(ref(borderRadiusMinLg), ref(borderRadiusMaxLg)),
+        'xl': createBorderRadiusVariant(ref(borderRadiusMinXl), ref(borderRadiusMaxXl))
+    };
+
+    const {
+        borderTopLeftRadiusXs,
+        borderTopLeftRadiusSm,
+        borderTopLeftRadiusMd,
+        borderTopLeftRadiusLg,
+        borderTopLeftRadiusXl
+    } = useVariantsFactory<'border-top-left-radius', keyof typeof variants>('border-top-left-radius', variants, options);
+
+    const {
+        borderTopRightRadiusXs,
+        borderTopRightRadiusSm,
+        borderTopRightRadiusMd,
+        borderTopRightRadiusLg,
+        borderTopRightRadiusXl
+    } = useVariantsFactory<'border-top-right-radius', keyof typeof variants>('border-top-right-radius', variants, options);
+
+    const {
+        borderBottomRightRadiusXs,
+        borderBottomRightRadiusSm,
+        borderBottomRightRadiusMd,
+        borderBottomRightRadiusLg,
+        borderBottomRightRadiusXl
+    } = useVariantsFactory<'border-bottom-right-radius', keyof typeof variants>('border-bottom-right-radius', variants, options);
+
+    const {
+        borderBottomLeftRadiusXs,
+        borderBottomLeftRadiusSm,
+        borderBottomLeftRadiusMd,
+        borderBottomLeftRadiusLg,
+        borderBottomLeftRadiusXl
+    } = useVariantsFactory<'border-bottom-left-radius', keyof typeof variants>('border-bottom-left-radius', variants, options);
+
+    const borderRadiusXs = variable(
+        'border-radius-xs',
+        [
+            ref(borderTopLeftRadiusXs),
+            ref(borderTopRightRadiusXs),
+            ref(borderBottomRightRadiusXs),
+            ref(borderBottomLeftRadiusXs)
+        ],
+        options
+    );
+
+    const borderRadiusSm = variable(
+        'border-radius-sm',
+        [
+            ref(borderTopLeftRadiusSm),
+            ref(borderTopRightRadiusSm),
+            ref(borderBottomRightRadiusSm),
+            ref(borderBottomLeftRadiusSm)
+        ],
+        options
+    );
+
+    const borderRadiusMd = variable(
+        'border-radius-md',
+        [
+            ref(borderTopLeftRadiusMd),
+            ref(borderTopRightRadiusMd),
+            ref(borderBottomRightRadiusMd),
+            ref(borderBottomLeftRadiusMd)
+        ],
+        options
+    );
+
+    const borderRadiusLg = variable(
+        'border-radius-lg',
+        [
+            ref(borderTopLeftRadiusLg),
+            ref(borderTopRightRadiusLg),
+            ref(borderBottomRightRadiusLg),
+            ref(borderBottomLeftRadiusLg)
+        ],
+        options
+    );
+
+    const borderRadiusXl = variable(
+        'border-radius-xl',
+        [
+            ref(borderTopLeftRadiusXl),
+            ref(borderTopRightRadiusXl),
+            ref(borderBottomRightRadiusXl),
+            ref(borderBottomLeftRadiusXl)
+        ],
+        options
+    );
+
+
+    const borderTopLeftRadius = variable('border-top-left-radius', ref(borderTopLeftRadiusMd), options);
+    const borderTopRightRadius = variable('border-top-right-radius', ref(borderTopRightRadiusMd), options);
+    const borderBottomRightRadius = variable('border-bottom-right-radius', ref(borderBottomRightRadiusMd), options);
+    const borderBottomLeftRadius = variable('border-bottom-left-radius', ref(borderBottomLeftRadiusMd), options);
     const borderRadius = variable(
         'border-radius',
         [
@@ -25,50 +153,15 @@ export function useBorderRadiusBase(options = defaultDefinitionOptions) {
         options
     );
 
+
     return {
+        borderRadiusMin,
+        borderRadiusMax,
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius,
-        borderRadius
-    };
-}
-
-export function useBorderRadiusVariants(options = defaultDefinitionOptions) {
-    const { borderRadius } = useBorderRadiusBase();
-
-    const {
-        borderTopLeftRadiusXs,
-        borderTopRightRadiusXs,
-        borderBottomRightRadiusXs,
-        borderBottomLeftRadiusXs,
-        borderRadiusXs,
-        borderTopLeftRadiusSm,
-        borderTopRightRadiusSm,
-        borderBottomRightRadiusSm,
-        borderBottomLeftRadiusSm,
-        borderRadiusSm,
-        borderTopLeftRadiusMd,
-        borderTopRightRadiusMd,
-        borderBottomRightRadiusMd,
-        borderBottomLeftRadiusMd,
-        borderRadiusMd,
-        borderTopLeftRadiusLg,
-        borderTopRightRadiusLg,
-        borderBottomRightRadiusLg,
-        borderBottomLeftRadiusLg,
-        borderRadiusLg,
-        borderTopLeftRadiusXl,
-        borderTopRightRadiusXl,
-        borderBottomRightRadiusXl,
-        borderBottomLeftRadiusXl,
-        borderRadiusXl
-    } = useComposedSizeMultiplierVariantsFactory<BorderRadiusProperties, 'border-radius'>(
         borderRadius,
-        options
-    );
-
-    return {
         borderTopLeftRadiusXs,
         borderTopRightRadiusXs,
         borderBottomRightRadiusXs,
@@ -94,12 +187,5 @@ export function useBorderRadiusVariants(options = defaultDefinitionOptions) {
         borderBottomRightRadiusXl,
         borderBottomLeftRadiusXl,
         borderRadiusXl
-    };
-}
-
-export function useBorderRadius(options = defaultDefinitionOptions) {
-    return {
-        ...useBorderRadiusBase(options),
-        ...useBorderRadiusVariants(options)
     };
 }

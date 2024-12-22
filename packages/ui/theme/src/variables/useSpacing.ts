@@ -21,7 +21,7 @@ export function useSpacing(options = defaultDefinitionOptions) {
         '4xl': 8
     };
 
-    const spacingVariants = {
+    const spacingMinMaxVariants = {
         '2xs': createVariantFactoryFn((value) => multiply(value, variantMultipliers['2xs'])),
         'xs': createVariantFactoryFn((value) => multiply(value, variantMultipliers['xs'])),
         'sm': createVariantFactoryFn((value) => multiply(value, variantMultipliers['sm'])),
@@ -43,7 +43,7 @@ export function useSpacing(options = defaultDefinitionOptions) {
         spacingMin2Xl,
         spacingMin3Xl,
         spacingMin4Xl
-    } = useVariantsFactory<'spacing-min', keyof typeof spacingVariants>(spacingMin, spacingVariants, options);
+    } = useVariantsFactory<'spacing-min', keyof typeof spacingMinMaxVariants>(spacingMin, spacingMinMaxVariants, options);
 
 
     const {
@@ -56,7 +56,7 @@ export function useSpacing(options = defaultDefinitionOptions) {
         spacingMax2Xl,
         spacingMax3Xl,
         spacingMax4Xl
-    } = useVariantsFactory<'spacing-max', keyof typeof spacingVariants>(spacingMax, spacingVariants, options);
+    } = useVariantsFactory<'spacing-max', keyof typeof spacingMinMaxVariants>(spacingMax, spacingMinMaxVariants, options);
 
     const createSpacingVariant = (spacingMin: TokenValue, spacingMax: TokenValue) => createVariantFactoryFn(() => css`calc(((${spacingMin} / 16) * 1 rem) + (${spacingMax} - ${spacingMin}) * ${ref(fluidBreakpoint)})`);
     const variants = {
