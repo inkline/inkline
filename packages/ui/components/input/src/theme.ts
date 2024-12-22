@@ -7,11 +7,8 @@ import {
     setExportsNamespace,
     stripExportsNamespace
 } from '@inkline/core';
+import { capitalize } from '@inkline/utils';
 import {
-    ComponentBrandColor,
-    ComponentSize,
-    defaultComponentBrandColors,
-    defaultComponentSizes,
     useBorder,
     useBorderRadiusBase,
     useBoxShadow,
@@ -26,9 +23,17 @@ import {
     useTextColor,
     useTransition
 } from '@inkline/theme';
-import { capitalize } from '@inkline/utils';
 
 const ns = 'input';
+
+const defaultInputColor = 'light';
+const defaultInputColors = ['light', 'dark'] as const;
+
+const defaultInputSize = 'md';
+const defaultInputSizes = ['sm', 'md', 'lg'] as const;
+
+type InputColorVariant = (typeof defaultInputColors)[number];
+type InputSizeVariant = (typeof defaultInputSizes)[number];
 
 export function useInputThemeVariables(options = defaultDefinitionOptions) {
     const {
@@ -524,7 +529,7 @@ export function useInputThemeBase() {
     });
 }
 
-export function useInputThemeSizeFactory(variant: ComponentSize) {
+export function useInputThemeSizeFactory(variant: InputSizeVariant) {
     const {
         inputPaddingTop,
         inputPaddingRight,
@@ -626,11 +631,11 @@ export function useInputThemeSizeFactory(variant: ComponentSize) {
     });
 }
 
-export function useInputThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function useInputThemeSizes(sizes = defaultInputSizes) {
     sizes.forEach(useInputThemeSizeFactory);
 }
 
-export function useInputThemeColorFactory(variant: ComponentBrandColor) {
+export function useInputThemeColorFactory(variant: InputColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const brandColors = useBrandColors();
@@ -732,7 +737,7 @@ export function useInputThemeColorFactory(variant: ComponentBrandColor) {
     });
 }
 
-export function useInputThemeColors({ colors = defaultComponentBrandColors } = {}) {
+export function useInputThemeColors({ colors = defaultInputColors } = {}) {
     colors.forEach(useInputThemeColorFactory);
 }
 
