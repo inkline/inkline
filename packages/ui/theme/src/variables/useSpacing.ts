@@ -60,23 +60,23 @@ export function useSpacing(options = defaultDefinitionOptions) {
 
     const createSpacingVariant = (spacingMin: TokenValue, spacingMax: TokenValue) => createVariantFactoryFn(() => css`calc(((${spacingMin} / 16) * 1 rem) + (${spacingMax} - ${spacingMin}) * ${ref(fluidBreakpoint)})`);
     const variants = {
-        '2xs': createSpacingVariant(spacingMin2Xs, spacingMax2Xs),
-        'xs': createSpacingVariant(spacingMinXs, spacingMaxXs),
-        'sm': createSpacingVariant(spacingMinSm, spacingMaxSm),
-        'md': createSpacingVariant(spacingMinMd, spacingMaxMd),
-        'lg': createSpacingVariant(spacingMinLg, spacingMaxLg),
-        'xl': createSpacingVariant(spacingMinXl, spacingMaxXl),
-        '2xl': createSpacingVariant(spacingMin2Xl, spacingMax2Xl),
-        '3xl': createSpacingVariant(spacingMin3Xl, spacingMax3Xl),
-        '4xl': createSpacingVariant(spacingMin4Xl, spacingMax4Xl),
-        '2xs-xs': createSpacingVariant(spacingMin2Xs, spacingMaxXs),
-        'xs-sm': createSpacingVariant(spacingMinXs, spacingMaxSm),
-        'sm-md': createSpacingVariant(spacingMinSm, spacingMaxMd),
-        'md-lg': createSpacingVariant(spacingMinMd, spacingMaxLg),
-        'lg-xl': createSpacingVariant(spacingMinLg, spacingMaxXl),
-        'xl-2xl': createSpacingVariant(spacingMinXl, spacingMax2Xl),
-        '2xl-3xl': createSpacingVariant(spacingMin2Xl, spacingMax3Xl),
-        '3xl-4xl': createSpacingVariant(spacingMin3Xl, spacingMax4Xl)
+        '2xs': createSpacingVariant(ref(spacingMin2Xs), ref(spacingMax2Xs)),
+        'xs': createSpacingVariant(ref(spacingMinXs), ref(spacingMaxXs)),
+        'sm': createSpacingVariant(ref(spacingMinSm), ref(spacingMaxSm)),
+        'md': createSpacingVariant(ref(spacingMinMd), ref(spacingMaxMd)),
+        'lg': createSpacingVariant(ref(spacingMinLg), ref(spacingMaxLg)),
+        'xl': createSpacingVariant(ref(spacingMinXl), ref(spacingMaxXl)),
+        '2xl': createSpacingVariant(ref(spacingMin2Xl), ref(spacingMax2Xl)),
+        '3xl': createSpacingVariant(ref(spacingMin3Xl), ref(spacingMax3Xl)),
+        '4xl': createSpacingVariant(ref(spacingMin4Xl), ref(spacingMax4Xl)),
+        '2xs-xs': createSpacingVariant(ref(spacingMin2Xs), ref(spacingMaxXs)),
+        'xs-sm': createSpacingVariant(ref(spacingMinXs), ref(spacingMaxSm)),
+        'sm-md': createSpacingVariant(ref(spacingMinSm), ref(spacingMaxMd)),
+        'md-lg': createSpacingVariant(ref(spacingMinMd), ref(spacingMaxLg)),
+        'lg-xl': createSpacingVariant(ref(spacingMinLg), ref(spacingMaxXl)),
+        'xl-2xl': createSpacingVariant(ref(spacingMinXl), ref(spacingMax2Xl)),
+        '2xl-3xl': createSpacingVariant(ref(spacingMin2Xl), ref(spacingMax3Xl)),
+        '3xl-4xl': createSpacingVariant(ref(spacingMin3Xl), ref(spacingMax4Xl))
     };
 
     const {
