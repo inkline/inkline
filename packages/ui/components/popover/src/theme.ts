@@ -8,8 +8,6 @@ import {
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
-    ComponentSize,
-    ComponentBrandColor,
     useBorder,
     useBorderRadiusBase,
     useBoxShadow,
@@ -20,12 +18,19 @@ import {
     useTransition,
     useColors,
     useContrastTextColor,
-    useNeutralColors,
-    defaultComponentSizes,
-    defaultComponentBrandColors
+    useNeutralColors
 } from '@inkline/theme';
 
 const ns = 'popover';
+
+const defaultPopoverColor = 'light';
+const defaultPopoverColors = ['light', 'dark'] as const;
+
+const defaultPopoverSize = 'md';
+const defaultPopoverSizes = ['sm', 'md', 'lg'] as const;
+
+type PopoverColorVariant = (typeof defaultPopoverColors)[number];
+type PopoverSizeVariant = (typeof defaultPopoverSizes)[number];
 
 export function usePopoverThemeVariables(options = defaultDefinitionOptions) {
     const {
@@ -327,7 +332,7 @@ export function usePopoverThemeBase() {
     });
 }
 
-export function usePopoverThemeSizeFactory(variant: ComponentSize) {
+export function usePopoverThemeSizeFactory(variant: PopoverSizeVariant) {
     const {
         popoverPaddingTop,
         popoverPaddingRight,
@@ -404,11 +409,11 @@ export function usePopoverThemeSizeFactory(variant: ComponentSize) {
     });
 }
 
-export function usePopoverThemeSizes({ sizes = defaultComponentSizes } = {}) {
+export function usePopoverThemeSizes({ sizes = defaultPopoverSizes } = {}) {
     sizes.forEach(usePopoverThemeSizeFactory);
 }
 
-export function usePopoverThemeColorFactory(variant: ComponentBrandColor) {
+export function usePopoverThemeColorFactory(variant: PopoverColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
@@ -470,7 +475,7 @@ export function usePopoverThemeColorFactory(variant: ComponentBrandColor) {
     });
 }
 
-export function usePopoverThemeColors({ colors = defaultComponentBrandColors } = {}) {
+export function usePopoverThemeColors({ colors = defaultPopoverColors } = {}) {
     colors.forEach(usePopoverThemeColorFactory);
 }
 
