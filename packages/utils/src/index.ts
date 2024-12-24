@@ -21,6 +21,7 @@ export * from './isVisible';
 export * from './indent';
 export * from './markSearchString';
 export * from './memoize';
+export * from './merge';
 export * from './off';
 export * from './on';
 export * from './once';

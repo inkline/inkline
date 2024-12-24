@@ -1,5 +1,5 @@
 import { variable } from './variable';
-import { ref } from './ref';
+import { ref, vref } from './ref';
 import { TokenType } from '../types';
 
 describe('ref', () => {
@@ -34,6 +34,21 @@ describe('ref', () => {
             __type: TokenType.Reference,
             __name: refName,
             __fallback: refFallback
+        });
+    });
+});
+
+describe('vref', () => {
+    it('should create a reference to a variable using the variable value', () => {
+        const variableName = 'color';
+        const variableValue = 'red';
+        const variableInstance = variable(variableName, variableValue);
+        const refInstance = vref(variableInstance);
+
+        expect(refInstance).toEqual({
+            __type: TokenType.Reference,
+            __name: variableName,
+            __fallback: variableValue
         });
     });
 });

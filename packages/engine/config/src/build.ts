@@ -27,7 +27,6 @@ type BuildOptions = Required<UserBuildOptions> & {
 };
 
 export function getResolvedBuildOptions(options: UserBuildOptions): BuildOptions {
-    console.log('GETTING ZHE OPTIONSSS');
     let configDir = process.cwd();
     let configFile = defaultConfigFileBasename;
     let configExtName = defaultConfigFileExtName;

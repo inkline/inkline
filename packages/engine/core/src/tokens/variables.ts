@@ -17,8 +17,8 @@ import {
     defineGeneric,
     SourceMapGeneric,
     defineBackground,
-    defineColor,
     SourceMapBackground,
+    defineColor,
     SourceMapColor
 } from './define';
 import { toCssName } from '../utils';
@@ -92,7 +92,7 @@ export function nsvariables<
                     const subns = [...(typeof ns === 'string' ? [ns] : ns), name] as const;
                     results = {
                         ...results,
-                        ...nsvariables(subns, value as PartialDeep<SourceMap>, options)
+                        ...nsvariables(subns, value, options)
                     };
                 } else {
                     results = {

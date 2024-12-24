@@ -4,7 +4,8 @@ import {
     Variable,
     DefineOptions,
     HSLAColorProperty,
-    NamespaceType
+    NamespaceType,
+    NamespacedMap
 } from '../../types';
 import { hsla, nsvariable, ref, set } from '../../tokens';
 import { isHSLAColorProperty } from '../../typeGuards';
@@ -12,28 +13,52 @@ import { resolveStringColorPropertyValue, toExportedVariable } from '../../utils
 
 export type SourceMapColor = TokenValue | HSLAColorProperty;
 
-export type OutputMapColor<Namespace extends NamespaceType> = {
-    colorH: Variable<NamespacedKey<Namespace, 'color-h'>>;
-    colorS: Variable<NamespacedKey<Namespace, 'color-s'>>;
-    colorL: Variable<NamespacedKey<Namespace, 'color-l'>>;
-    colorA: Variable<NamespacedKey<Namespace, 'color-a'>>;
-    color: Variable<NamespacedKey<Namespace, 'color'>>;
-};
+export type OutputMapColor<Namespace extends NamespaceType> = NamespacedMap<
+    Namespace,
+    {
+        colorH: Variable<NamespacedKey<Namespace, 'color-h'>>;
+        colorS: Variable<NamespacedKey<Namespace, 'color-s'>>;
+        colorL: Variable<NamespacedKey<Namespace, 'color-l'>>;
+        colorA: Variable<NamespacedKey<Namespace, 'color-a'>>;
+        color: Variable<NamespacedKey<Namespace, 'color'>>;
+    }
+>;
 
 export type SourceMapBackground = SourceMapColor;
 
-export type OutputMapBackground<Namespace extends NamespaceType> = {
-    backgroundH: Variable<NamespacedKey<Namespace, 'background-h'>>;
-    backgroundS: Variable<NamespacedKey<Namespace, 'background-s'>>;
-    backgroundL: Variable<NamespacedKey<Namespace, 'background-l'>>;
-    backgroundA: Variable<NamespacedKey<Namespace, 'background-a'>>;
-    background: Variable<NamespacedKey<Namespace, 'background'>>;
-};
+export type OutputMapBackground<Namespace extends NamespaceType> = NamespacedMap<
+    Namespace,
+    {
+        backgroundH: Variable<NamespacedKey<Namespace, 'background-h'>>;
+        backgroundS: Variable<NamespacedKey<Namespace, 'background-s'>>;
+        backgroundL: Variable<NamespacedKey<Namespace, 'background-l'>>;
+        backgroundA: Variable<NamespacedKey<Namespace, 'background-a'>>;
+        background: Variable<NamespacedKey<Namespace, 'background'>>;
+    }
+>;
+
+export type OutputMapBorderTopColor<Namespace extends NamespaceType> = NamespacedMap<
+    Namespace,
+    {
+        borderTopColorH: Variable<NamespacedKey<Namespace, 'border-top-color-h'>>;
+        borderTopColorS: Variable<NamespacedKey<Namespace, 'border-top-color-s'>>;
+        borderTopColorL: Variable<NamespacedKey<Namespace, 'border-top-color-l'>>;
+        borderTopColorA: Variable<NamespacedKey<Namespace, 'border-top-color-a'>>;
+        borderTopColor: Variable<NamespacedKey<Namespace, 'border-top-color'>>;
+    }
+>;
 
 export function defineColorFn<Namespace extends NamespaceType, ReturnType>(
     propertyName: string
 ): (ns: Namespace, value: SourceMapColor, options?: DefineOptions) => ReturnType {
     return (ns, value, options) => {
+        if (['inherit', 'initial', 'unset'].includes(value as string)) {
+            const color = nsvariable(ns, propertyName, value as string, options);
+            return {
+                ...toExportedVariable(color)
+            } as ReturnType;
+        }
+
         const colorH = nsvariable(ns, `${propertyName}-h`, 0, options);
         const colorS = nsvariable(ns, `${propertyName}-s`, '0%', options);
         const colorL = nsvariable(ns, `${propertyName}-l`, '0%', options);
@@ -42,7 +67,10 @@ export function defineColorFn<Namespace extends NamespaceType, ReturnType>(
             ns,
             propertyName,
             hsla([ref(colorH), ref(colorS), ref(colorL), ref(colorA)]),
-            options
+            {
+                ...options,
+                register: options?.registerComposed ?? true
+            }
         );
 
         if (isHSLAColorProperty(value)) {
@@ -81,3 +109,27 @@ export const defineBackground: <Namespace extends NamespaceType>(
     value: SourceMapBackground,
     options?: DefineOptions
 ) => OutputMapBackground<Namespace> = defineColorFn('background');
+
+export const defineBorderTopColor: <Namespace extends NamespaceType>(
+    ns: Namespace,
+    value: SourceMapColor,
+    options?: DefineOptions
+) => OutputMapBorderTopColor<Namespace> = defineColorFn('border-top-color');
+
+export const defineBorderRightColor: <Namespace extends NamespaceType>(
+    ns: Namespace,
+    value: SourceMapColor,
+    options?: DefineOptions
+) => OutputMapColor<Namespace> = defineColorFn('border-right-color');
+
+export const defineBorderBottomColor: <Namespace extends NamespaceType>(
+    ns: Namespace,
+    value: SourceMapColor,
+    options?: DefineOptions
+) => OutputMapColor<Namespace> = defineColorFn('border-bottom-color');
+
+export const defineBorderLeftColor: <Namespace extends NamespaceType>(
+    ns: Namespace,
+    value: SourceMapColor,
+    options?: DefineOptions
+) => OutputMapColor<Namespace> = defineColorFn('border-left-color');

@@ -147,7 +147,20 @@ describe('nsvariables', () => {
                 ]),
                 namespaceBorderTopWidth: nsvariable(ns, 'border-top-width', '1px'),
                 namespaceBorderTopStyle: nsvariable(ns, 'border-top-style', 'solid'),
-                namespaceBorderTopColor: nsvariable(ns, 'border-top-color', 'red'),
+                namespaceBorderTopColorH: nsvariable(ns, 'border-top-color-h', 0),
+                namespaceBorderTopColorS: nsvariable(ns, 'border-top-color-s', '100%'),
+                namespaceBorderTopColorL: nsvariable(ns, 'border-top-color-l', '50%'),
+                namespaceBorderTopColorA: nsvariable(ns, 'border-top-color-a', 1),
+                namespaceBorderTopColor: nsvariable(
+                    ns,
+                    'border-top-color',
+                    hsla([
+                        ref(nsvariable(ns, 'border-top-color-h', '')),
+                        ref(nsvariable(ns, 'border-top-color-s', '')),
+                        ref(nsvariable(ns, 'border-top-color-l', '')),
+                        ref(nsvariable(ns, 'border-top-color-a', ''))
+                    ])
+                ),
                 namespaceBorderRight: nsvariable(ns, 'border-right', [
                     ref(nsvariable(ns, 'border-right-width', '')),
                     ref(nsvariable(ns, 'border-right-style', '')),
@@ -155,7 +168,20 @@ describe('nsvariables', () => {
                 ]),
                 namespaceBorderRightWidth: nsvariable(ns, 'border-right-width', '1px'),
                 namespaceBorderRightStyle: nsvariable(ns, 'border-right-style', 'solid'),
-                namespaceBorderRightColor: nsvariable(ns, 'border-right-color', 'red'),
+                namespaceBorderRightColorH: nsvariable(ns, 'border-right-color-h', 0),
+                namespaceBorderRightColorS: nsvariable(ns, 'border-right-color-s', '100%'),
+                namespaceBorderRightColorL: nsvariable(ns, 'border-right-color-l', '50%'),
+                namespaceBorderRightColorA: nsvariable(ns, 'border-right-color-a', 1),
+                namespaceBorderRightColor: nsvariable(
+                    ns,
+                    'border-right-color',
+                    hsla([
+                        ref(nsvariable(ns, 'border-right-color-h', '')),
+                        ref(nsvariable(ns, 'border-right-color-s', '')),
+                        ref(nsvariable(ns, 'border-right-color-l', '')),
+                        ref(nsvariable(ns, 'border-right-color-a', ''))
+                    ])
+                ),
                 namespaceBorderBottom: nsvariable(ns, 'border-bottom', [
                     ref(nsvariable(ns, 'border-bottom-width', '')),
                     ref(nsvariable(ns, 'border-bottom-style', '')),
@@ -163,7 +189,20 @@ describe('nsvariables', () => {
                 ]),
                 namespaceBorderBottomWidth: nsvariable(ns, 'border-bottom-width', '1px'),
                 namespaceBorderBottomStyle: nsvariable(ns, 'border-bottom-style', 'solid'),
-                namespaceBorderBottomColor: nsvariable(ns, 'border-bottom-color', 'red'),
+                namespaceBorderBottomColorH: nsvariable(ns, 'border-bottom-color-h', 0),
+                namespaceBorderBottomColorS: nsvariable(ns, 'border-bottom-color-s', '100%'),
+                namespaceBorderBottomColorL: nsvariable(ns, 'border-bottom-color-l', '50%'),
+                namespaceBorderBottomColorA: nsvariable(ns, 'border-bottom-color-a', 1),
+                namespaceBorderBottomColor: nsvariable(
+                    ns,
+                    'border-bottom-color',
+                    hsla([
+                        ref(nsvariable(ns, 'border-bottom-color-h', '')),
+                        ref(nsvariable(ns, 'border-bottom-color-s', '')),
+                        ref(nsvariable(ns, 'border-bottom-color-l', '')),
+                        ref(nsvariable(ns, 'border-bottom-color-a', ''))
+                    ])
+                ),
                 namespaceBorderLeft: nsvariable(ns, 'border-left', [
                     ref(nsvariable(ns, 'border-left-width', '')),
                     ref(nsvariable(ns, 'border-left-style', '')),
@@ -171,22 +210,38 @@ describe('nsvariables', () => {
                 ]),
                 namespaceBorderLeftWidth: nsvariable(ns, 'border-left-width', '1px'),
                 namespaceBorderLeftStyle: nsvariable(ns, 'border-left-style', 'solid'),
-                namespaceBorderLeftColor: nsvariable(ns, 'border-left-color', 'red'),
-                namespaceBorderWidth: nsvariable(
+                namespaceBorderLeftColorH: nsvariable(ns, 'border-left-color-h', 0),
+                namespaceBorderLeftColorS: nsvariable(ns, 'border-left-color-s', '100%'),
+                namespaceBorderLeftColorL: nsvariable(ns, 'border-left-color-l', '50%'),
+                namespaceBorderLeftColorA: nsvariable(ns, 'border-left-color-a', 1),
+                namespaceBorderLeftColor: nsvariable(
                     ns,
-                    'border-width',
-                    ref(nsvariable(ns, 'border-top-width', ''))
+                    'border-left-color',
+                    hsla([
+                        ref(nsvariable(ns, 'border-left-color-h', '')),
+                        ref(nsvariable(ns, 'border-left-color-s', '')),
+                        ref(nsvariable(ns, 'border-left-color-l', '')),
+                        ref(nsvariable(ns, 'border-left-color-a', ''))
+                    ])
                 ),
-                namespaceBorderStyle: nsvariable(
-                    ns,
-                    'border-style',
-                    ref(nsvariable(ns, 'border-top-style', ''))
-                ),
-                namespaceBorderColor: nsvariable(
-                    ns,
-                    'border-color',
-                    ref(nsvariable(ns, 'border-top-color', ''))
-                ),
+                namespaceBorderWidth: nsvariable(ns, 'border-width', [
+                    ref(nsvariable(ns, 'border-top-width', '')),
+                    ref(nsvariable(ns, 'border-right-width', '')),
+                    ref(nsvariable(ns, 'border-bottom-width', '')),
+                    ref(nsvariable(ns, 'border-left-width', ''))
+                ]),
+                namespaceBorderStyle: nsvariable(ns, 'border-style', [
+                    ref(nsvariable(ns, 'border-top-style', '')),
+                    ref(nsvariable(ns, 'border-right-style', '')),
+                    ref(nsvariable(ns, 'border-bottom-style', '')),
+                    ref(nsvariable(ns, 'border-left-style', ''))
+                ]),
+                namespaceBorderColor: nsvariable(ns, 'border-color', [
+                    ref(nsvariable(ns, 'border-top-color', '')),
+                    ref(nsvariable(ns, 'border-right-color', '')),
+                    ref(nsvariable(ns, 'border-bottom-color', '')),
+                    ref(nsvariable(ns, 'border-left-color', ''))
+                ]),
                 namespaceBorder: nsvariable(ns, 'border', [
                     ref(nsvariable(ns, 'border-top-width', '')),
                     ref(nsvariable(ns, 'border-top-style', '')),
@@ -753,14 +808,15 @@ describe('nsvariables', () => {
 
         it('should return an object from object token value', () => {
             const ns = 'namespace';
+            const variableValue = ref('variable');
             const values = nsvariables(ns, {
-                custom: ref('variable')
+                custom: variableValue
             });
 
             const { namespaceCustom } = values;
 
             expect(values).toEqual({
-                namespaceCustom: nsvariable(ns, 'custom', 'value')
+                namespaceCustom: nsvariable(ns, 'custom', variableValue)
             });
             expect(namespaceCustom).toBeDefined();
         });

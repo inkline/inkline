@@ -1,11 +1,11 @@
 import {
     Color,
-    ColorComposedReturnKey,
-    ColorPartsReturnKeys,
+    ExportedName,
     HSLAColorInlineProperty,
     HSLAColorProperty,
     NamespaceType,
     TokenType,
+    TokenValue,
     Variable
 } from '../types';
 import { defaultDefinitionOptions } from '../constants';
@@ -17,6 +17,7 @@ import {
     resolvePercentagePropertyValue,
     toExportedName
 } from '../utils';
+import { isHSLAColorInlineProperty, isHSLAColorProperty } from '../typeGuards';
 
 /**
  * Creates a HSLA color token
@@ -28,6 +29,10 @@ export function hsla(value: HSLAColorInlineProperty): Color {
     };
 }
 
+type ColorReturnType<Name extends string> = {
+    [key in ExportedName<Name | `${Name}-h` | `${Name}-s` | `${Name}-l` | `${Name}-a`>]: Variable;
+};
+
 /**
  * Creates a `color` token.
  * This is a special token that allows you to define a color with the given name and value.
@@ -36,31 +41,35 @@ export function hsla(value: HSLAColorInlineProperty): Color {
  */
 export function color<Name extends string>(
     name: Name,
-    value: string | HSLAColorInlineProperty,
+    value: TokenValue | HSLAColorProperty | HSLAColorInlineProperty,
     options = defaultDefinitionOptions
-) {
-    type ComposedReturnKey = ColorComposedReturnKey<Name>;
-    type PartsReturnKey = ColorPartsReturnKeys<Name>;
-    type PartsReturnType = {
-        [key in PartsReturnKey]: Variable;
-    };
-    type ComposedReturnType = {
-        [key in ComposedReturnKey]: Variable<Name>;
-    };
-    type ReturnType = PartsReturnType & ComposedReturnType;
+): ColorReturnType<Name> {
+    const colorVariables: ColorReturnType<Name> = {} as ColorReturnType<Name>;
 
-    const colorVariables: ReturnType = {} as ReturnType;
-
-    let parsedColor: HSLAColorProperty;
+    let isParseableHSLAValue = true;
+    let parsedColor: HSLAColorProperty = {} as HSLAColorProperty;
     if (typeof value === 'string') {
-        const { h, s, l, alpha: a } = parseColor(value).hsl().object();
+        if (['transparent', 'inherit', 'initial', 'unset'].includes(value)) {
+            isParseableHSLAValue = false;
+        } else {
+            const { h, s, l, alpha: a } = parseColor(value).hsl().object();
+            parsedColor = {
+                h,
+                s: resolvePercentagePropertyValue(s),
+                l: resolvePercentagePropertyValue(l),
+                a: a ?? 1
+            };
+        }
+    } else if (isHSLAColorProperty(value)) {
+        const { h, s, l, a } = value;
+
         parsedColor = {
             h,
-            s: resolvePercentagePropertyValue(s),
-            l: resolvePercentagePropertyValue(l),
-            a: a ?? 1
+            s,
+            l,
+            a
         };
-    } else {
+    } else if (isHSLAColorInlineProperty(value)) {
         parsedColor = {
             h: value[0],
             s: resolvePercentagePropertyValue(value[1]),
@@ -70,20 +79,22 @@ export function color<Name extends string>(
     }
 
     const composedParts: Variable[] = [];
+
     Object.keys(parsedColor).forEach((key) => {
         const variableName = `${name}-${key}`;
         const colorVariable = variable(variableName, parsedColor[key as keyof typeof parsedColor], {
             default: options?.default
         });
 
-        (colorVariables as PartsReturnType)[toExportedName(variableName) as PartsReturnKey] =
-            colorVariable;
+        colorVariables[toExportedName(variableName) as keyof typeof colorVariables] = colorVariable;
         composedParts.push(colorVariable);
     });
 
-    (colorVariables as ComposedReturnType)[toExportedName(name)] = variable(
+    colorVariables[toExportedName(name)] = variable(
         name,
-        hsla(composedParts.map((part) => ref(part)) as HSLAColorInlineProperty)
+        isParseableHSLAValue
+            ? hsla(composedParts.map((part) => ref(part)) as HSLAColorInlineProperty)
+            : (value as TokenValue)
     );
 
     return colorVariables;
@@ -97,7 +108,7 @@ export function color<Name extends string>(
 export function nscolor<Namespace extends NamespaceType, Name extends string>(
     ns: Namespace,
     name: Name,
-    value: string | HSLAColorInlineProperty,
+    value: TokenValue | HSLAColorProperty | HSLAColorInlineProperty,
     options = defaultDefinitionOptions
 ) {
     return color(createNamespacedTokenName(ns, name), value, options);

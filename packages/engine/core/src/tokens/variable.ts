@@ -29,7 +29,9 @@ export function variable<Name extends string = string>(
         __value: value
     };
 
-    addVariableToTheme(instance, options);
+    if (options?.register !== false) {
+        addVariableToTheme(instance, options);
+    }
 
     return instance;
 }
@@ -58,4 +60,18 @@ export function nsvariable<Namespace extends NamespaceType, Name extends string>
  */
 export function set<Name extends string>(instance: Variable<Name>, value: TokenValue) {
     instance.__value = value;
+}
+
+/**
+ * Return the value of a variable or reference
+ */
+export function valueOf<Name extends string>(instance: Variable<Name>): TokenValue {
+    return instance.__value;
+}
+
+/**
+ * Returns the CSS name of a variable
+ */
+export function toVariableKey<Name extends string>(instance: Variable<Name>): string {
+    return `--${instance.__name}`;
 }

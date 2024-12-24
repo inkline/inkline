@@ -1,8 +1,8 @@
 import type { Theme } from './tokens';
 
-export type DefinitionOptions = { theme?: string | Theme; default?: boolean };
+export type DefinitionOptions = { theme?: string | Theme; default?: boolean; register?: boolean };
 
-export type DefineOptions = DefinitionOptions;
+export type DefineOptions = DefinitionOptions & { registerComposed?: boolean };
 
 export type SelectorOptions = DefinitionOptions;
 

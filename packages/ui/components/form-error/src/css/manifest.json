@@ -1872,10 +1872,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-min"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",
@@ -1895,10 +1892,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-min"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",
@@ -2030,10 +2024,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-max"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",
@@ -2053,10 +2044,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-max"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",

@@ -8,9 +8,9 @@ export function setExportsNamespace<
     NewNamespace extends NamespaceType,
     SourceSubMap extends PartialDeep<SourceMap>
 >(values: Define<OldNamespace, SourceSubMap>, newNs: NewNamespace) {
-    const oldNs = extractVariableNamespace<OldNamespace>(
-        (values as Record<string, Variable>)[Object.keys(values)[0]]
-    );
+    type KeyType = keyof typeof values;
+    const keys: KeyType[] = Object.keys(values) as KeyType[];
+    const oldNs = extractVariableNamespace<OldNamespace>(values[keys[0]] as Variable);
 
     return replaceExportsNamespace(values, oldNs, newNs);
 }

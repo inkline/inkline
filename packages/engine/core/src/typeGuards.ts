@@ -16,7 +16,8 @@ import {
     TokenValue,
     Transform,
     PrimitiveTokenValue,
-    CSS
+    CSS,
+    HSLAColorInlineProperty
 } from './types';
 import { TokenType } from './types';
 
@@ -147,6 +148,14 @@ export function isHSLAColorProperty(property: unknown): property is HSLAColorPro
     return (
         isObject(property) &&
         ('h' in property || 's' in property || 'l' in property || 'a' in property)
+    );
+}
+
+export function isHSLAColorInlineProperty(property: unknown): property is HSLAColorInlineProperty {
+    return (
+        Array.isArray(property) &&
+        property.length === 4 &&
+        property.every((part) => isTokenValue(part))
     );
 }
 

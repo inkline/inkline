@@ -1,18 +1,29 @@
-import { NamespacedKey, TokenValue, Variable, DefineOptions, NamespaceType } from '../../types';
+import {
+    NamespacedKey,
+    TokenValue,
+    Variable,
+    DefineOptions,
+    NamespaceType,
+    NamespacedMap
+} from '../../types';
 import { BorderRadiusProperty } from '../../types';
-import { nsvariable, ref, set } from '../../tokens';
 import { isCornersProperty } from '../../typeGuards';
 import { resolveStringCornersPropertyValue, toExportedVariable } from '../../utils';
+import { nsvariable, set } from '../variable';
+import { ref } from '../ref';
 
 export type SourceMapBorderRadius = TokenValue | BorderRadiusProperty;
 
-export type OutputMapBorderRadius<Namespace extends NamespaceType> = {
-    borderTopLeftRadius: Variable<NamespacedKey<Namespace, 'border-top-left-radius'>>;
-    borderTopRightRadius: Variable<NamespacedKey<Namespace, 'border-top-right-radius'>>;
-    borderBottomRightRadius: Variable<NamespacedKey<Namespace, 'border-bottom-right-radius'>>;
-    borderBottomLeftRadius: Variable<NamespacedKey<Namespace, 'border-bottom-left-radius'>>;
-    borderRadius: Variable<NamespacedKey<Namespace, 'border-radius'>>;
-};
+export type OutputMapBorderRadius<Namespace extends NamespaceType> = NamespacedMap<
+    Namespace,
+    {
+        borderTopLeftRadius: Variable<NamespacedKey<Namespace, 'border-top-left-radius'>>;
+        borderTopRightRadius: Variable<NamespacedKey<Namespace, 'border-top-right-radius'>>;
+        borderBottomRightRadius: Variable<NamespacedKey<Namespace, 'border-bottom-right-radius'>>;
+        borderBottomLeftRadius: Variable<NamespacedKey<Namespace, 'border-bottom-left-radius'>>;
+        borderRadius: Variable<NamespacedKey<Namespace, 'border-radius'>>;
+    }
+>;
 
 export function defineBorderRadius<Namespace extends NamespaceType>(
     ns: Namespace,
@@ -32,7 +43,10 @@ export function defineBorderRadius<Namespace extends NamespaceType>(
             ref(borderBottomRightRadius),
             ref(borderBottomLeftRadius)
         ],
-        options
+        {
+            ...options,
+            register: options?.registerComposed ?? true
+        }
     );
 
     if (isCornersProperty(value)) {
@@ -43,10 +57,10 @@ export function defineBorderRadius<Namespace extends NamespaceType>(
     } else if (typeof value === 'string') {
         const { topLeft, topRight, bottomRight, bottomLeft } =
             resolveStringCornersPropertyValue(value);
-        set(borderTopLeftRadius, topLeft);
-        set(borderTopRightRadius, topRight);
-        set(borderBottomRightRadius, bottomRight);
-        set(borderBottomLeftRadius, bottomLeft);
+        if (topLeft) set(borderTopLeftRadius, topLeft);
+        if (topRight) set(borderTopRightRadius, topRight);
+        if (bottomRight) set(borderBottomRightRadius, bottomRight);
+        if (bottomLeft) set(borderBottomLeftRadius, bottomLeft);
     } else {
         set(borderRadius, value);
     }

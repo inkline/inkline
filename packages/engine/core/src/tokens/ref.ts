@@ -12,3 +12,10 @@ export function ref(value: string | Variable, fallback?: TokenValue): Reference 
         ...(fallback ? { __fallback: fallback } : {})
     };
 }
+
+/**
+ * Creates a value reference from a variable by using the variable's value.
+ */
+export function vref(value: Variable): Reference {
+    return ref(value, value.__value);
+}

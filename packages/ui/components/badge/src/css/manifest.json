@@ -223,6 +223,695 @@
                     }
                 ]
             },
+            "spacing": {
+                "__type": "variable",
+                "__name": "spacing",
+                "__value": "1rem"
+            },
+            "scale-minor-second": {
+                "__type": "variable",
+                "__name": "scale-minor-second",
+                "__value": 1.067
+            },
+            "scale-major-second": {
+                "__type": "variable",
+                "__name": "scale-major-second",
+                "__value": 1.125
+            },
+            "scale-minor-third": {
+                "__type": "variable",
+                "__name": "scale-minor-third",
+                "__value": 1.2
+            },
+            "scale-major-third": {
+                "__type": "variable",
+                "__name": "scale-major-third",
+                "__value": 1.25
+            },
+            "scale-perfect-fourth": {
+                "__type": "variable",
+                "__name": "scale-perfect-fourth",
+                "__value": 1.333
+            },
+            "scale-augmented-fourth": {
+                "__type": "variable",
+                "__name": "scale-augmented-fourth",
+                "__value": 1.414
+            },
+            "scale-perfect-fifth": {
+                "__type": "variable",
+                "__name": "scale-perfect-fifth",
+                "__value": 1.5
+            },
+            "scale-golden": {
+                "__type": "variable",
+                "__name": "scale-golden",
+                "__value": 1.618
+            },
+            "scale": {
+                "__type": "variable",
+                "__name": "scale",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "scale-minor-third"
+                }
+            },
+            "scale-pow-minus-2": {
+                "__type": "variable",
+                "__name": "scale-pow-minus-2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "scale-pow-minus-1": {
+                "__type": "variable",
+                "__name": "scale-pow-minus-1",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "scale-pow-1": {
+                "__type": "variable",
+                "__name": "scale-pow-1",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        1
+                    ]
+                }
+            },
+            "scale-pow-2": {
+                "__type": "variable",
+                "__name": "scale-pow-2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "scale-pow-3": {
+                "__type": "variable",
+                "__name": "scale-pow-3",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "scale-pow-4": {
+                "__type": "variable",
+                "__name": "scale-pow-4",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "scale-pow-5": {
+                "__type": "variable",
+                "__name": "scale-pow-5",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier": {
+                "__type": "variable",
+                "__name": "size-multiplier",
+                "__value": 1
+            },
+            "size-multiplier-xxs": {
+                "__type": "variable",
+                "__name": "size-multiplier-xxs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-3"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier-xs": {
+                "__type": "variable",
+                "__name": "size-multiplier-xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-2"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier-sm": {
+                "__type": "variable",
+                "__name": "size-multiplier-sm",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-1"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier-md": {
+                "__type": "variable",
+                "__name": "size-multiplier-md",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "size-multiplier"
+                }
+            },
+            "size-multiplier-lg": {
+                "__type": "variable",
+                "__name": "size-multiplier-lg",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-1"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier-xl": {
+                "__type": "variable",
+                "__name": "size-multiplier-xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-2"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier-xxl": {
+                "__type": "variable",
+                "__name": "size-multiplier-xxl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-3"
+                        }
+                    ]
+                }
+            },
+            "spacing-xs": {
+                "__type": "variable",
+                "__name": "spacing-xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-xs"
+                        }
+                    ]
+                }
+            },
+            "spacing-sm": {
+                "__type": "variable",
+                "__name": "spacing-sm",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "spacing-md": {
+                "__type": "variable",
+                "__name": "spacing-md",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "spacing-lg": {
+                "__type": "variable",
+                "__name": "spacing-lg",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-lg"
+                        }
+                    ]
+                }
+            },
+            "spacing-xl": {
+                "__type": "variable",
+                "__name": "spacing-xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-xl"
+                        }
+                    ]
+                }
+            },
+            "spacing-2": {
+                "__type": "variable",
+                "__name": "spacing-2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        2
+                    ]
+                }
+            },
+            "spacing-3": {
+                "__type": "variable",
+                "__name": "spacing-3",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        3
+                    ]
+                }
+            },
+            "spacing-4": {
+                "__type": "variable",
+                "__name": "spacing-4",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        4
+                    ]
+                }
+            },
+            "spacing-5": {
+                "__type": "variable",
+                "__name": "spacing-5",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        5
+                    ]
+                }
+            },
+            "spacing-0.2": {
+                "__type": "variable",
+                "__name": "spacing-0.2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "/",
+                        5
+                    ]
+                }
+            },
+            "spacing-0.25": {
+                "__type": "variable",
+                "__name": "spacing-0.25",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "/",
+                        4
+                    ]
+                }
+            },
+            "spacing-0.33": {
+                "__type": "variable",
+                "__name": "spacing-0.33",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "/",
+                        3
+                    ]
+                }
+            },
+            "spacing-0.5": {
+                "__type": "variable",
+                "__name": "spacing-0.5",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "/",
+                        2
+                    ]
+                }
+            },
+            "padding-top": {
+                "__type": "variable",
+                "__name": "padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "padding-right": {
+                "__type": "variable",
+                "__name": "padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "padding-bottom": {
+                "__type": "variable",
+                "__name": "padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "padding-left": {
+                "__type": "variable",
+                "__name": "padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "padding": {
+                "__type": "variable",
+                "__name": "padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "padding-left"
+                    }
+                ]
+            },
+            "border-top-left-radius": {
+                "__type": "variable",
+                "__name": "border-top-left-radius",
+                "__value": "0.25rem"
+            },
+            "border-top-right-radius": {
+                "__type": "variable",
+                "__name": "border-top-right-radius",
+                "__value": "0.25rem"
+            },
+            "border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius",
+                "__value": "0.25rem"
+            },
+            "border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius",
+                "__value": "0.25rem"
+            },
+            "border-radius": {
+                "__type": "variable",
+                "__name": "border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-left-radius"
+                    }
+                ]
+            },
+            "box-shadow-offset-x": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-x",
+                "__value": 0
+            },
+            "box-shadow-offset-y": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-y",
+                "__value": "0.5rem"
+            },
+            "box-shadow-blur-radius": {
+                "__type": "variable",
+                "__name": "box-shadow-blur-radius",
+                "__value": "1rem"
+            },
+            "box-shadow-spread-radius": {
+                "__type": "variable",
+                "__name": "box-shadow-spread-radius",
+                "__value": "-0.75rem"
+            },
+            "box-shadow-color": {
+                "__type": "variable",
+                "__name": "box-shadow-color",
+                "__value": "rgba(0, 0, 0, 0.15)"
+            },
+            "box-shadow": {
+                "__type": "variable",
+                "__name": "box-shadow",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-x"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-y"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-blur-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-spread-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-color"
+                    }
+                ]
+            },
             "color-red-h": {
                 "__type": "variable",
                 "__name": "color-red-h",
@@ -8449,757 +9138,460 @@
                     ]
                 }
             },
-            "spacing": {
+            "contrast-text-color-light-h": {
                 "__type": "variable",
-                "__name": "spacing",
-                "__value": "1rem"
-            },
-            "scale-minor-second": {
-                "__type": "variable",
-                "__name": "scale-minor-second",
-                "__value": 1.067
-            },
-            "scale-major-second": {
-                "__type": "variable",
-                "__name": "scale-major-second",
-                "__value": 1.125
-            },
-            "scale-minor-third": {
-                "__type": "variable",
-                "__name": "scale-minor-third",
-                "__value": 1.2
-            },
-            "scale-major-third": {
-                "__type": "variable",
-                "__name": "scale-major-third",
-                "__value": 1.25
-            },
-            "scale-perfect-fourth": {
-                "__type": "variable",
-                "__name": "scale-perfect-fourth",
-                "__value": 1.333
-            },
-            "scale-augmented-fourth": {
-                "__type": "variable",
-                "__name": "scale-augmented-fourth",
-                "__value": 1.414
-            },
-            "scale-perfect-fifth": {
-                "__type": "variable",
-                "__name": "scale-perfect-fifth",
-                "__value": 1.5
-            },
-            "scale-golden": {
-                "__type": "variable",
-                "__name": "scale-golden",
-                "__value": 1.618
-            },
-            "scale": {
-                "__type": "variable",
-                "__name": "scale",
+                "__name": "contrast-text-color-light-h",
                 "__value": {
                     "__type": "reference",
-                    "__name": "scale-minor-third"
+                    "__name": "color-gray-900-h"
                 }
             },
-            "scale-pow-minus-2": {
+            "contrast-text-color-light-s": {
                 "__type": "variable",
-                "__name": "scale-pow-minus-2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "scale-pow-minus-1": {
-                "__type": "variable",
-                "__name": "scale-pow-minus-1",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "scale-pow-1": {
-                "__type": "variable",
-                "__name": "scale-pow-1",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        1
-                    ]
-                }
-            },
-            "scale-pow-2": {
-                "__type": "variable",
-                "__name": "scale-pow-2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "scale-pow-3": {
-                "__type": "variable",
-                "__name": "scale-pow-3",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "scale-pow-4": {
-                "__type": "variable",
-                "__name": "scale-pow-4",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "scale-pow-5": {
-                "__type": "variable",
-                "__name": "scale-pow-5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier": {
-                "__type": "variable",
-                "__name": "size-multiplier",
-                "__value": 1
-            },
-            "size-multiplier-xxs": {
-                "__type": "variable",
-                "__name": "size-multiplier-xxs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-3"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-xs": {
-                "__type": "variable",
-                "__name": "size-multiplier-xs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-2"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-sm": {
-                "__type": "variable",
-                "__name": "size-multiplier-sm",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-1"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-md": {
-                "__type": "variable",
-                "__name": "size-multiplier-md",
+                "__name": "contrast-text-color-light-s",
                 "__value": {
                     "__type": "reference",
-                    "__name": "size-multiplier"
+                    "__name": "color-gray-900-s"
                 }
             },
-            "size-multiplier-lg": {
+            "contrast-text-color-light-l": {
                 "__type": "variable",
-                "__name": "size-multiplier-lg",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-1"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-xl": {
-                "__type": "variable",
-                "__name": "size-multiplier-xl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-2"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-xxl": {
-                "__type": "variable",
-                "__name": "size-multiplier-xxl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-3"
-                        }
-                    ]
-                }
-            },
-            "spacing-xs": {
-                "__type": "variable",
-                "__name": "spacing-xs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xs"
-                        }
-                    ]
-                }
-            },
-            "spacing-sm": {
-                "__type": "variable",
-                "__name": "spacing-sm",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "spacing-md": {
-                "__type": "variable",
-                "__name": "spacing-md",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "spacing-lg": {
-                "__type": "variable",
-                "__name": "spacing-lg",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "spacing-xl": {
-                "__type": "variable",
-                "__name": "spacing-xl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xl"
-                        }
-                    ]
-                }
-            },
-            "spacing-2": {
-                "__type": "variable",
-                "__name": "spacing-2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        2
-                    ]
-                }
-            },
-            "spacing-3": {
-                "__type": "variable",
-                "__name": "spacing-3",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        3
-                    ]
-                }
-            },
-            "spacing-4": {
-                "__type": "variable",
-                "__name": "spacing-4",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        4
-                    ]
-                }
-            },
-            "spacing-5": {
-                "__type": "variable",
-                "__name": "spacing-5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        5
-                    ]
-                }
-            },
-            "spacing-0.2": {
-                "__type": "variable",
-                "__name": "spacing-0.2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "/",
-                        5
-                    ]
-                }
-            },
-            "spacing-0.25": {
-                "__type": "variable",
-                "__name": "spacing-0.25",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "/",
-                        4
-                    ]
-                }
-            },
-            "spacing-0.33": {
-                "__type": "variable",
-                "__name": "spacing-0.33",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "/",
-                        3
-                    ]
-                }
-            },
-            "spacing-0.5": {
-                "__type": "variable",
-                "__name": "spacing-0.5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "/",
-                        2
-                    ]
-                }
-            },
-            "padding-top": {
-                "__type": "variable",
-                "__name": "padding-top",
+                "__name": "contrast-text-color-light-l",
                 "__value": {
                     "__type": "reference",
-                    "__name": "spacing"
+                    "__name": "color-gray-900-l"
                 }
             },
-            "padding-right": {
+            "contrast-text-color-light-a": {
                 "__type": "variable",
-                "__name": "padding-right",
+                "__name": "contrast-text-color-light-a",
                 "__value": {
                     "__type": "reference",
-                    "__name": "spacing"
+                    "__name": "color-gray-900-a"
                 }
-            },
-            "padding-bottom": {
-                "__type": "variable",
-                "__name": "padding-bottom",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "padding-left": {
-                "__type": "variable",
-                "__name": "padding-left",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "padding": {
-                "__type": "variable",
-                "__name": "padding",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "padding-top"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "padding-right"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "padding-bottom"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "padding-left"
-                    }
-                ]
-            },
-            "border-top-left-radius": {
-                "__type": "variable",
-                "__name": "border-top-left-radius",
-                "__value": "0.25rem"
-            },
-            "border-top-right-radius": {
-                "__type": "variable",
-                "__name": "border-top-right-radius",
-                "__value": "0.25rem"
-            },
-            "border-bottom-right-radius": {
-                "__type": "variable",
-                "__name": "border-bottom-right-radius",
-                "__value": "0.25rem"
-            },
-            "border-bottom-left-radius": {
-                "__type": "variable",
-                "__name": "border-bottom-left-radius",
-                "__value": "0.25rem"
-            },
-            "border-radius": {
-                "__type": "variable",
-                "__name": "border-radius",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-left-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-left-radius"
-                    }
-                ]
-            },
-            "box-shadow-offset-x": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-x",
-                "__value": 0
-            },
-            "box-shadow-offset-y": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-y",
-                "__value": "0.5rem"
-            },
-            "box-shadow-blur-radius": {
-                "__type": "variable",
-                "__name": "box-shadow-blur-radius",
-                "__value": "1rem"
-            },
-            "box-shadow-spread-radius": {
-                "__type": "variable",
-                "__name": "box-shadow-spread-radius",
-                "__value": "-0.75rem"
-            },
-            "box-shadow-color": {
-                "__type": "variable",
-                "__name": "box-shadow-color",
-                "__value": "rgba(0, 0, 0, 0.15)"
-            },
-            "box-shadow": {
-                "__type": "variable",
-                "__name": "box-shadow",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-x"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-y"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-blur-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-spread-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-color"
-                    }
-                ]
             },
             "contrast-text-color-light": {
                 "__type": "variable",
                 "__name": "contrast-text-color-light",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-dark-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "color-gray-900"
+                    "__name": "color-white-h"
+                }
+            },
+            "contrast-text-color-dark-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white-s"
+                }
+            },
+            "contrast-text-color-dark-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white-l"
+                }
+            },
+            "contrast-text-color-dark-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white-a"
                 }
             },
             "contrast-text-color-dark": {
                 "__type": "variable",
                 "__name": "contrast-text-color-dark",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-primary-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "color-white"
+                    "__name": "contrast-text-color-dark-h"
+                }
+            },
+            "contrast-text-color-primary-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-s"
+                }
+            },
+            "contrast-text-color-primary-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-l"
+                }
+            },
+            "contrast-text-color-primary-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-a"
                 }
             },
             "contrast-text-color-primary": {
                 "__type": "variable",
                 "__name": "contrast-text-color-primary",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-secondary-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-dark"
+                    "__name": "contrast-text-color-dark-h"
+                }
+            },
+            "contrast-text-color-secondary-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-s"
+                }
+            },
+            "contrast-text-color-secondary-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-l"
+                }
+            },
+            "contrast-text-color-secondary-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-a"
                 }
             },
             "contrast-text-color-secondary": {
                 "__type": "variable",
                 "__name": "contrast-text-color-secondary",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-info-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-dark"
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-info-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-info-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-info-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
                 }
             },
             "contrast-text-color-info": {
                 "__type": "variable",
                 "__name": "contrast-text-color-info",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-success-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-light"
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-success-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-success-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-success-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
                 }
             },
             "contrast-text-color-success": {
                 "__type": "variable",
                 "__name": "contrast-text-color-success",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-warning-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-light"
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-warning-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-warning-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-warning-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
                 }
             },
             "contrast-text-color-warning": {
                 "__type": "variable",
                 "__name": "contrast-text-color-warning",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-danger-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-light"
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-danger-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-danger-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-danger-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
                 }
             },
             "contrast-text-color-danger": {
                 "__type": "variable",
                 "__name": "contrast-text-color-danger",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "contrast-text-color-dark"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-a"
+                        }
+                    ]
                 }
             },
             "fluid--min-width": {
@@ -9271,10 +9663,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-min"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",
@@ -9294,10 +9683,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-min"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",
@@ -9429,10 +9815,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-max"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",
@@ -9452,10 +9835,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-max"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",
@@ -10057,12 +10437,36 @@
                     "__name": "border-top-style"
                 }
             },
-            "badge--border-top-color": {
+            "badge--border-top-color-h": {
                 "__type": "variable",
-                "__name": "badge--border-top-color",
+                "__name": "badge--border-top-color-h",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light-shade-50"
+                    "__name": "color-light-shade-50-h"
+                }
+            },
+            "badge--border-top-color-s": {
+                "__type": "variable",
+                "__name": "badge--border-top-color-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-s"
+                }
+            },
+            "badge--border-top-color-l": {
+                "__type": "variable",
+                "__name": "badge--border-top-color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-l"
+                }
+            },
+            "badge--border-top-color-a": {
+                "__type": "variable",
+                "__name": "badge--border-top-color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-a"
                 }
             },
             "badge--border-right-width": {
@@ -10081,12 +10485,36 @@
                     "__name": "border-right-style"
                 }
             },
-            "badge--border-right-color": {
+            "badge--border-right-color-h": {
                 "__type": "variable",
-                "__name": "badge--border-right-color",
+                "__name": "badge--border-right-color-h",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light-shade-50"
+                    "__name": "color-light-shade-50-h"
+                }
+            },
+            "badge--border-right-color-s": {
+                "__type": "variable",
+                "__name": "badge--border-right-color-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-s"
+                }
+            },
+            "badge--border-right-color-l": {
+                "__type": "variable",
+                "__name": "badge--border-right-color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-l"
+                }
+            },
+            "badge--border-right-color-a": {
+                "__type": "variable",
+                "__name": "badge--border-right-color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-a"
                 }
             },
             "badge--border-bottom-width": {
@@ -10105,12 +10533,36 @@
                     "__name": "border-bottom-style"
                 }
             },
-            "badge--border-bottom-color": {
+            "badge--border-bottom-color-h": {
                 "__type": "variable",
-                "__name": "badge--border-bottom-color",
+                "__name": "badge--border-bottom-color-h",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light-shade-50"
+                    "__name": "color-light-shade-50-h"
+                }
+            },
+            "badge--border-bottom-color-s": {
+                "__type": "variable",
+                "__name": "badge--border-bottom-color-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-s"
+                }
+            },
+            "badge--border-bottom-color-l": {
+                "__type": "variable",
+                "__name": "badge--border-bottom-color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-l"
+                }
+            },
+            "badge--border-bottom-color-a": {
+                "__type": "variable",
+                "__name": "badge--border-bottom-color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-a"
                 }
             },
             "badge--border-left-width": {
@@ -10129,127 +10581,94 @@
                     "__name": "border-left-style"
                 }
             },
-            "badge--border-left-color": {
+            "badge--border-left-color-h": {
                 "__type": "variable",
-                "__name": "badge--border-left-color",
+                "__name": "badge--border-left-color-h",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light-shade-50"
+                    "__name": "color-light-shade-50-h"
                 }
             },
-            "badge--border-width": {
+            "badge--border-left-color-s": {
                 "__type": "variable",
-                "__name": "badge--border-width",
+                "__name": "badge--border-left-color-s",
                 "__value": {
                     "__type": "reference",
-                    "__name": "badge--border-top-width"
+                    "__name": "color-light-shade-50-s"
                 }
             },
-            "badge--border-style": {
+            "badge--border-left-color-l": {
                 "__type": "variable",
-                "__name": "badge--border-style",
+                "__name": "badge--border-left-color-l",
                 "__value": {
                     "__type": "reference",
-                    "__name": "badge--border-top-style"
+                    "__name": "color-light-shade-50-l"
                 }
             },
-            "badge--border-color": {
+            "badge--border-left-color-a": {
                 "__type": "variable",
-                "__name": "badge--border-color",
+                "__name": "badge--border-left-color-a",
                 "__value": {
                     "__type": "reference",
-                    "__name": "badge--border-top-color"
+                    "__name": "color-light-shade-50-a"
                 }
             },
-            "badge--border-top": {
+            "color-h": {
                 "__type": "variable",
-                "__name": "badge--border-top",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-top-width"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-top-style"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-top-color"
-                    }
-                ]
+                "__name": "color-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-h"
+                }
             },
-            "badge--border-right": {
+            "color-s": {
                 "__type": "variable",
-                "__name": "badge--border-right",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-right-width"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-right-style"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-right-color"
-                    }
-                ]
+                "__name": "color-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-s"
+                }
             },
-            "badge--border-bottom": {
+            "color-l": {
                 "__type": "variable",
-                "__name": "badge--border-bottom",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-bottom-width"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-bottom-style"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-bottom-color"
-                    }
-                ]
+                "__name": "color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-l"
+                }
             },
-            "badge--border-left": {
+            "color-a": {
                 "__type": "variable",
-                "__name": "badge--border-left",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-left-width"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-left-style"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-left-color"
-                    }
-                ]
+                "__name": "color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-a"
+                }
             },
-            "badge--border": {
+            "color": {
                 "__type": "variable",
-                "__name": "badge--border",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-top-width"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-top-style"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-top-color"
-                    }
-                ]
+                "__name": "color",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-a"
+                        }
+                    ]
+                }
             },
             "badge--border-top-left-radius": {
                 "__type": "variable",
@@ -10282,28 +10701,6 @@
                     "__type": "reference",
                     "__name": "border-bottom-left-radius"
                 }
-            },
-            "badge--border-radius": {
-                "__type": "variable",
-                "__name": "badge--border-radius",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-top-left-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-top-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-bottom-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--border-bottom-left-radius"
-                    }
-                ]
             },
             "badge--box-shadow-offset-x": {
                 "__type": "variable",
@@ -10345,32 +10742,6 @@
                     "__name": "box-shadow-color"
                 }
             },
-            "badge--box-shadow": {
-                "__type": "variable",
-                "__name": "badge--box-shadow",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--box-shadow-offset-x"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--box-shadow-offset-y"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--box-shadow-blur-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--box-shadow-spread-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--box-shadow-color"
-                    }
-                ]
-            },
             "badge--background-h": {
                 "__type": "variable",
                 "__name": "badge--background-h",
@@ -10403,31 +10774,6 @@
                     "__name": "color-light-a"
                 }
             },
-            "badge--background": {
-                "__type": "variable",
-                "__name": "badge--background",
-                "__value": {
-                    "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--background-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--background-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--background-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--background-a"
-                        }
-                    ]
-                }
-            },
             "badge--color-h": {
                 "__type": "variable",
                 "__name": "badge--color-h",
@@ -10448,20 +10794,12 @@
                 "__name": "badge--color-a",
                 "__value": 1
             },
-            "badge--color": {
-                "__type": "variable",
-                "__name": "badge--color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "contrast-text-color-light"
-                }
-            },
             "badge--font-size": {
                 "__type": "variable",
                 "__name": "badge--font-size",
                 "__value": {
                     "__type": "reference",
-                    "__name": "font-size"
+                    "__name": "font-size-sm"
                 }
             },
             "badge--font-weight": {
@@ -10532,28 +10870,6 @@
                     ]
                 }
             },
-            "badge--padding": {
-                "__type": "variable",
-                "__name": "badge--padding",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--padding-top"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--padding-right"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--padding-bottom"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--padding-left"
-                    }
-                ]
-            },
             "badge--transition-property": {
                 "__type": "variable",
                 "__name": "badge--transition-property",
@@ -10578,24 +10894,6 @@
                     "__name": "transition-timing-function"
                 }
             },
-            "badge--transition": {
-                "__type": "variable",
-                "__name": "badge--transition",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--transition-property"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--transition-duration"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--transition-timing-function"
-                    }
-                ]
-            },
             "badge--pill--border-top-left-radius": {
                 "__type": "variable",
                 "__name": "badge--pill--border-top-left-radius",
@@ -10616,1156 +10914,468 @@
                 "__name": "badge--pill--border-bottom-left-radius",
                 "__value": "50%"
             },
-            "badge--pill--border-radius": {
+            "badge--light--border-top-width": {
                 "__type": "variable",
-                "__name": "badge--pill--border-radius",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--pill--border-top-left-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--pill--border-top-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--pill--border-bottom-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--pill--border-bottom-left-radius"
-                    }
-                ]
-            },
-            "badge--sm--border-top-left-radius": {
-                "__type": "variable",
-                "__name": "badge--sm--border-top-left-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-top-left-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "badge--sm--border-top-right-radius": {
-                "__type": "variable",
-                "__name": "badge--sm--border-top-right-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-top-right-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "badge--sm--border-bottom-right-radius": {
-                "__type": "variable",
-                "__name": "badge--sm--border-bottom-right-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-bottom-right-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "badge--sm--border-bottom-left-radius": {
-                "__type": "variable",
-                "__name": "badge--sm--border-bottom-left-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-bottom-left-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "badge--sm--border-radius": {
-                "__type": "variable",
-                "__name": "badge--sm--border-radius",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--sm--border-top-left-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--sm--border-top-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--sm--border-bottom-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--sm--border-bottom-left-radius"
-                    }
-                ]
-            },
-            "badge--sm--font-size": {
-                "__type": "variable",
-                "__name": "badge--sm--font-size",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--font-size"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "badge--sm--padding-top": {
-                "__type": "variable",
-                "__name": "badge--sm--padding-top",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "badge--sm--padding-right": {
-                "__type": "variable",
-                "__name": "badge--sm--padding-right",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "badge--sm--padding-bottom": {
-                "__type": "variable",
-                "__name": "badge--sm--padding-bottom",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "badge--sm--padding-left": {
-                "__type": "variable",
-                "__name": "badge--sm--padding-left",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "badge--sm--padding": {
-                "__type": "variable",
-                "__name": "badge--sm--padding",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--sm--padding-top"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--sm--padding-right"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--sm--padding-bottom"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--sm--padding-left"
-                    }
-                ]
-            },
-            "badge--md--border-top-left-radius": {
-                "__type": "variable",
-                "__name": "badge--md--border-top-left-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-top-left-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "badge--md--border-top-right-radius": {
-                "__type": "variable",
-                "__name": "badge--md--border-top-right-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-top-right-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "badge--md--border-bottom-right-radius": {
-                "__type": "variable",
-                "__name": "badge--md--border-bottom-right-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-bottom-right-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "badge--md--border-bottom-left-radius": {
-                "__type": "variable",
-                "__name": "badge--md--border-bottom-left-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-bottom-left-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "badge--md--border-radius": {
-                "__type": "variable",
-                "__name": "badge--md--border-radius",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--md--border-top-left-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--md--border-top-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--md--border-bottom-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--md--border-bottom-left-radius"
-                    }
-                ]
-            },
-            "badge--md--font-size": {
-                "__type": "variable",
-                "__name": "badge--md--font-size",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--font-size"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "badge--md--padding-top": {
-                "__type": "variable",
-                "__name": "badge--md--padding-top",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "badge--md--padding-right": {
-                "__type": "variable",
-                "__name": "badge--md--padding-right",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "badge--md--padding-bottom": {
-                "__type": "variable",
-                "__name": "badge--md--padding-bottom",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "badge--md--padding-left": {
-                "__type": "variable",
-                "__name": "badge--md--padding-left",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "badge--md--padding": {
-                "__type": "variable",
-                "__name": "badge--md--padding",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--md--padding-top"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--md--padding-right"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--md--padding-bottom"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--md--padding-left"
-                    }
-                ]
-            },
-            "badge--lg--border-top-left-radius": {
-                "__type": "variable",
-                "__name": "badge--lg--border-top-left-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-top-left-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "badge--lg--border-top-right-radius": {
-                "__type": "variable",
-                "__name": "badge--lg--border-top-right-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-top-right-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "badge--lg--border-bottom-right-radius": {
-                "__type": "variable",
-                "__name": "badge--lg--border-bottom-right-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-bottom-right-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "badge--lg--border-bottom-left-radius": {
-                "__type": "variable",
-                "__name": "badge--lg--border-bottom-left-radius",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--border-bottom-left-radius"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "badge--lg--border-radius": {
-                "__type": "variable",
-                "__name": "badge--lg--border-radius",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--lg--border-top-left-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--lg--border-top-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--lg--border-bottom-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--lg--border-bottom-left-radius"
-                    }
-                ]
-            },
-            "badge--lg--font-size": {
-                "__type": "variable",
-                "__name": "badge--lg--font-size",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--font-size"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "badge--lg--padding-top": {
-                "__type": "variable",
-                "__name": "badge--lg--padding-top",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "badge--lg--padding-right": {
-                "__type": "variable",
-                "__name": "badge--lg--padding-right",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "badge--lg--padding-bottom": {
-                "__type": "variable",
-                "__name": "badge--lg--padding-bottom",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "badge--lg--padding-left": {
-                "__type": "variable",
-                "__name": "badge--lg--padding-left",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--padding-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "badge--lg--padding": {
-                "__type": "variable",
-                "__name": "badge--lg--padding",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "badge--lg--padding-top"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--lg--padding-right"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--lg--padding-bottom"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "badge--lg--padding-left"
-                    }
-                ]
-            },
-            "badge--primary--border-color": {
-                "__type": "variable",
-                "__name": "badge--primary--border-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-shade-50"
-                }
-            },
-            "badge--primary--background-h": {
-                "__type": "variable",
-                "__name": "badge--primary--background-h",
+                "__name": "badge--light--border-top-width",
                 "__value": 0
             },
-            "badge--primary--background-s": {
+            "badge--light--border-top-style": {
                 "__type": "variable",
-                "__name": "badge--primary--background-s",
-                "__value": "0%"
+                "__name": "badge--light--border-top-style",
+                "__value": "none"
             },
-            "badge--primary--background-l": {
+            "badge--light--border-top-color-h": {
                 "__type": "variable",
-                "__name": "badge--primary--background-l",
-                "__value": "0%"
-            },
-            "badge--primary--background-a": {
-                "__type": "variable",
-                "__name": "badge--primary--background-a",
-                "__value": 1
-            },
-            "badge--primary--background": {
-                "__type": "variable",
-                "__name": "badge--primary--background",
+                "__name": "badge--light--border-top-color-h",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-primary"
+                    "__name": "color-light-shade-50-h"
                 }
             },
-            "badge--primary--color-h": {
+            "badge--light--border-top-color-s": {
                 "__type": "variable",
-                "__name": "badge--primary--color-h",
+                "__name": "badge--light--border-top-color-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-s"
+                }
+            },
+            "badge--light--border-top-color-l": {
+                "__type": "variable",
+                "__name": "badge--light--border-top-color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-l"
+                }
+            },
+            "badge--light--border-top-color-a": {
+                "__type": "variable",
+                "__name": "badge--light--border-top-color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-a"
+                }
+            },
+            "badge--light--border-right-width": {
+                "__type": "variable",
+                "__name": "badge--light--border-right-width",
                 "__value": 0
             },
-            "badge--primary--color-s": {
+            "badge--light--border-right-style": {
                 "__type": "variable",
-                "__name": "badge--primary--color-s",
-                "__value": "0%"
+                "__name": "badge--light--border-right-style",
+                "__value": "none"
             },
-            "badge--primary--color-l": {
+            "badge--light--border-right-color-h": {
                 "__type": "variable",
-                "__name": "badge--primary--color-l",
-                "__value": "0%"
-            },
-            "badge--primary--color-a": {
-                "__type": "variable",
-                "__name": "badge--primary--color-a",
-                "__value": 1
-            },
-            "badge--primary--color": {
-                "__type": "variable",
-                "__name": "badge--primary--color",
+                "__name": "badge--light--border-right-color-h",
                 "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-primary"
+                    "__name": "color-light-shade-50-h"
                 }
             },
-            "badge--secondary--border-color": {
+            "badge--light--border-right-color-s": {
                 "__type": "variable",
-                "__name": "badge--secondary--border-color",
+                "__name": "badge--light--border-right-color-s",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-secondary-shade-50"
+                    "__name": "color-light-shade-50-s"
                 }
             },
-            "badge--secondary--background-h": {
+            "badge--light--border-right-color-l": {
                 "__type": "variable",
-                "__name": "badge--secondary--background-h",
+                "__name": "badge--light--border-right-color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-l"
+                }
+            },
+            "badge--light--border-right-color-a": {
+                "__type": "variable",
+                "__name": "badge--light--border-right-color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-a"
+                }
+            },
+            "badge--light--border-bottom-width": {
+                "__type": "variable",
+                "__name": "badge--light--border-bottom-width",
                 "__value": 0
             },
-            "badge--secondary--background-s": {
+            "badge--light--border-bottom-style": {
                 "__type": "variable",
-                "__name": "badge--secondary--background-s",
-                "__value": "0%"
+                "__name": "badge--light--border-bottom-style",
+                "__value": "none"
             },
-            "badge--secondary--background-l": {
+            "badge--light--border-bottom-color-h": {
                 "__type": "variable",
-                "__name": "badge--secondary--background-l",
-                "__value": "0%"
-            },
-            "badge--secondary--background-a": {
-                "__type": "variable",
-                "__name": "badge--secondary--background-a",
-                "__value": 1
-            },
-            "badge--secondary--background": {
-                "__type": "variable",
-                "__name": "badge--secondary--background",
+                "__name": "badge--light--border-bottom-color-h",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-secondary"
+                    "__name": "color-light-shade-50-h"
                 }
             },
-            "badge--secondary--color-h": {
+            "badge--light--border-bottom-color-s": {
                 "__type": "variable",
-                "__name": "badge--secondary--color-h",
+                "__name": "badge--light--border-bottom-color-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-s"
+                }
+            },
+            "badge--light--border-bottom-color-l": {
+                "__type": "variable",
+                "__name": "badge--light--border-bottom-color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-l"
+                }
+            },
+            "badge--light--border-bottom-color-a": {
+                "__type": "variable",
+                "__name": "badge--light--border-bottom-color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-a"
+                }
+            },
+            "badge--light--border-left-width": {
+                "__type": "variable",
+                "__name": "badge--light--border-left-width",
                 "__value": 0
             },
-            "badge--secondary--color-s": {
+            "badge--light--border-left-style": {
                 "__type": "variable",
-                "__name": "badge--secondary--color-s",
-                "__value": "0%"
+                "__name": "badge--light--border-left-style",
+                "__value": "none"
             },
-            "badge--secondary--color-l": {
+            "badge--light--border-left-color-h": {
                 "__type": "variable",
-                "__name": "badge--secondary--color-l",
-                "__value": "0%"
-            },
-            "badge--secondary--color-a": {
-                "__type": "variable",
-                "__name": "badge--secondary--color-a",
-                "__value": 1
-            },
-            "badge--secondary--color": {
-                "__type": "variable",
-                "__name": "badge--secondary--color",
+                "__name": "badge--light--border-left-color-h",
                 "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-secondary"
+                    "__name": "color-light-shade-50-h"
                 }
             },
-            "badge--light--border-color": {
+            "badge--light--border-left-color-s": {
                 "__type": "variable",
-                "__name": "badge--light--border-color",
+                "__name": "badge--light--border-left-color-s",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light-shade-50"
+                    "__name": "color-light-shade-50-s"
+                }
+            },
+            "badge--light--border-left-color-l": {
+                "__type": "variable",
+                "__name": "badge--light--border-left-color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-l"
+                }
+            },
+            "badge--light--border-left-color-a": {
+                "__type": "variable",
+                "__name": "badge--light--border-left-color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50-a"
                 }
             },
             "badge--light--background-h": {
                 "__type": "variable",
                 "__name": "badge--light--background-h",
-                "__value": 0
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-h"
+                }
             },
             "badge--light--background-s": {
                 "__type": "variable",
                 "__name": "badge--light--background-s",
-                "__value": "0%"
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-s"
+                }
             },
             "badge--light--background-l": {
                 "__type": "variable",
                 "__name": "badge--light--background-l",
-                "__value": "0%"
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-l"
+                }
             },
             "badge--light--background-a": {
                 "__type": "variable",
                 "__name": "badge--light--background-a",
-                "__value": 1
-            },
-            "badge--light--background": {
-                "__type": "variable",
-                "__name": "badge--light--background",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light"
+                    "__name": "color-light-a"
                 }
             },
             "badge--light--color-h": {
                 "__type": "variable",
                 "__name": "badge--light--color-h",
-                "__value": 0
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-h"
+                }
             },
             "badge--light--color-s": {
                 "__type": "variable",
                 "__name": "badge--light--color-s",
-                "__value": "0%"
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
             },
             "badge--light--color-l": {
                 "__type": "variable",
                 "__name": "badge--light--color-l",
-                "__value": "0%"
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
             },
             "badge--light--color-a": {
                 "__type": "variable",
                 "__name": "badge--light--color-a",
-                "__value": 1
-            },
-            "badge--light--color": {
-                "__type": "variable",
-                "__name": "badge--light--color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-light"
+                    "__name": "contrast-text-color-light-a"
                 }
             },
-            "badge--dark--border-color": {
+            "badge--dark--border-top-width": {
                 "__type": "variable",
-                "__name": "badge--dark--border-color",
+                "__name": "badge--dark--border-top-width",
+                "__value": 0
+            },
+            "badge--dark--border-top-style": {
+                "__type": "variable",
+                "__name": "badge--dark--border-top-style",
+                "__value": "none"
+            },
+            "badge--dark--border-top-color-h": {
+                "__type": "variable",
+                "__name": "badge--dark--border-top-color-h",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-dark-tint-50"
+                    "__name": "color-dark-tint-50-h"
+                }
+            },
+            "badge--dark--border-top-color-s": {
+                "__type": "variable",
+                "__name": "badge--dark--border-top-color-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-s"
+                }
+            },
+            "badge--dark--border-top-color-l": {
+                "__type": "variable",
+                "__name": "badge--dark--border-top-color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-l"
+                }
+            },
+            "badge--dark--border-top-color-a": {
+                "__type": "variable",
+                "__name": "badge--dark--border-top-color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-a"
+                }
+            },
+            "badge--dark--border-right-width": {
+                "__type": "variable",
+                "__name": "badge--dark--border-right-width",
+                "__value": 0
+            },
+            "badge--dark--border-right-style": {
+                "__type": "variable",
+                "__name": "badge--dark--border-right-style",
+                "__value": "none"
+            },
+            "badge--dark--border-right-color-h": {
+                "__type": "variable",
+                "__name": "badge--dark--border-right-color-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-h"
+                }
+            },
+            "badge--dark--border-right-color-s": {
+                "__type": "variable",
+                "__name": "badge--dark--border-right-color-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-s"
+                }
+            },
+            "badge--dark--border-right-color-l": {
+                "__type": "variable",
+                "__name": "badge--dark--border-right-color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-l"
+                }
+            },
+            "badge--dark--border-right-color-a": {
+                "__type": "variable",
+                "__name": "badge--dark--border-right-color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-a"
+                }
+            },
+            "badge--dark--border-bottom-width": {
+                "__type": "variable",
+                "__name": "badge--dark--border-bottom-width",
+                "__value": 0
+            },
+            "badge--dark--border-bottom-style": {
+                "__type": "variable",
+                "__name": "badge--dark--border-bottom-style",
+                "__value": "none"
+            },
+            "badge--dark--border-bottom-color-h": {
+                "__type": "variable",
+                "__name": "badge--dark--border-bottom-color-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-h"
+                }
+            },
+            "badge--dark--border-bottom-color-s": {
+                "__type": "variable",
+                "__name": "badge--dark--border-bottom-color-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-s"
+                }
+            },
+            "badge--dark--border-bottom-color-l": {
+                "__type": "variable",
+                "__name": "badge--dark--border-bottom-color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-l"
+                }
+            },
+            "badge--dark--border-bottom-color-a": {
+                "__type": "variable",
+                "__name": "badge--dark--border-bottom-color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-a"
+                }
+            },
+            "badge--dark--border-left-width": {
+                "__type": "variable",
+                "__name": "badge--dark--border-left-width",
+                "__value": 0
+            },
+            "badge--dark--border-left-style": {
+                "__type": "variable",
+                "__name": "badge--dark--border-left-style",
+                "__value": "none"
+            },
+            "badge--dark--border-left-color-h": {
+                "__type": "variable",
+                "__name": "badge--dark--border-left-color-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-h"
+                }
+            },
+            "badge--dark--border-left-color-s": {
+                "__type": "variable",
+                "__name": "badge--dark--border-left-color-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-s"
+                }
+            },
+            "badge--dark--border-left-color-l": {
+                "__type": "variable",
+                "__name": "badge--dark--border-left-color-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-l"
+                }
+            },
+            "badge--dark--border-left-color-a": {
+                "__type": "variable",
+                "__name": "badge--dark--border-left-color-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50-a"
                 }
             },
             "badge--dark--background-h": {
                 "__type": "variable",
                 "__name": "badge--dark--background-h",
-                "__value": 0
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-h"
+                }
             },
             "badge--dark--background-s": {
                 "__type": "variable",
                 "__name": "badge--dark--background-s",
-                "__value": "0%"
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-s"
+                }
             },
             "badge--dark--background-l": {
                 "__type": "variable",
                 "__name": "badge--dark--background-l",
-                "__value": "0%"
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-l"
+                }
             },
             "badge--dark--background-a": {
                 "__type": "variable",
                 "__name": "badge--dark--background-a",
-                "__value": 1
-            },
-            "badge--dark--background": {
-                "__type": "variable",
-                "__name": "badge--dark--background",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-dark"
+                    "__name": "color-dark-a"
                 }
             },
             "badge--dark--color-h": {
                 "__type": "variable",
                 "__name": "badge--dark--color-h",
-                "__value": 0
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-h"
+                }
             },
             "badge--dark--color-s": {
                 "__type": "variable",
                 "__name": "badge--dark--color-s",
-                "__value": "0%"
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-s"
+                }
             },
             "badge--dark--color-l": {
                 "__type": "variable",
                 "__name": "badge--dark--color-l",
-                "__value": "0%"
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-l"
+                }
             },
             "badge--dark--color-a": {
                 "__type": "variable",
                 "__name": "badge--dark--color-a",
-                "__value": 1
-            },
-            "badge--dark--color": {
-                "__type": "variable",
-                "__name": "badge--dark--color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-dark"
-                }
-            },
-            "badge--info--border-color": {
-                "__type": "variable",
-                "__name": "badge--info--border-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-info-shade-50"
-                }
-            },
-            "badge--info--background-h": {
-                "__type": "variable",
-                "__name": "badge--info--background-h",
-                "__value": 0
-            },
-            "badge--info--background-s": {
-                "__type": "variable",
-                "__name": "badge--info--background-s",
-                "__value": "0%"
-            },
-            "badge--info--background-l": {
-                "__type": "variable",
-                "__name": "badge--info--background-l",
-                "__value": "0%"
-            },
-            "badge--info--background-a": {
-                "__type": "variable",
-                "__name": "badge--info--background-a",
-                "__value": 1
-            },
-            "badge--info--background": {
-                "__type": "variable",
-                "__name": "badge--info--background",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-info"
-                }
-            },
-            "badge--info--color-h": {
-                "__type": "variable",
-                "__name": "badge--info--color-h",
-                "__value": 0
-            },
-            "badge--info--color-s": {
-                "__type": "variable",
-                "__name": "badge--info--color-s",
-                "__value": "0%"
-            },
-            "badge--info--color-l": {
-                "__type": "variable",
-                "__name": "badge--info--color-l",
-                "__value": "0%"
-            },
-            "badge--info--color-a": {
-                "__type": "variable",
-                "__name": "badge--info--color-a",
-                "__value": 1
-            },
-            "badge--info--color": {
-                "__type": "variable",
-                "__name": "badge--info--color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "contrast-text-color-info"
-                }
-            },
-            "badge--success--border-color": {
-                "__type": "variable",
-                "__name": "badge--success--border-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-success-shade-50"
-                }
-            },
-            "badge--success--background-h": {
-                "__type": "variable",
-                "__name": "badge--success--background-h",
-                "__value": 0
-            },
-            "badge--success--background-s": {
-                "__type": "variable",
-                "__name": "badge--success--background-s",
-                "__value": "0%"
-            },
-            "badge--success--background-l": {
-                "__type": "variable",
-                "__name": "badge--success--background-l",
-                "__value": "0%"
-            },
-            "badge--success--background-a": {
-                "__type": "variable",
-                "__name": "badge--success--background-a",
-                "__value": 1
-            },
-            "badge--success--background": {
-                "__type": "variable",
-                "__name": "badge--success--background",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-success"
-                }
-            },
-            "badge--success--color-h": {
-                "__type": "variable",
-                "__name": "badge--success--color-h",
-                "__value": 0
-            },
-            "badge--success--color-s": {
-                "__type": "variable",
-                "__name": "badge--success--color-s",
-                "__value": "0%"
-            },
-            "badge--success--color-l": {
-                "__type": "variable",
-                "__name": "badge--success--color-l",
-                "__value": "0%"
-            },
-            "badge--success--color-a": {
-                "__type": "variable",
-                "__name": "badge--success--color-a",
-                "__value": 1
-            },
-            "badge--success--color": {
-                "__type": "variable",
-                "__name": "badge--success--color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "contrast-text-color-success"
-                }
-            },
-            "badge--warning--border-color": {
-                "__type": "variable",
-                "__name": "badge--warning--border-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-warning-shade-50"
-                }
-            },
-            "badge--warning--background-h": {
-                "__type": "variable",
-                "__name": "badge--warning--background-h",
-                "__value": 0
-            },
-            "badge--warning--background-s": {
-                "__type": "variable",
-                "__name": "badge--warning--background-s",
-                "__value": "0%"
-            },
-            "badge--warning--background-l": {
-                "__type": "variable",
-                "__name": "badge--warning--background-l",
-                "__value": "0%"
-            },
-            "badge--warning--background-a": {
-                "__type": "variable",
-                "__name": "badge--warning--background-a",
-                "__value": 1
-            },
-            "badge--warning--background": {
-                "__type": "variable",
-                "__name": "badge--warning--background",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-warning"
-                }
-            },
-            "badge--warning--color-h": {
-                "__type": "variable",
-                "__name": "badge--warning--color-h",
-                "__value": 0
-            },
-            "badge--warning--color-s": {
-                "__type": "variable",
-                "__name": "badge--warning--color-s",
-                "__value": "0%"
-            },
-            "badge--warning--color-l": {
-                "__type": "variable",
-                "__name": "badge--warning--color-l",
-                "__value": "0%"
-            },
-            "badge--warning--color-a": {
-                "__type": "variable",
-                "__name": "badge--warning--color-a",
-                "__value": 1
-            },
-            "badge--warning--color": {
-                "__type": "variable",
-                "__name": "badge--warning--color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "contrast-text-color-warning"
-                }
-            },
-            "badge--danger--border-color": {
-                "__type": "variable",
-                "__name": "badge--danger--border-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-danger-shade-50"
-                }
-            },
-            "badge--danger--background-h": {
-                "__type": "variable",
-                "__name": "badge--danger--background-h",
-                "__value": 0
-            },
-            "badge--danger--background-s": {
-                "__type": "variable",
-                "__name": "badge--danger--background-s",
-                "__value": "0%"
-            },
-            "badge--danger--background-l": {
-                "__type": "variable",
-                "__name": "badge--danger--background-l",
-                "__value": "0%"
-            },
-            "badge--danger--background-a": {
-                "__type": "variable",
-                "__name": "badge--danger--background-a",
-                "__value": 1
-            },
-            "badge--danger--background": {
-                "__type": "variable",
-                "__name": "badge--danger--background",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-danger"
-                }
-            },
-            "badge--danger--color-h": {
-                "__type": "variable",
-                "__name": "badge--danger--color-h",
-                "__value": 0
-            },
-            "badge--danger--color-s": {
-                "__type": "variable",
-                "__name": "badge--danger--color-s",
-                "__value": "0%"
-            },
-            "badge--danger--color-l": {
-                "__type": "variable",
-                "__name": "badge--danger--color-l",
-                "__value": "0%"
-            },
-            "badge--danger--color-a": {
-                "__type": "variable",
-                "__name": "badge--danger--color-a",
-                "__value": 1
-            },
-            "badge--danger--color": {
-                "__type": "variable",
-                "__name": "badge--danger--color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "contrast-text-color-danger"
+                    "__name": "contrast-text-color-dark-a"
                 }
             }
         },
@@ -11792,31 +11402,228 @@
                 "__value": {
                     "borderStyle": {
                         "__type": "reference",
-                        "__name": "badge--border-style"
+                        "__name": "badge--border-style",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-top-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-right-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-bottom-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-left-style"
+                            }
+                        ]
                     },
-                    "borderColor": {
+                    "borderTopColor": {
                         "__type": "reference",
-                        "__name": "badge--border-color"
+                        "__name": "badge--border-top-color",
+                        "__fallback": {
+                            "__type": "hsla",
+                            "__value": [
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-top-color-h"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-top-color-s"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-top-color-l"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-top-color-a"
+                                }
+                            ]
+                        }
+                    },
+                    "borderRightColor": {
+                        "__type": "reference",
+                        "__name": "badge--border-right-color",
+                        "__fallback": {
+                            "__type": "hsla",
+                            "__value": [
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-right-color-h"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-right-color-s"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-right-color-l"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-right-color-a"
+                                }
+                            ]
+                        }
+                    },
+                    "borderBottomColor": {
+                        "__type": "reference",
+                        "__name": "badge--border-bottom-color",
+                        "__fallback": {
+                            "__type": "hsla",
+                            "__value": [
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-bottom-color-h"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-bottom-color-s"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-bottom-color-l"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-bottom-color-a"
+                                }
+                            ]
+                        }
+                    },
+                    "borderLeftColor": {
+                        "__type": "reference",
+                        "__name": "badge--border-left-color",
+                        "__fallback": {
+                            "__type": "hsla",
+                            "__value": [
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-left-color-h"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-left-color-s"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-left-color-l"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--border-left-color-a"
+                                }
+                            ]
+                        }
                     },
                     "borderWidth": {
                         "__type": "reference",
-                        "__name": "badge--border-width"
+                        "__name": "badge--border-width",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-top-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-right-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-bottom-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-left-width"
+                            }
+                        ]
                     },
                     "borderRadius": {
                         "__type": "reference",
-                        "__name": "badge--border-radius"
+                        "__name": "badge--border-radius",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-top-left-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-top-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-bottom-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--border-bottom-left-radius"
+                            }
+                        ]
                     },
                     "boxShadow": {
                         "__type": "reference",
-                        "__name": "badge--box-shadow"
+                        "__name": "badge--box-shadow",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "badge--box-shadow-offset-x"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--box-shadow-offset-y"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--box-shadow-blur-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--box-shadow-spread-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--box-shadow-color"
+                            }
+                        ]
                     },
                     "background": {
                         "__type": "reference",
-                        "__name": "badge--background"
+                        "__name": "badge--background",
+                        "__fallback": {
+                            "__type": "hsla",
+                            "__value": [
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--background-h"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--background-s"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--background-l"
+                                },
+                                {
+                                    "__type": "reference",
+                                    "__name": "badge--background-a"
+                                }
+                            ]
+                        }
                     },
                     "color": {
                         "__type": "reference",
-                        "__name": "badge--color"
+                        "__name": "badge--color",
+                        "__fallback": {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light"
+                        }
                     },
                     "fontSize": {
                         "__type": "reference",
@@ -11824,305 +11631,51 @@
                     },
                     "fontWeight": {
                         "__type": "reference",
-                        "__name": "badge--font-weight"
+                        "__name": "badge--font-weight",
+                        "__fallback": {
+                            "__type": "reference",
+                            "__name": "font-weight-semibold"
+                        }
                     },
                     "padding": {
                         "__type": "reference",
-                        "__name": "badge--padding"
+                        "__name": "badge--padding",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "badge--padding-top"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--padding-right"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--padding-bottom"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--padding-left"
+                            }
+                        ]
                     },
-                    "transitionProperty": {
+                    "transition": {
                         "__type": "reference",
-                        "__name": "badge--transition-property"
-                    },
-                    "transitionDuration": {
-                        "__type": "reference",
-                        "__name": "badge--transition-duration"
-                    },
-                    "transitionTimingFunction": {
-                        "__type": "reference",
-                        "__name": "badge--transition-timing-function"
-                    }
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".badge.-sm",
-                "__value": {
-                    "borderRadius": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--sm--border-top-left-radius"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--sm--border-top-right-radius"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--sm--border-bottom-right-radius"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--sm--border-bottom-left-radius"
-                        }
-                    ],
-                    "fontSize": {
-                        "__type": "reference",
-                        "__name": "badge--sm--font-size"
-                    },
-                    "padding": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--sm--padding-top"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--sm--padding-right"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--sm--padding-bottom"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--sm--padding-left"
-                        }
-                    ]
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".badge.-md",
-                "__value": {
-                    "borderRadius": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--md--border-top-left-radius"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--md--border-top-right-radius"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--md--border-bottom-right-radius"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--md--border-bottom-left-radius"
-                        }
-                    ],
-                    "fontSize": {
-                        "__type": "reference",
-                        "__name": "badge--md--font-size"
-                    },
-                    "padding": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--md--padding-top"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--md--padding-right"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--md--padding-bottom"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--md--padding-left"
-                        }
-                    ]
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".badge.-lg",
-                "__value": {
-                    "borderRadius": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--lg--border-top-left-radius"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--lg--border-top-right-radius"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--lg--border-bottom-right-radius"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--lg--border-bottom-left-radius"
-                        }
-                    ],
-                    "fontSize": {
-                        "__type": "reference",
-                        "__name": "badge--lg--font-size"
-                    },
-                    "padding": [
-                        {
-                            "__type": "reference",
-                            "__name": "badge--lg--padding-top"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--lg--padding-right"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--lg--padding-bottom"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "badge--lg--padding-left"
-                        }
-                    ]
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".badge.-primary",
-                "__value": {
-                    "borderColor": {
-                        "__type": "reference",
-                        "__name": "badge--primary--border-color"
-                    },
-                    "background": {
-                        "__type": "reference",
-                        "__name": "badge--primary--background"
-                    },
-                    "color": {
-                        "__type": "reference",
-                        "__name": "badge--primary--color"
-                    }
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".badge.-secondary",
-                "__value": {
-                    "borderColor": {
-                        "__type": "reference",
-                        "__name": "badge--secondary--border-color"
-                    },
-                    "background": {
-                        "__type": "reference",
-                        "__name": "badge--secondary--background"
-                    },
-                    "color": {
-                        "__type": "reference",
-                        "__name": "badge--secondary--color"
-                    }
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".badge.-light",
-                "__value": {
-                    "borderColor": {
-                        "__type": "reference",
-                        "__name": "badge--light--border-color"
-                    },
-                    "background": {
-                        "__type": "reference",
-                        "__name": "badge--light--background"
-                    },
-                    "color": {
-                        "__type": "reference",
-                        "__name": "badge--light--color"
-                    }
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".badge.-dark",
-                "__value": {
-                    "borderColor": {
-                        "__type": "reference",
-                        "__name": "badge--dark--border-color"
-                    },
-                    "background": {
-                        "__type": "reference",
-                        "__name": "badge--dark--background"
-                    },
-                    "color": {
-                        "__type": "reference",
-                        "__name": "badge--dark--color"
-                    }
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".badge.-info",
-                "__value": {
-                    "borderColor": {
-                        "__type": "reference",
-                        "__name": "badge--info--border-color"
-                    },
-                    "background": {
-                        "__type": "reference",
-                        "__name": "badge--info--background"
-                    },
-                    "color": {
-                        "__type": "reference",
-                        "__name": "badge--info--color"
-                    }
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".badge.-success",
-                "__value": {
-                    "borderColor": {
-                        "__type": "reference",
-                        "__name": "badge--success--border-color"
-                    },
-                    "background": {
-                        "__type": "reference",
-                        "__name": "badge--success--background"
-                    },
-                    "color": {
-                        "__type": "reference",
-                        "__name": "badge--success--color"
-                    }
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".badge.-warning",
-                "__value": {
-                    "borderColor": {
-                        "__type": "reference",
-                        "__name": "badge--warning--border-color"
-                    },
-                    "background": {
-                        "__type": "reference",
-                        "__name": "badge--warning--background"
-                    },
-                    "color": {
-                        "__type": "reference",
-                        "__name": "badge--warning--color"
-                    }
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".badge.-danger",
-                "__value": {
-                    "borderColor": {
-                        "__type": "reference",
-                        "__name": "badge--danger--border-color"
-                    },
-                    "background": {
-                        "__type": "reference",
-                        "__name": "badge--danger--background"
-                    },
-                    "color": {
-                        "__type": "reference",
-                        "__name": "badge--danger--color"
+                        "__name": "badge--transition",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "badge--transition-property"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--transition-duration"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--transition-timing-function"
+                            }
+                        ]
                     }
                 }
             },
@@ -12130,9 +11683,231 @@
                 "__type": "selector",
                 "__name": ".badge.-pill",
                 "__value": {
-                    "borderRadius": {
+                    "--badge--border-radius": {
                         "__type": "reference",
-                        "__name": "badge--pill--border-radius"
+                        "__name": "badge--pill--border-radius",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "badge--pill--border-top-left-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--pill--border-top-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--pill--border-bottom-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "badge--pill--border-bottom-left-radius"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".badge.-light",
+                "__value": {
+                    "--badge--border-top-color-h": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-top-color-h"
+                    },
+                    "--badge--border-top-color-s": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-top-color-s"
+                    },
+                    "--badge--border-top-color-l": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-top-color-l"
+                    },
+                    "--badge--border-top-color-a": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-top-color-a"
+                    },
+                    "--badge--border-right-color-h": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-right-color-h"
+                    },
+                    "--badge--border-right-color-s": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-right-color-s"
+                    },
+                    "--badge--border-right-color-l": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-right-color-l"
+                    },
+                    "--badge--border-right-color-a": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-right-color-a"
+                    },
+                    "--badge--border-bottom-color-h": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-bottom-color-h"
+                    },
+                    "--badge--border-bottom-color-s": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-bottom-color-s"
+                    },
+                    "--badge--border-bottom-color-l": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-bottom-color-l"
+                    },
+                    "--badge--border-bottom-color-a": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-bottom-color-a"
+                    },
+                    "--badge--border-left-color-h": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-left-color-h"
+                    },
+                    "--badge--border-left-color-s": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-left-color-s"
+                    },
+                    "--badge--border-left-color-l": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-left-color-l"
+                    },
+                    "--badge--border-left-color-a": {
+                        "__type": "reference",
+                        "__name": "badge--light--border-left-color-a"
+                    },
+                    "--badge--background-h": {
+                        "__type": "reference",
+                        "__name": "badge--light--background-h"
+                    },
+                    "--badge--background-s": {
+                        "__type": "reference",
+                        "__name": "badge--light--background-s"
+                    },
+                    "--badge--background-l": {
+                        "__type": "reference",
+                        "__name": "badge--light--background-l"
+                    },
+                    "--badge--background-a": {
+                        "__type": "reference",
+                        "__name": "badge--light--background-a"
+                    },
+                    "--badge--color-h": {
+                        "__type": "reference",
+                        "__name": "badge--light--color-h"
+                    },
+                    "--badge--color-s": {
+                        "__type": "reference",
+                        "__name": "badge--light--color-s"
+                    },
+                    "--badge--color-l": {
+                        "__type": "reference",
+                        "__name": "badge--light--color-l"
+                    },
+                    "--badge--color-a": {
+                        "__type": "reference",
+                        "__name": "badge--light--color-a"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".badge.-dark",
+                "__value": {
+                    "--badge--border-top-color-h": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-top-color-h"
+                    },
+                    "--badge--border-top-color-s": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-top-color-s"
+                    },
+                    "--badge--border-top-color-l": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-top-color-l"
+                    },
+                    "--badge--border-top-color-a": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-top-color-a"
+                    },
+                    "--badge--border-right-color-h": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-right-color-h"
+                    },
+                    "--badge--border-right-color-s": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-right-color-s"
+                    },
+                    "--badge--border-right-color-l": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-right-color-l"
+                    },
+                    "--badge--border-right-color-a": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-right-color-a"
+                    },
+                    "--badge--border-bottom-color-h": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-bottom-color-h"
+                    },
+                    "--badge--border-bottom-color-s": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-bottom-color-s"
+                    },
+                    "--badge--border-bottom-color-l": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-bottom-color-l"
+                    },
+                    "--badge--border-bottom-color-a": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-bottom-color-a"
+                    },
+                    "--badge--border-left-color-h": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-left-color-h"
+                    },
+                    "--badge--border-left-color-s": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-left-color-s"
+                    },
+                    "--badge--border-left-color-l": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-left-color-l"
+                    },
+                    "--badge--border-left-color-a": {
+                        "__type": "reference",
+                        "__name": "badge--dark--border-left-color-a"
+                    },
+                    "--badge--background-h": {
+                        "__type": "reference",
+                        "__name": "badge--dark--background-h"
+                    },
+                    "--badge--background-s": {
+                        "__type": "reference",
+                        "__name": "badge--dark--background-s"
+                    },
+                    "--badge--background-l": {
+                        "__type": "reference",
+                        "__name": "badge--dark--background-l"
+                    },
+                    "--badge--background-a": {
+                        "__type": "reference",
+                        "__name": "badge--dark--background-a"
+                    },
+                    "--badge--color-h": {
+                        "__type": "reference",
+                        "__name": "badge--dark--color-h"
+                    },
+                    "--badge--color-s": {
+                        "__type": "reference",
+                        "__name": "badge--dark--color-s"
+                    },
+                    "--badge--color-l": {
+                        "__type": "reference",
+                        "__name": "badge--dark--color-l"
+                    },
+                    "--badge--color-a": {
+                        "__type": "reference",
+                        "__name": "badge--dark--color-a"
                     }
                 }
             }

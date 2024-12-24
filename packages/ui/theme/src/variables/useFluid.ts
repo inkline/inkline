@@ -21,8 +21,8 @@ export function useFluid(options = defaultDefinitionOptions) {
 
 
 export const fluidScaleVariants = {
-    'pow-minus-2': createVariantFactoryFn((value) => divide(value, value, value)),
-    'pow-minus-1': createVariantFactoryFn((value) => divide(value, value)),
+    'pow-minus-2': createVariantFactoryFn((value) => divide(1, value, value)),
+    'pow-minus-1': createVariantFactoryFn((value) => divide(1, value)),
     'pow-1': createVariantFactoryFn((value) => multiply(value, 1)),
     'pow-2': createVariantFactoryFn((value) => multiply(value, value)),
     'pow-3': createVariantFactoryFn((value) => multiply(value, value, value)),

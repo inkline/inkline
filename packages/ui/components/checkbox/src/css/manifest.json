@@ -8849,10 +8849,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-min"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",
@@ -8872,10 +8869,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-min"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",
@@ -9007,10 +9001,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-max"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",
@@ -9030,10 +9021,7 @@
                 "__value": {
                     "__type": "calc",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "type-scale-max"
-                        },
+                        1,
                         "/",
                         {
                             "__type": "reference",
@@ -11087,68 +11075,460 @@
                     }
                 ]
             },
+            "contrast-text-color-light-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-light-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-900-h"
+                }
+            },
+            "contrast-text-color-light-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-light-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-900-s"
+                }
+            },
+            "contrast-text-color-light-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-light-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-900-l"
+                }
+            },
+            "contrast-text-color-light-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-light-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-900-a"
+                }
+            },
             "contrast-text-color-light": {
                 "__type": "variable",
                 "__name": "contrast-text-color-light",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-dark-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "color-gray-900"
+                    "__name": "color-white-h"
+                }
+            },
+            "contrast-text-color-dark-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white-s"
+                }
+            },
+            "contrast-text-color-dark-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white-l"
+                }
+            },
+            "contrast-text-color-dark-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white-a"
                 }
             },
             "contrast-text-color-dark": {
                 "__type": "variable",
                 "__name": "contrast-text-color-dark",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-primary-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "color-white"
+                    "__name": "contrast-text-color-dark-h"
+                }
+            },
+            "contrast-text-color-primary-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-s"
+                }
+            },
+            "contrast-text-color-primary-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-l"
+                }
+            },
+            "contrast-text-color-primary-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-a"
                 }
             },
             "contrast-text-color-primary": {
                 "__type": "variable",
                 "__name": "contrast-text-color-primary",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-secondary-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-dark"
+                    "__name": "contrast-text-color-dark-h"
+                }
+            },
+            "contrast-text-color-secondary-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-s"
+                }
+            },
+            "contrast-text-color-secondary-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-l"
+                }
+            },
+            "contrast-text-color-secondary-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-a"
                 }
             },
             "contrast-text-color-secondary": {
                 "__type": "variable",
                 "__name": "contrast-text-color-secondary",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-info-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-dark"
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-info-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-info-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-info-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
                 }
             },
             "contrast-text-color-info": {
                 "__type": "variable",
                 "__name": "contrast-text-color-info",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-success-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-light"
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-success-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-success-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-success-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
                 }
             },
             "contrast-text-color-success": {
                 "__type": "variable",
                 "__name": "contrast-text-color-success",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-warning-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-light"
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-warning-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-warning-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-warning-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
                 }
             },
             "contrast-text-color-warning": {
                 "__type": "variable",
                 "__name": "contrast-text-color-warning",
                 "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-danger-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-h",
+                "__value": {
                     "__type": "reference",
-                    "__name": "contrast-text-color-light"
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-danger-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-danger-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-danger-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
                 }
             },
             "contrast-text-color-danger": {
                 "__type": "variable",
                 "__name": "contrast-text-color-danger",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "contrast-text-color-dark"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-a"
+                        }
+                    ]
                 }
             },
             "checkbox--background-h": {
@@ -11195,12 +11575,49 @@
                     "__name": "border-top-style"
                 }
             },
+            "checkbox--border-top-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--border-top-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--border-top-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--border-top-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--border-top-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--border-top-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--border-top-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--border-top-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--border-top-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-light-shade-50"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-top-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-top-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-top-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-top-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--border-right-width": {
@@ -11219,12 +11636,49 @@
                     "__name": "border-right-style"
                 }
             },
+            "checkbox--border-right-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--border-right-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--border-right-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--border-right-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--border-right-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--border-right-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--border-right-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--border-right-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--border-right-color": {
                 "__type": "variable",
                 "__name": "checkbox--border-right-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-light-shade-50"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-right-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-right-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-right-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-right-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--border-bottom-width": {
@@ -11243,12 +11697,49 @@
                     "__name": "border-bottom-style"
                 }
             },
+            "checkbox--border-bottom-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--border-bottom-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--border-bottom-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--border-bottom-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--border-bottom-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--border-bottom-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--border-bottom-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--border-bottom-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--border-bottom-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-light-shade-50"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-bottom-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-bottom-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-bottom-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-bottom-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--border-left-width": {
@@ -11267,37 +11758,116 @@
                     "__name": "border-left-style"
                 }
             },
+            "checkbox--border-left-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--border-left-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--border-left-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--border-left-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--border-left-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--border-left-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--border-left-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--border-left-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--border-left-color": {
                 "__type": "variable",
                 "__name": "checkbox--border-left-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-light-shade-50"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-left-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-left-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-left-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--border-left-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--border-width": {
                 "__type": "variable",
                 "__name": "checkbox--border-width",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--border-top-width"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-top-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-right-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-bottom-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-left-width"
+                    }
+                ]
             },
             "checkbox--border-style": {
                 "__type": "variable",
                 "__name": "checkbox--border-style",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--border-top-style"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-top-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-right-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-bottom-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-left-style"
+                    }
+                ]
             },
             "checkbox--border-color": {
                 "__type": "variable",
                 "__name": "checkbox--border-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--border-top-color"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-top-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-right-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-bottom-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--border-left-color"
+                    }
+                ]
             },
             "checkbox--border-top": {
                 "__type": "variable",
@@ -11388,6 +11958,14 @@
                         "__name": "checkbox--border-top-color"
                     }
                 ]
+            },
+            "color": {
+                "__type": "variable",
+                "__name": "color",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": []
+                }
             },
             "checkbox--border-top-left-radius": {
                 "__type": "variable",
@@ -11732,12 +12310,49 @@
                 "__name": "checkbox--checked--border-top-style",
                 "__value": "none"
             },
+            "checkbox--checked--border-top-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-top-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--border-top-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-top-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--border-top-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-top-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--border-top-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-top-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--border-top-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-shade-50"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-top-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-top-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-top-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-top-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--border-right-width": {
@@ -11750,12 +12365,49 @@
                 "__name": "checkbox--checked--border-right-style",
                 "__value": "none"
             },
+            "checkbox--checked--border-right-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-right-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--border-right-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-right-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--border-right-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-right-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--border-right-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-right-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--border-right-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--border-right-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-shade-50"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-right-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-right-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-right-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-right-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--border-bottom-width": {
@@ -11768,12 +12420,49 @@
                 "__name": "checkbox--checked--border-bottom-style",
                 "__value": "none"
             },
+            "checkbox--checked--border-bottom-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-bottom-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--border-bottom-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-bottom-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--border-bottom-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-bottom-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--border-bottom-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-bottom-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--border-bottom-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-shade-50"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-bottom-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-bottom-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-bottom-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-bottom-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--border-left-width": {
@@ -11786,37 +12475,116 @@
                 "__name": "checkbox--checked--border-left-style",
                 "__value": "none"
             },
+            "checkbox--checked--border-left-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-left-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--border-left-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-left-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--border-left-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-left-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--border-left-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-left-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--border-left-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--border-left-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-shade-50"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-left-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-left-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-left-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--border-left-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--border-width": {
                 "__type": "variable",
                 "__name": "checkbox--checked--border-width",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--checked--border-top-width"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-top-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-right-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-bottom-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-left-width"
+                    }
+                ]
             },
             "checkbox--checked--border-style": {
                 "__type": "variable",
                 "__name": "checkbox--checked--border-style",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--checked--border-top-style"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-top-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-right-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-bottom-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-left-style"
+                    }
+                ]
             },
             "checkbox--checked--border-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--border-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--checked--border-top-color"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-top-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-right-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-bottom-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--border-left-color"
+                    }
+                ]
             },
             "checkbox--checked--border-top": {
                 "__type": "variable",
@@ -12098,12 +12866,49 @@
                 "__name": "checkbox--checked--disabled--border-top-style",
                 "__value": "none"
             },
+            "checkbox--checked--disabled--border-top-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-top-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--disabled--border-top-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-top-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--disabled--border-top-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-top-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--disabled--border-top-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-top-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--disabled--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--disabled--border-top-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-400"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-top-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-top-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-top-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-top-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--disabled--border-right-width": {
@@ -12116,12 +12921,49 @@
                 "__name": "checkbox--checked--disabled--border-right-style",
                 "__value": "none"
             },
+            "checkbox--checked--disabled--border-right-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-right-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--disabled--border-right-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-right-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--disabled--border-right-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-right-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--disabled--border-right-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-right-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--disabled--border-right-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--disabled--border-right-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-400"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-right-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-right-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-right-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-right-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--disabled--border-bottom-width": {
@@ -12134,12 +12976,49 @@
                 "__name": "checkbox--checked--disabled--border-bottom-style",
                 "__value": "none"
             },
+            "checkbox--checked--disabled--border-bottom-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-bottom-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--disabled--border-bottom-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-bottom-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--disabled--border-bottom-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-bottom-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--disabled--border-bottom-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-bottom-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--disabled--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--disabled--border-bottom-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-400"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-bottom-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-bottom-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-bottom-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-bottom-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--disabled--border-left-width": {
@@ -12152,37 +13031,116 @@
                 "__name": "checkbox--checked--disabled--border-left-style",
                 "__value": "none"
             },
+            "checkbox--checked--disabled--border-left-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-left-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--disabled--border-left-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-left-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--disabled--border-left-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-left-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--disabled--border-left-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-left-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--disabled--border-left-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--disabled--border-left-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-400"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-left-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-left-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-left-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--disabled--border-left-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--disabled--border-width": {
                 "__type": "variable",
                 "__name": "checkbox--checked--disabled--border-width",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--checked--disabled--border-top-width"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-top-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-right-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-bottom-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-left-width"
+                    }
+                ]
             },
             "checkbox--checked--disabled--border-style": {
                 "__type": "variable",
                 "__name": "checkbox--checked--disabled--border-style",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--checked--disabled--border-top-style"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-top-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-right-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-bottom-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-left-style"
+                    }
+                ]
             },
             "checkbox--checked--disabled--border-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--disabled--border-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--checked--disabled--border-top-color"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-top-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-right-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-bottom-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--disabled--border-left-color"
+                    }
+                ]
             },
             "checkbox--checked--disabled--border-top": {
                 "__type": "variable",
@@ -12312,12 +13270,49 @@
                 "__name": "checkbox--checked--readonly--border-top-style",
                 "__value": "none"
             },
+            "checkbox--checked--readonly--border-top-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-top-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--readonly--border-top-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-top-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--readonly--border-top-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-top-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--readonly--border-top-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-top-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--readonly--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--readonly--border-top-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-500"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-top-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-top-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-top-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-top-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--readonly--border-right-width": {
@@ -12330,12 +13325,49 @@
                 "__name": "checkbox--checked--readonly--border-right-style",
                 "__value": "none"
             },
+            "checkbox--checked--readonly--border-right-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-right-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--readonly--border-right-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-right-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--readonly--border-right-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-right-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--readonly--border-right-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-right-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--readonly--border-right-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--readonly--border-right-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-500"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-right-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-right-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-right-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-right-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--readonly--border-bottom-width": {
@@ -12348,12 +13380,49 @@
                 "__name": "checkbox--checked--readonly--border-bottom-style",
                 "__value": "none"
             },
+            "checkbox--checked--readonly--border-bottom-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-bottom-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--readonly--border-bottom-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-bottom-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--readonly--border-bottom-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-bottom-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--readonly--border-bottom-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-bottom-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--readonly--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--readonly--border-bottom-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-500"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-bottom-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-bottom-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-bottom-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-bottom-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--readonly--border-left-width": {
@@ -12366,37 +13435,116 @@
                 "__name": "checkbox--checked--readonly--border-left-style",
                 "__value": "none"
             },
+            "checkbox--checked--readonly--border-left-color-h": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-left-color-h",
+                "__value": "from currentColor h"
+            },
+            "checkbox--checked--readonly--border-left-color-s": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-left-color-s",
+                "__value": "from currentColor s"
+            },
+            "checkbox--checked--readonly--border-left-color-l": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-left-color-l",
+                "__value": "from currentColor l"
+            },
+            "checkbox--checked--readonly--border-left-color-a": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-left-color-a",
+                "__value": "from currentColor a"
+            },
             "checkbox--checked--readonly--border-left-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--readonly--border-left-color",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "color-primary-500"
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-left-color-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-left-color-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-left-color-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "checkbox--checked--readonly--border-left-color-a"
+                        }
+                    ]
                 }
             },
             "checkbox--checked--readonly--border-width": {
                 "__type": "variable",
                 "__name": "checkbox--checked--readonly--border-width",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--checked--readonly--border-top-width"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-top-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-right-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-bottom-width"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-left-width"
+                    }
+                ]
             },
             "checkbox--checked--readonly--border-style": {
                 "__type": "variable",
                 "__name": "checkbox--checked--readonly--border-style",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--checked--readonly--border-top-style"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-top-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-right-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-bottom-style"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-left-style"
+                    }
+                ]
             },
             "checkbox--checked--readonly--border-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--readonly--border-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "checkbox--checked--readonly--border-top-color"
-                }
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-top-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-right-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-bottom-color"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "checkbox--checked--readonly--border-left-color"
+                    }
+                ]
             },
             "checkbox--checked--readonly--border-top": {
                 "__type": "variable",

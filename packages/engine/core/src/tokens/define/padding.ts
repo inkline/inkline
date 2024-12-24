@@ -1,4 +1,11 @@
-import { NamespacedKey, TokenValue, Variable, DefineOptions, NamespaceType } from '../../types';
+import {
+    NamespacedKey,
+    TokenValue,
+    Variable,
+    DefineOptions,
+    NamespaceType,
+    NamespacedMap
+} from '../../types';
 import { PaddingProperty } from '../../types';
 import { nsvariable, ref, set } from '../../tokens';
 import { isSidesProperty } from '../../typeGuards';
@@ -6,13 +13,16 @@ import { resolveStringSidesPropertyValue, toExportedVariable } from '../../utils
 
 export type SourceMapPadding = TokenValue | PaddingProperty;
 
-export type OutputMapPadding<Namespace extends NamespaceType> = {
-    paddingTop: Variable<NamespacedKey<Namespace, 'padding-top'>>;
-    paddingRight: Variable<NamespacedKey<Namespace, 'padding-right'>>;
-    paddingBottom: Variable<NamespacedKey<Namespace, 'padding-bottom'>>;
-    paddingLeft: Variable<NamespacedKey<Namespace, 'padding-left'>>;
-    padding: Variable<NamespacedKey<Namespace, 'padding'>>;
-};
+export type OutputMapPadding<Namespace extends NamespaceType> = NamespacedMap<
+    Namespace,
+    {
+        paddingTop: Variable<NamespacedKey<Namespace, 'padding-top'>>;
+        paddingRight: Variable<NamespacedKey<Namespace, 'padding-right'>>;
+        paddingBottom: Variable<NamespacedKey<Namespace, 'padding-bottom'>>;
+        paddingLeft: Variable<NamespacedKey<Namespace, 'padding-left'>>;
+        padding: Variable<NamespacedKey<Namespace, 'padding'>>;
+    }
+>;
 
 export function definePadding<Namespace extends NamespaceType>(
     ns: Namespace,
@@ -27,7 +37,10 @@ export function definePadding<Namespace extends NamespaceType>(
         ns,
         'padding',
         [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)],
-        options
+        {
+            ...options,
+            register: options?.registerComposed ?? true
+        }
     );
 
     if (isSidesProperty(value)) {
@@ -37,10 +50,10 @@ export function definePadding<Namespace extends NamespaceType>(
         if (value.left) set(paddingLeft, value.left);
     } else if (typeof value === 'string') {
         const { top, right, bottom, left } = resolveStringSidesPropertyValue(value);
-        set(paddingTop, top);
-        set(paddingRight, right);
-        set(paddingBottom, bottom);
-        set(paddingLeft, left);
+        if (top) set(paddingTop, top);
+        if (right) set(paddingRight, right);
+        if (bottom) set(paddingBottom, bottom);
+        if (left) set(paddingLeft, left);
     } else {
         set(padding, value);
     }

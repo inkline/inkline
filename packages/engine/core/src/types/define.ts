@@ -125,31 +125,29 @@ export type OutputMap<Namespace extends NamespaceType> = {
 };
 
 export type KeySelector<
+    Namespace extends NamespaceType,
     InputKey extends PropertyKey,
-    InputMap extends Record<string, any>,
-    OutputMap extends Record<string, any>
-> = InputKey extends keyof OutputMap
-    ? OutputMap[InputKey] extends Record<string, any>
-        ? keyof OutputMap[InputKey]
+    InputMap extends Record<string, any>
+> = InputKey extends keyof OutputMap<Namespace>
+    ? OutputMap<Namespace>[InputKey] extends Record<string, any>
+        ? keyof OutputMap<Namespace>[InputKey]
         : InputKey
     : InputKey extends string
       ? InputMap[InputKey] extends object
           ? InputMap[InputKey] extends TokenValue
-              ? InputKey
-              : NamespacedKey<
-                    KebabCase<InputKey>,
-                    Exclude<
-                        KeySelector<keyof InputMap[InputKey], InputMap[InputKey], OutputMap>,
-                        symbol | number
-                    >
+              ? ExportedName<NamespacedKey<Namespace, InputKey>>
+              : KeySelector<
+                    NamespacedKey<Namespace, InputKey>,
+                    keyof InputMap[InputKey],
+                    InputMap[InputKey]
                 >
-          : InputKey
+          : ExportedName<NamespacedKey<Namespace, InputKey>>
       : InputKey;
 
 export type ValueSelector<
+    Namespace extends NamespaceType,
     InputKey extends PropertyKey,
-    InputMap extends Record<string, any>,
-    Namespace extends NamespaceType
+    InputMap extends Record<string, any>
 > = InputKey extends keyof OutputMap<Namespace>
     ? OutputMap<Namespace>[InputKey] extends Record<string, any>
         ? OutputMap<Namespace>[InputKey][keyof OutputMap<Namespace>[InputKey]]
@@ -161,9 +159,9 @@ export type ValueSelector<
           ? InputMap[InputKey] extends TokenValue
               ? Variable<NamespacedKey<Namespace, KebabCase<InputKey>>>
               : ValueSelector<
+                    NamespacedKey<Namespace, KebabCase<InputKey>>,
                     keyof InputMap[InputKey],
-                    InputMap[InputKey],
-                    NamespacedKey<Namespace, KebabCase<InputKey>>
+                    InputMap[InputKey]
                 >
           : Variable<NamespacedKey<Namespace, KebabCase<InputKey>>>
       : InputKey extends string
@@ -171,10 +169,10 @@ export type ValueSelector<
         : never;
 
 export type ResultMap<Namespace extends NamespaceType, InputMap extends Record<string, any>> = {
-    [K in keyof InputMap as KeySelector<K, InputMap, OutputMap<Namespace>>]: ValueSelector<
+    [K in keyof InputMap as KeySelector<Namespace, K, InputMap>]: ValueSelector<
+        Namespace,
         K,
-        InputMap,
-        Namespace
+        InputMap
     >;
 };
 
@@ -187,4 +185,4 @@ export type NamespacedMap<Namespace extends NamespaceType, Input> = {
 export type Define<
     Namespace extends NamespaceType,
     SourceSubMap extends PartialDeep<SourceMap>
-> = NamespacedMap<Namespace, ResultMap<Namespace, SourceSubMap>>;
+> = ResultMap<Namespace, SourceSubMap>;

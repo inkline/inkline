@@ -1,18 +1,29 @@
-import { NamespacedKey, TokenValue, Variable, DefineOptions, NamespaceType } from '../../types';
+import {
+    NamespacedKey,
+    TokenValue,
+    Variable,
+    DefineOptions,
+    NamespaceType,
+    NamespacedMap
+} from '../../types';
 import { AnimationProperty } from '../../types';
-import { nsvariable, ref, set } from '../../tokens';
 import { isAnimationProperty } from '../../typeGuards';
 import { resolveStringPropertyValue, toExportedVariable } from '../../utils';
+import { ref } from '../ref';
+import { nsvariable, set } from '../variable';
 
 export type SourceMapAnimation = TokenValue | AnimationProperty;
 
-export type OutputMapAnimation<Namespace extends NamespaceType> = {
-    animationName: Variable<NamespacedKey<Namespace, 'animation-name'>>;
-    animationDuration: Variable<NamespacedKey<Namespace, 'animation-duration'>>;
-    animationIterationCount: Variable<NamespacedKey<Namespace, 'animation-iteration-count'>>;
-    animationDirection: Variable<NamespacedKey<Namespace, 'animation-direction'>>;
-    animation: Variable<NamespacedKey<Namespace, 'animation'>>;
-};
+export type OutputMapAnimation<Namespace extends NamespaceType> = NamespacedMap<
+    Namespace,
+    {
+        animationName: Variable<NamespacedKey<Namespace, 'animation-name'>>;
+        animationDuration: Variable<NamespacedKey<Namespace, 'animation-duration'>>;
+        animationIterationCount: Variable<NamespacedKey<Namespace, 'animation-iteration-count'>>;
+        animationDirection: Variable<NamespacedKey<Namespace, 'animation-direction'>>;
+        animation: Variable<NamespacedKey<Namespace, 'animation'>>;
+    }
+>;
 
 export function defineAnimation<Namespace extends NamespaceType>(
     ns: Namespace,
@@ -32,7 +43,10 @@ export function defineAnimation<Namespace extends NamespaceType>(
             ref(animationIterationCount),
             ref(animationDirection)
         ],
-        options
+        {
+            ...options,
+            register: options?.registerComposed ?? true
+        }
     );
 
     if (isAnimationProperty(value)) {
@@ -48,10 +62,10 @@ export function defineAnimation<Namespace extends NamespaceType>(
             'direction'
         ]);
 
-        set(animationName, name);
-        set(animationDuration, duration);
-        set(animationIterationCount, iterationCount);
-        set(animationDirection, direction);
+        if (name) set(animationName, name);
+        if (duration) set(animationDuration, duration);
+        if (iterationCount) set(animationIterationCount, iterationCount);
+        if (direction) set(animationDirection, direction);
     } else {
         set(animation, value);
     }

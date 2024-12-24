@@ -7,7 +7,9 @@
         "postinstall": "turbo run build --filter @inkline/devtools",
         "build": "turbo run build --filter '!@inkline/e2e*'",
         "build:core": "turbo run build --filter '!@inkline/e2e*' --filter '!@inkline/component*' --filter !@inkline/storybook --filter !inkline",
-        "dev": "turbo run dev --concurrency 16 --filter !@inkline/e2e* --filter '!@inkline/component*' --filter '!@inkline/addon*' --filter !@inkline/logger --filter !@inkline/nuxt --filter !@inkline/vite --filter !@inkline/storybook",
+        "dev": "turbo run dev --concurrency 64",
+        "dev:core": "turbo run dev --filter '@inkline/config' --filter '@inkline/core' --filter '@inkline/generator-css'",
+        "dev:ui": "turbo run dev --filter '@inkline/addon-*' --filter '@inkline/composables' --filter '@inkline/i18n' --filter '@inkline/theme' --filter '@inkline/types' --filter '@inkline/validation' --filter '@inkline/vue'",
         "storybook": "cd storybook && pnpm run dev",
         "test": "turbo run test",
         "lint": "turbo run lint"

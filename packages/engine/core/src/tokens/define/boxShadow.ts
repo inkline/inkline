@@ -1,4 +1,11 @@
-import { NamespacedKey, TokenValue, Variable, DefineOptions, NamespaceType } from '../../types';
+import {
+    NamespacedKey,
+    TokenValue,
+    Variable,
+    DefineOptions,
+    NamespaceType,
+    NamespacedMap
+} from '../../types';
 import { BoxShadowProperty } from '../../types';
 import { nsvariable, ref, set } from '../../tokens';
 import { isBoxShadowProperty } from '../../typeGuards';
@@ -6,14 +13,17 @@ import { resolveStringPropertyValue, toExportedVariable } from '../../utils';
 
 export type SourceMapBoxShadow = TokenValue | BoxShadowProperty;
 
-export type OutputMapBoxShadow<Namespace extends NamespaceType> = {
-    boxShadowOffsetX: Variable<NamespacedKey<Namespace, 'box-shadow-offset-x'>>;
-    boxShadowOffsetY: Variable<NamespacedKey<Namespace, 'box-shadow-offset-y'>>;
-    boxShadowBlurRadius: Variable<NamespacedKey<Namespace, 'box-shadow-blur-radius'>>;
-    boxShadowSpreadRadius: Variable<NamespacedKey<Namespace, 'box-shadow-spread-radius'>>;
-    boxShadowColor: Variable<NamespacedKey<Namespace, 'box-shadow-color'>>;
-    boxShadow: Variable<NamespacedKey<Namespace, 'box-shadow'>>;
-};
+export type OutputMapBoxShadow<Namespace extends NamespaceType> = NamespacedMap<
+    Namespace,
+    {
+        boxShadowOffsetX: Variable<NamespacedKey<Namespace, 'box-shadow-offset-x'>>;
+        boxShadowOffsetY: Variable<NamespacedKey<Namespace, 'box-shadow-offset-y'>>;
+        boxShadowBlurRadius: Variable<NamespacedKey<Namespace, 'box-shadow-blur-radius'>>;
+        boxShadowSpreadRadius: Variable<NamespacedKey<Namespace, 'box-shadow-spread-radius'>>;
+        boxShadowColor: Variable<NamespacedKey<Namespace, 'box-shadow-color'>>;
+        boxShadow: Variable<NamespacedKey<Namespace, 'box-shadow'>>;
+    }
+>;
 
 export function defineBoxShadow<Namespace extends NamespaceType>(
     ns: Namespace,
@@ -35,7 +45,10 @@ export function defineBoxShadow<Namespace extends NamespaceType>(
             ref(boxShadowSpreadRadius),
             ref(boxShadowColor)
         ],
-        options
+        {
+            ...options,
+            register: options?.registerComposed ?? true
+        }
     );
 
     if (isBoxShadowProperty(value)) {
@@ -50,11 +63,11 @@ export function defineBoxShadow<Namespace extends NamespaceType>(
             ['offsetX', 'offsetY', 'blurRadius', 'spreadRadius', 'color']
         );
 
-        set(boxShadowOffsetX, offsetX);
-        set(boxShadowOffsetY, offsetY);
-        set(boxShadowBlurRadius, blurRadius);
-        set(boxShadowSpreadRadius, spreadRadius);
-        set(boxShadowColor, color);
+        if (offsetX) set(boxShadowOffsetX, offsetX);
+        if (offsetY) set(boxShadowOffsetY, offsetY);
+        if (blurRadius) set(boxShadowBlurRadius, blurRadius);
+        if (spreadRadius) set(boxShadowSpreadRadius, spreadRadius);
+        if (color) set(boxShadowColor, color);
     } else {
         set(boxShadow, value);
     }

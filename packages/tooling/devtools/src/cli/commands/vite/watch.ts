@@ -7,7 +7,7 @@ export async function viteWatch(options: WatchCommandOptions) {
     const patterns = options.pattern.map((pattern) => path.resolve(process.cwd(), pattern));
     const command = options.script ?? 'pnpm run build';
 
-    await new Promise<void>((resolve) => {
+    return new Promise<void>((resolve) => {
         nodemon({
             watch: patterns,
             ext: 'vue,ts,json',

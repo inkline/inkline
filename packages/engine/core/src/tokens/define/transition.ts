@@ -1,4 +1,11 @@
-import { NamespacedKey, TokenValue, Variable, DefineOptions, NamespaceType } from '../../types';
+import {
+    NamespacedKey,
+    TokenValue,
+    Variable,
+    DefineOptions,
+    NamespaceType,
+    NamespacedMap
+} from '../../types';
 import { TransitionProperty } from '../../types';
 import { nsvariable, ref, set } from '../../tokens';
 import { isTransitionProperty } from '../../typeGuards';
@@ -6,12 +13,15 @@ import { resolveStringPropertyValue, toExportedVariable } from '../../utils';
 
 export type SourceMapTransition = TokenValue | TransitionProperty;
 
-export type OutputMapTransition<Namespace extends NamespaceType> = {
-    transitionDuration: Variable<NamespacedKey<Namespace, 'transition-duration'>>;
-    transitionProperty: Variable<NamespacedKey<Namespace, 'transition-property'>>;
-    transitionTimingFunction: Variable<NamespacedKey<Namespace, 'transition-timing-function'>>;
-    transition: Variable<NamespacedKey<Namespace, 'transition'>>;
-};
+export type OutputMapTransition<Namespace extends NamespaceType> = NamespacedMap<
+    Namespace,
+    {
+        transitionDuration: Variable<NamespacedKey<Namespace, 'transition-duration'>>;
+        transitionProperty: Variable<NamespacedKey<Namespace, 'transition-property'>>;
+        transitionTimingFunction: Variable<NamespacedKey<Namespace, 'transition-timing-function'>>;
+        transition: Variable<NamespacedKey<Namespace, 'transition'>>;
+    }
+>;
 
 export function defineTransition<Namespace extends NamespaceType>(
     ns: Namespace,
@@ -25,7 +35,10 @@ export function defineTransition<Namespace extends NamespaceType>(
         ns,
         'transition',
         [ref(transitionProperty), ref(transitionDuration), ref(transitionTimingFunction)],
-        options
+        {
+            ...options,
+            register: options?.registerComposed ?? true
+        }
     );
 
     if (isTransitionProperty(value)) {
@@ -39,9 +52,9 @@ export function defineTransition<Namespace extends NamespaceType>(
             'timingFunction'
         ]);
 
-        set(transitionProperty, property);
-        set(transitionDuration, duration);
-        set(transitionTimingFunction, timingFunction);
+        if (property) set(transitionProperty, property);
+        if (duration) set(transitionDuration, duration);
+        if (timingFunction) set(transitionTimingFunction, timingFunction);
     } else {
         set(transition, value);
     }

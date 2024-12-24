@@ -1,18 +1,29 @@
-import { NamespacedKey, TokenValue, Variable, DefineOptions, NamespaceType } from '../../types';
+import {
+    NamespacedKey,
+    TokenValue,
+    Variable,
+    DefineOptions,
+    NamespaceType,
+    NamespacedMap
+} from '../../types';
 import { MarginProperty } from '../../types';
-import { nsvariable, ref, set } from '../../tokens';
 import { isSidesProperty } from '../../typeGuards';
 import { resolveStringSidesPropertyValue, toExportedVariable } from '../../utils';
+import { nsvariable, set } from '../variable';
+import { ref } from '../ref';
 
 export type SourceMapMargin = TokenValue | MarginProperty;
 
-export type OutputMapMargin<Namespace extends NamespaceType> = {
-    marginTop: Variable<NamespacedKey<Namespace, 'margin-top'>>;
-    marginRight: Variable<NamespacedKey<Namespace, 'margin-right'>>;
-    marginBottom: Variable<NamespacedKey<Namespace, 'margin-bottom'>>;
-    marginLeft: Variable<NamespacedKey<Namespace, 'margin-left'>>;
-    margin: Variable<NamespacedKey<Namespace, 'margin'>>;
-};
+export type OutputMapMargin<Namespace extends NamespaceType> = NamespacedMap<
+    Namespace,
+    {
+        marginTop: Variable<NamespacedKey<Namespace, 'margin-top'>>;
+        marginRight: Variable<NamespacedKey<Namespace, 'margin-right'>>;
+        marginBottom: Variable<NamespacedKey<Namespace, 'margin-bottom'>>;
+        marginLeft: Variable<NamespacedKey<Namespace, 'margin-left'>>;
+        margin: Variable<NamespacedKey<Namespace, 'margin'>>;
+    }
+>;
 
 export function defineMargin<Namespace extends NamespaceType>(
     ns: Namespace,
@@ -27,7 +38,10 @@ export function defineMargin<Namespace extends NamespaceType>(
         ns,
         'margin',
         [ref(marginTop), ref(marginRight), ref(marginBottom), ref(marginLeft)],
-        options
+        {
+            ...options,
+            register: options?.registerComposed ?? true
+        }
     );
 
     if (isSidesProperty(value)) {
@@ -37,10 +51,11 @@ export function defineMargin<Namespace extends NamespaceType>(
         if (value.left) set(marginLeft, value.left);
     } else if (typeof value === 'string') {
         const { top, right, bottom, left } = resolveStringSidesPropertyValue(value);
-        set(marginTop, top);
-        set(marginRight, right);
-        set(marginBottom, bottom);
-        set(marginLeft, left);
+
+        if (top) set(marginTop, top);
+        if (right) set(marginRight, right);
+        if (bottom) set(marginBottom, bottom);
+        if (left) set(marginLeft, left);
     } else {
         set(margin, value);
     }

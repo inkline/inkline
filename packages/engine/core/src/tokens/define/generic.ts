@@ -1,12 +1,19 @@
-import { NamespacedKey, TokenValue, Variable, DefineOptions, NamespaceType } from '../../types';
-import { nsvariable } from '../../tokens';
+import {
+    NamespacedKey,
+    TokenValue,
+    Variable,
+    DefineOptions,
+    NamespaceType,
+    NamespacedMap
+} from '../../types';
+import { nsvariable } from '../variable';
 import { toExportedVariable } from '../../utils';
 
 export type SourceMapGeneric = TokenValue;
 
-export type OutputMapGeneric<Namespace extends NamespaceType, Name extends string> = Record<
-    Name,
-    Variable<NamespacedKey<Namespace, Name>>
+export type OutputMapGeneric<Namespace extends NamespaceType, Name extends string> = NamespacedMap<
+    Namespace,
+    Record<Name, Variable<NamespacedKey<Namespace, Name>>>
 >;
 
 export function defineGeneric<Namespace extends NamespaceType, Name extends string>(

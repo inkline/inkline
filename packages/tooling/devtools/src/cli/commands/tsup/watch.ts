@@ -1,5 +1,5 @@
-import { exec } from "../../utils";
+import { exec } from '../../utils';
 
-export function tsupWatch() {
-    exec("tsup --watch");
+export async function tsupWatch() {
+    return exec('tsup --watch');
 }

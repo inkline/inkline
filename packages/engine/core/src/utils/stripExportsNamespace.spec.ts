@@ -51,13 +51,24 @@ describe('stripExportsNamespace', () => {
     it('should strip array namespace from keys correctly', () => {
         const ns = ['old', 'nested'] as const;
         const values = nsvariables(ns, {
-            fontSize: '16px'
+            fontSize: '16px',
+            color: {
+                h: 0,
+                s: '100%',
+                l: '50%',
+                a: 1
+            }
         });
 
         const result = stripExportsNamespace(values);
 
         expect(result).toEqual({
-            fontSize: values.oldNestedFontSize
+            fontSize: values.oldNestedFontSize,
+            colorH: values.oldNestedColorH,
+            colorS: values.oldNestedColorS,
+            colorL: values.oldNestedColorL,
+            colorA: values.oldNestedColorA,
+            color: values.oldNestedColor
         });
     });
 
@@ -99,6 +110,12 @@ describe('stripExportsNamespace', () => {
         const ns = ['old', 'namespace'] as const;
         const values = nsvariables(ns, {
             fontSize: '16px',
+            color: {
+                h: 0,
+                s: '100%',
+                l: '50%',
+                a: 1
+            },
             nested: {
                 margin: {
                     top: '16px',
@@ -111,6 +128,11 @@ describe('stripExportsNamespace', () => {
 
         const {
             fontSize,
+            colorH,
+            colorS,
+            colorL,
+            colorA,
+            color,
             nestedMargin,
             nestedMarginTop,
             nestedMarginRight,
@@ -119,6 +141,11 @@ describe('stripExportsNamespace', () => {
         } = stripExportsNamespace(values);
 
         expect(fontSize).toBeDefined();
+        expect(colorH).toBeDefined();
+        expect(colorS).toBeDefined();
+        expect(colorL).toBeDefined();
+        expect(colorA).toBeDefined();
+        expect(color).toBeDefined();
         expect(nestedMargin).toBeDefined();
         expect(nestedMarginTop).toBeDefined();
         expect(nestedMarginRight).toBeDefined();
