@@ -1,5 +1,4 @@
-import { css, defaultDefinitionOptions, divide, multiply, ref, variable } from '@inkline/core';
-import { createVariantFactoryFn } from './useVariantsFactory';
+import { css, defaultDefinitionOptions, ref, variable } from '@inkline/core';
 
 export function useFluid(options = defaultDefinitionOptions) {
     const fluidMinWidth = variable('fluid--min-width', 320, options);
@@ -18,14 +17,3 @@ export function useFluid(options = defaultDefinitionOptions) {
         fluidBreakpoint
     };
 }
-
-
-export const fluidScaleVariants = {
-    'pow-minus-2': createVariantFactoryFn((value) => divide(1, value, value)),
-    'pow-minus-1': createVariantFactoryFn((value) => divide(1, value)),
-    'pow-1': createVariantFactoryFn((value) => multiply(value, 1)),
-    'pow-2': createVariantFactoryFn((value) => multiply(value, value)),
-    'pow-3': createVariantFactoryFn((value) => multiply(value, value, value)),
-    'pow-4': createVariantFactoryFn((value) => multiply(value, value, value, value)),
-    'pow-5': createVariantFactoryFn((value) => multiply(value, value, value, value, value))
-};

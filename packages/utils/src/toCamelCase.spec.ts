@@ -1,4 +1,4 @@
-import { toCamelCase } from "./toCamelCase";
+import { toCamelCase } from './toCamelCase';
 
 describe('toCamelCase', () => {
     it('should convert hyphenated text to camelCase', () => {
@@ -23,5 +23,9 @@ describe('toCamelCase', () => {
 
     it('should handle strings containing numbers', () => {
         expect(toCamelCase('text-2-center')).toBe('text2Center');
+    });
+
+    it('should handle strings containing adjacent numbers', () => {
+        expect(toCamelCase('text-2xs')).toBe('text2Xs');
     });
 });

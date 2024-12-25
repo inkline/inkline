@@ -3,12 +3,11 @@ import {
     useBorderRadiusBase,
     useBoxShadow,
     useFontSize,
-    useKeyMappedSizeMultiplier,
-    usePaddingBase,
     useTransition,
     useColors,
     useContrastTextColor,
-    useFontWeight
+    useFontWeight,
+    useSpacing
 } from '@inkline/theme';
 import {
     defaultDefinitionOptions,
@@ -16,7 +15,6 @@ import {
     ref,
     selector,
     nsvariables,
-    stripExportsNamespace,
     vref,
     toVariableKey,
     setExportsNamespace
@@ -326,7 +324,6 @@ export function useBadgeThemeColorConfig(variant?: BadgeColorVariant) {
 }
 
 export function useBadgeThemeSizeConfig(variant?: BadgeSizeVariant) {
-    const sizeMultipliers = useKeyMappedSizeMultiplier();
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
@@ -334,22 +331,22 @@ export function useBadgeThemeSizeConfig(variant?: BadgeSizeVariant) {
         borderBottomLeftRadius
     } = useBorderRadiusBase();
     const { fontSizeXs, fontSizeSm, fontSizeMd } = useFontSize();
-    const { paddingTop, paddingRight, paddingBottom, paddingLeft } = usePaddingBase();
+    const { spacingSm, spacingMd, spacingLg } = useSpacing();
 
     return {
         sm: {
             borderRadius: {
-                topLeft: multiply(ref(borderTopLeftRadius), ref(sizeMultipliers.sm)),
-                topRight: multiply(ref(borderTopRightRadius), ref(sizeMultipliers.sm)),
-                bottomRight: multiply(ref(borderBottomRightRadius), ref(sizeMultipliers.sm)),
-                bottomLeft: multiply(ref(borderBottomLeftRadius), ref(sizeMultipliers.sm))
+                topLeft: multiply(ref(borderTopLeftRadius)),
+                topRight: multiply(ref(borderTopRightRadius)),
+                bottomRight: multiply(ref(borderBottomRightRadius)),
+                bottomLeft: multiply(ref(borderBottomLeftRadius))
             },
             fontSize: ref(fontSizeXs),
             padding: {
-                top: multiply(ref(paddingTop), 0.25, ref(sizeMultipliers.sm)),
-                right: multiply(ref(paddingRight), 0.5, ref(sizeMultipliers.sm)),
-                bottom: multiply(ref(paddingBottom), 0.25, ref(sizeMultipliers.sm)),
-                left: multiply(ref(paddingLeft), 0.5, ref(sizeMultipliers.sm))
+                top: multiply(ref(spacingSm), 0.25),
+                right: multiply(ref(spacingSm), 0.5),
+                bottom: multiply(ref(spacingSm), 0.25),
+                left: multiply(ref(spacingSm), 0.5)
             }
         },
         md: {
@@ -361,25 +358,25 @@ export function useBadgeThemeSizeConfig(variant?: BadgeSizeVariant) {
             },
             fontSize: ref(fontSizeSm),
             padding: {
-                top: multiply(ref(paddingTop), 0.25),
-                right: multiply(ref(paddingRight), 0.5),
-                bottom: multiply(ref(paddingBottom), 0.25),
-                left: multiply(ref(paddingLeft), 0.5)
+                top: multiply(ref(spacingMd), 0.25),
+                right: multiply(ref(spacingMd), 0.5),
+                bottom: multiply(ref(spacingMd), 0.25),
+                left: multiply(ref(spacingMd), 0.5)
             }
         },
         lg: {
             borderRadius: {
-                topLeft: multiply(ref(borderTopLeftRadius), ref(sizeMultipliers.lg)),
-                topRight: multiply(ref(borderTopRightRadius), ref(sizeMultipliers.lg)),
-                bottomRight: multiply(ref(borderBottomRightRadius), ref(sizeMultipliers.lg)),
-                bottomLeft: multiply(ref(borderBottomLeftRadius), ref(sizeMultipliers.lg))
+                topLeft: multiply(ref(borderTopLeftRadius)),
+                topRight: multiply(ref(borderTopRightRadius)),
+                bottomRight: multiply(ref(borderBottomRightRadius)),
+                bottomLeft: multiply(ref(borderBottomLeftRadius))
             },
             fontSize: ref(fontSizeMd),
             padding: {
-                top: multiply(ref(paddingTop), 0.5, ref(sizeMultipliers.lg)),
-                right: multiply(ref(paddingRight), 1, ref(sizeMultipliers.lg)),
-                bottom: multiply(ref(paddingBottom), 0.5, ref(sizeMultipliers.lg)),
-                left: multiply(ref(paddingLeft), 1, ref(sizeMultipliers.lg))
+                top: multiply(ref(spacingLg), 0.25),
+                right: multiply(ref(spacingLg), 0.5),
+                bottom: multiply(ref(spacingLg), 0.25),
+                left: multiply(ref(spacingLg), 0.5)
             }
         }
     }[variant ?? defaultBadgeSize];
@@ -614,28 +611,40 @@ export function useBadgeThemeColors({ colors = defaultBadgeColors } = {}) {
 
 export function useBadgeThemeSizeFactory(variant: BadgeSizeVariant) {
     const sizeNs = [ns, variant] as const;
+    const {
+        badgeBorderTopLeftRadius,
+        badgeBorderTopRightRadius,
+        badgeBorderBottomRightRadius,
+        badgeBorderBottomLeftRadius,
+        badgeFontSize,
+        badgePaddingTop,
+        badgePaddingRight,
+        badgePaddingBottom,
+        badgePaddingLeft
+    } = useBadgeThemeVariables();
 
     const {
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomRightRadius,
-        borderBottomLeftRadius,
-        fontSize,
-        paddingTop,
-        paddingRight,
-        paddingBottom,
-        paddingLeft
-    } = stripExportsNamespace(nsvariables(sizeNs, useBadgeThemeSizeConfig(variant)));
+        variantBorderTopLeftRadius,
+        variantBorderTopRightRadius,
+        variantBorderBottomRightRadius,
+        variantBorderBottomLeftRadius,
+        variantFontSize,
+        variantPaddingTop,
+        variantPaddingRight,
+        variantPaddingBottom,
+        variantPaddingLeft
+    } = setExportsNamespace(nsvariables(sizeNs, useBadgeThemeSizeConfig(variant)), 'variant');
 
     selector(`.badge.-${variant}`, {
-        borderRadius: [
-            ref(borderTopLeftRadius),
-            ref(borderTopRightRadius),
-            ref(borderBottomRightRadius),
-            ref(borderBottomLeftRadius)
-        ],
-        fontSize: ref(fontSize),
-        padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
+        [toVariableKey(badgeBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
+        [toVariableKey(badgeBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
+        [toVariableKey(badgeBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
+        [toVariableKey(badgeBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
+        [toVariableKey(badgeFontSize)]: ref(variantFontSize),
+        [toVariableKey(badgePaddingTop)]: ref(variantPaddingTop),
+        [toVariableKey(badgePaddingRight)]: ref(variantPaddingRight),
+        [toVariableKey(badgePaddingBottom)]: ref(variantPaddingBottom),
+        [toVariableKey(badgePaddingLeft)]: ref(variantPaddingLeft)
     });
 }
 

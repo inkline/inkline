@@ -1,50 +1,54 @@
-import { divide, multiply, variable } from '@inkline/core';
-import { useSizeMultiplierVariantsFactory } from './useSizeMultiplier';
-import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
+import { css, ref, TokenValue, variable } from '@inkline/core';
 import { defaultDefinitionOptions } from '@inkline/core';
+import { useFluid } from './useFluid';
+import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 
 export function useSpacing(options = defaultDefinitionOptions) {
-    const spacing = variable('spacing', '1rem', options);
+    const { fluidBreakpoint } = useFluid();
 
-    const { spacingXs, spacingSm, spacingMd, spacingLg, spacingXl } =
-        useSizeMultiplierVariantsFactory<'spacing'>(spacing, options);
+    const spacingMin = variable('spacing-min', 18, options);
+    const spacingMax = variable('spacing-max', 20, options);
 
+    const createSpacingVariant = (value: TokenValue) => createVariantFactoryFn(() => css`calc((${ref(spacingMin)} / 16 * ${'1rem'} + (${ref(spacingMax)} - ${ref(spacingMin)}) * ${ref(fluidBreakpoint)}) ${typeof value === 'number' && value !== 1 ? ` * ${value}` : ''})`);
     const variants = {
-        '0.2': createVariantFactoryFn((value) => divide(value, 5)),
-        '0.25': createVariantFactoryFn((value) => divide(value, 4)),
-        '0.33': createVariantFactoryFn((value) => divide(value, 3)),
-        '0.5': createVariantFactoryFn((value) => divide(value, 2)),
-        '2': createVariantFactoryFn((value) => multiply(value, 2)),
-        '3': createVariantFactoryFn((value) => multiply(value, 3)),
-        '4': createVariantFactoryFn((value) => multiply(value, 4)),
-        '5': createVariantFactoryFn((value) => multiply(value, 5))
+        '2xs': createSpacingVariant(0.25),
+        'xs': createSpacingVariant(0.5),
+        'sm': createSpacingVariant(0.75),
+        'md': createSpacingVariant(1),
+        'lg': createSpacingVariant(1.5),
+        'xl': createSpacingVariant(2),
+        '2xl': createSpacingVariant(4),
+        '3xl': createSpacingVariant(6),
+        '4xl': createSpacingVariant(8)
     };
 
     const {
-        spacing0_2,
-        spacing0_25,
-        spacing0_33,
-        spacing0_5,
-        spacing2,
-        spacing3,
-        spacing4,
-        spacing5
-    } = useVariantsFactory<'spacing', keyof typeof variants>(spacing, variants, options);
-
-    return {
-        spacing,
-        spacing0_2,
-        spacing0_25,
-        spacing0_33,
-        spacing0_5,
-        spacing2,
-        spacing3,
-        spacing4,
-        spacing5,
+        spacing2Xs,
         spacingXs,
         spacingSm,
         spacingMd,
         spacingLg,
-        spacingXl
+        spacingXl,
+        spacing2Xl,
+        spacing3Xl,
+        spacing4Xl
+    } =
+        useVariantsFactory<'spacing', keyof typeof variants>('spacing', variants, options);
+
+    const spacing = variable('spacing', ref(spacingMd), options);
+
+    return {
+        spacingMin,
+        spacingMax,
+        spacing,
+        spacing2Xs,
+        spacingXs,
+        spacingSm,
+        spacingMd,
+        spacingLg,
+        spacingXl,
+        spacing2Xl,
+        spacing3Xl,
+        spacing4Xl
     };
 }

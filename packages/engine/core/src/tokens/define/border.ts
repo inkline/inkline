@@ -306,64 +306,84 @@ export function defineBorder<Namespace extends NamespaceType>(
                 set(borderLeftColorA, valueOf(colorA));
             }
         }
-    } else if (isSidesProperty(value)) {
-        if (isBorderProperty(value.top)) {
-            if (value.top.width) set(borderTopWidth, value.top.width);
-            if (value.top.style) set(borderTopStyle, value.top.style);
-            if (value.top.color) {
-                const { colorH, colorS, colorL, colorA } = parseColor('color', value.top.color, {
-                    register: false
-                });
+    }
 
-                if (colorH) set(borderTopColorH, valueOf(colorH));
-                if (colorS) set(borderTopColorS, valueOf(colorS));
-                if (colorL) set(borderTopColorL, valueOf(colorL));
-                if (colorA) set(borderTopColorA, valueOf(colorA));
+    if (typeof value === 'object') {
+        if (isSidesProperty(value)) {
+            if (isBorderProperty(value.top)) {
+                if (value.top.width) set(borderTopWidth, value.top.width);
+                if (value.top.style) set(borderTopStyle, value.top.style);
+                if (value.top.color) {
+                    const { colorH, colorS, colorL, colorA } = parseColor(
+                        'color',
+                        value.top.color,
+                        {
+                            register: false
+                        }
+                    );
+
+                    if (colorH) set(borderTopColorH, valueOf(colorH));
+                    if (colorS) set(borderTopColorS, valueOf(colorS));
+                    if (colorL) set(borderTopColorL, valueOf(colorL));
+                    if (colorA) set(borderTopColorA, valueOf(colorA));
+                }
             }
-        }
 
-        if (isBorderProperty(value.right)) {
-            if (value.right.width) set(borderRightWidth, value.right.width);
-            if (value.right.style) set(borderRightStyle, value.right.style);
-            if (value.right.color) {
-                const { colorH, colorS, colorL, colorA } = parseColor('color', value.right.color, {
-                    register: false
-                });
+            if (isBorderProperty(value.right)) {
+                if (value.right.width) set(borderRightWidth, value.right.width);
+                if (value.right.style) set(borderRightStyle, value.right.style);
+                if (value.right.color) {
+                    const { colorH, colorS, colorL, colorA } = parseColor(
+                        'color',
+                        value.right.color,
+                        {
+                            register: false
+                        }
+                    );
 
-                if (colorH) set(borderRightColorH, valueOf(colorH));
-                if (colorS) set(borderRightColorS, valueOf(colorS));
-                if (colorL) set(borderRightColorL, valueOf(colorL));
-                if (colorA) set(borderRightColorA, valueOf(colorA));
+                    if (colorH) set(borderRightColorH, valueOf(colorH));
+                    if (colorS) set(borderRightColorS, valueOf(colorS));
+                    if (colorL) set(borderRightColorL, valueOf(colorL));
+                    if (colorA) set(borderRightColorA, valueOf(colorA));
+                }
             }
-        }
 
-        if (isBorderProperty(value.bottom)) {
-            if (value.bottom.width) set(borderBottomWidth, value.bottom.width);
-            if (value.bottom.style) set(borderBottomStyle, value.bottom.style);
-            if (value.bottom.color) {
-                const { colorH, colorS, colorL, colorA } = parseColor('color', value.bottom.color, {
-                    register: false
-                });
+            if (isBorderProperty(value.bottom)) {
+                if (value.bottom.width) set(borderBottomWidth, value.bottom.width);
+                if (value.bottom.style) set(borderBottomStyle, value.bottom.style);
+                if (value.bottom.color) {
+                    const { colorH, colorS, colorL, colorA } = parseColor(
+                        'color',
+                        value.bottom.color,
+                        {
+                            register: false
+                        }
+                    );
 
-                if (colorH) set(borderBottomColorH, valueOf(colorH));
-                if (colorS) set(borderBottomColorS, valueOf(colorS));
-                if (colorL) set(borderBottomColorL, valueOf(colorL));
-                if (colorA) set(borderBottomColorA, valueOf(colorA));
+                    if (colorH) set(borderBottomColorH, valueOf(colorH));
+                    if (colorS) set(borderBottomColorS, valueOf(colorS));
+                    if (colorL) set(borderBottomColorL, valueOf(colorL));
+                    if (colorA) set(borderBottomColorA, valueOf(colorA));
+                }
             }
-        }
 
-        if (isBorderProperty(value.left)) {
-            if (value.left.width) set(borderLeftWidth, value.left.width);
-            if (value.left.style) set(borderLeftStyle, value.left.style);
-            if (value.left.color) {
-                const { colorH, colorS, colorL, colorA } = parseColor('color', value.left.color, {
-                    register: false
-                });
+            if (isBorderProperty(value.left)) {
+                if (value.left.width) set(borderLeftWidth, value.left.width);
+                if (value.left.style) set(borderLeftStyle, value.left.style);
+                if (value.left.color) {
+                    const { colorH, colorS, colorL, colorA } = parseColor(
+                        'color',
+                        value.left.color,
+                        {
+                            register: false
+                        }
+                    );
 
-                if (colorH) set(borderLeftColorH, valueOf(colorH));
-                if (colorS) set(borderLeftColorS, valueOf(colorS));
-                if (colorL) set(borderLeftColorL, valueOf(colorL));
-                if (colorA) set(borderLeftColorA, valueOf(colorA));
+                    if (colorH) set(borderLeftColorH, valueOf(colorH));
+                    if (colorS) set(borderLeftColorS, valueOf(colorS));
+                    if (colorL) set(borderLeftColorL, valueOf(colorL));
+                    if (colorA) set(borderLeftColorA, valueOf(colorA));
+                }
             }
         }
     } else if (typeof value === 'string') {

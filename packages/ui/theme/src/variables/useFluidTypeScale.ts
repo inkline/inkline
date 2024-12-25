@@ -1,7 +1,18 @@
-import { defaultDefinitionOptions, ref, variable } from '@inkline/core';
-import { useVariantsFactory } from './useVariantsFactory';
+import { defaultDefinitionOptions, divide, multiply, ref, variable } from '@inkline/core';
+import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 import { useScale } from './useScale';
-import { fluidScaleVariants } from './useFluid';
+
+export const fluidScaleVariants = {
+    'pow-minus-4': createVariantFactoryFn((value) => divide(1, value, value, value, value)),
+    'pow-minus-3': createVariantFactoryFn((value) => divide(1, value, value, value)),
+    'pow-minus-2': createVariantFactoryFn((value) => divide(1, value, value)),
+    'pow-minus-1': createVariantFactoryFn((value) => divide(1, value)),
+    'pow-1': createVariantFactoryFn((value) => multiply(value, 1)),
+    'pow-2': createVariantFactoryFn((value) => multiply(value, value)),
+    'pow-3': createVariantFactoryFn((value) => multiply(value, value, value)),
+    'pow-4': createVariantFactoryFn((value) => multiply(value, value, value, value)),
+    'pow-5': createVariantFactoryFn((value) => multiply(value, value, value, value, value))
+};
 
 export function useFluidTypeScale(options = defaultDefinitionOptions) {
     const { scaleMinorThird, scalePerfectFourth } = useScale();
