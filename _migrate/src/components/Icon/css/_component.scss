@@ -1,0 +1,9 @@
+@use '../../../css/functions/properties';
+
+/**
+ * Icon
+ */
+
+.inkline-icon {
+    height: properties.font-size('icon');
+}

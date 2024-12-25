@@ -1,0 +1,3292 @@
+{
+    "default": {
+        "__type": "theme",
+        "__name": "default",
+        "__keys": {
+            "variables": {},
+            "selectors": {}
+        },
+        "variables": {
+            "spacing": {
+                "__type": "variable",
+                "__name": "spacing",
+                "__value": "1rem"
+            },
+            "scale-minor-second": {
+                "__type": "variable",
+                "__name": "scale-minor-second",
+                "__value": 1.067
+            },
+            "scale-major-second": {
+                "__type": "variable",
+                "__name": "scale-major-second",
+                "__value": 1.125
+            },
+            "scale-minor-third": {
+                "__type": "variable",
+                "__name": "scale-minor-third",
+                "__value": 1.2
+            },
+            "scale-major-third": {
+                "__type": "variable",
+                "__name": "scale-major-third",
+                "__value": 1.25
+            },
+            "scale-perfect-fourth": {
+                "__type": "variable",
+                "__name": "scale-perfect-fourth",
+                "__value": 1.333
+            },
+            "scale-augmented-fourth": {
+                "__type": "variable",
+                "__name": "scale-augmented-fourth",
+                "__value": 1.414
+            },
+            "scale-perfect-fifth": {
+                "__type": "variable",
+                "__name": "scale-perfect-fifth",
+                "__value": 1.5
+            },
+            "scale-golden": {
+                "__type": "variable",
+                "__name": "scale-golden",
+                "__value": 1.618
+            },
+            "scale": {
+                "__type": "variable",
+                "__name": "scale",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "scale-minor-third"
+                }
+            },
+            "scale-pow-minus-2": {
+                "__type": "variable",
+                "__name": "scale-pow-minus-2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "scale-pow-minus-1": {
+                "__type": "variable",
+                "__name": "scale-pow-minus-1",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "scale-pow-1": {
+                "__type": "variable",
+                "__name": "scale-pow-1",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        1
+                    ]
+                }
+            },
+            "scale-pow-2": {
+                "__type": "variable",
+                "__name": "scale-pow-2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "scale-pow-3": {
+                "__type": "variable",
+                "__name": "scale-pow-3",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "scale-pow-4": {
+                "__type": "variable",
+                "__name": "scale-pow-4",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "scale-pow-5": {
+                "__type": "variable",
+                "__name": "scale-pow-5",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier": {
+                "__type": "variable",
+                "__name": "size-multiplier",
+                "__value": 1
+            },
+            "size-multiplier-xxs": {
+                "__type": "variable",
+                "__name": "size-multiplier-xxs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-3"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier-xs": {
+                "__type": "variable",
+                "__name": "size-multiplier-xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-2"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier-sm": {
+                "__type": "variable",
+                "__name": "size-multiplier-sm",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-1"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier-md": {
+                "__type": "variable",
+                "__name": "size-multiplier-md",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "size-multiplier"
+                }
+            },
+            "size-multiplier-lg": {
+                "__type": "variable",
+                "__name": "size-multiplier-lg",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-1"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier-xl": {
+                "__type": "variable",
+                "__name": "size-multiplier-xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-2"
+                        }
+                    ]
+                }
+            },
+            "size-multiplier-xxl": {
+                "__type": "variable",
+                "__name": "size-multiplier-xxl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "scale-pow-3"
+                        }
+                    ]
+                }
+            },
+            "spacing-xs": {
+                "__type": "variable",
+                "__name": "spacing-xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-xs"
+                        }
+                    ]
+                }
+            },
+            "spacing-sm": {
+                "__type": "variable",
+                "__name": "spacing-sm",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "spacing-md": {
+                "__type": "variable",
+                "__name": "spacing-md",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "spacing-lg": {
+                "__type": "variable",
+                "__name": "spacing-lg",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-lg"
+                        }
+                    ]
+                }
+            },
+            "spacing-xl": {
+                "__type": "variable",
+                "__name": "spacing-xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-xl"
+                        }
+                    ]
+                }
+            },
+            "spacing-2": {
+                "__type": "variable",
+                "__name": "spacing-2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        2
+                    ]
+                }
+            },
+            "spacing-3": {
+                "__type": "variable",
+                "__name": "spacing-3",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        3
+                    ]
+                }
+            },
+            "spacing-4": {
+                "__type": "variable",
+                "__name": "spacing-4",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        4
+                    ]
+                }
+            },
+            "spacing-5": {
+                "__type": "variable",
+                "__name": "spacing-5",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "*",
+                        5
+                    ]
+                }
+            },
+            "spacing-0.2": {
+                "__type": "variable",
+                "__name": "spacing-0.2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "/",
+                        5
+                    ]
+                }
+            },
+            "spacing-0.25": {
+                "__type": "variable",
+                "__name": "spacing-0.25",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "/",
+                        4
+                    ]
+                }
+            },
+            "spacing-0.33": {
+                "__type": "variable",
+                "__name": "spacing-0.33",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "/",
+                        3
+                    ]
+                }
+            },
+            "spacing-0.5": {
+                "__type": "variable",
+                "__name": "spacing-0.5",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        },
+                        "/",
+                        2
+                    ]
+                }
+            },
+            "margin-top": {
+                "__type": "variable",
+                "__name": "margin-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin-right": {
+                "__type": "variable",
+                "__name": "margin-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin-bottom": {
+                "__type": "variable",
+                "__name": "margin-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin-left": {
+                "__type": "variable",
+                "__name": "margin-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "margin": {
+                "__type": "variable",
+                "__name": "margin",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "margin-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "margin-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "margin-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "margin-left"
+                    }
+                ]
+            },
+            "padding-top": {
+                "__type": "variable",
+                "__name": "padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "padding-right": {
+                "__type": "variable",
+                "__name": "padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "padding-bottom": {
+                "__type": "variable",
+                "__name": "padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "padding-left": {
+                "__type": "variable",
+                "__name": "padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing"
+                }
+            },
+            "padding": {
+                "__type": "variable",
+                "__name": "padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "padding-left"
+                    }
+                ]
+            },
+            "fluid--min-width": {
+                "__type": "variable",
+                "__name": "fluid--min-width",
+                "__value": 320
+            },
+            "fluid--max-width": {
+                "__type": "variable",
+                "__name": "fluid--max-width",
+                "__value": 1440
+            },
+            "fluid--screen": {
+                "__type": "variable",
+                "__name": "fluid--screen",
+                "__value": "100vw"
+            },
+            "fluid--breakpoint": {
+                "__type": "variable",
+                "__name": "fluid--breakpoint",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--screen"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--min-width"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        ") / (",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--max-width"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--min-width"
+                        },
+                        "))"
+                    ]
+                }
+            },
+            "type-scale-min": {
+                "__type": "variable",
+                "__name": "type-scale-min",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "scale-minor-third"
+                }
+            },
+            "type-scale-max": {
+                "__type": "variable",
+                "__name": "type-scale-max",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "scale-perfect-fourth"
+                }
+            },
+            "type-scale-min-pow-minus-2": {
+                "__type": "variable",
+                "__name": "type-scale-min-pow-minus-2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        1,
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        }
+                    ]
+                }
+            },
+            "type-scale-min-pow-minus-1": {
+                "__type": "variable",
+                "__name": "type-scale-min-pow-minus-1",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        1,
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        }
+                    ]
+                }
+            },
+            "type-scale-min-pow-1": {
+                "__type": "variable",
+                "__name": "type-scale-min-pow-1",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "*",
+                        1
+                    ]
+                }
+            },
+            "type-scale-min-pow-2": {
+                "__type": "variable",
+                "__name": "type-scale-min-pow-2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        }
+                    ]
+                }
+            },
+            "type-scale-min-pow-3": {
+                "__type": "variable",
+                "__name": "type-scale-min-pow-3",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        }
+                    ]
+                }
+            },
+            "type-scale-min-pow-4": {
+                "__type": "variable",
+                "__name": "type-scale-min-pow-4",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        }
+                    ]
+                }
+            },
+            "type-scale-min-pow-5": {
+                "__type": "variable",
+                "__name": "type-scale-min-pow-5",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min"
+                        }
+                    ]
+                }
+            },
+            "type-scale-max-pow-minus-2": {
+                "__type": "variable",
+                "__name": "type-scale-max-pow-minus-2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        1,
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        }
+                    ]
+                }
+            },
+            "type-scale-max-pow-minus-1": {
+                "__type": "variable",
+                "__name": "type-scale-max-pow-minus-1",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        1,
+                        "/",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        }
+                    ]
+                }
+            },
+            "type-scale-max-pow-1": {
+                "__type": "variable",
+                "__name": "type-scale-max-pow-1",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "*",
+                        1
+                    ]
+                }
+            },
+            "type-scale-max-pow-2": {
+                "__type": "variable",
+                "__name": "type-scale-max-pow-2",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        }
+                    ]
+                }
+            },
+            "type-scale-max-pow-3": {
+                "__type": "variable",
+                "__name": "type-scale-max-pow-3",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        }
+                    ]
+                }
+            },
+            "type-scale-max-pow-4": {
+                "__type": "variable",
+                "__name": "type-scale-max-pow-4",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        }
+                    ]
+                }
+            },
+            "type-scale-max-pow-5": {
+                "__type": "variable",
+                "__name": "type-scale-max-pow-5",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max"
+                        }
+                    ]
+                }
+            },
+            "font-size-min": {
+                "__type": "variable",
+                "__name": "font-size-min",
+                "__value": 17
+            },
+            "font-size-max": {
+                "__type": "variable",
+                "__name": "font-size-max",
+                "__value": 20
+            },
+            "font-size-xs": {
+                "__type": "variable",
+                "__name": "font-size-xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-minus-2"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-minus-2"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-minus-2"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "font-size-sm": {
+                "__type": "variable",
+                "__name": "font-size-sm",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-minus-1"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-minus-1"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-minus-1"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "font-size-md": {
+                "__type": "variable",
+                "__name": "font-size-md",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "font-size-lg": {
+                "__type": "variable",
+                "__name": "font-size-lg",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-1"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-1"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-1"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "font-size-xl": {
+                "__type": "variable",
+                "__name": "font-size-xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-2"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-2"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-2"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "font-size-2xl": {
+                "__type": "variable",
+                "__name": "font-size-2xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-3"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-3"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-3"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "font-size-3xl": {
+                "__type": "variable",
+                "__name": "font-size-3xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-4"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-4"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-4"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "font-size-4xl": {
+                "__type": "variable",
+                "__name": "font-size-4xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc((",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-5"
+                        },
+                        " / 16 * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-5"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        " * ",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-5"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "font-size": {
+                "__type": "variable",
+                "__name": "font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-md"
+                }
+            },
+            "color-white-h": {
+                "__type": "variable",
+                "__name": "color-white-h",
+                "__value": 0
+            },
+            "color-white-s": {
+                "__type": "variable",
+                "__name": "color-white-s",
+                "__value": "0%"
+            },
+            "color-white-l": {
+                "__type": "variable",
+                "__name": "color-white-l",
+                "__value": "100%"
+            },
+            "color-white-a": {
+                "__type": "variable",
+                "__name": "color-white-a",
+                "__value": 1
+            },
+            "color-white": {
+                "__type": "variable",
+                "__name": "color-white",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-white-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-white-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-white-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-white-a"
+                        }
+                    ]
+                }
+            },
+            "color-black-h": {
+                "__type": "variable",
+                "__name": "color-black-h",
+                "__value": 0
+            },
+            "color-black-s": {
+                "__type": "variable",
+                "__name": "color-black-s",
+                "__value": "0%"
+            },
+            "color-black-l": {
+                "__type": "variable",
+                "__name": "color-black-l",
+                "__value": "0%"
+            },
+            "color-black-a": {
+                "__type": "variable",
+                "__name": "color-black-a",
+                "__value": 1
+            },
+            "color-black": {
+                "__type": "variable",
+                "__name": "color-black",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-black-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-black-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-black-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-black-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-h": {
+                "__type": "variable",
+                "__name": "color-gray-h",
+                "__value": 193.63636363636363
+            },
+            "color-gray-s": {
+                "__type": "variable",
+                "__name": "color-gray-s",
+                "__value": "10.784313725490199%"
+            },
+            "color-gray-l": {
+                "__type": "variable",
+                "__name": "color-gray-l",
+                "__value": "60.00000000000001%"
+            },
+            "color-gray-a": {
+                "__type": "variable",
+                "__name": "color-gray-a",
+                "__value": 1
+            },
+            "color-gray": {
+                "__type": "variable",
+                "__name": "color-gray",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-50-h": {
+                "__type": "variable",
+                "__name": "color-gray-50-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-h"
+                }
+            },
+            "color-gray-50-s": {
+                "__type": "variable",
+                "__name": "color-gray-50-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-s"
+                }
+            },
+            "color-gray-50-l": {
+                "__type": "variable",
+                "__name": "color-gray-50-l",
+                "__value": "95%"
+            },
+            "color-gray-50-a": {
+                "__type": "variable",
+                "__name": "color-gray-50-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-a"
+                }
+            },
+            "color-gray-50": {
+                "__type": "variable",
+                "__name": "color-gray-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-50-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-50-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-50-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-50-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-100-h": {
+                "__type": "variable",
+                "__name": "color-gray-100-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-h"
+                }
+            },
+            "color-gray-100-s": {
+                "__type": "variable",
+                "__name": "color-gray-100-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-s"
+                }
+            },
+            "color-gray-100-l": {
+                "__type": "variable",
+                "__name": "color-gray-100-l",
+                "__value": "90%"
+            },
+            "color-gray-100-a": {
+                "__type": "variable",
+                "__name": "color-gray-100-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-a"
+                }
+            },
+            "color-gray-100": {
+                "__type": "variable",
+                "__name": "color-gray-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-100-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-100-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-100-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-100-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-200-h": {
+                "__type": "variable",
+                "__name": "color-gray-200-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-h"
+                }
+            },
+            "color-gray-200-s": {
+                "__type": "variable",
+                "__name": "color-gray-200-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-s"
+                }
+            },
+            "color-gray-200-l": {
+                "__type": "variable",
+                "__name": "color-gray-200-l",
+                "__value": "80%"
+            },
+            "color-gray-200-a": {
+                "__type": "variable",
+                "__name": "color-gray-200-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-a"
+                }
+            },
+            "color-gray-200": {
+                "__type": "variable",
+                "__name": "color-gray-200",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-200-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-200-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-200-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-200-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-300-h": {
+                "__type": "variable",
+                "__name": "color-gray-300-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-h"
+                }
+            },
+            "color-gray-300-s": {
+                "__type": "variable",
+                "__name": "color-gray-300-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-s"
+                }
+            },
+            "color-gray-300-l": {
+                "__type": "variable",
+                "__name": "color-gray-300-l",
+                "__value": "70%"
+            },
+            "color-gray-300-a": {
+                "__type": "variable",
+                "__name": "color-gray-300-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-a"
+                }
+            },
+            "color-gray-300": {
+                "__type": "variable",
+                "__name": "color-gray-300",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-300-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-300-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-300-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-300-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-400-h": {
+                "__type": "variable",
+                "__name": "color-gray-400-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-h"
+                }
+            },
+            "color-gray-400-s": {
+                "__type": "variable",
+                "__name": "color-gray-400-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-s"
+                }
+            },
+            "color-gray-400-l": {
+                "__type": "variable",
+                "__name": "color-gray-400-l",
+                "__value": "60%"
+            },
+            "color-gray-400-a": {
+                "__type": "variable",
+                "__name": "color-gray-400-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-a"
+                }
+            },
+            "color-gray-400": {
+                "__type": "variable",
+                "__name": "color-gray-400",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-400-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-400-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-400-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-400-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-500-h": {
+                "__type": "variable",
+                "__name": "color-gray-500-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-h"
+                }
+            },
+            "color-gray-500-s": {
+                "__type": "variable",
+                "__name": "color-gray-500-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-s"
+                }
+            },
+            "color-gray-500-l": {
+                "__type": "variable",
+                "__name": "color-gray-500-l",
+                "__value": "50%"
+            },
+            "color-gray-500-a": {
+                "__type": "variable",
+                "__name": "color-gray-500-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-a"
+                }
+            },
+            "color-gray-500": {
+                "__type": "variable",
+                "__name": "color-gray-500",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-500-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-500-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-500-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-500-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-600-h": {
+                "__type": "variable",
+                "__name": "color-gray-600-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-h"
+                }
+            },
+            "color-gray-600-s": {
+                "__type": "variable",
+                "__name": "color-gray-600-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-s"
+                }
+            },
+            "color-gray-600-l": {
+                "__type": "variable",
+                "__name": "color-gray-600-l",
+                "__value": "40%"
+            },
+            "color-gray-600-a": {
+                "__type": "variable",
+                "__name": "color-gray-600-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-a"
+                }
+            },
+            "color-gray-600": {
+                "__type": "variable",
+                "__name": "color-gray-600",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-600-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-600-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-600-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-600-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-700-h": {
+                "__type": "variable",
+                "__name": "color-gray-700-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-h"
+                }
+            },
+            "color-gray-700-s": {
+                "__type": "variable",
+                "__name": "color-gray-700-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-s"
+                }
+            },
+            "color-gray-700-l": {
+                "__type": "variable",
+                "__name": "color-gray-700-l",
+                "__value": "30%"
+            },
+            "color-gray-700-a": {
+                "__type": "variable",
+                "__name": "color-gray-700-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-a"
+                }
+            },
+            "color-gray-700": {
+                "__type": "variable",
+                "__name": "color-gray-700",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-700-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-700-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-700-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-700-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-800-h": {
+                "__type": "variable",
+                "__name": "color-gray-800-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-h"
+                }
+            },
+            "color-gray-800-s": {
+                "__type": "variable",
+                "__name": "color-gray-800-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-s"
+                }
+            },
+            "color-gray-800-l": {
+                "__type": "variable",
+                "__name": "color-gray-800-l",
+                "__value": "20%"
+            },
+            "color-gray-800-a": {
+                "__type": "variable",
+                "__name": "color-gray-800-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-a"
+                }
+            },
+            "color-gray-800": {
+                "__type": "variable",
+                "__name": "color-gray-800",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-800-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-800-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-800-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-800-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-900-h": {
+                "__type": "variable",
+                "__name": "color-gray-900-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-h"
+                }
+            },
+            "color-gray-900-s": {
+                "__type": "variable",
+                "__name": "color-gray-900-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-s"
+                }
+            },
+            "color-gray-900-l": {
+                "__type": "variable",
+                "__name": "color-gray-900-l",
+                "__value": "10%"
+            },
+            "color-gray-900-a": {
+                "__type": "variable",
+                "__name": "color-gray-900-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-a"
+                }
+            },
+            "color-gray-900": {
+                "__type": "variable",
+                "__name": "color-gray-900",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-900-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-900-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-900-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-900-a"
+                        }
+                    ]
+                }
+            },
+            "color-gray-950-h": {
+                "__type": "variable",
+                "__name": "color-gray-950-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-h"
+                }
+            },
+            "color-gray-950-s": {
+                "__type": "variable",
+                "__name": "color-gray-950-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-s"
+                }
+            },
+            "color-gray-950-l": {
+                "__type": "variable",
+                "__name": "color-gray-950-l",
+                "__value": "5%"
+            },
+            "color-gray-950-a": {
+                "__type": "variable",
+                "__name": "color-gray-950-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-a"
+                }
+            },
+            "color-gray-950": {
+                "__type": "variable",
+                "__name": "color-gray-950",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-950-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-950-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-950-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "color-gray-950-a"
+                        }
+                    ]
+                }
+            },
+            "text-color": {
+                "__type": "variable",
+                "__name": "text-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-900"
+                }
+            },
+            "text-color-weak": {
+                "__type": "variable",
+                "__name": "text-color-weak",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-700"
+                }
+            },
+            "text-color-weaker": {
+                "__type": "variable",
+                "__name": "text-color-weaker",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-500"
+                }
+            },
+            "text-color-weakest": {
+                "__type": "variable",
+                "__name": "text-color-weakest",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-300"
+                }
+            },
+            "breadcrumb--font-size": {
+                "__type": "variable",
+                "__name": "breadcrumb--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size"
+                }
+            },
+            "breadcrumb--margin-top": {
+                "__type": "variable",
+                "__name": "breadcrumb--margin-top",
+                "__value": 0
+            },
+            "breadcrumb--margin-right": {
+                "__type": "variable",
+                "__name": "breadcrumb--margin-right",
+                "__value": 0
+            },
+            "breadcrumb--margin-bottom": {
+                "__type": "variable",
+                "__name": "breadcrumb--margin-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "margin-bottom"
+                }
+            },
+            "breadcrumb--margin-left": {
+                "__type": "variable",
+                "__name": "breadcrumb--margin-left",
+                "__value": 0
+            },
+            "breadcrumb--margin": {
+                "__type": "variable",
+                "__name": "breadcrumb--margin",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--margin-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--margin-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--margin-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--margin-left"
+                    }
+                ]
+            },
+            "breadcrumb--padding-top": {
+                "__type": "variable",
+                "__name": "breadcrumb--padding-top",
+                "__value": 0
+            },
+            "breadcrumb--padding-right": {
+                "__type": "variable",
+                "__name": "breadcrumb--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "padding-right"
+                }
+            },
+            "breadcrumb--padding-bottom": {
+                "__type": "variable",
+                "__name": "breadcrumb--padding-bottom",
+                "__value": 0
+            },
+            "breadcrumb--padding-left": {
+                "__type": "variable",
+                "__name": "breadcrumb--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "padding-left"
+                }
+            },
+            "breadcrumb--padding": {
+                "__type": "variable",
+                "__name": "breadcrumb--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--padding-left"
+                    }
+                ]
+            },
+            "breadcrumb--separator": {
+                "__type": "variable",
+                "__name": "breadcrumb--separator",
+                "__value": "\"/\""
+            },
+            "breadcrumb--active--color-h": {
+                "__type": "variable",
+                "__name": "breadcrumb--active--color-h",
+                "__value": 0
+            },
+            "breadcrumb--active--color-s": {
+                "__type": "variable",
+                "__name": "breadcrumb--active--color-s",
+                "__value": "0%"
+            },
+            "breadcrumb--active--color-l": {
+                "__type": "variable",
+                "__name": "breadcrumb--active--color-l",
+                "__value": "0%"
+            },
+            "breadcrumb--active--color-a": {
+                "__type": "variable",
+                "__name": "breadcrumb--active--color-a",
+                "__value": 1
+            },
+            "breadcrumb--active--color": {
+                "__type": "variable",
+                "__name": "breadcrumb--active--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "text-color-weaker"
+                }
+            },
+            "breadcrumb--sm--font-size": {
+                "__type": "variable",
+                "__name": "breadcrumb--sm--font-size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--font-size"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--sm--padding-top": {
+                "__type": "variable",
+                "__name": "breadcrumb--sm--padding-top",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-top"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--sm--padding-right": {
+                "__type": "variable",
+                "__name": "breadcrumb--sm--padding-right",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-right"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--sm--padding-bottom": {
+                "__type": "variable",
+                "__name": "breadcrumb--sm--padding-bottom",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-bottom"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--sm--padding-left": {
+                "__type": "variable",
+                "__name": "breadcrumb--sm--padding-left",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-left"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-sm"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--sm--padding": {
+                "__type": "variable",
+                "__name": "breadcrumb--sm--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--sm--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--sm--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--sm--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--sm--padding-left"
+                    }
+                ]
+            },
+            "breadcrumb--md--font-size": {
+                "__type": "variable",
+                "__name": "breadcrumb--md--font-size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--font-size"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--md--padding-top": {
+                "__type": "variable",
+                "__name": "breadcrumb--md--padding-top",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-top"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--md--padding-right": {
+                "__type": "variable",
+                "__name": "breadcrumb--md--padding-right",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-right"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--md--padding-bottom": {
+                "__type": "variable",
+                "__name": "breadcrumb--md--padding-bottom",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-bottom"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--md--padding-left": {
+                "__type": "variable",
+                "__name": "breadcrumb--md--padding-left",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-left"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-md"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--md--padding": {
+                "__type": "variable",
+                "__name": "breadcrumb--md--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--md--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--md--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--md--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--md--padding-left"
+                    }
+                ]
+            },
+            "breadcrumb--lg--font-size": {
+                "__type": "variable",
+                "__name": "breadcrumb--lg--font-size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--font-size"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-lg"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--lg--padding-top": {
+                "__type": "variable",
+                "__name": "breadcrumb--lg--padding-top",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-top"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-lg"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--lg--padding-right": {
+                "__type": "variable",
+                "__name": "breadcrumb--lg--padding-right",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-right"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-lg"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--lg--padding-bottom": {
+                "__type": "variable",
+                "__name": "breadcrumb--lg--padding-bottom",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-bottom"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-lg"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--lg--padding-left": {
+                "__type": "variable",
+                "__name": "breadcrumb--lg--padding-left",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--padding-left"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "size-multiplier-lg"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--lg--padding": {
+                "__type": "variable",
+                "__name": "breadcrumb--lg--padding",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--lg--padding-top"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--lg--padding-right"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--lg--padding-bottom"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "breadcrumb--lg--padding-left"
+                    }
+                ]
+            },
+            "contrast-text-color-light-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-light-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-900-h"
+                }
+            },
+            "contrast-text-color-light-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-light-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-900-s"
+                }
+            },
+            "contrast-text-color-light-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-light-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-900-l"
+                }
+            },
+            "contrast-text-color-light-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-light-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-900-a"
+                }
+            },
+            "contrast-text-color-light": {
+                "__type": "variable",
+                "__name": "contrast-text-color-light",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-light-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-dark-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white-h"
+                }
+            },
+            "contrast-text-color-dark-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white-s"
+                }
+            },
+            "contrast-text-color-dark-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white-l"
+                }
+            },
+            "contrast-text-color-dark-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white-a"
+                }
+            },
+            "contrast-text-color-dark": {
+                "__type": "variable",
+                "__name": "contrast-text-color-dark",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-dark-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-primary-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-h"
+                }
+            },
+            "contrast-text-color-primary-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-s"
+                }
+            },
+            "contrast-text-color-primary-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-l"
+                }
+            },
+            "contrast-text-color-primary-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-a"
+                }
+            },
+            "contrast-text-color-primary": {
+                "__type": "variable",
+                "__name": "contrast-text-color-primary",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-primary-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-secondary-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-h"
+                }
+            },
+            "contrast-text-color-secondary-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-s"
+                }
+            },
+            "contrast-text-color-secondary-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-l"
+                }
+            },
+            "contrast-text-color-secondary-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark-a"
+                }
+            },
+            "contrast-text-color-secondary": {
+                "__type": "variable",
+                "__name": "contrast-text-color-secondary",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-secondary-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-info-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-info-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-info-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-info-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
+                }
+            },
+            "contrast-text-color-info": {
+                "__type": "variable",
+                "__name": "contrast-text-color-info",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-info-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-success-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-success-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-success-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-success-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
+                }
+            },
+            "contrast-text-color-success": {
+                "__type": "variable",
+                "__name": "contrast-text-color-success",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-success-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-warning-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-warning-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-warning-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-warning-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
+                }
+            },
+            "contrast-text-color-warning": {
+                "__type": "variable",
+                "__name": "contrast-text-color-warning",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-warning-a"
+                        }
+                    ]
+                }
+            },
+            "contrast-text-color-danger-h": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-h",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-h"
+                }
+            },
+            "contrast-text-color-danger-s": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-s",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-s"
+                }
+            },
+            "contrast-text-color-danger-l": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-l",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-l"
+                }
+            },
+            "contrast-text-color-danger-a": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger-a",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light-a"
+                }
+            },
+            "contrast-text-color-danger": {
+                "__type": "variable",
+                "__name": "contrast-text-color-danger",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-h"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-s"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-l"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "contrast-text-color-danger-a"
+                        }
+                    ]
+                }
+            },
+            "breadcrumb--light--color-h": {
+                "__type": "variable",
+                "__name": "breadcrumb--light--color-h",
+                "__value": 0
+            },
+            "breadcrumb--light--color-s": {
+                "__type": "variable",
+                "__name": "breadcrumb--light--color-s",
+                "__value": "0%"
+            },
+            "breadcrumb--light--color-l": {
+                "__type": "variable",
+                "__name": "breadcrumb--light--color-l",
+                "__value": "0%"
+            },
+            "breadcrumb--light--color-a": {
+                "__type": "variable",
+                "__name": "breadcrumb--light--color-a",
+                "__value": 1
+            },
+            "breadcrumb--light--color": {
+                "__type": "variable",
+                "__name": "breadcrumb--light--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light"
+                }
+            },
+            "breadcrumb--dark--color-h": {
+                "__type": "variable",
+                "__name": "breadcrumb--dark--color-h",
+                "__value": 0
+            },
+            "breadcrumb--dark--color-s": {
+                "__type": "variable",
+                "__name": "breadcrumb--dark--color-s",
+                "__value": "0%"
+            },
+            "breadcrumb--dark--color-l": {
+                "__type": "variable",
+                "__name": "breadcrumb--dark--color-l",
+                "__value": "0%"
+            },
+            "breadcrumb--dark--color-a": {
+                "__type": "variable",
+                "__name": "breadcrumb--dark--color-a",
+                "__value": 1
+            },
+            "breadcrumb--dark--color": {
+                "__type": "variable",
+                "__name": "breadcrumb--dark--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark"
+                }
+            }
+        },
+        "selectors": [
+            {
+                "__type": "selector",
+                "__name": ".breadcrumb",
+                "__value": {
+                    "display": "flex"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".breadcrumb ol",
+                "__value": {
+                    "display": "flex",
+                    "flexWrap": "wrap",
+                    "paddingLeft": 0,
+                    "listStyle": "none"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".breadcrumb",
+                "__value": {
+                    "fontSize": {
+                        "__type": "reference",
+                        "__name": "breadcrumb--font-size"
+                    },
+                    "padding": {
+                        "__type": "reference",
+                        "__name": "breadcrumb--padding"
+                    },
+                    "margin": {
+                        "__type": "reference",
+                        "__name": "breadcrumb--margin"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".breadcrumb.-sm",
+                "__value": {
+                    "fontSize": {
+                        "__type": "reference",
+                        "__name": "breadcrumb--sm--font-size"
+                    },
+                    "padding": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--sm--padding-top"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--sm--padding-right"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--sm--padding-bottom"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--sm--padding-left"
+                        }
+                    ]
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".breadcrumb.-md",
+                "__value": {
+                    "fontSize": {
+                        "__type": "reference",
+                        "__name": "breadcrumb--md--font-size"
+                    },
+                    "padding": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--md--padding-top"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--md--padding-right"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--md--padding-bottom"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--md--padding-left"
+                        }
+                    ]
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".breadcrumb.-lg",
+                "__value": {
+                    "fontSize": {
+                        "__type": "reference",
+                        "__name": "breadcrumb--lg--font-size"
+                    },
+                    "padding": [
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--lg--padding-top"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--lg--padding-right"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--lg--padding-bottom"
+                        },
+                        {
+                            "__type": "reference",
+                            "__name": "breadcrumb--lg--padding-left"
+                        }
+                    ]
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".breadcrumb.-light",
+                "__value": {
+                    "color": {
+                        "__type": "reference",
+                        "__name": "breadcrumb--light--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".breadcrumb.-dark",
+                "__value": {
+                    "color": {
+                        "__type": "reference",
+                        "__name": "breadcrumb--dark--color"
+                    }
+                }
+            }
+        ]
+    }
+}

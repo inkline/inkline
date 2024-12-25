@@ -1,0 +1,57 @@
+{
+    "name": "@inkline/e2e",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "lint": "devtools eslint",
+        "e2e:create": "tsx scripts/create.ts",
+        "e2e:create:vite": "tsx scripts/create.ts vite",
+        "e2e:create:nuxt": "tsx scripts/create.ts nuxt",
+        "e2e:vite": "INTEGRATION=vite playwright test",
+        "e2e:nuxt": "INTEGRATION=nuxt NITRO_PORT=3030 playwright test",
+        "e2e": "pnpm run e2e:vite && pnpm run e2e:nuxt",
+        "e2e:dev": "DEV=true playwright test --ui",
+        "e2e:ui": "playwright test --ui",
+        "e2e:setup": "pnpm run integration:create"
+    },
+    "devDependencies": {
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@types/node": "catalog:",
+        "@types/shelljs": "catalog:",
+        "eslint": "catalog:",
+        "shelljs": "catalog:",
+        "typescript": "catalog:",
+        "type-fest": "catalog:",
+        "tsx": "catalog:"
+    },
+    "dependencies": {
+        "@playwright/test": "^1.47.2"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

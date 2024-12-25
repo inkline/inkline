@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Button > should render correctly 1`] = `"<linkable-stub active="false" tag="button" class="button -light -md" type="button" tabindex="0" aria-live="polite"></linkable-stub>"`;

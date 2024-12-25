@@ -1,0 +1,171 @@
+import { fireEvent, render } from '@testing-library/vue';
+import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
+import { FormKey } from '@inkline/types';
+import { Input } from '@inkline/component-input';
+import { FormGroup } from '../index';
+import { ref } from 'vue';
+
+describe('Components', () => {
+    describe('FormGroup', () => {
+        const props = {
+            name: 'form-group',
+            color: 'light',
+            size: 'md'
+        };
+
+        const slots = {
+            default: ['<Input name="input" color="light" size="md" />']
+        };
+
+        const stubs = {
+            Input
+        };
+
+        it('should be named correctly', () => {
+            expect(FormGroup.name).toEqual('FormGroup');
+        });
+
+        it('should render correctly', () => {
+            const wrapper = render(FormGroup, {
+                global: {
+                    stubs,
+                    provide: {
+                        ...createTestingInklineOptionsProvide()
+                    }
+                },
+                props,
+                slots
+            });
+
+            expect(wrapper.html()).toMatchSnapshot();
+        });
+
+        describe('computed', () => {
+            describe('classes', () => {
+                it('should add classes based on props', () => {
+                    const wrapper = render(FormGroup, {
+                        global: {
+                            stubs,
+                            provide: {
+                                ...createTestingInklineOptionsProvide()
+                            }
+                        },
+                        slots,
+                        props: {
+                            disabled: true,
+                            readonly: true,
+                            inline: true,
+                            required: true,
+                            ...props
+                        }
+                    });
+
+                    expect(wrapper.container.firstChild).toHaveClass(
+                        `-${props.color}`,
+                        `-${props.size}`,
+                        '-disabled',
+                        '-readonly',
+                        '-inline',
+                        '-required'
+                    );
+                });
+            });
+        });
+
+        describe('methods', () => {
+            describe('onBlur', () => {
+                it('should not call onBlur if not parent', async () => {
+                    const onBlur = vi.fn();
+                    const wrapper = render(FormGroup, {
+                        global: {
+                            stubs,
+                            provide: {
+                                ...createTestingInklineOptionsProvide()
+                            }
+                        },
+                        slots,
+                        props
+                    });
+                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
+
+                    await fireEvent.blur(input);
+
+                    expect(onBlur).not.toHaveBeenCalled();
+                });
+
+                it('should call onBlur if parent with onBlur', async () => {
+                    const onBlur = vi.fn();
+                    const onInput = vi.fn();
+                    const wrapper = render(FormGroup, {
+                        global: {
+                            stubs,
+                            provide: {
+                                ...createTestingInklineOptionsProvide(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
+                                    onInput
+                                }
+                            }
+                        },
+                        slots,
+                        props
+                    });
+                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
+
+                    await fireEvent.blur(input);
+
+                    expect(onBlur).toHaveBeenCalled();
+                });
+            });
+
+            describe('onInput', () => {
+                it('should not call onInput if not parent', async () => {
+                    const onInput = vi.fn();
+                    const wrapper = render(FormGroup, {
+                        global: {
+                            stubs,
+                            provide: {
+                                ...createTestingInklineOptionsProvide()
+                            }
+                        },
+                        slots,
+                        props
+                    });
+                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
+
+                    await fireEvent.update(input, 'abc');
+
+                    expect(onInput).not.toHaveBeenCalled();
+                });
+
+                it('should call onInput if parent with onInput', async () => {
+                    const onBlur = vi.fn();
+                    const onInput = vi.fn();
+                    const wrapper = render(FormGroup, {
+                        global: {
+                            stubs,
+                            provide: {
+                                ...createTestingInklineOptionsProvide(),
+                                [FormKey as symbol]: {
+                                    disabled: ref(false),
+                                    readonly: ref(false),
+                                    onBlur,
+                                    onInput
+                                }
+                            }
+                        },
+                        slots,
+                        props
+                    });
+                    const input = wrapper.container.querySelector('input') as HTMLInputElement;
+
+                    await fireEvent.update(input, 'abc');
+
+                    expect(onInput).toHaveBeenCalled();
+                });
+            });
+        });
+    });
+});

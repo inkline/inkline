@@ -1,0 +1,5 @@
+#storybook-root {
+    > .toggle + .toggle {
+        margin-top: var(--margin-top);
+    }
+}

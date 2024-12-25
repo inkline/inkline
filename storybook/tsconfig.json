@@ -1,0 +1,86 @@
+{
+    "extends": "../packages/tooling/typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "types": [
+            "vitest/globals"
+        ],
+        "paths": {
+            "inkline": [
+                "../packages/inkline/src/index.ts"
+            ],
+            "inkline/*": [
+                "../packages/inkline/src/*"
+            ],
+            "@inkline/component-*": [
+                "../packages/ui/components/*/src/index.ts"
+            ],
+            "@inkline/component-alert*": [
+                "../packages/ui/components/alert/src*"
+            ],
+            "@inkline/component-badge*": [
+                "../packages/ui/components/badge/src*"
+            ],
+            "@inkline/component-breadcrumb*": [
+                "../packages/ui/components/breadcrumb/src*"
+            ],
+            "@inkline/component-button*": [
+                "../packages/ui/components/button/src*"
+            ],
+            "@inkline/component-button-group*": [
+                "../packages/ui/components/button-group/src*"
+            ],
+            "@inkline/component-card*": [
+                "../packages/ui/components/card/src*"
+            ],
+            "@inkline/component-checkbox*": [
+                "../packages/ui/components/checkbox/src*"
+            ],
+            "@inkline/component-form-group*": [
+                "../packages/ui/components/form-group/src*"
+            ],
+            "@inkline/component-icon*": [
+                "../packages/ui/components/icon/src*"
+            ],
+            "@inkline/component-input*": [
+                "../packages/ui/components/input/src*"
+            ],
+            "@inkline/component-loader*": [
+                "../packages/ui/components/loader/src*"
+            ],
+            "@inkline/component-media*": [
+                "../packages/ui/components/media/src*"
+            ],
+            "@inkline/component-modal*": [
+                "../packages/ui/components/modal/src*"
+            ],
+            "@inkline/component-popover*": [
+                "../packages/ui/components/popover/src*"
+            ],
+            "@inkline/component-popup*": [
+                "../packages/ui/components/popup/src*"
+            ],
+            "@inkline/component-radio*": [
+                "../packages/ui/components/radio/src*"
+            ],
+            "@inkline/component-textarea*": [
+                "../packages/ui/components/textarea/src*"
+            ],
+            "@inkline/component-toast*": [
+                "../packages/ui/components/toast/src*"
+            ],
+            "@inkline/component-toggle*": [
+                "../packages/ui/components/toggle/src*"
+            ],
+            "@inkline/component-tooltip*": [
+                "../packages/ui/components/tooltip/src*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        ".storybook/**/*.ts",
+        "vite.config.ts",
+        "inkline.config.ts"
+    ]
+}

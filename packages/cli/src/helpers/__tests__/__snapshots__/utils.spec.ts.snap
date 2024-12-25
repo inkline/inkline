@@ -13,7 +13,7 @@ exports[`addFieldToDefaultExport > should add a field to a multi-line default ex
 "import { defineConfig } from 'vite';
 
 export default defineConfig({
-    modules: [Example, 
+    modules: [Example,
         exampleA,
         exampleB,
         exampleC
@@ -40,7 +40,7 @@ export default defineConfig({
 exports[`addImport > should add a default import to a named multi line import 1`] = `
 "import { createApp } from 'vue';
 import App from './App.vue';
-import Inkline, { IButton, ICheckbox, ILayout } from '@inkline/inkline';
+import Inkline, { IButton, ICheckbox, ILayout } from '@inkline/vue';
 
 createApp(App)
   .mount('#app');"
@@ -64,7 +64,7 @@ exports[`addImport > should insert a named import 1`] = `
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import { Inkline } from '@inkline/inkline';
+import { Inkline } from '@inkline/vue';
 
 createApp(App)
   .use(store)
@@ -75,7 +75,7 @@ createApp(App)
 exports[`addImport > should update a named multi line import 1`] = `
 "import { createApp } from 'vue';
 import App from './App.vue';
-import { IButton, ICheckbox, ILayout, IContainer } from '@inkline/inkline';
+import { IButton, ICheckbox, ILayout, IContainer } from '@inkline/vue';
 
 createApp(App)
   .mount('#app');"
@@ -88,7 +88,7 @@ import {
     IButton,
     ICheckbox,
     ILayout
-} from '@inkline/inkline';
+} from '@inkline/vue';
 
 createApp(App)
   .mount('#app');"
@@ -108,7 +108,7 @@ createApp(App)
 `;
 
 exports[`insertImport > should insert a import when there are no other imports 1`] = `
-"import { Inkline } from '@inkline/inkline';
+"import { Inkline } from '@inkline/vue';
 
 const a = 1;"
 `;

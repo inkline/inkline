@@ -1,9 +1,0 @@
-export { default as IButtonGroupBasicExample } from '@inkline/inkline/components/IButtonGroup/examples/basic.vue';
-export { default as IButtonGroupBlockExample } from '@inkline/inkline/components/IButtonGroup/examples/block.vue';
-export { default as IButtonGroupDisabledExample } from '@inkline/inkline/components/IButtonGroup/examples/disabled.vue';
-export { default as IButtonGroupNestedExample } from '@inkline/inkline/components/IButtonGroup/examples/nested.vue';
-export { default as IButtonGroupNestedBlockExample } from '@inkline/inkline/components/IButtonGroup/examples/nested-block.vue';
-export { default as IButtonGroupSizeVariantsExample } from '@inkline/inkline/components/IButtonGroup/examples/size-variants.vue';
-export { default as IButtonGroupVerticalExample } from '@inkline/inkline/components/IButtonGroup/examples/vertical.vue';
-export { default as IButtonGroupVerticalBlockExample } from '@inkline/inkline/components/IButtonGroup/examples/vertical-block.vue';
-export { default as IButtonGroupVerticalSizeVariantsExample } from '@inkline/inkline/components/IButtonGroup/examples/vertical-size-variants.vue';

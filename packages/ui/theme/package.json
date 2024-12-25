@@ -1,0 +1,67 @@
+{
+    "name": "@inkline/theme",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools tsup watch",
+        "build": "devtools tsup build",
+        "lint": "devtools eslint",
+        "test": "devtools test"
+    },
+    "devDependencies": {
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "eslint": "catalog:",
+        "typescript": "catalog:",
+        "type-fest": "catalog:",
+        "tsup": "catalog:",
+        "vite": "catalog:",
+        "vitest": "catalog:"
+    },
+    "dependencies": {
+        "@inkline/core": "workspace:*",
+        "@inkline/utils": "workspace:*"
+    },
+    "files": [
+        "dist",
+        "LICENSE"
+    ],
+    "types": "./dist/index.d.ts",
+    "module": "./dist/index.js",
+    "main": "./dist/index.cjs",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

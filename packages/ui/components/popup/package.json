@@ -1,0 +1,85 @@
+{
+    "name": "@inkline/component-popup",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools component watch",
+        "build": "devtools component build",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage"
+    },
+    "dependencies": {
+        "@floating-ui/core": "^1.6.8",
+        "@floating-ui/dom": "^1.6.11",
+        "@inkline/composables": "workspace:*",
+        "@inkline/core": "workspace:*",
+        "@inkline/theme": "workspace:*",
+        "@inkline/utils": "workspace:*",
+        "@inkline/vue": "workspace:*"
+    },
+    "devDependencies": {
+        "@inkline/config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/postcss-config": "workspace:*",
+        "@inkline/test-utils": "workspace:*",
+        "@inkline/types": "workspace:*",
+        "@inkline/vite-component-config": "workspace:*",        "@testing-library/jest-dom": "catalog:",
+        "@testing-library/vue": "catalog:",
+               "@vitest/coverage-v8": "catalog:",
+        "eslint": "catalog:",
+        "tsup": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+                "vitest": "catalog:",
+        "vue": "catalog:",
+        "vue-tsc": "catalog:"
+    },
+    "peerDependencies": {
+        "vue": ">=3.0.0"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "types": "./dist/popup.d.ts",
+    "main": "./dist/popup.umd.cjs",
+    "module": "./dist/popup.js",
+    "exports": {
+        ".": {
+            "types": "./dist/popup.d.ts",
+            "import": "./dist/popup.js",
+            "require": "./dist/popup.umd.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

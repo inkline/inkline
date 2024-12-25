@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Alert > should render correctly 1`] = `
+"<div class="alert -primary -md" role="alert">
+  <!--v-if-->
+  <div class="alert-content">
+    <!-- @slot default Slot for default alert content -->
+  </div>
+  <!--v-if-->
+</div>"
+`;

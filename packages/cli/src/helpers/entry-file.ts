@@ -1,9 +1,9 @@
 import { InitEnv } from '../types';
-import { resolve } from 'pathe';
+import { resolve } from 'node:path';
 import { existsSync } from 'fs';
 import { readFile, writeFile } from 'fs/promises';
 import { addAfterImports } from './insert';
-import { Logger } from '@grozav/logger';
+import { Logger } from '@inkline/logger';
 import { createAppRegEx, defaultPrettierConfig } from '../constants';
 import prettier from 'prettier';
 
@@ -40,10 +40,10 @@ export async function addPluginToEntryFile(entryFile: string, _: InitEnv): Promi
             entryFileContents,
             [
                 '',
-                `import { Inkline, components } from '@inkline/inkline';`,
+                `import { Inkline, components } from '@inkline/vue';`,
                 `import './css/variables/index.scss';`,
-                `import '@inkline/inkline/css/index.scss';`,
-                `import '@inkline/inkline/css/utilities.scss';`
+                `import '@inkline/vue/css/index.scss';`,
+                `import '@inkline/vue/css/utilities.scss';`
             ].join('\n')
         );
 

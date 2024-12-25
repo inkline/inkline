@@ -1,0 +1,131 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > ToastContainer > methods > showToast() > should show a toast in every container position 1`] = `
+"<div class="toast-container">
+  <div class="toast-position -top-left">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true">
+      <div id="top-left" class="toast -light -md" style="--toast--duration: 0ms;"><span class="toast-icon" role="img" aria-hidden="true"><!-- @slot icon Slot for toast icon --><icon name="ink:circle"></icon></span>
+        <div class="toast-content">
+          <!--v-if-->
+          <!-- @slot default Slot for default toast content --><span></span>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </transition-group-stub>
+  </div>
+  <div class="toast-position -top">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true">
+      <div id="top" class="toast -light -md" style="--toast--duration: 0ms;"><span class="toast-icon" role="img" aria-hidden="true"><!-- @slot icon Slot for toast icon --><icon name="ink:circle"></icon></span>
+        <div class="toast-content">
+          <!--v-if-->
+          <!-- @slot default Slot for default toast content --><span></span>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </transition-group-stub>
+  </div>
+  <div class="toast-position -top-right">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true">
+      <div id="top-right" class="toast -light -md" style="--toast--duration: 0ms;"><span class="toast-icon" role="img" aria-hidden="true"><!-- @slot icon Slot for toast icon --><icon name="ink:circle"></icon></span>
+        <div class="toast-content">
+          <!--v-if-->
+          <!-- @slot default Slot for default toast content --><span></span>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </transition-group-stub>
+  </div>
+  <div class="toast-position -right">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true">
+      <div id="right" class="toast -light -md" style="--toast--duration: 0ms;"><span class="toast-icon" role="img" aria-hidden="true"><!-- @slot icon Slot for toast icon --><icon name="ink:circle"></icon></span>
+        <div class="toast-content">
+          <!--v-if-->
+          <!-- @slot default Slot for default toast content --><span></span>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </transition-group-stub>
+  </div>
+  <div class="toast-position -bottom-right">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true">
+      <div id="bottom-right" class="toast -light -md" style="--toast--duration: 0ms;"><span class="toast-icon" role="img" aria-hidden="true"><!-- @slot icon Slot for toast icon --><icon name="ink:circle"></icon></span>
+        <div class="toast-content">
+          <!--v-if-->
+          <!-- @slot default Slot for default toast content --><span></span>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </transition-group-stub>
+  </div>
+  <div class="toast-position -bottom">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true">
+      <div id="bottom" class="toast -light -md" style="--toast--duration: 0ms;"><span class="toast-icon" role="img" aria-hidden="true"><!-- @slot icon Slot for toast icon --><icon name="ink:circle"></icon></span>
+        <div class="toast-content">
+          <!--v-if-->
+          <!-- @slot default Slot for default toast content --><span></span>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </transition-group-stub>
+  </div>
+  <div class="toast-position -bottom-left">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true">
+      <div id="bottom-left" class="toast -light -md" style="--toast--duration: 0ms;"><span class="toast-icon" role="img" aria-hidden="true"><!-- @slot icon Slot for toast icon --><icon name="ink:circle"></icon></span>
+        <div class="toast-content">
+          <!--v-if-->
+          <!-- @slot default Slot for default toast content --><span></span>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </transition-group-stub>
+  </div>
+  <div class="toast-position -left">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true">
+      <div id="left" class="toast -light -md" style="--toast--duration: 0ms;"><span class="toast-icon" role="img" aria-hidden="true"><!-- @slot icon Slot for toast icon --><icon name="ink:circle"></icon></span>
+        <div class="toast-content">
+          <!--v-if-->
+          <!-- @slot default Slot for default toast content --><span></span>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </transition-group-stub>
+  </div>
+</div>"
+`;
+
+exports[`Components > ToastContainer > should render correctly 1`] = `
+"<div class="toast-container">
+  <div class="toast-position -top-left">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true"></transition-group-stub>
+  </div>
+  <div class="toast-position -top">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true"></transition-group-stub>
+  </div>
+  <div class="toast-position -top-right">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true"></transition-group-stub>
+  </div>
+  <div class="toast-position -right">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true"></transition-group-stub>
+  </div>
+  <div class="toast-position -bottom-right">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true"></transition-group-stub>
+  </div>
+  <div class="toast-position -bottom">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true"></transition-group-stub>
+  </div>
+  <div class="toast-position -bottom-left">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true"></transition-group-stub>
+  </div>
+  <div class="toast-position -left">
+    <transition-group-stub name="toast-transition" appear="false" persisted="false" css="true"></transition-group-stub>
+  </div>
+</div>"
+`;

@@ -1,0 +1,7 @@
+{
+    "extends": "../typescript-config/tsconfig.json",
+    "include": [
+        "src/**/*.ts",
+        "tsup.config.ts"
+    ]
+}

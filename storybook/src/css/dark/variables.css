@@ -1,0 +1,15 @@
+.dark-theme {
+    --border-top-color: var(--color-gray-700);
+    --border-right-color: var(--color-gray-700);
+    --border-bottom-color: var(--color-gray-700);
+    --border-left-color: var(--color-gray-700);
+    --text-color: var(--color-gray-100);
+    --text-color-weak: var(--color-gray-300);
+    --text-color-weaker: var(--color-gray-500);
+    --text-color-weakest: var(--color-gray-700);
+    --body--background-h: 0;
+    --body--background-s: 0%;
+    --body--background-l: 0%;
+    --body--background-a: 1;
+    --body--background: var(--color-dark-shade-50);
+}

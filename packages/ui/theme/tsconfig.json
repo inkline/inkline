@@ -1,0 +1,13 @@
+{
+    "extends": "../../tooling/typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "types": [
+            "vitest/globals"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "tsup.config.ts",
+        "vite.config.ts"
+    ]
+}

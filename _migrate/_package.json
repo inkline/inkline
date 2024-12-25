@@ -1,0 +1,104 @@
+{
+    "name": "@inkline/inkline",
+    "description": "Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools vite watch",
+        "build": "devtools vite build --vue",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage"
+    },
+    "dependencies": {
+        "@inkline/component-alert": "workspace:*",
+        "@inkline/component-badge": "workspace:*",
+        "@inkline/component-breadcrumb": "workspace:*",
+        "@inkline/component-button": "workspace:*",
+        "@inkline/component-loader": "workspace:*",
+        "@inkline/config": "workspace:*",
+        "@inkline/core": "workspace:*",
+        "@inkline/i18n": "workspace:*",
+        "@inkline/theme": "workspace:*",
+        "@inkline/utils": "workspace:*",
+        "@inkline/validation": "workspace:*"
+    },
+    "devDependencies": {
+        "@floating-ui/core": "^1.6.2",
+        "@floating-ui/dom": "^1.6.5",
+        "@inkline/composables": "workspace:*",
+        "@inkline/config": "workspace:*",
+        "@inkline/core": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/plugin": "workspace:*",
+        "@inkline/test-utils": "workspace:*",
+        "@inkline/theme": "workspace:*",
+        "@inkline/types": "workspace:*",
+        "@testing-library/jest-dom": "catalog:",
+        "@testing-library/vue": "catalog:",
+        "@vitejs/plugin-vue": "catalog:",
+        "@vitest/coverage-v8": "catalog:",
+        "@vue/runtime-core": "catalog:",
+        "@vue/test-utils": "catalog:",
+        "eslint": "catalog:",
+        "fast-glob": "^3.3.2",
+        "micromustache": "^8.0.3",
+        "miragejs": "0.2.0-alpha.3",
+        "normalize.css": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vite-plugin-dts": "catalog:",
+        "vitest": "catalog:",
+        "vue": "catalog:",
+        "vue-tsc": "catalog:"
+    },
+    "peerDependencies": {
+        "vue": ">=3.0.0"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "types": "./dist/inkline.d.ts",
+    "main": "./dist/inkline.umd.cjs",
+    "module": "./dist/inkline.js",
+    "jsdelivr": "dist/inkline.umd.js",
+    "unpkg": "dist/inkline.umd.js",
+    "exports": {
+        ".": {
+            "types": "./dist/inkline.d.ts",
+            "import": "./dist/inkline.js",
+            "require": "./dist/inkline.umd.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

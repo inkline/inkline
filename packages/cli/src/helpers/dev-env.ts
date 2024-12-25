@@ -1,6 +1,6 @@
-import { DevEnv, DevEnvType, DevLibraryType, InitEnv, PackageJsonSchema } from '../types';
+import { DevEnv, DevEnvType, DevLibraryType, InitEnv } from '../types';
 import { getPluginCjsPreamble, getPluginPreamble } from './preamble';
-import { resolve } from 'pathe';
+import { resolve } from 'node:path';
 import { existsSync } from 'fs';
 import { readFile, writeFile } from 'fs/promises';
 import {
@@ -11,10 +11,11 @@ import {
     defaultWebpackTsDevEnvConfigFileContents,
     unknownDevEnvironment
 } from '../constants';
-import { Logger } from '@grozav/logger';
+import { Logger } from '@inkline/logger';
 import prettier from 'prettier';
 import { addAfterImports, addAfterRequires } from './insert';
 import { addFieldToDefaultExport, addImport } from './import';
+import { PackageJson } from "type-fest";
 
 /**
  * Initialize the development environment configuration file
@@ -51,7 +52,7 @@ export async function initDevEnvConfigFile(
  * Detect the development environment based on the package.json file
  */
 export async function detectDevEnv(
-    packageJson: PackageJsonSchema,
+    _packageJson: PackageJson,
     { cwd, isTypescript }: InitEnv
 ): Promise<DevEnv> {
     const nuxtTs: DevEnv = {
@@ -112,10 +113,10 @@ export async function detectDevEnv(
 
     if (!inferredDevEnvironment) {
         const packageJsonPath = resolve(cwd, 'package.json');
-        let packageJson: PackageJsonSchema = {};
+        let packageJson: PackageJson = {};
         if (existsSync(packageJsonPath)) {
             const packageJsonContents = await readFile(packageJsonPath, 'utf-8');
-            packageJson = JSON.parse(packageJsonContents) as PackageJsonSchema;
+            packageJson = JSON.parse(packageJsonContents) as PackageJson;
 
             if (packageJson.dependencies?.nuxt || packageJson.devDependencies?.nuxt) {
                 inferredDevEnvironment = {
@@ -163,7 +164,7 @@ export async function addPluginToDevEnvConfigFile(devEnv: DevEnv, env: InitEnv) 
          */
         configFile = addImport(configFile, {
             name: 'inkline',
-            from: '@inkline/plugin/vite'
+            from: '@inkline/vite'
         });
         configFile = addAfterImports(configFile, getPluginPreamble(configFile, devEnv, env));
         configFile = addFieldToDefaultExport(configFile, 'plugins', ['inkline(inklineConfig)']);

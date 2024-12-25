@@ -1,7 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`Components > IRadio > should render correctly 1`] = `
-"<div class="radio -light -md" role="radio" aria-checked="false"><input type="radio" name="radio"><label class="radio-label" tabindex="0">
-    <!-- @slot default Slot for default radio label -->
-  </label></div>"
-`;

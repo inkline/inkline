@@ -1,0 +1,14 @@
+{
+    "extends": "../../packages/tooling/typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "types": [
+            "vitest/globals"
+        ]
+    },
+    "include": [
+        "e2e/**/*.ts",
+        "scripts/**/*.ts",
+        "templates/**/*.ts",
+        "playwright.config.ts"
+    ]
+}

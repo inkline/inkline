@@ -1,0 +1,78 @@
+{
+    "name": "@inkline/addon-modal-manager",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools tsup watch",
+        "build": "devtools tsup build",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch"
+    },
+    "dependencies": {
+        "@inkline/component-modal": "workspace:*",
+        "@inkline/utils": "workspace:*",
+        "@inkline/validation": "workspace:*",
+        "defu": "^6.1.4"
+    },
+    "devDependencies": {
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/types": "workspace:*",
+        "@testing-library/vue": "catalog:",
+        "@types/node": "catalog:",
+        "@vue/test-utils": "catalog:",
+        "eslint": "catalog:",
+        "jsdom": "catalog:",
+        "tsup": "catalog:",
+        "type-fest": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vitest": "catalog:",
+        "vue": "catalog:"
+    },
+    "peerDependencies": {
+        "vue": ">=3.0.0"
+    },
+    "files": [
+        "dist",
+        "LICENSE"
+    ],
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.js",
+    "module": "./dist/index.cjs",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

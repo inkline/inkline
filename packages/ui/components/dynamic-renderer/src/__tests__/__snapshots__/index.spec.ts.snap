@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DynamicRenderer > should handle render function 1`] = `"<div>Hello, world!</div>"`;
+
+exports[`DynamicRenderer > should handle rendering a boolean 1`] = `"true"`;
+
+exports[`DynamicRenderer > should handle rendering a number 1`] = `"42"`;
+
+exports[`DynamicRenderer > should handle rendering a string with interpolation 1`] = `"Hello, John!"`;
+
+exports[`DynamicRenderer > should handle rendering as Component 1`] = `"<div>Hello, object!</div>"`;

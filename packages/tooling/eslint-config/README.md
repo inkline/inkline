@@ -1,4 +1,4 @@
-# @grozav/eslint-preset
+# @inkline/eslint-config
 
 - Typescript ready
 - Extends standard

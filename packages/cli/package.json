@@ -1,94 +1,79 @@
 {
-  "name": "inkline",
-  "version": "2.6.1",
-  "description": "CLI for Inkline, the intuitive UI Components library that gives you a developer-friendly foundation for building high-quality, accessible, and customizable Vue.js 3 Design Systems.",
-  "scripts": {
-    "start": "npm run build && node lib/index.mjs",
-    "dev": "inkline-build watch",
-    "build": "unbuild && cp package.json lib",
-    "lint": "eslint -c eslint.config.mjs src",
-    "preview": "vite preview",
-    "test": "vitest run",
-    "test:ci": "vitest run --coverage",
-    "test:dev": "vitest",
-    "typecheck": "tsc --noEmit",
-    "prerelease": "npm-run-all test build",
-    "release": "np",
-    "postrelease": "tsx scripts/postrelease.ts",
-    "postversion": "tsx scripts/postversion.ts"
-  },
-  "devDependencies": {
-    "@inkline/eslint-config": "workspace:^",
-    "@inkline/build": "workspace:*",
-    "@schemastore/package": "^0.0.10",
-    "@types/object-inspect": "1.13.0",
-    "@types/prettier": "^3.0.0",
-    "@types/shelljs": "0.8.15",
-    "eslint": "^9.3.0",
-    "fast-glob": "^3.2.12",
-    "mjscjs": "^1.1.0",
-    "np": "^10.0.5",
-    "npm-run-all": "4.1.5",
-    "pathe": "^1.0.0",
-    "shelljs": "0.8.5",
-    "tsx": "^4.10.3",
-    "typescript": "^5.4.5",
-    "unbuild": "^2.0.0",
-    "vite": "^5.2.11",
-    "vitest": "^1.6.0"
-  },
-  "dependencies": {
-    "@grozav/logger": "^1.0.0",
-    "@grozav/utils": "^1.0.0",
-    "@inkline/config": "workspace:^",
-    "chalk": "^4.1.2",
-    "commander": "^12.0.0",
-    "object-inspect": "^1.12.3",
-    "prettier": "^3.2.5"
-  },
-  "main": "lib/index.js",
-  "module": "lib/index.mjs",
-  "jsdelivr": "lib/index.js",
-  "unpkg": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib/**/*",
-    "LICENSE",
-    "README.md"
-  ],
-  "exports": {
-    ".": {
-      "require": "./lib/index.js",
-      "import": "./lib/index.mjs",
-      "types": "./lib/index.d.ts"
+    "name": "@inkline/cli",
+    "version": "1.0.0",
+    "type": "module",
+    "bin": {
+        "inkline": "dist/main.js"
     },
-    "./commands": {
-      "require": "./lib/commands/index.js",
-      "import": "./lib/commands/index.mjs",
-      "types": "./lib/commands/index.d.ts"
+    "scripts": {
+        "dev": "devtools tsup watch",
+        "build": "devtools tsup build",
+        "lint": "devtools eslint",
+        "test": "devtools vitest",
+        "test:dev": "devtools vitest --watch"
     },
-    "./helpers": {
-      "require": "./lib/helpers/index.js",
-      "import": "./lib/helpers/index.mjs",
-      "types": "./lib/helpers/index.d.ts"
+    "dependencies": {
+        "@inkline/config": "workspace:*",
+        "@inkline/logger": "workspace:*",
+        "@inkline/utils": "workspace:*",
+        "chalk": "catalog:",
+        "commander": "catalog:",
+        "nodemon": "catalog:",
+        "prettier": "catalog:",
+        "shelljs": "catalog:"
     },
-    "./constants": {
-      "require": "./lib/constants/index.js",
-      "import": "./lib/constants/index.mjs",
-      "types": "./lib/constants/index.d.ts"
+    "devDependencies": {
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@types/node": "catalog:",
+        "@types/shelljs": "catalog:",
+        "eslint": "catalog:",
+        "tsx": "catalog:",
+        "tsup": "catalog:",
+        "typescript": "catalog:",
+        "type-fest": "catalog:",
+        "vite": "catalog:",
+        "vitest": "catalog:"
     },
-    "./types": {
-      "require": "./lib/types.js",
-      "import": "./lib/types.mjs",
-      "types": "./lib/types.d.ts"
+    "files": [
+        "dist",
+        "LICENSE"
+    ],
+    "types": "./dist/main.d.ts",
+    "main": "./dist/main.js",
+    "module": "./dist/main.cjs",
+    "exports": {
+        ".": {
+            "types": "./dist/main.d.ts",
+            "import": "./dist/main.js",
+            "require": "./dist/main.cjs"
+        },
+        "./*": "./*"
     },
-    "./*": "./lib/*"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "bin": {
-    "inkline": "./lib/index.js"
-  },
-  "license": "MIT"
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
 }

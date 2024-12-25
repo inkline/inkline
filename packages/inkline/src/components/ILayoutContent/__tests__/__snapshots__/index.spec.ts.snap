@@ -1,7 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`Components > ILayoutContent > should render correctly 1`] = `
-"<section class="layout-content">
-  <!-- @slot default Slot for default layout content children -->
-</section>"
-`;

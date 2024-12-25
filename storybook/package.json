@@ -1,0 +1,93 @@
+{
+    "name": "@inkline/storybook",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "start": "pnpm run storybook",
+        "dev": "pnpm run storybook",
+        "build": "storybook build",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage",
+        "storybook": "storybook dev -p 6006 --no-open"
+    },
+    "dependencies": {
+        "inkline": "workspace:*"
+    },
+    "devDependencies": {
+        "@chromatic-com/storybook": "^1.9.0",
+        "@inkline/config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/theme": "workspace:*",
+        "@inkline/vite": "workspace:*",
+        "@storybook/addon-essentials": "^8.3.4",
+        "@storybook/addon-interactions": "^8.3.4",
+        "@storybook/addon-links": "^8.3.4",
+        "@storybook/addon-onboarding": "^8.3.4",
+        "@storybook/addon-themes": "^8.3.4",
+        "@storybook/blocks": "^8.3.4",
+        "@storybook/test": "^8.3.4",
+        "@storybook/theming": "^8.3.4",
+        "@storybook/vue3": "^8.3.4",
+        "@storybook/vue3-vite": "^8.3.4",
+        "@vitejs/plugin-vue": "^5.1.4",
+        "@vitest/coverage-v8": "catalog:",
+        "eslint": "catalog:",
+        "eslint-plugin-storybook": "^0.9.0",
+        "fast-glob": "^3.3.2",
+        "normalize.css": "catalog:",
+        "storybook": "^8.3.4",
+        "storybook-dark-mode": "^4.0.2",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vitest": "catalog:",
+        "vue": "catalog:"
+    },
+    "files": [
+        "dist"
+    ],
+    "types": "./dist/storybook.d.ts",
+    "main": "./dist/storybook.umd.cjs",
+    "module": "./dist/storybook.js",
+    "exports": {
+        ".": {
+            "types": "./dist/storybook.d.ts",
+            "import": "./dist/storybook.js",
+            "require": "./dist/storybook.umd.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    },
+    "eslintConfig": {
+        "extends": [
+            "plugin:storybook/recommended"
+        ]
+    }
+}

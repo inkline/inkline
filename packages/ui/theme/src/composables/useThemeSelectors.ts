@@ -1,0 +1,55 @@
+import {
+    useNormalizeTheme,
+    useFluidTheme,
+    useATheme,
+    useAbbrTheme,
+    useAddressTheme,
+    useBlockquoteTheme,
+    useBodyTheme,
+    useCaptionTheme,
+    useCodeTheme,
+    useDisplayTheme,
+    useDlTheme,
+    useHeadingTheme,
+    useHrTheme,
+    useIframeTheme,
+    useKbdTheme,
+    useLegendTheme,
+    useMarkTheme,
+    useOlTheme,
+    useOutputTheme,
+    useParagraphTheme,
+    usePreTheme,
+    useSampTheme,
+    useSummaryTheme,
+    useUlTheme,
+    useTransitionsTheme
+} from '../selectors';
+
+export function useThemeSelectors() {
+    useNormalizeTheme();
+    useFluidTheme();
+    useATheme();
+    useAbbrTheme();
+    useAddressTheme();
+    useBlockquoteTheme();
+    useBodyTheme();
+    useCaptionTheme();
+    useCodeTheme();
+    useDisplayTheme();
+    useDlTheme();
+    useHeadingTheme();
+    useHrTheme();
+    useIframeTheme();
+    useKbdTheme();
+    useLegendTheme();
+    useMarkTheme();
+    useOlTheme();
+    useOutputTheme();
+    useParagraphTheme();
+    usePreTheme();
+    useSampTheme();
+    useSummaryTheme();
+    useUlTheme();
+    useTransitionsTheme();
+}

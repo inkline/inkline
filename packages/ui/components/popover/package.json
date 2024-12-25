@@ -1,0 +1,84 @@
+{
+    "name": "@inkline/component-popover",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools component watch",
+        "build": "devtools component build",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage"
+    },
+    "dependencies": {
+        "@inkline/core": "workspace:*",
+        "@inkline/composables": "workspace:*",
+        "@inkline/component-popup": "workspace:*",
+        "@inkline/theme": "workspace:*",
+        "@inkline/utils": "workspace:*",
+        "@inkline/vue": "workspace:*"
+    },
+    "devDependencies": {
+        "@inkline/config": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "@inkline/postcss-config": "workspace:*",
+        "@inkline/vite-component-config": "workspace:*",        "@inkline/test-utils": "workspace:*",
+        "@inkline/types": "workspace:*",
+        "@testing-library/vue": "catalog:",
+        "@testing-library/jest-dom": "catalog:",
+        "@vitest/coverage-v8": "catalog:",
+               "eslint": "catalog:",
+        "typescript": "catalog:",
+        "tsup": "catalog:",
+        "vite": "catalog:",
+                "vitest": "catalog:",
+        "vue": "catalog:",
+        "vue-tsc": "catalog:"
+    },
+    "peerDependencies": {
+        "vue": ">=3.0.0"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "types": "./dist/popover.d.ts",
+    "main": "./dist/popover.umd.cjs",
+    "module": "./dist/popover.js",
+    "exports": {
+        ".": {
+            "types": "./dist/popover.d.ts",
+            "import": "./dist/popover.js",
+            "require": "./dist/popover.umd.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

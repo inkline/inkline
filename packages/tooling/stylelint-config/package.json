@@ -1,27 +1,51 @@
 {
-  "name": "@inkline/stylelint-config",
-  "version": "1.0.0",
-  "scripts": {
-    "release": "np",
-    "test": "echo 'All tests passed!'"
-  },
-  "dependencies": {
-    "stylelint": "^16.5.0",
-    "stylelint-config-recommended": "^14.0.0",
-    "stylelint-config-recommended-scss": "^14.0.0",
-    "stylelint-config-recommended-vue": "^1.5.0",
-    "stylelint-config-standard": "^36.0.0",
-    "stylelint-config-standard-scss": "^13.0.0",
-    "prettier": "^3.2.5"
-  },
-  "devDependencies": {
-    "np": "^10.0.1"
-  },
-  "files": [
-    "index.js",
-    "package.json",
-    "README.md",
-    "LICENSE"
-  ],
-  "license": "ISC"
+    "name": "@inkline/stylelint-config",
+    "version": "1.0.0",
+    "scripts": {
+        "release": "np",
+        "test": "echo 'All tests passed!'"
+    },
+    "dependencies": {
+        "stylelint": "catalog:",
+        "stylelint-config-recommended": "^14.0.0",
+        "stylelint-config-recommended-scss": "^14.0.0",
+        "stylelint-config-recommended-vue": "^1.5.0",
+        "stylelint-config-standard": "^36.0.0",
+        "stylelint-config-standard-scss": "^13.0.0",
+        "prettier": "catalog:"
+    },
+    "devDependencies": {
+        "np": "catalog:"
+    },
+    "files": [
+        "index.js",
+        "README.md",
+        "LICENSE"
+    ],
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
 }

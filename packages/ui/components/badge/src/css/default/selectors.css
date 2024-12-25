@@ -1,0 +1,264 @@
+.badge {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a:hover .badge, a:focus .badge {
+    text-decoration: none;
+}
+
+.badge {
+    border-style: var(--badge--border-style, var(--badge--border-top-style) var(--badge--border-right-style) var(--badge--border-bottom-style) var(--badge--border-left-style));
+    border-top-color: var(--badge--border-top-color, hsla(var(--badge--border-top-color-h) var(--badge--border-top-color-s) var(--badge--border-top-color-l) / var(--badge--border-top-color-a)));
+    border-right-color: var(--badge--border-right-color, hsla(var(--badge--border-right-color-h) var(--badge--border-right-color-s) var(--badge--border-right-color-l) / var(--badge--border-right-color-a)));
+    border-bottom-color: var(--badge--border-bottom-color, hsla(var(--badge--border-bottom-color-h) var(--badge--border-bottom-color-s) var(--badge--border-bottom-color-l) / var(--badge--border-bottom-color-a)));
+    border-left-color: var(--badge--border-left-color, hsla(var(--badge--border-left-color-h) var(--badge--border-left-color-s) var(--badge--border-left-color-l) / var(--badge--border-left-color-a)));
+    border-width: var(--badge--border-width, var(--badge--border-top-width) var(--badge--border-right-width) var(--badge--border-bottom-width) var(--badge--border-left-width));
+    border-radius: var(--badge--border-radius, var(--badge--border-top-left-radius) var(--badge--border-top-right-radius) var(--badge--border-bottom-right-radius) var(--badge--border-bottom-left-radius));
+    box-shadow: var(--badge--box-shadow, var(--badge--box-shadow-offset-x) var(--badge--box-shadow-offset-y) var(--badge--box-shadow-blur-radius) var(--badge--box-shadow-spread-radius) var(--badge--box-shadow-color));
+    background: var(--badge--background, hsla(var(--badge--background-h) var(--badge--background-s) var(--badge--background-l) / var(--badge--background-a)));
+    color: var(--badge--color, hsla(var(--badge--color-h) var(--badge--color-s) var(--badge--color-l) / var(--badge--color-a)));
+    font-size: var(--badge--font-size);
+    font-weight: var(--badge--font-weight, var(--font-weight-semibold));
+    padding: var(--badge--padding, var(--badge--padding-top) var(--badge--padding-right) var(--badge--padding-bottom) var(--badge--padding-left));
+    transition: var(--badge--transition, var(--badge--transition-property) var(--badge--transition-duration) var(--badge--transition-timing-function));
+}
+
+.badge.-pill {
+    --badge--border-radius: var(--badge--pill--border-radius, var(--badge--pill--border-top-left-radius) var(--badge--pill--border-top-right-radius) var(--badge--pill--border-bottom-right-radius) var(--badge--pill--border-bottom-left-radius));
+}
+
+.badge.-light {
+    --badge--border-top-color-h: var(--badge--light--border-top-color-h);
+    --badge--border-top-color-s: var(--badge--light--border-top-color-s);
+    --badge--border-top-color-l: var(--badge--light--border-top-color-l);
+    --badge--border-top-color-a: var(--badge--light--border-top-color-a);
+    --badge--border-right-color-h: var(--badge--light--border-right-color-h);
+    --badge--border-right-color-s: var(--badge--light--border-right-color-s);
+    --badge--border-right-color-l: var(--badge--light--border-right-color-l);
+    --badge--border-right-color-a: var(--badge--light--border-right-color-a);
+    --badge--border-bottom-color-h: var(--badge--light--border-bottom-color-h);
+    --badge--border-bottom-color-s: var(--badge--light--border-bottom-color-s);
+    --badge--border-bottom-color-l: var(--badge--light--border-bottom-color-l);
+    --badge--border-bottom-color-a: var(--badge--light--border-bottom-color-a);
+    --badge--border-left-color-h: var(--badge--light--border-left-color-h);
+    --badge--border-left-color-s: var(--badge--light--border-left-color-s);
+    --badge--border-left-color-l: var(--badge--light--border-left-color-l);
+    --badge--border-left-color-a: var(--badge--light--border-left-color-a);
+    --badge--background-h: var(--badge--light--background-h);
+    --badge--background-s: var(--badge--light--background-s);
+    --badge--background-l: var(--badge--light--background-l);
+    --badge--background-a: var(--badge--light--background-a);
+    --badge--color-h: var(--badge--light--color-h);
+    --badge--color-s: var(--badge--light--color-s);
+    --badge--color-l: var(--badge--light--color-l);
+    --badge--color-a: var(--badge--light--color-a);
+}
+
+.badge.-dark {
+    --badge--border-top-color-h: var(--badge--dark--border-top-color-h);
+    --badge--border-top-color-s: var(--badge--dark--border-top-color-s);
+    --badge--border-top-color-l: var(--badge--dark--border-top-color-l);
+    --badge--border-top-color-a: var(--badge--dark--border-top-color-a);
+    --badge--border-right-color-h: var(--badge--dark--border-right-color-h);
+    --badge--border-right-color-s: var(--badge--dark--border-right-color-s);
+    --badge--border-right-color-l: var(--badge--dark--border-right-color-l);
+    --badge--border-right-color-a: var(--badge--dark--border-right-color-a);
+    --badge--border-bottom-color-h: var(--badge--dark--border-bottom-color-h);
+    --badge--border-bottom-color-s: var(--badge--dark--border-bottom-color-s);
+    --badge--border-bottom-color-l: var(--badge--dark--border-bottom-color-l);
+    --badge--border-bottom-color-a: var(--badge--dark--border-bottom-color-a);
+    --badge--border-left-color-h: var(--badge--dark--border-left-color-h);
+    --badge--border-left-color-s: var(--badge--dark--border-left-color-s);
+    --badge--border-left-color-l: var(--badge--dark--border-left-color-l);
+    --badge--border-left-color-a: var(--badge--dark--border-left-color-a);
+    --badge--background-h: var(--badge--dark--background-h);
+    --badge--background-s: var(--badge--dark--background-s);
+    --badge--background-l: var(--badge--dark--background-l);
+    --badge--background-a: var(--badge--dark--background-a);
+    --badge--color-h: var(--badge--dark--color-h);
+    --badge--color-s: var(--badge--dark--color-s);
+    --badge--color-l: var(--badge--dark--color-l);
+    --badge--color-a: var(--badge--dark--color-a);
+}
+
+.badge.-primary {
+    --badge--border-top-color-h: var(--badge--primary--border-top-color-h);
+    --badge--border-top-color-s: var(--badge--primary--border-top-color-s);
+    --badge--border-top-color-l: var(--badge--primary--border-top-color-l);
+    --badge--border-top-color-a: var(--badge--primary--border-top-color-a);
+    --badge--border-right-color-h: var(--badge--primary--border-right-color-h);
+    --badge--border-right-color-s: var(--badge--primary--border-right-color-s);
+    --badge--border-right-color-l: var(--badge--primary--border-right-color-l);
+    --badge--border-right-color-a: var(--badge--primary--border-right-color-a);
+    --badge--border-bottom-color-h: var(--badge--primary--border-bottom-color-h);
+    --badge--border-bottom-color-s: var(--badge--primary--border-bottom-color-s);
+    --badge--border-bottom-color-l: var(--badge--primary--border-bottom-color-l);
+    --badge--border-bottom-color-a: var(--badge--primary--border-bottom-color-a);
+    --badge--border-left-color-h: var(--badge--primary--border-left-color-h);
+    --badge--border-left-color-s: var(--badge--primary--border-left-color-s);
+    --badge--border-left-color-l: var(--badge--primary--border-left-color-l);
+    --badge--border-left-color-a: var(--badge--primary--border-left-color-a);
+    --badge--background-h: var(--badge--primary--background-h);
+    --badge--background-s: var(--badge--primary--background-s);
+    --badge--background-l: var(--badge--primary--background-l);
+    --badge--background-a: var(--badge--primary--background-a);
+    --badge--color-h: var(--badge--primary--color-h);
+    --badge--color-s: var(--badge--primary--color-s);
+    --badge--color-l: var(--badge--primary--color-l);
+    --badge--color-a: var(--badge--primary--color-a);
+}
+
+.badge.-secondary {
+    --badge--border-top-color-h: var(--badge--secondary--border-top-color-h);
+    --badge--border-top-color-s: var(--badge--secondary--border-top-color-s);
+    --badge--border-top-color-l: var(--badge--secondary--border-top-color-l);
+    --badge--border-top-color-a: var(--badge--secondary--border-top-color-a);
+    --badge--border-right-color-h: var(--badge--secondary--border-right-color-h);
+    --badge--border-right-color-s: var(--badge--secondary--border-right-color-s);
+    --badge--border-right-color-l: var(--badge--secondary--border-right-color-l);
+    --badge--border-right-color-a: var(--badge--secondary--border-right-color-a);
+    --badge--border-bottom-color-h: var(--badge--secondary--border-bottom-color-h);
+    --badge--border-bottom-color-s: var(--badge--secondary--border-bottom-color-s);
+    --badge--border-bottom-color-l: var(--badge--secondary--border-bottom-color-l);
+    --badge--border-bottom-color-a: var(--badge--secondary--border-bottom-color-a);
+    --badge--border-left-color-h: var(--badge--secondary--border-left-color-h);
+    --badge--border-left-color-s: var(--badge--secondary--border-left-color-s);
+    --badge--border-left-color-l: var(--badge--secondary--border-left-color-l);
+    --badge--border-left-color-a: var(--badge--secondary--border-left-color-a);
+    --badge--background-h: var(--badge--secondary--background-h);
+    --badge--background-s: var(--badge--secondary--background-s);
+    --badge--background-l: var(--badge--secondary--background-l);
+    --badge--background-a: var(--badge--secondary--background-a);
+    --badge--color-h: var(--badge--secondary--color-h);
+    --badge--color-s: var(--badge--secondary--color-s);
+    --badge--color-l: var(--badge--secondary--color-l);
+    --badge--color-a: var(--badge--secondary--color-a);
+}
+
+.badge.-success {
+    --badge--border-top-color-h: var(--badge--success--border-top-color-h);
+    --badge--border-top-color-s: var(--badge--success--border-top-color-s);
+    --badge--border-top-color-l: var(--badge--success--border-top-color-l);
+    --badge--border-top-color-a: var(--badge--success--border-top-color-a);
+    --badge--border-right-color-h: var(--badge--success--border-right-color-h);
+    --badge--border-right-color-s: var(--badge--success--border-right-color-s);
+    --badge--border-right-color-l: var(--badge--success--border-right-color-l);
+    --badge--border-right-color-a: var(--badge--success--border-right-color-a);
+    --badge--border-bottom-color-h: var(--badge--success--border-bottom-color-h);
+    --badge--border-bottom-color-s: var(--badge--success--border-bottom-color-s);
+    --badge--border-bottom-color-l: var(--badge--success--border-bottom-color-l);
+    --badge--border-bottom-color-a: var(--badge--success--border-bottom-color-a);
+    --badge--border-left-color-h: var(--badge--success--border-left-color-h);
+    --badge--border-left-color-s: var(--badge--success--border-left-color-s);
+    --badge--border-left-color-l: var(--badge--success--border-left-color-l);
+    --badge--border-left-color-a: var(--badge--success--border-left-color-a);
+    --badge--background-h: var(--badge--success--background-h);
+    --badge--background-s: var(--badge--success--background-s);
+    --badge--background-l: var(--badge--success--background-l);
+    --badge--background-a: var(--badge--success--background-a);
+    --badge--color-h: var(--badge--success--color-h);
+    --badge--color-s: var(--badge--success--color-s);
+    --badge--color-l: var(--badge--success--color-l);
+    --badge--color-a: var(--badge--success--color-a);
+}
+
+.badge.-danger {
+    --badge--border-top-color-h: var(--badge--danger--border-top-color-h);
+    --badge--border-top-color-s: var(--badge--danger--border-top-color-s);
+    --badge--border-top-color-l: var(--badge--danger--border-top-color-l);
+    --badge--border-top-color-a: var(--badge--danger--border-top-color-a);
+    --badge--border-right-color-h: var(--badge--danger--border-right-color-h);
+    --badge--border-right-color-s: var(--badge--danger--border-right-color-s);
+    --badge--border-right-color-l: var(--badge--danger--border-right-color-l);
+    --badge--border-right-color-a: var(--badge--danger--border-right-color-a);
+    --badge--border-bottom-color-h: var(--badge--danger--border-bottom-color-h);
+    --badge--border-bottom-color-s: var(--badge--danger--border-bottom-color-s);
+    --badge--border-bottom-color-l: var(--badge--danger--border-bottom-color-l);
+    --badge--border-bottom-color-a: var(--badge--danger--border-bottom-color-a);
+    --badge--border-left-color-h: var(--badge--danger--border-left-color-h);
+    --badge--border-left-color-s: var(--badge--danger--border-left-color-s);
+    --badge--border-left-color-l: var(--badge--danger--border-left-color-l);
+    --badge--border-left-color-a: var(--badge--danger--border-left-color-a);
+    --badge--background-h: var(--badge--danger--background-h);
+    --badge--background-s: var(--badge--danger--background-s);
+    --badge--background-l: var(--badge--danger--background-l);
+    --badge--background-a: var(--badge--danger--background-a);
+    --badge--color-h: var(--badge--danger--color-h);
+    --badge--color-s: var(--badge--danger--color-s);
+    --badge--color-l: var(--badge--danger--color-l);
+    --badge--color-a: var(--badge--danger--color-a);
+}
+
+.badge.-warning {
+    --badge--border-top-color-h: var(--badge--warning--border-top-color-h);
+    --badge--border-top-color-s: var(--badge--warning--border-top-color-s);
+    --badge--border-top-color-l: var(--badge--warning--border-top-color-l);
+    --badge--border-top-color-a: var(--badge--warning--border-top-color-a);
+    --badge--border-right-color-h: var(--badge--warning--border-right-color-h);
+    --badge--border-right-color-s: var(--badge--warning--border-right-color-s);
+    --badge--border-right-color-l: var(--badge--warning--border-right-color-l);
+    --badge--border-right-color-a: var(--badge--warning--border-right-color-a);
+    --badge--border-bottom-color-h: var(--badge--warning--border-bottom-color-h);
+    --badge--border-bottom-color-s: var(--badge--warning--border-bottom-color-s);
+    --badge--border-bottom-color-l: var(--badge--warning--border-bottom-color-l);
+    --badge--border-bottom-color-a: var(--badge--warning--border-bottom-color-a);
+    --badge--border-left-color-h: var(--badge--warning--border-left-color-h);
+    --badge--border-left-color-s: var(--badge--warning--border-left-color-s);
+    --badge--border-left-color-l: var(--badge--warning--border-left-color-l);
+    --badge--border-left-color-a: var(--badge--warning--border-left-color-a);
+    --badge--background-h: var(--badge--warning--background-h);
+    --badge--background-s: var(--badge--warning--background-s);
+    --badge--background-l: var(--badge--warning--background-l);
+    --badge--background-a: var(--badge--warning--background-a);
+    --badge--color-h: var(--badge--warning--color-h);
+    --badge--color-s: var(--badge--warning--color-s);
+    --badge--color-l: var(--badge--warning--color-l);
+    --badge--color-a: var(--badge--warning--color-a);
+}
+
+.badge.-info {
+    --badge--border-top-color-h: var(--badge--info--border-top-color-h);
+    --badge--border-top-color-s: var(--badge--info--border-top-color-s);
+    --badge--border-top-color-l: var(--badge--info--border-top-color-l);
+    --badge--border-top-color-a: var(--badge--info--border-top-color-a);
+    --badge--border-right-color-h: var(--badge--info--border-right-color-h);
+    --badge--border-right-color-s: var(--badge--info--border-right-color-s);
+    --badge--border-right-color-l: var(--badge--info--border-right-color-l);
+    --badge--border-right-color-a: var(--badge--info--border-right-color-a);
+    --badge--border-bottom-color-h: var(--badge--info--border-bottom-color-h);
+    --badge--border-bottom-color-s: var(--badge--info--border-bottom-color-s);
+    --badge--border-bottom-color-l: var(--badge--info--border-bottom-color-l);
+    --badge--border-bottom-color-a: var(--badge--info--border-bottom-color-a);
+    --badge--border-left-color-h: var(--badge--info--border-left-color-h);
+    --badge--border-left-color-s: var(--badge--info--border-left-color-s);
+    --badge--border-left-color-l: var(--badge--info--border-left-color-l);
+    --badge--border-left-color-a: var(--badge--info--border-left-color-a);
+    --badge--background-h: var(--badge--info--background-h);
+    --badge--background-s: var(--badge--info--background-s);
+    --badge--background-l: var(--badge--info--background-l);
+    --badge--background-a: var(--badge--info--background-a);
+    --badge--color-h: var(--badge--info--color-h);
+    --badge--color-s: var(--badge--info--color-s);
+    --badge--color-l: var(--badge--info--color-l);
+    --badge--color-a: var(--badge--info--color-a);
+}
+
+.badge.-sm {
+    border-radius: var(--badge--sm--border-top-left-radius) var(--badge--sm--border-top-right-radius) var(--badge--sm--border-bottom-right-radius) var(--badge--sm--border-bottom-left-radius);
+    font-size: var(--badge--sm--font-size);
+    padding: var(--badge--sm--padding-top) var(--badge--sm--padding-right) var(--badge--sm--padding-bottom) var(--badge--sm--padding-left);
+}
+
+.badge.-md {
+    border-radius: var(--badge--md--border-top-left-radius) var(--badge--md--border-top-right-radius) var(--badge--md--border-bottom-right-radius) var(--badge--md--border-bottom-left-radius);
+    font-size: var(--badge--md--font-size);
+    padding: var(--badge--md--padding-top) var(--badge--md--padding-right) var(--badge--md--padding-bottom) var(--badge--md--padding-left);
+}
+
+.badge.-lg {
+    border-radius: var(--badge--lg--border-top-left-radius) var(--badge--lg--border-top-right-radius) var(--badge--lg--border-bottom-right-radius) var(--badge--lg--border-bottom-left-radius);
+    font-size: var(--badge--lg--font-size);
+    padding: var(--badge--lg--padding-top) var(--badge--lg--padding-right) var(--badge--lg--padding-bottom) var(--badge--lg--padding-left);
+}

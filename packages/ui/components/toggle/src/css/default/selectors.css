@@ -1,0 +1,236 @@
+.toggle {
+    position: relative;
+    margin-bottom: 0;
+    display: flex;
+}
+
+.toggle .toggle-label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+}
+
+.toggle .toggle-label::before {
+    content: "";
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.toggle .toggle-label::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    transform: translate(0, 0);
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.toggle input:disabled ~ .toggle-label::before, .toggle input:disabled ~ .toggle-label::after {
+    cursor: not-allowed;
+}
+
+.toggle input:disabled ~ .toggle-label, .toggle input[readonly] ~ .toggle-label {
+    cursor: not-allowed;
+}
+
+.toggle > .input:disabled ~ .toggle-label, .toggle > .input[readonly] ~ .toggle-label {
+    cursor: default;
+}
+
+.toggle .toggle-label {
+    color: var(--toggle--color);
+    font-size: var(--toggle--font-size);
+}
+
+.toggle .toggle-label::before {
+    background: var(--toggle--background);
+    box-shadow: var(--toggle--box-shadow);
+    border-width: var(--toggle--border-width);
+    border-style: var(--toggle--border-style);
+    border-color: var(--toggle--border-color);
+    border-radius: var(--toggle--border-radius);
+    width: var(--toggle--width);
+    height: var(--toggle--height);
+    margin: var(--toggle--margin);
+    transition-property: var(--toggle--transition-property);
+    transition-duration: var(--toggle--transition-duration);
+    transition-timing-function: var(--toggle--transition-timing-function);
+}
+
+.toggle .toggle-label::after {
+    background: var(--toggle--indicator--background);
+    border-radius: var(--toggle--indicator--border-radius);
+    width: var(--toggle--indicator--width);
+    height: var(--toggle--indicator--height);
+    margin: var(--toggle--indicator--margin);
+    transition-property: var(--toggle--indicator--transition-property);
+    transition-duration: var(--toggle--indicator--transition-duration);
+    transition-timing-function: var(--toggle--indicator--transition-timing-function);
+}
+
+.toggle input:checked ~ .toggle-label::before {
+    background: var(--toggle--checked--background);
+    border-color: var(--toggle--checked--border-color);
+}
+
+.toggle input:checked ~ .toggle-label::after {
+    background: var(--toggle--checked--indicator--background);
+    transform: translate(calc(calc(var(--toggle--width) - var(--toggle--indicator--margin-left)) * 0.5), 0);
+}
+
+.toggle input:focus ~ .toggle-label::before {
+    box-shadow-offset-x: 0;
+    box-shadow-offset-y: 0;
+    box-shadow-blur-radius: 1px;
+    box-shadow-color: var(--toggle--checked--background);
+}
+
+.toggle input:disabled ~ .toggle-label {
+    color: var(--toggle--disabled--color);
+}
+
+.toggle input:disabled ~ .toggle-label::before {
+    border-color: var(--toggle--disabled--border-color);
+    background: var(--toggle--disabled--background);
+}
+
+.toggle input:disabled ~ .toggle-label::after {
+    background: var(--toggle--disabled--indicator--background);
+}
+
+.toggle input[readonly] ~ .toggle-label {
+    color: var(--toggle--readonly--color);
+}
+
+.toggle input[readonly] ~ .toggle-label::before {
+    border-color: var(--toggle--readonly--border-color);
+    background: var(--toggle--readonly--background);
+}
+
+.toggle input[readonly] ~ .toggle-label::after {
+    background: var(--toggle--readonly--indicator--background);
+}
+
+.toggle input:checked:disabled ~ .toggle-label::before {
+    background: var(--toggle--checked--disabled--background);
+    border-color: var(--toggle--checked--disabled--border-color);
+}
+
+.toggle input:checked:disabled ~ .toggle-label::after {
+    background: var(--toggle--checked--disabled--indicator--background);
+}
+
+.toggle input:checked[readonly] ~ .toggle-label::before {
+    background: var(--toggle--checked--readonly--background);
+    border-color: var(--toggle--checked--readonly--border-color);
+}
+
+.toggle input:checked[readonly] ~ .toggle-label::after {
+    background: var(--toggle--checked--readonly--indicator--background);
+}
+
+.toggle.-rounded .toggle-label::before {
+    border-radius: var(--toggle--height);
+}
+
+.toggle.-rounded .toggle-label::after {
+    border-radius: var(--toggle--indicator--height);
+}
+
+.toggle.-sm .toggle-label {
+    font-size: var(--toggle--sm--font-size);
+}
+
+.toggle.-sm .toggle-label::before {
+    border-radius: var(--toggle--sm--border-radius);
+    width: var(--toggle--sm--width);
+    height: var(--toggle--sm--height);
+}
+
+.toggle.-sm .toggle-label::after {
+    width: var(--toggle--sm--indicator--width);
+    height: var(--toggle--sm--indicator--height);
+    margin: var(--toggle--sm--indicator--margin);
+}
+
+.toggle.-sm input:checked ~ .toggle-label::after {
+    transform: translate(calc(calc(var(--toggle--sm--width) - var(--toggle--sm--indicator--margin-left)) * 0.5), 0);
+}
+
+.toggle.-sm.-rounded .toggle-label::before {
+    border-radius: var(--toggle--sm--height);
+}
+
+.toggle.-sm.-rounded .toggle-label::after {
+    border-radius: var(--toggle--sm--indicator--height);
+}
+
+.toggle.-md .toggle-label {
+    font-size: var(--toggle--md--font-size);
+}
+
+.toggle.-md .toggle-label::before {
+    border-radius: var(--toggle--md--border-radius);
+    width: var(--toggle--md--width);
+    height: var(--toggle--md--height);
+}
+
+.toggle.-md .toggle-label::after {
+    width: var(--toggle--md--indicator--width);
+    height: var(--toggle--md--indicator--height);
+    margin: var(--toggle--md--indicator--margin);
+}
+
+.toggle.-md input:checked ~ .toggle-label::after {
+    transform: translate(calc(calc(var(--toggle--md--width) - var(--toggle--md--indicator--margin-left)) * 0.5), 0);
+}
+
+.toggle.-md.-rounded .toggle-label::before {
+    border-radius: var(--toggle--md--height);
+}
+
+.toggle.-md.-rounded .toggle-label::after {
+    border-radius: var(--toggle--md--indicator--height);
+}
+
+.toggle.-lg .toggle-label {
+    font-size: var(--toggle--lg--font-size);
+}
+
+.toggle.-lg .toggle-label::before {
+    border-radius: var(--toggle--lg--border-radius);
+    width: var(--toggle--lg--width);
+    height: var(--toggle--lg--height);
+}
+
+.toggle.-lg .toggle-label::after {
+    width: var(--toggle--lg--indicator--width);
+    height: var(--toggle--lg--indicator--height);
+    margin: var(--toggle--lg--indicator--margin);
+}
+
+.toggle.-lg input:checked ~ .toggle-label::after {
+    transform: translate(calc(calc(var(--toggle--lg--width) - var(--toggle--lg--indicator--margin-left)) * 0.5), 0);
+}
+
+.toggle.-lg.-rounded .toggle-label::before {
+    border-radius: var(--toggle--lg--height);
+}
+
+.toggle.-lg.-rounded .toggle-label::after {
+    border-radius: var(--toggle--lg--indicator--height);
+}

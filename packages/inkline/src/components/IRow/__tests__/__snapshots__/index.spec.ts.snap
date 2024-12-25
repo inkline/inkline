@@ -1,7 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`Components > IRow > should render correctly 1`] = `
-"<div class="row">
-  <!-- @slot default Slot for default row content -->
-</div>"
-`;

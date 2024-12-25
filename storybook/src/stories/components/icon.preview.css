@@ -1,0 +1,6 @@
+#storybook-root {
+    > .icon {
+        margin-right: var(--margin-right);
+        margin-bottom: var(--margin-bottom);
+    }
+}

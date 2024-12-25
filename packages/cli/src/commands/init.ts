@@ -1,7 +1,7 @@
 import { existsSync } from 'fs';
 import { writeFile } from 'fs/promises';
-import { resolve } from 'pathe';
-import { Logger } from '@grozav/logger';
+import { resolve } from 'node:path';
+import { Logger } from '@inkline/logger';
 import chalk from 'chalk';
 import {
     defaultConfigFileContents,
@@ -17,10 +17,11 @@ import {
     extendPackageJson,
     initDevEnvConfigFile
 } from '../helpers';
-import type { InitEnv } from '../types';
-import { Commands, DevEnvType, PackageJsonSchema } from '../types';
+import type { InitCommandOptions, InitEnv } from "../types";
+import { DevEnvType } from '../types';
 import prettier from 'prettier';
-import { capitalizeFirst } from '@grozav/utils';
+import { capitalize } from '@inkline/utils';
+import { PackageJson } from "type-fest";
 
 /**
  * Create the inkline.config.ts file
@@ -37,7 +38,7 @@ async function createConfigFile(env: InitEnv) {
 /**
  * Initialize Inkline
  */
-export async function init(options: Commands.Init.Options) {
+export async function init(options: InitCommandOptions) {
     try {
         Logger.info('Initializing Inkline');
         let initSuccessful = true;
@@ -49,7 +50,7 @@ export async function init(options: Commands.Init.Options) {
 
         const packageJsonPath = resolve(cwd, 'package.json');
         const packageJsonFound = existsSync(packageJsonPath);
-        let packageJson: PackageJsonSchema = {};
+        let packageJson: PackageJson = {};
         if (packageJsonFound) {
             Logger.success(`Detected package.json file.`);
             packageJson = await extendPackageJson(packageJsonPath,
@@ -68,7 +69,7 @@ export async function init(options: Commands.Init.Options) {
                 initSuccessful = false;
             } else {
                 Logger.success(
-                    `Detected ${capitalizeFirst(devEnv.type)}.js development environment`
+                    `Detected ${capitalize(devEnv.type)}.js development environment`
                 );
             }
 
@@ -110,7 +111,7 @@ export async function init(options: Commands.Init.Options) {
         await createConfigFile(initEnv);
 
         if (initSuccessful) {
-            Logger.success(Commands.Init.messages.success);
+            Logger.success('Inkline initialized successfully.');
         } else {
             Logger.warning(
                 `Inkline partially initialized. Please see manual setup steps: ${manualInstallationUrl}`
@@ -123,7 +124,7 @@ export async function init(options: Commands.Init.Options) {
             )} or ${chalk.blue('pnpm install')}`
         );
     } catch (error) {
-        Logger.error(Commands.Init.messages.error);
+        Logger.error('An unexpected error occurred.');
         Logger.log(error);
     }
 }

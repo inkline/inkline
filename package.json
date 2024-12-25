@@ -1,30 +1,35 @@
 {
-  "name": "inkline",
-  "version": "1.0.0",
-  "description": "Inkline monorepo",
-  "main": "index.js",
-  "scripts": {
-    "build": "turbo run build --filter !@inkline/e2e*",
-    "dev": "turbo run dev --filter !@inkline/e2e*",
-    "test": "turbo run test",
-    "lint": "turbo run lint"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/inkline/inkline.git"
-  },
-  "keywords": [
-    "inkline"
-  ],
-  "author": "Alex Grozav <alex@grozav.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/inkline/inkline/issues"
-  },
-  "homepage": "https://github.com/inkline/inkline#readme",
-  "devDependencies": {
-    "prettier": "^3.2.5",
-    "turbo": "^1.13.3"
-  },
-  "packageManager": "pnpm@9.2.0"
+    "name": "inkline",
+    "version": "1.0.0",
+    "description": "Inkline monorepo",
+    "main": "index.js",
+    "scripts": {
+        "postinstall": "turbo run build --filter @inkline/devtools",
+        "build": "turbo run build --filter '!@inkline/e2e*'",
+        "build:core": "turbo run build --filter '!@inkline/e2e*' --filter '!@inkline/component*' --filter !@inkline/storybook --filter !inkline",
+        "dev": "turbo run dev --concurrency 64",
+        "dev:core": "turbo run dev --filter '@inkline/config' --filter '@inkline/core' --filter '@inkline/generator-css' --filter '@inkline/theme'",
+        "dev:ui": "turbo run dev --filter '@inkline/addon-*' --filter '@inkline/composables' --filter '@inkline/i18n' --filter '@inkline/theme' --filter '@inkline/types' --filter '@inkline/validation' --filter '@inkline/vue'",
+        "storybook": "cd storybook && pnpm run dev",
+        "test": "turbo run test",
+        "lint": "turbo run lint"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    },
+    "keywords": [
+        "inkline"
+    ],
+    "author": "Alex Grozav <alex@grozav.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://github.com/inkline/inkline#readme",
+    "devDependencies": {
+        "prettier": "catalog:",
+        "turbo": "catalog:"
+    },
+    "packageManager": "pnpm@9.2.0"
 }

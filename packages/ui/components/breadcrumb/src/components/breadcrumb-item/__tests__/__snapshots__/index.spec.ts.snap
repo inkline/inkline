@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > BreadcrumbItem > should render correctly 1`] = `
+"<li class="breadcrumb-item" role="menuitem">
+  <linkable-stub active="false" tag="a" tabindex="0" aria-disabled="false" aria-current="false"></linkable-stub>
+</li>"
+`;
