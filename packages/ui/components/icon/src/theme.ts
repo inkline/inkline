@@ -1,8 +1,10 @@
 import {
     ComponentSize,
+    ComponentBrandColor,
+    defaultComponentBrandColors,
+    defaultComponentSizes,
     useFontSize,
-    useKeyMappedSizeMultiplier,
-    defaultComponentSizes
+    useKeyMappedSizeMultiplier
 } from '@inkline/theme';
 import {
     multiply,
@@ -14,6 +16,14 @@ import {
 } from '@inkline/core';
 
 const ns = 'icon';
+
+export const defaultIconColor = 'info';
+export const defaultIconColors = defaultComponentBrandColors;
+export const defaultIconSize = 'md';
+export const defaultIconSizes = defaultComponentSizes;
+
+export type IconColorVariant = ComponentBrandColor;
+export type IconSizeVariant = ComponentSize;
 
 export function useIconThemeVariables(options = defaultDefinitionOptions) {
     const { fontSize } = useFontSize();

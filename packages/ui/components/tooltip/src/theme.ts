@@ -27,6 +27,14 @@ import {
 
 const ns = 'tooltip';
 
+export const defaultTooltipColor = 'info';
+export const defaultTooltipColors = defaultComponentBrandColors;
+export const defaultTooltipSize = 'md';
+export const defaultTooltipSizes = defaultComponentSizes;
+
+export type TooltipColorVariant = ComponentBrandColor;
+export type TooltipSizeVariant = ComponentSize;
+
 export function useTooltipThemeVariables(options = defaultDefinitionOptions) {
     const {
         borderTopStyle,

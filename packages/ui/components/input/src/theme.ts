@@ -30,6 +30,14 @@ import { capitalize } from '@inkline/utils';
 
 const ns = 'input';
 
+export const defaultInputColor = 'info';
+export const defaultInputColors = defaultComponentBrandColors;
+export const defaultInputSize = 'md';
+export const defaultInputSizes = defaultComponentSizes;
+
+export type InputColorVariant = ComponentBrandColor;
+export type InputSizeVariant = ComponentSize;
+
 export function useInputThemeVariables(options = defaultDefinitionOptions) {
     const {
         borderTopStyle,

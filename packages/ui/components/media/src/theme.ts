@@ -1,7 +1,15 @@
 import { ref, selector, nsvariables, defaultDefinitionOptions } from '@inkline/core';
-import { useMargin } from '@inkline/theme';
+import { useMargin, ComponentSize, ComponentStateColor, defaultComponentSizes, defaultComponentStateColors } from '@inkline/theme';
 
 const ns = 'media';
+
+export const defaultMediaColor = 'info';
+export const defaultMediaColors = defaultComponentStateColors;
+export const defaultMediaSize = 'md';
+export const defaultMediaSizes = defaultComponentSizes;
+
+export type MediaColorVariant = ComponentStateColor;
+export type MediaSizeVariant = ComponentSize;
 
 export function useMediaThemeVariables(options = defaultDefinitionOptions) {
     const { marginTop, marginRight, marginBottom, marginLeft } = useMargin();

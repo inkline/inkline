@@ -25,6 +25,14 @@ import {
 
 const ns = 'alert';
 
+export const defaultAlertColor = 'info';
+export const defaultAlertColors = defaultComponentStateColors;
+export const defaultAlertSize = 'md';
+export const defaultAlertSizes = defaultComponentSizes;
+
+export type AlertColorVariant = ComponentStateColor;
+export type AlertSizeVariant = ComponentSize;
+
 export function useAlertThemeVariables(options = defaultDefinitionOptions) {
     const {
         borderTopStyle,

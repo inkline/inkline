@@ -29,6 +29,14 @@ import {
 
 const ns = 'button';
 
+export const defaultButtonColor = 'info';
+export const defaultButtonColors = defaultComponentBrandColors;
+export const defaultButtonSize = 'md';
+export const defaultButtonSizes = defaultComponentSizes;
+
+export type ButtonColorVariant = ComponentBrandColor;
+export type ButtonSizeVariant = ComponentSize;
+
 export function useButtonThemeVariables(options = defaultDefinitionOptions) {
     const {
         borderTopStyle,

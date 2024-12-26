@@ -1,7 +1,15 @@
 import { defaultDefinitionOptions, nsvariables, ref, selector } from '@inkline/core';
-import { useBoxShadow } from '@inkline/theme';
+import { useBoxShadow, ComponentSize, ComponentStateColor, defaultComponentSizes, defaultComponentStateColors } from '@inkline/theme';
 
 const ns = 'button-group';
+
+export const defaultButtonGroupColor = 'info';
+export const defaultButtonGroupColors = defaultComponentStateColors;
+export const defaultButtonGroupSize = 'md';
+export const defaultButtonGroupSizes = defaultComponentSizes;
+
+export type ButtonGroupColorVariant = ComponentStateColor;
+export type ButtonGroupSizeVariant = ComponentSize;
 
 export function useButtonGroupThemeVariables(options = defaultDefinitionOptions) {
     const {

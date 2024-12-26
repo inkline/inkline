@@ -37,6 +37,14 @@ const checkmarkIconUrl =
 const minusIconUrl =
     'data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>minus</title><path d="M0 11.375v5.25c0 0.483 0.392 0.875 0.875 0.875h26.25c0.483 0 0.875-0.392 0.875-0.875v-5.25c0-0.483-0.392-0.875-0.875-0.875h-26.25c-0.483 0-0.875 0.392-0.875 0.875z"></path></svg>';
 
+export const defaultCheckboxColor = 'info';
+export const defaultCheckboxColors = defaultComponentNeutralColors;
+export const defaultCheckboxSize = 'md';
+export const defaultCheckboxSizes = defaultComponentSizes;
+
+export type CheckboxColorVariant = ComponentBrandColor;
+export type CheckboxSizeVariant = ComponentSize;
+
 export function useCheckboxThemeVariables(options = defaultDefinitionOptions) {
     const { colorPrimary, colorPrimaryH, colorPrimaryS, colorPrimaryL } = useBrandColors();
     const {

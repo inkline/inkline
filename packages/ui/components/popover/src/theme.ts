@@ -27,6 +27,14 @@ import {
 
 const ns = 'popover';
 
+export const defaultPopoverColor = 'info';
+export const defaultPopoverColors = defaultComponentBrandColors;
+export const defaultPopoverSize = 'md';
+export const defaultPopoverSizes = defaultComponentSizes;
+
+export type PopoverColorVariant = ComponentBrandColor;
+export type PopoverSizeVariant = ComponentSize;
+
 export function usePopoverThemeVariables(options = defaultDefinitionOptions) {
     const {
         borderTopStyle,

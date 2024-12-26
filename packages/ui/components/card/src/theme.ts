@@ -27,6 +27,14 @@ import {
 
 const ns = 'card';
 
+export const defaultCardColor = 'info';
+export const defaultCardColors = defaultComponentBrandColors;
+export const defaultCardSize = 'md';
+export const defaultCardSizes = defaultComponentSizes;
+
+export type CardColorVariant = ComponentBrandColor;
+export type CardSizeVariant = ComponentSize;
+
 export function useCardThemeVariables(options = defaultDefinitionOptions) {
     const {
         borderTopStyle,
