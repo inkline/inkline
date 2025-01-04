@@ -1,11 +1,11 @@
 import { selector } from '@inkline/core';
 
-export function useIframeThemeBase() {
+export function useIframeThemeSelectors() {
     selector('iframe', {
         border: 0
     });
 }
 
 export function useIframeTheme() {
-    useIframeThemeBase();
+    useIframeThemeSelectors();
 }

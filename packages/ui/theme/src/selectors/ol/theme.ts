@@ -1,34 +1,38 @@
 import {
     defaultDefinitionOptions,
-    multiply,
-    addVariableNamespace,
-    nsvariable,
     ref,
-    selector
+    selector,
+    nsvariables,
+    vref
 } from '@inkline/core';
-import { useMarginBase, usePaddingBase } from '../../variables';
+import { useSpacing } from '../../variables';
 
 const ns = 'ol';
 
-export function useOlVariables(options = defaultDefinitionOptions) {
-    const { marginBottom } = useMarginBase();
-    const { paddingLeft } = usePaddingBase();
-
-    const olMarginBottom = addVariableNamespace(ns, marginBottom, options);
-    const olPaddingLeft = nsvariable(ns, 'padding-left', multiply(ref(paddingLeft), 2), options);
+export function useOlConfig() {
+    const { spacing, spacingXl } = useSpacing();
 
     return {
-        olMarginBottom,
-        olPaddingLeft
+        margin: {
+            bottom: ref(spacing)
+        },
+        padding: {
+            left: ref(spacingXl)
+        }
     };
 }
 
-export function useOlThemeBase() {
-    const { olMarginBottom, olPaddingLeft } = useOlVariables();
+export function useOlVariables(options = defaultDefinitionOptions) {
+
+    return nsvariables(ns, useOlConfig(), options);
+}
+
+export function useOlThemeSelectors() {
+    const { olMargin, olPadding } = useOlVariables();
 
     selector('ol', {
-        marginBottom: ref(olMarginBottom),
-        paddingLeft: ref(olPaddingLeft)
+        margin: vref(olMargin),
+        padding: vref(olPadding)
     });
 
     selector('ol ul, ol ol', {
@@ -38,5 +42,5 @@ export function useOlThemeBase() {
 
 export function useOlTheme() {
     useOlVariables();
-    useOlThemeBase();
+    useOlThemeSelectors();
 }

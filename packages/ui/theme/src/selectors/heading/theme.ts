@@ -1,88 +1,98 @@
 import {
     defaultDefinitionOptions,
-    addVariableNamespace,
-    nsvariable,
     ref,
-    selector
+    selector, nsvariables, vref
 } from '@inkline/core';
 import {
     useFontFamily,
     useFontSize,
     useFontStyle,
     useFontWeight,
-    useMarginBase
+    useSpacing
 } from '../../variables';
 
 const ns = 'heading';
 
-export function useHeadingThemeVariables(options = defaultDefinitionOptions) {
-    const { marginBottom } = useMarginBase();
-    const { fontFamilyBaseSecondary } = useFontFamily();
-    const { fontStyleNormal } = useFontStyle();
-    const { fontSizeMd, fontSizeLg, fontSizeXl, fontSize2Xl, fontSize3Xl, fontSize4Xl } = useFontSize();
-    const { fontWeightBold } = useFontWeight();
-
-    const headingMarginBottom = addVariableNamespace(ns, marginBottom, options);
-    const headingFontFamily = nsvariable(ns, 'font-family', ref(fontFamilyBaseSecondary), options);
-    const headingFontStyle = nsvariable(ns, 'font-style', ref(fontStyleNormal), options);
-    const headingFontWeight = nsvariable(ns, 'font-weight', ref(fontWeightBold), options);
-    const headingLineHeight = nsvariable(ns, 'line-height', 1.2, options);
-
-    const h6FontSize = nsvariable('h6', 'font-size', ref(fontSizeMd), options);
-
-    const h5FontSize = nsvariable(
-        'h5',
-        'font-size',
-        ref(fontSizeLg),
-        options
-    );
-
-    const h4FontSize = nsvariable(
-        'h4',
-        'font-size',
-        ref(fontSizeXl),
-        options
-    );
-
-    const h3FontSize = nsvariable(
-        'h3',
-        'font-size',
-        ref(fontSize2Xl),
-        options
-    );
-
-    const h2FontSize = nsvariable(
-        'h2',
-        'font-size',
-        ref(fontSize3Xl),
-        options
-    );
-
-    const h1FontSize = nsvariable(
-        'h1',
-        'font-size',
-        ref(fontSize4Xl),
-        options
-    );
+export function useH1Config() {
+    const { fontSize4Xl } = useFontSize();
 
     return {
-        headingMarginBottom,
-        headingFontFamily,
-        headingFontStyle,
-        headingFontWeight,
-        headingLineHeight,
-        h1FontSize,
-        h2FontSize,
-        h3FontSize,
-        h4FontSize,
-        h5FontSize,
-        h6FontSize
+        fontSize: ref(fontSize4Xl)
     };
 }
 
-export function useHeadingThemeBase() {
+export function useH2Config() {
+    const { fontSize3Xl } = useFontSize();
+
+    return {
+        fontSize: ref(fontSize3Xl)
+    };
+}
+
+export function useH3Config() {
+    const { fontSize2Xl } = useFontSize();
+
+    return {
+        fontSize: ref(fontSize2Xl)
+    };
+}
+
+export function useH4Config() {
+    const { fontSizeXl } = useFontSize();
+
+    return {
+        fontSize: ref(fontSizeXl)
+    };
+}
+
+export function useH5Config() {
+    const { fontSizeLg } = useFontSize();
+
+    return {
+        fontSize: ref(fontSizeLg)
+    };
+}
+
+export function useH6Config() {
+    const { fontSizeMd } = useFontSize();
+
+    return {
+        fontSize: ref(fontSizeMd)
+    };
+}
+
+export function useHeadingConfig() {
+    const { spacing } = useSpacing();
+    const { fontFamilyBaseSecondary } = useFontFamily();
+    const { fontStyleNormal } = useFontStyle();
+    const { fontWeightBold } = useFontWeight();
+
+    return {
+        margin: {
+            bottom: ref(spacing)
+        },
+        fontFamily: ref(fontFamilyBaseSecondary),
+        fontStyle: ref(fontStyleNormal),
+        fontWeight: ref(fontWeightBold),
+        lineHeight: 1.2
+    };
+}
+
+export function useHeadingThemeVariables(options = defaultDefinitionOptions) {
+    return {
+        ...nsvariables(ns, useHeadingConfig(), options),
+        ...nsvariables('h1', useH1Config(), options),
+        ...nsvariables('h2', useH2Config(), options),
+        ...nsvariables('h3', useH3Config(), options),
+        ...nsvariables('h4', useH4Config(), options),
+        ...nsvariables('h5', useH5Config(), options),
+        ...nsvariables('h6', useH6Config(), options)
+    };
+}
+
+export function useHeadingThemeSelectors() {
     const {
-        headingMarginBottom,
+        headingMargin,
         headingFontFamily,
         headingFontStyle,
         headingFontWeight,
@@ -96,7 +106,7 @@ export function useHeadingThemeBase() {
     } = useHeadingThemeVariables();
 
     selector('h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6', {
-        marginBottom: ref(headingMarginBottom),
+        margin: vref(headingMargin),
         fontFamily: ref(headingFontFamily),
         fontStyle: ref(headingFontStyle),
         fontWeight: ref(headingFontWeight),
@@ -131,5 +141,5 @@ export function useHeadingThemeBase() {
 
 export function useHeadingTheme() {
     useHeadingThemeVariables();
-    useHeadingThemeBase();
+    useHeadingThemeSelectors();
 }

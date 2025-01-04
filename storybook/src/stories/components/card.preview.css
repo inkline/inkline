@@ -1,7 +1,7 @@
 #storybook-root {
     > .card {
-        margin-right: var(--margin-right);
-        margin-bottom: var(--margin-bottom);
+        margin-right: var(--spacing);
+        margin-bottom: var(--spacing);
         max-width: 360px;
     }
 }

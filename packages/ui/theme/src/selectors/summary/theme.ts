@@ -1,11 +1,11 @@
 import { selector } from '@inkline/core';
 
-export function useSummaryThemeBase() {
+export function useSummaryThemeSelectors() {
     selector('summary', {
         cursor: 'pointer'
     });
 }
 
 export function useSummaryTheme() {
-    useSummaryThemeBase();
+    useSummaryThemeSelectors();
 }

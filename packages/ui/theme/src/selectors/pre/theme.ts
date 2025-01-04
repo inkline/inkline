@@ -1,31 +1,39 @@
-import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
-import { useFontFamily, useFontSize, useMarginBase } from '../../variables';
+import {
+    defaultDefinitionOptions,
+    ref,
+    selector,
+    nsvariables,
+    vref
+} from '@inkline/core';
+import { useFontFamily, useFontSize, useSpacing } from '../../variables';
 
 const ns = 'pre';
 
-export function usePreVariables(options = defaultDefinitionOptions) {
+export function usePreConfig() {
     const { fontSizeSm } = useFontSize();
     const { fontFamilyMonospace } = useFontFamily();
-    const { marginBottom } = useMarginBase();
-
-    const preFontSize = nsvariable(ns, 'font-size', ref(fontSizeSm), options);
-    const preFontFamily = nsvariable(ns, 'font-family', ref(fontFamilyMonospace), options);
-    const preMarginBottom = addVariableNamespace(ns, marginBottom, options);
+    const { spacing } = useSpacing();
 
     return {
-        preFontSize,
-        preFontFamily,
-        preMarginBottom
+        fontSize: ref(fontSizeSm),
+        fontFamily: ref(fontFamilyMonospace),
+        margin: {
+            bottom: ref(spacing)
+        }
     };
 }
 
-export function usePreThemeBase() {
-    const { preMarginBottom, preFontSize, preFontFamily } = usePreVariables();
+export function usePreVariables(options = defaultDefinitionOptions) {
+    return nsvariables(ns, usePreConfig(), options);
+}
+
+export function usePreThemeSelectors() {
+    const { preMargin, preFontSize, preFontFamily } = usePreVariables();
 
     selector('pre', {
         fontSize: ref(preFontSize),
         fontFamily: ref(preFontFamily),
-        marginBottom: ref(preMarginBottom),
+        margin: vref(preMargin),
         display: 'block',
         marginTop: 0,
         overflow: 'auto'
@@ -46,5 +54,5 @@ export function usePreThemeBase() {
 
 export function usePreTheme() {
     usePreVariables();
-    usePreThemeBase();
+    usePreThemeSelectors();
 }

@@ -1,58 +1,75 @@
-import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
-import { useFontSize, useFontWeight, useMarginBase } from '../../variables';
+import {
+    defaultDefinitionOptions,
+    ref,
+    selector,
+    nsvariables,
+    vref
+} from '@inkline/core';
+import { useFontSize, useFontWeight, useSpacing } from '../../variables';
 
-export function useParagraphThemeVariables(options = defaultDefinitionOptions) {
-    const { fontSizeLg } = useFontSize();
-    const { fontWeightLight } = useFontWeight();
-    const { marginBottom, margin } = useMarginBase();
-
-    const paragraphMarginTop = nsvariable('p', 'margin-top', 0, options);
-    const paragraphMarginRight = nsvariable('p', 'margin-right', 0, options);
-    const paragraphMarginBottom = nsvariable('p', 'margin-bottom', ref(marginBottom), options);
-    const paragraphMarginLeft = nsvariable('p', 'margin-left', 0, options);
-    const paragraphMargin = addVariableNamespace('p', margin, options);
-
-    const leadFontSize = nsvariable('lead', 'font-size', ref(fontSizeLg), options);
-    const leadFontWeight = nsvariable('lead', 'font-weight', ref(fontWeightLight), options);
-
-    const initialismFontSize = nsvariable('initialism', 'font-size', '90%', options);
-    const initialismTextTransform = nsvariable(
-        'initialism',
-        'text-transform',
-        'uppercase',
-        options
-    );
+export function useParagraphConfig() {
+    const { spacing } = useSpacing();
 
     return {
-        paragraphMarginTop,
-        paragraphMarginRight,
-        paragraphMarginBottom,
-        paragraphMarginLeft,
-        paragraphMargin,
-        leadFontSize,
-        leadFontWeight,
-        initialismFontSize,
-        initialismTextTransform
+        margin: {
+            top: 0,
+            right: 0,
+            bottom: ref(spacing),
+            left: 0
+        }
     };
 }
 
-export function useParagraphThemeBase() {
+export function useParagraphThemeVariables(options = defaultDefinitionOptions) {
+    return nsvariables('p', useParagraphConfig(), options);
+}
+
+export function useLeadConfig() {
+    const { fontSizeLg } = useFontSize();
+    const { fontWeightLight } = useFontWeight();
+
+    return {
+        fontSize: ref(fontSizeLg),
+        fontWeight: ref(fontWeightLight)
+    };
+}
+
+export function useLeadVariables(options = defaultDefinitionOptions) {
+    return nsvariables('lead', useLeadConfig(), options);
+}
+
+export function useInitialismConfig() {
+    return {
+        fontSize: '90%',
+        textTransform: 'uppercase'
+    };
+}
+
+export function useInitialismVariables(options = defaultDefinitionOptions) {
+    return nsvariables('initialism', useInitialismConfig(), options);
+}
+
+export function useParagraphThemeSelectors() {
     const {
-        paragraphMargin,
-        leadFontSize,
-        leadFontWeight,
-        initialismFontSize,
-        initialismTextTransform
+        pMargin
     } = useParagraphThemeVariables();
 
     selector('p', {
-        margin: ref(paragraphMargin)
+        margin: vref(pMargin)
     });
+}
+
+export function useLeadThemeSelectors() {
+    const { leadFontSize, leadFontWeight } = useLeadVariables();
 
     selector('.lead', {
         fontSize: ref(leadFontSize),
         fontWeight: ref(leadFontWeight)
     });
+}
+
+export function useInitialismThemeSelectors() {
+    const { initialismFontSize, initialismTextTransform } = useInitialismVariables();
 
     selector('.initialism', {
         fontSize: ref(initialismFontSize),
@@ -60,6 +77,9 @@ export function useParagraphThemeBase() {
     });
 }
 
+
 export function useParagraphTheme() {
-    useParagraphThemeBase();
+    useParagraphThemeSelectors();
+    useLeadThemeSelectors();
+    useInitialismThemeSelectors();
 }

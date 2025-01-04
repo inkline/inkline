@@ -1,6 +1,6 @@
 #storybook-root {
     > .loader {
-        margin-right: var(--margin-right);
-        margin-bottom: var(--margin-bottom);
+        margin-right: var(--spacing);
+        margin-bottom: var(--spacing);
     }
 }

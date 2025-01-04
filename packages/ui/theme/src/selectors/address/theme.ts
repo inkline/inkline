@@ -1,23 +1,27 @@
-import { defaultDefinitionOptions, addVariableNamespace, ref, selector } from '@inkline/core';
-import { useMarginBase } from '../../variables';
+import { defaultDefinitionOptions, ref, selector, nsvariables, vref } from '@inkline/core';
+import { useSpacing } from '../../variables';
 
 const ns = 'address';
 
-export function useAddressThemeVariables(options = defaultDefinitionOptions) {
-    const { marginBottom } = useMarginBase();
-
-    const addressMarginBottom = addVariableNamespace(ns, marginBottom, options);
+export function useAddressThemeConfig() {
+    const { spacing } = useSpacing();
 
     return {
-        addressMarginBottom
+        margin: {
+            bottom: ref(spacing)
+        }
     };
 }
 
-export function useAddressThemeBase() {
-    const { addressMarginBottom } = useAddressThemeVariables();
+export function useAddressThemeVariables(options = defaultDefinitionOptions) {
+    return nsvariables(ns, useAddressThemeConfig(), options);
+}
+
+export function useAddressThemeSelectors() {
+    const { addressMargin } = useAddressThemeVariables();
 
     selector('address', {
-        marginBottom: ref(addressMarginBottom),
+        margin: vref(addressMargin),
         fontStyle: 'normal',
         lineHeight: 'inherit'
     });
@@ -25,5 +29,5 @@ export function useAddressThemeBase() {
 
 export function useAddressTheme() {
     useAddressThemeVariables();
-    useAddressThemeBase();
+    useAddressThemeSelectors();
 }

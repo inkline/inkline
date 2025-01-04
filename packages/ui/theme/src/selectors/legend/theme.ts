@@ -1,23 +1,26 @@
-import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
-import { useFontSize, useMarginBase } from '../../variables';
+import { defaultDefinitionOptions, ref, selector, nsvariables, vref } from '@inkline/core';
+import { useFontSize, useSpacing } from '../../variables';
 
 const ns = 'legend';
 
-export function useLegendThemeVariables(options = defaultDefinitionOptions) {
-    const { marginBottom } = useMarginBase();
+export function useLegendThemeConfig() {
+    const { spacing } = useSpacing();
     const { fontSizeLg } = useFontSize();
 
-    const legendMarginBottom = addVariableNamespace(ns, marginBottom, options);
-    const legendFontSize = nsvariable(ns, 'font-size', ref(fontSizeLg), options);
-
     return {
-        legendMarginBottom,
-        legendFontSize
+        margin: {
+            bottom: ref(spacing)
+        },
+        fontSize: ref(fontSizeLg)
     };
 }
 
-export function useLegendThemeBase() {
-    const { legendMarginBottom, legendFontSize } = useLegendThemeVariables();
+export function useLegendThemeVariables(options = defaultDefinitionOptions) {
+    return nsvariables(ns, useLegendThemeConfig(), options);
+}
+
+export function useLegendThemeSelectors() {
+    const { legendMargin, legendFontSize } = useLegendThemeVariables();
 
     // By using `float: left`, the legend will behave like a block element.
     // This way the border of a fieldset wraps around the legend if present.
@@ -27,7 +30,7 @@ export function useLegendThemeBase() {
         float: 'left',
         width: '100%',
         padding: 0,
-        marginBottom: ref(legendMarginBottom),
+        margin: vref(legendMargin),
         fontSize: ref(legendFontSize),
         lineHeight: 'inherit'
     });
@@ -40,5 +43,5 @@ export function useLegendThemeBase() {
 
 export function useLegendTheme() {
     useLegendThemeVariables();
-    useLegendThemeBase();
+    useLegendThemeSelectors();
 }

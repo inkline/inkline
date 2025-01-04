@@ -1,12 +1,12 @@
 import { ref, selector, nsvariables, defaultDefinitionOptions } from '@inkline/core';
-import { useBrandColors, useFontSize, useMarginBase } from '@inkline/theme';
+import { useBrandColors, useFontSize, useSpacing } from '@inkline/theme';
 
 const ns = 'form-error';
 
 export function useFormErrorThemeVariables(options = defaultDefinitionOptions) {
     const { colorDanger } = useBrandColors();
     const { fontSizeSm } = useFontSize();
-    const { marginTop } = useMarginBase();
+    const { spacing } = useSpacing();
 
     return {
         ...nsvariables(
@@ -15,7 +15,7 @@ export function useFormErrorThemeVariables(options = defaultDefinitionOptions) {
                 color: ref(colorDanger),
                 fontSize: ref(fontSizeSm),
                 margin: {
-                    top: ref(marginTop),
+                    top: ref(spacing),
                     right: 0,
                     bottom: 0,
                     left: 0

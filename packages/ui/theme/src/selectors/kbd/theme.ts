@@ -1,77 +1,96 @@
-import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
 import {
-    useBorderRadiusBase,
+    defaultDefinitionOptions,
+    ref,
+    selector,
+    multiply,
+    vref, nsvariables
+} from '@inkline/core';
+import {
+    useBorderRadius,
     useBrandColors,
     useContrastTextColor,
     useFontFamily,
     useFontSize,
-    usePaddingBase
+    useSpacing
 } from '../../variables';
 
 const ns = 'kbd';
 
-export function useKbdVariables(options = defaultDefinitionOptions) {
-    const { colorDark } = useBrandColors();
-    const { contrastTextColorDark } = useContrastTextColor();
+export function useKbdConfig() {
+    const {
+        colorDarkH,
+        colorDarkS,
+        colorDarkL,
+        colorDarkA
+    } = useBrandColors();
+    const {
+        contrastTextColorDarkH,
+        contrastTextColorDarkS,
+        contrastTextColorDarkL,
+        contrastTextColorDarkA
+    } = useContrastTextColor();
     const { fontSizeSm } = useFontSize();
     const { fontFamilyMonospace } = useFontFamily();
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
-        borderBottomLeftRadius,
-        borderRadius
-    } = useBorderRadiusBase();
-    const { padding } = usePaddingBase();
-
-    const kbdBackground = nsvariable(ns, 'background', ref(colorDark), options);
-
-    const kbdBorderTopLeftRadius = addVariableNamespace(ns, borderTopLeftRadius, options);
-    const kbdBorderTopRightRadius = addVariableNamespace(ns, borderTopRightRadius, options);
-    const kbdBorderBottomRightRadius = addVariableNamespace(ns, borderBottomRightRadius, options);
-    const kbdBorderBottomLeftRadius = addVariableNamespace(ns, borderBottomLeftRadius, options);
-    const kbdBorderRadius = addVariableNamespace(ns, borderRadius, options);
-
-    const kbdColor = nsvariable(ns, 'color', ref(contrastTextColorDark), options);
-
-    const kbdFontFamily = nsvariable(ns, 'font-family', ref(fontFamilyMonospace), options);
-    const kbdFontSize = nsvariable(ns, 'font-size', ref(fontSizeSm), options);
-
-    const kbdPaddingTop = nsvariable(ns, 'padding-top', '0.1875rem', options);
-    const kbdPaddingRight = nsvariable(ns, 'padding-right', '0.375rem', options);
-    const kbdPaddingBottom = nsvariable(ns, 'padding-bottom', '0.1875rem', options);
-    const kbdPaddingLeft = nsvariable(ns, 'padding-left', '0.375rem', options);
-    const kbdPadding = addVariableNamespace(ns, padding, options);
+        borderBottomLeftRadius
+    } = useBorderRadius();
+    const { spacing } = useSpacing();
 
     return {
-        kbdBackground,
-        kbdBorderTopLeftRadius,
-        kbdBorderTopRightRadius,
-        kbdBorderBottomRightRadius,
-        kbdBorderBottomLeftRadius,
-        kbdBorderRadius,
-        kbdColor,
-        kbdFontFamily,
-        kbdFontSize,
-        kbdPaddingTop,
-        kbdPaddingRight,
-        kbdPaddingBottom,
-        kbdPaddingLeft,
-        kbdPadding
+        background: {
+            h: ref(colorDarkH),
+            s: ref(colorDarkS),
+            l: ref(colorDarkL),
+            a: ref(colorDarkA)
+        },
+        borderRadius: {
+            topLeft: ref(borderTopLeftRadius),
+            topRight: ref(borderTopRightRadius),
+            bottomRight: ref(borderBottomRightRadius),
+            bottomLeft: ref(borderBottomLeftRadius)
+        },
+        color: {
+            h: ref(contrastTextColorDarkH),
+            s: ref(contrastTextColorDarkS),
+            l: ref(contrastTextColorDarkL),
+            a: ref(contrastTextColorDarkA)
+        },
+        fontFamily: ref(fontFamilyMonospace),
+        fontSize: ref(fontSizeSm),
+        padding: {
+            top: multiply(ref(spacing), 0.1875),
+            right: multiply(ref(spacing), 0.375),
+            bottom: multiply(ref(spacing), 0.1875),
+            left: multiply(ref(spacing), 0.375)
+        }
     };
 }
 
-export function useKbdThemeBase() {
-    const { kbdFontSize, kbdFontFamily, kbdPadding, kbdColor, kbdBackground, kbdBorderRadius } =
+export function useKbdVariables(options = defaultDefinitionOptions) {
+    return nsvariables(ns, useKbdConfig(), options);
+}
+
+export function useKbdThemeSelectors() {
+    const {
+        kbdFontSize,
+        kbdFontFamily,
+        kbdPadding,
+        kbdColor,
+        kbdBackground,
+        kbdBorderRadius
+    } =
         useKbdVariables();
 
     selector('kbd', {
         fontSize: ref(kbdFontSize),
         fontFamily: ref(kbdFontFamily),
-        padding: ref(kbdPadding),
-        color: ref(kbdColor),
-        backgroundColor: ref(kbdBackground),
-        borderRadius: ref(kbdBorderRadius),
+        padding: vref(kbdPadding),
+        color: vref(kbdColor),
+        background: vref(kbdBackground),
+        borderRadius: vref(kbdBorderRadius),
         display: 'inline-block'
     });
 
@@ -82,5 +101,5 @@ export function useKbdThemeBase() {
 
 export function useKbdTheme() {
     useKbdVariables();
-    useKbdThemeBase();
+    useKbdThemeSelectors();
 }

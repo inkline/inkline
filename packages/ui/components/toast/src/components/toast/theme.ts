@@ -12,17 +12,17 @@ import {
 import { capitalize } from '@inkline/utils';
 import {
     useBorder,
-    useBorderRadiusBase,
+    useBorderRadius,
     useBoxShadow,
     useBrandColorVariants,
     useFontSize,
     useKeyMappedSizeMultiplier,
-    usePaddingBase,
     useTransition,
     useFontWeight,
     useNeutralColors,
     useContrastTextColor,
-    useBrandColors
+    useBrandColors,
+    useSpacing
 } from '@inkline/theme';
 
 const ns = 'toast';
@@ -56,13 +56,13 @@ export function useToastThemeVariables(options = defaultDefinitionOptions) {
         borderLeftStyle,
         borderLeftWidth
     } = useBorder();
-    const { paddingTop, paddingRight, paddingBottom, paddingLeft } = usePaddingBase();
+    const { spacing } = useSpacing();
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadiusBase();
+    } = useBorderRadius();
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -125,10 +125,10 @@ export function useToastThemeVariables(options = defaultDefinitionOptions) {
                 color: ref(contrastTextColorLight),
                 fontSize: ref(fontSize),
                 padding: {
-                    top: ref(paddingTop),
-                    right: ref(paddingRight),
-                    bottom: ref(paddingBottom),
-                    left: ref(paddingLeft)
+                    top: ref(spacing),
+                    right: ref(spacing),
+                    bottom: ref(spacing),
+                    left: ref(spacing)
                 },
                 transition: {
                     property: ref(transitionProperty),

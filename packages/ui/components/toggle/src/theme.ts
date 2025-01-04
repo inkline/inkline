@@ -14,7 +14,7 @@
 //     defaultComponentNeutralColors,
 //     defaultComponentSizes,
 //     useBorder,
-//     useBorderRadiusBase,
+//     useBorderRadius,
 //     useBoxShadow,
 //     useBrandColors,
 //     useBrandColorVariants,
@@ -294,7 +294,7 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //         borderTopRightRadius,
 //         borderBottomRightRadius,
 //         borderBottomLeftRadius
-//     } = useBorderRadiusBase();
+//     } = useBorderRadius();
 //     const {
 //         boxShadowOffsetX,
 //         boxShadowOffsetY,

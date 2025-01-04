@@ -9,17 +9,16 @@ import {
 import { capitalize } from '@inkline/utils';
 import {
     useBorder,
-    useBorderRadiusBase,
+    useBorderRadius,
     useBoxShadow,
     useBrandColorVariants,
     useFontSize,
     useKeyMappedSizeMultiplier,
-    usePaddingBase,
     useTransition,
     useColors,
     useContrastTextColor,
     useNeutralColors,
-    useMarginBase
+    useSpacing
 } from '@inkline/theme';
 
 const ns = 'modal';
@@ -54,14 +53,13 @@ export function useModalThemeVariables(options = defaultDefinitionOptions) {
         borderLeftWidth
     } = useBorder();
     const { colorLightShade50 } = useBrandColorVariants();
-    const { paddingTop, paddingRight, paddingBottom, paddingLeft } = usePaddingBase();
-    const { marginRight, marginLeft } = useMarginBase();
+    const { spacing } = useSpacing();
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadiusBase();
+    } = useBorderRadius();
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -122,10 +120,10 @@ export function useModalThemeVariables(options = defaultDefinitionOptions) {
                 color: ref(contrastTextColorLight),
                 fontSize: ref(fontSize),
                 padding: {
-                    top: ref(paddingTop),
-                    right: ref(paddingRight),
-                    bottom: ref(paddingBottom),
-                    left: ref(paddingLeft)
+                    top: ref(spacing),
+                    right: ref(spacing),
+                    bottom: ref(spacing),
+                    left: ref(spacing)
                 },
                 transition: {
                     property: ref(transitionProperty),
@@ -150,7 +148,7 @@ export function useModalThemeVariables(options = defaultDefinitionOptions) {
             {
                 margin: {
                     top: '0',
-                    right: ref(marginRight),
+                    right: ref(spacing),
                     bottom: '0',
                     left: '0'
                 }
@@ -192,7 +190,7 @@ export function useModalThemeVariables(options = defaultDefinitionOptions) {
             [ns, 'footer', 'button'] as const,
             {
                 margin: {
-                    left: multiply(ref(marginLeft), 0.5)
+                    left: multiply(ref(spacing), 0.5)
                 }
             },
             options

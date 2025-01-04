@@ -1,10 +1,10 @@
 import { ref, selector, nsvariables, defaultDefinitionOptions } from '@inkline/core';
-import { useMarginBase } from '@inkline/theme';
+import { useSpacing } from '@inkline/theme';
 
 const ns = 'form-group';
 
 export function useFormGroupThemeVariables(options = defaultDefinitionOptions) {
-    const { marginBottom } = useMarginBase();
+    const { spacing } = useSpacing();
 
     return {
         ...nsvariables(
@@ -13,7 +13,7 @@ export function useFormGroupThemeVariables(options = defaultDefinitionOptions) {
                 margin: {
                     top: 0,
                     right: 0,
-                    bottom: ref(marginBottom),
+                    bottom: ref(spacing),
                     left: 0
                 }
             },

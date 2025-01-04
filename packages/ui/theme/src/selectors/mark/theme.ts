@@ -1,40 +1,48 @@
-import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
-import { useBaseColors, usePaddingBase } from '../../variables';
+import {
+    defaultDefinitionOptions,
+    ref,
+    selector,
+    multiply,
+    vref, nsvariables
+} from '@inkline/core';
+import { useBaseColors, useSpacing } from '../../variables';
 
 const ns = 'mark';
 
-export function useMarkVariables(options = defaultDefinitionOptions) {
-    const { colorYellow } = useBaseColors();
-    const { padding } = usePaddingBase();
-
-    const markBackground = nsvariable(ns, 'background', ref(colorYellow), options);
-
-    const markPaddingTop = nsvariable(ns, 'padding-top', '0.1875rem', options);
-    const markPaddingRight = nsvariable(ns, 'padding-right', '0.1875rem', options);
-    const markPaddingBottom = nsvariable(ns, 'padding-bottom', '0.1875rem', options);
-    const markPaddingLeft = nsvariable(ns, 'padding-left', '0.1875rem', options);
-    const markPadding = addVariableNamespace(ns, padding, options);
+export function useMarkConfig() {
+    const { colorYellowH, colorYellowS, colorYellowL, colorYellowA } = useBaseColors();
+    const { spacing } = useSpacing();
 
     return {
-        markBackground,
-        markPaddingTop,
-        markPaddingRight,
-        markPaddingBottom,
-        markPaddingLeft,
-        markPadding
+        background: {
+            h: ref(colorYellowH),
+            s: ref(colorYellowS),
+            l: ref(colorYellowL),
+            a: ref(colorYellowA)
+        },
+        padding: {
+            top: multiply(ref(spacing), 0.1875),
+            right: multiply(ref(spacing), 0.375),
+            bottom: multiply(ref(spacing), 0.1875),
+            left: multiply(ref(spacing), 0.375)
+        }
     };
 }
 
-export function useMarkThemeBase() {
+export function useMarkVariables(options = defaultDefinitionOptions) {
+    return nsvariables(ns, useMarkConfig(), options);
+}
+
+export function useMarkThemeSelectors() {
     const { markPadding, markBackground } = useMarkVariables();
 
     selector('mark', {
-        padding: ref(markPadding),
-        backgroundColor: ref(markBackground)
+        padding: vref(markPadding),
+        background: vref(markBackground)
     });
 }
 
 export function useMarkTheme() {
     useMarkVariables();
-    useMarkThemeBase();
+    useMarkThemeSelectors();
 }

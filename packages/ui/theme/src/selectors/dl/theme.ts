@@ -1,42 +1,47 @@
 import {
     defaultDefinitionOptions,
-    multiply,
-    addVariableNamespace,
-    nsvariable,
     ref,
-    selector
+    selector, nsvariables, vref
 } from '@inkline/core';
-import { useFontWeight, useMarginBase } from '../../variables';
+import { useFontWeight, useSpacing } from '../../variables';
 
 const ns = 'dl';
 
-export function useDlVariables(options = defaultDefinitionOptions) {
-    const { marginBottom } = useMarginBase();
+export function useDlConfig() {
+    const { spacing, spacingXs } = useSpacing();
     const { fontWeightBold } = useFontWeight();
 
-    const dlMarginBottom = addVariableNamespace(ns, marginBottom, options);
-
-    const dlDtFontWeight = nsvariable([ns, 'dt'], 'font-weight', ref(fontWeightBold), options);
-
-    const dlDdMarginBottom = nsvariable(
-        [ns, 'dd'],
-        'margin-bottom',
-        multiply(ref(marginBottom), 0.5),
-        options
-    );
-
     return {
-        dlMarginBottom,
-        dlDtFontWeight,
-        dlDdMarginBottom
+        margin: {
+            bottom: ref(spacing)
+        },
+        /**
+         * @element dt
+         */
+        dt: {
+            fontWeight: ref(fontWeightBold)
+        },
+        /**
+         * @element dd
+         */
+        dd: {
+            margin: {
+                bottom: ref(spacingXs)
+            }
+        }
     };
 }
 
-export function useDlThemeBase() {
+
+export function useDlVariables(options = defaultDefinitionOptions) {
+    return nsvariables(ns, useDlConfig(), options);
+}
+
+export function useDlThemeSelectors() {
     const { dlMarginBottom, dlDtFontWeight, dlDdMarginBottom } = useDlVariables();
 
     selector('dl', {
-        marginBottom: ref(dlMarginBottom)
+        margin: vref(dlMarginBottom)
     });
 
     selector('dl dt', {
@@ -44,11 +49,11 @@ export function useDlThemeBase() {
     });
 
     selector('dl dd', {
-        marginBottom: ref(dlDdMarginBottom)
+        margin: vref(dlDdMarginBottom)
     });
 }
 
 export function useDlTheme() {
     useDlVariables();
-    useDlThemeBase();
+    useDlThemeSelectors();
 }

@@ -41,6 +41,10 @@ const defaultBadgeSizes = ['sm', 'md', 'lg'] as const;
 type BadgeColorVariant = (typeof defaultBadgeColors)[number];
 type BadgeSizeVariant = (typeof defaultBadgeSizes)[number];
 
+/**
+ * Config
+ */
+
 export function useBadgeThemeColorConfig(variant?: BadgeColorVariant) {
     const {
         colorLightShade50H,
@@ -461,6 +465,34 @@ export function useBadgeThemeConfig() {
     );
 }
 
+/**
+ * Variables
+ */
+
+export function useBadgeThemeColorVariables(
+    variant: BadgeColorVariant,
+    options = defaultDefinitionOptions
+) {
+    const colorNs = [ns, variant] as const;
+
+    return nsvariables(colorNs, useBadgeThemeColorConfig(variant), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+export function useBadgeThemeSizeVariables(
+    variant: BadgeSizeVariant,
+    options = defaultDefinitionOptions
+) {
+    const sizeNs = [ns, variant] as const;
+
+    return nsvariables(sizeNs, useBadgeThemeSizeConfig(variant), {
+        ...options,
+        registerComposed: false
+    });
+}
+
 export function useBadgeThemeVariables(options = defaultDefinitionOptions) {
     return {
         ...nsvariables(ns, useBadgeThemeConfig(), {
@@ -470,7 +502,11 @@ export function useBadgeThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useBadgeThemeLayout() {
+/**
+ * Selectors
+ */
+
+export function useBadgeThemeLayoutSelectors() {
     selector('.badge', {
         display: 'inline-flex',
         justifyContent: 'center',
@@ -482,7 +518,7 @@ export function useBadgeThemeLayout() {
     });
 }
 
-export function useBadgeThemeBase() {
+export function useBadgeThemeBaseSelectors() {
     const {
         badgeBorderStyle,
         badgeBorderTopColor,
@@ -497,7 +533,9 @@ export function useBadgeThemeBase() {
         badgeColor,
         badgeFontSize,
         badgeFontWeight,
-        badgeTransition,
+        badgeTransitionProperty,
+        badgeTransitionDuration,
+        badgeTransitionTimingFunction,
         badgePillBorderRadius
     } = useBadgeThemeVariables();
 
@@ -515,7 +553,9 @@ export function useBadgeThemeBase() {
         fontSize: ref(badgeFontSize),
         fontWeight: vref(badgeFontWeight),
         padding: vref(badgePadding),
-        transition: vref(badgeTransition)
+        transitionProperty: vref(badgeTransitionProperty),
+        transitionDuration: vref(badgeTransitionDuration),
+        transitionTimingFunction: vref(badgeTransitionTimingFunction)
     });
 
     selector('.badge.-pill', {
@@ -523,9 +563,7 @@ export function useBadgeThemeBase() {
     });
 }
 
-export function useBadgeThemeColorFactory(variant: BadgeColorVariant) {
-    const colorNs = [ns, variant] as const;
-
+export function useBadgeThemeColorSelectors(variant: BadgeColorVariant) {
     const {
         badgeBackgroundH,
         badgeBackgroundS,
@@ -578,12 +616,7 @@ export function useBadgeThemeColorFactory(variant: BadgeColorVariant) {
         variantColorS,
         variantColorL,
         variantColorA
-    } = setExportsNamespace(
-        nsvariables(colorNs, useBadgeThemeColorConfig(variant), {
-            registerComposed: false
-        }),
-        'variant'
-    );
+    } = setExportsNamespace(useBadgeThemeColorVariables(variant), 'variant');
 
     selector(`.badge.-${variant}`, {
         [toVariableKey(badgeBorderTopColorH)]: ref(variantBorderTopColorH),
@@ -613,12 +646,7 @@ export function useBadgeThemeColorFactory(variant: BadgeColorVariant) {
     });
 }
 
-export function useBadgeThemeColors(colors = defaultBadgeColors) {
-    colors.forEach(useBadgeThemeColorFactory);
-}
-
-export function useBadgeThemeSizeFactory(variant: BadgeSizeVariant) {
-    const sizeNs = [ns, variant] as const;
+export function useBadgeThemeSizeSelectors(variant: BadgeSizeVariant) {
     const {
         badgeBorderTopLeftRadius,
         badgeBorderTopRightRadius,
@@ -641,7 +669,7 @@ export function useBadgeThemeSizeFactory(variant: BadgeSizeVariant) {
         variantPaddingRight,
         variantPaddingBottom,
         variantPaddingLeft
-    } = setExportsNamespace(nsvariables(sizeNs, useBadgeThemeSizeConfig(variant)), 'variant');
+    } = setExportsNamespace(useBadgeThemeSizeVariables(variant), 'variant');
 
     selector(`.badge.-${variant}`, {
         [toVariableKey(badgeBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
@@ -656,14 +684,22 @@ export function useBadgeThemeSizeFactory(variant: BadgeSizeVariant) {
     });
 }
 
+/**
+ * Composables
+ */
+
+export function useBadgeThemeColors(colors = defaultBadgeColors) {
+    colors.forEach(useBadgeThemeColorSelectors);
+}
+
 export function useBadgeThemeSizes(sizes = defaultBadgeSizes) {
-    sizes.forEach(useBadgeThemeSizeFactory);
+    sizes.forEach(useBadgeThemeSizeSelectors);
 }
 
 export function useBadgeTheme() {
     useBadgeThemeVariables();
-    useBadgeThemeLayout();
-    useBadgeThemeBase();
+    useBadgeThemeLayoutSelectors();
+    useBadgeThemeBaseSelectors();
     useBadgeThemeColors();
     useBadgeThemeSizes();
 }

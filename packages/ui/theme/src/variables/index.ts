@@ -14,8 +14,6 @@ export * from './useFontWeight';
 export * from './useGrid';
 export * from './useLetterSpacing';
 export * from './useLineHeight';
-export * from './useMargin';
-export * from './usePadding';
 export * from './usePercentages';
 export * from './useScale';
 export * from './useSizeMultiplier';

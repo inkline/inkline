@@ -1,6 +1,6 @@
 import { selector } from '@inkline/core';
 
-export function useImgThemeBase() {
+export function useImgThemeSelectors() {
     selector('img, svg', {
         verticalAlign: 'middle'
     });
@@ -42,5 +42,5 @@ export function useImgThemeBase() {
 }
 
 export function useImgTheme() {
-    useImgThemeBase();
+    useImgThemeSelectors();
 }

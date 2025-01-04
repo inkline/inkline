@@ -1,34 +1,36 @@
 import {
     defaultDefinitionOptions,
-    multiply,
-    addVariableNamespace,
-    nsvariable,
     ref,
-    selector
+    selector, nsvariables, vref
 } from '@inkline/core';
-import { useMarginBase, usePaddingBase } from '../../variables';
+import { useSpacing } from '../../variables';
 
 const ns = 'ul';
 
-export function useUlVariables(options = defaultDefinitionOptions) {
-    const { marginBottom } = useMarginBase();
-    const { paddingLeft } = usePaddingBase();
 
-    const ulMarginBottom = addVariableNamespace(ns, marginBottom, options);
-    const ulPaddingLeft = nsvariable(ns, 'padding-left', multiply(ref(paddingLeft), 2), options);
+export function useUlConfig() {
+    const { spacing, spacingXl } = useSpacing();
 
     return {
-        ulMarginBottom,
-        ulPaddingLeft
+        margin: {
+            bottom: ref(spacing)
+        },
+        padding: {
+            left: ref(spacingXl)
+        }
     };
 }
 
-export function useUlThemeBase() {
-    const { ulMarginBottom, ulPaddingLeft } = useUlVariables();
+export function useUlVariables(options = defaultDefinitionOptions) {
+    return nsvariables(ns, useUlConfig(), options);
+}
+
+export function useUlThemeSelectors() {
+    const { ulMargin, ulPadding } = useUlVariables();
 
     selector('ul', {
-        marginBottom: ref(ulMarginBottom),
-        paddingLeft: ref(ulPaddingLeft)
+        margin: vref(ulMargin),
+        padding: vref(ulPadding)
     });
 
     selector('ul ol, ul ul', {
@@ -38,5 +40,5 @@ export function useUlThemeBase() {
 
 export function useUlTheme() {
     useUlVariables();
-    useUlThemeBase();
+    useUlThemeSelectors();
 }

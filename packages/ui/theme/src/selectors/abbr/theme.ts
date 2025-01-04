@@ -1,6 +1,6 @@
 import { selector } from '@inkline/core';
 
-export function useAbbrThemeBase() {
+export function useAbbrThemeSelectors() {
     selector('abbr[title]', {
         cursor: 'help',
         textDecorationSkipInk: 'none'
@@ -8,5 +8,5 @@ export function useAbbrThemeBase() {
 }
 
 export function useAbbrTheme() {
-    useAbbrThemeBase();
+    useAbbrThemeSelectors();
 }

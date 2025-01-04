@@ -82,9 +82,11 @@ export function color<Name extends string>(
 
     Object.keys(parsedColor).forEach((key) => {
         const variableName = `${name}-${key}`;
-        const colorVariable = variable(variableName, parsedColor[key as keyof typeof parsedColor], {
-            default: options?.default
-        });
+        const colorVariable = variable(
+            variableName,
+            parsedColor[key as keyof typeof parsedColor],
+            options
+        );
 
         colorVariables[toExportedName(variableName) as keyof typeof colorVariables] = colorVariable;
         composedParts.push(colorVariable);
@@ -94,7 +96,8 @@ export function color<Name extends string>(
         name,
         isParseableHSLAValue
             ? hsla(composedParts.map((part) => ref(part)) as HSLAColorInlineProperty)
-            : (value as TokenValue)
+            : (value as TokenValue),
+        options
     );
 
     return colorVariables;

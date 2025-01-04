@@ -1,11 +1,11 @@
 import { selector } from '@inkline/core';
 
-export function useOutputThemeBase() {
+export function useOutputThemeSelectors() {
     selector('output', {
         display: 'inline-block'
     });
 }
 
 export function useOutputTheme() {
-    useOutputThemeBase();
+    useOutputThemeSelectors();
 }

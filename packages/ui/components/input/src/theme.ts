@@ -10,7 +10,7 @@ import {
 import { capitalize } from '@inkline/utils';
 import {
     useBorder,
-    useBorderRadiusBase,
+    useBorderRadius,
     useBoxShadow,
     useBrandColors,
     useBrandColorVariants,
@@ -19,7 +19,7 @@ import {
     useKeyMappedSizeMultiplier,
     useLineHeight,
     useNeutralColors,
-    usePaddingBase,
+    useSpacing,
     useTextColor,
     useTransition
 } from '@inkline/theme';
@@ -49,13 +49,13 @@ export function useInputThemeVariables(options = defaultDefinitionOptions) {
     const { colorPrimary, colorDanger } = useBrandColors();
     const { colorLightTint100, colorLightTint50, colorLightShade50, colorLightShade100 } =
         useBrandColorVariants();
-    const { paddingTop, paddingRight, paddingBottom, paddingLeft } = usePaddingBase();
+    const { spacing } = useSpacing();
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadiusBase();
+    } = useBorderRadius();
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -119,10 +119,10 @@ export function useInputThemeVariables(options = defaultDefinitionOptions) {
                 fontSize: ref(fontSize),
                 lineHeight: ref(lineHeight),
                 padding: {
-                    top: multiply(ref(paddingTop), 3 / 4),
-                    right: ref(paddingRight),
-                    bottom: multiply(ref(paddingBottom), 3 / 4),
-                    left: ref(paddingLeft)
+                    top: multiply(ref(spacing), 3 / 4),
+                    right: ref(spacing),
+                    bottom: multiply(ref(spacing), 3 / 4),
+                    left: ref(spacing)
                 },
                 transition: {
                     property: ref(transitionProperty),

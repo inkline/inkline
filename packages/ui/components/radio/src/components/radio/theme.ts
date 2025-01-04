@@ -15,14 +15,14 @@ import {
     useBoxShadow,
     useFontSize,
     useKeyMappedSizeMultiplier,
-    useMargin,
     useTransition,
     useTextColor,
     useBrandColors,
     useBrandColorVariants,
     useNeutralColors,
     useColors,
-    useContrastTextColor
+    useContrastTextColor,
+    useSpacing
 } from '@inkline/theme';
 
 const ns = 'radio';
@@ -68,7 +68,7 @@ export function useRadioThemeVariables(options = defaultDefinitionOptions) {
     } = useBoxShadow();
     const { textColorWeak } = useTextColor();
     const { fontSize } = useFontSize();
-    const { marginRight, marginBottom } = useMargin();
+    const { spacing } = useSpacing();
     const { transitionDuration, transitionTimingFunction } = useTransition();
     const { contrastTextColorLight } = useContrastTextColor();
 
@@ -116,8 +116,8 @@ export function useRadioThemeVariables(options = defaultDefinitionOptions) {
                 fontSize: ref(fontSize),
                 margin: {
                     top: 0,
-                    right: multiply(ref(marginRight), 0.5),
-                    bottom: multiply(ref(marginBottom), 0.5),
+                    right: multiply(ref(spacing), 0.5),
+                    bottom: multiply(ref(spacing), 0.5),
                     left: 0
                 },
                 width: '1rem',

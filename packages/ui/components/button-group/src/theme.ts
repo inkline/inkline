@@ -1,9 +1,13 @@
-import { defaultDefinitionOptions, nsvariables, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, nsvariables, ref, selector, vref } from '@inkline/core';
 import { useBoxShadow } from '@inkline/theme';
 
 const ns = 'button-group';
 
-export function useButtonGroupThemeVariables(options = defaultDefinitionOptions) {
+/**
+ * Config
+ */
+
+export function useButtonGroupThemeConfig() {
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -12,22 +16,33 @@ export function useButtonGroupThemeVariables(options = defaultDefinitionOptions)
         boxShadowColor
     } = useBoxShadow();
 
-    return nsvariables(
-        ns,
-        {
-            boxShadow: {
-                offsetX: ref(boxShadowOffsetX),
-                offsetY: ref(boxShadowOffsetY),
-                blurRadius: ref(boxShadowBlurRadius),
-                spreadRadius: ref(boxShadowSpreadRadius),
-                color: ref(boxShadowColor)
-            }
-        },
-        options
-    );
+    return {
+        boxShadow: {
+            offsetX: ref(boxShadowOffsetX),
+            offsetY: ref(boxShadowOffsetY),
+            blurRadius: ref(boxShadowBlurRadius),
+            spreadRadius: ref(boxShadowSpreadRadius),
+            color: ref(boxShadowColor)
+        }
+    };
 }
 
-export function useButtonGroupThemeLayout() {
+/**
+ * Variables
+ */
+
+export function useButtonGroupThemeVariables(options = defaultDefinitionOptions) {
+    return nsvariables(ns, useButtonGroupThemeConfig(), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+/**
+ * Selectors
+ */
+
+export function useButtonGroupThemeLayoutSelectors() {
     selector('.button-group', {
         position: 'relative',
         display: 'inline-flex',
@@ -124,16 +139,20 @@ export function useButtonGroupThemeLayout() {
     );
 }
 
-export function useButtonGroupThemeBase() {
+export function useButtonGroupThemeBaseSelectors() {
     const { buttonGroupBoxShadow } = useButtonGroupThemeVariables();
 
     selector('.button-group', {
-        boxShadow: ref(buttonGroupBoxShadow)
+        boxShadow: vref(buttonGroupBoxShadow)
     });
 }
 
+/**
+ * Composables
+ */
+
 export function useButtonGroupTheme() {
     useButtonGroupThemeVariables();
-    useButtonGroupThemeLayout();
-    useButtonGroupThemeBase();
+    useButtonGroupThemeLayoutSelectors();
+    useButtonGroupThemeBaseSelectors();
 }

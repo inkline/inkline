@@ -41,7 +41,7 @@ export function useBorderRadius(options = defaultDefinitionOptions) {
         borderRadiusMaxXl
     } = useVariantsFactory<'border-radius-max', keyof typeof borderRadiusMinMaxVariants>(borderRadiusMax, borderRadiusMinMaxVariants, options);
 
-    const createBorderRadiusVariant = (borderRadiusMin: TokenValue, borderRadiusMax: TokenValue) => createVariantFactoryFn(() => css`calc(((${borderRadiusMin} / 16) * 1 rem) + (${borderRadiusMax} - ${borderRadiusMin}) * ${ref(fluidBreakpoint)})`);
+    const createBorderRadiusVariant = (borderRadiusMin: TokenValue, borderRadiusMax: TokenValue) => createVariantFactoryFn(() => css`calc(((${borderRadiusMin} / 16) * ${'1rem'}) + (${borderRadiusMax} - ${borderRadiusMin}) * ${ref(fluidBreakpoint)})`);
     const variants = {
         'xs': createBorderRadiusVariant(ref(borderRadiusMinXs), ref(borderRadiusMaxXs)),
         'sm': createBorderRadiusVariant(ref(borderRadiusMinSm), ref(borderRadiusMaxSm)),

@@ -1,20 +1,20 @@
 import { ref, selector, nsvariables, defaultDefinitionOptions } from '@inkline/core';
-import { useMargin } from '@inkline/theme';
+import { useSpacing } from '@inkline/theme';
 
 const ns = 'media';
 
 export function useMediaThemeVariables(options = defaultDefinitionOptions) {
-    const { marginTop, marginRight, marginBottom, marginLeft } = useMargin();
+    const { spacing } = useSpacing();
 
     return {
         ...nsvariables(
             [ns, 'image'] as const,
             {
                 margin: {
-                    top: ref(marginTop),
-                    right: ref(marginRight),
-                    bottom: ref(marginBottom),
-                    left: ref(marginLeft)
+                    top: ref(spacing),
+                    right: ref(spacing),
+                    bottom: ref(spacing),
+                    left: ref(spacing)
                 }
             },
             options

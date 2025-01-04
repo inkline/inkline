@@ -1,10 +1,10 @@
 import { defaultDefinitionOptions, nsvariables, ref, selector } from '@inkline/core';
-import { useMarginBase, useTransitionBase } from '@inkline/theme';
+import { useSpacing, useTransitionBase } from '@inkline/theme';
 
 const ns = 'toast-container';
 
 export function useToastContainerThemeVariables(options = defaultDefinitionOptions) {
-    const { marginTop, marginRight, marginBottom, marginLeft } = useMarginBase();
+    const { spacing } = useSpacing();
     const { transitionDuration, transitionTimingFunction } = useTransitionBase();
 
     return {
@@ -12,10 +12,10 @@ export function useToastContainerThemeVariables(options = defaultDefinitionOptio
             ns,
             {
                 margin: {
-                    top: ref(marginTop),
-                    right: ref(marginRight),
-                    bottom: ref(marginBottom),
-                    left: ref(marginLeft)
+                    top: ref(spacing),
+                    right: ref(spacing),
+                    bottom: ref(spacing),
+                    left: ref(spacing)
                 },
                 width: '320px',
                 zIndex: 2010
@@ -26,7 +26,7 @@ export function useToastContainerThemeVariables(options = defaultDefinitionOptio
             [ns, 'toast'] as const,
             {
                 margin: {
-                    bottom: ref(marginBottom)
+                    bottom: ref(spacing)
                 },
                 transition: {
                     property: 'transform, opacity',

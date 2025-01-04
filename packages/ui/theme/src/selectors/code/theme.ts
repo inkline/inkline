@@ -1,29 +1,34 @@
-import { defaultDefinitionOptions, nsvariable, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, nsvariables, ref, selector, vref } from '@inkline/core';
 import { useBaseColors, useFontFamily, useFontSize } from '../../variables';
 
 const ns = 'code';
 
-export function useCodeVariables(options = defaultDefinitionOptions) {
-    const { colorPink } = useBaseColors();
+export function useCodeConfig() {
+    const { colorPinkH, colorPinkS, colorPinkL, colorPinkA } = useBaseColors();
     const { fontSizeSm } = useFontSize();
     const { fontFamilyMonospace } = useFontFamily();
 
-    const codeColor = nsvariable(ns, 'color', ref(colorPink), options);
-    const codeFontSize = nsvariable(ns, 'font-size', ref(fontSizeSm), options);
-    const codeFontFamily = nsvariable(ns, 'font-family', ref(fontFamilyMonospace), options);
-
     return {
-        codeColor,
-        codeFontSize,
-        codeFontFamily
+        color: {
+            h: ref(colorPinkH),
+            s: ref(colorPinkS),
+            l: ref(colorPinkL),
+            a: ref(colorPinkA)
+        },
+        fontSize: ref(fontSizeSm),
+        fontFamily: ref(fontFamilyMonospace)
     };
 }
 
-export function useCodeThemeBase() {
+export function useCodeVariables(options = defaultDefinitionOptions) {
+    return nsvariables(ns, useCodeConfig(), options);
+}
+
+export function useCodeThemeSelectors() {
     const { codeColor, codeFontSize, codeFontFamily } = useCodeVariables();
 
     selector('code', {
-        color: ref(codeColor),
+        color: vref(codeColor),
         fontSize: ref(codeFontSize),
         fontFamily: ref(codeFontFamily),
         wordWrap: 'break-word'
@@ -36,5 +41,5 @@ export function useCodeThemeBase() {
 
 export function useCodeTheme() {
     useCodeVariables();
-    useCodeThemeBase();
+    useCodeThemeSelectors();
 }

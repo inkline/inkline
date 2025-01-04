@@ -1,5 +1,5 @@
 #storybook-root {
     > .input + .input {
-        margin-top: var(--margin-top);
+        margin-top: var(--spacing);
     }
 }

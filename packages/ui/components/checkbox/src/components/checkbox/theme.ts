@@ -12,18 +12,18 @@ import {
 import { capitalize } from '@inkline/utils';
 import {
     useBorder,
-    useBorderRadiusBase,
+    useBorderRadius,
     useBoxShadow,
     useFontSize,
     useKeyMappedSizeMultiplier,
-    useMargin,
     useTransition,
     useTextColor,
     useBrandColors,
     useBrandColorVariants,
     useNeutralColors,
     useColors,
-    useContrastTextColor
+    useContrastTextColor,
+    useSpacing
 } from '@inkline/theme';
 
 const ns = 'checkbox';
@@ -67,7 +67,7 @@ export function useCheckboxThemeVariables(options = defaultDefinitionOptions) {
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadiusBase();
+    } = useBorderRadius();
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -77,7 +77,7 @@ export function useCheckboxThemeVariables(options = defaultDefinitionOptions) {
     } = useBoxShadow();
     const { textColorWeak } = useTextColor();
     const { fontSize } = useFontSize();
-    const { marginRight, marginBottom } = useMargin();
+    const { spacing } = useSpacing();
     const { transitionDuration, transitionTimingFunction } = useTransition();
     const { contrastTextColorLight } = useContrastTextColor();
 
@@ -125,8 +125,8 @@ export function useCheckboxThemeVariables(options = defaultDefinitionOptions) {
                 fontSize: ref(fontSize),
                 margin: {
                     top: 0,
-                    right: multiply(ref(marginRight), 0.5),
-                    bottom: multiply(ref(marginBottom), 0.5),
+                    right: multiply(ref(spacing), 0.5),
+                    bottom: multiply(ref(spacing), 0.5),
                     left: 0
                 },
                 width: '1rem',

@@ -9,16 +9,16 @@ import {
 import { capitalize } from '@inkline/utils';
 import {
     useBorder,
-    useBorderRadiusBase,
+    useBorderRadius,
     useBoxShadow,
     useBrandColorVariants,
     useFontSize,
     useKeyMappedSizeMultiplier,
-    usePaddingBase,
     useTransition,
     useColors,
     useContrastTextColor,
-    useNeutralColors
+    useNeutralColors,
+    useSpacing
 } from '@inkline/theme';
 
 const ns = 'tooltip';
@@ -53,13 +53,13 @@ export function useTooltipThemeVariables(options = defaultDefinitionOptions) {
         borderLeftWidth
     } = useBorder();
     const { colorLightShade50 } = useBrandColorVariants();
-    const { paddingTop, paddingRight, paddingBottom, paddingLeft } = usePaddingBase();
+    const { spacing } = useSpacing();
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadiusBase();
+    } = useBorderRadius();
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -120,10 +120,10 @@ export function useTooltipThemeVariables(options = defaultDefinitionOptions) {
                 color: ref(contrastTextColorLight),
                 fontSize: ref(fontSize),
                 padding: {
-                    top: multiply(ref(paddingTop), 3 / 4),
-                    right: ref(paddingRight),
-                    bottom: multiply(ref(paddingBottom), 3 / 4),
-                    left: ref(paddingLeft)
+                    top: multiply(ref(spacing), 3 / 4),
+                    right: ref(spacing),
+                    bottom: multiply(ref(spacing), 3 / 4),
+                    left: ref(spacing)
                 },
                 transition: {
                     property: ref(transitionProperty),

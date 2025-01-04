@@ -3,7 +3,7 @@ import {
     darkThemeName,
     ref,
     selector,
-    nsvariables
+    nsvariables, vref
 } from '@inkline/core';
 import {
     useBrandColorVariants,
@@ -18,10 +18,33 @@ import {
 
 const ns = 'body';
 
-export function useBodyThemeVariables(options = defaultDefinitionOptions) {
-    const { textColor } = useTextColor();
-    const { colorWhite } = useNeutralColors();
-    const { colorDarkShade50 } = useBrandColorVariants();
+const defaultBodyColor = 'light';
+const defaultBodyColors = [
+    'light',
+    'dark'
+] as const;
+
+type BodyColorVariant = (typeof defaultBodyColors)[number];
+
+export function useBodyThemeConfig(variant?: BodyColorVariant) {
+    const {
+        textColorH,
+        textColorS,
+        textColorL,
+        textColorA
+    } = useTextColor();
+    const {
+        colorWhiteH,
+        colorWhiteS,
+        colorWhiteL,
+        colorWhiteA
+    } = useNeutralColors();
+    const {
+        colorDarkShade50H,
+        colorDarkShade50S,
+        colorDarkShade50L,
+        colorDarkShade50A
+    } = useBrandColorVariants();
     const { fontSize } = useFontSize();
     const { fontFamilyBase } = useFontFamily();
     const { textAlignLeft } = useTextAlign();
@@ -29,16 +52,13 @@ export function useBodyThemeVariables(options = defaultDefinitionOptions) {
         useTransition();
     const { lineHeight } = useLineHeight();
 
-    nsvariables(ns, {
-        background: ref(colorDarkShade50)
-    }, {
-        ...options,
-        theme: darkThemeName
-    });
-
-    return nsvariables(ns, {
-        color: ref(textColor),
-        background: ref(colorWhite),
+    const common = {
+        color: {
+            h: ref(textColorH),
+            s: ref(textColorS),
+            l: ref(textColorL),
+            a: ref(textColorA)
+        },
         fontSize: ref(fontSize),
         fontFamily: ref(fontFamilyBase),
         lineHeight: ref(lineHeight),
@@ -48,10 +68,40 @@ export function useBodyThemeVariables(options = defaultDefinitionOptions) {
             duration: ref(transitionDuration),
             timingFunction: ref(transitionTimingFunction)
         }
-    }, options);
+    };
+
+    return {
+        light: {
+            ...common,
+            background: {
+                h: ref(colorWhiteH),
+                s: ref(colorWhiteS),
+                l: ref(colorWhiteL),
+                a: ref(colorWhiteA)
+            }
+        },
+        dark: {
+            ...common,
+            background: {
+                h: ref(colorDarkShade50H),
+                s: ref(colorDarkShade50S),
+                l: ref(colorDarkShade50L),
+                a: ref(colorDarkShade50A)
+            }
+        }
+    }[variant ?? defaultBodyColor];
 }
 
-export function useBodyThemeBase() {
+export function useBodyThemeVariables(options = defaultDefinitionOptions) {
+    nsvariables(ns, useBodyThemeConfig('dark'), {
+        ...options,
+        theme: darkThemeName
+    });
+
+    return nsvariables(ns, useBodyThemeConfig(), options);
+}
+
+export function useBodyThemeSelectors() {
     const {
         bodyColor,
         bodyBackground,
@@ -63,8 +113,8 @@ export function useBodyThemeBase() {
     } = useBodyThemeVariables();
 
     selector('body', {
-        color: ref(bodyColor),
-        backgroundColor: ref(bodyBackground),
+        color: vref(bodyColor),
+        backgroundColor: vref(bodyBackground),
         fontSize: ref(bodyFontSize),
         fontFamily: ref(bodyFontFamily),
         lineHeight: ref(bodyLineHeight),
@@ -76,5 +126,5 @@ export function useBodyThemeBase() {
 
 export function useBodyTheme() {
     useBodyThemeVariables();
-    useBodyThemeBase();
+    useBodyThemeSelectors();
 }

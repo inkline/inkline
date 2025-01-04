@@ -1,9 +1,14 @@
-import { defaultDefinitionOptions, addVariableNamespace, nsvariable, ref, selector } from '@inkline/core';
+import {
+    defaultDefinitionOptions,
+    ref,
+    selector,
+    nsvariables,
+    vref
+} from '@inkline/core';
 import {
     useBorder,
     useFontSize,
-    useMarginBase,
-    usePaddingBase,
+    useSpacing,
     useTextColor
 } from '../../variables';
 
@@ -11,61 +16,54 @@ const ns = 'blockquote';
 
 export function useBlockquoteVariables(options = defaultDefinitionOptions) {
     const { fontSize } = useFontSize();
-    const { marginBottom } = useMarginBase();
-    const { paddingLeft } = usePaddingBase();
+    const { spacing } = useSpacing();
     const { borderLeftWidth, borderLeftStyle, borderLeftColor } = useBorder();
-    const { textColorWeak } = useTextColor();
+    const {
+        textColorWeakH,
+        textColorWeakS,
+        textColorWeakL,
+        textColorWeakA
+    } = useTextColor();
 
-    const blockquoteFontSize = addVariableNamespace(ns, fontSize, options);
+    return nsvariables(ns, {
+        fontSize: ref(fontSize),
+        margin: ref(spacing),
 
-    const blockquoteMarginBottom = addVariableNamespace(ns, marginBottom, options);
+        /**
+         * @variant bordered
+         */
+        bordered: {
+            padding: ref(spacing),
+            border: {
+                left: {
+                    width: ref(borderLeftWidth),
+                    style: ref(borderLeftStyle),
+                    color: ref(borderLeftColor)
+                }
+            }
+        },
 
-    const blockquoteBorderedPadding = nsvariable(
-        [ns, 'bordered'],
-        'padding',
-        ref(paddingLeft),
-        options
-    );
-
-    const blockquoteBorderedBorderWidth = nsvariable(
-        [ns, 'bordered'],
-        'border-width',
-        ref(borderLeftWidth),
-        options
-    );
-    const blockquoteBorderedBorderStyle = nsvariable(
-        [ns, 'bordered'],
-        'border-style',
-        ref(borderLeftStyle),
-        options
-    );
-    const blockquoteBorderedBorderColor = nsvariable(
-        [ns, 'bordered'],
-        'border-color',
-        ref(borderLeftColor),
-        options
-    );
-
-    const blockquoteFooterColor = nsvariable([ns, 'footer'], 'color', ref(textColorWeak), options);
-    const blockquoteFooterFontSize = nsvariable([ns, 'footer'], 'font-size', '80%', options);
-
-    return {
-        blockquoteFontSize,
-        blockquoteMarginBottom,
-        blockquoteBorderedPadding,
-        blockquoteBorderedBorderWidth,
-        blockquoteBorderedBorderStyle,
-        blockquoteBorderedBorderColor,
-        blockquoteFooterColor,
-        blockquoteFooterFontSize
-    };
+        /**
+         * @element footer
+         */
+        footer: {
+            color: {
+                h: ref(textColorWeakH),
+                s: ref(textColorWeakS),
+                l: ref(textColorWeakL),
+                a: ref(textColorWeakA)
+            },
+            fontSize: '80%'
+        }
+    }, options);
 }
 
-export function useBlockquoteThemeBase() {
+export function useBlockquoteThemeSelectors() {
     const {
         blockquoteFontSize,
-        blockquoteMarginBottom,
-        blockquoteBorderedPadding,
+        blockquoteMargin,
+        blockquoteBorderedPaddingLeft,
+        blockquoteBorderedPaddingRight,
         blockquoteBorderedBorderWidth,
         blockquoteBorderedBorderStyle,
         blockquoteBorderedBorderColor,
@@ -74,7 +72,7 @@ export function useBlockquoteThemeBase() {
     } = useBlockquoteVariables();
 
     selector('.blockquote', {
-        marginBottom: ref(blockquoteMarginBottom),
+        margin: vref(blockquoteMargin),
         fontSize: ref(blockquoteFontSize)
     });
 
@@ -91,14 +89,14 @@ export function useBlockquoteThemeBase() {
     });
 
     selector('.blockquote.-left.-bordered', {
-        paddingLeft: ref(blockquoteBorderedPadding),
-        borderLeftWidth: ref(blockquoteBorderedBorderWidth),
-        borderLeftStyle: ref(blockquoteBorderedBorderStyle),
-        borderLeftColor: ref(blockquoteBorderedBorderColor)
+        paddingLeft: vref(blockquoteBorderedPaddingLeft),
+        borderLeftWidth: vref(blockquoteBorderedBorderWidth),
+        borderLeftStyle: vref(blockquoteBorderedBorderStyle),
+        borderLeftColor: vref(blockquoteBorderedBorderColor)
     });
 
     selector('.blockquote.-right.-bordered', {
-        paddingRight: ref(blockquoteBorderedPadding),
+        paddingRight: ref(blockquoteBorderedPaddingRight),
         borderRightWidth: ref(blockquoteBorderedBorderWidth),
         borderRightStyle: ref(blockquoteBorderedBorderStyle),
         borderRightColor: ref(blockquoteBorderedBorderColor)
@@ -109,7 +107,7 @@ export function useBlockquoteThemeBase() {
     });
 
     selector('.blockquote > footer, blockquote > .footer', {
-        color: ref(blockquoteFooterColor),
+        color: vref(blockquoteFooterColor),
         fontSize: ref(blockquoteFooterFontSize),
         display: 'block'
     });
@@ -121,5 +119,5 @@ export function useBlockquoteThemeBase() {
 
 export function useBlockquoteTheme() {
     useBlockquoteVariables();
-    useBlockquoteThemeBase();
+    useBlockquoteThemeSelectors();
 }

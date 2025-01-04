@@ -58,7 +58,7 @@ export function useSpacing(options = defaultDefinitionOptions) {
         spacingMax4Xl
     } = useVariantsFactory<'spacing-max', keyof typeof spacingMinMaxVariants>(spacingMax, spacingMinMaxVariants, options);
 
-    const createSpacingVariant = (spacingMin: TokenValue, spacingMax: TokenValue) => createVariantFactoryFn(() => css`calc(((${spacingMin} / 16) * 1 rem) + (${spacingMax} - ${spacingMin}) * ${ref(fluidBreakpoint)})`);
+    const createSpacingVariant = (spacingMin: TokenValue, spacingMax: TokenValue) => createVariantFactoryFn(() => css`calc(((${spacingMin} / 16) * ${'1rem'}) + (${spacingMax} - ${spacingMin}) * ${ref(fluidBreakpoint)})`);
     const variants = {
         '2xs': createSpacingVariant(ref(spacingMin2Xs), ref(spacingMax2Xs)),
         'xs': createSpacingVariant(ref(spacingMinXs), ref(spacingMaxXs)),
